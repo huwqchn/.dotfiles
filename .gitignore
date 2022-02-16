@@ -1,0 +1,11 @@
+*.swp
+.config/nvim/.DS_Store
+.config/nvim/view/
+.config/nvim/plugged/
+.config/nvim/sessions/
+.config/nvim/autoload/plug.vim.old
+.config/nvim/tmp/
+.config/nvim/.netrwhist
+.config/nvim/_machine_specific.vim
+.config/nvim/tmp/
+.config/nvim/.vim-bookmarks
