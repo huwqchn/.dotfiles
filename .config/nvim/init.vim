@@ -225,7 +225,6 @@ noremap <C-i> <C-w>l
 noremap qf <C-w>o
 
 " edit
-noremap <LEADER>dw diw
 noremap <LEADER>cw ciw
 noremap <LEADER>yw yiw
 noremap <LEADER>pw viwp
