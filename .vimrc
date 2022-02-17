@@ -24,6 +24,11 @@ set sidescrolloff=4 " the number of screen columns to keep to the left and right
 set colorcolumn=81
 set noshowmode " show vim current mode
 
+" === Mode Settings ===
+
+let &t_SI.="\e[5 q" "SI = INSERT mode
+let &t_SR.="\e[4 q" "SR = REPLACE mode
+let &t_EI.="\e[1 q" "EI = NORMAL mode (ELSE)
 " === indent settings ===
 
 set noexpandtab " don't convert tabs to spaces
@@ -73,7 +78,7 @@ set shortmess+=c
 
 set splitright " put vsplite window on the right of current window
 set splitbelow " put hsplite window on the below of current window
-set inccommand=split " preview command effect
+" set inccommand=split " preview command effect
 set completeopt=longest,noinsert,menuone,noselect,preview
 
 set updatetime=100 " auto write time
