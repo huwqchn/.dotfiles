@@ -265,14 +265,14 @@ noremap srv <C-w>b<C-w>H
 noremap <LEADER>x <C-w>j:q<CR>
 
 " move line
-noremap <LEADER>u <Esc>:m .-2<CR>
-noremap <LEADER>e <Esc>:m .+1<CR>
-vnoremap <LEADER>u :m '<-2<CR>gv=gv
-vnoremap <LEADER>e :m '>+1<CR>gv=gv
+noremap <A-u> <Esc>:m .-2<CR>
+noremap <A-e> <Esc>:m .+1<CR>
+vnoremap <A-u> :m '<-2<CR>gv=gv
+vnoremap <A-e> :m '>+1<CR>gv=gv
 
 " back/forward
-noremap <LEADER>n <C-o>
-noremap <LEADER>i <C-i>
+noremap <A-n> <C-o>
+noremap <A-i> <C-i>
 
 " ===
 " === Tab management
