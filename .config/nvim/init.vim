@@ -684,8 +684,10 @@ let g:coc_global_extensions = [
 	\ 'coc-vetur',
 	\ 'coc-vimlsp',
 	\ 'coc-yaml',
-	\ 'coc-yank']
-	"\ 'https://github.com/rodrigore/coc-tailwind-intellisense'
+	\ 'coc-yank',
+	\ 'coc-lua',
+	\ 'coc-cmake',]
+	" \ 'https://github.com/rodrigore/coc-tailwind-intellisense']
 
 inoremap <silent><expr> <TAB>
 	\ pumvisible() ? "\<C-n>" :
