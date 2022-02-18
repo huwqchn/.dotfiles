@@ -8,3 +8,13 @@
 .config/nvim/.netrwhist
 .config/nvim/_machine_specific.vim
 .config/nvim/.vim-bookmarks
+.config/ranger/plugins/__pycache__/*
+.config/ranger/plugins/__init__.pyo
+.config/ranger/plugins/devicons.pyo
+.config/ranger/plugins/devicons_linemode.pyo
+.config/ranger/colorschemes/__pycache__/*
+.config/ranger/colorschemes/__init__.pyo
+.config/ranger/colorschemes/default.pyo
+.config/ranger/folders.conf
+.config/ranger/__pycache__/commands.cpython-39.opt-1.pyc
+!/ranger/
