@@ -193,6 +193,9 @@ nnoremap dy d%
 nnoremap <LEADER>tt :%s/    /\t/g
 vnoremap <LEADER>tt :s/    /\t/g
 
+" paste and replace a word
+nnoremap <LEADER>pw viwp
+
 " ===
 " === Cursor Movement
 " ===
