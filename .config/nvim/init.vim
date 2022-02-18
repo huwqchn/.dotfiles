@@ -47,15 +47,15 @@ set secure
 set number " show line numbers on left sidebar
 set relativenumber " show line number on the current line and relative numbers on all other lines
 
-set mouse=a " enable mouser for scrolling and resizing 
 set cursorline " highlight the line currently under curor 
+set mouse=a " enable mouser for scrolling and resizing 
 set scrolloff=4 " the number of screen lines to keep above and below the cursor
 set sidescrolloff=4 " the number of screen columns to keep to the left and right of the cursor
 set colorcolumn=81
 set noshowmode " show vim current mode
+set tw=0 " set textwidth
 
 " === indent settings ===
-
 set noexpandtab " don't convert tabs to spaces
 set shiftwidth=4 " when shifting,indent using four spaces
 set tabstop=4 " indent using four spaces
@@ -129,10 +129,19 @@ else
     set fileformats=unix,mac,dos
 endif
 
+au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+
+" ===
+" === Terminal Behaviors
+" ===
+let g:neoterm_autoscroll = 1
+autocmd TermOpen term://* startinsert
+tnoremap <C-N> <C-\><C-N>
+tnoremap <C-O> <C-\><C-N><C-O>
+
 "===
 "=== Special Settings
 "===
-
 autocmd FileType c,cpp,html,htmldjango,lua,javascript,nsis set shiftwidth=2 | set tabstop=2 | set expandtab | set cindent | set cinoptions=t0,g1,h1,N-s,j1
 autocmd FileType make set noexpandtab | set tabstop=8 | set shiftwidth=2
 autocmd FileType c,cpp,python,vim set textwidth=80
@@ -160,13 +169,17 @@ noremap <LEADER>q :q<CR>
 " Insert Key
 noremap k i
 noremap K I
+
+" Undo operations
 noremap l u
 
 " Indentation
 nnoremap < <<
 nnoremap > >>
+
 " Search
 noremap <LEADER><CR> :nohlsearch<CR>
+
 " make Y to copy till the end of the line
 nnoremap Y y$
 
@@ -223,11 +236,6 @@ noremap <C-e> <C-w>j
 noremap <C-n> <C-w>h
 noremap <C-i> <C-w>l
 noremap qf <C-w>o
-
-" edit
-noremap <LEADER>cw ciw
-noremap <LEADER>yw yiw
-noremap <LEADER>pw viwp
 
 " Disable the default s key
 noremap s <nop>
@@ -293,6 +301,12 @@ nnoremap \t :tabe<CR>:-tabmove<CR>:term sh -c 'st'<CR><C-\><C-N>:q<CR>
 " Opening a terminal window
 noremap <LEADER>/ :set splitbelow<CR>:split<CR>:res +10<CR>:term<CR>
 
+" Press space twice to jump to the next '<++>' and edit it
+noremap <LEADER><LEADER> <Esc>/<++><CR>:nohlsearch<CR>c4l
+
+" Spelling Check with <space>sc
+noremap <LEADER>sc :set spell!<CR>
+
 " ===
 " === Insert Mode Cursor Movement
 " ===
@@ -318,9 +332,6 @@ noremap \s :%s//g<left><left>
 
 " Adjacent duplicate words
 noremap <LEADER>dw /\(\<\w\+\>\)\_s*\1
-
-" Folding
-noremap <silent> <LEADER>o za
 
 " go to the start of the line
 noremap <silent> N ^
@@ -641,8 +652,6 @@ nnoremap <LEADER>gh :GitGutterPreviewHunk<CR>
 nnoremap <LEADER>g- :GitGutterPrevHunk<CR>
 nnoremap <LEADER>g= :GitGutterNextHunk<CR>
 
-
-
 " ===
 " === coc.nvim
 " ===
@@ -743,8 +752,8 @@ noremap <silent> <leader>ts :CocList tasks<CR>
 " coc-snippets
 imap <C-l> <Plug>(coc-snippets-expand)
 vmap <C-e> <Plug>(coc-snippets-select)
-let g:coc_snippet_next = '<c-l>'
-let g:coc_snippet_prev = '<c-h>'
+let g:coc_snippet_next = '<c-e>'
+let g:coc_snippet_prev = '<c-n>'
 imap <C-e> <Plug>(coc-snippets-expand-jump)
 let g:snips_author = 'Johnson Hu'
 autocmd BufRead,BufNewFile tsconfig.json set filetype=jsonc
@@ -1297,12 +1306,12 @@ let g:dartfmt_options = ["-l 100"]
 " ===
 " === tcomment_vim
 " ===
-" nnoremap ci cl
+" nnoremap ci cn
 let g:tcomment_textobject_inlinecomment = ''
-nmap <LEADER>ce g>c
-vmap <LEADER>ce g>
-nmap <LEADER>cu g<c
-vmap <LEADER>cu g<
+nmap <LEADER>ci g>c
+vmap <LEADER>ci g>
+nmap <LEADER>cn g<c
+vmap <LEADER>cn g<
 
 
 " ===
