@@ -1,7 +1,8 @@
 alias c='clear'
 # alias ls="colorls"
-alias s="neofetch"
+alias s='neofetch'
 alias lg='lazygit'
+alias ln='lazynpm'
 alias ra='ranger'
 alias t='tmux'
 alias ta='tmux a'
