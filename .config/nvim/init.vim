@@ -4,7 +4,7 @@
 "| |  | | | |   | |\  | \ V /  | || |  | |  _ <| |___
 "|_|  |_| |_|   |_| \_|  \_/  |___|_|  |_|_| \_\\____|
 
-" Author: huwqd
+" Author: huwq
 
 " ===
 " === Auto load for first time uses
@@ -164,6 +164,10 @@ noremap <silent> <LEADER>o za
 " Save & Quit
 noremap <LEADER>w :w<CR>
 noremap <LEADER>q :q<CR>
+
+" Open the vimrc file anytime
+noremap <LEADER>rc :e $HOME/.config/nvim/init.vim<CR>
+" noremap <LEADER>rv :e .nvimrc<CR>
 
 " Insert Key
 noremap k i
@@ -429,6 +433,7 @@ Plug 'nvim-treesitter/playground'
 
 " Pretty Dress
 Plug 'theniceboy/nvim-deus'
+" Plug 'arzg/vim-colors-xcode'
 
 " Status line
 Plug 'theniceboy/eleline.vim'
@@ -808,7 +813,7 @@ endfunction
 
 command! BD call fzf#run(fzf#wrap({
   \ 'source': s:list_buffers(),
-  \ 'sink*': { lines -> s:delete_bufers(lines) },
+  \ 'sink*': { lines -> s:delete_buffers(lines) },
   \ 'options': '--multi --reverse --bind ctrl-a:select-all+accept'
 \ }))
 
@@ -826,10 +831,10 @@ let g:Lf_PreviewCode = 1
 let g:Lf_ShowHidden = 1
 let g:Lf_ShowDevIcons = 1
 let g:Lf_CommandMap = {
-\   '<C-k>': ['<C-e>'],
-\   '<C-j>': ['<C-n>'],
+\   '<C-k>': ['<C-u>'],
+\   '<C-j>': ['<C-e>'],
 \   '<C-]>': ['<C-v>'],
-\   '<C-p>': ['<C-k>'],
+\   '<C-p>': ['<C-n>'],
 \}
 let g:Lf_UseVersionControlTool = 0
 let g:Lf_IgnoreCurrentBufferName = 1
@@ -1021,16 +1026,16 @@ let g:calendar_google_task = 1
 augroup calendar-mappings
 	autocmd!
 	" diamond cursor
-	autocmd FileType calendar nmap <buffer> k <Plug>(calendar_up)
-	autocmd FileType calendar nmap <buffer> h <Plug>(calendar_left)
-	autocmd FileType calendar nmap <buffer> j <Plug>(calendar_down)
-	autocmd FileType calendar nmap <buffer> l <Plug>(calendar_right)
-	autocmd FileType calendar nmap <buffer> <c-k> <Plug>(calendar_move_up)
-	autocmd FileType calendar nmap <buffer> <c-h> <Plug>(calendar_move_left)
-	autocmd FileType calendar nmap <buffer> <c-j> <Plug>(calendar_move_down)
-	autocmd FileType calendar nmap <buffer> <c-l> <Plug>(calendar_move_right)
-	autocmd FileType calendar nmap <buffer> i <Plug>(calendar_start_insert)
-	autocmd FileType calendar nmap <buffer> i <Plug>(calendar_start_insert_head)
+	autocmd FileType calendar nmap <buffer> u <Plug>(calendar_up)
+	autocmd FileType calendar nmap <buffer> n <Plug>(calendar_left)
+	autocmd FileType calendar nmap <buffer> e <Plug>(calendar_down)
+	autocmd FileType calendar nmap <buffer> i <Plug>(calendar_right)
+	autocmd FileType calendar nmap <buffer> <c-u> <Plug>(calendar_move_up)
+	autocmd FileType calendar nmap <buffer> <c-n> <Plug>(calendar_move_left)
+	autocmd FileType calendar nmap <buffer> <c-e> <Plug>(calendar_move_down)
+	autocmd FileType calendar nmap <buffer> <c-i> <Plug>(calendar_move_right)
+	autocmd FileType calendar nmap <buffer> k <Plug>(calendar_start_insert)
+	autocmd FileType calendar nmap <buffer> k <Plug>(calendar_start_insert_head)
 	" unmap <C-n>, <C-p> for other plugins
 	autocmd FileType calendar nunmap <buffer> <C-n>
 	autocmd FileType calendar nunmap <buffer> <C-p>
