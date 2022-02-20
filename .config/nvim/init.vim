@@ -1289,7 +1289,7 @@ hi illuminatedWord cterm=undercurl gui=undercurl
 " === vim-rooter
 " ===
 let g:rooter_patterns = ['__vim_project_root', '.git/', 'Makefile', '*.sln', 'build/env.sh']
-" let g:rooter_silent_chdir = 1
+let g:rooter_silent_chdir = 1
 
 
 " ===
