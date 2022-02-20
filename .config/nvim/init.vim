@@ -57,9 +57,9 @@ set tw=0 " set textwidth
 
 " === indent settings ===
 set noexpandtab " don't convert tabs to spaces
-set shiftwidth=4 " when shifting,indent using four spaces
-set tabstop=4 " indent using four spaces
-set softtabstop=4 "
+set shiftwidth=2 " when shifting,indent using four spaces
+set tabstop=2 " indent using two spaces
+set softtabstop=2
 set autoindent " new lines inherit the indentation of previous lines
 set list " show special symbols
 set listchars=tab:\|\ ,trail:▫ " replace special symbols
@@ -97,8 +97,8 @@ set visualbell
 set foldenable " enable fold text
 set foldmethod=indent " fold text by indent
 set foldlevel=99
-set formatoptions=qmM
-
+" set formatoptions=qmM
+set formatoptions-=tc
 set shortmess+=c
 
 set splitright " put vsplite window on the right of current window
@@ -124,9 +124,9 @@ if has('persistent_undo')
 endif
 
 if has('win32')
-    set fileformats=dos,unix,mac
+  set fileformats=dos,unix,mac
 else
-    set fileformats=unix,mac,dos
+  set fileformats=unix,mac,dos
 endif
 
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
@@ -142,9 +142,8 @@ tnoremap <C-O> <C-\><C-N><C-O>
 "===
 "=== Special Settings
 "===
-autocmd FileType c,cpp,html,htmldjango,lua,javascript,nsis set shiftwidth=2 | set tabstop=2 | set expandtab | set cindent | set cinoptions=t0,g1,h1,N-s,j1
+autocmd FileType c,cpp,html,htmldjango,lua,javascript,nsis set shiftwidth=2 | set tabstop=2 | set softtabstop=2 | set expandtab | set cindent | set cinoptions=t0,g1,h1,N-s,j1
 autocmd FileType make set noexpandtab | set tabstop=8 | set shiftwidth=2
-autocmd FileType c,cpp,python,vim set textwidth=80
 
 "===
 "=== Basic Mapping
