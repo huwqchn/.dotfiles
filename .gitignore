@@ -21,3 +21,5 @@
 .config/ranger/__pycache__/
 .config/lazygit/*
 !/.config/lazygit/config.yml
+.emacs.d/auto-save-list/
+.hammerspoon/Spoons

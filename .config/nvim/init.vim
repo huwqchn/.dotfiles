@@ -106,6 +106,8 @@ set splitbelow " put hsplite window on the below of current window
 set inccommand=split " preview command effect
 set completeopt=longest,noinsert,menuone,noselect,preview
 
+set indentexpr=
+
 set updatetime=100 " auto write time
 set virtualedit=block
 set background=dark
@@ -1315,12 +1317,12 @@ let g:dartfmt_options = ["-l 100"]
 " ===
 " === tcomment_vim
 " ===
-" nnoremap ci cn
+" nnoremap cn cu
 let g:tcomment_textobject_inlinecomment = ''
-nmap <LEADER>ci g>c
-vmap <LEADER>ci g>
-nmap <LEADER>cn g<c
-vmap <LEADER>cn g<
+nmap <LEADER>cn g>c
+vmap <LEADER>cn g>
+nmap <LEADER>cu g<c
+vmap <LEADER>cu g<
 
 
 " ===
