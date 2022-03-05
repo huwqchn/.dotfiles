@@ -164,8 +164,8 @@ noremap <silent> \v v$h
 noremap <silent> <LEADER>o za
 
 " Save & Quit
-noremap <LEADER>w :w<CR>
-noremap <LEADER>q :q<CR>
+noremap W :w<CR>
+noremap Q :q<CR>
 
 " Open the vimrc file anytime
 noremap <LEADER>rc :e $HOME/.config/nvim/init.vim<CR>
@@ -225,7 +225,7 @@ noremap <silent> E 5j
 noremap h e
 
 " Faster in-line navigation
-noremap W 5w
+" noremap W 5w
 noremap B 5b
 
 " Ctrl + U or E will move up/down the view port without moving the cursor
@@ -238,11 +238,11 @@ source $HOME/.config/nvim/cursor.vim
 " === Window management
 " ===
 " Use Ctrl new arrow keys for moving the cursor around windows
-noremap <C-w> <C-w>w
-noremap <C-u> <C-w>k
-noremap <C-e> <C-w>j
-noremap <C-n> <C-w>h
-noremap <C-i> <C-w>l
+noremap <LEADER>w <C-w>w
+noremap <LEADER>u <C-w>k
+noremap <LEADER>e <C-w>j
+noremap <LEADER>n <C-w>h
+noremap <LEADER>i <C-w>l
 noremap qf <C-w>o
 
 " Disable the default s key
