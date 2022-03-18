@@ -164,8 +164,8 @@ noremap <silent> \v v$h
 noremap <silent> <LEADER>o za
 
 " Save & Quit
-noremap W :w<CR>
-noremap Q :q<CR>
+noremap <LEADER>s :w<CR>
+noremap <LEADER>q :q<CR>
 
 " Open the vimrc file anytime
 noremap <LEADER>rc :e $HOME/.config/nvim/init.vim<CR>
@@ -225,7 +225,7 @@ noremap <silent> E 5j
 noremap h e
 
 " Faster in-line navigation
-" noremap W 5w
+noremap W 5w
 noremap B 5b
 
 " Ctrl + U or E will move up/down the view port without moving the cursor
