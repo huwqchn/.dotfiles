@@ -1,0 +1,134 @@
+let searchalias s = "stackoverflow"
+let searchalias g = "google"
+let searchalias a = "www.acwing.com"
+let searchaliar y = "youtube"
+	
+" show the heads-up-display	
+set hud
+
+" use regexp in find mode	
+set regexp
+
+" ignore search case in find mode	
+set ignorecase
+
+" no fade effect when toggling link hints
+set nolinkanimations
+" use numbers instead of characters for link hints
+set nonumerichints
+" dim letter matches in hint characters rather than remove them from the hint	
+set dimhintcharacters
+" use the default chrome://newtab page instead of a blank page	
+set nodefaultnewtabpage
+" <C-n> and <C-p> to cycle through completion results (requires you to
+" set the nextCompletionResult keybinding in the chrome://extensions page (bottom right)	
+set nocncpcompletion
+" case-insensitive find mode searches except when input contains a capital letter	
+set smartcase
+" auto-highlighting find mode matches when input length is greater thant two	
+set incsearch 
+" (numerichints required) type text in the link to narrow down numeric hints	
+set typelinkhints
+" hide the mouse cursor when scrolling (useful for Linux, which doesn't auto-hide the cursor on keydown)	
+set autohidecursor
+" allows websites to automatically focus an input box when they are first loaded	
+set noautofocus
+" use insert mappings to navigate the cursor in text boxes (see bindings below)	
+set insertmappings
+" if a GitHub Gist is used to sync settings, pull updates every hour (and when Chrome restarts)	
+set autoupdategist
+" Open new tabs like Chrome does rather than next to the currently opened tab	
+set nonativelinkorder
+" disable cVim on the sites matching one of the patterns
+let blacklists = ["https://inbox.google.com/*"]
+" number of results displayed in the command bar	
+let searchlimit = 30
+" time to wait for a <Leader> mapping in (millis)
+let timeoutlen = 1000
+" milliseconds to wait before taking input after opening a link hint with
+" typelinkhints and numerichints enabled integer
+let typelinkhintsdelay = 50
+" use smooth scrolling	
+set smoothscroll
+" integer the duration of smooth scrolling
+let scrollduration = 2000
+" number of pixels scrolled when using scrollUp and scrollDown	
+let scrollstep = 125
+" full page scroll percent
+let fullpagescrollpercent = 85	
+" " integer the step size when zooming the page in/out 0.
+" let zoomfactor = 0.1	
+" use only the specified search engines
+let completionengines = []
+" The default <Leader> key
+let mapleader = " "
+" the highlight color in find mode	
+let highlight = "#ffff00"
+" set the default search engine	
+let defaultengine = "google"	
+" set the locale of the site being completed/searched on (see example configuration below)	
+let locale = ""
+" the highlight color for the current find match	
+let activehighlight =	"#ff9632"
+" the directory to replace ~ when using the file command
+let homedirectory = ""
+" add a persistent QuickMark (e.g. let qmark a = ["http://google.com", "http://reddit.com"])
+let qmark a = ["http://google.com", "http://reddit.com"]
+" the pattern looked for when navigating a page's back button	
+let previousmatchpattern = "((?!last)(prev(ious)?|back|«|less|<|‹|<|←|«|≪|<<)+)"
+" the pattern looked for when navigation a page's next button	
+let nextmatchpattern = "((?!first)(next|more|>|›|»|forward|>|→|»|≫|>>)+)"	
+" set the default characters to be used in link hint mode	
+let hintcharacters = "asdfgqwertzxcvb"
+let barposition = "bottom"
+" Swap ; and :
+map ; openCommandBar
+map : setMark
+unmap h j k l
+map u scrollUp
+map e scrollDown
+map n scrollLeft
+map i scrollRight
+map U scrollPageUp
+map <C-u> scrollFullPageUp
+map E scrollPageDown
+map <C-e> scrollFullPageDown
+map N scrollToLeft
+map I scrollToRight
+map h :history
+map <A-n> previousScrollPosition
+map <A-i> nextScrollPosition
+map tn previousTab
+map ti nextTab
+map tN firstTab
+map tI lastTab
+map <LEADER>n goBack
+map <LEADER>i goForward
+map txn closeTabLeft
+map txi closeTabRight
+map txN closeTabsToLeft
+map txI closeTabsToRight
+map tmn moveTabLeft
+map tmi moveTabRight
+map - nextSearchResult
+map = previousSearchResult
+map tt :tabnew
+map tg :tabnew g<CR>
+map ts :tabnew s<CR>
+map tb :tabnew baidu<CR>
+map ty :tabnew youtube<CR>
+map <C-n> backwardWord
+map <C-i> forwardWord
+map <C-u> forwardLine
+map <C-e> backwardLine
+map <C-a> selectAll
+map k goToInput
+map K goToLastInput
+map <LEADER>p pinTab
+map <LEADER>d hideDownloadsShelf
+map <LEADER>f nextFrame
+map <LEADER>F rootFrame
+map <LEADER>q cancelWebRequest
+map <LEADER>Q cancelAllWebRequests
+map <LEADER>u goUpUrl
+map <LEADER>U goToRootUrl
