@@ -164,8 +164,8 @@ noremap <silent> \v v$h
 noremap <silent> <LEADER>o za
 
 " Save & Quit
-noremap <LEADER>s :w<CR>
-noremap <LEADER>q :q<CR>
+noremap S :w<CR>
+noremap Q :q<CR>
 
 " Open the vimrc file anytime
 noremap <LEADER>rc :e $HOME/.config/nvim/init.vim<CR>
