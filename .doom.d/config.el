@@ -49,14 +49,16 @@
       :nmvo "u" #'evil-previous-line
       :nmvo "gu" #'evil-previous-visual-line
       :nmvo "ge" #'evil-next-visual-line
-      :nmvro "k" #'evil-insert
-      :nmvro "K" #'evil-insert-line
+      :n "k" #'evil-insert
+      :nv "K" #'evil-insert-line
+      :ov "k" evil-inner-text-objects-map
       :nmvo "l" #'evil-undo
       :nmvo "h" #'evil-forward-word-end
       :nmvo "H" #'evil-forward-WORD-end
       :nmvo "N" #'evil-first-non-blank
-      :nmvo "I" #'evil-last-non-blank)
-
+      :nmvo "I" #'evil-last-non-blank
+      :nmv "=" (if (eq evil-search-module 'evil-search) #'evil-ex-search-next #'evil-search-next)
+      :nmv "-" (if (eq evil-search-module 'evil-search) #'evil-ex-search-previous #'evil-search-previous))
 
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
