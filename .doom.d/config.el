@@ -66,7 +66,7 @@
 (setq url-proxy-services
 		'(("http" . "127.0.0.1:19180")
 		  ("https" . "127.0.0.1:19180")))
-
+(setq mac-command-modifier 'meta)
 ;; Whenever you reconfigure a package, make sure to wrap your config in an
 ;; `after!' block, otherwise Doom's defaults may override your ttings. E.g.
 ;;
