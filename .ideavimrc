@@ -1,0 +1,205 @@
+" Set <LEADER> as <SPACE>, ; as :
+let mapleader=" "
+
+set history=100000
+set clipboard=unnamed
+set showmode
+set relativenumber
+set nocompatible
+syntax on
+set incsearch
+set hlsearch
+set ignorecase
+set smartcase
+
+noremap ; :
+
+" Press ` to change case (instead of ~)
+noremap ` ~
+
+" Save & quit
+noremap <LEADER>q :q<CR>
+noremap <LEADER>s :w<CR>
+
+" Indentation
+nnoremap < <<
+nnoremap > >>
+
+" Folding
+noremap <silent> <LEADER>o za
+"     ^
+"     u
+" < n   i >
+"     e
+"     v
+noremap <silent> u k
+noremap <silent> n h
+noremap <silent> e j
+noremap <silent> i l
+" noremap <silent> gu gk
+" noremap <silent> ge gj
+noremap <silent> \v v$h
+
+" U/E keys for 5 times u/e (faster navigation)
+noremap <silent> U 5k
+noremap <silent> E 5j
+
+
+" Faster in-line navigation
+noremap W 5w
+noremap B 5b
+
+" Ctrl + U or E will move up/down the view port without moving the cursor
+noremap <C-U> 5<C-y>
+noremap <C-E> 5<C-e>
+
+noremap h e
+noremap H E
+noremap l u
+
+" Insert Key
+noremap k i
+noremap K I
+" make Y to copy till the end of the line
+nnoremap Y y$
+
+" Copy to system clipboard
+vnoremap Y "+y
+
+" Delete find pair
+nnoremap dy d%
+
+" Adjacent duplicate words
+noremap <LEADER>dw /\(\<\w\+\>\)\_s*\1
+
+noremap N ^
+noremap I $
+
+" ===
+" === Searching
+" ===
+noremap - N
+noremap = n
+
+" Tab operation
+" (切换标签)
+nnoremap ti gt
+nnoremap tn gT
+" nnoremap gn :<C-u>action Back<CR>
+" nnoremap gi :<C-u>action Forward<CR>
+
+noremap <LEADER>e <Esc>:m .+1<CR>
+noremap <LEADER>u <Esc>:m .-2<CR>
+vnoremap <LEADER>e :m '>+1<CR>gv=gv
+vnoremap <LEADER>u :m '<-2<CR>gv=gv
+
+“ noremap <LEADER>n <C-o>
+” noremap <LEADER>i <C-i>
+
+" Disable the default s key
+noremap s <nop>
+
+" split the screens to up (horizontal), down (horizontal), left (vertical), right (vertical)
+noremap su :set nosplitbelow<CR>:split<CR>:set splitbelow<CR>
+noremap se :set splitbelow<CR>:split<CR>
+noremap sn :set nosplitright<CR>:vsplit<CR>:set splitright<CR>
+noremap si :set splitright<CR>:vsplit<CR>
+
+" Place the two screens up and down
+noremap sh <C-w>t<C-w>K
+" Place the two screens side by side
+noremap sv <C-w>t<C-w>H
+
+" ===
+" === Window management
+" ===
+" Use <space> + new arrow keys for moving the cursor around windows
+noremap <leader>ww <C-w>w
+noremap <leader>wu <C-w>k
+noremap <leader>we <C-w>j
+noremap <leader>wn <C-w>h
+noremap <leader>wi <C-w>l
+noremap <leader>wo <C-w>o
+
+" Rotate screens
+noremap srh <C-w>b<C-w>K
+noremap srv <C-w>b<C-w>H
+
+"查找用法
+nnoremap <Leader>fu :action FindUsages<CR>
+
+"在本文件查找用法
+nnoremap <Leader>ff :action FindUsagesInFile<CR>
+
+"打断点
+nnoremap <Leader>bb :action ToggleLineBreakpoint<CR>
+
+"查看所有断点
+nnoremap <Leader>br :action ViewBreakpoints<CR>
+
+"DUG启动
+nnoremap <Leader>cd :action ChooseDebugConfiguration<CR>
+
+"跳转到Action
+nnoremap ga :action GotoAction<CR>
+
+"跳转到实体类
+nnoremap gc :action GotoClass<CR>
+
+"跳转到声明
+nnoremap gd :action GotoDeclaration<CR>
+
+"跳转到文件
+nnoremap gf :action GotoFile<CR>
+
+"跳转到实现类
+nnoremap gi :action GotoImplementation<CR>
+
+"跳转到super函数
+nnoremap gu :action GotoSuperMethod<CR>
+
+"跳转到测试类(没有则自动建立)
+nnoremap gt :action GotoTest<CR>
+
+"跳转到错误处
+nnoremap ge :action GotoNextError<CR>
+
+"跳转到符号
+nnoremap gs :action GotoSymbol
+
+"显示当前文件路径
+nnoremap <Leader>fp :action ShowFilePath<CR>
+
+"激活maven窗口
+"nnoremap <Leader>mv :action ActivateMavenProjectsToolWindow<CR>
+
+"修改所有的关联名字
+nnoremap <Leader>re :action RenameElement<CR>
+
+"修改当前文件的文件名
+nnoremap <Leader>rf :action RenameFile<CR>
+
+"显示用法
+nnoremap <Leader>su :action ShowUsages<CR>
+
+"关闭活动显示板
+nnoremap <Leader>tc :action CloseActiveTab<CR>
+
+"compile dirty
+nnoremap <Leader>oo :action CompileDirty<CR>
+
+" comment line
+nnoremap <Leader>cn :action CommentByLineComment<CR>
+
+"forward/back
+nnoremap <Leader>n :action Back<CR>
+nnoremap <Leader>i :action Forward<CR>
+
+"columns list class all 
+nnoremap <Leader>cl :action Console.TableResult.ColumnsList<CR>
+
+nnoremap <Leader>so :action StepOver<CR>
+nnoremap <Leader>si :action StepInto<CR>
+nnoremap <Leader>se :action StepOut<CR>
+nnoremap <Leader>ss :action Stop<CR>
+
