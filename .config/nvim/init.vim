@@ -434,8 +434,8 @@ Plug 'nvim-treesitter/nvim-treesitter'
 Plug 'nvim-treesitter/playground'
 
 " Pretty Dress
-" Plug 'theniceboy/nvim-deus'
-Plug 'Mofiqul/dracula.nvim'
+Plug 'theniceboy/nvim-deus'
+" Plug 'Mofiqul/dracula.nvim'
 " Plug 'arzg/vim-colors-xcode'
 
 " Status line
@@ -622,9 +622,9 @@ let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 "let g:oceanic_next_terminal_italic = 1
 "let g:one_allow_italics = 1
 
-color dracula
+" color dracula
 "color one
-" color deus
+color deus
 "color gruvbox
 "let ayucolor="light"
 "color ayu
@@ -636,8 +636,6 @@ hi NonText ctermfg=gray guifg=grey10
 "hi SpecialKey ctermfg=blue guifg=grey70
 
 " ===================== Start of Plugin Settings =====================
-
-
 " ===
 " === eleline.vim
 " ===
