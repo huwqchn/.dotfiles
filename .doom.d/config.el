@@ -38,12 +38,7 @@
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
 (setq display-line-numbers-type 'relative)
-      :nmvr "l" (kbd "u")
-(map! :i "C-n" (kbd "<left>")
-      :i "C-i" (kbd "<right>")
-      :i "C-e" (kbd "<down>")
-      :i "C-u" (kbd "<up>")
-      :nmvo "n" #'evil-backward-char
+(map! :nmvo "n" #'evil-backward-char
       :nmvo "i" #'evil-forward-char
       :nmvo "e" #'evil-next-line
       :nmvo "u" #'evil-previous-line
@@ -60,14 +55,19 @@
       :nmv "=" (if (eq evil-search-module 'evil-search) #'evil-ex-search-next #'evil-search-next)
       :nmv "-" (if (eq evil-search-module 'evil-search) #'evil-ex-search-previous #'evil-search-previous))
 
+(cond (IS-MAC
+       (setq mac-control-modifier 'control
+             mac-command-modifier 'super
+             mac-option-modifier 'alt
+             mac-right-option-modifier 'meta
+             mac-right-command-modifier 'hyper)))
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
 (setq org-directory "~/org/")
 (setq url-proxy-services
 		'(("http" . "127.0.0.1:19180")
 		  ("https" . "127.0.0.1:19180")))
-(setq mac-command-modifier 'meta)
-;; Whenever you reconfigure a package, make sure to wrap your config in an
+;; Whenever you reconfigure a package, make sUre To wrap your config in an
 ;; `after!' block, otherwise Doom's defaults may override your ttings. E.g.
 ;;
 ;;   (after! PACKAGE
