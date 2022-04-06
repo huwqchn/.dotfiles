@@ -1,2 +1,0 @@
-{:main [{:des "a to 1, b to 2, c to insert 1 2 3"
-         :rules [[:a :1] [:b :2] [:c [:1 :2 :3]]]}]}
