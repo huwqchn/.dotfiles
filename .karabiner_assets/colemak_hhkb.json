@@ -1,0 +1,45 @@
+{
+	"title": "Own Custom Keymaps",
+	"rules": [
+		{
+			"description": "Tab to Cmd on press and hold.",
+			"manipulators": [
+				{
+					"type": "basic",
+					"from": {
+						"key_code": "tab",
+						"modifiers": {
+							"optional": ["any"]
+						}
+					},
+					"to": [
+						{
+							"key_code": "left_command"
+						}
+					],
+					"to_if_alone": [
+						{
+							"key_code": "tab"
+						}
+					]
+				}
+			]
+		},
+		{
+			"description": "map n to 1",
+			"manipulators": [
+				{
+					"type": "basic",
+					"from": {
+						"key_code": "n"
+					},
+					"to": [
+						{
+							"key_code": "1"
+						}
+					]
+				}
+			]
+		}
+	]
+}

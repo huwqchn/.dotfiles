@@ -695,6 +695,7 @@ let g:coc_global_extensions = [
 	\ 'coc-yank',
 	\ 'coc-lua',
 	\ 'coc-cmake',
+	\ 'coc-clojure',
 	\ 'https://github.com/rodrigore/coc-tailwind-intellisense']
 
 inoremap <silent><expr> <TAB>
