@@ -26,16 +26,39 @@
 			]
 		},
 		{
-			"description": "map n to 1",
+			"description": "Right Commant to Hyper",
 			"manipulators": [
 				{
 					"type": "basic",
 					"from": {
-						"key_code": "n"
+						"key_code": "right_command",
+						"modifiers": {
+							"optional": ["any"]
+						}
 					},
 					"to": [
 						{
-							"key_code": "1"
+							"key_code": "left_shift",
+							"modifiers": ["left_command", "left_control", "left_option"]
+						}
+					]
+				}
+			]
+		},
+		{
+			"description": "Left Command to Fn",
+			"manipulators": [
+				{
+					"type": "basic",
+					"from": {
+						"key_code": "left_command",
+						"modifiers": {
+							"optional": ["any"]
+						}
+					},
+					"to": [
+						{
+							"key_code": "fn"
 						}
 					]
 				}
