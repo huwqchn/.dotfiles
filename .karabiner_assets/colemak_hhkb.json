@@ -26,12 +26,12 @@
 			]
 		},
 		{
-			"description": "Space to Hyper on press and hold",
+			"description": "Left Conmmand to Hyper on press and hold",
 			"manipulators": [
 				{
 					"type": "basic",
 					"from": {
-						"key_code": "spacebar",
+						"key_code": "left_command",
 						"modifiers": {
 							"optional": ["any"]
 						}
@@ -40,11 +40,6 @@
 						{
 							"key_code": "left_shift",
 							"modifiers": ["left_command", "left_control", "left_option"]
-						}
-					],
-					"to_if_alone": [
-						{
-							"key_code": "spacebar"
 						}
 					]
 				}
@@ -340,19 +335,24 @@
 			]
 		},
 		{
-			"description": "Left Option to Left Command",
+			"description": "Right Command to Right Option on press and hold, alone to key code of y",
 			"manipulators": [
 				{
 					"type": "basic",
 					"from": {
-						"key_code": "left_option",
+						"key_code": "right_command",
 						"modifiers": {
 							"optional": ["any"]
 						}
 					},
 					"to": [
 						{
-							"key_code": "left_command"
+							"key_code": "right_option"
+						}
+					],
+					"to_if_alone": [
+						{
+							"key_code": "y"
 						}
 					]
 				}
