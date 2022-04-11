@@ -440,6 +440,20 @@
 							"modifiers": "left_shift"
 						}
 					]
+				},
+				{
+					"type": "basic",
+					"from": {
+						"key_code": "spacebar",
+						"modifiers": {
+							"mandatory": ["fn"]
+						}
+					},
+					"to": [
+						{
+							"key_code": "delete_or_backspace"
+						}
+					]
 				}
 			]
 		},
