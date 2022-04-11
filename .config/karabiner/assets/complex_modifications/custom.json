@@ -26,6 +26,30 @@
 			]
 		},
 		{
+			"description": "Left Control to Escape On single press, Control on press and hold",
+			"manipulators": [
+				{
+					"type": "basic",
+					"from": {
+						"key_code": "left_control",
+						"modifiers": {
+							"optional": ["any"]
+						}
+					},
+					"to": [
+						{
+							"key_code": "left_control"
+						}
+					],
+					"to_if_alone": [
+						{
+							"key_code": "escape"
+						}
+					]
+				}
+			]
+		},
+		{
 			"description": "Spacebar to Hyper on press and hold",
 			"manipulators": [
 				{
