@@ -19,7 +19,8 @@
 					],
 					"to_if_alone": [
 						{
-							"key_code": "tab"
+							"key_code": "tab",
+							"hold_down_milliseconds": 250
 						}
 					]
 				}
@@ -43,7 +44,8 @@
 					],
 					"to_if_alone": [
 						{
-							"key_code": "escape"
+							"key_code": "escape",
+							"hold_down_milliseconds": 250
 						}
 					]
 				}
@@ -100,6 +102,26 @@
 			]
 		},
 		{
+			"description": "Left Option to Super on press and hold",
+			"manipulators": [
+				{
+					"type": "basic",
+					"from": {
+						"key_code": "left_option",
+						"modifiers": {
+							"optional": ["any"]
+						}
+					},
+					"to": [
+						{
+							"key_code": "left_option",
+							"modifiers": ["left_command", "left_control"]
+						}
+					]
+				}
+			]
+		},
+		{
 			"description": "Left Option to Hyper on press and hold",
 			"manipulators": [
 				{
@@ -116,6 +138,239 @@
 							"modifiers": ["left_command", "left_control", "left_option"]
 						}
 					]
+				}
+			]
+		},
+		{
+			"description": "Normal mode",
+			"manipulators": [
+				{
+					"from": {
+						"key_code": "escape",
+						"modifiers": {
+							"mandatory": ["command", "option", "control", "shift"]
+						}
+					},
+					"to": [
+						{
+							"set_variable": {
+								"name": "yabai_mode",
+								"value": 0
+							}
+						}
+					],
+					"type": "basic"
+				}
+			]
+		},
+		{
+			"description": "yabai mode",
+			"manipulators": [
+				{
+					"from": {
+						"key_code": "spacebar",
+						"modifiers": {
+							"mandatory": ["command", "option", "control", "shift"]
+						}
+					},
+					"to": [
+						{
+							"set_variable": {
+								"name": "yabai_mode",
+								"value": 1
+							}
+						}
+					],
+					"type": "basic"
+				},
+				{
+					"conditions": [
+						{
+							"name": "yabai_mode",
+							"type": "variable_if",
+							"value": 1
+						}
+					],
+					"from": {
+						"key_code": "return_or_enter",
+						"modifiers": {
+							"optional": ["any"]
+						}
+					},
+					"to": [
+						{
+							"shell_command": "open -n -a iTerm"
+						}
+					],
+					"type": "basic"
+				},
+				{
+					"conditions": [
+						{
+							"name": "yabai_mode",
+							"type": "variable_if",
+							"value": 1
+						}
+					],
+					"from": {
+						"key_code": "j",
+						"modifiers": {
+							"optional": ["any"]
+						}
+					},
+					"to": [
+						{
+							"shell_command": "opt/homebrew/bin/yabai -m window --focus west"
+						}
+					],
+					"type": "basic"
+				},
+				{
+					"conditions": [
+						{
+							"name": "yabai_mode",
+							"type": "variable_if",
+							"value": 1
+						}
+					],
+					"from": {
+						"key_code": "k",
+						"modifiers": {
+							"optional": ["any"]
+						}
+					},
+					"to": [
+						{
+							"shell_command": "opt/homebrew/bin/yabai -m window --focus south"
+						}
+					],
+					"type": "basic"
+				},
+				{
+					"conditions": [
+						{
+							"name": "yabai_mode",
+							"type": "variable_if",
+							"value": 1
+						}
+					],
+					"from": {
+						"key_code": "i",
+						"modifiers": {
+							"optional": ["any"]
+						}
+					},
+					"to": [
+						{
+							"shell_command": "opt/homebrew/bin/yabai -m window --focus north"
+						}
+					],
+					"type": "basic"
+				},
+				{
+					"conditions": [
+						{
+							"name": "yabai_mode",
+							"type": "variable_if",
+							"value": 1
+						}
+					],
+					"from": {
+						"key_code": "l",
+						"modifiers": {
+							"optional": ["any"]
+						}
+					},
+					"to": [
+						{
+							"shell_command": "opt/homebrew/bin/yabai -m window --focus east"
+						}
+					],
+					"type": "basic"
+				},
+				{
+					"conditions": [
+						{
+							"name": "yabai_mode",
+							"type": "variable_if",
+							"value": 1
+						}
+					],
+					"from": {
+						"key_code": "j",
+						"modifiers": {
+							"mandatory": ["shift"]
+						}
+					},
+					"to": [
+						{
+							"shell_command": "opt/homebrew/bin/yabai -m window --resize left:-50:0; \\ yabai -m window --resize right:-50:0"
+						}
+					],
+					"type": "basic"
+				},
+				{
+					"conditions": [
+						{
+							"name": "yabai_mode",
+							"type": "variable_if",
+							"value": 1
+						}
+					],
+					"from": {
+						"key_code": "k",
+						"modifiers": {
+							"mandatory": ["shift"]
+						}
+					},
+					"to": [
+						{
+							"shell_command": "opt/homebrew/bin/yabai -m window --resize bottom:0:50; \\ yabai -m window --resize top:0:50"
+						}
+					],
+					"type": "basic"
+				},
+				{
+					"conditions": [
+						{
+							"name": "yabai_mode",
+							"type": "variable_if",
+							"value": 1
+						}
+					],
+					"from": {
+						"key_code": "i",
+						"modifiers": {
+							"mandatory": ["shift"]
+						}
+					},
+					"to": [
+						{
+							"shell_command": "opt/homebrew/bin/yabai -m window --resize top:0:-50; \\ yabai -m window --resize bottom:0:-50"
+						}
+					],
+					"type": "basic"
+				},
+				{
+					"conditions": [
+						{
+							"name": "yabai_mode",
+							"type": "variable_if",
+							"value": 1
+						}
+					],
+					"from": {
+						"key_code": "l",
+						"modifiers": {
+							"mandatory": ["shift"]
+						}
+					},
+					"to": [
+						{
+							"shell_command": "opt/homebrew/bin/yabai -m window --resize right:0:-50; \\ yabai -m window --resize left:50:0"
+						}
+					],
+					"type": "basic"
 				}
 			]
 		},
