@@ -375,28 +375,46 @@
 			]
 		},
 		{
-			"description": "Left Command to Fn, Enhance Fn Shortcuts",
+			"description": "Left Option to Fn, Enhance Fn Shortcuts",
 			"manipulators": [
 				{
 					"type": "basic",
 					"from": {
-						"key_code": "left_command",
+						"key_code": "left_option",
 						"modifiers": {
 							"optional": ["any"]
 						}
 					},
 					"to": [
 						{
-							"key_code": "fn"
+							"set_variable": {
+								"name": "fn_mode",
+								"value": 1
+							}
+						}
+					],
+					"to_after_key_up": [
+						{
+							"set_variable": {
+								"name": "fn_mode",
+								"value": 0
+							}
 						}
 					]
 				},
 				{
+					"conditions": [
+						{
+							"name": "fn_mode",
+							"type": "variable_if",
+							"value": 1
+						}
+					],
 					"type": "basic",
 					"from": {
 						"key_code": "a",
 						"modifiers": {
-							"mandatory": ["fn"]
+							"optional": ["any"]
 						}
 					},
 					"to": [
@@ -406,11 +424,18 @@
 					]
 				},
 				{
+					"conditions": [
+						{
+							"name": "fn_mode",
+							"type": "variable_if",
+							"value": 1
+						}
+					],
 					"type": "basic",
 					"from": {
 						"key_code": "s",
 						"modifiers": {
-							"mandatory": ["fn"]
+							"optional": ["any"]
 						}
 					},
 					"to": [
@@ -420,11 +445,18 @@
 					]
 				},
 				{
+					"conditions": [
+						{
+							"name": "fn_mode",
+							"type": "variable_if",
+							"value": 1
+						}
+					],
 					"type": "basic",
 					"from": {
 						"key_code": "d",
 						"modifiers": {
-							"mandatory": ["fn"]
+							"optional": ["any"]
 						}
 					},
 					"to": [
@@ -434,11 +466,18 @@
 					]
 				},
 				{
+					"conditions": [
+						{
+							"name": "fn_mode",
+							"type": "variable_if",
+							"value": 1
+						}
+					],
 					"type": "basic",
 					"from": {
 						"key_code": "f",
 						"modifiers": {
-							"mandatory": ["fn"]
+							"optional": ["any"]
 						}
 					},
 					"to": [
@@ -448,11 +487,18 @@
 					]
 				},
 				{
+					"conditions": [
+						{
+							"name": "fn_mode",
+							"type": "variable_if",
+							"value": 1
+						}
+					],
 					"type": "basic",
 					"from": {
 						"key_code": "g",
 						"modifiers": {
-							"mandatory": ["fn"]
+							"optional": ["any"]
 						}
 					},
 					"to": [
@@ -462,11 +508,18 @@
 					]
 				},
 				{
+					"conditions": [
+						{
+							"name": "fn_mode",
+							"type": "variable_if",
+							"value": 1
+						}
+					],
 					"type": "basic",
 					"from": {
 						"key_code": "h",
 						"modifiers": {
-							"mandatory": ["fn"]
+							"optional": ["any"]
 						}
 					},
 					"to": [
@@ -476,11 +529,18 @@
 					]
 				},
 				{
+					"conditions": [
+						{
+							"name": "fn_mode",
+							"type": "variable_if",
+							"value": 1
+						}
+					],
 					"type": "basic",
 					"from": {
 						"key_code": "j",
 						"modifiers": {
-							"mandatory": ["fn"]
+							"optional": ["any"]
 						}
 					},
 					"to": [
@@ -490,11 +550,18 @@
 					]
 				},
 				{
+					"conditions": [
+						{
+							"name": "fn_mode",
+							"type": "variable_if",
+							"value": 1
+						}
+					],
 					"type": "basic",
 					"from": {
 						"key_code": "k",
 						"modifiers": {
-							"mandatory": ["fn"]
+							"optional": ["any"]
 						}
 					},
 					"to": [
@@ -504,11 +571,18 @@
 					]
 				},
 				{
+					"conditions": [
+						{
+							"name": "fn_mode",
+							"type": "variable_if",
+							"value": 1
+						}
+					],
 					"type": "basic",
 					"from": {
 						"key_code": "l",
 						"modifiers": {
-							"mandatory": ["fn"]
+							"optional": ["any"]
 						}
 					},
 					"to": [
@@ -522,7 +596,7 @@
 					"from": {
 						"key_code": "semicolon",
 						"modifiers": {
-							"mandatory": ["fn"]
+							"optional": ["any"]
 						}
 					},
 					"to": [
@@ -532,11 +606,18 @@
 					]
 				},
 				{
+					"conditions": [
+						{
+							"name": "fn_mode",
+							"type": "variable_if",
+							"value": 1
+						}
+					],
 					"type": "basic",
 					"from": {
 						"key_code": "a",
 						"modifiers": {
-							"mandatory": ["shift", "fn"]
+							"mandatory": ["shift"]
 						}
 					},
 					"to": [
@@ -547,11 +628,18 @@
 					]
 				},
 				{
+					"conditions": [
+						{
+							"name": "fn_mode",
+							"type": "variable_if",
+							"value": 1
+						}
+					],
 					"type": "basic",
 					"from": {
 						"key_code": "s",
 						"modifiers": {
-							"mandatory": ["shift", "fn"]
+							"mandatory": ["shift"]
 						}
 					},
 					"to": [
@@ -562,11 +650,18 @@
 					]
 				},
 				{
+					"conditions": [
+						{
+							"name": "fn_mode",
+							"type": "variable_if",
+							"value": 1
+						}
+					],
 					"type": "basic",
 					"from": {
 						"key_code": "d",
 						"modifiers": {
-							"mandatory": ["shift", "fn"]
+							"mandatory": ["shift"]
 						}
 					},
 					"to": [
@@ -577,11 +672,18 @@
 					]
 				},
 				{
+					"conditions": [
+						{
+							"name": "fn_mode",
+							"type": "variable_if",
+							"value": 1
+						}
+					],
 					"type": "basic",
 					"from": {
 						"key_code": "f",
 						"modifiers": {
-							"mandatory": ["shift", "fn"]
+							"mandatory": ["shift"]
 						}
 					},
 					"to": [
@@ -592,11 +694,18 @@
 					]
 				},
 				{
+					"conditions": [
+						{
+							"name": "fn_mode",
+							"type": "variable_if",
+							"value": 1
+						}
+					],
 					"type": "basic",
 					"from": {
 						"key_code": "g",
 						"modifiers": {
-							"mandatory": ["shift", "fn"]
+							"mandatory": ["shift"]
 						}
 					},
 					"to": [
@@ -607,11 +716,18 @@
 					]
 				},
 				{
+					"conditions": [
+						{
+							"name": "fn_mode",
+							"type": "variable_if",
+							"value": 1
+						}
+					],
 					"type": "basic",
 					"from": {
 						"key_code": "h",
 						"modifiers": {
-							"mandatory": ["shift", "fn"]
+							"mandatory": ["shift"]
 						}
 					},
 					"to": [
@@ -622,11 +738,18 @@
 					]
 				},
 				{
+					"conditions": [
+						{
+							"name": "fn_mode",
+							"type": "variable_if",
+							"value": 1
+						}
+					],
 					"type": "basic",
 					"from": {
 						"key_code": "j",
 						"modifiers": {
-							"mandatory": ["shift", "fn"]
+							"mandatory": ["shift"]
 						}
 					},
 					"to": [
@@ -637,11 +760,18 @@
 					]
 				},
 				{
+					"conditions": [
+						{
+							"name": "fn_mode",
+							"type": "variable_if",
+							"value": 1
+						}
+					],
 					"type": "basic",
 					"from": {
 						"key_code": "k",
 						"modifiers": {
-							"mandatory": ["shift", "fn"]
+							"mandatory": ["shift"]
 						}
 					},
 					"to": [
@@ -652,11 +782,18 @@
 					]
 				},
 				{
+					"conditions": [
+						{
+							"name": "fn_mode",
+							"type": "variable_if",
+							"value": 1
+						}
+					],
 					"type": "basic",
 					"from": {
 						"key_code": "l",
 						"modifiers": {
-							"mandatory": ["shift", "fn"]
+							"mandatory": ["shift"]
 						}
 					},
 					"to": [
@@ -667,11 +804,18 @@
 					]
 				},
 				{
+					"conditions": [
+						{
+							"name": "fn_mode",
+							"type": "variable_if",
+							"value": 1
+						}
+					],
 					"type": "basic",
 					"from": {
 						"key_code": "semicolon",
 						"modifiers": {
-							"mandatory": ["shift", "fn"]
+							"mandatory": ["shift"]
 						}
 					},
 					"to": [
@@ -682,11 +826,18 @@
 					]
 				},
 				{
+					"conditions": [
+						{
+							"name": "fn_mode",
+							"type": "variable_if",
+							"value": 1
+						}
+					],
 					"type": "basic",
 					"from": {
 						"key_code": "e",
 						"modifiers": {
-							"mandatory": ["fn"]
+							"optional": ["any"]
 						}
 					},
 					"to": [
@@ -696,11 +847,18 @@
 					]
 				},
 				{
+					"conditions": [
+						{
+							"name": "fn_mode",
+							"type": "variable_if",
+							"value": 1
+						}
+					],
 					"type": "basic",
 					"from": {
 						"key_code": "e",
 						"modifiers": {
-							"mandatory": ["fn", "shift"]
+							"mandatory": ["shift"]
 						}
 					},
 					"to": [
@@ -711,11 +869,18 @@
 					]
 				},
 				{
+					"conditions": [
+						{
+							"name": "fn_mode",
+							"type": "variable_if",
+							"value": 1
+						}
+					],
 					"type": "basic",
 					"from": {
 						"key_code": "r",
 						"modifiers": {
-							"mandatory": ["fn"]
+							"mandatory": ["shift"]
 						}
 					},
 					"to": [
@@ -725,11 +890,18 @@
 					]
 				},
 				{
+					"conditions": [
+						{
+							"name": "fn_mode",
+							"type": "variable_if",
+							"value": 1
+						}
+					],
 					"type": "basic",
 					"from": {
 						"key_code": "r",
 						"modifiers": {
-							"mandatory": ["fn", "shift"]
+							"mandatory": ["shift"]
 						}
 					},
 					"to": [
@@ -740,16 +912,279 @@
 					]
 				},
 				{
+					"conditions": [
+						{
+							"name": "fn_mode",
+							"type": "variable_if",
+							"value": 1
+						}
+					],
 					"type": "basic",
 					"from": {
 						"key_code": "spacebar",
 						"modifiers": {
-							"mandatory": ["fn"]
+							"optional": ["any"]
 						}
 					},
 					"to": [
 						{
 							"key_code": "delete_or_backspace"
+						}
+					]
+				},
+				{
+					"conditions": [
+						{
+							"name": "fn_mode",
+							"type": "variable_if",
+							"value": 1
+						}
+					],
+					"type": "basic",
+					"from": {
+						"key_code": "w",
+						"modifiers": {
+							"optional": ["any"]
+						}
+					},
+					"to": [
+						{
+							"key_code": "return_or_enter"
+						}
+					]
+				},
+				{
+					"conditions": [
+						{
+							"name": "fn_mode",
+							"type": "variable_if",
+							"value": 1
+						}
+					],
+					"type": "basic",
+					"from": {
+						"key_code": "quote",
+						"modifiers": {
+							"optional": ["any"]
+						}
+					},
+					"to": [
+						{
+							"key_code": "escape"
+						}
+					]
+				},
+				{
+					"conditions": [
+						{
+							"name": "fn_mode",
+							"type": "variable_if",
+							"value": 1
+						}
+					],
+					"type": "basic",
+					"from": {
+						"key_code": "u",
+						"modifiers": {
+							"optional": ["any"]
+						}
+					},
+					"to": [
+						{
+							"key_code": "hyphen"
+						}
+					]
+				},
+				{
+					"conditions": [
+						{
+							"name": "fn_mode",
+							"type": "variable_if",
+							"value": 1
+						}
+					],
+					"type": "basic",
+					"from": {
+						"key_code": "i",
+						"modifiers": {
+							"optional": ["any"]
+						}
+					},
+					"to": [
+						{
+							"key_code": "equal_sign"
+						}
+					]
+				},
+				{
+					"conditions": [
+						{
+							"name": "fn_mode",
+							"type": "variable_if",
+							"value": 1
+						}
+					],
+					"type": "basic",
+					"from": {
+						"key_code": "o",
+						"modifiers": {
+							"optional": ["any"]
+						}
+					},
+					"to": [
+						{
+							"key_code": "backslash"
+						}
+					]
+				},
+				{
+					"conditions": [
+						{
+							"name": "fn_mode",
+							"type": "variable_if",
+							"value": 1
+						}
+					],
+					"type": "basic",
+					"from": {
+						"key_code": "p",
+						"modifiers": {
+							"optional": ["any"]
+						}
+					},
+					"to": [
+						{
+							"key_code": "grave_accent_and_tilde"
+						}
+					]
+				},
+				{
+					"conditions": [
+						{
+							"name": "fn_mode",
+							"type": "variable_if",
+							"value": 1
+						}
+					],
+					"type": "basic",
+					"from": {
+						"key_code": "u",
+						"modifiers": {
+							"mandatory": ["shift"]
+						}
+					},
+					"to": [
+						{
+							"key_code": "hyphen",
+							"modifiers": "left_shift"
+						}
+					]
+				},
+				{
+					"conditions": [
+						{
+							"name": "fn_mode",
+							"type": "variable_if",
+							"value": 1
+						}
+					],
+					"type": "basic",
+					"from": {
+						"key_code": "i",
+						"modifiers": {
+							"mandatory": ["shift"]
+						}
+					},
+					"to": [
+						{
+							"key_code": "equal_sign",
+							"modifiers": "left_shift"
+						}
+					]
+				},
+				{
+					"conditions": [
+						{
+							"name": "fn_mode",
+							"type": "variable_if",
+							"value": 1
+						}
+					],
+					"type": "basic",
+					"from": {
+						"key_code": "o",
+						"modifiers": {
+							"mandatory": ["shift"]
+						}
+					},
+					"to": [
+						{
+							"key_code": "backslash",
+							"modifiers": "left_shift"
+						}
+					]
+				},
+				{
+					"conditions": [
+						{
+							"name": "fn_mode",
+							"type": "variable_if",
+							"value": 1
+						}
+					],
+					"type": "basic",
+					"from": {
+						"key_code": "p",
+						"modifiers": {
+							"mandatory": ["shift"]
+						}
+					},
+					"to": [
+						{
+							"key_code": "grave_accent_and_tilde",
+							"modifiers": "left_shift"
+						}
+					]
+				},
+				{
+					"conditions": [
+						{
+							"name": "fn_mode",
+							"type": "variable_if",
+							"value": 1
+						}
+					],
+					"type": "basic",
+					"from": {
+						"key_code": "left_option",
+						"modifiers": {
+							"optional": ["any"]
+						}
+					},
+					"to": [
+						{
+							"key_code": "tab"
+						}
+					]
+				},
+				{
+					"conditions": [
+						{
+							"name": "fn_mode",
+							"type": "variable_if",
+							"value": 1
+						}
+					],
+					"type": "basic",
+					"from": {
+						"key_code": "right_option",
+						"modifiers": {
+							"optional": ["any"]
+						}
+					},
+					"to": [
+						{
+							"key_code": "right_shift"
 						}
 					]
 				}
