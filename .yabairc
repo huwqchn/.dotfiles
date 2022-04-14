@@ -50,7 +50,7 @@ yabai -m space 10 --label X
 # ^^ these are annoying
 yabai -m rule --add app="Safari"        space=3
 yabai -m rule --add app="Spotify"       space=4
-yabai -m rule --add app="Discord"       space=5
+yabai -m rule --add app="CleanMyMac X"       space=5
 
 yabai -m rule --add app="^System Preferences$" manage=off
 yabai -m rule --add app="^Finder$" manage=off
