@@ -1,6 +1,9 @@
 # open iTerm
 lctrl + alt + cmd - return : open -n -a iTerm
 
+# open chrome
+lctrl + alt + cmd - c : open -n -a "Google Chrome"
+
 # focus window
 lctrl + alt + cmd - n : yabai -m window --focus west
 lctrl + alt + cmd - e : yabai -m window --focus south
