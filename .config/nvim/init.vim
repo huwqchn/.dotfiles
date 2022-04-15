@@ -1158,7 +1158,7 @@ vmap ga :Tabularize /
 " ===
 " === vim-after-object
 " ===
-" autocmd VimEnter * call after_object#enable('=', ':', '-', '#', ' ')
+ autocmd VimEnter * call after_object#enable('=', ':', '-', '#', ' ')
 
 
 " ===
