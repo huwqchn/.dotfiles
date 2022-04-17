@@ -1204,7 +1204,7 @@
 					],
 					"type": "basic",
 					"from": {
-						"key_code": "right_option",
+						"key_code": "right_command",
 						"modifiers": {
 							"optional": ["any"]
 						}
@@ -1212,6 +1212,153 @@
 					"to": [
 						{
 							"key_code": "right_shift"
+						}
+					]
+				},
+				{
+					"conditions": [
+						{
+							"name": "fn_mode",
+							"type": "variable_if",
+							"value": 1
+						}
+					],
+					"type": "basic",
+					"from": {
+						"key_code": "open_bracket",
+						"modifiers": {
+							"optional": ["any"]
+						}
+					},
+					"to": [
+						{
+							"key_code": "page_up"
+						}
+					]
+				},
+				{
+					"conditions": [
+						{
+							"name": "fn_mode",
+							"type": "variable_if",
+							"value": 1
+						}
+					],
+					"type": "basic",
+					"from": {
+						"key_code": "close_bracket",
+						"modifiers": {
+							"optional": ["any"]
+						}
+					},
+					"to": [
+						{
+							"key_code": "page_down"
+						}
+					]
+				},
+				{
+					"conditions": [
+						{
+							"name": "fn_mode",
+							"type": "variable_if",
+							"value": 1
+						}
+					],
+					"type": "basic",
+					"from": {
+						"key_code": "m",
+						"modifiers": {
+							"optional": ["any"]
+						}
+					},
+					"to": [
+						{
+							"key_code": "spacebar"
+						}
+					]
+				},
+				{
+					"conditions": [
+						{
+							"name": "fn_mode",
+							"type": "variable_if",
+							"value": 1
+						}
+					],
+					"type": "basic",
+					"from": {
+						"key_code": "comma",
+						"modifiers": {
+							"optional": ["any"]
+						}
+					},
+					"to": [
+						{
+							"key_code": "tab"
+						}
+					]
+				},
+				{
+					"conditions": [
+						{
+							"name": "fn_mode",
+							"type": "variable_if",
+							"value": 1
+						}
+					],
+					"type": "basic",
+					"from": {
+						"key_code": "period",
+						"modifiers": {
+							"optional": ["any"]
+						}
+					},
+					"to": [
+						{
+							"key_code": "return_or_enter"
+						}
+					]
+				},
+				{
+					"conditions": [
+						{
+							"name": "fn_mode",
+							"type": "variable_if",
+							"value": 1
+						}
+					],
+					"type": "basic",
+					"from": {
+						"key_code": "slash",
+						"modifiers": {
+							"optional": ["any"]
+						}
+					},
+					"to": [
+						{
+							"key_code": "delete_or_backspace"
+						}
+					]
+				},
+				{
+					"conditions": [
+						{
+							"name": "fn_mode",
+							"type": "variable_if",
+							"value": 1
+						}
+					],
+					"type": "basic",
+					"from": {
+						"key_code": "r",
+						"modifiers": {
+							"optional": ["any"]
+						}
+					},
+					"to": [
+						{
+							"key_code": "caps_locks"
 						}
 					]
 				}
