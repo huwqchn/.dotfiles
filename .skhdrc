@@ -42,8 +42,8 @@ lctrl + alt + cmd - a : yabai -m space --focus prev
 lctrl + alt + cmd - o : yabai -m space --focus next
 
 # create and destroy spaces
-lctrl + alt + cmd - x : yabai -m space --create
-lctrl + alt + cmd + shift - x : yabai -m space --destroy
+lctrl + alt + cmd - d : yabai -m space --create
+lctrl + alt + cmd + shift - d : yabai -m space --destroy
 
 # send window to desktop and follow focus
 lctrl + alt + cmd + shift - 1 : yabai -m window --space  1; yabai -m space --focus 1
