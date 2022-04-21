@@ -671,7 +671,7 @@
                                     }
                                 ],
                                 "from": {
-                                    "key_code": "w",
+                                    "key_code": "e",
                                     "modifiers": {
                                         "optional": [
                                             "any"
@@ -694,7 +694,7 @@
                                     }
                                 ],
                                 "from": {
-                                    "key_code": "w",
+                                    "key_code": "e",
                                     "modifiers": {
                                         "mandatory": [
                                             "shift"
@@ -718,7 +718,7 @@
                                     }
                                 ],
                                 "from": {
-                                    "key_code": "e",
+                                    "key_code": "r",
                                     "modifiers": {
                                         "mandatory": [
                                             "shift"
@@ -741,7 +741,7 @@
                                     }
                                 ],
                                 "from": {
-                                    "key_code": "e",
+                                    "key_code": "r",
                                     "modifiers": {
                                         "mandatory": [
                                             "shift"
