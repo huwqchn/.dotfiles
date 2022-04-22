@@ -720,8 +720,8 @@
                                 "from": {
                                     "key_code": "r",
                                     "modifiers": {
-                                        "mandatory": [
-                                            "shift"
+                                        "optional": [
+                                            "any"
                                         ]
                                     }
                                 },
