@@ -67,6 +67,9 @@
 (setq url-proxy-services
 		'(("http" . "127.0.0.1:19180")
 		  ("https" . "127.0.0.1:19180")))
+(use-package fira-code-mode
+  :custom (fira-code-mode-disabled-ligatures '("int" "true" "false" "return"))
+  :hook prog-mode)
 ;; Whenever you reconfigure a package, make sUre To wrap your config in an
 ;; `after!' block, otherwise Doom's defaults may override your ttings. E.g.
 ;;
