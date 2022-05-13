@@ -948,27 +948,6 @@
 					],
 					"type": "basic",
 					"from": {
-						"key_code": "spacebar",
-						"modifiers": {
-							"optional": ["any"]
-						}
-					},
-					"to": [
-						{
-							"key_code": "delete_or_backspace"
-						}
-					]
-				},
-				{
-					"conditions": [
-						{
-							"name": "fn_mode",
-							"type": "variable_if",
-							"value": 1
-						}
-					],
-					"type": "basic",
-					"from": {
 						"key_code": "w",
 						"modifiers": {
 							"optional": ["any"]
@@ -1274,7 +1253,7 @@
 					},
 					"to": [
 						{
-							"key_code": "spacebar"
+							"key_code": "delete_or_backspace"
 						}
 					]
 				},
@@ -1295,7 +1274,7 @@
 					},
 					"to": [
 						{
-							"key_code": "tab"
+							"key_code": "return_or_enter"
 						}
 					]
 				},
@@ -1316,7 +1295,7 @@
 					},
 					"to": [
 						{
-							"key_code": "return_or_enter"
+							"key_code": "tab"
 						}
 					]
 				},
@@ -1337,7 +1316,7 @@
 					},
 					"to": [
 						{
-							"key_code": "delete_or_backspace"
+							"key_code": "delete_forward"
 						}
 					]
 				},
