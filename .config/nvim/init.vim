@@ -144,7 +144,7 @@ tnoremap <C-O> <C-\><C-N><C-O>
 "===
 "=== Special Settings
 "===
-autocmd FileType c,cpp,html,htmldjango,lua,javascript,nsis set shiftwidth=2 | set tabstop=2 | set softtabstop=2 | set expandtab | set cindent | set cinoptions=t0,g1,h1,N-s,j1
+autocmd FileType c,cpp,rs,html,htmldjango,lua,javascript,nsis set shiftwidth=2 | set tabstop=2 | set softtabstop=2 | set expandtab | set cindent | set cinoptions=t0,g1,h1,N-s,j1
 autocmd FileType make set noexpandtab | set tabstop=8 | set shiftwidth=2
 
 "===
@@ -381,6 +381,11 @@ func! CompileRunGcc()
 	elseif &filetype == 'cpp'
 		set splitbelow
 		exec "!g++ -std=c++20 % -Wall -o %<"
+		:sp
+		:res -15
+		:term ./%<
+	elseif &filetype == 'rs'
+		set splitbelow
 		:sp
 		:res -15
 		:term ./%<
