@@ -50,16 +50,11 @@ yabai -m space 10 --label X
 # ^^ these are annoying
 yabai -m rule --add app="Safari"        space=3
 yabai -m rule --add app="Spotify"       space=4
-yabai -m rule --add app="CleanMyMac X"       space=5
-yabai -m rule --add app="^Pocket cleaner Pro$" space=5
-yabai -m rule --add app="^DaisyDisk$" space=5
-yabai -m rule --add app="^Boom 3D$" space=5
-yabai -m rule --add app="^iMazing$" space=5
 
 yabai -m rule --add app="^System Preferences$" manage=off
 yabai -m rule --add app="^Finder$" manage=off
 yabai -m rule --add app="^Github Desktop$" manage=off
-yabai -m rule --add app="^CleanMyMac X$" manage=off
+yabai -m rule --add app="^CleanMyMac$" manage=off
 yabai -m rule --add app="^Pocket cleaner Pro$" manage=off
 yabai -m rule --add app="^DaisyDisk$" manage=off
 yabai -m rule --add app="^Boom 3D$" manage=off
