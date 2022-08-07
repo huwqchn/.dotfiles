@@ -18,4 +18,3 @@ zmodule pabloariasal/zfm
 zmodule agkozak/zsh-z
 zmodule Aloxaf/fzf-tab
 zmodule romkatv/powerlevel10k --use degit
-zmodule danielporto/wd -s 'wd.plugin.zsh' -f '.'
