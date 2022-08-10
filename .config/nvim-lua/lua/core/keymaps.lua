@@ -73,6 +73,12 @@ keymap("n", ">", ">>", opts)
 keymap("n", "-", "N", opts)
 keymap("n", "=", "n", opts)
 
+-- make Y to copy till the end of the line
+keymap("n", "Y", "y$", opts)
+
+-- Cop; to system clipboard
+keymap("v", "Y", '"+y', opts)
+
 -- Leader Key
 -- Window Management
 keymap("n", "<LEADER>ww", "<C-w>w", opts)
@@ -81,6 +87,18 @@ keymap("n", "<LEADER>we", "<C-w>j", opts)
 keymap("n", "<LEADER>wn", "<C-w>h", opts)
 keymap("n", "<LEADER>wi", "<C-w>l", opts)
 keymap("n", "<LEADER>wq", "<C-w>o", opts)
+
+-- File Operation
+keymap("n", "<LEADER>fs", ":w<CR>", opts)
+keymap("n", "<LEADER>fq", ":q<CR>", opts)
+
+-- Select current line
+keymap("n", "<LEADER>vv", "v$h", opts)
+-- Paste and replace a word
+keymap("n", "<LEADER>vw", "viwp", opts)
+
+-- Delete find pair
+keymap("n", "<LEADER>dp", "d%", opts)
 
 -- split the screens to up(horizontal), down(horizontal), left(vertical),right(vertical)
 keymap("n", "<LEADER>su", ":set nosplitbelow<CR>:split<CR>:set splitbelow<CR>", opts)
@@ -93,7 +111,7 @@ keymap("n", "<LEADER>sh", "<C-w>t<C-w>K", opts)
 keymap("n", "<LEADER>sv", "<C-w>t<C-w>H", opts)
 
 -- find and replace
-keymap("n", "<LEADER>sg", ":%s//g<left><left>", opt)
+keymap("n", "<LEADER>sg", ":%s//g<left><left>", opts)
 
 -- Resize splits
 keymap("n", "<LEADER>ru", ":res +5<CR>", opts)
