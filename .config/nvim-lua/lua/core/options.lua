@@ -1,10 +1,12 @@
 -- :help options
 local options = {
   backup = false,              -- creaters a backup file
-  clipboard = 'unnamedplus',   -- allows neovim to access the system clipboard
+  -- clipboard = 'unnamedplus',   -- allows neovim to access the system clipboard
+	paste = true,
   number = true,               -- shwo line numbers on left sidebar
   relativenumber = true,       -- show line number on the current line and relative numbers on all other lines
   cursorline = true,           -- highlight the line currently under curor
+  cursorcolumn = true,         -- highlight the column currently under cursor
   mouse = 'a',                 -- enables mouser for scrolling and resizing
   scrolloff = 8,               -- the number of screen lines to keep above and below the cursor
   sidescrolloff = 8,           -- the number of screen columns to keep the left and right of the cursor
@@ -60,6 +62,11 @@ vim.opt.formatoptions:remove('tc')
 
 vim.cmd 'set indentexpr='
 vim.cmd "let &t_ut =''"
+
+if vim.fn.has('syntax') == 1 then
+  vim.opt.syntax = "on"
+end
+
 
 for k, v in pairs(options) do
   vim.opt[k] = v

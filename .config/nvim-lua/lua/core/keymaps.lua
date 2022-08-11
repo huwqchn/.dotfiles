@@ -92,6 +92,9 @@ keymap("n", "<LEADER>wq", "<C-w>o", opts)
 keymap("n", "<LEADER>fs", ":w<CR>", opts)
 keymap("n", "<LEADER>fq", ":q<CR>", opts)
 
+keymap("n", "S", ":w<CR>", opts)
+keymap("n", "Q", ":q<CR>", opts)
+
 -- Select current line
 keymap("n", "<LEADER>vv", "v$h", opts)
 -- Paste and replace a word
