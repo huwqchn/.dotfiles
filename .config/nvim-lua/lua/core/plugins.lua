@@ -138,6 +138,31 @@ return packer.startup(function(use)
   -- Terminal Integration
   use { 'akinsho/nvim-toggleterm.lua', tag = 'v2.*', config = get_config("toggleterm") }
 
+  -- requirement for Neogit
+  use({
+    "sindrets/diffview.nvim",
+    cmd = {
+      "DiffviewOpen",
+      "DiffviewClose",
+      "DiffviewToggleFiles",
+      "DiffviewFocusFiles",
+    },
+    config = get_config("diffview"),
+  })
+
+  use({
+    "TimUntersberger/neogit",
+    requires = { "nvim-lua/plenary.nvim" },
+    cmd = "Neogit",
+    config = get_config("neogit"),
+  })
+
+  use({ "f-person/git-blame.nvim", config = get_config("git-blame") })
+
+  use({ "tpope/vim-fugitive" }) -- yeah this is not lua but one of the best Vim plugins ever
+
+  use("p00f/nvim-ts-rainbow")
+
   use {
     "lewis6991/gitsigns.nvim",
     requires = { "nvim-lua/plenary.nvim" },
