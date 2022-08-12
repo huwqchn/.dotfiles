@@ -1,4 +1,4 @@
-local status_ok, which_key = pcall(require, "which_key")
+local status_ok, which_key = pcall(require, "which-key")
 if not status_ok then
   return
 end
@@ -64,8 +64,8 @@ local setup = {
     -- list of mode / prefixes that should never be hooked by WhichKey
     -- this is mostly relevant for key maps that start with a native binding
     -- most people should not need to change this
-    i = { "j", "k" },
-    v = { "j", "k" },
+    i = { "e", "u" },
+    v = { "e", "u" },
   },
 }
 
@@ -79,8 +79,64 @@ local opts = {
 }
 
 local mappings = {
-
-
+  w = {
+    name = "Window"
+  },
+  b = {
+    name = "Buffers",
+    b = {
+      "<cmd>Telescope buffers<cr>",
+      "Find buffer",
+    },
+    D = {
+      "<cmd>%bd|e#|bd#<cr>",
+      "Close all but the current buffer",
+    },
+    d = { "<cmd>Bdelete!<CR>", "Close buffer" },
+  },
+  e = {
+    name = "Explorer",
+    e = {
+      "<cmd>NvimTreeToggle<cr>",
+      "Project"
+    },
+    E = {
+      "<cmd>NvimTreeFindFile<cr>",
+      "Current File"
+    },
+    c = {
+      ":NvimTreeCollapse<cr>",
+      "Collapse"
+    },
+  },
+  p = {
+    name = "Packer",
+    c = { "<cmd>PackerCompile<cr>", "Compile" },
+    i = { "<cmd>PackerInstall<cr>", "Install" },
+    s = { "<cmd>PackerSync<cr>", "Sync" },
+    S = { "<cmd>PackerStatus<cr>", "Status" },
+    u = { "<cmd>PackerUpdate<cr>", "Update" },
+  },
+  f = {
+    name = "Files",
+    b = { "<cmd>Telescope file_browser<cr>", "File browser" },
+    f = { "<cmd>Telescope find_files<cr>", "Find File" },
+    l = { "<cmd>Lf<cr>", "Open LF" },
+    t = { "<cmd>NvimTreeToggle<cr>", "Toggle Filetree" },
+    r = { "<cmd>Telescope oldfiles<cr>", "Open Recent File" },
+    s = { "<cmd>w<cr>", "Save Buffer" },
+    z = { "<cmd>Telescope zoxide list<CR>", "Zoxide" },
+  },
+  t = {
+    name = "Terminal",
+    -- o = { "<cmd>lua _NODE_TOGGLE()<cr>", "Node" },
+    -- u = { "<cmd>lua _NCDU_TOGGLE()<cr>", "NCDU" },
+    -- h = { "<cmd>lua _HTOP_TOGGLE()<cr>", "Htop" },
+    p = { "<cmd>lua _PYTHON_TOGGLE()<cr>", "Python" },
+    f = { "<cmd>ToggleTerm direction=float<cr>", "Float" },
+    h = { "<cmd>ToggleTerm size=10 direction=horizontal<cr>", "Horizontal" },
+    v = { "<cmd>ToggleTerm size=80 direction=vertical<cr>", "Vertical" },
+  },
 }
 
 which_key.setup(setup)

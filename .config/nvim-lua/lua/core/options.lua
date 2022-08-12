@@ -2,7 +2,7 @@
 local options = {
   backup = false,              -- creaters a backup file
   -- clipboard = 'unnamedplus',   -- allows neovim to access the system clipboard
-	paste = true,
+	-- paste = true,
   number = true,               -- shwo line numbers on left sidebar
   relativenumber = true,       -- show line number on the current line and relative numbers on all other lines
   cursorline = true,           -- highlight the line currently under curor
@@ -67,6 +67,7 @@ if vim.fn.has('syntax') == 1 then
   vim.opt.syntax = "on"
 end
 
+vim.cmd 'set termguicolors'
 
 for k, v in pairs(options) do
   vim.opt[k] = v

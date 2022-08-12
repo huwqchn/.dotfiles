@@ -72,9 +72,3 @@ autocmd(
 		end,
 	}
 )
-
--- TODO: seeming not working
-autocmd(
-  "BufLeave",
-  { command = [[:%s/  /\t/g"]] }
-)
