@@ -55,6 +55,7 @@ local options = {
   signcolumn = 'yes',           -- always show the sign column
   fileencoding = 'utf-8',
   pumheight = 10,               -- pop up menu height
+  termguicolors = true,
 }
 
 vim.opt.shortmess:append('c')
@@ -66,8 +67,6 @@ vim.cmd "let &t_ut =''"
 if vim.fn.has('syntax') == 1 then
   vim.opt.syntax = "on"
 end
-
-vim.cmd 'set termguicolors'
 
 for k, v in pairs(options) do
   vim.opt[k] = v

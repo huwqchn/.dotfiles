@@ -72,8 +72,8 @@ yabai -m rule --add app="^WeChat$" manage=off
 yabai -m rule --add app="^微信$" manage=off
 yabai -m rule --add app="^Alfred Preferences$" sticky=on layer=above manage=off
 
-# yabai -m config external_bar all:27:0
-SPACEBAR_HEIGHT=$(spacebar -m config height)
-yabai -m config external_bar all:0:$SPACEBAR_HEIGHT
+yabai -m config external_bar all:27:0
+# SPACEBAR_HEIGHT=$(spacebar -m config height)
+# yabai -m config external_bar all:0:$SPACEBAR_HEIGHT
 
 echo "yabai configuration loaded.."
