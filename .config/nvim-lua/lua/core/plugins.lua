@@ -60,6 +60,7 @@ return packer.startup(function(use)
 
   use { "jvgrootveld/telescope-zoxide" }
   use { "crispgm/telescope-heading.nvim" }
+  use { "LinArcX/telescope-env.nvim" }
   use { "nvim-telescope/telescope-symbols.nvim" }
   use { "nvim-telescope/telescope-file-browser.nvim" }
   use { "nvim-telescope/telescope-fzf-native.nvim", run = "make" }
