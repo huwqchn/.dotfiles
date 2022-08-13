@@ -97,16 +97,20 @@ local mappings = {
   e = {
     name = "Explorer",
     e = {
-      "<cmd>NvimTreeToggle<cr>",
+      "<cmd>NvimTreeToggle<CR>",
       "Project"
     },
     E = {
-      "<cmd>NvimTreeFindFile<cr>",
+      "<cmd>NvimTreeFindFile<CR>",
       "Current File"
     },
     c = {
-      ":NvimTreeCollapse<cr>",
+      "<cmd>:NvimTreeCollapse<CR>",
       "Collapse"
+    },
+    s = {
+      "<cmd>:SymbolsOutline<CR>",
+      "SymbolsOutline"
     },
   },
   p = {

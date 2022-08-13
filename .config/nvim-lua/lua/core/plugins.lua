@@ -99,7 +99,29 @@ return packer.startup(function(use)
     config = get_config("indent-blankline")
   }
 
-  use{
+  use 'famiu/bufdelete.nvim'
+
+  -- lsp
+  use { "neovim/nvim-lspconfig", config = get_config("lsp") }
+
+  use { 'williamboman/nvim-lsp-installer' }
+
+  use { "onsails/lspkind-nvim", requires = { "famiu/bufdelete.nvim" } }
+
+  use {
+    "jose-elias-alvarez/null-ls.nvim",
+    requires = { 'nvim-lua/plenary.nvim' },
+    config = get_config("null-ls"),
+  }
+
+  use {
+    "simrat39/symbols-outline.nvim",
+    cmd = { "SymbolsOutline" },
+    config = get_config("symbols"),
+  }
+
+  -- cmp
+  use {
     "hrsh7th/nvim-cmp",
     requires = {
       "hrsh7th/cmp-nvim-lsp",
@@ -114,15 +136,24 @@ return packer.startup(function(use)
     config = get_config("cmp"),
   }
 
-  use{
+  -- Treesitter
+  use {
     "nvim-treesitter/nvim-treesitter",
     config = get_config("treesitter"),
     run = ":TSUpdate",
   }
 
-  use 'nvim-treesitter/nvim-treesitter-textobjects'
+  use { 'nvim-treesitter/nvim-treesitter-textobjects', after = 'nvim-treesitter' }
 
-  use 'RRethy/nvim-treesitter-endwise'
+  use { 'RRethy/nvim-treesitter-endwise', after = 'nvim-treesitter' }
+
+  use { 'RRethy/nvim-treesitter-textsubjects', after = 'nvim-treesitter' }
+
+  use { 'p00f/nvim-ts-rainbow', after = 'nvim-treesitter' }
+
+  use { 'windwp/nvim-ts-autotag', after = 'nvim-treesitter' }
+
+  use { "mfussenegger/nvim-ts-hint-textobject" }
 
   use { "ahmedkhalf/project.nvim", config = get_config("project") }
 
@@ -130,16 +161,22 @@ return packer.startup(function(use)
 
   -- Colorschemes
   use { 'folke/tokyonight.nvim', config = get_config("colorscheme") }
-  -- use 'lunarvim/darkplus.nvim'
 
+  use {
+    'norcalli/nvim-colorizer.lua',
+    config = get_config("colorizer"),
+    event = 'BufRead',
+  }
   -- which key
   use { 'folke/which-key.nvim', config = get_config("which-key") }
+
+  use { "RRethy/vim-illuminate", config = get_config("illuminate") }
 
   -- Terminal Integration
   use { 'akinsho/nvim-toggleterm.lua', tag = 'v2.*', config = get_config("toggleterm") }
 
   -- requirement for Neogit
-  use({
+  use {
     "sindrets/diffview.nvim",
     cmd = {
       "DiffviewOpen",
@@ -148,20 +185,19 @@ return packer.startup(function(use)
       "DiffviewFocusFiles",
     },
     config = get_config("diffview"),
-  })
+  }
 
-  use({
+  -- Git
+  use {
     "TimUntersberger/neogit",
     requires = { "nvim-lua/plenary.nvim" },
     cmd = "Neogit",
     config = get_config("neogit"),
-  })
+  }
 
-  use({ "f-person/git-blame.nvim", config = get_config("git-blame") })
+  use { "f-person/git-blame.nvim", config = get_config("git-blame") }
 
-  use({ "tpope/vim-fugitive" }) -- yeah this is not lua but one of the best Vim plugins ever
-
-  use("p00f/nvim-ts-rainbow")
+  use { "tpope/vim-fugitive" } -- yeah this is not lua but one of the best Vim plugins ever
 
   use {
     "lewis6991/gitsigns.nvim",
