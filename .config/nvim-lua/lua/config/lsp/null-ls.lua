@@ -3,24 +3,33 @@ if not status_ok then
   return
 end
 
+local formatting = nls.builtins.formatting
+local diagnostics = nls.builtins.diagnostics
+local code_actions = nls.builtins.code_actions
+
 local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 
 nls.setup({
   sources = {
-    nls.builtins.formatting.stylua.with({ extra_args = { "--indent-type", "Spaces", "--indent-width", "2" } }),
-    nls.builtins.diagnostics.eslint,
-    nls.builtins.formatting.prettier.with({
+    formatting.stylua.with({ extra_args = { "--indent-type", "Spaces", "--indent-width", "2" } }),
+    diagnostics.eslint,
+    formatting.prettier.with({
       extra_args = { "--single-quote", "false" },
     }),
-    nls.builtins.formatting.terraform_fmt,
-    nls.builtins.formatting.black,
-    nls.builtins.formatting.goimports,
-    nls.builtins.formatting.gofumpt,
-    nls.builtins.formatting.latexindent.with({
+    formatting.rustfmt,
+    formatting.terraform_fmt,
+    formatting.black.with({ extra_args = { "--fast" } }),
+    formatting.goimports,
+    formatting.gofumpt,
+    -- formatting.flake8,
+    formatting.shfmt,
+    -- formatting.cppcheck,
+    formatting.latexindent.with({
       extra_args = { "-g", "/dev/null" }, -- https://github.com/cmhughes/latexindent.pl/releases/tag/V3.9.3
     }),
-    nls.builtins.code_actions.shellcheck,
-    nls.builtins.diagnostics.vale,
+    code_actions.shellcheck,
+    code_actions.gitsigns,
+    diagnostics.vale,
   },
   on_attach = function(client, bufnr)
     if client.supports_method("textDocument/formatting") then
