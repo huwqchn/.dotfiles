@@ -39,6 +39,6 @@ nls.setup({
         F = { "<cmd>lua require('functions').toggle_autoformat()<cr>", "Toggle format on save" },
       },
     }, { prefix = "<leader>", mode = "n", default_options })
-    require("core/functions").custom_lsp_attach(client, bufnr)
+    require("config.lsp.handlers").on_attach(client, bufnr)
   end,
 })
