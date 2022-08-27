@@ -23,7 +23,7 @@ lsp_installer.setup({
     icons = {
       server_installed = "✓",
       server_pending = "➜",
-      server_uninstalled = "✗"
+      server_uninstalled = "✗",
     },
   },
   keymaps = {
@@ -49,10 +49,13 @@ local servers = {
 }
 
 for name, config in pairs(servers) do
+  local opts = {
+    on_attach = require("config.lsp.handlers").on_attach,
+    capabilites = require("config.lsp.handlers").capabilities,
+  }
+
   if config ~= nil and type(config) == "table" then
-    config.on_setup(lspconfig[name])
-  else
-    -- default config
-    lspconfig[name].setup({})
+    opts = vim.tbl_deep_extend("force", opts, config)
   end
+  lspconfig[name].setup(opts)
 end

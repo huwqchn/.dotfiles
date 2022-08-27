@@ -121,6 +121,8 @@ return packer.startup(function(use)
     config = get_config("symbols"),
   })
 
+  use({ "SmiteshP/nvim-navic" })
+
   -- cmp
   use({
     "hrsh7th/nvim-cmp",
