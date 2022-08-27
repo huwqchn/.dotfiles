@@ -40,7 +40,7 @@ M.toggle_colorcolumn = function()
   print(value)
   if value == "{}" then
     M.notify("Enable colocolumn", "info", "functions.lua")
-    vim.opt.colorcolumn = "79"
+    vim.opt.colorcolumn = "81"
   else
     M.notify("Disable colocolumn", "info", "functions.lua")
     vim.opt.colorcolumn = {}

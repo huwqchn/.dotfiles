@@ -19,7 +19,7 @@ nls.setup({
     formatting.rustfmt,
     formatting.terraform_fmt,
     formatting.black.with({ extra_args = { "--fast" } }),
-    formatting.goimports,
+    -- formatting.goimports,
     formatting.gofumpt,
     -- formatting.flake8,
     formatting.shfmt,
@@ -32,6 +32,13 @@ nls.setup({
     diagnostics.vale,
   },
   on_attach = function(client, bufnr)
+    local wk = require("which-key")
+    local default_options = { silent = true }
+    wk.register({
+      m = {
+        F = { "<cmd>lua require('functions').toggle_autoformat()<cr>", "Toggle format on save" },
+      },
+    }, { prefix = "<leader>", mode = "n", default_options })
     if client.supports_method("textDocument/formatting") then
       vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
       vim.api.nvim_create_autocmd("BufWritePre", {
@@ -39,7 +46,7 @@ nls.setup({
         buffer = bufnr,
         callback = function()
           if AUTOFORMAT_ACTIVE then -- global var defined in functions.lua
-            vim.lsp.buf.format({ bufnr = bufnr })
+            vim.lsp.buf.formatting({ bufnr = bufnr  })
           end
         end,
       })
