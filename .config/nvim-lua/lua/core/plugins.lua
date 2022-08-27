@@ -214,6 +214,10 @@ return packer.startup(function(use)
     config = get_config("trouble"),
   })
 
+  use({ "rhysd/conflict-marker.vim" })
+
+  use({ "edluffy/specs.nvim", config = get_config("specs") })
+
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
   if PACKER_BOOTSTRAP then

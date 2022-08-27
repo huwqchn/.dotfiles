@@ -39,6 +39,17 @@ nls.setup({
         F = { "<cmd>lua require('functions').toggle_autoformat()<cr>", "Toggle format on save" },
       },
     }, { prefix = "<leader>", mode = "n", default_options })
-    require("config.lsp.handlers").on_attach(client, bufnr)
+    if client.supports_method("textDocument/formatting") then
+      vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
+      vim.api.nvim_create_autocmd("BufWritePre", {
+        group = augroup,
+        buffer = bufnr,
+        callback = function()
+          if AUTOFORMAT_ACTIVE then -- global var defined in functions.lua
+            vim.lsp.buf.format({ bufnr = bufnr })
+          end
+        end,
+      })
+    end
   end,
 })

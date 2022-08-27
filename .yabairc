@@ -63,6 +63,7 @@ yabai -m rule --add app="^DaisyDisk$" manage=off
 yabai -m rule --add app="^Boom 3D$" manage=off
 yabai -m rule --add app="^iMazing$" manage=off
 yabai -m rule --add app="^Stickies$" manage=off
+yabai -m rule --add app="^Surge.*" manage=off
 yabai -m rule --add app="^Jetbrains Toolbox$" manage=off
 yabai -m rule --add app="^Karabiner-Elements$" sticky=on layer=above manage=off
 yabai -m rule --add app="^Karabiner-EventViewer$" sticky=on layer=above manage=off
