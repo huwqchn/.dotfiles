@@ -4,7 +4,7 @@
 -- luasnip will bring some globals into scope for executing these files.
 -- defined by snip_env in setup
 require("luasnip.loaders.from_lua").lazy_load()
-local env = snip_env
+local env = Snip_env
 
 return {
   env.parse("mail", "huwqchn@gmail.com"),

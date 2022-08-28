@@ -82,6 +82,12 @@ local mappings = {
   w = {
     name = "Window"
   },
+  a = {
+    name = "Align"
+  },
+  c = {
+    name = "Comment"
+  },
   b = {
     name = "Buffers",
     b = {
@@ -131,7 +137,7 @@ local mappings = {
     z = { "<cmd>Telescope zoxide list<CR>", "Zoxide" },
   },
   t = {
-    name = "Terminal",
+    name = "Terminal&Tab",
     -- o = { "<cmd>lua _NODE_TOGGLE()<cr>", "Node" },
     -- u = { "<cmd>lua _NCDU_TOGGLE()<cr>", "NCDU" },
     -- h = { "<cmd>lua _HTOP_TOGGLE()<cr>", "Htop" },
@@ -139,6 +145,48 @@ local mappings = {
     f = { "<cmd>ToggleTerm direction=float<cr>", "Float" },
     h = { "<cmd>ToggleTerm size=10 direction=horizontal<cr>", "Horizontal" },
     v = { "<cmd>ToggleTerm size=80 direction=vertical<cr>", "Vertical" },
+  },
+  q = {
+    name = "Quickfix",
+    e = { "<cmd>cnext<cr>", "Next Quickfix Item" },
+    u = { "<cmd>cprevious<cr>", "Previous Quickfix Item" },
+    q = { "<cmd>lua require('functions').toggle_qf()<cr>", "Toggle quickfix list" },
+    t = { "<cmd>TodoQuickFix<cr>", "Show TODOs" },
+  },
+  x = {
+    name = "LanguageTool",
+    c = { "<cmd>GrammarousCheck<cr>", "Grammar check" },
+    i = { "<Plug>(grammarous-open-info-window)", "Open the info window" },
+    r = { "<Plug>(grammarous-reset)", "Reset the current check" },
+    f = { "<Plug>(grammarous-fixit)", "Fix the error under the cursor" },
+    x = {
+      "<Plug>(grammarous-close-info-window)",
+      "Close the information window",
+    },
+    e = {
+      "<Plug>(grammarous-remove-error)",
+      "Remove the error under the cursor",
+    },
+    n = {
+      "<Plug>(grammarous-move-to-next-error)",
+      "Move cursor to the next error",
+    },
+    p = {
+      "<Plug>(grammarous-move-to-previous-error)",
+      "Move cursor to the previous error",
+    },
+    d = {
+      "<Plug>(grammarous-disable-rule)",
+      "Disable the grammar rule under the cursor",
+    },
+  },
+  z = {
+    name = "Spelling",
+    n = { "]s", "Next" },
+    p = { "[s", "Previous" },
+    a = { "zg", "Add word" },
+    f = { "1z=", "Use 1. correction" },
+    l = { "<cmd>Telescope spell_suggest<cr>", "List corrections" },
   },
 }
 

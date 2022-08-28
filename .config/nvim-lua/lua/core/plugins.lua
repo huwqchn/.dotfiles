@@ -222,6 +222,90 @@ return packer.startup(function(use)
 
   use({ "vimpostor/vim-tpipeline" })
 
+  use({ "terrortylor/nvim-comment", config = get_config("comment") })
+
+  use({
+    "folke/todo-comments.nvim",
+    requires = "nvim-lua/plenary.nvim",
+    config = get_config("todo")
+  })
+
+  use({
+    "Vonr/align.nvim",
+    config = get_config("align")
+  })
+
+  use({ "rhysd/vim-grammarous", cmd = "GrammarousCheck" })
+
+  use({
+    "ptzz/lf.vim",
+    requires = "voldikss/vim-floaterm",
+    config = get_config("lf"),
+  })
+
+  use({ "tweekmonster/startuptime.vim" })
+
+  use({ "ggandor/lightspeed.nvim" })
+
+  use({ "ray-x/go.nvim", requires = "ray-x/guihua.lua", config = get_config("go"), ft = { "go" } })
+
+  use({ "LudoPinelli/comment-box.nvim", config = get_config("comment-box") })
+
+  use({ "echasnovski/mini.nvim", branch = "stable", config = get_config("mini") })
+
+  use({
+    "waylonwalker/Telegraph.nvim",
+    config = function()
+      require("telegraph").setup({})
+    end,
+  })
+
+  use({
+    "j-hui/fidget.nvim",
+    config = function()
+      require("fidget").setup({})
+    end,
+  })
+
+  use({
+    "kevinhwang91/nvim-ufo",
+    requires = "kevinhwang91/promise-async",
+    config = function()
+      require("ufo").setup()
+    end,
+  })
+
+  use({
+    "https://gitlab.com/yorickpeterse/nvim-pqf.git",
+    config = function()
+      require("pqf").setup()
+    end,
+  })
+
+  use({
+    "https://gitlab.com/yorickpeterse/nvim-window.git",
+    config = get_config("nvim-window"),
+  })
+
+  use({
+    "beauwilliams/focus.nvim",
+    config = function()
+      require("focus").setup()
+    end,
+  })
+
+  use({
+    "mfussenegger/nvim-dap",
+    requires = {
+      "mfussenegger/nvim-dap-python",
+      "leoluz/nvim-dap-go",
+      "rcarriga/nvim-dap-ui",
+      "theHamsta/nvim-dap-virtual-text",
+    },
+    config = function()
+      require("config.dap").setup()
+    end,
+  })
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
   if PACKER_BOOTSTRAP then

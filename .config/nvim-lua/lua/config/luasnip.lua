@@ -2,7 +2,7 @@ local ls = require("luasnip")
 local vsc = require("luasnip.loaders.from_vscode")
 local lua = require("luasnip.loaders.from_lua")
 
-snip_env = {
+Snip_env = {
   s = require("luasnip.nodes.snippet").S,
   sn = require("luasnip.nodes.snippet").SN,
   t = require("luasnip.nodes.textNode").T,
