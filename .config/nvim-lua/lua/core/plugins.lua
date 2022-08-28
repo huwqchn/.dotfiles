@@ -218,6 +218,10 @@ return packer.startup(function(use)
 
   use({ "edluffy/specs.nvim", config = get_config("specs") })
 
+  use({ "Djancyp/cheat-sheet" })
+
+  use({ "vimpostor/vim-tpipeline" })
+
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
   if PACKER_BOOTSTRAP then

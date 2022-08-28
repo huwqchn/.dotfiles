@@ -21,5 +21,5 @@ specs.setup({
   },
 })
 -- center and highlight results
-vim.keymap.set("n", "n", 'nzz:lua require("specs").show_specs()<CR>', { silent = true })
-vim.keymap.set("n", "N", 'Nzz:lua require("specs").show_specs()<CR>', { silent = true })
+vim.keymap.set("n", "=", 'nzz:lua require("specs").show_specs()<CR>', { silent = true })
+vim.keymap.set("n", "-", 'Nzz:lua require("specs").show_specs()<CR>', { silent = true })
