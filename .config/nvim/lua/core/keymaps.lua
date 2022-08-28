@@ -51,6 +51,7 @@ keymap("", "N", "^", opts)
 keymap("", "I", "$", opts)
 
 keymap("", "h", "e", opts)
+keymap("", "H", "E", opts)
 
 -- faster in-line navigation
 keymap("", "W", "5w", opts)
