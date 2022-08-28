@@ -1,11 +1,11 @@
 local opts = { noremap = true, silent = true }
-local term_opts = { silent = true }
+local re_opts = { remap = true, silent = true }
 
-local keymap = vim.api.nvim_set_keymap
+local keymap = vim.keymap.set
 
 -- Remap space as leader key
 keymap("", "<Space>", "<Nop>", opts)
-vim.g.mapleader = " "
+  vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
 -- Modes
@@ -39,6 +39,11 @@ keymap("", "n", "h", opts)
 keymap("", "e", "j", opts)
 keymap("", "i", "l", opts)
 
+--map t/T to g/G
+keymap("", "t", "g", re_opts)
+keymap("", "T", "G", opts)
+
+keymap("", "gt", "gg", opts)
 keymap("", "gu", "gk", opts)
 keymap("", "ge", "gj", opts)
 

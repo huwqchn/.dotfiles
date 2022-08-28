@@ -13,9 +13,9 @@ comment.setup({
   -- Should key mappings be created
   create_mappings = true,
   -- Normal mode mapping left hand side
-  line_mapping = "<leader>cc",
+  line_mapping = "gcc",
   -- Visual/Operator mapping left hand side
-  operator_mapping = "<leader>c",
+  operator_mapping = "gc",
   -- text object mapping, comment chunk,,
   comment_chunk_text_object = "ic",
   -- Hook function to call before commenting takes place
