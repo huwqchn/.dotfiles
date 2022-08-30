@@ -79,14 +79,8 @@ local opts = {
 }
 
 local mappings = {
-  w = {
-    name = "Window"
-  },
   a = {
     name = "Align"
-  },
-  c = {
-    name = "Comment"
   },
   b = {
     name = "Buffers",
@@ -99,6 +93,8 @@ local mappings = {
       "Close all but the current buffer",
     },
     d = { "<cmd>Bdelete!<CR>", "Close buffer" },
+    n = { "<cmd>:bprevious<CR>", "Move Previous buffer" },
+    i = { "<cmd>:bnext<CR>", "Move next buffer" },
   },
   e = {
     name = "Explorer",
@@ -119,14 +115,6 @@ local mappings = {
       "SymbolsOutline"
     },
   },
-  p = {
-    name = "Packer",
-    c = { "<cmd>PackerCompile<cr>", "Compile" },
-    i = { "<cmd>PackerInstall<cr>", "Install" },
-    s = { "<cmd>PackerSync<cr>", "Sync" },
-    S = { "<cmd>PackerStatus<cr>", "Status" },
-    u = { "<cmd>PackerUpdate<cr>", "Update" },
-  },
   f = {
     name = "Files",
     b = { "<cmd>Telescope file_browser<cr>", "File browser" },
@@ -135,9 +123,30 @@ local mappings = {
     r = { "<cmd>Telescope oldfiles<cr>", "Open Recent File" },
     s = { "<cmd>w<cr>", "Save Buffer" },
     z = { "<cmd>Telescope zoxide list<CR>", "Zoxide" },
+    q = { "<cmd>:q<CR>", "Quit"},
   },
   t = {
-    name = "Terminal&Tab",
+    e = {
+      "<cmd>:tabe<CR>", "New Tab"
+    },
+    E = {
+      "<cmd>:tab split<CR>", "New and Move the Tab"
+    },
+    n = {
+      "<cmd>:-tabnext<CR>", "Move to Left Tab"
+    },
+    i = {
+      "<cmd>:+tabnext<CR>", "Move to Right Tab"
+    },
+    N = {
+      "<cmd>:-tabmove<CR>", "Move The Tab to Left"
+    },
+    I = {
+      "<cmd>:+tabmove<CR>", "Move The Tab to Right"
+    },
+  },
+  T = {
+    name = "Terminal",
     -- o = { "<cmd>lua _NODE_TOGGLE()<cr>", "Node" },
     -- u = { "<cmd>lua _NCDU_TOGGLE()<cr>", "NCDU" },
     -- h = { "<cmd>lua _HTOP_TOGGLE()<cr>", "Htop" },
@@ -152,6 +161,51 @@ local mappings = {
     u = { "<cmd>cprevious<cr>", "Previous Quickfix Item" },
     q = { "<cmd>lua require('functions').toggle_qf()<cr>", "Toggle quickfix list" },
     t = { "<cmd>TodoQuickFix<cr>", "Show TODOs" },
+  },
+  v = {
+    name = "Visual",
+    v = { "v$h", "Select current line" },
+    w = { "viwp", "Paste ahd replace a word" },
+  },
+  w = {
+    name = "Window",
+    w = {
+      "<C-w>w", "Switch To Next Window"
+    },
+    u = {
+      "<C-w>k", "Switch To Up Window"
+    },
+    e = {
+      "<C-w>j", "Switch To Down Window"
+    },
+    n = {
+      "<C-w>h", "Switch To Letf Window"
+    },
+    i = {
+      "<C-w>l", "Switch To Right Window"
+    },
+    q = {
+      "<C-w>o", "Quit All Other Windows"
+    },
+  },
+  s = {
+    name = "Split",
+    u = { "<cmd>:set nosplitbelow<CR>:split<CR>:set splitbelow<CR>", "Split Up Window" },
+    e = { "<cmd>:set splitbelow<CR>:split<CR>", "Split Down Window" },
+    n = { "<cmd>:set nosplitright<CR>:vsplit<CR>:set splitright<CR>", "Split Left Window" },
+    i = { "<cmd>:set splitright<CR>:vsplit<CR>", "Split Right Window" },
+    h = { "<C-w>t<C-w>K", "Place Screens Horizontal" },
+    v = { "<C-w>t<C-w>H", "Place Screens Vertical" },
+    U = { "<cmd>:res +5<CR>", "Resize Up" },
+    E = { "<cmd>:res -5<CR>", "Resize Down" },
+    N = { "<cmd>:vertical resize-5<CR>", "Resize Left" },
+    I = { "<cmd>:vertical resize+5<CR>", "Resize Right" },
+    H = { "<C-w>b<C-w>K", "Rotate Screens Horizontal" },
+    V = { "<C-w>b<C-w>H", "Rotate Screens Vertical" },
+  },
+  S = {
+    name = "Search",
+    s = { "<cmd>:%s//g<left><left>", "Find and Search" },
   },
   x = {
     name = "LanguageTool",
@@ -189,6 +243,5 @@ local mappings = {
     l = { "<cmd>Telescope spell_suggest<cr>", "List corrections" },
   },
 }
-
 which_key.setup(setup)
 which_key.register(mappings, opts)
