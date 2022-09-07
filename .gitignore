@@ -8,6 +8,7 @@
 .backup/nvim/.netrwhist
 .backup/nvim/_machine_specific.vim
 .backup/nvim/.vim-bookmarks
+.config/nvim/plugin/packer_compiled.lua
 .config/ranger/plugins/__pycache__/*
 .config/ranger/plugins/__init__.pyo
 .config/ranger/plugins/devicons.pyo
@@ -26,3 +27,5 @@
 .config/cheat/cheatsheets/community/
 .config/tmux/extrakto/
 .config/karabiner/automatic_backups/
+.config/surge/*
+!.config/surge/custom.conf
