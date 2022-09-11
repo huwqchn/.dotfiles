@@ -176,7 +176,7 @@ noremap B 5b
 noremap <C-U> 5<C-y>
 noremap <C-E> 5<C-e>
 
-source $HOME/.config/nvim/cursor.vim
+" source $HOME/.config/nvim/cursor.vim
 
 " ===
 " === Window management
