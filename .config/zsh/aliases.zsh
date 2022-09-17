@@ -1,6 +1,6 @@
 alias c='clear'
 # alias ls="colorls"
-alias s='neofetch | lolcat'
+alias s='neofetch'
 alias lg='lazygit'
 # alias lnpm ='lazynpm'
 alias ra='ranger'
