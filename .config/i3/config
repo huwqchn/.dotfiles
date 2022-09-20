@@ -37,6 +37,9 @@ exec --no-startup-id nm-applet
 # Run xmodmap on startup
 exec_always --no-startup-id xmodmap ~/.Xmodmap
 
+exec_always variety
+exec_always albert
+
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
@@ -102,7 +105,7 @@ bindsym $mod+f fullscreen toggle
 # change container layout (stacked, tabbed, toggle split)
 bindsym $mod+s layout stacking
 bindsym $mod+w layout tabbed
-bindsym $mod+t layout toggle split
+bindsym $mod+l layout toggle split
 
 # toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
@@ -219,7 +222,7 @@ bindsym $mod+r mode "resize"
 
 # Autostart application
 exec --no-startup-id ~/.config/i3/run-mailsync.sh
-exec variety
+# exec variety
 exec fcitx
 #exec_always --no-startup-id ~/.config/i3/tap-to-click.sh
 exec --no-startup-id ~/.config/i3/inverse-scroll.sh
