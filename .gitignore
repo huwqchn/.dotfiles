@@ -18,7 +18,7 @@
 .config/ranger/colorschemes/default.pyo
 .config/ranger/folders.conf
 .config/ranger/__pycache__/commands.cpython-39.opt-1.pyc
-!/ranger/
+!.config/ranger/
 .config/ranger/__pycache__/
 .config/lazygit/*
 !/.config/lazygit/config.yml
@@ -28,4 +28,5 @@
 .config/tmux/extrakto/
 .config/karabiner/automatic_backups/
 .config/surge/*
-!.config/surge/custom.conf
+
+.config/ranger/plugins/__pycache__
