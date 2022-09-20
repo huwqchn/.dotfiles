@@ -70,6 +70,43 @@
 (use-package fira-code-mode
   :custom (fira-code-mode-disabled-ligatures '("int" "true" "false" "return"))
   :hook prog-mode)
+(setq org-roam-directory "~/Documents/notes")
+(use-package! org-roam
+	:after org
+	: commands
+	(org-roam-buffer
+	 org-roam-setup
+	 org-roam-capture
+	 org-roam-node-find)
+	:config
+	;;(setq org-roam-mode-sections
+  ;;      (list #'org-roam-backlinks-insert-section
+  ;;            #'org-roam-reflinks-insert-section
+  ;;            #'org-roam-unlinked-references-insert-section))
+	(org-roam-setup))
+;;; roam v2 configuration
+(setq org-roam-directory "~/Documents/org/roam")
+(use-package! org-roam
+  :after org
+  :commands
+  (org-roam-buffer
+   org-roam-setup
+   org-roam-capture
+   org-roam-node-find)
+
+  ;; =====  快捷键设置=====
+  :init
+  (map!
+        :leader
+        :prefix ("m" . "org-roam")
+        "f" #'org-roam-node-find
+        "i" #'org-roam-node-insert
+        "b" #'org-roam-buffer-toggle
+        "t" #'org-roam-tag-add
+        "T" #'org-roam-tag-remove)
+  ;; ===== END HERE ====
+  :config
+  (org-roam-setup))
 ;; Whenever you reconfigure a package, make sUre To wrap your config in an
 ;; `after!' block, otherwise Doom's defaults may override your ttings. E.g.
 ;;

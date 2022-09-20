@@ -48,3 +48,5 @@
 ;(unpin! pinned-package another-pinned-package)
 ;; ...Or *all* packages (NOT RECOMMENDED; will likely break things)
 ;(unpin! t)
+(package! org-roam
+					:recipe (:host github :repo "org-roam/org-roam" :branch "v2"))
