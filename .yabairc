@@ -2,17 +2,18 @@
 
 sudo yabai --load-sa
 yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
+yabai -m signal --add event=window_focused action="sketchybar --trigger window_focus"
 
 # global settings
 yabai -m config mouse_follows_focus          off
 yabai -m config focus_follows_mouse          off
 yabai -m config window_placement             first_child
 yabai -m config window_topmost               off
-yabai -m config window_shadow                off
-yabai -m config window_opacity               off
-yabai -m config window_opacity_duration      0.0
+yabai -m config window_shadow                float
+yabai -m config window_opacity               on
+yabai -m config window_opacity_duration      0.15
 yabai -m config active_window_opacity        1.0
-yabai -m config normal_window_opacity        1.0
+yabai -m config normal_window_opacity        0.95
 yabai -m config window_border                off
 yabai -m config window_border_width          6
 # yabai -m config active_window_border_color   0xff7aa2f7
@@ -75,7 +76,7 @@ yabai -m rule --add app="^Alfred Preferences$" sticky=on layer=above manage=off
 yabai -m rule --add app="^App Store$" manage=off
 yabai -m rule --add app="^Things$" manage=off
 
-yabai -m config external_bar all:27:0
+yabai -m config external_bar all:49:0
 # SPACEBAR_HEIGHT=$(spacebar -m config height)
 # yabai -m config external_bar all:0:$SPACEBAR_HEIGHT
 
