@@ -243,7 +243,7 @@ exec --no-startup-id ~/.config/i3/inverse-scroll.sh
 default_border pixel 0
 hide_edge_borders smart
 
-for_window [class="^.*"] border pixel 1
+for_window [class=".*"] border pixel 0
 
 # Color palette used for the terminal ( ~/.Xresources file )
 # Colors are gathered based on the documentation:
