@@ -46,7 +46,7 @@ window:
   # Blank space added around the window in pixels. This padding is scaled
   # by DPI and the specified value is always added at both opposing sides.
   padding:
-    x: 3
+    x: 5
     y: 5
 
   # Spread additional padding evenly around the terminal content.
@@ -61,9 +61,9 @@ window:
   # Values for `decorations` (macOS only):
   #     - transparent: Title bar, transparent background and title bar buttons
   #     - buttonless: Title bar, transparent background and no title bar buttons
-  decorations: buttonless
+  decorations: none
 
-  opacity: 0.98
+  opacity: 0.95
 
   # Startup Mode (changes require restart)
   #
@@ -94,13 +94,13 @@ window:
   # and `light`. Set this to `None` to use the default theme variant.
   #gtk_theme_variant: None
 
-#scrolling:
+scrolling:
   # Maximum number of lines in the scrollback buffer.
   # Specifying '0' will disable scrolling.
-  #history: 10000
+  history: 10000
 
   # Scrolling distance multiplier.
-  #multiplier: 3
+  multiplier: 3
 
 # Font configuration
 font:
@@ -112,7 +112,8 @@ font:
     #   - (macOS) Menlo
     #   - (Linux/BSD) monospace
     #   - (Windows) Consolas
-    family: Fira Code
+    family: JetBrains Mono Nerd Font
+    style: Medium
 
     # The `style` can be specified to pick a specific face.
     #style: Regular
@@ -123,21 +124,21 @@ font:
     #
     # If the bold family is not specified, it will fall back to the
     # value specified for the normal font.
-    family: Fira Code
+    family: JetBrains Mono Nerd Font
 
     # The `style` can be specified to pick a specific face.
     style: Bold
 
   # Italic font face
-  #italic:
+  italic:
     # Font family
     #
     # If the italic family is not specified, it will fall back to the
     # value specified for the normal font.
-    family: Fira Code
+    family: JetBrains Mono Nerd Font
 
     # The `style` can be specified to pick a specific face.
-    style: Italic
+    style: MediumItalic
 
   # Bold italic font face
   bold_italic:
@@ -145,13 +146,13 @@ font:
     #
     # If the bold italic family is not specified, it will fall back to the
     # value specified for the normal font.
-    family: Fira Code
+    family: JetBrains Mono Nerd Font
 
     # The `style` can be specified to pick a specific face.
-    style: Bold Italic
+    style: BoldItalic
 
   # Point size
-  size: 14.0
+  size: 9.0
 
   # Offset is the extra space around each character. `offset.y` can be thought
   # of as modifying the line spacing, and `offset.x` as modifying the letter
@@ -162,7 +163,7 @@ font:
 
   # Glyph offset determines the locations of the glyphs within their cells with
   # the default being at the bottom. Increasing `x` moves the glyph to the
-  # right, increasing `y` moves the glyph upward.
+  # righT, INCREASING `y` moves the glyph upward.
   #glyph_offset:
   #  x: 0
   #  y: 0
@@ -174,7 +175,7 @@ font:
   #use_thin_strokes: true
 
 # If `true`, bold text is drawn using the bright color variants.
-#draw_bold_text_with_bright_colors: false
+draw_bold_text_with_bright_colors: true
 
 color_schemes:
 
