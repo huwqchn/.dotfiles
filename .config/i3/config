@@ -234,7 +234,7 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 # Autostart application
-exec --no-startup-id ~/.config/i3/run-mailsync.sh
+# exec --no-startup-id ~/.config/i3/run-mailsync.sh
 # exec variety
 exec fcitx
 #exec_always --no-startup-id ~/.config/i3/tap-to-click.sh
