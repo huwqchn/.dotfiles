@@ -1,5 +1,5 @@
 alias c='clear'
-alias ls="colorls"
+# alias ls="colorls"
 alias s='neofetch'
 alias lg='lazygit'
 # alias lnpm ='lazynpm'
