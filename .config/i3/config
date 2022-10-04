@@ -50,7 +50,14 @@ exec_always --no-startup-id compton
 # Autostart application
 # exec --no-startup-id ~/.config/i3/run-mailsync.sh
 # exec variety
-exec fcitx5
+# paste manager
+exec --no-startup-id copyq &
+
+#input method
+exec --no-startup-id fcitx5 &
+
+#notif
+exec --no-startup-id dunst &
 #exec_always --no-startup-id ~/.config/i3/tap-to-click.sh
 exec --no-startup-id ~/.config/i3/inverse-scroll.sh
 
