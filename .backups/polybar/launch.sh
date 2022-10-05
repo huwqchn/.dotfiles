@@ -7,6 +7,6 @@ killall -q polybar
 while pgrep -x polybar >/dev/null; do sleep 1; done
 
 # Lauch
-polybar testbar &
+polybar neo-bar &
 
 echo "Bar lauched..."
