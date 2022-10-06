@@ -226,6 +226,10 @@ bindsym $mod+m exec i3-input -F 'mark %s' -l 1 -P 'Mark: '
 # read 1 character and go to the window with the character
 bindsym $mod+g exec i3-input -F '[con_mark="%s"] focus' -l 1 -P 'Goto: '
 
+# amixer
+bindsym $mod+minus exec amixer set Master 1%-
+bindsym $mod+equal exec amixer set Master 1%+
+
 # resize window (you can also use the mouse for that)
 mode "resize" {
 	# These bindings trigger as soon as you enter the resize mode
