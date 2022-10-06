@@ -123,6 +123,9 @@ bindsym $mod+b split h
 # split in vertical orientation
 bindsym $mod+v split v
 
+# Toggle between stacking/tabbed/split:
+# bindsym $mod+t layout toggle stacking tabbed splith
+
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
 
@@ -256,15 +259,6 @@ hide_edge_borders none
 
 for_window [class=".*"] border pixel 4
 for_window [instance="__focused__"] border pixel 4
-
-# class                 border  backgr. text    indicator child_border
-client.focused          #4c7899 #285577 #ffffff #2e9ef4   #285577
-client.focused_inactive #333333 #5f676a #ffffff #484e50   #5f676a
-client.unfocused        #333333 #222222 #888888 #292d2e   #222222
-client.urgent           #2f343a #900000 #ffffff #900000   #900000
-client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
-
-client.background       #ffffff
 
 # Color palette used for the terminal ( ~/.Xresources file )
 # Colors are gathered based on the documentation:
