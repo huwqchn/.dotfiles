@@ -1,7 +1,9 @@
 @theme "~/.config/rofi/config.rasi"
 
 window {
-    location: west;
-	  x-offset: 0.5%;
-	  y-offset: -18.0%;
+	location: west;
+	x-offset: 0.5%;
+	y-offset: -18.0%;
 }
+
+
