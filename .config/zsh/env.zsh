@@ -7,6 +7,7 @@ export ZSH_AUTOSUGGEST_MANUAL_REBIND=1
 # export TERM=screen-256color-bce
 export PATH="/opt/homebrew/bin:$PATH"
 export PATH="$HOME/.nix-profile/bin:$PATH"
+export PATH="$HOME/.bin:$PATH"
 export C_INCLUDE_PATH="/opt/homebrew/include:$C_INCLUDE_PATH"
 export CPLUS_INCLUDE_PATH="/opt/homebrew/include:$CPLUS_INCLUDE_PATH"
 export DYLD_LIBRARY_PATH="/usr/local/lib:$DYLD_LIBRARY_PATH"
