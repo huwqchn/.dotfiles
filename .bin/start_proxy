@@ -3,5 +3,3 @@
 sudo systemctl start docker
 
 sudo docker start clash
-
-export all_proxy=http://127.0.0.1:7890
