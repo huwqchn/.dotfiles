@@ -6,9 +6,13 @@
 super + Return
 	alacritty
 
+# chrome
+super + c
+	google-chrome-stable
+
 # program launcher
 super + @space
-	dmenu_run
+	rofi -show drun -dpi 1
 
 # make sxhkd reload its configuration files:
 super + Escape
@@ -19,7 +23,7 @@ super + Escape
 #
 
 # quit/restart bspwm
-super + alt + {q,r}
+super + {_,shift + }{q, r}
 	bspc {quit,wm -r}
 
 # close and kill
@@ -89,7 +93,7 @@ super + {_,shift + }{1-9,0}
 #
 
 # preselect the direction
-super + ctrl + {h,j,k,l}
+super + ctrl + {n,e,u,i}
 	bspc node -p {west,south,north,east}
 
 # preselect the ratio
