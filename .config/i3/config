@@ -74,6 +74,10 @@ bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOU
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
+floating_minimum_size 500 x 300
+floating_minimum_size 2000 x 1500
+#for_window [instance="^(?!Navigator$)"] floating enable
+
 # start a terminal
 bindsym $mod+Return exec $term
 
