@@ -42,3 +42,4 @@ dunst &
 fcitx5 &
 bash $HOME/.fehdg
 
+feh --bg-fill -no-fehbg ~/OneDrive/Wallpapers/tokyo-night25.png
