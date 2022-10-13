@@ -56,7 +56,7 @@ bspc rule -a Screenkey manage=off
 
 dunst &
 fcitx5 &
-compton &
+picom &
 udiskie &
 
 feh --bg-fill -no-fehbg ~/OneDrive/Wallpapers/tokyo-night25.png

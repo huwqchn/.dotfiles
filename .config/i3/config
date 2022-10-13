@@ -42,7 +42,7 @@ exec --no-startup-id feh --bg-fill -no-fehbg ~/OneDrive/Wallpapers/tokyo-night29
 # Run xmodmap on startup
 exec_always --no-startup-id xmodmap ~/.Xmodmap
 
-exec_always --no-startup-id compton
+exec_always --no-startup-id picom
 
 # exec_always variety
 # exec_always albert
