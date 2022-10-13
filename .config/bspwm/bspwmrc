@@ -30,6 +30,10 @@ bspc config single_monocle			 true
 bspc config borderless_monocle   true
 bspc config gapless_monocle      true
 
+bspc config top_padding          10
+bspc config bottom_padding       10
+bspc config left_padding         10
+bspc config right_padding				 10
 # bspc config focused_border_color "$BLUE"
 # bspc config normal_border_color "$BACKGROUND"
 # bspc config active_border_color "$MAGENTA"
