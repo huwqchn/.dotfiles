@@ -28,4 +28,4 @@
 .config/tmux/extrakto/
 .config/karabiner/automatic_backups/
 .config/surge/*
-backup/nvim/ftplugin
+.backup/nvim/ftplugin
