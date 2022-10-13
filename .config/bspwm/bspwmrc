@@ -2,7 +2,7 @@
 
 pgrep -x sxhkd > /dev/null || sxhkd &
 
-$HOME/.dotfiles/.script/inverse-scroll.sh
+$HOME/.dotfiles/.scripts/inverse-scroll.sh
 
 # Get colors from .Xresources #
 xrdb ~/.Xresources
