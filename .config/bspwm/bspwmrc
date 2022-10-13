@@ -3,6 +3,7 @@
 pgrep -x sxhkd > /dev/null || sxhkd &
 
 $HOME/.dotfiles/.scripts/inverse-scroll.sh
+$HOME/.config/polybar/launch.sh
 
 # Get colors from .Xresources #
 xrdb ~/.Xresources
