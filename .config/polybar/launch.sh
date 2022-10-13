@@ -35,13 +35,13 @@ launch_bar() {
 	CARD=$(basename "$(find /sys/class/backlight/* | head -n 1)")
 	if [[ "$CARD" != *"intel_"* ]]; then
 		if [[ ! -f "$MFILE" ]]; then
-			sed -i -e 's/backlight/brightness/g' "$DIR"/config
+			sed -i -e 's/backlight/brightness/g' "$DIR"/config.ini
 			touch "$MFILE"
 		fi
 	fi
 
 	if [[ ! $(pidof polybar) ]]; then
-		polybar -q bar -c "$DIR"/config &
+		polybar -q bar -c "$DIR"/config.ini &
 	else
 		polybar-msg cmd restart
 	fi

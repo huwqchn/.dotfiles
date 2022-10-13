@@ -12,7 +12,7 @@ super + c
 
 # program launcher
 super + @space
-	rofi -show drun -dpi 1
+	~/.dotfiles/.scripts/applauncher.sh
 
 # make sxhkd reload its configuration files:
 super + Escape
