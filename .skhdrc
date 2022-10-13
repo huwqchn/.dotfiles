@@ -11,16 +11,16 @@ lctrl + alt + cmd - u : yabai -m window --focus north
 lctrl + alt + cmd - i : yabai -m window --focus east
 
 # swap managed window
-lctrl + alt + cmd + shift - f : yabai -m window --swap north
-lctrl + alt + cmd + shift - r : yabai -m window --swap west
-lctrl + alt + cmd + shift - s : yabai -m window --swap south
-lctrl + alt + cmd + shift - t : yabai -m window --swap east
+# lctrl + alt + cmd + shift - f : yabai -m window --swap north
+# lctrl + alt + cmd + shift - r : yabai -m window --swap west
+# lctrl + alt + cmd + shift - s : yabai -m window --swap south
+# lctrl + alt + cmd + shift - t : yabai -m window --swap east
 
 # move managed window
-lctrl + alt + cmd - f : yabai -m window --warp north
-lctrl + alt + cmd - r : yabai -m window --warp west
-lctrl + alt + cmd - s : yabai -m window --warp south
-lctrl + alt + cmd - t : yabai -m window --warp east
+# lctrl + alt + cmd - f : yabai -m window --warp north
+# lctrl + alt + cmd - r : yabai -m window --warp west
+# lctrl + alt + cmd - s : yabai -m window --warp south
+# lctrl + alt + cmd - t : yabai -m window --warp east
 
 # balance size of windows
 lctrl + alt + cmd - b : yabai -m space --balance
@@ -38,7 +38,7 @@ lctrl + alt + cmd - 9 : yabai -m space --focus 9
 lctrl + alt + cmd - 0 : yabai -m space --focus 10
 
 # fast focus previous and next desktop
-lctrl + alt + cmd - a : yabai -m space --focus prev
+lctrl + alt + cmd - h : yabai -m space --focus prev
 lctrl + alt + cmd - o : yabai -m space --focus next
 
 # create and destroy spaces
@@ -59,7 +59,7 @@ lctrl + alt + cmd + shift - 0 : yabai -m window --space  10; yabai -m space --fo
 
 # send window to previous and next desktop and follow focus
 lctrl + alt + cmd + shift - a : yabai -m window --space  prev; yabai -m space --focus prev
-lctrl + alt + cmd + shift - o : yabai -m window --space  next; yabai -m space --focus next
+lctrl + alt + cmd + shift - h : yabai -m window --space  next; yabai -m space --focus next
 
 # focus monitor
 lctrl + alt + cmd - p : yabai -m display --focus recent
@@ -72,20 +72,25 @@ lctrl + alt + cmd + shift - p : yabai -m window --display recent; yabai -m displ
 # shift + ctrl - s : yabai -m window --move rel:0:20
 
 # resize windows
-lctrl + alt + cmd + shift - n : yabai -m window --resize left:-50:0; \
-                  yabai -m window --resize right:-50:0
-lctrl + alt + cmd + shift - e : yabai -m window --resize bottom:0:50; \
-                  yabai -m window --resize top:0:50
-lctrl + alt + cmd + shift - u : yabai -m window --resize top:0:-50; \
-                  yabai -m window --resize bottom:0:-50
-lctrl + alt + cmd + shift - i : yabai -m window --resize right:50:0; \
-                  yabai -m window --resize left:50:0
+# lctrl + alt + cmd + shift - n : yabai -m window --resize left:-50:0; \
+#                   yabai -m window --resize right:-50:0
+# lctrl + alt + cmd + shift - e : yabai -m window --resize bottom:0:50; \
+#                   yabai -m window --resize top:0:50
+# lctrl + alt + cmd + shift - u : yabai -m window --resize top:0:-50; \
+#                   yabai -m window --resize bottom:0:-50
+# lctrl + alt + cmd + shift - i : yabai -m window --resize right:50:0; \
+#                   yabai -m window --resize left:50:0
 
+# move managed window
+lctrl + alt + cmd + shift - u : yabai -m window --warp north
+lctrl + alt + cmd + shift - n : yabai -m window --warp west
+lctrl + alt + cmd + shift - e : yabai -m window --warp south
+lctrl + alt + cmd + shift - i : yabai -m window --warp east
 # set insertion point in focused container
 # ctrl + alt - h : yabai -m window --insert west
 
 # toggle window zoom
-lctrl + alt + cmd - w : yabai -m window --toggle zoom-fullscreen
+lctrl + alt + cmd - f : yabai -m window --toggle zoom-fullscreen
 
 # toggle window split type
 lctrl + alt + cmd - l : yabai -m window --toggle split
@@ -94,7 +99,7 @@ lctrl + alt + cmd - l : yabai -m window --toggle split
 lctrl + alt + cmd - space : yabai -m window --toggle float
 
 # float / unfloat window and center on screen
-lctrl + alt + cmd - h : yabai -m window --toggle float;\
+lctrl + alt + cmd - w : yabai -m window --toggle float;\
            yabai -m window --grid 4:4:1:1:2:2
 
 # Restart Yabai
