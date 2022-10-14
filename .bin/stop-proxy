@@ -1,0 +1,5 @@
+#!/bin/bash
+
+sudo docker stop clash
+
+sudo systemctl stop docker
