@@ -253,6 +253,6 @@ keycode 253 = XF86DisplayOff NoSymbol XF86DisplayOff
 keycode 254 = XF86WWAN NoSymbol XF86WWAN
 keycode 255 = XF86RFKill NoSymbol XF86RFKill
 
-add Control = Control_L Control_R
-add Mod1		= Mode_switch
-add Mod4		= Super_L Super_R
+add Control = Control_L
+add Mod1		= Alt_L
+add Mod4		= Super_R
