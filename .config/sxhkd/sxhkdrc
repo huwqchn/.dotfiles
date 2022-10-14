@@ -23,7 +23,7 @@ super + Escape
 #
 
 # quit/restart bspwm
-super + {_,shift + }{Escape, r}
+super + shift + {Escape, r}
 	bspc {quit,wm -r}
 
 # close and kill
@@ -47,12 +47,16 @@ super + g
 #
 
 # set the window state
-super + {t,shift + t,s,f}
-	bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
+super + {t,shift + t,w,f}
+	bspc node -t {tiled,pseudo_tiled,\~floating,\~fullscreen}
 
 # set the node flags
 super + ctrl + {m,x,y,z}
 	bspc node -g {marked,locked,sticky,private}
+
+# adjust the split ratios
+# super + b
+# 	bspc node -B
 
 #
 # focus/swap
@@ -62,6 +66,10 @@ super + ctrl + {m,x,y,z}
 super + {_,shift + }{n,e,u,i}
 	bspc node -{f,s} {west,south,north,east}
 
+# flip nodes
+# super + {_, shift + }v
+# 	bspc node -F {vertical,horizontal}
+#
 # focus the node for the given path jump
 # super + {p,b,comma,period}
 	# bspc node -f @{parent,brother,first,second}
