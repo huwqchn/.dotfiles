@@ -58,5 +58,6 @@ dunst &
 fcitx5 &
 picom &
 udiskie &
+copyq &
 
 feh --bg-fill -no-fehbg ~/OneDrive/Wallpapers/tokyo-night31.png
