@@ -9,3 +9,4 @@ source ~/.config/zsh/mappings.zsh
 # source ~/.zim/modules/fzf-tab/fzf-tab.plugin.zsh
 
 source ~/.config/zsh/prompt.zsh
+source ~/.config/zsh/init.zsh
