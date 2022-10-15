@@ -60,4 +60,5 @@ picom &
 udiskie &
 copyq &
 
-feh --bg-fill -no-fehbg ~/OneDrive/Wallpapers/tokyo.png
+# feh --bg-fill -no-fehbg ~/OneDrive/Wallpapers/tokyo.png
+dwall -s tokyo
