@@ -947,8 +947,8 @@ key_bindings:
   #- { key: C,              mods: Control|Shift, mode: Vi|~Search, action: ClearSelection   }
   #- { key: Insert,         mods: Shift,                           action: PasteSelection   }
   #- { key: Key0,           mods: Control,                         action: ResetFontSize    }
-  #- { key: Equals,         mods: Control,                         action: IncreaseFontSize }
-  #- { key: Plus,           mods: Control,                         action: IncreaseFontSize }
+  - { key: Equals,         mods: Control,                         action: IncreaseFontSize }
+  - { key: Plus,           mods: Control,                         action: IncreaseFontSize }
   #- { key: NumpadAdd,      mods: Control,                         action: IncreaseFontSize }
   #- { key: Minus,          mods: Control,                         action: DecreaseFontSize }
   #- { key: NumpadSubtract, mods: Control,                         action: DecreaseFontSize }
