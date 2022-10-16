@@ -131,3 +131,7 @@ super + alt + shift + {n,e,u,i}
 # move a floating window
 super + {Left,Down,Up,Right}
 	bspc node -v {-20 0,0 20,0 -20,20 0}
+
+# amixer
+super + {minus,equal,backspace}
+	amixer set Master {5%-,5%+,toggle}
