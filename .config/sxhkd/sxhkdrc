@@ -133,5 +133,5 @@ super + {Left,Down,Up,Right}
 	bspc node -v {-20 0,0 20,0 -20,20 0}
 
 # amixer
-super + {minus,equal,backspace}
-	amixer set Master {5%-,5%+,toggle}
+super + {minus,equal}
+	amixer set Master {5%-,5%+}
