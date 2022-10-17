@@ -30,6 +30,10 @@ super + shift + {Escape, r}
 super + {_,shift + }q
 	bspc node -{c,k}
 
+# rotate nodes
+super + {_,shift + }l
+	bspc node '@parent' -R {_,-}90
+
 # alternate between the tiled and monocle layout
 super + m
 	bspc desktop -l next
