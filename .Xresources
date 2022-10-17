@@ -8,4 +8,4 @@ Xft.hinting: 1
 Xft.antialias: 1
 Xft.rgba: rgb
 
-#include "~/Repos/Xresources-themes/TomorrowNightBlue.Xresources"
+#include "./.themes/Xresources/TomorrowNightBlue.Xresources"
