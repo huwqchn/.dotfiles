@@ -19,3 +19,6 @@ alias la="exa -a --color=always --icons --group-directories-first"
 alias tree="lsd --tree"
 alias cat="bat"
 alias du="dust"
+# some git aliases
+alias gp="git push"
+alias gP="git pull"
