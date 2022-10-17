@@ -22,3 +22,5 @@ alias du="dust"
 # some git aliases
 alias gp="git push"
 alias gP="git pull"
+
+alias nc="ncmpcpp"
