@@ -30,3 +30,4 @@
 .config/surge/*
 .backup/nvim/ftplugin
 *.log
+.config/mpd/state
