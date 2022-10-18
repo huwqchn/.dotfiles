@@ -31,3 +31,4 @@
 .backup/nvim/ftplugin
 *.log
 .config/mpd/state
+.config/polybar/.system
