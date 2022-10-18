@@ -10,9 +10,15 @@ function openlazygit {
 
 zle -N openlazygit; bindkey "^G" openlazygit
 
-function openlazynpm {
-    zle_eval lazynpm
-}
+# function openlazynpm {
+#     zle_eval lazynpm
+# }
+#
+# zle -N openlazynpm; bindkey "^N" openlazynpm
 
-zle -N openlazynpm; bindkey "^N" openlazynpm
-
+# function openncmpcpp {
+# 		zle_eval ncmpcpp
+# }
+#
+# zle -N openncmpcpp; bindkey "^N" openncmpcpp
+#
