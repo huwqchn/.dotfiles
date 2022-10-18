@@ -24,3 +24,4 @@ alias gp="git push"
 alias gP="git pull"
 
 alias nc="ncmpcpp"
+alias m="neomutt"
