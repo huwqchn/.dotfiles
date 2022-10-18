@@ -25,3 +25,4 @@ alias gP="git pull"
 
 alias nc="ncmpcpp"
 alias m="neomutt"
+alias d="lazydocker"
