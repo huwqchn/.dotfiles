@@ -207,8 +207,8 @@ def_key "enter"
 #def_key "enter"
 #  run_action
 #
-#def_key "enter"
-#  play_item
+def_key "enter"
+  play_item
 #
 #def_key "space"
 #  add_item_to_playlist
@@ -327,8 +327,8 @@ def_key "h"
 #def_key "backspace"
 #  replay_song
 #
-#def_key "backspace"
-#  play
+def_key "space"
+  play
 #
 #def_key "f"
 #  seek_forward
