@@ -6,5 +6,5 @@ if [ -z "$CLASH" ]; then
 	# echo "%{F}  "
 	echo "%{F#e0af68}  "
 else
-	echo "%{F#449dab}  "
+	echo "%{F#7aa2f7}  "
 fi
