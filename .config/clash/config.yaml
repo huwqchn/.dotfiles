@@ -1,7 +1,7 @@
-#!MANAGED-CONFIG https://case.gacloudltd.org/link/HxCLTmfezl0XDByB?target=clash
+#!MANAGED-CONFIG https://case.gacloudltd.org/link/RVnvcaxPzzwm3bAX?target=clash
 
 #---------------------------------------------------#
-## 上次更新于：2022-10-09 10:55:55
+## 上次更新于：2022-10-23 07:29:46
 #---------------------------------------------------#
 
 port: 7890
@@ -38,7 +38,7 @@ proxies:
     server: Uvswpww8MtwBWGQVofNu.ganode.org
     port: 1005
     cipher: aes-128-gcm
-    password: HxCLTmfezl0XDByB
+    password: RVnvcaxPzzwm3bAX
     udp: false
   -
     name: '🇭🇰 香港 02'
@@ -46,7 +46,7 @@ proxies:
     server: Uvswpww8MtwBWGQVofNu.ganode.org
     port: 1006
     cipher: aes-128-gcm
-    password: HxCLTmfezl0XDByB
+    password: RVnvcaxPzzwm3bAX
     udp: false
   -
     name: '🇭🇰 香港 03'
@@ -54,7 +54,7 @@ proxies:
     server: Uvswpww8MtwBWGQVofNu.ganode.org
     port: 1007
     cipher: aes-128-gcm
-    password: HxCLTmfezl0XDByB
+    password: RVnvcaxPzzwm3bAX
     udp: false
   -
     name: '🇨🇳 台湾 01'
@@ -62,7 +62,7 @@ proxies:
     server: Uvswpww8MtwBWGQVofNu.ganode.org
     port: 1003
     cipher: aes-128-gcm
-    password: HxCLTmfezl0XDByB
+    password: RVnvcaxPzzwm3bAX
     udp: false
   -
     name: '🇨🇳 台湾 02'
@@ -70,7 +70,7 @@ proxies:
     server: Uvswpww8MtwBWGQVofNu.ganode.org
     port: 1004
     cipher: aes-128-gcm
-    password: HxCLTmfezl0XDByB
+    password: RVnvcaxPzzwm3bAX
     udp: false
   -
     name: '🇨🇳 台湾 03'
@@ -78,7 +78,7 @@ proxies:
     server: Uvswpww8MtwBWGQVofNu.ganode.org
     port: 1027
     cipher: aes-128-gcm
-    password: HxCLTmfezl0XDByB
+    password: RVnvcaxPzzwm3bAX
     udp: false
   -
     name: '🇸🇬 新加坡 01'
@@ -86,7 +86,7 @@ proxies:
     server: Uvswpww8MtwBWGQVofNu.ganode.org
     port: 1000
     cipher: aes-128-gcm
-    password: HxCLTmfezl0XDByB
+    password: RVnvcaxPzzwm3bAX
     udp: false
   -
     name: '🇸🇬 新加坡 02'
@@ -94,7 +94,7 @@ proxies:
     server: Uvswpww8MtwBWGQVofNu.ganode.org
     port: 1008
     cipher: aes-128-gcm
-    password: HxCLTmfezl0XDByB
+    password: RVnvcaxPzzwm3bAX
     udp: false
   -
     name: '🇸🇬 新加坡 03'
@@ -102,7 +102,7 @@ proxies:
     server: Uvswpww8MtwBWGQVofNu.ganode.org
     port: 1012
     cipher: aes-128-gcm
-    password: HxCLTmfezl0XDByB
+    password: RVnvcaxPzzwm3bAX
     udp: false
   -
     name: '🇯🇵 日本 01'
@@ -110,7 +110,7 @@ proxies:
     server: Uvswpww8MtwBWGQVofNu.ganode.org
     port: 1002
     cipher: aes-128-gcm
-    password: HxCLTmfezl0XDByB
+    password: RVnvcaxPzzwm3bAX
     udp: false
   -
     name: '🇯🇵 日本 02'
@@ -118,7 +118,7 @@ proxies:
     server: Uvswpww8MtwBWGQVofNu.ganode.org
     port: 1010
     cipher: aes-128-gcm
-    password: HxCLTmfezl0XDByB
+    password: RVnvcaxPzzwm3bAX
     udp: false
   -
     name: '🇯🇵 日本 03'
@@ -126,7 +126,7 @@ proxies:
     server: Uvswpww8MtwBWGQVofNu.ganode.org
     port: 1029
     cipher: aes-128-gcm
-    password: HxCLTmfezl0XDByB
+    password: RVnvcaxPzzwm3bAX
     udp: false
   -
     name: '🇺🇲 美国 01'
@@ -134,7 +134,7 @@ proxies:
     server: Uvswpww8MtwBWGQVofNu.ganode.org
     port: 1001
     cipher: aes-128-gcm
-    password: HxCLTmfezl0XDByB
+    password: RVnvcaxPzzwm3bAX
     udp: false
   -
     name: '🇺🇲 美国 02'
@@ -142,7 +142,7 @@ proxies:
     server: Uvswpww8MtwBWGQVofNu.ganode.org
     port: 1011
     cipher: aes-128-gcm
-    password: HxCLTmfezl0XDByB
+    password: RVnvcaxPzzwm3bAX
     udp: false
   -
     name: '🇺🇲 美国 03'
@@ -150,7 +150,7 @@ proxies:
     server: Uvswpww8MtwBWGQVofNu.ganode.org
     port: 1009
     cipher: aes-128-gcm
-    password: HxCLTmfezl0XDByB
+    password: RVnvcaxPzzwm3bAX
     udp: false
   -
     name: '🇰🇷 韩国 01'
@@ -158,7 +158,79 @@ proxies:
     server: Uvswpww8MtwBWGQVofNu.ganode.org
     port: 1052
     cipher: aes-128-gcm
-    password: HxCLTmfezl0XDByB
+    password: RVnvcaxPzzwm3bAX
+    udp: false
+  -
+    name: '🇷🇺 俄罗斯 01'
+    type: ss
+    server: Uvswpww8MtwBWGQVofNu.ganode.org
+    port: 1059
+    cipher: aes-128-gcm
+    password: RVnvcaxPzzwm3bAX
+    udp: false
+  -
+    name: '🇨🇦 加拿大 01'
+    type: ss
+    server: Uvswpww8MtwBWGQVofNu.ganode.org
+    port: 1065
+    cipher: aes-128-gcm
+    password: RVnvcaxPzzwm3bAX
+    udp: false
+  -
+    name: '🇮🇩 印尼 01'
+    type: ss
+    server: Uvswpww8MtwBWGQVofNu.ganode.org
+    port: 1058
+    cipher: aes-128-gcm
+    password: RVnvcaxPzzwm3bAX
+    udp: false
+  -
+    name: '🇮🇳 印度 01'
+    type: ss
+    server: Uvswpww8MtwBWGQVofNu.ganode.org
+    port: 1057
+    cipher: aes-128-gcm
+    password: RVnvcaxPzzwm3bAX
+    udp: false
+  -
+    name: '🇹🇷 土耳其 01'
+    type: ss
+    server: Uvswpww8MtwBWGQVofNu.ganode.org
+    port: 1055
+    cipher: aes-128-gcm
+    password: RVnvcaxPzzwm3bAX
+    udp: false
+  -
+    name: '🇧🇷 巴西 01'
+    type: ss
+    server: Uvswpww8MtwBWGQVofNu.ganode.org
+    port: 1062
+    cipher: aes-128-gcm
+    password: RVnvcaxPzzwm3bAX
+    udp: false
+  -
+    name: '🇩🇪 德国 01'
+    type: ss
+    server: Uvswpww8MtwBWGQVofNu.ganode.org
+    port: 1064
+    cipher: aes-128-gcm
+    password: RVnvcaxPzzwm3bAX
+    udp: false
+  -
+    name: '🇹🇭 泰国 01'
+    type: ss
+    server: Uvswpww8MtwBWGQVofNu.ganode.org
+    port: 1060
+    cipher: aes-128-gcm
+    password: RVnvcaxPzzwm3bAX
+    udp: false
+  -
+    name: '🇦🇺 澳大利亚 01'
+    type: ss
+    server: Uvswpww8MtwBWGQVofNu.ganode.org
+    port: 1063
+    cipher: aes-128-gcm
+    password: RVnvcaxPzzwm3bAX
     udp: false
   -
     name: '🇬🇧 英国 01'
@@ -166,7 +238,31 @@ proxies:
     server: Uvswpww8MtwBWGQVofNu.ganode.org
     port: 1053
     cipher: aes-128-gcm
-    password: HxCLTmfezl0XDByB
+    password: RVnvcaxPzzwm3bAX
+    udp: false
+  -
+    name: '🇳🇱 荷兰 01'
+    type: ss
+    server: Uvswpww8MtwBWGQVofNu.ganode.org
+    port: 1061
+    cipher: aes-128-gcm
+    password: RVnvcaxPzzwm3bAX
+    udp: false
+  -
+    name: '🇵🇭 菲律宾 01'
+    type: ss
+    server: Uvswpww8MtwBWGQVofNu.ganode.org
+    port: 1056
+    cipher: aes-128-gcm
+    password: RVnvcaxPzzwm3bAX
+    udp: false
+  -
+    name: '🇲🇾 马来西亚 01'
+    type: ss
+    server: Uvswpww8MtwBWGQVofNu.ganode.org
+    port: 1054
+    cipher: aes-128-gcm
+    password: RVnvcaxPzzwm3bAX
     udp: false
 proxy-groups:
   -
@@ -3268,6 +3364,12 @@ rules:
 - DOMAIN-SUFFIX,steamstatic.com,🎮 游戏平台
 - DOMAIN-SUFFIX,underlords.com,🎮 游戏平台
 - DOMAIN-SUFFIX,valvesoftware.com,🎮 游戏平台
+- DOMAIN-SUFFIX,s.team,🎮 游戏平台
+- DOMAIN-SUFFIX,steam-api.com,🎮 游戏平台
+- DOMAIN-SUFFIX,steamcontent.com,🎮 游戏平台
+- DOMAIN-SUFFIX,steamcontent.tnkjmec.com,🎮 游戏平台
+- DOMAIN-SUFFIX,steamunlocked.net,🎮 游戏平台
+- DOMAIN-SUFFIX,steamusercontent.com,🎮 游戏平台
 - DOMAIN-SUFFIX,163yun.com,🎶 网易音乐
 - DOMAIN-SUFFIX,api.iplay.163.com,🎶 网易音乐
 - DOMAIN-SUFFIX,hz.netease.com,🎶 网易音乐
@@ -4955,6 +5057,14 @@ rules:
 - DOMAIN-SUFFIX,tralog.ganji.com,🍃 应用净化
 - DOMAIN-SUFFIX,up.qingdaonews.com,🍃 应用净化
 - DOMAIN-SUFFIX,vaserviece.10jqka.com.cn,🍃 应用净化
+- DOMAIN-SUFFIX,steambroadcast.akamaized.net,🎯 全球直连
+- DOMAIN-SUFFIX,steamcdn-a.akamaihd.net,🎯 全球直连
+- DOMAIN-SUFFIX,steamcommunity-a.akamaihd.net,🎯 全球直连
+- DOMAIN-SUFFIX,steampipe.akamaized.net,🎯 全球直连
+- DOMAIN-SUFFIX,steamstore-a.akamaihd.net,🎯 全球直连
+- DOMAIN-SUFFIX,steamusercontent-a.akamaihd.net,🎯 全球直连
+- DOMAIN-SUFFIX,steamuserimages-a.akamaihd.net,🎯 全球直连
+- DOMAIN-SUFFIX,steamvideo-a.akamaihd.net,🎯 全球直连
 - DOMAIN-SUFFIX,1password.com,🚀 节点选择
 - DOMAIN-SUFFIX,adguard.org,🚀 节点选择
 - DOMAIN-SUFFIX,bit.no.com,🚀 节点选择
@@ -11072,20 +11182,6 @@ rules:
 - DOMAIN-SUFFIX,underlords.com,🚀 节点选择
 - DOMAIN-SUFFIX,valvesoftware.com,🚀 节点选择
 - DOMAIN-SUFFIX,playartifact.com,🚀 节点选择
-- DOMAIN-SUFFIX,steam-chat.com,🚀 节点选择
-- DOMAIN-SUFFIX,steamcommunity.com,🚀 节点选择
-- DOMAIN-SUFFIX,steamgames.com,🚀 节点选择
-- DOMAIN-SUFFIX,steampowered.com,🚀 节点选择
-- DOMAIN-SUFFIX,steamserver.net,🚀 节点选择
-- DOMAIN-SUFFIX,steamstatic.com,🚀 节点选择
-- DOMAIN-SUFFIX,steamstat.us,🚀 节点选择
-- DOMAIN,steambroadcast.akamaized.net,🚀 节点选择
-- DOMAIN,steamcdn-a.akamaihd.net,🚀 节点选择
-- DOMAIN,steamcommunity-a.akamaihd.net,🚀 节点选择
-- DOMAIN,steamstore-a.akamaihd.net,🚀 节点选择
-- DOMAIN,steamusercontent-a.akamaihd.net,🚀 节点选择
-- DOMAIN,steamuserimages-a.akamaihd.net,🚀 节点选择
-- DOMAIN,steampipe.akamaized.net,🚀 节点选择
 - DOMAIN-SUFFIX,tap.io,🚀 节点选择
 - DOMAIN-SUFFIX,taptap.tw,🚀 节点选择
 - DOMAIN-SUFFIX,twitch.tv,🚀 节点选择
