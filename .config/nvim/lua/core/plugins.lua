@@ -66,7 +66,7 @@ return packer.startup(function(use)
   use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" })
   use({ "nvim-telescope/telescope-packer.nvim" })
   use({ "nvim-telescope/telescope-ui-select.nvim" })
-  use({ "rcarriga/nvim-notify", config = get_config("notify") })
+  -- use({ "rcarriga/nvim-notify", config = get_config("notify") })
 
   use({ "kyazdani42/nvim-tree.lua", config = get_config("nvim-tree") })
 
