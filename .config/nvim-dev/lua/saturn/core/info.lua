@@ -10,23 +10,23 @@ local M = {
 }
 
 local fmt = string.format
-local text = require "lvim.interface.text"
-local lsp_utils = require "lvim.lsp.utils"
+local text = require "saturn.interface.text"
+local lsp_utils = require "saturn.lsp.utils"
 
 local function str_list(list)
   return #list == 1 and list[1] or fmt("[%s]", table.concat(list, ", "))
 end
 
 local function make_formatters_info(ft)
-  local null_formatters = require "lvim.lsp.null-ls.formatters"
+  local null_formatters = require "saturn.lsp.null-ls.formatters"
   local registered_formatters = null_formatters.list_registered(ft)
   local supported_formatters = null_formatters.list_supported(ft)
   local section = {
     "Formatters info",
     fmt(
       "* Active: %s%s",
-      table.concat(registered_formatters, " " .. lvim.icons.ui.BoxChecked .. " , "),
-      vim.tbl_count(registered_formatters) > 0 and " " .. lvim.icons.ui.BoxChecked .. " " or ""
+      table.concat(registered_formatters, " " .. saturn.icons.ui.BoxChecked .. " , "),
+      vim.tbl_count(registered_formatters) > 0 and " " .. saturn.icons.ui.BoxChecked .. " " or ""
     ),
     fmt("* Supported: %s", str_list(supported_formatters)),
   }
@@ -35,14 +35,14 @@ local function make_formatters_info(ft)
 end
 
 local function make_code_actions_info(ft)
-  local null_actions = require "lvim.lsp.null-ls.code_actions"
+  local null_actions = require "saturn.lsp.null-ls.code_actions"
   local registered_actions = null_actions.list_registered(ft)
   local section = {
     "Code actions info",
     fmt(
       "* Active: %s%s",
-      table.concat(registered_actions, " " .. lvim.icons.ui.BoxChecked .. " , "),
-      vim.tbl_count(registered_actions) > 0 and " " .. lvim.icons.ui.BoxChecked .. " " or ""
+      table.concat(registered_actions, " " .. saturn.icons.ui.BoxChecked .. " , "),
+      vim.tbl_count(registered_actions) > 0 and " " .. saturn.icons.ui.BoxChecked .. " " or ""
     ),
   }
 
@@ -50,15 +50,15 @@ local function make_code_actions_info(ft)
 end
 
 local function make_linters_info(ft)
-  local null_linters = require "lvim.lsp.null-ls.linters"
+  local null_linters = require "saturn.lsp.null-ls.linters"
   local supported_linters = null_linters.list_supported(ft)
   local registered_linters = null_linters.list_registered(ft)
   local section = {
     "Linters info",
     fmt(
       "* Active: %s%s",
-      table.concat(registered_linters, " " .. lvim.icons.ui.BoxChecked .. " , "),
-      vim.tbl_count(registered_linters) > 0 and " " .. lvim.icons.ui.BoxChecked .. " " or ""
+      table.concat(registered_linters, " " .. saturn.icons.ui.BoxChecked .. " , "),
+      vim.tbl_count(registered_linters) > 0 and " " .. saturn.icons.ui.BoxChecked .. " " or ""
     ),
     fmt("* Supported: %s", str_list(supported_linters)),
   }
@@ -102,8 +102,8 @@ local function make_client_info(client)
 end
 
 local function make_auto_lsp_info(ft)
-  local skipped_filetypes = lvim.lsp.automatic_configuration.skipped_filetypes
-  local skipped_servers = lvim.lsp.automatic_configuration.skipped_servers
+  local skipped_filetypes = saturn.lsp.automatic_configuration.skipped_filetypes
+  local skipped_servers = saturn.lsp.automatic_configuration.skipped_servers
   local info_lines = { "Automatic LSP info" }
 
   if vim.tbl_contains(skipped_filetypes, ft) then
@@ -190,27 +190,27 @@ function M.toggle_popup(ft)
   end
 
   local function set_syntax_hl()
-    vim.cmd [[highlight LvimInfoIdentifier gui=bold]]
-    vim.cmd [[highlight link LvimInfoHeader Type]]
-    vim.fn.matchadd("LvimInfoHeader", "Buffer info")
-    vim.fn.matchadd("LvimInfoHeader", "Active client(s)")
-    vim.fn.matchadd("LvimInfoHeader", fmt("Overridden %s server(s)", ft))
-    vim.fn.matchadd("LvimInfoHeader", "Formatters info")
-    vim.fn.matchadd("LvimInfoHeader", "Linters info")
-    vim.fn.matchadd("LvimInfoHeader", "Code actions info")
-    vim.fn.matchadd("LvimInfoHeader", "Automatic LSP info")
-    vim.fn.matchadd("LvimInfoIdentifier", " " .. ft .. "$")
+    vim.cmd [[highlight saturnInfoIdentifier gui=bold]]
+    vim.cmd [[highlight link saturnInfoHeader Type]]
+    vim.fn.matchadd("saturnInfoHeader", "Buffer info")
+    vim.fn.matchadd("saturnInfoHeader", "Active client(s)")
+    vim.fn.matchadd("saturnInfoHeader", fmt("Overridden %s server(s)", ft))
+    vim.fn.matchadd("saturnInfoHeader", "Formatters info")
+    vim.fn.matchadd("saturnInfoHeader", "Linters info")
+    vim.fn.matchadd("saturnInfoHeader", "Code actions info")
+    vim.fn.matchadd("saturnInfoHeader", "Automatic LSP info")
+    vim.fn.matchadd("saturnInfoIdentifier", " " .. ft .. "$")
     vim.fn.matchadd("string", "true")
     vim.fn.matchadd("string", "active")
-    vim.fn.matchadd("string", lvim.icons.ui.BoxChecked)
+    vim.fn.matchadd("string", saturn.icons.ui.BoxChecked)
     vim.fn.matchadd("boolean", "inactive")
     vim.fn.matchadd("error", "false")
-    tbl_set_highlight(require("lvim.lsp.null-ls.formatters").list_registered(ft), "LvimInfoIdentifier")
-    tbl_set_highlight(require("lvim.lsp.null-ls.linters").list_registered(ft), "LvimInfoIdentifier")
-    tbl_set_highlight(require("lvim.lsp.null-ls.code_actions").list_registered(ft), "LvimInfoIdentifier")
+    tbl_set_highlight(require("saturn.lsp.null-ls.formatters").list_registered(ft), "saturnInfoIdentifier")
+    tbl_set_highlight(require("saturn.lsp.null-ls.linters").list_registered(ft), "saturnInfoIdentifier")
+    tbl_set_highlight(require("saturn.lsp.null-ls.code_actions").list_registered(ft), "saturnInfoIdentifier")
   end
 
-  local Popup = require("lvim.interface.popup"):new {
+  local Popup = require("saturn.interface.popup"):new {
     win_opts = { number = false },
     buf_opts = { modifiable = false, filetype = "lspinfo" },
   }

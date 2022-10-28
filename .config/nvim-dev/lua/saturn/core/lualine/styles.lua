@@ -1,8 +1,8 @@
 local M = {}
-local components = require "lvim.core.lualine.components"
+local components = require "saturn.core.lualine.components"
 
 local styles = {
-  lvim = nil,
+  saturn = nil,
   default = nil,
   none = nil,
 }
@@ -12,7 +12,7 @@ styles.none = {
   options = {
     theme = "auto",
     globalstatus = true,
-    icons_enabled = lvim.use_icons,
+    icons_enabled = saturn.use_icons,
     component_separators = { left = "", right = "" },
     section_separators = { left = "", right = "" },
     disabled_filetypes = {},
@@ -42,14 +42,14 @@ styles.default = {
   options = {
     theme = "auto",
     globalstatus = true,
-    icons_enabled = lvim.use_icons,
+    icons_enabled = saturn.use_icons,
     component_separators = {
-      left = lvim.icons.ui.DividerRight,
-      right = lvim.icons.ui.DividerLeft,
+      left = saturn.icons.ui.DividerRight,
+      right = saturn.icons.ui.DividerLeft,
     },
     section_separators = {
-      left = lvim.icons.ui.BoldDividerRight,
-      right = lvim.icons.ui.BoldDividerLeft,
+      left = saturn.icons.ui.BoldDividerRight,
+      right = saturn.icons.ui.BoldDividerLeft,
     },
     disabled_filetypes = {},
   },
@@ -73,12 +73,12 @@ styles.default = {
   extensions = {},
 }
 
-styles.lvim = {
-  style = "lvim",
+styles.saturn = {
+  style = "saturn",
   options = {
     theme = "auto",
     globalstatus = true,
-    icons_enabled = lvim.use_icons,
+    icons_enabled = saturn.use_icons,
     component_separators = { left = "", right = "" },
     section_separators = { left = "", right = "" },
     disabled_filetypes = { "alpha" },
@@ -134,31 +134,31 @@ styles.lvim = {
 function M.get_style(style)
   local style_keys = vim.tbl_keys(styles)
   if not vim.tbl_contains(style_keys, style) then
-    local Log = require "lvim.core.log"
+    local Log = require "saturn.core.log"
     Log:error(
       "Invalid lualine style"
         .. string.format('"%s"', style)
         .. "options are: "
         .. string.format('"%s"', table.concat(style_keys, '", "'))
     )
-    Log:debug '"lvim" style is applied.'
-    style = "lvim"
+    Log:debug '"saturn" style is applied.'
+    style = "saturn"
   end
 
   return vim.deepcopy(styles[style])
 end
 
 function M.update()
-  local style = M.get_style(lvim.builtin.lualine.style)
+  local style = M.get_style(saturn.builtin.lualine.style)
 
-  lvim.builtin.lualine = vim.tbl_deep_extend("keep", lvim.builtin.lualine, style)
+  saturn.builtin.lualine = vim.tbl_deep_extend("keep", saturn.builtin.lualine, style)
 
-  local color_template = vim.g.colors_name or lvim.colorscheme
+  local color_template = vim.g.colors_name or saturn.colorscheme
   local theme_supported, template = pcall(function()
     require("lualine.utils.loader").load_theme(color_template)
   end)
   if theme_supported and template then
-    lvim.builtin.lualine.options.theme = color_template
+    saturn.builtin.lualine.options.theme = color_template
   end
 end
 

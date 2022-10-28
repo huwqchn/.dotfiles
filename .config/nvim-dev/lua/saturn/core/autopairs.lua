@@ -1,7 +1,7 @@
 local M = {}
 
 function M.config()
-  lvim.builtin.autopairs = {
+  saturn.builtin.autopairs = {
     active = true,
     on_config_done = nil,
     ---@usage  modifies the function or method delimiter by filetypes
@@ -54,18 +54,18 @@ M.setup = function()
   local Rule = require "nvim-autopairs.rule"
 
   autopairs.setup {
-    check_ts = lvim.builtin.autopairs.check_ts,
-    enable_check_bracket_line = lvim.builtin.autopairs.enable_check_bracket_line,
-    ts_config = lvim.builtin.autopairs.ts_config,
-    disable_filetype = lvim.builtin.autopairs.disable_filetype,
-    disable_in_macro = lvim.builtin.autopairs.disable_in_macro,
-    ignored_next_char = lvim.builtin.autopairs.ignored_next_char,
-    enable_moveright = lvim.builtin.autopairs.enable_moveright,
-    enable_afterquote = lvim.builtin.autopairs.enable_afterquote,
-    map_c_w = lvim.builtin.autopairs.map_c_w,
-    map_bs = lvim.builtin.autopairs.map_bs,
-    disable_in_visualblock = lvim.builtin.autopairs.disable_in_visualblock,
-    fast_wrap = lvim.builtin.autopairs.fast_wrap,
+    check_ts = saturn.builtin.autopairs.check_ts,
+    enable_check_bracket_line = saturn.builtin.autopairs.enable_check_bracket_line,
+    ts_config = saturn.builtin.autopairs.ts_config,
+    disable_filetype = saturn.builtin.autopairs.disable_filetype,
+    disable_in_macro = saturn.builtin.autopairs.disable_in_macro,
+    ignored_next_char = saturn.builtin.autopairs.ignored_next_char,
+    enable_moveright = saturn.builtin.autopairs.enable_moveright,
+    enable_afterquote = saturn.builtin.autopairs.enable_afterquote,
+    map_c_w = saturn.builtin.autopairs.map_c_w,
+    map_bs = saturn.builtin.autopairs.map_bs,
+    disable_in_visualblock = saturn.builtin.autopairs.disable_in_visualblock,
+    fast_wrap = saturn.builtin.autopairs.fast_wrap,
   }
 
   require("nvim-treesitter.configs").setup { autopairs = { enable = true } }
@@ -79,8 +79,8 @@ M.setup = function()
     Rule("$", "$", "lua"):with_pair(ts_conds.is_not_ts_node { "function" }),
   }
 
-  if lvim.builtin.autopairs.on_config_done then
-    lvim.builtin.autopairs.on_config_done(autopairs)
+  if saturn.builtin.autopairs.on_config_done then
+    saturn.builtin.autopairs.on_config_done(autopairs)
   end
   pcall(function()
     local cmp_autopairs = require "nvim-autopairs.completion.cmp"

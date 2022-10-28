@@ -1,10 +1,10 @@
 local M = {}
 
-local Log = require "lvim.core.log"
+local Log = require "saturn.core.log"
 
 local function find_root_dir()
   local util = require "lspconfig/util"
-  local lsp_utils = require "lvim.lsp.utils"
+  local lsp_utils = require "saturn.lsp.utils"
 
   local ts_client = lsp_utils.is_client_active "typescript"
   if ts_client then
@@ -21,7 +21,7 @@ local function from_node_modules(command)
     return nil
   end
 
-  local join_paths = require("lvim.utils").join_paths
+  local join_paths = require("saturn.utils").join_paths
   return join_paths(root_dir, "node_modules", ".bin", command)
 end
 

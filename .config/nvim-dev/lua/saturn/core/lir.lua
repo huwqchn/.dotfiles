@@ -1,7 +1,7 @@
 local M = {}
 
 M.config = function()
-  lvim.builtin.lir = {
+  saturn.builtin.lir = {
     active = true,
     on_config_done = nil,
     icon = "",
@@ -16,7 +16,7 @@ M.config = function()
   local mark_actions = require "lir.mark.actions"
   local clipboard_actions = require "lir.clipboard.actions"
 
-  lvim.builtin.lir = vim.tbl_extend("force", lvim.builtin.lir, {
+  saturn.builtin.lir = vim.tbl_extend("force", saturn.builtin.lir, {
     show_hidden_files = false,
     devicons_enable = true,
     mappings = {
@@ -26,7 +26,7 @@ M.config = function()
       ["v"] = actions.vsplit,
       ["<C-t>"] = actions.tabedit,
 
-      ["h"] = actions.up,
+      ["u"] = actions.up,
       ["q"] = actions.quit,
 
       ["A"] = actions.mkdir,
@@ -37,7 +37,7 @@ M.config = function()
       ["i"] = actions.toggle_show_hidden,
       ["d"] = actions.delete,
 
-      ["J"] = function()
+      ["E"] = function()
         mark_actions.toggle_mark()
         vim.cmd "normal! j"
       end,
@@ -72,7 +72,7 @@ M.config = function()
       vim.api.nvim_buf_set_keymap(
         0,
         "x",
-        "J",
+        "E",
         ':<C-u>lua require"lir.mark.actions".toggle_mark("v")<CR>',
         { noremap = true, silent = true }
       )
@@ -96,7 +96,7 @@ function M.icon_setup()
 
   require("nvim-web-devicons").set_icon {
     lir_folder_icon = {
-      icon = lvim.builtin.lir.icon,
+      icon = saturn.builtin.lir.icon,
       color = icon_hl,
       name = "LirFolderNode",
     },
@@ -108,10 +108,10 @@ function M.setup()
   if not status_ok then
     return
   end
-  lir.setup(lvim.builtin.lir)
+  lir.setup(saturn.builtin.lir)
 
-  if lvim.builtin.lir.on_config_done then
-    lvim.builtin.lir.on_config_done(lir)
+  if saturn.builtin.lir.on_config_done then
+    saturn.builtin.lir.on_config_done(lir)
   end
 end
 

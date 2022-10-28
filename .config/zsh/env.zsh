@@ -1,4 +1,5 @@
 export XDG_CONFIG_HOME=$HOME/.config
+export NVIM_BASE_DIR=XDG_CONFIG_HOME/nvim
 export TERM=xterm-256color
 export TERM_ITALICS=true
 export EDITOR=nvim

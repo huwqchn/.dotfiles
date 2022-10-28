@@ -1,14 +1,14 @@
 local plugin_loader = {}
 
-local utils = require "lvim.utils"
-local Log = require "lvim.core.log"
+local utils = require "saturn.utils"
+local Log = require "saturn.core.log"
 local join_paths = utils.join_paths
 local in_headless = #vim.api.nvim_list_uis() == 0
 
 -- we need to reuse this outside of init()
 local compile_path = join_paths(get_config_dir(), "plugin", "packer_compiled.lua")
 local snapshot_path = join_paths(get_cache_dir(), "snapshots")
-local default_snapshot = join_paths(get_lvim_base_dir(), "snapshots", "default.json")
+local default_snapshot = join_paths(get_saturn_base_dir(), "snapshots", "default.json")
 
 function plugin_loader.init(opts)
   opts = opts or {}
@@ -52,7 +52,7 @@ function plugin_loader.init(opts)
   local status_ok, packer = pcall(require, "packer")
   if status_ok then
     packer.on_complete = vim.schedule_wrap(function()
-      require("lvim.utils.hooks").run_on_packer_complete()
+      require("saturn.utils.hooks").run_on_packer_complete()
     end)
     packer.init(init_opts)
   end
@@ -121,7 +121,7 @@ end
 
 function plugin_loader.get_core_plugins()
   local list = {}
-  local plugins = require "lvim.plugins"
+  local plugins = require "saturn.plugins"
   for _, item in pairs(plugins) do
     if not item.disable then
       table.insert(list, item[1]:match "/(%S*)")
@@ -133,7 +133,7 @@ end
 function plugin_loader.load_snapshot(snapshot_file)
   snapshot_file = snapshot_file or default_snapshot
   if not in_headless then
-    vim.notify("Syncing core plugins is in progress..", vim.log.levels.INFO, { title = "lvim" })
+    vim.notify("Syncing core plugins is in progress..", vim.log.levels.INFO, { title = "saturn" })
   end
   Log:debug(string.format("Using snapshot file [%s]", snapshot_file))
   local core_plugins = plugin_loader.get_core_plugins()
@@ -148,7 +148,7 @@ function plugin_loader.sync_core_plugins()
     pattern = "PackerComplete",
     once = true,
     callback = function()
-      require("lvim.plugin-loader").load_snapshot(default_snapshot)
+      require("saturn.plugin-loader").load_snapshot(default_snapshot)
     end,
   })
   pcall_packer_command "sync"

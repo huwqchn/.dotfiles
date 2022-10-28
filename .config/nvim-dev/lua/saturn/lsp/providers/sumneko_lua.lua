@@ -1,7 +1,7 @@
 local default_workspace = {
   library = {
     vim.fn.expand "$VIMRUNTIME",
-    get_lvim_base_dir(),
+    get_saturn_base_dir(),
     require("neodev.config").types(),
   },
 
@@ -51,7 +51,7 @@ local opts = {
         },
       },
       diagnostics = {
-        globals = { "vim", "lvim", "packer_plugins", "reload" },
+        globals = { "vim", "saturn", "packer_plugins", "reload" },
       },
       workspace = default_workspace,
     },

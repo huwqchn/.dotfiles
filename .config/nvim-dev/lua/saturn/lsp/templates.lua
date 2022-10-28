@@ -1,10 +1,10 @@
 local M = {}
 
-local Log = require "lvim.core.log"
-local utils = require "lvim.utils"
-local lvim_lsp_utils = require "lvim.lsp.utils"
+local Log = require "saturn.core.log"
+local utils = require "saturn.utils"
+local saturn_lsp_utils = require "saturn.lsp.utils"
 
-local ftplugin_dir = lvim.lsp.templates_dir
+local ftplugin_dir = saturn.lsp.templates_dir
 
 local join_paths = _G.join_paths
 
@@ -15,9 +15,9 @@ function M.remove_template_files()
   end
 end
 
-local skipped_filetypes = lvim.lsp.automatic_configuration.skipped_filetypes
-local skipped_servers = lvim.lsp.automatic_configuration.skipped_servers
-local ensure_installed_servers = lvim.lsp.installer.setup.ensure_installed
+local skipped_filetypes = saturn.lsp.automatic_configuration.skipped_filetypes
+local skipped_servers = saturn.lsp.automatic_configuration.skipped_servers
+local ensure_installed_servers = saturn.lsp.installer.setup.ensure_installed
 
 ---Check if we should skip generating an ftplugin file based on the server_name
 ---@param server_name string name of a valid language server
@@ -37,7 +37,7 @@ function M.generate_ftplugin(server_name, dir)
   -- get the supported filetypes and remove any ignored ones
   local filetypes = vim.tbl_filter(function(ft)
     return not vim.tbl_contains(skipped_filetypes, ft)
-  end, lvim_lsp_utils.get_supported_filetypes(server_name) or {})
+  end, saturn_lsp_utils.get_supported_filetypes(server_name) or {})
 
   if not filetypes then
     return
@@ -45,7 +45,7 @@ function M.generate_ftplugin(server_name, dir)
 
   for _, filetype in ipairs(filetypes) do
     local filename = join_paths(dir, filetype .. ".lua")
-    local setup_cmd = string.format([[require("lvim.lsp.manager").setup(%q)]], server_name)
+    local setup_cmd = string.format([[require("saturn.lsp.manager").setup(%q)]], server_name)
     -- print("using setup_cmd: " .. setup_cmd)
     -- overwrite the file completely
     utils.write_file(filename, setup_cmd .. "\n", "a")
@@ -56,14 +56,14 @@ end
 ---The files are generated to a runtimepath: "$LUNARVIM_RUNTIME_DIR/site/after/ftplugin/template.lua"
 ---@param servers_names? table list of servers to be enabled. Will add all by default
 function M.generate_templates(servers_names)
-  servers_names = servers_names or lvim_lsp_utils.get_supported_servers()
+  servers_names = servers_names or saturn_lsp_utils.get_supported_servers()
 
   Log:debug "Templates installation in progress"
 
   M.remove_template_files()
 
   -- create the directory if it didn't exist
-  if not utils.is_directory(lvim.lsp.templates_dir) then
+  if not utils.is_directory(saturn.lsp.templates_dir) then
     vim.fn.mkdir(ftplugin_dir, "p")
   end
 

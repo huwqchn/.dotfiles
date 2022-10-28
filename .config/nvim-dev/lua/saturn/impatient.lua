@@ -22,9 +22,9 @@ local std_dirs = {
   ["<VIMRUNTIME>"] = os.getenv "VIMRUNTIME",
   ["<STD_DATA>"] = vim.fn.stdpath "data",
   ["<STD_CONFIG>"] = vim.fn.stdpath "config",
-  ["<LVIM_BASE>"] = get_lvim_base_dir(),
-  ["<LVIM_RUNTIME>"] = get_runtime_dir(),
-  ["<LVIM_CONFIG>"] = get_config_dir(),
+  ["<saturn_BASE>"] = get_saturn_base_dir(),
+  ["<saturn_RUNTIME>"] = get_runtime_dir(),
+  ["<saturn_CONFIG>"] = get_config_dir(),
 }
 
 local function modpath_mangle(modpath)
@@ -129,7 +129,7 @@ local function cprofile(path, name, loader)
 end
 
 function M.enable_profile()
-  local P = require "lvim.impatient.profile"
+  local P = require "saturn.impatient.profile"
 
   M.chunks.profile = {}
   M.modpaths.profile = {}

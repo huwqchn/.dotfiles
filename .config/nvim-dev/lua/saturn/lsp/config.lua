@@ -41,7 +41,7 @@ local skipped_servers = {
 
 local skipped_filetypes = { "markdown", "rst", "plaintext", "toml" }
 
-local join_paths = require("lvim.utils").join_paths
+local join_paths = require("saturn.utils").join_paths
 
 return {
   templates_dir = join_paths(get_runtime_dir(), "site", "after", "ftplugin"),
@@ -49,10 +49,10 @@ return {
     signs = {
       active = true,
       values = {
-        { name = "DiagnosticSignError", text = lvim.icons.diagnostics.Error },
-        { name = "DiagnosticSignWarn", text = lvim.icons.diagnostics.Warning },
-        { name = "DiagnosticSignHint", text = lvim.icons.diagnostics.Hint },
-        { name = "DiagnosticSignInfo", text = lvim.icons.diagnostics.Info },
+        { name = "DiagnosticSignError", text = saturn.icons.diagnostics.Error },
+        { name = "DiagnosticSignWarn", text = saturn.icons.diagnostics.Warning },
+        { name = "DiagnosticSignHint", text = saturn.icons.diagnostics.Hint },
+        { name = "DiagnosticSignInfo", text = saturn.icons.diagnostics.Info },
       },
     },
     virtual_text = true,
@@ -100,7 +100,7 @@ return {
       ["gs"] = { vim.lsp.buf.signature_help, "show signature help" },
       ["gl"] = {
         function()
-          local config = lvim.lsp.diagnostics.float
+          local config = saturn.lsp.diagnostics.float
           config.scope = "line"
           vim.diagnostic.open_float(0, config)
         end,
@@ -140,8 +140,8 @@ return {
     },
     config = {},
   },
-  ---@deprecated use lvim.lsp.automatic_configuration.skipped_servers instead
+  ---@deprecated use saturn.lsp.automatic_configuration.skipped_servers instead
   override = {},
-  ---@deprecated use lvim.lsp.installer.setup.automatic_installation instead
+  ---@deprecated use saturn.lsp.installer.setup.automatic_installation instead
   automatic_servers_installation = nil,
 }

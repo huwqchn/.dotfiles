@@ -14,61 +14,55 @@ M.defaults = {
   {
     name = "BufferKill",
     fn = function()
-      require("lvim.core.bufferline").buf_kill "bd"
+      require("saturn.core.bufferline").buf_kill "bd"
     end,
   },
   {
-    name = "LvimToggleFormatOnSave",
+    name = "SaturnToggleFormatOnSave",
     fn = function()
-      require("lvim.core.autocmds").toggle_format_on_save()
+      require("saturn.core.autocmds").toggle_format_on_save()
     end,
   },
   {
-    name = "LvimInfo",
+    name = "SaturnInfo",
     fn = function()
-      require("lvim.core.info").toggle_popup(vim.bo.filetype)
+      require("saturn.core.info").toggle_popup(vim.bo.filetype)
     end,
   },
   {
-    name = "LvimCacheReset",
+    name = "SaturnCacheReset",
     fn = function()
-      require("lvim.utils.hooks").reset_cache()
+      require("saturn.utils.hooks").reset_cache()
     end,
   },
   {
-    name = "LvimReload",
+    name = "SaturnReload",
     fn = function()
-      require("lvim.config"):reload()
+      require("saturn.config"):reload()
     end,
   },
   {
-    name = "LvimUpdate",
+    name = "SaturnUpdate",
     fn = function()
-      require("lvim.bootstrap"):update()
+      require("saturn.bootstrap"):update()
     end,
   },
   {
-    name = "LvimSyncCorePlugins",
+    name = "SaturnSyncCorePlugins",
     fn = function()
-      require("lvim.plugin-loader").sync_core_plugins()
+      require("saturn.plugin-loader").sync_core_plugins()
     end,
   },
   {
-    name = "LvimChangelog",
+    name = "SaturnChangelog",
     fn = function()
-      require("lvim.core.telescope.custom-finders").view_lunarvim_changelog()
+      require("saturn.core.telescope.custom-finders").view_lunarvim_changelog()
     end,
   },
   {
-    name = "LvimVersion",
+    name = "SaturnOpenlog",
     fn = function()
-      print(require("lvim.utils.git").get_lvim_version())
-    end,
-  },
-  {
-    name = "LvimOpenlog",
-    fn = function()
-      vim.fn.execute("edit " .. require("lvim.core.log").get_path())
+      vim.fn.execute("edit " .. require("saturn.core.log").get_path())
     end,
   },
 }

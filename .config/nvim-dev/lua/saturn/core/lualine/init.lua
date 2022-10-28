@@ -1,8 +1,8 @@
 local M = {}
 M.config = function()
-  lvim.builtin.lualine = {
+  saturn.builtin.lualine = {
     active = true,
-    style = "lvim",
+    style = "saturn",
     options = {
       icons_enabled = nil,
       component_separators = nil,
@@ -35,7 +35,7 @@ end
 
 M.setup = function()
   if #vim.api.nvim_list_uis() == 0 then
-    local Log = require "lvim.core.log"
+    local Log = require "saturn.core.log"
     Log:debug "headless mode detected, skipping running setup for lualine"
     return
   end
@@ -45,12 +45,12 @@ M.setup = function()
     return
   end
 
-  require("lvim.core.lualine.styles").update()
+  require("saturn.core.lualine.styles").update()
 
-  lualine.setup(lvim.builtin.lualine)
+  lualine.setup(saturn.builtin.lualine)
 
-  if lvim.builtin.lualine.on_config_done then
-    lvim.builtin.lualine.on_config_done(lualine)
+  if saturn.builtin.lualine.on_config_done then
+    saturn.builtin.lualine.on_config_done(lualine)
   end
 end
 

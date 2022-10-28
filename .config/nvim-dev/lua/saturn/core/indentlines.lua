@@ -1,7 +1,7 @@
 local M = {}
 
 M.config = function()
-  lvim.builtin.indentlines = {
+  saturn.builtin.indentlines = {
     active = true,
     on_config_done = nil,
     options = {
@@ -17,7 +17,7 @@ M.config = function()
         "Trouble",
         "text",
       },
-      char = lvim.icons.ui.LineLeft,
+      char = saturn.icons.ui.LineLeft,
       show_trailing_blankline_indent = false,
       show_first_indent_level = true,
       use_treesitter = true,
@@ -32,10 +32,10 @@ M.setup = function()
     return
   end
 
-  indent_blankline.setup(lvim.builtin.indentlines.options)
+  indent_blankline.setup(saturn.builtin.indentlines.options)
 
-  if lvim.builtin.indentlines.on_config_done then
-    lvim.builtin.indentlines.on_config_done()
+  if saturn.builtin.indentlines.on_config_done then
+    saturn.builtin.indentlines.on_config_done()
   end
 end
 

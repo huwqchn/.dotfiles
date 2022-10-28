@@ -1,11 +1,11 @@
 local M = {}
 
 function M.config()
-  local lvim_dashboard = require "lvim.core.alpha.dashboard"
-  local lvim_startify = require "lvim.core.alpha.startify"
-  lvim.builtin.alpha = {
-    dashboard = { config = {}, section = lvim_dashboard.get_sections() },
-    startify = { config = {}, section = lvim_startify.get_sections() },
+  local saturn_dashboard = require "saturn.core.alpha.dashboard"
+  local saturn_startify = require "saturn.core.alpha.startify"
+  saturn.builtin.alpha = {
+    dashboard = { config = {}, section = saturn_dashboard.get_sections() },
+    startify = { config = {}, section = saturn_startify.get_sections() },
     active = true,
     mode = "dashboard",
   }
@@ -31,7 +31,7 @@ end
 local function resolve_config(theme_name)
   local selected_theme = require("alpha.themes." .. theme_name)
   local resolved_section = selected_theme.section
-  local section = lvim.builtin.alpha[theme_name].section
+  local section = saturn.builtin.alpha[theme_name].section
 
   for name, el in pairs(section) do
     for k, v in pairs(el) do
@@ -54,7 +54,7 @@ local function configure_additional_autocmds()
     pattern = "alpha",
     command = "set showtabline=0 | autocmd BufLeave <buffer> set showtabline=" .. vim.opt.showtabline._value,
   })
-  if not lvim.builtin.lualine.options.globalstatus then
+  if not saturn.builtin.lualine.options.globalstatus then
     -- https://github.com/goolord/alpha-nvim/issues/42
     vim.api.nvim_create_autocmd("FileType", {
       group = group,
@@ -69,8 +69,8 @@ function M.setup()
   if not status_ok then
     return
   end
-  local mode = lvim.builtin.alpha.mode
-  local config = lvim.builtin.alpha[mode].config
+  local mode = saturn.builtin.alpha.mode
+  local config = saturn.builtin.alpha[mode].config
 
   -- this makes it easier to use a completely custom configuration
   if vim.tbl_isempty(config) then

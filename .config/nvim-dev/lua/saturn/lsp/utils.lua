@@ -1,7 +1,7 @@
 local M = {}
 
-local tbl = require "lvim.utils.table"
-local Log = require "lvim.core.log"
+local tbl = require "saturn.utils.table"
+local Log = require "saturn.core.log"
 
 function M.is_client_active(name)
   local clients = vim.lsp.get_active_clients()
@@ -72,7 +72,7 @@ function M.get_all_supported_filetypes()
 end
 
 function M.setup_document_highlight(client, bufnr)
-  if lvim.builtin.illuminate.active then
+  if saturn.builtin.illuminate.active then
     Log:debug "skipping setup for document_highlight, illuminate already active"
     return
   end

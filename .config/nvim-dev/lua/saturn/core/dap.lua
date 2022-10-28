@@ -1,23 +1,23 @@
 local M = {}
 
 M.config = function()
-  lvim.builtin.dap = {
+  saturn.builtin.dap = {
     active = true,
     on_config_done = nil,
     breakpoint = {
-      text = lvim.icons.ui.Bug,
+      text = saturn.icons.ui.Bug,
       texthl = "DiagnosticSignError",
       linehl = "",
       numhl = "",
     },
     breakpoint_rejected = {
-      text = lvim.icons.ui.Bug,
+      text = saturn.icons.ui.Bug,
       texthl = "DiagnosticSignError",
       linehl = "",
       numhl = "",
     },
     stopped = {
-      text = lvim.icons.ui.BoldArrowRight,
+      text = saturn.icons.ui.BoldArrowRight,
       texthl = "DiagnosticSignWarn",
       linehl = "Visual",
       numhl = "DiagnosticSignWarn",
@@ -34,13 +34,13 @@ M.setup = function()
     return
   end
 
-  if lvim.use_icons then
-    vim.fn.sign_define("DapBreakpoint", lvim.builtin.dap.breakpoint)
-    vim.fn.sign_define("DapBreakpointRejected", lvim.builtin.dap.breakpoint_rejected)
-    vim.fn.sign_define("DapStopped", lvim.builtin.dap.stopped)
+  if saturn.use_icons then
+    vim.fn.sign_define("DapBreakpoint", saturn.builtin.dap.breakpoint)
+    vim.fn.sign_define("DapBreakpointRejected", saturn.builtin.dap.breakpoint_rejected)
+    vim.fn.sign_define("DapStopped", saturn.builtin.dap.stopped)
   end
 
-  lvim.builtin.which_key.mappings["d"] = {
+  saturn.builtin.which_key.mappings["d"] = {
     name = "Debug",
     t = { "<cmd>lua require'dap'.toggle_breakpoint()<cr>", "Toggle Breakpoint" },
     b = { "<cmd>lua require'dap'.step_back()<cr>", "Step Back" },
@@ -58,8 +58,8 @@ M.setup = function()
     U = { "<cmd>lua require'dapui'.toggle()<cr>", "Toggle UI" },
   }
 
-  if lvim.builtin.dap.on_config_done then
-    lvim.builtin.dap.on_config_done(dap)
+  if saturn.builtin.dap.on_config_done then
+    saturn.builtin.dap.on_config_done(dap)
   end
 end
 
@@ -111,7 +111,7 @@ M.setup_ui = function()
     },
   }
 
-  if lvim.builtin.dap.ui.auto_open then
+  if saturn.builtin.dap.ui.auto_open then
     dap.listeners.after.event_initialized["dapui_config"] = function()
       dapui.open()
     end

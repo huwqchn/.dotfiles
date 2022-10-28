@@ -87,15 +87,15 @@ function M.get_sections()
     },
   }
 
-  local text = require "lvim.interface.text"
-  local lvim_version = require("lvim.utils.git").get_lvim_version()
+  local text = require "saturn.interface.text"
+  local saturn_version = "beta"
 
   local footer = {
     type = "text",
     val = text.align_center({ width = 0 }, {
       "",
       "lunarvim.org",
-      lvim_version,
+      saturn_version,
     }, 0.5),
     opts = {
       position = "center",
@@ -113,15 +113,15 @@ function M.get_sections()
     end
     buttons = {
       val = {
-        button("f", lvim.icons.ui.FindFile .. "  Find File", "<CMD>Telescope find_files<CR>"),
-        button("n", lvim.icons.ui.NewFile .. "  New File", "<CMD>ene!<CR>"),
-        button("p", lvim.icons.ui.Project .. "  Projects ", "<CMD>Telescope projects<CR>"),
-        button("r", lvim.icons.ui.History .. "  Recent files", ":Telescope oldfiles <CR>"),
-        button("t", lvim.icons.ui.FindText .. "  Find Text", "<CMD>Telescope live_grep<CR>"),
+        button("f", saturn.icons.ui.FindFile .. "  Find File", "<CMD>Telescope find_files<CR>"),
+        button("n", saturn.icons.ui.NewFile .. "  New File", "<CMD>ene!<CR>"),
+        button("p", saturn.icons.ui.Project .. "  Projects ", "<CMD>Telescope projects<CR>"),
+        button("r", saturn.icons.ui.History .. "  Recent files", ":Telescope oldfiles <CR>"),
+        button("t", saturn.icons.ui.FindText .. "  Find Text", "<CMD>Telescope live_grep<CR>"),
         button(
           "c",
-          lvim.icons.ui.Gear .. "  Configuration",
-          "<CMD>edit " .. require("lvim.config"):get_user_config_path() .. " <CR>"
+          saturn.icons.ui.Gear .. "  Configuration",
+          "<CMD>edit " .. require("saturn.config"):get_user_config_path() .. " <CR>"
         ),
       },
     }

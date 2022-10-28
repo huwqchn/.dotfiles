@@ -6,7 +6,7 @@ function M.config()
   if loaded and ts_comment then
     pre_hook = ts_comment.create_pre_hook()
   end
-  lvim.builtin.comment = {
+  saturn.builtin.comment = {
     active = true,
     on_config_done = nil,
     ---Add a space b/w comment and the line
@@ -77,9 +77,9 @@ end
 function M.setup()
   local nvim_comment = require "Comment"
 
-  nvim_comment.setup(lvim.builtin.comment)
-  if lvim.builtin.comment.on_config_done then
-    lvim.builtin.comment.on_config_done(nvim_comment)
+  nvim_comment.setup(saturn.builtin.comment)
+  if saturn.builtin.comment.on_config_done then
+    saturn.builtin.comment.on_config_done(nvim_comment)
   end
 end
 

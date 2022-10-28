@@ -1,6 +1,6 @@
 local M = {}
 
-local Log = require "lvim.core.log"
+local Log = require "saturn.core.log"
 local in_headless = #vim.api.nvim_list_uis() == 0
 
 function M.run_pre_update()
@@ -15,8 +15,8 @@ function M.run_on_packer_complete()
   Log:debug "Packer operation complete"
   vim.api.nvim_exec_autocmds("User", { pattern = "PackerComplete" })
 
-  vim.g.colors_name = lvim.colorscheme
-  pcall(vim.cmd, "colorscheme " .. lvim.colorscheme)
+  vim.g.colors_name = saturn.colorscheme
+  pcall(vim.cmd, "colorscheme " .. saturn.colorscheme)
 
   if M._reload_triggered then
     Log:debug "Reloaded configuration"
@@ -35,15 +35,15 @@ end
 ---Tip: Useful for clearing any outdated settings
 function M.reset_cache()
   vim.cmd [[LuaCacheClear]]
-  local lvim_modules = {}
+  local saturn_modules = {}
   for module, _ in pairs(package.loaded) do
-    if module:match "lvim.core" or module:match "lvim.lsp" then
+    if module:match "saturn.core" or module:match "saturn.lsp" then
       package.loaded[module] = nil
-      table.insert(lvim_modules, module)
+      table.insert(saturn_modules, module)
     end
   end
-  Log:trace(string.format("Cache invalidated for core modules: { %s }", table.concat(lvim_modules, ", ")))
-  require("lvim.lsp.templates").generate_templates()
+  Log:trace(string.format("Cache invalidated for core modules: { %s }", table.concat(saturn_modules, ", ")))
+  require("saturn.lsp.templates").generate_templates()
 end
 
 function M.run_post_update()
@@ -58,7 +58,7 @@ function M.run_post_update()
     vim.wait(1000, function()
       return false
     end)
-    local ret = reload("lvim.utils.git").switch_lvim_branch(compat_tag)
+    local ret = reload("saturn.utils.git").switch_saturn_branch(compat_tag)
     if ret then
       vim.notify("Reverted to the last known compatible version: " .. compat_tag, vim.log.levels.WARN)
     end
@@ -68,7 +68,7 @@ function M.run_post_update()
   M.reset_cache()
 
   Log:debug "Syncing core plugins"
-  require("lvim.plugin-loader").sync_core_plugins()
+  require("saturn.plugin-loader").sync_core_plugins()
 
   if not in_headless then
     vim.schedule(function()

@@ -1,8 +1,8 @@
 local M = {}
-local Log = require "lvim.core.log"
+local Log = require "saturn.core.log"
 
 M.config = function()
-  lvim.builtin["terminal"] = {
+  saturn.builtin["terminal"] = {
     active = true,
     on_config_done = nil,
     -- size can be a number or function which is passed the current terminal
@@ -37,8 +37,8 @@ M.config = function()
     },
     -- Add executables on the config.lua
     -- { exec, keymap, name}
-    -- lvim.builtin.terminal.execs = {{}} to overwrite
-    -- lvim.builtin.terminal.execs[#lvim.builtin.terminal.execs+1] = {"gdb", "tg", "GNU Debugger"}
+    -- saturn.builtin.terminal.execs = {{}} to overwrite
+    -- saturn.builtin.terminal.execs[#saturn.builtin.terminal.execs+1] = {"gdb", "tg", "GNU Debugger"}
     -- TODO: pls add mappings in which key and refactor this
     execs = {
       { vim.o.shell, "<M-1>", "Horizontal Terminal", "horizontal", 10 },
@@ -50,24 +50,24 @@ end
 
 M.setup = function()
   local terminal = require "toggleterm"
-  terminal.setup(lvim.builtin.terminal)
+  terminal.setup(saturn.builtin.terminal)
 
-  for i, exec in pairs(lvim.builtin.terminal.execs) do
+  for i, exec in pairs(saturn.builtin.terminal.execs) do
     local opts = {
       cmd = exec[1],
       keymap = exec[2],
       label = exec[3],
       -- NOTE: unable to consistently bind id/count <= 9, see #2146
       count = i + 100,
-      direction = exec[4] or lvim.builtin.terminal.direction,
-      size = exec[5] or lvim.builtin.terminal.size,
+      direction = exec[4] or saturn.builtin.terminal.direction,
+      size = exec[5] or saturn.builtin.terminal.size,
     }
 
     M.add_exec(opts)
   end
 
-  if lvim.builtin.terminal.on_config_done then
-    lvim.builtin.terminal.on_config_done(terminal)
+  if saturn.builtin.terminal.on_config_done then
+    saturn.builtin.terminal.on_config_done(terminal)
   end
 end
 
@@ -92,19 +92,19 @@ end
 ---Toggles a log viewer according to log.viewer.layout_config
 ---@param logfile string the fullpath to the logfile
 M.toggle_log_view = function(logfile)
-  local log_viewer = lvim.log.viewer.cmd
+  local log_viewer = saturn.log.viewer.cmd
   if vim.fn.executable(log_viewer) ~= 1 then
     log_viewer = "less +F"
   end
   Log:debug("attempting to open: " .. logfile)
   log_viewer = log_viewer .. " " .. logfile
-  local term_opts = vim.tbl_deep_extend("force", lvim.builtin.terminal, {
+  local term_opts = vim.tbl_deep_extend("force", saturn.builtin.terminal, {
     cmd = log_viewer,
-    open_mapping = lvim.log.viewer.layout_config.open_mapping,
-    direction = lvim.log.viewer.layout_config.direction,
+    open_mapping = saturn.log.viewer.layout_config.open_mapping,
+    direction = saturn.log.viewer.layout_config.direction,
     -- TODO: this might not be working as expected
-    size = lvim.log.viewer.layout_config.size,
-    float_opts = lvim.log.viewer.layout_config.float_opts,
+    size = saturn.log.viewer.layout_config.size,
+    float_opts = saturn.log.viewer.layout_config.float_opts,
   })
 
   local Terminal = require("toggleterm.terminal").Terminal

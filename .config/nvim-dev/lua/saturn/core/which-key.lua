@@ -1,6 +1,6 @@
 local M = {}
 M.config = function()
-  lvim.builtin.which_key = {
+  saturn.builtin.which_key = {
     ---@usage disable which-key completely [not recommended]
     active = true,
     on_config_done = nil,
@@ -22,9 +22,9 @@ M.config = function()
         spelling = { enabled = true, suggestions = 20 }, -- use which-key for spelling hints
       },
       icons = {
-        breadcrumb = lvim.icons.ui.DoubleChevronRight, -- symbol used in the command line area that shows your active key combo
-        separator = lvim.icons.ui.BoldArrowRight, -- symbol used between a key and it's label
-        group = lvim.icons.ui.Plus, -- symbol prepended to a group
+        breadcrumb = saturn.icons.ui.DoubleChevronRight, -- symbol used in the command line area that shows your active key combo
+        separator = saturn.icons.ui.BoldArrowRight, -- symbol used between a key and it's label
+        group = saturn.icons.ui.Plus, -- symbol prepended to a group
       },
       popup_mappings = {
         scroll_down = "<c-d>", -- binding to scroll down inside the popup
@@ -81,10 +81,10 @@ M.config = function()
     mappings = {
       [";"] = { "<cmd>Alpha<CR>", "Dashboard" },
       ["w"] = { "<cmd>w!<CR>", "Save" },
-      ["q"] = { "<cmd>lua require('lvim.utils.functions').smart_quit()<CR>", "Quit" },
+      ["q"] = { "<cmd>lua require('saturn.utils.functions').smart_quit()<CR>", "Quit" },
       ["/"] = { "<Plug>(comment_toggle_linewise_current)", "Comment toggle current line" },
       ["c"] = { "<cmd>BufferKill<CR>", "Close Buffer" },
-      ["f"] = { require("lvim.core.telescope.custom-finders").find_project_files, "Find File" },
+      ["f"] = { require("saturn.core.telescope.custom-finders").find_project_files, "Find File" },
       ["h"] = { "<cmd>nohlsearch<CR>", "No Highlight" },
       b = {
         name = "Buffers",
@@ -115,7 +115,7 @@ M.config = function()
         name = "Packer",
         c = { "<cmd>PackerCompile<cr>", "Compile" },
         i = { "<cmd>PackerInstall<cr>", "Install" },
-        r = { "<cmd>lua require('lvim.plugin-loader').recompile()<cr>", "Re-compile" },
+        r = { "<cmd>lua require('saturn.plugin-loader').recompile()<cr>", "Re-compile" },
         s = { "<cmd>PackerSync<cr>", "Sync" },
         S = { "<cmd>PackerStatus<cr>", "Status" },
         u = { "<cmd>PackerUpdate<cr>", "Update" },
@@ -130,7 +130,7 @@ M.config = function()
       -- " Debugging
       g = {
         name = "Git",
-        g = { "<cmd>lua require 'lvim.core.terminal'.lazygit_toggle()<cr>", "Lazygit" },
+        g = { "<cmd>lua require 'saturn.core.terminal'.lazygit_toggle()<cr>", "Lazygit" },
         j = { "<cmd>lua require 'gitsigns'.next_hunk({navigation_message = false})<cr>", "Next Hunk" },
         k = { "<cmd>lua require 'gitsigns'.prev_hunk({navigation_message = false})<cr>", "Prev Hunk" },
         l = { "<cmd>lua require 'gitsigns'.blame_line()<cr>", "Blame" },
@@ -159,7 +159,7 @@ M.config = function()
         a = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Code Action" },
         d = { "<cmd>Telescope diagnostics bufnr=0 theme=get_ivy<cr>", "Buffer Diagnostics" },
         w = { "<cmd>Telescope diagnostics<cr>", "Diagnostics" },
-        f = { require("lvim.lsp.utils").format, "Format" },
+        f = { require("saturn.lsp.utils").format, "Format" },
         i = { "<cmd>LspInfo<cr>", "Info" },
         I = { "<cmd>Mason<cr>", "Mason Info" },
         j = {
@@ -187,50 +187,50 @@ M.config = function()
           "Edit config.lua",
         },
         f = {
-          "<cmd>lua require('lvim.core.telescope.custom-finders').find_lunarvim_files()<cr>",
+          "<cmd>lua require('saturn.core.telescope.custom-finders').find_lunarvim_files()<cr>",
           "Find LunarVim files",
         },
         g = {
-          "<cmd>lua require('lvim.core.telescope.custom-finders').grep_lunarvim_files()<cr>",
+          "<cmd>lua require('saturn.core.telescope.custom-finders').grep_lunarvim_files()<cr>",
           "Grep LunarVim files",
         },
         k = { "<cmd>Telescope keymaps<cr>", "View LunarVim's keymappings" },
         i = {
-          "<cmd>lua require('lvim.core.info').toggle_popup(vim.bo.filetype)<cr>",
+          "<cmd>lua require('saturn.core.info').toggle_popup(vim.bo.filetype)<cr>",
           "Toggle LunarVim Info",
         },
         I = {
-          "<cmd>lua require('lvim.core.telescope.custom-finders').view_lunarvim_changelog()<cr>",
+          "<cmd>lua require('saturn.core.telescope.custom-finders').view_lunarvim_changelog()<cr>",
           "View LunarVim's changelog",
         },
         l = {
           name = "+logs",
           d = {
-            "<cmd>lua require('lvim.core.terminal').toggle_log_view(require('lvim.core.log').get_path())<cr>",
+            "<cmd>lua require('saturn.core.terminal').toggle_log_view(require('saturn.core.log').get_path())<cr>",
             "view default log",
           },
           D = {
-            "<cmd>lua vim.fn.execute('edit ' .. require('lvim.core.log').get_path())<cr>",
+            "<cmd>lua vim.fn.execute('edit ' .. require('saturn.core.log').get_path())<cr>",
             "Open the default logfile",
           },
           l = {
-            "<cmd>lua require('lvim.core.terminal').toggle_log_view(vim.lsp.get_log_path())<cr>",
+            "<cmd>lua require('saturn.core.terminal').toggle_log_view(vim.lsp.get_log_path())<cr>",
             "view lsp log",
           },
           L = { "<cmd>lua vim.fn.execute('edit ' .. vim.lsp.get_log_path())<cr>", "Open the LSP logfile" },
           n = {
-            "<cmd>lua require('lvim.core.terminal').toggle_log_view(os.getenv('NVIM_LOG_FILE'))<cr>",
+            "<cmd>lua require('saturn.core.terminal').toggle_log_view(os.getenv('NVIM_LOG_FILE'))<cr>",
             "view neovim log",
           },
           N = { "<cmd>edit $NVIM_LOG_FILE<cr>", "Open the Neovim logfile" },
           p = {
-            "<cmd>lua require('lvim.core.terminal').toggle_log_view(get_cache_dir() .. '/packer.nvim.log')<cr>",
+            "<cmd>lua require('saturn.core.terminal').toggle_log_view(get_cache_dir() .. '/packer.nvim.log')<cr>",
             "view packer log",
           },
           P = { "<cmd>edit $LUNARVIM_CACHE_DIR/packer.nvim.log<cr>", "Open the Packer logfile" },
         },
-        r = { "<cmd>LvimReload<cr>", "Reload LunarVim's configuration" },
-        u = { "<cmd>LvimUpdate<cr>", "Update LunarVim" },
+        r = { "<cmd>saturnReload<cr>", "Reload LunarVim's configuration" },
+        u = { "<cmd>saturnUpdate<cr>", "Update LunarVim" },
       },
       s = {
         name = "Search",
@@ -250,6 +250,26 @@ M.config = function()
           "Colorscheme with Preview",
         },
       },
+      t = {
+        e = {
+          "<cmd>:tabe<CR>", "New Tab"
+        },
+        E = {
+          "<cmd>:tab split<CR>", "New and Move the Tab"
+        },
+        n = {
+          "<cmd>:-tabnext<CR>", "Move to Left Tab"
+        },
+        i = {
+          "<cmd>:+tabnext<CR>", "Move to Right Tab"
+        },
+        N = {
+          "<cmd>:-tabmove<CR>", "Move The Tab to Left"
+        },
+        I = {
+          "<cmd>:+tabmove<CR>", "Move The Tab to Right"
+        },
+      },
       T = {
         name = "Treesitter",
         i = { ":TSConfigInfo<cr>", "Info" },
@@ -261,19 +281,19 @@ end
 M.setup = function()
   local which_key = require "which-key"
 
-  which_key.setup(lvim.builtin.which_key.setup)
+  which_key.setup(saturn.builtin.which_key.setup)
 
-  local opts = lvim.builtin.which_key.opts
-  local vopts = lvim.builtin.which_key.vopts
+  local opts = saturn.builtin.which_key.opts
+  local vopts = saturn.builtin.which_key.vopts
 
-  local mappings = lvim.builtin.which_key.mappings
-  local vmappings = lvim.builtin.which_key.vmappings
+  local mappings = saturn.builtin.which_key.mappings
+  local vmappings = saturn.builtin.which_key.vmappings
 
   which_key.register(mappings, opts)
   which_key.register(vmappings, vopts)
 
-  if lvim.builtin.which_key.on_config_done then
-    lvim.builtin.which_key.on_config_done(which_key)
+  if saturn.builtin.which_key.on_config_done then
+    saturn.builtin.which_key.on_config_done(which_key)
   end
 end
 

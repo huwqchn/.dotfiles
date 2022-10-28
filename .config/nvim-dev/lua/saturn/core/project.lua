@@ -1,7 +1,7 @@
 local M = {}
 
 function M.config()
-  lvim.builtin.project = {
+  saturn.builtin.project = {
     ---@usage set to false to disable project.nvim.
     --- This is on by default since it's currently the expected behavior.
     active = true,
@@ -46,9 +46,9 @@ function M.setup()
     return
   end
 
-  project.setup(lvim.builtin.project)
-  if lvim.builtin.project.on_config_done then
-    lvim.builtin.project.on_config_done(project)
+  project.setup(saturn.builtin.project)
+  if saturn.builtin.project.on_config_done then
+    saturn.builtin.project.on_config_done(project)
   end
 end
 

@@ -13,7 +13,7 @@ local notify_opts = {}
 
 function Log:set_level(level)
   local logger_ok, logger = pcall(function()
-    return require("structlog").get_logger "lvim"
+    return require("structlog").get_logger "saturn"
   end)
   local log_level = Log.levels[level:upper()]
   if logger_ok and logger and log_level then
@@ -38,9 +38,9 @@ function Log:init()
     return nil
   end
 
-  local log_level = Log.levels[(lvim.log.level):upper() or "WARN"]
-  local lvim_log = {
-    lvim = {
+  local log_level = Log.levels[(saturn.log.level):upper() or "WARN"]
+  local saturn_log = {
+    saturn = {
       sinks = {
         structlog.sinks.Console(log_level, {
           async = true,
@@ -70,11 +70,11 @@ function Log:init()
     },
   }
 
-  structlog.configure(lvim_log)
-  local logger = structlog.get_logger "lvim"
+  structlog.configure(saturn_log)
+  local logger = structlog.get_logger "saturn"
 
   -- Overwrite `vim.notify` to use the logger
-  if lvim.log.override_notify then
+  if saturn.log.override_notify then
     vim.notify = function(msg, vim_log_level, opts)
       notify_opts = opts or {}
 
@@ -87,7 +87,7 @@ function Log:init()
         -- https://github.com/neovim/neovim/blob/685cf398130c61c158401b992a1893c2405cd7d2/runtime/lua/vim/lsp/log.lua#L5
         vim_log_level = vim_log_level + 1
       end
-      
+
       self:add_entry(vim_log_level, msg)
     end
   end
@@ -157,7 +157,7 @@ end
 ---@return table|nil logger handle if found
 function Log:get_logger()
   local logger_ok, logger = pcall(function()
-    return require("structlog").get_logger "lvim"
+    return require("structlog").get_logger "saturn"
   end)
   if logger_ok and logger then
     return logger
@@ -176,7 +176,7 @@ end
 ---Retrieves the path of the logfile
 ---@return string path of the logfile
 function Log:get_path()
-  return string.format("%s/%s.log", get_cache_dir(), "lvim")
+  return string.format("%s/%s.log", get_cache_dir(), "saturn")
 end
 
 ---Add a log entry at TRACE level

@@ -1,6 +1,6 @@
 local M = {}
 
-local Log = require "lvim.core.log"
+local Log = require "saturn.core.log"
 -- revisit this
 -- function prequire(package)
 --   local status, lib = pcall(require, package)

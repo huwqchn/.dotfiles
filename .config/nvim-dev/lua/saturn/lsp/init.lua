@@ -1,10 +1,10 @@
 local M = {}
-local Log = require "lvim.core.log"
-local utils = require "lvim.utils"
-local autocmds = require "lvim.core.autocmds"
+local Log = require "saturn.core.log"
+local utils = require "saturn.utils"
+local autocmds = require "saturn.core.autocmds"
 
 local function add_lsp_buffer_options(bufnr)
-  for k, v in pairs(lvim.lsp.buffer_options) do
+  for k, v in pairs(saturn.lsp.buffer_options) do
     vim.api.nvim_buf_set_option(bufnr, k, v)
   end
 end
@@ -17,7 +17,7 @@ local function add_lsp_buffer_keybindings(bufnr)
   }
 
   for mode_name, mode_char in pairs(mappings) do
-    for key, remap in pairs(lvim.lsp.buffer_mappings[mode_name]) do
+    for key, remap in pairs(saturn.lsp.buffer_mappings[mode_name]) do
       local opts = { buffer = bufnr, desc = remap[2], noremap = true, silent = true }
       vim.keymap.set(mode_char, key, remap[1], opts)
     end
@@ -44,32 +44,32 @@ function M.common_capabilities()
 end
 
 function M.common_on_exit(_, _)
-  if lvim.lsp.document_highlight then
+  if saturn.lsp.document_highlight then
     autocmds.clear_augroup "lsp_document_highlight"
   end
-  if lvim.lsp.code_lens_refresh then
+  if saturn.lsp.code_lens_refresh then
     autocmds.clear_augroup "lsp_code_lens_refresh"
   end
 end
 
 function M.common_on_init(client, bufnr)
-  if lvim.lsp.on_init_callback then
-    lvim.lsp.on_init_callback(client, bufnr)
+  if saturn.lsp.on_init_callback then
+    saturn.lsp.on_init_callback(client, bufnr)
     Log:debug "Called lsp.on_init_callback"
     return
   end
 end
 
 function M.common_on_attach(client, bufnr)
-  if lvim.lsp.on_attach_callback then
-    lvim.lsp.on_attach_callback(client, bufnr)
+  if saturn.lsp.on_attach_callback then
+    saturn.lsp.on_attach_callback(client, bufnr)
     Log:debug "Called lsp.on_attach_callback"
   end
-  local lu = require "lvim.lsp.utils"
-  if lvim.lsp.document_highlight then
+  local lu = require "saturn.lsp.utils"
+  if saturn.lsp.document_highlight then
     lu.setup_document_highlight(client, bufnr)
   end
-  if lvim.lsp.code_lens_refresh then
+  if saturn.lsp.code_lens_refresh then
     lu.setup_codelens_refresh(client, bufnr)
   end
   add_lsp_buffer_keybindings(bufnr)
@@ -94,30 +94,30 @@ function M.setup()
     return
   end
 
-  if lvim.use_icons then
-    for _, sign in ipairs(lvim.lsp.diagnostics.signs.values) do
+  if saturn.use_icons then
+    for _, sign in ipairs(saturn.lsp.diagnostics.signs.values) do
       vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = sign.name })
     end
   end
 
-  require("lvim.lsp.handlers").setup()
+  require("saturn.lsp.handlers").setup()
 
-  if not utils.is_directory(lvim.lsp.templates_dir) then
-    require("lvim.lsp.templates").generate_templates()
+  if not utils.is_directory(saturn.lsp.templates_dir) then
+    require("saturn.lsp.templates").generate_templates()
   end
 
   pcall(function()
-    require("nlspsettings").setup(lvim.lsp.nlsp_settings.setup)
+    require("nlspsettings").setup(saturn.lsp.nlsp_settings.setup)
   end)
 
   pcall(function()
-    require("mason-lspconfig").setup(lvim.lsp.installer.setup)
+    require("mason-lspconfig").setup(saturn.lsp.installer.setup)
     local util = require "lspconfig.util"
     -- automatic_installation is handled by lsp-manager
     util.on_setup = nil
   end)
 
-  require("lvim.lsp.null-ls").setup()
+  require("saturn.lsp.null-ls").setup()
 
   autocmds.configure_format_on_save()
 end
