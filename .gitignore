@@ -25,7 +25,6 @@
 !/.config/lazygit/config.yml
 .emacs.d/auto-save-list/
 .hammerspoon/Spoons
-.config/cheat/cheatsheets/community/
 .config/tmux/extrakto/
 .config/karabiner/automatic_backups/
 .config/surge/*
