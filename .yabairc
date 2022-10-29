@@ -78,6 +78,7 @@ yabai -m rule --add app="^微信$" manage=off
 yabai -m rule --add app="^Alfred Preferences$" sticky=on layer=above manage=off
 yabai -m rule --add app="^App Store$" manage=off
 yabai -m rule --add app="^Things$" manage=off
+yabai -m rule --add app="^Parallels Desktop$" manage=off
 
 yabai -m config external_bar all:49:0
 # SPACEBAR_HEIGHT=$(spacebar -m config height)
