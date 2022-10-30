@@ -119,8 +119,10 @@ noremap <silent> \v v$h
 noremap <silent> <LEADER>o za
 
 " Save & Quit
-noremap <LEADER>w :w<CR>
-noremap <LEADER>q :q<CR>
+noremap S :w<CR>
+noremap Q :q<CR>
+noremap <C-q> :q<CR>
+noremap <C-s> :w<CR>
 
 " Insert Key
 noremap k i
@@ -187,7 +189,7 @@ noremap <C-u> <C-w>k
 noremap <C-e> <C-w>j
 noremap <C-n> <C-w>h
 noremap <C-i> <C-w>l
-noremap qf <C-w>o
+noremap <C-o> <C-w>o
 
 " edit
 noremap <LEADER>cw ciw
@@ -204,10 +206,10 @@ noremap sn :set nosplitright<CR>:vsplit<CR>:set splitright<CR>
 noremap si :set splitright<CR>:vsplit<CR>
 
 " Resize splits with arrow keys
-noremap <up> :res +5<CR>
-noremap <down> :res -5<CR>
-noremap <left> :vertical resize-5<CR>
-noremap <right> :vertical resize+5<CR>
+noremap <C-up> :res +5<CR>
+noremap <C-down> :res -5<CR>
+noremap <C-left> :vertical resize-5<CR>
+noremap <C-right> :vertical resize+5<CR>
 
 " Place the two screens up and down
 noremap sh <C-w>t<C-w>K
