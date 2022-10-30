@@ -1,23 +1,23 @@
 local M = {}
 
 M.config = function()
-  lvim.builtin.dap = {
+  saturn.plugins.core.dap = {
     active = true,
     on_config_done = nil,
     breakpoint = {
-      text = lvim.icons.ui.Bug,
+      text = saturn.icons.ui.Bug,
       texthl = "DiagnosticSignError",
       linehl = "",
       numhl = "",
     },
     breakpoint_rejected = {
-      text = lvim.icons.ui.Bug,
+      text = saturn.icons.ui.Bug,
       texthl = "DiagnosticSignError",
       linehl = "",
       numhl = "",
     },
     stopped = {
-      text = lvim.icons.ui.BoldArrowRight,
+      text = saturn.icons.ui.BoldArrowRight,
       texthl = "DiagnosticSignWarn",
       linehl = "Visual",
       numhl = "DiagnosticSignWarn",
@@ -34,32 +34,14 @@ M.setup = function()
     return
   end
 
-  if lvim.use_icons then
-    vim.fn.sign_define("DapBreakpoint", lvim.builtin.dap.breakpoint)
-    vim.fn.sign_define("DapBreakpointRejected", lvim.builtin.dap.breakpoint_rejected)
-    vim.fn.sign_define("DapStopped", lvim.builtin.dap.stopped)
+  if saturn.use_icons then
+    vim.fn.sign_define("DapBreakpoint", saturn.plugins.core.dap.breakpoint)
+    vim.fn.sign_define("DapBreakpointRejected", saturn.plugins.core.dap.breakpoint_rejected)
+    vim.fn.sign_define("DapStopped", saturn.plugins.core.dap.stopped)
   end
 
-  lvim.builtin.which_key.mappings["d"] = {
-    name = "Debug",
-    t = { "<cmd>lua require'dap'.toggle_breakpoint()<cr>", "Toggle Breakpoint" },
-    b = { "<cmd>lua require'dap'.step_back()<cr>", "Step Back" },
-    c = { "<cmd>lua require'dap'.continue()<cr>", "Continue" },
-    C = { "<cmd>lua require'dap'.run_to_cursor()<cr>", "Run To Cursor" },
-    d = { "<cmd>lua require'dap'.disconnect()<cr>", "Disconnect" },
-    g = { "<cmd>lua require'dap'.session()<cr>", "Get Session" },
-    i = { "<cmd>lua require'dap'.step_into()<cr>", "Step Into" },
-    o = { "<cmd>lua require'dap'.step_over()<cr>", "Step Over" },
-    u = { "<cmd>lua require'dap'.step_out()<cr>", "Step Out" },
-    p = { "<cmd>lua require'dap'.pause()<cr>", "Pause" },
-    r = { "<cmd>lua require'dap'.repl.toggle()<cr>", "Toggle Repl" },
-    s = { "<cmd>lua require'dap'.continue()<cr>", "Start" },
-    q = { "<cmd>lua require'dap'.close()<cr>", "Quit" },
-    U = { "<cmd>lua require'dapui'.toggle()<cr>", "Toggle UI" },
-  }
-
-  if lvim.builtin.dap.on_config_done then
-    lvim.builtin.dap.on_config_done(dap)
+  if saturn.plugins.core.dap.on_config_done then
+    saturn.plugins.core.dap.on_config_done(dap)
   end
 end
 
@@ -111,7 +93,7 @@ M.setup_ui = function()
     },
   }
 
-  if lvim.builtin.dap.ui.auto_open then
+  if saturn.plugins.core.dap.ui.auto_open then
     dap.listeners.after.event_initialized["dapui_config"] = function()
       dapui.open()
     end

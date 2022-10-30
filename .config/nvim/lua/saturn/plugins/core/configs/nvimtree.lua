@@ -1,8 +1,7 @@
 local M = {}
-local Log = require "lvim.core.log"
 
 function M.config()
-  lvim.builtin.nvimtree = {
+  saturn.plugins.core.nvimtree = {
     active = true,
     on_config_done = nil,
     setup = {
@@ -17,13 +16,13 @@ function M.config()
       },
       update_cwd = true,
       diagnostics = {
-        enable = lvim.use_icons,
+        enable = saturn.use_icons,
         show_on_dirs = false,
         icons = {
-          hint = lvim.icons.diagnostics.BoldHint,
-          info = lvim.icons.diagnostics.BoldInformation,
-          warning = lvim.icons.diagnostics.BoldWarning,
-          error = lvim.icons.diagnostics.BoldError,
+          hint = saturn.icons.diagnostics.BoldHint,
+          info = saturn.icons.diagnostics.BoldInformation,
+          warning = saturn.icons.diagnostics.BoldWarning,
+          error = saturn.icons.diagnostics.BoldError,
         },
       },
       update_focused_file = {
@@ -63,31 +62,31 @@ function M.config()
           },
         },
         icons = {
-          webdev_colors = lvim.use_icons,
+          webdev_colors = saturn.use_icons,
           show = {
-            git = lvim.use_icons,
-            folder = lvim.use_icons,
-            file = lvim.use_icons,
-            folder_arrow = lvim.use_icons,
+            git = saturn.use_icons,
+            folder = saturn.use_icons,
+            file = saturn.use_icons,
+            folder_arrow = saturn.use_icons,
           },
           glyphs = {
-            default = lvim.icons.ui.Text,
-            symlink = lvim.icons.ui.FileSymlink,
+            default = saturn.icons.ui.Text,
+            symlink = saturn.icons.ui.FileSymlink,
             git = {
-              deleted = lvim.icons.git.FileDeleted,
-              ignored = lvim.icons.git.FileIgnored,
-              renamed = lvim.icons.git.FileRenamed,
-              staged = lvim.icons.git.FileStaged,
-              unmerged = lvim.icons.git.FileUnmerged,
-              unstaged = lvim.icons.git.FileUnstaged,
-              untracked = lvim.icons.git.FileUntracked,
+              deleted = saturn.icons.git.FileDeleted,
+              ignored = saturn.icons.git.FileIgnored,
+              renamed = saturn.icons.git.FileRenamed,
+              staged = saturn.icons.git.FileStaged,
+              unmerged = saturn.icons.git.FileUnmerged,
+              unstaged = saturn.icons.git.FileUnstaged,
+              untracked = saturn.icons.git.FileUntracked,
             },
             folder = {
-              default = lvim.icons.ui.Folder,
-              empty = lvim.icons.ui.EmptyFolder,
-              empty_open = lvim.icons.ui.EmptyFolderOpen,
-              open = lvim.icons.ui.FolderOpen,
-              symlink = lvim.icons.ui.FolderSymlink,
+              default = saturn.icons.ui.Folder,
+              empty = saturn.icons.ui.EmptyFolder,
+              empty_open = saturn.icons.ui.EmptyFolderOpen,
+              open = saturn.icons.ui.FolderOpen,
+              symlink = saturn.icons.ui.FolderSymlink,
             },
           },
         },
@@ -148,32 +147,32 @@ function M.setup()
   end
 
 
-  if lvim.builtin.nvimtree._setup_called then
+  if saturn.plugins.core.nvimtree._setup_called then
     Log:debug "ignoring repeated setup call for nvim-tree, see kyazdani42/nvim-tree.lua#1308"
     return
   end
 
-  lvim.builtin.which_key.mappings["e"] = { "<cmd>NvimTreeToggle<CR>", "Explorer" }
-  lvim.builtin.nvimtree._setup_called = true
+  saturn.plugins.core.which_key.mappings["e"] = { "<cmd>NvimTreeToggle<CR>", "Explorer" }
+  saturn.plugins.core.nvimtree._setup_called = true
 
   -- Implicitly update nvim-tree when project module is active
-  if lvim.builtin.project.active then
-    lvim.builtin.nvimtree.setup.respect_buf_cwd = true
-    lvim.builtin.nvimtree.setup.update_cwd = true
-    lvim.builtin.nvimtree.setup.update_focused_file = { enable = true, update_cwd = true }
+  if saturn.plugins.core.project.active then
+    saturn.plugins.core.nvimtree.setup.respect_buf_cwd = true
+    saturn.plugins.core.nvimtree.setup.update_cwd = true
+    saturn.plugins.core.nvimtree.setup.update_focused_file = { enable = true, update_cwd = true }
   end
 
   local function telescope_find_files(_)
-    require("lvim.core.nvimtree").start_telescope "find_files"
+    require("saturn.plugins.core.configs.nvimtree").start_telescope "find_files"
   end
 
   local function telescope_live_grep(_)
-    require("lvim.core.nvimtree").start_telescope "live_grep"
+    require("saturn.plugins.core.configs.nvimtree").start_telescope "live_grep"
   end
 
   -- Add useful keymaps
-  if #lvim.builtin.nvimtree.setup.view.mappings.list == 0 then
-    lvim.builtin.nvimtree.setup.view.mappings.list = {
+  if #saturn.plugins.core.nvimtree.setup.view.mappings.list == 0 then
+    saturn.plugins.core.nvimtree.setup.view.mappings.list = {
       { key = { "l", "<CR>", "o" }, action = "edit", mode = "n" },
       { key = "h", action = "close_node" },
       { key = "v", action = "vsplit" },
@@ -183,10 +182,10 @@ function M.setup()
     }
   end
 
-  nvim_tree.setup(lvim.builtin.nvimtree.setup)
+  nvim_tree.setup(saturn.plugins.core.nvimtree.setup)
 
-  if lvim.builtin.nvimtree.on_config_done then
-    lvim.builtin.nvimtree.on_config_done(nvim_tree)
+  if saturn.plugins.core.nvimtree.on_config_done then
+    saturn.plugins.core.nvimtree.on_config_done(nvim_tree)
   end
 end
 

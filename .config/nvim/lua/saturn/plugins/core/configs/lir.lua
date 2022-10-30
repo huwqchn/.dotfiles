@@ -1,7 +1,7 @@
 local M = {}
 
 M.config = function()
-  lvim.builtin.lir = {
+  saturn.plugins.core.lir = {
     active = true,
     on_config_done = nil,
     icon = "",
@@ -16,7 +16,7 @@ M.config = function()
   local mark_actions = require "lir.mark.actions"
   local clipboard_actions = require "lir.clipboard.actions"
 
-  lvim.builtin.lir = vim.tbl_extend("force", lvim.builtin.lir, {
+  saturn.plugins.core.lir = vim.tbl_extend("force", saturn.plugins.core.lir, {
     show_hidden_files = false,
     devicons_enable = true,
     mappings = {
@@ -96,7 +96,7 @@ function M.icon_setup()
 
   require("nvim-web-devicons").set_icon {
     lir_folder_icon = {
-      icon = lvim.builtin.lir.icon,
+      icon = saturn.plugins.core.lir.icon,
       color = icon_hl,
       name = "LirFolderNode",
     },
@@ -108,10 +108,10 @@ function M.setup()
   if not status_ok then
     return
   end
-  lir.setup(lvim.builtin.lir)
+  lir.setup(saturn.plugins.core.lir)
 
-  if lvim.builtin.lir.on_config_done then
-    lvim.builtin.lir.on_config_done(lir)
+  if saturn.plugins.core.lir.on_config_done then
+    saturn.plugins.core.lir.on_config_done(lir)
   end
 end
 

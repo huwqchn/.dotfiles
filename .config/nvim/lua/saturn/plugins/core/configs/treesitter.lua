@@ -1,8 +1,7 @@
 local M = {}
-local Log = require "lvim.core.log"
 
 M.config = function()
-  lvim.builtin.treesitter = {
+  saturn.plugins.core.treesitter = {
     on_config_done = nil,
     ensure_installed = {}, -- one of "all", "maintained" (parsers with maintainers), or a list of languages
     ignore_install = {},
@@ -85,12 +84,12 @@ M.setup = function()
     return
   end
 
-  local opts = vim.deepcopy(lvim.builtin.treesitter)
+  local opts = vim.deepcopy(saturn.plugins.core.treesitter)
 
   treesitter_configs.setup(opts)
 
-  if lvim.builtin.treesitter.on_config_done then
-    lvim.builtin.treesitter.on_config_done(treesitter_configs)
+  if saturn.plugins.core.treesitter.on_config_done then
+    saturn.plugins.core.treesitter.on_config_done(treesitter_configs)
   end
 end
 

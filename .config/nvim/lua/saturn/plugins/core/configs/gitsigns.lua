@@ -1,38 +1,38 @@
 local M = {}
 
 M.config = function()
-  lvim.builtin.gitsigns = {
+  saturn.plugins.core.gitsigns = {
     active = true,
     on_config_done = nil,
     opts = {
       signs = {
         add = {
           hl = "GitSignsAdd",
-          text = lvim.icons.ui.BoldLineLeft,
+          text = saturn.icons.ui.BoldLineLeft,
           numhl = "GitSignsAddNr",
           linehl = "GitSignsAddLn",
         },
         change = {
           hl = "GitSignsChange",
-          text = lvim.icons.ui.BoldLineLeft,
+          text = saturn.icons.ui.BoldLineLeft,
           numhl = "GitSignsChangeNr",
           linehl = "GitSignsChangeLn",
         },
         delete = {
           hl = "GitSignsDelete",
-          text = lvim.icons.ui.Triangle,
+          text = saturn.icons.ui.Triangle,
           numhl = "GitSignsDeleteNr",
           linehl = "GitSignsDeleteLn",
         },
         topdelete = {
           hl = "GitSignsDelete",
-          text = lvim.icons.ui.Triangle,
+          text = saturn.icons.ui.Triangle,
           numhl = "GitSignsDeleteNr",
           linehl = "GitSignsDeleteLn",
         },
         changedelete = {
           hl = "GitSignsChange",
-          text = lvim.icons.ui.BoldLineLeft,
+          text = saturn.icons.ui.BoldLineLeft,
           numhl = "GitSignsChangeNr",
           linehl = "GitSignsChangeLn",
         },
@@ -81,9 +81,9 @@ end
 M.setup = function()
   local gitsigns = reload "gitsigns"
 
-  gitsigns.setup(lvim.builtin.gitsigns.opts)
-  if lvim.builtin.gitsigns.on_config_done then
-    lvim.builtin.gitsigns.on_config_done(gitsigns)
+  gitsigns.setup(saturn.plugins.core.gitsigns.opts)
+  if saturn.plugins.core.gitsigns.on_config_done then
+    saturn.plugins.core.gitsigns.on_config_done(gitsigns)
   end
 end
 

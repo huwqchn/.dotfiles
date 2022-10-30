@@ -127,7 +127,7 @@ M.config = function()
     return
   end
 
-  lvim.builtin.cmp = {
+  saturn.plugins.core.cmp = {
     confirm_opts = {
       behavior = cmp.ConfirmBehavior.Replace,
       select = false,
@@ -143,7 +143,7 @@ M.config = function()
     formatting = {
       fields = { "kind", "abbr", "menu" },
       max_width = 0,
-      kind_icons = lvim.icons.kind,
+      kind_icons = saturn.icons.kind,
       source_names = {
         nvim_lsp = "(LSP)",
         emoji = "(Emoji)",
@@ -165,46 +165,46 @@ M.config = function()
       },
       duplicates_default = 0,
       format = function(entry, vim_item)
-        local max_width = lvim.builtin.cmp.formatting.max_width
+        local max_width = saturn.plugins.core.cmp.formatting.max_width
         if max_width ~= 0 and #vim_item.abbr > max_width then
-          vim_item.abbr = string.sub(vim_item.abbr, 1, max_width - 1) .. lvim.icons.ui.Ellipsis
+          vim_item.abbr = string.sub(vim_item.abbr, 1, max_width - 1) .. saturn.icons.ui.Ellipsis
         end
-        if lvim.use_icons then
-          vim_item.kind = lvim.builtin.cmp.formatting.kind_icons[vim_item.kind]
+        if saturn.use_icons then
+          vim_item.kind = saturn.plugins.core.cmp.formatting.kind_icons[vim_item.kind]
 
           -- TODO: not sure why I can't put this anywhere else
           vim.api.nvim_set_hl(0, "CmpItemKindCopilot", { fg = "#6CC644" })
           if entry.source.name == "copilot" then
-            vim_item.kind = lvim.icons.git.Octoface
+            vim_item.kind = saturn.icons.git.Octoface
             vim_item.kind_hl_group = "CmpItemKindCopilot"
           end
 
           vim.api.nvim_set_hl(0, "CmpItemKindTabnine", { fg = "#CA42F0" })
           if entry.source.name == "cmp_tabnine" then
-            vim_item.kind = lvim.icons.misc.Robot
+            vim_item.kind = saturn.icons.misc.Robot
             vim_item.kind_hl_group = "CmpItemKindTabnine"
           end
 
           vim.api.nvim_set_hl(0, "CmpItemKindCrate", { fg = "#F64D00" })
           if entry.source.name == "crates" then
-            vim_item.kind = lvim.icons.misc.Package
+            vim_item.kind = saturn.icons.misc.Package
             vim_item.kind_hl_group = "CmpItemKindCrate"
           end
 
           if entry.source.name == "lab.quick_data" then
-            vim_item.kind = lvim.icons.misc.CircuitBoard
+            vim_item.kind = saturn.icons.misc.CircuitBoard
             vim_item.kind_hl_group = "CmpItemKindConstant"
           end
 
           vim.api.nvim_set_hl(0, "CmpItemKindEmoji", { fg = "#FDE030" })
           if entry.source.name == "emoji" then
-            vim_item.kind = lvim.icons.misc.Smiley
+            vim_item.kind = saturn.icons.misc.Smiley
             vim_item.kind_hl_group = "CmpItemKindEmoji"
           end
         end
-        vim_item.menu = lvim.builtin.cmp.formatting.source_names[entry.source.name]
-        vim_item.dup = lvim.builtin.cmp.formatting.duplicates[entry.source.name]
-          or lvim.builtin.cmp.formatting.duplicates_default
+        vim_item.menu = saturn.plugins.core.cmp.formatting.source_names[entry.source.name]
+        vim_item.dup = saturn.plugins.core.cmp.formatting.duplicates[entry.source.name]
+          or saturn.plugins.core.cmp.formatting.duplicates_default
         return vim_item
       end,
     },
@@ -274,8 +274,8 @@ M.config = function()
       { name = "tmux" },
     },
     mapping = cmp.mapping.preset.insert {
-      ["<C-k>"] = cmp.mapping(cmp.mapping.select_prev_item(), { "i", "c" }),
-      ["<C-j>"] = cmp.mapping(cmp.mapping.select_next_item(), { "i", "c" }),
+      ["<C-u>"] = cmp.mapping(cmp.mapping.select_prev_item(), { "i", "c" }),
+      ["<C-e>"] = cmp.mapping(cmp.mapping.select_next_item(), { "i", "c" }),
       ["<Down>"] = cmp.mapping(cmp.mapping.select_next_item { behavior = cmp.SelectBehavior.Select }, { "i" }),
       ["<Up>"] = cmp.mapping(cmp.mapping.select_prev_item { behavior = cmp.SelectBehavior.Select }, { "i" }),
       ["<C-d>"] = cmp.mapping.scroll_docs(-4),
@@ -317,7 +317,7 @@ M.config = function()
       ["<C-e>"] = cmp.mapping.abort(),
       ["<CR>"] = cmp.mapping(function(fallback)
         if cmp.visible() then
-          local confirm_opts = vim.deepcopy(lvim.builtin.cmp.confirm_opts) -- avoid mutating the original opts below
+          local confirm_opts = vim.deepcopy(saturn.plugins.core.cmp.confirm_opts) -- avoid mutating the original opts below
           local is_insert_mode = function()
             return vim.api.nvim_get_mode().mode:sub(1, 1) == "i"
           end
@@ -357,10 +357,10 @@ end
 
 function M.setup()
   local cmp = require "cmp"
-  cmp.setup(lvim.builtin.cmp)
+  cmp.setup(saturn.plugins.core.cmp)
 
-  if lvim.builtin.cmp.cmdline.enable then
-    for _, option in ipairs(lvim.builtin.cmp.cmdline.options) do
+  if saturn.plugins.core.cmp.cmdline.enable then
+    for _, option in ipairs(saturn.plugins.core.cmp.cmdline.options) do
       cmp.setup.cmdline(option.type, {
         mapping = cmp.mapping.preset.cmdline(),
         sources = option.sources,

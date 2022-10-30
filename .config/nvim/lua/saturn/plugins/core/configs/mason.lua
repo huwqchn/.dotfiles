@@ -1,7 +1,7 @@
 local M = {}
 
 function M.config()
-  lvim.builtin.mason = {
+  saturn.plugins.core.mason = {
     ui = {
       border = "rounded",
       keymaps = {
@@ -36,7 +36,7 @@ function M.setup()
     return
   end
 
-  mason.setup(lvim.builtin.mason)
+  mason.setup(saturn.plugins.core.mason)
 end
 
 return M

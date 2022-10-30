@@ -1,9 +1,7 @@
-local Log = require "lvim.core.log"
-
 local M = {}
 
 M.config = function()
-  lvim.builtin.theme = {
+  saturn.plugins.core.theme = {
     name = "tokyonight",
     options = {
       on_highlights = function(hl, c)
@@ -46,7 +44,7 @@ M.config = function()
         -- }
       end,
       style = "night", -- The theme comes in three styles, `storm`, a darker variant `night` and `day`
-      transparent = lvim.transparent_window, -- Enable this to disable setting the background color
+      transparent = saturn.transparent_window, -- Enable this to disable setting the background color
       terminal_colors = true, -- Configure the colors used when opening a `:terminal` in Neovim
       styles = {
         -- Style to be applied to different syntax groups
@@ -81,7 +79,7 @@ M.config = function()
     return
   end
 
-  theme.setup(lvim.builtin.theme.options)
+  theme.setup(saturn.plugins.core.theme.options)
 end
 
 M.setup = function()
@@ -93,21 +91,21 @@ M.setup = function()
 
   local status_ok, theme = pcall(require, "tokyonight")
   if status_ok and theme then
-    theme.setup(lvim.builtin.theme.options)
+    theme.setup(saturn.plugins.core.theme.options)
   end
 
   -- ref: https://github.com/neovim/neovim/issues/18201#issuecomment-1104754564
-  local colors = vim.api.nvim_get_runtime_file(("colors/%s.*"):format(lvim.colorscheme), false)
+  local colors = vim.api.nvim_get_runtime_file(("colors/%s.*"):format(saturn.colorscheme), false)
   if #colors == 0 then
-    Log:debug(string.format("Could not find '%s' colorscheme", lvim.colorscheme))
+    Log:debug(string.format("Could not find '%s' colorscheme", saturn.colorscheme))
     return
   end
 
-  vim.g.colors_name = lvim.colorscheme
-  vim.cmd("colorscheme " .. lvim.colorscheme)
+  vim.g.colors_name = saturn.colorscheme
+  vim.cmd("colorscheme " .. saturn.colorscheme)
 
-  require("lvim.core.lualine").setup()
-  require("lvim.core.lir").icon_setup()
+  require("saturn.plugins.core.lualine").setup()
+  require("saturn.plugins.core.lir").icon_setup()
 end
 
 return M

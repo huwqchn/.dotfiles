@@ -7,11 +7,11 @@ end
 local function diagnostics_indicator(num, _, diagnostics, _)
   local result = {}
   local symbols = {
-    error = lvim.icons.diagnostics.Error,
-    warning = lvim.icons.diagnostics.Warning,
-    info = lvim.icons.diagnostics.Information,
+    error = saturn.icons.diagnostics.Error,
+    warning = saturn.icons.diagnostics.Warning,
+    info = saturn.icons.diagnostics.Information,
   }
-  if not lvim.use_icons then
+  if not saturn.use_icons then
     return "(" .. num .. ")"
   end
   for name, count in pairs(diagnostics) do
@@ -41,11 +41,11 @@ local function custom_filter(buf, buf_nums)
 end
 
 M.config = function()
-  lvim.builtin.bufferline = {
+  saturn.plugins.core.bufferline = {
     active = true,
     on_config_done = nil,
     keymap = {
-      normal_mode = {},
+      ["n"] = {},
     },
     highlights = {
       background = {
@@ -63,14 +63,14 @@ M.config = function()
       left_mouse_command = "buffer %d", -- can be a string | function, see "Mouse actions"
       middle_mouse_command = nil, -- can be a string | function, see "Mouse actions"
       indicator = {
-        icon = lvim.icons.ui.BoldLineLeft, -- this should be omitted if indicator style is not 'icon'
+        icon = saturn.icons.ui.BoldLineLeft, -- this should be omitted if indicator style is not 'icon'
         style = "icon", -- can also be 'underline'|'none',
       },
-      buffer_close_icon = lvim.icons.ui.Close,
-      modified_icon = lvim.icons.ui.Circle,
-      close_icon = lvim.icons.ui.BoldClose,
-      left_trunc_marker = lvim.icons.ui.ArrowCircleLeft,
-      right_trunc_marker = lvim.icons.ui.ArrowCircleRight,
+      buffer_close_icon = saturn.icons.ui.Close,
+      modified_icon = saturn.icons.ui.Circle,
+      close_icon = saturn.icons.ui.BoldClose,
+      left_trunc_marker = saturn.icons.ui.ArrowCircleLeft,
+      right_trunc_marker = saturn.icons.ui.ArrowCircleRight,
       --- name_formatter can be used to change the buffer's label in the bufferline.
       --- Please note some names can/will break the
       --- bufferline so use this at your discretion knowing that it has
@@ -122,8 +122,8 @@ M.config = function()
         },
       },
       color_icons = true, -- whether or not to add the filetype icon highlights
-      show_buffer_icons = lvim.use_icons, -- disable filetype icons for buffers
-      show_buffer_close_icons = lvim.use_icons,
+      show_buffer_icons = saturn.use_icons, -- disable filetype icons for buffers
+      show_buffer_close_icons = saturn.use_icons,
       show_close_icon = false,
       show_tab_indicators = true,
       persist_buffer_sort = true, -- whether or not custom sorted buffers should persist
@@ -143,7 +143,7 @@ M.config = function()
 end
 
 M.setup = function()
-  require("lvim.keymappings").load(lvim.builtin.bufferline.keymap)
+  --require("saturn.keymappings").load(saturn.plugins.core.bufferline.keymap)
 
   local status_ok, bufferline = pcall(require, "bufferline")
   if not status_ok then
@@ -151,12 +151,12 @@ M.setup = function()
   end
 
   bufferline.setup {
-    options = lvim.builtin.bufferline.options,
-    highlights = lvim.builtin.bufferline.highlights,
+    options = saturn.plugins.core.bufferline.options,
+    highlights = saturn.plugins.core.bufferline.highlights,
   }
 
-  if lvim.builtin.bufferline.on_config_done then
-    lvim.builtin.bufferline.on_config_done()
+  if saturn.plugins.core.bufferline.on_config_done then
+    saturn.plugins.core.bufferline.on_config_done()
   end
 end
 

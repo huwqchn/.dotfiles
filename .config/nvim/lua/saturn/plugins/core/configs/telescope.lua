@@ -61,7 +61,7 @@ end
 function M.config()
   -- Define this minimal config so that it's available if telescope is not yet available.
 
-  lvim.builtin.telescope = {
+  saturn.plugins.core.telescope = {
     ---@usage disable telescope completely [not recommended]
     active = true,
     on_config_done = nil,
@@ -71,10 +71,10 @@ function M.config()
   if not ok then
     return
   end
-  lvim.builtin.telescope = vim.tbl_extend("force", lvim.builtin.telescope, {
+  saturn.plugins.core.telescope = vim.tbl_extend("force", saturn.plugins.core.telescope, {
     defaults = {
-      prompt_prefix = lvim.icons.ui.Telescope .. " ",
-      selection_caret = lvim.icons.ui.Forward .. " ",
+      prompt_prefix = saturn.icons.ui.Telescope .. " ",
+      selection_caret = saturn.icons.ui.Forward .. " ",
       entry_prefix = "  ",
       initial_mode = "insert",
       selection_strategy = "reset",
@@ -147,28 +147,28 @@ function M.setup()
   local previewers = require "telescope.previewers"
   local sorters = require "telescope.sorters"
 
-  lvim.builtin.telescope = vim.tbl_extend("keep", {
+  saturn.plugins.core.telescope = vim.tbl_extend("keep", {
     file_previewer = previewers.vim_buffer_cat.new,
     grep_previewer = previewers.vim_buffer_vimgrep.new,
     qflist_previewer = previewers.vim_buffer_qflist.new,
     file_sorter = sorters.get_fuzzy_file,
     generic_sorter = sorters.get_generic_fuzzy_sorter,
-  }, lvim.builtin.telescope)
+  }, saturn.plugins.core.telescope)
 
   local telescope = require "telescope"
-  telescope.setup(lvim.builtin.telescope)
+  telescope.setup(saturn.plugins.core.telescope)
 
-  if lvim.builtin.project.active then
+  if saturn.plugins.core.project.active then
     pcall(function()
       require("telescope").load_extension "projects"
     end)
   end
 
-  if lvim.builtin.telescope.on_config_done then
-    lvim.builtin.telescope.on_config_done(telescope)
+  if saturn.plugins.core.telescope.on_config_done then
+    saturn.plugins.core.telescope.on_config_done(telescope)
   end
 
-  if lvim.builtin.telescope.extensions and lvim.builtin.telescope.extensions.fzf then
+  if saturn.plugins.core.telescope.extensions and saturn.plugins.core.telescope.extensions.fzf then
     pcall(function()
       require("telescope").load_extension "fzf"
     end)

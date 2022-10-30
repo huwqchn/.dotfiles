@@ -1,11 +1,9 @@
 local M = {}
 
--- local Log = require "lvim.core.log"
-
-local icons = lvim.icons.kind
+local icons = saturn.icons.kind
 
 M.config = function()
-  lvim.builtin.breadcrumbs = {
+  saturn.plugins.core.breadcrumbs = {
     active = true,
     on_config_done = nil,
     winbar_filetype_exclude = {
@@ -86,17 +84,17 @@ M.setup = function()
   end
 
   M.create_winbar()
-  navic.setup(lvim.builtin.breadcrumbs.options)
+  navic.setup(saturn.plugins.core.breadcrumbs.options)
 
-  if lvim.builtin.breadcrumbs.on_config_done then
-    lvim.builtin.breadcrumbs.on_config_done()
+  if saturn.plugins.core.breadcrumbs.on_config_done then
+    saturn.plugins.core.breadcrumbs.on_config_done()
   end
 end
 
 M.get_filename = function()
   local filename = vim.fn.expand "%:t"
   local extension = vim.fn.expand "%:e"
-  local f = require "lvim.utils.functions"
+  local f = require "saturn.core.utils.functions"
 
   if not f.isempty(filename) then
     local file_icon, file_icon_color =
@@ -106,29 +104,29 @@ M.get_filename = function()
 
     vim.api.nvim_set_hl(0, hl_group, { fg = file_icon_color })
     if f.isempty(file_icon) then
-      file_icon = lvim.icons.kind.File
+      file_icon = saturn.icons.kind.File
     end
 
     local buf_ft = vim.bo.filetype
 
     if buf_ft == "dapui_breakpoints" then
-      file_icon = lvim.icons.ui.Bug
+      file_icon = saturn.icons.ui.Bug
     end
 
     if buf_ft == "dapui_stacks" then
-      file_icon = lvim.icons.ui.Stacks
+      file_icon = saturn.icons.ui.Stacks
     end
 
     if buf_ft == "dapui_scopes" then
-      file_icon = lvim.icons.ui.Scopes
+      file_icon = saturn.icons.ui.Scopes
     end
 
     if buf_ft == "dapui_watches" then
-      file_icon = lvim.icons.ui.Watches
+      file_icon = saturn.icons.ui.Watches
     end
 
     -- if buf_ft == "dapui_console" then
-    --   file_icon = lvim.icons.ui.DebugConsole
+    --   file_icon = saturn.icons.ui.DebugConsole
     -- end
 
     local navic_text = vim.api.nvim_get_hl_by_name("Normal", true)
@@ -153,7 +151,7 @@ local get_gps = function()
     return ""
   end
 
-  if not require("lvim.utils.functions").isempty(gps_location) then
+  if not require("saturn.core.utils.functions").isempty(gps_location) then
     -- TODO: replace with chevron
     return ">" .. " " .. gps_location
   else
@@ -162,14 +160,14 @@ local get_gps = function()
 end
 
 local excludes = function()
-  return vim.tbl_contains(lvim.builtin.breadcrumbs.winbar_filetype_exclude or {}, vim.bo.filetype)
+  return vim.tbl_contains(saturn.plugins.core.breadcrumbs.winbar_filetype_exclude or {}, vim.bo.filetype)
 end
 
 M.get_winbar = function()
   if excludes() then
     return
   end
-  local f = require "lvim.utils.functions"
+  local f = require "saturn.core.utils.functions"
   local value = M.get_filename()
 
   local gps_added = false
@@ -183,7 +181,7 @@ M.get_winbar = function()
 
   if not f.isempty(value) and f.get_buf_option "mod" then
     -- TODO: replace with circle
-    local mod = "%#LspCodeLens#" .. lvim.icons.ui.Circle .. "%*"
+    local mod = "%#LspCodeLens#" .. saturn.icons.ui.Circle .. "%*"
     if gps_added then
       value = value .. " " .. mod
     else
@@ -215,7 +213,7 @@ M.create_winbar = function()
           local status_ok, _ = pcall(vim.api.nvim_buf_get_var, 0, "lsp_floating_window")
           if not status_ok then
             -- TODO:
-            require("lvim.core.breadcrumbs").get_winbar()
+            require("saturn.plugins.core.configs.breadcrumbs").get_winbar()
           end
         end,
       }
