@@ -3,13 +3,7 @@ local M = {}
 function M.get_sections()
   local header = {
     type = "text",
-    val = {
-      [[    __                          _    ___         ]],
-      [[   / /   __  ______  ____ _____| |  / (_)___ ___ ]],
-      [[  / /   / / / / __ \/ __ `/ ___/ | / / / __ `__ \]],
-      [[ / /___/ /_/ / / / / /_/ / /   | |/ / / / / / / /]],
-      [[/_____/\__,_/_/ /_/\__,_/_/    |___/_/_/ /_/ /_/ ]],
-    },
+    val = require 'saturn.core.ui.name',
     opts = {
       hl = "Label",
       shrink_margin = false,
@@ -19,7 +13,7 @@ function M.get_sections()
 
   local top_buttons = {
     entries = {
-      { "e", lvim.icons.ui.NewFile .. " New File", "<CMD>ene!<CR>" },
+      { "e", saturn.icons.ui.NewFile .. " New File", "<CMD>ene!<CR>" },
     },
     val = {},
   }

@@ -2,7 +2,7 @@ local M = {}
 local opts_any = { noremap = true, silent = true }
 local opts_remap = { remap = true, silent = true }
 
--- Modes
+-- Mods
 --	 normal_mode = "n",
 --	 insert_mode = "i",
 --	 visual_mode = "v",
@@ -67,8 +67,10 @@ M.general = {
 		-- convenient keymaps
 		[";"] = ":",
 		["`"] = "~",
-		["S"] = ":w<CR>",
-		["Q"] = ":q<CR>",
+		["<C-s>"] = ":w<CR>",
+		["<C-q>"] = ":q<CR>",
+    ["S"] = ":w<CR>",
+    ["Q"] = ":q<CR>",
 	},
 	["n"] = {
 		-- better indentation
@@ -85,6 +87,7 @@ M.general = {
 		["<C-u>"] = "<C-w>k",
 		["<C-i>"] = "<C-w>l",
 		["<C-o>"] = "<C-w>o",
+    ["<C-b>"] = "<C-w>=",
 
 		-- Disable the default s key
 		["s"] =  "<nop>",
@@ -95,9 +98,9 @@ M.general = {
 		["si"] = ":set splitright<CR>:vsplit<CR>",
 		
 		-- place the two screens up and down
-		["sh"] = "<C-w>t<C-w>K",
+		["<C-h>"] = "<C-w>t<C-w>K",
 		-- place the two screens side by side
-		["sv"] = "<C-w>t<C-w>H",
+		["<C-v>"] = "<C-w>t<C-w>H",
 
 		-- Rotate screens
 		["sr"] = "<C-w>b<C-w>K",
@@ -114,9 +117,9 @@ M.general = {
 		["<A-u>"] = ":m .-2<CR>==gi",
 
 		-- QuickFix
-		["]q"] = ":cnext<CR>",
-		["[q"] = ":cprev<CR>",
-		["<C-q>"] = ":call QuickFixToggle()<CR>",
+		["]]"] = ":cnext<CR>",
+		["[["] = ":cprev<CR>",
+		-- ["<C-q>"] = ":call QuickFixToggle()<CR>",
 
 		-- Delete pair
 		["dy"] = "d%",
@@ -125,28 +128,28 @@ M.general = {
 		-- copy to system clipboard
 		["Y"] = '"+y',
 
-	        -- Better indenting
-	        ["<"] = "<gv",
-	        [">"] = ">gv",
+    -- Better indenting
+    ["<"] = "<gv",
+    [">"] = ">gv",
 
 	},
 	["x"] = {
-        	-- Move current line / block with Alt-e/u ala vscode.
-        	["<A-e>"] = ":m '>+1<CR>gv-gv",
-    		["<A-u>"] = ":m '<-2<CR>gv-gv",
+    -- Move current line / block with Alt-e/u ala vscode.
+    ["<A-e>"] = ":m '>+1<CR>gv-gv",
+    ["<A-u>"] = ":m '<-2<CR>gv-gv",
 	},
 	["t"] = {
-        	-- Terminal window navigation
-    		["<C-n>"] = "<C-\\><C-N><C-w>h",
-    		["<C-e>"] = "<C-\\><C-N><C-w>j",
-    		["<C-u>"] = "<C-\\><C-N><C-w>k",
-    		["<C-i>"] = "<C-\\><C-N><C-w>l",
+    -- Terminal window navigation
+    ["<C-n>"] = "<C-\\><C-N><C-w>h",
+    ["<C-e>"] = "<C-\\><C-N><C-w>j",
+    ["<C-u>"] = "<C-\\><C-N><C-w>k",
+    ["<C-i>"] = "<C-\\><C-N><C-w>l",
 	},
 	["c"] = {
-	        -- navigate tab completion with <c-j> and <c-k>
-	        -- runs conditionally
-	        ["<C-e>"] = { 'pumvisible() ? "\\<C-n>" : "\\<C-j>"', { expr = true, noremap = true } },
-	        ["<C-u>"] = { 'pumvisible() ? "\\<C-p>" : "\\<C-k>"', { expr = true, noremap = true } },
+    -- navigate tab completion with <c-j> and <c-k>
+    -- runs conditionally
+    ["<C-e>"] = { 'pumvisible() ? "\\<C-n>" : "\\<C-j>"', { expr = true, noremap = true } },
+    ["<C-u>"] = { 'pumvisible() ? "\\<C-p>" : "\\<C-k>"', { expr = true, noremap = true } },
 		["<C-n>"] = "<Left>",
 		["<C-i>"] = "<Right>",
 		["<C-s>"] = "<S-Left>",
@@ -175,6 +178,7 @@ function M.load()
 			M.set_keymaps(mode, key, val)
 		end
 	end
+  saturn.keys = M.general
 end
 
 return M

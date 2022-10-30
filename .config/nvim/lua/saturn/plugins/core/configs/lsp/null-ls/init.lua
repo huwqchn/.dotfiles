@@ -1,7 +1,5 @@
 local M = {}
 
-local Log = require "lvim.core.log"
-
 function M.setup()
   local status_ok, null_ls = pcall(require, "null-ls")
   if not status_ok then
@@ -9,8 +7,8 @@ function M.setup()
     return
   end
 
-  local default_opts = require("lvim.lsp").get_common_opts()
-  null_ls.setup(vim.tbl_deep_extend("force", default_opts, lvim.lsp.null_ls.setup))
+  local default_opts = require("saturn.plugins.core.lsp").get_common_opts()
+  null_ls.setup(vim.tbl_deep_extend("force", default_opts, saturn.plugins.core.lsp.null_ls.setup))
 end
 
 return M

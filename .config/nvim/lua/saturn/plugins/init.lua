@@ -1,7 +1,7 @@
 local M = {}
 
 function M.init()
-  local init_opts = require("plugins.core.configs.packer")
+  local init_opts = require("saturn.plugins.core.configs.packer")
   local install_path = vim.fn.stdpath "data" .. "/site/pack/packer/opt/packer.nvim"
 
   if vim.fn.empty(vim.fn.glob(installLpath)) > 0 then

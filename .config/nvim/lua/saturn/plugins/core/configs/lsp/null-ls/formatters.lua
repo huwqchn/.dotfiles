@@ -1,9 +1,7 @@
 local M = {}
 
-local Log = require "lvim.core.log"
-
 local null_ls = require "null-ls"
-local services = require "lvim.lsp.null-ls.services"
+local services = require "saturn.plugins.core.lsp.null-ls.services"
 local method = null_ls.methods.FORMATTING
 
 function M.list_registered(filetype)
@@ -26,7 +24,7 @@ function M.setup(formatter_configs)
   local registered = services.register_sources(formatter_configs, method)
 
   if #registered > 0 then
-    Log:debug("Registered the following formatters: " .. unpack(registered))
+    print("Registered the following formatters: " .. unpack(registered))
   end
 end
 

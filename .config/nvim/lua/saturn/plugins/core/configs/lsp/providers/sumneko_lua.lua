@@ -1,7 +1,7 @@
 local default_workspace = {
   library = {
     vim.fn.expand "$VIMRUNTIME",
-    get_lvim_base_dir(),
+    get__base_dir(),
     require("neodev.config").types(),
   },
 
@@ -24,7 +24,7 @@ end
 
 local lspconfig = require "lspconfig"
 
-local make_on_new_config = function(on_new_config, _)
+local make_on_new_con= function(on_new_config, _)
   return lspconfig.util.add_hook_before(on_new_config, function(new_config, _)
     local server_name = new_config.name
 
@@ -51,7 +51,7 @@ local opts = {
         },
       },
       diagnostics = {
-        globals = { "vim", "lvim", "packer_plugins", "reload" },
+        globals = { "vim", "packer_plugins", "reload" },
       },
       workspace = default_workspace,
     },

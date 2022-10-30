@@ -10,7 +10,7 @@ return {
   {
     "williamboman/mason.nvim",
     config = function()
-      require("plugins.core.configs.mason").setup()
+      require("saturn.plugins.core.configs.mason").setup()
     end,
   },
   {
@@ -25,7 +25,7 @@ return {
     "nvim-telescope/telescope.nvim",
     branch = "0.1.x",
     config = function()
-      require("plugins.core.configs.telescope").setup()
+      require("saturn.plugins.core.configs.telescope").setup()
     end,
     disable = not saturn.plugins.core.telescope.active,
   },
@@ -40,7 +40,7 @@ return {
     "hrsh7th/nvim-cmp",
     config = function()
       if saturn.plugins.core.cmp then
-        require("plugins.core.configs.cmp").setup()
+        require("saturn.plugins.core.configs.cmp").setup()
       end
     end,
     requires = {
@@ -83,7 +83,7 @@ return {
     "windwp/nvim-autopairs",
     -- event = "InsertEnter",
     config = function()
-      require("plugins.core.configs.autopairs").setup()
+      require("saturn.plugins.core.configs.autopairs").setup()
     end,
     disable = not saturn.plugins.core.autopairs.active,
   },
@@ -93,7 +93,7 @@ return {
     "nvim-treesitter/nvim-treesitter",
     -- run = ":TSUpdate",
     config = function()
-      require("plugins.core.configs.treesitter").setup()
+      require("saturn.plugins.core.configs.treesitter").setup()
     end,
   },
   {
@@ -107,7 +107,7 @@ return {
     -- event = "BufWinOpen",
     -- cmd = "NvimTreeToggle",
     config = function()
-      require("plugins.core.configs.nvimtree").setup()
+      require("saturn.plugins.core.configs.nvimtree").setup()
     end,
     disable = not saturn.plugins.core.nvimtree.active,
   },
@@ -115,7 +115,7 @@ return {
   {
     "christianchiarulli/lir.nvim",
     config = function()
-      require("plugins.core.configs.lir").setup()
+      require("saturn.plugins.core.configs.lir").setup()
     end,
     requires = { "kyazdani42/nvim-web-devicons" },
     disable = not saturn.plugins.core.lir.active,
@@ -124,7 +124,7 @@ return {
     "lewis6991/gitsigns.nvim",
 
     config = function()
-      require("plugins.core.configs.gitsigns").setup()
+      require("saturn.plugins.core.configs.gitsigns").setup()
     end,
     event = "BufRead",
     disable = not saturn.plugins.core.gitsigns.active,
@@ -134,7 +134,7 @@ return {
   {
     "folke/which-key.nvim",
     config = function()
-      require("plugins.core.configs.which-key").setup()
+      require("saturn.plugins.core.configs.which-key").setup()
     end,
     event = "BufWinEnter",
     disable = not saturn.plugins.core.which_key.active,
@@ -145,7 +145,7 @@ return {
     "numToStr/Comment.nvim",
     event = "BufRead",
     config = function()
-      require("plugins.core.configs.comment").setup()
+      require("saturn.plugins.core.configs.comment").setup()
     end,
     disable = not saturn.plugins.core.comment.active,
   },
@@ -154,7 +154,7 @@ return {
   {
     "ahmedkhalf/project.nvim",
     config = function()
-      require("plugins.core.configs.project").setup()
+      require("saturn.plugins.core.configs.project").setup()
     end,
     disable = not saturn.plugins.core.project.active,
   },
@@ -171,7 +171,7 @@ return {
     "nvim-lualine/lualine.nvim",
     -- "Lunarvim/lualine.nvim",
     config = function()
-      require("plugins.core.configs.lualine").setup()
+      require("saturn.plugins.core.configs.lualine").setup()
     end,
     disable = not saturn.plugins.core.lualine.active,
   },
@@ -180,7 +180,7 @@ return {
   {
     "SmiteshP/nvim-navic",
     config = function()
-      require("plugins.core.configs.breadcrumbs").setup()
+      require("saturn.plugins.core.configs.breadcrumbs").setup()
     end,
     disable = not saturn.plugins.core.breadcrumbs.active,
   },
@@ -188,7 +188,7 @@ return {
   {
     "akinsho/bufferline.nvim",
     config = function()
-      require("plugins.core.configs.bufferline").setup()
+      require("saturn.plugins.core.configs.bufferline").setup()
     end,
     branch = "main",
     event = "BufWinEnter",
@@ -200,7 +200,7 @@ return {
     "mfussenegger/nvim-dap",
     -- event = "BufWinEnter",
     config = function()
-      require("plugins.core.configs.dap").setup()
+      require("saturn.plugins.core.configs.dap").setup()
     end,
     disable = not saturn.plugins.core.dap.active,
   },
@@ -209,7 +209,7 @@ return {
   {
     "rcarriga/nvim-dap-ui",
     config = function()
-      require("plugins.core.configs.dap").setup_ui()
+      require("saturn.plugins.core.configs.dap").setup_ui()
     end,
     disable = not saturn.plugins.core.dap.active,
   },
@@ -218,7 +218,7 @@ return {
   {
     "goolord/alpha-nvim",
     config = function()
-      require("plugins.core.configs.alpha").setup()
+      require("saturn.plugins.core.configs.alpha").setup()
     end,
     disable = not saturn.plugins.core.alpha.active,
   },
@@ -229,7 +229,7 @@ return {
     event = "BufWinEnter",
     branch = "main",
     config = function()
-      require("plugins.core.configs.terminal").setup()
+      require("saturn.plugins.core.configs.terminal").setup()
     end,
     disable = not saturn.plugins.core.terminal.active,
   },
@@ -242,7 +242,7 @@ return {
   {
     "RRethy/vim-illuminate",
     config = function()
-      require("plugins.core.configs.illuminate").setup()
+      require("saturn.plugins.core.configs.illuminate").setup()
     end,
     disable = not saturn.plugins.core.illuminate.active,
   },
@@ -250,7 +250,7 @@ return {
   {
     "lukas-reineke/indent-blankline.nvim",
     config = function()
-      require("plugins.core.configs.indentlines").setup()
+      require("saturn.plugins.core.configs.indentlines").setup()
     end,
     disable = not saturn.plugins.core.indentlines.active,
   },

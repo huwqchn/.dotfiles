@@ -1,2 +1,2 @@
-require('core'):init()
-require('plugins'):init()
+require('saturn.core'):init()
+require('saturn.plugins'):init()
