@@ -12,6 +12,7 @@ if [[ `uname` == 'Darwin' ]]; then
 elif [[ `uname` == 'Linux' ]]; then
 	alias ep='export all_proxy=http://127.0.0.1:7890'
   alias aic='ascii-image-converter'
+  alias x='xmodmap ~/.Xmodmap'
 fi
 alias doom='~/.emacs.d/bin/doom'
 alias v='nvim'
