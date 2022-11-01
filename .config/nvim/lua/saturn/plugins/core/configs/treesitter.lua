@@ -74,13 +74,13 @@ end
 M.setup = function()
   -- avoid running in headless mode since it's harder to detect failures
   if #vim.api.nvim_list_uis() == 0 then
-    Log:debug "headless mode detected, skipping running setup for treesitter"
+      print("headless mode detected, skipping running setup for treesitter")
     return
   end
 
   local status_ok, treesitter_configs = pcall(require, "nvim-treesitter.configs")
   if not status_ok then
-    Log:error "Failed to load nvim-treesitter.configs"
+    print("Failed to load nvim-treesitter.configs")
     return
   end
 

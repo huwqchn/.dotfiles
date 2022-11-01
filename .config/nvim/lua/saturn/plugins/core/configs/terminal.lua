@@ -73,7 +73,7 @@ end
 M.add_exec = function(opts)
   local binary = opts.cmd:match "(%S+)"
   if vim.fn.executable(binary) ~= 1 then
-    Log:debug("Skipping configuring executable " .. binary .. ". Please make sure it is installed properly.")
+    print("Skipping configuring executable " .. binary .. ". Please make sure it is installed properly.")
     return
   end
 
@@ -95,7 +95,7 @@ M.toggle_log_view = function(logfile)
   if vim.fn.executable(log_viewer) ~= 1 then
     log_viewer = "less +F"
   end
-  Log:debug("attempting to open: " .. logfile)
+  print("attempting to open: " .. logfile)
   log_viewer = log_viewer .. " " .. logfile
   local term_opts = vim.tbl_deep_extend("force", saturn.plugins.core.terminal, {
     cmd = log_viewer,

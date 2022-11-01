@@ -85,7 +85,7 @@ end
 M.setup = function()
   -- avoid running in headless mode since it's harder to detect failures
   if #vim.api.nvim_list_uis() == 0 then
-    Log:debug "headless mode detected, skipping running setup for lualine"
+    print("headless mode detected, skipping running setup for lualine")
     return
   end
 
@@ -97,7 +97,7 @@ M.setup = function()
   -- ref: https://github.com/neovim/neovim/issues/18201#issuecomment-1104754564
   local colors = vim.api.nvim_get_runtime_file(("colors/%s.*"):format(saturn.colorscheme), false)
   if #colors == 0 then
-    Log:debug(string.format("Could not find '%s' colorscheme", saturn.colorscheme))
+    print(string.format("Could not find '%s' colorscheme", saturn.colorscheme))
     return
   end
 
