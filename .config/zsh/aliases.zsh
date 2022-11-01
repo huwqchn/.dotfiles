@@ -13,6 +13,7 @@ elif [[ `uname` == 'Linux' ]]; then
 	alias ep='export all_proxy=http://127.0.0.1:7890'
   alias aic='ascii-image-converter'
   alias x='xmodmap ~/.Xmodmap'
+  alias xr='xrandr --output HDMI-1 --scale 1.12x1.50'
 fi
 alias doom='~/.emacs.d/bin/doom'
 alias v='nvim'
