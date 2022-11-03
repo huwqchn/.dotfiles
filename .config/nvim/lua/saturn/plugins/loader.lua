@@ -109,6 +109,10 @@ return packer.startup(function(use)
   use { "SmiteshP/nvim-navic" }
   use { "b0o/schemastore.nvim" }
 
+  -- extra
+  use { "mrjones2014/smart-splits.nvim" }
+  use { "kwkarlwang/bufresize.nvim" }
+
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
   if PACKER_BOOTSTRAP then
