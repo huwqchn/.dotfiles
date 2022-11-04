@@ -4,7 +4,7 @@ return {
   transparent_window = false,
   keys = {},
   use_icons = true,
-  icons = require "saturn.core.ui.icons",
+  icons = require "saturn.basic.ui.icons",
   plugins = {
     core = {},
     extra = {},
