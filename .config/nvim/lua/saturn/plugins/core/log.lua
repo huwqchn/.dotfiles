@@ -87,7 +87,7 @@ function Log:init()
         -- https://github.com/neovim/neovim/blob/685cf398130c61c158401b992a1893c2405cd7d2/runtime/lua/vim/lsp/log.lua#L5
         vim_log_level = vim_log_level + 1
       end
-      
+
       self:add_entry(vim_log_level, msg)
     end
   end
@@ -157,7 +157,7 @@ end
 ---@return table|nil logger handle if found
 function Log:get_logger()
   local logger_ok, logger = pcall(function()
-    return require("structlog").get_logger "lvim"
+    return require("structlog").get_logger "saturn"
   end)
   if logger_ok and logger then
     return logger
@@ -176,7 +176,7 @@ end
 ---Retrieves the path of the logfile
 ---@return string path of the logfile
 function Log:get_path()
-  return string.format("%s/%s.log", get_cache_dir(), "lvim")
+  return string.format("%s/%s.log", "~/.config/nvim/", "saturn")
 end
 
 ---Add a log entry at TRACE level
