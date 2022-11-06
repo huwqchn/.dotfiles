@@ -173,7 +173,7 @@ function M.set_keymaps(mode, key, val)
 end
 
 function M.load()
-  vim.keymap.set("", saturn.leaderkey, "<Nop>", opts)
+  vim.keymap.set("", saturn.leaderkey, "<Nop>", opts_any)
   vim.g.mapleader = saturn.leaderkey
   vim.g.maplocalleader = saturn.leaderkey
 	for mode, maps in pairs(M.general) do

@@ -17,4 +17,4 @@ require "saturn.plugins.configs.indentline"
 require "saturn.plugins.configs.alpha"
 require "saturn.plugins.configs.lsp"
 require "saturn.plugins.configs.dap"
-
+require "saturn.plugins.configs.whichkey"

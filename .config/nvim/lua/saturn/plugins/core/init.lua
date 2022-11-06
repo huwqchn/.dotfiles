@@ -18,7 +18,7 @@ return {
   "saturn.plugins.core.gitsigns",
   "saturn.plugins.core.lualine",
   "saturn.plugins.core.toggleterm",
-  "saturn.plugins.core.which-key",
+  "saturn.plugins.core.whichkey",
   "saturn.plugins.core.lir",
   "saturn.plugins.core.breadcrumbs",
 }
