@@ -27,13 +27,13 @@ M.load = function()
     splitright = true, -- force all vertical splits to go to the right of current window
     swapfile = false, -- creates a swapfile
     termguicolors = true, -- set term gui colors (most terminals support this)
-    timeoutlen = 1000, -- time to wait for a mapped sequence to complete (in milliseconds)
+    timeoutlen = 0, -- time to wait for a mapped sequence to complete (in milliseconds)
     title = true, -- set the title of window to the value of the titlestring
     list = true, -- show special symbols
     listchars={tab = '| ', trail = '▫'}, -- replace special symbols
 
     -- opt.titlestring = "%<%F%=%l/%L - nvim" -- what the title of the window will be set to
-    undodir = undodir, -- set an undo directory
+    --undodir = undodir, -- set an undo directory
     undofile = true, -- enable persistent undo
     updatetime = 100, -- faster completion
     writebackup = false, -- if a file is being edited by another program (or was written to file while editing with another program), it is not allowed to be edited

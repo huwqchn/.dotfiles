@@ -105,7 +105,7 @@ return packer.startup(function(use)
   use { "Tastyep/structlog.nvim", commit = "232a8e26060440e0db9fefba857036442b34227d" }
   use { "folke/neodev.nvim", module = "neodev", commit = "a9ddee2951ee43ca678b45bcc604592ea49a9456" }
   use { "christianchiarulli/lir.nvim" }
-  use { "folke/which-key.nvim", event = "BufWinEnter" }
+  use { "folke/which-key.nvim" }
   use { "SmiteshP/nvim-navic" }
   use { "b0o/schemastore.nvim" }
 
