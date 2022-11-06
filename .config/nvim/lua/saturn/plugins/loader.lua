@@ -115,6 +115,16 @@ return packer.startup(function(use)
   -- extra
   use { "mrjones2014/smart-splits.nvim" }
   use { "kwkarlwang/bufresize.nvim" }
+  use { "zbirenbaum/copilot.lua",
+    event = { "VimEnter" },
+    config = function()
+      vim.defer_fn(function()
+        require "saturn.plugins.configs.copilot"
+      end, 100)
+    end,
+  }
+  use { "zbirenbaum/copilot-cmp" }
+  use { "rcarriga/nvim-notify" }
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
