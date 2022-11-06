@@ -39,7 +39,7 @@ M.general = {
 		-- colemak better searching key
 		["-"] = "N",
 		["="] = "n",
-		
+
 		-- colemak goto key
 		["t"] = { "g", opts_remap },
 		["T"] = "G",
@@ -96,7 +96,7 @@ M.general = {
 		["se"] = ":set splitbelow<CR>:split<CR>",
 		["sn"] = ":set nosplitright<CR>:vsplit<CR>:set splitright<CR>",
 		["si"] = ":set splitright<CR>:vsplit<CR>",
-		
+
 		-- place the two screens up and down
 		["<C-h>"] = "<C-w>t<C-w>K",
 		-- place the two screens side by side
