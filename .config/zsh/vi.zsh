@@ -1,3 +1,4 @@
+# bindkey -e will be emacs mode
 bindkey '^v' edit-command-line
 bindkey -v
 bindkey -M vicmd "k" vi-insert

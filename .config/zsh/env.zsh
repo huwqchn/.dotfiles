@@ -20,6 +20,7 @@ if [[ `uname` == 'Darwin' ]]; then
 	export LIBRARY_PATH="/opt/homebrew/lib:$LIBRARY_PATH"
 	export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.ustc.edu.cn/homebrew-bottles/bottles
 elif [[ `uname` == 'Linux' ]]; then
+  export TERMINAL="alacritty"
   export PATH=$PATH:/snap/bin
 	export GDK_SCALE=2
 	export GDK_DPI_SCALE=0.5

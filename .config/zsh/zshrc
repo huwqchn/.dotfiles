@@ -6,7 +6,9 @@ source ~/.config/zsh/fzf.zsh
 source ~/.config/zsh/mappings.zsh
 
 autopair-init
+# beeping is annoying
+unsetopt BEEP
 # source ~/.zim/modules/fzf-tab/fzf-tab.plugin.zsh
 
 source ~/.config/zsh/prompt.zsh
-source ~/.config/zsh/init.zsh
+source ~/.config/zsh/eval.zsh
