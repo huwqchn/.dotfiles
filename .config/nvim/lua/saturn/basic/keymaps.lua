@@ -162,7 +162,7 @@ M.general = {
 function M.set_keymaps(mode, key, val)
 	local opt = M.general_opts[mode] or opts_any
 	if type(val) == "table" then
-		opt = opts_any
+		opt = val[2]
 		val = val[1]
 	end
 	if val then
