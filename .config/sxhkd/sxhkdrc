@@ -139,3 +139,7 @@ super + {Left,Down,Up,Right}
 # amixer
 super + {minus,equal}
 	amixer set Master {5%-,5%+}
+
+#brightnessctl
+super + bracket{left,right}
+  brightnessctl set {5%-,+5%}
