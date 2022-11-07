@@ -5,10 +5,7 @@ return {
   keys = {},
   use_icons = true,
   icons = require "saturn.basic.ui.icons",
-  plugins = {
-    core = {},
-    extra = {},
-  },
+  plugins = {},
   log = {
     ---@usage can be { "trace", "debug", "info", "warn", "error", "fatal" },
     level = "warn",
