@@ -123,6 +123,10 @@ M.general = {
 
 		-- Delete pair
 		["dy"] = "d%",
+
+    -- inc/dec numbers
+    ["<leader>="] = "<C-a>",
+    ["<leader>-"] = "<C-x>",
 	},
 	["v"] = {
 		-- copy to system clipboard
