@@ -19,7 +19,7 @@ end
 vim.cmd [[
   augroup packer_user_config
     autocmd!
-    autocmd BufWritePost loader.lua source <afile> | PackerSync
+    autocmd BufWritePost packer.lua source <afile> | PackerSync
   augroup end
 ]]
 
@@ -119,7 +119,7 @@ return packer.startup(function(use)
     event = { "VimEnter" },
     config = function()
       vim.defer_fn(function()
-        require "saturn.plugins.configs.copilot"
+        require "saturn.plugins.copilot"
       end, 100)
     end,
   }

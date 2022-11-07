@@ -176,7 +176,7 @@ end
 ---Retrieves the path of the logfile
 ---@return string path of the logfile
 function Log:get_path()
-  return string.format("%s/%s.log", "~/.config/nvim/", "saturn")
+  return string.format("%s/%s.log", "~/.config/nvim/logs", "saturn")
 end
 
 ---Add a log entry at TRACE level
