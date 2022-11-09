@@ -14,9 +14,14 @@ super + c
 super + @space
 	~/.dotfiles/.scripts/applauncher.sh
 
+# program switcher
+super + Tab
+  ~/.dotfiles/.scripts/appswitcher.sh
+
 # make sxhkd reload its configuration files:
 super + Escape
 	pkill -USR1 -x sxhkd
+
 
 #
 # bspwm hotkeys
@@ -87,7 +92,7 @@ super + {h,o}
 	bspc desktop -f {prev,next}.local
 
 # focus the last node/desktop
-super + {grave,Tab}
+super + {grave, shift + grave}
 	bspc {node,desktop} -f last
 
 # focus the older or newer node in the focus history
