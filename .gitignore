@@ -33,3 +33,4 @@
 .config/mpd/state
 .config/polybar/.system
 .config/clash/config.yaml
+cache.*
