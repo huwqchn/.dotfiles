@@ -1,6 +1,6 @@
 require "saturn.plugins.packer"
 require "saturn.plugins.impatient"
-require "saturn.plugins.autocommands"
+-- require "saturn.plugins.autocommands"
 require "saturn.plugins.colorscheme"
 require "saturn.plugins.cmp"
 require "saturn.plugins.telescope"
@@ -20,3 +20,7 @@ require "saturn.plugins.lsp"
 require "saturn.plugins.dap"
 require "saturn.plugins.whichkey"
 require "saturn.plugins.lir"
+
+local mason = require('saturn.plugins.mason')
+mason.config()
+mason.setup()
