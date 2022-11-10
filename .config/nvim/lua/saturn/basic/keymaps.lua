@@ -72,6 +72,18 @@ M.general = {
     ["S"] = ":w<CR>",
     ["Q"] = ":q<CR>",
 	},
+  ["i"] = {
+    -- Move current line / block with Alt-j/k ala vscode.
+    ["<A-e>"] = "<Esc>:m .+1<CR>==gi",
+    -- Move current line / block with Alt-j/k ala vscode.
+    ["<A-u>"] = "<Esc>:m .-2<CR>==gi",
+    -- navigation
+    ["<A-Up>"] = "<C-\\><C-N><C-w>k",
+    ["<A-Down>"] = "<C-\\><C-N><C-w>j",
+    ["<A-Left>"] = "<C-\\><C-N><C-w>h",
+    ["<A-Right>"] = "<C-\\><C-N><C-w>l",
+
+  },
 	["n"] = {
 		-- better indentation
 		["<"] = "<<",
@@ -113,8 +125,8 @@ M.general = {
 		["<C-Right>"] = ":vertical resize +2<CR>",
 
 		-- Move current line / block up / down
-		["<A-e>"] = ":m .+1<CR>==gi",
-		["<A-u>"] = ":m .-2<CR>==gi",
+    ["<A-e>"] = ":m .+1<CR>==",
+		["<A-u>"] = ":m .-2<CR>==",
 
 		-- QuickFix
 		["]]"] = ":cnext<CR>",
@@ -136,6 +148,9 @@ M.general = {
     ["<"] = "<gv",
     [">"] = ">gv",
 
+    -- Move current line / block with Alt-j/k ala vscode.
+    ["<A-e>"] = ":m '>+1<CR>gv-gv",
+    ["<A-u>"] = ":m '<-2<CR>gv-gv",
 	},
 	["x"] = {
     -- Move current line / block with Alt-e/u ala vscode.

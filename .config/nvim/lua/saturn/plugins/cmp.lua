@@ -55,7 +55,7 @@ cmp.setup({
 		["<C-e>"] = cmp.mapping.select_next_item(),
 		["<C-b>"] = cmp.mapping(cmp.mapping.scroll_docs(-1), { "i", "c" }),
 		["<C-f>"] = cmp.mapping(cmp.mapping.scroll_docs(1), { "i", "c" }),
-		["<C-Space>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
+		["<C-c>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
 		["<C-x>"] = cmp.mapping({
 			i = cmp.mapping.abort(),
 			c = cmp.mapping.close(),
@@ -433,7 +433,7 @@ function M.config()
           fallback()
         end
       end, { "i", "s" }),
-      ["<C-Space>"] = cmp.mapping.complete(),
+      ["<C-c>"] = cmp.mapping.complete(),
       ["<C-x>"] = cmp.mapping.abort(),
       ["<CR>"] = cmp.mapping(function(fallback)
         if cmp.visible() then
