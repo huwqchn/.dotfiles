@@ -14,15 +14,51 @@ local M = {}
 function M.config()
   saturn.plugins.treesitter = {
     on_config_done = nil,
-    ensure_installed = { "lua", "markdown", "markdown_lines", "bash", "python", "c", "rust", "java", "cpp", "cmake" }, -- put the language you want in this array
+    ensure_installed = { "lua", "markdown", "bash", "python", "c", "rust", "java", "cpp", "cmake" }, -- put the language you want in this array
     -- ensure_installed = "all", -- one of "all" or a list of languages
-    ignore_install = { "" }, -- List of parsers to ignore installing
+    ignore_install = {}, -- List of parsers to ignore installing
     sync_install = false, -- install languages synchronously (only applied to `ensure_installed`)
 
     highlight = {
       enable = true, -- false will disable the whole extension
-      disable = { "latex", "css" }, -- list of language that will be disabled
       additional_vim_regex_highlighting = false,
+      disable = function(lang, buf)
+        if vim.tbl_contains({ "latex" }, lang) then
+          return true
+        end
+
+        local max_filesize = 1024 * 1024
+        local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(buf))
+        if ok and stats and stats.size > max_filesize then
+          if saturn.plugins.illuminate.active then
+            pcall(require("illuminate").pause_buf)
+          end
+
+          vim.schedule(function()
+            vim.api.nvim_buf_call(buf, function()
+              vim.cmd "setlocal noswapfile noundofile"
+
+              if vim.tbl_contains({ "json" }, lang) then
+                vim.cmd "NoMatchParen"
+                vim.cmd "syntax off"
+                vim.cmd "syntax clear"
+                vim.cmd "setlocal nocursorline nolist bufhidden=unload"
+
+                vim.api.nvim_create_autocmd({ "BufDelete" }, {
+                  callback = function()
+                    vim.cmd "DoMatchParen"
+                    vim.cmd "syntax on"
+                  end,
+                  buffer = buf,
+                })
+              end
+            end)
+          end)
+
+          log:info "File larger than 1MB, turned off treesitter for this buffer"
+          return true
+        end
+      end,
     },
     context_commentstring = {
       enable = true,
@@ -75,7 +111,7 @@ function M.config()
       },
     },
     rainbow = {
-      enable = false,
+      enable = true,
       extended_mode = true, -- Highlight also non-parentheses delimiters, boolean or table: lang -> boolean
       max_file_lines = 1000, -- Do not enable for files with more than 1000 lines, int
     },
@@ -103,31 +139,5 @@ function M.setup()
     saturn.plugins.treesitter.on_config_done(treesitter_configs)
   end
 end
-
-
-
-
-configs.setup({
-  ensure_installed = { "lua", "markdown", "markdown_inline", "bash", "python" }, -- put the language you want in this array
-  -- ensure_installed = "all", -- one of "all" or a list of languages
-	ignore_install = { "" }, -- List of parsers to ignore installing
-	sync_install = false, -- install languages synchronously (only applied to `ensure_installed`)
-  
-  highlight = {
-		enable = true, -- false will disable the whole extension
-		disable = { "latex", "css" }, -- list of language that will be disabled
-    additional_vim_regex_highlighting = false,
-	},
-	autopairs = {
-		enable = true,
-	},
-	indent = { enable = true, disable = { "python", "css" } },
-
-	context_commentstring = {
-		enable = true,
-		enable_autocmd = false,
-	},
-
-})
 
 return M

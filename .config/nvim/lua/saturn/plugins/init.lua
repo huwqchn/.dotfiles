@@ -1,3 +1,13 @@
+
+local mason = require('saturn.plugins.mason')
+mason.config()
+
+local breadcrumbs = require('saturn.plugins.breadcrumbs')
+breadcrumbs.config()
+
+local treesitter = require('saturn.plugins.treesitter')
+treesitter.config()
+
 require "saturn.plugins.packer"
 require "saturn.plugins.impatient"
 -- require "saturn.plugins.autocommands"
@@ -5,7 +15,7 @@ require "saturn.plugins.colorscheme"
 require "saturn.plugins.cmp"
 require "saturn.plugins.telescope"
 require "saturn.plugins.gitsigns"
-require "saturn.plugins.treesitter"
+-- require "saturn.plugins.treesitter"
 require "saturn.plugins.autopairs"
 require "saturn.plugins.comment"
 require "saturn.plugins.nvim-tree"
@@ -21,6 +31,7 @@ require "saturn.plugins.dap"
 require "saturn.plugins.whichkey"
 require "saturn.plugins.lir"
 
-local mason = require('saturn.plugins.mason')
-mason.config()
+
+-- setup
 mason.setup()
+

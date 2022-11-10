@@ -95,10 +95,17 @@ return packer.startup(function(use)
   use { "nvim-telescope/telescope-fzf-native.nvim", commit = "65c0ee3d4bb9cb696e262bca1ea5e9af3938fc90" }
 
   -- Treesitter
-  use { "nvim-treesitter/nvim-treesitter", commit = "8e763332b7bf7b3a426fd8707b7f5aa85823a5ac" }
+  use { "nvim-treesitter/nvim-treesitter", 
+    commit = "8e763332b7bf7b3a426fd8707b7f5aa85823a5ac",
+    config = function ()
+      require('saturn.plugins.treesitter').setup()
+    end,
+  }
+  use { "p00f/nvim-ts-rainbow", after = "nvim-treesitter" }
 
   -- Git
   use { "lewis6991/gitsigns.nvim", commit = "f98c85e7c3d65a51f45863a34feb4849c82f240f" }
+  use { 'sindrets/diffview.nvim', requires = 'nvim-lua/plenary.nvim' }
 
   -- DAP
   use { "mfussenegger/nvim-dap", commit = "6b12294a57001d994022df8acbe2ef7327d30587" }
@@ -109,7 +116,12 @@ return packer.startup(function(use)
   use { "folke/neodev.nvim", module = "neodev", commit = "a9ddee2951ee43ca678b45bcc604592ea49a9456" }
   use { "christianchiarulli/lir.nvim" }
   use { "folke/which-key.nvim" }
-  use { "SmiteshP/nvim-navic" }
+  use { "SmiteshP/nvim-navic",
+    config = function()
+      require('saturn.plugins.breadcrumbs').setup()
+    end,
+    disable = not saturn.plugins.breadcrumbs.active,
+  }
   use { "b0o/schemastore.nvim" }
 
   -- extra
@@ -125,6 +137,15 @@ return packer.startup(function(use)
   }
   use { "zbirenbaum/copilot-cmp" }
   use { "rcarriga/nvim-notify" }
+
+  -- markdown
+  use({ "iamcco/markdown-preview.nvim", run = "cd app && npm install", setup = function() vim.g.mkdp_filetypes = { "markdown" } end, ft = { "markdown" }, })
+
+  -- colorizer
+  use { 'norcalli/nvim-colorizer.lua', event = "BufRead" }
+
+  -- zen mode
+  use { "folke/zen-mode.nvim" }
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins

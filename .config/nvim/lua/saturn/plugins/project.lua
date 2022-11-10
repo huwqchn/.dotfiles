@@ -4,7 +4,7 @@ if not status_ok then
 end
 local M = {}
 
-function M.setup()
+function M.config()
   saturn.plugins.project = {
     ---@usage set to false to disable project.nvim.
     --- This is on by default since it's currently the expected behavior.
@@ -63,3 +63,5 @@ if not tele_status_ok then
 end
 
 telescope.load_extension('projects')
+
+return M

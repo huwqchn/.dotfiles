@@ -39,6 +39,47 @@ function M.config()
     },
     ui = {
       auto_open = true,
+      config = {
+        expand_lines = true,
+        icons = { expanded = "", collapsed = "", circular = "" },
+        mappings = {
+          -- Use a table to apply multiple mappings
+          expand = { "<CR>", "<2-LeftMouse>" },
+          open = "o",
+          remove = "d",
+          edit = "e",
+          repl = "r",
+          toggle = "t",
+        },
+        layouts = {
+          {
+            elements = {
+              { id = "scopes", size = 0.33 },
+              { id = "breakpoints", size = 0.17 },
+              { id = "stacks", size = 0.25 },
+              { id = "watches", size = 0.25 },
+            },
+            size = 0.33,
+            position = "right",
+          },
+          {
+            elements = {
+              { id = "repl", size = 0.45 },
+              { id = "console", size = 0.55 },
+            },
+            size = 0.27,
+            position = "bottom",
+          },
+        },
+        floating = {
+          max_height = 0.9,
+          max_width = 0.5, -- Floats will be treated as percentage of your screen.
+          border = vim.g.border_chars, -- Border style. Can be 'single', 'double' or 'rounded'
+          mappings = {
+            close = { "q", "<Esc>" },
+          },
+        },
+      },
     },
   }
 end
@@ -57,47 +98,7 @@ function M.setup()
 end
 
 function M.setup_ui()
-  dapui.setup {
-    expand_lines = true,
-    icons = { expanded = "", collapsed = "", circular = "" },
-    mappings = {
-      -- Use a table to apply multiple mappings
-      expand = { "<CR>", "<2-LeftMouse>" },
-      open = "o",
-      remove = "d",
-      edit = "e",
-      repl = "r",
-      toggle = "t",
-    },
-    layouts = {
-      {
-        elements = {
-          { id = "scopes", size = 0.33 },
-          { id = "breakpoints", size = 0.17 },
-          { id = "stacks", size = 0.25 },
-          { id = "watches", size = 0.25 },
-        },
-        size = 0.33,
-        position = "right",
-      },
-      {
-        elements = {
-          { id = "repl", size = 0.45 },
-          { id = "console", size = 0.55 },
-        },
-        size = 0.27,
-        position = "bottom",
-      },
-    },
-    floating = {
-      max_height = 0.9,
-      max_width = 0.5, -- Floats will be treated as percentage of your screen.
-      border = vim.g.border_chars, -- Border style. Can be 'single', 'double' or 'rounded'
-      mappings = {
-        close = { "q", "<Esc>" },
-      },
-    },
-  }
+  dapui.setup(saturn.plugins.dap.ui.config)
 
   if saturn.plugins.dap.ui.auto_open then
     dap.listeners.after.event_initialized["dapui_config"] = function()

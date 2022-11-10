@@ -71,17 +71,21 @@ function M.config()
     disable_in_visualblock = false,
     ---@usage  change default fast_wrap
     fast_wrap = {
-      map = "<M-e>",
+      map = "<M-n>",
       chars = { "{", "[", "(", '"', "'" },
       pattern = string.gsub([[ [%'%"%)%>%]%)%}%,] ]], "%s+", ""),
       offset = 0, -- Offset from pattern match
       end_key = "$",
-      keys = "qwertyuiopzxcvbnmasdfghjkl",
+      keys = "qwfpgjluyzxcvbkmarstdhneio",
       check_comma = true,
       highlight = "Search",
       highlight_grey = "Comment",
     },
   }
+end
+
+local function on_confirm_done(...)
+  require("nvim-autopairs.completion.cmp").on_confirm_done()(...)
 end
 
 function M.setup()
@@ -117,8 +121,9 @@ function M.setup()
     saturn.plugins.autopairs.on_config_done(autopairs)
   end
   pcall(function()
-    local cmp_autopairs = require "nvim-autopairs.completion.cmp"
-    require("cmp").event:on("confirm_done", cmp_autopairs.on_confirm_done())
+    require "nvim-autopairs.completion.cmp"
+    require("cmp").event:off("confirm_done", on_confirm_done)
+    require("cmp").event:on("confirm_done", on_confirm_done)
   end)
 end
 return M

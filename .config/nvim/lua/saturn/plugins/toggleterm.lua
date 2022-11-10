@@ -6,7 +6,7 @@ end
 local M = {}
 
 function M.config()
-  saturn.plugins["toggleterm"] = {
+  saturn.plugins.toggleterm = {
     active = true,
     on_config_done = nil,
     -- size can be a number or function which is passed the current terminal
