@@ -51,12 +51,12 @@ cmp.setup({
 	},
 
 	mapping = cmp.mapping.preset.insert({
-		["<C-k>"] = cmp.mapping.select_prev_item(),
-		["<C-j>"] = cmp.mapping.select_next_item(),
+		["<C-u>"] = cmp.mapping.select_prev_item(),
+		["<C-e>"] = cmp.mapping.select_next_item(),
 		["<C-b>"] = cmp.mapping(cmp.mapping.scroll_docs(-1), { "i", "c" }),
 		["<C-f>"] = cmp.mapping(cmp.mapping.scroll_docs(1), { "i", "c" }),
 		["<C-Space>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
-		["<C-e>"] = cmp.mapping({
+		["<C-x>"] = cmp.mapping({
 			i = cmp.mapping.abort(),
 			c = cmp.mapping.close(),
 		}),
@@ -394,8 +394,8 @@ function M.config()
       { name = "tmux" },
     },
     mapping = cmp.mapping.preset.insert {
-      ["<C-k>"] = cmp.mapping(cmp.mapping.select_prev_item(), { "i", "c" }),
-      ["<C-j>"] = cmp.mapping(cmp.mapping.select_next_item(), { "i", "c" }),
+      ["<C-u>"] = cmp.mapping(cmp.mapping.select_prev_item(), { "i", "c" }),
+      ["<C-e>"] = cmp.mapping(cmp.mapping.select_next_item(), { "i", "c" }),
       ["<Down>"] = cmp.mapping(cmp.mapping.select_next_item { behavior = cmp.SelectBehavior.Select }, { "i" }),
       ["<Up>"] = cmp.mapping(cmp.mapping.select_prev_item { behavior = cmp.SelectBehavior.Select }, { "i" }),
       ["<C-d>"] = cmp.mapping.scroll_docs(-4),
@@ -434,7 +434,7 @@ function M.config()
         end
       end, { "i", "s" }),
       ["<C-Space>"] = cmp.mapping.complete(),
-      ["<C-e>"] = cmp.mapping.abort(),
+      ["<C-x>"] = cmp.mapping.abort(),
       ["<CR>"] = cmp.mapping(function(fallback)
         if cmp.visible() then
           local confirm_opts = vim.deepcopy(saturn.plugins.cmp.confirm_opts) -- avoid mutating the original opts below
