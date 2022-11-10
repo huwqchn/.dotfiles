@@ -52,6 +52,7 @@ set hlsearch " search highlignting
 
 set showcmd " show cmmand line
 set wildmenu " display command line's tab complete options as a menu
+set wildmode=list:full
 
 set ttimeoutlen=0 " set vim will wait for longer after each keystroke of the mapping before aborting it and carrying out the behaviour
 set notimeout " disable timeout on the vim leader key

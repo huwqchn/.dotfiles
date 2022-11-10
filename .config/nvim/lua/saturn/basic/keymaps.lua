@@ -154,12 +154,6 @@ M.general = {
     -- runs conditionally
     ["<C-e>"] = { 'pumvisible() ? "\\<C-n>" : "\\<C-j>"', { expr = true, noremap = true } },
     ["<C-u>"] = { 'pumvisible() ? "\\<C-p>" : "\\<C-k>"', { expr = true, noremap = true } },
-		["<C-n>"] = "<Left>",
-		["<C-i>"] = "<Right>",
-		["<C-s>"] = "<S-Left>",
-		["<c-t>"] = "<S-Rihgt>",
-		["<c-h>"] = "<Home>",
-		["<c-o>"] = "<End>",
 	}
 }
 
