@@ -5,7 +5,7 @@ M.load = function()
     backup = false, -- creates a backup file
     clipboard = "unnamedplus", -- allows neovim to access the system clipboard
     cmdheight = 1, -- more space in the neovim command line for displaying messages
-    completeopt = { "menuone", "noselect" },
+    completeopt = { "menu", "menuone", "noselect" },
     conceallevel = 0, -- so that `` is visible in markdown files
     fileencoding = "utf-8", -- the encoding written to a file
     foldmethod = "manual", -- folding, set to "expr" for treesitter based folding
@@ -54,6 +54,9 @@ M.load = function()
     showcmd = false,
     ruler = false,
     laststatus = 3,
+    lazyredraw = true, -- redraw editor when changes
+    ttyfast = true, -- should make scrolling faster
+    inccommand = 'split', -- preview command effect
   }
 
   ---  SETTINGS  ---
