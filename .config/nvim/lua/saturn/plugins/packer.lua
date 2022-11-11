@@ -138,13 +138,38 @@ return packer.startup(function(use)
   use { "p00f/nvim-ts-rainbow", after = "nvim-treesitter" }
 
   -- Git
-  use { "lewis6991/gitsigns.nvim", commit = "f98c85e7c3d65a51f45863a34feb4849c82f240f" }
+  use { "lewis6991/gitsigns.nvim",
+    -- commit = "f98c85e7c3d65a51f45863a34feb4849c82f240f",
+    config = function()
+      require("saturn.plugins.gitsigns").setup()
+    end,
+    -- event = "BufRead",
+    -- disable = not saturn.plugins.gitsigns.active,
+  }
   use { 'sindrets/diffview.nvim', requires = 'nvim-lua/plenary.nvim' }
 
   -- DAP
-  use { "mfussenegger/nvim-dap", commit = "6b12294a57001d994022df8acbe2ef7327d30587" }
-  use { "rcarriga/nvim-dap-ui", commit = "1cd4764221c91686dcf4d6b62d7a7b2d112e0b13" }
-  use { "ravenxrz/DAPInstall.nvim", commit = "8798b4c36d33723e7bba6ed6e2c202f84bb300de" }
+  use { "mfussenegger/nvim-dap",
+    commit = "6b12294a57001d994022df8acbe2ef7327d30587",
+    config = function()
+      require("saturn.plugins.dap").setup()
+    end,
+    disable = not saturn.plugins.dap.active,
+  }
+  use { "rcarriga/nvim-dap-ui",
+    commit = "1cd4764221c91686dcf4d6b62d7a7b2d112e0b13",
+    config = function()
+      require("saturn.plugins.dap").setup_ui()
+    end,
+    disable = not saturn.plugins.dap.active,
+  }
+  use { "ravenxrz/DAPInstall.nvim",
+    -- commit = "8798b4c36d33723e7bba6ed6e2c202f84bb300de",
+    config = function()
+      require('saturn.plugins.dap').setup_install()
+    end,
+    disable = not saturn.plugins.dap.active,
+  }
 
   use { "Tastyep/structlog.nvim", commit = "232a8e26060440e0db9fefba857036442b34227d" }
   use { "folke/neodev.nvim", module = "neodev", commit = "a9ddee2951ee43ca678b45bcc604592ea49a9456" }
