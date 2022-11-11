@@ -104,18 +104,18 @@ function M.config()
         cmd = "trash",
         require_confirm = true,
       },
-      -- Log = {
-      --   enable = false,
-      --   truncate = false,
-      --   types = {
-      --     all = false,
-      --     config = false,
-      --     copy_paste = false,
-      --     diagnostics = false,
-      --     git = false,
-      --     profile = false,
-      --   },
-      -- },
+      log = {
+        enable = false,
+        truncate = false,
+        types = {
+          all = false,
+          config = false,
+          copy_paste = false,
+          diagnostics = false,
+          git = false,
+          profile = false,
+        },
+      },
       actions = {
         use_system_clipboard = true,
         change_dir = {

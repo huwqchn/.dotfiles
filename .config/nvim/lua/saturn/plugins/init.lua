@@ -8,6 +8,7 @@ require('saturn.plugins.lir').config()
 require('saturn.plugins.toggleterm').config()
 require('saturn.plugins.dap').config()
 require('saturn.plugins.gitsigns').config()
+require('saturn.plugins.telescope').config()
 require('saturn.plugins.project').config()
 require('saturn.plugins.nvim-tree').config()
 require "saturn.plugins.packer"
@@ -16,7 +17,6 @@ require "saturn.plugins.impatient"
 -- require "saturn.plugins.autocommands"
 require "saturn.plugins.colorscheme"
 -- require "saturn.plugins.cmp"
-require "saturn.plugins.telescope"
 -- require "saturn.plugins.treesitter"
 -- require "saturn.plugins.autopairs"
 require "saturn.plugins.comment"
