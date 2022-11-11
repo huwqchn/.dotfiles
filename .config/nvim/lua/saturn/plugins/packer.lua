@@ -65,9 +65,10 @@ return packer.startup(function(use)
     end,
     disable = not saturn.plugins.comment.active,
   }
-  use { "JoosepAlviste/nvim-ts-context-commentstring", 
-    commit = "32d9627123321db65a4f158b72b757bcaef1a3f4", 
-    event = "BufReadPost", 
+  use { "folke/todo-comments.nvim" }
+  use { "JoosepAlviste/nvim-ts-context-commentstring",
+    commit = "32d9627123321db65a4f158b72b757bcaef1a3f4",
+    event = "BufReadPost",
   }
   use { "kyazdani42/nvim-web-devicons", commit = "563f3635c2d8a7be7933b9e547f7c178ba0d4352", disable = not saturn.use_icons, }
   use { "kyazdani42/nvim-tree.lua",
@@ -77,7 +78,7 @@ return packer.startup(function(use)
     end,
     disable = not saturn.plugins.nvimtree.active,
   }
-  use { "akinsho/bufferline.nvim", 
+  use { "akinsho/bufferline.nvim",
     -- commit = "83bf4dc7bff642e145c8b4547aa596803a8b4dc4",
     config = function()
       require('saturn.plugins.bufferline').setup()
@@ -87,7 +88,7 @@ return packer.startup(function(use)
     disable = not saturn.plugins.bufferline.active,
   }
   use { "moll/vim-bbye", commit = "25ef93ac5a87526111f43e5110675032dbcacf56" }
-  use { "nvim-lualine/lualine.nvim", 
+  use { "nvim-lualine/lualine.nvim",
     commit = "a52f078026b27694d2290e34efa61a6e4a690621",
     config = function()
       require('saturn.plugins.lualine').setup()
@@ -125,7 +126,7 @@ return packer.startup(function(use)
   use { "lunarvim/darkplus.nvim", commit = "13ef9daad28d3cf6c5e793acfc16ddbf456e1c83" }
 
   -- cmp plugins
-  use { 
+  use {
     "hrsh7th/nvim-cmp",
     commit = "b0dff0ec4f2748626aae13f011d1a47071fe9abc",
     config = function()
@@ -140,7 +141,8 @@ return packer.startup(function(use)
   use { "saadparwaiz1/cmp_luasnip", commit = "a9de941bcbda508d0a45d28ae366bb3f08db2e36" } -- snippet completions
   use { "hrsh7th/cmp-nvim-lsp", commit = "affe808a5c56b71630f17aa7c38e15c59fd648a8" }
   use { "hrsh7th/cmp-nvim-lua", commit = "d276254e7198ab7d00f117e88e223b4bd8c02d21" }
-
+  use { "hrsh7th/cmp-cmdline" } -- cmdline completions
+  use { "hrsh7th/cmp-emoji" }
   -- snippets
   use { "L3MON4D3/LuaSnip", commit = "8f8d493e7836f2697df878ef9c128337cbf2bb84" } --snippet engine
   use { "rafamadriz/friendly-snippets",
@@ -169,7 +171,7 @@ return packer.startup(function(use)
   }
 
   -- Telescope
-  use { "nvim-telescope/telescope.nvim", 
+  use { "nvim-telescope/telescope.nvim",
     -- commit = "76ea9a898d3307244dce3573392dcf2cc38f340f",
     branch = "0.1.x",
     config = function()
@@ -183,9 +185,11 @@ return packer.startup(function(use)
     run = "make",
     disable = not saturn.plugins.telescope.active,
   }
+  use { "nvim-telescope/telescope-media-files.nvim" }
+  use { "tom-anders/telescope-vim-bookmarks.nvim" }
 
   -- Treesitter
-  use { "nvim-treesitter/nvim-treesitter", 
+  use { "nvim-treesitter/nvim-treesitter",
     commit = "8e763332b7bf7b3a426fd8707b7f5aa85823a5ac",
     config = function ()
       require('saturn.plugins.treesitter').setup()
@@ -193,6 +197,9 @@ return packer.startup(function(use)
   }
   use { "p00f/nvim-ts-rainbow", after = "nvim-treesitter" }
 
+  use { "nvim-treesitter/playground" }
+  use { "windwp/nvim-ts-autotag" }
+  use { "nvim-treesitter/nvim-treesitter-textobjects" }
   -- Git
   use { "lewis6991/gitsigns.nvim",
     -- commit = "f98c85e7c3d65a51f45863a34feb4849c82f240f",
@@ -202,6 +209,11 @@ return packer.startup(function(use)
     -- event = "BufRead",
     -- disable = not saturn.plugins.gitsigns.active,
   }
+  use { "f-person/git-blame.nvim" }
+  use { "ruifm/gitlinker.nvim" }
+  use { "mattn/vim-gist" }
+  use { "mattn/webapi-vim" }
+
   use { 'sindrets/diffview.nvim', requires = 'nvim-lua/plenary.nvim' }
 
   -- DAP
@@ -236,7 +248,8 @@ return packer.startup(function(use)
     require = { "kyazdani42/nvim-web-devicons" },
     disable = not saturn.plugins.lir.active,
   }
-  use { 
+
+  use {
     "folke/which-key.nvim",
     config = function()
       require("saturn.plugins.whichkey").setup()
@@ -265,6 +278,7 @@ return packer.startup(function(use)
   }
   use { "zbirenbaum/copilot-cmp" }
   use { "rcarriga/nvim-notify" }
+  use { "lalitmee/browse.nvim" }
 
   -- markdown
   use({ "iamcco/markdown-preview.nvim", run = "cd app && npm install", setup = function() vim.g.mkdp_filetypes = { "markdown" } end, ft = { "markdown" }, })
@@ -274,6 +288,9 @@ return packer.startup(function(use)
 
   -- zen mode
   use { "folke/zen-mode.nvim" }
+
+  -- aerial
+  use { "stevearc/aerial.nvim" }
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
