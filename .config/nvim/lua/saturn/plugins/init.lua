@@ -21,4 +21,4 @@ require "saturn.plugins.packer"
 require "saturn.plugins.impatient"
 require('saturn.plugins.theme').setup()
 require "saturn.plugins.alpha"
-require "saturn.plugins.lsp"
+-- require "saturn.plugins.lsp"
