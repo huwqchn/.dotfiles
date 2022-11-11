@@ -22,9 +22,15 @@ alias la="exa -a --color=always --icons --group-directories-first"
 alias tree="lsd --tree"
 alias cat="bat"
 alias du="dust"
+
 # some git aliases
 alias gp="git push"
 alias gP="git pull"
+alias ga="git status"
+alias gA="git add"
+alias gc="git commit"
+alias gC="git checkout"
+
 
 alias nc="ncmpcpp"
 alias m="neomutt"
