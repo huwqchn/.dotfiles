@@ -37,8 +37,14 @@ function M.config()
       linehl = "Visual",
       numhl = "DiagnosticSignWarn",
     },
+    log = {
+      level = "info",
+    },
     ui = {
       auto_open = true,
+      notify = {
+        threshold = vim.log.levels.INFO,
+      },
       config = {
         expand_lines = true,
         icons = { expanded = "", collapsed = "", circular = "" },
@@ -92,6 +98,7 @@ function M.setup()
     vim.fn.sign_define("DapStopped", saturn.plugins.dap.stopped)
   end
 
+  dap.set_log_level(saturn.plugins.dap.log.level)
   if saturn.plugins.dap.on_config_done then
     saturn.plugins.dap.on_config_done(dap)
   end
@@ -110,6 +117,42 @@ function M.setup_ui()
     dap.listeners.before.event_exited["dapui_config"] = function()
       dapui.close()
     end
+  end
+  local Log = require "saturn.plugins.log"
+
+  -- until rcarriga/nvim-dap-ui#164 is fixed
+  local function notify_handler(msg, level, opts)
+    if level >= saturn.plugins.dap.ui.notify.threshold then
+      return vim.notify(msg, level, opts)
+    end
+
+    opts = vim.tbl_extend("keep", opts or {}, {
+      title = "dap-ui",
+      icon = "",
+      on_open = function(win)
+        vim.api.nvim_buf_set_option(vim.api.nvim_win_get_buf(win), "filetype", "markdown")
+      end,
+    })
+
+    -- vim_log_level can be omitted
+    if level == nil then
+      level = Log.levels["INFO"]
+    elseif type(level) == "string" then
+      level = Log.levels[(level):upper()] or Log.levels["INFO"]
+    else
+      -- https://github.com/neovim/neovim/blob/685cf398130c61c158401b992a1893c2405cd7d2/runtime/lua/vim/lsp/log.lua#L5
+      level = level + 1
+    end
+
+    msg = string.format("%s: %s", opts.title, msg)
+    Log:add_entry(level, msg)
+  end
+
+  local dapui_ok, _ = xpcall(function()
+    require("dapui.util").notify = notify_handler
+  end, debug.traceback)
+  if not dapui_ok then
+    Log:debug "Unable to override dap-ui logging level"
   end
 end
 
