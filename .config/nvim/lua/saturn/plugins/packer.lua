@@ -111,6 +111,7 @@ return packer.startup(function(use)
     end,
     disable = not saturn.plugins.project.active,
   }
+  use { "windwp/nvim-spectre" }
   use { "lewis6991/impatient.nvim", commit = "b842e16ecc1a700f62adb9802f8355b99b52a5a6" }
   use { "lukas-reineke/indent-blankline.nvim",
     commit = "db7cbcb40cc00fc5d6074d7569fb37197705e7f6",
@@ -143,6 +144,14 @@ return packer.startup(function(use)
   use { "hrsh7th/cmp-nvim-lua", commit = "d276254e7198ab7d00f117e88e223b4bd8c02d21" }
   use { "hrsh7th/cmp-cmdline" } -- cmdline completions
   use { "hrsh7th/cmp-emoji" }
+  use { "zbirenbaum/copilot-cmp" }
+  use { "tzachar/cmp-tabnine", 
+    run = "./install.sh",
+    config = function()
+      require("saturn.plugins.tabnine").setup()
+    end
+  }
+
   -- snippets
   use { "L3MON4D3/LuaSnip", commit = "8f8d493e7836f2697df878ef9c128337cbf2bb84" } --snippet engine
   use { "rafamadriz/friendly-snippets",
@@ -160,6 +169,8 @@ return packer.startup(function(use)
   }
   use { "williamboman/mason-lspconfig.nvim", commit = "0051870dd728f4988110a1b2d47f4a4510213e31" }
   use { "jose-elias-alvarez/null-ls.nvim", commit = "c0c19f32b614b3921e17886c541c13a72748d450" } -- for formatters and linters
+  use { "ray-x/lsp_signature.nvim" }
+
 
   use { "tamago324/nlsp-settings.nvim", commit = "758adec8e3b3dd0b4f4d5073a0419b9e1daf43f7" }
   use { "RRethy/vim-illuminate",
@@ -169,6 +180,11 @@ return packer.startup(function(use)
     end,
     disable = not saturn.plugins.illuminate.active,
   }
+
+  use { "j-hui/fidget.nvim" }
+  use { "lvimuser/lsp-inlayhints.nvim" }
+  use { "https://git.sr.ht/~whynothugo/lsp_lines.nvim" }
+
 
   -- Telescope
   use { "nvim-telescope/telescope.nvim",
@@ -263,6 +279,7 @@ return packer.startup(function(use)
     end,
     disable = not saturn.plugins.breadcrumbs.active,
   }
+  use { "simrat39/symbols-outline.nvim" }
   use { "b0o/schemastore.nvim" }
 
   -- extra
@@ -276,21 +293,81 @@ return packer.startup(function(use)
       end, 100)
     end,
   }
-  use { "zbirenbaum/copilot-cmp" }
+
+  -- Utility
   use { "rcarriga/nvim-notify" }
+  use { "stevearc/dressing.nvim" }
+  use { "ghillb/cybu.nvim" }
   use { "lalitmee/browse.nvim" }
+
+  -- Registers
+  use { "tversteeg/registers.nvim" }
+
 
   -- markdown
   use({ "iamcco/markdown-preview.nvim", run = "cd app && npm install", setup = function() vim.g.mkdp_filetypes = { "markdown" } end, ft = { "markdown" }, })
 
   -- colorizer
-  use { 'norcalli/nvim-colorizer.lua', event = "BufRead" }
+  use { "norcalli/nvim-colorizer.lua", event = "BufRead" }
+  use { "nvim-colortils/colortils.nvim" }
 
   -- zen mode
   use { "folke/zen-mode.nvim" }
 
   -- aerial
   use { "stevearc/aerial.nvim" }
+
+  -- surround
+  use { "kylechui/nvim-surround" }
+
+  use {
+    "abecodes/tabout.nvim",
+    wants = { "nvim-treesitter" }, -- or require if not used so far
+  }
+
+  -- marks
+  use { "christianchiarulli/harpoon" }
+  use { "MattesGroeger/vim-bookmarks" }
+
+  -- Note Taking
+  use "mickael-menu/zk-nvim"
+
+  -- Session
+  use { "rmagatti/auto-session" }
+  use { "rmagatti/session-lens" }
+
+    -- Quickfix
+  use { "kevinhwang91/nvim-bqf" }
+
+  -- Code Runner
+  use "is0n/jaq-nvim"
+  use {
+    "0x100101/lab.nvim",
+    run = "cd js && npm ci",
+  }
+
+  -- Github
+  use { "pwntester/octo.nvim" }
+
+  -- edit support
+  use { "monaqa/dial.nvim" }
+  use { "nacro90/numb.nvim" }
+  use { "andymass/vim-matchup" }
+  use { "karb94/neoscroll.nvim" }
+  use { "junegunn/vim-slash" }
+
+  -- Motion
+  use { "phaazon/hop.nvim" }
+
+  -- Java
+  use { "mfussenegger/nvim-jdtls" }
+  
+  -- Rust
+  use { "christianchiarulli/rust-tools.nvim", branch = "modularize_and_inlay_rewrite" }
+  use { "Saecki/crates.nvim" }
+
+  -- Typescript TODO: set this up, also add keybinds to ftplugin
+  use { "jose-elias-alvarez/typescript.nvim" }
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
