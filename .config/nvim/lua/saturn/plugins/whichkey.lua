@@ -155,7 +155,7 @@ local mappings = {
   },
   g = {
     name = "Git",
-    g = { "<cmd>lua require 'saturn.plugins.configs.toggleterm'.lazygit_toggle()<cr>", "Lazygit" },
+    g = { "<cmd>lua require 'saturn.plugins.toggleterm'.lazygit_toggle()<cr>", "Lazygit" },
     e = { "<cmd>lua require 'gitsigns'.next_hunk({navigation_message = false})<cr>", "Next Hunk" },
     u = { "<cmd>lua require 'gitsigns'.prev_hunk({navigation_message = false})<cr>", "Prev Hunk" },
     b = { "<cmd>lua require 'gitsigns'.blame_line()<cr>", "Blame" },

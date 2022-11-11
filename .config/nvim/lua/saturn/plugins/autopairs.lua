@@ -1,45 +1,7 @@
--- Setup nvim-cmp.
-local status_ok, autopairs = pcall(require, "nvim-autopairs")
-if not status_ok then
-	return
-end
-
-autopairs.setup({
-	check_ts = true, -- treesitter integration
-	disable_filetype = { "TelescopePrompt" },
-	ts_config = {
-		lua = { "string", "source" },
-		javascript = { "string", "template_string" },
-		java = false,
-	},
-
-	fast_wrap = {
-		map = "<M-w>",
-		chars = { "{", "[", "(", '"', "'" },
-		pattern = string.gsub([[ [%'%"%)%>%]%)%}%,] ]], "%s+", ""),
-		offset = 0, -- Offset from pattern match
-		end_key = "$",
-		keys = "qwertyuiopzxcvbnmasdfghjkl",
-		check_comma = true,
-		highlight = "PmenuSel",
-		highlight_grey = "LineNr",
-	},
-})
-
-local cmp_autopairs = require("nvim-autopairs.completion.cmp")
-local cmp_status_ok, cmp = pcall(require, "cmp")
-if not cmp_status_ok then
-	return
-end
-cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done({}))
-
-
--- refactory
-
 local M = {}
 
 function M.config()
-  saturn.builtin.autopairs = {
+  saturn.plugins.autopairs = {
     active = true,
     on_config_done = nil,
     ---@usage  modifies the function or method delimiter by filetypes
@@ -71,7 +33,7 @@ function M.config()
     disable_in_visualblock = false,
     ---@usage  change default fast_wrap
     fast_wrap = {
-      map = "<M-n>",
+      map = "<M-w>",
       chars = { "{", "[", "(", '"', "'" },
       pattern = string.gsub([[ [%'%"%)%>%]%)%}%,] ]], "%s+", ""),
       offset = 0, -- Offset from pattern match
@@ -89,6 +51,11 @@ local function on_confirm_done(...)
 end
 
 function M.setup()
+  local present, autopairs = pcall(require, "nvim-autopairs")
+  if not present then
+    return
+  end
+
   local Rule = require "nvim-autopairs.rule"
 
   autopairs.setup {
@@ -126,4 +93,5 @@ function M.setup()
     require("cmp").event:on("confirm_done", on_confirm_done)
   end)
 end
+
 return M
