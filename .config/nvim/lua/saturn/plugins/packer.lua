@@ -57,9 +57,19 @@ return packer.startup(function(use)
     end,
     disable = not saturn.plugins.autopairs.active,
   } -- Autopairs, integrates with both cmp and treesitter
-  use { "numToStr/Comment.nvim", commit = "97a188a98b5a3a6f9b1b850799ac078faa17ab67" }
-  use { "JoosepAlviste/nvim-ts-context-commentstring", commit = "32d9627123321db65a4f158b72b757bcaef1a3f4" }
-  use { "kyazdani42/nvim-web-devicons", commit = "563f3635c2d8a7be7933b9e547f7c178ba0d4352" }
+  use { "numToStr/Comment.nvim",
+    commit = "97a188a98b5a3a6f9b1b850799ac078faa17ab67",
+    event = "BufRead",
+    config = function()
+      require("saturn.plugins.comment").setup()
+    end,
+    disable = not saturn.plugins.comment.active,
+  }
+  use { "JoosepAlviste/nvim-ts-context-commentstring", 
+    commit = "32d9627123321db65a4f158b72b757bcaef1a3f4", 
+    event = "BufReadPost", 
+  }
+  use { "kyazdani42/nvim-web-devicons", commit = "563f3635c2d8a7be7933b9e547f7c178ba0d4352", disable = not saturn.use_icons, }
   use { "kyazdani42/nvim-tree.lua",
     -- commit = "7282f7de8aedf861fe0162a559fc2b214383c51c",
     config = function()
@@ -67,7 +77,15 @@ return packer.startup(function(use)
     end,
     disable = not saturn.plugins.nvimtree.active,
   }
-  use { "akinsho/bufferline.nvim", commit = "83bf4dc7bff642e145c8b4547aa596803a8b4dc4" }
+  use { "akinsho/bufferline.nvim", 
+    -- commit = "83bf4dc7bff642e145c8b4547aa596803a8b4dc4",
+    config = function()
+      require('saturn.plugins.bufferline').setup()
+    end,
+    branch = "main",
+    event = "BufWinEnter",
+    disable = not saturn.plugins.bufferline.active,
+  }
   use { "moll/vim-bbye", commit = "25ef93ac5a87526111f43e5110675032dbcacf56" }
   use { "nvim-lualine/lualine.nvim", 
     commit = "a52f078026b27694d2290e34efa61a6e4a690621",
@@ -93,7 +111,13 @@ return packer.startup(function(use)
     disable = not saturn.plugins.project.active,
   }
   use { "lewis6991/impatient.nvim", commit = "b842e16ecc1a700f62adb9802f8355b99b52a5a6" }
-  use { "lukas-reineke/indent-blankline.nvim", commit = "db7cbcb40cc00fc5d6074d7569fb37197705e7f6" }
+  use { "lukas-reineke/indent-blankline.nvim",
+    commit = "db7cbcb40cc00fc5d6074d7569fb37197705e7f6",
+    config = function()
+      require('saturn.plugins.indentline').setup()
+    end,
+    disable = not saturn.plugins.indentlines.active,
+  }
   use { "goolord/alpha-nvim", commit = "0bb6fc0646bcd1cdb4639737a1cee8d6e08bcc31" }
 
   -- Colorschemes
@@ -119,7 +143,9 @@ return packer.startup(function(use)
 
   -- snippets
   use { "L3MON4D3/LuaSnip", commit = "8f8d493e7836f2697df878ef9c128337cbf2bb84" } --snippet engine
-  use { "rafamadriz/friendly-snippets", commit = "2be79d8a9b03d4175ba6b3d14b082680de1b31b1" } -- a bunch of snippets to use
+  use { "rafamadriz/friendly-snippets",
+    commit = "2be79d8a9b03d4175ba6b3d14b082680de1b31b1",
+  } -- a bunch of snippets to use
 
   -- LSP
   -- use { "williamboman/nvim-lsp-installer", commit = "e9f13d7acaa60aff91c58b923002228668c8c9e6" } -- simple to use language server installer
@@ -134,7 +160,13 @@ return packer.startup(function(use)
   use { "jose-elias-alvarez/null-ls.nvim", commit = "c0c19f32b614b3921e17886c541c13a72748d450" } -- for formatters and linters
 
   use { "tamago324/nlsp-settings.nvim", commit = "758adec8e3b3dd0b4f4d5073a0419b9e1daf43f7" }
-  use { "RRethy/vim-illuminate", commit = "a2e8476af3f3e993bb0d6477438aad3096512e42" }
+  use { "RRethy/vim-illuminate",
+    -- commit = "a2e8476af3f3e993bb0d6477438aad3096512e42",
+    config = function()
+      require('saturn.plugins.illuminate').setup()
+    end,
+    disable = not saturn.plugins.illuminate.active,
+  }
 
   -- Telescope
   use { "nvim-telescope/telescope.nvim", 
@@ -204,7 +236,14 @@ return packer.startup(function(use)
     require = { "kyazdani42/nvim-web-devicons" },
     disable = not saturn.plugins.lir.active,
   }
-  use { "folke/which-key.nvim" }
+  use { 
+    "folke/which-key.nvim",
+    config = function()
+      require("saturn.plugins.whichkey").setup()
+    end,
+    event = "BufWinEnter",
+    disable = not saturn.plugins.whichkey.active,
+  }
   use { "SmiteshP/nvim-navic",
     config = function()
       require('saturn.plugins.breadcrumbs').setup()
