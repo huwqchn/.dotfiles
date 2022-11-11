@@ -14,10 +14,6 @@ end
 
 local branch = saturn.icons.git.Branch
 
-if saturn.colorscheme == "lunar" then
-  branch = "%#SLGitIcon#" .. saturn.icons.git.Branch .. "%*" .. "%#SLBranchName#"
-end
-
 return {
   mode = {
     function()

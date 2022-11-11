@@ -1,14 +1,4 @@
-local status_ok, treesitter = pcall(require, "nvim-treesitter")
-if not status_ok then
-	return
-end
-
-local status_ok, configs = pcall(require, "nvim-treesitter.configs")
-if not status_ok then
-	return
-end
-
-local log = require 'saturn.plugins.log'
+local Log = require 'saturn.plugins.log'
 local M = {}
 
 function M.config()
@@ -55,7 +45,7 @@ function M.config()
             end)
           end)
 
-          log:info "File larger than 1MB, turned off treesitter for this buffer"
+          Log:info "File larger than 1MB, turned off treesitter for this buffer"
           return true
         end
       end,
@@ -121,13 +111,13 @@ end
 function M.setup()
   -- avoid running in headless mode since it's harder to detect failures
   if #vim.api.nvim_list_uis() == 0 then
-    log:debug "headless mode detected, skipping running setup for treesitter"
+    Log:debug "headless mode detected, skipping running setup for treesitter"
     return
   end
 
   local status_ok, treesitter_configs = pcall(require, "nvim-treesitter.configs")
   if not status_ok then
-    log:error "Failed to load nvim-treesitter.configs"
+    Log:error "Failed to load nvim-treesitter.configs"
     return
   end
 
