@@ -1,15 +1,5 @@
-local status_ok, nvim_tree = pcall(require, "nvim-tree")
-if not status_ok then
-  return
-end
-
-local config_status_ok, nvim_tree_config = pcall(require, "nvim-tree.config")
-if not config_status_ok then
-  return
-end
-
 local M = {}
-local log = require 'saturn.plugins.log'
+local Log = require 'saturn.plugins.log'
 
 function M.config()
   saturn.plugins.nvimtree = {
@@ -114,18 +104,18 @@ function M.config()
         cmd = "trash",
         require_confirm = true,
       },
-      log = {
-        enable = false,
-        truncate = false,
-        types = {
-          all = false,
-          config = false,
-          copy_paste = false,
-          diagnostics = false,
-          git = false,
-          profile = false,
-        },
-      },
+      -- Log = {
+      --   enable = false,
+      --   truncate = false,
+      --   types = {
+      --     all = false,
+      --     config = false,
+      --     copy_paste = false,
+      --     diagnostics = false,
+      --     git = false,
+      --     profile = false,
+      --   },
+      -- },
       actions = {
         use_system_clipboard = true,
         change_dir = {
@@ -151,19 +141,18 @@ function M.config()
 end
 
 function M.setup()
-    local status_ok, nvim_tree = pcall(require, "nvim-tree")
-  if not status_ok then
-    log:error "Failed to load nvim-tree"
+  local present, nvim_tree = pcall(require, "nvim-tree")
+  if not present then
+    Log:error "Failed to load nvim-tree"
     return
   end
-
 
   if saturn.plugins.nvimtree._setup_called then
-    log:debug "ignoring repeated setup call for nvim-tree, see kyazdani42/nvim-tree.lua#1308"
+    Log:debug "ignoring repeated setup call for nvim-tree, see kyazdani42/nvim-tree.lua#1308"
     return
   end
 
-  saturn.plugins.which_key.mappings["e"] = { "<cmd>NvimTreeToggle<CR>", "Explorer" }
+  -- saturn.plugins.which_key.mappings["e"] = { "<cmd>NvimTreeToggle<CR>", "Explorer" }
   saturn.plugins.nvimtree._setup_called = true
 
   -- Implicitly update nvim-tree when project module is active
@@ -209,64 +198,5 @@ function M.start_telescope(telescope_mode)
     cwd = basedir,
   }
 end
-
-
-local tree_cb = nvim_tree_config.nvim_tree_callback
-
-nvim_tree.setup {
-  update_focused_file = {
-    enable = true,
-    update_cwd = true,
-  },
-  renderer = {
-    root_folder_modifier = ":t",
-    icons = {
-      glyphs = {
-        default = "",
-        symlink = "",
-        folder = {
-          arrow_open = "",
-          arrow_closed = "",
-          default = "",
-          open = "",
-          empty = "",
-          empty_open = "",
-          symlink = "",
-          symlink_open = "",
-        },
-        git = {
-          unstaged = "",
-          staged = "S",
-          unmerged = "",
-          renamed = "➜",
-          untracked = "U",
-          deleted = "",
-          ignored = "◌",
-        },
-      },
-    },
-  },
-  diagnostics = {
-    enable = true,
-    show_on_dirs = true,
-    icons = {
-      hint = "",
-      info = "",
-      warning = "",
-      error = "",
-    },
-  },
-  view = {
-    width = 30,
-    side = "left",
-    mappings = {
-      list = {
-        { key = { "l", "<CR>", "o" }, cb = tree_cb "edit" },
-        { key = "h", cb = tree_cb "close_node" },
-        { key = "v", cb = tree_cb "vsplit" },
-      },
-    },
-  },
-}
 
 return M

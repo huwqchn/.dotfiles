@@ -1,7 +1,3 @@
-local status_ok, project = pcall(require, "project_nvim")
-if not status_ok then
-	return
-end
 local M = {}
 
 function M.config()
@@ -41,27 +37,15 @@ function M.config()
 end
 
 function M.setup()
+  local present, project = pcall(require, "project_nvim")
+  if not present then
+    return
+  end
 
   project.setup(saturn.plugins.project)
   if saturn.plugins.project.on_config_done then
     saturn.plugins.project.on_config_done(project)
   end
 end
-
-project.setup({
-
-	-- detection_methods = { "lsp", "pattern" }, -- NOTE: lsp detection will get annoying with multiple langs in one project
-	detection_methods = { "pattern" },
-
-	-- patterns used to detect root dir, when **"pattern"** is in detection_methods
-	patterns = { ".git", "Makefile", "package.json" },
-})
-
-local tele_status_ok, telescope = pcall(require, "telescope")
-if not tele_status_ok then
-	return
-end
-
-telescope.load_extension('projects')
 
 return M
