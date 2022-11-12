@@ -14,6 +14,7 @@ elif [[ `uname` == 'Linux' ]]; then
   alias aic='ascii-image-converter'
   alias x='xmodmap ~/.Xmodmap'
   alias xr='xrandr --output HDMI-1 --scale 1.12x1.50'
+  alias lo='betterlockscreen'
 fi
 alias doom='~/.emacs.d/bin/doom'
 alias v='nvim'

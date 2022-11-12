@@ -10,6 +10,10 @@ super + Return
 super + c
 	google-chrome-stable
 
+# betterlockscreen
+super + x
+  betterlockscreen -l blur
+
 # program launcher
 super + @space
 	~/.dotfiles/.scripts/applauncher.sh
