@@ -144,7 +144,9 @@ return packer.startup(function(use)
   use { "hrsh7th/cmp-nvim-lua", commit = "d276254e7198ab7d00f117e88e223b4bd8c02d21" }
   use { "hrsh7th/cmp-cmdline" } -- cmdline completions
   use { "hrsh7th/cmp-emoji" }
-  use { "zbirenbaum/copilot-cmp" }
+  use { "zbirenbaum/copilot-cmp",
+    after = { "copilot.lua" },
+  }
   use { "tzachar/cmp-tabnine", 
     run = "./install.sh",
     config = function()
@@ -289,7 +291,7 @@ return packer.startup(function(use)
     event = { "VimEnter" },
     config = function()
       vim.defer_fn(function()
-        require "saturn.plugins.copilot"
+        require("saturn.plugins.copilot").setup()
       end, 100)
     end,
   }

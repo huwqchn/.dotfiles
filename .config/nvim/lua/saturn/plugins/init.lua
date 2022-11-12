@@ -20,6 +20,7 @@ require('saturn.plugins.mason').config()
 require('saturn.plugins.tabnine').config()
 require('saturn.plugins.tabout').config()
 require('saturn.plugins.symbol-outline').config()
+require('saturn.plugins.copilot').config()
 require "saturn.plugins.packer"
 require "saturn.plugins.impatient"
 require('saturn.plugins.theme').setup()
