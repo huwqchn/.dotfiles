@@ -6,7 +6,7 @@ function M.config()
   require('saturn.plugins.extra.tabnine').config()
   require('saturn.plugins.extra.symbol-outline').config()
   require('saturn.plugins.extra.spectre').config()
-  require('saturn.plugins.extra.tabout').config()
+  -- require('saturn.plugins.extra.tabout').config()
 end
 
 function M.setup()
@@ -20,7 +20,7 @@ function M.setup()
   require('saturn.plugins.extra.dial')
   require('saturn.plugins.extra.copilot').setup()
   require('saturn.plugins.extra.tabnine').setup()
-  require('saturn.plugins.extra.tabout').setup()
+  -- require('saturn.plugins.extra.tabout').setup()
 end
 
 

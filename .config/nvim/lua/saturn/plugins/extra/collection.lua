@@ -18,7 +18,6 @@ return {
   },
   {
     "zbirenbaum/copilot-cmp",
-    after = { "copilot.lua" },
   },
   { "tzachar/cmp-tabnine",
     run = "./install.sh",
@@ -123,7 +122,7 @@ return {
   { "nvim-colortils/colortils.nvim" },
   { "folke/zen-mode.nvim" },
   { "stevearc/aerial.nvim" },
-  { "kylechui/nvim-surround" },
+  { "kylechui/nvim-surround", disable = true, },
   {
     "abecodes/tabout.nvim",
     wants = { "nvim-treesitter" }, -- or require if not used so far

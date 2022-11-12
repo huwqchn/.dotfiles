@@ -2,14 +2,44 @@ local M = {}
 
 function M.config()
   saturn.plugins.copilot = {
+    panel = {
+      enabled = true,
+      auto_refresh = false,
+      keymap = {
+        jump_prev = "[[",
+        jump_next = "]]",
+        accept = "<CR>",
+        refresh = "g<CR>",
+        open = "<M-4>"
+      },
+    },
+    suggestion = {
+      enabled = true,
+      auto_trigger = false,
+      debounce = 75,
+      keymap = {
+       accept = "<M-l>",
+       next = "<M-i>",
+       prev = "<M-n>",
+       dismiss = "<C-]>",
+      },
+    },
+    filetypes = {
+      yaml = false,
+      markdown = false,
+      help = false,
+      gitcommit = false,
+      gitrebase = false,
+      hgcommit = false,
+      svn = false,
+      cvs = false,
+      ["."] = false,
+    },
+    copilot_node_command = 'node', -- Node version must be < 18
     cmp = {
       enabled = true,
       method = "getCompletionsCycling",
     },
-    panel = { -- no config options yet
-      enabled = true,
-    },
-    ft_disable = { "markdown" },
     -- plugin_manager_path = vim.fn.stdpath "data" .. "/site/pack/packer",
     server_opts_overrides = {
       -- trace = "verbose",

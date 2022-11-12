@@ -253,6 +253,7 @@ function M.config()
             -- "\n",
           },
         },
+        group_index = 2,
       },
       {
         name = "nvim_lsp",
@@ -266,18 +267,19 @@ function M.config()
           end
           return true
         end,
+        group_index = 2,
       },
 
-      { name = "path" },
-      { name = "luasnip" },
-      { name = "cmp_tabnine" },
-      { name = "nvim_lua" },
-      { name = "buffer" },
-      { name = "calc" },
-      { name = "emoji" },
-      { name = "treesitter" },
-      { name = "crates" },
-      { name = "tmux" },
+      { name = "path", group_index = 2, },
+      { name = "luasnip", group_index = 2, },
+      { name = "cmp_tabnine", group_index = 2, },
+      { name = "nvim_lua", group_index = 2, },
+      { name = "buffer", group_index = 2, },
+      { name = "calc", group_index = 2, },
+      { name = "emoji", group_index = 2, },
+      { name = "treesitter", group_index = 2, },
+      { name = "crates", group_index = 2, },
+      { name = "tmux", group_index = 2, },
     },
     mapping = cmp.mapping.preset.insert {
       ["<C-u>"] = cmp.mapping(cmp.mapping.select_prev_item(), { "i", "c" }),
@@ -341,6 +343,25 @@ function M.config()
         fallback() -- if not exited early, always fallback
       end),
     },
+    -- sorting = {
+    --   priority_weight = 2,
+    --   comparators = {
+    --     require("copilot-cmp.comparators").prioritize,
+    --     require("copilot-cmp.comparators").score,
+    --
+    --     -- Below is the default comparitor list and order for nvim-cmp
+    --     cmp.config.compare.offset,
+    --     -- cmp.config.compare.scopes, --this is commented in nvim-cmp too
+    --     cmp.config.compare.exact,
+    --     cmp.config.compare.score,
+    --     cmp.config.compare.recently_used,
+    --     cmp.config.compare.locality,
+    --     cmp.config.compare.kind,
+    --     cmp.config.compare.sort_text,
+    --     cmp.config.compare.length,
+    --     cmp.config.compare.order,
+    --   },
+    -- },
     cmdline = {
       enable = true,
       options = {

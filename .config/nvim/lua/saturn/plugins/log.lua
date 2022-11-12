@@ -1,5 +1,6 @@
 local Log = {}
 
+--TODO: it is not working
 Log.levels = {
   TRACE = 1,
   DEBUG = 2,
