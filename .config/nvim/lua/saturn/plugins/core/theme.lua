@@ -78,8 +78,8 @@ M.setup = function()
   vim.g.colors_name = saturn.colorscheme
   vim.cmd("colorscheme " .. saturn.colorscheme)
 
-  require("saturn.plugins.lualine").setup()
-  require("saturn.plugins.lir").icon_setup()
+  require("saturn.plugins.core.lualine").setup()
+  require("saturn.plugins.core.lir").icon_setup()
 end
 
 return M

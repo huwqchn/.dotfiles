@@ -213,7 +213,7 @@ M.create_winbar = function()
             local status_ok, _ = pcall(vim.api.nvim_buf_get_var, 0, "lsp_floating_window")
             if not status_ok then
               -- TODO:
-              require("saturn.plugins.breadcrumbs").get_winbar()
+              require("saturn.plugins.core.breadcrumbs").get_winbar()
             end
           end
         end,

@@ -1,5 +1,5 @@
-local conditions = require "saturn.plugins.lualine.conditions"
-local colors = require "saturn.plugins.lualine.colors"
+local conditions = require "saturn.plugins.core.lualine.conditions"
+local colors = require "saturn.plugins.core.lualine.colors"
 
 local function diff_source()
   local gitsigns = vim.b.gitsigns_status_dict
@@ -51,7 +51,7 @@ return {
   },
   python_env = {
     function()
-      local utils = require "saturn.plugins.lualine.utils"
+      local utils = require "saturn.plugins.core.lualine.utils"
       if vim.bo.filetype == "python" then
         local venv = os.getenv "CONDA_DEFAULT_ENV" or os.getenv "VIRTUAL_ENV"
         if venv then
@@ -114,12 +114,12 @@ return {
       end
 
       -- add formatter
-      local formatters = require "saturn.plugins.lsp.null-ls.formatters"
+      local formatters = require "saturn.plugins.core.lsp.null-ls.formatters"
       local supported_formatters = formatters.list_registered(buf_ft)
       vim.list_extend(buf_client_names, supported_formatters)
 
       -- add linter
-      local linters = require "saturn.plugins.lsp.null-ls.linters"
+      local linters = require "saturn.plugins.core.lsp.null-ls.linters"
       local supported_linters = linters.list_registered(buf_ft)
       vim.list_extend(buf_client_names, supported_linters)
 

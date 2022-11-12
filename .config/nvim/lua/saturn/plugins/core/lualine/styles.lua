@@ -1,5 +1,5 @@
 local M = {}
-local components = require "saturn.plugins.lualine.components"
+local components = require "saturn.plugins.core.lualine.components"
 
 local styles = {
   saturn = nil,
@@ -134,7 +134,7 @@ styles.saturn = {
 function M.get_style(style)
   local style_keys = vim.tbl_keys(styles)
   if not vim.tbl_contains(style_keys, style) then
-    local Log = require "saturn.plugins.log"
+    local Log = require "saturn.plugins.core.log"
     Log:error(
       "Invalid lualine style"
         .. string.format('"%s"', style)

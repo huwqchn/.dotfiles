@@ -141,9 +141,9 @@ function M.setup()
     return
   end
   spectre.setup(saturn.plugins.spectre)
-  if saturn.plugins.spectre.on_config_done then
-    saturn.plugins.spectre.on_config_done(spectre)
-  end
+  -- if saturn.plugins.spectre.on_config_done then
+  --   saturn.plugins.spectre.on_config_done(spectre)
+  -- end
 end
 
 return M

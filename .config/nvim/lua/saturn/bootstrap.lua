@@ -4,4 +4,3 @@ local log = require 'saturn.plugins.log'
 log:debug "Starting SaturnVim"
 
 require 'saturn.plugins'
-require 'saturn.lsp'

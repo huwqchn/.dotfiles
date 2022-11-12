@@ -35,7 +35,7 @@ end
 
 M.setup = function()
   if #vim.api.nvim_list_uis() == 0 then
-    local Log = require "saturn.plugins.log"
+    local Log = require "saturn.plugins.core.log"
     Log:debug "headless mode detected, skipping running setup for lualine"
     return
   end
@@ -45,7 +45,7 @@ M.setup = function()
     return
   end
 
-  require("saturn.plugins.lualine.styles").update()
+  require("saturn.plugins.core.lualine.styles").update()
 
   lualine.setup(saturn.plugins.lualine)
 

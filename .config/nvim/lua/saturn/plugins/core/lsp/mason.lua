@@ -37,8 +37,8 @@ local opts = {}
 
 for _, server in pairs(servers) do
 	opts = {
-		on_attach = require("saturn.lsp.handlers").on_attach,
-		capabilities = require("saturn.lsp.handlers").capabilities,
+		on_attach = require("saturn.plugins.core.lsp.handlers").on_attach,
+		capabilities = require("saturn.plugins.core.lsp.handlers").capabilities,
 	}
 
 	server = vim.split(server, "@")[1]
