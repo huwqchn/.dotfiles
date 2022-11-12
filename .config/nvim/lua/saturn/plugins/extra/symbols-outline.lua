@@ -51,17 +51,20 @@ function M.config()
       Operator = { icon = saturn.icons.kind.Operator, hl = "CmpItemKindOperator" },
       TypeParameter = { icon = saturn.icons.kind.TypeParameter, hl = "CmpItemKindTypeParameter" },
     },
-
   }
 end
 
 function M.setup()
+  if not saturn.plugins.symbols_outline.active then
+    return
+  end
+
   local present, symbols_outline = pcall(require, "symbols-outline")
   if not present then
     return
   end
 
-  symbols_outline.setua(saturn.plugins.symbols_outline)
+  -- symbols_outline.setup(saturn.plugins.symbols_outline)
   if saturn.plugins.symbols_outline.on_config_done then
     saturn.plugins.symbols_outline.on_config_done(symbols_outline)
   end

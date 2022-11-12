@@ -53,8 +53,10 @@ return packer.startup(function(use)
   end
   local core_plugins = require 'saturn.plugins.core'
   load(core_plugins.get())
-  local extra_plugins = require 'saturn.plugins.extra'
-  load(extra_plugins.get())
+  if saturn.enale_extra_plugins then
+    local extra_plugins = require 'saturn.plugins.extra'
+    load(extra_plugins.get())
+  end
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins

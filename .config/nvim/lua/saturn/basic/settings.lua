@@ -6,6 +6,7 @@ return {
   use_icons = true,
   icons = require "saturn.basic.ui.icons",
   plugins = {},
+  enale_extra_plugins = true,
   log = {
     ---@usage can be { "trace", "debug", "info", "warn", "error", "fatal" },
     level = "warn",

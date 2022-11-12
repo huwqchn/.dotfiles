@@ -28,6 +28,7 @@ function M.setup()
   require('saturn.plugins.core.theme').setup()
   require('saturn.plugins.core.whichkey').setup()
   require 'saturn.plugins.core.alpha'
+  --TODO:make lsp greater
   require 'saturn.plugins.core.lsp'
 end
 

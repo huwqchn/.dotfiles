@@ -94,7 +94,7 @@ M.config = function()
       s = { "<esc><cmd>'<,'>SnipRun<cr>", "Run range" },
     },
     mappings = {
-      b = {
+      u = {
         name = "Buffer",
         o = { "<cmd>%bd|e#|bd#<CR>", "Close all but the current buffer" },
         x = { "<cmd>Bdelete!<CR>", "Close buffer" },

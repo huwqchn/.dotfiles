@@ -1,14 +1,18 @@
 return {
   {
     "folke/todo-comments.nvim",
-    disable = true,
+    config = function()
+      require("saturn.plugins.extra.todo-comments").setup()
+    end,
+    disable = not saturn.plugins.todo_comments.active,
   },
-  { 
+  {
+    -- TODO:not working anyway
     "windwp/nvim-spectre",
     config = function()
       require("saturn.plugins.extra.spectre").setup()
     end,
-    disable = false,
+    disable = not saturn.plugins.spectre.active,
   },
   {
     "hrsh7th/cmp-cmdline"
@@ -19,7 +23,8 @@ return {
   {
     "zbirenbaum/copilot-cmp",
   },
-  { "tzachar/cmp-tabnine",
+  {
+    "tzachar/cmp-tabnine",
     run = "./install.sh",
     config = function()
       require("saturn.plugins.extra.tabnine").setup()
@@ -80,7 +85,10 @@ return {
   },
   {
     "simrat39/symbols-outline.nvim",
-    disable = false,
+    config = function()
+      require("saturn.plugins.extra.symbols-outline").setup()
+    end,
+    disable = not saturn.plugins.symbols_outline.active,
   },
   {
     "mrjones2014/smart-splits.nvim"
@@ -102,7 +110,13 @@ return {
   { "stevearc/dressing.nvim" },
   {
     "ghillb/cybu.nvim",
-    disable = false,
+    branch = "main", -- timely updates
+    -- branch = "v1.x", -- won't receive breaking changes
+    config = function()
+      require("saturn.plugins.extra.cybu").setup()
+    end,
+    requires = { "nvim-tree/nvim-web-devicons", "nvim-lua/plenary.nvim"}, -- optional for icon support
+    disable = not saturn.plugins.cybu.active,
   },
   {
     "lalitmee/browse.nvim",
@@ -167,7 +181,10 @@ return {
   },
   {
     "monaqa/dial.nvim",
-    disable = true,
+    config = function()
+      require("saturn.plugins.extra.dial").setup()
+    end,
+    disable = not saturn.plugins.dial.active,
   },
   { "nacro90/numb.nvim", disable = true },
   { "andymass/vim-matchup", disable = true },
