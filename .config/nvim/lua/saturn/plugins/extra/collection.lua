@@ -15,6 +15,10 @@ return {
     disable = not saturn.plugins.spectre.active,
   },
   {
+    "ggandor/lightspeed.nvim",
+    event = "BufRead",
+  },
+  {
     "hrsh7th/cmp-cmdline"
   },
   {
@@ -120,7 +124,6 @@ return {
   },
   {
     "lalitmee/browse.nvim",
-    disable = false,
   },
   {
     "tversteeg/registers.nvim",
@@ -186,7 +189,19 @@ return {
     end,
     disable = not saturn.plugins.dial.active,
   },
-  { "nacro90/numb.nvim", disable = true },
+  { 
+    "nacro90/numb.nvim",
+    event = "BufRead",
+    config = function()
+      require("numb").setup {
+        show_numbers = true, -- Enable 'number' for the window while peeking
+        show_cursorline = true, -- Enable 'cursorline' for the window while peeking
+        -- hide_relativenumbers = true, -- Enable turning off 'relativenumber' for the window while peeking
+        -- number_only = false, -- Peek only when the command is only a number instead of when it starts with a number
+        -- centered_peeking = true, -- Peeked line will be centered relative to window
+      }
+    end,
+  },
   { "andymass/vim-matchup", disable = true },
   { "karb94/neoscroll.nvim", disable = true },
   { "junegunn/vim-slash", disable = true },

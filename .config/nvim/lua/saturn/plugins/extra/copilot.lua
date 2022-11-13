@@ -9,8 +9,8 @@ function M.config()
         jump_prev = "[[",
         jump_next = "]]",
         accept = "<CR>",
-        refresh = "g<CR>",
-        open = "<M-4>"
+        refresh = "<M-r>",
+        open = "<M-h>"
       },
     },
     suggestion = {
