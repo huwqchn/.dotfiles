@@ -113,10 +113,10 @@ M.general = {
 		["sn"] = ":set nosplitright<CR>:vsplit<CR>:set splitright<CR>",
 		["si"] = ":set splitright<CR>:vsplit<CR>",
 
-		-- place the two screens up and down
-		["<C-k>"] = "<C-w>t<C-w>K",
-		-- place the two screens side by side
-		["<C-v>"] = "<C-w>t<C-w>H",
+		-- -- place the two screens up and down
+		["sh"] = "<C-w>t<C-w>K",
+		-- -- place the two screens side by side
+		["sv"] = "<C-w>t<C-w>H",
 
 		-- Rotate screens
 		["sr"] = "<C-w>b<C-w>K",
