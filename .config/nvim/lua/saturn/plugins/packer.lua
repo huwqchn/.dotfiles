@@ -53,7 +53,7 @@ return packer.startup(function(use)
   end
   local core_plugins = require 'saturn.plugins.core'
   load(core_plugins.get())
-  if saturn.enale_extra_plugins then
+  if saturn.enable_extra_plugins then
     local extra_plugins = require 'saturn.plugins.extra'
     load(extra_plugins.get())
   end

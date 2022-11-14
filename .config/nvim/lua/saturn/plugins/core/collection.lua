@@ -136,8 +136,9 @@ return {
     "L3MON4D3/LuaSnip",
     -- commit = "8f8d493e7836f2697df878ef9c128337cbf2bb84"
     config = function()
+      local utils = require 'saturn.utils.helper'
       local paths = {}
-      if lvim.plugins.luasnip.sources.friendly_snippets then
+      if saturn.plugins.luasnip.sources.friendly_snippets then
         paths[#paths + 1] = utils.join_paths(vim.call("stdpath", "data"), "site", "pack", "packer", "start", "friendly-snippets")
       end
       local user_snippets = utils.join_paths(vim.call("stdpath", "config"), "snippets")

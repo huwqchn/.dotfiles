@@ -85,7 +85,11 @@ function M.is_directory(path)
   return stat and stat.type == "directory" or false
 end
 
-M.join_paths = _G.join_paths
+M.join_paths = function(...)
+  local path_sep = uv.os_uname().version:match "Windows" and "\\" or "/"
+  local result = table.concat({ ... }, path_sep)
+  return result
+end
 
 ---Write data to a file
 ---@param path string can be full or relative to `cwd`
