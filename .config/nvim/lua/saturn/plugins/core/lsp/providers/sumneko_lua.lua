@@ -2,7 +2,7 @@ local default_workspace = {
   library = {
     vim.fn.expand "$VIMRUNTIME",
     vim.fn.expand "config" .. "/lua",
-    --require("neodev.config").types(),
+    -- require("neodev.config").types(),
   },
   checkThirdParty = false,
 

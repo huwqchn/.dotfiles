@@ -71,7 +71,6 @@ M.general = {
 		[";"] = ":",
 		["`"] = "~",
 		["<C-s>"] = ":w<CR>",
-		["<C-q>"] = ":q!<CR>",
     ["S"] = ":w<CR>",
     ["Q"] = ":q<CR>",
 	},
@@ -105,7 +104,7 @@ M.general = {
     ["<C-b>"] = "<C-w>=",
     ["<C-h>"] = "<C-o>",
     ["<C-o>"] = "<C-i>",
-
+		["<C-q>"] = "<C-w>q",
 		-- Disable the default s key
 		["s"] =  "<nop>",
 		-- split the screens to horizontal (up / down) and vertical (left / right)
