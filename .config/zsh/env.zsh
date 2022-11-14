@@ -9,6 +9,7 @@ export ZSH_AUTOSUGGEST_MANUAL_REBIND=1
 
 export PATH="$HOME/.dotfiles/.bin:$PATH"
 export PATH="$HOME/.local/share/gem/ruby/3.0.0/bin:$PATH"
+export PATH="$HOME/.local/share/nvim/mason/bin:$PATH"
 if [[ `uname` == 'Darwin' ]]; then
 	export PATH="/opt/homebrew/bin:$PATH"
 	export PATH="$HOME/.nix-profile/bin:$PATH"
