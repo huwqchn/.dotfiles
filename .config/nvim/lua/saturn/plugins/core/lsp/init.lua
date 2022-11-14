@@ -102,9 +102,11 @@ function M.config()
   }
   saturn.lsp.installer.setup.automatic_installation = false
 
-  vim.list_extend(saturn.lsp.automatic_configuration.skipped_servers, { "pyright" })
+  vim.list_extend(saturn.lsp.automatic_configuration.skipped_servers, { "pyright", "sumneko_lua" })
   local opts = {} -- check the lspconfig documentation for a list of all possible options
-  require("saturn.plugins.core.lsp.manager").setup("pyright", opts)
+  local manager = require("saturn.plugins.core.lsp.manager")
+  manager.setup("pyright", opts)
+  manager.setup("sumneko_lua", require 'saturn.plugins.core.lsp.providers.sumneko_lua')
 
   saturn.lsp.automatic_configuration.skipped_servers = vim.tbl_filter(function(server)
     return server ~= "emmet_ls"
@@ -112,13 +114,13 @@ function M.config()
 
   -- you can set a custom on_attach function that will be used for all the language servers
   -- See <https://github.com/neovim/nvim-lspconfig#keybindings-and-completion>
-  saturn.lsp.on_attach_callback = function(client, bufnr)
-    local function buf_set_option(...)
-      vim.api.nvim_buf_set_option(bufnr, ...)
-    end
-    --Enable completion triggered by <c-x><c-o>
-    buf_set_option("omnifunc", "v:lua.vim.lsp.omnifunc")
-  end
+  -- saturn.lsp.on_attach_callback = function(client, bufnr)
+  --   local function buf_set_option(...)
+  --     vim.api.nvim_buf_set_option(bufnr, ...)
+  --   end
+  --   --Enable completion triggered by <c-x><c-o>
+  --   buf_set_option("omnifunc", "v:lua.vim.lsp.omnifunc")
+  -- end
 
   -- set a formatter, this will override the language server formatting capabilities (if it exists)
   local formatters = require "saturn.plugins.core.lsp.null-ls.formatters"
@@ -155,6 +157,10 @@ function M.config()
       ---@usage specify which filetypes to enable. By default a providers will attach to all the filetypes it supports.
       filetypes = { "javascript", "python" },
     },
+    -- {
+    --   command = "luacheck",
+    --   filetypes = { "lua" },
+    -- }
   }
 end
 

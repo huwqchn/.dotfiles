@@ -72,15 +72,15 @@ end
 
 local function launch_server(server_name, config)
   pcall(function()
-    local command = config.cmd
-      or (function()
-        local default_config = require("lspconfig.server_configurations." .. server_name).default_config
-        return default_config.cmd
-      end)()
-    if vim.fn.executable(command[1]) ~= 1 then
-      Log:debug(string.format("[%q] is either not installed, missing from PATH, or not executable.", server_name))
-      return
-    end
+    -- local command = config.cmd
+    --   or (function()
+    --     local default_config = require("lspconfig.server_configurations." .. server_name).default_config
+    --     return default_config.cmd
+    --   end)()
+    -- if vim.fn.executable(command[1]) ~= 1 then
+    --   Log:debug(string.format("[%q] is either not installed, missing from PATH, or not executable.", server_name))
+    --   return
+    -- end
     require("lspconfig")[server_name].setup(config)
     buf_try_add(server_name)
   end)
@@ -92,6 +92,7 @@ end
 function M.setup(server_name, user_config)
   vim.validate { name = { server_name, "string" } }
   user_config = user_config or {}
+
 
   if saturn_lsp_utils.is_client_active(server_name) or client_is_configured(server_name) then
     return
@@ -135,6 +136,7 @@ function M.setup(server_name, user_config)
 
   local config = resolve_config(server_name, resolve_mason_config(server_name), user_config)
   launch_server(server_name, config)
+
 end
 
 return M
