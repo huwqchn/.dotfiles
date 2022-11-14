@@ -103,10 +103,10 @@ function M.config()
   saturn.lsp.installer.setup.automatic_installation = false
 
   vim.list_extend(saturn.lsp.automatic_configuration.skipped_servers, { "pyright", "sumneko_lua" })
-  local opts = {} -- check the lspconfig documentation for a list of all possible options
+
   local manager = require("saturn.plugins.core.lsp.manager")
-  manager.setup("pyright", opts)
-  manager.setup("sumneko_lua", require 'saturn.plugins.core.lsp.providers.sumneko_lua')
+  manager.setup("pyright", {})
+  manager.setup("sumneko_lua", {} )
 
   saturn.lsp.automatic_configuration.skipped_servers = vim.tbl_filter(function(server)
     return server ~= "emmet_ls"

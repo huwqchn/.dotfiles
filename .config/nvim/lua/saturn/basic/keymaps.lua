@@ -101,8 +101,10 @@ M.general = {
 		["<C-e>"] = "<C-w>j",
 		["<C-u>"] = "<C-w>k",
 		["<C-i>"] = "<C-w>l",
-		["<C-o>"] = "<C-w>o",
+		["<C-y>"] = "<C-w>o",
     ["<C-b>"] = "<C-w>=",
+    ["<C-h>"] = "<C-o>",
+    ["<C-o>"] = "<C-i>",
 
 		-- Disable the default s key
 		["s"] =  "<nop>",
@@ -113,7 +115,7 @@ M.general = {
 		["si"] = ":set splitright<CR>:vsplit<CR>",
 
 		-- place the two screens up and down
-		["<C-h>"] = "<C-w>t<C-w>K",
+		["<C-k>"] = "<C-w>t<C-w>K",
 		-- place the two screens side by side
 		["<C-v>"] = "<C-w>t<C-w>H",
 
