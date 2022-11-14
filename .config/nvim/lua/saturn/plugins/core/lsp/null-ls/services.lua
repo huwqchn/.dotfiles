@@ -1,6 +1,6 @@
 local M = {}
 
-local Log = require "saturn.plugins.core.log"
+local Log = require "saturn.plugins.log"
 
 local function find_root_dir()
   local util = require "lspconfig/util"

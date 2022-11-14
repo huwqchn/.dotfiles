@@ -2,6 +2,7 @@
 local M = {}
 
 function M.config()
+  require('saturn.plugins.core.lsp').config()
   require('saturn.plugins.core.whichkey').config()
   require('saturn.plugins.core.theme').config()
   require('saturn.plugins.core.gitsigns').config()
@@ -28,8 +29,7 @@ function M.setup()
   require('saturn.plugins.core.theme').setup()
   require('saturn.plugins.core.whichkey').setup()
   require 'saturn.plugins.core.alpha'
-  --TODO:make lsp greater
-  require 'saturn.plugins.core.lsp'
+  require('saturn.plugins.core.lsp').setup()
 end
 
 function M.get()

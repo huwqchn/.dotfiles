@@ -44,6 +44,9 @@ M.general = {
 		["t"] = { "g", opts_remap },
 		["T"] = "G",
 
+    ["j"] = "t",
+    ["J"] = "T",
+
 		["gt"] = "gg",
 		["gu"] = "gk",
 		["ge"] = "gj",

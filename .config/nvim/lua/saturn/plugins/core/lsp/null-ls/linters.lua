@@ -1,6 +1,6 @@
 local M = {}
 
-local Log = require "saturn.plugins.core.log"
+local Log = require "saturn.plugins.log"
 
 local null_ls = require "null-ls"
 local services = require "saturn.plugins.core.lsp.null-ls.services"
