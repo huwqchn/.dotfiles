@@ -152,6 +152,7 @@ M.general = {
     ["<"] = "<gv",
     [">"] = ">gv",
 
+
     -- Move current line / block with Alt-j/k ala vscode.
     ["<A-e>"] = ":m '>+1<CR>gv-gv",
     ["<A-u>"] = ":m '<-2<CR>gv-gv",
@@ -160,6 +161,9 @@ M.general = {
     -- Move current line / block with Alt-e/u ala vscode.
     ["<A-e>"] = ":m '>+1<CR>gv-gv",
     ["<A-u>"] = ":m '<-2<CR>gv-gv",
+
+    -- replace in selection
+    ["s"] = ":s/\\%V",
 	},
 	["t"] = {
     -- Terminal window navigation
