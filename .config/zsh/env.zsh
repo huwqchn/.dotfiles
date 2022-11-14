@@ -7,18 +7,19 @@ export ZSH_AUTOSUGGEST_USE_ASYNC=1
 export ZSH_AUTOSUGGEST_MANUAL_REBIND=1
 # export TERM=screen-256color-bce
 
-export PATH="$HOME/.dotfiles/.bin:$PATH"
-export PATH="$HOME/.local/share/gem/ruby/3.0.0/bin:$PATH"
-export PATH="$HOME/.local/share/nvim/mason/bin:$PATH"
+export PATH="$PATH:$HOME/.dotfiles/.bin"
+export PATH="$PATH:$HOME/.local/share/gem/ruby/3.0.0/bin"
+export PATH="$PATH:$HOME/.local/share/nvim/mason/bin"
+export PATH="$PATH:$HOME/.local/bin"
 if [[ `uname` == 'Darwin' ]]; then
-	export PATH="/opt/homebrew/bin:$PATH"
-	export PATH="$HOME/.nix-profile/bin:$PATH"
-	export C_INCLUDE_PATH="/opt/homebrew/include:$C_INCLUDE_PATH"
-	export CPLUS_INCLUDE_PATH="/opt/homebrew/include:$CPLUS_INCLUDE_PATH"
-	export DYLD_LIBRARY_PATH="/usr/local/lib:$DYLD_LIBRARY_PATH"
-	export DYLD_LIBRARY_PATH="/opt/homebrew/lib:$DYLD_LIBRARY_PATH"
-	export LIBRARY_PATH="/usr/local/lib:$LIBRARY_PATH"
-	export LIBRARY_PATH="/opt/homebrew/lib:$LIBRARY_PATH"
+	export PATH="$PATH:/opt/homebrew/bin"
+	export PATH="$PATH:$HOME/.nix-profile/bin"
+	export C_INCLUDE_PATH="$PATH:/opt/homebrew/include:$C_INCLUDE_PATH"
+	export CPLUS_INCLUDE_PATH="$PATH:/opt/homebrew/include:$CPLUS_INCLUDE_PATH"
+	export DYLD_LIBRARY_PATH="$PATH:/usr/local/lib:$DYLD_LIBRARY_PATH"
+	export DYLD_LIBRARY_PATH="$PATH:/opt/homebrew/lib:$DYLD_LIBRARY_PATH"
+	export LIBRARY_PATH="$PATH:/usr/local/lib:$LIBRARY_PATH"
+	export LIBRARY_PATH="$PATH:/opt/homebrew/lib:$LIBRARY_PATH"
 	export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.ustc.edu.cn/homebrew-bottles/bottles
 elif [[ `uname` == 'Linux' ]]; then
   export TERMINAL="alacritty"
