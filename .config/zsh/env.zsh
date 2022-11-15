@@ -9,9 +9,9 @@ export ZSH_AUTOSUGGEST_MANUAL_REBIND=1
 export WORKON_HOME=$HOME/.venvs
 export PATH="$PATH:$HOME/.dotfiles/.bin"
 export PATH="$PATH:$HOME/.local/share/gem/ruby/3.0.0/bin"
-export PATH="$PATH:$HOME/.local/share/nvim/mason/bin"
+# export PATH="$PATH:$HOME/.local/share/nvim/mason/bin"
 export PATH="$PATH:$HOME/.local/bin"
-if [[ `uname` == 'Darwin' ]]; then
+if [[ $(uname) == 'Darwin' ]]; then
 	export PATH="$PATH:/opt/homebrew/bin"
 	export PATH="$PATH:$HOME/.nix-profile/bin"
 	export C_INCLUDE_PATH="$PATH:/opt/homebrew/include:$C_INCLUDE_PATH"
@@ -21,7 +21,7 @@ if [[ `uname` == 'Darwin' ]]; then
 	export LIBRARY_PATH="$PATH:/usr/local/lib:$LIBRARY_PATH"
 	export LIBRARY_PATH="$PATH:/opt/homebrew/lib:$LIBRARY_PATH"
 	export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.ustc.edu.cn/homebrew-bottles/bottles
-elif [[ `uname` == 'Linux' ]]; then
+elif [[ $(uname) == 'Linux' ]]; then
   export TERMINAL="alacritty"
   export PATH=$PATH:/snap/bin
 	export GDK_SCALE=2
