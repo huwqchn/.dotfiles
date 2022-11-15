@@ -6,7 +6,7 @@ export EDITOR=nvim
 export ZSH_AUTOSUGGEST_USE_ASYNC=1
 export ZSH_AUTOSUGGEST_MANUAL_REBIND=1
 # export TERM=screen-256color-bce
-
+export WORKON_HOME=$HOME/.venvs
 export PATH="$PATH:$HOME/.dotfiles/.bin"
 export PATH="$PATH:$HOME/.local/share/gem/ruby/3.0.0/bin"
 export PATH="$PATH:$HOME/.local/share/nvim/mason/bin"
