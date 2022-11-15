@@ -94,7 +94,6 @@ function M.config()
       friendly_snippets = true,
     },
   }
-
 end
 
 function M.setup()

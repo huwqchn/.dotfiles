@@ -197,7 +197,7 @@ return {
     end,
     disable = not saturn.plugins.dial.active,
   },
-  { 
+  {
     "nacro90/numb.nvim",
     event = "BufRead",
     config = function()
@@ -217,5 +217,6 @@ return {
   { "mfussenegger/nvim-jdtls", disable = true },
   { "christianchiarulli/rust-tools.nvim", disable = true, branch = "modularize_and_inlay_rewrite" },
   { "Saecki/crates.nvim", disable = true },
-  { "jose-elias-alvarez/typescript.nvim", disable = true },
+  { "jose-elias-alvarez/typescript.nvim" },
+  { "mxsdev/nvim-dap-vscode-js" },
 }
