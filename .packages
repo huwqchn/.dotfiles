@@ -229,6 +229,7 @@ gtk-engines 2.21.0-5
 gtk-update-icon-cache 1:4.8.2-1
 gtk2 2.24.33-2
 gtk3 1:3.24.34+r156+g812b3930d0-1
+gtkmm 1:2.24.5-4
 gtkmm3 3.24.7-1
 gts 0.7.6.121130-2
 gucharmap 15.0.1-1
@@ -653,8 +654,10 @@ netpbm 10.73.37-2
 nettle 3.8.1-1
 network-manager-applet 1.30.0-1
 networkmanager 1.40.2-1
+networkmanager-dmenu-git r165.60c12b5-1
 newsboat 2.29-1
 ninja 1.11.1-1
+nitrogen 1.6.1-4
 nm-connection-editor 1.30.0-1
 node-gyp 9.3.0-1
 nodejs 19.0.1-1
