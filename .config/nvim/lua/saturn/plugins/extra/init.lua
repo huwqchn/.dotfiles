@@ -2,6 +2,7 @@
 local M = {}
 
 function M.config()
+  require('saturn.plugins.extra.lsp').config()
   require('saturn.plugins.extra.copilot').config()
   require('saturn.plugins.extra.tabnine').config()
   require('saturn.plugins.extra.symbols-outline').config()

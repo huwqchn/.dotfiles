@@ -9,4 +9,5 @@ require 'saturn.plugins.packer'
 core.setup()
 extra.setup()
 
--- require 'saturn.plugins.lsp'
+require('saturn.plugins.extra.lsp').setup()
+require('saturn.plugins.core.lsp').setup()
