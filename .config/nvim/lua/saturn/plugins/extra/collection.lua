@@ -62,19 +62,15 @@ return {
   },
   {
     "p00f/nvim-ts-rainbow", after = "nvim-treesitter",
-    disable = true,
   },
   {
     "nvim-treesitter/playground",
-    disable = true,
   },
   {
     "windwp/nvim-ts-autotag",
-    disable = true,
   },
   {
     "nvim-treesitter/nvim-treesitter-textobjects",
-    disable = true,
   },
   {
     "f-person/git-blame.nvim"
@@ -84,16 +80,16 @@ return {
   },
   {
     "mattn/vim-gist",
-    disable = true,
   },
   {
     "mattn/webapi-vim",
-    disable = true,
+  },
+  {
+    "TimUntersberger/neogit",
   },
   {
     'sindrets/diffview.nvim',
     requires = 'nvim-lua/plenary.nvim',
-    disable = true,
   },
   {
     "simrat39/symbols-outline.nvim",
@@ -143,7 +139,8 @@ return {
     setup = function() vim.g.mkdp_filetypes = { "markdown" } end,
     ft = { "markdown" },
   },
-  { "norcalli/nvim-colorizer.lua", event = "BufRead" },
+  -- { "norcalli/nvim-colorizer.lua", event = "BufRead" },
+  {  "NvChad/nvim-colorizer.lua", event = "BufRead" },
   { "nvim-colortils/colortils.nvim" },
   { "folke/zen-mode.nvim" },
   { "stevearc/aerial.nvim" },
@@ -179,7 +176,9 @@ return {
   },
   {
     "is0n/jaq-nvim",
-    disable = true,
+  },
+  {
+    "ggandor/leap.nvim",
   },
   {
     "0x100101/lab.nvim",
@@ -211,12 +210,35 @@ return {
     end,
   },
   { "andymass/vim-matchup", disable = true },
-  { "karb94/neoscroll.nvim", disable = true },
+  { "karb94/neoscroll.nvim" },
   { "junegunn/vim-slash", disable = true },
   { "phaazon/hop.nvim", disable = true },
-  { "mfussenegger/nvim-jdtls", disable = true },
-  { "christianchiarulli/rust-tools.nvim", disable = true, branch = "modularize_and_inlay_rewrite" },
-  { "Saecki/crates.nvim", disable = true },
+  { "mfussenegger/nvim-jdtls" },
+  { "christianchiarulli/rust-tools.nvim", branch = "modularize_and_inlay_rewrite" },
+  {
+    "Saecki/crates.nvim",
+    tag = "v0.3.0",
+    requires = { "nvim-lua/plenary.nvim" },
+    config = function()
+      require("crates").setup {
+        null_ls = {
+          enabled = true,
+          name = "crates.nvim",
+        },
+      }
+    end,
+  },
+  {
+    "jinh0/eyeliner.nvim",
+    config = function()
+      require("eyeliner").setup {
+        highlight_on_key = true,
+      }
+    end,
+  },
   { "jose-elias-alvarez/typescript.nvim" },
   { "mxsdev/nvim-dap-vscode-js" },
+  { "mfussenegger/nvim-dap-python" },
+  { "leoluz/nvim-dap-go" },
+  { "olexsmir/gopher.nvim", }
 }
