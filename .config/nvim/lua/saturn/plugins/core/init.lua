@@ -27,7 +27,6 @@ end
 function M.setup()
   require 'saturn.plugins.core.impatient'
   require('saturn.plugins.core.theme').setup()
-  require('saturn.plugins.core.whichkey').setup()
   require 'saturn.plugins.core.alpha'
   require('saturn.plugins.core.lsp').setup()
 end
