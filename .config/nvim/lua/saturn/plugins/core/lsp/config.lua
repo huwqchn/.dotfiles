@@ -43,7 +43,7 @@ local skipped_servers = {
 local skipped_filetypes = { "markdown", "rst", "plaintext", "toml", "proto" }
 
 return {
-  templates_dir = vim.fn.stdpath "data" .. "/site/after/ftplugin",
+  templates_dir = vim.fn.stdpath "config" .. "/after/ftplugin",
   diagnostics = {
     signs = {
       active = true,
