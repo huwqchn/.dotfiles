@@ -172,10 +172,17 @@ return {
   },
   {
     "kevinhwang91/nvim-bqf",
-    disable = true,
+    config = function()
+      require("saturn.plugins.extra.bqf").setup()
+    end,
+    disable = not saturn.plugins.bqf.active,
   },
   {
     "is0n/jaq-nvim",
+    conifg = function()
+      require("jaq").setup()
+    end,
+    disable = not saturn.plugins.jaq.active,
   },
   {
     "ggandor/leap.nvim",

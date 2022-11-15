@@ -336,10 +336,6 @@ function M.config()
             return -- success, exit early
           end
         end
-
-        if jumpable(1) and luasnip.jump(1) then
-          return -- success, exit early
-        end
         fallback() -- if not exited early, always fallback
       end),
     },
@@ -363,7 +359,7 @@ function M.config()
     --   },
     -- },
     cmdline = {
-      enable = true,
+      enable = false,
       options = {
         {
           type = ":",

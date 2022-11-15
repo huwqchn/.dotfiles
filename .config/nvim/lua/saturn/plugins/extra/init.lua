@@ -10,6 +10,8 @@ function M.config()
   require('saturn.plugins.extra.todo-comments').config()
   require('saturn.plugins.extra.cybu').config()
   require('saturn.plugins.extra.dial').config()
+  require('saturn.plugins.extra.bqf').config()
+  require('saturn.plugins.extra.jaq').config()
   -- require('saturn.plugins.extra.tabout').config()
 end
 
