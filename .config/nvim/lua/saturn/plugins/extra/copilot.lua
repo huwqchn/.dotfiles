@@ -18,7 +18,7 @@ function M.config()
       auto_trigger = false,
       debounce = 75,
       keymap = {
-       accept = "<M-l>",
+       accept = "<M-y>",
        next = "<M-i>",
        prev = "<M-n>",
        dismiss = "<C-]>",
