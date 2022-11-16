@@ -27,7 +27,7 @@ super + Escape
 	pkill -USR1 -x sxhkd
 
 #applauncher
-# super + a; {a, b}
+# super + a ; {a, b}
 #   {arandr,brave}
 
 #
