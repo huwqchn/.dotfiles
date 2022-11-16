@@ -96,7 +96,7 @@ super + {h,o}
 	bspc desktop -f {prev,next}.local
 
 # focus the next/previous monitor
-super + shift + {comma,period}
+super + shift + {less,greater}
   bspc monitor -f {prev,next}
 
 # focus the last node/desktop
@@ -156,3 +156,12 @@ super + {minus,equal}
 #brightnessctl
 super + bracket{left,right}
   brightnessctl set {5%-,+5%}
+
+super + ctrl + alt + {n,e,u,i}
+  n=10; \
+  { d1=left;   d2=right;  dx=-$n; dy=0;   \
+  , d1=bottom; d2=top;    dx=0;   dy=$n;  \
+  , d1=top;    d2=bottom; dx=0;   dy=-$n; \
+  , d1=right;  d2=left;   dx=$n;  dy=0;   \
+  } \
+  bspc node --resize $d1 $dx $dy || bspc node --resize $d2 $dx $dy
