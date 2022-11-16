@@ -70,9 +70,11 @@ M.general = {
 		-- convenient keymaps
 		-- [";"] = ":",
 		-- ["`"] = "~",
-		["<C-s>"] = ":w<CR>",
     ["S"] = ":w<CR>",
     ["Q"] = ":q<CR>",
+
+    -- nohl
+    ["<C-l>"] = ":nohl<CR>",
 	},
   ["i"] = {
     -- Move current line / block with Alt-j/k ala vscode.
@@ -84,7 +86,6 @@ M.general = {
     ["<A-Down>"] = "<C-\\><C-N><C-w>j",
     ["<A-Left>"] = "<C-\\><C-N><C-w>h",
     ["<A-Right>"] = "<C-\\><C-N><C-w>l",
-
   },
 	["n"] = {
 		-- better indentation
