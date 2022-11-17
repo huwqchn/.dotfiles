@@ -64,7 +64,7 @@ function M.setup()
     return
   end
 
-  -- symbols_outline.setup(saturn.plugins.symbols_outline)
+  symbols_outline.setup(saturn.plugins.symbols_outline)
   if saturn.plugins.symbols_outline.on_config_done then
     saturn.plugins.symbols_outline.on_config_done(symbols_outline)
   end

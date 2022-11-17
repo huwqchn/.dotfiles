@@ -113,7 +113,12 @@ return {
       end, 100)
     end,
   },
-  { "rcarriga/nvim-notify" },
+  {
+    "rcarriga/nvim-notify",
+    config = function()
+      require("saturn.plugins.extra.notify").setup()
+    end
+  },
   { "stevearc/dressing.nvim" },
   {
     "ghillb/cybu.nvim",
@@ -227,12 +232,7 @@ return {
     tag = "v0.3.0",
     requires = { "nvim-lua/plenary.nvim" },
     config = function()
-      require("crates").setup {
-        null_ls = {
-          enabled = true,
-          name = "crates.nvim",
-        },
-      }
+      require("saturn.plugins.extra.crates").setup()
     end,
   },
   {
