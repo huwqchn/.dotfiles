@@ -46,8 +46,8 @@ function M.setup()
   end
   cybu.setup(saturn.plugins.cybu)
 
-  vim.keymap.set("n", "<s-tab>", "<plug>(CybuLastusedPrev)")
-  vim.keymap.set("n", "<tab>", "<plug>(CybuLastusedNext)")
+  -- vim.keymap.set("n", "<s-tab>", "<plug>(CybuLastusedPrev)")
+  -- vim.keymap.set("n", "<tab>", "<plug>(CybuLastusedNext)")
   if saturn.plugins.cybu.on_config_done then
     saturn.plugins.cybu.on_config_done(cybu)
   end
