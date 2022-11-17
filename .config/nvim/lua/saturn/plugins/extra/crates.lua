@@ -3,7 +3,6 @@ local M = {}
 function M.config()
   saturn.plugins.crates = {
     active = true,
-    on_config_done = nil,
     popup = {
       -- autofocus = true,
       style = "minimal",
@@ -27,9 +26,6 @@ function M.setup()
     return
   end
   crates.setup(saturn.plugins.crates)
-  if saturn.plugins.crates.on_config_done then
-    saturn.plugins.crates.on_config_done(crates)
-  end
 end
 
 return M

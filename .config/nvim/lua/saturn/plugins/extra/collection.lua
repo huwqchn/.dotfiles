@@ -117,9 +117,16 @@ return {
     "rcarriga/nvim-notify",
     config = function()
       require("saturn.plugins.extra.notify").setup()
-    end
+    end,
+    disable = not saturn.plugins.notify.active,
   },
-  { "stevearc/dressing.nvim" },
+  {
+    "stevearc/dressing.nvim",
+    config = function()
+      require("saturn.plugins.extra.dressing").setup()
+    end,
+    disable = not saturn.plugins.dressing.active,
+  },
   {
     "ghillb/cybu.nvim",
     branch = "main", -- timely updates
@@ -145,8 +152,27 @@ return {
   -- { "norcalli/nvim-colorizer.lua", event = "BufRead" },
   { "NvChad/nvim-colorizer.lua", event = "BufRead" },
   { "nvim-colortils/colortils.nvim" },
-  { "folke/zen-mode.nvim" },
-  { "stevearc/aerial.nvim" },
+  {
+    "folke/zen-mode.nvim",
+    config = function()
+      require("saturn.plugins.extra.zen-mode").setup()
+    end,
+    disable = not saturn.plugins.zen_mode.active,
+  },
+  {
+    "Pocco81/true-zen.nvim",
+    config = function()
+      require("saturn.plugins.extra.true-zen").setup()
+    end,
+    disable = not saturn.plugins.true_zen
+  },
+  {
+    "stevearc/aerial.nvim",
+    config = function()
+      require("saturn.plugins.extra.aerial").setup()
+    end,
+    disable = not saturn.plugins.aerial.active,
+  },
   { "kylechui/nvim-surround", disable = true, },
   {
     "abecodes/tabout.nvim",
@@ -224,7 +250,13 @@ return {
   { "andymass/vim-matchup", disable = true },
   { "karb94/neoscroll.nvim" },
   { "junegunn/vim-slash", disable = true },
-  { "phaazon/hop.nvim", disable = true },
+  {
+    "phaazon/hop.nvim",
+    branch = 'v2',
+    config = function()
+      require("saturn.plugins.extra.hop")
+    end,
+  },
   { "mfussenegger/nvim-jdtls" },
   { "christianchiarulli/rust-tools.nvim", branch = "modularize_and_inlay_rewrite" },
   {

@@ -14,6 +14,10 @@ function M.config()
   require('saturn.plugins.extra.jaq').config()
   require('saturn.plugins.extra.lab').config()
   require('saturn.plugins.extra.notify').config()
+  require('saturn.plugins.extra.aerial').config()
+  require('saturn.plugins.extra.dressing').config()
+  require('saturn.plugins.extra.zen-mode').config()
+  require('saturn.plugins.extra.true-zen').config()
   -- require('saturn.plugins.extra.tabout').config()
 end
 
@@ -25,6 +29,7 @@ function M.setup()
   require('saturn.plugins.extra.dressing')
   require('saturn.plugins.extra.spectre')
   require('saturn.plugins.extra.dial')
+  -- require('saturn.plugins.extra.hop')
   -- require('saturn.plugins.extra.tabout').setup()
 end
 
