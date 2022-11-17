@@ -16,6 +16,23 @@ function M.smart_quit()
   end
 end
 
+function M.popup_search()
+  vim.ui.input({
+    prompt = "Search: ",
+  }, function(input)
+    vim.cmd("noh")
+    vim.cmd("silent! %s/" .. input .. "//gn")
+  end)
+end
+
+function M.popup_cmd()
+  vim.ui.input({
+    prompt = "Command: ",
+  }, function(input)
+    vim.cmd(input)
+  end)
+end
+
 function M.isempty(s)
   return s == nil or s == ""
 end

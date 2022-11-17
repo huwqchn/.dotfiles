@@ -1,6 +1,6 @@
 local M = {}
 local opts_any = { noremap = true, silent = true }
-local opts_remap = { remap = true, silent = true }
+-- local opts_remap = { remap = true, silent = true }
 
 -- Mods
 --	 normal_mode = "n",
