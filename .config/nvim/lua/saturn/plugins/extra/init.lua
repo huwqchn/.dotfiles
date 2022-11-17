@@ -12,6 +12,7 @@ function M.config()
   require('saturn.plugins.extra.dial').config()
   require('saturn.plugins.extra.bqf').config()
   require('saturn.plugins.extra.jaq').config()
+  require('saturn.plugins.extra.lab').config()
   -- require('saturn.plugins.extra.tabout').config()
 end
 

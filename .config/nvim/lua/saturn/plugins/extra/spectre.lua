@@ -177,10 +177,6 @@ function M.config()
 end
 
 function M.setup()
-  if not saturn.plugins.spectre.active then
-    return
-  end
-
   local present, spectre = pcall(require, "spectre")
   if not present then
     return

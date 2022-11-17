@@ -1,8 +1,3 @@
-local status_ok, todo_comments = pcall(require, "todo-comments")
-if not status_ok then
-  return
-end
-
 local M = {}
 
 function M.config()
@@ -83,6 +78,5 @@ function M.setup()
     saturn.plugins.todo_comments.on_config_done(todo_comments)
   end
 end
-
 
 return M

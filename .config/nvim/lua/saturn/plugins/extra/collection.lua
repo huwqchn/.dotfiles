@@ -138,7 +138,7 @@ return {
     ft = { "markdown" },
   },
   -- { "norcalli/nvim-colorizer.lua", event = "BufRead" },
-  {  "NvChad/nvim-colorizer.lua", event = "BufRead" },
+  { "NvChad/nvim-colorizer.lua", event = "BufRead" },
   { "nvim-colortils/colortils.nvim" },
   { "folke/zen-mode.nvim" },
   { "stevearc/aerial.nvim" },
@@ -186,7 +186,11 @@ return {
   {
     "0x100101/lab.nvim",
     run = "cd js && npm ci",
-    require = { 'nvim-lua/plenary.nvim' }
+    config = function()
+      require("saturn.plugins.extra.lab").setup()
+    end,
+    require = { 'nvim-lua/plenary.nvim' },
+    disable = not saturn.plugins.lab.active,
   },
   {
     "pwntester/octo.nvim",
