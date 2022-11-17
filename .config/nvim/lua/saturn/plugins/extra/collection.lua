@@ -46,19 +46,22 @@ return {
     "ray-x/lsp_signature.nvim"
   },
   {
-    "j-hui/fidget.nvim"
+    "j-hui/fidget.nvim",
+    config = function()
+      require("fidget").setup()
+    end,
   },
   {
-    "lvimuser/lsp-inlayhints.nvim"
+    "lvimuser/lsp-inlayhints.nvim",
   },
   {
-    "https://git.sr.ht/~whynothugo/lsp_lines.nvim"
+    "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
   },
   {
-    "nvim-telescope/telescope-media-files.nvim"
+    "nvim-telescope/telescope-media-files.nvim",
   },
   {
-    "tom-anders/telescope-vim-bookmarks.nvim"
+    "tom-anders/telescope-vim-bookmarks.nvim",
   },
   {
     "p00f/nvim-ts-rainbow", after = "nvim-treesitter",
@@ -73,10 +76,10 @@ return {
     "nvim-treesitter/nvim-treesitter-textobjects",
   },
   {
-    "f-person/git-blame.nvim"
+    "f-person/git-blame.nvim",
   },
   {
-    "ruifm/gitlinker.nvim"
+    "ruifm/gitlinker.nvim",
   },
   {
     "mattn/vim-gist",
@@ -150,7 +153,14 @@ return {
     ft = { "markdown" },
   },
   -- { "norcalli/nvim-colorizer.lua", event = "BufRead" },
-  { "NvChad/nvim-colorizer.lua", event = "BufRead" },
+  {
+    "NvChad/nvim-colorizer.lua",
+    event = "BufRead",
+    config = function()
+      require("saturn.plugins.extra.colorizer").setup()
+    end,
+    disable = not saturn.plugins.colorizer.active,
+  },
   { "nvim-colortils/colortils.nvim" },
   {
     "folke/zen-mode.nvim",
@@ -173,7 +183,12 @@ return {
     end,
     disable = not saturn.plugins.aerial.active,
   },
-  { "kylechui/nvim-surround", disable = true, },
+  {
+    "kylechui/nvim-surround",
+    config = function()
+      require("saturn.plugins.extra.surround")
+    end,
+  },
   {
     "abecodes/tabout.nvim",
     wants = { "nvim-treesitter" }, -- or require if not used so far
@@ -181,11 +196,9 @@ return {
   },
   {
     "christianchiarulli/harpoon",
-    disable = true,
   },
   {
     "MattesGroeger/vim-bookmarks",
-    disable = true,
   },
   {
     "mickael-menu/zk-nvim",
