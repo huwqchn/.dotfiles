@@ -19,20 +19,20 @@ return {
     event = "BufRead",
   },
   {
-    "hrsh7th/cmp-cmdline"
+    "hrsh7th/cmp-cmdline",
   },
   {
-    "hrsh7th/cmp-emoji"
+    "hrsh7th/cmp-emoji",
   },
   {
     "zbirenbaum/copilot-cmp",
     after = { "copilot.lua" },
     config = function()
-      require("copilot_cmp").setup {
+      require("copilot_cmp").setup({
         formatters = {
           insert_text = require("copilot_cmp.format").remove_existing,
         },
-      }
+      })
     end,
   },
   {
@@ -40,10 +40,10 @@ return {
     run = "./install.sh",
     config = function()
       require("saturn.plugins.extra.tabnine").setup()
-    end
+    end,
   },
   {
-    "ray-x/lsp_signature.nvim"
+    "ray-x/lsp_signature.nvim",
   },
   {
     "j-hui/fidget.nvim",
@@ -64,7 +64,8 @@ return {
     "tom-anders/telescope-vim-bookmarks.nvim",
   },
   {
-    "p00f/nvim-ts-rainbow", after = "nvim-treesitter",
+    "p00f/nvim-ts-rainbow",
+    after = "nvim-treesitter",
   },
   {
     "nvim-treesitter/playground",
@@ -89,10 +90,14 @@ return {
   },
   {
     "TimUntersberger/neogit",
+    config = function()
+      require("saturn.plugins.extra.neogit").setup()
+    end,
+    disable = not saturn.plugins.neogit.active,
   },
   {
-    'sindrets/diffview.nvim',
-    requires = 'nvim-lua/plenary.nvim',
+    "sindrets/diffview.nvim",
+    requires = "nvim-lua/plenary.nvim",
   },
   {
     "simrat39/symbols-outline.nvim",
@@ -102,7 +107,7 @@ return {
     disable = not saturn.plugins.symbols_outline.active,
   },
   {
-    "mrjones2014/smart-splits.nvim"
+    "mrjones2014/smart-splits.nvim",
   },
   {
     "kwkarlwang/bufresize.nvim",
@@ -131,13 +136,31 @@ return {
     disable = not saturn.plugins.dressing.active,
   },
   {
+    "VonHeikemen/fine-cmdline.nvim",
+    config = function()
+      require("saturn.plugins.extra.fine-cmdline")
+    end,
+    requires = {
+      { "MunifTanjim/nui.nvim" },
+    },
+  },
+  {
+    "romgrk/searchbox.nvim",
+    config = function()
+      require("saturn.plugins.extra.searchbox")
+    end,
+    requires = {
+      { "MunifTanjim/nui.nvim" },
+    },
+  },
+  {
     "ghillb/cybu.nvim",
     branch = "main", -- timely updates
     -- branch = "v1.x", -- won't receive breaking changes
     config = function()
       require("saturn.plugins.extra.cybu").setup()
     end,
-    requires = { "nvim-tree/nvim-web-devicons", "nvim-lua/plenary.nvim"}, -- optional for icon support
+    requires = { "nvim-tree/nvim-web-devicons", "nvim-lua/plenary.nvim" }, -- optional for icon support
     disable = not saturn.plugins.cybu.active,
   },
   {
@@ -149,7 +172,9 @@ return {
   {
     "iamcco/markdown-preview.nvim",
     run = "cd app && npm install",
-    setup = function() vim.g.mkdp_filetypes = { "markdown" } end,
+    setup = function()
+      vim.g.mkdp_filetypes = { "markdown" }
+    end,
     ft = { "markdown" },
   },
   -- { "norcalli/nvim-colorizer.lua", event = "BufRead" },
@@ -174,7 +199,7 @@ return {
     config = function()
       require("saturn.plugins.extra.true-zen").setup()
     end,
-    disable = not saturn.plugins.true_zen
+    disable = not saturn.plugins.true_zen,
   },
   {
     "stevearc/aerial.nvim",
@@ -233,7 +258,7 @@ return {
     config = function()
       require("saturn.plugins.extra.lab").setup()
     end,
-    require = { 'nvim-lua/plenary.nvim' },
+    require = { "nvim-lua/plenary.nvim" },
     disable = not saturn.plugins.lab.active,
   },
   {
@@ -251,13 +276,13 @@ return {
     "nacro90/numb.nvim",
     event = "BufRead",
     config = function()
-      require("numb").setup {
+      require("numb").setup({
         show_numbers = true, -- Enable 'number' for the window while peeking
         show_cursorline = true, -- Enable 'cursorline' for the window while peeking
         -- hide_relativenumbers = true, -- Enable turning off 'relativenumber' for the window while peeking
         -- number_only = false, -- Peek only when the command is only a number instead of when it starts with a number
         -- centered_peeking = true, -- Peeked line will be centered relative to window
-      }
+      })
     end,
   },
   { "andymass/vim-matchup", disable = true },
@@ -265,7 +290,7 @@ return {
   { "junegunn/vim-slash", disable = true },
   {
     "phaazon/hop.nvim",
-    branch = 'v2',
+    branch = "v2",
     config = function()
       require("saturn.plugins.extra.hop")
     end,
@@ -283,14 +308,14 @@ return {
   {
     "jinh0/eyeliner.nvim",
     config = function()
-      require("eyeliner").setup {
+      require("eyeliner").setup({
         highlight_on_key = true,
-      }
+      })
     end,
   },
   { "jose-elias-alvarez/typescript.nvim" },
   { "mxsdev/nvim-dap-vscode-js" },
   { "mfussenegger/nvim-dap-python" },
   { "leoluz/nvim-dap-go" },
-  { "olexsmir/gopher.nvim", }
+  { "olexsmir/gopher.nvim" },
 }

@@ -19,6 +19,7 @@ function M.config()
   require('saturn.plugins.extra.zen-mode').config()
   require('saturn.plugins.extra.true-zen').config()
   require('saturn.plugins.extra.colorizer').config()
+  require('saturn.plugins.extra.neogit').config()
   -- require('saturn.plugins.extra.tabout').config()
 end
 
