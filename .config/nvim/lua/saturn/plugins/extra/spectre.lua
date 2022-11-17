@@ -16,7 +16,7 @@ function M.config()
     },
     mapping = {
       ["toggle_line"] = {
-        map = "dd",
+        map = "tt",
         cmd = "<cmd>lua require('spectre').toggle_line()<CR>",
         desc = "toggle current item",
       },
@@ -26,42 +26,42 @@ function M.config()
         desc = "goto current file",
       },
       ["send_to_qf"] = {
-        map = "<leader>q",
+        map = "Q",
         cmd = "<cmd>lua require('spectre.actions').send_to_qf()<CR>",
         desc = "send all item to quickfix",
       },
       ["replace_cmd"] = {
-        map = "<leader>c",
+        map = "c",
         cmd = "<cmd>lua require('spectre.actions').replace_cmd()<CR>",
         desc = "input replace vim command",
       },
       ["show_option_menu"] = {
-        map = "<leader>o",
+        map = "o",
         cmd = "<cmd>lua require('spectre').show_options()<CR>",
         desc = "show option",
       },
       ["run_current_replace"] = {
-        map = "<leader>rc",
+        map = "R",
         cmd = "<cmd>lua require('spectre.actions').run_current_replace()<CR>",
         desc = "replace current line",
       },
       ["run_replace"] = {
-        map = "<leader>R",
+        map = "r",
         cmd = "<cmd>lua require('spectre.actions').run_replace()<CR>",
         desc = "replace all",
       },
       ["change_view_mode"] = {
-        map = "<leader>v",
+        map = "m",
         cmd = "<cmd>lua require('spectre').change_view()<CR>",
         desc = "change result view mode",
       },
       ["change_replace_sed"] = {
-        map = "trs",
+        map = "ts",
         cmd = "<cmd>lua require('spectre').change_engine_replace('sed')<CR>",
         desc = "use sed to replace",
       },
       ["change_replace_oxi"] = {
-        map = "tro",
+        map = "to",
         cmd = "<cmd>lua require('spectre').change_engine_replace('oxi')<CR>",
         desc = "use oxi to replace",
       },
@@ -81,7 +81,7 @@ function M.config()
         desc = "toggle search hidden",
       },
       ["resume_last_search"] = {
-        map = "<leader>l",
+        map = "l",
         cmd = "<cmd>lua require('spectre').resume_last_search()<CR>",
         desc = "resume last search before close",
       },

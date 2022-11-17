@@ -7,7 +7,6 @@ return {
     disable = not saturn.plugins.todo_comments.active,
   },
   {
-    -- TODO:not working anyway
     "windwp/nvim-spectre",
     config = function()
       require("saturn.plugins.extra.spectre").setup()
