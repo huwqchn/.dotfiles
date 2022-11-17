@@ -103,7 +103,6 @@ return {
   },
   {
     "kwkarlwang/bufresize.nvim",
-    disable = true,
   },
   {
     "zbirenbaum/copilot.lua",
@@ -131,7 +130,6 @@ return {
   },
   {
     "tversteeg/registers.nvim",
-    disable = true,
   },
   {
     "iamcco/markdown-preview.nvim",
@@ -164,11 +162,9 @@ return {
   },
   {
     "rmagatti/auto-session",
-    disable = false,
   },
   {
     "rmagatti/session-lens",
-    disable = false,
   },
   {
     "kevinhwang91/nvim-bqf",
@@ -190,7 +186,7 @@ return {
   {
     "0x100101/lab.nvim",
     run = "cd js && npm ci",
-    disable = true,
+    require = { 'nvim-lua/plenary.nvim' }
   },
   {
     "pwntester/octo.nvim",

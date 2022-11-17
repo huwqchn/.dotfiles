@@ -41,11 +41,11 @@ M.general = {
 		["="] = "n",
 
 		-- colemak goto key
-		["t"] = { "g", opts_remap },
-		["T"] = "G",
+		-- ["t"] = { "g", opts_remap },
+		-- ["T"] = "G",
 
-    ["j"] = "t",
-    ["J"] = "T",
+    --   ["j"] = "t",
+    --   ["J"] = "T",
 
 		["gt"] = "gg",
 		["gu"] = "gk",
@@ -64,8 +64,8 @@ M.general = {
 		["H"] = "E",
 
 		-- faster in-line navigation
-		["W"] = "5w",
-		["B"] = "5b",
+		-- ["W"] = "5w",
+		-- ["B"] = "5b",
 
 		-- convenient keymaps
 		-- [";"] = ":",

@@ -158,7 +158,7 @@ return {
   },
   {
     "neovim/nvim-lspconfig",
-    commit = "f11fdff7e8b5b415e5ef1837bdcdd37ea6764dda"
+    -- commit = "f11fdff7e8b5b415e5ef1837bdcdd37ea6764dda"
   },
   {
     "williamboman/mason.nvim",
@@ -169,15 +169,15 @@ return {
   },
   {
     "williamboman/mason-lspconfig.nvim",
-    commit = "0051870dd728f4988110a1b2d47f4a4510213e31"
+    -- commit = "0051870dd728f4988110a1b2d47f4a4510213e31"
   },
   {
     "jose-elias-alvarez/null-ls.nvim",
-    commit = "c0c19f32b614b3921e17886c541c13a72748d450"
+    -- commit = "c0c19f32b614b3921e17886c541c13a72748d450"
   },
   {
     "tamago324/nlsp-settings.nvim",
-    commit = "758adec8e3b3dd0b4f4d5073a0419b9e1daf43f7"
+    -- commit = "758adec8e3b3dd0b4f4d5073a0419b9e1daf43f7"
   },
   {
     "RRethy/vim-illuminate",
