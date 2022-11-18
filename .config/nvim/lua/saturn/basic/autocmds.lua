@@ -50,14 +50,14 @@ function M.load()
         command = "set nobuflisted",
       },
     },
-    {
-      "FileType",
-      {
-        group = "_filetype_settings",
-        pattern = { "gitcommit", "markdown" },
-        command = "setlocal wrap spell",
-      },
-    },
+    -- {
+    --   "FileType",
+    --   {
+    --     group = "_filetype_settings",
+    --     pattern = { "gitcommit", "markdown" },
+    --     command = "setlocal wrap spell",
+    --   },
+    -- },
     {
       "FileType",
       {
