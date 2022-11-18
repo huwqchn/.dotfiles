@@ -2,6 +2,7 @@
 local M = {}
 
 function M.config()
+  require('saturn.plugins.extra.autocmds')
   require('saturn.plugins.extra.telescope')
   require('saturn.plugins.extra.treesitter')
   require('saturn.plugins.extra.lsp').config()
@@ -22,7 +23,8 @@ function M.config()
   require('saturn.plugins.extra.true-zen').config()
   require('saturn.plugins.extra.colorizer').config()
   require('saturn.plugins.extra.neogit').config()
-  -- require('saturn.plugins.extra.tabout').config()
+  require('saturn.plugins.extra.tabout').config()
+  require('saturn.plugins.extra.trouble').config()
 end
 
 function M.setup()
@@ -36,7 +38,8 @@ function M.setup()
   require('saturn.plugins.extra.numb')
   require('saturn.plugins.extra.git')
   require('saturn.plugins.extra.harpoon')
-  -- require('saturn.plugins.extra.jaq')
+  require('saturn.plugins.extra.surround')
+  require('saturn.plugins.extra.neuron')
   -- require('saturn.plugins.extra.hop')
   -- require('saturn.plugins.extra.tabout').setup()
 end

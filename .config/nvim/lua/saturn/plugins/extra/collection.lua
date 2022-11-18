@@ -7,8 +7,8 @@ return {
     disable = not saturn.plugins.todo_comments.active,
   },
   {
-    'LukasPietzschmann/telescope-tabs',
-    requires = { 'nvim-telescope/telescope.nvim' },
+    "LukasPietzschmann/telescope-tabs",
+    requires = { "nvim-telescope/telescope.nvim" },
   },
   {
     "windwp/nvim-spectre",
@@ -47,6 +47,14 @@ return {
   },
   {
     "ray-x/lsp_signature.nvim",
+  },
+  {
+    "folke/trouble.nvim",
+    cmd = "TroubleToggle",
+    config = function()
+      require("saturn.plugins.extra.trouble").setup()
+    end,
+    disable = not saturn.plugins.trouble.active,
   },
   {
     "j-hui/fidget.nvim",
@@ -225,14 +233,14 @@ return {
   },
   {
     "kylechui/nvim-surround",
-    config = function()
-      require("saturn.plugins.extra.surround")
-    end,
   },
   {
     "abecodes/tabout.nvim",
     wants = { "nvim-treesitter" }, -- or require if not used so far
-    disable = true,
+    config = function()
+      require("saturn.plugins.extra.tabout").setup()
+    end,
+    disable = not saturn.plugins.tabout.active,
   },
   {
     "christianchiarulli/harpoon",
@@ -333,4 +341,7 @@ return {
   { "mfussenegger/nvim-dap-python" },
   { "leoluz/nvim-dap-go" },
   { "olexsmir/gopher.nvim" },
+  {
+    "oberblastmeister/neuron.nvim"
+  },
 }

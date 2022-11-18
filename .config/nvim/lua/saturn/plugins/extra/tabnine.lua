@@ -2,6 +2,8 @@ local M = {}
 
 function M.config()
   saturn.plugins.tabnine = {
+    active = true,
+    on_config_done = nil,
     max_lines = 1000,
     max_num_results = 20,
     sort = true,
@@ -15,13 +17,15 @@ function M.config()
   }
 end
 
-
 function M.setup()
   local present, tabnine = pcall(require, "cmp_tabnine.config")
   if not present then
     return
   end
   tabnine.setup(saturn.plugins.tabnine)
+  if saturn.plugins.tabnine.on_config_done then
+    saturn.plugins.tabnine.on_config_done(tabnine)
+  end
 end
 
 return M
