@@ -317,8 +317,8 @@ return {
   {
     "andymass/vim-matchup",
   },
-  { "karb94/neoscroll.nvim" },
-  { "junegunn/vim-slash", disable = true },
+  { "karb94/neoscroll.nvim", },
+  -- { "junegunn/vim-slash",},
   {
     "phaazon/hop.nvim",
     branch = "v2",
