@@ -255,8 +255,8 @@ return {
   },
   {
     "is0n/jaq-nvim",
-    conifg = function()
-      require("jaq").setup()
+    config = function()
+      require("saturn.plugins.extra.jaq").setup()
     end,
     disable = not saturn.plugins.jaq.active,
   },

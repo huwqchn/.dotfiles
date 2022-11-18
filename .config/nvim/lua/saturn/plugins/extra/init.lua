@@ -34,6 +34,7 @@ function M.setup()
   require('saturn.plugins.extra.numb')
   require('saturn.plugins.extra.git')
   require('saturn.plugins.extra.harpoon')
+  -- require('saturn.plugins.extra.jaq')
   -- require('saturn.plugins.extra.hop')
   -- require('saturn.plugins.extra.tabout').setup()
 end
