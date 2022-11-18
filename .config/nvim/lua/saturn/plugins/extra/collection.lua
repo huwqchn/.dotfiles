@@ -258,6 +258,14 @@ return {
     "rmagatti/session-lens",
   },
   {
+    "folke/persistence.nvim",
+    event = "BufReadPre", -- this will only start session saving when an actual file was opened
+    module = "persistence",
+    config = function()
+      require("saturn.plugins.extra.persistence").setup()
+    end,
+  },
+  {
     "kevinhwang91/nvim-bqf",
     config = function()
       require("saturn.plugins.extra.bqf").setup()
@@ -317,7 +325,7 @@ return {
   {
     "andymass/vim-matchup",
   },
-  { "karb94/neoscroll.nvim", },
+  { "karb94/neoscroll.nvim" },
   -- { "junegunn/vim-slash",},
   {
     "phaazon/hop.nvim",
@@ -352,4 +360,10 @@ return {
   {
     "oberblastmeister/neuron.nvim",
   },
+  {
+    "metakirby5/codi.vim",
+    cmd = "Codi",
+  },
+  { "ellisonleao/glow.nvim" },
+  { "ethanholz/nvim-lastplace" },
 }
