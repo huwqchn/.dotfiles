@@ -52,6 +52,18 @@ return {
   },
   {
     "lvimuser/lsp-inlayhints.nvim",
+    config = function()
+      require("saturn.plugins.extra.inlayhints")
+      -- require("lsp-inlayhints").setup({
+      --   show_parameter_hints = true,
+      --   show_parameter_type_hints = true,
+      --   show_return_type_hints = true,
+      --   show_variable_type_hints = true,
+      --   parameter_hints_prefix = "<- ",
+      --   parameter_hints_separator = ", ",
+      --   other_hints_prefix = "=> ",
+      -- })
+    end,
   },
   {
     "https://git.sr.ht/~whynothugo/lsp_lines.nvim",

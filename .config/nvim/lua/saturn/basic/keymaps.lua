@@ -103,8 +103,8 @@ M.general = {
 		["<C-i>"] = "<C-w>l",
 		["<C-y>"] = "<C-w>o",
     ["<C-b>"] = "<C-w>=",
-    ["<C-h>"] = "<C-o>",
-    ["<C-o>"] = "<C-i>",
+    -- ["<C-h>"] = "<C-o>",
+    -- ["<C-o>"] = "<C-i>",
 		["<C-q>"] = "<C-w>q",
 		-- Disable the default s key
 		["s"] =  "<nop>",
