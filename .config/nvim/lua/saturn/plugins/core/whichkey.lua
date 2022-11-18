@@ -158,7 +158,7 @@ M.config = function()
       },
       g = {
         name = "Git",
-        g = { "<cmd>lua require 'saturn.plugins.toggleterm'.lazygit_toggle()<cr>", "Lazygit" },
+        g = { "<cmd>lua require 'saturn.plugins.core.toggleterm'.lazygit_toggle()<cr>", "Lazygit" },
         n = { "<cmd>Neogit<cr>", "Neogit" },
         e = { "<cmd>lua require 'gitsigns'.next_hunk({navigation_message = false})<cr>", "Next Hunk" },
         u = { "<cmd>lua require 'gitsigns'.prev_hunk({navigation_message = false})<cr>", "Prev Hunk" },
