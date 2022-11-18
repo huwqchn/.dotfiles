@@ -10,6 +10,7 @@ function M.config()
   saturn.plugins.treesitter.ensure_installed = {
     "java",
     "cpp",
+    "lua",
   }
   -- saturn.lsp.installer.setup.automatic_installation = false
 
@@ -27,6 +28,7 @@ function M.setup()
   require "saturn.plugins.extra.lsp.languages.python"
   require "saturn.plugins.extra.lsp.languages.js-ts"
   require "saturn.plugins.extra.lsp.languages.sh"
+  require "saturn.plugins.extra.lsp.languages.cpp"
 
   local formatters = require "saturn.plugins.core.lsp.null-ls.formatters"
   formatters.setup {
