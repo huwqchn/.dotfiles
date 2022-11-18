@@ -7,6 +7,10 @@ return {
     disable = not saturn.plugins.todo_comments.active,
   },
   {
+    'LukasPietzschmann/telescope-tabs',
+    requires = { 'nvim-telescope/telescope.nvim' },
+  },
+  {
     "windwp/nvim-spectre",
     config = function()
       require("saturn.plugins.extra.spectre").setup()

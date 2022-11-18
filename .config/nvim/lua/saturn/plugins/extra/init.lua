@@ -2,6 +2,8 @@
 local M = {}
 
 function M.config()
+  require('saturn.plugins.extra.telescope')
+  require('saturn.plugins.extra.treesitter')
   require('saturn.plugins.extra.lsp').config()
   require('saturn.plugins.extra.copilot').config()
   require('saturn.plugins.extra.tabnine').config()

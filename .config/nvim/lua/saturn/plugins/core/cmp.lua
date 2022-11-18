@@ -358,7 +358,7 @@ function M.config()
 		--   },
 		-- },
 		cmdline = {
-			enable = false,
+			enable = true,
 			options = {
 				{
 					type = ":",
