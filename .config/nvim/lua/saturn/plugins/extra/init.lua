@@ -40,6 +40,7 @@ function M.setup()
   require('saturn.plugins.extra.harpoon')
   require('saturn.plugins.extra.surround')
   require('saturn.plugins.extra.neuron')
+  require('saturn.plugins.extra.matchup')
   -- require('saturn.plugins.extra.hop')
   -- require('saturn.plugins.extra.tabout').setup()
 end

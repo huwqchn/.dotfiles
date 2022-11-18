@@ -250,7 +250,6 @@ return {
   },
   {
     "mickael-menu/zk-nvim",
-    disable = true,
   },
   {
     "rmagatti/auto-session",
@@ -286,7 +285,14 @@ return {
   },
   {
     "pwntester/octo.nvim",
-    disable = true,
+    requires = {
+      "nvim-lua/plenary.nvim",
+      "nvim-telescope/telescope.nvim",
+      "kyazdani42/nvim-web-devicons",
+    },
+    config = function()
+      require("octo").setup()
+    end,
   },
   {
     "monaqa/dial.nvim",
@@ -308,7 +314,9 @@ return {
       })
     end,
   },
-  { "andymass/vim-matchup", disable = true },
+  {
+    "andymass/vim-matchup",
+  },
   { "karb94/neoscroll.nvim" },
   { "junegunn/vim-slash", disable = true },
   {
@@ -342,6 +350,6 @@ return {
   { "leoluz/nvim-dap-go" },
   { "olexsmir/gopher.nvim" },
   {
-    "oberblastmeister/neuron.nvim"
+    "oberblastmeister/neuron.nvim",
   },
 }
