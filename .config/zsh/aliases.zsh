@@ -23,6 +23,8 @@ alias la="exa -a --color=always --icons --group-directories-first"
 alias tree="lsd --tree"
 alias cat="bat"
 alias du="dust"
+alias mkdir="mkdir -p --verbose"
+alias rmdir="rmdir -p --verbose"
 
 # some git aliases
 alias gp="git push"
