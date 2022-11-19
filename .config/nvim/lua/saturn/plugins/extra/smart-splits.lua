@@ -57,16 +57,16 @@ M.setup = function()
     return
   end
   smart_splits.setup(saturn.plugins.smart_splits)
-  -- Better window navigation
-  vim.api.nvim_set_keymap("n", "<C-n>", smart_splits.move_cursor_left(), { noremap = true })
-  vim.api.nvim_set_keymap("n", "<C-e>", smart_splits.move_cursor_down(), { noremap = true })
-  vim.api.nivm_set_keymap("n", "<C-u>", smart_splits.move_cursor_up(), { noremap = true })
-  vim.api.nvim_set_keymap("n", "<C-i>", smart_splits.move_cursor_right(), { noremap = true })
-  -- Resize with arrows
-  vim.api.nvim_set_keymap("n", "<C-up>", smart_splits.resize_up(), { noremap = true })
-  vim.api.nvim_set_keymap("n", "<C-Down>", smart_splits.resize_down(), { noremap = true })
-  vim.api.nivm_set_keymap("n", "<C-Left>", smart_splits.resize_left(), { noremap = true })
-  vim.api.nvim_set_keymap("n", "<C-Right>", smart_splits.resize_right(), { noremap = true })
+  -- resizing splits
+  vim.keymap.set("n", "<C-Left>", require("smart-splits").resize_left)
+  vim.keymap.set("n", "<C-Down>", require("smart-splits").resize_down)
+  vim.keymap.set("n", "<C-Up>", require("smart-splits").resize_up)
+  vim.keymap.set("n", "<C-Right>", require("smart-splits").resize_right)
+  -- moving between splits
+  vim.keymap.set("n", "<C-n>", require("smart-splits").move_cursor_left)
+  vim.keymap.set("n", "<C-e>", require("smart-splits").move_cursor_down)
+  vim.keymap.set("n", "<C-u>", require("smart-splits").move_cursor_up)
+  vim.keymap.set("n", "<C-i>", require("smart-splits").move_cursor_right)
   if saturn.plugins.smart_splits.on_config_done then
     saturn.plugins.smart_splits.on_config_done(smart_splits)
   end
