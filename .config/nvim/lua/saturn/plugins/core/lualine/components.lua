@@ -17,7 +17,7 @@ local branch = saturn.icons.git.Branch
 return {
   mode = {
     function()
-      return " " .. saturn.icons.ui.Target .. " "
+      return " " .. saturn.icons.misc.Saturn .. " "
     end,
     padding = { left = 0, right = 0 },
     color = {},

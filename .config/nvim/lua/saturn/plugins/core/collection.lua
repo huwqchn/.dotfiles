@@ -5,11 +5,11 @@ return {
   },
   {
     "nvim-lua/plenary.nvim",
-    -- commit = "4b7e52044bbb84242158d977a50c4cbcd85070c7" 
+    -- commit = "4b7e52044bbb84242158d977a50c4cbcd85070c7"
   },
   {
     "nvim-lua/popup.nvim",
-    -- commit = "b7404d35d5d3548a82149238289fa71f7f6de4ac" 
+    -- commit = "b7404d35d5d3548a82149238289fa71f7f6de4ac"
   },
   {
     "windwp/nvim-autopairs",
@@ -80,7 +80,6 @@ return {
   },
   {
     "lewis6991/impatient.nvim",
-    -- commit = "b842e16ecc1a700f62adb9802f8355b99b52a5a6",
   },
   {
     "lukas-reineke/indent-blankline.nvim",
@@ -96,7 +95,7 @@ return {
   },
   {
     "folke/tokyonight.nvim",
-    -- commit = "66bfc2e8f754869c7b651f3f47a2ee56ae557764", 
+    -- commit = "66bfc2e8f754869c7b651f3f47a2ee56ae557764",
   },
   {
     "lunarvim/darkplus.nvim",
