@@ -52,9 +52,6 @@ M.config = function()
 end
 
 M.setup = function()
-  if not saturn.plugins.smart_splits.active then
-    return
-  end
   local present, smart_splits = pcall(require, "smart-splits")
   if not present then
     return

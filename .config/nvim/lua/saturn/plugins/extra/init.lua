@@ -27,6 +27,7 @@ function M.config()
   require('saturn.plugins.extra.trouble').config()
   require('saturn.plugins.extra.persistence').config()
   require('saturn.plugins.extra.smart-splits').config()
+  require('saturn.plugins.extra.window-picker').config()
 end
 
 function M.setup()
