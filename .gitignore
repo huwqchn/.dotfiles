@@ -34,3 +34,4 @@
 .config/polybar/.system
 .config/clash/config.yaml
 cache.*
+.config/tmux/plugins
