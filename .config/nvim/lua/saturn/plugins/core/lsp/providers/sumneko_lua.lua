@@ -1,7 +1,8 @@
 local default_workspace = {
   library = {
-    vim.fn.expand "$VIMRUNTIME",
-    vim.fn.expand "config" .. "/lua",
+    -- vim.fn.expand "$VIMRUNTIME",
+    [vim.fn.expand "config" .. "/lua"] = true,
+    [vim.fn.expand "$VIMRUNTIME/lua"] = true,
     -- require("neodev.config").types(),
     -- "${3rd}/busted/library",
     -- "${3rd}/luassert/library",

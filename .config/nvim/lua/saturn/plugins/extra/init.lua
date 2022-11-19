@@ -26,6 +26,7 @@ function M.config()
   require('saturn.plugins.extra.tabout').config()
   require('saturn.plugins.extra.trouble').config()
   require('saturn.plugins.extra.persistence').config()
+  require('saturn.plugins.extra.smart-splits').config()
 end
 
 function M.setup()

@@ -134,6 +134,10 @@ return {
   },
   {
     "mrjones2014/smart-splits.nvim",
+    config = function()
+      require("saturn.plugins.extra.smart-splits").setup()
+    end,
+    disable = not saturn.plugins.symbols_outline.active,
   },
   {
     "kwkarlwang/bufresize.nvim",
