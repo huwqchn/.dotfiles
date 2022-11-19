@@ -33,8 +33,11 @@ M.config = function()
       -- must be functions, they will be executed when
       -- entering or exiting the resize mode
       hooks = {
-        on_enter = nil,
-        on_leave = nil,
+        on_enter = function() vim.notify('Entering resize mode') end,
+        on_leave = function()
+          vim.notify('Exiting resize mode, bye')
+          require('bufresize').register()
+        end,
       },
     },
     -- ignore these autocmd events (via :h eventignore) while processing
