@@ -1041,19 +1041,25 @@ key_bindings:
   - { key: Key8,      mods: Alt,       chars: "\x1b8"                       }
   - { key: Key9,      mods: Alt,       chars: "\x1b9"                       }
   - { key: Key0,      mods: Alt,       chars: "\x1b0"                       }
+  - { key: Key1,      mods: Alt|Shift,       chars: "\x1b!"                 }
+  - { key: Key2,      mods: Alt|Shift,       chars: "\x1b@"                 }
+  - { key: Key3,      mods: Alt|Shift,       chars: "\x1b#"                 }
+  - { key: Key4,      mods: Alt|Shift,       chars: "\x1b$"                 }
+  - { key: Key5,      mods: Alt|Shift,       chars: "\x1b%"                 }
+  - { key: Key6,      mods: Alt|Shift,       chars: "\x1b^"                 }
+  - { key: Key7,      mods: Alt|Shift,       chars: "\x1b&"                 }
+  - { key: Key8,      mods: Alt|Shift,       chars: "\x1b*"                 }
+  - { key: Key9,      mods: Alt|Shift,       chars: "\x1b("                 }
+  - { key: Key0,      mods: Alt|Shift,       chars: "\x1b)"                 }
   #- { key: Space,     mods: Control,   chars: "\x00"                        } # Ctrl + Space
   - { key: Grave,     mods: Alt,       chars: "\x1b`"                       } # Alt + `
   - { key: Grave,     mods: Alt|Shift, chars: "\x1b~"                       } # Alt + ~
   - { key: Period,    mods: Alt,       chars: "\x1b."                       } # Alt + .
-  - { key: Key8,      mods: Alt|Shift, chars: "\x1b*"                       } # Alt + *
-  - { key: Key3,      mods: Alt|Shift, chars: "\x1b#"                       } # Alt + #
   - { key: Period,    mods: Alt|Shift, chars: "\x1b>"                       } # Alt + >
   - { key: Comma,     mods: Alt|Shift, chars: "\x1b<"                       } # Alt + <
   - { key: Minus,     mods: Alt|Shift, chars: "\x1b_"                       } # Alt + _
-  - { key: Key5,      mods: Alt|Shift, chars: "\x1b%"                       } # Alt + %
-  - { key: Key6,      mods: Alt|Shift, chars: "\x1b^"                       } # Alt + ^
   - { key: Backslash, mods: Alt,       chars: "\x1b\\"                      } # Alt + \
-  - { key: Return,    mods: Alt,       chars: "\x1b\x0d"                    } # Alt + Return - { key: Backslash, mods: Alt|Shift, chars: "\x1b|"                       } # Alt + 
+  - { key: Return,    mods: Alt,       chars: "\x1b\x0d"                    } # Alt + Return - { key: Backslash, mods: Alt|Shift, chars: "\x1b|"                       } # Alt +
   - { key: Back,      mods: Alt,       chars: "\x1b\x7f"                    } # Alt + Back
 #debug:
   # Display the time it takes to redraw each frame.
