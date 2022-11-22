@@ -8,7 +8,7 @@
 #
 
 [global]
-font = Roboto Medium 12
+font = JetBrains Mono 10
 icon_theme = "Papirus-Dark"
 enable_recursive_icon_lookup = true
 
@@ -75,7 +75,7 @@ hide_duplicate_count = yes
 # The width can be negative.  In this case the actual width is the
 # screen width minus the width defined in within the geometry option.
 #geometry = "250x50-40+40"
-# geometry = "280x50-10+44"
+geometry = "280x50-10+44"
 
 origin = top-right
 
@@ -93,7 +93,7 @@ shrink = no
 idle_threshold = 120
 
 # Which monitor should the notifications be displayed on.
-# monitor = 0
+monitor = 0
 
 # Display notification on focused monitor.  Possible modes are:
 #   mouse: follow mouse pointer
@@ -163,7 +163,7 @@ max_icon_size = 48
 
 frame_width = 0
 
-# [shortcuts]
+[shortcuts]
 #
 # # Shortcuts are specified as [modifier+][modifier+]...key
 # # Available modifiers are "ctrl", "mod1" (the alt-key), "mod2",
@@ -171,18 +171,18 @@ frame_width = 0
 # # Xev might be helpful to find names for keys.
 #
 # # Close notification.
-# close = ctrl+shift+space
+close = ctrl+shift+space
 #
 # # Close all notifications.
-# close_all = ctrl+shift+space
+close_all = ctrl+shift+space
 #
 # # Redisplay last message(s).
 # # On the US keyboard layout "grave" is normally above TAB and left
 # # of "1".
-# history = ctrl+grave
+history = ctrl+grave
 #
 # # Context menu.
-# context = ctrl+shift+period
+context = ctrl+shift+period
 
 [urgency_low]
 # IMPORTANT: colors have to be defined in quotation marks.
@@ -190,19 +190,19 @@ frame_width = 0
 frame_color = "#80a8fd"
 foreground = "#80a8fd"
 background = "#282e49"
-timeout = 10
+timeout = 2
 
 [urgency_normal]
 frame_color = "#80a8fd"
 foreground = "#80a8fd"
 background = "#282e49"
-timeout = 10
+timeout = 5
 
 [urgency_critical]
 frame_color = "#f7768e"
 foreground = "#ffffff"
 background = "#c45e71"
-timeout = 10
+timeout = 0
 
 [notify_send]
 appname = notify-send
