@@ -14,6 +14,7 @@ configuration{
 	display-window: " 﩯  Window ";
 	/* display-Network: " 󰤨  Network"; */
 	sidebar-mode: true;
+  dpi: 192;
 }
 
 @theme "tokyonight"
