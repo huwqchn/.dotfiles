@@ -136,6 +136,9 @@ super + ctrl + space
 super + ctrl + shift + space
 	bspc query -N -d | xargs -I id -n 1 bspc node id -p cancel
 
+super + ctrl + f
+  flameshot gui
+
 #
 # move/resize
 #
