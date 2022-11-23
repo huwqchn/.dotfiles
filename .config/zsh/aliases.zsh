@@ -46,7 +46,7 @@ alias rm="rm -i"
 
 # easier to read disk
 alias df="df -h" # human-readable sizes
-alias free="free -m" # show sizes in MB
+# alias free="free" # show sizes in MB
 
 # get top process eating memory
 alias psmem='ps auxf | sort -nr -k 4 | head -5'
