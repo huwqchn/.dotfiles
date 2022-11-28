@@ -196,7 +196,7 @@ function M.buf_kill(kill_command, bufnr, force)
       }, function(choice)
         if choice ~= nil and choice:match "ye?s?" then force = true end
       end)
-      if not force then return end
+      return
     end
   end
 

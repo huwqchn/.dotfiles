@@ -26,6 +26,7 @@ M.config = function()
       "dap-repl",
       "dap-terminal",
       "dapui_console",
+      "dapui_hover",
       "lab",
       "Markdown",
       "notify",
