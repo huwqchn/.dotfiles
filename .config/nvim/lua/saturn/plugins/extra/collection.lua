@@ -401,4 +401,8 @@ return {
 		end,
 		disable = not saturn.plugins.window_picker.active,
 	},
+  {
+    'kevinhwang91/nvim-ufo',
+    requires = 'kevinhwang91/promise-async',
+  },
 }
