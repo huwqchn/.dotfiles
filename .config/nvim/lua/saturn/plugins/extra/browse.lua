@@ -50,4 +50,7 @@ local keymap = vim.api.nvim_set_keymap
 
 keymap("n", "<leader>bm", "<cmd>BrowseBookmarks<cr>", opts)
 keymap("n", "<leader>bb", "<cmd>BrowseInputSearch<cr>", opts)
+keymap("n", "<leader>bd", "<cmd>BrowseDevdocsSearch<cr>", opts)
+keymap("n", "<leader>bf", "<cmd>BrowseDevdocsFileTypeSearch", opts)
+keymap("n", "<leader>bm", "<cmd>BrowseMdnSearch<cr>", opts)
 

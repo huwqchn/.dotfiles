@@ -251,6 +251,10 @@ return {
 	},
 	{
 		"christianchiarulli/harpoon",
+    config = function()
+      require("saturn.plugins.extra.harpoon").setup()
+    end,
+    disable = not saturn.plugins.harpoon.active,
 	},
 	{
 		"MattesGroeger/vim-bookmarks",
