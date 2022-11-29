@@ -235,6 +235,16 @@ M.config = function()
         -- t = { '<cmd>lua require("user.functions").toggle_diagnostics()<cr>', "Toggle Diagnostics" },
         -- p = { "<cmd>LuaSnipUnlinkCurrent<cr>", "Unlink Snippet" },
       },
+      m = {
+        name = "Mark",
+        a = { "<cmd>silent BookmarkAnnotate<cr>", "Annotate" },
+        c = { "<cmd>silent BookmarkClear<cr>", "Clear" },
+        t = { "<cmd>silent BookmarkToggle<cr>", "Toggle" },
+        e = { "<cmd>silent BookmarkNext<cr>", "Next" },
+        u = { "<cmd>silent BookmarkPrev<cr>", "Prev" },
+        l = { "<cmd>silent BookmarkShowAll<cr>", "Show All" },
+        x = { "<cmd>BookmarkClearAll<cr>", "Clear All"},
+      },
       p = {
         name = "Packer",
         c = { "<cmd>PackerCompile<cr>", "Compile" },

@@ -8,4 +8,3 @@ if not h_status_ok then
   return
 end
 telescope.load_extension "harpoon"
-
