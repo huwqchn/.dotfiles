@@ -202,7 +202,7 @@ timeout = 5
 frame_color = "#f7768e"
 foreground = "#ffffff"
 background = "#c45e71"
-timeout = 0
+timeout = 10
 
 [notify_send]
 appname = notify-send
