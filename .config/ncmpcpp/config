@@ -19,7 +19,7 @@ ncmpcpp_directory = ~/.config/ncmpcpp
 ## MPD clients (eg. ncmpc) also use that location.
 ##
 #
-lyrics_directory = ~/music/lyrics
+lyrics_directory = ~/Music/lyrics
 #
 ##### connection settings #####
 #
@@ -31,7 +31,7 @@ mpd_connection_timeout = 5
 #
 ## Needed for tag editor and file operations to work.
 ##
-mpd_music_dir = ~/music
+mpd_music_dir = ~/Music
 #
 mpd_crossfade_time = 5
 #
@@ -89,7 +89,7 @@ visualizer_in_stereo = no
 ## visualization and audio.
 ##
 #
-visualizer_sync_interval = 30
+# visualizer_sync_interval = 30
 #
 ##
 ## Note: To enable spectrum frequency visualization you need to compile ncmpcpp
