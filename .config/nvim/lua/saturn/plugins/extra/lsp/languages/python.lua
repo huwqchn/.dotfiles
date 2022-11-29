@@ -17,6 +17,13 @@ pcall(function()
   -- require("dap-python").setup("python")
 end)
 
+-- Setup lsp for python
+local manager = require "saturn.plugins.core.lsp.manager"
+manager.setup("pyright", {
+  on_init = require("saturn.plugins.core.lsp").common_on_init,
+  capabilities = require("saturn.plugins.core.lsp").common_capabilities(),
+} )
+
 -- Supported test frameworks are unittest, pytest and django. By default it
 -- tries to detect the runner by probing for pytest.ini and manage.py, if
 -- neither are present it defaults to unittest.
