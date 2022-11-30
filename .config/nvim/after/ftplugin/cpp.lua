@@ -6,3 +6,5 @@ vim.notify = function(msg, ...)
 
     notify(msg, ...)
 end
+
+vim.keymap.set('n', "<space><space>", ":e %:p:s,.h$,.X123X,:s,.cpp$,.h,:s,.X123X$,.cpp,<CR>", { noremap = true, silent = true } )
