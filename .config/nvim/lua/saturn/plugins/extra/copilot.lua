@@ -10,7 +10,7 @@ function M.config()
         jump_next = "]]",
         accept = "<CR>",
         refresh = "<M-r>",
-        open = "<M-h>"
+        open = "<M-space>"
       },
     },
     suggestion = {
@@ -18,7 +18,7 @@ function M.config()
       auto_trigger = false,
       debounce = 75,
       keymap = {
-       accept = "<M-y>",
+       accept = "<M-cr>",
        next = "<M-i>",
        prev = "<M-n>",
        dismiss = "<C-]>",
