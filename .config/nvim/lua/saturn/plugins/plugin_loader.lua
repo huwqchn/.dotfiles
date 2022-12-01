@@ -5,7 +5,7 @@ local Log = require "saturn.plugins.log"
 local in_headless = #vim.api.nvim_list_uis() == 0
 
 
-local compile_path = vim.fn.stdpath "config" .. "/plugin/packer_compile.lua"
+local compile_path = vim.fn.stdpath "config" .. "/plugin/packer_compiled.lua"
 local snapshot_path = vim.fn.stdpath "cache" .. "/snapshots"
 
 function plugin_loader.init(opts)
