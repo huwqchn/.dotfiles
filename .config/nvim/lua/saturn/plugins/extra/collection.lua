@@ -444,4 +444,18 @@ return {
       "MunifTanjim/nui.nvim",
     },
   },
+  {
+    "anuvyklack/keymap-amend.nvim",
+    config = function()
+      local keymap = vim.keymap
+      keymap.amend = require('keymap-amend')
+
+      keymap.amend('n', '<Esc>', function(original)
+        if vim.v.hlsearch and vim.v.hlsearch == 1 then
+          vim.cmd("noh")
+        end
+        original()
+      end, { desc = 'disable search highlight' })
+    end,
+  },
 }

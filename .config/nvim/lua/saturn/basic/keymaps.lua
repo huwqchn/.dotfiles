@@ -74,7 +74,7 @@ M.general = {
     ["Q"] = ":q<CR>",
 
     -- nohl
-    ["<C-l>"] = ":nohl<CR>",
+    -- ["<C-l>"] = ":nohl<CR>",
 	},
   ["i"] = {
     -- Move current line / block with Alt-j/k ala vscode.
