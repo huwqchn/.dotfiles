@@ -2,6 +2,17 @@
 local M = {}
 
 function M.config()
+  saturn.plugins.luasnip = {
+    sources = {
+      friendly_snippets = true,
+    },
+  }
+
+  saturn.plugins.bigfile = {
+    active = true,
+    config = {},
+  }
+
   require('saturn.plugins.core.lsp').config()
   require('saturn.plugins.core.whichkey').config()
   require('saturn.plugins.core.theme').config()

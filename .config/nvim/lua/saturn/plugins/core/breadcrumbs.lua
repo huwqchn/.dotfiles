@@ -98,12 +98,8 @@ M.get_filename = function()
   local f = require "saturn.utils.functions"
 
   if not f.isempty(filename) then
-    local file_icon, file_icon_color =
-      require("nvim-web-devicons").get_icon_color(filename, extension, { default = true })
+    local file_icon, hl_group = require("nvim-web-devicons").get_icon(filename, extension, { default = true })
 
-    local hl_group = "FileIconColor" .. extension
-
-    vim.api.nvim_set_hl(0, hl_group, { fg = file_icon_color })
     if f.isempty(file_icon) then
       file_icon = saturn.icons.kind.File
     end

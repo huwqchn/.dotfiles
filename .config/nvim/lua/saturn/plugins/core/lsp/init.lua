@@ -89,11 +89,6 @@ end
 function M.config()
   local lsp_config = require "saturn.plugins.core.lsp.config"
   saturn.lsp = vim.deepcopy(lsp_config)
-  saturn.plugins.luasnip = {
-    sources = {
-      friendly_snippets = true,
-    },
-  }
 end
 
 function M.setup()

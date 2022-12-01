@@ -124,6 +124,10 @@ return {
 	{
 		"sindrets/diffview.nvim",
 		requires = "nvim-lua/plenary.nvim",
+    config = function()
+      require("saturn.plugins.extra.diffview").setup()
+    end,
+    disable = not saturn.plugins.diffview.active,
 	},
 	{
 		"simrat39/symbols-outline.nvim",
@@ -404,5 +408,8 @@ return {
   {
     'kevinhwang91/nvim-ufo',
     requires = 'kevinhwang91/promise-async',
+  },
+  {
+    "potamides/pantran.nvim",
   },
 }

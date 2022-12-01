@@ -1,10 +1,13 @@
+local plugin_loader = require 'saturn.plugins.plugin_loader'
+plugin_loader.init()
+
 local core = require 'saturn.plugins.core'
 core.config()
 
 local extra = require 'saturn.plugins.extra'
 extra.config()
 
-require 'saturn.plugins.packer'
+plugin_loader.load( { core.get(), extra.get() } )
 
 core.setup()
 extra.setup()

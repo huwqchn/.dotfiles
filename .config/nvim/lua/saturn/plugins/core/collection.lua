@@ -283,4 +283,13 @@ return {
     disable = not saturn.plugins.breadcrumbs.active,
   },
   { "b0o/schemastore.nvim" },
+  {
+    "lunarvim/bigfile.nvim",
+    config = function()
+      pcall(function()
+        require("bigfile").config(saturn.plugins.bigfile.config)
+      end)
+    end,
+    disable = not saturn.plugins.bigfile.active,
+  },
 }
