@@ -418,9 +418,9 @@ return {
     config = function()
       require("nvim-magic").setup({
         backends = {
-          default = require('nvim-magic-openai').new(),
+          default = require("nvim-magic-openai").new(),
         },
-        use_default_keymap = false
+        use_default_keymap = false,
       })
       local vopts = {
         mode = "x",
@@ -432,9 +432,18 @@ return {
       local vmappings = {
         o = {
           name = "+magic openai",
-          o = { "<cmd>lua require('nvim-magic.flows').append_completion(require('nvim-magic').backends.default)<cr>", "append completion" },
-          a = { "<cmd>lua require('nvim-magic.flows').suggest_alteration(require('nvim-magic').backends.default)<cr>", "suggest alteration" },
-          d = { "<cmd>lua require('nvim-magic.flows').suggest_docstring(require('nvim-magic').backends.default)<cr>", "generating a docstring" },
+          o = {
+            "<cmd>lua require('nvim-magic.flows').append_completion(require('nvim-magic').backends.default)<cr>",
+            "append completion",
+          },
+          a = {
+            "<cmd>lua require('nvim-magic.flows').suggest_alteration(require('nvim-magic').backends.default)<cr>",
+            "suggest alteration",
+          },
+          d = {
+            "<cmd>lua require('nvim-magic.flows').suggest_docstring(require('nvim-magic').backends.default)<cr>",
+            "generating a docstring",
+          },
         },
       }
       require("which-key").register(vmappings, vopts)
@@ -448,14 +457,29 @@ return {
     "anuvyklack/keymap-amend.nvim",
     config = function()
       local keymap = vim.keymap
-      keymap.amend = require('keymap-amend')
+      keymap.amend = require("keymap-amend")
 
-      keymap.amend('n', '<Esc>', function(original)
+      keymap.amend("n", "<Esc>", function(original)
         if vim.v.hlsearch and vim.v.hlsearch == 1 then
           vim.cmd("noh")
         end
         original()
-      end, { desc = 'disable search highlight' })
+      end, { desc = "disable search highlight" })
     end,
+  },
+  {
+    "anuvyklack/hydra.nvim",
+  },
+  {
+    "nvim-orgmode/orgmode",
+    config = function()
+      require("orgmode").setup_ts_grammar()
+      require("orgmode").setup({})
+    end,
+  },
+  {
+    "crusj/bookmarks.nvim",
+    branch = "main",
+    requires = { "kyazdani42/nvim-web-devicons" },
   },
 }
