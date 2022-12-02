@@ -1,6 +1,6 @@
 -- extra plugins
 local M = {}
-
+--TODO: move unfamiliar and experimental plugins to experimental plugins folder
 function M.config()
   require('saturn.plugins.extra.autocmds')
   require('saturn.plugins.extra.telescope')

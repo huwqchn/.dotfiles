@@ -10,6 +10,7 @@ local opts_any = { noremap = true, silent = true }
 --	 term_mode = "t",
 --	 command_mode = "c",
 
+--TODO: support qwerty keyboard layouts keymaps
 M.general_opts = {
 	[""] = opts_any,
 	["i"] = opts_any,
