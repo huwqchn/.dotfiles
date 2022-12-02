@@ -292,4 +292,7 @@ return {
     end,
     disable = not saturn.plugins.bigfile.active,
   },
+  {
+    "anuvyklack/hydra.nvim",
+  },
 }

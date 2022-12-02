@@ -35,3 +35,4 @@
 .config/clash/config.yaml
 cache.*
 .config/tmux/plugins
+.config/nvim/sessions/
