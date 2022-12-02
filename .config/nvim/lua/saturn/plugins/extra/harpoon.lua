@@ -10,6 +10,7 @@ M.config = function()
   saturn.plugins.whichkey.mappings["m"]["s"] = { "<cmd>Telescope harpoon marks<cr>", "Search Files" }
   saturn.plugins.whichkey.mappings["m"][";"] = { '<cmd>lua require("harpoon.ui").toggle_quick_menu()<cr>', "Harpoon UI" }
   saturn.plugins.whichkey.mappings["m"]["m"] = { '<cmd>lua require("harpoon.mark").add_file()<cr>', "Harpoon" }
+  saturn.plugins.whichkey.mappings["f"]["m"] = { '<cmd>Telescope harpoon marks<cr>', "Find harpoon mark files" }
 end
 
 M.setup = function()
