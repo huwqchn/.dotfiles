@@ -341,6 +341,7 @@ M.setup = function()
   which_key.register(mappings, opts)
   which_key.register(vmappings, vopts)
 
+  which_key.register({ k = { name = "inside" }, a = { name = "around" } }, { mode = "v", preset = true })
   if saturn.plugins.whichkey.on_config_done then
     saturn.plugins.whichkey.on_config_done(which_key)
   end
