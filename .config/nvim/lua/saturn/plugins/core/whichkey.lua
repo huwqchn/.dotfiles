@@ -60,8 +60,8 @@ M.config = function()
         -- list of mode / prefixes that should never be hooked by WhichKey
         -- this is mostly relevant for key maps that start with a native binding
         -- most people should not need to change this
-        i = { "j", "k" },
-        v = { "j", "k" },
+        i = { "u", "e" },
+        v = { "u", "e" },
       },
       -- disable the WhichKey popup for certain buf types and file types.
       -- Disabled by deafult for Telescope
