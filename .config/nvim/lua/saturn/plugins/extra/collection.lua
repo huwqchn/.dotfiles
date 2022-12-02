@@ -482,4 +482,8 @@ return {
     branch = "main",
     requires = { "kyazdani42/nvim-web-devicons" },
   },
+  {
+    "Badhi/nvim-treesitter-cpp-tools",
+    requires = { "nvim-treesitter/nvim-treesitter" },
+  },
 }
