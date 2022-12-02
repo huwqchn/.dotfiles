@@ -27,8 +27,8 @@ function M.config()
     -- customize displayed signs
     signs = {
       -- { CLOSED, OPENED }
-      section = { ">", "v" },
-      item = { ">", "v" },
+      section = { saturn.icons.ui.ChevronShortRight, saturn.icons.ui.ChevronShortDown },
+      item = { saturn.icons.ui.ChevronShortRight, saturn.icons.ui.ChevronShortDown, },
       hunk = { "", "" },
     },
     integrations = {
@@ -62,6 +62,8 @@ function M.config()
     mappings = {
       -- modify status buffer mappings
       status = {
+        ["u"] = "", -- remove the default mapping  of 'u'
+        ["U"] = "", -- romove the default mapping of 'U'
         ["q"] = "Close",
         ["1"] = "Depth1",
         ["2"] = "Depth2",
