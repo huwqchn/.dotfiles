@@ -4,6 +4,12 @@
 --   { command = "cpplint", filetypes = { "cpp" } }
 -- }
 
+-- set a formatter for cpp
+local formatters = require "saturn.plugins.core.lsp.null-ls.formatters"
+formatters.setup {
+  { command = "clang-format", filetypes = { "cpp" } }
+}
+
 -- set a lsp for cpp
 local manager = require 'saturn.plugins.core.lsp.manager'
 manager.setup("clangd", {
