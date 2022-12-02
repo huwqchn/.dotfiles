@@ -7,7 +7,7 @@ core.config()
 local extra = require 'saturn.plugins.extra'
 extra.config()
 
-plugin_loader.load( { core.get(), extra.get() } )
+plugin_loader.load( { core.get(), saturn.enable_extra_plugins and extra.get() or {} } )
 
 core.setup()
 extra.setup()
