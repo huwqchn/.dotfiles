@@ -79,7 +79,7 @@ function M.config()
         ["d"] = "DiffAtFile",
         ["$"] = "CommandHistory",
         ["<c-r>"] = "RefreshBuffer",
-        ["o"] = "GoToFile",
+        ["k"] = "GoToFile",
         ["<enter>"] = "Toggle",
         ["<c-v>"] = "VSplitOpen",
         ["<c-x>"] = "SplitOpen",
