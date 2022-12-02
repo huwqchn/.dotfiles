@@ -73,7 +73,7 @@ function M.config()
         ["x"] = "Discard",
         ["s"] = "Stage",
         ["a"] = "StageUnstaged",
-        ["<c-s>"] = "StageAll",
+        ["S"] = "StageAll",
         ["l"] = "Unstage",
         ["L"] = "UnstageStaged",
         ["d"] = "DiffAtFile",
