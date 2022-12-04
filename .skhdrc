@@ -1,3 +1,4 @@
+# TODO:uniform with linux bspwm shortkeys
 # open iTerm
 lctrl + alt + cmd - return : open -n -a iTerm
 
