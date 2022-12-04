@@ -66,6 +66,27 @@
 					],
 					"type": "basic",
 					"from": {
+						"key_code": "w",
+						"modifiers": {
+							"optional": ["any"]
+						}
+					},
+					"to": [
+						{
+              "key_code": "caps_locks"
+						}
+					]
+        },
+        {
+					"conditions": [
+						{
+							"name": "tab_mode",
+							"type": "variable_if",
+							"value": 1
+						}
+					],
+					"type": "basic",
+					"from": {
 						"key_code": "j",
 						"modifiers": {
 							"optional": ["any"]
