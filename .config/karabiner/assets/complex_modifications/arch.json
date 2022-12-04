@@ -45,6 +45,27 @@
 					],
 					"type": "basic",
 					"from": {
+						"key_code": "spacebar",
+						"modifiers": {
+							"optional": ["any"]
+						}
+					},
+					"to": [
+						{
+              "key_code": "spacebar"
+						}
+					]
+        },
+        {
+					"conditions": [
+						{
+							"name": "tab_mode",
+							"type": "variable_if",
+							"value": 1
+						}
+					],
+					"type": "basic",
+					"from": {
 						"key_code": "j",
 						"modifiers": {
 							"optional": ["any"]
@@ -196,6 +217,27 @@
               "hold_down_milliseconds": 50
             }
           ]
+				},
+				{
+					"conditions": [
+						{
+							"name": "space_mode",
+							"type": "variable_if",
+							"value": 1
+						}
+					],
+					"type": "basic",
+					"from": {
+						"key_code": "tab",
+						"modifiers": {
+							"optional": ["any"]
+						}
+					},
+					"to": [
+						{
+							"key_code": "tab"
+						}
+					]
 				},
 				{
 					"conditions": [
