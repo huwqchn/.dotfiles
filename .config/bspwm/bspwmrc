@@ -7,7 +7,7 @@ $HOME/.config/polybar/launch.sh
 
 # Get colors from .Xresources #
 xrdb ~/.Xresources
-xmodmap ~/.Xmodmap
+# xmodmap ~/.Xmodmap
 getcolors() {
 	FOREGROUND=$(xrdb -query | grep 'foreground:'| awk '{print $NF}')
 	BACKGROUND=$(xrdb -query | grep 'background:'| awk '{print $NF}')

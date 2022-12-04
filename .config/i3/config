@@ -40,7 +40,7 @@ exec --no-startup-id nm-applet
 
 exec --no-startup-id feh --bg-fill -no-fehbg ~/OneDrive/Wallpapers/tokyo-night29.png
 # Run xmodmap on startup
-exec_always --no-startup-id xmodmap ~/.Xmodmap
+# exec_always --no-startup-id xmodmap ~/.Xmodmap
 
 exec_always --no-startup-id picom
 
