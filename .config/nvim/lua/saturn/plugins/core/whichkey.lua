@@ -217,6 +217,10 @@ M.config = function()
         l = { "<cmd>silent BookmarkShowAll<cr>", "Show All" },
         x = { "<cmd>BookmarkClearAll<cr>", "Clear All"},
       },
+      n = {
+        name = "Note",
+        m = { "<cmd>MarkdownPreviewToggle<cr>", "Markdown Preview" },
+      },
       p = {
         name = "Packer",
         c = { "<cmd>PackerCompile<cr>", "Compile" },
