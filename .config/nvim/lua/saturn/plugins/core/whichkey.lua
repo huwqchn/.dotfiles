@@ -280,7 +280,7 @@ M.config = function()
       },
       u = {
         name = "Buffer",
-        b = { "<cmd>Telescope buffers<cr>", "Buffers" },
+        u = { "<cmd>Telescope buffers<cr>", "Buffers" },
         o = { "<cmd>%bd|e#|bd#<CR>", "Close all but the current buffer" },
         x = { "<cmd>Bdelete!<CR>", "Close buffer" },
         n = { "<cmd>:bprevious<CR>", "Move Previous buffer" },
