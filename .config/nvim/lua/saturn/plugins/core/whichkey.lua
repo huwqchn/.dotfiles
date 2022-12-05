@@ -310,6 +310,7 @@ M.config = function()
       },
       w = {
         name = "Window",
+        a = { '<cmd>wa<CR>', "Save all" },
         q = { '<cmd>lua require("saturn.utils.functions").smart_quit()<CR>', "Quit" },
       },
       x = {
