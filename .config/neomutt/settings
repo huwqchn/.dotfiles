@@ -3,7 +3,7 @@
 # set editor to neovim
 set editor = "nvim"
 
-set my_name = "Gideon Wolfe"
+set my_name = "Johnson Hu"
 set imap_check_subscribed
 
 # Set preffered view modes
