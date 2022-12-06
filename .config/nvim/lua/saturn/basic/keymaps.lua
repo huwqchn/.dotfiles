@@ -131,14 +131,18 @@ M.general = {
 		["sn"] = ":set nosplitright<CR>:vsplit<CR>:set splitright<CR>",
 		["si"] = ":set splitright<CR>:vsplit<CR>",
 
-		-- -- place the two screens up and down
-		["sh"] = "<C-w>t<C-w>K",
-		-- -- place the two screens side by side
-		["sv"] = "<C-w>t<C-w>H",
-
 		-- Rotate screens
 		["sr"] = "<C-w>b<C-w>K",
 		["sR"] = "<C-w>b<C-w>H",
+
+    -- Swap the current window with the next one
+    ["sw"] = "<C-w>x",
+
+    -- move current window to the far left, bottom, rihgt, top
+    ["sN"] = "<C-w>H",
+    ["sE"] = "<C-w>J",
+    ["sI"] = "<C-w>L",
+    ["sU"] = "<C-w>K",
 
 		-- Resize with arrows
 		["<C-Up>"] = ":resize -2<CR>",
