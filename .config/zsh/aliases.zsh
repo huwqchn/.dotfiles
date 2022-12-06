@@ -38,6 +38,7 @@ alias nc="ncmpcpp"
 alias m="neomutt"
 alias d="lazydocker"
 alias chwal="feh --bg-fill -no-fehbg"
+alias cm="cmatrix"
 
 # confirm before overwriting something
 alias cp="cp -i"
