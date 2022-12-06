@@ -979,6 +979,7 @@ key_bindings:
   #- { key: B,              mods: Command, mode: ~Search,     action: SearchBackward        }
 
   # distinguish between Tab and C-i
+  - { key: H, mods: Control, chars: "\x1b[104;5u" }
   - { key: I, mods: Control, chars: "\x1b[105;5u" }
   - { key: M, mods: Control, chars: "\x1b[109;5u" }
   # remap Alt key
