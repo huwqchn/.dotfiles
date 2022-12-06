@@ -4,15 +4,15 @@
 set editor = "nvim"
 
 set my_name = "Johnson Hu"
-set imap_check_subscribed
+# set imap_check_subscribed
 
 # Set preffered view modes
 auto_view text/html text/calendar application/ics # view html automatically
-alternative_order text/html text/plain text/enriched text/*
+alternative_order text/html text/enriched text/plain text/*
 
 
 # main options
-set envelope_from
+# set envelope_from
 set edit_headers                     # show headers when composing
 set fast_reply                       # skip to compose when replying
 set askcc                            # ask for CC:
@@ -40,9 +40,13 @@ set thorough_search      # strip headers and eval mimes before searching
 set timeout = 0
 
 # status bar, date format, finding stuff etc.
-set status_chars = " *%A"
-set status_format = "[ Folder: %f ] [%r%m messages%?n? (%n new)?%?d? (%d to delete)?%?t? (%t tagged)? ]%>─%?p?( %p postponed )?"
-set date_format = "%d.%m.%Y %H:%M"
+set date_format = "%h %d %I:%M%p" # man strftime for arguments
+set status_chars = " "
+# set status_format = "  %D %?r? %m ?%?n? %n ?%?d? %d ?%?t? %t ?%?F? %F ?%?p? %p?  \n \n" # Some terminals can support rounded items
+set status_format = "[ %D ] %?r?[  %m ] ?%?n?[  %n ] ?%?d?[  %d ] ?%?t?[  %t ] ?%?F?[  %F ] ?%?p?[  %p ]?%|─"
+set crypt_chars = " "
+set flag_chars = "     "
+
 set sort = threads
 set sort_aux = reverse-last-date-received
 set uncollapse_jump
@@ -53,16 +57,43 @@ set send_charset = "utf-8:iso-8859-1:us-ascii"
 set charset = "utf-8"
 set arrow_cursor = "no" # Change `color indicator` depending
 
+# Index options
+set index_format="%?M? ↳&%4? %Z  %-20.20n  %D  %s"
+set to_chars=""
+
 # Pager View Options
-set pager_index_lines = 10  # Shows 10 lines of index when pager is active
-set pager_context = 3
-set pager_stop
+# set pager_format="\n  %n %T %s%*  %{!%d %b · %H:%M} %?X? %X?%P    \n \n" # Some terminals support rounded button things
+set pager_format="[ %n ] [ %T %s ]%* [  %{!%d %b · %I:%M%p} ] %?X?[  %X ]? [  %P ]%|─"
+
+set pager_index_lines = 10    # Shows 10 lines of index when pager is active
+set pager_context = 3         # Number of lines of overlap when changing pages in the pager
+set pager_stop                # Don't automatically open the next message when at the end of a message
 set menu_scroll
 set tilde
 unset markers
 
-set mailcap_path = ~/.config/neomutt/mailcap
+# Compose view options
+set compose_format = "[ %l] [ %a]%>─"
+
+# Attatchment view options
+set attach_format = "%u%D  %T%-75.75d %?T?%&   ? %5s · %m/%M"
+
+# Sidebar options
+set sidebar_folder_indent = no
+set sidebar_indent_string = ' - '
+set sidebar_width = 10
+# set sidebar_format = '%B%?F? %?N?%N/?%S'
+set sidebar_format = '%D%?F? %?N?%N/?%S' # changed %B to %D to show named-mailbox
+set sidebar_non_empty_mailbox_only = yes
+set sidebar_short_path = yes
+set sidebar_component_depth = 0
+
+
+set mailcap_path = "~/.config/neomutt/mailcap"
 set header_cache = "~/.cache/mutt"
 set message_cachedir = "~/.cache/mutt"
 
-set query_command = "khard email --parsable --search-in-source-files '%s'"
+set query_command = "khard email --parsable --search-in-source-files '%s'" # tab complete to search khard contacts
+
+# set new_mail_command="notify-send --icon=/home/gideon/.icons/oomox-xresources-reverse-flat/status/scalable/mail-unread-symbolic.svg \
+# 'New Email' '%n new messages, %u unread.' &"
