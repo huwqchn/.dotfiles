@@ -2224,6 +2224,6 @@ map ctrl+m send_text all \x1b[109;5u
 
 
 # BEGIN_KITTY_THEME
-# Tokyo Night
+# Cyberpunk
 include current-theme.conf
 # END_KITTY_THEME
