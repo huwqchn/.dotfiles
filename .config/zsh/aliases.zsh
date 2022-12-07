@@ -39,6 +39,7 @@ alias m="neomutt"
 alias d="lazydocker"
 alias chwal="feh --bg-fill -no-fehbg"
 alias cm="cmatrix"
+alias g="gitui"
 
 # confirm before overwriting something
 alias cp="cp -i"
