@@ -6,11 +6,11 @@ source ~/.config/neomutt/mappings
 
 # Accounts
 
-# source ~/.config/neomutt/accounts/gmail
-# folder-hook $folder 'source ~/.config/neomutt/accounts/gmail'
+source ~/.config/neomutt/accounts/gmail
+folder-hook $folder 'source ~/.config/neomutt/accounts/gmail'
 
-source ~/.config/neomutt/accounts/company
-folder-hook $folder 'source ~/.config/neomutt/accounts/company'
+# source ~/.config/neomutt/accounts/company
+# folder-hook $folder 'source ~/.config/neomutt/accounts/company'
 
 # source ~/.config/neomutt/accounts/main
 # folder-hook $folder 'source ~/.config/neomutt/accounts/main'
