@@ -6,9 +6,9 @@
 super + Return
 	kitty
 
-# chrome
+# browser
 super + c
-	google-chrome-stable
+  firefox
 
 # betterlockscreen
 super + x
