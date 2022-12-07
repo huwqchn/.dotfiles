@@ -34,6 +34,7 @@
     shift_down: Some(( code: Char('E'), modifiers: ( bits: 1,),)),
 
     edit_file: Some(( code: Char('k'), modifiers: ( bits: 0,),)),
+    status_ignore_file: Some(( code: Char('I'), modifiers: ( bits: 1,),)),
 
     status_reset_item: Some(( code: Char('L'), modifiers: ( bits: 1,),)),
 
