@@ -37,3 +37,4 @@ cache.*
 .config/tmux/plugins
 .config/nvim/sessions/
 .config/polybar/gmail
+.config/neomutt/accounts
