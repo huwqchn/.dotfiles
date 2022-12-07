@@ -10,6 +10,22 @@ function openlazygit {
 
 zle -N openlazygit; bindkey "^G" openlazygit
 
+# lfcd () {
+#     tmp="$(mktemp)"
+#     lf -last-dir-path="$tmp" "$@"
+#     if [ -f "$tmp" ]; then
+#         dir="$(cat "$tmp")"
+#         rm -f "$tmp"
+#         [ -d "$dir" ] && [ "$dir" != "$(pwd)" ] && cd "$dir"
+#     fi
+# }
+LFCD="$HOME/.config/lf/lfcd.sh"
+if [ -f "$LFCD" ]; then
+    source "$LFCD"
+fi
+
+bindkey -s '^o' 'lfcd\n'
+
 # function openlazynpm {
 #     zle_eval lazynpm
 # }

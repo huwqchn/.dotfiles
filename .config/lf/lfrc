@@ -62,7 +62,7 @@ cmd setbg "$1"
 cmd bulkrename $vidir
 
 # Bindings
-map Q quit
+map q quit
 map <c-f> $lf -remote "send $id select '$(fzf)'"
 map J $lf -remote "send $id cd $(cut -d'	' -f2 ${XDG_CONFIG_HOME:-$HOME/.config}/directories | fzf)"
 map gh
@@ -87,7 +87,7 @@ map B bulkrename
 map b $setbg $f
 
 map <c-e> down
-map <c-y> up
+map <c-u> up
 map V push :!nvim<space>
 
 # VIM-LIKE
