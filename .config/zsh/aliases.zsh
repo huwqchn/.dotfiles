@@ -40,7 +40,7 @@ alias d="lazydocker"
 alias chwal="feh --bg-fill -no-fehbg"
 alias cm="cmatrix"
 alias g="gitui"
-
+alias top="btop"
 # confirm before overwriting something
 alias cp="cp -i"
 alias mv="mv -i"
