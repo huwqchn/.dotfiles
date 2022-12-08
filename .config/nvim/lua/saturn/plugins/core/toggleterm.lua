@@ -35,14 +35,14 @@ function M.config()
       },
     },
     -- Add executables on the config.lua
-    -- { exec, keymap, name}
-    -- lvim.builtin.terminal.execs = {{}} to overwrite
-    -- lvim.builtin.terminal.execs[#lvim.builtin.terminal.execs+1] = {"gdb", "tg", "GNU Debugger"}
+    -- { exec, keymap, description, direction, size }
+    -- saturn.plugins.toggleterm.execs = {...} to overwrite
+    -- saturn.plugins.toggleterm.execs[#saturn.plugins.toggleterm.execs+1] = {"gdb", "tg", "GNU Debugger"}
     -- TODO: pls add mappings in which key and refactor this
     execs = {
-      { vim.o.shell, "<M-1>", "Horizontal Terminal", "horizontal", 0.3 },
-      { vim.o.shell, "<M-2>", "Vertical Terminal", "vertical", 0.4 },
-      { vim.o.shell, "<M-3>", "Float Terminal", "float", nil },
+      { nil, "<M-1>", "Horizontal Terminal", "horizontal", 0.3 },
+      { nil, "<M-2>", "Vertical Terminal", "vertical", 0.4 },
+      { nil, "<M-3>", "Float Terminal", "float", nil },
     },
   }
 end
@@ -62,7 +62,7 @@ end
 
 --- Get the dynamic terminal size in cells
 ---@param direction number
----@param size integer
+---@param size number
 ---@return integer
 local function get_dynamic_terminal_size(direction, size)
   size = size or saturn.plugins.toggleterm.size
@@ -84,7 +84,7 @@ function M.setup()
     local direction = exec[4] or saturn.plugins.toggleterm.direction
 
     local opts = {
-      cmd = exec[1],
+      cmd = exec[1] or saturn.plugins.toggleterm.shell,
       keymap = exec[2],
       label = exec[3],
       -- NOTE: unable to consistently bind id/count <= 9, see #2146

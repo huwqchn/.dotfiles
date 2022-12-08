@@ -486,4 +486,8 @@ return {
     "Badhi/nvim-treesitter-cpp-tools",
     requires = { "nvim-treesitter/nvim-treesitter" },
   },
+  {
+    "terror/chatgpt.nvim",
+    run = 'pip3 install -r requirements.txt',
+  },
 }

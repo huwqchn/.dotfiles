@@ -121,7 +121,13 @@ M.config = function()
       },
       f = {
         name = "Files",
-        f = { "<cmd>Telescope find_files<CR>", "Find File" },
+        f = {
+          function()
+            require("saturn.plugins.core.telescope.custom-finders").find_project_files { previewer = false }
+          end,
+          "Find File",
+        },
+        -- f = { "<cmd>Telescope find_files<CR>", "Find File" },
         a = { "<cmd>Telescope find_files follow=true no_ignore=true hidden=true<CR>", "find all" },
         o = { "<cmd>Telescope file_browser<CR>", "File browser" },
         l = { "<cmd>Lf<CR>", "Open LF" },
@@ -290,10 +296,11 @@ M.config = function()
         n = { "<cmd>:bprevious<CR>", "Move Previous buffer" },
         i = { "<cmd>:bnext<CR>", "Move next buffer" },
         j = { "<cmd>BufferLinePick<CR>", "Jump" },
-        f = { "<cmd>Telescope buffers<CR>", "Find buffer" },
+        f = { "<cmd>Telescope buffers previewer=false<CR>", "Find buffer" },
         --b = { "<cmd>BufferLineCyclePrev<CR>", "Previous" },
         --n = { "<cmd>BufferLineCycleNext<CR>", "Next" },
         --w = { "<cmd>BufferWipeout<cr>", "Wipeout" }, -- TODO: implement this for bufferline
+        d = { "<cmd>BufferKiller<CR>", "Kill Buffer" },
         c = {
           "<cmd>BufferLinePickClose<CR>",
           "Pick which buffer to close",

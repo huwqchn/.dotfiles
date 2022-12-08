@@ -1,12 +1,11 @@
-local notify = vim.notify
+local notify_filter = vim.notify
 vim.notify = function(msg, ...)
-    if msg:match("warning: multiple different client offset_encodings") then
-        return
-    end
+  if msg:match "warning: multiple different client offset_encodings detected for buffer, this is not supported yet" then
+    return
+  end
 
-    notify(msg, ...)
+  notify_filter(msg, ...)
 end
-
 vim.keymap.set('n', "<space><space>", ":e %:p:s,.h$,.X123X,:s,.cpp$,.h,:s,.X123X$,.c,<CR>", { noremap = true, silent = true } )
 
 vim.bo.textwidth   = 100

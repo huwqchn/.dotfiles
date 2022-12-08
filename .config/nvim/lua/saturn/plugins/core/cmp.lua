@@ -364,6 +364,7 @@ function M.config()
 					type = ":",
 					sources = {
 						{ name = "path" },
+            { name = "cmdline" },
 					},
 				},
 				{
