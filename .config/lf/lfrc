@@ -1,3 +1,4 @@
+set ratios 1:2:3
 # Basic vars
 set shell bash
 set shellopts '-eu'

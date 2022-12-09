@@ -41,6 +41,7 @@ alias chwal="feh --bg-fill -no-fehbg"
 alias cm="cmatrix"
 alias g="gitui"
 alias top="btop"
+alias lf="lfrun"
 # confirm before overwriting something
 alias cp="cp -i"
 alias mv="mv -i"
