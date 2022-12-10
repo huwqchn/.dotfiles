@@ -19,4 +19,4 @@ Xft.rgba: rgb
 ! 6 Cyan      14 Cyan
 ! 7 White     15 White
 
-#include "./.themes/Xresources/TomorrowNightBlue.Xresources"
+#include "./.themes/Xresources/TokyoNight.Xresources"
