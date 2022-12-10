@@ -31,8 +31,6 @@ elif [[ $(uname) == 'Linux' ]]; then
 	export QT_SCALE_FACTOR=1
 fi
 
-export OPENAI_API_KEY="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"
-
 # FZF bases
 export FZF_DEFAULT_OPTS="
   --color fg:$color7
