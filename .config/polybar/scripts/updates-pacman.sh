@@ -4,8 +4,9 @@ if ! updates=$(checkupdates 2> /dev/null | wc -l ); then
     updates=0
 fi
 
-if [ "$updates" -gt 0 ]; then
-    echo "$updates"
+# updates greater equal than 1
+if [ "$updates" -ge 1 ]; then
+  echo "$updates Updates"
 else
-    echo "0"
+  echo "$updates Update"
 fi
