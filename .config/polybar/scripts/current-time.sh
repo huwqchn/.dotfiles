@@ -30,7 +30,6 @@ elif [ "$hour" -eq 10 ]; then
 elif [ "$hour" -eq 11 ]; then
   clock_icon="%{T3} %{T-}"
 else
-  # Night
   clock_icon="%{T3} %{T-}"
 fi
 
