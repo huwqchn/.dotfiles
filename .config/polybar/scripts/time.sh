@@ -1,8 +1,21 @@
 #!/bin/bash
+t=0
+sleep_pid=0
+
+toggle() {
+    t=$(((t + 1) % 2))
+
+    if [ "$sleep_pid" -ne 0 ]; then
+        kill $sleep_pid >/dev/null 2>&1
+    fi
+}
+
+
+trap "toggle" USR1
 
 #Get the current time
 time=$(date "+%I:%M %p")
-
+time_alt=$(date "+%A, %d %B %Y")
 # Get the hour of the day
 hour=$(date +"%I")
 
@@ -35,3 +48,13 @@ fi
 
 # Output the clock icon and the current time
 echo -e "$clock_icon$time"
+while true; do
+  if [ $t -eq 0 ]; then
+    echo -e "$clock_icon$time"
+  else
+    echo -e "$clock_icon$time_alt"
+  fi
+  sleep 1 &
+  sleep_pid=$!
+  wait
+done
