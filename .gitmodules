@@ -1,0 +1,3 @@
+[submodule "sxiv"]
+	path = sxiv
+	url = https://github.com/huwqchn/sxiv.git
