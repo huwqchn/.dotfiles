@@ -39,3 +39,4 @@ cache.*
 .config/polybar/gmail
 .config/neomutt/accounts
 .config/gtk-3.0/bookmarks
+.config/mpv/watch_later
