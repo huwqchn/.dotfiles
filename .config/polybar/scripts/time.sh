@@ -47,9 +47,9 @@ while true; do
     clock_icon="%{T3} %{T-}"
   fi
   if [ $t -eq 0 ]; then
-    echo -e "$clock_icon$time"
+    echo -e "$clock_icon%{T4}$time%{T-}"
   else
-    echo -e "$clock_icon$time_alt"
+    echo -e "$clock_icon%{T4}$time_alt%{T-}"
   fi
   sleep 1 &
   sleep_pid=$!
