@@ -1,3 +1,6 @@
 [submodule "sxiv"]
 	path = sxiv
 	url = https://github.com/huwqchn/sxiv.git
+[submodule "st"]
+	path = st
+	url = https://github.com/huwqchn/st.git
