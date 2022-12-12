@@ -7,6 +7,11 @@ Xft.hintstyle:  hintfull
 Xft.hinting: 1
 Xft.antialias: 1
 Xft.rgba: rgb
+! Xft.font: JetBrains Mono Nerd Font:pixelsize=30
+
+st.alpha: 0.92
+st.alphaOffset: 0.3
+st.font: JetBrains Mono Nerd Font:pixelsize=30
 
 ! Normal      Bright
 ! --------    -------
