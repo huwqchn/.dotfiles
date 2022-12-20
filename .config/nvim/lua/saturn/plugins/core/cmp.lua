@@ -126,6 +126,7 @@ function M.config()
 
 	saturn.plugins.cmp = {
 		active = true,
+    on_config_done = nil,
 		enabled = function()
 			local buftype = vim.api.nvim_buf_get_option(0, "buftype")
 			if buftype == "prompt" then
@@ -390,6 +391,10 @@ function M.setup()
 			})
 		end
 	end
+
+  if saturn.plugins.cmp.on_config_done then
+    saturn.plugins.cmp.on_config_done(cmp)
+  end
 end
 
 return M

@@ -60,13 +60,16 @@ M.setup = function()
   end
 
   local selected_theme = saturn.plugins.theme.name
-  local present, plugin = pcall(require, selected_theme)
-  if not present then
-    return
+
+  if vim.startswith(saturn.colorscheme, selected_theme) then
+    local status_ok, plugin = pcall(require, selected_theme)
+    if not status_ok then
+      return
+    end
+    pcall(function()
+      plugin.setup(saturn.plugins.theme[selected_theme].options)
+    end)
   end
-  pcall(function()
-    plugin.setup(saturn.plugins.theme[selected_theme].options)
-  end)
 
   -- ref: https://github.com/neovim/neovim/issues/18201#issuecomment-1104754564
   local colors = vim.api.nvim_get_runtime_file(("colors/%s.*"):format(saturn.colorscheme), false)
