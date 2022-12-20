@@ -165,6 +165,9 @@ M.general = {
     -- inc/dec numbers
     ["<leader>="] = "<C-a>",
     ["<leader>-"] = "<C-x>",
+
+    ["<tab>"] = ":bnext<CR>",
+    ["<s-tab>"] = ":bprevious<CR>",
 	},
 	["v"] = {
 		-- copy to system clipboard
