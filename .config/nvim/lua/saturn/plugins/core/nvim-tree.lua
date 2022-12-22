@@ -46,7 +46,17 @@ function M.config()
         side = "left",
         mappings = {
           custom_only = false,
-          list = {},
+          list = {
+            { key = "e", action = ""},
+            { key = "k", action = "rename_basename" },
+            { key = "K", action = "expand_all" },
+            { key = "h", action = "split" },
+            { key = "v", action = "vsplit" },
+            { key = "t", action = "tabnew" },
+            { key = "U", action = "first_sibling" },
+            { key = "E", action = "last_sibling" },
+            { key = "M", action = "toggle_custom" },
+          },
         },
         number = false,
         relativenumber = false,
