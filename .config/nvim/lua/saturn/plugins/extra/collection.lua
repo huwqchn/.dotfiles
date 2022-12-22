@@ -490,4 +490,7 @@ return {
     "terror/chatgpt.nvim",
     run = 'pip3 install -r requirements.txt',
   },
+  {
+    "h-hg/fcitx.nvim",
+  },
 }
