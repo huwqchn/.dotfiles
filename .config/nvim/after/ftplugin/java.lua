@@ -1,5 +1,8 @@
 vim.opt_local.shiftwidth = 2
 vim.opt_local.tabstop = 2
+vim.opt_local.softtabstop = 2
+vim.opt_local.expandtab = true
+vim.opt_local.smarttab = true
 vim.opt_local.cmdheight = 2 -- more space in the neovim command line for displaying messages
 
 local capabilities = require("saturn.plugins.core.lsp").common_capabilities()
