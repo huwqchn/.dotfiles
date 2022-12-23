@@ -49,7 +49,7 @@ pcall(function()
       on_attach = function(client, bufnr)
         require("saturn.plugins.core.lsp").common_on_attach(client, bufnr)
         local rt = require "rust-tools"
-        vim.keymap.set("n", "K", rt.hover_actions.hover_actions, { buffer = bufnr })
+        vim.keymap.set("n", "H", rt.hover_actions.hover_actions, { buffer = bufnr })
       end,
 
       capabilities = require("saturn.plugins.core.lsp").common_capabilities(),
