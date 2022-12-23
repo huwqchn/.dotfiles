@@ -9,11 +9,10 @@ end
 
 vim.keymap.set('n', "<space><space>", ":e %:p:s,.h$,.X123X,:s,.cpp$,.h,:s,.X123X$,.cpp,<CR>", { noremap = true, silent = true } )
 
-vim.opt.showtabline  = 4
 vim.bo.textwidth   = 100
-vim.bo.tabstop     = 4
-vim.bo.softtabstop = 4
-vim.bo.shiftwidth  = 4
+vim.bo.tabstop     = 2
+vim.bo.softtabstop = 2
+vim.bo.shiftwidth  = 2
 
 vim.bo.commentstring = '// %s'
 
