@@ -43,9 +43,9 @@ alias g="gitui"
 alias top="btop"
 alias lf="lfrun"
 # confirm before overwriting something
-alias cp="cp -i"
-alias mv="mv -i"
-alias rm="rm -i"
+# alias cp="cp -i"
+# alias mv="mv -i"
+# alias rm="rm -i"
 
 # easier to read disk
 alias df="df -h" # human-readable sizes
