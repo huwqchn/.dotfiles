@@ -11,6 +11,7 @@ export PATH="$PATH:$HOME/.dotfiles/.bin"
 export PATH="$PATH:$HOME/.local/share/gem/ruby/3.0.0/bin"
 # export PATH="$PATH:$HOME/.local/share/nvim/mason/bin"
 export PATH="$PATH:$HOME/.local/bin"
+export PATH="$PATH:$HOME/.cargo/bin"
 export TMUX_TMPDIR=$HOME/.tmux/tmp
 if [[ $(uname) == 'Darwin' ]]; then
 	export PATH="$PATH:/opt/homebrew/bin"
