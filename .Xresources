@@ -6,14 +6,13 @@ Xft.lcdfilter:  lcddefault
 Xft.hintstyle:  hintfull
 Xft.hinting: 1
 Xft.antialias: 1
-Xft.autohint: 1
 Xft.rgba: rgb
 ! Xft.font: JetBrains Mono Nerd Font:pixelsize=30:style=Medium
 
 st.alpha: 0.92
 st.alphaOffset: 0.3
 st.font: JetBrains Mono Nerd Font:pixelsize=30:style=SemiBold:antialias=true:autohint=true;
-st.font2: JetBrains Mono Nerd Font:pixelsize=30:style=SemiBold:antialias=true:autohint=true;
+! st.font2: JetBrains Mono Nerd Font:pixelsize=12:style=SemiBold:antialias=true:autohint=true;
 ! Normal      Bright
 ! --------    -------
 ! 0 Black      8 Black
