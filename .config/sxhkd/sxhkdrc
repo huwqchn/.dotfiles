@@ -94,6 +94,8 @@ super + {_, shift + }v
 super + {_,shift + }k
 	bspc node -f {next,prev}.local.!hidden.window
 
+#
+
 # focus the next/previous desktop in the current monitor
 super + {h,o}
 	bspc desktop -f {prev,next}.local
@@ -105,6 +107,14 @@ super + shift + {less,greater}
 # focus the last node/desktop
 super + {grave, shift + grave}
 	bspc {node,desktop} -f last
+
+# destory the current desktop
+super + shift + d
+  bspc desktop -r
+
+# create a new desktop
+super + d
+  bspc monitor -a new
 
 # focus the older or newer node in the focus history
 # super + {o,i}
