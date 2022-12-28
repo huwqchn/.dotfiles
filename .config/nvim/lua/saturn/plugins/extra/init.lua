@@ -30,6 +30,7 @@ function M.config()
   require('saturn.plugins.extra.window-picker').config()
   require('saturn.plugins.extra.harpoon').config()
   require('saturn.plugins.extra.diffview').config()
+  require('saturn.plugins.extra.zk').config()
   require('saturn.plugins.extra.whichkey')
 end
 

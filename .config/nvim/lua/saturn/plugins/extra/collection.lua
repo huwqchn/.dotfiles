@@ -265,6 +265,10 @@ return {
   },
   {
     "mickael-menu/zk-nvim",
+    config = function()
+      require("saturn.plugins.extra.zk-nvim").setup()
+    end,
+    disable = not saturn.plugins.zk.active,
   },
   {
     "rmagatti/auto-session",
