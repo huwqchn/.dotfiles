@@ -34,7 +34,7 @@ local opts = {
 }
 
 local mappings = {
-  c = {
+  n = {
     name = "C/C++",
     d = { "<cmd>TSCppDefineClassFunc<cr>", "Define class function" },
     i = { "<cmd>TSCppMakeConcreteClass<cr>", "Derive class" },

@@ -13,7 +13,7 @@ local opts = {
 }
 
 local mappings = {
-  c = {
+  n = {
     name = "Python",
     t = { "<cmd>lua require('dap-python').test_method()<cr>", "Test Method" },
     T = { "<cmd>lua require('dap-python').test_class()<cr>", "Test Class" },
