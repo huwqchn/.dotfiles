@@ -29,6 +29,7 @@ function M.setup()
   require "saturn.plugins.extra.lsp.languages.js-ts"
   require "saturn.plugins.extra.lsp.languages.sh"
   require "saturn.plugins.extra.lsp.languages.cpp"
+  require "saturn.plugins.extra.lsp.languages.markdown"
 
   local formatters = require "saturn.plugins.core.lsp.null-ls.formatters"
   formatters.setup {
