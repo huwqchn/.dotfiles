@@ -266,7 +266,7 @@ return {
   {
     "mickael-menu/zk-nvim",
     config = function()
-      require("saturn.plugins.extra.zk-nvim").setup()
+      require("saturn.plugins.extra.zk").setup()
     end,
     disable = not saturn.plugins.zk.active,
   },
