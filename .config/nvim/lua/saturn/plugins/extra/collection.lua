@@ -497,4 +497,8 @@ return {
   {
     "h-hg/fcitx.nvim",
   },
+  {
+    "epwalsh/obsidian.nvim",
+    tag = "v1.*",
+  },
 }

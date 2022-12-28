@@ -51,6 +51,7 @@ function M.setup()
   require('saturn.plugins.extra.lastplace')
   require('saturn.plugins.extra.goto-preview')
   require('saturn.plugins.extra.ufo')
+  require('saturn.plugins.extra.obsidian')
   -- require('saturn.plugins.extra.hop')
   -- require('saturn.plugins.extra.tabout').setup()
 end
