@@ -30,6 +30,14 @@ function plugin_loader.init(opts)
       open_fn = function()
         return require("packer.util").float { border = "rounded" }
       end,
+      keybindings = {
+        quit = 'q',
+        toggle_update = 'l', -- only in preview
+        continue = 'c', -- only in preview
+        toggle_info = '<CR>',
+        diff = 'd',
+        prompt_revert = 'r',
+      }
     },
   }
 
