@@ -6,3 +6,8 @@ saturn.plugins.whichkey.mappings["S"] = {
   f = { "<cmd>Autosession search<cr>", "Find" },
   d = { "<cmd>Autosession delete<cr>", "Find Delete" },
 }
+saturn.plugins.whichkey.mappings["c"] = {
+  name = "Code documentation",
+  c = { ":lua require('neogen').generate()<CR>", "Generate documentation" }
+}
+

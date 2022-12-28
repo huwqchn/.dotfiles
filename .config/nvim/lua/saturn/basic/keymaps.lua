@@ -73,8 +73,11 @@ M.general = {
     ["S"] = ":w<CR>",
     ["Q"] = ":q<CR>",
 
-    -- nohl
-    -- ["<C-l>"] = ":nohl<CR>",
+    -- select all
+    ['<A-a>'] = "ggVG",
+
+    -- save
+    ['<C-s>'] = '<C-g>u<Cmd>w<CR>',
 	},
   ["i"] = {
     -- Move current line / block with Alt-j/k ala vscode.
@@ -86,6 +89,19 @@ M.general = {
     ["<A-Down>"] = "<C-\\><C-N><C-w>j",
     ["<A-Left>"] = "<C-\\><C-N><C-w>h",
     ["<A-Right>"] = "<C-\\><C-N><C-w>l",
+
+
+    -- select all
+    ['<A-a>'] = "<Esc>ggVG",
+
+    -- undo
+    ['<C-z>'] = "<C-o>u",
+
+    -- paste
+    ['<C-v>'] = '<C-g>u<Cmd>set paste<CR><C-r>+<Cmd>set nopaste<CR>',
+
+    -- save
+    ['<C-s>'] = '<C-g>u<Cmd>w<CR>',
 
     -- emacs keybinds
     ["<C-b>"] = "<Left>",
@@ -163,8 +179,8 @@ M.general = {
 		["dy"] = "d%",
 
     -- inc/dec numbers
-    ["<leader>="] = "<C-a>",
-    ["<leader>-"] = "<C-x>",
+    ["<C-=>"] = "<C-a>",
+    ["<C-->"] = "<C-x>",
 
     ["<tab>"] = ":bnext<CR>",
     ["<s-tab>"] = ":bprevious<CR>",
@@ -177,16 +193,25 @@ M.general = {
     ["<"] = "<gv",
     [">"] = ">gv",
 
-
     -- Move current line / block with Alt-j/k ala vscode.
     ["<A-e>"] = ":m '>+1<CR>gv-gv",
-    ["<A-u>"] = ":m '<-2<CR>gv-gv",
+    ["<A-u>"] = ":m '<-1<CR>gv-gv",
+
+    -- inc/dec numbers
+    ["<C-=>"] = "<C-a>",
+    ["<C-->"] = "<C-x>",
+
+    -- Column inc/dec numbers
+    ["g<C-=>"] = "g<C-a>",
+    ["g<C-->"] = "g<C-x>",
 	},
 	["x"] = {
     -- Move current line / block with Alt-e/u ala vscode.
     ["<A-e>"] = ":m '>+1<CR>gv-gv",
     ["<A-u>"] = ":m '<-2<CR>gv-gv",
 
+    -- select all
+    ['<A-a>'] = "<Esc>ggVG",
     -- replace in selection
     ["s"] = ":s/\\%V",
 	},
@@ -196,12 +221,16 @@ M.general = {
     ["<C-e>"] = "<C-\\><C-N><C-w>j",
     ["<C-u>"] = "<C-\\><C-N><C-w>k",
     ["<C-i>"] = "<C-\\><C-N><C-w>l",
+    -- paste
+    ['<C-v>'] = '<C-\\><C-N>pi',
 	},
 	["c"] = {
     -- navigate tab completion with <c-j> and <c-k>
     -- runs conditionally
     ["<C-e>"] = { 'pumvisible() ? "\\<C-n>" : "\\<C-j>"', { expr = true, noremap = true } },
     ["<C-u>"] = { 'pumvisible() ? "\\<C-p>" : "\\<C-k>"', { expr = true, noremap = true } },
+    -- paste
+    ['<C-v>'] = '<C-r>+',
 	}
 }
 

@@ -505,4 +505,14 @@ return {
     "epwalsh/obsidian.nvim",
     tag = "v1.*",
   },
+  {
+    "danymat/neogen",
+    config = function()
+      require('neogen').setup({
+        enabled = true,
+      })
+    end,
+    requires = "nvim-treesitter/nvim-treesitter",
+    tag = "*"
+  }
 }
