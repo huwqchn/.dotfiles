@@ -9,7 +9,7 @@ export ZSH_AUTOSUGGEST_MANUAL_REBIND=1
 export WORKON_HOME=$HOME/.venvs
 export PATH="$PATH:$HOME/.dotfiles/.bin"
 export PATH="$PATH:$HOME/.local/share/gem/ruby/3.0.0/bin"
-# export PATH="$PATH:$HOME/.local/share/nvim/mason/bin"
+export PATH="$PATH:$HOME/.local/share/nvim/mason/bin"
 export PATH="$PATH:$HOME/.local/bin"
 export PATH="$PATH:$HOME/.cargo/bin"
 export TMUX_TMPDIR=$HOME/.tmux/tmp
@@ -26,6 +26,7 @@ if [[ $(uname) == 'Darwin' ]]; then
 elif [[ $(uname) == 'Linux' ]]; then
   export TERMINAL="alacritty"
   export PATH=$PATH:/snap/bin
+  export CPLUS_INCLUDE_PATH="$CPLUS_INCLUDE_PATH:/usr/include/python2.7/"
   # for hidpi screen
 	export GDK_SCALE=2
 	export GDK_DPI_SCALE=0.5
