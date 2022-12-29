@@ -62,3 +62,4 @@ alias pscpu='ps auxf | sort -nr -k 3 | head -5'
 alias S="source ~/.zshrc"
 # shutdown -h now
 alias sn="shutdown -h now"
+alias powermanager="xfce4-power-manager -c"
