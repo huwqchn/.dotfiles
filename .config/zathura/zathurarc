@@ -1,8 +1,18 @@
-set adjust-open width
-
+# when selecting text with mouth, copy to clipboard
 set selection-clipboard clipboard
 
-set font "JetBrains Mono Nerd font 12"
+# keep several lines of text when scrolling a screenful
+set scroll-full-overlap 0.2
+
+set scroll-page-aware true
+set window-title-basename true
+set adjust-open width
+set statusbar-home-tilde true
+set vertical-center true
+set synctex true
+
+set font "JetBrains Mono Nerd font Bold 12"
+set zoom-step 3
 
 set default-bg "#1a1b26"
 
@@ -24,11 +34,36 @@ set completion-highlight-fg "#7aa2f7"
 
 set completion-group-bg "#32333e"
 
-map = zoom in
 
 map n scroll left
 map i scroll right
 map e scroll down
 map u scroll up
+map <C-e> bisect backward
+map <C-u> bisect forward
+map <A-n> scroll half-left
+map <A-i> scroll half-right
+map <A-e> scroll half-down
+map <A-u> scroll half-up
+map j jumplist forward
+map J jumplist backward
 map E navigate next
 map U navigate previous
+map b toggle_statusbar
+map <Tab> toggle_index
+map k focus_inputbar
+map - search forward
+map = search backward
+map <C--> zoom out
+map <C-=> zoom in
+map <C-p> toggle_presentation
+map <C-f> toggle_fullscreen
+map [index] e navigate_index down
+map [index] u navigate_index up
+map [index] n navigate_index collapse
+map [index] i navigate_index expand
+map [index] I navigate_index expand-all
+map [index] N navigate_index collapse-all
+map [index] <Space> navigate_index select
+map [index] <Return> navigate_index select
+
