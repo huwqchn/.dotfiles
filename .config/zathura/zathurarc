@@ -2,7 +2,7 @@ set adjust-open width
 
 set selection-clipboard clipboard
 
-set font "Roboto 12"
+set font "JetBrains Mono Nerd font 12"
 
 set default-bg "#1a1b26"
 
@@ -23,3 +23,12 @@ set completion-highlight-bg "#282e49"
 set completion-highlight-fg "#7aa2f7"
 
 set completion-group-bg "#32333e"
+
+map = zoom in
+
+map n scroll left
+map i scroll right
+map e scroll down
+map u scroll up
+map E navigate next
+map U navigate previous
