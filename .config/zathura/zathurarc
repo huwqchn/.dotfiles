@@ -35,29 +35,58 @@ set completion-highlight-fg "#7aa2f7"
 set completion-group-bg "#32333e"
 
 
-map n scroll left
-map i scroll right
-map e scroll down
-map u scroll up
-map <C-e> bisect backward
-map <C-u> bisect forward
-map <A-n> scroll half-left
-map <A-i> scroll half-right
-map <A-e> scroll half-down
-map <A-u> scroll half-up
-map j jumplist forward
-map J jumplist backward
-map E navigate next
-map U navigate previous
-map b toggle_statusbar
-map <Tab> toggle_index
-map k focus_inputbar
-map - search forward
-map = search backward
-map <C--> zoom out
-map <C-=> zoom in
-map <C-p> toggle_presentation
-map <C-f> toggle_fullscreen
+map [normal] n scroll left
+map [normal] i scroll right
+map [normal] e scroll down
+map [normal] u scroll up
+map [normal] <C-e> bisect backward
+map [normal] <C-u> bisect forward
+map [normal] <A-n> scroll half-left
+map [normal] <A-i> scroll half-right
+map [normal] <A-e> scroll half-down
+map [normal] <A-u> scroll half-up
+map [normal] j jumplist forward
+map [normal] J jumplist backward
+map [normal] E navigate next
+map [normal] U navigate previous
+map [normal] b toggle_statusbar
+map [normal] <Tab> toggle_index
+map [normal] k focus_inputbar
+map [normal] - search forward
+map [normal] = search backward
+map [normal] <C--> zoom out
+map [normal] <C-=> zoom in
+map [normal] <C-p> toggle_presentation
+map [normal] <C-f> toggle_fullscreen
+map [fullscreen] q toggle_fullscreen
+map [fullscreen] n scroll left
+map [fullscreen] i scroll right
+map [fullscreen] e scroll down
+map [fullscreen] u scroll up
+map [fullscreen] <C-e> bisect backward
+map [fullscreen] <C-u> bisect forward
+map [fullscreen] <A-n> scroll half-left
+map [fullscreen] <A-i> scroll half-right
+map [fullscreen] <A-e> scroll half-down
+map [fullscreen] <A-u> scroll half-up
+map [fullscreen] j jumplist forward
+map [fullscreen] J jumplist backward
+map [fullscreen] E navigate next
+map [fullscreen] U navigate previous
+map [fullscreen] b toggle_statusbar
+map [fullscreen] <Tab> toggle_index
+map [fullscreen] k focus_inputbar
+map [fullscreen] - search forward
+map [fullscreen] = search backward
+map [fullscreen] <C--> zoom out
+map [fullscreen] <C-=> zoom in
+map [fullscreen] <C-p> toggle_presentation
+map [fullscreen] <C-f> toggle_fullscreen
+map [presentation] q toggle_presentation
+map [presentation] e navigate next
+map [presentation] u navigate previous
+map [index] q toggle_index
+map [index] <Tab> toggle_index
 map [index] e navigate_index down
 map [index] u navigate_index up
 map [index] n navigate_index collapse
@@ -66,4 +95,3 @@ map [index] I navigate_index expand-all
 map [index] N navigate_index collapse-all
 map [index] <Space> navigate_index select
 map [index] <Return> navigate_index select
-
