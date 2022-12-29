@@ -4,6 +4,7 @@ alias lg='lazygit'
 # alias lnpm ='lazynpm'
 alias ra='ranger'
 alias t='tmux'
+alias ipy="ipython"
 alias cdiff='colordiff'
 alias e='/usr/bin/emacs --daemon &'
 if [[ $(uname) == 'Darwin' ]]; then
