@@ -18,6 +18,8 @@ bind index l undelete-message
 bind index L limit
 bind index h noop
 bind index i display-message
+bind index e next-entry
+bind index u previous-entry
 bind browser n goto-parent
 bind browser i select-entry
 bind pager,browser gg top-page
