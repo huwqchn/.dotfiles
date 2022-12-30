@@ -72,9 +72,6 @@ function M.config()
         },
       },
     },
-    install = {
-      "python", {}
-    }
   }
 end
 
@@ -116,6 +113,7 @@ function M.setup_ui()
     --   dapui.close()
     -- end
   end
+
   local Log = require "saturn.plugins.log"
 
   -- until rcarriga/nvim-dap-ui#164 is fixed
