@@ -1,6 +1,6 @@
 local M = {}
 
-vim.cmd [[
+vim.cmd([[
   function! QuickFixToggle()
     if empty(filter(getwininfo(), 'v:val.quickfix'))
       copen
@@ -8,13 +8,13 @@ vim.cmd [[
       cclose
     endif
   endfunction
-]]
+]])
 
 M.default = {
   {
     name = "BufferKill",
     fn = function()
-      require("saturn.plugins.core.bufferline").buf_kill "bd"
+      require("saturn.plugins.core.bufferline").buf_kill("bd")
     end,
   },
   {
@@ -33,12 +33,12 @@ M.default = {
     name = "SyncCorePlugins",
     fn = function()
       require("saturn.plugins.plugin_loader").sync_core_plugins()
-    end
+    end,
   },
   {
     name = "OpenLog",
     fn = function()
-      vim.fn.execute("edit " .. require("lvim.core.log").get_path())
+      vim.fn.execute("edit " .. require("saturn.plugins.core.log").get_path())
     end,
   },
 }
