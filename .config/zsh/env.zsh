@@ -1,6 +1,5 @@
 export XDG_CONFIG_HOME=$HOME/.config
 export NVIM_BASE_DIR=XDG_CONFIG_HOME/nvim
-export TERM=xterm-256color
 export TERM_ITALICS=true
 export EDITOR=nvim
 export ZSH_AUTOSUGGEST_USE_ASYNC=1
@@ -14,6 +13,7 @@ export PATH="$PATH:$HOME/.local/bin"
 export PATH="$PATH:$HOME/.cargo/bin"
 export TMUX_TMPDIR=$HOME/.tmux/tmp
 if [[ $(uname) == 'Darwin' ]]; then
+  export TERM=xterm-256color
 	export PATH="$PATH:/opt/homebrew/bin"
 	export PATH="$PATH:$HOME/.nix-profile/bin"
 	export C_INCLUDE_PATH="$PATH:/opt/homebrew/include:$C_INCLUDE_PATH"
@@ -24,7 +24,8 @@ if [[ $(uname) == 'Darwin' ]]; then
 	export LIBRARY_PATH="$PATH:/opt/homebrew/lib:$LIBRARY_PATH"
 	export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.ustc.edu.cn/homebrew-bottles/bottles
 elif [[ $(uname) == 'Linux' ]]; then
-  export TERMINAL="alacritty"
+  export TERM=xterm-kitty
+  export TERMINAL="kitty"
   export PATH=$PATH:/snap/bin
   export CPLUS_INCLUDE_PATH="$CPLUS_INCLUDE_PATH:/usr/include/python2.7/"
   # for hidpi screen
