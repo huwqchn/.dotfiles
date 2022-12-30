@@ -99,7 +99,7 @@ endif
 "=== Special Settings
 "===
 
-autocmd FileType c,cpp,html,htmldjango,lua,javascript,nsis set shiftwidth=2 | set tabstop=2 | set expandtab | set cindent | set cinoptions=t0,g1,h1,N-s,E-s,j1
+autocmd FileType c,cpp,html,htmldjango,lua,javascript,nsis set shiftwidth=2 | set tabstop=2 | set expandtab | set cindent | set cinoptions=t0,g1,h1,N-s,E-s,j1,:0
 autocmd FileType make set noexpandtab | set tabstop=8 | set shiftwidth=2
 autocmd FileType c,cpp,python,vim set textwidth=80
 
