@@ -205,13 +205,13 @@ return {
     end,
     disable = not saturn.plugins.dap.active,
   },
-  {
-    "ravenxrz/DAPInstall.nvim",
-    config = function()
-      require('saturn.plugins.core.dap').setup_install()
-    end,
-    disable = not saturn.plugins.dap.active,
-  },
+  -- {
+  --   "ravenxrz/DAPInstall.nvim",
+  --   config = function()
+  --     require('saturn.plugins.core.dap').setup_install()
+  --   end,
+  --   disable = not saturn.plugins.dap.active,
+  -- },
   {
     "Tastyep/structlog.nvim",
   },

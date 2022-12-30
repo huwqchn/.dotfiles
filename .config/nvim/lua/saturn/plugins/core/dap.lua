@@ -109,12 +109,12 @@ function M.setup_ui()
     dap.listeners.after.event_initialized["dapui_config"] = function()
       dapui.open()
     end
-    dap.listeners.before.event_terminated["dapui_config"] = function()
-      dapui.close()
-    end
-    dap.listeners.before.event_exited["dapui_config"] = function()
-      dapui.close()
-    end
+    -- dap.listeners.before.event_terminated["dapui_config"] = function()
+    --   dapui.close()
+    -- end
+    -- dap.listeners.before.event_exited["dapui_config"] = function()
+    --   dapui.close()
+    -- end
   end
   local Log = require "saturn.plugins.log"
 
@@ -152,16 +152,6 @@ function M.setup_ui()
   if not dapui_ok then
     Log:debug "Unable to override dap-ui logging level"
   end
-end
-
-function M.setup_install()
-  -- local present, dap_install = pcall(require, "dap-install")
-  -- if not present then
-  --   return
-  -- end
-
-  -- dap_install.config(saturn.plugins.dap.install)
-
 end
 
 return M
