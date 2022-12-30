@@ -22,19 +22,19 @@ autocmd(
 )
 
 -- Set FileType options
-local file_opt_grp = augroup("FileOptGrp", { clear = true })
-autocmd(
-	"FileType",
-	{
-		pattern = { "c", "cpp", "rs", "html", "htmldjango", "lua",
-		"javascript", "nsis"},
-		callback = function()
-			vim.opt.shiftwidth = 2
-			vim.opt.tabstop = 2
-			vim.opt.expandtab = true
-			vim.opt.cindent = true
-			vim.opt.cinoptions= { "t0", "g1", "h1", "N-s", "j1" }
-		end,
-		group = file_opt_grp
-	}
-)
+-- local file_opt_grp = augroup("FileOptGrp", { clear = true })
+-- autocmd(
+-- 	"FileType",
+-- 	{
+-- 		pattern = { "c", "cpp", "rs", "html", "htmldjango", "lua",
+-- 		"javascript", "nsis"},
+-- 		callback = function()
+-- 			vim.opt.shiftwidth = 2
+-- 			vim.opt.tabstop = 2
+-- 			vim.opt.expandtab = true
+-- 			vim.opt.cindent = true
+-- 			vim.opt.cinoptions= { "t0", "g1", "h1", "N-s", "j1" }
+-- 		end,
+-- 		group = file_opt_grp
+-- 	}
+-- )
