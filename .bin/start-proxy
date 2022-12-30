@@ -1,5 +1,5 @@
 #!/bin/bash
 
-sudo systemctl start docker
+systemctl start docker
 
-sudo docker start clash
+docker start clash
