@@ -51,6 +51,7 @@ function M.load()
           "qf",
           "help",
           "man",
+          "notify",
           "floaterm",
           "lspinfo",
           "lir",
@@ -59,6 +60,10 @@ function M.load()
           "tsplayground",
           "DressingSelect",
           "Jaq",
+          "spectre_pannel",
+          "startuptime",
+          "tspluayground",
+          "PlenaryTestPopup"
         },
         callback = function()
           vim.keymap.set("n", "q", "<cmd>close<cr>", { buffer = true })
