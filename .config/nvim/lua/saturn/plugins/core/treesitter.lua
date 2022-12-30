@@ -4,6 +4,7 @@ local Log = require 'saturn.plugins.log'
 function M.config()
   saturn.plugins.treesitter = {
     on_config_done = nil,
+
     ensure_installed = { "lua", "markdown", "bash", "python", "c", "rust", "java", "cpp", "cmake" }, -- put the language you want in this array
     -- ensure_installed = "all", -- one of "all" or a list of languages
     ignore_install = {}, -- List of parsers to ignore installing
@@ -46,7 +47,8 @@ function M.config()
         json = "",
       },
     },
-    indent = { enable = true, disable = { "yaml", "python", "css" } },
+    -- TODO:This indent not correct
+    indent = { enable = true, disable = { "yaml", "python", "css", "c", "cpp" } },
     autotag = { enable = false },
     autopairs = { enable = true },
     textobjects = {
