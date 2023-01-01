@@ -53,6 +53,12 @@ return {
       "cmp_luasnip",
       "cmp-buffer",
       "cmp-path",
+      "cmp-cmdline",
+      "cmp-cmdline-history",
+      "cmp-emoji",
+      "cmp-nvim-lua",
+      "cmp-tabline",
+      "copilot-cmp",
     },
   },
   { "hrsh7th/cmp-nvim-lsp", lazy = true },
@@ -194,6 +200,7 @@ return {
   {
     "akinsho/bufferline.nvim",
     config = function()
+      vim.opt.showtabline = 2
       require('saturn.plugins.core.bufferline').setup()
     end,
     branch = "main",

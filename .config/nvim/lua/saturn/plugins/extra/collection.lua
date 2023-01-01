@@ -8,7 +8,7 @@ return {
   },
   {
     "LukasPietzschmann/telescope-tabs",
-    dependencies = { "nvim-telescope/telescope.nvim" },
+    dependencies = { "telescope.nvim" },
   },
   {
     "windwp/nvim-spectre",
@@ -90,11 +90,17 @@ return {
     end,
   },
   {
-    "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
+    "Maan2003/lsp_lines.nvim",
     config = function()
       require("lsp_lines").setup()
     end,
   },
+  -- {
+  --   "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
+  --   config = function()
+  --     require("lsp_lines").setup()
+  --   end,
+  -- },
   {
     "nvim-telescope/telescope-media-files.nvim",
   },
@@ -190,7 +196,7 @@ return {
       require("saturn.plugins.extra.fine-cmdline")
     end,
     dependencies = {
-      "MunifTanjim/nui.nvim",
+      "nui.nvim",
     },
   },
   {
@@ -199,7 +205,7 @@ return {
       require("saturn.plugins.extra.searchbox")
     end,
     dependencies = {
-      "MunifTanjim/nui.nvim",
+      "nui.nvim",
     },
   },
   {
@@ -209,7 +215,7 @@ return {
     config = function()
       require("saturn.plugins.extra.cybu").setup()
     end,
-    dependencies = { "nvim-tree/nvim-web-devicons", "nvim-lua/plenary.nvim" }, -- optional for icon support
+    dependencies = { "nvim-web-devicons", "plenary.nvim" }, -- optional for icon support
     enabled = saturn.plugins.cybu.active,
   },
   {
@@ -331,9 +337,9 @@ return {
   {
     "pwntester/octo.nvim",
     dependencies = {
-      "nvim-lua/plenary.nvim",
-      "nvim-telescope/telescope.nvim",
-      "kyazdani42/nvim-web-devicons",
+      "plenary.nvim",
+      "telescope.nvim",
+      "nvim-web-devicons",
     },
     config = function()
       require("octo").setup()
@@ -376,7 +382,7 @@ return {
   {
     "Saecki/crates.nvim",
     version = "v0.3.0",
-    dependencies = { "nvim-lua/plenary.nvim" },
+    dependencies = { "plenary.nvim" },
     config = function()
       require("saturn.plugins.extra.crates").setup()
     end,
@@ -429,7 +435,7 @@ return {
   },
   {
     "kevinhwang91/nvim-ufo",
-    dependencies = { "kevinhwang91/promise-async" },
+    dependencies = { "promise-async" },
   },
   {
     "potamides/pantran.nvim",
@@ -471,8 +477,8 @@ return {
       require("which-key").register(vmappings, vopts)
     end,
     dependencies = {
-      "nvim-lua/plenary.nvim",
-      "MunifTanjim/nui.nvim",
+      "plenary.nvim",
+      "nui.nvim",
     },
   },
   {
@@ -502,11 +508,11 @@ return {
   {
     "crusj/bookmarks.nvim",
     branch = "main",
-    dependencies = { "kyazdani42/nvim-web-devicons" },
+    dependencies = { "nvim-web-devicons" },
   },
   {
     "Badhi/nvim-treesitter-cpp-tools",
-    dependencies = { "nvim-treesitter/nvim-treesitter" },
+    dependencies = { "nvim-treesitter" },
   },
   {
     "terror/chatgpt.nvim",
@@ -526,7 +532,7 @@ return {
         enabled = true,
       })
     end,
-    dependencies = { "nvim-treesitter/nvim-treesitter" },
+    dependencies = { "nvim-treesitter" },
     version = "*"
   },
   {
@@ -534,5 +540,11 @@ return {
   },
   {
     "ThePrimeagen/refactoring.nvim",
-  }
+  },
+  {
+    "MunifTanjim/nui.nvim",
+  },
+  {
+    "kevinhwang91/promise-async",
+  },
 }

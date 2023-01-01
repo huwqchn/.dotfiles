@@ -17,13 +17,13 @@ function plugin_loader.init(opts)
     vim.fn.system({ "git", "-C", install_path, "checkout", "tags/stable" }) -- last stable release
   end
   vim.opt.runtimepath:prepend(install_path)
-  local lazy_cache = require "lazy.core.cache"
+  vim.opt.runtimepath:prepend(join_paths(plugins_dir, "*"))
 
+  local lazy_cache = require "lazy.core.cache"
   lazy_cache.setup {
     performance = {
       cache = {
         enable = true,
-        path = vim.fn.stdpath "cache" .. "/lazy/cache",
       }
     }
   }
@@ -69,17 +69,6 @@ function plugin_loader.load(configurations)
     return
   end
 
-  -- Close lazy.nvim after installing plugins on startup
-  vim.api.nvim_create_autocmd("User", {
-    pattern = "LazyDone",
-    callback = function()
-      if vim.opt.ft:get() == "lazy" then
-        require("lazy.view"):close()
-        vim.cmd "q"
-      end
-    end,
-  })
-
   -- remove plugins from rtp before loading lazy, so that all plugins won't be loaded on startup
   vim.opt.runtimepath:remove(join_paths(plugins_dir, "*"))
 
@@ -113,14 +102,15 @@ function plugin_loader.load(configurations)
 end
 
 function plugin_loader.get_core_plugins()
-  local list = {}
+  local names = {}
   local plugins = require("saturn.plugins.core").get()
-  for _, item in pairs(plugins) do
-    if not item.disable then
-      table.insert(list. item[1]:match "/(%S*)")
+  local get_name = require("lazy.core.plugin").Spec.get_name
+  for _, spec in pairs(plugins) do
+    if spec.enabled == true or spec.enabled == nil then
+      table.insert(names, get_name(spec[1]) )
     end
   end
-  return list
+  return names
 end
 
 function plugin_loader.sync_core_plugins()
