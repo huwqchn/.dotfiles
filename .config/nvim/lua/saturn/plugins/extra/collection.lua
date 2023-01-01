@@ -4,18 +4,18 @@ return {
     config = function()
       require("saturn.plugins.extra.todo-comments").setup()
     end,
-    disable = not saturn.plugins.todo_comments.active,
+    enabled = saturn.plugins.todo_comments.active,
   },
   {
     "LukasPietzschmann/telescope-tabs",
-    requires = { "nvim-telescope/telescope.nvim" },
+    dependencies = { "nvim-telescope/telescope.nvim" },
   },
   {
     "windwp/nvim-spectre",
     config = function()
       require("saturn.plugins.extra.spectre").setup()
     end,
-    disable = not saturn.plugins.spectre.active,
+    enabled = saturn.plugins.spectre.active,
   },
   {
     "ggandor/lightspeed.nvim",
@@ -23,13 +23,31 @@ return {
   },
   {
     "hrsh7th/cmp-cmdline",
+    lazy = true,
+  },
+  {
+    "dmitmel/cmp-cmdline-history",
+    lazy = true,
   },
   {
     "hrsh7th/cmp-emoji",
+    lazy = true,
+  },
+  {
+    "hrsh7th/cmp-nvim-lua",
+    lazy = true,
+  },
+  {
+    "tzachar/cmp-tabnine",
+    build = "./install.sh",
+    config = function()
+      require("saturn.plugins.extra.tabnine").setup()
+    end,
+    lazy = true,
   },
   {
     "zbirenbaum/copilot-cmp",
-    after = { "copilot.lua" },
+    dependencies = { "copilot.lua" },
     config = function()
       require("copilot_cmp").setup({
         formatters = {
@@ -37,24 +55,18 @@ return {
         },
       })
     end,
-  },
-  {
-    "tzachar/cmp-tabnine",
-    run = "./install.sh",
-    config = function()
-      require("saturn.plugins.extra.tabnine").setup()
-    end,
+    lazy = true,
   },
   {
     "ray-x/lsp_signature.nvim",
   },
   {
     "folke/trouble.nvim",
-    cmd = "TroubleToggle",
+    cmd = { "TroubleToggle", "Trouble" },
     config = function()
       require("saturn.plugins.extra.trouble").setup()
     end,
-    disable = not saturn.plugins.trouble.active,
+    enabled = saturn.plugins.trouble.active,
   },
   {
     "j-hui/fidget.nvim",
@@ -88,7 +100,7 @@ return {
   },
   {
     "p00f/nvim-ts-rainbow",
-    after = "nvim-treesitter",
+    dependencies = { "nvim-treesitter" },
   },
   {
     "nvim-treesitter/playground",
@@ -119,29 +131,29 @@ return {
     config = function()
       require("saturn.plugins.extra.neogit").setup()
     end,
-    disable = not saturn.plugins.neogit.active,
+    enabled = saturn.plugins.neogit.active,
   },
   {
     "sindrets/diffview.nvim",
-    requires = "nvim-lua/plenary.nvim",
+    dependencies = { "nvim-lua/plenary.nvim" },
     config = function()
       require("saturn.plugins.extra.diffview").setup()
     end,
-    disable = not saturn.plugins.diffview.active,
+    enabled = saturn.plugins.diffview.active,
   },
   {
     "simrat39/symbols-outline.nvim",
     config = function()
       require("saturn.plugins.extra.symbols-outline").setup()
     end,
-    disable = not saturn.plugins.symbols_outline.active,
+    enabled = saturn.plugins.symbols_outline.active,
   },
   {
     "mrjones2014/smart-splits.nvim",
     config = function()
       require("saturn.plugins.extra.smart-splits").setup()
     end,
-    disable = not saturn.plugins.smart_splits.active,
+    enabled = saturn.plugins.smart_splits.active,
   },
   {
     "kwkarlwang/bufresize.nvim",
@@ -160,22 +172,22 @@ return {
     config = function()
       require("saturn.plugins.extra.notify").setup()
     end,
-    disable = not saturn.plugins.notify.active,
+    enabled = saturn.plugins.notify.active,
   },
   {
     "stevearc/dressing.nvim",
     config = function()
       require("saturn.plugins.extra.dressing").setup()
     end,
-    disable = not saturn.plugins.dressing.active,
+    enabled = saturn.plugins.dressing.active,
   },
   {
     "VonHeikemen/fine-cmdline.nvim",
     config = function()
       require("saturn.plugins.extra.fine-cmdline")
     end,
-    requires = {
-      { "MunifTanjim/nui.nvim" },
+    dependencies = {
+      "MunifTanjim/nui.nvim",
     },
   },
   {
@@ -183,8 +195,8 @@ return {
     config = function()
       require("saturn.plugins.extra.searchbox")
     end,
-    requires = {
-      { "MunifTanjim/nui.nvim" },
+    dependencies = {
+      "MunifTanjim/nui.nvim",
     },
   },
   {
@@ -194,8 +206,8 @@ return {
     config = function()
       require("saturn.plugins.extra.cybu").setup()
     end,
-    requires = { "nvim-tree/nvim-web-devicons", "nvim-lua/plenary.nvim" }, -- optional for icon support
-    disable = not saturn.plugins.cybu.active,
+    dependencies = { "nvim-tree/nvim-web-devicons", "nvim-lua/plenary.nvim" }, -- optional for icon support
+    enabled = saturn.plugins.cybu.active,
   },
   {
     "lalitmee/browse.nvim",
@@ -205,8 +217,8 @@ return {
   },
   {
     "iamcco/markdown-preview.nvim",
-    run = "cd app && npm install",
-    setup = function()
+    build = "cd app && npm install",
+    init = function()
       vim.g.mkdp_filetypes = { "markdown" }
     end,
     ft = { "markdown" },
@@ -218,7 +230,7 @@ return {
     config = function()
       require("saturn.plugins.extra.colorizer").setup()
     end,
-    disable = not saturn.plugins.colorizer.active,
+    enabled = saturn.plugins.colorizer.active,
   },
   { "nvim-colortils/colortils.nvim" },
   {
@@ -226,43 +238,43 @@ return {
     config = function()
       require("saturn.plugins.extra.zen-mode").setup()
     end,
-    disable = not saturn.plugins.zen_mode.active,
+    enabled = saturn.plugins.zen_mode.active,
   },
   {
     "Pocco81/true-zen.nvim",
     config = function()
       require("saturn.plugins.extra.true-zen").setup()
     end,
-    disable = not saturn.plugins.true_zen,
+    enabled = saturn.plugins.true_zen,
   },
   {
     "stevearc/aerial.nvim",
     config = function()
       require("saturn.plugins.extra.aerial").setup()
     end,
-    disable = not saturn.plugins.aerial.active,
+    enabled = saturn.plugins.aerial.active,
   },
   {
     "kylechui/nvim-surround",
-    tag = "*",
+    version = "*",
     config = function()
       require("nvim-surround").setup()
     end,
   },
   {
     "abecodes/tabout.nvim",
-    wants = { "nvim-treesitter" }, -- or require if not used so far
+    dependencies = { "nvim-treesitter" }, -- or require if not used so far
     config = function()
       require("saturn.plugins.extra.tabout").setup()
     end,
-    disable = not saturn.plugins.tabout.active,
+    enabled = saturn.plugins.tabout.active,
   },
   {
     "christianchiarulli/harpoon",
     config = function()
       require("saturn.plugins.extra.harpoon").setup()
     end,
-    disable = not saturn.plugins.harpoon.active,
+    enabled = saturn.plugins.harpoon.active,
   },
   {
     "MattesGroeger/vim-bookmarks",
@@ -272,7 +284,7 @@ return {
     config = function()
       require("saturn.plugins.extra.zk").setup()
     end,
-    disable = not saturn.plugins.zk.active,
+    enabled = saturn.plugins.zk.active,
   },
   {
     "rmagatti/auto-session",
@@ -283,7 +295,6 @@ return {
   {
     "folke/persistence.nvim",
     event = "BufReadPre", -- this will only start session saving when an actual file was opened
-    module = "persistence",
     config = function()
       require("saturn.plugins.extra.persistence").setup()
     end,
@@ -293,30 +304,30 @@ return {
     config = function()
       require("saturn.plugins.extra.bqf").setup()
     end,
-    disable = not saturn.plugins.bqf.active,
+    enabled = saturn.plugins.bqf.active,
   },
   {
     "is0n/jaq-nvim",
     config = function()
       require("saturn.plugins.extra.jaq").setup()
     end,
-    disable = not saturn.plugins.jaq.active,
+    enabled = saturn.plugins.jaq.active,
   },
   {
     "ggandor/leap.nvim",
   },
   {
     "0x100101/lab.nvim",
-    run = "cd js && npm ci",
+    build = "cd js && npm ci",
     config = function()
       require("saturn.plugins.extra.lab").setup()
     end,
     require = { "nvim-lua/plenary.nvim" },
-    disable = not saturn.plugins.lab.active,
+    enabled = saturn.plugins.lab.active,
   },
   {
     "pwntester/octo.nvim",
-    requires = {
+    dependencies = {
       "nvim-lua/plenary.nvim",
       "nvim-telescope/telescope.nvim",
       "kyazdani42/nvim-web-devicons",
@@ -330,7 +341,7 @@ return {
     config = function()
       require("saturn.plugins.extra.dial").setup()
     end,
-    disable = not saturn.plugins.dial.active,
+    enabled = saturn.plugins.dial.active,
   },
   {
     "nacro90/numb.nvim",
@@ -361,8 +372,8 @@ return {
   { "christianchiarulli/rust-tools.nvim", branch = "modularize_and_inlay_rewrite" },
   {
     "Saecki/crates.nvim",
-    tag = "v0.3.0",
-    requires = { "nvim-lua/plenary.nvim" },
+    version = "v0.3.0",
+    dependencies = { "nvim-lua/plenary.nvim" },
     config = function()
       require("saturn.plugins.extra.crates").setup()
     end,
@@ -407,15 +418,15 @@ return {
   },
   {
     "s1n7ax/nvim-window-picker",
-    tag = "v1.*",
+    version = "v1.*",
     config = function()
       require("saturn.plugins.extra.window-picker").setup()
     end,
-    disable = not saturn.plugins.window_picker.active,
+    enabled = saturn.plugins.window_picker.active,
   },
   {
     "kevinhwang91/nvim-ufo",
-    requires = "kevinhwang91/promise-async",
+    dependencies = { "kevinhwang91/promise-async" },
   },
   {
     "potamides/pantran.nvim",
@@ -456,7 +467,7 @@ return {
       }
       require("which-key").register(vmappings, vopts)
     end,
-    requires = {
+    dependencies = {
       "nvim-lua/plenary.nvim",
       "MunifTanjim/nui.nvim",
     },
@@ -488,22 +499,22 @@ return {
   {
     "crusj/bookmarks.nvim",
     branch = "main",
-    requires = { "kyazdani42/nvim-web-devicons" },
+    dependencies = { "kyazdani42/nvim-web-devicons" },
   },
   {
     "Badhi/nvim-treesitter-cpp-tools",
-    requires = { "nvim-treesitter/nvim-treesitter" },
+    dependencies = { "nvim-treesitter/nvim-treesitter" },
   },
   {
     "terror/chatgpt.nvim",
-    run = 'pip3 install -r requirements.txt',
+    build = 'pip3 install -r requirements.txt',
   },
   {
     "h-hg/fcitx.nvim",
   },
   {
     "epwalsh/obsidian.nvim",
-    tag = "v1.*",
+    version = "v1.*",
   },
   {
     "danymat/neogen",
@@ -512,7 +523,13 @@ return {
         enabled = true,
       })
     end,
-    requires = "nvim-treesitter/nvim-treesitter",
-    tag = "*"
+    dependencies = { "nvim-treesitter/nvim-treesitter" },
+    version = "*"
+  },
+  {
+    "moll/vim-bbye",
+  },
+  {
+    "ThePrimeagen/refactoring.nvim",
   }
 }

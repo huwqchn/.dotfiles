@@ -1,89 +1,44 @@
 return {
   {
-    "wbthomason/packer.nvim",
+    "folke/lazy.nvim",
+    tag = "stable"
   },
   {
-    "nvim-lua/plenary.nvim",
+    "neovim/nvim-lspconfig",
+    lazy = true,
+    dependencies = { "mason-lspconfig.nvim", "nlsp-settings.nvim" }
   },
+  { "williamboman/mason-lspconfig.nvim", lazy = true },
+  { "tamago324/nlsp-settings.nvim", lazy = true },
+  { "jose-elias-alvarez/null-ls.nvim", lazy = true },
   {
-    "nvim-lua/popup.nvim",
-  },
-  {
-    "windwp/nvim-autopairs",
+    "williamboman/mason.nvim",
     config = function()
-      require("saturn.plugins.core.autopairs").setup()
+      require("saturn.plugins.core.mason").setup()
     end,
-    disable = not saturn.plugins.autopairs.active,
   },
+  { "folke/tokyonight.nvim", },
+  { "lunarvim/lunar.nvim", },
+  { "Tastyep/structlog.nvim" },
+  { "nvim-lua/plenary.nvim", },
+  { "nvim-lua/popup.nvim", },
+  -- Telescope
   {
-    "numToStr/Comment.nvim",
-    event = "BufRead",
+    "nvim-telescope/telescope.nvim",
+    branch = "0.1.x",
     config = function()
-      require("saturn.plugins.core.comment").setup()
+      require("saturn.plugins.core.telescope").config()
     end,
-    disable = not saturn.plugins.comment.active,
+    dependencies = { "telescope-fzf-native.nvim" },
+    lazy = true,
+    cmd = "Telescope",
+    enabled = saturn.plugins.telescope.active,
   },
   {
-    "JoosepAlviste/nvim-ts-context-commentstring",
-    event = "BufReadPost",
-  },
-  {
-    "kyazdani42/nvim-web-devicons",
-    disable = not saturn.use_icons,
-  },
-  {
-    "akinsho/bufferline.nvim",
-    config = function()
-      require('saturn.plugins.core.bufferline').setup()
-    end,
-    branch = "main",
-    event = "BufWinEnter",
-    disable = not saturn.plugins.bufferline.active,
-  },
-  {
-    "moll/vim-bbye",
-  },
-  {
-    "nvim-lualine/lualine.nvim",
-    config = function()
-      require('saturn.plugins.core.lualine').setup()
-    end,
-    disable = not saturn.plugins.lualine.active,
-  },
-  {
-    "akinsho/toggleterm.nvim",
-    event = "BufWinEnter",
-    branch = "main",
-    config = function()
-      require('saturn.plugins.core.toggleterm').setup()
-    end,
-    disable = not saturn.plugins.toggleterm.active,
-  },
-  {
-    "ahmedkhalf/project.nvim",
-    config = function()
-      require("saturn.plugins.core.project").setup()
-    end,
-    disable = not saturn.plugins.project.active,
-  },
-  {
-    "lewis6991/impatient.nvim",
-  },
-  {
-    "lukas-reineke/indent-blankline.nvim",
-    config = function()
-      require('saturn.plugins.core.indentline').setup()
-    end,
-    disable = not saturn.plugins.indentlines.active,
-  },
-  {
-    "goolord/alpha-nvim",
-  },
-  {
-    "folke/tokyonight.nvim",
-  },
-  {
-    "lunarvim/darkplus.nvim",
+    "nvim-telescope/telescope-fzf-native.nvim",
+    bulid = "make",
+    lazy = true,
+    enabled = saturn.plugins.telescope.active
   },
   {
     "hrsh7th/nvim-cmp",
@@ -92,23 +47,18 @@ return {
         require('saturn.plugins.core.cmp').setup()
       end
     end,
-    require = { "L3MON4D3/LuaSnip" },
+    event = { "InsertEnter", "CmdlineEnter" },
+    dependencies = {
+      "cmp-nvim-lsp",
+      "cmp_luasnip",
+      "cmp-buffer",
+      "cmp-path",
+    },
   },
-  {
-    "hrsh7th/cmp-buffer",
-  },
-  {
-    "hrsh7th/cmp-path",
-  },
-  {
-    "saadparwaiz1/cmp_luasnip",
-  },
-  {
-    "hrsh7th/cmp-nvim-lsp",
-  },
-  {
-    "hrsh7th/cmp-nvim-lua",
-  },
+  { "hrsh7th/cmp-nvim-lsp", lazy = true },
+  { "saadparwaiz1/cmp_luasnip", lazy = true },
+  { "hrsh7th/cmp-buffer", lazy = true },
+  { "hrsh7th/cmp-path", lazy = true },
   {
     "L3MON4D3/LuaSnip",
     config = function()
@@ -127,49 +77,29 @@ return {
       }
       require("luasnip.loaders.from_snipmate").lazy_load()
     end,
+    event = "InsertEnter",
+    dependencies = {
+      "friendly-snippets",
+    },
   },
   {
     "rafamadriz/friendly-snippets",
+    lazy = true,
+    cond = saturn.plugins.luasnip.sources.friendly_snippets,
   },
+  { "folke/neodev.nvim", lazy = true },
+
+  -- Autopairs
   {
-    "neovim/nvim-lspconfig",
-  },
-  {
-    "williamboman/mason.nvim",
+    "windwp/nvim-autopairs",
+    event = "InsertEnter",
     config = function()
-      require("saturn.plugins.core.mason").setup()
+      require("saturn.plugins.core.autopairs").setup()
     end,
+    enabled = saturn.plugins.autopairs.active,
   },
-  {
-    "williamboman/mason-lspconfig.nvim",
-  },
-  {
-    "jose-elias-alvarez/null-ls.nvim",
-  },
-  {
-    "tamago324/nlsp-settings.nvim",
-  },
-  {
-    "RRethy/vim-illuminate",
-    config = function()
-      require('saturn.plugins.core.illuminate').setup()
-    end,
-    disable = not saturn.plugins.illuminate.active,
-  },
-  {
-    "nvim-telescope/telescope.nvim",
-    branch = "0.1.x",
-    config = function()
-      require("saturn.plugins.core.telescope").config()
-    end,
-    disable = not saturn.plugins.telescope.active,
-  },
-  {
-    "nvim-telescope/telescope-fzf-native.nvim",
-    require = { "nvim-telescope/telescope.nvim" },
-    run = "make",
-    disable = not saturn.plugins.telescope.active,
-  },
+
+  -- Treesitter
   {
     "nvim-treesitter/nvim-treesitter",
     config = function ()
@@ -177,11 +107,25 @@ return {
     end,
   },
   {
+    "JoosepAlviste/nvim-ts-context-commentstring",
+    event = "VeryLazy",
+  },
+
+  -- NvimTree
+  {
     "kyazdani42/nvim-tree.lua",
     config = function()
       require("saturn.plugins.core.nvim-tree").setup()
     end,
-    disable = not saturn.plugins.nvimtree.active,
+    enabled = saturn.plugins.nvimtree.active,
+  },
+  -- Lir
+  {
+    "christianchiarulli/lir.nvim",
+    config = function ()
+      require('saturn.plugins.core.lir').setup()
+    end,
+    enabled = saturn.plugins.lir.active,
   },
   {
     "lewis6991/gitsigns.nvim",
@@ -189,60 +133,144 @@ return {
       require("saturn.plugins.core.gitsigns").setup()
     end,
     event = "BufRead",
-    disable = not saturn.plugins.gitsigns.active,
+    enabled = saturn.plugins.gitsigns.active,
   },
-  {
-    "mfussenegger/nvim-dap",
-    config = function()
-      require("saturn.plugins.core.dap").setup()
-    end,
-    disable = not saturn.plugins.dap.active,
-  },
-  {
-    "rcarriga/nvim-dap-ui",
-    config = function()
-      require("saturn.plugins.core.dap").setup_ui()
-    end,
-    disable = not saturn.plugins.dap.active,
-  },
-  -- {
-  --   "ravenxrz/DAPInstall.nvim",
-  --   config = function()
-  --     require('saturn.plugins.core.dap').setup_install()
-  --   end,
-  --   disable = not saturn.plugins.dap.active,
-  -- },
-  {
-    "Tastyep/structlog.nvim",
-  },
-  {
-    "folke/neodev.nvim",
-    module = "neodev",
-  },
-  {
-    "christianchiarulli/lir.nvim",
-    config = function ()
-      require('saturn.plugins.core.lir').setup()
-    end,
-    require = { "kyazdani42/nvim-web-devicons" },
-    disable = not saturn.plugins.lir.active,
-  },
+
+  -- WhichKey
   {
     "folke/which-key.nvim",
     config = function()
       require("saturn.plugins.core.whichkey").setup()
     end,
-    event = "BufWinEnter",
-    disable = not saturn.plugins.whichkey.active,
+    event = "VeryLazy",
+    enabled = saturn.plugins.whichkey.active,
   },
+
+  -- Comments
+  {
+    "numToStr/Comment.nvim",
+    event = "BufRead",
+    config = function()
+      require("saturn.plugins.core.comment").setup()
+    end,
+    enabled = saturn.plugins.comment.active,
+  },
+
+  -- Project
+  {
+    "ahmedkhalf/project.nvim",
+    config = function()
+      require("saturn.plugins.core.project").setup()
+    end,
+    enabled = saturn.plugins.project.active,
+  },
+
+  -- Icons
+  {
+    "kyazdani42/nvim-web-devicons",
+    enabled = saturn.use_icons,
+  },
+
+  -- Status Line and Bufferline
+  {
+    "nvim-lualine/lualine.nvim",
+    config = function()
+      require('saturn.plugins.core.lualine').setup()
+    end,
+    enabled = saturn.plugins.lualine.active,
+  },
+
+  -- breadcrumbs
   {
     "SmiteshP/nvim-navic",
     config = function()
       require('saturn.plugins.core.breadcrumbs').setup()
     end,
-    disable = not saturn.plugins.breadcrumbs.active,
+    event = "VeryLazy",
+    enabled = saturn.plugins.breadcrumbs.active,
   },
-  { "b0o/schemastore.nvim" },
+
+  -- bufferline
+  {
+    "akinsho/bufferline.nvim",
+    config = function()
+      require('saturn.plugins.core.bufferline').setup()
+    end,
+    branch = "main",
+    event = "VeryLazy",
+    enabled = saturn.plugins.bufferline.active,
+  },
+
+  -- Debugging
+  {
+    "mfussenegger/nvim-dap",
+    config = function()
+      require("saturn.plugins.core.dap").setup()
+    end,
+    enabled = saturn.plugins.dap.active,
+  },
+
+  -- Debugger user interface
+  {
+    "rcarriga/nvim-dap-ui",
+    config = function()
+      require("saturn.plugins.core.dap").setup_ui()
+    end,
+    enabled = saturn.plugins.dap.active,
+  },
+
+  -- alpha
+  {
+    "goolord/alpha-nvim",
+  },
+
+  -- Terminal
+  {
+    "akinsho/toggleterm.nvim",
+    event = "VeryLazy",
+    branch = "main",
+    config = function()
+      require('saturn.plugins.core.toggleterm').setup()
+    end,
+    enabled = saturn.plugins.toggleterm.active,
+  },
+
+  -- SchemaStore
+  { "b0o/schemastore.nvim", lazy = true, },
+  {
+    "RRethy/vim-illuminate",
+    config = function()
+      require('saturn.plugins.core.illuminate').setup()
+    end,
+    event = "VeryLazy",
+    enabled = saturn.plugins.illuminate.active,
+  },
+  {
+    "lukas-reineke/indent-blankline.nvim",
+    config = function()
+      require('saturn.plugins.core.indentline').setup()
+    end,
+    enabled = saturn.plugins.indentlines.active,
+  },
+
+  -- impatient
+  {
+    "lewis6991/impatient.nvim",
+  },
+  {
+    "lunarvim/onedarker.nvim",
+    branch = "freeze",
+    config = function()
+      pcall(function()
+        if saturn and saturn.colorscheme == "onedarker" then
+          require("onedarker").setup()
+          saturn.plugins.lualine.options.theme = "onedarker"
+        end
+      end)
+    end,
+    enabled = saturn.colorscheme == "onedarker",
+  },
+
   {
     "lunarvim/bigfile.nvim",
     config = function()
@@ -250,6 +278,6 @@ return {
         require("bigfile").config(saturn.plugins.bigfile.config)
       end)
     end,
-    disable = not saturn.plugins.bigfile.active,
+    enabled = saturn.plugins.bigfile.active,
   },
 }
