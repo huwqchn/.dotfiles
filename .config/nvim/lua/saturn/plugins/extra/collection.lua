@@ -169,7 +169,7 @@ return {
   },
   {
     "zbirenbaum/copilot.lua",
-    event = { "VimEnter" },
+    event = "VeryLazy",
     config = function()
       vim.defer_fn(function()
         require("saturn.plugins.extra.copilot").setup()
@@ -196,7 +196,7 @@ return {
       require("saturn.plugins.extra.fine-cmdline")
     end,
     dependencies = {
-      "nui.nvim",
+      { "MunifTanjim/nui.nvim" },
     },
   },
   {
@@ -205,7 +205,7 @@ return {
       require("saturn.plugins.extra.searchbox")
     end,
     dependencies = {
-      "nui.nvim",
+      { "MunifTanjim/nui.nvim" },
     },
   },
   {
@@ -215,7 +215,10 @@ return {
     config = function()
       require("saturn.plugins.extra.cybu").setup()
     end,
-    dependencies = { "nvim-web-devicons", "plenary.nvim" }, -- optional for icon support
+    dependencies = {
+      "nvim-web-devicons",
+      "plenary.nvim"
+    }, -- optional for icon support
     enabled = saturn.plugins.cybu.active,
   },
   {
@@ -331,7 +334,7 @@ return {
     config = function()
       require("saturn.plugins.extra.lab").setup()
     end,
-    require = { "nvim-lua/plenary.nvim" },
+    dependencies = { "plenary.nvim" },
     enabled = saturn.plugins.lab.active,
   },
   {
@@ -435,7 +438,9 @@ return {
   },
   {
     "kevinhwang91/nvim-ufo",
-    dependencies = { "promise-async" },
+    dependencies = {
+      { "kevinhwang91/promise-async" }
+    },
   },
   {
     "potamides/pantran.nvim",
@@ -478,7 +483,7 @@ return {
     end,
     dependencies = {
       "plenary.nvim",
-      "nui.nvim",
+      { "MunifTanjim/nui.nvim" },
     },
   },
   {
@@ -508,7 +513,9 @@ return {
   {
     "crusj/bookmarks.nvim",
     branch = "main",
-    dependencies = { "nvim-web-devicons" },
+    dependencies = {
+      { "kyazdani42/nvim-web-devicons" }
+    },
   },
   {
     "Badhi/nvim-treesitter-cpp-tools",
@@ -541,10 +548,37 @@ return {
   {
     "ThePrimeagen/refactoring.nvim",
   },
+  -- {
+  --   "MunifTanjim/nui.nvim",
+  -- },
+  -- {
+  --   "kevinhwang91/promise-async",
+  -- },
   {
-    "MunifTanjim/nui.nvim",
+    "smjonas/inc-rename.nvim",
+    cmd = "IncRename",
+    config = true,
   },
+  -- {
+  --   "folke/drop.nvim",
+  --   event = "VimEnter",
+  --   enabled = true,
+  --   config = function()
+  --     math.randomseed(os.time())
+  --     local theme = ({ "stars", "snow", "xmas" })[math.random(1, 3)]
+  --     require("drop").setup({ theme = theme })
+  --   end,
+  -- },
   {
-    "kevinhwang91/promise-async",
+    "m-demare/hlargs.nvim",
+    event = "VeryLazy",
+    enabled = false,
+    config = {
+      excluded_argnames = {
+        usages = {
+          lua = { "self", "use" },
+        },
+      },
+    },
   },
 }
