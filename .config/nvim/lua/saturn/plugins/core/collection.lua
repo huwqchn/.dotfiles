@@ -17,7 +17,7 @@ return {
       require("saturn.plugins.core.mason").setup()
     end,
   },
-  { "folke/tokyonight.nvim", },
+  { "folke/tokyonight.nvim", lazy = false, priority = 999, },
   { "lunarvim/lunar.nvim", },
   { "Tastyep/structlog.nvim" },
   { "nvim-lua/plenary.nvim", },
@@ -108,9 +108,14 @@ return {
   -- Treesitter
   {
     "nvim-treesitter/nvim-treesitter",
+    build = ":TSUpdate",
+    event = "BufReadPost",
     config = function ()
       require('saturn.plugins.core.treesitter').setup()
     end,
+    dependencies = {
+      "nvim-treesitter/nvim-treesitter-textobjects",
+    },
   },
   {
     "JoosepAlviste/nvim-ts-context-commentstring",
@@ -184,6 +189,7 @@ return {
       require('saturn.plugins.core.lualine').setup()
     end,
     enabled = saturn.plugins.lualine.active,
+    event = "VeryLazy",
   },
 
   -- breadcrumbs
@@ -254,6 +260,7 @@ return {
   },
   {
     "lukas-reineke/indent-blankline.nvim",
+    event = "BufReadPre",
     config = function()
       require('saturn.plugins.core.indentline').setup()
     end,

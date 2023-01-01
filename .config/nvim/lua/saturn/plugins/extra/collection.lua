@@ -1,6 +1,8 @@
 return {
   {
     "folke/todo-comments.nvim",
+    cmd = { "TodoTrouble", "TodoTelescope" },
+    event = "BufReadPost",
     config = function()
       require("saturn.plugins.extra.todo-comments").setup()
     end,
@@ -95,12 +97,6 @@ return {
       require("lsp_lines").setup()
     end,
   },
-  -- {
-  --   "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
-  --   config = function()
-  --     require("lsp_lines").setup()
-  --   end,
-  -- },
   {
     "nvim-telescope/telescope-media-files.nvim",
   },
@@ -113,6 +109,7 @@ return {
   },
   {
     "nvim-treesitter/playground",
+    cmd = "TSPlaygroundToggle",
   },
   {
     "windwp/nvim-ts-autotag",
@@ -181,7 +178,26 @@ return {
     config = function()
       require("saturn.plugins.extra.notify").setup()
     end,
+    event = "VeryLazy",
     enabled = saturn.plugins.notify.active,
+  },
+  {
+    "folke/noice.nvim",
+    event = "VeryLazy",
+  },
+  {
+    "nvim-neorg/neorg",
+    ft = "norg",
+    config = {
+      load = {
+        ["core.defaults"] = {},
+        ["core.norg.concealer"] = {},
+        ["core.norg.completion"] = {
+          config = { engine = "nvim-cmp" },
+        },
+        ["core.integrations.nvim-cmp"] = {},
+      },
+    },
   },
   {
     "stevearc/dressing.nvim",
@@ -217,7 +233,7 @@ return {
     end,
     dependencies = {
       "nvim-web-devicons",
-      "plenary.nvim"
+      "plenary.nvim",
     }, -- optional for icon support
     enabled = saturn.plugins.cybu.active,
   },
@@ -327,6 +343,7 @@ return {
   },
   {
     "ggandor/leap.nvim",
+    event = "VeryLazy",
   },
   {
     "0x100101/lab.nvim",
@@ -370,8 +387,12 @@ return {
   },
   {
     "andymass/vim-matchup",
+    config = function()
+      vim.g.matchup_matchparen_offscreen = { method = "popup" }
+      saturn.plugins.treesitter.matchup.enable = true
+    end,
   },
-  { "karb94/neoscroll.nvim" },
+  { "karb94/neoscroll.nvim", config = true, event = "VeryLazy" },
   -- { "junegunn/vim-slash",},
   {
     "phaazon/hop.nvim",
@@ -390,14 +411,14 @@ return {
       require("saturn.plugins.extra.crates").setup()
     end,
   },
-  {
-    "jinh0/eyeliner.nvim",
-    config = function()
-      require("eyeliner").setup({
-        highlight_on_key = true,
-      })
-    end,
-  },
+  -- {
+  --   "jinh0/eyeliner.nvim",
+  --   config = function()
+  --     require("eyeliner").setup({
+  --       highlight_on_key = true,
+  --     })
+  --   end,
+  -- },
   { "jose-elias-alvarez/typescript.nvim" },
   { "mxsdev/nvim-dap-vscode-js" },
   { "mfussenegger/nvim-dap-python" },
@@ -427,6 +448,7 @@ return {
   },
   {
     "rmagatti/goto-preview",
+    config = true,
   },
   {
     "s1n7ax/nvim-window-picker",
@@ -439,11 +461,12 @@ return {
   {
     "kevinhwang91/nvim-ufo",
     dependencies = {
-      { "kevinhwang91/promise-async" }
+      { "kevinhwang91/promise-async" },
     },
   },
   {
     "potamides/pantran.nvim",
+    event = "VeryLazy",
   },
   -- using packer.nvim
   {
@@ -485,6 +508,7 @@ return {
       "plenary.nvim",
       { "MunifTanjim/nui.nvim" },
     },
+    event = "VeryLazy"
   },
   {
     "anuvyklack/keymap-amend.nvim",
@@ -499,9 +523,11 @@ return {
         original()
       end, { desc = "disable search highlight" })
     end,
+    event = "BufRead",
   },
   {
     "anuvyklack/hydra.nvim",
+    Event = "VeryLazy",
   },
   {
     "nvim-orgmode/orgmode",
@@ -514,7 +540,7 @@ return {
     "crusj/bookmarks.nvim",
     branch = "main",
     dependencies = {
-      { "kyazdani42/nvim-web-devicons" }
+      { "kyazdani42/nvim-web-devicons" },
     },
   },
   {
@@ -523,27 +549,30 @@ return {
   },
   {
     "terror/chatgpt.nvim",
-    build = 'pip3 install -r requirements.txt',
+    build = "pip3 install -r requirements.txt",
+    event = "VeryLazy"
   },
   {
     "h-hg/fcitx.nvim",
+    event = "InsertEnter",
   },
-  {
-    "epwalsh/obsidian.nvim",
-    version = "v1.*",
-  },
+  -- {
+  --   "epwalsh/obsidian.nvim",
+  --   version = "v1.*",
+  -- },
   {
     "danymat/neogen",
     config = function()
-      require('neogen').setup({
+      require("neogen").setup({
         enabled = true,
       })
     end,
     dependencies = { "nvim-treesitter" },
-    version = "*"
+    version = "*",
   },
   {
     "moll/vim-bbye",
+    event = "BufReadPost",
   },
   {
     "ThePrimeagen/refactoring.nvim",
@@ -580,5 +609,42 @@ return {
         },
       },
     },
+  },
+  {
+    "petertriho/nvim-scrollbar",
+    event = "BufReadPost",
+    init = function()
+      require("saturn.plugins.extra.scrollbar").init()
+    end,
+    config = function()
+      require("saturn.plugins.extra.scrollbar").config()
+    end,
+  },
+  {
+    "glacambre/firenvim",
+    lazy = false,
+    enabled = false,
+    build = function()
+      vim.fn["firenvim#install"](0)
+    end,
+    init = function()
+      if vim.g.started_by_firenvim then
+        vim.g.firenvim_config = {
+          localSettings = {
+            [".*"] = {
+              cmdline = "none",
+            },
+          },
+        }
+        vim.opt.laststatus = 0
+        vim.api.nvim_create_autocmd("UIEnter", {
+          once = true,
+          callback = function()
+            vim.go.lines = 20
+          end,
+        })
+        -- vim.cmd([[au BufEnter github.com_*.txt set filetype=markdown]])
+      end
+    end,
   },
 }
