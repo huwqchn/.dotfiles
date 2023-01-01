@@ -57,7 +57,7 @@ return {
       "cmp-cmdline-history",
       "cmp-emoji",
       "cmp-nvim-lua",
-      "cmp-tabline",
+      "cmp-tabnine",
       "copilot-cmp",
     },
   },
