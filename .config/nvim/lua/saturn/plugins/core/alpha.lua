@@ -6,13 +6,13 @@ end
 local dashboard = require "alpha.themes.dashboard"
 dashboard.section.header.val = require "saturn.basic.ui.logo"
 dashboard.section.buttons.val = {
-  dashboard.button("f", " " .. " Find file", ":Telescope find_files <CR>"),
-  dashboard.button("e", " " .. " New file", ":ene <BAR> startinsert <CR>"),
-  dashboard.button("p", " " .. " Find project", ":lua require('telescope').extensions.projects.projects()<CR>"),
-  dashboard.button("r", " " .. " Recent files", ":Telescope oldfiles <CR>"),
-  dashboard.button("t", " " .. " Find text", ":Telescope live_grep <CR>"),
-  dashboard.button("c", " " .. " Config", ":e $MYVIMRC <CR>"),
-  dashboard.button("q", " " .. " Quit", ":qa<CR>"),
+  dashboard.button("f", saturn.icons.ui.FindFile .. " Find file", ":Telescope find_files <CR>"),
+  dashboard.button("e", saturn.icons.ui.NewFile .. " New file", ":ene <BAR> startinsert <CR>"),
+  dashboard.button("p", saturn.icons.ui.Project .. " Find project", ":lua require('telescope').extensions.projects.projects()<CR>"),
+  dashboard.button("r", saturn.icons.ui.History .. " Recent files", ":Telescope oldfiles <CR>"),
+  dashboard.button("t", saturn.icons.ui.FindText .. " Find text", ":Telescope live_grep <CR>"),
+  dashboard.button("c", saturn.icons.ui.Gear .. " Configuration", ":e $MYVIMRC <CR>"),
+  dashboard.button("q", saturn.icons.ui.Quit .. " Quit", ":qa<CR>"),
 }
 -- local function footer()
 --   return "Stay foolish, Stay hungry"
