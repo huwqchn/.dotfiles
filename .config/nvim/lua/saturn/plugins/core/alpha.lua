@@ -14,11 +14,12 @@ dashboard.section.buttons.val = {
   dashboard.button("c", " " .. " Config", ":e $MYVIMRC <CR>"),
   dashboard.button("q", " " .. " Quit", ":qa<CR>"),
 }
-local function footer()
-  return "Stay foolish, Stay hungry"
-end
+-- local function footer()
+--   return "Stay foolish, Stay hungry"
+-- end
 
-dashboard.section.footer.val = footer()
+local fortune = require('alpha.fortune')
+dashboard.section.footer.val = fortune
 
 dashboard.section.footer.opts.hl = "Type"
 dashboard.section.header.opts.hl = "Include"
