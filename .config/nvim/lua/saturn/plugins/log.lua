@@ -23,13 +23,6 @@ function Log:set_level(level)
   else
     vim.notify_once("Unable to set logger's level to " .. level)
   end
-
-  local packer_ok, _ = xpcall(function()
-    require("packer.log").cfg { log = { level = level } }
-  end, debug.traceback)
-  if not packer_ok then
-    vim.notify_once("Unable to set packer's log level to " .. level)
-  end
 end
 
 function Log:init()
@@ -70,6 +63,7 @@ function Log:init()
     },
   }
 
+  saturn_log.saturn.sinks[1].async = false -- HACK: Bug in structlog prevents setting async to false
   structlog.configure(saturn_log)
   local logger = structlog.get_logger "saturn"
 
