@@ -198,7 +198,6 @@ return {
     config = function()
       require('saturn.plugins.core.breadcrumbs').setup()
     end,
-    event = "VeryLazy",
     enabled = saturn.plugins.breadcrumbs.active,
   },
 
@@ -206,11 +205,9 @@ return {
   {
     "akinsho/bufferline.nvim",
     config = function()
-      vim.opt.showtabline = 2
       require('saturn.plugins.core.bufferline').setup()
     end,
     branch = "main",
-    event = "VeryLazy",
     enabled = saturn.plugins.bufferline.active,
   },
 
