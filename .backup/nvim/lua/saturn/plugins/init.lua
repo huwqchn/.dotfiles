@@ -16,7 +16,20 @@ return {
       {
         "smjonas/inc-rename.nvim",
         cmd = "IncRename",
-        config = saturn.enable_extra_plugins,
+        config = true,
+        enabled = saturn.enable_extra_plugins,
+      },
+      {
+        "ray-x/lsp_signature.nvim",
+        config = true,
+        enabled = saturn.enable_extra_plugins,
+      },
+
+      -- LSP load progress
+      {
+        "j-hui/fidget.nvim",
+        config = true,
+        enabled = saturn.enable_extra_plugins,
       },
     },
   },
@@ -170,6 +183,9 @@ return {
         "nvim-treesitter/nvim-treesitter-textobjects",
       },
       {
+        "JoosepAlviste/nvim-ts-context-commentstring",
+      },
+      {
         "p00f/nvim-ts-rainbow",
         enabled = saturn.enable_extra_plugins and saturn.plugins.treesitter.rainbow.enable,
       },
@@ -180,6 +196,7 @@ return {
       },
       {
         "windwp/nvim-ts-autotag",
+        event = "InsertEnter",
         enabled = saturn.enable_extra_plugins,
       },
       {
@@ -190,39 +207,11 @@ return {
         "nvim-treesitter/nvim-treesitter-context",
         enabled = saturn.enable_extra_plugins,
       },
-      {
-        "abecodes/tabout.nvim",
-        config = function()
-          saturn.plugins.tabout = {
-            tabkey = "<tab>", -- key to trigger tabout, set to an empty string to disable
-            backwards_tabkey = "<s-tab>", -- key to trigger backwards tabout, set to an empty string to disable
-            act_as_tab = true, -- shift content if tab out is not possible
-            act_as_shift_tab = false, -- reverse shift content if tab out is not possible (if your keyboard/terminal supports <S-Tab>)
-            default_tab = "<C-t>", -- shift default action (only at the beginning of a line, otherwise <TAB> is used)
-            default_shift_tab = "<C-d>", -- reverse shift default action,
-            enable_backwards = false, -- well ...
-            completion = true, -- if the tabkey is used in a completion pum
-            tabouts = {
-              { open = "'", close = "'" },
-              { open = '"', close = '"' },
-              { open = "`", close = "`" },
-              { open = "(", close = ")" },
-              { open = "[", close = "]" },
-              { open = "{", close = "}" },
-              { open = "<", close = ">" },
-            },
-            ignore_beginning = false, --[[ if the cursor is at the beginning of a filled element it will rather tab out than shift the content ]]
-            exclude = { "markdown" }, -- tabout will ignore these filetypes
-          }
-          require("tabout").setup(saturn.plugins.tabout)
-        end,
-        enabled = saturn.enable_extra_plugins,
-      },
-      {
-        "Badhi/nvim-treesitter-cpp-tools",
-        ft = { "c", "cpp", "objc", "objcpp" },
-        enabled = saturn.enable_extra_plugins,
-      },
+      -- {
+      --   "Badhi/nvim-treesitter-cpp-tools",
+      --   ft = { "c", "cpp", "objc", "objcpp" },
+      --   enabled = saturn.enable_extra_plugins,
+      -- },
       {
         "m-demare/hlargs.nvim",
         enabled = saturn.enable_extra_plugins,
@@ -236,11 +225,6 @@ return {
       },
     },
   },
-  {
-    "JoosepAlviste/nvim-ts-context-commentstring",
-    event = "VeryLazy",
-  },
-
   -- NvimTree
   {
     "kyazdani42/nvim-tree.lua",
@@ -480,7 +464,8 @@ return {
   {
     "kylechui/nvim-surround",
     version = "*",
-    config = true,
+    sonfig = true,
+    event = "InsertEnter",
   },
   -- require("harpoon"),
   -- require("lab"),
@@ -616,17 +601,16 @@ return {
   require("saturn.plugins.magic"),
   {
     "danymat/neogen",
-    init = function()
-      saturn.plugins.whichkey.mappings["c"] = {
-        name = "Code documentation",
-        c = { ":lua require('neogen').generate()<CR>", "Generate documentation" },
-      }
-    end,
-    config = function()
-      require("neogen").setup({
-        enabled = true,
-      })
-    end,
+    keys = {
+      {
+        "<leader>cc",
+        function()
+          require("neogen").generate({})
+        end,
+        desc = "Neogen Comment",
+      },
+    },
+    config = { snippet_engine = "luasnip" },
     dependencies = { "nvim-treesitter" },
     version = "*",
   },
@@ -657,6 +641,7 @@ return {
 
   {
     "andymass/vim-matchup",
+    event = "BufReadPost",
     init = function()
       saturn.plugins.treesitter.matchup.enable = true
     end,
@@ -665,4 +650,65 @@ return {
     end,
     enable = saturn.enable_extra_plugins,
   },
+
+  {
+    "abecodes/tabout.nvim",
+    event = "InsertEnter",
+    dependencies = {
+      "nvim-treesitter",
+    },
+    config = function()
+      saturn.plugins.tabout = {
+        tabkey = "<tab>", -- key to trigger tabout, set to an empty string to disable
+        backwards_tabkey = "<s-tab>", -- key to trigger backwards tabout, set to an empty string to disable
+        act_as_tab = true, -- shift content if tab out is not possible
+        act_as_shift_tab = false, -- reverse shift content if tab out is not possible (if your keyboard/terminal supports <S-Tab>)
+        default_tab = "<C-t>", -- shift default action (only at the beginning of a line, otherwise <TAB> is used)
+        default_shift_tab = "<C-d>", -- reverse shift default action,
+        enable_backwards = false, -- well ...
+        completion = true, -- if the tabkey is used in a completion pum
+        tabouts = {
+          { open = "'", close = "'" },
+          { open = '"', close = '"' },
+          { open = "`", close = "`" },
+          { open = "(", close = ")" },
+          { open = "[", close = "]" },
+          { open = "{", close = "}" },
+          { open = "<", close = ">" },
+        },
+        ignore_beginning = false, --[[ if the cursor is at the beginning of a filled element it will rather tab out than shift the content ]]
+        exclude = { "markdown" }, -- tabout will ignore these filetypes
+      }
+      require("tabout").setup(saturn.plugins.tabout)
+    end,
+    enabled = saturn.enable_extra_plugins,
+  },
+  -- Lsp inline hints
+  require("saturn.plugins.inlayhints"),
+  -- search box
+  require("saturn.plugins.searchbox"),
+  -- Session manager
+  require("saturn.plugins.persistence"),
+  -- Join
+  {
+    "Wansmer/treesj",
+    keys = {
+      { "J", "<cmd>TSJToggle<cr>" },
+    },
+    config = { use_default_keymaps = false },
+  },
+  {
+    "cshuaimin/ssr.nvim",
+    keys = {
+      {
+        "<leader>R",
+        function()
+          require("ssr").open()
+        end,
+        mode = { "n", "x" },
+        desc = "Structural Replace",
+      },
+    },
+  },
+  require("saturn.plugins.windows"),
 }

@@ -4,7 +4,7 @@ local M = {
   enabled = saturn.enable_extra_plugins,
   keys = {
     { "j", ":HopPattern<cr>", silent = true },
-    { "J", ":HopChar2<cr>", silent = true },
+    { "<leader>j", ":HopChar2<cr>", silent = true, desc = "Jump" },
     {
       "f",
       ":lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.AFTER_CURSOR, current_line_only = true })<CR>",

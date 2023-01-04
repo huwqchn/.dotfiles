@@ -94,6 +94,9 @@ M.preinit = function()
       s = { "<esc><cmd>'<,'>SnipRun<cr>", "Run range" },
     },
     mappings = {
+      c = {
+        name = "Code",
+      },
       d = {
         name = "Debug",
         t = { "<cmd>lua require'dap'.toggle_breakpoint()<cr>", "Toggle Breakpoint" },

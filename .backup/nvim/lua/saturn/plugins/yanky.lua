@@ -15,10 +15,6 @@ function M.init()
     name = "Yanky",
     e = { "<Plug>(YankyCycleForward)", "Yanky Forward" },
     u = { "<Plug>(YankyCycleBackward)", "Yanky Backward" },
-    y = {
-      "<cmd>lua require('telescope').extensions.yank_history.yank_history({})<cr>",
-      "Search Yanky",
-    },
   }
 end
 
@@ -54,6 +50,10 @@ function M.config()
 
   vim.keymap.set("n", "]p", "<Plug>(YankyPutAfterFilter)")
   vim.keymap.set("n", "[p", "<Plug>(YankyPutBeforeFilter)")
+
+  vim.keymap.set("n", "<leader>P", function()
+    require("telescope").extensions.yank_history.yank_history({})
+  end, { desc = "Paste from Yanky" })
 end
 
 return M
