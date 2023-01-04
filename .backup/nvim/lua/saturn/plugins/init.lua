@@ -218,6 +218,17 @@ return {
         end,
         enabled = saturn.enable_extra_plugins,
       },
+      {
+        "m-demare/hlargs.nvim",
+        enabled = saturn.enable_extra_plugins,
+        config = {
+          excluded_argnames = {
+            usages = {
+              lua = { "self", "use" },
+            },
+          },
+        },
+      },
     },
   },
   {
@@ -337,6 +348,9 @@ return {
           require("saturn.plugins.dap").config_ui()
         end,
       },
+      { "mxsdev/nvim-dap-vscode-js" },
+      { "mfussenegger/nvim-dap-python", ft = "python" },
+      { "leoluz/nvim-dap-go", ft = "go" },
     },
   },
 
@@ -404,10 +418,19 @@ return {
   require("saturn.plugins.copilot"),
   require("saturn.plugins.todo-comments"),
   require("saturn.plugins.trouble"),
+  -- Magit like
   require("saturn.plugins.neogit"),
+  -- Diff
   require("saturn.plugins.diffview"),
+  -- Symbols
   require("saturn.plugins.symbols-outline"),
+  -- Search
+  require("saturn.plugins.spectre"),
+  -- Motion
+  require("saturn.plugins.hop"),
+  { "karb94/neoscroll.nvim", config = true, event = "VeryLazy" },
   -- require("saturn.plugins.smart-splits"),
+  -- Windows Resize not change radio
   {
     "kwkarlwang/bufresize.nvim",
     config = true,
@@ -415,6 +438,7 @@ return {
   },
   require("saturn.plugins.notify"),
   -- require("saturn.plugins.noice"),
+  -- Neovim Org mode
   {
     "nvim-neorg/neorg",
     ft = "norg",
@@ -430,6 +454,7 @@ return {
     },
   },
   require("saturn.plugins.dressing"),
+  -- Cycling buffer switcher
   require("saturn.plugins.cybu"),
   {
     "iamcco/markdown-preview.nvim",
@@ -448,6 +473,7 @@ return {
   },
   -- require("harpoon"),
   -- require("lab"),
+  -- Preview number Jump
   {
     "nacro90/numb.nvim",
     event = "CmdlineEnter",
@@ -461,11 +487,8 @@ return {
       })
     end,
   },
-  require("saturn.plugins.dial"),
+  -- require("saturn.plugins.dial"),
   { "jose-elias-alvarez/typescript.nvim", ft = "typescript" },
-  { "mxsdev/nvim-dap-vscode-js" },
-  { "mfussenegger/nvim-dap-python", ft = "python" },
-  { "leoluz/nvim-dap-go", ft = "go" },
   {
     "itchyny/vim-cursorword",
     event = { "BufEnter", "BufNewFile" },
@@ -484,6 +507,7 @@ return {
     config = true,
   },
   require("saturn.plugins.window-picker"),
+  -- Folding
   {
     "kevinhwang91/nvim-ufo",
     dependencies = {
@@ -506,4 +530,101 @@ return {
     end,
     event = "BufRead",
   },
+  -- Browser insert box use neovim
+  {
+    "glacambre/firenvim",
+    lazy = false,
+    enabled = saturn.enable_extra_plugins,
+    build = function()
+      vim.fn["firenvim#install"](0)
+    end,
+    init = function()
+      if vim.g.started_by_firenvim then
+        vim.g.firenvim_config = {
+          localSettings = {
+            [".*"] = {
+              cmdline = "none",
+            },
+          },
+        }
+        vim.opt.laststatus = 0
+        vim.api.nvim_create_autocmd("UIEnter", {
+          once = true,
+          callback = function()
+            vim.go.lines = 20
+          end,
+        })
+        -- vim.cmd([[au BufEnter github.com_*.txt set filetype=markdown]])
+      end
+    end,
+  },
+  { "mfussenegger/nvim-jdtls", ft = "java" },
+  {
+    "christianchiarulli/rust-tools.nvim",
+    branch = "modularize_and_inlay_rewrite",
+    ft = "rust",
+  },
+  -- rust crates
+  require("saturn.plugins.crates"),
+  -- open file in last edit place
+  { "ethanholz/nvim-lastplace", config = true, lazy = false, priority = 990 },
+  -- Translater
+  {
+    "potamides/pantran.nvim",
+    config = function()
+      require("pantran").setup({
+        controls = {
+          mappings = {
+            edit = {
+              n = {
+                -- Use this table to add additional mappings for the normal mode in
+                -- the translation window. Either strings or function references are
+                -- supported.
+                ["e"] = "gj",
+                ["u"] = "gk",
+              },
+              i = {
+                -- Similar table but for insert mode. Using 'false' disables
+                -- existing keybindings.
+                ["<C-y>"] = false,
+                ["<C-a>"] = require("pantran.ui.actions").yank_close_translation,
+              },
+            },
+            -- Keybindings here are used in the selection window.
+            select = {
+              n = {
+                -- ...
+              },
+            },
+          },
+        },
+      })
+    end,
+  },
+  -- OpenAI
+  require("saturn.plugins.magic"),
+  {
+    "danymat/neogen",
+    init = function()
+      saturn.plugins.whichkey.mappings["c"] = {
+        name = "Code documentation",
+        c = { ":lua require('neogen').generate()<CR>", "Generate documentation" },
+      }
+    end,
+    config = function()
+      require("neogen").setup({
+        enabled = true,
+      })
+    end,
+    dependencies = { "nvim-treesitter" },
+    version = "*",
+  },
+  -- Refactoring
+  require("saturn.plugins.refactoring"),
+  {
+    'crusj/bookmarks.nvim',
+    branch = 'main',
+    requires = { 'kyazdani42/nvim-web-devicons' },
+    config = true,
+  }
 }
