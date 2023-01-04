@@ -1,6 +1,7 @@
 local M = {
   "TimUntersberger/neogit",
   enabled = saturn.enable_extra_plugins,
+  cmd = "Neogit",
 }
 
 function M.init()

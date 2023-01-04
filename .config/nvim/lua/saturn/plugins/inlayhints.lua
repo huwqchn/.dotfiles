@@ -1,5 +1,6 @@
 local M = {
   "lvimuser/lsp-inlayhints.nvim",
+  enabled = saturn.enable_extra_plugins,
 }
 
 M.config = function()

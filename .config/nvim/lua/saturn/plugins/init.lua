@@ -2,6 +2,16 @@ return {
   {
     "folke/lazy.nvim",
     tag = "stable",
+    init = function()
+      saturn.plugins.whichkey.mappings.p.i = { "<cmd>Lazy install<cr>", "Install" }
+      saturn.plugins.whichkey.mappings.p.s = { "<cmd>Lazy sync<cr>", "Sync" }
+      saturn.plugins.whichkey.mappings.p.S = { "<cmd>Lazy clear<cr>", "Status" }
+      saturn.plugins.whichkey.mappings.p.c = { "<cmd>Lazy clean<cr>", "Clean" }
+      saturn.plugins.whichkey.mappings.p.u = { "<cmd>Lazy update<cr>", "Update" }
+      saturn.plugins.whichkey.mappings.p.p = { "<cmd>Lazy profile<cr>", "Profile" }
+      saturn.plugins.whichkey.mappings.p.l = { "<cmd>Lazy log<cr>", "Log" }
+      saturn.plugins.whichkey.mappings.p.d = { "<cmd>Lazy debug<cr>", "Debug" }
+    end,
   },
   {
     "neovim/nvim-lspconfig",
@@ -32,11 +42,6 @@ return {
         enabled = saturn.enable_extra_plugins,
       },
     },
-    -- {
-    --   "rmagatti/goto-preview",
-    --   config = true,
-    --   enabled = saturn.enable_extra_plugins,
-    -- },
   },
   { "jose-elias-alvarez/null-ls.nvim" },
   {
@@ -274,7 +279,6 @@ return {
   -- Comments
   {
     "numToStr/Comment.nvim",
-    event = "BufRead",
     config = function()
       require("saturn.plugins.comment").config()
     end,
@@ -362,6 +366,7 @@ return {
     config = function()
       require("saturn.plugins.toggleterm").config()
     end,
+    cmd = "ToggleTerm",
     enabled = saturn.plugins.toggleterm.active,
   },
 
@@ -508,26 +513,47 @@ return {
   -- Folding
   -- {
   --   "kevinhwang91/nvim-ufo",
+  --   init = function()
+  --     vim.o.foldcolumn = "1" -- '0' is not bad
+  --     vim.o.foldlevel = 99 -- Using ufo provider need a large value, feel free to decrease the value
+  --     vim.o.foldlevelstart = 99
+  --     vim.o.foldenable = true
+  --   end,
   --   dependencies = {
   --     { "kevinhwang91/promise-async" },
   --   },
-  --   config = true,
-  --   event = "BufReadPre",
+  --   config = function()
+  --     require("ufo").setup({
+  --       provider_selector = function(bufnr, filetype, buftype)
+  --         return { "treesitter", "indent" }
+  --       end,
+  --     })
+
+  --     vim.keymap.set("n", "zR", require("ufo").openAllFolds)
+  --     vim.keymap.set("n", "zM", require("ufo").closeAllFolds)
+  --   end,
   -- },
   {
     "anuvyklack/keymap-amend.nvim",
-    config = function()
-      local keymap = vim.keymap
-      keymap.amend = require("keymap-amend")
+    keys = {
+      {
+        "<Esc>",
+        function()
+          local keymap = vim.keymap
+          keymap.amend = require("keymap-amend")
 
-      keymap.amend("n", "<Esc>", function(original)
-        if vim.v.hlsearch and vim.v.hlsearch == 1 then
-          vim.cmd("noh")
-        end
-        original()
-      end, { desc = "disable search highlight" })
-    end,
-    event = { "InsertEnter", "CmdlineEnter" },
+          keymap.amend("n", "<Esc>", function(original)
+            if vim.v.hlsearch and vim.v.hlsearch == 1 then
+              vim.cmd("noh")
+            end
+            original()
+          end, { desc = "disable search highlight" })
+        end,
+        mode = "n",
+        desc = "disable search highlight",
+      },
+    },
+    enabled = saturn.enable_extra_plugins,
   },
   -- Browser insert box use neovim
   {
@@ -566,7 +592,7 @@ return {
   -- rust crates
   require("saturn.plugins.crates"),
   -- open file in last edit place
-  { "ethanholz/nvim-lastplace", config = true, lazy = false, priority = 990 },
+  { "ethanholz/nvim-lastplace", config = true, event = "BufReadPost" },
   -- Translater
   {
     "potamides/pantran.nvim",
@@ -622,6 +648,15 @@ return {
   {
     "MattesGroeger/vim-bookmarks",
     enabled = saturn.enable_extra_plugins,
+    init = function()
+      saturn.plugins.whichkey.mappings.m.a = { "<cmd>silent BookmarkAnnotate<cr>", "Annotate" }
+      saturn.plugins.whichkey.mappings.m.c = { "<cmd>silent BookmarkClear<cr>", "Clear" }
+      saturn.plugins.whichkey.mappings.m.t = { "<cmd>silent BookmarkToggle<cr>", "Toggle" }
+      saturn.plugins.whichkey.mappings.m.e = { "<cmd>silent BookmarkNext<cr>", "Next" }
+      saturn.plugins.whichkey.mappings.m.u = { "<cmd>silent BookmarkPrev<cr>", "Prev" }
+      saturn.plugins.whichkey.mappings.m.l = { "<cmd>silent BookmarkShowAll<cr>", "Show All" }
+      saturn.plugins.whichkey.mappings.m.x = { "<cmd>BookmarkClearAll<cr>", "Clear All" }
+    end,
     cmd = {
       "BookmarkToggle",
       "BookmarkAnnotate",
@@ -700,6 +735,7 @@ return {
     },
     config = { use_default_keymaps = false },
   },
+  -- Structural Replace
   {
     "cshuaimin/ssr.nvim",
     keys = {
@@ -714,4 +750,10 @@ return {
     },
   },
   require("saturn.plugins.windows"),
+
+  -- {
+  --   "rmagatti/goto-preview",
+  --   config = true,
+  --   enabled = saturn.enable_extra_plugins,
+  -- },
 }

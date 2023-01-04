@@ -1,6 +1,14 @@
 local M = {
   "sindrets/diffview.nvim",
   enabled = saturn.enable_extra_plugins,
+  cmd = {
+    "DiffviewFileHistory",
+    "DiffviewFileHistory",
+    "DiffviewOpen",
+    "DiffviewClose",
+    "DiffviewToggleFiles",
+    "DiffviewFileHistory",
+  },
 }
 
 function M.init()

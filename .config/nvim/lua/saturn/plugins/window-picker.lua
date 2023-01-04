@@ -106,7 +106,7 @@ M.config = function()
     end,
   }
 
-  require("window_picker").setup(saturn.plugins.window_picker)
+  require("window-picker").setup(saturn.plugins.window_picker)
 end
 
 return M

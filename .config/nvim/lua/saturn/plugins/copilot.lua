@@ -1,6 +1,6 @@
 local M = {
   "zbirenbaum/copilot.lua",
-  event = "VeryLazy",
+  event = "InsertEnter",
   enabled = saturn.enable_extra_plugins,
 }
 

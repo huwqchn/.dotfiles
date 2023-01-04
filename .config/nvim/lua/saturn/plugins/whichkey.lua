@@ -139,7 +139,7 @@ M.preinit = function()
       },
       g = {
         name = "Git",
-        g = { "<cmd>lua require 'saturn..toggleterm'.lazygit_toggle()<cr>", "Lazygit" },
+        g = { "<cmd>lua require 'saturn.plugins.toggleterm'.lazygit_toggle()<cr>", "Lazygit" },
         n = { "<cmd>Neogit<cr>", "Neogit" },
         e = { "<cmd>lua require 'gitsigns'.next_hunk({navigation_message = false})<cr>", "Next Hunk" },
         u = { "<cmd>lua require 'gitsigns'.prev_hunk({navigation_message = false})<cr>", "Prev Hunk" },
@@ -218,24 +218,9 @@ M.preinit = function()
       },
       m = {
         name = "Mark",
-        a = { "<cmd>silent BookmarkAnnotate<cr>", "Annotate" },
-        c = { "<cmd>silent BookmarkClear<cr>", "Clear" },
-        t = { "<cmd>silent BookmarkToggle<cr>", "Toggle" },
-        e = { "<cmd>silent BookmarkNext<cr>", "Next" },
-        u = { "<cmd>silent BookmarkPrev<cr>", "Prev" },
-        l = { "<cmd>silent BookmarkShowAll<cr>", "Show All" },
-        x = { "<cmd>BookmarkClearAll<cr>", "Clear All" },
       },
       p = {
         name = "Plugins",
-        i = { "<cmd>Lazy install<cr>", "Install" },
-        s = { "<cmd>Lazy sync<cr>", "Sync" },
-        S = { "<cmd>Lazy clear<cr>", "Status" },
-        c = { "<cmd>Lazy clean<cr>", "Clean" },
-        u = { "<cmd>Lazy update<cr>", "Update" },
-        p = { "<cmd>Lazy profile<cr>", "Profile" },
-        l = { "<cmd>Lazy log<cr>", "Log" },
-        d = { "<cmd>Lazy debug<cr>", "Debug" },
       },
       q = {
         name = "Quickfix",
