@@ -17,8 +17,6 @@ local M = {
 
 M.config = function()
   saturn.plugins.smart_splits = {
-    active = true,
-    on_config_done = nil,
     -- Ignored filetypes (only while resizing)
     ignored_filetypes = {
       "nofile",
@@ -70,7 +68,7 @@ M.config = function()
     tmux_integration = true,
   }
 
-  require("smart_splits").setup(saturn.plugins.smart_splits)
+  require("smart-splits").setup(saturn.plugins.smart_splits)
 end
 
 return M

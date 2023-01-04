@@ -464,7 +464,9 @@ return {
     ft = { "markdown" },
   },
   require("saturn.plugins.colorizer"),
-  require("saturn.plugins.true-zen"),
+  -- require("saturn.plugins.true-zen"),
+  require("saturn.plugins.zen-mode"),
+  "folke/twilight.nvim",
   {
     "kylechui/nvim-surround",
     version = "*",

@@ -118,7 +118,7 @@ M.preinit = function()
         name = "Explorer",
         e = { "<cmd>NvimTreeToggle<CR>", "Project" },
         c = { "<cmd>NvimTreeCollapse<CR>", "Collapse" },
-        o = { "<cmd>SymbolsOutline<CR>", "SymbolsOutline" },
+        -- o = { "<cmd>SymbolsOutline<CR>", "SymbolsOutline" },
         f = { "<cmd>lua require'lir.float'.toggle()<cr>", "Toggle Floating Lir" },
         ["."] = { "<cmd>edit .<cr>", "Navigating Current Directory" },
       },

@@ -1,6 +1,7 @@
 local M = {
   "simrat39/symbols-outline.nvim",
   enabled = saturn.enable_extra_plugins,
+  keys = { { "<leader>eo", "<cmd>SymbolsOutline<cr>", desc = "Symbols Outline" } },
 }
 
 function M.config()
@@ -55,9 +56,6 @@ function M.config()
       TypeParameter = { icon = saturn.icons.kind.TypeParameter, hl = "CmpItemKindTypeParameter" },
     },
   }
-end
-
-function M.setup()
   require("symbols_outline").setup(saturn.plugins.symbols_outline)
 end
 
