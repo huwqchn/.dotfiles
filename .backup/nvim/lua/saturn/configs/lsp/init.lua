@@ -18,24 +18,23 @@ function M.config()
   -- saturn.lsp.automatic_configuration.skipped_servers = vim.tbl_filter(function(server)
   --   return server ~= "emmet_ls"
   -- end, saturn.lsp.automatic_configuration.skipped_servers)
-
 end
 
 function M.setup()
-  require "saturn.lsp.languages.go"
-  require "saturn.lsp.languages.rust"
-  require "saturn.lsp.languages.lua"
-  require "saturn.lsp.languages.python"
-  require "saturn.lsp.languages.js-ts"
-  require "saturn.lsp.languages.sh"
-  require "saturn.lsp.languages.cpp"
+  require("saturn.configs.lsp.languages.go")
+  require("saturn.configs.lsp.languages.rust")
+  require("saturn.configs.lsp.languages.lua")
+  require("saturn.configs.lsp.languages.python")
+  require("saturn.configs.lsp.languages.js-ts")
+  require("saturn.configs.lsp.languages.sh")
+  require("saturn.configs.lsp.languages.cpp")
 
-  local formatters = require "saturn.plugins.lsp.null-ls.formatters"
-  formatters.setup {
+  local formatters = require("saturn.plugins.lsp.null-ls.formatters")
+  formatters.setup({
     { command = "google_java_format", filetypes = { "java" } },
     { command = "stylua", filetypes = { "lua" } },
     { command = "shfmt", filetypes = { "sh", "zsh" } },
-  }
+  })
 end
 
 return M

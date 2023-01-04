@@ -74,6 +74,7 @@
   "nvim-treesitter-textobjects": { "branch": "master", "commit": "d816761ec1ea4a605689bc5f4111088459cf74d4" },
   "nvim-ts-autotag": { "branch": "main", "commit": "fdefe46c6807441460f11f11a167a2baf8e4534b" },
   "nvim-ts-context-commentstring": { "branch": "main", "commit": "4a42b30376c1bd625ab5016c2079631d531d797a" },
+  "nvim-ts-rainbow": { "branch": "master", "commit": "ef95c15a935f97c65a80e48e12fe72d49aacf9b9" },
   "nvim-web-devicons": { "branch": "master", "commit": "05e1072f63f6c194ac6e867b567e6b437d3d4622" },
   "nvim-window-picker": { "branch": "main", "commit": "5902827d0e338890a22849e2f18dc80d1cc1a8db" },
   "pantran.nvim": { "branch": "main", "commit": "e53eb4238cea124f8a585c6dc245161b29def275" },
@@ -101,7 +102,7 @@
   "tokyonight.nvim": { "branch": "main", "commit": "63879369ac45e1dfe14c541d630e59240a6f2d4a" },
   "treesj": { "branch": "main", "commit": "8853418ad35abc35475131fa289bc8f3d704a1fa" },
   "trouble.nvim": { "branch": "main", "commit": "897542f90050c3230856bc6e45de58b94c700bbf" },
-  "true-zen.nvim": { "branch": "main", "commit": "98740c76254c65576ec294551028b65081053588" },
+  "twilight.nvim": { "branch": "main", "commit": "1ffa6a4d89fb2fbb784c6674044bf54f1fca936f" },
   "typescript.nvim": { "branch": "main", "commit": "f66d4472606cb24615dfb7dbc6557e779d177624" },
   "vim-bookmarks": { "branch": "master", "commit": "9cc5fa7ecc23b052bd524d07c85356c64b92aeef" },
   "vim-cursorword": { "branch": "master", "commit": "371fdd7fa8817c28aa09d181cfcfa3c7ca29bf56" },
@@ -110,5 +111,6 @@
   "which-key.nvim": { "branch": "main", "commit": "8682d3003595017cd8ffb4c860a07576647cc6f8" },
   "windows.nvim": { "branch": "main", "commit": "a37b5d021afbe9baf741bb40818bd14604dde424" },
   "yanky.nvim": { "branch": "main", "commit": "2bb05abe20b5d7af917a48785acfacb602248e36" },
+  "zen-mode.nvim": { "branch": "main", "commit": "6f5702db4fd4a4c9a212f8de3b7b982f3d93b03c" },
   "zk-nvim": { "branch": "main", "commit": "2fd9f9f29270bb28477e000100625276ec2a2377" }
 }
