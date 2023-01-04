@@ -9,9 +9,9 @@ function M.init()
   -- lab keymaps
   local opts = { noremap = true, silent = true }
   local keymap = vim.api.nvim_set_keymap
-  keymap("n", "<m-4>", ":Lab code run<cr>", opts)
-  keymap("n", "<m-5>", ":Lab code stop<cr>", opts)
-  keymap("n", "<m-6>", ":Lab code panel<cr>", opts)
+  keymap("n", "<m-s-4>", ":Lab code run<cr>", opts)
+  keymap("n", "<m-s-5>", ":Lab code stop<cr>", opts)
+  keymap("n", "<m-s-6>", ":Lab code panel<cr>", opts)
 end
 
 function M.config()

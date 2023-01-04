@@ -477,7 +477,7 @@ return {
     "kylechui/nvim-surround",
     version = "*",
     sonfig = true,
-    event = "InsertEnter",
+    event = "VeryLazy",
   },
   require("saturn.plugins.harpoon"),
   require("saturn.plugins.lab"),
