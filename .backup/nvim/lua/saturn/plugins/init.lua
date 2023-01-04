@@ -219,6 +219,11 @@ return {
         enabled = saturn.enable_extra_plugins,
       },
       {
+        "Badhi/nvim-treesitter-cpp-tools",
+        ft = { "c", "cpp", "objc", "objcpp" },
+        enabled = saturn.enable_extra_plugins,
+      },
+      {
         "m-demare/hlargs.nvim",
         enabled = saturn.enable_extra_plugins,
         config = {
@@ -428,7 +433,13 @@ return {
   require("saturn.plugins.spectre"),
   -- Motion
   require("saturn.plugins.hop"),
-  { "karb94/neoscroll.nvim", config = true, event = "VeryLazy" },
+  {
+    "karb94/neoscroll.nvim",
+    config = true,
+    event = "VeryLazy",
+    enable = saturn.enable_extra_plugins,
+  },
+  -- Splits
   -- require("saturn.plugins.smart-splits"),
   -- Windows Resize not change radio
   {
@@ -622,9 +633,36 @@ return {
   -- Refactoring
   require("saturn.plugins.refactoring"),
   {
-    'crusj/bookmarks.nvim',
-    branch = 'main',
-    requires = { 'kyazdani42/nvim-web-devicons' },
-    config = true,
-  }
+    "MattesGroeger/vim-bookmarks",
+    enabled = saturn.enable_extra_plugins,
+    cmd = {
+      "BookmarkToggle",
+      "BookmarkAnnotate",
+      "BookmarkNext",
+      "BookmarkPrev",
+      "BookmarkShowAll",
+      "BookmarkClear",
+      "BookmarkClearAll",
+      "BookmarkMoveUp",
+      "BookmarkMoveDown",
+      "BookmarkMoveToLine",
+      "BookmarkSave",
+      "BookmarkLoad",
+    },
+  },
+  require("saturn.plugins.zk"),
+  -- Better Quickfix
+  require("saturn.plugins.bqf"),
+  require("saturn.plugins.yanky"),
+
+  {
+    "andymass/vim-matchup",
+    init = function()
+      saturn.plugins.treesitter.matchup.enable = true
+    end,
+    config = function()
+      vim.g.matchup_matchparen_offscreen = { method = "popup" }
+    end,
+    enable = saturn.enable_extra_plugins,
+  },
 }

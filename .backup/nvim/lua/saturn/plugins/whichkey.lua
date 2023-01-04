@@ -215,7 +215,7 @@ M.preinit = function()
       },
       m = {
         name = "Mark",
-        a = { "<cmd>silent BookmarkAnnotate<cr>", "Annotate" },
+        m = { "<cmd>silent BookmarkAnnotate<cr>", "Annotate" },
         c = { "<cmd>silent BookmarkClear<cr>", "Clear" },
         t = { "<cmd>silent BookmarkToggle<cr>", "Toggle" },
         e = { "<cmd>silent BookmarkNext<cr>", "Next" },

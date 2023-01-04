@@ -1,26 +1,71 @@
-local status_ok, hop = pcall(require, "hop")
-if not status_ok then
-	return
+local M = {
+  "phaazon/hop.nvim",
+  branch = "v2",
+  enabled = saturn.enable_extra_plugins,
+  keys = {
+    { "j", ":HopPattern<cr>", silent = true },
+    { "J", ":HopChar2<cr>", silent = true },
+    {
+      "f",
+      ":lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.AFTER_CURSOR, current_line_only = true })<CR>",
+      mode = "o",
+      noremap = true,
+      silent = true,
+    },
+    {
+      "F",
+      ":lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.BEFORE_CURSOR, current_line_only = true })<CR>",
+      mode = "o",
+      noremap = true,
+      silent = true,
+    },
+    {
+      "t",
+      ":lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.AFTER_CURSOR, current_line_only = true, hint_offset = -1 })<CR>",
+      mode = "o",
+      noremap = true,
+      silent = true,
+    },
+    {
+      "T",
+      ":lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.BEFORE_CURSOR, current_line_only = true, hint_offset = 1 })<CR>",
+      mode = "o",
+      noremap = true,
+      silent = true,
+    },
+    {
+      "f",
+      ":lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.AFTER_CURSOR, current_line_only = true })<CR>",
+      mode = "n",
+      noremap = true,
+      silent = true,
+    },
+    {
+      "F",
+      ":lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.BEFORE_CURSOR, current_line_only = true })<CR>",
+      mode = "n",
+      noremap = true,
+      silent = true,
+    },
+    {
+      "t",
+      ":lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.AFTER_CURSOR, current_line_only = true, hint_offset = -1 })<CR>",
+      mode = "n",
+      noremap = true,
+      silent = true,
+    },
+    {
+      "T",
+      ":lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.BEFORE_CURSOR, current_line_only = true, hint_offset = 1 })<CR>",
+      mode = "n",
+      noremap = true,
+      silent = true,
+    },
+  },
+}
+
+M.config = function()
+  require("hop").setup({ keys = "arstdhneoioqwfplukmcxzv" })
 end
-hop.setup()
 
-local opts = { noremap = true, silent = true }
-local keymap = vim.api.nvim_set_keymap
-
-
-
-keymap("", "j", ":HopWordCurrentLine<cr>", { silent = true })
--- keymap("", "S", ":HopChar2<cr>", { silent = true })
--- keymap("", "Q", ":HopPattern<cr>", { silent = true })
-keymap("", "J", ":HopChar2<cr>", { silent = true })
-
-keymap("o", "f", ":lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.AFTER_CURSOR, current_line_only = true })<CR>", opts)
-keymap("o", "F", ":lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.BEFORE_CURSOR, current_line_only = true })<CR>", opts)
-keymap("o", "t", ":lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.AFTER_CURSOR, current_line_only = true, hint_offset = -1 })<CR>", opts)
-keymap("o", "T", ":lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.BEFORE_CURSOR, current_line_only = true, hint_offset = 1 })<CR>", opts)
-
-keymap("n", "f", ":lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.AFTER_CURSOR, current_line_only = true })<CR>", opts)
-keymap("n", "F", ":lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.BEFORE_CURSOR, current_line_only = true })<CR>", opts)
-keymap("n", "t", ":lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.AFTER_CURSOR, current_line_only = true, hint_offset = -1 })<CR>", opts)
-keymap("n", "T", ":lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.BEFORE_CURSOR, current_line_only = true, hint_offset = 1 })<CR>", opts)
-
+return M
