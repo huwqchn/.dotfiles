@@ -57,16 +57,16 @@ M.disable_all = function()
   saturn.plugins.whichkey.active = false
 end
 
-
 -- custom
 M.custom_init = function()
   saturn.format_on_save.enabled = true
   saturn.enable_extra_plugins = true
+  saturn.plugins.treesitter.rainbow = false
 
   lsp_config.config()
-  require 'saturn.configs.autocmds'
-  require 'saturn.configs.telescope'
-  require 'saturn.configs.treesitter'
+  require("saturn.configs.autocmds")
+  require("saturn.configs.telescope")
+  require("saturn.configs.treesitter")
 end
 
 M.config = function()

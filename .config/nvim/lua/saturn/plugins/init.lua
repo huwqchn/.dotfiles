@@ -279,6 +279,7 @@ return {
   -- Comments
   {
     "numToStr/Comment.nvim",
+    event = "BufRead",
     config = function()
       require("saturn.plugins.comment").config()
     end,
