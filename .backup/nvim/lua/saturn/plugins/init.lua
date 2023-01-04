@@ -32,6 +32,11 @@ return {
         enabled = saturn.enable_extra_plugins,
       },
     },
+    -- {
+    --   "rmagatti/goto-preview",
+    --   config = true,
+    --   enabled = saturn.enable_extra_plugins,
+    -- },
   },
   { "jose-elias-alvarez/null-ls.nvim" },
   {
@@ -72,7 +77,6 @@ return {
         "tom-anders/telescope-vim-bookmarks.nvim",
         enabled = saturn.enable_extra_plugins,
       },
-      --require "harpoon",
     },
     cmd = "Telescope",
     enabled = saturn.plugins.telescope.active,
@@ -354,7 +358,6 @@ return {
   -- Terminal
   {
     "akinsho/toggleterm.nvim",
-    event = "VeryLazy",
     branch = "main",
     config = function()
       require("saturn.plugins.toggleterm").config()
@@ -424,13 +427,14 @@ return {
     enable = saturn.enable_extra_plugins,
   },
   -- Splits
-  -- require("saturn.plugins.smart-splits"),
+  require("saturn.plugins.smart-splits"),
   -- Windows Resize not change radio
-  {
-    "kwkarlwang/bufresize.nvim",
-    config = true,
-    enabled = saturn.enable_extra_plugins,
-  },
+  -- {
+  --   "kwkarlwang/bufresize.nvim",
+  --   config = true,
+  --   enabled = saturn.enable_extra_plugins,
+  --   event = "BufAdd",
+  -- },
   require("saturn.plugins.notify"),
   -- require("saturn.plugins.noice"),
   -- Neovim Org mode
@@ -467,8 +471,8 @@ return {
     sonfig = true,
     event = "InsertEnter",
   },
-  -- require("harpoon"),
-  -- require("lab"),
+  require("saturn.plugins.harpoon"),
+  require("saturn.plugins.lab"),
   -- Preview number Jump
   {
     "nacro90/numb.nvim",
@@ -483,7 +487,7 @@ return {
       })
     end,
   },
-  -- require("saturn.plugins.dial"),
+  require("saturn.plugins.dial"),
   { "jose-elias-alvarez/typescript.nvim", ft = "typescript" },
   {
     "itchyny/vim-cursorword",
@@ -498,19 +502,16 @@ return {
       vim.api.nvim_command("augroup END")
     end,
   },
-  {
-    "rmagatti/goto-preview",
-    config = true,
-  },
   require("saturn.plugins.window-picker"),
   -- Folding
-  {
-    "kevinhwang91/nvim-ufo",
-    dependencies = {
-      { "kevinhwang91/promise-async" },
-    },
-    config = true,
-  },
+  -- {
+  --   "kevinhwang91/nvim-ufo",
+  --   dependencies = {
+  --     { "kevinhwang91/promise-async" },
+  --   },
+  --   config = true,
+  --   event = "BufReadPre",
+  -- },
   {
     "anuvyklack/keymap-amend.nvim",
     config = function()
@@ -524,7 +525,7 @@ return {
         original()
       end, { desc = "disable search highlight" })
     end,
-    event = "BufRead",
+    event = { "InsertEnter", "CmdlineEnter" },
   },
   -- Browser insert box use neovim
   {
@@ -686,7 +687,7 @@ return {
   -- Lsp inline hints
   require("saturn.plugins.inlayhints"),
   -- search box
-  require("saturn.plugins.searchbox"),
+  -- require("saturn.plugins.searchbox"),
   -- Session manager
   require("saturn.plugins.persistence"),
   -- Join

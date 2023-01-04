@@ -3,10 +3,10 @@ local M = {
   enabled = saturn.enable_extra_plugins,
   keys = {
     -- change augends in VISUAL mode
-    { "n", "<C-=>", require("dial.map").inc_normal("mygroup"), { noremap = true } },
-    { "n", "<C-->", require("dial.map").dec_normal("mygroup"), { noremap = true } },
-    { "v", "<C-=>", require("dial.map").inc_normal("visual"), { noremap = true } },
-    { "v", "<C-->", require("dial.map").dec_normal("visual"), { noremap = true } },
+    { "<C-=>", require("dial.map").inc_normal("mygroup"), mode = "n", noremap = true },
+    { "<C-->", require("dial.map").dec_normal("mygroup"), mode = "n", noremap = true },
+    { "<C-=>", require("dial.map").inc_normal("visual"), mode = "v", noremap = true },
+    { "<C-->", require("dial.map").dec_normal("visual"), mode = "v", noremap = true },
   },
 }
 

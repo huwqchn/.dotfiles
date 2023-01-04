@@ -7,6 +7,10 @@ local M = {
     "plenary.nvim",
   }, -- optional for icon support
   enabled = saturn.enable_extra_plugins,
+  keys = {
+    { "<s-tab>", "<plug>(CybuLastusedPrev)", mode = "n" },
+    { "<tab>", "<plug>(CybuLastusedNext)", mode = "n" },
+  },
 }
 
 function M.init()

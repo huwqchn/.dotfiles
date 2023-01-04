@@ -3,19 +3,19 @@ local M = {
   enabled = saturn.enable_extra_plugins,
   keys = {
     -- resizing splits
-    { "n", "<C-Left>", require("smart-splits").resize_left, desc = "resize left", },
-    { "n", "<C-Down>", require("smart-splits").resize_down, desc = "resize down", },
-    { "n", "<C-Up>", require("smart-splits").resize_up, desc = "resize up", },
-    { "n", "<C-Right>", require("smart-splits").resize_right, desc = "resize right", },
+    { mode = "n", "<C-Left>", require("smart-splits").resize_left, desc = "resize left" },
+    { mode = "n", "<C-Down>", require("smart-splits").resize_down, desc = "resize down" },
+    { mode = "n", "<C-Up>", require("smart-splits").resize_up, desc = "resize up" },
+    { mode = "n", "<C-Right>", require("smart-splits").resize_right, desc = "resize right" },
     -- moving between splits
-    { "n", "<C-n>", require("smart-splits").move_cursor_left, desc = "move cursor left", },
-    { "n", "<C-e>", require("smart-splits").move_cursor_down, desc = "move cursor down", },
-    { "n", "<C-u>", require("smart-splits").move_cursor_up, desc = "move cursor up", },
-    { "n", "<C-i>", require("smart-splits").move_cursor_right, desc = "move cursor right", },
+    { mode = "n", "<C-n>", require("smart-splits").move_cursor_left, desc = "move cursor left" },
+    { mode = "n", "<C-e>", require("smart-splits").move_cursor_down, desc = "move cursor down" },
+    { mode = "n", "<C-u>", require("smart-splits").move_cursor_up, desc = "move cursor up" },
+    { mode = "n", "<C-i>", require("smart-splits").move_cursor_right, desc = "move cursor right" },
   },
 }
 
-M.init = function()
+M.config = function()
   saturn.plugins.smart_splits = {
     active = true,
     on_config_done = nil,
@@ -69,9 +69,7 @@ M.init = function()
     -- enable or disable the tmux integration
     tmux_integration = true,
   }
-end
 
-M.config = function()
   require("smart_splits").setup(saturn.plugins.smart_splits)
 end
 

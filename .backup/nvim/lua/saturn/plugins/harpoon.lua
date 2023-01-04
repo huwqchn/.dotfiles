@@ -33,7 +33,6 @@ M.init = function()
 end
 
 M.config = function()
-  ---@diagnostic disable-next-line: duplicate-set-field
   require("telescope").load_extension("harpoon")
   require("harpoon").setup(saturn.plugins.harpoon)
 end
