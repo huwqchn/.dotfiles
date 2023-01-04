@@ -118,7 +118,7 @@ function M.load()
         group = "_saturn_colorscheme",
         callback = function()
           if saturn.plugins.breadcrumbs.active then
-            require("saturn.plugins.core.breadcrumbs").get_winbar()
+            require("saturn.plugins.breadcrumbs").get_winbar()
           end
           local statusline_hl = vim.api.nvim_get_hl_by_name("StatusLine", true)
           local cursorline_hl = vim.api.nvim_get_hl_by_name("CursorLine", true)
@@ -159,7 +159,7 @@ function M.enable_format_on_save()
     group = "lsp_format_on_save",
     pattern = opts.pattern,
     callback = function()
-      require("saturn.plugins.core.lsp.utils").format { timeout_ms = opts.timeout, filter = opts.filter }
+      require("saturn.plugins.lsp.utils").format { timeout_ms = opts.timeout, filter = opts.filter }
     end,
   })
   Log:debug "enabled format-on-save"

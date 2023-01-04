@@ -1,1 +1,1 @@
-require 'saturn.bootstrap'
+require 'saturn'

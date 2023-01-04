@@ -6,6 +6,7 @@ function M:init()
   require("saturn.basic.keymaps").load()
   require("saturn.basic.options").load()
   require("saturn.basic.autocmds").load()
+
   local commands = require("saturn.basic.commands")
   commands.load(commands.default)
 end

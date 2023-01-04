@@ -13,7 +13,7 @@ local notify_opts = {}
 
 function Log:set_level(level)
   local logger_ok, logger = pcall(function()
-    return require("structlog").get_logger "saturn"
+    return require("structlog").get_logger("saturn")
   end)
   local log_level = Log.levels[level:upper()]
   if logger_ok and logger and log_level then
@@ -40,7 +40,7 @@ function Log:init()
           processors = {
             structlog.processors.Namer(),
             structlog.processors.StackWriter({ "line", "file" }, { max_parents = 0, stack_level = 2 }),
-            structlog.processors.Timestamper "%H:%M:%S",
+            structlog.processors.Timestamper("%H:%M:%S"),
           },
           formatter = structlog.formatters.FormatColorizer( --
             "%s [%-5s] %s: %-30s",
@@ -52,7 +52,7 @@ function Log:init()
           processors = {
             structlog.processors.Namer(),
             structlog.processors.StackWriter({ "line", "file" }, { max_parents = 3, stack_level = 2 }),
-            structlog.processors.Timestamper "%F %H:%M:%S",
+            structlog.processors.Timestamper("%F %H:%M:%S"),
           },
           formatter = structlog.formatters.Format( --
             "%s [%-5s] %s: %-30s",
@@ -65,7 +65,7 @@ function Log:init()
 
   saturn_log.saturn.sinks[1].async = false -- HACK: Bug in structlog prevents setting async to false
   structlog.configure(saturn_log)
-  local logger = structlog.get_logger "saturn"
+  local logger = structlog.get_logger("saturn")
 
   -- Overwrite `vim.notify` to use the logger
   if saturn.log.override_notify then
@@ -151,7 +151,7 @@ end
 ---@return table|nil logger handle if found
 function Log:get_logger()
   local logger_ok, logger = pcall(function()
-    return require("structlog").get_logger "saturn"
+    return require("structlog").get_logger("saturn")
   end)
   if logger_ok and logger then
     return logger

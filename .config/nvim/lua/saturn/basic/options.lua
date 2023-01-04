@@ -30,7 +30,7 @@ M.load_default_options = function()
     timeoutlen = 0, -- time to wait for a mapped sequence to complete (in milliseconds)
     title = true, -- set the title of window to the value of the titlestring
     list = true, -- show special symbols
-    listchars={tab = '| ', trail = '▫'}, -- replace special symbols
+    listchars = { tab = "| ", trail = "▫" }, -- replace special symbols
 
     -- opt.titlestring = "%<%F%=%l/%L - nvim" -- what the title of the window will be set to
     --undodir = undodir, -- set an undo directory
@@ -45,7 +45,7 @@ M.load_default_options = function()
     numberwidth = 4, -- set number column width to 2 {default 4}
     relativenumber = true, -- show line number on the current line and relative numbers on all other lines
     signcolumn = "yes", -- always show the sign column, otherwise it would shift the text each time
-    colorcolumn = '81', -- highlight a column
+    colorcolumn = "81", -- highlight a column
     wrap = false, -- display lines as one long line
     -- shadafile = join_paths(get_cache_dir(), "saturn.shada"),
     scrolloff = 8, -- minimal number of screen lines to keep above and below the cursor.
@@ -56,21 +56,21 @@ M.load_default_options = function()
     showcmd = false,
     ruler = false,
     laststatus = 3,
-    lazyredraw = true, -- redraw editor when changes
+    -- lazyredraw = true, -- redraw editor when changes
     ttyfast = true, -- should make scrolling faster
-    inccommand = 'split', -- preview command effect
+    inccommand = "split", -- preview command effect
   }
 
   ---  SETTINGS  ---
-  vim.opt.spelllang:append "cjk" -- disable spellchecking for asian characters (VIM algorithm does not support it)
-  vim.opt.shortmess:append "c" -- don't show redundant messages from ins-completion-menu
-  vim.opt.shortmess:append "I" -- don't show the default intro message
-  vim.opt.whichwrap:append "<,>,[,],h,l"
+  vim.opt.spelllang:append("cjk") -- disable spellchecking for asian characters (VIM algorithm does not support it)
+  vim.opt.shortmess:append("c") -- don't show redundant messages from ins-completion-menu
+  vim.opt.shortmess:append("I") -- don't show the default intro message
+  vim.opt.whichwrap:append("<,>,[,],h,l")
 
   for k, v in pairs(options) do
     vim.opt[k] = v
   end
-  vim.filetype.add {
+  vim.filetype.add({
     extension = {
       tex = "tex",
       zir = "zir",
@@ -78,7 +78,7 @@ M.load_default_options = function()
     pattern = {
       ["[jt]sconfig.*.json"] = "jsonc",
     },
-  }
+  })
 end
 
 M.load_headless_options = function()

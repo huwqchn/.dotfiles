@@ -14,7 +14,7 @@ M.default = {
   {
     name = "BufferKill",
     fn = function()
-      require("saturn.plugins.core.bufferline").buf_kill("bd")
+      require("saturn.plugins.bufferline").buf_kill("bd")
     end,
   },
   {
@@ -32,13 +32,13 @@ M.default = {
   {
     name = "SyncCorePlugins",
     fn = function()
-      require("saturn.plugins.plugin_loader").sync_core_plugins()
+      require("saturn.plugin_loader").sync_core_plugins()
     end,
   },
   {
     name = "OpenLog",
     fn = function()
-      vim.fn.execute("edit " .. require("saturn.plugins.core.log").get_path())
+      vim.fn.execute("edit " .. require("saturn.plugins.log").get_path())
     end,
   },
 }
