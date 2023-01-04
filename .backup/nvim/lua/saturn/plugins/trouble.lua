@@ -1,7 +1,7 @@
 local M = {
   "folke/trouble.nvim",
   cmd = { "TroubleToggle", "Trouble" },
-  enabled = saturn.enable_extra_plugins
+  enabled = saturn.enable_extra_plugins,
 }
 
 M.init = function()

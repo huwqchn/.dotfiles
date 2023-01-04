@@ -48,5 +48,5 @@ require("saturn.plugins.mason").preinit()
 -- saturn.plugins.whichkey.active = false
 
 -- custom
-saturn.format_on_save.enabled = false
+saturn.format_on_save.enabled = true
 saturn.enable_extra_plugins = true

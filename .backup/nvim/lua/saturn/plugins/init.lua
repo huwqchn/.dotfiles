@@ -55,6 +55,11 @@ return {
         "nvim-telescope/telescope-media-files.nvim",
         enabled = saturn.enable_extra_plugins,
       },
+      {
+        "tom-anders/telescope-vim-bookmarks.nvim",
+        enabled = saturn.enable_extra_plugins,
+      },
+      --require "harpoon",
     },
     cmd = "Telescope",
     enabled = saturn.plugins.telescope.active,
@@ -168,6 +173,51 @@ return {
         "p00f/nvim-ts-rainbow",
         enabled = saturn.enable_extra_plugins and saturn.plugins.treesitter.rainbow.enable,
       },
+      {
+        "nvim-treesitter/playground",
+        cmd = "TSPlaygroundToggle",
+        enabled = saturn.enable_extra_plugins,
+      },
+      {
+        "windwp/nvim-ts-autotag",
+        enabled = saturn.enable_extra_plugins,
+      },
+      {
+        "nvim-treesitter/nvim-treesitter-textobjects",
+        enabled = saturn.enable_extra_plugins,
+      },
+      {
+        "nvim-treesitter/nvim-treesitter-context",
+        enabled = saturn.enable_extra_plugins,
+      },
+      {
+        "abecodes/tabout.nvim",
+        config = function()
+          saturn.plugins.tabout = {
+            tabkey = "<tab>", -- key to trigger tabout, set to an empty string to disable
+            backwards_tabkey = "<s-tab>", -- key to trigger backwards tabout, set to an empty string to disable
+            act_as_tab = true, -- shift content if tab out is not possible
+            act_as_shift_tab = false, -- reverse shift content if tab out is not possible (if your keyboard/terminal supports <S-Tab>)
+            default_tab = "<C-t>", -- shift default action (only at the beginning of a line, otherwise <TAB> is used)
+            default_shift_tab = "<C-d>", -- reverse shift default action,
+            enable_backwards = false, -- well ...
+            completion = true, -- if the tabkey is used in a completion pum
+            tabouts = {
+              { open = "'", close = "'" },
+              { open = '"', close = '"' },
+              { open = "`", close = "`" },
+              { open = "(", close = ")" },
+              { open = "[", close = "]" },
+              { open = "{", close = "}" },
+              { open = "<", close = ">" },
+            },
+            ignore_beginning = false, --[[ if the cursor is at the beginning of a filled element it will rather tab out than shift the content ]]
+            exclude = { "markdown" }, -- tabout will ignore these filetypes
+          }
+          require("tabout").setup(saturn.plugins.tabout)
+        end,
+        enabled = saturn.enable_extra_plugins,
+      },
     },
   },
   {
@@ -198,6 +248,12 @@ return {
       require("saturn.plugins.gitsigns").config()
     end,
     event = "BufRead",
+    dependencies = {
+      {
+        "f-person/git-blame.nvim",
+        enabled = saturn.enable_extra_plugins,
+      },
+    },
     enabled = saturn.plugins.gitsigns.active,
   },
 
@@ -347,4 +403,107 @@ return {
   -- EXTRA PLUGINS ADD
   require("saturn.plugins.copilot"),
   require("saturn.plugins.todo-comments"),
+  require("saturn.plugins.trouble"),
+  require("saturn.plugins.neogit"),
+  require("saturn.plugins.diffview"),
+  require("saturn.plugins.symbols-outline"),
+  -- require("saturn.plugins.smart-splits"),
+  {
+    "kwkarlwang/bufresize.nvim",
+    config = true,
+    enabled = saturn.enable_extra_plugins,
+  },
+  require("saturn.plugins.notify"),
+  -- require("saturn.plugins.noice"),
+  {
+    "nvim-neorg/neorg",
+    ft = "norg",
+    config = {
+      load = {
+        ["core.defaults"] = {},
+        ["core.norg.concealer"] = {},
+        ["core.norg.completion"] = {
+          config = { engine = "nvim-cmp" },
+        },
+        ["core.integrations.nvim-cmp"] = {},
+      },
+    },
+  },
+  require("saturn.plugins.dressing"),
+  require("saturn.plugins.cybu"),
+  {
+    "iamcco/markdown-preview.nvim",
+    build = "cd app && npm install",
+    init = function()
+      vim.g.mkdp_filetypes = { "markdown" }
+    end,
+    ft = { "markdown" },
+  },
+  require("saturn.plugins.colorizer"),
+  require("saturn.plugins.true-zen"),
+  {
+    "kylechui/nvim-surround",
+    version = "*",
+    config = true,
+  },
+  -- require("harpoon"),
+  -- require("lab"),
+  {
+    "nacro90/numb.nvim",
+    event = "CmdlineEnter",
+    config = function()
+      require("numb").setup({
+        show_numbers = true, -- Enable 'number' for the window while peeking
+        show_cursorline = true, -- Enable 'cursorline' for the window while peeking
+        -- hide_relativenumbers = true, -- Enable turning off 'relativenumber' for the window while peeking
+        -- number_only = false, -- Peek only when the command is only a number instead of when it starts with a number
+        -- centered_peeking = true, -- Peeked line will be centered relative to window
+      })
+    end,
+  },
+  require("saturn.plugins.dial"),
+  { "jose-elias-alvarez/typescript.nvim", ft = "typescript" },
+  { "mxsdev/nvim-dap-vscode-js" },
+  { "mfussenegger/nvim-dap-python", ft = "python" },
+  { "leoluz/nvim-dap-go", ft = "go" },
+  {
+    "itchyny/vim-cursorword",
+    event = { "BufEnter", "BufNewFile" },
+    config = function()
+      vim.api.nvim_command("augroup user_plugin_cursorword")
+      vim.api.nvim_command("autocmd!")
+      vim.api.nvim_command("autocmd FileType NvimTree,lspsagafinder,dashboard,vista let b:cursorword = 0")
+      vim.api.nvim_command("autocmd WinEnter * if &diff || &pvw | let b:cursorword = 0 | endif")
+      vim.api.nvim_command("autocmd InsertEnter * let b:cursorword = 0")
+      vim.api.nvim_command("autocmd InsertLeave * let b:cursorword = 1")
+      vim.api.nvim_command("augroup END")
+    end,
+  },
+  {
+    "rmagatti/goto-preview",
+    config = true,
+  },
+  require("saturn.plugins.window-picker"),
+  {
+    "kevinhwang91/nvim-ufo",
+    dependencies = {
+      { "kevinhwang91/promise-async" },
+    },
+    config = true,
+  },
+  {
+    "anuvyklack/keymap-amend.nvim",
+    config = function()
+      local keymap = vim.keymap
+      keymap.amend = require("keymap-amend")
+
+      keymap.amend("n", "<Esc>", function(original)
+        if vim.v.hlsearch and vim.v.hlsearch == 1 then
+          vim.cmd("noh")
+        end
+        original()
+      end, { desc = "disable search highlight" })
+    end,
+    event = "BufRead",
+  },
 }

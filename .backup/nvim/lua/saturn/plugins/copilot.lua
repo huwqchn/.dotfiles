@@ -1,9 +1,10 @@
 local M = {
   "zbirenbaum/copilot.lua",
-  event = "InsertEnter",
+  event = "VeryLazy",
+  enabled = saturn.enable_extra_plugins,
 }
 
-function M.init()
+function M.config()
   saturn.plugins.copilot = {
     panel = {
       enabled = true,
@@ -54,15 +55,13 @@ function M.init()
       },
     },
   }
-end
 
--- function M.config()
---   vim.defer_fn(function()
---     M.setup()
---   end, 100)
--- end
+  -- function M.config()
+  --   vim.defer_fn(function()
+  --     M.setup()
+  --   end, 100)
+  -- end
 
-function M.setup()
   -- local present, copilot = pcall(require, "copilot")
   -- if not present then
   --   return
