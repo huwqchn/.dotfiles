@@ -7,14 +7,15 @@ alias t='tmux'
 alias ipy="ipython"
 alias cdiff='colordiff'
 alias e='/usr/bin/emacs --daemon &'
+alias ec="emacsclient -c -a 'emacs'"
 if [[ $(uname) == 'Darwin' ]]; then
 	alias ep='export https_proxy=http://127.0.0.1:19180 && export http_proxy=http://127.0.0.1:19180'
 elif [[ $(uname) == 'Linux' ]]; then
 	alias ep='export all_proxy=http://127.0.0.1:7890'
-  alias aic='ascii-image-converter'
-  # alias x='xmodmap ~/.Xmodmap' # use keyd instead
-  alias xr='xrandr --output HDMI-1 --scale 1.12x1.50'
-  alias lo='betterlockscreen'
+	alias aic='ascii-image-converter'
+	# alias x='xmodmap ~/.Xmodmap' # use keyd instead
+	alias xr='xrandr --output HDMI-1 --scale 1.12x1.50'
+	alias lo='betterlockscreen'
 fi
 alias doom='~/.emacs.d/bin/doom'
 alias v='nvim'
@@ -33,7 +34,6 @@ alias ga="git status"
 alias gA="git add"
 alias gc="git commit"
 alias gC="git checkout"
-
 
 alias nc="ncmpcpp"
 alias m="neomutt"
