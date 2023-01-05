@@ -6,8 +6,9 @@ alias ra='ranger'
 alias t='tmux'
 alias ipy="ipython"
 alias cdiff='colordiff'
-alias e='/usr/bin/emacs --daemon &'
+alias ed='/usr/bin/emacs --daemon &'
 alias ec="emacsclient -c -a 'emacs'"
+alias em="emacs -nw"
 if [[ $(uname) == 'Darwin' ]]; then
 	alias ep='export https_proxy=http://127.0.0.1:19180 && export http_proxy=http://127.0.0.1:19180'
 elif [[ $(uname) == 'Linux' ]]; then
