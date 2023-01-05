@@ -18,11 +18,11 @@ return {
     dependencies = {
       { "williamboman/mason-lspconfig.nvim" },
       { "tamago324/nlsp-settings.nvim" },
-      {
-        "Maan2003/lsp_lines.nvim",
-        config = true,
-        enabled = saturn.enable_extra_plugins and not saturn.lsp.diagnostics.virtual_text,
-      },
+      -- {
+      --   "Maan2003/lsp_lines.nvim",
+      --   config = true,
+      --   enabled = saturn.enable_extra_plugins and not saturn.lsp.diagnostics.virtual_text,
+      -- },
       {
         "ray-x/lsp_signature.nvim",
         config = true,
@@ -566,35 +566,35 @@ return {
     },
     enabled = saturn.enable_extra_plugins,
   },
-  -- Browser insert box use neovim
-  -- TODO:not work now, need fix that
-  {
-    "glacambre/firenvim",
-    lazy = false,
-    enabled = saturn.enable_extra_plugins,
-    build = function()
-      vim.fn["firenvim#install"](0)
-    end,
-    init = function()
-      if vim.g.started_by_firenvim then
-        vim.g.firenvim_config = {
-          localSettings = {
-            [".*"] = {
-              cmdline = "none",
-            },
-          },
-        }
-        vim.opt.laststatus = 0
-        vim.api.nvim_create_autocmd("UIEnter", {
-          once = true,
-          callback = function()
-            vim.go.lines = 20
-          end,
-        })
-        -- vim.cmd([[au BufEnter github.com_*.txt set filetype=markdown]])
-      end
-    end,
-  },
+  -- -- Browser insert box use neovim
+  -- -- TODO:not work now, need fix that
+  -- {
+  --   "glacambre/firenvim",
+  --   lazy = false,
+  --   enabled = saturn.enable_extra_plugins,
+  --   build = function()
+  --     vim.fn["firenvim#install"](0)
+  --   end,
+  --   init = function()
+  --     if vim.g.started_by_firenvim then
+  --       vim.g.firenvim_config = {
+  --         localSettings = {
+  --           [".*"] = {
+  --             cmdline = "none",
+  --           },
+  --         },
+  --       }
+  --       vim.opt.laststatus = 0
+  --       vim.api.nvim_create_autocmd("UIEnter", {
+  --         once = true,
+  --         callback = function()
+  --           vim.go.lines = 20
+  --         end,
+  --       })
+  --       -- vim.cmd([[au BufEnter github.com_*.txt set filetype=markdown]])
+  --     end
+  --   end,
+  -- },
   { "mfussenegger/nvim-jdtls", ft = "java" },
   {
     "christianchiarulli/rust-tools.nvim",

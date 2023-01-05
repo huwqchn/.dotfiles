@@ -62,6 +62,7 @@ M.config = function()
   saturn.format_on_save.enabled = true
   saturn.enable_extra_plugins = true
   saturn.plugins.treesitter.rainbow = false
+  saturn.lsp.diagnostics.virtual_text = true
 
   lsp_config.config()
   require("saturn.configs.autocmds")
