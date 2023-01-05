@@ -89,7 +89,16 @@ function plugin_loader.load(configurations)
       performance = {
         rtp = {
           reset = false,
-          disabled_plugins = {},
+          disabled_plugins = {
+            "matchit",
+            "matchparen",
+            "netrwPlugin",
+            "tarPlugin",
+            "zipPlugin",
+            "tohtml",
+            "tutor",
+            "gzip",
+          },
         },
       },
     }
