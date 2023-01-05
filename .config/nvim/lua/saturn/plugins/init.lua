@@ -567,6 +567,7 @@ return {
     enabled = saturn.enable_extra_plugins,
   },
   -- Browser insert box use neovim
+  -- TODO:not work now, need fix that
   {
     "glacambre/firenvim",
     lazy = false,
