@@ -1,7 +1,7 @@
 local M = {}
-local Log = require "saturn.plugins.log"
-local utils = require "saturn.utils.helper"
-local autocmds = require "saturn.basic.autocmds"
+local Log = require("saturn.plugins.log")
+local utils = require("saturn.utils.helper")
+local autocmds = require("saturn.basic.autocmds")
 
 local function add_lsp_buffer_options(bufnr)
   for k, v in pairs(saturn.lsp.buffer_options) do
@@ -45,17 +45,17 @@ end
 
 function M.common_on_exit(_, _)
   if saturn.lsp.document_highlight then
-    autocmds.clear_augroup "lsp_document_highlight"
+    autocmds.clear_augroup("lsp_document_highlight")
   end
   if saturn.lsp.code_lens_refresh then
-    autocmds.cleer_augroup "lsp_code_lens_refresh"
+    autocmds.cleer_augroup("lsp_code_lens_refresh")
   end
 end
 
 function M.common_on_init(client, bufnr)
   if saturn.lsp.on_init_callback then
     saturn.lsp.on_init_callback(client, bufnr)
-    Log:debug "Called lsp.on_init_callback"
+    Log:debug("Called lsp.on_init_callback")
     return
   end
 end
@@ -63,9 +63,9 @@ end
 function M.common_on_attach(client, bufnr)
   if saturn.lsp.on_attach_callback then
     saturn.lsp.on_attach_callback(client, bufnr)
-    Log:debug "Called lsp.on_attach_callback"
+    Log:debug("Called lsp.on_attach_callback")
   end
-  local lu = require "saturn.plugins.lsp.utils"
+  local lu = require("saturn.plugins.lsp.utils")
   if saturn.lsp.document_highlight then
     lu.setup_document_highlight(client, bufnr)
   end
@@ -87,12 +87,12 @@ function M.get_common_opts()
 end
 
 function M.config()
-  local lsp_config = require "saturn.plugins.lsp.config"
+  local lsp_config = require("saturn.plugins.lsp.config")
   saturn.lsp = vim.deepcopy(lsp_config)
 end
 
 function M.setup()
-  Log:debug "Setting up LSP support"
+  Log:debug("Setting up LSP support")
 
   local lsp_status_ok, _ = pcall(require, "lspconfig")
   if not lsp_status_ok then
@@ -117,7 +117,7 @@ function M.setup()
 
   pcall(function()
     require("mason-lspconfig").setup(saturn.lsp.installer.setup)
-    local util = require "lspconfig.util"
+    local util = require("lspconfig.util")
     -- automatic_installation is handled by lsp-manager
     util.on_setup = nil
   end)

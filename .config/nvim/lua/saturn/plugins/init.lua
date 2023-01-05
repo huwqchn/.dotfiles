@@ -24,12 +24,6 @@ return {
         enabled = saturn.enable_extra_plugins and not saturn.lsp.diagnostics.virtual_text,
       },
       {
-        "smjonas/inc-rename.nvim",
-        cmd = "IncRename",
-        config = true,
-        enabled = saturn.enable_extra_plugins,
-      },
-      {
         "ray-x/lsp_signature.nvim",
         config = true,
         enabled = saturn.enable_extra_plugins,
@@ -43,6 +37,7 @@ return {
       },
     },
   },
+
   { "jose-elias-alvarez/null-ls.nvim" },
   {
     "williamboman/mason.nvim",
@@ -279,7 +274,17 @@ return {
   -- Comments
   {
     "numToStr/Comment.nvim",
-    event = "BufRead",
+    keys = {
+      {
+        "<leader>/",
+        function()
+          require("Comment.api").toggle.linewise.current()
+        end,
+        mode = "n",
+        desc = "Comment",
+      },
+      { "<leader>/", "<Plug>(comment_toggle_linewise_visual)", mode = "v", desc = "Comment toggle linewise (visual)" },
+    },
     config = function()
       require("saturn.plugins.comment").config()
     end,
@@ -751,7 +756,12 @@ return {
     },
   },
   require("saturn.plugins.windows"),
-
+  {
+    "smjonas/inc-rename.nvim",
+    cmd = "IncRename",
+    config = true,
+    enabled = saturn.enable_extra_plugins,
+  },
   -- {
   --   "rmagatti/goto-preview",
   --   config = true,

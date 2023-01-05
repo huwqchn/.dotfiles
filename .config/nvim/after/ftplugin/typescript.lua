@@ -1,3 +1,4 @@
+require("saturn.configs.lsp.languages.js-ts")
 local status_ok, which_key = pcall(require, "which-key")
 if not status_ok then
   return
@@ -25,5 +26,3 @@ local mappings = {
 }
 
 which_key.register(mappings, opts)
-
-

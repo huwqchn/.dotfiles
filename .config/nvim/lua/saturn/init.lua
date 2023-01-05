@@ -9,10 +9,9 @@ plugin_loader.init()
 local configs = require("saturn.configs")
 configs.init()
 
-configs.custom_init()
+configs.config()
 local plugins = require("saturn.plugins")
 plugin_loader.load({ plugins })
 
-configs.config()
 require("saturn.plugins.theme").config()
 require("saturn.plugins.lsp").setup()

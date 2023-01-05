@@ -4,12 +4,12 @@ local utils = require("saturn.utils.helper")
 local Log = require("saturn.plugins.log")
 local join_paths = utils.join_paths
 
-local plugins_dir = vim.fn.stdpath("data") .. "lazy"
+local plugins_dir = vim.fn.stdpath("data") .. "/lazy"
 
 function plugin_loader.init(opts)
   opts = opts or {}
 
-  local install_path = opts.install_path or vim.fn.stdpath("data") .. "lazy/lazy.nvim"
+  local install_path = opts.install_path or vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 
   if not utils.is_directory(install_path) then
     print("Installing first time setup")
