@@ -90,6 +90,7 @@ function plugin_loader.load(configurations)
         rtp = {
           reset = false,
           disabled_plugins = {
+            "black",
             "matchit",
             "matchparen",
             "netrwPlugin",
