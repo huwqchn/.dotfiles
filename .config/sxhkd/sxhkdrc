@@ -10,6 +10,10 @@ super + Return
 super + c
   firefox
 
+# emacs
+super + a
+  emacsclient -c -a 'emacs'
+
 # betterlockscreen
 super + x
   betterlockscreen -l blur
