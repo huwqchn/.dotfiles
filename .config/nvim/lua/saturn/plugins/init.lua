@@ -283,7 +283,12 @@ return {
         mode = "n",
         desc = "Comment",
       },
-      { "<leader>/", "<Plug>(comment_toggle_linewise_visual)", mode = "v", desc = "Comment toggle linewise (visual)" },
+      {
+        "<leader>/",
+        "<Plug>(comment_toggle_linewise_visual)",
+        mode = "v",
+        desc = "Comment toggle linewise (visual)",
+      },
     },
     config = function()
       require("saturn.plugins.comment").config()

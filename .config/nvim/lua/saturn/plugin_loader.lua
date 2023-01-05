@@ -89,6 +89,7 @@ function plugin_loader.load(configurations)
       performance = {
         rtp = {
           reset = false,
+          disabled_plugins = {},
         },
       },
     }
