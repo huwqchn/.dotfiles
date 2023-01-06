@@ -16,6 +16,7 @@ elif [[ $(uname) == 'Linux' ]]; then
 	alias aic='ascii-image-converter'
 	# alias x='xmodmap ~/.Xmodmap' # use keyd instead
 	alias xr='xrandr --output HDMI-1 --scale 1.12x1.50'
+	# xrandr --output HDMI-1 --scale 2x2 --primary --output eDP-1 --auto --below HDMI-1
 	alias lo='betterlockscreen'
 fi
 alias doom='~/.emacs.d/bin/doom'

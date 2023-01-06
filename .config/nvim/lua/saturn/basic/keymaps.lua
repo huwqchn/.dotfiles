@@ -74,7 +74,7 @@ M.general = {
     ["Q"] = ":q<CR>",
 
     -- select all
-    ["<A-a>"] = "ggVG",
+    ["<C-a>"] = "ggVG",
 
     -- save
     ["<C-s>"] = "<C-g>u<Cmd>w<CR>",
@@ -91,7 +91,7 @@ M.general = {
     ["<A-Right>"] = "<C-\\><C-N><C-w>l",
 
     -- select all
-    ["<A-a>"] = "<Esc>ggVG",
+    ["<C-a>"] = "<Esc>ggVG",
 
     -- undo
     ["<C-z>"] = "<C-o>u",
@@ -102,25 +102,25 @@ M.general = {
     -- save
     ["<C-s>"] = "<C-g>u<Cmd>w<CR>",
 
-    -- emacs keybinds
-    ["<C-b>"] = "<Left>",
-    ["<C-f>"] = "<Right>",
-    ["<C-n>"] = "<Down>",
-    ["<C-p>"] = "<Up>",
-    ["<C-a>"] = "<Home>",
-    ["<C-e>"] = "<End>",
-    ["<C-d>"] = "<Del>",
-    ["<C-k>"] = {
-      function()
-        local col = vim.api.nvim_win_get_cursor(0)[2]
-        local line = vim.api.nvim_get_current_line()
-        if #line <= col then
-          return "<Del><C-o>dw"
-        end
-        return "<C-o>dw"
-      end,
-      { silent = true, expr = true },
-    },
+    -- -- emacs keybinds
+    -- ["<C-b>"] = "<Left>",
+    -- ["<C-f>"] = "<Right>",
+    -- ["<C-n>"] = "<Down>",
+    -- ["<C-p>"] = "<Up>",
+    -- ["<C-a>"] = "<Home>",
+    -- ["<C-e>"] = "<End>",
+    -- ["<C-d>"] = "<Del>",
+    -- ["<C-k>"] = {
+    --   function()
+    --     local col = vim.api.nvim_win_get_cursor(0)[2]
+    --     local line = vim.api.nvim_get_current_line()
+    --     if #line <= col then
+    --       return "<Del><C-o>dw"
+    --     end
+    --     return "<C-o>dw"
+    --   end,
+    --   { silent = true, expr = true },
+    -- },
   },
   ["n"] = {
     -- better indentation
@@ -186,6 +186,9 @@ M.general = {
 
     ["<tab>"] = ":bnext<CR>",
     ["<s-tab>"] = ":bprevious<CR>",
+
+    -- map backspace to ciw
+    ["<BS>"] = "ciw",
   },
   ["v"] = {
     -- copy to system clipboard

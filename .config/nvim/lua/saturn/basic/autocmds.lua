@@ -1,5 +1,5 @@
 local M = {}
-local Log = require "saturn.plugins.log"
+local Log = require("saturn.plugins.log")
 
 --- Load the default set of autogroups and autocommands.
 function M.load()
@@ -11,7 +11,7 @@ function M.load()
         pattern = "*",
         desc = "Highlight text on yank",
         callback = function()
-          vim.highlight.on_yank { higroup = "Search", timeout = 100 }
+          vim.highlight.on_yank({ higroup = "Search", timeout = 100 })
         end,
       },
     },
@@ -34,8 +34,8 @@ function M.load()
           -- credit: https://github.com/sam4llis/nvim-lua-gf
           vim.opt_local.include = [[\v<((do|load)file|require|reload)[^''"]*[''"]\zs[^''"]+]]
           vim.opt_local.includeexpr = "substitute(v:fname,'\\.','/','g')"
-          vim.opt_local.suffixesadd:prepend ".lua"
-          vim.opt_local.suffixesadd:prepend "init.lua"
+          vim.opt_local.suffixesadd:prepend(".lua")
+          vim.opt_local.suffixesadd:prepend("init.lua")
 
           for _, path in pairs(vim.api.nvim_list_runtime_paths()) do
             vim.opt_local.path:append(path .. "/lua")
@@ -63,7 +63,7 @@ function M.load()
           "spectre_pannel",
           "startuptime",
           "tspluayground",
-          "PlenaryTestPopup"
+          "PlenaryTestPopup",
         },
         callback = function()
           vim.keymap.set("n", "q", "<cmd>close<cr>", { buffer = true })
@@ -93,11 +93,11 @@ function M.load()
         group = "_filetype_settings",
         pattern = "alpha",
         callback = function()
-          vim.cmd [[
+          vim.cmd([[
             nnoremap <silent> <buffer> q :qa<CR>
             nnoremap <silent> <buffer> <esc> :qa<CR>
             set nobuflisted
-          ]]
+          ]])
         end,
       },
     },
@@ -159,15 +159,15 @@ function M.enable_format_on_save()
     group = "lsp_format_on_save",
     pattern = opts.pattern,
     callback = function()
-      require("saturn.plugins.lsp.utils").format { timeout_ms = opts.timeout, filter = opts.filter }
+      require("saturn.plugins.lsp.utils").format({ timeout_ms = opts.timeout, filter = opts.filter })
     end,
   })
-  Log:debug "enabled format-on-save"
+  Log:debug("enabled format-on-save")
 end
 
 function M.disable_format_on_save()
-  M.clear_augroup "lsp_format_on_save"
-  Log:debug "disabled format-on-save"
+  M.clear_augroup("lsp_format_on_save")
+  Log:debug("disabled format-on-save")
 end
 
 function M.configure_format_on_save()
@@ -191,7 +191,6 @@ function M.toggle_format_on_save()
     M.disable_format_on_save()
   end
 end
-
 
 function M.enable_transparent_mode()
   vim.api.nvim_create_autocmd("ColorScheme", {
@@ -222,7 +221,7 @@ function M.clear_augroup(name)
   Log:debug("request to clear autocmds  " .. name)
   vim.schedule(function()
     pcall(function()
-      vim.api.nvim_clear_autocmds { group = name }
+      vim.api.nvim_clear_autocmds({ group = name })
     end)
   end)
 end
