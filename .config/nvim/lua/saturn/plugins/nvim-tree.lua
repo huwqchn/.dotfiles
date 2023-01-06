@@ -154,7 +154,7 @@ saturn.plugins.nvimtree = {
 }
 
 function M.init()
-  saturn.plugins.nvimtree.mappings.e = {
+  saturn.plugins.whichkey.mappings.e = {
     name = "Explorer",
   }
 end
@@ -163,7 +163,7 @@ function M.config()
   local nvim_tree = require("nvim-tree")
 
   if saturn.plugins.nvimtree._setup_called then
-    vim.notify("ignoring repeated setup call for nvim-tree, see kyazdani42/nvim-tree.lua#1308")
+    print("ignoring repeated setup call for nvim-tree, see kyazdani42/nvim-tree.lua#1308")
     return
   end
 

@@ -1,9 +1,6 @@
 local M = {
   "nvim-telescope/telescope.nvim",
   branch = "0.1.x",
-  config = function()
-    require("saturn.plugins.telescope").config()
-  end,
   dependencies = {
     {
       "nvim-telescope/telescope-fzf-native.nvim",
@@ -25,6 +22,10 @@ local M = {
   cmd = "Telescope",
 }
 
+
+
+function M.config()
+
 ---@alias telescope_themes
 ---| "cursor"   # see `telescope.themes.get_cursor()`
 ---| "dropdown" # see `telescope.themes.get_dropdown()`
@@ -34,14 +35,9 @@ local M = {
 -- Define this minimal config so that it's available if telescope is not yet available.
 saturn.plugins.telescope = {
   ---@usage disable telescope completely [not recommended]
-  active = true,
   on_config_done = nil,
 }
-
-local present, actions = pcall(require, "telescope.actions")
-if not present then
-  return
-end
+local actions = require("telescope.actions")
 saturn.plugins.telescope = {
   active = true,
   on_config_done = nil,
@@ -131,8 +127,6 @@ saturn.plugins.telescope = {
     },
   },
 }
-
-function M.config()
   saturn.plugins.telescope.defaults.file_ignore_patterns = {
     ".git/",
     "target/",

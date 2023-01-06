@@ -1,6 +1,6 @@
 local M = {
   "christianchiarulli/lir.nvim",
-  cmd = {
+  keys = {
     { "<leader>ef", "<cmd>lua require'lir.float'.toggle()<cr>", desc = "Toggle Floating Lir" },
   },
 }

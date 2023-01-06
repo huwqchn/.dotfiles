@@ -2,7 +2,7 @@ local M = {}
 local loader = require("saturn.utils.loader")
 
 local get_format_on_save_opts = function()
-  local defaults = require("saturn.basic.settings").format_on_save
+  local defaults = require("saturn.config.settings").format_on_save
   -- accept a basic boolean `saturn.format_on_save=true`
   if type(saturn.format_on_save) ~= "table" then
     return defaults

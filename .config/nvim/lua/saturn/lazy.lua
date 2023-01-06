@@ -1,51 +1,36 @@
 -- init global variable saturn
 saturn = vim.deepcopy(require("saturn.config.settings"))
-local lazy_path = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-
-if not vim.loop.fs_stat(lazy_path) then
-  print("Installing first time setup")
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
   vim.fn.system({
     "git",
     "clone",
     "--filter=blob:none",
     "https://github.com/folke/lazy.nvim.git",
     "--branch=stable",
-    lazy_path,
+    lazypath,
   })
 end
-vim.opt.rtp:prepend(vim.env.LAZY or lazy_path)
-
-local lazy_cache = require("lazy.core.cache")
-lazy_cache.setup({
-  performance = {
-    cache = {
-      enable = true,
-    },
-  },
-})
--- HACK: Don't allow lazy to call setup second time
-lazy_cache.setup = function() end
+vim.opt.rtp:prepend(vim.env.LAZY or lazypath)
 
 require("lazy").setup({
   spec = "saturn.plugins",
   defaults = { lazy = true, version = "*" },
-  install = { missing = true, colorscheme = { saturn.colorscheme, "tokyonight", "habamax" } },
-  ui = { border = "rounded" },
-  git = { timeout = 120 },
+  install = { colorscheme = { "tokyonight", "habamax" } },
+  checker = { enabled = true },
   performance = {
     rtp = {
-      reset = false,
       disabled_plugins = {
-        -- "black",
+        "gzip",
         "matchit",
         "matchparen",
         "netrwPlugin",
         "tarPlugin",
-        "zipPlugin",
         "tohtml",
         "tutor",
-        "gzip",
+        "zipPlugin",
       },
     },
   },
 })
+vim.keymap.set("n", "<leader>l", "<cmd>:Lazy<cr>")
