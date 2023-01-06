@@ -1,14 +1,16 @@
 local M = {
   "windwp/nvim-spectre",
   enabled = saturn.enable_extra_plugins,
+  keys = {
+    { "<leader>Rr", "<cmd>lua require('spectre').open()<cr>", desc = "Replace" },
+    { "<leader>Rw", "<cmd>lua require('spectre').open_visual({select_word=true})<cr>", desc = "Replace Word" },
+    { "<leader>Rf", "<cmd>lua require('spectre').open_file_search()<cr>", desc = "Replace Buffer" },
+  },
 }
 
 function M.init()
   saturn.plugins.whichkey.mappings["R"] = {
     name = "Replace",
-    r = { "<cmd>lua require('spectre').open()<cr>", "Replace" },
-    w = { "<cmd>lua require('spectre').open_visual({select_word=true})<cr>", "Replace Word" },
-    f = { "<cmd>lua require('spectre').open_file_search()<cr>", "Replace Buffer" },
   }
 end
 

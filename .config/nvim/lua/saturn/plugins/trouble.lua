@@ -1,11 +1,26 @@
 local M = {
   "folke/trouble.nvim",
   cmd = { "TroubleToggle", "Trouble" },
+  keys = {
+    { "<leader>Dt", "<cmd>TroubleToggle<cr>", desc = "trouble" },
+    { "<leader>Dw", "<cmd>TroubleToggle workspace_diagnostics<cr>", desc = "workspace" },
+    { "<leader>Dd", "<cmd>TroubleToggle document_diagnostics<cr>", desc = "document" },
+    { "<leader>Dq", "<cmd>TroubleToggle quickfix<cr>", desc = "quickfix" },
+    { "<leader>Dl", "<cmd>TroubleToggle loclist<cr>", dsec = "loclist" },
+    { "<leader>Dr", "<cmd>TroubleToggle lsp_references<cr>", desc = "references" },
+  },
   enabled = saturn.enable_extra_plugins,
 }
 
 M.init = function()
-  saturn.plugins.trouble = {
+  saturn.plugins.whichkey.mappings["D"] = {
+    name = "Diagnostics",
+  }
+end
+
+M.config = function()
+  require("trouble").setup({
+
     position = "bottom", -- position of the list can be: bottom, top, left, right
     height = 10, -- height of the trouble list when position is top or bottom
     width = 50, -- width of the list when position is left or right
@@ -51,20 +66,7 @@ M.init = function()
       other = "﫠",
     },
     use_diagnostic_signs = false, -- enabling this will use the signs defined in your lsp client
-  }
-  saturn.plugins.whichkey.mappings["D"] = {
-    name = "Diagnostics",
-    t = { "<cmd>TroubleToggle<cr>", "trouble" },
-    w = { "<cmd>TroubleToggle workspace_diagnostics<cr>", "workspace" },
-    d = { "<cmd>TroubleToggle document_diagnostics<cr>", "document" },
-    q = { "<cmd>TroubleToggle quickfix<cr>", "quickfix" },
-    l = { "<cmd>TroubleToggle loclist<cr>", "loclist" },
-    r = { "<cmd>TroubleToggle lsp_references<cr>", "references" },
-  }
-end
-
-M.config = function()
-  require("trouble").setup(saturn.plugins.trouble)
+  })
 end
 
 return M

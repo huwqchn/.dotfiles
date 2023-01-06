@@ -1,17 +1,16 @@
-local M = {}
+local M = {
+  "christianchiarulli/lir.nvim",
+  cmd = {
+    { "<leader>ef", "<cmd>lua require'lir.float'.toggle()<cr>", desc = "Toggle Floating Lir" },
+  },
+}
 
-function M.preinit()
-  saturn.plugins.lir = {
-    active = true,
-    on_config_done = nil,
-    icon = "",
-  }
+saturn.plugins.lir = {
+  on_config_done = nil,
+  icon = "",
+}
 
-  local status_ok, _ = pcall(require, "lir")
-  if not status_ok then
-    return
-  end
-
+function M.config_icon()
   local actions = require("lir.actions")
   local mark_actions = require("lir.mark.actions")
   local clipboard_actions = require("lir.clipboard.actions")
@@ -81,9 +80,6 @@ function M.preinit()
       -- vim.api.nvim_echo({ { vim.fn.expand "%:p", "Normal" } }, false, {})
     end,
   })
-end
-
-function M.config_icon()
   local function get_hl_by_name(name)
     local ret = vim.api.nvim_get_hl_by_name(name.group, true)
     return string.format("#%06x", ret[name.property])
@@ -104,10 +100,7 @@ function M.config_icon()
 end
 
 function M.config()
-  local status_ok, lir = pcall(require, "lir")
-  if not status_ok then
-    return
-  end
+  local lir = require("lir")
   lir.setup(saturn.plugins.lir)
 
   if saturn.plugins.lir.on_config_done then

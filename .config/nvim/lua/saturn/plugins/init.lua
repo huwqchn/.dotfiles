@@ -1,141 +1,7 @@
 return {
-  {
-    "folke/lazy.nvim",
-    tag = "stable",
-    init = function()
-      saturn.plugins.whichkey.mappings.p.i = { "<cmd>Lazy install<cr>", "Install" }
-      saturn.plugins.whichkey.mappings.p.s = { "<cmd>Lazy sync<cr>", "Sync" }
-      saturn.plugins.whichkey.mappings.p.S = { "<cmd>Lazy clear<cr>", "Status" }
-      saturn.plugins.whichkey.mappings.p.c = { "<cmd>Lazy clean<cr>", "Clean" }
-      saturn.plugins.whichkey.mappings.p.u = { "<cmd>Lazy update<cr>", "Update" }
-      saturn.plugins.whichkey.mappings.p.p = { "<cmd>Lazy profile<cr>", "Profile" }
-      saturn.plugins.whichkey.mappings.p.l = { "<cmd>Lazy log<cr>", "Log" }
-      saturn.plugins.whichkey.mappings.p.d = { "<cmd>Lazy debug<cr>", "Debug" }
-    end,
-  },
-  {
-    "neovim/nvim-lspconfig",
-    dependencies = {
-      { "williamboman/mason-lspconfig.nvim" },
-      { "tamago324/nlsp-settings.nvim" },
-      -- {
-      --   "Maan2003/lsp_lines.nvim",
-      --   config = true,
-      --   enabled = saturn.enable_extra_plugins and not saturn.lsp.diagnostics.virtual_text,
-      -- },
-      {
-        "ray-x/lsp_signature.nvim",
-        config = true,
-        enabled = saturn.enable_extra_plugins,
-      },
-
-      -- LSP load progress
-      {
-        "j-hui/fidget.nvim",
-        config = true,
-        enabled = saturn.enable_extra_plugins,
-      },
-    },
-  },
-
   { "jose-elias-alvarez/null-ls.nvim" },
-  {
-    "williamboman/mason.nvim",
-    init = function()
-      require("saturn.plugins.mason").init()
-    end,
-    config = function()
-      require("saturn.plugins.mason").config()
-    end,
-  },
-  { "folke/tokyonight.nvim", lazy = false, priority = 999 },
-  { "lunarvim/lunar.nvim" },
-  { "Tastyep/structlog.nvim" },
   { "nvim-lua/plenary.nvim" },
   { "nvim-lua/popup.nvim" },
-  -- Telescope
-  {
-    "nvim-telescope/telescope.nvim",
-    branch = "0.1.x",
-    config = function()
-      require("saturn.plugins.telescope").config()
-    end,
-    dependencies = {
-      {
-        "nvim-telescope/telescope-fzf-native.nvim",
-        bulid = "make",
-      },
-      {
-        "LukasPietzschmann/telescope-tabs",
-        enabled = saturn.enable_extra_plugins,
-      },
-      {
-        "nvim-telescope/telescope-media-files.nvim",
-        enabled = saturn.enable_extra_plugins,
-      },
-      {
-        "tom-anders/telescope-vim-bookmarks.nvim",
-        enabled = saturn.enable_extra_plugins,
-      },
-    },
-    cmd = "Telescope",
-    enabled = saturn.plugins.telescope.active,
-  },
-  -- cmp
-  {
-    "hrsh7th/nvim-cmp",
-    event = { "InsertEnter", "CmdlineEnter" },
-    config = function()
-      require("saturn.plugins.cmp").config()
-    end,
-    dependencies = {
-      { "hrsh7th/cmp-nvim-lsp" },
-      { "saadparwaiz1/cmp_luasnip" },
-      { "hrsh7th/cmp-buffer" },
-      { "hrsh7th/cmp-path" },
-      { "hrsh7th/cmp-cmdline" },
-      { "hrsh7th/cmp-emoji" },
-      { "hrsh7th/cmp-nvim-lua" },
-      { "dmitmel/cmp-cmdline-history" },
-      {
-        "zbirenbaum/copilot-cmp",
-        config = function()
-          require("copilot_cmp").setup({
-            formatters = {
-              insert_text = require("copilot_cmp.format").remove_existing,
-            },
-          })
-        end,
-        dependencies = {
-          "copilot.lua",
-        },
-        enabled = saturn.enable_extra_plugins,
-      },
-      {
-        "tzachar/cmp-tabnine",
-        build = "./install.sh",
-        init = function()
-          saturn.plugins.tabnine = {
-            max_lines = 1000,
-            max_num_results = 20,
-            sort = true,
-            run_on_every_keystroke = true,
-            snippet_placeholder = "..",
-            ignored_file_types = { -- default is not to ignore
-              -- uncomment to ignore in lua:
-              -- lua = true
-            },
-            show_prediction_strength = true,
-          }
-        end,
-        config = function()
-          require("cmp_tabnine.config").setup(saturn.plugins.tabnine)
-        end,
-        enabled = saturn.enable_extra_plugins,
-      },
-    },
-    enabled = saturn.plugins.cmp.active,
-  },
   {
     "L3MON4D3/LuaSnip",
     config = function()
@@ -162,90 +28,8 @@ return {
       },
     },
   },
-  { "folke/neodev.nvim" },
 
-  -- Autopairs
-  {
-    "windwp/nvim-autopairs",
-    event = "InsertEnter",
-    config = function()
-      require("saturn.plugins.autopairs").config()
-    end,
-    enabled = saturn.plugins.autopairs.active,
-  },
-
-  -- Treesitter
-  {
-    "nvim-treesitter/nvim-treesitter",
-    build = ":TSUpdate",
-    event = "BufReadPost",
-    config = function()
-      require("saturn.plugins.treesitter").config()
-    end,
-    dependencies = {
-      {
-        "nvim-treesitter/nvim-treesitter-textobjects",
-      },
-      {
-        "JoosepAlviste/nvim-ts-context-commentstring",
-      },
-      {
-        "p00f/nvim-ts-rainbow",
-        enabled = saturn.enable_extra_plugins and saturn.plugins.treesitter.rainbow.enable,
-      },
-      {
-        "nvim-treesitter/playground",
-        cmd = "TSPlaygroundToggle",
-        enabled = saturn.enable_extra_plugins,
-      },
-      {
-        "windwp/nvim-ts-autotag",
-        event = "InsertEnter",
-        enabled = saturn.enable_extra_plugins,
-      },
-      {
-        "nvim-treesitter/nvim-treesitter-textobjects",
-        enabled = saturn.enable_extra_plugins,
-      },
-      {
-        "nvim-treesitter/nvim-treesitter-context",
-        enabled = saturn.enable_extra_plugins,
-      },
-      -- {
-      --   "Badhi/nvim-treesitter-cpp-tools",
-      --   ft = { "c", "cpp", "objc", "objcpp" },
-      --   enabled = saturn.enable_extra_plugins,
-      -- },
-      {
-        "m-demare/hlargs.nvim",
-        enabled = saturn.enable_extra_plugins,
-        config = {
-          excluded_argnames = {
-            usages = {
-              lua = { "self", "use" },
-            },
-          },
-        },
-      },
-    },
-  },
-  -- NvimTree
-  {
-    "kyazdani42/nvim-tree.lua",
-    config = function()
-      require("saturn.plugins.nvim-tree").config()
-    end,
-    cmd = "NvimTreeToggle",
-    enabled = saturn.plugins.nvimtree.active,
-  },
   -- Lir
-  {
-    "christianchiarulli/lir.nvim",
-    config = function()
-      require("saturn.plugins.lir").config()
-    end,
-    enabled = saturn.plugins.lir.active,
-  },
   {
     "lewis6991/gitsigns.nvim",
     config = function()
@@ -271,179 +55,24 @@ return {
     enabled = saturn.plugins.whichkey.active,
   },
 
-  -- Comments
-  {
-    "numToStr/Comment.nvim",
-    keys = {
-      {
-        "<leader>/",
-        function()
-          require("Comment.api").toggle.linewise.current()
-        end,
-        mode = "n",
-        desc = "Comment",
-      },
-      {
-        "<leader>/",
-        "<Plug>(comment_toggle_linewise_visual)",
-        mode = "v",
-        desc = "Comment toggle linewise (visual)",
-      },
-    },
-    config = function()
-      require("saturn.plugins.comment").config()
-    end,
-    enabled = saturn.plugins.comment.active,
-  },
-
-  -- Project
-  {
-    "ahmedkhalf/project.nvim",
-    config = function()
-      require("saturn.plugins.project").config()
-    end,
-    enabled = saturn.plugins.project.active,
-  },
-
   -- Icons
   {
     "kyazdani42/nvim-web-devicons",
     enabled = saturn.use_icons,
   },
 
-  -- Status Line and Bufferline
-  {
-    "nvim-lualine/lualine.nvim",
-    config = function()
-      require("saturn.plugins.lualine").config()
-    end,
-    enabled = saturn.plugins.lualine.active,
-    event = "VeryLazy",
-  },
-
-  -- breadcrumbs
-  {
-    "SmiteshP/nvim-navic",
-    config = function()
-      require("saturn.plugins.breadcrumbs").config()
-    end,
-    enabled = saturn.plugins.breadcrumbs.active,
-  },
-
-  -- bufferline
-  {
-    "akinsho/bufferline.nvim",
-    config = function()
-      require("saturn.plugins.bufferline").config()
-    end,
-    event = "BufRead",
-    branch = "main",
-    enabled = saturn.plugins.bufferline.active,
-  },
-
-  -- Debugging
-  {
-    "mfussenegger/nvim-dap",
-    config = function()
-      require("saturn.plugins.dap").config()
-    end,
-    enabled = saturn.plugins.dap.active,
-    dependencies = {
-      -- Debugger user interface
-      {
-        "rcarriga/nvim-dap-ui",
-        config = function()
-          require("saturn.plugins.dap").config_ui()
-        end,
-      },
-      { "mxsdev/nvim-dap-vscode-js" },
-      { "mfussenegger/nvim-dap-python", ft = "python" },
-      { "leoluz/nvim-dap-go", ft = "go" },
-    },
-  },
-
-  -- alpha
-  {
-    "goolord/alpha-nvim",
-    config = function()
-      require("saturn.plugins.alpha").config()
-    end,
-  },
-
-  -- Terminal
-  {
-    "akinsho/toggleterm.nvim",
-    branch = "main",
-    config = function()
-      require("saturn.plugins.toggleterm").config()
-    end,
-    cmd = "ToggleTerm",
-    enabled = saturn.plugins.toggleterm.active,
-  },
-
+  { "mfussenegger/nvim-dap-python", ft = "python" },
+  { "leoluz/nvim-dap-go", ft = "go" },
+  { "mxsdev/nvim-dap-vscode-js", ft = { "javascript", "typescript" } },
   -- SchemaStore
   { "b0o/schemastore.nvim" },
-  {
-    "RRethy/vim-illuminate",
-    config = function()
-      require("saturn.plugins.illuminate").config()
-    end,
-    event = "VeryLazy",
-    enabled = saturn.plugins.illuminate.active,
-  },
-  {
-    "lukas-reineke/indent-blankline.nvim",
-    event = "BufReadPre",
-    config = function()
-      require("saturn.plugins.indentline").config()
-    end,
-    enabled = saturn.plugins.indentlines.active,
-  },
-  {
-    "lunarvim/onedarker.nvim",
-    branch = "freeze",
-    config = function()
-      pcall(function()
-        if saturn and saturn.colorscheme == "onedarker" then
-          require("onedarker").config()
-          saturn.plugins.lualine.options.theme = "onedarker"
-        end
-      end)
-    end,
-    enabled = saturn.colorscheme == "onedarker",
-  },
-  {
-    "lunarvim/bigfile.nvim",
-    config = function()
-      pcall(function()
-        require("bigfile").config(saturn.plugins.bigfile.config)
-      end)
-    end,
-    enabled = saturn.plugins.bigfile.active,
-  },
 
-  -- EXTRA PLUGINS ADD
-  require("saturn.plugins.copilot"),
-  require("saturn.plugins.todo-comments"),
-  require("saturn.plugins.trouble"),
-  -- Magit like
-  require("saturn.plugins.neogit"),
-  -- Diff
-  require("saturn.plugins.diffview"),
-  -- Symbols
-  require("saturn.plugins.symbols-outline"),
-  -- Search
-  require("saturn.plugins.spectre"),
-  -- Motion
-  require("saturn.plugins.hop"),
   {
     "karb94/neoscroll.nvim",
     config = true,
     event = "VeryLazy",
     enable = saturn.enable_extra_plugins,
   },
-  -- Splits
-  require("saturn.plugins.smart-splits"),
   -- Windows Resize not change radio
   -- {
   --   "kwkarlwang/bufresize.nvim",
@@ -451,8 +80,6 @@ return {
   --   enabled = saturn.enable_extra_plugins,
   --   event = "BufAdd",
   -- },
-  require("saturn.plugins.notify"),
-  -- require("saturn.plugins.noice"),
   -- Neovim Org mode
   {
     "nvim-neorg/neorg",
@@ -468,9 +95,6 @@ return {
       },
     },
   },
-  require("saturn.plugins.dressing"),
-  -- Cycling buffer switcher
-  require("saturn.plugins.cybu"),
   {
     "iamcco/markdown-preview.nvim",
     build = "cd app && npm install",
@@ -479,18 +103,7 @@ return {
     end,
     ft = { "markdown" },
   },
-  require("saturn.plugins.colorizer"),
-  -- require("saturn.plugins.true-zen"),
-  require("saturn.plugins.zen-mode"),
   "folke/twilight.nvim",
-  {
-    "kylechui/nvim-surround",
-    version = "*",
-    sonfig = true,
-    event = "VeryLazy",
-  },
-  require("saturn.plugins.harpoon"),
-  require("saturn.plugins.lab"),
   -- Preview number Jump
   {
     "nacro90/numb.nvim",
@@ -505,8 +118,7 @@ return {
       })
     end,
   },
-  require("saturn.plugins.dial"),
-  { "jose-elias-alvarez/typescript.nvim", ft = "typescript" },
+  { "jose-elias-alvarez/typescript.nvim", ft = "typescript", config = true },
   {
     "itchyny/vim-cursorword",
     event = { "BufEnter", "BufNewFile" },
@@ -520,32 +132,9 @@ return {
       vim.api.nvim_command("augroup END")
     end,
   },
-  require("saturn.plugins.window-picker"),
-  -- Folding
-  -- {
-  --   "kevinhwang91/nvim-ufo",
-  --   init = function()
-  --     vim.o.foldcolumn = "1" -- '0' is not bad
-  --     vim.o.foldlevel = 99 -- Using ufo provider need a large value, feel free to decrease the value
-  --     vim.o.foldlevelstart = 99
-  --     vim.o.foldenable = true
-  --   end,
-  --   dependencies = {
-  --     { "kevinhwang91/promise-async" },
-  --   },
-  --   config = function()
-  --     require("ufo").setup({
-  --       provider_selector = function(bufnr, filetype, buftype)
-  --         return { "treesitter", "indent" }
-  --       end,
-  --     })
-
-  --     vim.keymap.set("n", "zR", require("ufo").openAllFolds)
-  --     vim.keymap.set("n", "zM", require("ufo").closeAllFolds)
-  --   end,
-  -- },
   {
     "anuvyklack/keymap-amend.nvim",
+    event = "BufRead",
     keys = {
       {
         "<Esc>",
@@ -566,45 +155,14 @@ return {
     },
     enabled = saturn.enable_extra_plugins,
   },
-  -- -- Browser insert box use neovim
-  -- -- TODO:not work now, need fix that
-  -- {
-  --   "glacambre/firenvim",
-  --   lazy = false,
-  --   enabled = saturn.enable_extra_plugins,
-  --   build = function()
-  --     vim.fn["firenvim#install"](0)
-  --   end,
-  --   init = function()
-  --     if vim.g.started_by_firenvim then
-  --       vim.g.firenvim_config = {
-  --         localSettings = {
-  --           [".*"] = {
-  --             cmdline = "none",
-  --           },
-  --         },
-  --       }
-  --       vim.opt.laststatus = 0
-  --       vim.api.nvim_create_autocmd("UIEnter", {
-  --         once = true,
-  --         callback = function()
-  --           vim.go.lines = 20
-  --         end,
-  --       })
-  --       -- vim.cmd([[au BufEnter github.com_*.txt set filetype=markdown]])
-  --     end
-  --   end,
-  -- },
   { "mfussenegger/nvim-jdtls", ft = "java" },
   {
     "christianchiarulli/rust-tools.nvim",
     branch = "modularize_and_inlay_rewrite",
     ft = "rust",
   },
-  -- rust crates
-  require("saturn.plugins.crates"),
   -- open file in last edit place
-  { "ethanholz/nvim-lastplace", config = true, event = "BufReadPost" },
+  { "ethanholz/nvim-lastplace", config = true, event = "BufRead" },
   -- Translater
   {
     "potamides/pantran.nvim",
@@ -638,8 +196,6 @@ return {
       })
     end,
   },
-  -- OpenAI
-  require("saturn.plugins.magic"),
   {
     "danymat/neogen",
     keys = {
@@ -653,22 +209,24 @@ return {
     },
     config = { snippet_engine = "luasnip" },
     dependencies = { "nvim-treesitter" },
-    version = "*",
   },
-  -- Refactoring
-  require("saturn.plugins.refactoring"),
   {
     "MattesGroeger/vim-bookmarks",
     enabled = saturn.enable_extra_plugins,
     init = function()
-      saturn.plugins.whichkey.mappings.m.a = { "<cmd>silent BookmarkAnnotate<cr>", "Annotate" }
-      saturn.plugins.whichkey.mappings.m.c = { "<cmd>silent BookmarkClear<cr>", "Clear" }
-      saturn.plugins.whichkey.mappings.m.t = { "<cmd>silent BookmarkToggle<cr>", "Toggle" }
-      saturn.plugins.whichkey.mappings.m.e = { "<cmd>silent BookmarkNext<cr>", "Next" }
-      saturn.plugins.whichkey.mappings.m.u = { "<cmd>silent BookmarkPrev<cr>", "Prev" }
-      saturn.plugins.whichkey.mappings.m.l = { "<cmd>silent BookmarkShowAll<cr>", "Show All" }
-      saturn.plugins.whichkey.mappings.m.x = { "<cmd>BookmarkClearAll<cr>", "Clear All" }
+      saturn.plugins.whichkey.mappings.m = {
+        name = "Marks",
+      }
     end,
+    keys = {
+      { "<leader>ma", "<cmd>silent BookmarkAnnotate<cr>", desc = "Annotate" },
+      { "<leader>mc", "<cmd>silent BookmarkClear<cr>", desc = "Clear" },
+      { "<leader>mt", "<cmd>silent BookmarkToggle<cr>", desc = "Toggle" },
+      { "<leader>me", "<cmd>silent BookmarkNext<cr>", desc = "Next" },
+      { "<leader>mu", "<cmd>silent BookmarkPrev<cr>", desc = "Prev" },
+      { "<leader>ml", "<cmd>silent BookmarkShowAll<cr>", desc = "Show All" },
+      { "<leader>mx", "<cmd>BookmarkClearAll<cr>", desc = "Clear All" },
+    },
     cmd = {
       "BookmarkToggle",
       "BookmarkAnnotate",
@@ -684,11 +242,6 @@ return {
       "BookmarkLoad",
     },
   },
-  require("saturn.plugins.zk"),
-  -- Better Quickfix
-  require("saturn.plugins.bqf"),
-  require("saturn.plugins.yanky"),
-
   {
     "andymass/vim-matchup",
     event = "BufReadPost",
@@ -707,38 +260,29 @@ return {
     dependencies = {
       "nvim-treesitter",
     },
-    config = function()
-      saturn.plugins.tabout = {
-        tabkey = "<tab>", -- key to trigger tabout, set to an empty string to disable
-        backwards_tabkey = "<s-tab>", -- key to trigger backwards tabout, set to an empty string to disable
-        act_as_tab = true, -- shift content if tab out is not possible
-        act_as_shift_tab = false, -- reverse shift content if tab out is not possible (if your keyboard/terminal supports <S-Tab>)
-        default_tab = "<C-t>", -- shift default action (only at the beginning of a line, otherwise <TAB> is used)
-        default_shift_tab = "<C-d>", -- reverse shift default action,
-        enable_backwards = false, -- well ...
-        completion = true, -- if the tabkey is used in a completion pum
-        tabouts = {
-          { open = "'", close = "'" },
-          { open = '"', close = '"' },
-          { open = "`", close = "`" },
-          { open = "(", close = ")" },
-          { open = "[", close = "]" },
-          { open = "{", close = "}" },
-          { open = "<", close = ">" },
-        },
-        ignore_beginning = false, --[[ if the cursor is at the beginning of a filled element it will rather tab out than shift the content ]]
-        exclude = { "markdown" }, -- tabout will ignore these filetypes
-      }
-      require("tabout").setup(saturn.plugins.tabout)
-    end,
+    config = {
+      tabkey = "<tab>", -- key to trigger tabout, set to an empty string to disable
+      backwards_tabkey = "<s-tab>", -- key to trigger backwards tabout, set to an empty string to disable
+      act_as_tab = true, -- shift content if tab out is not possible
+      act_as_shift_tab = false, -- reverse shift content if tab out is not possible (if your keyboard/terminal supports <S-Tab>)
+      default_tab = "<C-t>", -- shift default action (only at the beginning of a line, otherwise <TAB> is used)
+      default_shift_tab = "<C-d>", -- reverse shift default action,
+      enable_backwards = false, -- well ...
+      completion = true, -- if the tabkey is used in a completion pum
+      tabouts = {
+        { open = "'", close = "'" },
+        { open = '"', close = '"' },
+        { open = "`", close = "`" },
+        { open = "(", close = ")" },
+        { open = "[", close = "]" },
+        { open = "{", close = "}" },
+        { open = "<", close = ">" },
+      },
+      ignore_beginning = false, --[[ if the cursor is at the beginning of a filled element it will rather tab out than shift the content ]]
+      exclude = { "markdown" }, -- tabout will ignore these filetypes
+    },
     enabled = saturn.enable_extra_plugins,
   },
-  -- Lsp inline hints
-  require("saturn.plugins.inlayhints"),
-  -- search box
-  -- require("saturn.plugins.searchbox"),
-  -- Session manager
-  require("saturn.plugins.persistence"),
   -- Join
   {
     "Wansmer/treesj",
@@ -761,13 +305,12 @@ return {
       },
     },
   },
-  require("saturn.plugins.windows"),
-  {
-    "smjonas/inc-rename.nvim",
-    cmd = "IncRename",
-    config = true,
-    enabled = saturn.enable_extra_plugins,
-  },
+  -- {
+  --   "smjonas/inc-rename.nvim",
+  --   cmd = "IncRename",
+  --   config = true,
+  --   enabled = saturn.enable_extra_plugins,
+  -- },
   -- {
   --   "rmagatti/goto-preview",
   --   config = true,

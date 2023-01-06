@@ -5,7 +5,7 @@ local M = {
 }
 
 function M.config()
-  saturn.plugins.copilot = {
+  require("copilot").setup({
     panel = {
       enabled = true,
       auto_refresh = false,
@@ -54,20 +54,7 @@ function M.config()
         },
       },
     },
-  }
-
-  -- function M.config()
-  --   vim.defer_fn(function()
-  --     M.setup()
-  --   end, 100)
-  -- end
-
-  -- local present, copilot = pcall(require, "copilot")
-  -- if not present then
-  --   return
-  -- end
-
-  require("copilot").setup(saturn.plugins.copilot)
+  })
 end
 
 return M

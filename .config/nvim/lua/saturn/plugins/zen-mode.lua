@@ -1,10 +1,13 @@
 local M = {
   "folke/zen-mode.nvim",
   cmd = "ZenMode",
+  keys = {
+    { "<leader>zz", "<cmd>ZenMode<cr>", desc = "Zen Mode" },
+  },
 }
 
 function M.init()
-  saturn.plugins.whichkey.mappings["Z"] = { "<cmd>ZenMode<cr>", "Zen Mode" }
+  saturn.plugins.whichkey.mappings["z"] = { name = "Zen" }
 end
 
 function M.config()

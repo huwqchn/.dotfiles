@@ -9,6 +9,14 @@ local M = {
     "DiffviewToggleFiles",
     "DiffviewFileHistory",
   },
+  keys = {
+    { "<leader>hh", "<cmd>DiffviewFileHistory<cr>", desc = "file history" },
+    { "<leader>hH", "<cmd>DiffviewFileHistory %<cr>", desc = "current file history" },
+    { "<leader>ho", "<cmd>DiffviewOpen<cr>", desc = "diffview open" },
+    { "<leader>hc", "<cmd>DiffviewClose<cr>", desc = "diffview close" },
+    { "<leader>ht", "<cmd>DiffviewToggleFiles<cr>", desc = "toggle files" },
+    { "<leader>h", "<cmd>'<,'>DiffviewFileHistory<cr>", "file history", mode = "v" },
+  },
 }
 
 function M.init()
@@ -17,19 +25,13 @@ function M.init()
   }
   saturn.plugins.whichkey.mappings["h"] = {
     name = "diffview",
-    h = { "<cmd>DiffviewFileHistory<cr>", "file history" },
-    H = { "<cmd>DiffviewFileHistory %<cr>", "current file history" },
-    o = { "<cmd>DiffviewOpen<cr>", "open" },
-    x = { "<cmd>DiffviewClose<cr>", "close" },
-    t = { "<cmd>DiffviewToggleFiles<cr>", "toggle files" },
   }
-  saturn.plugins.whichkey.vmappings["h"] = { "<cmd>'<,'>DiffviewFileHistory<cr>", "file history" }
 end
 
 function M.config()
   local actions = require("diffvieew.actions")
 
-  saturn.plugins.diffview.opts = {
+  require("diffview").setup({
     diff_binaries = false, -- Show diffs for binaries
     enhanced_diff_hl = false, -- See ':h diffview-config-enhanced_diff_hl'
     git_cmd = { "git" }, -- The git executable followed by default args.
@@ -429,8 +431,7 @@ function M.config()
         { "n", "<esc>", actions.close, { desc = "Close help menu" } },
       },
     },
-  }
-  require("diffview").setup(saturn.plugins.diffview.opts)
+  })
 end
 
 return M

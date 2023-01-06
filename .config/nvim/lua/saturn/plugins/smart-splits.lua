@@ -1,6 +1,7 @@
 local M = {
   "mrjones2014/smart-splits.nvim",
   enabled = saturn.enable_extra_plugins,
+  event = "WinNew",
   keys = {
     -- resizing splits
     { mode = "n", "<C-Left>", require("smart-splits").resize_left, desc = "resize left" },
@@ -16,7 +17,7 @@ local M = {
 }
 
 M.config = function()
-  saturn.plugins.smart_splits = {
+  require("smart-splits").setup({
     -- Ignored filetypes (only while resizing)
     ignored_filetypes = {
       "nofile",
@@ -66,9 +67,7 @@ M.config = function()
     },
     -- enable or disable the tmux integration
     tmux_integration = true,
-  }
-
-  require("smart-splits").setup(saturn.plugins.smart_splits)
+  })
 end
 
 return M

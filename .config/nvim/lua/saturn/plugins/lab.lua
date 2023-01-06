@@ -3,19 +3,15 @@ local M = {
   build = "cd js && npm ci",
   cmd = "Lab",
   enabled = saturn.enable_extra_plugins,
+  keys = {
+    { "<m-s-4>", ":Lab code run<cr>" },
+    { "<m-s-5>", ":Lab code stop<cr>" },
+    { "<m-s-6>", ":Lab code panel<cr>" },
+  },
 }
 
-function M.init()
-  -- lab keymaps
-  local opts = { noremap = true, silent = true }
-  local keymap = vim.api.nvim_set_keymap
-  keymap("n", "<m-s-4>", ":Lab code run<cr>", opts)
-  keymap("n", "<m-s-5>", ":Lab code stop<cr>", opts)
-  keymap("n", "<m-s-6>", ":Lab code panel<cr>", opts)
-end
-
 function M.config()
-  saturn.plugins.lab = {
+  require("lab").setup({
     active = true,
     on_config_done = nil,
     code_runner = {
@@ -24,8 +20,7 @@ function M.config()
     quick_data = {
       enabled = false,
     },
-  }
-  require("lab").setup(saturn.plugins.lab)
+  })
 end
 
 return M

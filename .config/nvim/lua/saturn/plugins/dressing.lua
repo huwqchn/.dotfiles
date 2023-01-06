@@ -14,7 +14,10 @@ function M.init()
     require("lazy").load({ plugins = { "dressing.nvim" } })
     return vim.ui.input(...)
   end
-  saturn.plugins.dressing = {
+end
+
+function M.config()
+  require("dressing").setup({
     input = {
       -- Set to false to disable the vim.ui.input implementation
       enabled = true,
@@ -180,11 +183,7 @@ function M.init()
         end
       end,
     },
-  }
-end
-
-function M.config()
-  require("dressing").setup(saturn.plugins.dressing)
+  })
 end
 
 return M

@@ -1,4 +1,7 @@
-local M = {}
+local M = {
+  "goolord/alpha-nvim",
+  event = "VimEnter",
+}
 M.config = function()
   local dashboard = require("alpha.themes.dashboard")
   dashboard.section.header.val = require("saturn.basic.ui.logo")

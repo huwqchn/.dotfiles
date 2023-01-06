@@ -2,13 +2,13 @@ local M = {
   "TimUntersberger/neogit",
   enabled = saturn.enable_extra_plugins,
   cmd = "Neogit",
+  keys = {
+    { "<leader>gn", "<cmd>Neogit<cr>", "Neogit" },
+  },
 }
 
-function M.init()
-  saturn.plugins.neogit = {
-    active = true,
-    on_config_done = nil,
-
+M.config = function()
+  require("neogit").setup({
     disable_signs = false,
     disable_hint = true,
     disable_context_highlighting = false,
@@ -102,11 +102,7 @@ function M.init()
         -- ["s"] = "",
       },
     },
-  }
-end
-
-M.config = function()
-  require("neogit").setup(saturn.plugins.neogit)
+  })
 end
 
 return M

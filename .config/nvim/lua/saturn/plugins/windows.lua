@@ -6,15 +6,22 @@ local M = {
     { "anuvyklack/middleclass" },
     { "anuvyklack/animation.nvim", enabled = false },
   },
+  keys = {
+    { "<leader>wm", "<Cmd>WindowsMaximize<CR>", desc = "Window Maximize" },
+    { "<leader>wv", "<Cmd>WindowsMaximizeVertically<CR>", desc = "Window Maximize Vertically" },
+    { "<leader>wh", "<Cmd>WindowsMaximizeHorizontally<CR>", desc = "Window Maximize Horizontally" },
+    { "<leader>we", "<Cmd>WindowsEqualize<CR>", desc = "Window Maximize Equalize" },
+  },
+  cmd = {
+    "WindowsMaximize",
+    "WindowsMaximizeVertically",
+    "WindowsMaximizeHorizontally",
+    "WindowsEqualize",
+    "WindowsEnableAutowidth",
+    "WindowsDisableAutowidth",
+    "WindowsToggleAutowidth",
+  },
 }
-
-function M.init()
-  saturn.plugins.whichkey.mappings["w"]["m"] = { "<Cmd>WindowsMaximize<CR>", "Window Maximize" }
-  saturn.plugins.whichkey.mappings["w"]["v"] = { "<Cmd>WindowsMaximizeVertically<CR>", "Window Maximize Vertically" }
-  saturn.plugins.whichkey.mappings["w"]["h"] =
-    { "<Cmd>WindowsMaximizeHorizontally<CR>", "Window Maximize Horizontally" }
-  saturn.plugins.whichkey.mappings["w"]["e"] = { "<Cmd>WindowsEqualize<CR>", "Window Maximize Equalize" }
-end
 
 function M.config()
   vim.o.winwidth = 5

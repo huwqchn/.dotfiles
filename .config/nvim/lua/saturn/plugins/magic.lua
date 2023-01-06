@@ -4,23 +4,28 @@ local M = {
     "plenary.nvim",
     { "MunifTanjim/nui.nvim" },
   },
+  keys = {
+    {
+      "<leader>oo",
+      "<cmd>lua require('nvim-magic.flows').append_completion(require('nvim-magic').backends.default)<cr>",
+      desc = "append completion",
+    },
+    {
+      "<leader>oa",
+      "<cmd>lua require('nvim-magic.flows').suggest_alteration(require('nvim-magic').backends.default)<cr>",
+      desc = "suggest alteration",
+    },
+    {
+      "<leader>od",
+      "<cmd>lua require('nvim-magic.flows').suggest_docstring(require('nvim-magic').backends.default)<cr>",
+      desc = "generating a docstring",
+    },
+  },
 }
 
 M.init = function()
   saturn.plugins.whichkey.vmappings["o"] = {
     name = "+magic openai",
-    o = {
-      "<cmd>lua require('nvim-magic.flows').append_completion(require('nvim-magic').backends.default)<cr>",
-      "append completion",
-    },
-    a = {
-      "<cmd>lua require('nvim-magic.flows').suggest_alteration(require('nvim-magic').backends.default)<cr>",
-      "suggest alteration",
-    },
-    d = {
-      "<cmd>lua require('nvim-magic.flows').suggest_docstring(require('nvim-magic').backends.default)<cr>",
-      "generating a docstring",
-    },
   }
 end
 

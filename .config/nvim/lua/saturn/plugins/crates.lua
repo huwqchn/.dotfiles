@@ -3,10 +3,7 @@ local M = {
   version = "v0.3.0",
   dependencies = { "plenary.nvim" },
   ft = { "rust", "toml" },
-}
-
-function M.config()
-  saturn.plugins.crates = {
+  config = {
     popup = {
       -- autofocus = true,
       style = "minimal",
@@ -21,8 +18,7 @@ function M.config()
       enabled = true,
       name = "crates.nvim",
     },
-  }
-  require("crates").setup(saturn.plugins.crates)
-end
+  },
+}
 
 return M

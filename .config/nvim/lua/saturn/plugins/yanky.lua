@@ -8,13 +8,23 @@ local M = {
     end,
   },
   enabled = saturn.enable_extra_plugins,
+  keys = {
+    {
+      "<leader>ye",
+      "<Plug>(YankyCycleForward)",
+      desc = "Yanky Forward",
+    },
+    {
+      "<leader>yu",
+      "<Plug>(YankyCycleBackward)",
+      desc = "Yanky Backward",
+    },
+  },
 }
 
 function M.init()
   saturn.plugins.whichkey.mappings["y"] = {
     name = "Yanky",
-    e = { "<Plug>(YankyCycleForward)", "Yanky Forward" },
-    u = { "<Plug>(YankyCycleBackward)", "Yanky Backward" },
   }
 end
 

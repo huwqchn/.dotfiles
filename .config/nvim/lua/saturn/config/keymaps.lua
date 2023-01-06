@@ -1,4 +1,3 @@
-local M = {}
 local opts_any = { noremap = true, silent = true }
 -- local opts_remap = { remap = true, silent = true }
 
@@ -10,8 +9,7 @@ local opts_any = { noremap = true, silent = true }
 --	 term_mode = "t",
 --	 command_mode = "c",
 
---TODO: support qwerty keyboard layouts keymaps
-M.general_opts = {
+local general_opts = {
   [""] = opts_any,
   ["i"] = opts_any,
   ["n"] = opts_any,
@@ -21,7 +19,7 @@ M.general_opts = {
   ["t"] = { silent = true },
 }
 
-M.general = {
+local keys = {
   [""] = {
     -- colemak movement
     ["u"] = "k",
@@ -41,19 +39,12 @@ M.general = {
     ["-"] = "N",
     ["="] = "n",
 
-    -- colemak goto key
-    -- ["t"] = { "g", opts_remap },
-    -- ["T"] = "G",
-
-    --   ["j"] = "t",
-    --   ["J"] = "T",
-
     ["gu"] = "gk",
     ["ge"] = "gj",
 
     -- colemak faster navigation
-    ["U"] = "5k",
-    ["E"] = "5j",
+    ["U"] = "<C-b>",
+    ["E"] = "<C-f>",
 
     -- colemak jump to start/end of the line
     ["N"] = "^",
@@ -63,21 +54,15 @@ M.general = {
     ["h"] = "e",
     ["H"] = "E",
 
-    -- faster in-line navigation
-    -- ["W"] = "5w",
-    -- ["B"] = "5b",
-
-    -- convenient keymaps
-    -- [";"] = ":",
-    -- ["`"] = "~",
-    ["S"] = ":w<CR>",
-    ["Q"] = ":q<CR>",
+    -- map return key to command_mode
+    ["<CR>"] = ":",
 
     -- select all
     ["<C-a>"] = "ggVG",
-
     -- save
-    ["<C-s>"] = "<C-g>u<Cmd>w<CR>",
+    ["<C-s>"] = ":wa<CR>",
+    -- quit
+    ["<C-q>"] = ":wq<CR>",
   },
   ["i"] = {
     -- Move current line / block with Alt-j/k ala vscode.
@@ -90,9 +75,6 @@ M.general = {
     ["<A-Left>"] = "<C-\\><C-N><C-w>h",
     ["<A-Right>"] = "<C-\\><C-N><C-w>l",
 
-    -- select all
-    ["<C-a>"] = "<Esc>ggVG",
-
     -- undo
     ["<C-z>"] = "<C-o>u",
 
@@ -101,34 +83,11 @@ M.general = {
 
     -- save
     ["<C-s>"] = "<C-g>u<Cmd>w<CR>",
-
-    -- -- emacs keybinds
-    -- ["<C-b>"] = "<Left>",
-    -- ["<C-f>"] = "<Right>",
-    -- ["<C-n>"] = "<Down>",
-    -- ["<C-p>"] = "<Up>",
-    -- ["<C-a>"] = "<Home>",
-    -- ["<C-e>"] = "<End>",
-    -- ["<C-d>"] = "<Del>",
-    -- ["<C-k>"] = {
-    --   function()
-    --     local col = vim.api.nvim_win_get_cursor(0)[2]
-    --     local line = vim.api.nvim_get_current_line()
-    --     if #line <= col then
-    --       return "<Del><C-o>dw"
-    --     end
-    --     return "<C-o>dw"
-    --   end,
-    --   { silent = true, expr = true },
-    -- },
   },
   ["n"] = {
     -- better indentation
     ["<"] = "<<",
     [">"] = ">>",
-
-    -- make Y to copy till the end of the line
-    ["Y"] = "y$",
 
     -- Better window movement
     ["<C-w>"] = "<C-w>w",
@@ -137,10 +96,7 @@ M.general = {
     ["<C-u>"] = "<C-w>k",
     ["<C-i>"] = "<C-w>l",
     ["<C-l>"] = "<C-w>o",
-    -- ["<C-b>"] = "<C-w>=",
-    -- ["<C-h>"] = "<C-o>",
-    -- ["<C-o>"] = "<C-i>",
-    ["<C-q>"] = "<C-w>q",
+
     -- Disable the default s key
     ["s"] = "<nop>",
     -- split the screens to horizontal (up / down) and vertical (left / right)
@@ -176,9 +132,6 @@ M.general = {
     ["]]"] = ":cnext<CR>",
     ["[["] = ":cprev<CR>",
     -- ["<C-q>"] = ":call QuickFixToggle()<CR>",
-
-    -- Delete pair
-    ["dy"] = "d%",
 
     -- inc/dec numbers
     ["<C-=>"] = "<C-a>",
@@ -218,7 +171,7 @@ M.general = {
     ["<A-u>"] = ":m '<-2<CR>gv-gv",
 
     -- select all
-    ["<A-a>"] = "<Esc>ggVG",
+    ["<C-a>"] = "<Esc>ggVG",
     -- replace in selection
     ["s"] = ":s/\\%V",
   },
@@ -232,7 +185,7 @@ M.general = {
     ["<C-v>"] = "<C-\\><C-N>pi",
   },
   ["c"] = {
-    -- navigate tab completion with <c-j> and <c-k>
+    -- navigate tab completion with <c-e> and <c-u>
     -- runs conditionally
     ["<C-e>"] = { 'pumvisible() ? "\\<C-n>" : "\\<C-j>"', { expr = true, noremap = true } },
     ["<C-u>"] = { 'pumvisible() ? "\\<C-p>" : "\\<C-k>"', { expr = true, noremap = true } },
@@ -241,8 +194,8 @@ M.general = {
   },
 }
 
-function M.set_keymaps(mode, key, val)
-  local opt = M.general_opts[mode] or opts_any
+local function set_keymaps(mode, key, val)
+  local opt = general_opts[mode] or opts_any
   if type(val) == "table" then
     opt = val[2]
     val = val[1]
@@ -254,16 +207,40 @@ function M.set_keymaps(mode, key, val)
   end
 end
 
-function M.load()
-  vim.keymap.set("", saturn.leaderkey, "<Nop>", opts_any)
-  vim.g.mapleader = saturn.leaderkey
-  vim.g.maplocalleader = saturn.leaderkey
-  for mode, maps in pairs(M.general) do
-    for key, val in pairs(maps) do
-      M.set_keymaps(mode, key, val)
-    end
+vim.keymap.set("", saturn.leaderkey, "<Nop>", opts_any)
+vim.g.mapleader = saturn.leaderkey
+vim.g.maplocalleader = saturn.leaderkey
+for mode, maps in pairs(keys) do
+  for key, val in pairs(maps) do
+    set_keymaps(mode, key, val)
   end
-  saturn.keys = M.general
 end
 
-return M
+vim.api.nvim_set_keymap(
+  "n",
+  "<leader>e.",
+  "<cmd>edit .<cr>",
+  { noremap = true, silent = true, desc = "Explore Current Directory" }
+)
+
+-- QuickFix
+vim.api.nvim_set_keymap(
+  "n",
+  "<leader>qi",
+  "<cmd>cnext<cr>",
+  { noremap = true, silent = true, desc = "Next Quickfix Item" }
+)
+
+vim.api.nvim_set_keymap(
+  "n",
+  "<leader>qn",
+  "<cmd>cnext<cr>",
+  { noremap = true, silent = true, desc = "Previous Quickfix Item" }
+)
+
+vim.api.nvim_set_keymap(
+  "n",
+  "<leader>qt",
+  "<cmd>TodoQuickFix<cr>",
+  { noremap = true, silent = true, desc = "Show TODOS" }
+)
