@@ -13,7 +13,7 @@ function M.init()
   saturn.plugins.whichkey.mappings["w"]["v"] = { "<Cmd>WindowsMaximizeVertically<CR>", "Window Maximize Vertically" }
   saturn.plugins.whichkey.mappings["w"]["h"] =
     { "<Cmd>WindowsMaximizeHorizontally<CR>", "Window Maximize Horizontally" }
-  saturn.plugins.whichkey.mappings["w"]["e"] = { "<Cmd>WindowsMaximizeEqualize<CR>", "Window Maximize Equalize" }
+  saturn.plugins.whichkey.mappings["w"]["e"] = { "<Cmd>WindowsEqualize<CR>", "Window Maximize Equalize" }
 end
 
 function M.config()

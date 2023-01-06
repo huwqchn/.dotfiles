@@ -71,6 +71,7 @@ bspc rule -a Screenkey manage=off
 bspc rule -a Zathura state=tiled
 bspc rule -a Emacs state=tiled
 
+xfce4-power-manager &
 dunst &
 fcitx5 &
 picom &

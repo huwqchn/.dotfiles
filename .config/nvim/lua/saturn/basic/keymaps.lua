@@ -137,7 +137,7 @@ M.general = {
     ["<C-u>"] = "<C-w>k",
     ["<C-i>"] = "<C-w>l",
     ["<C-l>"] = "<C-w>o",
-    ["<C-b>"] = "<C-w>=",
+    -- ["<C-b>"] = "<C-w>=",
     -- ["<C-h>"] = "<C-o>",
     -- ["<C-o>"] = "<C-i>",
     ["<C-q>"] = "<C-w>q",
@@ -189,6 +189,8 @@ M.general = {
 
     -- map backspace to ciw
     ["<BS>"] = "ciw",
+    -- goto new position in jumplist
+    ["<C-h>"] = "<C-i>",
   },
   ["v"] = {
     -- copy to system clipboard
