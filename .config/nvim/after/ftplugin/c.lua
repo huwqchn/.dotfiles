@@ -5,7 +5,7 @@ vim.keymap.set(
   { noremap = true, silent = true }
 )
 
-require("saturn.configs.lsp.languages.cpp")
+require("saturn.plugins.lsp.languages.cpp")
 
 vim.opt_local.textwidth = 100
 vim.opt_local.tabstop = 2

@@ -24,7 +24,7 @@ return {
     dependencies = {
       {
         "rafamadriz/friendly-snippets",
-        cond = saturn.plugins.luasnip.sources.friendly_snippets,
+        -- cond = saturn.plugins.luasnip.sources.friendly_snippets,
       },
     },
   },
@@ -43,16 +43,6 @@ return {
       },
     },
     enabled = saturn.plugins.gitsigns.active,
-  },
-
-  -- WhichKey
-  {
-    "folke/which-key.nvim",
-    config = function()
-      require("saturn.plugins.whichkey").config()
-    end,
-    event = "VeryLazy",
-    enabled = saturn.plugins.whichkey.active,
   },
 
   -- Icons

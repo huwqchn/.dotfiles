@@ -1,11 +1,9 @@
 local M = {}
 
-local Log = require "saturn.plugins.log"
-
 function M.setup()
   local status_ok, null_ls = pcall(require, "null-ls")
   if not status_ok then
-    Log:error "Missing null-ls dependency"
+    vim.notify("Missing null-ls dependency")
     return
   end
 

@@ -29,8 +29,8 @@ local M = {
 
 local lsp_config = require("saturn.plugins.lsp.config")
 local utils = require("saturn.utils.helper")
-local format = require("saturn.utiles.format")
-local loader = require("saturn.utiles.loader")
+local format = require("saturn.utils.format")
+local loader = require("saturn.utils.loader")
 saturn.lsp = vim.deepcopy(lsp_config)
 
 function M.init()

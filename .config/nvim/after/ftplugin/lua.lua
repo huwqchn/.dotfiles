@@ -1,4 +1,4 @@
-require("saturn.configs.lsp.languages.lua")
+require("saturn.plugins.lsp.languages.lua")
 
 local formatters = require("saturn.plugins.lsp.null-ls.formatters")
 formatters.setup({

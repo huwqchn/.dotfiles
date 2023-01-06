@@ -16,7 +16,7 @@ vim.opt_local.cindent = true -- stricter rules for C programs
 vim.opt_local.cinoptions:append("g0,N-s,E-s,l1,:0")
 vim.wo.wrap = false
 
-require("saturn.configs.lsp.languages.cpp")
+require("saturn.plugins.lsp.languages.cpp")
 
 local status_ok, which_key = pcall(require, "which-key")
 if not status_ok then

@@ -53,7 +53,7 @@ local options = {
   showcmd = false,
   ruler = false,
   laststatus = 3,
-  -- lazyredraw = true, -- redraw editor when changes
+  lazyredraw = true, -- redraw editor when changes
   ttyfast = true, -- should make scrolling faster
   inccommand = "split", -- preview command effect
 }

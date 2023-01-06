@@ -1,4 +1,4 @@
-require("saturn.configs.lsp.languages.js-ts")
+require("saturn.plugins.lsp.languages.js-ts")
 local status_ok, which_key = pcall(require, "which-key")
 if not status_ok then
   return

@@ -5,11 +5,9 @@ local M = {
     { "<leader>ee", "<cmd>NvimTreeToggle<CR>", desc = "Project" },
     { "<leader>ec", "<cmd>NvimTreeCollapse<CR>", desc = "Collapse" },
   },
-  enabled = saturn.plugins.nvimtree.active,
 }
 
 saturn.plugins.nvimtree = {
-  active = true,
   on_config_done = nil,
   setup = {
     ignore_ft_on_setup = {

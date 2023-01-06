@@ -4,15 +4,15 @@ local M = {
   event = "WinNew",
   keys = {
     -- resizing splits
-    { mode = "n", "<C-Left>", require("smart-splits").resize_left, desc = "resize left" },
-    { mode = "n", "<C-Down>", require("smart-splits").resize_down, desc = "resize down" },
-    { mode = "n", "<C-Up>", require("smart-splits").resize_up, desc = "resize up" },
-    { mode = "n", "<C-Right>", require("smart-splits").resize_right, desc = "resize right" },
+    { mode = "n", "<C-Left>",function() require("smart-splits").resize_left() end, desc = "resize left" },
+    { mode = "n", "<C-Down>", function() require("smart-splits").resize_down() end, desc = "resize down" },
+    { mode = "n", "<C-Up>", function() require("smart-splits").resize_up() end, desc = "resize up" },
+    { mode = "n", "<C-Right>", function() require("smart-splits").resize_right() end, desc = "resize right" },
     -- moving between splits
-    { mode = "n", "<C-n>", require("smart-splits").move_cursor_left, desc = "move cursor left" },
-    { mode = "n", "<C-e>", require("smart-splits").move_cursor_down, desc = "move cursor down" },
-    { mode = "n", "<C-u>", require("smart-splits").move_cursor_up, desc = "move cursor up" },
-    { mode = "n", "<C-i>", require("smart-splits").move_cursor_right, desc = "move cursor right" },
+    { mode = "n", "<C-n>", function() require("smart-splits").move_cursor_left() end, desc = "move cursor left" },
+    { mode = "n", "<C-e>", function() require("smart-splits").move_cursor_down() end, desc = "move cursor down" },
+    { mode = "n", "<C-u>", function() require("smart-splits").move_cursor_up() end, desc = "move cursor up" },
+    { mode = "n", "<C-i>", function() require("smart-splits").move_cursor_right() end, desc = "move cursor right" },
   },
 }
 

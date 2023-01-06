@@ -1,7 +1,5 @@
 local M = {}
 
-local Log = require "saturn.plugins.log"
-
 local null_ls = require "null-ls"
 local services = require "saturn.plugins.lsp.null-ls.services"
 local method = null_ls.methods.DIAGNOSTICS
@@ -36,7 +34,7 @@ function M.setup(linter_configs)
   local registered = services.register_sources(linter_configs, method)
 
   if #registered > 0 then
-    Log:debug("Registered the following linters: " .. unpack(registered))
+    vim.notify("Registered the following linters: " .. unpack(registered))
   end
 end
 

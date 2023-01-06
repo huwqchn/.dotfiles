@@ -1,4 +1,7 @@
-local M = {}
+local M = {
+  "folke/which-key.nvim",
+  event = "VeryLazy",
+}
 
 saturn.plugins.whichkey = {
   ---@usage disable which-key completely [not recommended]

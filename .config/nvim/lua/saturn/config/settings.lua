@@ -13,7 +13,7 @@ return {
     -- filter = require("saturn.plugins.core.lsp.utils").format_filter,
   },
   use_icons = true,
-  icons = require("saturn.basic.ui.icons"),
+  icons = require("saturn.config.ui.icons"),
   plugins = {},
   enable_extra_plugins = false,
 }
