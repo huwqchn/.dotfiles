@@ -1,5 +1,3 @@
--- init global variable saturn
-saturn = vim.deepcopy(require("saturn.config.settings"))
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
   vim.fn.system({
@@ -16,8 +14,12 @@ vim.opt.rtp:prepend(vim.env.LAZY or lazypath)
 require("lazy").setup({
   spec = "saturn.plugins",
   defaults = { lazy = true, version = "*" },
-  install = { colorscheme = { "tokyonight", "habamax" } },
-  checker = { enabled = true },
+  install = { colorscheme = { saturn.colorscheme, "tokyonight", "habamax" } },
+  ui = { border = "rounded" },
+  git = {
+    timeout = 120,
+  },
+  -- checker = { enabled = true },
   performance = {
     rtp = {
       disabled_plugins = {
@@ -33,4 +35,3 @@ require("lazy").setup({
     },
   },
 })
-vim.keymap.set("n", "<leader>l", "<cmd>:Lazy<cr>")

@@ -1,246 +1,159 @@
-local opts_any = { noremap = true, silent = true }
--- local opts_remap = { remap = true, silent = true }
+-- colemak movement
+vim.keymap.set("", "e", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
+vim.keymap.set("", "u", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
+vim.keymap.set("", "n", "h")
+vim.keymap.set("", "i", "l")
+vim.keymap.set("", "gu", "gk")
+vim.keymap.set("", "ge", "gj")
 
--- Mods
---	 normal_mode = "n",
---	 insert_mode = "i",
---	 visual_mode = "v",
---	 visual_block_mode = "x",
---	 term_mode = "t",
---	 command_mode = "c",
+-- colemak jump to start/end of the line
+vim.keymap.set("", "N", "^")
+vim.keymap.set("", "I", "$")
+-- colemak fast navigation
+vim.keymap.set("", "U", "<C-b>")
+vim.keymap.set("", "E", "<C-f>")
 
-local general_opts = {
-  [""] = opts_any,
-  ["i"] = opts_any,
-  ["n"] = opts_any,
-  ["v"] = opts_any,
-  ["x"] = opts_any,
-  ["c"] = opts_any,
-  ["t"] = { silent = true },
-}
+-- colemak insert key
+vim.keymap.set("", "k", "i")
+vim.keymap.set("", "K", "I")
 
-local keys = {
-  [""] = {
-    -- colemak movement
-    ["u"] = "k",
-    ["n"] = "h",
-    ["e"] = "j",
-    ["i"] = "l",
+-- colemake undo key
+vim.keymap.set("", "l", "u")
+vim.keymap.set("", "L", "U")
 
-    -- colemak insert key
-    ["k"] = "i",
-    ["K"] = "I",
+-- colemak end of word
+vim.keymap.set("", "h", "e")
+vim.keymap.set("", "H", "E")
 
-    -- colemak undo key
-    ["l"] = "u",
-    ["L"] = "U",
+-- colemake searching key
+-- https://github.com/mhinz/vim-galore#saner-behavior-of-n-and-n
+vim.keymap.set("", "=", "'Nn'[v:searchforward]", { expr = true })
+vim.keymap.set("", "-", "'nN'[v:searchforward]", { expr = true })
 
-    -- colemak better searching key
-    ["-"] = "N",
-    ["="] = "n",
+-- clear search with <esc>
+vim.keymap.set("", "<esc>", "<cmd>noh<cr><esc>")
 
-    ["gu"] = "gk",
-    ["ge"] = "gj",
+-- save
+vim.keymap.set("", "<C-s>", "<cmd>w<cr><esc>")
 
-    -- colemak faster navigation
-    ["U"] = "<C-b>",
-    ["E"] = "<C-f>",
+-- quit
+vim.keymap.set("", "<C-q>", "<cmd>q<cr>")
 
-    -- colemak jump to start/end of the line
-    ["N"] = "^",
-    ["I"] = "$",
+-- select all
+vim.keymap.set("", "<C-a>", "<esc>ggvG")
 
-    -- colemak end of word
-    ["h"] = "e",
-    ["H"] = "E",
+-- paste
+vim.keymap.set("i", "<C-v>", "<C-g>u<Cmd>set paste<CR><C-r>+<Cmd>set nopaste<CR>")
+vim.keymap.set("t", "<C-v>", "<C-\\><C-N>pi")
+vim.keymap.set("c", "<C-v>", "<C-r>+")
 
-    -- map return key to command_mode
-    ["<CR>"] = ":",
+-- inc/dec number
+vim.keymap.set("", "<C-=>", "<C-a>")
+vim.keymap.set("", "<C-->", "<C-x>")
 
-    -- select all
-    ["<C-a>"] = "ggVG",
-    -- save
-    ["<C-s>"] = ":wa<CR>",
-    -- quit
-    ["<C-q>"] = ":wq<CR>",
-  },
-  ["i"] = {
-    -- Move current line / block with Alt-j/k ala vscode.
-    ["<A-e>"] = "<Esc>:m .+1<CR>==gi",
-    -- Move current line / block with Alt-j/k ala vscode.
-    ["<A-u>"] = "<Esc>:m .-2<CR>==gi",
-    -- navigation
-    ["<A-Up>"] = "<C-\\><C-N><C-w>k",
-    ["<A-Down>"] = "<C-\\><C-N><C-w>j",
-    ["<A-Left>"] = "<C-\\><C-N><C-w>h",
-    ["<A-Right>"] = "<C-\\><C-N><C-w>l",
+-- Column inc/dec numbers
+vim.keymap.set("v", "g<C-=>", "g<C-a>")
+vim.keymap.set("v", "g<C-->", "g<C-x>")
 
-    -- undo
-    ["<C-z>"] = "<C-o>u",
+-- better indentation
+vim.keymap.set("n", "<", "<<")
+vim.keymap.set("n", ">", ">>")
+vim.keymap.set("v", "<", "<gv")
+vim.keymap.set("v", ">", ">gv")
 
-    -- paste
-    ["<C-v>"] = "<C-g>u<Cmd>set paste<CR><C-r>+<Cmd>set nopaste<CR>",
+-- Better Copy
+vim.keymap.set("n", "Y", "y$")
+vim.keymap.set("v", "Y", '"+y')
 
-    -- save
-    ["<C-s>"] = "<C-g>u<Cmd>w<CR>",
-  },
-  ["n"] = {
-    -- better indentation
-    ["<"] = "<<",
-    [">"] = ">>",
+-- Move lines
+vim.keymap.set("n", "<A-e>", ":m .+1<CR>==")
+vim.keymap.set("v", "<A-e>", ":m '>+1<CR>gv=gv")
+vim.keymap.set("i", "<A-e>", "<Esc>:m .+1<CR>==gi")
+vim.keymap.set("n", "<A-u>", ":m .-2<CR>==")
+vim.keymap.set("v", "<A-u>", ":m '<-2<CR>gv=gv")
+vim.keymap.set("i", "<A-u>", "<Esc>:m .-2<CR>==gi")
 
-    -- Better window movement
-    ["<C-w>"] = "<C-w>w",
-    ["<C-n>"] = "<C-w>h",
-    ["<C-e>"] = "<C-w>j",
-    ["<C-u>"] = "<C-w>k",
-    ["<C-i>"] = "<C-w>l",
-    ["<C-l>"] = "<C-w>o",
+-- Switch buffer with tab
+vim.keymap.set("n", "<tab>", "<cmd>bnext<cr>")
+vim.keymap.set("n", "<s-tab>", "<cmd>bprevious<cr>")
 
-    -- Disable the default s key
-    ["s"] = "<nop>",
-    -- split the screens to horizontal (up / down) and vertical (left / right)
-    ["su"] = ":set nosplitbelow<CR>:split<CR>:set splitbelow<CR>",
-    ["se"] = ":set splitbelow<CR>:split<CR>",
-    ["sn"] = ":set nosplitright<CR>:vsplit<CR>:set splitright<CR>",
-    ["si"] = ":set splitright<CR>:vsplit<CR>",
+-- Replace in selection
+vim.keymap.set("n", "s", "<cmd>s/\\%V")
 
-    -- Rotate screens
-    ["sr"] = "<C-w>b<C-w>K",
-    ["sR"] = "<C-w>b<C-w>H",
+-- insert mode navigation
+vim.keymap.set("i", "<A-Up>", "<C-\\><C-N><C-w>k")
+vim.keymap.set("i", "<A-Down>", "<C-\\><C-N><C-w>j")
+vim.keymap.set("i", "<A-Left>", "<C-\\><C-N><C-w>h")
+vim.keymap.set("i", "<A-Right>", "<C-\\><C-N><C-w>l")
 
-    -- Swap the current window with the next one
-    ["sw"] = "<C-w>x",
+-- Terminal window navigation
+vim.keymap.set("t", "<C-n>", "<C-\\><C-N><C-w>h")
+vim.keymap.set("t", "<C-e>", "<C-\\><C-N><C-w>j")
+vim.keymap.set("t", "<C-u>", "<C-\\><C-N><C-w>k")
+vim.keymap.set("t", "<C-i>", "<C-\\><C-N><C-w>l")
 
-    -- move current window to the far left, bottom, rihgt, top
-    ["sN"] = "<C-w>H",
-    ["sE"] = "<C-w>J",
-    ["sI"] = "<C-w>L",
-    ["sU"] = "<C-w>K",
+vim.keymap.set("t", "<esc><esc>", "<c-\\><c-n>", {desc = "Enter Normal Mode"})
+-- navigate tab completion with <c-j> and <c-k>
+-- runs conditionally
+vim.keymap.set("c", "<C-e>", 'pumvisible() ? "\\<C-n>" : "\\<C-j>"', { expr = true, noremap = true })
+vim.keymap.set("c", "<C-u>", 'pumvisible() ? "\\<C-p>" : "\\<C-k>"', { expr = true, noremap = true })
 
-    -- Resize with arrows
-    ["<C-Up>"] = ":resize -2<CR>",
-    ["<C-Down>"] = ":resize +2<CR>",
-    ["<C-Left>"] = ":vertical resize -2<CR>",
-    ["<C-Right>"] = ":vertical resize +2<CR>",
+-- goto new position in jumplist
+vim.keymap.set("n", "<C-h>", "<C-i>")
 
-    -- Move current line / block up / down
-    ["<A-e>"] = ":m .+1<CR>==",
-    ["<A-u>"] = ":m .-2<CR>==",
+-- Windows managenment
+--Better window movement
+vim.keymap.set("n", "<C-w>", "<C-w>w")
+vim.keymap.set("n", "<C-x>", "<C-w>x")
+vim.keymap.set("n", "<C-n>", "<C-w>h")
+vim.keymap.set("n", "<C-e>", "<C-w>j")
+vim.keymap.set("n", "<C-u>", "<C-w>k")
+vim.keymap.set("n", "<C-i>", "<C-w>l")
+vim.keymap.set("n", "<C-l>", "<C-w>o")
 
-    -- QuickFix
-    ["]]"] = ":cnext<CR>",
-    ["[["] = ":cprev<CR>",
-    -- ["<C-q>"] = ":call QuickFixToggle()<CR>",
+-- Resize with arrows
+vim.keymap.set("n", "<C-Up>", ":resize +2<CR>")
+vim.keymap.set("n", "<C-Down>", ":resize -2<CR>")
+vim.keymap.set("n", "<C-Left>", ":vertical resize +2<CR>")
+vim.keymap.set("n", "<C-Right>", ":vertical resize -2<CR>")
 
-    -- inc/dec numbers
-    ["<C-=>"] = "<C-a>",
-    ["<C-->"] = "<C-x>",
+-- disable the default s key
+vim.keymap.set("n", "s", "<nop>")
 
-    ["<tab>"] = ":bnext<CR>",
-    ["<s-tab>"] = ":bprevious<CR>",
+-- split the screens
+vim.keymap.set("n", "su", ":set nosplitbelow<CR>:split<CR>:set splitbelow<CR>", { desc = "split above"})
+vim.keymap.set("n", "se", ":set splitbelow<CR>:split<CR>", { desc = "split below"})
+vim.keymap.set("n", "sn", ":set nosplitright<CR>:vsplit<CR>:set splitright<CR>", { desc = "split left"})
+vim.keymap.set("n", "si", ":set splitright<CR>:vsplit<CR>", { desc = "split right"})
 
-    -- map backspace to ciw
-    ["<BS>"] = "ciw",
-    -- goto new position in jumplist
-    ["<C-h>"] = "<C-i>",
-  },
-  ["v"] = {
-    -- copy to system clipboard
-    ["Y"] = '"+y',
+-- Rotate window
+vim.keymap.set("n", "<leader>wU", "<C-w>b<C-w>K", { desc = "rotate window up"})
+vim.keymap.set("n", "<leader>wN", "<C-w>b<C-w>H", { desc = "rotate window left"})
 
-    -- Better indenting
-    ["<"] = "<gv",
-    [">"] = ">gv",
+vim.keymap.set("n", "<leader>ww", "<C-W>p", { desc = "other-window" })
+vim.keymap.set("n", "<leader>wd", "<C-W>c", { desc = "delete-window" })
+-- move current windwo to the far left, bottom, right, top
+vim.keymap.set("n", "<leader>wn", "<C-w>H", { desc = "move to the far left"})
+vim.keymap.set("n", "<leader>we", "<C-w>J", { desc = "move to the far bottom"})
+vim.keymap.set("n", "<leader>wi", "<C-w>L", { desc = "move to the far right"})
+vim.keymap.set("n", "<leader>wu", "<C-w>K", { desc = "move to the far top"})
 
-    -- Move current line / block with Alt-j/k ala vscode.
-    ["<A-e>"] = ":m '>+1<CR>gv-gv",
-    ["<A-u>"] = ":m '<-1<CR>gv-gv",
+-- Tabs management
+vim.keymap.set("n", "<leader><tab>a", "<cmd>tabfirst<CR>", { desc = "First" })
+vim.keymap.set("n", "<leader><tab>z", "<cmd>tablast<CR>", { desc = "Last" })
+vim.keymap.set("n", "<leader><tab><tab>", "<cmd>tabnew<CR>", { desc = "New Tab" })
+vim.keymap.set("n", "<leader><tab>i", "<cmd>tabn<CR>", { desc = "Next" })
+vim.keymap.set("n", "<leader><tab>n", "<cmd>tabp<CR>", { desc = "Previous"})
+vim.keymap.set("n", "<leader><tab>d", "<cmd>tabclose<CR>", { desc = "Close" })
+vim.keymap.set("n", "<leader><tab>s", "<cmd>tab split<CR>", { desc = "Split" })
+vim.keymap.set("n", "<leader><tab>N", "<cmd>-tabmove<CR>", { desc = "Move to left" })
+vim.keymap.set("n", "<leader><tab>I", "<cmd>+tabmove<CR>", { desc = "Move to right" })
+vim.keymap.set("n", "<leader><tab>l", "<cmd>tabonly<CR>", { desc = "Close all other tabs" })
+vim.keymap.set("n", "<leader><tab>A", "<cmd>tabm 0<CR>", { desc = "Move to first" })
+vim.keymap.set("n", "<leader><tab>Z", "<cmd>tabm<CR>", { desc = "Move to last" })
+vim.keymap.set("n", "<leader><tab>t", "<cmd>tabs", { desc = "List all tabs" })
 
-    -- inc/dec numbers
-    ["<C-=>"] = "<C-a>",
-    ["<C-->"] = "<C-x>",
-
-    -- Column inc/dec numbers
-    ["g<C-=>"] = "g<C-a>",
-    ["g<C-->"] = "g<C-x>",
-  },
-  ["x"] = {
-    -- Move current line / block with Alt-e/u ala vscode.
-    ["<A-e>"] = ":m '>+1<CR>gv-gv",
-    ["<A-u>"] = ":m '<-2<CR>gv-gv",
-
-    -- select all
-    ["<C-a>"] = "<Esc>ggVG",
-    -- replace in selection
-    ["s"] = ":s/\\%V",
-  },
-  ["t"] = {
-    -- Terminal window navigation
-    ["<C-n>"] = "<C-\\><C-N><C-w>h",
-    ["<C-e>"] = "<C-\\><C-N><C-w>j",
-    ["<C-u>"] = "<C-\\><C-N><C-w>k",
-    ["<C-i>"] = "<C-\\><C-N><C-w>l",
-    -- paste
-    ["<C-v>"] = "<C-\\><C-N>pi",
-  },
-  ["c"] = {
-    -- navigate tab completion with <c-e> and <c-u>
-    -- runs conditionally
-    ["<C-e>"] = { 'pumvisible() ? "\\<C-n>" : "\\<C-j>"', { expr = true, noremap = true } },
-    ["<C-u>"] = { 'pumvisible() ? "\\<C-p>" : "\\<C-k>"', { expr = true, noremap = true } },
-    -- paste
-    ["<C-v>"] = "<C-r>+",
-  },
-}
-
-local function set_keymaps(mode, key, val)
-  local opt = general_opts[mode] or opts_any
-  if type(val) == "table" then
-    opt = val[2]
-    val = val[1]
-  end
-  if val then
-    vim.keymap.set(mode, key, val, opt)
-  else
-    pcall(vim.api.nvim_del_keymap, mode, key)
-  end
-end
-
-vim.keymap.set("", saturn.leaderkey, "<Nop>", opts_any)
-vim.g.mapleader = saturn.leaderkey
-vim.g.maplocalleader = saturn.leaderkey
-for mode, maps in pairs(keys) do
-  for key, val in pairs(maps) do
-    set_keymaps(mode, key, val)
-  end
-end
-
-vim.api.nvim_set_keymap(
-  "n",
-  "<leader>e.",
-  "<cmd>edit .<cr>",
-  { noremap = true, silent = true, desc = "Explore Current Directory" }
-)
-
--- QuickFix
-vim.api.nvim_set_keymap(
-  "n",
-  "<leader>qi",
-  "<cmd>cnext<cr>",
-  { noremap = true, silent = true, desc = "Next Quickfix Item" }
-)
-
-vim.api.nvim_set_keymap(
-  "n",
-  "<leader>qn",
-  "<cmd>cnext<cr>",
-  { noremap = true, silent = true, desc = "Previous Quickfix Item" }
-)
-
-vim.api.nvim_set_keymap(
-  "n",
-  "<leader>qt",
-  "<cmd>TodoQuickFix<cr>",
-  { noremap = true, silent = true, desc = "Show TODOS" }
-)
+-- buffers
+vim.keymap.set("n", "<leader>ui", "<cmd>BufferLineCycleNext<CR>", { desc = "Next Buffer" })
+vim.keymap.set("n", "<leader>un", "<cmd>BufferLineCyclePrev<CR>", { desc = "Previous Buffer" })
+vim.keymap.set("n", "<leader>`", "<cmd>:e #<cr>", { desc = "Switch to Other Buffer" })

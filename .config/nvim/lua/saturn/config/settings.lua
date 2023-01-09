@@ -15,5 +15,4 @@ return {
   use_icons = true,
   icons = require("saturn.config.ui.icons"),
   plugins = {},
-  enable_extra_plugins = false,
 }

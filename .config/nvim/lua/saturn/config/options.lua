@@ -1,79 +1,62 @@
-local options = {
-  backup = false, -- creates a backup file
-  clipboard = "unnamedplus", -- allows neovim to access the system clipboard
-  cmdheight = 1, -- more space in the neovim command line for displaying messages
-  completeopt = { "menu", "menuone", "noselect" },
-  conceallevel = 0, -- so that `` is visible in markdown files
-  fileencoding = "utf-8", -- the encoding written to a file
-  foldmethod = "manual", -- folding, set to "expr" for treesitter based folding
-  foldexpr = "", -- set to "nvim_treesitter#foldexpr()" for treesitter based folding
-  guifont = "monospace:h17", -- the font used in graphical neovim applications
-  hidden = true, -- required to keep multiple buffers and open multiple buffers
-  hlsearch = true, -- highlight all matches on previous search pattern
-  ignorecase = true, -- ignore case in search patterns
-  mouse = "a", -- allow the mouse to be used in neovim
-  pumheight = 10, -- pop up menu height
-  showmode = false, -- we don't need to see things like -- INSERT -- anymore
-  showmatch = true, -- thow match symbol
-  incsearch = true, -- incremental search that shows partial matches
-  showtabline = 2, -- always show tabs
-  smartcase = true, -- automatically switch search search to case-sensitive when search query contains an uppercase letter
-  smartindent = true, -- make indenting smarter again
-  autoindent = true, -- new lines inherit the indentation of previous lines
-  splitbelow = true, -- force all horizontal splits to go below current window
-  splitright = true, -- force all vertical splits to go to the right of current window
-  swapfile = false, -- creates a swapfile
-  termguicolors = true, -- set term gui colors (most terminals support this)
-  timeoutlen = 0, -- time to wait for a mapped sequence to complete (in milliseconds)
-  title = true, -- set the title of window to the value of the titlestring
-  list = true, -- show special symbols
-  listchars = { tab = "| ", trail = "▫" }, -- replace special symbols
+-- This file is automatically loaded by plugins.config
 
-  -- opt.titlestring = "%<%F%=%l/%L - nvim" -- what the title of the window will be set to
-  --undodir = undodir, -- set an undo directory
-  undofile = true, -- enable persistent undo
-  updatetime = 100, -- faster completion
-  writebackup = false, -- if a file is being edited by another program (or was written to file while editing with another program), it is not allowed to be edited
-  expandtab = true, -- convert tabs to spaces
-  shiftwidth = 2, -- the number of spaces inserted for each indentation
-  tabstop = 2, -- insert 2 spaces for a tab
-  cursorline = true, -- highlight the current line
-  number = true, -- set numbered lines
-  numberwidth = 4, -- set number column width to 2 {default 4}
-  relativenumber = true, -- show line number on the current line and relative numbers on all other lines
-  signcolumn = "yes", -- always show the sign column, otherwise it would shift the text each time
-  colorcolumn = "81", -- highlight a column
-  wrap = false, -- display lines as one long line
-  -- shadafile = join_paths(get_cache_dir(), "saturn.shada"),
-  scrolloff = 8, -- minimal number of screen lines to keep above and below the cursor.
-  sidescrolloff = 8, -- minimal number of screen lines to keep left and right of the cursor.
-  wildmenu = true, -- display command line's tab complete options as a menu
-  -- wildmode = "longest:full",
-  -- wildoptions = "pum",
-  showcmd = false,
-  ruler = false,
-  laststatus = 3,
-  lazyredraw = true, -- redraw editor when changes
-  ttyfast = true, -- should make scrolling faster
-  inccommand = "split", -- preview command effect
-}
+vim.g.mapleader = saturn.leaderkey
+vim.g.maplocalleader = saturn.leaderkey
 
----  SETTINGS  ---
-vim.opt.spelllang:append("cjk") -- disable spellchecking for asian characters (VIM algorithm does not support it)
-vim.opt.shortmess:append("c") -- don't show redundant messages from ins-completion-menu
-vim.opt.shortmess:append("I") -- don't show the default intro message
+vim.opt.backup = false
+vim.opt.swapfile = false
+vim.opt.colorcolumn = "81"
 vim.opt.whichwrap:append("<,>,[,],h,l")
+vim.opt.listchars = { tab = "| ", trail = "▫" } -- replace special symbols
+vim.opt.autowrite = true -- enable auto write
+vim.opt.clipboard = "unnamedplus" -- sync with system clipboard
+vim.opt.cmdheight = 1 -- move space in the neovim command line for displaying messages
+vim.opt.completeopt = "menu,menuone,noselect"
+vim.opt.conceallevel = 3 -- Hide * markup for bold and italic
+vim.opt.fileencoding = "utf-8" -- the encoding written to a file
+vim.opt.confirm = true -- confirm to save changes before exiting modified buffer
+vim.opt.cursorline = true -- Enable highlighting of the current line
+vim.opt.expandtab = true -- Use spaces instead of tabs
+vim.opt.formatoptions = "jcroqlnt" -- tcqj
+vim.opt.grepformat = "%f:%l:%c:%m"
+vim.opt.grepprg = "rg --vimgrep"
+vim.opt.guifont = "FiraCode Nerd Font:h11"
+vim.opt.hidden = true -- Enable modified buffers in background
+vim.opt.ignorecase = true -- Ignore case
+vim.opt.inccommand = "nosplit" -- preview incremental substitute
+vim.opt.joinspaces = false -- No double spaces with join after a dot
+vim.opt.laststatus = 0
+vim.opt.list = true -- Show some invisible characters (tabs...
+vim.opt.mouse = "a" -- enable mouse mode
+vim.opt.number = true -- Print line number
+vim.opt.pumblend = 10 -- Popup blend
+vim.opt.pumheight = 10 -- Maximum number of entries in a popup
+vim.opt.relativenumber = true -- Relative line numbers
+vim.opt.scrolloff = 4 -- Lines of context
+vim.opt.sessionoptions = { "buffers", "curdir", "tabpages", "winsize" }
+vim.opt.shiftround = true -- Round indent
+vim.opt.shiftwidth = 2 -- Size of an indent
+vim.opt.showmode = false -- dont show mode since we have a statusline
+vim.opt.sidescrolloff = 8 -- Columns of context
+vim.opt.signcolumn = "yes" -- Always show the signcolumn, otherwise it would shift the text each time
+vim.opt.smartcase = true -- Don't ignore case with capitals
+vim.opt.smartindent = true -- Insert indents automatically
+vim.opt.spelllang = { "en", "cjk" }
+vim.opt.splitbelow = true -- Put new windows below current
+vim.opt.splitright = true -- Put new windows right of current
+vim.opt.tabstop = 2 -- Number of spaces tabs count for
+vim.opt.termguicolors = true -- True color support
+vim.opt.timeoutlen = 300
+vim.opt.undofile = true
+vim.opt.undolevels = 10000
+vim.opt.updatetime = 200 -- save swap file and trigger CursorHold
+vim.opt.wildmode = "longest:full,full" -- Command-line completion mode
+vim.opt.wrap = false -- Disable line wrap
 
-for k, v in pairs(options) do
-  vim.opt[k] = v
+if vim.fn.has("nvim-0.9.0") == 1 then
+  vim.opt.splitkeep = "screen"
+  vim.o.shortmess = "filnxtToOFWIcC"
 end
 
-vim.filetype.add({
-  extension = {
-    tex = "tex",
-    zir = "zir",
-  },
-  pattern = {
-    ["[jt]sconfig.*.json"] = "jsonc",
-  },
-})
+-- fix markdown indentation settings
+vim.g.markdown_recommended_style = 0
