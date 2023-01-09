@@ -3,6 +3,23 @@ return {
     "nvim-treesitter/nvim-treesitter",
     build = ":TSUpdate",
     event = "BufReadPost",
+    dependencies = {
+      {
+        "nvim-treesitter/nvim-treesitter-textobjects",
+      },
+      {
+        "JoosepAlviste/nvim-ts-context-commentstring",
+      },
+      {
+        "p00f/nvim-ts-rainbow",
+      },
+      {
+        "nvim-treesitter/nvim-treesitter-textobjects",
+      },
+      {
+        "nvim-treesitter/nvim-treesitter-context",
+      },
+    },
     config = function()
       require("nvim-treesitter.configs").setup({
         ensure_installed = {
@@ -116,8 +133,34 @@ return {
           },
           -- move = textobj_move_keymaps,
           select = {
-            enable = false,
-            -- keymaps = textobj_sel_keymaps,
+            enable = true,
+            -- Automatically jump forward to textobj, similar to targets.vim
+            lookahead = true,
+            keymaps = {
+              -- You can use the capture groups defined in textobjects.scm
+              ["af"] = "@function.outer",
+              ["kf"] = "@function.inner",
+              ["at"] = "@class.outer",
+              ["kt"] = "@class.inner",
+              ["ac"] = "@call.outer",
+              ["kc"] = "@call.inner",
+              ["aa"] = "@parameter.outer",
+              ["ka"] = "@parameter.inner",
+              ["al"] = "@loop.outer",
+              ["kl"] = "@loop.inner",
+              ["ak"] = "@conditional.outer",
+              ["kk"] = "@conditional.inner",
+              ["a/"] = "@comment.outer",
+              ["k/"] = "@comment.inner",
+              ["ab"] = "@block.outer",
+              ["kb"] = "@block.inner",
+              ["as"] = "@statement.outer",
+              ["ks"] = "@scopename.inner",
+              ["aA"] = "@attribute.outer",
+              ["kA"] = "@attribute.inner",
+              ["aF"] = "@frame.outer",
+              ["kF"] = "@frame.inner",
+            },
           },
         },
         textsubjects = {
@@ -143,9 +186,15 @@ return {
           },
         },
         rainbow = {
-          enable = false,
+          enable = true,
           extended_mode = true, -- Highlight also non-parentheses delimiters, boolean or table: lang -> boolean
           max_file_lines = 1000, -- Do not enable for files with more than 1000 lines, int
+          colors = {
+            "DodgerBlue",
+            "Orchid",
+            "Gold",
+          },
+          disable = { "html" },
         },
       })
     end,
@@ -158,14 +207,4 @@ return {
     "nvim-treesitter/playground",
     cmd = "TSPlaygroundToggle",
   },
-  {
-    "nvim-treesitter/nvim-treesitter-context",
-    event = "BufReadPre",
-    config = true,
-  },
-  -- {
-  --   "m-demare/hlargs.nvim",
-  --   event = "BufReadPost",
-  --   config = true,
-  -- },
 }

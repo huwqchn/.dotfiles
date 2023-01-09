@@ -51,7 +51,7 @@ return {
     event = "VeryLazy",
     config = function()
       local lualine = require("lualine")
-      local style = require("saturn.plugins.ui.lualine.styles").get_style("evil")
+      local style = require("saturn.plugins.ui.lualine.styles").get_style("saturn")
       lualine.setup(style)
     end,
   },
@@ -164,7 +164,7 @@ return {
     event = "BufAdd",
     config = function()
       local bufferline = require("bufferline")
-      local conf = require("saturn.plugins.ui.bufferline").config()
+      local conf = require("saturn.plugins.ui.bufferline").config
       bufferline.setup({
         options = conf.options,
         highlights = conf.hightlights
@@ -177,7 +177,7 @@ return {
       local navic = require("nvim-navic")
       local breadcrumbs = require("saturn.plugins.ui.breadcrumbs")
       breadcrumbs.create_winbar()
-      local conf = breadcrumbs.config()
+      local conf = breadcrumbs.config
       navic.setup(conf.options)
     end,
   },

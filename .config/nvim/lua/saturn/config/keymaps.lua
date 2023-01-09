@@ -154,6 +154,6 @@ vim.keymap.set("n", "<leader><tab>Z", "<cmd>tabm<CR>", { desc = "Move to last" }
 vim.keymap.set("n", "<leader><tab>t", "<cmd>tabs", { desc = "List all tabs" })
 
 -- buffers
-vim.keymap.set("n", "<leader>ui", "<cmd>BufferLineCycleNext<CR>", { desc = "Next Buffer" })
-vim.keymap.set("n", "<leader>un", "<cmd>BufferLineCyclePrev<CR>", { desc = "Previous Buffer" })
+vim.keymap.set("n", "]b", "<cmd>BufferLineCycleNext<CR>", { desc = "Next Buffer" })
+vim.keymap.set("n", "[b", "<cmd>BufferLineCyclePrev<CR>", { desc = "Previous Buffer" })
 vim.keymap.set("n", "<leader>`", "<cmd>:e #<cr>", { desc = "Switch to Other Buffer" })
