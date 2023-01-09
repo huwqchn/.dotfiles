@@ -4,21 +4,15 @@ return {
     build = ":TSUpdate",
     event = "BufReadPost",
     dependencies = {
-      {
-        "nvim-treesitter/nvim-treesitter-textobjects",
-      },
-      {
-        "JoosepAlviste/nvim-ts-context-commentstring",
-      },
+      -- {
+      --   "nvim-treesitter/nvim-treesitter-textobjects",
+      -- },
       {
         "p00f/nvim-ts-rainbow",
       },
-      {
-        "nvim-treesitter/nvim-treesitter-textobjects",
-      },
-      {
-        "nvim-treesitter/nvim-treesitter-context",
-      },
+      -- {
+      --   "nvim-treesitter/nvim-treesitter-context",
+      -- },
     },
     config = function()
       require("nvim-treesitter.configs").setup({
@@ -208,10 +202,13 @@ return {
     cmd = "TSPlaygroundToggle",
   },
   {
-    "andymass/vim-matchup",
-    event = "BufReadPost",
-    config = function()
-      vim.g.matchup_matchparen_offscreen = { method = "popup" }
-    end,
+    "JoosepAlviste/nvim-ts-context-commentstring",
   },
+ --{
+ --  "andymass/vim-matchup",
+ --  event = "BufReadPost",
+ --  config = function()
+ --    vim.g.matchup_matchparen_offscreen = { method = "popup" }
+ --  end,
+ --},
 }
