@@ -12,6 +12,26 @@ return {
       { "hrsh7th/cmp-emoji" },
       { "hrsh7th/cmp-nvim-lua" },
       { "dmitmel/cmp-cmdline-history" },
+      {
+        "zbirenbaum/copilot-cmp",
+        config = function()
+          require("copilot_cmp").setup({
+            formatters = {
+              insert_text = require("copilot_cmp.format").remove_existing,
+            },
+          })
+        end,
+        dependencies = {
+          "copilot.lua",
+        },
+      },
+      {
+        "tzachar/cmp-tabnine",
+        build = "./install.sh",
+        config = {
+          show_prediction_strength = true,
+        }
+      },
     },
     config = function()
       local cmp = require("cmp")
@@ -187,9 +207,9 @@ return {
               cmp.select_next_item()
             elseif luasnip.expand_or_locally_jumpable() then
               luasnip.expand_or_jump()
-            elseif cmp_utils.jumpable(1) then
+            elseif cmp_utils.methods.jumpable(1) then
               luasnip.jump(1)
-            elseif cmp_utils.has_words_before() then
+            elseif cmp_utils.methods.has_words_before() then
               -- cmp.complete()
               fallback()
             else
@@ -213,7 +233,7 @@ return {
                 return vim.api.nvim_get_mode().mode:sub(1, 1) == "i"
               end
               if is_insert_mode() then -- prevent overwriting brackets
-                confirm_opts.behavior = cmp.ConfirmBehavior.Insert
+                conf.confirm_opts.behavior = cmp.ConfirmBehavior.Insert
               end
               if cmp.confirm(conf.confirm_opts) then
                 return -- success, exit early
@@ -272,6 +292,61 @@ return {
       end
     end,
     enabled = cmp_utils.enabled,
+  },
+  {
+    "zbirenbaum/copilot.lua",
+    event = "InsertEnter",
+    cmd = "Copilot",
+    config = {
+      panel = {
+        enabled = true,
+        auto_refresh = false,
+        keymap = {
+          jump_prev = "[[",
+          jump_next = "]]",
+          accept = "<CR>",
+          refresh = "<M-r>",
+          open = "<M-space>",
+        },
+      },
+      suggestion = {
+        enabled = true,
+        auto_trigger = false,
+        debounce = 75,
+        keymap = {
+          accept = "<M-cr>",
+          next = "<M-i>",
+          prev = "<M-n>",
+          dismiss = "<C-]>",
+        },
+      },
+      filetypes = {
+        yaml = false,
+        markdown = false,
+        help = false,
+        gitcommit = false,
+        gitrebase = false,
+        hgcommit = false,
+        svn = false,
+        cvs = false,
+        ["."] = false,
+      },
+      copilot_node_command = "node", -- Node version must be < 18
+      cmp = {
+        enabled = true,
+        method = "getCompletionsCycling",
+      },
+      -- plugin_manager_path = vim.fn.stdpath "data" .. "/site/pack/packer",
+      server_opts_overrides = {
+        -- trace = "verbose",
+        settings = {
+          advanced = {
+            -- listCount = 10, -- #completions for panel
+            inlineSuggestCount = 3, -- #completions for getCompletions
+          },
+        },
+      },
+    }
   },
   {
     "phaazon/hop.nvim",

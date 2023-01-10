@@ -123,4 +123,13 @@ return {
       { "<leader>qd", function() require("persistence").stop() end, desc = "Don't Save Current Session" },
     },
   },
+  {
+    "NvChad/nvim-colorizer.lua",
+    event = "BufRead",
+    config = {
+      user_defaults_options = {
+        virtualtext = saturn.icons.ui.Circle,
+      }
+    }
+  },
 }

@@ -34,10 +34,12 @@ vim.keymap.set("", "-", "'nN'[v:searchforward]", { expr = true })
 vim.keymap.set("", "<esc>", "<cmd>noh<cr><esc>")
 
 -- save
-vim.keymap.set("", "<C-s>", "<cmd>w<cr><esc>")
+vim.keymap.set("", "<C-s>", "<cmd>wa<cr><esc>")
+vim.keymap.set("", "S", "<cmd>w<cr><esc>")
 
 -- quit
-vim.keymap.set("", "<C-q>", "<cmd>q<cr>")
+vim.keymap.set("", "<C-q>", "<cmd>qa<cr>")
+vim.keymap.set("", "Q", "<cmd>q<cr>")
 
 -- select all
 vim.keymap.set("", "<C-a>", "<esc>ggvG")

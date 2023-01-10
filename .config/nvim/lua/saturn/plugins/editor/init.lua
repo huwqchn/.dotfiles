@@ -99,11 +99,15 @@ return {
         "nvim-telescope/telescope-media-files.nvim",
       },
       {
+        "nvim-telescope/telescope-file-browser.nvim"
+      },
+      {
         "tom-anders/telescope-vim-bookmarks.nvim",
       },
     },
     config = function()
       local actions = require("telescope.actions")
+      local fb_actions = require('telescope').extensions.file_browser.actions
       conf = {
         theme = "dropdown", ---@type telescope_themes
         defaults = {
@@ -129,21 +133,131 @@ return {
           ---@usage Mappings are fully customizable. Many familiar mapping patterns are setup as defaults.
           mappings = {
             i = {
-              ["<C-n>"] = actions.move_selection_next,
-              ["<C-p>"] = actions.move_selection_previous,
+              ["<C-n>"] = actions.cycle_history_next,
+              ["<C-p>"] = actions.cycle_history_prev,
+
+              ["<C-e>"] = actions.move_selection_next,
+              ["<C-u>"] = actions.move_selection_previous,
+
+              ["<C-b>"] = actions.results_scrolling_up,
+              ["<C-f>"] = actions.results_scrolling_down,
+
               ["<C-c>"] = actions.close,
-              ["<C-j>"] = actions.cycle_history_next,
-              ["<C-k>"] = actions.cycle_history_prev,
-              ["<C-q>"] = actions.smart_send_to_qflist + actions.open_qflist,
+
+              ["<Down>"] = actions.move_selection_next,
+              ["<Up>"] = actions.move_selection_previous,
+
               ["<CR>"] = actions.select_default,
+              ["<C-s>"] = actions.select_horizontal,
+              ["<C-v>"] = actions.select_vertical,
+              ["<C-t>"] = actions.select_tab,
+
+              ["<c-d>"] = require("telescope.actions").delete_buffer,
+
+              -- ["<C-u>"] = actions.preview_scrolling_up,
+              -- ["<C-d>"] = actions.preview_scrolling_down,
+
+              -- ["<Tab>"] = actions.toggle_selection + actions.move_selection_worse,
+              ["<Tab>"] = actions.close,
+              ["<S-Tab>"] = actions.close,
+              -- ["<S-Tab>"] = actions.toggle_selection + actions.move_selection_better,
+              ["<C-q>"] = actions.send_to_qflist + actions.open_qflist,
+              ["<M-q>"] = actions.send_selected_to_qflist + actions.open_qflist,
+              ["<C-l>"] = actions.complete_tag,
+              ["<C-h>"] = actions.which_key, -- keys from pressing <C-h>
+              ["<esc>"] = actions.close,
             },
             n = {
-              ["<C-n>"] = actions.move_selection_next,
-              ["<C-p>"] = actions.move_selection_previous,
-              ["<C-q>"] = actions.smart_send_to_qflist + actions.open_qflist,
+              ["<esc>"] = actions.close,
+              ["<CR>"] = actions.select_default,
+              ["<C-x>"] = actions.select_horizontal,
+              ["<C-v>"] = actions.select_vertical,
+              ["<C-t>"] = actions.select_tab,
+              ["<C-b>"] = actions.results_scrolling_up,
+              ["<C-f>"] = actions.results_scrolling_down,
+
+              ["<Tab>"] = actions.close,
+              ["<S-Tab>"] = actions.close,
+              -- ["<Tab>"] = actions.toggle_selection + actions.move_selection_worse,
+              -- ["<S-Tab>"] = actions.toggle_selection + actions.move_selection_better,
+              ["<C-q>"] = actions.send_to_qflist + actions.open_qflist,
+              ["<M-q>"] = actions.send_selected_to_qflist + actions.open_qflist,
+
+              ["e"] = actions.move_selection_next,
+              ["u"] = actions.move_selection_previous,
+              ["U"] = actions.move_to_top,
+              ["M"] = actions.move_to_middle,
+              ["E"] = actions.move_to_bottom,
+              ["q"] = actions.close,
+              ["dd"] = require("telescope.actions").delete_buffer,
+              ["s"] = actions.select_horizontal,
+              ["v"] = actions.select_vertical,
+              ["t"] = actions.select_tab,
+
+              ["<Down>"] = actions.move_selection_next,
+              ["<Up>"] = actions.move_selection_previous,
+              ["gg"] = actions.move_to_top,
+              ["G"] = actions.move_to_bottom,
+
+              ["<C-u>"] = actions.preview_scrolling_up,
+              ["<C-d>"] = actions.preview_scrolling_down,
+
+              ["<PageUp>"] = actions.results_scrolling_up,
+              ["<PageDown>"] = actions.results_scrolling_down,
+
+              ["?"] = actions.which_key,
             },
           },
-          file_ignore_patterns = {},
+          file_ignore_patterns = {
+            ".git/",
+            "target/",
+            "docs/",
+            "vendor/*",
+            "%.lock",
+            "__pycache__/*",
+            "%.sqlite3",
+            "%.ipynb",
+            "node_modules/*",
+            "%.svg",
+            "%.otf",
+            "%.ttf",
+            "%.webp",
+            ".dart_tool/",
+            ".github/",
+            ".gradle/",
+            ".idea/",
+            ".settings/",
+            ".vscode/",
+            "__pycache__/",
+            "build/",
+            "env/",
+            "gradle/",
+            "node_modules/",
+            "%.pdb",
+            "%.dll",
+            "%.class",
+            "%.exe",
+            "%.cache",
+            "%.ico",
+            "%.pdf",
+            "%.dylib",
+            "%.jar",
+            "%.docx",
+            "%.met",
+            "smalljre_*/*",
+            ".vale/",
+            "%.burp",
+            "%.mp4",
+            "%.mkv",
+            "%.rar",
+            "%.zip",
+            "%.7z",
+            "%.tar",
+            "%.bz2",
+            "%.epub",
+            "%.flac",
+            "%.tar.gz",
+          },
           path_display = { "smart" },
           winblend = 0,
           border = {},
@@ -189,6 +303,17 @@ return {
             override_file_sorter = true, -- override the file sorter
             case_mode = "smart_case", -- or "ignore_case" or "respect_case"
           },
+          file_browser = {
+            mappings = {
+              ['n'] = {
+                ['c'] = fb_actions.create,
+                ['r'] = fb_actions.rename,
+                ['d'] = fb_actions.remove,
+                ['o'] = fb_actions.open,
+                ['p'] = fb_actions.goto_parent_dir,
+              },
+            },
+          },
         },
       }
 
@@ -221,9 +346,16 @@ return {
           require("telescope").load_extension "fzf"
         end)
       end
+      pcall(function()
+        require("telescope").load_extension "dotfiles"
+      end)
+      pcall(function()
+        require("telescope").load_extension "file_browser"
+      end)
     end,
     keys = {
       { "<leader>fb", "<cmd>Telescope buffers<cr>", desc = "Buffers" },
+      { "<leader>fe", "<cmd>Telescope file_browser<cr>", desc = "File Explorer" },
       { "<leader>ff", util.telescope("find_files"), desc = "Find Files (root dir)" },
       { "<leader>fF", util.telescope("find_files", { cwd = false }), desc = "Find Files (cwd)" },
       { "<leader>fr", "<cmd>Telescope oldfiles<cr>", desc = "Recent" },
@@ -253,104 +385,6 @@ return {
     },
   },
 
-  -- Lir
-  {
-    "christianchiarulli/lir.nvim",
-    keys = {
-      { "<leader>ef", "<cmd>lua require'lir.float'.toggle()<cr>", desc = "Toggle Floating Lir" },
-    },
-
-    config = function()
-      local actions = require'lir.actions'
-      local mark_actions = require 'lir.mark.actions'
-      local clipboard_actions = require'lir.clipboard.actions'
-
-      require'lir'.setup {
-        show_hidden_files = false,
-        ignore = {}, -- { ".DS_Store" "node_modules" } etc.
-        devicons_enable = true,
-        mappings = {
-          ['<cr>']     = actions.edit,
-          ['s'] = actions.split,
-          ['v'] = actions.vsplit,
-          ['t'] = actions.tabedit,
-
-          ['h']     = actions.up,
-          ['q']     = actions.quit,
-
-          ["A"] = actions.mkdir,
-          ["a"] = actions.newfile,
-          ["r"] = actions.rename,
-          ["@"] = actions.cd,
-          ["Y"] = actions.yank_path,
-          ["i"] = actions.toggle_show_hidden,
-          ["d"] = actions.delete,
-
-          ["J"] = function()
-            mark_actions.toggle_mark()
-            vim.cmd("normal! j")
-          end,
-          ["c"] = clipboard_actions.copy,
-          ["x"] = clipboard_actions.cut,
-          ["p"] = clipboard_actions.paste,
-        },
-        float = {
-          winblend = 0,
-          curdir_window = {
-            enable = false,
-            highlight_dirname = false
-          },
-
-          -- -- You can define a function that returns a table to be passed as the third
-          -- -- argument of nvim_open_win().
-          win_opts = function()
-            local width = math.floor(vim.o.columns * 0.7)
-            local height = math.floor(vim.o.lines * 0.7)
-            return {
-              border = "rounded",
-              width = width,
-              height = height,
-              -- row = 1,
-              -- col = math.floor((vim.o.columns - width) / 2),
-            }
-          end,
-        },
-        hide_cursor = true,
-        on_init = function()
-          -- use visual mode
-          vim.api.nvim_buf_set_keymap(
-            0,
-            "x",
-            "J",
-            ':<C-u>lua require"lir.mark.actions".toggle_mark("v")<CR>',
-            { noremap = true, silent = true }
-          )
-
-          -- echo cwd
-          -- vim.api.nvim_echo({ { vim.fn.expand("%:p"), "Normal" } }, false, {})
-        end,
-      }
-
-      local function get_hl_by_name(name)
-        local ret = vim.api.nvim_get_hl_by_name(name.group, true)
-        return string.format("#%06x", ret[name.property])
-      end
-
-      local found, icon_hl = pcall(get_hl_by_name, { group = "NvimTreeFolderIcon", property = "foreground" })
-      if not found then
-        icon_hl = "#42A5F5"
-      end
-
-      -- custom folder icon
-      require'nvim-web-devicons'.set_icon({
-        lir_folder_icon = {
-          icon = "",
-          color = icon_hl,
-          name = "LirFolderNode"
-        }
-      })
-    end,
-  },
   {
     "folke/which-key.nvim",
     event = "VeryLazy",
