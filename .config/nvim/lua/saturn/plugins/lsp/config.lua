@@ -83,19 +83,4 @@ return {
       },
     },
   },
-  nlsp_settings = {
-    setup = {
-      config_home = vim.fn.stdpath("config") .. "/lsp-settings",
-      -- set to false to overwrite schemastore.nvim
-      append_default_schemas = true,
-      ignored_servers = {},
-      loader = "json",
-    },
-  },
-  null_ls = {
-    setup = {
-      debug = false,
-    },
-    config = {},
-  },
 }
