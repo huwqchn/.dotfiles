@@ -161,5 +161,9 @@ return {
     Smiley = "",
     Package = "",
     CircuitBoard = "",
+    Feather = "﯑",
+    CleanCode = "",
+    Lightning = "",
+    Mark = "",
   },
 }
