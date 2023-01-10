@@ -453,17 +453,94 @@ return {
     end,
   },
   {
-    "echasnovski/mini.comment",
+
+    "numToStr/Comment.nvim",
     event = "VeryLazy",
-    opts = {
-      hooks = {
-        pre = function()
-          require("ts_context_commentstring.internal").update_commentstring({})
+    keys = {
+      {
+        "<leader>/",
+        function()
+          require("Comment.api").toggle.linewise.current()
         end,
+        mode = "n",
+        desc = "Comment",
+      },
+      {
+        "<leader>/",
+        "<Plug>(comment_toggle_linewise_visual)",
+        mode = "v",
+        desc = "Comment toggle linewise (visual)",
       },
     },
-    config = function(_, opts)
-      require("mini.comment").setup(opts)
+    config = function()
+      local pre_hook
+      local ts_comment = require("ts_context_commentstring.integrations.comment_nvim")
+      pre_hook = ts_comment.create_pre_hook()
+
+      require("Comment").setup({
+        ---Add a space b/w comment and the line
+        ---@type boolean
+        padding = true,
+
+        ---Whether cursor should stay at the
+        ---same position. Only works in NORMAL
+        ---mode mappings
+        sticky = true,
+
+        ---Lines to be ignored while comment/uncomment.
+        ---Could be a regex string or a function that returns a regex string.
+        ---Example: Use '^$' to ignore empty lines
+        ---@type string|function
+        ignore = "^$",
+
+        ---Whether to create basic (operator-pending) and extra mappings for NORMAL/VISUAL mode
+        ---@type table
+        mappings = {
+          ---operator-pending mapping
+          ---Includes `gcc`, `gcb`, `gc[count]{motion}` and `gb[count]{motion}`
+          basic = true,
+          ---Extra mapping
+          ---Includes `gco`, `gcO`, `gcA`
+          extra = true,
+        },
+
+        ---LHS of line and block comment toggle mapping in NORMAL/VISUAL mode
+        ---@type table
+        toggler = {
+          ---line-comment toggle
+          line = "gcc",
+          ---block-comment toggle
+          block = "gbc",
+        },
+
+        ---LHS of line and block comment operator-mode mapping in NORMAL/VISUAL mode
+        ---@type table
+        opleader = {
+          ---line-comment opfunc mapping
+          line = "gc",
+          ---block-comment opfunc mapping
+          block = "gb",
+        },
+
+        ---LHS of extra mappings
+        ---@type table
+        extra = {
+          ---Add comment on the line above
+          above = "gcO",
+          ---Add comment on the line below
+          below = "gco",
+          ---Add comment at the end of line
+          eol = "gcA",
+        },
+
+        ---Pre-hook, called before commenting the line
+        ---@type function|nil
+        pre_hook = pre_hook,
+
+        ---Post-hook, called after commenting is done
+        ---@type function|nil
+        post_hook = nil,
+      })
     end,
   },
   {
@@ -501,7 +578,6 @@ return {
     end,
   },
   {
-
     "ThePrimeagen/refactoring.nvim",
     keys = {
       {
@@ -516,5 +592,46 @@ return {
       },
     },
     config = true,
+  },
+  {
+    "danymat/neogen",
+    keys = {
+      {
+        "<leader>c/",
+        function()
+          require("neogen").generate({})
+        end,
+        desc = "Neogen Comment",
+      },
+    },
+    config = { snippet_engine = "luasnip" },
+    dependencies = { "nvim-treesitter" },
+  },
+  {
+    "MattesGroeger/vim-bookmarks",
+    config = true,
+    keys = {
+      { "<leader>ma", "<cmd>silent BookmarkAnnotate<cr>", desc = "Annotate" },
+      { "<leader>mc", "<cmd>silent BookmarkClear<cr>", desc = "Clear" },
+      { "<leader>mt", "<cmd>silent BookmarkToggle<cr>", desc = "Toggle" },
+      { "<leader>me", "<cmd>silent BookmarkNext<cr>", desc = "Next" },
+      { "<leader>mu", "<cmd>silent BookmarkPrev<cr>", desc = "Prev" },
+      { "<leader>ml", "<cmd>silent BookmarkShowAll<cr>", desc = "Show All" },
+      { "<leader>mx", "<cmd>BookmarkClearAll<cr>", desc = "Clear All" },
+    },
+    cmd = {
+      "BookmarkToggle",
+      "BookmarkAnnotate",
+      "BookmarkNext",
+      "BookmarkPrev",
+      "BookmarkShowAll",
+      "BookmarkClear",
+      "BookmarkClearAll",
+      "BookmarkMoveUp",
+      "BookmarkMoveDown",
+      "BookmarkMoveToLine",
+      "BookmarkSave",
+      "BookmarkLoad",
+    },
   },
 }
