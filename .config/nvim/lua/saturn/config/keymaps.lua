@@ -42,7 +42,7 @@ vim.keymap.set("", "<C-q>", "<cmd>qa<cr>")
 vim.keymap.set("", "Q", "<cmd>q<cr>")
 
 -- select all
-vim.keymap.set("", "<C-a>", "<esc>ggvG")
+vim.keymap.set("", "<C-a>", "<esc>ggVG")
 
 -- paste
 vim.keymap.set("i", "<C-v>", "<C-g>u<Cmd>set paste<CR><C-r>+<Cmd>set nopaste<CR>")
