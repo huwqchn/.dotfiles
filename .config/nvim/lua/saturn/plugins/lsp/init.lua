@@ -65,6 +65,7 @@ return {
       { "williamboman/mason-lspconfig.nvim" },
       { "folke/neodev.nvim", config = true },
       { "smjonas/inc-rename.nvim" },
+      { "b0o/SchemaStore.nvim" },
       "mason.nvim",
       "cmp-nvim-lsp",
       "lvimuser/lsp-inlayhints.nvim",
@@ -85,10 +86,6 @@ return {
         select_signature_key = [[<M-c>]],
       })
     end,
-  },
-  {
-    -- json schemas
-    "b0o/SchemaStore.nvim",
   },
   {
     "lvimuser/lsp-inlayhints.nvim",

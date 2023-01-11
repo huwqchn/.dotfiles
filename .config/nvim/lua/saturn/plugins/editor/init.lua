@@ -108,8 +108,8 @@ return {
     config = function()
       local actions = require("telescope.actions")
       local fb_actions = require('telescope').extensions.file_browser.actions
-      conf = {
-        theme = "dropdown", ---@type telescope_themes
+      local conf = {
+        theme = "dropdown", --@type telescope_themes
         defaults = {
           prompt_prefix = saturn.icons.ui.Telescope .. " ",
           selection_caret = saturn.icons.ui.Forward .. " ",
@@ -464,6 +464,21 @@ return {
     event = "BufReadPre",
   },
 
+  -- git-conflict
+  {
+    "akinsho/git-conflict.nvim",
+    cmd = {
+      "GitConflictChooseOurs",
+      "GitConflictChooseTheirs",
+      "GitConflictChooseBoth",
+      "GitConflictChooseNone",
+      "GitConflictNextConflict",
+      "GitConflictPrevConflict",
+      "GitConflictListQf",
+    },
+    config = true,
+  },
+
   -- references
   {
     "RRethy/vim-illuminate",
@@ -483,8 +498,8 @@ return {
     "echasnovski/mini.bufremove",
     -- stylua: ignore
     keys = {
-      { "<leader>ud", function() require("mini.bufremove").delete(0, false) end, desc = "Delete Buffer" },
-      { "<leader>uD", function() require("mini.bufremove").delete(0, true) end, desc = "Delete Buffer (Force)" },
+      { "<leader>bd", function() require("mini.bufremove").delete(0, false) end, desc = "Delete Buffer" },
+      { "<leader>bD", function() require("mini.bufremove").delete(0, true) end, desc = "Delete Buffer (Force)" },
     },
   },
 
@@ -534,8 +549,8 @@ return {
     event = "BufReadPost",
     config = true,
     keys = {
-      { "<leader>ti", function() require("todo-comments").jump_next() end, desc = "Next todo comment" },
-      { "<leader>tn", function() require("todo-comments").jump_prev() end, desc = "Previous todo comment" },
+      { "]t", function() require("todo-comments").jump_next() end, desc = "Next todo comment" },
+      { "[t", function() require("todo-comments").jump_prev() end, desc = "Previous todo comment" },
       { "<leader>to", "<cmd>TodoTrouble<cr>", desc = "Todo Trouble" },
       { "<leader>tk", "<cmd>TodoTrouble keywords=TODO,FIX,FIXME<cr>", desc = "Todo Trouble" },
       { "<leader>tf", "<cmd>TodoTelescope<cr>", desc = "Todo Telescope" },

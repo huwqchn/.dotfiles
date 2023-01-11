@@ -181,7 +181,7 @@ return {
   -- bufferline
   {
     "akinsho/bufferline.nvim",
-    event = "BufAdd",
+    event = "VeryLazy",
     keys = {
       { "<leader>bp", "<cmd>BufferLinePick<cr>", desc = "Jump" },
       { "<Tab>", "<cmd>BufferLineCycleNext<cr>", desc = "Next" },
