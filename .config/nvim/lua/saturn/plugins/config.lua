@@ -14,6 +14,10 @@ local function load(name)
       end,
     })
   end
+  if vim.bo.filetype == "lazy" then
+    -- HACK: LazyVim may have overwritten options of the Lazy ui, so reset this here
+    vim.cmd([[do VimResized]])
+  end
 end
 
 -- load options here, before lazy init while sourcing plugin modules
@@ -21,14 +25,20 @@ end
 -- after installing missing plugins
 load("options")
 
--- autocmds and keymaps can wait to load
-vim.api.nvim_create_autocmd("User", {
-  pattern = "VeryLazy",
-  callback = function()
-    load("commands")
-    load("autocmds")
-    load("keymaps")
-  end,
-})
+if vim.fn.argc() == 0 then
+  -- autocmds and keymaps can wait to load
+  vim.api.nvim_create_autocmd("User", {
+    pattern = "VeryLazy",
+    callback = function()
+      load("commands")
+      load("autocmds")
+      load("keymaps")
+    end,
+  })
+else
+  load("commands")
+  load("autocmds")
+  load("keymaps")
+end
 
 return {}
