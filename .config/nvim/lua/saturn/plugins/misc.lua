@@ -1,9 +1,9 @@
 return {
-  {
-    "karb94/neoscroll.nvim",
-    config = true,
-    event = "VeryLazy",
-  },
+  -- {
+  --   "karb94/neoscroll.nvim",
+  --   config = true,
+  --   event = "VeryLazy",
+  -- },
   {
     "nvim-neorg/neorg",
     ft = "norg",
@@ -93,11 +93,13 @@ return {
           require("lsp-inlayhints").toggle()
           vim.g.cmp_active = false
           vim.cmd([[LspStop]])
+          vim.opt.relativenumber = false
         end,
         on_close = function()
           require("lsp-inlayhints").toggle()
           vim.g.cmp_active = true
           vim.cmd([[LspStart]])
+          vim.opt.relativenumber = true
         end,
       })
     end,
@@ -161,4 +163,5 @@ return {
       })
     end,
   },
+  --TODO:folding
 }

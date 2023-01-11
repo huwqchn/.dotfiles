@@ -12,6 +12,24 @@ return {
     ---@usage filter func to select client
     -- filter = require("saturn.plugins.core.lsp.utils").format_filter,
   },
+  lsp = {
+    buffer_options = {
+      --- enable completion triggered by <c-x><c-o>
+      omnifunc = "v:lua.vim.lsp.omnifunc",
+      --- use gq for formatting
+      formatexpr = "v:lua.vim.lsp.formatexpr(#{timeout_ms:500})",
+    },
+    document_highlight = false,
+    code_lens_refresh = true,
+    installer = {
+      setup = {
+        ensure_installed = { "sumneko_lua", "jsonls", "clangd", "pyright" },
+        automatic_installation = {
+          exclude = {},
+        },
+      },
+    },
+  },
   use_icons = true,
   icons = require("saturn.config.ui.icons"),
   plugins = {},

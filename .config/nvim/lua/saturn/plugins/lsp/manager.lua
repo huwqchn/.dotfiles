@@ -31,10 +31,10 @@ end
 ---@return table
 local function resolve_config(server_name, ...)
   local defaults = {
-    on_attach = require("saturn.plugins.lsp").common_on_attach,
-    on_init = require("saturn.plugins.lsp").common_on_init,
-    on_exit = require("saturn.plugins.lsp").common_on_exit,
-    capabilities = require("saturn.plugins.lsp").common_capabilities(),
+    on_attach = require("saturn.plugins.lsp.hooks").common_on_attach,
+    on_init = require("saturn.plugins.lsp.hooks").common_on_init,
+    on_exit = require("saturn.plugins.lsp.hooks").common_on_exit,
+    capabilities = require("saturn.plugins.lsp.hooks").common_capabilities(),
   }
 
   local has_custom_provider, custom_config = pcall(require, "saturn/plugins/lsp/providers/" .. server_name)

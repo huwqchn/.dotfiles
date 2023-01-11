@@ -201,15 +201,16 @@ return {
         highlight = "sh", -- Highlight surrounding
         replace = "sr", -- Replace surrounding
         update_n_lines = "sn", -- Update `n_lines`
+        suffix_last = 'u', -- Suffix to search with "prev" method
+        suffix_next = 'e', -- Suffix to search with "next" method
       },
     },
     config = function(_, opts)
-      -- use gz mappings instead of s to prevent conflict with leap
       require("mini.surround").setup(opts)
     end,
+    event = "VeryLazy",
   },
   {
-
     "numToStr/Comment.nvim",
     event = "VeryLazy",
     keys = {

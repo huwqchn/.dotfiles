@@ -57,10 +57,15 @@ return {
     vim.diagnostic.config(config)
     vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, opts.float)
     vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, opts.float)
+    require("mason-lspconfig").setup(saturn.lsp.installer.setup)
+    local util = require "lspconfig.util"
+    -- automatic_installation is handled by lsp-manager
+    util.on_setup = nil
   end,
   dependencies = {
     { "williamboman/mason-lspconfig.nvim" },
     { "folke/neodev.nvim", config = true },
+    { "smjonas/inc-rename.nvim" },
     {
       "ray-x/lsp_signature.nvim",
       opts = {
@@ -85,5 +90,51 @@ return {
         end,
       },
     },
-  }
+    {
+      "lvimuser/lsp-inlayhints.nvim",
+      config = function()
+        vim.api.nvim_create_augroup("LspAttach_inlayhints", {})
+        vim.api.nvim_create_autocmd("LspAttach", {
+          group = "LspAttach_inlayhints",
+          callback = function(args)
+            if not (args.data and args.data.client_id) then
+              return
+            end
+
+            local client = vim.lsp.get_client_by_id(args.data.client_id)
+            require("lsp-inlayhints").on_attach(client, args.buf)
+          end,
+        })
+        require("lsp-inlayhints").setup()
+      end,
+    },
+  },
+  {
+    "williamboman/mason.nvim",
+    cmd = "Mason",
+    keys = { { "<leader>cI", "<cmd>Mason<cr>", desc = "Mason" } },
+    opts = {
+      ui = {
+        border = "rounded",
+        keymaps = {
+          toggle_package_expand = "<CR>",
+          install_package = "<Space>",
+          update_package = "l",
+          check_package_version = "c",
+          update_all_packages = "L",
+          check_outdated_packages = "C",
+          uninstall_package = "X",
+          cancel_installation = "<C-c>",
+          apply_language_filter = "<C-f>",
+        },
+      },
+    },
+  },
+  {
+    "jose-elias-alvarez/null-ls.nvim",
+    config = function()
+      local default_opts = require("saturn.plugins.lsp.hooks").get_common_opts()
+      null_ls.setup(vim.tbl_deep_extend("force", default_opts, saturn.lsp.null_ls.setup))
+    end,
+  },
 }

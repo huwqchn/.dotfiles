@@ -360,6 +360,7 @@ return {
       { "<leader>fF", util.telescope("find_files", { cwd = false }), desc = "Find Files (cwd)" },
       { "<leader>fr", "<cmd>Telescope oldfiles<cr>", desc = "Recent" },
       { "<leader>fM", "<cmd>lua require('telescope').extensions.media_files.media_files()<cr>", desc = "Media" },
+      { "<leader>fd", "<cmd>Telescope dotfiles<cr>", desc = "Dotfiles" },
       { "<leader>gc", "<cmd>Telescope git_commits<CR>", desc = "commits" },
       { "<leader>ga", "<cmd>Telescope git_status<CR>", desc = "status" },
       { "<leader>ss", util.telescope("live_grep"), desc = "Find in Files (Grep)" },
@@ -634,4 +635,7 @@ return {
     enabled = saturn.enable_extra_plugins,
     config = true,
   },
+
+  --TODO:lab
+  --TODO:dap
 }
