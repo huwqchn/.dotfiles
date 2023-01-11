@@ -132,9 +132,15 @@ return {
   },
   {
     "jose-elias-alvarez/null-ls.nvim",
-    config = function()
+    opts = {
+      setup = {
+        debug = false,
+      },
+      config = {},
+    },
+    config = function(_, opts)
       local default_opts = require("saturn.plugins.lsp.hooks").get_common_opts()
-      null_ls.setup(vim.tbl_deep_extend("force", default_opts, saturn.lsp.null_ls.setup))
+      null_ls.setup(vim.tbl_deep_extend("force", default_opts, opts))
     end,
   },
 }
