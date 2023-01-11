@@ -21,40 +21,50 @@ return {
         desc = "Delete all Notifications",
       },
     },
-    config = {
-      timeout = 3000,
-      max_height = function()
-        return math.floor(vim.o.lines * 0.75)
-      end,
-      max_width = function()
-        return math.floor(vim.o.columns * 0.75)
-      end,
-    },
+    config = function()
+      local notify = require("notify")
+      notify.setup({
+        -- Icons for the different levels
+        icons = {
+          ERROR = saturn.icons.diagnostics.Error,
+          WARN = saturn.icons.diagnostics.Warning,
+          INFO = saturn.icons.diagnostics.Information,
+          DEBUG = saturn.icons.ui.Bug,
+          TRACE = saturn.icons.ui.Pencil,
+        },
+      })
+      local notify_filter = notify
+      vim.notify = function(msg, ...)
+        if msg:match("character_offset must be called") then
+          return
+        end
+        if msg:match("method textDocument") then
+          return
+        end
+        if
+          msg:match("warning: multiple different client offset_encodings detected for buffer, this is not supported yet")
+        then
+          return
+        end
+
+        notify_filter(msg, ...)
+      end
+    end
   },
   {
     "stevearc/dressing.nvim",
-    event = "VeryLazy",
     init = function()
-      ---@diagnostic disable-next-line: duplicate-set-field
+      --@diagnostic disable-next-line: duplicate-set-field
       vim.ui.select = function(...)
         require("lazy").load({ plugins = { "dressing.nvim" } })
         return vim.ui.select(...)
       end
-      ---@diagnostic disable-next-line: duplicate-set-field
+      --@diagnostic disable-next-line: duplicate-set-field
       vim.ui.input = function(...)
         require("lazy").load({ plugins = { "dressing.nvim" } })
         return vim.ui.input(...)
       end
     end,
-    config = {
-      icons = {
-        ERROR = saturn.icons.diagnostics.Error,
-        WARN = saturn.icons.diagnostics.Warning,
-        INFO = saturn.icons.diagnostics.Information,
-        DEBUG = saturn.icons.ui.Bug,
-        TRACE = saturn.icons.ui.Pencil,
-      },
-    }
   },
   {
     "nvim-lualine/lualine.nvim",

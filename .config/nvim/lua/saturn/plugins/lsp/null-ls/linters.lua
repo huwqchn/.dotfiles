@@ -31,11 +31,12 @@ function M.setup(linter_configs)
     return
   end
 
-  local registered = services.register_sources(linter_configs, method)
+  services.register_sources(linter_configs, method)
+  -- local registered = services.register_sources(linter_configs, method)
 
-  if #registered > 0 then
-    vim.notify("Registered the following linters: " .. unpack(registered))
-  end
+  -- if #registered > 0 then
+  --   vim.notify("Registered the following linters: " .. unpack(registered))
+  -- end
 end
 
 return M

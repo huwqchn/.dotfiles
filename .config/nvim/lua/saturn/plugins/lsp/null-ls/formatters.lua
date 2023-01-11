@@ -20,12 +20,12 @@ function M.setup(formatter_configs)
   if vim.tbl_isempty(formatter_configs) then
     return
   end
+  services.register_sources(formatter_configs, method)
+  -- local registered = services.register_sources(formatter_configs, method)
 
-  local registered = services.register_sources(formatter_configs, method)
-
-  if #registered > 0 then
-    vim.notify("Registered the following formatters: " .. unpack(registered))
-  end
+  -- if #registered > 0 then
+  --   vim.notify("Registered the following formatters: " .. unpack(registered))
+  -- end
 end
 
 return M

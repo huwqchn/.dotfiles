@@ -14,11 +14,12 @@ function M.setup(actions_configs)
     return
   end
 
-  local registered = services.register_sources(actions_configs, method)
+  services.register_sources(actions_configs, method)
+  -- local registered = services.register_sources(actions_configs, method)
 
-  if #registered > 0 then
-    vim.notify("Registered the following action-handlers: " .. unpack(registered))
-  end
+  -- if #registered > 0 then
+  --   vim.notify("Registered the following action-handlers: " .. unpack(registered))
+  -- end
 end
 
 return M
