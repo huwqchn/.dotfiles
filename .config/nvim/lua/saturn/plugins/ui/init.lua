@@ -33,6 +33,7 @@ return {
   },
   {
     "stevearc/dressing.nvim",
+    event = "VeryLazy",
     init = function()
       ---@diagnostic disable-next-line: duplicate-set-field
       vim.ui.select = function(...)
@@ -45,6 +46,15 @@ return {
         return vim.ui.input(...)
       end
     end,
+    config = {
+      icons = {
+        ERROR = saturn.icons.diagnostics.Error,
+        WARN = saturn.icons.diagnostics.Warning,
+        INFO = saturn.icons.diagnostics.Information,
+        DEBUG = saturn.icons.ui.Bug,
+        TRACE = saturn.icons.ui.Pencil,
+      },
+    }
   },
   {
     "nvim-lualine/lualine.nvim",

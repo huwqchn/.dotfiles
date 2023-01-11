@@ -6,7 +6,7 @@ local function r_inspect_settings(structure, limit, separator)
   limit = limit or 100 -- default item limit
   separator = separator or "." -- indent string
   if limit < 1 then
-    print "ERROR: Item limit reached."
+    -- print "ERROR: Item limit reached."
     return limit - 1
   end
   if structure == nil then

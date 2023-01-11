@@ -135,7 +135,7 @@ return {
     TriangleShortArrowRight = "",
     TriangleShortArrowUp = "",
     Quit = " ",
-    Gear = "",
+    MultiGear = "",
   },
   diagnostics = {
     BoldError = "",
@@ -165,5 +165,6 @@ return {
     CleanCode = "",
     Lightning = "",
     Mark = "",
+    Alien = "",
   },
 }

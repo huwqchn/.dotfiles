@@ -12,7 +12,7 @@ return {
             { name = "DiagnosticSignInfo", text = saturn.icons.diagnostics.Info },
           },
         },
-        virtual_text = { space = 4, prefix = saturn.icons.misc.CleanCode },
+        virtual_text = { space = 4, prefix = saturn.icons.misc.Alien },
         update_in_insert = false,
         underline = true,
         severity_sort = true,
