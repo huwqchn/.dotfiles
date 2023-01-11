@@ -420,16 +420,14 @@ return {
     end,
   },
   {
-
     "lewis6991/gitsigns.nvim",
     config = {
-
       signs = {
         add = {
-          text = saturn.icons.ui.BoldLineLeft,
+          text = saturn.icons.ui.ThickLineLeft,
         },
         change = {
-          text = saturn.icons.ui.BoldLineLeft,
+          text = saturn.icons.ui.ThickLineLeft,
         },
         delete = {
           text = saturn.icons.ui.Triangle,
@@ -438,7 +436,7 @@ return {
           text = saturn.icons.ui.Triangle,
         },
         changedelete = {
-          text = saturn.icons.ui.BoldLineLeft,
+          text = saturn.icons.ui.ThickLineLeft,
         },
       },
       on_attach = function(buffer)
