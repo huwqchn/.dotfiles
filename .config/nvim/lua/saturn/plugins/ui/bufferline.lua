@@ -137,7 +137,7 @@ M.config = {
     middle_mouse_command = nil, -- can be a string | function, see "Mouse actions"
     indicator = {
       icon = saturn.icons.ui.BoldLineLeft, -- this should be omitted if indicator style is not 'icon'
-      style = "icon", -- can also be 'underline'|'none',
+      style = "underline", -- can also be 'underline'|'none',
     },
     buffer_close_icon = saturn.icons.ui.Close,
     modified_icon = saturn.icons.ui.Circle,
@@ -206,7 +206,7 @@ M.config = {
     enforce_regular_tabs = false,
     always_show_bufferline = false,
     hover = {
-      enabled = false, -- requires nvim 0.8+
+      enabled = true, -- requires nvim 0.8+
       delay = 200,
       reveal = { "close" },
     },

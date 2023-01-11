@@ -162,6 +162,16 @@ return {
   {
     "akinsho/bufferline.nvim",
     event = "BufAdd",
+    keys = {
+      { "<leader>bp", "<cmd>BufferLinePick<cr>", desc = "Jump" },
+      { "<Tab>", "<cmd>BufferLineCycleNext<cr>", desc = "Next" },
+      { "<S-Tab>", "<cmd>BufferLineCyclePrev<cr>", desc = "Previous" },
+      { "<leader>bc", "<cmd>BufferLinePickClose<cr>", desc = "Pick Close" },
+      { "<leader>bn", "<cmd>BufferLineCloseLeft<cr>", desc = "Close all to the left" },
+      { "<leader>bi", "<cmd>BufferLineCloseRight<cr>", desc = "Close all to the right" },
+      { "<leader>bD", "<cmd>BufferLineSortByDirectory<cr>", desc = "Sort by directory" },
+      { "<leader>bL", "<cmd>BufferLineSortByExtension<cr>", desc = "Sort by language" },
+    },
     config = function()
       local bufferline = require("bufferline")
       local conf = require("saturn.plugins.ui.bufferline").config
