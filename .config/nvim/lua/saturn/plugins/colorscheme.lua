@@ -65,4 +65,10 @@ return {
     init = init,
     config = config,
   },
+
+  -- catppuccin
+  {
+    "catppuccin/nvim",
+    name = "catppuccin",
+  },
 }

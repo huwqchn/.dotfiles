@@ -19,7 +19,7 @@ require("lazy").setup({
   git = {
     timeout = 120,
   },
-  -- checker = { enabled = true },
+  checker = { enabled = true },
   performance = {
     rtp = {
       disabled_plugins = {
