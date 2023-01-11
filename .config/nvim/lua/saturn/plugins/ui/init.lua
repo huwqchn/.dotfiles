@@ -11,16 +11,16 @@ return {
   -- better vim.notify
   {
     "rcarriga/nvim-notify",
-    event = "VeryLazy",
-    keys = {
-      {
-        "<bs>",
-        function()
-          require("notify").dismiss({ silent = true, pending = true })
-        end,
-        desc = "Delete all Notifications",
-      },
-    },
+    -- event = "VeryLazy",
+    -- keys = {
+    --   {
+    --     "<bs>",
+    --     function()
+    --       require("notify").dismiss({ silent = true, pending = true })
+    --     end,
+    --     desc = "Delete all Notifications",
+    --   },
+    -- },
     config = function()
       local notify = require("notify")
       notify.setup({
@@ -222,6 +222,9 @@ return {
           ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
           ["vim.lsp.util.stylize_markdown"] = true,
         },
+        signature = {
+          enabled = false,
+        }
       },
       presets = {
         bottom_search = true,

@@ -64,7 +64,7 @@ return {
     dependencies = {
       { "williamboman/mason-lspconfig.nvim" },
       { "folke/neodev.nvim", config = true },
-      { "smjonas/inc-rename.nvim" },
+      { "smjonas/inc-rename.nvim", config = true },
       { "b0o/SchemaStore.nvim" },
       "mason.nvim",
       "cmp-nvim-lsp",

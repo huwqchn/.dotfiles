@@ -649,6 +649,169 @@ return {
     config = true,
   },
 
-  --TODO:lab
-  --TODO:dap
+  -- Debugging
+  {
+    "mfussenegger/nvim-dap",
+    keys = {
+      { "<leader>dd", "<cmd>lua require'dap'.toggle_breakpoint()<cr>", desc = "Toggle Breakpoint" },
+      { "<leader>db", "<cmd>lua require'dap'.step_back()<cr>", desc = "Step Back" },
+      { "<leader>dc", "<cmd>lua require'dap'.continue()<cr>", desc = "Continue" },
+      { "<leadeer>dC", "<cmd>lua require'dap'.run_to_cursor()<cr>", "Run To Cursor" },
+      { "<leader>dD", "<cmd>lua require'dap'.disconnect()<cr>", "Disconnect" },
+      { "<leader>ds", "<cmd>lua require'dap'.session()<cr>", "Get Session" },
+      { "<leader>di", "<cmd>lua require'dap'.step_into()<cr>", "Step Into" },
+      { "<leader>do", "<cmd>lua require'dap'.step_over()<cr>", "Step Over" },
+      { "<leader>du", "<cmd>lua require'dap'.step_out()<cr>", "Step Out" },
+      { "<leader>dp", "<cmd>lua require'dap'.pause()<cr>", "Pause" },
+      { "<leader>dr", "<cmd>lua require'dap'.repl.toggle()<cr>", "Toggle Repl" },
+      { "<leader>dq", "<cmd>lua require'dap'.close()<cr>", "Quit" },
+      { "<leader>dt", "<cmd>lua require'dapui'.toggle({reset = true})<cr>", "Toggle UI" },
+    },
+    opts = {
+      breakpoint = {
+        text = saturn.icons.ui.Bug,
+        texthl = "DiagnosticSignError",
+        linehl = "",
+        numhl = "",
+      },
+      breakpoint_rejected = {
+        text = saturn.icons.ui.Bug,
+        texthl = "DiagnosticSignError",
+        linehl = "",
+        numhl = "",
+      },
+      stopped = {
+        text = saturn.icons.ui.BoldArrowRight,
+        texthl = "DiagnosticSignWarn",
+        linehl = "Visual",
+        numhl = "DiagnosticSignWarn",
+      },
+      log = {
+        level = "info",
+      },
+    },
+    config = function(_, opts)
+      local dap = pcall(require, "dap")
+
+      if saturn.use_icons then
+        vim.fn.sign_define("DapBreakpoint", opts.breakpoint)
+        vim.fn.sign_define("DapBreakpointRejected", opts.breakpoint_rejected)
+        vim.fn.sign_define("DapStopped", opts.stopped)
+      end
+
+      dap.set_log_level(opts.log.level)
+    end,
+    dependencies = {
+      -- Debugger user interface
+      {
+        "rcarriga/nvim-dap-ui",
+        opts = {
+          ui = {
+            auto_open = true,
+            notify = {
+              threshold = vim.log.levels.INFO,
+            },
+            config = {
+              expand_lines = true,
+              icons = { expanded = "", collapsed = "", circular = "" },
+              mappings = {
+                -- Use a table to apply multiple mappings
+                expand = { "<CR>", "<2-LeftMouse>" },
+                open = "o",
+                remove = "d",
+                edit = "k",
+                repl = "r",
+                toggle = "t",
+              },
+              layouts = {
+                {
+                  elements = {
+                    { id = "scopes", size = 0.33 },
+                    { id = "breakpoints", size = 0.17 },
+                    { id = "stacks", size = 0.25 },
+                    { id = "watches", size = 0.25 },
+                  },
+                  size = 0.33,
+                  position = "right",
+                },
+                {
+                  elements = {
+                    { id = "repl", size = 0.45 },
+                    { id = "console", size = 0.55 },
+                  },
+                  size = 0.27,
+                  position = "bottom",
+                },
+              },
+              floating = {
+                max_height = 0.9,
+                max_width = 0.5, -- Floats will be treated as percentage of your screen.
+                border = vim.g.border_chars, -- Border style. Can be 'single', 'double' or 'rounded'
+                mappings = {
+                  close = { "q", "<Esc>" },
+                },
+              },
+            },
+          },
+        },
+        config = function(_, opts)
+          local dap = require("dap")
+
+          local dapui = require("dapui")
+          dapui.setup(opts.ui.config)
+
+          if opts.ui.auto_open then
+            dap.listeners.after.event_initialized["dapui_config"] = function()
+              dapui.open()
+            end
+            -- dap.listeners.before.event_terminated["dapui_config"] = function()
+            --   dapui.close()
+            -- end
+            -- dap.listeners.before.event_exited["dapui_config"] = function()
+            --   dapui.close()
+            -- end
+          end
+
+          -- until rcarriga/nvim-dap-ui#164 is fixed
+          local function notify_handler(msg, level, _opts)
+            if level >= opts.ui.notify.threshold then
+              return vim.notify(msg, level, _opts)
+            end
+
+            _opts = vim.tbl_extend("keep", opts or {}, {
+              title = "dap-ui",
+              icon = "",
+              on_open = function(win)
+                vim.api.nvim_buf_set_option(vim.api.nvim_win_get_buf(win), "filetype", "markdown")
+              end,
+            })
+
+            -- vim_log_level can be omitted
+            -- if level == nil then
+            --   level = Log.levels["INFO"]
+            -- elseif type(level) == "string" then
+            --   level = Log.levels[(level):upper()] or Log.levels["INFO"]
+            -- else
+            --   -- https://github.com/neovim/neovim/blob/685cf398130c61c158401b992a1893c2405cd7d2/runtime/lua/vim/lsp/log.lua#L5
+            --   level = level + 1
+            -- end
+
+            -- msg = string.format("%s: %s", opts.title, msg)
+            -- Log:add_entry(level, msg)
+          end
+
+          local dapui_ok, _ = xpcall(function()
+            require("dapui.util").notify = notify_handler
+          end, debug.traceback)
+          if not dapui_ok then
+            vim.notify("Unable to override dap-ui logging level")
+          end
+        end,
+      },
+    },
+  },
+
+  { "mxsdev/nvim-dap-vscode-js", ft = { "javascript", "typescript" } },
+  { "mfussenegger/nvim-dap-python", ft = "python" },
+  { "leoluz/nvim-dap-go", ft = "go" },
 }
