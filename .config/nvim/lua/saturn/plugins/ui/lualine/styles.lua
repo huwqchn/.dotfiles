@@ -101,7 +101,9 @@ styles.saturn = {
       components.diagnostics,
       components.lsp,
       components.spaces,
-      components.filetype,
+      -- components.filetype,
+      components.fileicon,
+      components.filename,
     },
     lualine_y = { components.location },
     lualine_z = {
@@ -123,7 +125,9 @@ styles.saturn = {
       components.diagnostics,
       components.lsp,
       components.spaces,
-      components.filetype,
+      -- components.filetype,
+      components.fileicon,
+      components.filename,
     },
     lualine_y = { components.location },
     lualine_z = {
