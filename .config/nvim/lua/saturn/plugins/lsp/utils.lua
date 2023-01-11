@@ -24,7 +24,7 @@ end
 function M.get_client_capabilities(client_id)
   local client = vim.lsp.get_client_by_id(tonumber(client_id))
   if not client then
-    vim.notify("Unable to determine client from client_id: " .. client_id)
+    -- print("Unable to determine client from client_id: " .. client_id)
     return
   end
 
@@ -73,7 +73,7 @@ end
 function M.setup_document_highlight(client, bufnr)
   local illuminant_active, _ pcall(require, "vim-illuminate")
   if illuminant_active then
-    vim.notify("skipping setup for document_highlight, illuminate already active")
+    -- vim.notify("skipping setup for document_highlight, illuminate already active")
     return
   end
   local status_ok, highlight_supported = pcall(function()
@@ -112,7 +112,7 @@ function M.setup_document_symbols(client, bufnr)
   vim.g.navic_silence = false -- can be set to true to suppress error
   local symbols_supported = client.supports_method "textDocument/documentSymbol"
   if not symbols_supported then
-    vim.notify("skipping setup for document_symbols, method not supported by " .. client.name)
+    -- print("skipping setup for document_symbols, method not supported by " .. client.name)
     return
   end
   local status_ok, navic = pcall(require, "nvim-navic")
