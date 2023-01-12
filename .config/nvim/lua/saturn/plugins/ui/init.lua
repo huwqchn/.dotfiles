@@ -165,13 +165,21 @@ return {
     event = "BufReadPre",
     config = function()
       vim.api.nvim_create_autocmd("FileType", {
-        pattern = { "help", "alpha", "dashboard", "neo-tree", "Trouble", "lazy", "mason" },
+        pattern = { "help", "alpha", "dashboard", "neo-tree", "NvimTree", "Trouble", "lazy", "mason" },
         callback = function()
           vim.b.miniindentscope_disable = true
         end,
       })
       require("mini.indentscope").setup({
-        -- symbol = "▏",
+        mappings = {
+          -- Textobjects
+          object_scope = 'kk',
+          object_scope_with_border = 'ak',
+
+          -- Motions (jump to respective border line; if not present - body line)
+          goto_top = '[k',
+          goto_bottom = ']k',
+        },
         symbol = saturn.icons.ui.LineLeft,
         options = { try_as_border = true },
       })

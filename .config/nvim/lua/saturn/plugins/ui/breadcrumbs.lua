@@ -28,6 +28,7 @@ M.config =  {
     "Markdown",
     "notify",
     "noice",
+    "lazy",
     "",
   },
   options = {

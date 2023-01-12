@@ -7,9 +7,9 @@ return {
       -- {
       --   "nvim-treesitter/nvim-treesitter-textobjects",
       -- },
-      {
-        "p00f/nvim-ts-rainbow",
-      },
+      -- {
+      --   "p00f/nvim-ts-rainbow",
+      -- },
       -- {
       --   "nvim-treesitter/nvim-treesitter-context",
       -- },
@@ -180,15 +180,15 @@ return {
           },
         },
         rainbow = {
-          enable = true,
-          extended_mode = true, -- Highlight also non-parentheses delimiters, boolean or table: lang -> boolean
-          max_file_lines = 1000, -- Do not enable for files with more than 1000 lines, int
-          colors = {
-            "DodgerBlue",
-            "Orchid",
-            "Gold",
-          },
-          disable = { "html" },
+          enable = false,
+          -- extended_mode = true, -- Highlight also non-parentheses delimiters, boolean or table: lang -> boolean
+          -- max_file_lines = 1000, -- Do not enable for files with more than 1000 lines, int
+          -- colors = {
+          --   "DodgerBlue",
+          --   "Orchid",
+          --   "Gold",
+          -- },
+          -- disable = { "html" },
         },
       })
     end,
@@ -204,11 +204,11 @@ return {
   {
     "JoosepAlviste/nvim-ts-context-commentstring",
   },
- --{
- --  "andymass/vim-matchup",
- --  event = "BufReadPost",
- --  config = function()
- --    vim.g.matchup_matchparen_offscreen = { method = "popup" }
- --  end,
- --},
+  -- {
+  --   "andymass/vim-matchup",
+  --   event = "BufReadPost",
+  --   config = function()
+  --     vim.g.matchup_matchparen_offscreen = { method = "popup" }
+  --   end,
+  -- },
 }
