@@ -3,7 +3,7 @@ local default_workspace = {
     -- vim.fn.expand "$VIMRUNTIME",
     [vim.fn.expand "config" .. "/lua"] = true,
     [vim.fn.expand "$VIMRUNTIME/lua"] = true,
-    -- require("neodev.config").types(),
+    require("neodev.config").types(),
     -- "${3rd}/busted/library",
     -- "${3rd}/luassert/library",
   },
@@ -56,6 +56,9 @@ local opts = {
       },
       diagnostics = {
         globals = { "vim", "saturn" },
+      },
+      completion = {
+        callSnippet = "Replace",
       },
       workspace = default_workspace,
     },

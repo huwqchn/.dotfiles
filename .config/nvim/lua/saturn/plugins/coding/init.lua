@@ -49,6 +49,7 @@ return {
     end,
     enabled = cmp_utils.enabled,
   },
+  { "hrsh7th/cmp-nvim-lsp" },
   {
     "zbirenbaum/copilot.lua",
     event = "InsertEnter",
@@ -173,9 +174,7 @@ return {
     end,
     event = "InsertEnter",
     dependencies = {
-      {
-        "rafamadriz/friendly-snippets",
-      },
+      { "rafamadriz/friendly-snippets" },
     },
   },
 
@@ -310,7 +309,7 @@ return {
       -- { "[f", desc = "Prev function" },
       -- { "]f", desc = "Next function" },
       { "a", mode = { "x", "o" } },
-      { "i", mode = { "x", "o" } },
+      { "k", mode = { "x", "o" } },
     },
     dependencies = {
       {
@@ -325,6 +324,21 @@ return {
       local ai = require("mini.ai")
       return {
         n_lines = 500,
+        mappings = {
+          -- Main textobject prefixes
+          around = 'a',
+          inside = 'k',
+
+          -- Next/last variants
+          around_next = 'ae',
+          inside_next = 'ke',
+          around_last = 'au',
+          inside_last = 'ku',
+
+          -- Move cursor to corresponding edge of `a` textobject
+          goto_left = 'g[',
+          goto_right = 'g]',
+        },
         custom_textobjects = {
           o = ai.gen_spec.treesitter({
             a = { "@block.outer", "@conditional.outer", "@loop.outer" },
@@ -370,31 +384,31 @@ return {
     config = { snippet_engine = "luasnip" },
     dependencies = { "nvim-treesitter" },
   },
-  {
-    "MattesGroeger/vim-bookmarks",
-    config = true,
-    keys = {
-      { "<leader>ma", "<cmd>silent BookmarkAnnotate<cr>", desc = "Annotate" },
-      { "<leader>mc", "<cmd>silent BookmarkClear<cr>", desc = "Clear" },
-      { "<leader>mt", "<cmd>silent BookmarkToggle<cr>", desc = "Toggle" },
-      { "<leader>me", "<cmd>silent BookmarkNext<cr>", desc = "Next" },
-      { "<leader>mu", "<cmd>silent BookmarkPrev<cr>", desc = "Prev" },
-      { "<leader>ml", "<cmd>silent BookmarkShowAll<cr>", desc = "Show All" },
-      { "<leader>mx", "<cmd>BookmarkClearAll<cr>", desc = "Clear All" },
-    },
-    cmd = {
-      "BookmarkToggle",
-      "BookmarkAnnotate",
-      "BookmarkNext",
-      "BookmarkPrev",
-      "BookmarkShowAll",
-      "BookmarkClear",
-      "BookmarkClearAll",
-      "BookmarkMoveUp",
-      "BookmarkMoveDown",
-      "BookmarkMoveToLine",
-      "BookmarkSave",
-      "BookmarkLoad",
-    },
-  },
+  -- {
+  --   "MattesGroeger/vim-bookmarks",
+  --   config = true,
+  --   keys = {
+  --     { "<leader>ma", "<cmd>silent BookmarkAnnotate<cr>", desc = "Annotate" },
+  --     { "<leader>mc", "<cmd>silent BookmarkClear<cr>", desc = "Clear" },
+  --     { "<leader>mt", "<cmd>silent BookmarkToggle<cr>", desc = "Toggle" },
+  --     { "<leader>me", "<cmd>silent BookmarkNext<cr>", desc = "Next" },
+  --     { "<leader>mu", "<cmd>silent BookmarkPrev<cr>", desc = "Prev" },
+  --     { "<leader>ml", "<cmd>silent BookmarkShowAll<cr>", desc = "Show All" },
+  --     { "<leader>mx", "<cmd>BookmarkClearAll<cr>", desc = "Clear All" },
+  --   },
+  --   cmd = {
+  --     "BookmarkToggle",
+  --     "BookmarkAnnotate",
+  --     "BookmarkNext",
+  --     "BookmarkPrev",
+  --     "BookmarkShowAll",
+  --     "BookmarkClear",
+  --     "BookmarkClearAll",
+  --     "BookmarkMoveUp",
+  --     "BookmarkMoveDown",
+  --     "BookmarkMoveToLine",
+  --     "BookmarkSave",
+  --     "BookmarkLoad",
+  --   },
+  -- },
 }

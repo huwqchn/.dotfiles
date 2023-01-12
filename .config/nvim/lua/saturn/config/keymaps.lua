@@ -14,8 +14,8 @@ vim.keymap.set("", "U", "<C-b>")
 vim.keymap.set("", "E", "<C-f>")
 
 -- colemak insert key
-vim.keymap.set("", "k", "i", { remap = true })
-vim.keymap.set("", "K", "I", { remap = true })
+vim.keymap.set("", "k", "i")
+vim.keymap.set("", "K", "I")
 
 -- colemake undo key
 vim.keymap.set("", "l", "u")
