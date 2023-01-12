@@ -212,8 +212,10 @@ return {
   },
   {
     "numToStr/Comment.nvim",
-    event = "VeryLazy",
+    -- event = "VeryLazy",
     keys = {
+      { "gc", mode = {"n", "v", "x" } },
+      { "gb", mode = { "n", "v", "x" } },
       {
         "<leader>/",
         function()
@@ -304,7 +306,6 @@ return {
   -- better text-objects
   {
     "echasnovski/mini.ai",
-    -- event = "BufReadPost",
     keys = {
       -- { "[f", desc = "Prev function" },
       -- { "]f", desc = "Next function" },
@@ -339,56 +340,6 @@ return {
       ai.setup(opts)
     end,
   },
-  -- {
-  --   "echasnovski/mini.ai",
-  --   keys = {
-  --     { "a", mode = { "x", "o" } },
-  --     { "k", mode = { "x", "o" } },
-  --   },
-  --   event = "VeryLazy",
-  --   dependencies = {
-  --     {
-  --       "nvim-treesitter/nvim-treesitter-textobjects",
-  --       init = function()
-  --         -- no need to load the plugin, since we only need its queries
-  --         require("lazy.core.loader").disable_rtp_plugin("nvim-treesitter-textobjects")
-  --       end,
-  --     },
-  --   },
-  --   opts = function()
-  --     local ai = require("mini.ai")
-  --     return {
-  --       n_lines = 500,
-  --       custom_textobjects = {
-  --         o = ai.gen_spec.treesitter({
-  --           a = { "@block.outer", "@conditional.outer", "@loop.outer" },
-  --           k = { "@block.inner", "@conditional.inner", "@loop.inner" },
-  --         }, {}),
-  --         f = ai.gen_spec.treesitter({ a = "@function.outer", k = "@function.inner" }, {}),
-  --         c = ai.gen_spec.treesitter({ a = "@class.outer", k = "@class.inner" }, {}),
-  --       },
-  --       mappings = {
-  --         -- Main textobject prefixes
-  --         around = 'a',
-  --         inside = 'k',
-
-  --         -- Next/last variants
-  --         around_next = 'an',
-  --         inside_next = 'kn',
-  --         around_last = 'al',
-  --         inside_last = 'kl',
-
-  --         -- Move cursor to corresponding edge of `a` textobject
-  --         goto_left = 'g[',
-  --         goto_right = 'g]',
-  --       },
-  --     }
-  --   end,
-  --   config = function(_, opts)
-  --     local ai = require("mini.ai")
-  --     ai.setup(opts)
-  --   end,
-  -- },
   {
     "ThePrimeagen/refactoring.nvim",
     keys = {
