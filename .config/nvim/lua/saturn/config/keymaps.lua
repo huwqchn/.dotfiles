@@ -31,7 +31,7 @@ vim.keymap.set("", "=", "'Nn'[v:searchforward]", { expr = true })
 vim.keymap.set("", "-", "'nN'[v:searchforward]", { expr = true })
 
 -- clear search with <esc>
-vim.keymap.set("", "<esc>", "<cmd>noh<cr><esc>")
+vim.keymap.set({ "n", "i" }, "<esc>", "<cmd>noh<cr><esc>", { desc = "Escape and clear hlsearch" })
 
 -- save
 vim.keymap.set({ "i", "v", "n", "s" }, "<C-s>", "<cmd>wa<cr><esc>")
