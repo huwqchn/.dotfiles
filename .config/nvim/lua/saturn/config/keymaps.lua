@@ -1,5 +1,3 @@
--- vim.o.iangnoremap = true
--- vim.o.langmap = 'k;i,i;k'
 -- colemak movement
 vim.keymap.set("", "e", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 vim.keymap.set("", "u", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
@@ -16,8 +14,8 @@ vim.keymap.set("", "U", "<C-b>")
 vim.keymap.set("", "E", "<C-f>")
 
 -- colemak insert key
-vim.keymap.set("", "k", "i")
-vim.keymap.set("", "K", "I")
+-- vim.keymap.set("", "k", "i")
+-- vim.keymap.set("", "K", "I")
 
 -- colemake undo key
 vim.keymap.set("", "l", "u")

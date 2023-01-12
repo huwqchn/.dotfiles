@@ -38,7 +38,7 @@
   "mini.surround": { "branch": "main", "commit": "df41f1c009afbb3eef39d979977fb14404576f9b" },
   "neodev.nvim": { "branch": "main", "commit": "0e3f5e763639951f96f9acbdc9f52a9fedf91b46" },
   "neogen": { "branch": "main", "commit": "87c09a4f81509adcb5a8b1538e76bb3ccb8d7bf9" },
-  "neogit": { "branch": "master", "commit": "a364c3da583a78f707aac761f5927967a0165143" },
+  "neogit": { "branch": "master", "commit": "981207efd10425fef82ca09fa8bd22c3ac3e622d" },
   "neorg": { "branch": "main", "commit": "4ad79529477fd8b84fec75485e705eab2d3ca34a" },
   "nui.nvim": { "branch": "main", "commit": "257da38029d3859ed111804f9d4e95b0fa993a31" },
   "null-ls.nvim": { "branch": "main", "commit": "915558963709ea17c5aa246ca1c9786bfee6ddb4" },
