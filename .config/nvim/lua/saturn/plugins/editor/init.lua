@@ -390,20 +390,47 @@ return {
   {
     "folke/which-key.nvim",
     event = "VeryLazy",
-    config = function()
-      local wk = require("which-key")
-      wk.setup({
-        plugins = { spelling = true },
-        key_labels = { ["<leader>"] = "SPC" },
-
-        popup_mappings = {
-          scroll_down = "<c-e>", -- binding to scroll down inside the popup
-          scroll_up = "<c-u>", -- binding to scroll up inside the popup
+    opts = {
+      plugins = {
+        marks = false,
+        registers = false,
+        spelling = {
+          enabled = true,
+          suggestions = 20,
         },
-      })
+        presets = {
+          operators = false,
+          motions = false,
+          text_objects = false,
+          windows = false,
+          nav = false,
+          z = false,
+          g = false,
+        },
+
+      },
+      operators = { gc = "Comments" },
+      key_labels = { ["<leader>"] = "SPC" },
+      icons = {
+        breadcrumb = saturn.icons.ui.DoubleChevronRight, -- symbol used in the command line area that shows your active key combo
+        separator = saturn.icons.ui.BoldArrowRight, -- symbol used between a key and it's label
+        group = saturn.icons.ui.Plus, -- symbol prepended to a group
+      },
+      window = {
+        border = "single", -- none, single, double, shadow
+        position = "bottom", -- bottom, top
+        margin = { 1, 0, 1, 0 }, -- extra window margin [top, right, bottom, left]
+        padding = { 2, 2, 2, 2 }, -- extra window padding [top, right, bottom, left]
+        winblend = 0,
+      },
+    },
+
+    config = function(_, opts)
+      local wk = require("which-key")
+      wk.setup(opts)
       wk.register({
         mode = { "n", "v" },
-        ["g"] = { name = "+goto" },
+        -- ["g"] = { name = "+goto" },
         ["]"] = { name = "+next" },
         ["["] = { name = "+prev" },
         ["<leader>b"] = { name = "+buffer" },
@@ -424,7 +451,6 @@ return {
         ["<leader><tab>"] = { name = "+tabs" },
         ["<leader><cr>"] = { name = "+terminal" },
       })
-      -- wk.register({ k = { name = "inside" }, a = { name = "around" } }, { mode = "o", preset = true })
     end,
   },
   {

@@ -302,58 +302,58 @@ return {
   },
 
   -- better text-objects
-  {
-    "echasnovski/mini.ai",
-    event = "VeryLazy",
-    keys = {
-      -- { "[f", desc = "Prev function" },
-      -- { "]f", desc = "Next function" },
-      { "a", mode = { "x", "o" } },
-      { "k", mode = { "x", "o" } },
-    },
-    dependencies = {
-      {
-        "nvim-treesitter/nvim-treesitter-textobjects",
-        init = function()
-          -- no need to load the plugin, since we only need its queries
-          require("lazy.core.loader").disable_rtp_plugin("nvim-treesitter-textobjects")
-        end,
-      },
-    },
-    opts = function()
-      local ai = require("mini.ai")
-      return {
-        n_lines = 500,
-        mappings = {
-          -- Main textobject prefixes
-          around = 'a',
-          inside = 'k',
+  -- {
+  --   "echasnovski/mini.ai",
+  --   event = "VeryLazy",
+  --   keys = {
+  --     -- { "[f", desc = "Prev function" },
+  --     -- { "]f", desc = "Next function" },
+  --     { "a", mode = { "x", "o" } },
+  --     { "k", mode = { "x", "o" } },
+  --   },
+  --   dependencies = {
+  --     {
+  --       "nvim-treesitter/nvim-treesitter-textobjects",
+  --       init = function()
+  --         -- no need to load the plugin, since we only need its queries
+  --         require("lazy.core.loader").disable_rtp_plugin("nvim-treesitter-textobjects")
+  --       end,
+  --     },
+  --   },
+  --   opts = function()
+  --     local ai = require("mini.ai")
+  --     return {
+  --       n_lines = 500,
+  --       mappings = {
+  --         -- Main textobject prefixes
+  --         around = 'a',
+  --         inside = 'k',
 
-          -- Next/last variants
-          around_next = 'an',
-          inside_next = 'kn',
-          around_last = 'al',
-          inside_last = 'kl',
+  --         -- Next/last variants
+  --         around_next = 'an',
+  --         inside_next = 'kn',
+  --         around_last = 'al',
+  --         inside_last = 'kl',
 
-          -- Move cursor to corresponding edge of `a` textobject
-          goto_left = 'g[',
-          goto_right = 'g]',
-        },
-        custom_textobjects = {
-          o = ai.gen_spec.treesitter({
-            a = { "@block.outer", "@conditional.outer", "@loop.outer" },
-            i = { "@block.inner", "@conditional.inner", "@loop.inner" },
-          }, {}),
-          f = ai.gen_spec.treesitter({ a = "@function.outer", i = "@function.inner" }, {}),
-          c = ai.gen_spec.treesitter({ a = "@class.outer", i = "@class.inner" }, {}),
-        },
-      }
-    end,
-    config = function(_, opts)
-      local ai = require("mini.ai")
-      ai.setup(opts)
-    end,
-  },
+  --         -- Move cursor to corresponding edge of `a` textobject
+  --         goto_left = 'g[',
+  --         goto_right = 'g]',
+  --       },
+  --       custom_textobjects = {
+  --         o = ai.gen_spec.treesitter({
+  --           a = { "@block.outer", "@conditional.outer", "@loop.outer" },
+  --           i = { "@block.inner", "@conditional.inner", "@loop.inner" },
+  --         }, {}),
+  --         f = ai.gen_spec.treesitter({ a = "@function.outer", i = "@function.inner" }, {}),
+  --         c = ai.gen_spec.treesitter({ a = "@class.outer", i = "@class.inner" }, {}),
+  --       },
+  --     }
+  --   end,
+  --   config = function(_, opts)
+  --     local ai = require("mini.ai")
+  --     ai.setup(opts)
+  --   end,
+  -- },
   -- {
   --   "echasnovski/mini.ai",
   --   keys = {
