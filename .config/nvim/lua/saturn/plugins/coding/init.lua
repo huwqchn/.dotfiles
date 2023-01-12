@@ -200,7 +200,7 @@ return {
         find_left = "sF", -- Find surrounding (to the left)
         highlight = "sh", -- Highlight surrounding
         replace = "sr", -- Replace surrounding
-        update_n_lines = "sn", -- Update `n_lines`
+        update_n_lines = "sl", -- Update `n_lines`
         suffix_last = 'u', -- Suffix to search with "prev" method
         suffix_next = 'e', -- Suffix to search with "next" method
       },
@@ -309,7 +309,7 @@ return {
       -- { "[f", desc = "Prev function" },
       -- { "]f", desc = "Next function" },
       { "a", mode = { "x", "o" } },
-      { "k", mode = { "x", "o" } },
+      { "i", mode = { "x", "o" } },
     },
     dependencies = {
       {
@@ -324,21 +324,6 @@ return {
       local ai = require("mini.ai")
       return {
         n_lines = 500,
-        mappings = {
-          -- Main textobject prefixes
-          around = 'a',
-          inside = 'k',
-
-          -- Next/last variants
-          around_next = 'ae',
-          inside_next = 'ke',
-          around_last = 'au',
-          inside_last = 'ku',
-
-          -- Move cursor to corresponding edge of `a` textobject
-          -- goto_left = 'g[',
-          -- goto_right = 'g]',
-        },
         custom_textobjects = {
           o = ai.gen_spec.treesitter({
             a = { "@block.outer", "@conditional.outer", "@loop.outer" },

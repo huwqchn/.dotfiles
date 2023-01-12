@@ -1,3 +1,5 @@
+-- vim.o.iangnoremap = true
+-- vim.o.langmap = 'k;i,i;k'
 -- colemak movement
 vim.keymap.set("", "e", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 vim.keymap.set("", "u", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
