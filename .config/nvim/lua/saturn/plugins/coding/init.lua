@@ -306,6 +306,8 @@ return {
     "echasnovski/mini.ai",
     event = "VeryLazy",
     keys = {
+      -- { "[f", desc = "Prev function" },
+      -- { "]f", desc = "Next function" },
       { "a", mode = { "x", "o" } },
       { "k", mode = { "x", "o" } },
     },
@@ -328,10 +330,10 @@ return {
           inside = 'k',
 
           -- Next/last variants
-          around_next = 'au',
-          inside_next = 'ku',
-          around_last = 'ae',
-          inside_last = 'ke',
+          around_next = 'an',
+          inside_next = 'kn',
+          around_last = 'al',
+          inside_last = 'kl',
 
           -- Move cursor to corresponding edge of `a` textobject
           goto_left = 'g[',

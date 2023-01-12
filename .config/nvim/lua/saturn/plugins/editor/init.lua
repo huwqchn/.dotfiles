@@ -407,17 +407,24 @@ return {
         ["]"] = { name = "+next" },
         ["["] = { name = "+prev" },
         ["<leader>b"] = { name = "+buffer" },
+        ["<leader>c"] = { name = "+code" },
+        ["<leader>d"] = { name = "+debug" },
         ["<leader>e"] = { name = "+explorer" },
         ["<leader>f"] = { name = "+file" },
         ["<leader>g"] = { name = "+git" },
+        ["<leader>j"] = { name = "+jump" },
+        ["<leader>m"] = { name = "+marks" },
+        ["<leader>p"] = { name = "+plugin" },
+        ["<leader>q"] = { name = "+session" },
+        ["<leader>r"] = { name = "+refactor" },
         ["<leader>s"] = { name = "+search" },
         ["<leader>t"] = { name = "+trouble/todo" },
-        ["<leader>p"] = { name = "+plugin" },
         ["<leader>w"] = { name = "+windows" },
+        ["<leader>z"] = { name = "+zen" },
         ["<leader><tab>"] = { name = "+tabs" },
+        ["<leader><cr>"] = { name = "+terminal" },
       })
-
-      wk.register({ k = { name = "inside" }, a = { name = "around" } }, { mode = "v", preset = true })
+      -- wk.register({ k = { name = "inside" }, a = { name = "around" } }, { mode = "o", preset = true })
     end,
   },
   {
@@ -653,6 +660,7 @@ return {
   -- Debugging
   {
     "mfussenegger/nvim-dap",
+    { "jbyuki/one-small-step-for-vimkind" },
     keys = {
       { "<leader>dd", "<cmd>lua require'dap'.toggle_breakpoint()<cr>", desc = "Toggle Breakpoint" },
       { "<leader>db", "<cmd>lua require'dap'.step_back()<cr>", desc = "Step Back" },
@@ -667,10 +675,11 @@ return {
       { "<leader>dr", "<cmd>lua require'dap'.repl.toggle()<cr>", "Toggle Repl" },
       { "<leader>dq", "<cmd>lua require'dap'.close()<cr>", "Quit" },
       { "<leader>dt", "<cmd>lua require'dapui'.toggle({reset = true})<cr>", "Toggle UI" },
+      { "<leader>dw", "<cmd>lua require'dap.ui.widgets'.hover()", "Widget" }
     },
     opts = {
       breakpoint = {
-        text = saturn.icons.ui.Bug,
+        text = saturn.icons.ui.Circle,
         texthl = "DiagnosticSignError",
         linehl = "",
         numhl = "",
@@ -765,12 +774,12 @@ return {
             dap.listeners.after.event_initialized["dapui_config"] = function()
               dapui.open()
             end
-            -- dap.listeners.before.event_terminated["dapui_config"] = function()
-            --   dapui.close()
-            -- end
-            -- dap.listeners.before.event_exited["dapui_config"] = function()
-            --   dapui.close()
-            -- end
+            dap.listeners.before.event_terminated["dapui_config"] = function()
+              dapui.close()
+            end
+            dap.listeners.before.event_exited["dapui_config"] = function()
+              dapui.close()
+            end
           end
 
           -- until rcarriga/nvim-dap-ui#164 is fixed
