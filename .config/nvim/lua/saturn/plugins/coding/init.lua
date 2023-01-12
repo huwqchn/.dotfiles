@@ -328,10 +328,10 @@ return {
           inside = 'k',
 
           -- Next/last variants
-          around_next = 'an',
-          inside_next = 'kn',
-          around_last = 'al',
-          inside_last = 'kl',
+          around_next = 'au',
+          inside_next = 'ku',
+          around_last = 'ae',
+          inside_last = 'ke',
 
           -- Move cursor to corresponding edge of `a` textobject
           goto_left = 'g[',
