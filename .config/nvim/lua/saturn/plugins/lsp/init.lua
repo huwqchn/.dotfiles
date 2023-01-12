@@ -69,24 +69,24 @@ return {
       "mason.nvim",
       "cmp-nvim-lsp",
       "lvimuser/lsp-inlayhints.nvim",
-      "ray-x/lsp_signature.nvim",
+      -- "ray-x/lsp_signature.nvim",
     },
   },
-  {
-    "ray-x/lsp_signature.nvim",
-    config = function()
-      require("lsp_signature").setup({
-        bind = true,
-        hint_prefix = saturn.icons.misc.Feather,
-        timer_interval = 100,
-        handler_opts = {
-          border = "rounded",
-        },
-        toggle_key = [[<M-x>]],
-        select_signature_key = [[<M-c>]],
-      })
-    end,
-  },
+  -- {
+  --   "ray-x/lsp_signature.nvim",
+  --   config = function()
+  --     require("lsp_signature").setup({
+  --       bind = true,
+  --       hint_prefix = saturn.icons.misc.Feather,
+  --       timer_interval = 100,
+  --       handler_opts = {
+  --         border = "rounded",
+  --       },
+  --       toggle_key = [[<M-x>]],
+  --       select_signature_key = [[<M-c>]],
+  --     })
+  --   end,
+  -- },
   {
     "lvimuser/lsp-inlayhints.nvim",
     config = function()
