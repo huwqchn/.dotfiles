@@ -142,4 +142,8 @@ return {
       require("null-ls").setup(vim.tbl_deep_extend("force", default_opts, opts))
     end,
   },
+  {
+    import = "saturn.plugins.lang.rust",
+    ft = "rust",
+  },
 }
