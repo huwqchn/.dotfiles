@@ -2,7 +2,7 @@
 vim.keymap.set("", "e", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 vim.keymap.set("", "u", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 vim.keymap.set("", "n", "h")
-vim.keymap.set("", "i", "l")
+vim.keymap.set({ "n", "v" }, "i", "l")
 vim.keymap.set("", "gu", "gk")
 vim.keymap.set("", "ge", "gj")
 
