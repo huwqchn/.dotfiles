@@ -23,7 +23,7 @@ vim.keymap.set("", "L", "U")
 
 -- colemak end of word
 vim.keymap.set("", "h", "e")
-vim.keymap.set("", "H", "E")
+vim.keymap.set("", "H", "K")
 
 -- colemake searching key
 -- https://github.com/mhinz/vim-galore#saner-behavior-of-n-and-n
