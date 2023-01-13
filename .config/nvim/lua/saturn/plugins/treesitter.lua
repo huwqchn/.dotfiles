@@ -4,15 +4,16 @@ return {
     build = ":TSUpdate",
     event = "BufReadPost",
     dependencies = {
-      -- {
+      "andymass/vim-matchup",
+      -- { -- too slow
       --   "nvim-treesitter/nvim-treesitter-textobjects",
       -- },
-      -- {
+      -- { -- too slow
       --   "p00f/nvim-ts-rainbow",
       -- },
-      -- {
-      --   "nvim-treesitter/nvim-treesitter-context",
-      -- },
+      {
+        "nvim-treesitter/nvim-treesitter-context",
+      },
     },
     config = function()
       require("nvim-treesitter.configs").setup({
@@ -204,11 +205,10 @@ return {
   {
     "JoosepAlviste/nvim-ts-context-commentstring",
   },
-  -- {
-  --   "andymass/vim-matchup",
-  --   event = "BufReadPost",
-  --   config = function()
-  --     vim.g.matchup_matchparen_offscreen = { method = "status_manual" }
-  --   end,
-  -- },
+  {
+    "andymass/vim-matchup",
+    config = function()
+      vim.g.matchup_matchparen_offscreen = { method = "status_manual" }
+    end,
+  },
 }
