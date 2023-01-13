@@ -248,24 +248,6 @@ return {
             enabled = false,
           },
         },
-        routes = {
-          {
-            filter = {
-              cond = function()
-                return not focused
-              end,
-            },
-            view = "notify_send",
-            opts = { stop = false },
-          },
-          {
-            filter = {
-              event = "msg_show",
-              find = "%d+L, %d+B",
-            },
-            view = "mini",
-          },
-        },
         presets = {
           bottom_search = true,
           command_palette = true,
@@ -297,22 +279,6 @@ return {
         end,
       })
     end,
-    -- opts = {
-    --   lsp = {
-    --     override = {
-    --       ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
-    --       ["vim.lsp.util.stylize_markdown"] = true,
-    --     },
-    --     -- signature = {
-    --     --   enabled = false,
-    --     -- }
-    --   },
-    --   presets = {
-    --     bottom_search = true,
-    --     command_palette = true,
-    --     long_message_to_split = true,
-    --   },
-    -- },
     -- stylua: ignore
     keys = {
       { "<S-Enter>", function() require("noice").redirect(vim.fn.getcmdline()) end, mode = "c", desc = "Redirect Cmdline" },
