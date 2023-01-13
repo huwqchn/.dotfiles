@@ -691,7 +691,7 @@ return {
       { "<leader>dd", "<cmd>lua require'dap'.toggle_breakpoint()<cr>", desc = "Toggle Breakpoint" },
       { "<leader>db", "<cmd>lua require'dap'.step_back()<cr>", desc = "Step Back" },
       { "<leader>dc", "<cmd>lua require'dap'.continue()<cr>", desc = "Continue" },
-      { "<leadeer>dC", "<cmd>lua require'dap'.run_to_cursor()<cr>", "Run To Cursor" },
+      { "<leader>dC", "<cmd>lua require'dap'.run_to_cursor()<cr>", "Run To Cursor" },
       { "<leader>dD", "<cmd>lua require'dap'.disconnect()<cr>", "Disconnect" },
       { "<leader>ds", "<cmd>lua require'dap'.session()<cr>", "Get Session" },
       { "<leader>di", "<cmd>lua require'dap'.step_into()<cr>", "Step Into" },
