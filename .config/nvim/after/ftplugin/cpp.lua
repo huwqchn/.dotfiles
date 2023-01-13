@@ -11,4 +11,10 @@ require("saturn.plugins.lsp.null-ls.formatters").setup({
   { command = "clang-format", filetype = { "cpp" } }
 })
 
-require("saturn.plugins.lsp.manager").setup("clangd")
+require("saturn.plugins.lsp.manager").setup("clangd", {
+  on_attach = function(client, bufnr)
+    vim.keymap.set("n", "<leader><space>", "<cmd>ClangdSwitchSourceHeader<cr>", { desc = "switch between header and source" })
+    require("saturn.plugins.lsp.hooks").common_on_attach(client, bufnr)
+  end,
+})
+
