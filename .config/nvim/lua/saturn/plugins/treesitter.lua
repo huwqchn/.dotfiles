@@ -177,7 +177,7 @@ return {
   },
   -- {
   --   "andymass/vim-matchup",
-    -- event = "BufReadPost",
+  -- event = "BufReadPost",
   --   config = function()
   --     vim.g.matchup_matchparen_offscreen = { method = "popup" }
   --   end,
