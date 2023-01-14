@@ -71,7 +71,7 @@ function M.get_all_supported_filetypes()
 end
 
 function M.setup_document_highlight(client, bufnr)
-  local illuminant_active, _ pcall(require, "vim-illuminate")
+  local illuminant_active, _ = pcall(require, "vim-illuminate")
   if illuminant_active then
     -- vim.notify("skipping setup for document_highlight, illuminate already active")
     return

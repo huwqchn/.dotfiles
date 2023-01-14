@@ -65,7 +65,6 @@ return {
       { "williamboman/mason-lspconfig.nvim" },
       { "folke/neodev.nvim", config = true },
       { "smjonas/inc-rename.nvim", config = true },
-      { "b0o/SchemaStore.nvim" },
       "mason.nvim",
       "cmp-nvim-lsp",
       "lvimuser/lsp-inlayhints.nvim",
@@ -141,6 +140,9 @@ return {
       local default_opts = require("saturn.plugins.lsp.hooks").get_common_opts()
       require("null-ls").setup(vim.tbl_deep_extend("force", default_opts, opts))
     end,
+  },
+  {
+    "b0o/SchemaStore.nvim",
   },
   {
     import = "saturn.plugins.lang.rust",

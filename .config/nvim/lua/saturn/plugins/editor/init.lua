@@ -516,9 +516,35 @@ return {
   -- references
   {
     "RRethy/vim-illuminate",
-    event = "BufReadPost",
-    config = function()
-      require("illuminate").configure({ delay = 200 })
+    event = "VeryLazy",
+    opts = {
+      -- providers: provider used to get references in the buffer, ordered by priority
+      providers = {
+        "lsp",
+        "treesitter",
+        "regex",
+      },
+      -- filetypes_denylist: filetypes to not illuminate, this overrides filetypes_allowlist
+      filetypes_denylist = {
+        "dirvish",
+        "fugitive",
+        "alpha",
+        "NvimTree",
+        "lazy",
+        "neogitstatus",
+        "Trouble",
+        "lir",
+        "Outline",
+        "spectre_panel",
+        "toggleterm",
+        "DressingSelect",
+        "TelescopePrompt",
+      },
+      under_cursor = true,
+
+    },
+    config = function(_, opts)
+      require("illuminate").configure(opts)
     end,
     -- stylua: ignore
     keys = {

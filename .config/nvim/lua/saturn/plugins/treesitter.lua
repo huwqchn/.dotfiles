@@ -10,9 +10,6 @@ return {
       -- { -- too slow
       --   "p00f/nvim-ts-rainbow",
       -- },
-      {
-        "nvim-treesitter/nvim-treesitter-context",
-      },
     },
     opts = {
       ensure_installed = {
@@ -162,7 +159,12 @@ return {
     },
     config = function(_, opts)
       require("nvim-treesitter.configs").setup(opts)
-    end
+    end,
+  },
+
+  {
+    "nvim-treesitter/nvim-treesitter-context",
+    event = "VeryLazy",
   },
   {
     "windwp/nvim-ts-autotag",
@@ -179,7 +181,8 @@ return {
   --   "andymass/vim-matchup",
   -- event = "BufReadPost",
   --   config = function()
-  --     vim.g.matchup_matchparen_offscreen = { method = "popup" }
+  -- vim.g.matchup_matchparen_offscreen = { method = nil }
+  -- vim.g.matchup_matchpref = { html = { nolists = 1 } }
   --   end,
   -- },
 }

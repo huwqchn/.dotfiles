@@ -19,7 +19,7 @@ return {
       --- use gq for formatting
       formatexpr = "v:lua.vim.lsp.formatexpr(#{timeout_ms:500})",
     },
-    document_highlight = false,
+    document_highlight = true,
     code_lens_refresh = true,
     installer = {
       setup = {
