@@ -103,11 +103,11 @@ return {
           },
         },
       },
-    }
+    },
   },
   {
     "phaazon/hop.nvim",
-    event = 'VeryLazy',
+    event = "VeryLazy",
     config = function()
       local hop = require("hop")
       hop.setup({ keys = "eariosthdfuwyqzxcvbkmj" })
@@ -200,8 +200,8 @@ return {
         highlight = "sh", -- Highlight surrounding
         replace = "sr", -- Replace surrounding
         update_n_lines = "sl", -- Update `n_lines`
-        suffix_last = 'u', -- Suffix to search with "prev" method
-        suffix_next = 'e', -- Suffix to search with "next" method
+        suffix_last = "u", -- Suffix to search with "prev" method
+        suffix_next = "e", -- Suffix to search with "next" method
       },
     },
     config = function(_, opts)
@@ -213,7 +213,7 @@ return {
     "numToStr/Comment.nvim",
     -- event = "VeryLazy",
     keys = {
-      { "gc", mode = {"n", "v", "x" } },
+      { "gc", mode = { "n", "v", "x" } },
       { "gb", mode = { "n", "v", "x" } },
       {
         "<leader>/",
@@ -375,18 +375,18 @@ return {
         n_lines = 500,
         mappings = {
           -- Main textobject prefixes
-          around = 'a',
-          inside = 'k',
+          around = "a",
+          inside = "k",
 
           -- Next/last variants
-          around_next = 'ae',
-          inside_next = 'ke',
-          around_last = 'au',
-          inside_last = 'ku',
+          around_next = "ae",
+          inside_next = "ke",
+          around_last = "au",
+          inside_last = "ku",
 
           -- Move cursor to corresponding edge of `a` textobject
-          goto_left = 'g[',
-          goto_right = 'g]',
+          goto_left = "g[",
+          goto_right = "g]",
         },
         custom_textobjects = {
           o = ai.gen_spec.treesitter({
@@ -454,6 +454,30 @@ return {
         },
       })
     end,
+  },
+  {
+    "jackMort/ChatGPT.nvim",
+    cmd = {
+      "ChatGPT",
+      "ChatGPTActAs",
+      "ChatGPTEditWithInstructions",
+    },
+    opts = {
+      keymaps = {
+        close = { "<C-c>", "<Esc>" },
+        yank_last = "<C-y>",
+        scroll_up = "<C-u>",
+        scroll_down = "<C-e>",
+        toggle_settings = "<C-o>",
+        new_session = "<C-n>",
+        cycle_windows = "<Tab>",
+      },
+    },
+    dependencies = {
+      "MunifTanjim/nui.nvim",
+      "nvim-lua/plenary.nvim",
+      "nvim-telescope/telescope.nvim",
+    },
   },
   -- {
   --   "MattesGroeger/vim-bookmarks",
