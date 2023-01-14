@@ -1,5 +1,7 @@
 local init = function()
   saturn.plugins.theme = {
+    lunar = {},
+    catppuccin = {},
     tokyonight = {
       options = {
         on_highlights = function(hl, c)
@@ -11,6 +13,19 @@ local init = function()
           }
           hl.TSTagDelimiter = {
             fg = c.dark5,
+          }
+          hl.IlluminatedWordRead = {
+            bg = "#3b4261",
+            underline = true,
+          }
+          hl.IlluminatedWordText = {
+            bg = "#3b4261",
+            underline = true,
+            italic = true,
+          }
+          hl.IlluminatedWordWrite = {
+            bg = "#3b4261",
+            underline = true,
           }
         end,
         style = "night", -- The theme comes in three styles, `storm`, a darker variant `night` and `day`
@@ -70,5 +85,20 @@ return {
   {
     "catppuccin/nvim",
     name = "catppuccin",
+    lazy = not saturn.colorscheme == "catppuccin",
+    enabled = saturn.colorscheme == "catppuccin",
+    priority = 1000,
+    init = init,
+    config = config,
   },
+
+  -- lunar
+  {
+    "lunarvim/lunar.nvim",
+    lazy = not saturn.colorscheme == "lunar",
+    enabled = saturn.colorscheme == "lunar",
+    priority = 1000,
+    init = init,
+    config = config,
+  }
 }

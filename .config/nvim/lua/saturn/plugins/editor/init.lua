@@ -518,12 +518,6 @@ return {
     "RRethy/vim-illuminate",
     event = "VeryLazy",
     opts = {
-      -- providers: provider used to get references in the buffer, ordered by priority
-      providers = {
-        "lsp",
-        "treesitter",
-        "regex",
-      },
       -- filetypes_denylist: filetypes to not illuminate, this overrides filetypes_allowlist
       filetypes_denylist = {
         "dirvish",
@@ -541,7 +535,6 @@ return {
         "TelescopePrompt",
       },
       under_cursor = true,
-
     },
     config = function(_, opts)
       require("illuminate").configure(opts)
