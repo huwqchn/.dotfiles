@@ -201,5 +201,13 @@ return {
     "eandrju/cellular-automaton.nvim",
     cmd = { "CellularAutomaton" },
   },
-  --TODO:folding
+  {
+    'anuvyklack/pretty-fold.nvim',
+    event = 'BufReadPost',
+    config = true,
+  },
+  {
+    import = "saturn.plugins.lang.markdown",
+    ft = { "markdown" },
+  },
 }
