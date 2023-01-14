@@ -455,7 +455,7 @@ return {
   },
   {
     "lewis6991/gitsigns.nvim",
-    config = {
+    opts = {
       signs = {
         add = {
           text = saturn.icons.ui.ThickLineLeft,
@@ -568,7 +568,7 @@ return {
       { "<leader>tl", "<cmd>TroubleToggle loclist<cr>", desc = "loclist" },
       { "<leader>tr", "<cmd>TroubleToggle lsp_references<cr>", desc = "references" },
     },
-    config = {
+    opts = {
       action_keys = {
         -- key mappings for actions in the trouble list
         -- map to {} to remove a mapping, for example:
@@ -647,7 +647,7 @@ return {
   {
     "simrat39/symbols-outline.nvim",
     keys = { { "<leader>eo", "<cmd>SymbolsOutline<cr>", desc = "Symbols Outline" } },
-    config = {
+    opts = {
       keymaps = { -- These keymaps can be a string or a table for multiple keys
         close = { "<Esc>", "q" },
         goto_location = "<Cr>",

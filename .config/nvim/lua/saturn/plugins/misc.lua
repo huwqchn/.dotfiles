@@ -41,7 +41,7 @@ return {
   {
     "nvim-neorg/neorg",
     ft = "norg",
-    config = {
+    opts = {
       load = {
         ["core.defaults"] = {},
         ["core.norg.concealer"] = {},
@@ -80,7 +80,7 @@ return {
     keys = {
       { "J", "<cmd>TSJToggle<cr>" },
     },
-    config = { use_default_keymaps = false },
+    opts = { use_default_keymaps = false },
   },
   {
     "cshuaimin/ssr.nvim",

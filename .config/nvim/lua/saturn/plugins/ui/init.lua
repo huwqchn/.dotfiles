@@ -136,7 +136,7 @@ return {
   {
     "lukas-reineke/indent-blankline.nvim",
     event = "BufReadPre",
-    config = {
+    opts = {
       enabled = true,
       buftype_exclude = { "terminal", "nofile" },
       filetype_exclude = {

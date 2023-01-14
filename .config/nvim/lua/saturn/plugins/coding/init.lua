@@ -54,7 +54,7 @@ return {
     "zbirenbaum/copilot.lua",
     event = "InsertEnter",
     cmd = "Copilot",
-    config = {
+    opts = {
       panel = {
         enabled = true,
         auto_refresh = false,
@@ -110,7 +110,7 @@ return {
     event = 'VeryLazy',
     config = function()
       local hop = require("hop")
-      hop.setup({ keys = "arstdhneoioqwfplukmcxzv" })
+      hop.setup({ keys = "eariosthdfuwyqzxcvbkmj" })
       local directions = require("hop.hint").HintDirection
       vim.keymap.set("", "j", ":HopPattern<cr>", { silent = true })
       vim.keymap.set("", "<leader>jj", ":HopChar2<cr>", { silent = true, desc = "Jump" })
@@ -134,7 +134,7 @@ return {
     dependencies = {
       "nvim-treesitter",
     },
-    config = {
+    opts = {
       tabkey = "<tab>", -- key to trigger tabout, set to an empty string to disable
       backwards_tabkey = "<s-tab>", -- key to trigger backwards tabout, set to an empty string to disable
       act_as_tab = true, -- shift content if tab out is not possible
@@ -430,7 +430,7 @@ return {
         desc = "Neogen Comment",
       },
     },
-    config = { snippet_engine = "luasnip" },
+    opts = { snippet_engine = "luasnip" },
     dependencies = { "nvim-treesitter" },
   },
 
