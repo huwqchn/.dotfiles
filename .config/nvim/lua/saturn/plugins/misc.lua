@@ -197,5 +197,9 @@ return {
       })
     end,
   },
+  {
+    "eandrju/cellular-automaton.nvim",
+    cmd = { "CellularAutomaton" },
+  },
   --TODO:folding
 }
