@@ -112,8 +112,9 @@ return {
       local hop = require("hop")
       hop.setup({ keys = "eariosthdfuwyqzxcvbkmj" })
       local directions = require("hop.hint").HintDirection
-      vim.keymap.set("", "j", ":HopPattern<cr>", { silent = true })
+      vim.keymap.set("", "j", ":HopChar1<cr>", { silent = true })
       vim.keymap.set("", "<leader>jj", ":HopChar2<cr>", { silent = true, desc = "Jump" })
+      vim.keymap.set("", "<leader>jp", ":HopPattern<cr>", { silent = true, desc = "Jump" })
       vim.keymap.set("", "f", function()
         hop.hint_char1({ direction = directions.AFTER_CURSOR, current_line_only = true })
       end, { remap = true })
