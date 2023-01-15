@@ -21,6 +21,9 @@ require("lazy").setup({
   },
   checker = { enabled = true },
   performance = {
+    cache = {
+      enabled = true,
+    },
     rtp = {
       disabled_plugins = {
         "gzip",
