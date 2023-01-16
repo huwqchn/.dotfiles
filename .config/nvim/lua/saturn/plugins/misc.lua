@@ -4,7 +4,7 @@ return {
   -- easily jump to any location and enhanced f/t motions for Leap
   {
     "ggandor/leap.nvim",
-    -- event = "VeryLazy",
+    event = "VeryLazy",
     keys = {
       {
         "j",
@@ -12,18 +12,19 @@ return {
         desc = "jump",
         mode = { "n", "v", "o" },
       },
-      {
-        "<C-j>",
-        "<cmd>lua require('leap').leap { target_windows = vim.tbl_filter(function (win) return vim.api.nvim_win_get_config(win).focusable end,vim.api.nvim_tabpage_list_wins(0))}<cr>",
-        desc = "jump to any window",
-        mode = { "n", "v", "o" },
-      },
-      { "E", "<Plug>(leap-forward-to)", desc = "leap forward to", mode = { "n", "v", "o" } },
-      { "U", "<Plug>(leap-backward-to)", desc = "leap backward to", mode = { "n", "v", "o" } },
-      { "x", "<Plug>(leap-forward-till)", desc = "leap forward till", mode = { "v", "o" } },
-      { "X", "<Plug>(leap-backward-till)", desc = "leap backward till", mode = { "v", "o" } },
+      -- {
+      --   "gj",
+      --   "<cmd>lua require('leap').leap { target_windows = vim.tbl_filter(function (win) return vim.api.nvim_win_get_config(win).focusable end,vim.api.nvim_tabpage_list_wins(0))}<cr>",
+      --   desc = "jump to any window",
+      --   mode = { "n", "v", "o" },
+      -- },
+      { "f", "<Plug>(leap-forward-to)", desc = "leap forward to", mode = { "n", "v", "o" } },
+      { "F", "<Plug>(leap-backward-to)", desc = "leap backward to", mode = { "n", "v", "o" } },
+      { "t", "<Plug>(leap-forward-till)", desc = "leap forward till", mode = { "v", "o" } },
+      { "T", "<Plug>(leap-backward-till)", desc = "leap backward till", mode = { "v", "o" } },
+      { "gs", "<Plug>(leap-cross-window)", desc = "leap cross window", mode = { "n", "x" } },
     },
-    dependencies = { { "ggandor/flit.nvim", opts = { labeled_modes = "nv" } } },
+    -- dependencies = { { "ggandor/flit.nvim", opts = { labeled_modes = "nv" } } },
     config = function(_, opts)
       local leap = require("leap")
       for k, v in pairs(opts) do
@@ -87,8 +88,8 @@ return {
   {
     "karb94/neoscroll.nvim",
     keys = {
-      { "U", mode = { "n", "v" } },
-      { "E", mode = { "n", "v" } },
+      { "<C-k>", mode = { "n", "v" } },
+      { "<C-d>", mode = { "n", "v" } },
       { "<C-b>", mode = { "n", "v" } },
       { "<C-f>", mode = { "n", "v" } },
       { "<C-y>", mode = { "n", "v" } },
