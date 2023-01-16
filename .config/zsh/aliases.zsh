@@ -1,5 +1,5 @@
 alias c='clear'
-alias s='neofetch'
+alias s='neofetch --ascii ~/.config/neofetch/predator'
 alias lg='lazygit'
 # alias lnpm ='lazynpm'
 alias ra='ranger'
