@@ -193,6 +193,12 @@ M.config = {
         highlight = "PanelHeading",
         padding = 1,
       },
+      {
+        filetype = "neo-tree",
+        text = "Explorer",
+        highlight = "PanelHeading",
+        padding = 1,
+      }
     },
     color_icons = true, -- whether or not to add the filetype icon highlights
     show_buffer_icons = saturn.use_icons, -- disable filetype icons for buffers
