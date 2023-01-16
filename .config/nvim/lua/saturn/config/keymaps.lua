@@ -39,7 +39,8 @@ vim.keymap.set({ "n", "i" }, "<esc>", "<cmd>noh<cr><esc>", { desc = "Escape and 
 
 -- better cmd mode
 vim.keymap.set("n", ":", ",")
-vim.keymap.set("n", ",", ":")
+vim.keymap.set("n", ",", ":") -- placeholder for some cool things
+vim.keymap.set("n", "<cr>", ":")
 
 -- save
 vim.keymap.set({ "i", "v", "n", "s" }, "<C-s>", "<cmd>wa<cr><esc>")
@@ -51,6 +52,9 @@ vim.keymap.set("", "Q", "<cmd>q<cr>")
 
 -- select all
 vim.keymap.set("", "<C-a>", "<esc>ggVG")
+
+-- new space line
+vim.keymap.set("n", "<C-cr>", "o<esc>")
 
 -- paste
 vim.keymap.set("i", "<C-v>", "<C-g>u<Cmd>set paste<CR><C-r>+<Cmd>set nopaste<CR>")
