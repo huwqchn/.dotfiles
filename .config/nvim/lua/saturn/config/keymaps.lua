@@ -10,8 +10,8 @@ vim.keymap.set("", "ge", "gj")
 vim.keymap.set("", "N", "^")
 vim.keymap.set("", "I", "$")
 -- colemak fast navigation
-vim.keymap.set("", "U", "<C-b>")
-vim.keymap.set("", "E", "<C-f>")
+vim.keymap.set("", "U", "5k")
+vim.keymap.set("", "E", "5j")
 
 -- colemak insert key
 vim.keymap.set("", "k", "i")
@@ -30,12 +30,17 @@ vim.keymap.set("", "H", "K")
 vim.keymap.set("", "=", "'Nn'[v:searchforward]", { expr = true })
 vim.keymap.set("", "-", "'nN'[v:searchforward]", { expr = true })
 
+-- search work under cursor
+vim.keymap.set("n", "gw", "*N")
+vim.keymap.set("x", "gw", "*N")
+
 -- clear search with <esc>
 vim.keymap.set({ "n", "i" }, "<esc>", "<cmd>noh<cr><esc>", { desc = "Escape and clear hlsearch" })
 
 -- better cmd mode
 vim.keymap.set("n", ":", ",")
-vim.keymap.set("n", "<cr>", ":")
+vim.keymap.set("n", ";", ":")
+-- vim.keymap.set("n", "<cr>", ":")
 
 -- save
 vim.keymap.set({ "i", "v", "n", "s" }, "<C-s>", "<cmd>wa<cr><esc>")
@@ -91,6 +96,11 @@ vim.keymap.set("i", "<A-Up>", "<C-\\><C-N><C-w>k")
 vim.keymap.set("i", "<A-Down>", "<C-\\><C-N><C-w>j")
 vim.keymap.set("i", "<A-Left>", "<C-\\><C-N><C-w>h")
 vim.keymap.set("i", "<A-Right>", "<C-\\><C-N><C-w>l")
+
+-- Add undo break-points
+vim.keymap.set("i", ",", ",<c-g>u")
+vim.keymap.set("i", ".", ".<c-g>u")
+vim.keymap.set("i", ";", ";<c-g>u")
 
 -- Terminal window navigation
 vim.keymap.set("t", "<C-n>", "<C-\\><C-N><C-w>h")
@@ -164,3 +174,10 @@ vim.keymap.set("n", "<leader><tab>t", "<cmd>tabs", { desc = "List all tabs" })
 vim.keymap.set("n", "]b", "<cmd>BufferLineCycleNext<CR>", { desc = "Next Buffer" })
 vim.keymap.set("n", "[b", "<cmd>BufferLineCyclePrev<CR>", { desc = "Previous Buffer" })
 vim.keymap.set("n", "<leader>`", "<cmd>:e #<cr>", { desc = "Switch to Other Buffer" })
+
+-- files
+-- new file
+vim.keymap.set("n", "<leader>fn", "<cmd>enew<cr>", { desc = "New File" })
+
+vim.keymap.set("n", "<leader>xl", "<cmd>lopen<cr>", { desc = "Open Location List" })
+vim.keymap.set("n", "<leader>xq", "<cmd>copen<cr>", { desc = "Open Quickfix List" })
