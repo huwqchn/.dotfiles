@@ -39,8 +39,7 @@ vim.keymap.set({ "n", "i" }, "<esc>", "<cmd>noh<cr><esc>", { desc = "Escape and 
 
 -- better cmd mode
 vim.keymap.set("n", ":", ",")
-vim.keymap.set("n", ";", ":")
--- vim.keymap.set("n", "<cr>", ":")
+vim.keymap.set("n", ",", ":")
 
 -- save
 vim.keymap.set({ "i", "v", "n", "s" }, "<C-s>", "<cmd>wa<cr><esc>")
