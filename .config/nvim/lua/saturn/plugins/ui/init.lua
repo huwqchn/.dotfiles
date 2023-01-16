@@ -289,5 +289,4 @@ return {
   --     { "<c-b>", function() if not require("noice.lsp").scroll(-4) then return "<c-b>" end end, silent = true, expr = true, desc = "Scroll backward"},
   --   },
   -- },
-
 }

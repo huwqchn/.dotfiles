@@ -33,6 +33,10 @@ vim.keymap.set("", "-", "'nN'[v:searchforward]", { expr = true })
 -- clear search with <esc>
 vim.keymap.set({ "n", "i" }, "<esc>", "<cmd>noh<cr><esc>", { desc = "Escape and clear hlsearch" })
 
+-- better cmd mode
+vim.keymap.set("n", ":", ",")
+vim.keymap.set("n", "<cr>", ":")
+
 -- save
 vim.keymap.set({ "i", "v", "n", "s" }, "<C-s>", "<cmd>wa<cr><esc>")
 vim.keymap.set("", "S", "<cmd>w<cr><esc>")
@@ -120,7 +124,8 @@ vim.keymap.set("n", "<C-Left>", ":vertical resize +2<CR>")
 vim.keymap.set("n", "<C-Right>", ":vertical resize -2<CR>")
 
 -- disable the default s key
-vim.keymap.set("n", "s", "<nop>")
+vim.keymap.set({ "n", "v" }, "s", "<nop>", { desc = "split/surround/select" })
+vim.keymap.set("x", "s", ":s/\\%V", { desc = "replace in selection" })
 
 -- split the screens
 vim.keymap.set("n", "su", ":set nosplitbelow<CR>:split<CR>:set splitbelow<CR>", { desc = "split above"})

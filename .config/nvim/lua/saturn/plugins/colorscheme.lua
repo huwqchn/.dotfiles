@@ -21,7 +21,7 @@ local init = function()
           hl.IlluminatedWordText = {
             bg = "#3b4261",
             underline = true,
-            italic = true,
+            -- italic = true,
           }
           hl.IlluminatedWordWrite = {
             bg = "#3b4261",
