@@ -3,8 +3,7 @@ vim.keymap.set("", "e", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = tru
 vim.keymap.set("", "u", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 vim.keymap.set("", "n", "h")
 vim.keymap.set({ "n", "v" }, "i", "l") -- for mini.ai case
-vim.keymap.set("", "gu", "gk")
-vim.keymap.set("", "ge", "gj")
+vim.keymap.set("", "gk", "gi", { desc = "goto last insert" })
 
 -- colemak jump to start/end of the line
 vim.keymap.set("", "N", "^")
@@ -111,7 +110,7 @@ vim.keymap.set("t", "<C-e>", "<C-\\><C-N><C-w>j")
 vim.keymap.set("t", "<C-u>", "<C-\\><C-N><C-w>k")
 vim.keymap.set("t", "<C-i>", "<C-\\><C-N><C-w>l")
 
-vim.keymap.set("t", "<esc><esc>", "<c-\\><c-n>", {desc = "Enter Normal Mode"})
+vim.keymap.set("t", "<esc><esc>", "<c-\\><c-n>", { desc = "Enter Normal Mode" })
 -- navigate tab completion with <c-j> and <c-k>
 -- runs conditionally
 vim.keymap.set("c", "<C-e>", 'pumvisible() ? "\\<C-n>" : "\\<C-j>"', { expr = true, noremap = true })
@@ -141,29 +140,29 @@ vim.keymap.set({ "n", "v" }, "s", "<nop>", { desc = "split/surround/select" })
 vim.keymap.set("x", "s", ":s/\\%V", { desc = "replace in selection" })
 
 -- split the screens
-vim.keymap.set("n", "su", ":set nosplitbelow<CR>:split<CR>:set splitbelow<CR>", { desc = "split above"})
-vim.keymap.set("n", "se", ":set splitbelow<CR>:split<CR>", { desc = "split below"})
-vim.keymap.set("n", "sn", ":set nosplitright<CR>:vsplit<CR>:set splitright<CR>", { desc = "split left"})
-vim.keymap.set("n", "si", ":set splitright<CR>:vsplit<CR>", { desc = "split right"})
+vim.keymap.set("n", "su", ":set nosplitbelow<CR>:split<CR>:set splitbelow<CR>", { desc = "split above" })
+vim.keymap.set("n", "se", ":set splitbelow<CR>:split<CR>", { desc = "split below" })
+vim.keymap.set("n", "sn", ":set nosplitright<CR>:vsplit<CR>:set splitright<CR>", { desc = "split left" })
+vim.keymap.set("n", "si", ":set splitright<CR>:vsplit<CR>", { desc = "split right" })
 
 -- Rotate window
-vim.keymap.set("n", "<leader>wU", "<C-w>b<C-w>K", { desc = "rotate window up"})
-vim.keymap.set("n", "<leader>wN", "<C-w>b<C-w>H", { desc = "rotate window left"})
+vim.keymap.set("n", "<leader>wU", "<C-w>b<C-w>K", { desc = "rotate window up" })
+vim.keymap.set("n", "<leader>wN", "<C-w>b<C-w>H", { desc = "rotate window left" })
 
 vim.keymap.set("n", "<leader>ww", "<C-W>p", { desc = "other-window" })
 vim.keymap.set("n", "<leader>wd", "<C-W>c", { desc = "delete-window" })
 -- move current windwo to the far left, bottom, right, top
-vim.keymap.set("n", "<leader>wn", "<C-w>H", { desc = "move to the far left"})
-vim.keymap.set("n", "<leader>we", "<C-w>J", { desc = "move to the far bottom"})
-vim.keymap.set("n", "<leader>wi", "<C-w>L", { desc = "move to the far right"})
-vim.keymap.set("n", "<leader>wu", "<C-w>K", { desc = "move to the far top"})
+vim.keymap.set("n", "<leader>wn", "<C-w>H", { desc = "move to the far left" })
+vim.keymap.set("n", "<leader>we", "<C-w>J", { desc = "move to the far bottom" })
+vim.keymap.set("n", "<leader>wi", "<C-w>L", { desc = "move to the far right" })
+vim.keymap.set("n", "<leader>wu", "<C-w>K", { desc = "move to the far top" })
 
 -- Tabs management
 vim.keymap.set("n", "<leader><tab>a", "<cmd>tabfirst<CR>", { desc = "First" })
 vim.keymap.set("n", "<leader><tab>z", "<cmd>tablast<CR>", { desc = "Last" })
 vim.keymap.set("n", "<leader><tab><tab>", "<cmd>tabnew<CR>", { desc = "New Tab" })
 vim.keymap.set("n", "]<tab>", "<cmd>tabn<CR>", { desc = "Next" })
-vim.keymap.set("n", "[<tab>", "<cmd>tabp<CR>", { desc = "Previous"})
+vim.keymap.set("n", "[<tab>", "<cmd>tabp<CR>", { desc = "Previous" })
 vim.keymap.set("n", "<leader><tab>d", "<cmd>tabclose<CR>", { desc = "Close" })
 vim.keymap.set("n", "<leader><tab>s", "<cmd>tab split<CR>", { desc = "Split" })
 vim.keymap.set("n", "<leader><tab>N", "<cmd>-tabmove<CR>", { desc = "Move to left" })
