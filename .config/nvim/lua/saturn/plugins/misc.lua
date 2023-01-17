@@ -18,13 +18,13 @@ return {
       --   desc = "jump to any window",
       --   mode = { "n", "v", "o" },
       -- },
-      { "f", "<Plug>(leap-forward-to)", desc = "leap forward to", mode = { "n", "v", "o" } },
-      { "F", "<Plug>(leap-backward-to)", desc = "leap backward to", mode = { "n", "v", "o" } },
-      { "t", "<Plug>(leap-forward-till)", desc = "leap forward till", mode = { "v", "o" } },
-      { "T", "<Plug>(leap-backward-till)", desc = "leap backward till", mode = { "v", "o" } },
+      { ";", "<Plug>(leap-forward-to)", desc = "leap forward to", mode = { "n", "v", "o" } },
+      { ":", "<Plug>(leap-backward-to)", desc = "leap backward to", mode = { "n", "v", "o" } },
+      { "x", "<Plug>(leap-forward-till)", desc = "leap forward till", mode = { "v", "o" } },
+      { "X", "<Plug>(leap-backward-till)", desc = "leap backward till", mode = { "v", "o" } },
       { "gs", "<Plug>(leap-cross-window)", desc = "leap cross window", mode = { "n", "x" } },
     },
-    -- dependencies = { { "ggandor/flit.nvim", opts = { labeled_modes = "nv" } } },
+    dependencies = { { "ggandor/flit.nvim", opts = { labeled_modes = "nv" } } },
     config = function(_, opts)
       local leap = require("leap")
       for k, v in pairs(opts) do
@@ -270,6 +270,38 @@ return {
       })
     end,
   },
+  -- {
+  --   "echasnovski/mini.move",
+  --   keys = function(plugin, keys)
+  --     -- Populate the keys based on the user's options
+  --     local opts = require("lazy.core.plugin").values(plugin, "opts", false)
+  --     local mappings = {
+  --       { opts.mappings.left, desc = "move left", mode = { "n", "v" } },
+  --       { opts.mappings.right, desc = "move right", mode = { "n", "v" } },
+  --       { opts.mappings.down, desc = "move down", mode = { "n", "v" } },
+  --       { opts.mappings.up, desc = "move up", mode = { "n", "v" } },
+  --       { opts.mappings.line_left, desc = "move line left", mode = { "n", "v" } },
+  --       { opts.mappings.line_right, desc = "move line right", mode = { "n", "v" } },
+  --       { opts.mappings.line_down, desc = "move line down", mode = { "n", "v" } },
+  --       { opts.mappings.line_up, desc = "move line up", mode = { "n", "v" } },
+  --     }
+  --     return vim.list_extend(mappings, keys)
+  --   end,
+  --   opts = {
+  --     mappings = {
+  --       -- Move visual selection in Visual mode. Defaults are Alt (Meta) + hjkl.
+  --       left = "<M-n>",
+  --       right = "<M-i>",
+  --       down = "<M-e>",
+  --       up = "<M-u>",
+  --       -- Move current line in Normal mode
+  --       line_left = "<M-n>",
+  --       line_right = "<M-i>",
+  --       line_down = "<M-e>",
+  --       line_up = "<M-u>",
+  --     },
+  --   },
+  -- },
   {
     "eandrju/cellular-automaton.nvim",
     cmd = { "CellularAutomaton" },
