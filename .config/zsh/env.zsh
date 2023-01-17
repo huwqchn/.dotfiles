@@ -12,6 +12,7 @@ export PATH="$PATH:$HOME/.local/share/nvim/mason/bin"
 export PATH="$PATH:$HOME/.local/bin"
 export PATH="$PATH:$HOME/.cargo/bin"
 export TMUX_TMPDIR=$HOME/.tmux/tmp
+export CFLAYS="-Wall -Werror -Wextra"
 if [[ $(uname) == 'Darwin' ]]; then
   export TERM=xterm-256color
 	export PATH="$PATH:/opt/homebrew/bin"

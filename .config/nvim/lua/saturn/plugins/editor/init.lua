@@ -60,7 +60,7 @@ return {
     cmd = "ToggleTerm",
     keys = {
       { "<leader><cr>p", "<cmd>lua _PYTHON_TOGGLE()<cr>", desc = "python" },
-      { "<leader><cr>f", "<cmd>ToggleTerm direction=float<cr>", desc = "Float" },
+      { "<leader><cr><cr>", "<cmd>ToggleTerm direction=float<cr>", desc = "Float" },
       { "<leader><cr>h", "<cmd>ToggleTerm size=10 direction=horizontal<cr>", desc = "Horizontal" },
       { "<leader><cr>v", "<cmd>ToggleTerm size=80 direction=vertical<cr>", desc = "Vertical" },
       { "<leader>gg", "<cmd>lua require 'saturn.plugins.editor.toggleterm'.lazygit_toggle()<cr>", desc = "LazyGit" },

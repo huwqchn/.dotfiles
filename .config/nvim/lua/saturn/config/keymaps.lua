@@ -105,13 +105,13 @@ vim.keymap.set("i", ".", ".<c-g>u")
 vim.keymap.set("i", ";", ";<c-g>u")
 
 -- Terminal window navigation
-vim.keymap.set("t", "<C-n>", "<C-\\><C-N><C-w>h")
-vim.keymap.set("t", "<C-e>", "<C-\\><C-N><C-w>j")
-vim.keymap.set("t", "<C-u>", "<C-\\><C-N><C-w>k")
-vim.keymap.set("t", "<C-i>", "<C-\\><C-N><C-w>l")
+vim.keymap.set("t", "<C-n>", "<C-\\><C-N><C-w>h", { desc = "move to left" })
+vim.keymap.set("t", "<C-e>", "<C-\\><C-N><C-w>j", { desc = "move to down" })
+vim.keymap.set("t", "<C-u>", "<C-\\><C-N><C-w>k", { desc = "move to up" })
+vim.keymap.set("t", "<C-i>", "<C-\\><C-N><C-w>l", { desc = "move to right" })
 
 vim.keymap.set("t", "<esc><esc>", "<c-\\><c-n>", { desc = "Enter Normal Mode" })
--- navigate tab completion with <c-j> and <c-k>
+-- navigate tab completion with <c-e> and <c-j>
 -- runs conditionally
 vim.keymap.set("c", "<C-e>", 'pumvisible() ? "\\<C-n>" : "\\<C-j>"', { expr = true, noremap = true })
 vim.keymap.set("c", "<C-u>", 'pumvisible() ? "\\<C-p>" : "\\<C-k>"', { expr = true, noremap = true })
