@@ -10,21 +10,21 @@ return {
         "j",
         "<cmd>lua require('leap').leap { target_windows = { vim.fn.win_getid() } }<cr>",
         desc = "jump",
-        mode = { "n", "v", "o" },
+        mode = { "n", "x" },
       },
-      -- {
-      --   "gj",
-      --   "<cmd>lua require('leap').leap { target_windows = vim.tbl_filter(function (win) return vim.api.nvim_win_get_config(win).focusable end,vim.api.nvim_tabpage_list_wins(0))}<cr>",
-      --   desc = "jump to any window",
-      --   mode = { "n", "v", "o" },
-      -- },
-      { ";", "<Plug>(leap-forward-to)", desc = "leap forward to", mode = { "n", "v", "o" } },
-      { ":", "<Plug>(leap-backward-to)", desc = "leap backward to", mode = { "n", "v", "o" } },
-      { "x", "<Plug>(leap-forward-till)", desc = "leap forward till", mode = { "v", "o" } },
-      { "X", "<Plug>(leap-backward-till)", desc = "leap backward till", mode = { "v", "o" } },
+      {
+        "gj",
+        "<cmd>lua require('leap').leap { target_windows = vim.tbl_filter(function (win) return vim.api.nvim_win_get_config(win).focusable end,vim.api.nvim_tabpage_list_wins(0))}<cr>",
+        desc = "jump to any window",
+        mode = { "n", "x" },
+      },
+      { "f", "<Plug>(leap-forward-to)", desc = "leap forward to", mode = { "n", "x" } },
+      { "F", "<Plug>(leap-backward-to)", desc = "leap backward to", mode = { "n", "x" } },
+      { "t", "<Plug>(leap-forward-till)", desc = "leap forward till", mode = { "n", "x" } },
+      { "T", "<Plug>(leap-backward-till)", desc = "leap backward till", mode = { "n", "x" } },
       { "gs", "<Plug>(leap-cross-window)", desc = "leap cross window", mode = { "n", "x" } },
     },
-    dependencies = { { "ggandor/flit.nvim", opts = { labeled_modes = "nv" } } },
+    -- dependencies = { { "ggandor/flit.nvim", opts = { labeled_modes = "o" } } },
     config = function(_, opts)
       local leap = require("leap")
       for k, v in pairs(opts) do

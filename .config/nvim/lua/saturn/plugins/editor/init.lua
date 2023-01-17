@@ -372,8 +372,8 @@ return {
       { "<leader>sf", "<cmd>Telescope filetypes<cr>", desc = "File Types" },
       { "<leader>sh", "<cmd>Telescope help_tags<cr>", desc = "Help Pages" },
       { "<leader>sH", "<cmd>Telescope highlights<cr>", desc = "Search Highlight Groups" },
-      { "<leader>ss", Util.telescope("live_grep"), desc = "Grep (root dir)" },
-      { "<leader>sS", Util.telescope("live_grep", { cwd = false }), desc = "Grep (cwd)" },
+      { "<leader>sw", Util.telescope("live_grep"), desc = "Grep (root dir)" },
+      { "<leader>sW", Util.telescope("live_grep", { cwd = false }), desc = "Grep (cwd)" },
       { "<leader>sm", "<cmd>Telescope marks<cr>", desc = "Jump to Mark" },
       { "<leader>sM", "<cmd>Telescope man_pages<cr>", desc = "Man Pages" },
       { "<leader>sr", "<cmd>Telescope registers<cr>", desc = "Registers" },
@@ -387,7 +387,7 @@ return {
         desc = "Colorscheme with Preview",
       },
       {
-        "<leader>sd",
+        "<leader>ss",
         Util.telescope("lsp_document_symbols", {
           symbols = {
             "Class",
