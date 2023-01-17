@@ -405,30 +405,30 @@ return {
       })
     end,
   },
-  {
-    "jackMort/ChatGPT.nvim",
-    cmd = {
-      "ChatGPT",
-      "ChatGPTActAs",
-      "ChatGPTEditWithInstructions",
-    },
-    opts = {
-      keymaps = {
-        close = { "<C-c>", "<Esc>" },
-        yank_last = "<C-y>",
-        scroll_up = "<C-u>",
-        scroll_down = "<C-e>",
-        toggle_settings = "<C-o>",
-        new_session = "<C-n>",
-        cycle_windows = "<Tab>",
-      },
-    },
-    dependencies = {
-      "MunifTanjim/nui.nvim",
-      "nvim-lua/plenary.nvim",
-      "nvim-telescope/telescope.nvim",
-    },
-  },
+  -- {
+  --   "jackMort/ChatGPT.nvim",
+  --   cmd = {
+  --     "ChatGPT",
+  --     "ChatGPTActAs",
+  --     "ChatGPTEditWithInstructions",
+  --   },
+  --   opts = {
+  --     keymaps = {
+  --       close = { "<C-c>", "<Esc>" },
+  --       yank_last = "<C-y>",
+  --       scroll_up = "<C-u>",
+  --       scroll_down = "<C-e>",
+  --       toggle_settings = "<C-o>",
+  --       new_session = "<C-n>",
+  --       cycle_windows = "<Tab>",
+  --     },
+  --   },
+  --   dependencies = {
+  --     "MunifTanjim/nui.nvim",
+  --     "nvim-lua/plenary.nvim",
+  --     "nvim-telescope/telescope.nvim",
+  --   },
+  -- },
   -- {
   --   "MattesGroeger/vim-bookmarks",
   --   config = true,

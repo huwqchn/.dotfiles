@@ -1,5 +1,4 @@
 {
-  "ChatGPT.nvim": { "branch": "main", "commit": "c33babb015005cda6042f908ac587e4bc498d041" },
   "Comment.nvim": { "branch": "master", "commit": "d9cfae1059b62f7eacc09dba181efe4894e3b086" },
   "LuaSnip": { "branch": "master", "commit": "563827f00bb4fe43269e3be653deabc0005f1302" },
   "SchemaStore.nvim": { "branch": "main", "commit": "82b039aa402c9d138c3c4c16b1465c8a3be66117" },
@@ -21,7 +20,7 @@
   "dial.nvim": { "branch": "master", "commit": "54b503f906bc9e5ab85288414840a1b86d40769f" },
   "diffview.nvim": { "branch": "main", "commit": "5bbcf162d03287296fe393f88da6065db3cf9fd0" },
   "dressing.nvim": { "branch": "master", "commit": "4436d6f41e2f6b8ada57588acd1a9f8b3d21453c" },
-  "friendly-snippets": { "branch": "main", "commit": "7ab483b355613ef4f74189c7789278d765724d12" },
+  "friendly-snippets": { "branch": "main", "commit": "320865dfe76c03a5c60513d4f34ca22effae56f2" },
   "git-conflict.nvim": { "branch": "main", "commit": "80bc8931d4ed8c8c4d289a08e1838fcf4741408d" },
   "gitsigns.nvim": { "branch": "main", "commit": "bb808fc7376ed7bac0fbe8f47b83d4bf01738167" },
   "harpoon": { "branch": "master", "commit": "a2487c29dba9c3befbb57ccd8773b7f617fc593a" },
