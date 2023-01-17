@@ -10,9 +10,7 @@ super + Return
 super + c
   firefox
 
-# emacs
-# super + a
-#   emacsclient -c -a 'emacs'
+# open app
 super + a ; {a, b, c, d, e, f, g, i, n, o, q, s, u, v, x, z}
   {arandr,brave,clion,eudic,emacsclient -c -a 'emacs',flameshot gui,goland,idea,neovide,obsidian,qtcreator,spotify,unityhub,vscodium,xfce4-power-manager -c,zathura}
 
