@@ -11,7 +11,6 @@ return {
       local nvim_tree = require("nvim-tree")
       local conf = require("saturn.plugins.editor.nvim-tree").config
 
-
       -- saturn.plugins.which_key.mappings["e"] = { "<cmd>NvimTreeToggle<CR>", "Explorer" }
       conf._setup_called = true
 
@@ -99,7 +98,7 @@ return {
         "nvim-telescope/telescope-media-files.nvim",
       },
       {
-        "nvim-telescope/telescope-file-browser.nvim"
+        "nvim-telescope/telescope-file-browser.nvim",
       },
       {
         "tom-anders/telescope-vim-bookmarks.nvim",
@@ -107,7 +106,7 @@ return {
     },
     config = function()
       local actions = require("telescope.actions")
-      local fb_actions = require('telescope').extensions.file_browser.actions
+      local fb_actions = require("telescope").extensions.file_browser.actions
       local conf = {
         theme = "dropdown", --@type telescope_themes
         defaults = {
@@ -305,20 +304,20 @@ return {
           },
           file_browser = {
             mappings = {
-              ['n'] = {
-                ['c'] = fb_actions.create,
-                ['r'] = fb_actions.rename,
-                ['d'] = fb_actions.remove,
-                ['o'] = fb_actions.open,
-                ['p'] = fb_actions.goto_parent_dir,
+              ["n"] = {
+                ["c"] = fb_actions.create,
+                ["r"] = fb_actions.rename,
+                ["d"] = fb_actions.remove,
+                ["o"] = fb_actions.open,
+                ["p"] = fb_actions.goto_parent_dir,
               },
             },
           },
         },
       }
 
-      local previewers = require "telescope.previewers"
-      local sorters = require "telescope.sorters"
+      local previewers = require("telescope.previewers")
+      local sorters = require("telescope.sorters")
 
       conf = vim.tbl_extend("keep", {
         file_previewer = previewers.vim_buffer_cat.new,
@@ -328,7 +327,7 @@ return {
         generic_sorter = sorters.get_generic_fuzzy_sorter,
       }, conf)
 
-      local telescope = require "telescope"
+      local telescope = require("telescope")
 
       local theme = require("telescope.themes")["get_" .. (conf.theme or "")]
       if theme then
@@ -338,19 +337,19 @@ return {
       telescope.setup(conf)
 
       pcall(function()
-        require("telescope").load_extension "projects"
+        require("telescope").load_extension("projects")
       end)
 
       if conf.extensions and conf.extensions.fzf then
         pcall(function()
-          require("telescope").load_extension "fzf"
+          require("telescope").load_extension("fzf")
         end)
       end
       pcall(function()
-        require("telescope").load_extension "dotfiles"
+        require("telescope").load_extension("dotfiles")
       end)
       pcall(function()
-        require("telescope").load_extension "file_browser"
+        require("telescope").load_extension("file_browser")
       end)
     end,
     keys = {
@@ -382,7 +381,11 @@ return {
       { "<leader>sl", "<cmd>Telescope resume<cr>", desc = "Last Search" },
       { "<leader>so", "<cmd>Telescope vim_options<cr>", desc = "Options" },
       { "<leader>st", "<cmd>Telescope builtin<cr>", desc = "Telescope" },
-      { "<leader>sp", "<cmd>lua require('telescope.plugins').colorscheme({enable_preview = true})<cr>", desc = "Colorscheme with Preview" },
+      {
+        "<leader>sp",
+        "<cmd>lua require('telescope.plugins').colorscheme({enable_preview = true})<cr>",
+        desc = "Colorscheme with Preview",
+      },
       {
         "<leader>sd",
         Util.telescope("lsp_document_symbols", {
@@ -424,7 +427,6 @@ return {
           z = false,
           g = false,
         },
-
       },
       operators = { gc = "Comments" },
       key_labels = { ["<leader>"] = "SPC" },
@@ -612,7 +614,7 @@ return {
         previous = "u", -- previous item
         next = "e", -- next item
       },
-      use_diagnostic_signs = true
+      use_diagnostic_signs = true,
     },
   },
 
@@ -623,8 +625,20 @@ return {
     event = "BufReadPost",
     config = true,
     keys = {
-      { "]t", function() require("todo-comments").jump_next() end, desc = "Next todo comment" },
-      { "[t", function() require("todo-comments").jump_prev() end, desc = "Previous todo comment" },
+      {
+        "]t",
+        function()
+          require("todo-comments").jump_next()
+        end,
+        desc = "Next todo comment",
+      },
+      {
+        "[t",
+        function()
+          require("todo-comments").jump_prev()
+        end,
+        desc = "Previous todo comment",
+      },
       { "<leader>to", "<cmd>TodoTrouble<cr>", desc = "Todo Trouble" },
       { "<leader>tk", "<cmd>TodoTrouble keywords=TODO,FIX,FIXME<cr>", desc = "Todo Trouble" },
       { "<leader>tf", "<cmd>TodoTelescope<cr>", desc = "Todo Telescope" },
@@ -713,11 +727,11 @@ return {
   {
     "christianchiarulli/harpoon",
     keys = {
-      { "]h", '<cmd>lua require("harpoon.ui").nav_next()<cr>', "Harpoon Next" },
-      { "[h", '<cmd>lua require("harpoon.ui").nav_prev()<cr>', "Harpoon Prev" },
-      { "<leader>fh", "<cmd>Telescope harpoon marks<cr>", "Search Mark Files" },
-      { "<leader>m;", '<cmd>lua require("harpoon.ui").toggle_quick_menu()<cr>', "Harpoon UI" },
-      { "<leader>mm", '<cmd>lua require("harpoon.mark").add_file()<cr>', "Harpoon" },
+      { "]h", '<cmd>lua require("harpoon.ui").nav_next()<cr>', desc = "Harpoon Next" },
+      { "[h", '<cmd>lua require("harpoon.ui").nav_prev()<cr>', desc = "Harpoon Prev" },
+      { "<leader>fh", "<cmd>Telescope harpoon marks<cr>", desc = "Search Mark Files" },
+      { "<leader>m;", '<cmd>lua require("harpoon.ui").toggle_quick_menu()<cr>', desc = "Harpoon UI" },
+      { "<leader>mm", '<cmd>lua require("harpoon.mark").add_file()<cr>', desc = "Harpoon" },
     },
     enabled = saturn.enable_extra_plugins,
     config = true,
@@ -741,7 +755,7 @@ return {
       { "<leader>dr", "<cmd>lua require'dap'.repl.toggle()<cr>", "Toggle Repl" },
       { "<leader>dq", "<cmd>lua require'dap'.close()<cr>", "Quit" },
       { "<leader>dt", "<cmd>lua require'dapui'.toggle({reset = true})<cr>", "Toggle UI" },
-      { "<leader>dw", "<cmd>lua require'dap.ui.widgets'.hover()", "Widget" }
+      { "<leader>dw", "<cmd>lua require'dap.ui.widgets'.hover()", "Widget" },
     },
     opts = {
       breakpoint = {
