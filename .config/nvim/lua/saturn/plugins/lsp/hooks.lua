@@ -52,6 +52,7 @@ function M.common_on_attach(client, bufnr)
   end
   -- add keymaps
   require("saturn.plugins.lsp.keymaps").on_attach(client, bufnr)
+  require("saturn.plugins.lsp.format").on_attach(client, bufnr)
   add_lsp_buffer_options(bufnr)
   lu.setup_document_symbols(client, bufnr)
 end

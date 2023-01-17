@@ -45,6 +45,8 @@ return {
         end
       end
 
+      require("saturn.plugins.lsp.format").autoformat = saturn.format_on_save.enabled
+
       local config = {
         virtual_text = opts.diagnostics.virtual_text,
         signs = opts.diagnostics.signs,
@@ -57,7 +59,7 @@ return {
       vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, opts.float)
       vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, opts.float)
       require("mason-lspconfig").setup(saturn.lsp.installer.setup)
-      local util = require "lspconfig.util"
+      local util = require("lspconfig.util")
       -- automatic_installation is handled by lsp-manager
       util.on_setup = nil
     end,
@@ -110,7 +112,7 @@ return {
     keys = { { "<leader>cI", "<cmd>Mason<cr>", desc = "Mason" } },
     lazy = false,
     config = function()
-     require("mason").setup({
+      require("mason").setup({
         ui = {
           border = "rounded",
           keymaps = {
