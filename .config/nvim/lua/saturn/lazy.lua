@@ -14,7 +14,7 @@ vim.opt.rtp:prepend(vim.env.LAZY or lazypath)
 require("lazy").setup({
   spec = "saturn.plugins",
   defaults = { lazy = true, version = "*" },
-  install = { colorscheme = { saturn.colorscheme, "tokyonight", "habamax" } },
+  install = { colorscheme = { "tokyonight-night", "habamax" } },
   ui = { border = "rounded" },
   git = {
     timeout = 120,
@@ -47,4 +47,3 @@ vim.keymap.set("n", "<leader>pu", "<cmd>Lazy update<cr>", { desc = "Update" })
 vim.keymap.set("n", "<leader>pp", "<cmd>Lazy profile<cr>", { desc = "Profile" })
 vim.keymap.set("n", "<leader>pl", "<cmd>Lazy log<cr>", { desc = "Log" })
 vim.keymap.set("n", "<leader>pd", "<cmd>Lazy debug<cr>", { desc = "Debug" })
-
