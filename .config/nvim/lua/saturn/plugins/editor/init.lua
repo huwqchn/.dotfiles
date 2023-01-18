@@ -465,6 +465,7 @@ return {
         ["<leader>p"] = { name = "+plugin" },
         ["<leader>q"] = { name = "+session" },
         ["<leader>r"] = { name = "+refactor" },
+        ["<leader>R"] = { name = "+replace" },
         ["<leader>s"] = { name = "+search" },
         ["<leader>t"] = { name = "+trouble/todo" },
         ["<leader>u"] = { name = "+ui" },

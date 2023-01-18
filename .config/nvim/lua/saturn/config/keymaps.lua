@@ -91,7 +91,8 @@ vim.keymap.set("n", "<tab>", "<cmd>bnext<cr>")
 vim.keymap.set("n", "<s-tab>", "<cmd>bprevious<cr>")
 
 -- Replace in selection
-vim.keymap.set("n", "s", "<cmd>s/\\%V")
+-- vim.keymap.set("n", "s", "<cmd>s/\\%V")
+-- vim.keymap.set("x", "s", ":s/\\%V", { desc = "replace in selection" })
 
 -- insert mode navigation
 vim.keymap.set("i", "<A-Up>", "<C-\\><C-N><C-w>k")
@@ -137,7 +138,6 @@ vim.keymap.set("n", "<C-Right>", ":vertical resize -2<CR>")
 
 -- disable the default s key
 vim.keymap.set({ "n", "v" }, "s", "<nop>", { desc = "split/surround/select" })
-vim.keymap.set("x", "s", ":s/\\%V", { desc = "replace in selection" })
 
 -- split the screens
 vim.keymap.set("n", "su", ":set nosplitbelow<CR>:split<CR>:set splitbelow<CR>", { desc = "split above" })
