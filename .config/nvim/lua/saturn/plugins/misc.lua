@@ -307,6 +307,48 @@ return {
     cmd = { "CellularAutomaton" },
   },
   {
+    "petertriho/nvim-scrollbar",
+    event = "VeryLazy",
+    opts = function()
+      local colors = require("tokyonight.colors").setup()
+      return {
+        handle = {
+          color = colors.bg_highlight,
+        },
+        marks = {
+          Search = { color = colors.orange },
+          Error = { color = colors.error },
+          Warn = { color = colors.warning },
+          Info = { color = colors.info },
+          Hint = { color = colors.hint },
+          Misc = { color = colors.purple },
+        },
+      }
+    end,
+    config = function(_, opts)
+      require("scrollbar").setup(opts)
+      pcall(function()
+        require("scrollbar.handlers.gitsigns").setup()
+        require("scrollbar.handlers.search").setup({
+          -- hlslens config overrides
+        })
+      end)
+    end,
+  },
+  {
+    "kevinhwang91/nvim-hlslens",
+    keys = {
+      { "=", [[<Cmd>execute('normal! ' . v:count1 . 'n')<CR><Cmd>lua require('hlslens').start()<CR>]] },
+      { "-", [[<Cmd>execute('normal! ' . v:count1 . 'N')<CR><Cmd>lua require('hlslens').start()<CR>]] },
+      { "*", [[*<Cmd>lua require('hlslens').start()<CR>]] },
+      { "#", [[#<Cmd>lua require('hlslens').start()<CR>]] },
+      { "g*", [[g*<Cmd>lua require('hlslens').start()<CR>]] },
+      { "g#", [[g#<Cmd>lua require('hlslens').start()<CR>]] },
+      { "/" },
+      { "?" },
+    },
+  },
+  {
     "anuvyklack/pretty-fold.nvim",
     event = "BufReadPost",
     config = true,
