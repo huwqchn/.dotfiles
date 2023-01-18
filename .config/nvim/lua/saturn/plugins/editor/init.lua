@@ -650,9 +650,9 @@ return {
     "windwp/nvim-spectre",
     -- stylua: ignore
     keys = {
-      { "<leader>sr", function() require("spectre").open() end, desc = "Replace in files (Spectre)" },
-      { "<leader>sw", function() require('spectre').open_visual({select_word=true}) end, desc = "Replace Word" },
-      { "<leader>sf", function() require('spectre').open_file_search() end, desc = "Replace Buffer" },
+      { "<leader>Rs", function() require("spectre").open() end, desc = "Replace in files (Spectre)" },
+      { "<leader>Rw", function() require('spectre').open_visual({select_word=true}) end, desc = "Replace Word" },
+      { "<leader>Rf", function() require('spectre').open_file_search() end, desc = "Replace Buffer" },
     },
     config = true,
   },
