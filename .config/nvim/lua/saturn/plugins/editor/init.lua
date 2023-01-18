@@ -906,7 +906,11 @@ return {
       },
     },
   },
-
+  {
+    "kevinhwang91/nvim-bqf",
+    ft = "qf",
+    cmd = "BqfAutoToggle",
+  },
   { "mxsdev/nvim-dap-vscode-js", ft = { "javascript", "typescript" } },
   { "mfussenegger/nvim-dap-python", ft = "python" },
   { "leoluz/nvim-dap-go", ft = "go" },
