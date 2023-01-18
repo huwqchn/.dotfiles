@@ -378,6 +378,36 @@ return {
         silent = true,
         expr = false,
       },
+      {
+        "<leader>rb",
+        function()
+          require("refactoring").refactor("Extract Block")
+        end,
+        mode = "n",
+        noremap = true,
+        silent = true,
+        expr = false,
+      },
+      {
+        "<leader>rB",
+        function()
+          require("refactoring").refactor("Extract Block To File")
+        end,
+        mode = "n",
+        noremap = true,
+        silent = true,
+        expr = false,
+      },
+      {
+        "<leader>ri",
+        function()
+          require("refactoring").refactor("Inline Variable")
+        end,
+        mode = "n",
+        noremap = true,
+        silent = true,
+        expr = false,
+      },
     },
     config = true,
   },
