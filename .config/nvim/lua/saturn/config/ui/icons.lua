@@ -166,5 +166,6 @@ return {
     Lightning = "",
     Mark = "",
     Alien = "",
+    Palette = "",
   },
 }

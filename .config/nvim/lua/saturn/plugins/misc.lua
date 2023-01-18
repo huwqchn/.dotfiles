@@ -237,15 +237,17 @@ return {
     event = "BufRead",
     config = function()
       require("colorizer").setup({
-        filetypes = { "*" },
+        filetypes = { "*", "!lazy" },
+        -- all the sub-options of filetypes apply to buftypes
+        buftypes = { "*", "!prompt", "!nofile" },
         user_default_options = {
           RGB = true, -- #RGB hex codes
           RRGGBB = true, -- #RRGGBB hex codes
           names = false, -- "Name" codes like Blue or blue
-          RRGGBBAA = false, -- #RRGGBBAA hex codes
+          RRGGBBAA = true, -- #RRGGBBAA hex codes
           AARRGGBB = false, -- 0xAARRGGBB hex codes
-          rgb_fn = false, -- CSS rgb() and rgba() functions
-          hsl_fn = false, -- CSS hsl() and hsla() functions
+          rgb_fn = true, -- CSS rgb() and rgba() functions
+          hsl_fn = true, -- CSS hsl() and hsla() functions
           css = false, -- Enable all CSS features: rgb_fn, hsl_fn, names, RGB, RRGGBB
           css_fn = true, -- Enable all CSS *functions*: rgb_fn, hsl_fn
           -- Available modes for `mode`: foreground, background,  virtualtext
@@ -254,10 +256,8 @@ return {
           -- True is same as normal
           tailwind = false, -- Enable tailwind colors
           -- parsers can contain values used in |user_default_options|
-          virtualtext = saturn.icons.ui.Circle,
+          virtualtext = saturn.icons.ui.misc.Palette,
         },
-        -- all the sub-options of filetypes apply to buftypes
-        buftypes = {},
       })
 
       vim.api.nvim_create_autocmd({ "FileType" }, {
