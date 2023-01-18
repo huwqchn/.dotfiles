@@ -90,10 +90,6 @@ vim.keymap.set("i", "<A-u>", "<Esc>:m .-2<CR>==gi")
 vim.keymap.set("n", "<tab>", "<cmd>bnext<cr>")
 vim.keymap.set("n", "<s-tab>", "<cmd>bprevious<cr>")
 
--- Replace in selection
--- vim.keymap.set("n", "s", "<cmd>s/\\%V")
--- vim.keymap.set("x", "s", ":s/\\%V", { desc = "replace in selection" })
-
 -- insert mode navigation
 vim.keymap.set("i", "<A-Up>", "<C-\\><C-N><C-w>k")
 vim.keymap.set("i", "<A-Down>", "<C-\\><C-N><C-w>j")
@@ -183,3 +179,6 @@ vim.keymap.set("n", "<leader>fn", "<cmd>enew<cr>", { desc = "New File" })
 
 vim.keymap.set("n", "<leader>xl", "<cmd>lopen<cr>", { desc = "Open Location List" })
 vim.keymap.set("n", "<leader>xq", "<cmd>copen<cr>", { desc = "Open Quickfix List" })
+
+-- Replace in selection
+vim.keymap.set("x", "<leader>s", "<cmd>s/\\%V", { desc = "replace in selection" })
