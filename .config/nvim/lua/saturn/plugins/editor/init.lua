@@ -404,6 +404,11 @@ return {
         }),
         desc = "Goto Symbol",
       },
+      {
+        "<leader>s<tab>",
+        "<cmd>lua require('telescope').extensions['telescope-tabs'].list_tabs(require('telescope.themes').get_dropdown{previewer = false, initial_mode='normal', prompt_title='Tabs'})<cr>",
+        desc = "Find Tab",
+      },
     },
   },
 
