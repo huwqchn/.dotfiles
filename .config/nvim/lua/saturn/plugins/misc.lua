@@ -256,7 +256,7 @@ return {
           -- True is same as normal
           tailwind = false, -- Enable tailwind colors
           -- parsers can contain values used in |user_default_options|
-          virtualtext = saturn.icons.ui.misc.Palette,
+          virtualtext = saturn.icons.misc.Palette,
         },
       })
 
