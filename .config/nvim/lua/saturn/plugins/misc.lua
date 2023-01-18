@@ -308,7 +308,7 @@ return {
   },
   {
     "petertriho/nvim-scrollbar",
-    event = "VeryLazy",
+    event = "CursorMoved",
     opts = function()
       local colors = require("tokyonight.colors").setup()
       return {
