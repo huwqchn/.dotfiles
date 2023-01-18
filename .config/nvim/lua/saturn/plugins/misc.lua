@@ -126,6 +126,7 @@ return {
   {
     "nvim-neorg/neorg",
     ft = "norg",
+    build = ":Neorg sync-parsers",
     opts = {
       load = {
         ["core.defaults"] = {},
@@ -133,18 +134,17 @@ return {
         ["core.norg.completion"] = {
           config = { engine = "nvim-cmp" },
         },
+        ["core.norg.dirman"] = { -- Manages Neorg workspaces
+          config = {
+            workspaces = {
+              notes = "~/Documents/notes",
+            },
+          },
+        },
         ["core.integrations.nvim-cmp"] = {},
       },
     },
   },
-  -- {
-  --   "iamcco/markdown-preview.nvim",
-  --   build = "cd app && npm install",
-  --   init = function()
-  --     vim.g.mkdp_filetypes = { "markdown" }
-  --   end,
-  --   ft = { "markdown" },
-  -- },
   -- Preview number Jump
   {
     "nacro90/numb.nvim",
