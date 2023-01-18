@@ -1,11 +1,22 @@
 return {
   {
-    "iamcco/markdown-preview.nvim",
-    build = "cd app && npm install",
-    cmd = { "MarkdownPreview" },
-    config = function()
-      vim.g.mkdp_filetypes = { "markdown" }
-    end,
+    "toppair/peek.nvim",
+    build = "deno task --quiet build:fast",
     ft = { "markdown" },
+    keys = {
+      {
+        "<leader><space>",
+        function()
+          local peek = require("peek")
+          if peek.is_open() then
+            peek.close()
+          else
+            peek.open()
+          end
+        end,
+        desc = "Peek (Markdown Preview)",
+      },
+    },
+    opts = { theme = "light" },
   },
 }
