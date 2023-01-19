@@ -2,8 +2,7 @@
 vim.keymap.set("", "e", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 vim.keymap.set("", "u", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 vim.keymap.set("", "n", "h")
-vim.keymap.set({ "n", "v" }, "i", "l") -- for mini.ai case
-vim.keymap.set("", "gk", "gi", { desc = "goto last insert" })
+vim.keymap.set("", "i", "l")
 
 -- colemak jump to start/end of the line
 vim.keymap.set("", "N", "^")
@@ -15,6 +14,7 @@ vim.keymap.set("", "E", "5j")
 -- colemak insert key
 vim.keymap.set("", "k", "i")
 vim.keymap.set("", "K", "I")
+vim.keymap.set("", "gk", "gi", { desc = "goto last insert" })
 
 -- colemake undo key
 vim.keymap.set("", "l", "u")
