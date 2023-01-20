@@ -42,14 +42,16 @@ return {
           return
         end
         if
-          msg:match("warning: multiple different client offset_encodings detected for buffer, this is not supported yet")
+          msg:match(
+            "warning: multiple different client offset_encodings detected for buffer, this is not supported yet"
+          )
         then
           return
         end
 
         notify_filter(msg, ...)
       end
-    end
+    end,
   },
   {
     "stevearc/dressing.nvim",
@@ -70,9 +72,10 @@ return {
     "nvim-lualine/lualine.nvim",
     event = "VeryLazy",
     config = function()
-      local lualine = require("lualine")
-      local style = require("saturn.plugins.ui.lualine.styles").get_style("saturn")
-      lualine.setup(style)
+      require("saturn.plugins.ui.lualine")
+      -- local lualine = require("lualine")
+      -- local style = require("saturn.plugins.ui.lualine.styles").get_style("saturn")
+      -- lualine.setup(style)
     end,
   },
   {
@@ -183,12 +186,12 @@ return {
       require("mini.indentscope").setup({
         mappings = {
           -- Textobjects
-          object_scope = 'kk',
-          object_scope_with_border = 'ak',
+          object_scope = "kk",
+          object_scope_with_border = "ak",
 
           -- Motions (jump to respective border line; if not present - body line)
-          goto_top = '[k',
-          goto_bottom = ']k',
+          goto_top = "[k",
+          goto_bottom = "]k",
         },
         symbol = saturn.icons.ui.LineLeft,
         options = { try_as_border = true },
@@ -215,7 +218,7 @@ return {
       local conf = require("saturn.plugins.ui.bufferline").config
       bufferline.setup({
         options = conf.options,
-        highlights = conf.hightlights
+        highlights = conf.hightlights,
       })
     end,
   },
