@@ -86,44 +86,6 @@ return {
     },
   },
   {
-    "karb94/neoscroll.nvim",
-    keys = {
-      { "<C-k>", mode = { "n", "v" } },
-      { "<C-d>", mode = { "n", "v" } },
-      { "<C-b>", mode = { "n", "v" } },
-      { "<C-f>", mode = { "n", "v" } },
-      { "<C-y>", mode = { "n", "v" } },
-      { "<C-m>", mode = { "n", "v" } },
-      { "zt", mode = "n" },
-      { "zz", mode = "n" },
-      { "zb", mode = "n" },
-    },
-    config = function()
-      require("neoscroll").setup({
-        easing_function = "quadratic", -- Default easing function
-        -- Set any other options as needed
-      })
-
-      local t = {}
-      -- Syntax: t[keys] = {function, {function arguments}}
-      -- Use the "sine" easing function
-      t["<C-k>"] = { "scroll", { "-vim.wo.scroll", "true", "350", [['sine']] } }
-      t["<C-d>"] = { "scroll", { "vim.wo.scroll", "true", "350", [['sine']] } }
-      -- Use the "circular" easing function
-      t["<C-b>"] = { "scroll", { "-vim.api.nvim_win_get_height(0)", "true", "500", [['circular']] } }
-      t["<C-f>"] = { "scroll", { "vim.api.nvim_win_get_height(0)", "true", "500", [['circular']] } }
-      -- Pass "nil" to disable the easing animation (constant scrolling speed)
-      t["<C-y>"] = { "scroll", { "-0.10", "false", "100", nil } }
-      t["<C-m>"] = { "scroll", { "0.10", "false", "100", nil } }
-      -- When no easing function is provided the default easing function (in this case "quadratic") will be used
-      t["zt"] = { "zt", { "300" } }
-      t["zz"] = { "zz", { "300" } }
-      t["zb"] = { "zb", { "300" } }
-
-      require("neoscroll.config").set_mappings(t)
-    end,
-  },
-  {
     "nvim-neorg/neorg",
     ft = "norg",
     build = ":Neorg sync-parsers",
@@ -307,48 +269,6 @@ return {
   --   cmd = { "CellularAutomaton" },
   -- },
   {
-    "petertriho/nvim-scrollbar",
-    event = "CursorMoved",
-    opts = function()
-      local colors = require("tokyonight.colors").setup()
-      return {
-        handle = {
-          color = colors.bg_highlight,
-        },
-        marks = {
-          Search = { color = colors.orange },
-          Error = { color = colors.error },
-          Warn = { color = colors.warning },
-          Info = { color = colors.info },
-          Hint = { color = colors.hint },
-          Misc = { color = colors.purple },
-        },
-      }
-    end,
-    config = function(_, opts)
-      require("scrollbar").setup(opts)
-      pcall(function()
-        require("scrollbar.handlers.gitsigns").setup()
-        require("scrollbar.handlers.search").setup({
-          -- hlslens config overrides
-        })
-      end)
-    end,
-  },
-  {
-    "kevinhwang91/nvim-hlslens",
-    keys = {
-      { "=", [[<Cmd>execute('normal! ' . v:count1 . 'n')<CR><Cmd>lua require('hlslens').start()<CR>]] },
-      { "-", [[<Cmd>execute('normal! ' . v:count1 . 'N')<CR><Cmd>lua require('hlslens').start()<CR>]] },
-      { "*", [[*<Cmd>lua require('hlslens').start()<CR>]] },
-      { "#", [[#<Cmd>lua require('hlslens').start()<CR>]] },
-      { "g*", [[g*<Cmd>lua require('hlslens').start()<CR>]] },
-      { "g#", [[g#<Cmd>lua require('hlslens').start()<CR>]] },
-      { "/" },
-      { "?" },
-    },
-  },
-  {
     "anuvyklack/pretty-fold.nvim",
     event = "BufReadPost",
     config = true,
@@ -357,17 +277,17 @@ return {
     import = "saturn.plugins.lang.markdown",
     ft = { "markdown" },
   },
-  {
-    "mickael-menu/zk-nvim",
-    ft = { "markdown", "norg" },
-    opts = {
-      picker = "telescope",
-    },
-    lsp = {
-      auto_attach = {
-        enabled = true,
-        filetypes = { "markdown", "norg" },
-      },
-    },
-  },
+  -- {
+  --   "mickael-menu/zk-nvim",
+  --   ft = { "markdown", "norg" },
+  --   opts = {
+  --     picker = "telescope",
+  --   },
+  --   lsp = {
+  --     auto_attach = {
+  --       enabled = true,
+  --       filetypes = { "markdown", "norg" },
+  --     },
+  --   },
+  -- },
 }

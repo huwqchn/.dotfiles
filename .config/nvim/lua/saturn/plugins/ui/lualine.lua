@@ -152,12 +152,11 @@ require("lualine").setup({
       space,
     },
     lualine_c = {
-
-      -- filename,
-      -- filetype,
-      -- space,
       branch,
       diff,
+      space,
+      filename,
+      filetype,
     },
     lualine_x = {
       space,

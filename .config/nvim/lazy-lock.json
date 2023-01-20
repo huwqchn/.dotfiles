@@ -93,6 +93,5 @@
   "vim-matchup": { "branch": "master", "commit": "959e0e79ea240cdee29efbdd0d2e2e718931ccec" },
   "vim-repeat": { "branch": "master", "commit": "24afe922e6a05891756ecf331f39a1f6743d3d5a" },
   "which-key.nvim": { "branch": "main", "commit": "e4fa445065a2bb0bbc3cca85346b67817f28e83e" },
-  "zen-mode.nvim": { "branch": "main", "commit": "4313a5828e4d48c5f2f135f29d46f769a59dcfdc" },
-  "zk-nvim": { "branch": "main", "commit": "2fd9f9f29270bb28477e000100625276ec2a2377" }
+  "zen-mode.nvim": { "branch": "main", "commit": "4313a5828e4d48c5f2f135f29d46f769a59dcfdc" }
 }
