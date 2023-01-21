@@ -22,6 +22,12 @@ require("noice").setup({
     },
     {
       filter = {
+        find = "line",
+      },
+      view = "mini",
+    },
+    {
+      filter = {
         event = "msg_show",
         kind = "",
         find = "written",
@@ -90,3 +96,7 @@ vim.api.nvim_create_autocmd("FileType", {
     end)
   end,
 })
+
+pcall(function()
+  require("telescope").load_extension("noice")
+end)
