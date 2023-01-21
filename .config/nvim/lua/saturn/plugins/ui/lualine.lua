@@ -23,7 +23,7 @@ local theme = {
 
 local vim_icons = {
   function()
-    return " "
+    return saturn.icons.misc.Saturn
   end,
   separator = { left = "", right = "" },
   color = { bg = "#313244", fg = "#80A7EA" },
