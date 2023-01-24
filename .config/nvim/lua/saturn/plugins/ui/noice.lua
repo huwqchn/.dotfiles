@@ -36,18 +36,6 @@ require("noice").setup({
     },
     {
       filter = {
-        find = "changed",
-      },
-      view = "mini",
-    },
-    {
-      filter = {
-        find = "change",
-      },
-      view = "mini",
-    },
-    {
-      filter = {
         find = "search",
       },
       view = "mini",

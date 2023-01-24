@@ -322,6 +322,9 @@ return {
     config = function()
       require("saturn.plugins.ui.noice")
     end,
+    deactivate = function()
+      require("noice").disable()
+    end,
     -- stylua: ignore
     keys = {
       { "<S-Enter>", function() require("noice").redirect(vim.fn.getcmdline()) end, mode = "c", desc = "Redirect Cmdline" },

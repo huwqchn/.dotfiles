@@ -273,21 +273,4 @@ return {
     event = "BufReadPost",
     config = true,
   },
-  {
-    import = "saturn.plugins.lang.markdown",
-    ft = { "markdown" },
-  },
-  -- {
-  --   "mickael-menu/zk-nvim",
-  --   ft = { "markdown", "norg" },
-  --   opts = {
-  --     picker = "telescope",
-  --   },
-  --   lsp = {
-  --     auto_attach = {
-  --       enabled = true,
-  --       filetypes = { "markdown", "norg" },
-  --     },
-  --   },
-  -- },
 }

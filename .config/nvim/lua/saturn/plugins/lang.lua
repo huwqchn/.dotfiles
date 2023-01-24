@@ -1,10 +1,43 @@
 return {
   {
+    "toppair/peek.nvim",
+    build = "deno task --quiet build:fast",
+    ft = { "markdown" },
+    keys = {
+      {
+        "<leader><space>",
+        function()
+          local peek = require("peek")
+          if peek.is_open() then
+            peek.close()
+          else
+            peek.open()
+          end
+        end,
+        desc = "Peek (Markdown Preview)",
+      },
+    },
+    opts = { theme = "light" },
+  },
+  -- {
+  --   "mickael-menu/zk-nvim",
+  --   ft = { "markdown", "norg" },
+  --   opts = {
+  --     picker = "telescope",
+  --   },
+  --   lsp = {
+  --     auto_attach = {
+  --       enabled = true,
+  --       filetypes = { "markdown", "norg" },
+  --     },
+  --   },
+  -- },
+  {
     "christianchiarulli/rust-tools.nvim",
     branch = "modularize_and_inlay_rewrite",
     ft = "rust",
     config = function()
-      local mason_path = vim.fn.glob(vim.fn.stdpath "data" .. "/mason/")
+      local mason_path = vim.fn.glob(vim.fn.stdpath("data") .. "/mason/")
       local codelldb_adapter = {
         type = "server",
         port = "${port}",
@@ -14,7 +47,7 @@ return {
         },
       }
 
-      require("rust-tools").setup {
+      require("rust-tools").setup({
         tools = {
           executor = require("rust-tools/executors").termopen, -- can be quickfix or termopen
           reload_workspace_from_cargo_toml = true,
@@ -51,7 +84,7 @@ return {
         server = {
           on_attach = function(client, bufnr)
             require("saturn.plugins.lsp.hooks").common_on_attach(client, bufnr)
-            local rt = require "rust-tools"
+            local rt = require("rust-tools")
             vim.keymap.set("n", "H", rt.hover_actions.hover_actions, { buffer = bufnr })
           end,
 
@@ -68,7 +101,7 @@ return {
             },
           },
         },
-      }
+      })
     end,
   },
   {
@@ -84,6 +117,6 @@ return {
         enable = true,
         name = "crates.nvim",
       },
-    }
+    },
   },
 }
