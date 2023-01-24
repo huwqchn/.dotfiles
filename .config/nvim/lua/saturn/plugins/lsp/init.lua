@@ -146,8 +146,4 @@ return {
   {
     "b0o/SchemaStore.nvim",
   },
-  {
-    import = "saturn.plugins.lang.rust",
-    ft = "rust",
-  },
 }
