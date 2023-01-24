@@ -135,9 +135,9 @@ return {
     TriangleShortArrowRight = "",
     TriangleShortArrowUp = "",
     Quit = " ",
-    MultiGear = "",
-    SeparatorLeft = "",
-    SeparatorRight = "",
+    MultiGear = " ",
+    SeparatorRight = "",
+    SeparatorLeft = "",
     DotLine = "",
   },
   diagnostics = {

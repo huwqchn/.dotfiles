@@ -25,7 +25,7 @@ local vim_icons = {
   function()
     return saturn.icons.misc.Saturn
   end,
-  separator = { left = "", right = "" },
+  separator = { left = saturn.icons.ui.SeparatorLeft, right = saturn.icons.ui.SeparatorRight },
   color = { bg = "#313244", fg = "#80A7EA" },
 }
 
@@ -39,7 +39,7 @@ local space = {
 local filename = {
   "filename",
   color = { bg = "#80A7EA", fg = "#242735" },
-  separator = { left = "", right = "" },
+  separator = { left = saturn.icons.ui.SeparatorLeft, right = saturn.icons.ui.SeparatorRight },
 }
 
 local filetype = {
@@ -47,7 +47,7 @@ local filetype = {
   icon_only = true,
   colored = true,
   color = { bg = "#313244" },
-  separator = { left = "", right = "" },
+  separator = { left = saturn.icons.ui.SeparatorLeft, right = saturn.icons.ui.SeparatorRight },
 }
 
 local filetype_tab = {
@@ -60,25 +60,25 @@ local filetype_tab = {
 local fileformat = {
   "fileformat",
   color = { bg = "#b4befe", fg = "#313244" },
-  separator = { left = "", right = "" },
+  separator = { left = saturn.icons.ui.SeparatorLeft, right = saturn.icons.ui.SeparatorRight },
 }
 
 local encoding = {
   "encoding",
   color = { bg = "#313244", fg = "#80A7EA" },
-  separator = { left = "", right = "" },
+  separator = { left = saturn.icons.ui.SeparatorLeft, right = saturn.icons.ui.SeparatorRight },
 }
 
 local branch = {
   "branch",
   color = { bg = "#a6e3a1", fg = "#313244" },
-  separator = { left = "", right = "" },
+  separator = { left = saturn.icons.ui.SeparatorLeft, right = saturn.icons.ui.SeparatorRight },
 }
 
 local diff = {
   "diff",
   color = { bg = "#313244", fg = "#313244" },
-  separator = { left = "", right = "" },
+  separator = { left = saturn.icons.ui.SeparatorLeft, right = saturn.icons.ui.SeparatorRight },
 }
 
 local modes = {
@@ -87,7 +87,7 @@ local modes = {
     return str:sub(1, 1)
   end,
   color = { bg = "#fab387		", fg = "#1e1e2e" },
-  separator = { left = "", right = "" },
+  separator = { left = saturn.icons.ui.SeparatorLeft, right = saturn.icons.ui.SeparatorRight },
 }
 
 local function getLspName()
@@ -100,23 +100,23 @@ local function getLspName()
   for _, client in ipairs(clients) do
     local filetypes = client.config.filetypes
     if filetypes and vim.fn.index(filetypes, buf_ft) ~= -1 then
-      return "  " .. client.name
+      return saturn.icons.ui.MultiGear .. " " .. client.name
     end
   end
-  return "  " .. msg
+  return saturn.icons.ui.MultiGear .. " " .. msg
 end
 
 local dia = {
   "diagnostics",
   color = { bg = "#313244", fg = "#80A7EA" },
-  separator = { left = "", right = "" },
+  separator = { left = saturn.icons.ui.SeparatorLeft, right = saturn.icons.ui.SeparatorRight },
 }
 
 local lsp = {
   function()
     return getLspName()
   end,
-  separator = { left = "", right = "" },
+  separator = { left = saturn.icons.ui.SeparatorLeft, right = saturn.icons.ui.SeparatorRight },
   color = { bg = "#f38ba8", fg = "#1e1e2e" },
 }
 
@@ -152,11 +152,11 @@ require("lualine").setup({
       space,
     },
     lualine_c = {
-      branch,
-      diff,
-      space,
       filename,
       filetype,
+      space,
+      branch,
+      diff,
     },
     lualine_x = {
       space,

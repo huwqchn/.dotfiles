@@ -42,6 +42,18 @@ require("noice").setup({
     },
     {
       filter = {
+        find = "change",
+      },
+      view = "mini",
+    },
+    {
+      filter = {
+        find = "search",
+      },
+      view = "mini",
+    },
+    {
+      filter = {
         find = "offset_encodings",
       },
       opts = { skip = true },

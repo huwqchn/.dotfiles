@@ -18,13 +18,13 @@ return {
         desc = "jump to any window",
         mode = { "n", "x" },
       },
-      { "f", "<Plug>(leap-forward-to)", desc = "leap forward to", mode = { "n", "x" } },
-      { "F", "<Plug>(leap-backward-to)", desc = "leap backward to", mode = { "n", "x" } },
+      { ";", "<Plug>(leap-forward-to)", desc = "leap forward to", mode = { "n", "x" } },
+      { ":", "<Plug>(leap-backward-to)", desc = "leap backward to", mode = { "n", "x" } },
       -- { "t", "<Plug>(leap-forward-till)", desc = "leap forward till", mode = { "n", "x" } },
       -- { "T", "<Plug>(leap-backward-till)", desc = "leap backward till", mode = { "n", "x" } },
       { "gs", "<Plug>(leap-cross-window)", desc = "leap cross window", mode = { "n", "x" } },
     },
-    -- dependencies = { { "ggandor/flit.nvim", opts = { labeled_modes = "o" } } },
+    dependencies = { { "ggandor/flit.nvim", opts = { labeled_modes = "o" } } },
     config = function(_, opts)
       local leap = require("leap")
       for k, v in pairs(opts) do
@@ -40,9 +40,9 @@ return {
   --     local hop = require("hop")
   --     hop.setup({ keys = "eariosthdfuwyqzxcvbkmj" })
   --     local directions = require("hop.hint").HintDirection
-  --     vim.keymap.set("", "j", ":HopChar1<cr>", { silent = true })
-  --     vim.keymap.set("", "<C-j>", ":HopChar2<cr>", { silent = true, desc = "Jump" })
-  --     vim.keymap.set("", "<leader>jj", ":HopPattern<cr>", { silent = true, desc = "Jump" })
+  --     -- vim.keymap.set("", "j", ":HopChar1<cr>", { silent = true })
+  --     -- vim.keymap.set("", "<C-j>", ":HopChar2<cr>", { silent = true, desc = "Jump" })
+  --     -- vim.keymap.set("", "<leader>jj", ":HopPattern<cr>", { silent = true, desc = "Jump" })
   --     vim.keymap.set("", "f", function()
   --       hop.hint_char1({ direction = directions.AFTER_CURSOR, current_line_only = true })
   --     end, { remap = true })
