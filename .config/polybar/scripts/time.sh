@@ -22,29 +22,29 @@ while true; do
 
   # Set the clock icon to use
   if [ "$hour" -eq 1 ]; then
-    clock_icon="%{T3} %{T-}"
+    clock_icon="%{T2} %{T-}"
   elif [ "$hour" -eq 2 ]; then
-    clock_icon="%{T3} %{T-}"
+    clock_icon="%{T2} %{T-}"
   elif [ "$hour" -eq 3 ]; then
-    clock_icon="%{T3} %{T-}"
+    clock_icon="%{T2} %{T-}"
   elif [ "$hour" -eq 4 ]; then
-    clock_icon="%{T3} %{T-}"
+    clock_icon="%{T2} %{T-}"
   elif [ "$hour" -eq 5 ]; then
-    clock_icon="%{T3} %{T-}"
+    clock_icon="%{T2} %{T-}"
   elif [ "$hour" -eq 6 ]; then
-    clock_icon="%{T3} %{T-}"
+    clock_icon="%{T2} %{T-}"
   elif [ "$hour" -eq 7 ]; then
-    clock_icon="%{T3} %{T-}"
+    clock_icon="%{T2} %{T-}"
   elif [ "$hour" -eq 8 ]; then
-    clock_icon="%{T3} %{T-}"
+    clock_icon="%{T2} %{T-}"
   elif [ "$hour" -eq 9 ]; then
-    clock_icon="%{T3} %{T-}"
+    clock_icon="%{T2} %{T-}"
   elif [ "$hour" -eq 10 ]; then
-    clock_icon="%{T3} %{T-}"
+    clock_icon="%{T2} %{T-}"
   elif [ "$hour" -eq 11 ]; then
-    clock_icon="%{T3} %{T-}"
+    clock_icon="%{T2} %{T-}"
   else
-    clock_icon="%{T3} %{T-}"
+    clock_icon="%{T2} %{T-}"
   fi
   if [ $t -eq 0 ]; then
     echo -e "$clock_icon%{T4}$time%{T-}"
