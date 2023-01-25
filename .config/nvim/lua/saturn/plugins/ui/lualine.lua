@@ -9,6 +9,22 @@ local colors = {
   blue = "#80A7EA",
 }
 
+local window_width_limit = 100
+
+local conditions = {
+  buffer_not_empty = function()
+    return vim.fn.empty(vim.fn.expand("%:t")) ~= 1
+  end,
+  hide_in_width = function()
+    return vim.o.columns > window_width_limit
+  end,
+  check_git_workspace = function()
+    local filepath = vim.fn.expand("%:p:h")
+    local gitdir = vim.fn.finddir(".git", filepath .. ";")
+    return gitdir and #gitdir > 0 and #gitdir < #filepath
+  end,
+}
+
 local theme = {
   normal = {
     a = { fg = colors.black, bg = colors.blue },
@@ -40,6 +56,7 @@ local filename = {
   "filename",
   color = { bg = "#80A7EA", fg = "#242735" },
   separator = { left = saturn.icons.ui.SeparatorLeft, right = saturn.icons.ui.SeparatorRight },
+  cond = conditions.hide_in_width,
 }
 
 local filetype = {
@@ -48,13 +65,6 @@ local filetype = {
   colored = true,
   color = { bg = "#313244" },
   separator = { left = saturn.icons.ui.SeparatorLeft, right = saturn.icons.ui.SeparatorRight },
-}
-
-local filetype_tab = {
-  "filetype",
-  icon_only = true,
-  colored = true,
-  color = { bg = "#313244" },
 }
 
 local fileformat = {
@@ -71,12 +81,31 @@ local encoding = {
 
 local branch = {
   "branch",
+  icon = saturn.icons.git.Branch,
   color = { bg = "#a6e3a1", fg = "#313244" },
   separator = { left = saturn.icons.ui.SeparatorLeft, right = saturn.icons.ui.SeparatorRight },
 }
 
+local function diff_source()
+  local gitsigns = vim.b.gitsigns_status_dict
+  if gitsigns then
+    return {
+      added = gitsigns.added,
+      modified = gitsigns.changed,
+      removed = gitsigns.removed,
+    }
+  end
+end
+
 local diff = {
   "diff",
+  source = diff_source,
+  symbols = {
+    added = saturn.icons.git.LineAdded .. " ",
+    modified = saturn.icons.git.LineModified .. " ",
+    removed = saturn.icons.git.LineRemoved .. " ",
+  },
+  padding = { left = 2, right = 1 },
   color = { bg = "#313244", fg = "#313244" },
   separator = { left = saturn.icons.ui.SeparatorLeft, right = saturn.icons.ui.SeparatorRight },
 }
@@ -86,7 +115,7 @@ local modes = {
   fmt = function(str)
     return str:sub(1, 1)
   end,
-  color = { bg = "#fab387		", fg = "#1e1e2e" },
+  color = { bg = "#fab387", fg = "#1e1e2e" },
   separator = { left = saturn.icons.ui.SeparatorLeft, right = saturn.icons.ui.SeparatorRight },
 }
 
@@ -108,6 +137,13 @@ end
 
 local dia = {
   "diagnostics",
+  sources = { "nvim_diagnostic" },
+  symbols = {
+    error = saturn.icons.diagnostics.BoldError .. " ",
+    warn = saturn.icons.diagnostics.BoldWarning .. " ",
+    info = saturn.icons.diagnostics.BoldInformation .. " ",
+    hint = saturn.icons.diagnostics.BoldHint .. " ",
+  },
   color = { bg = "#313244", fg = "#80A7EA" },
   separator = { left = saturn.icons.ui.SeparatorLeft, right = saturn.icons.ui.SeparatorRight },
 }
@@ -118,6 +154,13 @@ local lsp = {
   end,
   separator = { left = saturn.icons.ui.SeparatorLeft, right = saturn.icons.ui.SeparatorRight },
   color = { bg = "#f38ba8", fg = "#1e1e2e" },
+}
+
+local lazy = {
+  require("lazy.status").updates,
+  cond = require("lazy.status").has_updates,
+  color = { bg = "#a9a1e1", fg = "#202328" },
+  separator = { left = saturn.icons.ui.SeparatorLeft, right = saturn.icons.ui.SeparatorRight },
 }
 
 require("lualine").setup({
@@ -159,6 +202,7 @@ require("lualine").setup({
       diff,
     },
     lualine_x = {
+      lazy,
       space,
     },
     lualine_y = {
