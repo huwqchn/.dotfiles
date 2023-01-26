@@ -2,7 +2,7 @@ return {
   {
     "toppair/peek.nvim",
     build = "deno task --quiet build:fast",
-    ft = { "markdown" },
+    -- ft = { "markdown" },
     keys = {
       {
         "<leader><space>",
@@ -30,7 +30,7 @@ return {
       },
     },
     cmd = { "Telekasten" },
-    ft = { "markdown" },
+    -- ft = { "markdown" },
     keys = {
       {
         "<leader>nf",
@@ -187,7 +187,7 @@ return {
         desc = "telekasten panel",
       },
       {
-        "<leader>ni",
+        "<M-k>",
         function()
           require("telekasten").insert_link({ i = true })
         end,
@@ -195,7 +195,7 @@ return {
         mode = "i",
       },
       {
-        "<leader>nt",
+        "<M-t>",
         function()
           require("telekasten").toggle_todo({ i = true })
         end,
@@ -203,7 +203,7 @@ return {
         mode = "i",
       },
       {
-        "<leader>#",
+        "<M-#>",
         function()
           require("telekasten").show_tags({ i = true })
         end,
