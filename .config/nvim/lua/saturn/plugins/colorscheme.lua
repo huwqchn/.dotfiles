@@ -1,8 +1,18 @@
-local init = function()
-  saturn.plugins.theme = {
-    lunar = {},
-    catppuccin = {},
-    tokyonight = {
+local config = function(_, opts)
+  local colorscheme = require(saturn.colorscheme)
+  colorscheme.setup(opts)
+  vim.g.colors_name = saturn.colorscheme
+  vim.cmd("colorscheme " .. saturn.colorscheme)
+end
+
+return {
+  -- tokyonight
+  {
+    "folke/tokyonight.nvim",
+    lazy = not saturn.colorscheme == "tokyonight",
+    enabled = saturn.colorscheme == "tokyonight",
+    priority = 1000,
+    opts = {
       on_highlights = function(hl, c)
         hl.IndentBlanklineContextChar = {
           fg = c.dark5,
@@ -57,25 +67,6 @@ local init = function()
       lualine_bold = false, -- When `true`, section headers in the lualine theme will be bold
       use_background = true, -- can be light/dark/auto. When auto, background will be set to vim.o.background
     },
-  }
-end
-
-local config = function()
-  local colorscheme = require(saturn.colorscheme)
-  colorscheme.setup(saturn.plugins.theme[saturn.colorscheme])
-
-  vim.g.colors_name = saturn.colorscheme
-  vim.cmd("colorscheme " .. saturn.colorscheme)
-end
-
-return {
-  -- tokyonight
-  {
-    "folke/tokyonight.nvim",
-    lazy = not saturn.colorscheme == "tokyonight",
-    enabled = saturn.colorscheme == "tokyonight",
-    priority = 1000,
-    init = init,
     config = config,
   },
 
@@ -86,7 +77,6 @@ return {
     lazy = not saturn.colorscheme == "catppuccin",
     enabled = saturn.colorscheme == "catppuccin",
     priority = 1000,
-    init = init,
     config = config,
   },
 
@@ -96,7 +86,6 @@ return {
     lazy = not saturn.colorscheme == "lunar",
     enabled = saturn.colorscheme == "lunar",
     priority = 1000,
-    init = init,
     config = config,
   },
 }

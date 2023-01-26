@@ -33,6 +33,34 @@ return {
       -- leap.add_default_mappings(true)
     end,
   },
+  -- -- enhance tTfF
+  -- {
+  --   "jinh0/eyeliner.nvim",
+  --   cmd = {
+  --     "EyelinerEnable",
+  --     "EyelinerDisable",
+  --     "EyelinerToggle",
+  --   },
+  --   keys = {
+  --     { "f", mode = { "x", "o", "v", "n" } },
+  --     { "F", mode = { "x", "o", "v", "n" } },
+  --     { "t", mode = { "x", "o", "v", "n" } },
+  --     { "T", mode = { "x", "o", "v", "n" } },
+  --   },
+  --   config = function()
+  --     require("eyeliner").setup({
+  --       highlight_on_key = true,
+  --       -- dim = true,
+  --     })
+
+  --     vim.api.nvim_create_autocmd("ColorScheme", {
+  --       pattern = "*",
+  --       callback = function()
+  --         vim.api.nvim_set_hl(0, "EyelinerPrimary", { bold = true, underline = true })
+  --       end,
+  --     })
+  --   end,
+  -- },
   -- {
   --   "phaazon/hop.nvim",
   --   event = "VeryLazy",
