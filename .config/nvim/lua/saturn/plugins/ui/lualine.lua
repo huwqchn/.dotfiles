@@ -1,13 +1,52 @@
 local colors = {
-  red = "#cdd6f4",
+  silver = "#cdd6f4",
   grey = "#181825",
+  dark_grey = "#202328",
+  dark_purple = "#242735",
   black = "#1e1e2e",
   white = "#313244",
   light_green = "#6c7086",
   orange = "#fab387",
   green = "#a6e3a1",
   blue = "#80A7EA",
+  violet = "#a9a1e1",
+  lilac = "#b4befe",
+  oyster = "#e2ddd1",
+  pink = "#f38ba8",
+  cyan = "#4abaaf",
+  purple = "#9a7ecc",
+  yellow = "#e0af68",
+  red = "#ec5f67",
+  prussian = "#003153",
 }
+
+-- auto change color according to neovims mode
+local mode_color = {
+  n = colors.cyan,
+  i = colors.orange,
+  v = colors.purple,
+  [""] = colors.purple,
+  V = colors.purple,
+  c = colors.red,
+  no = colors.red,
+  s = colors.green,
+  S = colors.green,
+  [""] = colors.green,
+  ic = colors.yellow,
+  R = colors.violet,
+  Rv = colors.violet,
+  cv = colors.red,
+  ce = colors.red,
+  r = colors.prussian,
+  rm = colors.prussian,
+  ["r?"] = colors.prussion,
+  ["!"] = colors.oyster,
+  t = colors.oyster,
+}
+
+local function mode_color_fn()
+  return { bg = mode_color[vim.fn.mode()], fg = colors.black }
+end
 
 local window_width_limit = 100
 
@@ -42,19 +81,19 @@ local vim_icons = {
     return saturn.icons.misc.Saturn
   end,
   separator = { left = saturn.icons.ui.SeparatorLeft, right = saturn.icons.ui.SeparatorRight },
-  color = { bg = "#313244", fg = "#80A7EA" },
+  color = { bg = colors.white, fg = colors.blue },
 }
 
 local space = {
   function()
     return " "
   end,
-  color = { bg = colors.black, fg = "#80A7EA" },
+  color = { bg = colors.black, fg = colors.blue },
 }
 
 local filename = {
   "filename",
-  color = { bg = "#80A7EA", fg = "#242735" },
+  color = { bg = colors.blue, fg = colors.dark_purple },
   separator = { left = saturn.icons.ui.SeparatorLeft, right = saturn.icons.ui.SeparatorRight },
   cond = conditions.hide_in_width,
 }
@@ -63,26 +102,26 @@ local filetype = {
   "filetype",
   icon_only = true,
   colored = true,
-  color = { bg = "#313244" },
+  color = { bg = colors.white },
   separator = { left = saturn.icons.ui.SeparatorLeft, right = saturn.icons.ui.SeparatorRight },
 }
 
 local fileformat = {
   "fileformat",
-  color = { bg = "#b4befe", fg = "#313244" },
+  color = { bg = colors.lilac, fg = colors.white },
   separator = { left = saturn.icons.ui.SeparatorLeft, right = saturn.icons.ui.SeparatorRight },
 }
 
 local encoding = {
   "encoding",
-  color = { bg = "#313244", fg = "#80A7EA" },
+  color = { bg = colors.white, fg = colors.blue },
   separator = { left = saturn.icons.ui.SeparatorLeft, right = saturn.icons.ui.SeparatorRight },
 }
 
 local branch = {
   "branch",
   icon = saturn.icons.git.Branch,
-  color = { bg = "#a6e3a1", fg = "#313244" },
+  color = { bg = colors.green, fg = colors.white },
   separator = { left = saturn.icons.ui.SeparatorLeft, right = saturn.icons.ui.SeparatorRight },
 }
 
@@ -106,7 +145,7 @@ local diff = {
     removed = saturn.icons.git.LineRemoved .. " ",
   },
   padding = { left = 2, right = 1 },
-  color = { bg = "#313244", fg = "#313244" },
+  color = { bg = colors.white, fg = colors.white },
   separator = { left = saturn.icons.ui.SeparatorLeft, right = saturn.icons.ui.SeparatorRight },
 }
 
@@ -115,7 +154,7 @@ local modes = {
   fmt = function(str)
     return str:sub(1, 1)
   end,
-  color = { bg = "#fab387", fg = "#1e1e2e" },
+  color = mode_color_fn,
   separator = { left = saturn.icons.ui.SeparatorLeft, right = saturn.icons.ui.SeparatorRight },
 }
 
@@ -144,7 +183,7 @@ local dia = {
     info = saturn.icons.diagnostics.BoldInformation .. " ",
     hint = saturn.icons.diagnostics.BoldHint .. " ",
   },
-  color = { bg = "#313244", fg = "#80A7EA" },
+  color = { bg = colors.white, fg = colors.blue },
   separator = { left = saturn.icons.ui.SeparatorLeft, right = saturn.icons.ui.SeparatorRight },
 }
 
@@ -153,14 +192,41 @@ local lsp = {
     return getLspName()
   end,
   separator = { left = saturn.icons.ui.SeparatorLeft, right = saturn.icons.ui.SeparatorRight },
-  color = { bg = "#f38ba8", fg = "#1e1e2e" },
+  color = { bg = colors.pink, fg = colors.black },
 }
 
 local lazy = {
   require("lazy.status").updates,
   cond = require("lazy.status").has_updates,
-  color = { bg = "#a9a1e1", fg = "#202328" },
+  color = { bg = colors.violet, fg = colors.dark_grey },
   separator = { left = saturn.icons.ui.SeparatorLeft, right = saturn.icons.ui.SeparatorRight },
+}
+
+local function env_cleanup(venv)
+  if string.find(venv, "/") then
+    local final_venv = venv
+    for w in venv:gmatch("([^/]+)") do
+      final_venv = w
+    end
+    venv = final_venv
+  end
+  return venv
+end
+
+local python_env = {
+  function()
+    if vim.bo.filetype == "python" then
+      local venv = os.getenv("CONDA_DEFAULT_ENV") or os.getenv("VIRTUAL_ENV")
+      if venv then
+        local icons = require("nvim-web-devicons")
+        local py_icon, _ = icons.get_icon(".py")
+        return string.format(" " .. py_icon .. " (%s)", env_cleanup(venv))
+      end
+    end
+    return ""
+  end,
+  color = { fg = colors.green },
+  cond = conditions.hide_in_width,
 }
 
 require("lualine").setup({
