@@ -338,7 +338,7 @@ return {
         mappings = {
           -- Main textobject prefixes
           around = "a",
-          inside = "k",
+          inside = "i",
 
           -- Next/last variants
           around_next = "ae",
@@ -363,6 +363,20 @@ return {
     config = function(_, opts)
       local ai = require("mini.ai")
       ai.setup(opts)
+      --HACK: use k as inside
+      vim.api.nvim_set_keymap(
+        "x",
+        "k",
+        [[v:lua.require("mini.ai").expr_textobject('x', 'i')]],
+        { desc = "Inside textobject", expr = true, noremap = true }
+      )
+      vim.api.nvim_set_keymap(
+        "o",
+        "k",
+        [[v:lua.require("mini.ai").expr_textobject('o', 'i')]],
+        { desc = "Inside textobject", expr = true, noremap = true }
+      )
+      vim.keymap.set("", "i", "l")
     end,
   },
   {
