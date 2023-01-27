@@ -487,10 +487,10 @@ return {
     opts = {
       signs = {
         add = {
-          text = saturn.icons.ui.ThickLineLeft,
+          text = saturn.icons.ui.BoldLineLeft,
         },
         change = {
-          text = saturn.icons.ui.ThickLineLeft,
+          text = saturn.icons.ui.BoldLineLeft,
         },
         delete = {
           text = saturn.icons.ui.Triangle,
@@ -499,7 +499,7 @@ return {
           text = saturn.icons.ui.Triangle,
         },
         changedelete = {
-          text = saturn.icons.ui.ThickLineLeft,
+          text = saturn.icons.ui.BoldLineLeft,
         },
       },
       on_attach = function(buffer)
