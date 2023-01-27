@@ -9,7 +9,7 @@ return {
             { name = "DiagnosticSignError", text = saturn.icons.diagnostics.Error },
             { name = "DiagnosticSignWarn", text = saturn.icons.diagnostics.Warning },
             { name = "DiagnosticSignHint", text = saturn.icons.diagnostics.Hint },
-            { name = "DiagnosticSignInfo", text = saturn.icons.diagnostics.Info },
+            { name = "DiagnosticSignInfo", text = saturn.icons.diagnostics.Information },
           },
         },
         virtual_text = { space = 4, prefix = saturn.icons.misc.Alien },
