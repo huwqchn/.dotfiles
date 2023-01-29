@@ -186,12 +186,12 @@ return {
       require("mini.indentscope").setup({
         mappings = {
           -- Textobjects
-          object_scope = "kk",
-          object_scope_with_border = "ak",
+          object_scope = "ki",
+          object_scope_with_border = "ai",
 
           -- Motions (jump to respective border line; if not present - body line)
-          goto_top = "[k",
-          goto_bottom = "]k",
+          goto_top = "[i",
+          goto_bottom = "]i",
         },
         symbol = saturn.icons.ui.LineLeft,
         options = { try_as_border = true },
@@ -318,6 +318,7 @@ return {
   -- noicer ui too lag and noise
   {
     "folke/noice.nvim",
+    enabled = false,
     event = "VeryLazy",
     config = function()
       require("saturn.plugins.ui.noice")
