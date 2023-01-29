@@ -4,6 +4,23 @@ return {
     branch = "modularize_and_inlay_rewrite",
     ft = "rust",
     event = "VeryLazy",
+    keys = {
+      { "<leader>nr", "<cmd>RustRunnables<cr>", desc = "Runnables" },
+      { "<leader>nm", "<cmd>RustExpandMacro<cr>", desc = "Expand Macro" },
+      { "<leader>nc", "<cmd>RustOpenCargo<cr>", desc = "Open Cargo" },
+      { "<leader>nD", "<cmd>RustOpenExternalDocs<cr>", desc = "Open Docs" },
+      { "<leader>np", "<cmd>RustParentModule<cr>", desc = "Parent Module" },
+      { "<leader>nd", "<cmd>RustDebuggables<cr>", desc = "Debuggables" },
+      { "<leader>nv", "<cmd>RustViewCrateGraph<cr>", desc = "View Crate Graph" },
+      {
+        "<leader>nR",
+        "<cmd>lua require('rust-tools/workspace_refresh')._reload_workspace_from_cargo_toml()<Cr>",
+        "Reload Workspace",
+      },
+      { "<leader>nu", "<cmd>RustMoveItemUp<cr>", desc = "Move Item Up" },
+      { "<leader>ne", "<cmd>RustMoveItemDown<cr>", desc = "Move Item Down" },
+      { "J", "<cmd>RustJoinLines<cr>", desc = "Join Lines" },
+    },
     config = function()
       local mason_path = vim.fn.glob(vim.fn.stdpath("data") .. "/mason/")
       local codelldb_adapter = {
@@ -53,7 +70,10 @@ return {
           on_attach = function(client, bufnr)
             require("saturn.plugins.lsp.hooks").common_on_attach(client, bufnr)
             local rt = require("rust-tools")
+            -- Hover actions
             vim.keymap.set("n", "H", rt.hover_actions.hover_actions, { buffer = bufnr })
+            -- Code action groups
+            vim.keymap.set("n", "<Leader>ca", rt.code_action_group.code_action_group, { buffer = bufnr })
           end,
 
           capabilities = require("saturn.plugins.lsp.hooks").common_capabilities(),
