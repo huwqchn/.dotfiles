@@ -49,7 +49,7 @@
   "nvim-bqf": { "branch": "main", "commit": "d15b59d7429d45f0b057aa63a0266989adc95715" },
   "nvim-cmp": { "branch": "main", "commit": "e7e2ef7031db8e0cfad7ad9916ec766ddd9dbb3b" },
   "nvim-colorizer.lua": { "branch": "master", "commit": "760e27df4dd966607e8fb7fd8b6b93e3c7d2e193" },
-  "nvim-dap": { "branch": "master", "commit": "d213b7d5bf0d56b1f47c62a2f5d4ebd202fe0d12" },
+  "nvim-dap": { "branch": "master", "commit": "0e376f00e7fac143e29e1017d2ac2cc3df13d185" },
   "nvim-dap-go": { "branch": "main", "commit": "6f045a72a05a78e4071dd0880f08214a2bb1461b" },
   "nvim-dap-python": { "branch": "master", "commit": "d4400d075c21ed8fb8e8ac6a5ff56f58f6e93531" },
   "nvim-dap-ui": { "branch": "master", "commit": "e26fba0562cb9c904f7a6510a94961b82701a16f" },
