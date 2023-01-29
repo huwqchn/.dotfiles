@@ -463,108 +463,108 @@ return {
   },
 
   -- better yank/paste
-  {
-    "kkharji/sqlite.lua",
-    enabled = function()
-      return not jit.os:find("Windows")
-    end,
-  },
-  {
-    "gbprod/yanky.nvim",
-    enabled = true,
-    event = "BufReadPost",
-    config = function()
-      -- vim.g.clipboard = {
-      --   name = "xsel_override",
-      --   copy = {
-      --     ["+"] = "xsel --input --clipboard",
-      --     ["*"] = "xsel --input --primary",
-      --   },
-      --   paste = {
-      --     ["+"] = "xsel --output --clipboard",
-      --     ["*"] = "xsel --output --primary",
-      --   },
-      --   cache_enabled = 1,
-      -- }
-
-      require("yanky").setup({
-        highlight = {
-          timer = 150,
-        },
-        ring = {
-          storage = jit.os:find("Windows") and "shada" or "sqlite",
-        },
-      })
-
-      vim.keymap.set({ "n", "x" }, "y", "<Plug>(YankyYank)")
-
-      vim.keymap.set({ "n", "x" }, "p", "<Plug>(YankyPutAfter)")
-      vim.keymap.set({ "n", "x" }, "P", "<Plug>(YankyPutBefore)")
-      vim.keymap.set({ "n", "x" }, "gp", "<Plug>(YankyGPutAfter)")
-      vim.keymap.set({ "n", "x" }, "gP", "<Plug>(YankyGPutBefore)")
-
-      vim.keymap.set("n", "<c-[>", "<Plug>(YankyCycleForward)")
-      vim.keymap.set("n", "<c-]>", "<Plug>(YankyCycleBackward)")
-
-      vim.keymap.set("n", "]p", "<Plug>(YankyPutIndentAfterLinewise)")
-      vim.keymap.set("n", "[p", "<Plug>(YankyPutIndentBeforeLinewise)")
-      vim.keymap.set("n", "]P", "<Plug>(YankyPutIndentAfterLinewise)")
-      vim.keymap.set("n", "[P", "<Plug>(YankyPutIndentBeforeLinewise)")
-
-      vim.keymap.set("n", "<leader>P", function()
-        require("telescope").extensions.yank_history.yank_history({})
-      end, { desc = "Paste from Yanky" })
-    end,
-  },
   -- {
-  --   "jackMort/ChatGPT.nvim",
-  --   cmd = {
-  --     "ChatGPT",
-  --     "ChatGPTActAs",
-  --     "ChatGPTEditWithInstructions",
-  --   },
-  --   opts = {
-  --     keymaps = {
-  --       close = { "<C-c>", "<Esc>" },
-  --       yank_last = "<C-y>",
-  --       scroll_up = "<C-u>",
-  --       scroll_down = "<C-e>",
-  --       toggle_settings = "<C-o>",
-  --       new_session = "<C-n>",
-  --       cycle_windows = "<Tab>",
-  --     },
-  --   },
-  --   dependencies = {
-  --     "MunifTanjim/nui.nvim",
-  --     "nvim-lua/plenary.nvim",
-  --     "nvim-telescope/telescope.nvim",
-  --   },
+  --   "kkharji/sqlite.lua",
+  --   enabled = function()
+  --     return not jit.os:find("Windows")
+  --   end,
   -- },
   -- {
-  --   "MattesGroeger/vim-bookmarks",
-  --   config = true,
-  --   keys = {
-  --     { "<leader>ma", "<cmd>silent BookmarkAnnotate<cr>", desc = "Annotate" },
-  --     { "<leader>mc", "<cmd>silent BookmarkClear<cr>", desc = "Clear" },
-  --     { "<leader>mt", "<cmd>silent BookmarkToggle<cr>", desc = "Toggle" },
-  --     { "<leader>me", "<cmd>silent BookmarkNext<cr>", desc = "Next" },
-  --     { "<leader>mu", "<cmd>silent BookmarkPrev<cr>", desc = "Prev" },
-  --     { "<leader>ml", "<cmd>silent BookmarkShowAll<cr>", desc = "Show All" },
-  --     { "<leader>mx", "<cmd>BookmarkClearAll<cr>", desc = "Clear All" },
-  --   },
-  --   cmd = {
-  --     "BookmarkToggle",
-  --     "BookmarkAnnotate",
-  --     "BookmarkNext",
-  --     "BookmarkPrev",
-  --     "BookmarkShowAll",
-  --     "BookmarkClear",
-  --     "BookmarkClearAll",
-  --     "BookmarkMoveUp",
-  --     "BookmarkMoveDown",
-  --     "BookmarkMoveToLine",
-  --     "BookmarkSave",
-  --     "BookmarkLoad",
-  --   },
+  --   "gbprod/yanky.nvim",
+  --   enabled = true,
+  --   event = "BufReadPost",
+  --   config = function()
+  --     -- vim.g.clipboard = {
+  --     --   name = "xsel_override",
+  --     --   copy = {
+  --     --     ["+"] = "xsel --input --clipboard",
+  --     --     ["*"] = "xsel --input --primary",
+  --     --   },
+  --     --   paste = {
+  --     --     ["+"] = "xsel --output --clipboard",
+  --     --     ["*"] = "xsel --output --primary",
+  --     --   },
+  --     --   cache_enabled = 1,
+  --     -- }
+
+  --     require("yanky").setup({
+  --       highlight = {
+  --         timer = 150,
+  --       },
+  --       ring = {
+  --         storage = jit.os:find("Windows") and "shada" or "sqlite",
+  --       },
+  --     })
+
+  --     vim.keymap.set({ "n", "x" }, "y", "<Plug>(YankyYank)")
+
+  --     vim.keymap.set({ "n", "x" }, "p", "<Plug>(YankyPutAfter)")
+  --     vim.keymap.set({ "n", "x" }, "P", "<Plug>(YankyPutBefore)")
+  --     vim.keymap.set({ "n", "x" }, "gp", "<Plug>(YankyGPutAfter)")
+  --     vim.keymap.set({ "n", "x" }, "gP", "<Plug>(YankyGPutBefore)")
+
+  --     vim.keymap.set("n", "<c-[>", "<Plug>(YankyCycleForward)")
+  --     vim.keymap.set("n", "<c-]>", "<Plug>(YankyCycleBackward)")
+
+  --     vim.keymap.set("n", "]p", "<Plug>(YankyPutIndentAfterLinewise)")
+  --     vim.keymap.set("n", "[p", "<Plug>(YankyPutIndentBeforeLinewise)")
+  --     vim.keymap.set("n", "]P", "<Plug>(YankyPutIndentAfterLinewise)")
+  --     vim.keymap.set("n", "[P", "<Plug>(YankyPutIndentBeforeLinewise)")
+
+  --     vim.keymap.set("n", "<leader>P", function()
+  --       require("telescope").extensions.yank_history.yank_history({})
+  --     end, { desc = "Paste from Yanky" })
+  --   end,
   -- },
+  -- -- {
+  -- --   "jackMort/ChatGPT.nvim",
+  -- --   cmd = {
+  -- --     "ChatGPT",
+  -- --     "ChatGPTActAs",
+  -- --     "ChatGPTEditWithInstructions",
+  -- --   },
+  -- --   opts = {
+  -- --     keymaps = {
+  -- --       close = { "<C-c>", "<Esc>" },
+  -- --       yank_last = "<C-y>",
+  -- --       scroll_up = "<C-u>",
+  -- --       scroll_down = "<C-e>",
+  -- --       toggle_settings = "<C-o>",
+  -- --       new_session = "<C-n>",
+  -- --       cycle_windows = "<Tab>",
+  -- --     },
+  -- --   },
+  -- --   dependencies = {
+  -- --     "MunifTanjim/nui.nvim",
+  -- --     "nvim-lua/plenary.nvim",
+  -- --     "nvim-telescope/telescope.nvim",
+  -- --   },
+  -- -- },
+  -- -- {
+  -- --   "MattesGroeger/vim-bookmarks",
+  -- --   config = true,
+  -- --   keys = {
+  -- --     { "<leader>ma", "<cmd>silent BookmarkAnnotate<cr>", desc = "Annotate" },
+  -- --     { "<leader>mc", "<cmd>silent BookmarkClear<cr>", desc = "Clear" },
+  -- --     { "<leader>mt", "<cmd>silent BookmarkToggle<cr>", desc = "Toggle" },
+  -- --     { "<leader>me", "<cmd>silent BookmarkNext<cr>", desc = "Next" },
+  -- --     { "<leader>mu", "<cmd>silent BookmarkPrev<cr>", desc = "Prev" },
+  -- --     { "<leader>ml", "<cmd>silent BookmarkShowAll<cr>", desc = "Show All" },
+  -- --     { "<leader>mx", "<cmd>BookmarkClearAll<cr>", desc = "Clear All" },
+  -- --   },
+  -- --   cmd = {
+  -- --     "BookmarkToggle",
+  -- --     "BookmarkAnnotate",
+  -- --     "BookmarkNext",
+  -- --     "BookmarkPrev",
+  -- --     "BookmarkShowAll",
+  -- --     "BookmarkClear",
+  -- --     "BookmarkClearAll",
+  -- --     "BookmarkMoveUp",
+  -- --     "BookmarkMoveDown",
+  -- --     "BookmarkMoveToLine",
+  -- --     "BookmarkSave",
+  -- --     "BookmarkLoad",
+  -- --   },
+  -- -- },
 }
