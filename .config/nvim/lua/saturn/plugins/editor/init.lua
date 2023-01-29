@@ -786,7 +786,7 @@ return {
       },
     },
     config = function(_, opts)
-      local dap = pcall(require, "dap")
+      local dap = require("dap")
 
       if saturn.use_icons then
         vim.fn.sign_define("DapBreakpoint", opts.breakpoint)

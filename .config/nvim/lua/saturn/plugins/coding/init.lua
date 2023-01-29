@@ -429,7 +429,7 @@ return {
     "danymat/neogen",
     keys = {
       {
-        "<leader>c/",
+        "<leader>cc",
         function()
           require("neogen").generate({})
         end,
@@ -459,6 +459,61 @@ return {
           augend.semver.alias.semver,
         },
       })
+    end,
+  },
+
+  -- better yank/paste
+  {
+    "kkharji/sqlite.lua",
+    enabled = function()
+      return not jit.os:find("Windows")
+    end,
+  },
+  {
+    "gbprod/yanky.nvim",
+    enabled = true,
+    event = "BufReadPost",
+    config = function()
+      -- vim.g.clipboard = {
+      --   name = "xsel_override",
+      --   copy = {
+      --     ["+"] = "xsel --input --clipboard",
+      --     ["*"] = "xsel --input --primary",
+      --   },
+      --   paste = {
+      --     ["+"] = "xsel --output --clipboard",
+      --     ["*"] = "xsel --output --primary",
+      --   },
+      --   cache_enabled = 1,
+      -- }
+
+      require("yanky").setup({
+        highlight = {
+          timer = 150,
+        },
+        ring = {
+          storage = jit.os:find("Windows") and "shada" or "sqlite",
+        },
+      })
+
+      vim.keymap.set({ "n", "x" }, "y", "<Plug>(YankyYank)")
+
+      vim.keymap.set({ "n", "x" }, "p", "<Plug>(YankyPutAfter)")
+      vim.keymap.set({ "n", "x" }, "P", "<Plug>(YankyPutBefore)")
+      vim.keymap.set({ "n", "x" }, "gp", "<Plug>(YankyGPutAfter)")
+      vim.keymap.set({ "n", "x" }, "gP", "<Plug>(YankyGPutBefore)")
+
+      vim.keymap.set("n", "<c-[>", "<Plug>(YankyCycleForward)")
+      vim.keymap.set("n", "<c-]>", "<Plug>(YankyCycleBackward)")
+
+      vim.keymap.set("n", "]p", "<Plug>(YankyPutIndentAfterLinewise)")
+      vim.keymap.set("n", "[p", "<Plug>(YankyPutIndentBeforeLinewise)")
+      vim.keymap.set("n", "]P", "<Plug>(YankyPutIndentAfterLinewise)")
+      vim.keymap.set("n", "[P", "<Plug>(YankyPutIndentBeforeLinewise)")
+
+      vim.keymap.set("n", "<leader>P", function()
+        require("telescope").extensions.yank_history.yank_history({})
+      end, { desc = "Paste from Yanky" })
     end,
   },
   -- {
