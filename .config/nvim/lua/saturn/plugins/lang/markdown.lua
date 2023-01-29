@@ -1,6 +1,7 @@
 return {
   {
     "toppair/peek.nvim",
+    ft = "markdown",
     build = "deno task --quiet build:fast",
     keys = {
       {
@@ -266,7 +267,6 @@ return {
   {
     "mickael-menu/zk-nvim",
     ft = { "markdown", "norg" },
-    event = "VeryLazy",
     config = function()
       require("zk").setup({
         picker = "telescope",

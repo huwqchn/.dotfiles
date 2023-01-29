@@ -3,7 +3,6 @@ return {
     "christianchiarulli/rust-tools.nvim",
     branch = "modularize_and_inlay_rewrite",
     ft = "rust",
-    event = "VeryLazy",
     keys = {
       { "<leader>nr", "<cmd>RustRunnables<cr>", desc = "Runnables" },
       { "<leader>nm", "<cmd>RustExpandMacro<cr>", desc = "Expand Macro" },
@@ -97,7 +96,6 @@ return {
     version = "v0.3.0",
     dependencies = { "plenary.nvim" },
     ft = { "rust", "toml" },
-    event = "VeryLazy",
     opts = {
       popup = {
         border = "rounded",

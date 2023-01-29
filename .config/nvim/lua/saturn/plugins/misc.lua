@@ -297,11 +297,6 @@ return {
   --   cmd = { "CellularAutomaton" },
   -- },
   {
-    "anuvyklack/pretty-fold.nvim",
-    event = "BufReadPost",
-    config = true,
-  },
-  {
     "ziontee113/color-picker.nvim",
     cmd = { "PickColor", "PickColorInsert" },
     config = function()
