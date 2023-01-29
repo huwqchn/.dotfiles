@@ -746,7 +746,6 @@ return {
   -- Debugging
   {
     "mfussenegger/nvim-dap",
-    { "jbyuki/one-small-step-for-vimkind" },
     keys = {
       { "<leader>dd", "<cmd>lua require'dap'.toggle_breakpoint()<cr>", desc = "Toggle Breakpoint" },
       { "<leader>db", "<cmd>lua require'dap'.step_back()<cr>", desc = "Step Back" },
@@ -904,6 +903,7 @@ return {
           end
         end,
       },
+      { "jbyuki/one-small-step-for-vimkind" },
     },
   },
   {
