@@ -75,6 +75,7 @@
   "project.nvim": { "branch": "main", "commit": "685bc8e3890d2feb07ccf919522c97f7d33b94e4" },
   "refactoring.nvim": { "branch": "master", "commit": "57c32c6b7a211e5a3a5e4ddc4ad2033daff5cf9a" },
   "rust-tools.nvim": { "branch": "modularize_and_inlay_rewrite", "commit": "045ad793aeae0d323f8b78ce2beaae7038e6ea71" },
+  "sqlite.lua": { "branch": "master", "commit": "93ff5824682ecc874200e338fd8ca9ccd08508f8" },
   "ssr.nvim": { "branch": "main", "commit": "e6a11a702483d26f767f937575d549ac73b2fea3" },
   "symbols-outline.nvim": { "branch": "master", "commit": "512791925d57a61c545bc303356e8a8f7869763c" },
   "tabout.nvim": { "branch": "master", "commit": "c37ce26f316a2df693140450b8def41e89c0f57e" },
@@ -94,6 +95,7 @@
   "vim-matchup": { "branch": "master", "commit": "959e0e79ea240cdee29efbdd0d2e2e718931ccec" },
   "vim-repeat": { "branch": "master", "commit": "24afe922e6a05891756ecf331f39a1f6743d3d5a" },
   "which-key.nvim": { "branch": "main", "commit": "684e96c5e8477f1ee9b3f2e9a12d802fd12c5531" },
+  "yanky.nvim": { "branch": "main", "commit": "8cd75ca00a88a3c68385363e981783e0689dada1" },
   "zen-mode.nvim": { "branch": "main", "commit": "2c8f9f3758a4c430ff867e547741424ac16208bb" },
   "zk-nvim": { "branch": "main", "commit": "2fd9f9f29270bb28477e000100625276ec2a2377" }
 }
