@@ -1,6 +1,6 @@
 return {
   -- makes some plugins dot-repeatable like leap
-  { "tpope/vim-repeat", event = "VeryLazy" },
+  -- { "tpope/vim-repeat", event = "VeryLazy" },
   -- easily jump to any location and enhanced f/t motions for Leap
   {
     "ggandor/leap.nvim",

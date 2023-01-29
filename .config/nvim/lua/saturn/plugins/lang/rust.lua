@@ -18,7 +18,6 @@ return {
       },
       { "<leader>nu", "<cmd>RustMoveItemUp<cr>", desc = "Move Item Up" },
       { "<leader>ne", "<cmd>RustMoveItemDown<cr>", desc = "Move Item Down" },
-      { "J", "<cmd>RustJoinLines<cr>", desc = "Join Lines" },
     },
     config = function()
       local mason_path = vim.fn.glob(vim.fn.stdpath("data") .. "/mason/")
@@ -73,6 +72,8 @@ return {
             vim.keymap.set("n", "H", rt.hover_actions.hover_actions, { buffer = bufnr })
             -- Code action groups
             vim.keymap.set("n", "<Leader>ca", rt.code_action_group.code_action_group, { buffer = bufnr })
+            -- Join
+            vim.keymap.set("n", "J", rt.join_lines.join_lines, { buffer = bufnr })
           end,
 
           capabilities = require("saturn.plugins.lsp.hooks").common_capabilities(),
