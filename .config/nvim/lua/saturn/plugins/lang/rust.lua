@@ -3,22 +3,6 @@ return {
     "christianchiarulli/rust-tools.nvim",
     branch = "modularize_and_inlay_rewrite",
     ft = "rust",
-    keys = {
-      { "<leader>nr", "<cmd>RustRunnables<cr>", desc = "Runnables" },
-      { "<leader>nm", "<cmd>RustExpandMacro<cr>", desc = "Expand Macro" },
-      { "<leader>nc", "<cmd>RustOpenCargo<cr>", desc = "Open Cargo" },
-      { "<leader>nD", "<cmd>RustOpenExternalDocs<cr>", desc = "Open Docs" },
-      { "<leader>np", "<cmd>RustParentModule<cr>", desc = "Parent Module" },
-      { "<leader>nd", "<cmd>RustDebuggables<cr>", desc = "Debuggables" },
-      { "<leader>nv", "<cmd>RustViewCrateGraph<cr>", desc = "View Crate Graph" },
-      {
-        "<leader>nR",
-        "<cmd>lua require('rust-tools/workspace_refresh')._reload_workspace_from_cargo_toml()<Cr>",
-        "Reload Workspace",
-      },
-      { "<leader>nu", "<cmd>RustMoveItemUp<cr>", desc = "Move Item Up" },
-      { "<leader>ne", "<cmd>RustMoveItemDown<cr>", desc = "Move Item Down" },
-    },
     config = function()
       local mason_path = vim.fn.glob(vim.fn.stdpath("data") .. "/mason/")
       local codelldb_adapter = {
@@ -74,6 +58,22 @@ return {
             vim.keymap.set("n", "<Leader>ca", rt.code_action_group.code_action_group, { buffer = bufnr })
             -- Join
             vim.keymap.set("n", "J", rt.join_lines.join_lines, { buffer = bufnr })
+            -- Leader key
+            vim.keymap.set("n", "<leader>nr", "<cmd>RustRunnables<cr>", { desc = "Runnables" })
+            vim.keymap.set("n", "<leader>nm", "<cmd>RustExpandMacro<cr>", { desc = "Expand Macro" })
+            vim.keymap.set("n", "<leader>nc", "<cmd>RustOpenCargo<cr>", { desc = "Open Cargo" })
+            vim.keymap.set("n", "<leader>nD", "<cmd>RustOpenExternalDocs<cr>", { desc = "Open Docs" })
+            vim.keymap.set("n", "<leader>np", "<cmd>RustParentModule<cr>", { desc = "Parent Module" })
+            vim.keymap.set("n", "<leader>nd", "<cmd>RustDebuggables<cr>", { desc = "Debuggables" })
+            vim.keymap.set("n", "<leader>nv", "<cmd>RustViewCrateGraph<cr>", { desc = "View Crate Graph" })
+            vim.keymap.set(
+              "n",
+              "<leader>nR",
+              "<cmd>lua require('rust-tools/workspace_refresh')._reload_workspace_from_cargo_toml()<Cr>",
+              { desc = "Reload Workspace" }
+            )
+            vim.keymap.set("n", "<leader>nu", "<cmd>RustMoveItemUp<cr>", { desc = "Move Item Up" })
+            vim.keymap.set("n", "<leader>ne", "<cmd>RustMoveItemDown<cr>", { desc = "Move Item Down" })
           end,
 
           capabilities = require("saturn.plugins.lsp.hooks").common_capabilities(),
