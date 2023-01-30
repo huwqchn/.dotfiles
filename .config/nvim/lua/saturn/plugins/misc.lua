@@ -1,13 +1,13 @@
 return {
   -- makes some plugins dot-repeatable like leap
-  {
-    "tpope/vim-repeat",
-    event = "VeryLazy",
-    keys = {
-      { "<Plug>(RepeatUndo)", "l", desc = "Undo Repeat", remap = true },
-      { "<Plug>(RepeatUndoLine)", "L", desc = "Repeat Undo Line", remap = true },
-    },
-  },
+  -- {
+  --   "tpope/vim-repeat",
+  --   event = "VeryLazy",
+  --   keys = {
+  --     { "<Plug>(RepeatUndo)", "l", desc = "Undo Repeat", remap = true },
+  --     { "<Plug>(RepeatUndoLine)", "L", desc = "Repeat Undo Line", remap = true },
+  --   },
+  -- },
   -- easily jump to any location and enhanced f/t motions for Leap
   {
     "ggandor/leap.nvim",
