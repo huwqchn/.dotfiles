@@ -2,11 +2,6 @@ local M = {}
 
 M.config = {
   setup = {
-    ignore_ft_on_setup = {
-      "startify",
-      "dashboard",
-      "alpha",
-    },
     auto_reload_on_write = false,
     hijack_directories = {
       enable = false,
