@@ -368,15 +368,15 @@ return {
         "x",
         "k",
         [[v:lua.require("mini.ai").expr_textobject('x', 'i')]],
-        { desc = "Inside textobject", expr = true, noremap = true }
+        { desc = "Inside textobject", expr = true, noremap = false }
       )
       vim.api.nvim_set_keymap(
         "o",
         "k",
         [[v:lua.require("mini.ai").expr_textobject('o', 'i')]],
-        { desc = "Inside textobject", expr = true, noremap = true }
+        { desc = "Inside textobject", expr = true, noremap = false }
       )
-      vim.keymap.set("", "i", "l")
+      -- vim.keymap.set({ "n", "v" }, "i", "l")
     end,
   },
   {

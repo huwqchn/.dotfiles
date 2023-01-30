@@ -186,7 +186,7 @@ return {
       require("mini.indentscope").setup({
         mappings = {
           -- Textobjects
-          object_scope = "ki",
+          object_scope = "ii", -- integrate with mini.ai
           object_scope_with_border = "ai",
 
           -- Motions (jump to respective border line; if not present - body line)
