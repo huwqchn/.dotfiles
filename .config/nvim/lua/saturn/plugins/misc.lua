@@ -4,10 +4,8 @@ return {
     "tpope/vim-repeat",
     event = "VeryLazy",
     keys = {
-      { ".", "<Plug>(RepeatDot)", desc = "Repeat" },
-      { "l", "<Plug>(RepeatUndo)", desc = "Undo Repeat" },
-      { "L", "<Plug>(RepeatUndoLine)", desc = "Repeat Undo Line" },
-      { "<C-r>", "<Plug>(RepeatRedo)", desc = "Redo Repeat" },
+      { "<Plug>(RepeatUndo)", "l", desc = "Undo Repeat", remap = true },
+      { "<Plug>(RepeatUndoLine)", "L", desc = "Repeat Undo Line", remap = true },
     },
   },
   -- easily jump to any location and enhanced f/t motions for Leap
