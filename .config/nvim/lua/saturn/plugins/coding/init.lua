@@ -376,7 +376,7 @@ return {
         [[v:lua.require("mini.ai").expr_textobject('o', 'i')]],
         { desc = "Inside textobject", expr = true, noremap = false }
       )
-      -- vim.keymap.set({ "n", "v" }, "i", "l")
+      vim.keymap.set("v", "i", "l")
     end,
   },
   {
