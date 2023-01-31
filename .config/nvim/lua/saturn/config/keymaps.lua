@@ -181,4 +181,4 @@ vim.keymap.set("n", "<leader>xl", "<cmd>lopen<cr>", { desc = "Open Location List
 vim.keymap.set("n", "<leader>xq", "<cmd>copen<cr>", { desc = "Open Quickfix List" })
 
 -- Replace in selection
-vim.keymap.set("x", "<leader>s", "<cmd>s/\\%V", { desc = "replace in selection" })
+vim.keymap.set("x", "s<cr>", ":s/\\%V", { desc = "replace in selection" })
