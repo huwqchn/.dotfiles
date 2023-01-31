@@ -1,5 +1,4 @@
 local M = {}
-
 M.methods = {}
 
 local has_words_before = function()
@@ -117,6 +116,13 @@ M.config = function()
   local cmp = require("cmp")
   local luasnip = require("luasnip")
   saturn.plugins.cmp = {
+    enabled = function()
+      local buftype = vim.api.nvim_buf_get_option(0, "buftype")
+      if buftype == "prompt" then
+        return false
+      end
+      return true
+    end,
     confirm_opts = {
       behavior = cmp.ConfirmBehavior.Replace,
       select = false,
