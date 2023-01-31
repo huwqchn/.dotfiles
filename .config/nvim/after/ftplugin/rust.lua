@@ -15,6 +15,9 @@ local opts = {
 local mappings = {
   n = {
     name = "Rust",
+    c = {
+      name = "Crates",
+    },
   },
 }
 

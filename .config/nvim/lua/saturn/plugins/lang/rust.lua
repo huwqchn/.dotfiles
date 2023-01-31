@@ -53,7 +53,7 @@ return {
             require("saturn.plugins.lsp.hooks").common_on_attach(client, bufnr)
             local rt = require("rust-tools")
             -- Hover actions
-            vim.keymap.set("n", "H", rt.hover_actions.hover_actions, { buffer = bufnr })
+            vim.keymap.set("n", "H", rt.hover_actions.hover_actions(), { buffer = bufnr })
             -- Code action groups
             vim.keymap.set("n", "<Leader>ca", rt.code_action_group.code_action_group, { buffer = bufnr })
             -- Join
@@ -61,7 +61,7 @@ return {
             -- Leader key
             vim.keymap.set("n", "<leader>nr", "<cmd>RustRunnables<cr>", { desc = "Runnables" })
             vim.keymap.set("n", "<leader>nm", "<cmd>RustExpandMacro<cr>", { desc = "Expand Macro" })
-            vim.keymap.set("n", "<leader>nc", "<cmd>RustOpenCargo<cr>", { desc = "Open Cargo" })
+            vim.keymap.set("n", "<leader>nC", "<cmd>RustOpenCargo<cr>", { desc = "Open Cargo" })
             vim.keymap.set("n", "<leader>nD", "<cmd>RustOpenExternalDocs<cr>", { desc = "Open Docs" })
             vim.keymap.set("n", "<leader>np", "<cmd>RustParentModule<cr>", { desc = "Parent Module" })
             vim.keymap.set("n", "<leader>nd", "<cmd>RustDebuggables<cr>", { desc = "Debuggables" })
@@ -74,6 +74,31 @@ return {
             )
             vim.keymap.set("n", "<leader>nu", "<cmd>RustMoveItemUp<cr>", { desc = "Move Item Up" })
             vim.keymap.set("n", "<leader>ne", "<cmd>RustMoveItemDown<cr>", { desc = "Move Item Down" })
+            -- crates
+            local crates = require("crates")
+            vim.keymap.set("n", "<leader>nct", crates.toggle, { desc = "crates toggle" })
+            vim.keymap.set("n", "<leader>ncr", crates.reload, { desc = "crates reload" })
+
+            vim.keymap.set("n", "<leader>ncv", crates.show_versions_popup, { desc = "crates show versions popup" })
+            vim.keymap.set("n", "<leader>ncf", crates.show_features_popup, { desc = "crates show features popup" })
+            vim.keymap.set(
+              "n",
+              "<leader>ncd",
+              crates.show_dependencies_popup,
+              { desc = "crates show dependencies popup" }
+            )
+
+            vim.keymap.set("n", "<leader>ncu", crates.update_crate, { desc = "update crate" })
+            vim.keymap.set("v", "<leader>ncu", crates.update_crates, { desc = "update crates" })
+            vim.keymap.set("n", "<leader>nca", crates.update_all_crates, { desc = "update all crates" })
+            vim.keymap.set("n", "<leader>ncU", crates.upgrade_crate, { desc = "upgrade crate" })
+            vim.keymap.set("v", "<leader>ncU", crates.upgrade_crates, { desc = "upgrade crates" })
+            vim.keymap.set("n", "<leader>ncA", crates.upgrade_all_crates, { desc = "upgrade all crates" })
+
+            vim.keymap.set("n", "<leader>ncH", crates.open_homepage, { desc = "open homepage" })
+            vim.keymap.set("n", "<leader>ncR", crates.open_repository, { desc = "open repository" })
+            vim.keymap.set("n", "<leader>ncD", crates.open_documentation, { desc = "open documentation" })
+            vim.keymap.set("n", "<leader>ncC", crates.open_crates_io, { desc = "open crates io" })
           end,
 
           capabilities = require("saturn.plugins.lsp.hooks").common_capabilities(),
@@ -98,9 +123,6 @@ return {
     dependencies = { "plenary.nvim" },
     ft = { "rust", "toml" },
     opts = {
-      popup = {
-        border = "rounded",
-      },
       null_ls = {
         enable = true,
         name = "crates.nvim",

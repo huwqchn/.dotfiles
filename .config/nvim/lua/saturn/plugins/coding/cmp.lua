@@ -161,20 +161,16 @@ M.config = function()
         if saturn.use_icons then
           vim_item.kind = saturn.plugins.cmp.formatting.kind_icons[vim_item.kind]
 
-          -- TODO: not sure why I can't put this anywhere else
-          vim.api.nvim_set_hl(0, "CmpItemKindCopilot", { fg = "#6CC644" })
           if entry.source.name == "copilot" then
             vim_item.kind = saturn.icons.git.Octoface
             vim_item.kind_hl_group = "CmpItemKindCopilot"
           end
 
-          vim.api.nvim_set_hl(0, "CmpItemKindTabnine", { fg = "#CA42F0" })
           if entry.source.name == "cmp_tabnine" then
             vim_item.kind = saturn.icons.misc.Robot
             vim_item.kind_hl_group = "CmpItemKindTabnine"
           end
 
-          vim.api.nvim_set_hl(0, "CmpItemKindCrate", { fg = "#F64D00" })
           if entry.source.name == "crates" then
             vim_item.kind = saturn.icons.misc.Package
             vim_item.kind_hl_group = "CmpItemKindCrate"
@@ -185,7 +181,6 @@ M.config = function()
             vim_item.kind_hl_group = "CmpItemKindConstant"
           end
 
-          vim.api.nvim_set_hl(0, "CmpItemKindEmoji", { fg = "#FDE030" })
           if entry.source.name == "emoji" then
             vim_item.kind = saturn.icons.misc.Smiley
             vim_item.kind_hl_group = "CmpItemKindEmoji"
@@ -236,7 +231,6 @@ M.config = function()
             -- "\n",
           },
         },
-        group_index = 2,
       },
       {
         name = "nvim_lsp",
@@ -250,19 +244,18 @@ M.config = function()
           end
           return true
         end,
-        group_index = 2,
       },
 
-      { name = "path", group_index = 2 },
-      { name = "luasnip", group_index = 2 },
-      { name = "cmp_tabnine", group_index = 2 },
-      { name = "nvim_lua", group_index = 2 },
-      { name = "buffer", group_index = 2 },
-      { name = "calc", group_index = 2 },
-      { name = "emoji", group_index = 2 },
-      { name = "treesitter", group_index = 2 },
-      { name = "crates", group_index = 2 },
-      { name = "tmux", group_index = 2 },
+      { name = "path" },
+      { name = "luasnip" },
+      { name = "cmp_tabnine" },
+      { name = "nvim_lua" },
+      { name = "buffer" },
+      { name = "calc" },
+      { name = "emoji" },
+      { name = "treesitter" },
+      { name = "crates" },
+      { name = "tmux" },
     },
     mapping = cmp.mapping.preset.insert({
       ["<C-u>"] = cmp.mapping(cmp.mapping.select_prev_item(), { "i", "c" }),
@@ -322,25 +315,6 @@ M.config = function()
         fallback() -- if not exited early, always fallback
       end),
     }),
-    -- sorting = {
-    --   priority_weight = 2,
-    --   comparators = {
-    --     require("copilot-cmp.comparators").prioritize,
-    --     require("copilot-cmp.comparators").score,
-    --
-    --     -- Below is the default comparitor list and order for nvim-cmp
-    --     cmp.config.compare.offset,
-    --     -- cmp.config.compare.scopes, --this is commented in nvim-cmp too
-    --     cmp.config.compare.exact,
-    --     cmp.config.compare.score,
-    --     cmp.config.compare.recently_used,
-    --     cmp.config.compare.locality,
-    --     cmp.config.compare.kind,
-    --     cmp.config.compare.sort_text,
-    --     cmp.config.compare.length,
-    --     cmp.config.compare.order,
-    --   },
-    -- },
     cmdline = {
       enable = true,
       options = {
