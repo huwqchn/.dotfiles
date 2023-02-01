@@ -45,7 +45,6 @@ return {
     config = function()
       require("saturn.plugins.coding.cmp").config()
     end,
-    enabled = require("saturn.plugins.coding.cmp").enabled,
   },
   { "hrsh7th/cmp-nvim-lsp" },
   {
