@@ -106,8 +106,25 @@ return {
   {
     "L3MON4D3/LuaSnip",
     config = function()
-      require("luasnip.loaders.from_lua").lazy_load({ paths = "~/.config/nvim/snippets/" })
+      local ls = require("luasnip")
+      local types = require("luasnip.util.types")
+      ls.config.set_config({
+        history = true,
+        enable_autosnippets = true,
+        updateevents = "TextChanged,TextChangedI",
+        ext_opts = {
+          [types.choiceNode] = {
+            active = {
+              virt_text = { { "<- choiceNode", "Comment" } },
+            },
+          },
+        },
+      })
+      require("luasnip.loaders.from_lua").lazy_load({ paths = vim.fn.stdpath("config") .. "/snippets" })
       require("luasnip.loaders.from_vscode").lazy_load()
+      require("luasnip.loaders.from_vscode").lazy_load({
+        paths = { "./snippets/" },
+      })
       require("luasnip.loaders.from_snipmate").lazy_load()
     end,
     event = "InsertCharPre",
