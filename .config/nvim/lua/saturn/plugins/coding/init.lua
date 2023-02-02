@@ -120,10 +120,14 @@ return {
           },
         },
       })
-      require("luasnip.loaders.from_lua").lazy_load({ paths = vim.fn.stdpath("config") .. "/snippets" })
-      require("luasnip.loaders.from_vscode").lazy_load()
+
+      local paths = {}
+      paths[#paths + 1] = vim.fn.stdpath("data") .. "/lazy/friendly-snippets/"
+      local user_snippets = vim.fn.stdpath("config") .. "/snippets"
+      paths[#paths + 1] = user_snippets
+      require("luasnip.loaders.from_lua").lazy_load({ paths = user_snippets })
       require("luasnip.loaders.from_vscode").lazy_load({
-        paths = { "./snippets/" },
+        paths = paths,
       })
       require("luasnip.loaders.from_snipmate").lazy_load()
     end,
