@@ -119,7 +119,7 @@ return {
       })
       require("luasnip.loaders.from_snipmate").lazy_load()
     end,
-    event = "InsertEnter",
+    event = "InsertCharPre",
     dependencies = {
       { "rafamadriz/friendly-snippets" },
     },
