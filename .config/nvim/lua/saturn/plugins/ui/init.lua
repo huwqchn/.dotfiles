@@ -336,4 +336,64 @@ return {
       { "<c-b>", function() if not require("noice.lsp").scroll(-4) then return "<c-b>" end end, silent = true, expr = true, desc = "Scroll backward"},
     },
   },
+  {
+    enabled = true,
+    "anuvyklack/windows.nvim",
+    event = "WinNew",
+    keys = {
+      { "<leader>wz", "<Cmd>WindowsMaximize<CR>", desc = "Zoom" },
+      { "<leader>wv", "<Cmd>WindowsMaximizeVertically<CR>", desc = "Maximize Vertically" },
+      { "<leader>wh", "<Cmd>WindowsMaximizeHorizontally<CR>", desc = "Maximize Horizontally" },
+      { "<leader>wb", "<Cmd>WindowsMaximizeEqualize<CR>", desc = "Balance" },
+    },
+    dependencies = {
+      { "anuvyklack/middleclass" },
+      { "anuvyklack/animation.nvim", enabled = false },
+    },
+    config = function()
+      vim.o.winwidth = 5
+      vim.o.equalalways = false
+      require("windows").setup({
+        animation = { enable = false, duration = 150 },
+      })
+    end,
+  },
+  {
+    "s1n7ax/nvim-window-picker",
+    version = "v1.*",
+    keys = {
+      {
+        "<leader>ww",
+        function()
+          local picker = require("window-picker")
+          local picked_window_id = picker.pick_window({
+            include_current_win = true,
+          }) or vim.api.nvim_get_current_win()
+          vim.api.nvim_set_current_win(picked_window_id)
+        end,
+        desc = "Pick a window",
+      },
+      {
+        "<leader>ws",
+        function()
+          local picker = require("window-picker")
+          local window = picker.pick_window({
+            include_current_win = false,
+          })
+          local target_buffer = vim.fn.winbufnr(window)
+          -- Set the target window to contain current buffer
+          vim.api.nvim_win_set_buf(window, 0)
+          -- Set current window to contain target buffer
+          vim.api.nvim_win_set_buf(0, target_buffer)
+        end,
+        desc = "Swap a window",
+      },
+    },
+    opts = {
+      selection_chars = "ARSTNEIOFPLUDHKMCV",
+    },
+    config = function(_, opts)
+      require("window-picker").setup(opts)
+    end,
+  },
 }
