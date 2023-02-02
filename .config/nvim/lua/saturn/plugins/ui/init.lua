@@ -344,7 +344,7 @@ return {
       { "<leader>wz", "<Cmd>WindowsMaximize<CR>", desc = "Zoom" },
       { "<leader>wv", "<Cmd>WindowsMaximizeVertically<CR>", desc = "Maximize Vertically" },
       { "<leader>wh", "<Cmd>WindowsMaximizeHorizontally<CR>", desc = "Maximize Horizontally" },
-      { "<leader>wb", "<Cmd>WindowsMaximizeEqualize<CR>", desc = "Balance" },
+      { "<leader>wb", "<Cmd>WindowsEqualize<CR>", desc = "Balance" },
     },
     dependencies = {
       { "anuvyklack/middleclass" },
