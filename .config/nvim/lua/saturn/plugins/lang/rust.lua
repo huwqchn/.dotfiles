@@ -120,7 +120,7 @@ return {
   {
     "Saecki/crates.nvim",
     version = "v0.3.0",
-    dependencies = { "plenary.nvim" },
+    dependencies = { "plenary.nvim", "nvim-cmp" },
     ft = { "rust", "toml" },
     opts = {
       null_ls = {
