@@ -106,17 +106,8 @@ return {
   {
     "L3MON4D3/LuaSnip",
     config = function()
-      local utils = require("saturn.utils.helper")
-      local paths = {}
-      paths[#paths + 1] = utils.join_paths(vim.call("stdpath", "data"), "lazy", "friendly-snippets")
-      local user_snippets = utils.join_paths(vim.call("stdpath", "config"), "snippets")
-      if utils.is_directory(user_snippets) then
-        paths[#paths + 1] = user_snippets
-      end
-      require("luasnip.loaders.from_lua").lazy_load()
-      require("luasnip.loaders.from_vscode").lazy_load({
-        paths = paths,
-      })
+      require("luasnip.loaders.from_lua").lazy_load({ paths = "~/.config/nvim/snippets/" })
+      require("luasnip.loaders.from_vscode").lazy_load()
       require("luasnip.loaders.from_snipmate").lazy_load()
     end,
     event = "InsertCharPre",
