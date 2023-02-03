@@ -121,7 +121,7 @@ return {
     "Saecki/crates.nvim",
     version = "v0.3.0",
     dependencies = { "plenary.nvim", "nvim-cmp" },
-    ft = { "rust", "toml" },
+    event = { "BufRead Cargo.toml" },
     opts = {
       null_ls = {
         enable = true,
