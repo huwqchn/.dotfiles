@@ -541,6 +541,12 @@ return {
     config = true,
   },
 
+  -- git blame
+  {
+    "f-person/git-blame.nvim",
+    event = "BufReadPre",
+  },
+
   -- references
   {
     "RRethy/vim-illuminate",
