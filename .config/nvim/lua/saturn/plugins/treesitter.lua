@@ -8,9 +8,9 @@ return {
       -- { -- too slow
       --   "nvim-treesitter/nvim-treesitter-textobjects",
       -- },
-      -- { -- too slow
-      --   "p00f/nvim-ts-rainbow",
-      -- },
+      { -- too slow
+        "p00f/nvim-ts-rainbow",
+      },
     },
     opts = {
       ensure_installed = {
@@ -147,15 +147,15 @@ return {
         },
       },
       rainbow = {
-        enable = false,
-        -- extended_mode = true, -- Highlight also non-parentheses delimiters, boolean or table: lang -> boolean
-        -- max_file_lines = 1000, -- Do not enable for files with more than 1000 lines, int
-        -- colors = {
-        --   "DodgerBlue",
-        --   "Orchid",
-        --   "Gold",
-        -- },
-        -- disable = { "html" },
+        enable = true,
+        extended_mode = true, -- Highlight also non-parentheses delimiters, boolean or table: lang -> boolean
+        max_file_lines = 1000, -- Do not enable for files with more than 1000 lines, int
+        colors = {
+          "DodgerBlue",
+          "Orchid",
+          "Gold",
+        },
+        disable = { "html" },
       },
     },
     config = function(_, opts)
