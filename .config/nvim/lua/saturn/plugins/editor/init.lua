@@ -471,6 +471,7 @@ return {
         ["<leader>q"] = { name = "+session" },
         ["<leader>r"] = { name = "+refactor/replace" },
         ["<leader>s"] = { name = "+search" },
+        ["<leader>sd"] = { name = "+search dap" },
         ["<leader>t"] = { name = "+trouble/todo" },
         ["<leader>u"] = { name = "+ui" },
         ["<leader>w"] = { name = "+windows" },
@@ -923,6 +924,19 @@ return {
           virt_text_win_col = 80,
           highlight_changed_variables = true,
         },
+      },
+      {
+        "nvim-telescope/telescope-dap.nvim",
+        keys = {
+          { "<leader>sdc", "<cmd>Telescope dap commands<cr>", desc = "Telescope dap commands" },
+          { "<leader>sdC", "<cmd>Telescope dap configuration<cr>", desc = "Telescope dap configuration" },
+          { "<leader>sdb", "<cmd>Telescope dap list_breakpoints<cr>", desc = "Telescope dap list_breakpoints" },
+          { "<leader>sdv", "<cmd>Telescope dap variables<cr>", desc = "Telescope dap variables" },
+          { "<leader>sdf", "<cmd>Telescope dap frames<cr>", desc = "Telescope dap frame" },
+        },
+        config = function()
+          require("telescope").load_extension("dap")
+        end,
       },
       { "jbyuki/one-small-step-for-vimkind" },
     },
