@@ -8,13 +8,17 @@ vim.opt_local.cinoptions:append("g0,N-s,E-s,l1,:0")
 vim.wo.wrap = false
 
 require("saturn.plugins.lsp.null-ls.formatters").setup({
-  { command = "clang-format", filetype = { "cpp" } }
+  { command = "clang-format", filetype = { "cpp" } },
 })
 
 require("saturn.plugins.lsp.manager").setup("clangd", {
   on_attach = function(client, bufnr)
-    vim.keymap.set("n", "<leader><space>", "<cmd>ClangdSwitchSourceHeader<cr>", { desc = "switch between header and source" })
+    vim.keymap.set(
+      "n",
+      "<leader><space>",
+      "<cmd>ClangdSwitchSourceHeader<cr>",
+      { desc = "switch between header and source" }
+    )
     require("saturn.plugins.lsp.hooks").common_on_attach(client, bufnr)
   end,
 })
-

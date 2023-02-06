@@ -751,6 +751,11 @@ return {
   -- Debugging
   {
     "mfussenegger/nvim-dap",
+    init = function()
+      saturn.plugins.dap = {
+        on_config_done = nil,
+      }
+    end,
     keys = {
       { "<leader>dd", "<cmd>lua require'dap'.toggle_breakpoint()<cr>", desc = "Toggle Breakpoint" },
       { "<leader>db", "<cmd>lua require'dap'.step_back()<cr>", desc = "Step Back" },
@@ -765,6 +770,7 @@ return {
       { "<leader>dr", "<cmd>lua require'dap'.repl.toggle()<cr>", desc = "Toggle Repl" },
       { "<leader>dq", "<cmd>lua require'dap'.close()<cr>", desc = "Quit" },
       { "<leader>dt", "<cmd>lua require'dapui'.toggle({reset = true})<cr>", desc = "Toggle UI" },
+      { "<leader>de", "<cmd>lua require'dapui'.eval()<cr>", desc = "Eval" },
       { "<leader>dw", "<cmd>lua require'dap.ui.widgets'.hover()<cr>", desc = "Widget" },
     },
     opts = {
@@ -800,6 +806,9 @@ return {
       end
 
       dap.set_log_level(opts.log.level)
+      if saturn.plugins.dap.on_config_done then
+        saturn.plugins.dap.on_config_done(dap)
+      end
     end,
     dependencies = {
       -- Debugger user interface
