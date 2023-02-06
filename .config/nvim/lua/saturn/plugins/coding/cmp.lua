@@ -132,7 +132,10 @@ M.config = function()
       keyword_length = 1,
     },
     experimental = {
-      ghost_text = false,
+      -- ghost_text = false,
+      ghost_text = {
+        hl_group = "LspCodeLens",
+      },
       native_menu = false,
     },
     formatting = {

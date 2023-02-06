@@ -130,6 +130,36 @@ return {
         paths = paths,
       })
       require("luasnip.loaders.from_snipmate").lazy_load()
+      vim.keymap.set({ "i", "s" }, "<C-e>", function()
+        if ls.choice_active() then
+          ls.change_choice(1)
+        end
+      end)
+      vim.keymap.set({ "i", "s" }, "<C-u>", function()
+        if ls.choice_active() then
+          ls.change_choice(-1)
+        end
+      end)
+
+      _G.s = ls.snippet
+      _G.sn = ls.snippet_node
+      _G.t = ls.text_node
+      _G.i = ls.insert_node
+      _G.f = ls.function_node
+      _G.c = ls.choice_node
+      _G.d = ls.dynamic_node
+      _G.r = ls.restore_node
+      _G.l = require("luasnip.extras").lambda
+      _G.rep = require("luasnip.extras").rep
+      _G.p = require("luasnip.extras").partial
+      _G.m = require("luasnip.extras").match
+      _G.n = require("luasnip.extras").nonempty
+      _G.dl = require("luasnip.extras").dynamic_lambda
+      _G.fmt = require("luasnip.extras.fmt").fmt
+      _G.fmta = require("luasnip.extras.fmt").fmta
+      _G.types = require("luasnip.util.types")
+      _G.conds = require("luasnip.extras.conditions")
+      _G.conds_expand = require("luasnip.extras.conditions.expand")
     end,
     event = "InsertCharPre",
     dependencies = {
