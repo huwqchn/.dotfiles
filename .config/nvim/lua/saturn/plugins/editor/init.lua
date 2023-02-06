@@ -925,6 +925,22 @@ return {
     ft = "qf",
     cmd = "BqfAutoToggle",
   },
+  -- add nvim-ufo, need hacking
+  -- {
+  --   "kevinhwang91/nvim-ufo",
+  --   dependencies = "kevinhwang91/promise-async",
+  --   event = "BufReadPost",
+  --   init = function()
+  --     vim.o.foldcolumn = "1" -- '0' is not bad
+  --     vim.o.foldlevel = 99 -- Using ufo provider need a large value, feel free to decrease the value
+  --     vim.o.foldlevelstart = 99
+  --     vim.o.foldenable = true
+  --     -- Using ufo provider need remap `zR` and `zM`. If Neovim is 0.6.1, remap yourself
+  --     vim.keymap.set("n", "zR", require("ufo").openAllFolds)
+  --     vim.keymap.set("n", "zM", require("ufo").closeAllFolds)
+  --   end,
+  --   opts = {},
+  -- },
   { "mxsdev/nvim-dap-vscode-js", ft = { "javascript", "typescript" } },
   { "mfussenegger/nvim-dap-python", ft = "python" },
   { "leoluz/nvim-dap-go", ft = "go" },

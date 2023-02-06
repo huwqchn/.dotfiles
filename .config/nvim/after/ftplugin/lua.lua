@@ -19,7 +19,7 @@ saturn.plugins.dap.on_config_done = function(dap)
     require("osv").launch({ port = 8086 })
   end, { desc = "Launch Lua Debugger Server" })
 
-  vim.keymap.set("n", "<leader>dd", function()
+  vim.keymap.set("n", "<leader>dD", function()
     require("osv").run_this()
   end, { desc = "Launch Lua Debugger" })
 end
