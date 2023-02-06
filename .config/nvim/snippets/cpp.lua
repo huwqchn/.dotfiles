@@ -198,4 +198,42 @@ return {
       }
     )
   ),
+  s(
+    "bs",
+    fmt(
+      [[
+    int bsearch(int l, int x) {{
+      while (l < r) {{
+        int mid = l + r >> 1;
+        if ({}) r = mid;
+        else l = mid + 1;
+      }}
+      return l;
+    }}
+    {}
+    ]],
+      {
+        i(1, "a[mid] >= x"),
+        i(2, ""),
+      }
+    )
+  ),
+  s(
+    "Bs",
+    fmt(
+      [[
+      int bsearch(int l, int r) {{
+        while (l < r) {{
+          int mid = l + r + 1 >> 1;
+          if ({}) l = mid;
+          else r = mid - 1;
+      }}
+      {}
+      ]],
+      {
+        i(1, "a[mid] <= x"),
+        i(2, ""),
+      }
+    )
+  ),
 }
