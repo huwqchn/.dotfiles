@@ -101,9 +101,6 @@ return {
         "nvim-telescope/telescope-file-browser.nvim",
       },
       {
-        "tom-anders/telescope-vim-bookmarks.nvim",
-      },
-      {
         "nvim-telescope/telescope-ui-select.nvim",
       },
       {
@@ -488,7 +485,7 @@ return {
         ["<leader>q"] = { name = "+session" },
         ["<leader>r"] = { name = "+refactor/replace" },
         ["<leader>s"] = { name = "+search" },
-        -- ["<leader>sd"] = { name = "+search dap" },
+        ["<leader>sd"] = { name = "+search dap" },
         ["<leader>t"] = { name = "+trouble/todo" },
         ["<leader>u"] = { name = "+ui" },
         ["<leader>w"] = { name = "+windows" },
