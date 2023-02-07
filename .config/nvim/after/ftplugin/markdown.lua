@@ -16,7 +16,7 @@ local opts = {
 
 local mappings = {
   n = {
-    name = "Note",
+    name = "+note",
   },
 }
 
