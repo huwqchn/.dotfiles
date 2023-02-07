@@ -22,4 +22,4 @@ require("saturn.plugins.lsp.manager").setup("clangd", {
     require("saturn.plugins.lsp.hooks").common_on_attach(client, bufnr)
   end,
 })
-saturn.plugins.dap.on_config_done = require("saturn.utils.dap").dap_cpp
+saturn.plugins.dap.on_config_done = require("saturn.utils.dap").cppdbg_config
