@@ -775,9 +775,17 @@ return {
       {
         "<leader>da",
         function()
-          require("saturn.utils.dap").toggle_conditonal_breakpoint()
+          require("dap").set_breakpoint(vim.fn.input("condition:"))
         end,
-        desc = "Toggle conditonal breakpoint",
+        desc = "Set conditonal breakpoint",
+        expr = true,
+      },
+      {
+        "<leader>dl",
+        function()
+          require("dap").set_breakpoint(nil, nil, vim.fn.input("log message:"))
+        end,
+        desc = "Set log breakpoint",
         expr = true,
       },
       { "<leader>db", "<cmd>lua require'dap'.step_back()<cr>", desc = "Step Back" },
@@ -822,7 +830,7 @@ return {
       },
       log_point = {
         text = saturn.icons.ui.InfoCircle,
-        texthl = "DiagnosticSignInfo",
+        texthl = "DiagnosticSignError",
         linehl = "",
         numhl = "",
       },

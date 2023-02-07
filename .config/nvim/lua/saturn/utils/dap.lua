@@ -34,12 +34,6 @@ local args = function()
   return params
 end
 
-M.toggle_conditonal_breakpoint = function()
-  local dap = require("dap")
-  local cond = vim.fn.input("Condition:")
-  dap.toggle_breakpoint(cond)
-end
-
 M.cppdbg_config = function(dap)
   local mason_path = vim.fn.glob(vim.fn.stdpath("data")) .. "/mason/"
   local cppdbg_exec_path = mason_path .. "packages/cpptools/extension/debugAdapters/bin/OpenDebugAD7"
