@@ -4,6 +4,7 @@ local schema = {
     "--background-index",
     "--pch-storage=memory",
     "--clang-tidy",
+    "--all-scopes-completion",
     "--suggest-missing-includes",
     "--cross-file-rename",
     "--completion-style=detailed",
