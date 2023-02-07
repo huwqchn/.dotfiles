@@ -139,6 +139,10 @@ return {
     SeparatorRight = "",
     SeparatorLeft = "",
     DotLine = "",
+    InfoCircle = "",
+    ExclamationCircle = "",
+    DotsCircle = "󰟃",
+    PlayCircle = "",
   },
   diagnostics = {
     BoldError = "",

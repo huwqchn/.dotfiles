@@ -806,6 +806,18 @@ return {
         linehl = "Visual",
         numhl = "DiagnosticSignWarn",
       },
+      condition = {
+        text = saturn.icons.ui.ExclamationCircle,
+        texthl = "DiagnosticSignError",
+        linehl = "",
+        numhl = "",
+      },
+      log_point = {
+        text = saturn.icons.ui.InfoCircle,
+        texthl = "DiagnosticSignInfo",
+        linehl = "",
+        numhl = "",
+      },
       log = {
         level = "info",
       },
@@ -817,6 +829,8 @@ return {
         vim.fn.sign_define("DapBreakpoint", opts.breakpoint)
         vim.fn.sign_define("DapBreakpointRejected", opts.breakpoint_rejected)
         vim.fn.sign_define("DapStopped", opts.stopped)
+        vim.fn.sign_define("DapBreakpointCondition", opts.condition)
+        vim.fn.sign_define("DapLogPoint", opts.log_point)
       end
 
       dap.set_log_level(opts.log.level)

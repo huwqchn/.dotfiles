@@ -557,6 +557,7 @@ return {
   },
   -- {
   --   "jackMort/ChatGPT.nvim",
+  --   event = "VeryLazy",
   --   cmd = {
   --     "ChatGPT",
   --     "ChatGPTActAs",
