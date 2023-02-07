@@ -120,8 +120,7 @@ return {
   {
     "williamboman/mason.nvim",
     cmd = "Mason",
-    keys = { { "<leader>cI", "<cmd>Mason<cr>", desc = "Mason" } },
-    lazy = false,
+    keys = { { "<leader>cm", "<cmd>Mason<cr>", desc = "Mason" } },
     config = function()
       require("mason").setup({
         ui = {
