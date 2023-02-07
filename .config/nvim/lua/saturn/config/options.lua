@@ -1,7 +1,7 @@
 -- This file is automatically loaded by plugins.config
 
 vim.g.mapleader = saturn.leaderkey
-vim.g.maplocalleader = saturn.leaderkey
+vim.g.maplocalleader = saturn.localleaderkey
 
 vim.opt.backup = false
 vim.opt.swapfile = false

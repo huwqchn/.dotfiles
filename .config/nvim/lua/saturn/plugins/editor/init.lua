@@ -103,6 +103,12 @@ return {
       {
         "tom-anders/telescope-vim-bookmarks.nvim",
       },
+      {
+        "nvim-telescope/telescope-ui-select.nvim",
+      },
+      {
+        "nvim-telescope/telescope-live-grep-args.nvim",
+      },
     },
     config = function()
       local actions = require("telescope.actions")
@@ -351,6 +357,12 @@ return {
       pcall(function()
         require("telescope").load_extension("file_browser")
       end)
+      pcall(function()
+        require("telescope").load_extension("ui-select")
+      end)
+      pcall(function()
+        require("telescope").load_extension("live_grep_args")
+      end)
     end,
     keys = {
       -- { "<leader>,", "<cmd>Telescope buffers show_all_buffers=true<cr>", desc = "Switch Buffer" },
@@ -363,6 +375,11 @@ return {
       { "<leader>fr", "<cmd>Telescope oldfiles<cr>", desc = "Recent" },
       { "<leader>fM", "<cmd>lua require('telescope').extensions.media_files.media_files()<cr>", desc = "Media" },
       { "<leader>fd", "<cmd>Telescope dotfiles<cr>", desc = "Dotfiles" },
+      {
+        "<leader>fg",
+        "<cmd>lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>",
+        desc = "Live Grep Args",
+      },
       { "<leader>gc", "<cmd>Telescope git_commits<CR>", desc = "commits" },
       { "<leader>ga", "<cmd>Telescope git_status<CR>", desc = "status" },
       { "<leader>sa", "<cmd>Telescope autocommands<cr>", desc = "Auto Commands" },
@@ -925,19 +942,19 @@ return {
           highlight_changed_variables = true,
         },
       },
-      -- {
-      --   "nvim-telescope/telescope-dap.nvim",
-      --   keys = {
-      --     { "<leader>sdc", "<cmd>Telescope dap commands<cr>", desc = "Telescope dap commands" },
-      --     { "<leader>sdC", "<cmd>Telescope dap configuration<cr>", desc = "Telescope dap configuration" },
-      --     { "<leader>sdb", "<cmd>Telescope dap list_breakpoints<cr>", desc = "Telescope dap list_breakpoints" },
-      --     { "<leader>sdv", "<cmd>Telescope dap variables<cr>", desc = "Telescope dap variables" },
-      --     { "<leader>sdf", "<cmd>Telescope dap frames<cr>", desc = "Telescope dap frame" },
-      --   },
-      --   config = function()
-      --     require("telescope").load_extension("dap")
-      --   end,
-      -- },
+      {
+        "nvim-telescope/telescope-dap.nvim",
+        keys = {
+          { "<leader>sdc", "<cmd>Telescope dap commands<cr>", desc = "Telescope dap commands" },
+          { "<leader>sdC", "<cmd>Telescope dap configuration<cr>", desc = "Telescope dap configuration" },
+          { "<leader>sdb", "<cmd>Telescope dap list_breakpoints<cr>", desc = "Telescope dap list_breakpoints" },
+          { "<leader>sdv", "<cmd>Telescope dap variables<cr>", desc = "Telescope dap variables" },
+          { "<leader>sdf", "<cmd>Telescope dap frames<cr>", desc = "Telescope dap frame" },
+        },
+        config = function()
+          require("telescope").load_extension("dap")
+        end,
+      },
       { "jbyuki/one-small-step-for-vimkind" },
     },
   },
@@ -962,7 +979,4 @@ return {
   --   end,
   --   opts = {},
   -- },
-  { "mxsdev/nvim-dap-vscode-js", ft = { "javascript", "typescript" } },
-  { "mfussenegger/nvim-dap-python", ft = "python" },
-  { "leoluz/nvim-dap-go", ft = "go" },
 }

@@ -8,7 +8,7 @@ vim.opt_local.cinoptions:append("g0,N-s,E-s,l1,:0")
 vim.wo.wrap = false
 
 require("saturn.plugins.lsp.null-ls.formatters").setup({
-  { command = "clang-format", filetype = { "cpp" } },
+  { command = "clang-format", filetype = { "c" } },
 })
 
 require("saturn.plugins.lsp.manager").setup("clangd", {
@@ -22,3 +22,4 @@ require("saturn.plugins.lsp.manager").setup("clangd", {
     require("saturn.plugins.lsp.hooks").common_on_attach(client, bufnr)
   end,
 })
+saturn.plugins.dap.on_config_done = require("saturn.utils.dap").dap_cpp

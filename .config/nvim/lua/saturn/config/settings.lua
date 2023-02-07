@@ -1,5 +1,6 @@
 return {
   leaderkey = " ",
+  localleaderkey = ",",
   colorscheme = "tokyonight",
   transparent_window = false,
   format_on_save = {
