@@ -31,6 +31,10 @@ return {
     i(0),
     t({ "", "}" }),
   }),
+  s("std", {
+    t("using namespace std;"),
+    i(1),
+  }),
   s(
     "add",
     fmt(
