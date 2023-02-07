@@ -14,7 +14,7 @@ return {
     event = "VeryLazy",
     keys = {
       {
-        "<leader><bs>",
+        "<bs>",
         function()
           require("notify").dismiss({ silent = true, pending = true })
         end,
