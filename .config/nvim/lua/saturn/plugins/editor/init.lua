@@ -772,6 +772,14 @@ return {
     end,
     keys = {
       { "<leader>dd", "<cmd>lua require'dap'.toggle_breakpoint()<cr>", desc = "Toggle Breakpoint" },
+      {
+        "<leader>da",
+        function()
+          require("saturn.utils.dap").toggle_conditonal_breakpoint()
+        end,
+        desc = "Toggle conditonal breakpoint",
+        expr = true,
+      },
       { "<leader>db", "<cmd>lua require'dap'.step_back()<cr>", desc = "Step Back" },
       { "<leader>dc", "<cmd>lua require'dap'.continue()<cr>", desc = "Continue" },
       { "<leader>dC", "<cmd>lua require'dap'.run_to_cursor()<cr>", desc = "Run To Cursor" },
