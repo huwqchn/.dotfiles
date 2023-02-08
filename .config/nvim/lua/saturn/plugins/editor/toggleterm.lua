@@ -59,8 +59,8 @@ end
 ---@param direction number
 ---@param size number
 ---@return integer
-local function get_dynamic_terminal_size(direction, size)
-  size = size or saturn.plugins.toggleterm.size
+M.get_dynamic_terminal_size = function(direction, size)
+  size = size or M.config.size
   if direction ~= "float" and tostring(size):find(".", 1, true) then
     size = math.min(size, 1.0)
     local buf_sizes = get_buf_size()

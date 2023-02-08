@@ -64,11 +64,31 @@ return {
       { "<leader><cr>h", "<cmd>ToggleTerm size=10 direction=horizontal<cr>", desc = "Horizontal" },
       { "<leader><cr>v", "<cmd>ToggleTerm size=80 direction=vertical<cr>", desc = "Vertical" },
       { "<leader>gg", "<cmd>lua require 'saturn.plugins.editor.toggleterm'.lazygit_toggle()<cr>", desc = "LazyGit" },
+      { "<M-S-1>" },
+      { "<M-S-2>" },
+      { "<M-S-3>" },
     },
     config = function()
       local toggleterm = require("toggleterm")
       local term = require("saturn.plugins.editor.toggleterm")
       toggleterm.setup(term.config)
+      for i, exec in pairs(term.config.execs) do
+        local direction = exec[4] or term.config.direction
+
+        local opts = {
+          cmd = exec[1] or term.config.shell,
+          keymap = exec[2],
+          label = exec[3],
+          -- NOTE: unable to consistently bind id/count <= 9, see #2146
+          count = i + 100,
+          direction = direction,
+          size = function()
+            return term.get_dynamic_terminal_size(direction, exec[5])
+          end,
+        }
+
+        term.add_exec(opts)
+      end
     end,
   },
 
@@ -781,27 +801,44 @@ return {
         expr = true,
       },
       {
-        "<leader>dl",
+        "<leader>dm",
         function()
           require("dap").set_breakpoint(nil, nil, vim.fn.input("log message:"))
         end,
-        desc = "Set log breakpoint",
+        desc = "Set log message breakpoint",
         expr = true,
       },
+      { "<leader>dl", "<cmd>lua require'dap'.list_breakpoints()<cr>", desc = "List breakpoints" },
+      { "<leader>dL", "<cmd>lua require'dap'.clear_breakpoints()<cr>", desc = "Clear breakpoints" },
       { "<leader>db", "<cmd>lua require'dap'.step_back()<cr>", desc = "Step Back" },
       { "<leader>dc", "<cmd>lua require'dap'.continue()<cr>", desc = "Continue" },
       { "<leader>dC", "<cmd>lua require'dap'.run_to_cursor()<cr>", desc = "Run To Cursor" },
       { "<leader>dD", "<cmd>lua require'dap'.disconnect()<cr>", desc = "Disconnect" },
       { "<leader>ds", "<cmd>lua require'dap'.session()<cr>", desc = "Get Session" },
       { "<leader>di", "<cmd>lua require'dap'.step_into()<cr>", desc = "Step Into" },
+      { "<leader>dO", "<cmd>lua require'dap'.step_out()<cr>", desc = "Step Out" },
       { "<leader>do", "<cmd>lua require'dap'.step_over()<cr>", desc = "Step Over" },
-      { "<leader>du", "<cmd>lua require'dap'.step_out()<cr>", desc = "Step Out" },
       { "<leader>dp", "<cmd>lua require'dap'.pause()<cr>", desc = "Pause" },
       { "<leader>dr", "<cmd>lua require'dap'.repl.toggle()<cr>", desc = "Toggle Repl" },
+      { "<Leader>dR", ":lua require('dap').repl.run_last()<CR>", desc = "Repl Run Last" },
       { "<leader>dq", "<cmd>lua require'dap'.close()<cr>", desc = "Quit" },
-      { "<leader>dt", "<cmd>lua require'dapui'.toggle({reset = true})<cr>", desc = "Toggle UI" },
+      { "<leader>du", "<cmd>lua require'dapui'.toggle({reset = true})<cr>", desc = "Toggle UI" },
       { "<leader>de", "<cmd>lua require'dapui'.eval()<cr>", desc = "Eval" },
       { "<leader>dw", "<cmd>lua require'dap.ui.widgets'.hover()<cr>", desc = "Widget" },
+      {
+        "<Leader>dW",
+        "<cmd>lua local widgets=require('dap.ui.widgets');widgets.centered_float(widgets.scopes)<CR>",
+        desc = "Center widget",
+      },
+      { "<Leader>dv", "<cmd>lua require('dap.ui.variables').scopes()<CR>", desc = "Variables Scopes" },
+      { "<Leader>dh", "<cmd>lua require('dap.ui.variables').hover()<CR>", desc = "Hover variables" },
+      { "<Leader>dh", "<cmd>lua require('dap.ui.variables').visual_hover()<CR>", mode = "v", desc = "Hover variables" },
+      { "<F7>", "<leader>di", desc = "Step Into", remap = true },
+      { "<S-F7>", "<leader>dO", desc = "Step Out", remap = true },
+      { "<F8>", "<leader>do", desc = "Step Over", remap = true },
+      { "<S-F8>", "<leader>db", desc = "Step Back", remap = true },
+      { "<F9>", "<leader>dC", desc = "Run to Cursor", remap = true },
+      { "<F10>", "<leader>dc", desc = "Continue", remap = true },
     },
     opts = {
       breakpoint = {
