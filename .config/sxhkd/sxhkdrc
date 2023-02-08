@@ -11,8 +11,8 @@ super + c
   firefox
 
 # open app
-super + a ; {a, b, c, d, e, f, g, i, n, o, q, s, u, v, x, z}
-  {arandr,brave,clion,eudic,emacsclient -c -a 'emacs',flameshot gui,goland,idea,neovide,obsidian,qtcreator,spotify,unityhub,vscodium,xfce4-power-manager -c,zathura}
+super + a ; {a, b, c, d, e, f, g, i, k, n, o, p, q, s, u, v, x, z}
+  {arandr,brave,clion,eudic,emacsclient -c -a 'emacs',flameshot gui,goland,idea,screenkey,neovide,obsidian,peek,qtcreator,spotify,unityhub,vscodium,xfce4-power-manager -c,zathura}
 
 # betterlockscreen
 super + x
@@ -149,6 +149,18 @@ super + ctrl + space
 # cancel the preselection for the focused desktop
 super + ctrl + shift + space
 	bspc query -N -d | xargs -I id -n 1 bspc node id -p cancel
+
+# screenkey
+super + ctrl + k
+  ~/.dotfiles/.scripts/sk.sh
+
+# flameshot
+super + ctrl + s
+  flameshot gui
+
+# peek
+super + ctrl + p
+  peek
 
 #
 # move/resize
