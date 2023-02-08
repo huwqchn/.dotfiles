@@ -709,7 +709,6 @@ return {
   -- diffview
   {
     "sindrets/diffview.nvim",
-    enabled = saturn.enable_extra_plugins,
     keys = {
       { "<leader>gh", "<cmd>DiffviewFileHistory<cr>", desc = "file history" },
       { "<leader>gH", "<cmd>DiffviewFileHistory %<cr>", desc = "current file history" },
@@ -770,20 +769,6 @@ return {
         TypeParameter = { icon = saturn.icons.kind.TypeParameter, hl = "CmpItemKindTypeParameter" },
       },
     },
-  },
-
-  -- harpoon
-  {
-    "christianchiarulli/harpoon",
-    keys = {
-      { "]m", '<cmd>lua require("harpoon.ui").nav_next()<cr>', desc = "Next Mark File" },
-      { "[m", '<cmd>lua require("harpoon.ui").nav_prev()<cr>', desc = "Prev Mark File" },
-      { "<leader>fh", "<cmd>Telescope harpoon marks<cr>", desc = "Search Mark Files" },
-      { "<leader>m;", '<cmd>lua require("harpoon.ui").toggle_quick_menu()<cr>', desc = "Harpoon UI" },
-      { "<leader>mm", '<cmd>lua require("harpoon.mark").add_file()<cr>', desc = "Harpoon" },
-    },
-    enabled = saturn.enable_extra_plugins,
-    config = true,
   },
 
   -- Debugging

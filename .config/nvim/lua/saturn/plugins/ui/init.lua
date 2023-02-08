@@ -97,9 +97,6 @@ return {
         dashboard.button("c", saturn.icons.ui.Gear .. " Configuration", ":e $MYVIMRC <CR>"),
         dashboard.button("q", saturn.icons.ui.Quit .. " Quit", ":qa<CR>"),
       }
-      -- local function footer()
-      --   return "Stay foolish, Stay hungry"
-      -- end
 
       -- local fortune = require("alpha.fortune")
       -- dashboard.section.footer.val = fortune

@@ -49,8 +49,8 @@ map({ "i", "v", "n", "s" }, "<C-s>", "<cmd>wa<cr><esc>")
 map("", "S", "<cmd>w<cr><esc>")
 
 -- quit
-map("", "<C-q>", "<cmd>qa<cr>")
 map("", "Q", "<cmd>q<cr>")
+map("n", "<leader>qq", "<cmd>qa<cr>", { desc = "Quit all" })
 
 -- select all
 map("", "<C-a>", "<esc>ggVG")
@@ -138,6 +138,7 @@ map("n", "<C-e>", "<C-w>j")
 map("n", "<C-u>", "<C-w>k")
 map("n", "<C-i>", "<C-w>l")
 map("n", "<C-l>", "<C-w>o")
+map("n", "<C-q>", "<C-w>q")
 
 -- Resize with arrows
 map("n", "<C-Up>", ":resize +2<CR>")
