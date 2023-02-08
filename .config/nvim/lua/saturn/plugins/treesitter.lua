@@ -176,9 +176,6 @@ return {
     cmd = "TSPlaygroundToggle",
   },
   {
-    "JoosepAlviste/nvim-ts-context-commentstring",
-  },
-  {
     "andymass/vim-matchup",
     event = "BufReadPost",
     config = function()

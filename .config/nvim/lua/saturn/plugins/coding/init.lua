@@ -181,6 +181,7 @@ return {
     "echasnovski/mini.surround",
     keys = function(plugin, keys)
       -- Populate the keys based on the user's options
+      local plugin = require("lazy.core.config").spec.plugins["mini.surround"]
       local opts = require("lazy.core.plugin").values(plugin, "opts", false)
       local mappings = {
         { opts.mappings.add, desc = "Add surrounding", mode = { "n", "v" } },
@@ -210,37 +211,39 @@ return {
       require("mini.surround").setup(opts)
     end,
   },
+
   -- Comment
+  { "JoosepAlviste/nvim-ts-context-commentstring" },
   {
-    "numToStr/Comment.nvim",
-    keys = {
-      { "gcc" },
-      { "gbc" },
-      { "gcO" },
-      { "gco" },
-      { "gcA" },
-      { "gc", mode = { "x", "o" } },
-      { "gb", mode = { "x", "o" } },
-      {
-        "<leader>/",
-        function()
-          require("Comment.api").toggle.linewise.current()
-        end,
-        mode = "n",
-        desc = "Comment",
-      },
-      {
-        "<leader>/",
-        "<Plug>(comment_toggle_linewise_visual)",
-        mode = "v",
-        desc = "Comment toggle linewise (visual)",
-      },
-    },
+    "echasnovski/mini.comment",
+    keys = function(_, keys)
+      -- Populate the keys based on the user's options
+      local plugin = require("lazy.core.config").spec.plugins["mini.comment"]
+      local opts = require("lazy.core.plugin").values(plugin, "opts", false)
+      local mappings = {
+        { opts.mappings.comment, mode = { "n", "x" } },
+        { opts.mappings.comment_line },
+        { opts.mappings.textobject },
+        { "<leader>/", opts.mappings.comment_line, remap = true },
+        { "<leader>/", opts.mappings.comment, mode = "x", remap = true },
+      }
+      return vim.list_extend(mappings, keys)
+    end,
     opts = {
-      pre_hook = function()
-        require("ts_context_commentstring.internal").update_commentstring({})
-      end,
+      mappings = {
+        comment = "gc",
+        comment_line = "gcc",
+        textobject = "gc",
+      },
+      hooks = {
+        pre = function()
+          require("ts_context_commentstring.internal").update_commentstring({})
+        end,
+      },
     },
+    config = function(_, opts)
+      require("mini.comment").setup(opts)
+    end,
   },
 
   -- better text-objects
