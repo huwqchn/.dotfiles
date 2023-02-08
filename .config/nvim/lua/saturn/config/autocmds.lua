@@ -22,6 +22,13 @@ local definitions = {
     },
   },
   {
+    { "FocusGained", "TermClose", "TermLeave" },
+    {
+      group = "checktime",
+      command = "checktime",
+    },
+  },
+  {
     "FileType",
     {
       group = "_filetype_settings",
@@ -66,6 +73,17 @@ local definitions = {
       callback = function()
         vim.keymap.set("n", "q", "<cmd>close<cr>", { buffer = true })
         vim.opt_local.buflisted = false
+      end,
+    },
+  },
+  {
+    "FileType",
+    {
+      group = "wrap_spell",
+      pattern = { "gitcommit", "markdown" },
+      callback = function()
+        vim.opt_local.wrap = true
+        vim.opt_local.spell = true
       end,
     },
   },
@@ -130,14 +148,6 @@ local definitions = {
       end,
     },
   },
-  -- Remove all trailing whitespace on save
-  {
-    "BufWritePre",
-    {
-      group = "_format_on_save",
-      command = [[:%s/\s\+$//e]],
-    },
-  },
   -- Enable spell checking for certain file types
   {
     { "BufRead", "BufNewFile" },
@@ -145,6 +155,20 @@ local definitions = {
       group = "_spell_check",
       pattern = { "*.txt", "*.md", "*.tex" },
       command = "setlocal spell",
+    },
+  },
+  -- go to last loc when opening a buffer
+  {
+    "BufReadPost",
+    {
+      group = "last_loc",
+      callback = function()
+        local mark = vim.api.nvim_buf_get_mark(0, '"')
+        local lcount = vim.api.nvim_buf_line_count(0)
+        if mark[1] > 0 and mark[1] <= lcount then
+          pcall(vim.api.nvim_win_set_cursor, 0, mark)
+        end
+      end,
     },
   },
 }

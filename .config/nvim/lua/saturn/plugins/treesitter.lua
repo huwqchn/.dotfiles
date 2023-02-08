@@ -3,7 +3,7 @@ return {
     "nvim-treesitter/nvim-treesitter",
     version = false, -- the latest version will crash wit vim-matchup
     build = ":TSUpdate",
-    event = "BufReadPost",
+    event = { "BufReadPost", "BufNewFile" },
     dependencies = {
       -- { -- too slow
       --   "nvim-treesitter/nvim-treesitter-textobjects",

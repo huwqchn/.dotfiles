@@ -138,7 +138,7 @@ return {
   -- indent guides for Neovim
   {
     "lukas-reineke/indent-blankline.nvim",
-    event = "BufReadPre",
+    event = { "BufReadPre", "BufNewFile" },
     opts = {
       enabled = true,
       buftype_exclude = { "terminal", "nofile" },
@@ -166,7 +166,7 @@ return {
   {
     "echasnovski/mini.indentscope",
     version = false, -- wait till new 0.7.0 release to put it back on semver
-    event = "BufReadPre",
+    event = { "BufReadPre", "BufNewFile" },
     config = function()
       vim.api.nvim_create_autocmd("FileType", {
         pattern = {

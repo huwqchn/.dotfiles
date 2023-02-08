@@ -47,7 +47,6 @@ return {
 
       local format = require("saturn.plugins.lsp.format")
       format.autoformat = saturn.format_on_save.enabled
-      vim.keymap.set("n", "<leader>of", format.toggle, { desc = "toggle format on save" })
 
       local config = {
         virtual_text = opts.diagnostics.virtual_text,
@@ -92,15 +91,6 @@ return {
   -- },
   {
     "lvimuser/lsp-inlayhints.nvim",
-    keys = {
-      {
-        "<leader>oh",
-        function()
-          require("lsp-inlayhints").toggle()
-        end,
-        desc = "toggle inlayhits",
-      },
-    },
     config = function()
       vim.api.nvim_create_augroup("LspAttach_inlayhints", {})
       vim.api.nvim_create_autocmd("LspAttach", {
@@ -114,7 +104,9 @@ return {
           require("lsp-inlayhints").on_attach(client, args.buf)
         end,
       })
-      require("lsp-inlayhints").setup()
+      local inlayhints = require("lsp-inlayhints")
+      inlayhints.setup()
+      vim.keymap.set("n", "<leader>uh", inlayhints.toggle, { desc = "Toggle Lsp Inlayhints" })
     end,
   },
   {

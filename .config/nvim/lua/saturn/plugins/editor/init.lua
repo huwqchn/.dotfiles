@@ -414,7 +414,7 @@ return {
       { "<leader>sk", "<cmd>Telescope keymaps<cr>", desc = "Key Maps" },
       { "<leader>sl", "<cmd>Telescope resume<cr>", desc = "Last Search" },
       { "<leader>so", "<cmd>Telescope vim_options<cr>", desc = "Options" },
-      { "<leader>st", "<cmd>Telescope builtin<cr>", desc = "Telescope" },
+      { "<leader>si", "<cmd>Telescope builtin<cr>", desc = "Telescope" },
       {
         "<leader>sp",
         "<cmd>lua require('telescope.plugins').colorscheme({enable_preview = true})<cr>",
@@ -500,7 +500,6 @@ return {
         ["<leader>g"] = { name = "+git" },
         ["<leader>j"] = { name = "+jump" },
         ["<leader>m"] = { name = "+marks" },
-        ["<leader>o"] = { name = "+options" },
         ["<leader>p"] = { name = "+plugin" },
         ["<leader>q"] = { name = "+session" },
         ["<leader>r"] = { name = "+refactor/replace" },
@@ -508,7 +507,6 @@ return {
         ["<leader>t"] = { name = "+trouble/todo" },
         ["<leader>u"] = { name = "+ui" },
         ["<leader>w"] = { name = "+windows" },
-        ["<leader>x"] = { name = "+quickfix" },
         ["<leader>z"] = { name = "+zen" },
         ["<leader><tab>"] = { name = "+tabs" },
         ["<leader><cr>"] = { name = "+terminal" },
@@ -543,8 +541,8 @@ return {
         end
 
         -- stylua: ignore start
-        map("n", "]g", gs.prev_hunk, "Next Hunk")
-        map("n", "[g", gs.next_hunk, "Prev Hunk")
+        map("n", "]g", gs.prev_hunk, "Next Git Hunk")
+        map("n", "[g", gs.next_hunk, "Prev Git Hunk")
         map({ "n", "v" }, "<leader>gs", ":Gitsigns stage_hunk<CR>", "Stage Hunk")
         map({ "n", "v" }, "<leader>gr", ":Gitsigns reset_hunk<CR>", "Reset Hunk")
         map("n", "<leader>gS", gs.stage_buffer, "Stage Buffer")
@@ -557,7 +555,7 @@ return {
         map({ "o", "x" }, "kh", ":<C-U>Gitsigns select_hunk<CR>", "GitSigns Select Hunk")
       end,
     },
-    event = "BufReadPre",
+    event = { "BufReadPre", "BufNewFile" },
   },
 
   -- git-conflict
@@ -584,7 +582,7 @@ return {
   -- references
   {
     "RRethy/vim-illuminate",
-    event = "VeryLazy",
+    event = { "BufReadPost", "BufNewFile" },
     opts = {
       -- filetypes_denylist: filetypes to not illuminate, this overrides filetypes_allowlist
       filetypes_denylist = {
@@ -606,6 +604,13 @@ return {
     },
     config = function(_, opts)
       require("illuminate").configure(opts)
+      vim.api.nvim_create_autocmd("FileType", {
+        callback = function()
+          local buffer = vim.api.nvim_get_current_buf()
+          pcall(vim.keymap.del, "n", "]]", { buffer = buffer })
+          pcall(vim.keymap.del, "n", "[[", { buffer = buffer })
+        end,
+      })
     end,
     -- stylua: ignore
     keys = {
@@ -630,25 +635,24 @@ return {
     cmd = { "TroubleToggle", "Trouble" },
     keys = {
       { "<leader>tt", "<cmd>TroubleToggle<cr>", desc = "trouble" },
-      { "<leader>tw", "<cmd>TroubleToggle workspace_diagnostics<cr>", desc = "workspace" },
-      { "<leader>td", "<cmd>TroubleToggle document_diagnostics<cr>", desc = "document" },
-      { "<leader>tq", "<cmd>TroubleToggle quickfix<cr>", desc = "quickfix" },
-      { "<leader>tl", "<cmd>TroubleToggle loclist<cr>", desc = "loclist" },
+      { "<leader>tw", "<cmd>TroubleToggle workspace_diagnostics<cr>", desc = "Workspace Diagnostics (Trouble)" },
+      { "<leader>td", "<cmd>TroubleToggle document_diagnostics<cr>", desc = "Document Diagnostics (Trouble)" },
+      { "<leader>tq", "<cmd>TroubleToggle quickfix<cr>", desc = "Quickfix List (Touble)" },
+      { "<leader>tl", "<cmd>TroubleToggle loclist<cr>", desc = "Loclist List (Trouble)" },
       { "<leader>tr", "<cmd>TroubleToggle lsp_references<cr>", desc = "references" },
     },
     opts = {
-      action_keys = {
-        -- key mappings for actions in the trouble list
+      action_keys = { -- key mappings for actions in the trouble list
         -- map to {} to remove a mapping, for example:
         -- close = {},
         close = "q", -- close the list
         cancel = "<esc>", -- cancel the preview and get back to your last window / buffer / cursor
         refresh = "r", -- manually refresh
         jump = { "<cr>", "<tab>" }, -- jump to the diagnostic or open / close folds
-        open_split = { "s" }, -- open buffer in new split
-        open_vsplit = { "v" }, -- open buffer in new vsplit
-        open_tab = { "t" }, -- open buffer in new tab
-        jump_close = { "j" }, -- jump to the diagnostic and close the list
+        open_split = { "<c-x>" }, -- open buffer in new split
+        open_vsplit = { "<c-v>" }, -- open buffer in new vsplit
+        open_tab = { "<c-t>" }, -- open buffer in new tab
+        jump_close = { "o" }, -- jump to the diagnostic and close the list
         toggle_mode = "m", -- toggle between "workspace" and "document" diagnostics mode
         toggle_preview = "P", -- toggle auto_preview
         hover = "H", -- opens a small popup with the full multiline message
@@ -667,7 +671,7 @@ return {
   {
     "folke/todo-comments.nvim",
     cmd = { "TodoTrouble", "TodoTelescope" },
-    event = "BufReadPost",
+    event = { "BufReadPost", "BufNewFile" },
     config = true,
     keys = {
       {
@@ -684,9 +688,9 @@ return {
         end,
         desc = "Previous todo comment",
       },
-      { "<leader>to", "<cmd>TodoTrouble<cr>", desc = "Todo Trouble" },
-      { "<leader>tk", "<cmd>TodoTrouble keywords=TODO,FIX,FIXME<cr>", desc = "Todo Trouble" },
-      { "<leader>tf", "<cmd>TodoTelescope<cr>", desc = "Todo Telescope" },
+      { "<leader>to", "<cmd>TodoTrouble<cr>", desc = "Todo (Trouble)" },
+      { "<leader>tk", "<cmd>TodoTrouble keywords=TODO,FIX,FIXME<cr>", desc = "Todo/Fix/Fixme (Trouble)" },
+      { "<leader>st", "<cmd>TodoTelescope<cr>", desc = "Todo" },
     },
   },
 
@@ -772,8 +776,8 @@ return {
   {
     "christianchiarulli/harpoon",
     keys = {
-      { "]h", '<cmd>lua require("harpoon.ui").nav_next()<cr>', desc = "Harpoon Next" },
-      { "[h", '<cmd>lua require("harpoon.ui").nav_prev()<cr>', desc = "Harpoon Prev" },
+      { "]m", '<cmd>lua require("harpoon.ui").nav_next()<cr>', desc = "Next Mark File" },
+      { "[m", '<cmd>lua require("harpoon.ui").nav_prev()<cr>', desc = "Prev Mark File" },
       { "<leader>fh", "<cmd>Telescope harpoon marks<cr>", desc = "Search Mark Files" },
       { "<leader>m;", '<cmd>lua require("harpoon.ui").toggle_quick_menu()<cr>', desc = "Harpoon UI" },
       { "<leader>mm", '<cmd>lua require("harpoon.mark").add_file()<cr>', desc = "Harpoon" },
