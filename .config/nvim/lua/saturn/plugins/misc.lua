@@ -1,4 +1,13 @@
 return {
+
+  -- measure startuptime
+  {
+    "dstein64/vim-startuptime",
+    cmd = "StartupTime",
+    config = function()
+      vim.g.startuptime_tries = 10
+    end,
+  },
   -- makes some plugins dot-repeatable like leap
   {
     "huwqchn/vim-repeat",
@@ -116,28 +125,6 @@ return {
       exclude = { "markdown" }, -- tabout will ignore these filetypes
     },
   },
-  {
-    "nvim-neorg/neorg",
-    ft = "norg",
-    build = ":Neorg sync-parsers",
-    opts = {
-      load = {
-        ["core.defaults"] = {},
-        ["core.norg.concealer"] = {},
-        ["core.norg.completion"] = {
-          config = { engine = "nvim-cmp" },
-        },
-        ["core.norg.dirman"] = { -- Manages Neorg workspaces
-          config = {
-            workspaces = {
-              notes = "~/Documents/notes",
-            },
-          },
-        },
-        ["core.integrations.nvim-cmp"] = {},
-      },
-    },
-  },
   -- Preview number Jump
   {
     "nacro90/numb.nvim",
@@ -160,6 +147,7 @@ return {
     },
     opts = { use_default_keymaps = false },
   },
+  -- structural replace
   {
     "cshuaimin/ssr.nvim",
     keys = {
@@ -224,7 +212,6 @@ return {
     },
     config = true,
   },
-  --TODO:session management
   {
     "NvChad/nvim-colorizer.lua",
     event = "BufRead",
@@ -263,42 +250,46 @@ return {
       })
     end,
   },
-  -- {
-  --   "echasnovski/mini.move",
-  --   keys = function(plugin, keys)
-  --     -- Populate the keys based on the user's options
-  --     local opts = require("lazy.core.plugin").values(plugin, "opts", false)
-  --     local mappings = {
-  --       { opts.mappings.left, desc = "move left", mode = { "n", "v" } },
-  --       { opts.mappings.right, desc = "move right", mode = { "n", "v" } },
-  --       { opts.mappings.down, desc = "move down", mode = { "n", "v" } },
-  --       { opts.mappings.up, desc = "move up", mode = { "n", "v" } },
-  --       { opts.mappings.line_left, desc = "move line left", mode = { "n", "v" } },
-  --       { opts.mappings.line_right, desc = "move line right", mode = { "n", "v" } },
-  --       { opts.mappings.line_down, desc = "move line down", mode = { "n", "v" } },
-  --       { opts.mappings.line_up, desc = "move line up", mode = { "n", "v" } },
-  --     }
-  --     return vim.list_extend(mappings, keys)
-  --   end,
-  --   opts = {
-  --     mappings = {
-  --       -- Move visual selection in Visual mode. Defaults are Alt (Meta) + hjkl.
-  --       left = "<M-n>",
-  --       right = "<M-i>",
-  --       down = "<M-e>",
-  --       up = "<M-u>",
-  --       -- Move current line in Normal mode
-  --       line_left = "<M-n>",
-  --       line_right = "<M-i>",
-  --       line_down = "<M-e>",
-  --       line_up = "<M-u>",
-  --     },
-  --   },
-  -- },
-  -- {
-  --   "eandrju/cellular-automaton.nvim",
-  --   cmd = { "CellularAutomaton" },
-  -- },
+  -- move
+  {
+    "echasnovski/mini.move",
+    version = false,
+    keys = function(_, keys)
+      -- Populate the keys based on the user's options
+      local plugin = require("lazy.core.config").spec.plugins["mini.move"]
+      local opts = require("lazy.core.plugin").values(plugin, "opts", false)
+      local mappings = {
+        { opts.mappings.left, mode = "x" },
+        { opts.mappings.right, mode = "x" },
+        { opts.mappings.down, mode = "x" },
+        { opts.mappings.up, mode = "x" },
+        { opts.mappings.line_left },
+        { opts.mappings.line_right },
+        { opts.mappings.line_down },
+        { opts.mappings.line_up },
+      }
+      return vim.list_extend(mappings, keys)
+    end,
+    opts = {
+      mappings = {
+        -- Move visual selection in Visual mode. Defaults are Alt (Meta) + hjkl.
+        left = "<M-n>",
+        right = "<M-i>",
+        down = "<M-e>",
+        up = "<M-u>",
+        -- Move current line in Normal mode
+        line_left = "<M-n>",
+        line_right = "<M-i>",
+        line_down = "<M-e>",
+        line_up = "<M-u>",
+      },
+    },
+    config = function(_, opts)
+      require("mini.move").setup(opts)
+    end,
+  },
+
+  -- pick color
   {
     "ziontee113/color-picker.nvim",
     cmd = { "PickColor", "PickColorInsert" },
