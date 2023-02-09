@@ -11,12 +11,14 @@ return {
   -- makes some plugins dot-repeatable like leap
   {
     "huwqchn/vim-repeat",
-    event = "VeryLazy",
+    -- event = "VeryLazy",
+    keys = {
+      ".",
+    },
   },
   -- easily jump to any location and enhanced f/t motions for Leap
   {
     "ggandor/leap.nvim",
-    event = "VeryLazy",
     keys = {
       {
         "j",
