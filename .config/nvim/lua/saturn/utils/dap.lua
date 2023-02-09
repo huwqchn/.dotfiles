@@ -82,6 +82,7 @@ M.cppdbg_config = function(dap)
     },
   }
   dap.configurations.c = dap.configurations.cpp
+  dap.configurations.rust = dap.configuration.cpp
 end
 
 M.codelldb_config = function(dap)
@@ -122,6 +123,7 @@ M.codelldb_config = function(dap)
     },
   }
   dap.configurations.c = dap.configurations.cpp
+  dap.configurations.rust = dap.configurations.cpp
   -- dap_keymap(dap)
 end
 
