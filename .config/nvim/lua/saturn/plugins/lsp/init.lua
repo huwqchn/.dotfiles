@@ -113,24 +113,22 @@ return {
     "williamboman/mason.nvim",
     cmd = "Mason",
     keys = { { "<leader>cm", "<cmd>Mason<cr>", desc = "Mason" } },
-    config = function()
-      require("mason").setup({
-        ui = {
-          border = "rounded",
-          keymaps = {
-            toggle_package_expand = "<CR>",
-            install_package = "<Space>",
-            update_package = "l",
-            check_package_version = "c",
-            update_all_packages = "L",
-            check_outdated_packages = "C",
-            uninstall_package = "X",
-            cancel_installation = "<C-c>",
-            apply_language_filter = "<C-f>",
-          },
+    opts = {
+      ui = {
+        border = "rounded",
+        keymaps = {
+          toggle_package_expand = "<CR>",
+          install_package = "<Space>",
+          update_package = "l",
+          check_package_version = "c",
+          update_all_packages = "L",
+          check_outdated_packages = "C",
+          uninstall_package = "X",
+          cancel_installation = "<C-c>",
+          apply_language_filter = "<C-f>",
         },
-      })
-    end,
+      },
+    },
   },
   {
     "jose-elias-alvarez/null-ls.nvim",
