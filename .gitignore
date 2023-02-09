@@ -1,15 +1,4 @@
 *.swp
-.backup/nvim.version1/.DS_Store
-.backup/nvim.version1/view/
-.backup/nvim.version1/plugged/
-.backup/nvim.version1/sessions/
-.backup/nvim.version1/autoload/plug.vim.old
-.backup/nvim.version1/tmp/
-.backup/nvim.version1/.netrwhist
-.backup/nvim.version1/_machine_specific.vim
-.backup/nvim.version1/.vim-bookmarks
-.backup/nvim.version1/ftplugin
-.backup/nvim.version2/plugin/packer_compiled.lua
 .config/nvim/plugin/packer_compiled.lua
 .config/ranger/plugins/__pycache__/*
 .config/ranger/plugins/__init__.pyo
