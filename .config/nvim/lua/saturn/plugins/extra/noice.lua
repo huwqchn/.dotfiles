@@ -1,7 +1,6 @@
 return {
   {
     "folke/noice.nvim",
-    enabled = false,
     event = "VeryLazy",
     config = function()
       local focused = true

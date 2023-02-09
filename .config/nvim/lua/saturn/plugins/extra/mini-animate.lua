@@ -1,4 +1,8 @@
 return {
+  {
+    "karb94/neoscroll.nvim",
+    enabled = false,
+  },
   -- animations
   {
     "echasnovski/mini.animate",
