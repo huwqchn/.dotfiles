@@ -167,6 +167,10 @@ map("n", "<leader>we", "<C-w>J", { desc = "move to the far bottom" })
 map("n", "<leader>wi", "<C-w>L", { desc = "move to the far right" })
 map("n", "<leader>wu", "<C-w>K", { desc = "move to the far top" })
 
+-- scroll
+map({ "n", "v" }, "<C-k>", "<C-u>")
+map({ "n", "v" }, "<C-m>", "<C-e>")
+
 -- Tabs management
 map("n", "<leader><tab>a", "<cmd>tabfirst<CR>", { desc = "First" })
 map("n", "<leader><tab>z", "<cmd>tablast<CR>", { desc = "Last" })
