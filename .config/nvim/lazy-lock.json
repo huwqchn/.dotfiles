@@ -90,7 +90,7 @@
   "telescope.nvim": { "branch": "master", "commit": "203bf5609137600d73e8ed82703d6b0e320a5f36" },
   "todo-comments.nvim": { "branch": "main", "commit": "74c7d28cb50b0713c881ef69bcb6cdd77d8907d1" },
   "toggleterm.nvim": { "branch": "main", "commit": "19aad0f41f47affbba1274f05e3c067e6d718e1e" },
-  "tokyonight.nvim": { "branch": "main", "commit": "6705d069d9b37146024113c36aa90cec90630859" },
+  "tokyonight.nvim": { "branch": "main", "commit": "a0abe53df53616d13da327636cb0bcac3ea7f5af" },
   "treesj": { "branch": "main", "commit": "950d06ed1d4a33bf6825553f455dc0689047c91a" },
   "trouble.nvim": { "branch": "main", "commit": "fc003424b02109f1453af6b40dadff6019b97187" },
   "twilight.nvim": { "branch": "main", "commit": "9410252bed96887ca5a86bf16435a3a51a0e6ce5" },
@@ -103,3 +103,4 @@
   "yanky.nvim": { "branch": "main", "commit": "14b9c4cc572c3be5cf5b0a678e7ac240f08a8681" },
   "zen-mode.nvim": { "branch": "main", "commit": "3c92f503823088862ca2a7809d1c7edc90fb92fa" },
   "zk-nvim": { "branch": "main", "commit": "0413c52500cd0133b0cd8e7e7d43084855ac1760" }
+}
