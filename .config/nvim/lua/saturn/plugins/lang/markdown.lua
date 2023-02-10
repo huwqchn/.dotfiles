@@ -266,7 +266,7 @@ return {
   -- },
   {
     "mickael-menu/zk-nvim",
-    ft = { "markdown", "norg" },
+    ft = "markdown",
     config = function()
       require("zk").setup({
         picker = "telescope",
