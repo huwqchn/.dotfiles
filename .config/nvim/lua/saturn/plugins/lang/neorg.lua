@@ -18,9 +18,9 @@ return {
           },
         },
         ["core.integrations.nvim-cmp"] = {},
-        ["core.integrations.telescope"] = {},
+        -- ["core.integrations.telescope"] = {},
       },
     },
-    dependencies = { { "nvim-lua/plenary.nvim" }, { "nvim-neorg/neorg-telescope" } },
+    -- dependencies = { { "nvim-lua/plenary.nvim" }, { "telescope.nvim" }, { "nvim-neorg/neorg-telescope" } },
   },
 }
