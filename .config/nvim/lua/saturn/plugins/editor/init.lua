@@ -448,7 +448,42 @@ return {
 
   {
     "folke/which-key.nvim",
-    event = "VeryLazy",
+    keys = {
+      { "<leader>", mode = { "n", "v" } },
+      { "g", mode = { "n", "v" } },
+      { "s", mode = { "n", "v" } },
+      { "[", mode = { "n", "v" } },
+      { "]", mode = { "n", "v" } },
+    },
+    init = function()
+      saturn.plugins.which_key = {
+        mappings = {
+          mode = { "n", "v" },
+          ["g"] = { name = "+goto" },
+          ["s"] = { name = "+split/surroud/select" },
+          ["]"] = { name = "+next" },
+          ["["] = { name = "+prev" },
+          ["<leader>b"] = { name = "+buffer" },
+          ["<leader>c"] = { name = "+code" },
+          ["<leader>d"] = { name = "+debug" },
+          ["<leader>e"] = { name = "+explorer" },
+          ["<leader>f"] = { name = "+file" },
+          ["<leader>g"] = { name = "+git" },
+          ["<leader>j"] = { name = "+jump" },
+          ["<leader>m"] = { name = "+marks" },
+          ["<leader>p"] = { name = "+plugin" },
+          ["<leader>q"] = { name = "+session" },
+          ["<leader>r"] = { name = "+refactor/replace" },
+          ["<leader>s"] = { name = "+search" },
+          ["<leader>t"] = { name = "+trouble/todo" },
+          ["<leader>u"] = { name = "+ui" },
+          ["<leader>w"] = { name = "+windows" },
+          ["<leader>z"] = { name = "+zen" },
+          ["<leader><tab>"] = { name = "+tabs" },
+          ["<leader><cr>"] = { name = "+terminal" },
+        },
+      }
+    end,
     opts = {
       plugins = {
         marks = false,
@@ -486,31 +521,7 @@ return {
     config = function(_, opts)
       local wk = require("which-key")
       wk.setup(opts)
-      wk.register({
-        mode = { "n", "v" },
-        ["g"] = { name = "+goto" },
-        ["s"] = { name = "+split/surroud/select" },
-        ["]"] = { name = "+next" },
-        ["["] = { name = "+prev" },
-        ["<leader>b"] = { name = "+buffer" },
-        ["<leader>c"] = { name = "+code" },
-        ["<leader>d"] = { name = "+debug" },
-        ["<leader>e"] = { name = "+explorer" },
-        ["<leader>f"] = { name = "+file" },
-        ["<leader>g"] = { name = "+git" },
-        ["<leader>j"] = { name = "+jump" },
-        ["<leader>m"] = { name = "+marks" },
-        ["<leader>p"] = { name = "+plugin" },
-        ["<leader>q"] = { name = "+session" },
-        ["<leader>r"] = { name = "+refactor/replace" },
-        ["<leader>s"] = { name = "+search" },
-        ["<leader>t"] = { name = "+trouble/todo" },
-        ["<leader>u"] = { name = "+ui" },
-        ["<leader>w"] = { name = "+windows" },
-        ["<leader>z"] = { name = "+zen" },
-        ["<leader><tab>"] = { name = "+tabs" },
-        ["<leader><cr>"] = { name = "+terminal" },
-      })
+      wk.register(saturn.plugins.which_key.mappings)
     end,
   },
   {

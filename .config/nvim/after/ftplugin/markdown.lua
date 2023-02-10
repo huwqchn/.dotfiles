@@ -1,26 +1,6 @@
 vim.o.wrap = true
 
-local status_ok, which_key = pcall(require, "which-key")
-if not status_ok then
-  return
-end
-
-local opts = {
-  mode = "n", -- NORMAL mode
-  prefix = "<leader>",
-  buffer = nil, -- Global mappings. Specify a buffer number for buffer local mappings
-  silent = true, -- use `silent` when creating keymaps
-  noremap = true, -- use `noremap` when creating keymaps
-  nowait = true, -- use `nowait` when creating keymaps
-}
-
-local mappings = {
-  n = {
-    name = "+note",
-  },
-}
-
-which_key.register(mappings, opts)
+saturn.plugins.which_key.mappings["<leader>n"] = { name = "+note" }
 
 -- Add the key mappings only for Markdown files in a zk notebook.
 if require("zk.util").notebook_root(vim.fn.expand("%:p")) ~= nil then
