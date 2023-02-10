@@ -126,6 +126,7 @@ return {
       {
         "nvim-telescope/telescope-live-grep-args.nvim",
       },
+      { "project.nvim" },
     },
     config = function()
       local actions = require("telescope.actions")
@@ -392,6 +393,7 @@ return {
       { "<leader>fr", "<cmd>Telescope oldfiles<cr>", desc = "Recent" },
       { "<leader>fM", "<cmd>lua require('telescope').extensions.media_files.media_files()<cr>", desc = "Media" },
       { "<leader>fd", "<cmd>Telescope dotfiles<cr>", desc = "Dotfiles" },
+      { "<leader>fp", "<cmd>Telescope projects<cr>", desc = "Projects" },
       {
         "<leader>fg",
         "<cmd>lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>",
