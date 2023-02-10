@@ -900,7 +900,7 @@
           },
           "to": [
             {
-              "key_code": "return_or_enter",
+              "key_code": "return_or_enter"
             }
           ]
         },
@@ -994,7 +994,7 @@
           },
           "to": [
             {
-              "key_code": "tab",
+              "key_code": "tab"
             }
           ]
         },
@@ -1017,7 +1017,7 @@
           },
           "to": [
             {
-              "key_code": "delete_or_backspace",
+              "key_code": "delete_or_backspace"
             }
           ]
         },
@@ -1040,7 +1040,7 @@
           },
           "to": [
             {
-              "key_code": "f1",
+              "key_code": "f1"
             }
           ]
         },
@@ -1063,7 +1063,7 @@
           },
           "to": [
             {
-              "key_code": "f2",
+              "key_code": "f2"
             }
           ]
         },
@@ -1086,7 +1086,7 @@
           },
           "to": [
             {
-              "key_code": "f3",
+              "key_code": "f3"
             }
           ]
         },
@@ -1109,7 +1109,7 @@
           },
           "to": [
             {
-              "key_code": "f4",
+              "key_code": "f4"
             }
           ]
         },
@@ -1132,7 +1132,7 @@
           },
           "to": [
             {
-              "key_code": "f5",
+              "key_code": "f5"
             }
           ]
         },
@@ -1155,7 +1155,7 @@
           },
           "to": [
             {
-              "key_code": "f6",
+              "key_code": "f6"
             }
           ]
         },
@@ -1178,7 +1178,7 @@
           },
           "to": [
             {
-              "key_code": "f7",
+              "key_code": "f7"
             }
           ]
         },
@@ -1201,7 +1201,7 @@
           },
           "to": [
             {
-              "key_code": "f8",
+              "key_code": "f8"
             }
           ]
         },
@@ -1224,7 +1224,7 @@
           },
           "to": [
             {
-              "key_code": "f9",
+              "key_code": "f9"
             }
           ]
         },
@@ -1247,7 +1247,7 @@
           },
           "to": [
             {
-              "key_code": "f10",
+              "key_code": "f10"
             }
           ]
         },
@@ -1270,7 +1270,7 @@
           },
           "to": [
             {
-              "key_code": "f11",
+              "key_code": "f11"
             }
           ]
         },
@@ -1293,7 +1293,7 @@
           },
           "to": [
             {
-              "key_code": "f12",
+              "key_code": "f12"
             }
           ]
         }
