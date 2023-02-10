@@ -1,5 +1,5 @@
 return {
-  { "nvim-lua/plenary.nvim" },
+  { "nvim-lua/plenary.nvim", cmd = { "PlenaryBustedFile", "PlenaryBustedDirectory" } },
   { "nvim-lua/popup.nvim" },
   {
     "kyazdani42/nvim-web-devicons",
