@@ -336,4 +336,17 @@ return {
       { "<leader>qd", function() require("persistence").stop() end, desc = "Don't Save Current Session" },
     },
   },
+  -- {
+  --   "phaazon/mind.nvim",
+  --   cmd = {
+  --     "MindOpenMain",
+  --     "MindOpenProject",
+  --     "MindOpenSmartProject",
+  --     "MindReloadState",
+  --     "MindClose",
+  --   },
+  --   version = "v2.2",
+  --   dependencies = { "nvim-lua/plenary.nvim" },
+  --   config = true,
+  -- },
 }

@@ -453,8 +453,26 @@ return {
   },
   {
     "gbprod/yanky.nvim",
-    enabled = true,
-    event = "BufReadPost",
+    keys = {
+      { "y", "<Plug>(YankyYank)", desc = "Yank", mode = { "n", "x" } },
+      { "p", "<Plug>(YankyPutAfter)", desc = "Yank put after", mode = { "n", "x" } },
+      { "P", "<Plug>(YankyPutBefore)", desc = "Yanky put before", mode = { "n", "x" } },
+      { "gp", "<Plug>(YankyGPutAfter)", desc = "Yanky Gput after", mode = { "n", "x" } },
+      { "gP", "<Plug>(YankyGPutBefore)", desc = "Yanky Gput before", mode = { "n", "x" } },
+      { "<c-[>", "<Plug>(YankyCycleForward)", desc = "Yanky Cycle Forward" },
+      { "<c-]>", "<Plug>(YankyCycleBackward)", desc = "Yanky Cycle Backward" },
+      { "]p", "<Plug>(YankyPutIndentAfterLinewise)", desc = "Yank put indent after linewise" },
+      { "[p", "<Plug>(YankyPutIndentBeforeLinewise)", desc = "Yank put indent before linewise" },
+      { "]P", "<Plug>(YankyPutIndentAfterLinewise)", desc = "Yank put indent after linewise" },
+      { "[P", "<Plug>(YankyPutIndentBeforeLinewise)", desc = "Yank put indent before linewise" },
+      {
+        "<leader>P",
+        function()
+          require("telescope").extensions.yank_history.yank_history({})
+        end,
+        desc = "Paste from Yanky",
+      },
+    },
     config = function()
       -- vim.g.clipboard = {
       --   name = "xsel_override",
@@ -477,25 +495,6 @@ return {
           storage = jit.os:find("Windows") and "shada" or "sqlite",
         },
       })
-
-      vim.keymap.set({ "n", "x" }, "y", "<Plug>(YankyYank)")
-
-      vim.keymap.set({ "n", "x" }, "p", "<Plug>(YankyPutAfter)")
-      vim.keymap.set({ "n", "x" }, "P", "<Plug>(YankyPutBefore)")
-      vim.keymap.set({ "n", "x" }, "gp", "<Plug>(YankyGPutAfter)")
-      vim.keymap.set({ "n", "x" }, "gP", "<Plug>(YankyGPutBefore)")
-
-      vim.keymap.set("n", "<c-[>", "<Plug>(YankyCycleForward)")
-      vim.keymap.set("n", "<c-]>", "<Plug>(YankyCycleBackward)")
-
-      vim.keymap.set("n", "]p", "<Plug>(YankyPutIndentAfterLinewise)")
-      vim.keymap.set("n", "[p", "<Plug>(YankyPutIndentBeforeLinewise)")
-      vim.keymap.set("n", "]P", "<Plug>(YankyPutIndentAfterLinewise)")
-      vim.keymap.set("n", "[P", "<Plug>(YankyPutIndentBeforeLinewise)")
-
-      vim.keymap.set("n", "<leader>P", function()
-        require("telescope").extensions.yank_history.yank_history({})
-      end, { desc = "Paste from Yanky" })
     end,
   },
   -- {
