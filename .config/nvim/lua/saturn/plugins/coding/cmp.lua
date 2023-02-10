@@ -113,12 +113,12 @@ end
 M.methods.jumpable = jumpable
 
 M.config = function()
-  local cmp_types = pcall(require, "cmp.types.cmp")
+  local cmp_types = require("cmp.types.cmp")
   local ConfirmBehavior = cmp_types.ConfirmBehavior
   local SelectBehavior = cmp_types.SelectBehavior
 
-  local cmp = require("lvim.utils.modules").require_on_index("cmp")
-  local luasnip = require("lvim.utils.modules").require_on_index("luasnip")
+  local cmp = require("cmp")
+  local luasnip = require("luasnip")
   local cmp_window = require("cmp.config.window")
   local cmp_mapping = require("cmp.config.mapping")
   saturn.plugins.cmp = {
