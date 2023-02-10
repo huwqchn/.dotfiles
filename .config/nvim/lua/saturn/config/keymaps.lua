@@ -131,20 +131,20 @@ map("n", "<C-h>", "<C-i>")
 
 -- Windows managenment
 --Better window movement
-map("n", "<C-w>", "<C-w>w")
+map("n", "<C-w>", "<C-w>w", { desc = "Switch window" })
 map("n", "<C-x>", "<C-w>x")
-map("n", "<C-n>", "<C-w>h")
-map("n", "<C-e>", "<C-w>j")
-map("n", "<C-u>", "<C-w>k")
-map("n", "<C-i>", "<C-w>l")
-map("n", "<C-l>", "<C-w>o")
-map("n", "<C-q>", "<C-w>q")
+map("n", "<C-n>", "<C-w>h", { desc = "Go to left window" })
+map("n", "<C-e>", "<C-w>j", { desc = "Go to lower window" })
+map("n", "<C-u>", "<C-w>k", { desc = "Go to upper window" })
+map("n", "<C-i>", "<C-w>l", { desc = "Go to right window" })
+map("n", "<C-l>", "<C-w>o", { desc = "Clear other windwos" })
+map("n", "<C-q>", "<C-w>q", { desc = "Quit window" })
 
 -- Resize with arrows
-map("n", "<C-Up>", ":resize +2<CR>")
-map("n", "<C-Down>", ":resize -2<CR>")
-map("n", "<C-Left>", ":vertical resize +2<CR>")
-map("n", "<C-Right>", ":vertical resize -2<CR>")
+map("n", "<C-Up>", ":resize +2<CR>", { desc = "Increase window height" })
+map("n", "<C-Down>", ":resize -2<CR>", { desc = "Decrease window height" })
+map("n", "<C-Left>", ":vertical resize -2<CR>", { desc = "Decrease window width" })
+map("n", "<C-Right>", ":vertical resize +2<CR>", { desc = "Increase window width" })
 
 -- disable the default s key
 map({ "n", "v" }, "s", "<nop>", { desc = "split/surround/select" })
