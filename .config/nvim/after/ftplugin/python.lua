@@ -7,8 +7,6 @@ require("saturn.plugins.lsp.null-ls.linters").setup({ { command = "flake8", file
 -- set lsp for python
 require("saturn.plugins.lsp.manager").setup("pyright")
 
---TODO:setup dap for python
-
 saturn.plugins.which_key.mappings["<leader>n"] = { name = "+python" }
 vim.keymap.set("n", "<leader>nt", "<cmd>lua require('dap-python').test_method()<cr>", { desc = "Test Method" })
 vim.keymap.set("n", "<leader>nT", "<cmd>lua require('dap-python').test_class()<cr>", { desc = "Test Class" })
