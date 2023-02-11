@@ -277,7 +277,7 @@ M.config = function()
       ["<C-e>"] = cmp_mapping(cmp_mapping.select_next_item(), { "i", "c" }),
       ["<Down>"] = cmp_mapping(cmp_mapping.select_next_item({ behavior = SelectBehavior.Select }), { "i" }),
       ["<Up>"] = cmp_mapping(cmp_mapping.select_prev_item({ behavior = SelectBehavior.Select }), { "i" }),
-      ["<C-d>"] = cmp_mapping.scroll_docs(-4),
+      ["<C-b>"] = cmp_mapping.scroll_docs(-4),
       ["<C-f>"] = cmp_mapping.scroll_docs(4),
       ["<C-y>"] = cmp_mapping({
         i = cmp_mapping.confirm({ behavior = ConfirmBehavior.Replace, select = false }),
