@@ -309,11 +309,7 @@ M.config = function()
       end, { "i", "s", "c" }),
       ["<S-Tab>"] = cmp_mapping(function(fallback)
         if cmp.visible() then
-          local entry = cmp.get_selected_entry()
-          if not entry then
-            cmp.select_prev_item({ behavior = SelectBehavior.Select })
-          end
-          cmp.confirm()
+          cmp.select_prev_item()
         elseif luasnip.jumpable(-1) then
           luasnip.jump(-1)
         else

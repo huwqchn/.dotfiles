@@ -31,7 +31,7 @@
   "lsp-inlayhints.nvim": { "branch": "main", "commit": "84ca3abe8aaecbb5b30ad89e4701d4a9c821b72c" },
   "lualine.nvim": { "branch": "master", "commit": "0050b308552e45f7128f399886c86afefc3eb988" },
   "mason-lspconfig.nvim": { "branch": "main", "commit": "7a97a77eee486ae152d2c559a459eda7c8aa12aa" },
-  "mason.nvim": { "branch": "main", "commit": "14ae1ca58440b158a0a35cf90773013caddf788a" },
+  "mason.nvim": { "branch": "main", "commit": "47e9f6bc4c5bb3d6453949f07b8280c725ef7490" },
   "middleclass": { "branch": "master", "commit": "9fab4d5bca67262614960960ca35c4740eb2be2c" },
   "mini.ai": { "branch": "main", "commit": "2188cb1be3e9133fb1fe52374705b94630492401" },
   "mini.animate": { "branch": "main", "commit": "54002f54e2bb61f4834bd5442a19ddc4fa2e4ac0" },

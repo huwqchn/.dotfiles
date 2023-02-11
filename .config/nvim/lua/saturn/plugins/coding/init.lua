@@ -130,12 +130,12 @@ return {
         paths = paths,
       })
       require("luasnip.loaders.from_snipmate").lazy_load()
-      vim.keymap.set({ "i", "s" }, "<C-e>", function()
+      vim.keymap.set({ "i", "s" }, "<C-n>", function()
         if ls.choice_active() then
           ls.change_choice(1)
         end
       end)
-      vim.keymap.set({ "i", "s" }, "<C-u>", function()
+      vim.keymap.set({ "i", "s" }, "<C-i>", function()
         if ls.choice_active() then
           ls.change_choice(-1)
         end
