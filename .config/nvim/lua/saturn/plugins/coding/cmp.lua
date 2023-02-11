@@ -291,7 +291,11 @@ M.config = function()
       }),
       ["<Tab>"] = cmp_mapping(function(fallback)
         if cmp.visible() then
-          cmp.select_next_item()
+          local entry = cmp.get_selected_entry()
+          if not entry then
+            cmp.select_next_item({ behavior = SelectBehavior.Select })
+          end
+          cmp.confirm()
         elseif luasnip.expand_or_locally_jumpable() then
           luasnip.expand_or_jump()
         elseif jumpable(1) then
@@ -302,16 +306,20 @@ M.config = function()
         else
           fallback()
         end
-      end, { "i", "s" }),
+      end, { "i", "s", "c" }),
       ["<S-Tab>"] = cmp_mapping(function(fallback)
         if cmp.visible() then
-          cmp.select_prev_item()
+          local entry = cmp.get_selected_entry()
+          if not entry then
+            cmp.select_prev_item({ behavior = SelectBehavior.Select })
+          end
+          cmp.confirm()
         elseif luasnip.jumpable(-1) then
           luasnip.jump(-1)
         else
           fallback()
         end
-      end, { "i", "s" }),
+      end, { "i", "s", "c" }),
       ["<C-c>"] = cmp_mapping.complete(),
       ["<C-x>"] = cmp_mapping.abort(),
       ["<CR>"] = cmp_mapping(function(fallback)
