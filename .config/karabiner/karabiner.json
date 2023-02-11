@@ -2327,6 +2327,12 @@
                                         }
                                     }
                                 ],
+                                "to_if_alone": [
+                                    {
+                                        "hold_down_milliseconds": 250,
+                                        "key_code": "tab"
+                                    }
+                                ],
                                 "type": "basic"
                             },
                             {
