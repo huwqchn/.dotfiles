@@ -164,7 +164,20 @@ return {
     "echasnovski/mini.indentscope",
     version = false, -- wait till new 0.7.0 release to put it back on semver
     event = { "BufReadPre", "BufNewFile" },
-    config = function()
+    opts = {
+      mappings = {
+        -- Textobjects
+        object_scope = "ii", -- integrate with mini.ai
+        object_scope_with_border = "ai",
+
+        -- Motions (jump to respective border line; if not present - body line)
+        goto_top = "[i",
+        goto_bottom = "]i",
+      },
+      symbol = saturn.icons.ui.LineLeft,
+      options = { try_as_border = true },
+    },
+    config = function(_, opts)
       vim.api.nvim_create_autocmd("FileType", {
         pattern = {
           "help",
@@ -180,19 +193,7 @@ return {
           vim.b.miniindentscope_disable = true
         end,
       })
-      require("mini.indentscope").setup({
-        mappings = {
-          -- Textobjects
-          object_scope = "ii", -- integrate with mini.ai
-          object_scope_with_border = "ai",
-
-          -- Motions (jump to respective border line; if not present - body line)
-          goto_top = "[i",
-          goto_bottom = "]i",
-        },
-        symbol = saturn.icons.ui.LineLeft,
-        options = { try_as_border = true },
-      })
+      require("mini.indentscope").setup(opts)
     end,
   },
 
