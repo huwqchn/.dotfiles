@@ -13,9 +13,9 @@ export PATH="$PATH:$HOME/.local/bin"
 export PATH="$PATH:$HOME/.cargo/bin"
 export TMUX_TMPDIR=$HOME/.tmux/tmp
 export CFLAYS="-Wall -Werror -Wextra"
-export TERM=xterm-kitty
-export TERMINAL="kitty"
 if [[ $(uname) == 'Darwin' ]]; then
+  export TERM=screen-256color
+  export TERMINAL="iTerm"
 	export PATH="$PATH:/opt/homebrew/bin"
 	export PATH="$PATH:$HOME/.nix-profile/bin"
 	export C_INCLUDE_PATH="$PATH:/opt/homebrew/include:$C_INCLUDE_PATH"
@@ -26,6 +26,8 @@ if [[ $(uname) == 'Darwin' ]]; then
 	export LIBRARY_PATH="$PATH:/opt/homebrew/lib:$LIBRARY_PATH"
 	export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.ustc.edu.cn/homebrew-bottles/bottles
 elif [[ $(uname) == 'Linux' ]]; then
+  export TERM=xterm-kitty
+  export TERMINAL="kitty"
   export PATH=$PATH:/snap/bin
   export CPLUS_INCLUDE_PATH="$CPLUS_INCLUDE_PATH:/usr/include/python2.7/"
   # for hidpi screen
