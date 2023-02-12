@@ -189,8 +189,8 @@ map("n", "<leader><tab>Z", "<cmd>tabm<CR>", { desc = "Move to last" })
 map("n", "<leader><tab>t", "<cmd>tabs", { desc = "List all tabs" })
 
 -- buffers
-map("n", "]b", "<cmd>bnext<CR>", { desc = "Next Buffer" })
-map("n", "[b", "<cmd>bpreviout<CR>", { desc = "Previous Buffer" })
+map("n", "]b", "<tab>", { remap = true, desc = "Next Buffer" })
+map("n", "[b", "<S-tab>", { remap = true, desc = "Previous Buffer" })
 map("n", "<leader>`", "<cmd>e #<cr>", { desc = "Switch to Other Buffer" })
 
 -- files
