@@ -43,6 +43,8 @@ map({ "n", "i" }, "<esc>", "<cmd>noh<cr><esc>", { desc = "Escape and clear hlsea
 -- better cmd mode
 map("n", ":", ",")
 map("n", "<cr>", ":")
+-- backup cmd mode, some plugins will override <cr>
+map("n", "\\", ":")
 
 -- save
 map({ "i", "v", "n", "s" }, "<C-s>", "<cmd>wa<cr><esc>")
