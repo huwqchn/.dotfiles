@@ -62,6 +62,16 @@ local conditions = {
     local gitdir = vim.fn.finddir(".git", filepath .. ";")
     return gitdir and #gitdir > 0 and #gitdir < #filepath
   end,
+  has_noice_command = function()
+    return package.loaded["noice"] and require("noice").api.status.command.has()
+  end,
+  lsp_active = function()
+    local clients = vim.lsp.get_active_clients()
+    if next(clients) == nil then
+      return false
+    end
+    return true
+  end,
 }
 
 local theme = {
@@ -108,13 +118,13 @@ local filetype = {
 
 local fileformat = {
   "fileformat",
-  color = { bg = colors.white, fg = colors.blue },
+  color = { bg = colors.lilac, fg = colors.white },
   separator = { left = saturn.icons.ui.SeparatorLeft, right = saturn.icons.ui.SeparatorRight },
 }
 
 local encoding = {
   "encoding",
-  color = { bg = colors.lilac, fg = colors.white },
+  color = { bg = colors.white, fg = colors.blue },
   separator = { left = saturn.icons.ui.SeparatorLeft, right = saturn.icons.ui.SeparatorRight },
 }
 
@@ -178,10 +188,10 @@ local dia = {
   "diagnostics",
   sources = { "nvim_diagnostic" },
   symbols = {
-    error = saturn.icons.diagnostics.BoldError .. " ",
-    warn = saturn.icons.diagnostics.BoldWarning .. " ",
-    info = saturn.icons.diagnostics.BoldInformation .. " ",
-    hint = saturn.icons.diagnostics.BoldHint .. " ",
+    error = saturn.icons.diagnostics.Error .. " ",
+    warn = saturn.icons.diagnostics.Warning .. " ",
+    info = saturn.icons.diagnostics.Information .. " ",
+    hint = saturn.icons.diagnostics.Hint .. " ",
   },
   color = { bg = colors.white, fg = colors.blue },
   separator = { left = saturn.icons.ui.SeparatorLeft, right = saturn.icons.ui.SeparatorRight },
@@ -193,6 +203,7 @@ local lsp = {
   end,
   separator = { left = saturn.icons.ui.SeparatorLeft, right = saturn.icons.ui.SeparatorRight },
   color = { bg = colors.pink, fg = colors.black },
+  cond = conditions.lsp_active,
 }
 
 local lazy = {
@@ -202,16 +213,12 @@ local lazy = {
   separator = { left = saturn.icons.ui.SeparatorLeft, right = saturn.icons.ui.SeparatorRight },
 }
 
-local has_noice_command = function()
-  return package.loaded["noice"] and require("noice").api.status.command.has()
-end
-
 local key = {
   function()
     return require("noice").api.status.command.get()
   end,
-  cond = has_noice_command,
-  color = { bg = colors.purple, fg = colors.dark_grey },
+  cond = conditions.has_noice_command,
+  color = { bg = colors.white, fg = colors.purple },
   separator = { left = saturn.icons.ui.SeparatorLeft, right = saturn.icons.ui.SeparatorRight },
 }
 
@@ -219,22 +226,17 @@ local key_icon = {
   function()
     return saturn.icons.misc.Keyboard
   end,
-  cond = has_noice_command,
+  cond = conditions.has_noice_command,
+  color = { bg = colors.purple, fg = colors.dark_grey },
   separator = { left = saturn.icons.ui.SeparatorLeft, right = saturn.icons.ui.SeparatorRight },
-  color = { bg = colors.white, fg = colors.purple },
 }
 
-local has_noice_mode = function()
-  return package.loaded["noice"] and require("noice").api.status.mode.has()
-end
-
-local cmd = {
+local lsp_space = {
   function()
-    return require("noice").api.status.mode.get()
+    return " "
   end,
-  cond = has_noice_mode,
-  color = { bg = colors.red, fg = colors.dark_grey },
-  separator = { left = saturn.icons.ui.SeparatorLeft, right = saturn.icons.ui.SeparatorRight },
+  color = { bg = colors.black, fg = colors.blue },
+  cond = conditions.lsp_active,
 }
 
 local function env_cleanup(venv)
@@ -304,6 +306,7 @@ require("lualine").setup({
     },
     lualine_x = {
       lazy,
+      space,
       key,
       key_icon,
       space,
@@ -311,11 +314,11 @@ require("lualine").setup({
     lualine_y = {
       encoding,
       fileformat,
-      space,
     },
     lualine_z = {
-      lsp,
+      lsp_space,
       dia,
+      lsp,
     },
   },
   inactive_sections = {
