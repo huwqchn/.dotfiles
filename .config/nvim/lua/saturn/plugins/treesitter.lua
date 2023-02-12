@@ -63,6 +63,10 @@ return {
       -- Automatically install missing parsers when entering buffer
       auto_install = false,
 
+      matchup = {
+        enable = true, -- mandatory, false will disable the whole extension
+        -- disable = { "c", "ruby" },  -- optional, list of language that will be disabled
+      },
       highlight = {
         enable = true, -- false will disable the whole extension
         additional_vim_regex_highlighting = { "markdown" },
