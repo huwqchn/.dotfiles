@@ -174,5 +174,6 @@ return {
     Mark = "",
     Alien = "",
     Palette = "",
+    Keyboard = "",
   },
 }

@@ -76,7 +76,7 @@ local theme = {
   replace = { a = { fg = colors.black, bg = colors.green } },
 }
 
-local vim_icons = {
+local vim_icon = {
   function()
     return saturn.icons.misc.Saturn
   end,
@@ -108,13 +108,13 @@ local filetype = {
 
 local fileformat = {
   "fileformat",
-  color = { bg = colors.lilac, fg = colors.white },
+  color = { bg = colors.white, fg = colors.blue },
   separator = { left = saturn.icons.ui.SeparatorLeft, right = saturn.icons.ui.SeparatorRight },
 }
 
 local encoding = {
   "encoding",
-  color = { bg = colors.white, fg = colors.blue },
+  color = { bg = colors.lilac, fg = colors.white },
   separator = { left = saturn.icons.ui.SeparatorLeft, right = saturn.icons.ui.SeparatorRight },
 }
 
@@ -202,6 +202,41 @@ local lazy = {
   separator = { left = saturn.icons.ui.SeparatorLeft, right = saturn.icons.ui.SeparatorRight },
 }
 
+local has_noice_command = function()
+  return package.loaded["noice"] and require("noice").api.status.command.has()
+end
+
+local key = {
+  function()
+    return require("noice").api.status.command.get()
+  end,
+  cond = has_noice_command,
+  color = { bg = colors.purple, fg = colors.dark_grey },
+  separator = { left = saturn.icons.ui.SeparatorLeft, right = saturn.icons.ui.SeparatorRight },
+}
+
+local key_icon = {
+  function()
+    return saturn.icons.misc.Keyboard
+  end,
+  cond = has_noice_command,
+  separator = { left = saturn.icons.ui.SeparatorLeft, right = saturn.icons.ui.SeparatorRight },
+  color = { bg = colors.white, fg = colors.purple },
+}
+
+local has_noice_mode = function()
+  return package.loaded["noice"] and require("noice").api.status.mode.has()
+end
+
+local cmd = {
+  function()
+    return require("noice").api.status.mode.get()
+  end,
+  cond = has_noice_mode,
+  color = { bg = colors.red, fg = colors.dark_grey },
+  separator = { left = saturn.icons.ui.SeparatorLeft, right = saturn.icons.ui.SeparatorRight },
+}
+
 local function env_cleanup(venv)
   if string.find(venv, "/") then
     local final_venv = venv
@@ -254,7 +289,7 @@ require("lualine").setup({
     lualine_a = {
       --{ 'mode', fmt = function(str) return str:gsub(str, "  ") end },
       modes,
-      vim_icons,
+      vim_icon,
       --{ 'mode', fmt = function(str) return str:sub(1, 1) end },
     },
     lualine_b = {
@@ -269,6 +304,8 @@ require("lualine").setup({
     },
     lualine_x = {
       lazy,
+      key,
+      key_icon,
       space,
     },
     lualine_y = {
@@ -277,8 +314,8 @@ require("lualine").setup({
       space,
     },
     lualine_z = {
-      dia,
       lsp,
+      dia,
     },
   },
   inactive_sections = {
