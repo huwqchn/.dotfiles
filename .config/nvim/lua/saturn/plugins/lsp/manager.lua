@@ -1,17 +1,17 @@
 local M = {}
 
 local fmt = string.format
-local saturn_lsp_utils = require "saturn.plugins.lsp.utils"
-local is_windows = vim.loop.os_uname().version:match "Windows"
+local saturn_lsp_utils = require("saturn.plugins.lsp.utils")
+local is_windows = vim.loop.os_uname().version:match("Windows")
 
 local function resolve_mason_config(server_name)
   local found, mason_config = pcall(require, "mason-lspconfig.server_configurations." .. server_name)
   if not found then
-    -- vim.notify(fmt("mason configuration not found for %s", server_name))
+    vim.notify(fmt("mason configuration not found for %s", server_name))
     return {}
   end
-  local server_mapping = require "mason-lspconfig.mappings.server"
-  local path = require "mason-core.path"
+  local server_mapping = require("mason-lspconfig.mappings.server")
+  local path = require("mason-core.path")
   local pkg_name = server_mapping.lspconfig_to_package[server_name]
   local install_dir = path.package_prefix(pkg_name)
   local conf = mason_config(install_dir)
@@ -59,7 +59,7 @@ end
 -- which seems to occur only when attaching to single-files
 local function client_is_configured(server_name, ft)
   ft = ft or vim.bo.filetype
-  local active_autocmds = vim.api.nvim_get_autocmds { event = "FileType", pattern = ft }
+  local active_autocmds = vim.api.nvim_get_autocmds({ event = "FileType", pattern = ft })
   for _, result in ipairs(active_autocmds) do
     if result.desc ~= nil and result.desc:match("server " .. server_name .. " ") then
       -- vim.notify(string.format("[%q] is already configured", server_name))
@@ -89,15 +89,15 @@ end
 ---@param server_name string name of the language server
 ---@param user_config table? when available it will take predence over any default configurations
 function M.setup(server_name, user_config)
-  vim.validate { name = { server_name, "string" } }
+  vim.validate({ name = { server_name, "string" } })
   user_config = user_config or {}
 
   if saturn_lsp_utils.is_client_active(server_name) or client_is_configured(server_name) then
     return
   end
 
-  local server_mapping = require "mason-lspconfig.mappings.server"
-  local registry = require "mason-registry"
+  local server_mapping = require("mason-lspconfig.mappings.server")
+  local registry = require("mason-registry")
 
   local pkg_name = server_mapping.lspconfig_to_package[server_name]
   if not pkg_name then
@@ -134,7 +134,6 @@ function M.setup(server_name, user_config)
 
   local config = resolve_config(server_name, resolve_mason_config(server_name), user_config)
   launch_server(server_name, config)
-
 end
 
 return M

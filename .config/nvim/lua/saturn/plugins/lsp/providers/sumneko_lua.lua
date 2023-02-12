@@ -1,11 +1,11 @@
 local default_workspace = {
   library = {
     -- vim.fn.expand "$VIMRUNTIME",
-    [vim.fn.expand "config" .. "/lua"] = true,
-    [vim.fn.expand "$VIMRUNTIME/lua"] = true,
+    [vim.fn.expand("config") .. "/lua"] = true,
+    [vim.fn.expand("$VIMRUNTIME/lua")] = true,
     require("neodev.config").types(),
-    -- "${3rd}/busted/library",
-    -- "${3rd}/luassert/library",
+    "${3rd}/busted/library",
+    "${3rd}/luassert/library",
   },
   checkThirdParty = false,
 
@@ -26,7 +26,7 @@ local add_packages_to_workspace = function(packages, config)
   end
 end
 
-local lspconfig = require "lspconfig"
+local lspconfig = require("lspconfig")
 
 local make_on_new_config = function(on_new_config, _)
   return lspconfig.util.add_hook_before(on_new_config, function(new_config, _)
