@@ -797,18 +797,28 @@ return {
       {
         "<leader>da",
         function()
-          require("dap").set_breakpoint(vim.fn.input("condition:"))
+          vim.ui.input({ prompt = "Condition:" }, function(cond)
+            if not cond then
+              return
+            end
+            requrie("dap").set_breakpoint(nil, nil, cond)
+          end)
         end,
         desc = "Set conditonal breakpoint",
-        expr = true,
+        -- expr = true,
       },
       {
         "<leader>dm",
         function()
-          require("dap").set_breakpoint(nil, nil, vim.fn.input("log message:"))
+          vim.ui.input({ prompt = "Log messaeg:" }, function(msg)
+            if not msg then
+              return
+            end
+            requrie("dap").set_breakpoint(nil, nil, msg)
+          end)
         end,
         desc = "Set log message breakpoint",
-        expr = true,
+        -- expr = true,
       },
       { "<leader>dl", "<cmd>lua require'dap'.list_breakpoints()<cr>", desc = "List breakpoints" },
       { "<leader>dL", "<cmd>lua require'dap'.clear_breakpoints()<cr>", desc = "Clear breakpoints" },

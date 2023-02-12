@@ -1,35 +1,8 @@
 return {
   {
-    "stevearc/dressing.nvim",
-    lazy = true,
-    init = function()
-      ---@diagnostic disable-next-line: duplicate-set-field
-      vim.ui.select = function(...)
-        require("lazy").load({ plugins = { "dressing.nvim" } })
-        return vim.ui.select(...)
-      end
-      ---@diagnostic disable-next-line: duplicate-set-field
-      vim.ui.input = function(...)
-        require("lazy").load({ plugins = { "dressing.nvim" } })
-        return vim.ui.input(...)
-      end
-    end,
-  },
-  {
     "folke/noice.nvim",
     event = "VeryLazy",
     config = function()
-      local focused = true
-      vim.api.nvim_create_autocmd("FocusGained", {
-        callback = function()
-          focused = true
-        end,
-      })
-      vim.api.nvim_create_autocmd("FocusLost", {
-        callback = function()
-          focused = false
-        end,
-      })
       require("noice").setup({
         lsp = {
           override = {
@@ -39,15 +12,6 @@ return {
           },
         },
         routes = {
-          {
-            filter = {
-              cond = function()
-                return not focused
-              end,
-            },
-            view = "notify_send",
-            opts = { stop = false },
-          },
           {
             filter = {
               event = "msg_show",
