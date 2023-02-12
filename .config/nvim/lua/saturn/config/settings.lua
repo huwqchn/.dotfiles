@@ -24,7 +24,7 @@ return {
     code_lens_refresh = true,
     installer = {
       setup = {
-        ensure_installed = { "sumneko_lua", "jsonls", "clangd", "pyright" },
+        ensure_installed = { "lua_ls", "jsonls", "clangd", "pyright" },
         automatic_installation = {
           exclude = {},
         },

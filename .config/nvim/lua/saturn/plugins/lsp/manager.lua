@@ -7,7 +7,7 @@ local is_windows = vim.loop.os_uname().version:match("Windows")
 local function resolve_mason_config(server_name)
   local found, mason_config = pcall(require, "mason-lspconfig.server_configurations." .. server_name)
   if not found then
-    vim.notify(fmt("mason configuration not found for %s", server_name))
+    -- vim.notify(fmt("mason configuration not found for %s", server_name))
     return {}
   end
   local server_mapping = require("mason-lspconfig.mappings.server")
