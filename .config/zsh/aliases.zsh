@@ -27,8 +27,8 @@ alias la="exa -a --color=always --icons --group-directories-first"
 alias tree="lsd --tree"
 alias cat="bat"
 alias du="dust"
-alias mkdir="mkdir -p --verbose"
-alias rmdir="rmdir -p --verbose"
+# alias mkdir="mkdir -p --verbose"
+# alias rmdir="rmdir -p --verbose"
 
 # some git aliases
 alias gp="git push"
@@ -67,6 +67,8 @@ alias S="source ~/.zshrc"
 alias Q="shutdown -h now"
 #reboot
 alias R="reboot"
+
+# shortcuts
 alias utar="tar -zxvf"
 alias znvim="cd ~/.config/nvim/"
 alias poly="~/.config/polybar/launch.sh"
