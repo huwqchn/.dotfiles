@@ -5,10 +5,7 @@ return {
     build = ":TSUpdate",
     event = { "BufReadPost", "BufNewFile" },
     dependencies = {
-      -- { -- too slow
-      --   "nvim-treesitter/nvim-treesitter-textobjects",
-      -- },
-      { -- too slow
+      {
         "p00f/nvim-ts-rainbow",
       },
     },
