@@ -1,4 +1,4 @@
-return {
+local snippets = {
   -- e.g. local bar = require("foo.bar")
   s(
     "require",
@@ -37,3 +37,14 @@ return {
     )
   ),
 }
+
+local autosnippets = {
+  s(
+    "keymap",
+    fmt("vim.keymap.set({})", {
+      i(1, ""),
+    })
+  ),
+}
+
+return snippets, autosnippets

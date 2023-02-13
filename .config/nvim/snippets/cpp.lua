@@ -1,5 +1,5 @@
 require("luasnip").filetype_extend("cpp", { "c" })
-return {
+local snippets = {
   s("class", {
     -- Choice: Switch between two different Nodes, first parameter is its position, second a list of nodes.
     c(1, {
@@ -241,3 +241,6 @@ return {
     )
   ),
 }
+
+local autosnippets = {}
+return snippets, autosnippets
