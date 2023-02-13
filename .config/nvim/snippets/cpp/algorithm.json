@@ -2,8 +2,8 @@
   "linked-adjacency-list": {
     "prefix": "add",
     "body": [
-      "const int N = $1",
-      "int h[N], e[N], nxt[N], idx",
+      "const int N = $1;",
+      "int h[N], e[N], nxt[N], idx;",
       "",
       "void add(int a, int b) {",
       "\te[idx] = b, nxt[idx] = h[a], h[a] = idx++;",
@@ -15,8 +15,8 @@
   "linked-adjacency-list-with-weight": {
     "prefix": "addw",
     "body": [
-      "const int N = $1, M = $2",
-      "int h[N], e[M], w[M], nxt[M], idx",
+      "const int N = $1, M = $2;",
+      "int h[N], e[M], w[M], nxt[M], idx;",
       "",
       "void add(int a, int b, int c) {",
       "\te[idx] = b, w[idx] = c, nxt[idx] = h[a], h[a] = idx++;",
@@ -28,14 +28,14 @@
   "dijkstra": {
     "prefix": "dijk",
     "body": [
-      "const int N = $1",
-      "int g[N][N]",
-      "int dist[N]",
-      "bool st[N]",
+      "const int N = $1;",
+      "int g[N][N];",
+      "int dist[N];",
+      "bool st[N];",
       "",
       "int dijkstra() {",
       "\tmemset(dist, 0x3f, sizeof dist);",
-      "\tdist[1] = 0",
+      "\tdist[1] = 0;",
       "",
       "\tfor (int i = 0; i < n; i++) {",
       "\t\tint t = -1;",
@@ -58,12 +58,12 @@
     "prefix": "Dijk",
     "body": [
       "typedef pair<int, int> PII;",
-      "const int N = $1",
+      "const int N = $1;",
       "",
-      "int n, m",
-      "int h[N], e[N], w[N], nxt[N], idx",
-      "int dist[N]",
-      "bool st[N]",
+      "int n, m;",
+      "int h[N], e[N], w[N], nxt[N], idx;",
+      "int dist[N];",
+      "bool st[N];",
       "",
       "void add(int a, int b, int c) {",
       "\te[idx] = b, w[idx] = c, nxt[idx] = h[a], h[a] = idx++;",
@@ -103,7 +103,7 @@
   "spfa": {
     "prefix": "spfa",
     "body": [
-      "const int N = $1",
+      "const int N = $1;",
       "",
       "int n, m;",
       "int h[N], e[N], w[N], nxt[N], idx;",
