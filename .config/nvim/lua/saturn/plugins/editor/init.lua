@@ -465,6 +465,7 @@ return {
           ["s"] = { name = "+split/surroud/select" },
           ["]"] = { name = "+next" },
           ["["] = { name = "+prev" },
+          ["<leader>a"] = { name = "+AI support" },
           ["<leader>b"] = { name = "+buffer" },
           ["<leader>c"] = { name = "+code" },
           ["<leader>d"] = { name = "+debug" },
