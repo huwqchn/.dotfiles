@@ -140,6 +140,12 @@ return {
           ls.change_choice(-1)
         end
       end)
+      vim.keymap.set(
+        "i",
+        "<M-s",
+        "<cmd>lua require'luasnip.extras.select_choice'()<cr>",
+        { desc = "select snippet choice" }
+      )
 
       _G.s = ls.snippet
       _G.sn = ls.snippet_node

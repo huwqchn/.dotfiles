@@ -2,6 +2,15 @@ vim.o.wrap = true
 
 saturn.plugins.which_key.mappings["<leader>n"] = { name = "+note" }
 
+vim.keymap.set("n", "<leader><space>", function()
+  local peek = require("peek")
+  if peek.is_open() then
+    peek.close()
+  else
+    peek.open()
+  end
+end, { desc = "Peek (Markdown Preview)" })
+
 -- Add the key mappings only for Markdown files in a zk notebook.
 if require("zk.util").notebook_root(vim.fn.expand("%:p")) ~= nil then
   local function map(...)

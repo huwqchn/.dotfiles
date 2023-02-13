@@ -1,22 +1,7 @@
 return {
   {
     "toppair/peek.nvim",
-    ft = "markdown",
     build = "deno task --quiet build:fast",
-    keys = {
-      {
-        "<leader><space>",
-        function()
-          local peek = require("peek")
-          if peek.is_open() then
-            peek.close()
-          else
-            peek.open()
-          end
-        end,
-        desc = "Peek (Markdown Preview)",
-      },
-    },
     opts = { theme = "light" },
   },
   -- {
