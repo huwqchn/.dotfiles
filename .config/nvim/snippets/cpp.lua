@@ -242,5 +242,33 @@ local snippets = {
   ),
 }
 
-local autosnippets = {}
+local autosnippets = {
+  s(
+    { trig = "cout.(%a+);", regTrig = true },
+    { f(function(_, snip)
+      return 'std::cout << "' .. snip.captures[1] .. '"' .. " << std::endl;"
+    end) }
+  ),
+  s( -- for([%w_]+) JS For Loop snippet{{{
+    { trig = "for([%w_]+)", regTrig = true, hidden = true },
+    fmt(
+      [[
+      for (int {} = 0; {} < {}; {}++) {{
+        {}
+      }}
+      {}
+    ]],
+      {
+        d(1, function(_, snip)
+          return sn(1, i(1, snip.captures[1]))
+        end),
+        rep(1),
+        c(2, { i(1, "N"), sn(1, { i(1, "arr"), t(".size()") }) }),
+        rep(1),
+        i(3, "// TODO:"),
+        i(4),
+      }
+    )
+  ),
+}
 return snippets, autosnippets

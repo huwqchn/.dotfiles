@@ -82,7 +82,7 @@ M.cppdbg_config = function(dap)
     },
   }
   dap.configurations.c = dap.configurations.cpp
-  dap.configurations.rust = dap.configuration.cpp
+  dap.configurations.rust = dap.configurations.cpp
 end
 
 M.codelldb_config = function(dap)
