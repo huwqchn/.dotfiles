@@ -36,6 +36,28 @@ local snippets = {
     i(1),
   }),
   s(
+    "Bfs",
+    fmt(
+      [[
+    int hh = 0, tt = 1;
+    q[0] = {}, st[{}] = true;
+    while (hh != tt) {{
+      int t = q[hh++];
+      if (hh == N) hh = 0;
+      st[t] = false;
+      {}
+    }}
+    ]],
+      {
+        i(1),
+        d(2, function(args)
+          return sn(nil, { i(1, args[1][1]) })
+        end, { 1 }),
+        i(0),
+      }
+    )
+  ),
+  s(
     "bs",
     fmt(
       [[
