@@ -376,6 +376,6 @@ return {
       require("window-picker").setup(opts)
     end,
   },
-  -- { import = "saturn.plugins.extra.noice" },
+  { import = "saturn.plugins.extra.noice" },
   { import = "saturn.plugins.extra.mini-animate" },
 }
