@@ -78,6 +78,6 @@ fcitx5 &
 picom &
 udiskie &
 copyq &
-# /usr/bin/emacs --daemon &
+/usr/bin/emacs --daemon &
 feh --bg-fill -no-fehbg ~/OneDrive/Wallpapers/tokyo-night31.png
 # dwall -s tokyo
