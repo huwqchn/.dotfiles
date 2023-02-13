@@ -162,7 +162,7 @@ map("n", "<C-Left>", ":vertical resize -2<CR>", { desc = "Decrease window width"
 map("n", "<C-Right>", ":vertical resize +2<CR>", { desc = "Increase window width" })
 
 -- disable the default s key
-map({ "n", "v" }, "s", "<nop>", { desc = "split/surround/select" })
+map({ "n", "x" }, "s", "<nop>", { desc = "split/surround/select" })
 
 -- split the screens
 map("n", "su", ":set nosplitbelow<CR>:split<CR>:set splitbelow<CR>", { desc = "split above" })
