@@ -171,6 +171,9 @@ return {
   {
     "nvim-treesitter/playground",
     cmd = "TSPlaygroundToggle",
+    keys = {
+      { "<leader>et", "<cmd>TSPlaygroundToggle<cr>", desc = "Treesitter" },
+    },
   },
   {
     "andymass/vim-matchup",
