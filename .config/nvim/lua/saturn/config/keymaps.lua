@@ -1,37 +1,50 @@
+--          Mode  | Norm | Ins | Cmd | Vis | Sel | Opr | Term | Lang |
+-- Command        +------+-----+-----+-----+-----+-----+------+------+
+-- [nore]map      | yes  |  -  |  -  | yes | yes | yes |  -   |  -   |
+-- n[nore]map     | yes  |  -  |  -  |  -  |  -  |  -  |  -   |  -   |
+-- [nore]map!     |  -   | yes | yes |  -  |  -  |  -  |  -   |  -   |
+-- i[nore]map     |  -   | yes |  -  |  -  |  -  |  -  |  -   |  -   |
+-- c[nore]map     |  -   |  -  | yes |  -  |  -  |  -  |  -   |  -   |
+-- v[nore]map     |  -   |  -  |  -  | yes | yes |  -  |  -   |  -   |
+-- x[nore]map     |  -   |  -  |  -  | yes |  -  |  -  |  -   |  -   |
+-- s[nore]map     |  -   |  -  |  -  |  -  | yes |  -  |  -   |  -   |
+-- o[nore]map     |  -   |  -  |  -  |  -  |  -  | yes |  -   |  -   |
+-- t[nore]map     |  -   |  -  |  -  |  -  |  -  |  -  | yes  |  -   |
+-- l[nore]map     |  -   | yes | yes |  -  |  -  |  -  |  -   | yes  |
 local Util = require("saturn.utils.plugin")
 
 local map = vim.keymap.set
 
 -- colemak movement
-map("", "e", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
-map("", "u", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
-map("", "n", "h")
-map("", "i", "l")
+map({ "n", "x", "o" }, "e", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
+map({ "n", "x", "o" }, "u", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
+map({ "n", "x", "o" }, "n", "h")
+map({ "n", "x", "o" }, "i", "l")
 
 -- colemak jump to start/end of the line
-map("", "N", "^")
-map("", "I", "$")
+map({ "n", "x", "o" }, "N", "^")
+map({ "n", "x", "o" }, "I", "$")
 -- colemak fast navigation
-map("", "U", "5k")
-map("", "E", "5j")
+map({ "n", "x", "o" }, "U", "5k")
+map({ "n", "x", "o" }, "E", "5j")
 
 -- colemak insert key
-map("", "k", "i")
-map("", "K", "I")
-map("", "gk", "gi", { desc = "goto last insert" })
+map({ "n", "x", "o" }, "k", "i")
+map({ "n", "x", "o" }, "K", "I")
+map({ "n", "x", "o" }, "gk", "gi", { desc = "goto last insert" })
 
 -- colemake undo key
-map("", "l", "u")
-map("", "L", "U")
+map({ "n", "x", "o" }, "l", "u")
+map({ "n", "x", "o" }, "L", "U")
 
 -- colemak end of word
-map("", "h", "e")
-map("", "H", "K")
+map({ "n", "x", "o" }, "h", "e")
+map({ "n", "x", "o" }, "H", "K")
 
 -- colemake searching key
 -- https://github.com/mhinz/vim-galore#saner-behavior-of-n-and-n
-map("", "=", "'Nn'[v:searchforward]", { expr = true })
-map("", "-", "'nN'[v:searchforward]", { expr = true })
+map({ "n", "x", "o" }, "=", "'Nn'[v:searchforward]", { expr = true })
+map({ "n", "x", "o" }, "-", "'nN'[v:searchforward]", { expr = true })
 
 -- search work under cursor
 map("n", "gw", "*N")
@@ -51,11 +64,11 @@ map({ "i", "v", "n", "s" }, "<C-s>", "<cmd>wa<cr><esc>")
 map("", "S", "<cmd>w<cr><esc>")
 
 -- quit
-map("", "Q", "<cmd>q<cr>")
+map("n", "Q", "<cmd>q<cr>")
 map("n", "<leader>qq", "<cmd>qa<cr>", { desc = "Quit all" })
 
 -- select all
-map("", "<C-a>", "<esc>ggVG")
+map({ "n", "x", "i" }, "<C-a>", "<esc>ggVG")
 
 -- new space line
 map("n", "<C-cr>", "o<esc>")
@@ -66,8 +79,8 @@ map("t", "<C-v>", "<C-\\><C-N>pi")
 map("c", "<C-v>", "<C-r>+")
 
 -- inc/dec number
-map("", "<C-=>", "<C-a>")
-map("", "<C-->", "<C-x>")
+map("n", "<C-=>", "<C-a>")
+map("n", "<C-->", "<C-x>")
 
 -- Column inc/dec numbers
 map("v", "g<C-=>", "g<C-a>")
