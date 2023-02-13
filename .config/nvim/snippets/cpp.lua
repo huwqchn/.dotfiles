@@ -77,6 +77,32 @@ local snippets = {
 
 local autosnippets = {
   s(
+    "#all",
+    fmt(
+      [[
+    #include <bits/stdc++.h>
+    {}
+    ]],
+      {
+        i(1),
+      }
+    )
+  ),
+  s(
+    "#algo",
+    fmt(
+      [[
+      #include <cstring>
+      #include <iostream>
+      #include <algorithm>
+      {}
+      ]],
+      {
+        i(1),
+      }
+    )
+  ),
+  s(
     { trig = "cout.(%a+);", regTrig = true },
     { f(function(_, snip)
       return 'std::cout << "' .. snip.captures[1] .. '"' .. " << std::endl;"
