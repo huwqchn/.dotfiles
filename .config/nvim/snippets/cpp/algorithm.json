@@ -148,7 +148,7 @@
   "floyd": {
     "prefix": "floyd",
     "body": [
-      "const int N = $1, INF = 1e9;",
+      "const int N = $1, INF = 0x3f3f3f3f;",
       "",
       "int n, m, k;",
       "int d[N][N];",
