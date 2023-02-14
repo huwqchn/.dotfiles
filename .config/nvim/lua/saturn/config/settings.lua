@@ -33,5 +33,9 @@ return {
   },
   use_icons = true,
   icons = require("saturn.config.ui.icons"),
-  plugins = {},
+  plugins = {
+    notify = {
+      ignore_messages = {},
+    },
+  },
 }

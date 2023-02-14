@@ -31,7 +31,19 @@ return {
             vim.go.lines = 20
           end,
         })
-        -- vim.cmd([[au BufEnter github.com_*.txt set filetype=markdown]])
+
+        vim.opt.guifont = "JetBrainsMonoNL Nerd Font:h26"
+        vim.opt.guicursor = {
+          "n-sm:block",
+          "i-ci-c-ve:ver25",
+          "r-cr-o-v:hor10",
+          "a:blinkwait200-blinkoff500-blinkon700",
+        }
+
+        vim.cmd([[au BufEnter github.com_*.txt set filetype=markdown]])
+        vim.cmd([[au BufEnter www.acwing.com_*.txt set filetype=cpp]])
+        -- ignore all clangd messages
+        table.insert(saturn.plugins.notify.ignore_messages, "clangd")
       end
     end,
     cond = not not vim.g.started_by_firenvim,

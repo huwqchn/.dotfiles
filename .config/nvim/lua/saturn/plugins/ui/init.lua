@@ -21,6 +21,14 @@ return {
         desc = "Delete all Notifications",
       },
     },
+    init = function()
+      table.insert(saturn.plugins.notify.ignore_messages, "character_offset must be called")
+      table.insert(saturn.plugins.notify.ignore_messages, "method textDocument")
+      table.insert(
+        saturn.plugins.notify.ignore_messages,
+        "warning: multiple different client offset_encodings detected for buffer, this is not supported yet"
+      )
+    end,
     config = function()
       local notify = require("notify")
       notify.setup({
@@ -35,18 +43,12 @@ return {
       })
       local notify_filter = notify
       vim.notify = function(msg, ...)
-        if msg:match("character_offset must be called") then
-          return
-        end
-        if msg:match("method textDocument") then
-          return
-        end
-        if
-          msg:match(
-            "warning: multiple different client offset_encodings detected for buffer, this is not supported yet"
-          )
-        then
-          return
+        if type(msg) == "string" then
+          for _, ignore_msg in ipairs(saturn.plugins.notify.ignore_messages) do
+            if msg:find(ignore_msg) then
+              return
+            end
+          end
         end
 
         notify_filter(msg, ...)
