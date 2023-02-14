@@ -24,7 +24,7 @@ vim.opt.grepformat = "%f:%l:%c:%m"
 vim.opt.grepprg = "rg --vimgrep"
 
 -- gui options
-vim.opt.guifont = "FiraCode Nerd Font:h26"
+vim.opt.guifont = "FiraCode Nerd Font:h11"
 vim.opt.guicursor = {
   "n-sm:block",
   "i-ci-c-ve:ver25",

@@ -1,3 +1,9 @@
+---whether nvim runs in a GUI
+---@return boolean
+local function isGui()
+  return vim.g.neovide or vim.g.goneovim or vim.g.started_by_firenvim
+end
+
 return {
   {
     "karb94/neoscroll.nvim",
@@ -6,7 +12,7 @@ return {
   {
     "folke/noice.nvim",
     event = "VeryLazy",
-    cond = not vim.g.started_by_firenvim,
+    cond = not isGui(),
     config = function()
       require("noice").setup({
         lsp = {
