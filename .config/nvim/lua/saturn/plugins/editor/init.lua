@@ -1,46 +1,56 @@
 local Util = require("saturn.utils.plugin")
 
 return {
+  -- file explorer
   {
-    "kyazdani42/nvim-tree.lua",
-    cmd = "NvimTreeToggle",
+    "nvim-neo-tree/neo-tree.nvim",
+    cmd = "Neotree",
     keys = {
-      { "<leader>ee", "<cmd>NvimTreeToggle<CR>", desc = "Project" },
+      {
+        "<leader>ee",
+        function()
+          require("neo-tree.command").execute({ toggle = true, dir = require("saturn.utils.plugin").get_root() })
+        end,
+        desc = "Explorer NeoTree (root dir)",
+      },
+      {
+        "<leader>eE",
+        function()
+          require("neo-tree.command").execute({ toggle = true, dir = vim.loop.cwd() })
+        end,
+        desc = "Explorer NeoTree (cwd)",
+      },
     },
-    config = function()
-      local nvim_tree = require("nvim-tree")
-      local conf = require("saturn.plugins.editor.nvim-tree").config
-
-      -- saturn.plugins.which_key.mappings["e"] = { "<cmd>NvimTreeToggle<CR>", "Explorer" }
-      conf._setup_called = true
-
-      -- Implicitly update nvim-tree when project module is active
-      conf.setup.respect_buf_cwd = true
-      conf.setup.update_cwd = true
-      conf.setup.update_focused_file = { enable = true, update_cwd = true }
-
-      local function telescope_find_files(_)
-        require("saturn.core.nvimtree").start_telescope("find_files")
-      end
-
-      local function telescope_live_grep(_)
-        require("saturn.core.nvimtree").start_telescope("live_grep")
-      end
-
-      -- Add useful keymaps
-      if #conf.setup.view.mappings.list == 0 then
-        conf.setup.view.mappings.list = {
-          { key = { "l", "<CR>", "o" }, action = "edit", mode = "n" },
-          { key = "n", action = "close_node" },
-          { key = "v", action = "vsplit" },
-          { key = "C", action = "cd" },
-          { key = "gtf", action = "telescope_find_files", action_cb = telescope_find_files },
-          { key = "gtg", action = "telescope_live_grep", action_cb = telescope_live_grep },
-        }
-      end
-
-      nvim_tree.setup(conf.setup)
+    deactivate = function()
+      vim.cmd([[Neotree close]])
     end,
+    init = function()
+      vim.g.neo_tree_remove_legacy_commands = 1
+      if vim.fn.argc() == 1 then
+        local stat = vim.loop.fs_stat(vim.fn.argv(0))
+        if stat and stat.type == "directory" then
+          require("neo-tree")
+        end
+      end
+    end,
+    opts = {
+      filesystem = {
+        bind_to_cwd = false,
+        follow_current_file = true,
+      },
+      window = {
+        width = 30,
+        mappings = {
+          ["<space>"] = "none",
+          ["e"] = "none",
+          ["E"] = "toggle_auto_expand_width",
+          ["N"] = {
+            "toggle_node",
+            nowait = false,
+          },
+        },
+      },
+    },
   },
 
   -- project
@@ -1032,6 +1042,6 @@ return {
     ft = "qf",
     cmd = "BqfAutoToggle",
   },
+
   { import = "saturn.plugins.extra.ufo" },
-  { import = "saturn.plugins.extra.neo-tree" },
 }
