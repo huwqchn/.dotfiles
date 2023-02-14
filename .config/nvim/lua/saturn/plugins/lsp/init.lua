@@ -12,7 +12,7 @@ return {
             { name = "DiagnosticSignInfo", text = saturn.icons.diagnostics.Information },
           },
         },
-        virtual_text = { space = 4, prefix = saturn.icons.misc.Evil .. " " },
+        virtual_text = true,
         update_in_insert = false,
         underline = true,
         severity_sort = true,
@@ -43,6 +43,7 @@ return {
         for _, sign in ipairs(opts.diagnostics.signs.values) do
           vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = sign.name })
         end
+        opts.diagnostics.virtual_text.prefix = { space = 4, saturn.icons.misc.Evil .. " " }
       end
 
       local format = require("saturn.plugins.lsp.format")

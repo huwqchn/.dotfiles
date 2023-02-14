@@ -9,6 +9,7 @@ return {
     end,
     init = function()
       if vim.g.started_by_firenvim then
+        saturn.use_icons = false
         vim.g.firenvim_config = {
           localSettings = {
             [".*"] = {
