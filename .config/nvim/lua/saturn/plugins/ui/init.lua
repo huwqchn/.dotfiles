@@ -203,6 +203,7 @@ return {
   -- bufferline
   {
     "akinsho/bufferline.nvim",
+    cond = not vim.g.started_by_firenvim,
     event = "VeryLazy",
     keys = {
       { "<Tab>", "<cmd>BufferLineCycleNext<cr>", desc = "Next" },
@@ -229,6 +230,7 @@ return {
   },
   {
     "SmiteshP/nvim-navic",
+    cond = not vim.g.started_by_firenvim,
     config = function()
       local navic = require("nvim-navic")
       local breadcrumbs = require("saturn.plugins.ui.breadcrumbs")
