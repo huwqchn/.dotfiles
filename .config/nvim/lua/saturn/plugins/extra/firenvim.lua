@@ -17,6 +17,14 @@ return {
           },
         }
         vim.opt.laststatus = 0
+        -- gui options
+        vim.opt.guifont = "JetBrainsMonoNL Nerd Font:h26"
+        vim.opt.guicursor = {
+          "n-sm:block",
+          "i-ci-c-ve:ver25",
+          "r-cr-o-v:hor10",
+          "a:blinkwait200-blinkoff500-blinkon700",
+        }
         vim.api.nvim_create_autocmd("UIEnter", {
           once = true,
           callback = function()
