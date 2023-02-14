@@ -2,7 +2,7 @@ local M = {}
 
 -- local utils = require("saturn.utils.helper")
 -- local format = require("saturn.utils.format")
-local loader = require("saturn.utils.loader")
+local autocmd = require("saturn.utils.autocmd")
 
 local function add_lsp_buffer_options(bufnr)
   for k, v in pairs(saturn.lsp.buffer_options) do
@@ -31,10 +31,10 @@ end
 
 function M.common_on_exit(_, _)
   if saturn.lsp.document_highlight then
-    loader.clear_augroup("lsp_document_highlight")
+    autocmd.clear_augroup("lsp_document_highlight")
   end
   if saturn.lsp.code_lens_refresh then
-    loader.cleer_augroup("lsp_code_lens_refresh")
+    autocmd.cleer_augroup("lsp_code_lens_refresh")
   end
 end
 

@@ -59,4 +59,32 @@ function M.enable_transparent_mode()
   vim.opt.fillchars = "eob: "
 end
 
+---runs :normal natively with bang
+---@param cmdStr any
+local function normal(cmdStr)
+  vim.cmd.normal({ cmdStr, bang = true })
+end
+
+-- Remember folds and cursor
+function M.remember(mode)
+  local ignoredFts = {
+    "DressingInput",
+    "DressingSelect",
+    "TelescopePrompt",
+    "gitcommit",
+    "toggleterm",
+    "help",
+    "qf",
+  }
+  if vim.tbl_contains(ignoredFts, vim.bo.filetype) or vim.bo.buftype == "nofile" or not vim.bo.modifiable then
+    return
+  end
+  if mode == "save" then
+    vim.cmd.mkview(1)
+  else
+    vim.cmd([[silent! loadview 1]]) -- needs silent to avoid error for documents that do not have a view yet (opening first time)
+    normal("0^") -- to scroll to the left on start
+  end
+end
+
 return M

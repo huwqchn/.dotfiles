@@ -54,6 +54,25 @@ vim.opt.wildmode = "longest:full,full" -- Command-line completion mode
 vim.opt.wrap = false -- Disable line wrap
 vim.opt.mousemoveevent = true
 
+vim.opt.fillchars = {
+  foldopen = "",
+  foldclose = "",
+  fold = " ",
+  foldsep = " ",
+  diff = "╱",
+  eob = " ",
+}
+vim.o.foldlevel = 99 -- Using ufo provider need a large value, feel free to decrease the value
+vim.o.foldlevelstart = 99
+vim.o.foldenable = true
+vim.o.foldcolumn = "0"
+
+if vim.fn.has("nvim-0.8") == 1 then
+  vim.opt.backup = true
+  vim.opt.cmdheight = 0
+  vim.opt.backupdir = vim.fn.stdpath("state") .. "/backup"
+end
+
 if vim.fn.has("nvim-0.9.0") == 1 then
   vim.opt.splitkeep = "screen"
   vim.o.shortmess = "filnxtToOFWIcC"
@@ -61,3 +80,4 @@ end
 
 -- fix markdown indentation settings
 vim.g.markdown_recommended_style = 0
+require("saturn.utils.status")
