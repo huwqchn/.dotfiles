@@ -26,5 +26,6 @@ return {
         -- vim.cmd([[au BufEnter github.com_*.txt set filetype=markdown]])
       end
     end,
+    cond = not not vim.g.started_by_firenvim,
   },
 }

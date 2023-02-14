@@ -54,10 +54,10 @@ map("x", "gw", "*N")
 map({ "n", "i" }, "<esc>", "<cmd>noh<cr><esc>", { desc = "Escape and clear hlsearch" })
 
 -- better cmd mode
-map("n", ":", ",")
-map("n", "<cr>", ":")
+map({ "n", "x", "o" }, ":", ",")
+map({ "n", "x", "o" }, "<cr>", ":")
 -- backup cmd mode, some plugins will override <cr>
-map("n", "\\", ":")
+map({ "n", "x", "o" }, "\\", ":")
 
 -- save
 map({ "i", "v", "n", "s" }, "<C-s>", "<cmd>wa<cr><esc>")

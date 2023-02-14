@@ -377,5 +377,5 @@ return {
     end,
   },
   -- { import = "saturn.plugins.extra.noice" },
-  { import = "saturn.plugins.extra.mini-animate" },
+  -- { import = "saturn.plugins.extra.mini-animate" },
 }

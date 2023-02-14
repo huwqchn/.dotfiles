@@ -349,4 +349,5 @@ return {
   --   dependencies = { "nvim-lua/plenary.nvim" },
   --   config = true,
   -- },
+  { import = "saturn.plugins.extra.firenvim" },
 }
