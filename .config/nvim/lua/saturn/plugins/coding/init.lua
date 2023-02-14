@@ -537,6 +537,27 @@ return {
     end,
   },
   -- {
+  --   "dense-analysis/neural",
+  --   cmd = "NeuralCode",
+  --   dependencies = "MunifTanjim/nui.nvim",
+  --   config = function()
+  --     require("neural").setup({
+  --       mappings = {
+  --         swift = nil,
+  --         prompt = nil,
+  --       },
+  --       open_ai = {
+  --         api_key = vim.env.OPENAI_API_KEY, -- not committed, defined in config/private-settings.lua outside of repo
+  --         max_tokens = 1000,
+  --         temperature = 0.1,
+  --         presence_penalty = 0.5,
+  --         frequency_penalty = 0.5,
+  --       },
+  --       ui = { icon = saturn.icons.misc.Robot },
+  --     })
+  --   end,
+  -- },
+  -- {
   --   "jackMort/ChatGPT.nvim",
   --   event = "VeryLazy",
   --   cmd = {
