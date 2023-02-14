@@ -41,7 +41,7 @@ return {
         }
 
         vim.cmd([[au BufEnter github.com_*.txt set filetype=markdown]])
-        vim.cmd([[au BufEnter www.acwing.com_*.txt set filetype=cpp]])
+        vim.cmd([[au BufEnter www.acwing.com_problem-*.txt set filetype=cpp]])
         -- ignore all clangd messages
         table.insert(saturn.plugins.notify.ignore_messages, "clangd")
       end
