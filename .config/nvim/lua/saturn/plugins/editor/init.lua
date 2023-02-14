@@ -9,16 +9,38 @@ return {
       {
         "<leader>ee",
         function()
-          require("neo-tree.command").execute({ toggle = true, dir = require("saturn.utils.plugin").get_root() })
+          require("neo-tree.command").execute({
+            toggle = true,
+            position = "left",
+            dir = require("saturn.utils.plugin").get_root(),
+          })
         end,
-        desc = "Explorer NeoTree (root dir)",
+        desc = "Explorer NeoTree Left(root dir)",
       },
       {
         "<leader>eE",
         function()
-          require("neo-tree.command").execute({ toggle = true, dir = vim.loop.cwd() })
+          require("neo-tree.command").execute({ toggle = true, position = "left", dir = vim.loop.cwd() })
         end,
-        desc = "Explorer NeoTree (cwd)",
+        desc = "Explorer NeoTree Left(cwd)",
+      },
+      {
+        "<leader>ef",
+        function()
+          require("neo-tree.command").execute({
+            toggle = true,
+            position = "float",
+            dir = require("saturn.utils.plugin").get_root(),
+          })
+        end,
+        desc = "Explorer NeoTree Float(root dir)",
+      },
+      {
+        "<leader>eF",
+        function()
+          require("neo-tree.command").execute({ toggle = true, position = "float", dir = vim.loop.cwd() })
+        end,
+        desc = "Explorer NeoTree Float(cwd)",
       },
     },
     deactivate = function()
@@ -34,6 +56,7 @@ return {
       end
     end,
     opts = {
+      close_if_last_window = true,
       filesystem = {
         bind_to_cwd = false,
         follow_current_file = true,

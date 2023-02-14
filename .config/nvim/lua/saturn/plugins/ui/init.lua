@@ -73,6 +73,7 @@ return {
   {
     "nvim-lualine/lualine.nvim",
     event = "VeryLazy",
+    cond = not vim.g.started_by_firenvim, -- not load when start by firenvim
     config = function()
       require("saturn.plugins.ui.lualine")
       -- local lualine = require("lualine")
@@ -372,6 +373,19 @@ return {
       },
     },
     opts = {
+      autoselect_one = true,
+      include_current = false,
+      filter_rules = {
+        -- filter using buffer options
+        bo = {
+          -- if the file type is one of following, the window will be ignored
+          filetype = { "neo-tree", "neo-tree-popup", "notify", "NvimTree" },
+
+          -- if the buffer type is one of following, the window will be ignored
+          buftype = { "terminal", "quickfix" },
+        },
+      },
+      other_win_hl_color = "#e35e4f",
       selection_chars = "ARSTNEIOFPLUDHKMCV",
     },
     config = function(_, opts)
