@@ -1033,4 +1033,5 @@ return {
     cmd = "BqfAutoToggle",
   },
   { import = "saturn.plugins.extra.ufo" },
+  { import = "saturn.plugins.extra.neo-tree" },
 }
