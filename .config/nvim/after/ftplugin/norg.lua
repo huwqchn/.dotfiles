@@ -1,4 +1,3 @@
-vim.keymap.set("", ",", ":")
 --FIXME: not working yet
 --
 -- local neorg_callbacks = require("neorg.callbacks")
@@ -17,3 +16,8 @@ vim.keymap.set("", ",", ":")
 --     noremap = true,
 --   })
 -- end)
+--
+
+-- disable colorcolumn
+vim.o.colorcolumn = ""
+vim.o.wrap = true

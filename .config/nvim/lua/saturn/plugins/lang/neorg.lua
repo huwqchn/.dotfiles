@@ -13,8 +13,17 @@ return {
         ["core.norg.dirman"] = { -- Manages Neorg workspaces
           config = {
             workspaces = {
-              notes = "~/Documents/notes",
+              notes = "~/Notes",
             },
+          },
+        },
+        ["core.norg.completion"] = {
+          config = { engine = "nvim-cmp" },
+        },
+        ["core.keybinds"] = {
+          config = {
+            default_keybinds = true,
+            neorg_leader = ",",
           },
         },
         -- ["core.integrations.nvim-cmp"] = {},

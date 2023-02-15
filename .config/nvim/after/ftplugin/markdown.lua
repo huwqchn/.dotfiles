@@ -1,3 +1,4 @@
+vim.o.colorcolumn = ""
 vim.o.wrap = true
 
 saturn.plugins.which_key.mappings["<leader>n"] = { name = "+note" }
