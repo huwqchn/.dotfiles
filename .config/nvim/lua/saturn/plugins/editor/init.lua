@@ -65,12 +65,14 @@ return {
         width = 30,
         mappings = {
           ["<space>"] = "none",
+          ["<cr>"] = "open_with_window_picker",
           ["e"] = "none",
           ["E"] = "toggle_auto_expand_width",
           ["N"] = {
             "toggle_node",
             nowait = false,
           },
+          ["w"] = "open",
         },
       },
     },
