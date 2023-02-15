@@ -1,3 +1,4 @@
+-- TODO:using saturn.colorscheme instead
 local colors = {
   silver = "#cdd6f4",
   grey = "#181825",

@@ -283,20 +283,36 @@ return {
     "petertriho/nvim-scrollbar",
     event = "CursorMoved",
     opts = function()
-      local colors = require("tokyonight.colors").setup()
-      return {
-        handle = {
-          color = colors.bg_highlight,
-        },
-        marks = {
-          Search = { color = colors.orange },
-          Error = { color = colors.error },
-          Warn = { color = colors.warning },
-          Info = { color = colors.info },
-          Hint = { color = colors.hint },
-          Misc = { color = colors.purple },
-        },
-      }
+      local colors = require(saturn.colorscheme .. ".colors").setup()
+      if saturn.colorscheme == "tokyonight" then
+        return {
+          handle = {
+            color = colors.bg_highlight,
+          },
+          marks = {
+            Search = { color = colors.orange },
+            Error = { color = colors.error },
+            Warn = { color = colors.warning },
+            Info = { color = colors.info },
+            Hint = { color = colors.hint },
+            Misc = { color = colors.purple },
+          },
+        }
+      elseif saturn.colorscheme == "kanigawa" then
+        return {
+          handle = {
+            color = colors.sumiInk1,
+          },
+          marks = {
+            Search = { color = colors.surimiOrange },
+            Error = { color = colors.samuraiRed },
+            Warn = { color = colors.roninYellow },
+            Info = { color = colors.waveAqua1 },
+            Hint = { color = colors.dragonBlue },
+            Misc = { color = colors.oniViolet },
+          },
+        }
+      end
     end,
     config = function(_, opts)
       require("scrollbar").setup(opts)

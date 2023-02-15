@@ -9,8 +9,8 @@ return {
   -- tokyonight
   {
     "folke/tokyonight.nvim",
-    lazy = not saturn.colorscheme == "tokyonight",
-    enabled = saturn.colorscheme == "tokyonight",
+    lazy = false,
+    cond = saturn.colorscheme == "tokyonight",
     priority = 1000,
     opts = {
       on_highlights = function(hl, c)
@@ -74,18 +74,36 @@ return {
   {
     "catppuccin/nvim",
     name = "catppuccin",
-    lazy = not saturn.colorscheme == "catppuccin",
-    enabled = saturn.colorscheme == "catppuccin",
+    lazy = false,
+    cond = saturn.colorscheme == "catppuccin",
     priority = 1000,
     config = config,
   },
 
-  -- lunar
+  -- kanigawa
   {
-    "lunarvim/lunar.nvim",
-    lazy = not saturn.colorscheme == "lunar",
-    enabled = saturn.colorscheme == "lunar",
+    "rebelot/kanagawa.nvim",
+    lazy = false,
+    cond = saturn.colorscheme == "kanagawa",
     priority = 1000,
+    init = function()
+      if saturn.colorscheme == "kanagawa" then
+        vim.opt.laststatus = 3
+        vim.opt.fillchars:append({
+          horiz = "━",
+          horizup = "┻",
+          horizdown = "┳",
+          vert = "┃",
+          vertleft = "┨",
+          vertright = "┣",
+          verthoriz = "╋",
+        })
+      end
+    end,
+    opts = {
+      globalStatus = true,
+      transparent = saturn.transparent_window,
+    },
     config = config,
   },
 }

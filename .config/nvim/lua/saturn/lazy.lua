@@ -14,7 +14,7 @@ vim.opt.rtp:prepend(vim.env.LAZY or lazypath)
 require("lazy").setup({
   spec = "saturn.plugins",
   defaults = { lazy = true, version = false },
-  install = { colorscheme = { "tokyonight-night", "habamax" } },
+  install = { colorscheme = { saturn.colorscheme, "habamax" } },
   ui = { border = "rounded" },
   git = {
     timeout = 120,
