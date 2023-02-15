@@ -77,6 +77,9 @@ return {
     lazy = false,
     cond = saturn.colorscheme == "catppuccin",
     priority = 1000,
+    opts = {
+      transparent_background = saturn.transparent_window,
+    },
     config = config,
   },
 
