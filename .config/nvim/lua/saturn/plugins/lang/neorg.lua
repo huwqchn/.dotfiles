@@ -17,7 +17,7 @@ return {
             },
           },
         },
-        ["core.integrations.nvim-cmp"] = {},
+        -- ["core.integrations.nvim-cmp"] = {},
         -- ["core.integrations.telescope"] = {},
       },
     },
