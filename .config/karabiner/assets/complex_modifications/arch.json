@@ -201,12 +201,12 @@
       ]
     },
     {
-      "description": "Shift to Backspace if alone",
+      "description": "Option to Backspace if alone",
       "manipulators": [
         {
           "type": "basic",
           "from": {
-            "key_code": "left_shift",
+            "key_code": "left_option",
             "modifiers": {
               "optional": [
                 "any"
@@ -215,7 +215,7 @@
           },
           "to": [
             {
-              "key_code": "left_shift"
+              "key_code": "left_option"
             }
           ],
           "to_if_alone": [
@@ -760,171 +760,6 @@
           ],
           "type": "basic",
           "from": {
-            "key_code": "e",
-            "modifiers": {
-              "optional": [
-                "any"
-              ]
-            }
-          },
-          "to": [
-            {
-              "key_code": "open_bracket"
-            }
-          ]
-        },
-        {
-          "conditions": [
-            {
-              "name": "switch_mode",
-              "type": "variable_if",
-              "value": 1
-            }
-          ],
-          "type": "basic",
-          "from": {
-            "key_code": "e",
-            "modifiers": {
-              "mandatory": [
-                "shift"
-              ]
-            }
-          },
-          "to": [
-            {
-              "key_code": "open_bracket",
-              "modifiers": "left_shift"
-            }
-          ]
-        },
-        {
-          "conditions": [
-            {
-              "name": "switch_mode",
-              "type": "variable_if",
-              "value": 1
-            }
-          ],
-          "type": "basic",
-          "from": {
-            "key_code": "r",
-            "modifiers": {
-              "optional": [
-                "any"
-              ]
-            }
-          },
-          "to": [
-            {
-              "key_code": "close_bracket"
-            }
-          ]
-        },
-        {
-          "conditions": [
-            {
-              "name": "switch_mode",
-              "type": "variable_if",
-              "value": 1
-            }
-          ],
-          "type": "basic",
-          "from": {
-            "key_code": "r",
-            "modifiers": {
-              "mandatory": [
-                "shift"
-              ]
-            }
-          },
-          "to": [
-            {
-              "key_code": "close_bracket",
-              "modifiers": "left_shift"
-            }
-          ]
-        },
-        {
-          "conditions": [
-            {
-              "name": "switch_mode",
-              "type": "variable_if",
-              "value": 1
-            }
-          ],
-          "type": "basic",
-          "from": {
-            "key_code": "q",
-            "modifiers": {
-              "optional": [
-                "any"
-              ]
-            }
-          },
-          "to": [
-            {
-              "key_code": "open_bracket",
-              "modifiers": "left_shift"
-            }
-          ]
-        },
-        {
-          "conditions": [
-            {
-              "name": "switch_mode",
-              "type": "variable_if",
-              "value": 1
-            }
-          ],
-          "type": "basic",
-          "from": {
-            "key_code": "w",
-            "modifiers": {
-              "optional": [
-                "any"
-              ]
-            }
-          },
-          "to": [
-            {
-              "key_code": "close_bracket",
-              "modifiers": "left_shift"
-            }
-          ]
-        },
-        {
-          "conditions": [
-            {
-              "name": "switch_mode",
-              "type": "variable_if",
-              "value": 1
-            }
-          ],
-          "type": "basic",
-          "from": {
-            "key_code": "u",
-            "modifiers": {
-              "optional": [
-                "any"
-              ]
-            }
-          },
-          "to": [
-            {
-              "key_code": "hyphen"
-            }
-          ]
-        },
-        {
-          "conditions": [
-            {
-              "name": "switch_mode",
-              "type": "variable_if",
-              "value": 1
-            }
-          ],
-          "type": "basic",
-          "from": {
             "key_code": "i",
             "modifiers": {
               "optional": [
@@ -1145,8 +980,7 @@
           },
           "to": [
             {
-              "key_code": "9",
-              "modifiers": "left_shift"
+              "key_code": "open_bracket"
             }
           ]
         },
@@ -1169,7 +1003,54 @@
           },
           "to": [
             {
-              "key_code": "0",
+              "key_code": "close_bracket"
+            }
+          ]
+        },
+        {
+          "conditions": [
+            {
+              "name": "switch_mode",
+              "type": "variable_if",
+              "value": 1
+            }
+          ],
+          "type": "basic",
+          "from": {
+            "key_code": "comma",
+            "modifiers": {
+              "mandatory": [
+                "shift"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "open_bracket",
+              "modifiers": "left_shift"
+            }
+          ]
+        },
+        {
+          "conditions": [
+            {
+              "name": "switch_mode",
+              "type": "variable_if",
+              "value": 1
+            }
+          ],
+          "type": "basic",
+          "from": {
+            "key_code": "period",
+            "modifiers": {
+              "mandatory": [
+                "shift"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "close_bracket",
               "modifiers": "left_shift"
             }
           ]
