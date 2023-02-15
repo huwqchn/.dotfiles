@@ -283,8 +283,8 @@ return {
     "petertriho/nvim-scrollbar",
     event = "CursorMoved",
     opts = function()
-      local colors = require(saturn.colorscheme .. ".colors").setup()
       if saturn.colorscheme == "tokyonight" then
+        local colors = require("tokyonight.colors").setup()
         return {
           handle = {
             color = colors.bg_highlight,
@@ -298,7 +298,8 @@ return {
             Misc = { color = colors.purple },
           },
         }
-      elseif saturn.colorscheme == "kanigawa" then
+      elseif saturn.colorscheme == "kanagawa" then
+        local colors = require("kanagawa.colors").setup()
         return {
           handle = {
             color = colors.sumiInk1,
@@ -312,6 +313,8 @@ return {
             Misc = { color = colors.oniViolet },
           },
         }
+      else
+        return {}
       end
     end,
     config = function(_, opts)
