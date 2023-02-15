@@ -1,35 +1,36 @@
 -- TODO:using saturn.colorscheme instead
-local colors = {
-  silver = "#cdd6f4",
-  grey = "#181825",
-  dark_grey = "#202328",
-  dark_purple = "#242735",
-  black = "#1e1e2e",
-  white = "#313244",
-  light_green = "#6c7086",
-  orange = "#fab387",
-  green = "#a6e3a1",
-  blue = "#80A7EA",
-  violet = "#a9a1e1",
-  lilac = "#b4befe",
-  oyster = "#e2ddd1",
-  pink = "#f38ba8",
-  cyan = "#4abaaf",
-  purple = "#9a7ecc",
-  yellow = "#e0af68",
-  red = "#ec5f67",
-  prussian = "#003153",
-}
+-- local colors = {
+--   silver = "#cdd6f4",
+--   grey = "#181825",
+--   dark_grey = "#202328",
+--   dark_purple = "#242735",
+--   black = "#1e1e2e",
+--   white = "#313244",
+--   light_green = "#6c7086",
+--   orange = "#fab387",
+--   green = "#a6e3a1",
+--   blue = "#80A7EA",
+--   violet = "#a9a1e1",
+--   lilac = "#b4befe",
+--   oyster = "#e2ddd1",
+--   pink = "#f38ba8",
+--   cyan = "#4abaaf",
+--   purple = "#9a7ecc",
+--   yellow = "#e0af68",
+--   red = "#ec5f67",
+--   prussian = "#003153",
+-- }
+local colors = saturn.colors
 
 -- auto change color according to neovims mode
 local mode_color = {
   n = colors.cyan,
-  i = colors.orange,
+  i = colors.yellow,
   v = colors.purple,
   [""] = colors.purple,
   V = colors.purple,
-  c = colors.red,
-  no = colors.red,
+  c = colors.pink,
+  no = colors.pink,
   s = colors.green,
   S = colors.green,
   [""] = colors.green,
@@ -38,11 +39,11 @@ local mode_color = {
   Rv = colors.violet,
   cv = colors.red,
   ce = colors.red,
-  r = colors.prussian,
-  rm = colors.prussian,
-  ["r?"] = colors.prussion,
-  ["!"] = colors.oyster,
-  t = colors.oyster,
+  r = colors.teal,
+  rm = colors.teal,
+  ["r?"] = colors.teal,
+  ["!"] = colors.white,
+  t = colors.white,
 }
 
 local function mode_color_fn()
@@ -80,7 +81,7 @@ local vim_icon = {
     return saturn.icons.misc.Saturn
   end,
   separator = { left = saturn.icons.ui.SeparatorLeft, right = saturn.icons.ui.SeparatorRight },
-  color = { bg = colors.white, fg = colors.blue },
+  color = { bg = colors.grey, fg = colors.blue },
 }
 
 local space = {
@@ -92,7 +93,7 @@ local space = {
 
 local filename = {
   "filename",
-  color = { bg = colors.blue, fg = colors.dark_purple },
+  color = { bg = colors.blue, fg = colors.grey },
   separator = { left = saturn.icons.ui.SeparatorLeft, right = saturn.icons.ui.SeparatorRight },
   cond = conditions.hide_in_width,
 }
@@ -101,26 +102,26 @@ local filetype = {
   "filetype",
   icon_only = true,
   colored = true,
-  color = { bg = colors.white },
+  color = { bg = colors.grey },
   separator = { left = saturn.icons.ui.SeparatorLeft, right = saturn.icons.ui.SeparatorRight },
 }
 
 local fileformat = {
   "fileformat",
-  color = { bg = colors.lilac, fg = colors.white },
+  color = { bg = colors.white, fg = colors.grey },
   separator = { left = saturn.icons.ui.SeparatorLeft, right = saturn.icons.ui.SeparatorRight },
 }
 
 local encoding = {
   "encoding",
-  color = { bg = colors.white, fg = colors.blue },
+  color = { bg = colors.grey, fg = colors.blue },
   separator = { left = saturn.icons.ui.SeparatorLeft, right = saturn.icons.ui.SeparatorRight },
 }
 
 local branch = {
   "branch",
   icon = saturn.icons.git.Branch,
-  color = { bg = colors.green, fg = colors.white },
+  color = { bg = colors.green, fg = colors.grey },
   separator = { left = saturn.icons.ui.SeparatorLeft, right = saturn.icons.ui.SeparatorRight },
 }
 
@@ -144,7 +145,7 @@ local diff = {
     removed = saturn.icons.git.LineRemoved .. " ",
   },
   padding = { left = 2, right = 1 },
-  color = { bg = colors.white, fg = colors.white },
+  color = { bg = colors.grey, fg = colors.grey },
   separator = { left = saturn.icons.ui.SeparatorLeft, right = saturn.icons.ui.SeparatorRight },
 }
 
@@ -182,7 +183,7 @@ local dia = {
     info = saturn.icons.diagnostics.Information .. " ",
     hint = saturn.icons.diagnostics.Hint .. " ",
   },
-  color = { bg = colors.white, fg = colors.blue },
+  color = { bg = colors.grey, fg = colors.blue },
   separator = { left = saturn.icons.ui.SeparatorLeft, right = saturn.icons.ui.SeparatorRight },
 }
 
@@ -191,14 +192,14 @@ local lsp = {
     return getLspName()
   end,
   separator = { left = saturn.icons.ui.SeparatorLeft, right = saturn.icons.ui.SeparatorRight },
-  color = { bg = colors.pink, fg = colors.black },
+  color = { bg = colors.red, fg = colors.black },
   cond = conditions.lsp_active,
 }
 
 local lazy = {
   require("lazy.status").updates,
   cond = require("lazy.status").has_updates,
-  color = { bg = colors.violet, fg = colors.dark_grey },
+  color = { bg = colors.voilet, fg = colors.grey },
   separator = { left = saturn.icons.ui.SeparatorLeft, right = saturn.icons.ui.SeparatorRight },
 }
 
@@ -207,7 +208,7 @@ local key = {
     return require("noice").api.status.command.get()
   end,
   cond = conditions.has_noice_command,
-  color = { bg = colors.white, fg = colors.purple },
+  color = { bg = colors.grey, fg = colors.purple },
   separator = { left = saturn.icons.ui.SeparatorLeft, right = saturn.icons.ui.SeparatorRight },
 }
 
@@ -216,7 +217,7 @@ local key_icon = {
     return saturn.icons.misc.Keyboard
   end,
   cond = conditions.has_noice_command,
-  color = { bg = colors.purple, fg = colors.dark_grey },
+  color = { bg = colors.purple, fg = colors.grey },
   separator = { left = saturn.icons.ui.SeparatorLeft, right = saturn.icons.ui.SeparatorRight },
 }
 
@@ -249,7 +250,7 @@ local breakpoint_count = {
     end
     return saturn.icons.ui.Bug .. " " .. tostring(breakpointSum)
   end,
-  color = { bg = colors.white, fg = colors.red },
+  color = { bg = colors.grey, fg = colors.red },
   separator = { left = saturn.icons.ui.SeparatorLeft, right = saturn.icons.ui.SeparatorRight },
   cond = conditions.hide_in_width,
 }

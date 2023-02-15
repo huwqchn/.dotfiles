@@ -1,7 +1,7 @@
 return {
   leaderkey = " ",
   localleaderkey = ",",
-  colorscheme = "catppuccin",
+  colorscheme = "tokyonight",
   colors = nil, -- using colorscheme colors if colorscheme loaded
   transparent_window = false,
   format_on_save = {

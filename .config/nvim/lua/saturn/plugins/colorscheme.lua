@@ -12,6 +12,27 @@ return {
     lazy = false,
     cond = saturn.colorscheme == "tokyonight",
     priority = 1000,
+    init = function()
+      if saturn.colorscheme == "tokyonight" then
+        local colors = require("tokyonight.colors").setup()
+        saturn.colors = {
+          grey = colors.bg_highlight,
+          dark_grey = colors.fg_dark,
+          black = colors.black,
+          red = colors.red1,
+          pink = colors.red,
+          yellow = colors.yellow,
+          blue = colors.blue,
+          green = colors.green,
+          sky = colors.blue1,
+          cyan = colors.cyan,
+          voilet = colors.magenta,
+          purple = colors.purple,
+          teal = colors.teal,
+          white = colors.fg,
+        }
+      end
+    end,
     opts = {
       on_highlights = function(hl, c)
         hl.IndentBlanklineContextChar = {
@@ -77,6 +98,27 @@ return {
     lazy = false,
     cond = saturn.colorscheme == "catppuccin",
     priority = 1000,
+    init = function()
+      if saturn.colorscheme == "catppuccin" then
+        local colors = require("catppuccin.palettes.mocha")
+        saturn.colors = {
+          grey = colors.surface0,
+          dark_grey = colors.overlay0,
+          black = colors.base,
+          red = colors.red,
+          pink = colors.pink,
+          yellow = colors.yellow,
+          blue = colors.blue,
+          green = colors.green,
+          sky = colors.sky,
+          cyan = colors.sapphire,
+          voilet = colors.lavender, -- #B4BEFE
+          purple = colors.mauve,
+          teal = colors.teal,
+          white = colors.text,
+        }
+      end
+    end,
     opts = {
       transparent_background = saturn.transparent_window,
     },
@@ -101,6 +143,23 @@ return {
           vertright = "┣",
           verthoriz = "╋",
         })
+        local colors = require("kanagawa.colors").setup()
+        saturn.colors = {
+          grey = colors.sumiInk4,
+          dark_grey = colors.katanaGray,
+          black = colors.sumiInk2,
+          red = colors.waveRed,
+          pink = colors.sakuraPink,
+          yellow = colors.autumnYellow,
+          blue = colors.springBlue,
+          green = colors.springGreen,
+          sky = colors.lightBlue,
+          cyan = colors.crystalBlue,
+          voilet = colors.springViolet1, -- #B4BEFE
+          purple = colors.oniViolet,
+          teal = colors.dragonBlue,
+          white = colors.fujiWhite,
+        }
       end
     end,
     opts = {
