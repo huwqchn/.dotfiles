@@ -15,14 +15,14 @@ return {
             dir = require("saturn.utils.plugin").get_root(),
           })
         end,
-        desc = "Explorer NeoTree Left(root dir)",
+        desc = "Filesystem Left(root dir)",
       },
       {
         "<leader>eE",
         function()
           require("neo-tree.command").execute({ toggle = true, position = "left", dir = vim.loop.cwd() })
         end,
-        desc = "Explorer NeoTree Left(cwd)",
+        desc = "Filesystem Left(cwd)",
       },
       {
         "<leader>ef",
@@ -33,14 +33,62 @@ return {
             dir = require("saturn.utils.plugin").get_root(),
           })
         end,
-        desc = "Explorer NeoTree Float(root dir)",
+        desc = "Filesystem Float(root dir)",
       },
       {
         "<leader>eF",
         function()
           require("neo-tree.command").execute({ toggle = true, position = "float", dir = vim.loop.cwd() })
         end,
-        desc = "Explorer NeoTree Float(cwd)",
+        desc = "Filesystem Float(cwd)",
+      },
+      {
+        "<leader>eb",
+        function()
+          require("neo-tree.command").execute({
+            toggle = true,
+            position = "left",
+            dir = vim.loop.cwd(),
+            source = "buffers",
+          })
+        end,
+        desc = "Buffers Left(cwd)",
+      },
+      {
+        "<leader>eB",
+        function()
+          require("neo-tree.command").execute({
+            toggle = true,
+            position = "left",
+            dir = require("saturn.utils.plugin").get_root(),
+            source = "buffers",
+          })
+        end,
+        desc = "Buffers Left(cwd)",
+      },
+      {
+        "<leader>eg",
+        function()
+          require("neo-tree.command").execute({
+            toggle = true,
+            position = "left",
+            dir = vim.loop.cwd(),
+            source = "git_status",
+          })
+        end,
+        desc = "Git Status Left(cwd)",
+      },
+      {
+        "<leader>eG",
+        function()
+          require("neo-tree.command").execute({
+            toggle = true,
+            position = "left",
+            dir = require("saturn.utils.plugin").get_root(),
+            source = "git_status",
+          })
+        end,
+        desc = "Git Status Left(cwd)",
       },
     },
     deactivate = function()
