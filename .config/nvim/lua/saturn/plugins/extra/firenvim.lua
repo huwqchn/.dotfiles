@@ -36,7 +36,7 @@ return {
           "a:blinkwait200-blinkoff500-blinkon700",
         }
 
-        vim.cmd([[au BufEnter github.com_*.txt set filetype=markdown]])
+        -- vim.cmd([[au BufEnter github.com_*.txt set filetype=markdown]])
         vim.cmd([[au BufEnter www.acwing.com_problem-*.txt set filetype=cpp]])
         -- ignore all clangd messages
         table.insert(saturn.plugins.notify.ignore_messages, "clangd")
