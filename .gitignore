@@ -25,7 +25,6 @@ cache.*
 tmux/.config/tmux/plugins
 nvim/.config/nvim/sessions/
 polybar/.config/polybar/gmail
-neomutt/.config/neomutt/accounts
 gtk-3.0/.config/gtk-3.0/bookmarks
 mpv/.config/mpv/watch_later
 clash/.config/clash/cache.db
