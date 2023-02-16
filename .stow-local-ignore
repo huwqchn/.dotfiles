@@ -28,3 +28,9 @@ _darcs
 ^/LICENSE.*
 ^/COPYING
 ^/pkglist.*
+
+# stow to /etc/
+\pacman
+\dm
+\keyd
+\proxychains

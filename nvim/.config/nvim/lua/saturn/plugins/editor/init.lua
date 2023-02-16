@@ -110,7 +110,7 @@ return {
         follow_current_file = true,
       },
       window = {
-        width = 30,
+        -- width = 30,
         mappings = {
           ["<space>"] = "none",
           ["<cr>"] = "open_with_window_picker",
