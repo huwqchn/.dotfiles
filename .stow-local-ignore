@@ -20,14 +20,15 @@ _darcs
 \.bin
 \.script
 \.font
-
+\pkglist.*
+^/.Xmodmap
 .+~          # emacs backup files
 \#.*\#       # emacs autosave files
 
 ^/README.*
 ^/LICENSE.*
 ^/COPYING
-^/pkglist.*
+
 
 # stow to /etc/
 \pacman
