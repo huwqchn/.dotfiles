@@ -6,7 +6,7 @@
 
 ;; Some functionality uses this to identify you, e.g. GPG configuration, email
 ;; clients, file templates and snippets. It is optional.
-(setq user-full-name "Hu Wenqiang"
+(setq user-full-name "Johnson"
       user-mail-address "huwqchn@gmail.com")
 
 ;; Doom exposes five (optional) variables for controlling fonts in Doom:
@@ -21,8 +21,7 @@
 ;; See 'C-h v doom-font' for documentation and more examples of what they
 ;; accept. For example:
 ;;
-;;(setq doom-font (font-spec :family "Fira Code" :size 12 :weight 'semi-light)
-;;      doom-variable-pitch-font (font-spec :family "Fira Sans" :size 13))
+(setq doom-font (font-spec :family "JetBrainsMono Nerd Font" :size 30 :weight 'Medium))
 ;;
 ;; If you or Emacs can't find your font, use 'M-x describe-font' to look them
 ;; up, `M-x eval-region' to execute elisp code, and 'M-x doom/reload-font' to
@@ -32,12 +31,18 @@
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
-(setq doom-theme 'doom-dracula
-      doom-font (font-spec :family "Fira Code" :size 18 :weight 'medium))
-(pushnew! initial-frame-alist '(width . 120) '(height . 45))
+(setq doom-theme 'doom-one)
+
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
 (setq display-line-numbers-type 'relative)
+
+;; If you use `org' and don't want your org files in the default location below,
+;; change `org-directory'. It must be set before org loads!
+(setq org-directory "~/org/")
+(setq org-roam-directory "~/org/notes")
+
+;; evil mode for emacs keymaps
 (map! :nmvo "n" #'evil-backward-char
       :nmvo "i" #'evil-forward-char
       :nmvo "e" #'evil-next-line
@@ -55,60 +60,9 @@
       :nmv "=" (if (eq evil-search-module 'evil-search) #'evil-ex-search-next #'evil-search-next)
       :nmv "-" (if (eq evil-search-module 'evil-search) #'evil-ex-search-previous #'evil-search-previous))
 
-(cond (IS-MAC
-       (setq mac-control-modifier 'control
-             mac-command-modifier 'super
-             mac-option-modifier 'alt
-             mac-right-option-modifier 'meta
-             mac-right-command-modifier 'hyper)))
-;; If you use `org' and don't want your org files in the default location below,
-;; change `org-directory'. It must be set before org loads!
-(setq org-directory "~/org/")
-(setq url-proxy-services
-		'(("http" . "127.0.0.1:19180")
-		  ("https" . "127.0.0.1:19180")))
-(use-package fira-code-mode
-  :custom (fira-code-mode-disabled-ligatures '("int" "true" "false" "return"))
-  :hook prog-mode)
-(setq org-roam-directory "~/Documents/notes")
-(use-package! org-roam
-	:after org
-	: commands
-	(org-roam-buffer
-	 org-roam-setup
-	 org-roam-capture
-	 org-roam-node-find)
-	:config
-	;;(setq org-roam-mode-sections
-  ;;      (list #'org-roam-backlinks-insert-section
-  ;;            #'org-roam-reflinks-insert-section
-  ;;            #'org-roam-unlinked-references-insert-section))
-	(org-roam-setup))
-;;; roam v2 configuration
-(setq org-roam-directory "~/Documents/org/roam")
-(use-package! org-roam
-  :after org
-  :commands
-  (org-roam-buffer
-   org-roam-setup
-   org-roam-capture
-   org-roam-node-find)
 
-  ;; =====  快捷键设置=====
-  :init
-  (map!
-        :leader
-        :prefix ("m" . "org-roam")
-        "f" #'org-roam-node-find
-        "i" #'org-roam-node-insert
-        "b" #'org-roam-buffer-toggle
-        "t" #'org-roam-tag-add
-        "T" #'org-roam-tag-remove)
-  ;; ===== END HERE ====
-  :config
-  (org-roam-setup))
-;; Whenever you reconfigure a package, make sUre To wrap your config in an
-;; `after!' block, otherwise Doom's defaults may override your ttings. E.g.
+;; Whenever you reconfigure a package, make sure to wrap your config in an
+;; `after!' block, otherwise Doom's defaults may override your settings. E.g.
 ;;
 ;;   (after! PACKAGE
 ;;     (setq x y))
