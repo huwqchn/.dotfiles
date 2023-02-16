@@ -37,6 +37,11 @@ elif [[ $(uname) == 'Linux' ]]; then
 	export QT_SCALE_FACTOR=1
 fi
 
+
+# for user defined
+export THEME="tokyonight"
+# ----------------
+
 # FZF bases
 export FZF_DEFAULT_OPTS="
   --color fg:$color7
