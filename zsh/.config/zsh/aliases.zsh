@@ -46,6 +46,7 @@ alias cm="cmatrix"
 alias g="gitui"
 alias top="btop"
 alias lf="lfrun"
+alias pm="pulsemixer"
 # confirm before overwriting something
 # alias cp="cp -i"
 # alias mv="mv -i"
