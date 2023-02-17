@@ -16,15 +16,15 @@ super + a ; {a, b, c, d, e, f, g, i, k, n, o, p, q, s, u, v, x, z}
 
 # betterlockscreen
 super + x
-  betterlockscreen -l blur
+  ~/.scripts/lock
 
 # program launcher
 super + @space
-	~/.dotfiles/.scripts/applauncher.sh
+	~/.scripts/applauncher.sh
 
 # program switcher
 super + Tab
-  ~/.dotfiles/.scripts/appswitcher.sh
+  ~/.scripts/appswitcher.sh
 
 # make sxhkd reload its configuration files:
 super + Escape
@@ -152,7 +152,7 @@ super + ctrl + shift + space
 
 # screenkey
 super + ctrl + k
-  ~/.dotfiles/.scripts/sk.sh
+  ~/.scripts/sk.sh
 
 # flameshot
 super + ctrl + s

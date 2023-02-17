@@ -33,7 +33,7 @@ markup = full
 #   %p  progress value if set ([  0%] to [100%]) or nothing
 # Markup is allowed
 format = "<b>%s</b>\n%b"
-corner_radius = 8
+corner_radius = 15
 
 # Sort messages by urgency.
 sort = no
@@ -190,19 +190,22 @@ context = ctrl+shift+period
 frame_color = "#80a8fd"
 foreground = "#80a8fd"
 background = "#282e49"
-timeout = 2
+timeout = 10
+script = ~/.dotfiles/.scripts/dunst/sound-normal.sh
 
 [urgency_normal]
 frame_color = "#80a8fd"
 foreground = "#80a8fd"
 background = "#282e49"
 timeout = 5
+script = ~/.dotfiles/.scripts/dunst/sound-normal.sh
 
 [urgency_critical]
 frame_color = "#f7768e"
 foreground = "#ffffff"
 background = "#c45e71"
 timeout = 10
+script = ~/.dotfiles/.scripts/dunst/sound-critical.sh
 
 [notify_send]
 appname = notify-send
@@ -266,3 +269,15 @@ format = "<span font_desc='JetBrainsMono Medium Nerd Font'>%b</span>"
 #    urgency = normal
 #
 # vim: ft=cfg
+#
+[logger]
+summary = "*"
+script = "~/.config/eww/Main/scripts/logger.zsh"
+
+[spotify]
+summary = "*"
+script = "~/.dotfiles/.scripts/music-art"
+
+[spotify-icon]
+appname = "Spotify"
+icon = "~/.cache/temp.png"

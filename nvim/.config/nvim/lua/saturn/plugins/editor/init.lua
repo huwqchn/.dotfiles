@@ -7,7 +7,7 @@ return {
     cmd = "Neotree",
     keys = {
       {
-        "<leader>ee",
+        "<leader>eE",
         function()
           require("neo-tree.command").execute({
             toggle = true,
@@ -18,14 +18,14 @@ return {
         desc = "Filesystem Left(root dir)",
       },
       {
-        "<leader>eE",
+        "<leader>ee",
         function()
           require("neo-tree.command").execute({ toggle = true, position = "left", dir = vim.loop.cwd() })
         end,
         desc = "Filesystem Left(cwd)",
       },
       {
-        "<leader>ef",
+        "<leader>eF",
         function()
           require("neo-tree.command").execute({
             toggle = true,
@@ -36,14 +36,14 @@ return {
         desc = "Filesystem Float(root dir)",
       },
       {
-        "<leader>eF",
+        "<leader>ef",
         function()
           require("neo-tree.command").execute({ toggle = true, position = "float", dir = vim.loop.cwd() })
         end,
         desc = "Filesystem Float(cwd)",
       },
       {
-        "<leader>eb",
+        "<leader>eB",
         function()
           require("neo-tree.command").execute({
             toggle = true,
@@ -55,7 +55,7 @@ return {
         desc = "Buffers Left(cwd)",
       },
       {
-        "<leader>eB",
+        "<leader>eb",
         function()
           require("neo-tree.command").execute({
             toggle = true,
@@ -67,7 +67,7 @@ return {
         desc = "Buffers Left(cwd)",
       },
       {
-        "<leader>eg",
+        "<leader>eG",
         function()
           require("neo-tree.command").execute({
             toggle = true,
@@ -79,7 +79,7 @@ return {
         desc = "Git Status Left(cwd)",
       },
       {
-        "<leader>eG",
+        "<leader>eg",
         function()
           require("neo-tree.command").execute({
             toggle = true,

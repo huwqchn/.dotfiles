@@ -18,8 +18,6 @@ _darcs
 \.git
 \.gitignore
 \.bin
-\.script
-\.font
 \pkglist.*
 ^/.Xmodmap
 .+~          # emacs backup files

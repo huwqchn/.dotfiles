@@ -19,6 +19,8 @@ elif [[ $(uname) == 'Linux' ]]; then
 	alias xr='xrandr --output HDMI-1 --scale 1.12x1.50'
 	# xrandr --output HDMI-1 --scale 2x2 --primary --output eDP-1 --auto --below HDMI-1
 	alias lo='betterlockscreen'
+  alias mkdir="mkdir -p --verbose"
+  alias rmdir="rmdir -p --verbose"
 fi
 alias doom='~/.emacs.d/bin/doom'
 alias v='nvim'
@@ -27,8 +29,6 @@ alias la="exa -a --color=always --icons --group-directories-first"
 alias tree="lsd --tree"
 alias cat="bat"
 alias du="dust"
-# alias mkdir="mkdir -p --verbose"
-# alias rmdir="rmdir -p --verbose"
 
 # some git aliases
 alias gp="git push"
@@ -75,3 +75,4 @@ alias znvim="cd ~/.config/nvim/"
 alias poly="~/.config/polybar/launch.sh"
 alias cc="cc -Wall -Werror -Wextra"
 alias pc="proxychains4"
+alias convert2wallpaper="convert -resize $(xdpyinfo | grep dimensions | cut -d\  -f7 | cut -dx -f1)"

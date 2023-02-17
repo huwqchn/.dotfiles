@@ -48,7 +48,7 @@ exec_always --no-startup-id picom
 # exec_always albert
 
 # Autostart application
-# exec --no-startup-id ~/.dotfiles/.scripts/i3/run-mailsync.sh
+# exec --no-startup-id ~/.scripts/i3/run-mailsync.sh
 # exec variety
 # paste manager
 exec --no-startup-id copyq &
@@ -61,8 +61,8 @@ exec_always --no-startup-id ~/.config/polybar/launch.sh
 
 #notif
 exec --no-startup-id dunst &
-#exec_always --no-startup-id ~/.dotfiles/.scripts/tap-to-click.sh
-exec --no-startup-id ~/.dotfiles/.scripts/inverse-scroll.sh
+#exec_always --no-startup-id ~/.scripts/tap-to-click.sh
+exec --no-startup-id ~/.scripts/inverse-scroll.sh
 
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
@@ -86,7 +86,7 @@ bindsym $mod+Shift+q kill
 
 # start dmenu (a program launcher)
 # bindsym $mod+d exec --no-startup-id dmenu_run
-bindsym $mod+t exec --no-startup-id ~/.dotfiles/.scripts/applauncher.sh
+bindsym $mod+t exec --no-startup-id ~/.scripts/applauncher.sh
 
 bindsym $mod+c exec $browser
 # A more modern dmenu replacement is rofi:

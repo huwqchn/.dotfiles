@@ -2,8 +2,14 @@
 
 pgrep -x sxhkd >/dev/null || sxhkd &
 
-$HOME/.dotfiles/.scripts/inverse-scroll.sh
+$HOME/.scripts/inverse-scroll.sh
 $HOME/.config/polybar/launch.sh
+eww daemon &
+$HOME/.config/conky/Auva/start.sh &
+bash $HOME/.config/bspwm/scripts/fix-plank
+xsetroot -cursor_name left_ptr &
+/usr/lib/mate-polkit/polkit-mate-authentication-agent-1 &
+# bash $HOME/.config/bspwm/scripts/fix-plank
 
 # Get colors from .Xresources #
 xrdb ~/.Xresources
@@ -80,4 +86,6 @@ udiskie &
 copyq &
 /usr/bin/emacs --daemon &
 feh --bg-fill -no-fehbg ~/OneDrive/Wallpapers/tokyo-night31.png
+# parcellite &
+# plank &
 # dwall -s tokyo

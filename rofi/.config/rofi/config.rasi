@@ -1,14 +1,17 @@
 configuration{
 	modi: "run,drun";
 	lines: 5;
-	font: "JetBrainsMono Nerd Font Medium 14";
+	font: "Sofia Por 16";
 	show-icons: true;
 	icon-theme: "Papirus";
-	terminal: "alacritty";
+	terminal: "kitty";
 	drun-display-format: "{name}";
 	location: 0;
 	disable-history: false;
 	hide-scrollbar: true;
+  /* display-drun: " 󰵆  Apps "; */
+  /* display-run: " 󰆍  Run "; */
+  /* display-window: " 󱂬  Window"; */
 	display-drun: "   Apps ";
 	display-run: "   Run ";
 	display-window: " 﩯  Window ";
@@ -93,11 +96,13 @@ element-text {
 	vertical-align: 0.5;
 	horizontal-align: 0.5;
 	expand: true;
-	font: "JetBrainsMono Nerd Font Medium 10";
+	font: "Sofia Pro Bold 14";
 }
 
 mode-switcher {
 	spacing: 0;
+  margin: 5 10 5 10;
+  padding: 10 50 5 50;
 }
 
 button {
@@ -112,5 +117,3 @@ button selected {
   background-color: @bg-col;
   text-color: @blue;
 }
-
-
