@@ -21,6 +21,7 @@ elif [[ $(uname) == 'Linux' ]]; then
 	alias lo='betterlockscreen'
   alias mkdir="mkdir -p --verbose"
   alias rmdir="rmdir -p --verbose"
+  alias convert2wallpaper="convert -resize $(xdpyinfo | grep dimensions | cut -d\  -f7 | cut -dx -f1)"
 fi
 alias doom='~/.emacs.d/bin/doom'
 alias v='nvim'
@@ -75,4 +76,3 @@ alias znvim="cd ~/.config/nvim/"
 alias poly="~/.config/polybar/launch.sh"
 alias cc="cc -Wall -Werror -Wextra"
 alias pc="proxychains4"
-alias convert2wallpaper="convert -resize $(xdpyinfo | grep dimensions | cut -d\  -f7 | cut -dx -f1)"

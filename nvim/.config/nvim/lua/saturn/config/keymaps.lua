@@ -165,10 +165,28 @@ map("n", "<C-Right>", ":vertical resize +2<CR>", { desc = "Increase window width
 map({ "n", "x" }, "s", "<nop>", { desc = "split/surround/select" })
 
 -- split the screens
-map("n", "su", ":set nosplitbelow<CR>:split<CR>:set splitbelow<CR>", { desc = "split above" })
-map("n", "se", ":set splitbelow<CR>:split<CR>", { desc = "split below" })
-map("n", "sn", ":set nosplitright<CR>:vsplit<CR>:set splitright<CR>", { desc = "split left" })
-map("n", "si", ":set splitright<CR>:vsplit<CR>", { desc = "split right" })
+-- map("n", "su", ":set nosplitbelow<CR>:split<CR>:set splitbelow<CR>", { desc = "split above" })
+-- map("n", "se", ":set splitbelow<CR>:split<CR>", { desc = "split below" })
+-- map("n", "sn", ":set nosplitright<CR>:vsplit<CR>:set splitright<CR>", { desc = "split left" })
+-- map("n", "si", ":set splitright<CR>:vsplit<CR>", { desc = "split right" })
+
+map("n", "su", function()
+  vim.opt.splitbelow = false
+  vim.cmd([[split]])
+  vim.opt.splitbelow = true
+end, { desc = "split above" })
+map("n", "se", function()
+  vim.opt.splitbelow = true
+  vim.cmd([[split]])
+end, { desc = "split below" })
+map("n", "sn", function()
+  vim.opt.splitright = false
+  vim.cmd([[vsplit]])
+end, { desc = "split left" })
+map("n", "si", function()
+  vim.opt.splitright = true
+  vim.cmd([[vsplit]])
+end, { desc = "split right" })
 
 -- Rotate window
 map("n", "<leader>wU", "<C-w>b<C-w>K", { desc = "rotate window up" })
