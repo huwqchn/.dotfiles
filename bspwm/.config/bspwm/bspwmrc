@@ -2,7 +2,8 @@
 
 pgrep -x sxhkd >/dev/null || sxhkd &
 
-$HOME/.scripts/setcursor.sh
+# $HOME/.scripts/setcursor.sh
+#
 # Get colors from .Xresources #
 xrdb ~/.Xresources
 # xmodmap ~/.Xmodmap
