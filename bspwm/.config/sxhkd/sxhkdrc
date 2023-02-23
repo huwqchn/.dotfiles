@@ -30,9 +30,9 @@ super + Tab
 super + Escape
 	pkill -USR1 -x sxhkd
 
-# jqmenu
-super + z
-  jgmenu_run
+# Toggle right click context menu.
+~button3
+	  xqp 0 $(xdo id -N Bspwm -n root) && jgmenu_run 
 
 #applauncher
 # super + a ; {a, b}
