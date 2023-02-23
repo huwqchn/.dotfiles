@@ -74,6 +74,10 @@ super + {t,shift + t,shift + f,f}
 super + ctrl + {m,x,y,z}
 	bspc node -g {marked,locked,sticky,private}
 
+# bsp layout
+super + ctrl + {_, shift + } l
+ bsp-layout {next,previous} --layout tiled,monocle,grid,wide,even
+
 # adjust the split ratios
 # super + b
 # 	bspc node -B

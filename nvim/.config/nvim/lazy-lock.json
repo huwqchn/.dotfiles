@@ -110,4 +110,3 @@
   "yanky.nvim": { "branch": "main", "commit": "c41e4c31990ae1f5f3517de8dc006e4da235a043" },
   "zen-mode.nvim": { "branch": "main", "commit": "3c92f503823088862ca2a7809d1c7edc90fb92fa" },
   "zk-nvim": { "branch": "main", "commit": "0413c52500cd0133b0cd8e7e7d43084855ac1760" }
-}

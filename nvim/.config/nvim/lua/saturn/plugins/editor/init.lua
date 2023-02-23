@@ -1117,4 +1117,5 @@ return {
   },
 
   { import = "saturn.plugins.extra.ufo" },
+  { import = "saturn.plugins.extra.nvim-tree" },
 }

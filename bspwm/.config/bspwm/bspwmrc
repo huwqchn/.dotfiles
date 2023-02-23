@@ -10,16 +10,16 @@ getcolors() {
 	BACKGROUND=$(xrdb -query | grep 'background:' | awk '{print $NF}')
 	BLACK=$(xrdb -query | grep 'color0:' | awk '{print $NF}')
 	RED=$(xrdb -query | grep 'color1:' | awk '{print $NF}')
-	GREEN=$(xrdb -query | grep 'color2:' | awk '{print $NF}')
-	YELLOW=$(xrdb -query | grep 'color3:' | awk '{print $NF}')
+	YELLOW=$(xrdb -query | grep 'color2:' | awk '{print $NF}')
+	GREEN=$(xrdb -query | grep 'color3:' | awk '{print $NF}')
 	BLUE=$(xrdb -query | grep 'color4:' | awk '{print $NF}')
 	MAGENTA=$(xrdb -query | grep 'color5:' | awk '{print $NF}')
 	CYAN=$(xrdb -query | grep 'color6:' | awk '{print $NF}')
 	WHITE=$(xrdb -query | grep 'color7:' | awk '{print $NF}')
 	BRIGHT_BLACK=$(xrdb -query | grep 'color8:' | awk '{print $NF}')
 	BRIGHT_RED=$(xrdb -query | grep 'color9:' | awk '{print $NF}')
-	BRIGHT_GREEN=$(xrdb -query | grep 'color10:' | awk '{print $NF}')
-	BRIGHT_YELLOW=$(xrdb -query | grep 'color11:' | awk '{print $NF}')
+	BRIGHT_YELLLOW=$(xrdb -query | grep 'color10:' | awk '{print $NF}')
+	BRIGHT_BLUE=$(xrdb -query | grep 'color11:' | awk '{print $NF}')
 	BRIGHT_BLUE=$(xrdb -query | grep 'color12:' | awk '{print $NF}')
 	BRIGHT_MAGENTA=$(xrdb -query | grep 'color13:' | awk '{print $NF}')
 	BRIGHT_CYAN=$(xrdb -query | grep 'color14:' | awk '{print $NF}')
@@ -74,7 +74,6 @@ $HOME/.config/conky/Auva/start.sh &
 bash $HOME/.config/bspwm/scripts/fix-plank
 xsetroot -cursor_name left_ptr &
 /usr/lib/mate-polkit/polkit-mate-authentication-agent-1 &
-# bash $HOME/.config/bspwm/scripts/fix-plank
 xfce4-power-manager &
 ukui-window-switch &
 dunst &
@@ -84,6 +83,9 @@ udiskie &
 copyq &
 /usr/bin/emacs --daemon &
 feh --bg-fill -no-fehbg ~/OneDrive/Wallpapers/tokyo-night31.png
+blueman-applet &
+blueman-manager &
 # parcellite &
 # plank &
+# bash $HOME/.config/bspwm/scripts/fix-plank
 # dwall -s tokyo

@@ -7,31 +7,31 @@ CURRENT=$(cat $HOME/.config/bspwm/scripts/current-layout)
 # Switch layouts
 
 # Tiled
-if [[ $CURRENT == "[~]" ]]; then
+if [[ $CURRENT == "Tiled" ]]; then
         bsp-layout set tiled
-        echo "[=]" > $HOME/.config/bspwm/scripts/current-layout
+        echo "Tiled" > $HOME/.config/bspwm/scripts/current-layout
 fi
 
 # Monocle
-if [[ $CURRENT == "[=]" ]]; then
+if [[ $CURRENT == "Monocle" ]]; then
         bsp-layout set monocle
-        echo "[M]" > $HOME/.config/bspwm/scripts/current-layout
+        echo "Monocle" > $HOME/.config/bspwm/scripts/current-layout
 fi
 
 # Grid
-if [[ $CURRENT == "[M]" ]]; then
+if [[ $CURRENT == "Grid" ]]; then
         bsp-layout set grid
-        echo "[ | ]" > $HOME/.config/bspwm/scripts/current-layout
+        echo "Grid" > $HOME/.config/bspwm/scripts/current-layout
 fi
 
 # Wide
-if [[ $CURRENT == "[ | ]" ]]; then
+if [[ $CURRENT == "Wide" ]]; then
         bsp-layout set wide
-        echo "[_]" > $HOME/.config/bspwm/scripts/current-layout
+        echo "Wide" > $HOME/.config/bspwm/scripts/current-layout
 fi
 
 # Even
-if [[ $CURRENT == "[_]" ]]; then
+if [[ $CURRENT == "Even" ]]; then
         bsp-layout set even
-        echo "[~]" > $HOME/.config/bspwm/scripts/current-layout
+        echo "Even" > $HOME/.config/bspwm/scripts/current-layout
 fi
