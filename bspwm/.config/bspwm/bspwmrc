@@ -71,9 +71,8 @@ bspc rule -a GLava state=floating layer=below sticky=true locked=true border=off
 sleep 10 && $HOME/.config/bspwm/scripts/bspfloat floating 5 &> $HOME/.log.bspfloat.txt &
 $HOME/.scripts/inverse-scroll.sh
 $HOME/.config/polybar/launch.sh
-eww daemon &
 $HOME/.config/conky/Auva/start.sh &
-bash $HOME/.config/bspwm/scripts/fix-plank
+eww daemon &
 xsetroot -cursor_name left_ptr &
 /usr/lib/mate-polkit/polkit-mate-authentication-agent-1 &
 xfce4-power-manager &
