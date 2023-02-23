@@ -30,10 +30,6 @@ super + Tab
 super + Escape
 	pkill -USR1 -x sxhkd
 
-# Toggle right click context menu.
-~button3
-	  xqp 0 $(xdo id -N Bspwm -n root) && jgmenu_run 
-
 #applauncher
 # super + a ; {a, b}
 #   {arandr,brave}
@@ -202,3 +198,64 @@ super + ctrl + alt + {n,e,u,i}
   , d1=right;  d2=left;   dx=$n;  dy=0;   \
   } \
   bspc node --resize $d1 $dx $dy || bspc node --resize $d2 $dx $dy
+
+#
+# System keys
+#
+
+# Play music
+XF86AudioPlay 
+  playerctl play
+
+# Pause music
+XF86AudioPause
+	playerctl pause
+
+# Music next
+XF86AudioNext
+	playerctl next
+
+# Music previous
+XF86AudioPrev
+	playerctl previous
+
+# Screenshot Area
+Print
+	$HOME/.scripts/screenshot --area-cb
+
+# Screenshot Full
+shift + Print
+	$HOME/.scripts/screenshot --full-cb
+
+
+# Save screenshot to file with clipboard
+ctrl + shift + Print
+	$HOME/.scripts/screenshot --full
+
+# Screenshot Area and save it
+ctrl + Print
+        $HOME/.scripts/screenshot --area
+
+# Volume Up
+XF86AudioRaiseVolume
+  amixer sset Master 5%+ && $HOME/.config/eww/Misc/scripts/volume
+
+# Volume Down
+XF86AudioLowerVolume
+  amixer sset Master 5%- && $HOME/.config/eww/Misc/scripts/volume
+
+# Volume Mute
+XF86AudioMute
+  amixer sset Master toggle && $HOME/.config/eww/Misc/scripts/volume
+
+# Brightness Up
+XF86MonBrightnessUp
+  brightnessctl s 20+ && $HOME/.config/eww/Misc/scripts/brightness
+
+# Brightness Down
+XF86MonBrightnessDown
+  brightnessctl s 20- && $HOME/.config/eww/Misc/scripts/brightness
+
+# Toggle right click context menu.
+~button3
+	  xqp 0 $(xdo id -N Bspwm -n root) && jgmenu_run 

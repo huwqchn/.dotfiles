@@ -3,7 +3,7 @@
 pgrep -x sxhkd >/dev/null || sxhkd &
 
 # $HOME/.scripts/setcursor.sh
-#
+
 # Get colors from .Xresources #
 xrdb ~/.Xresources
 # xmodmap ~/.Xmodmap
@@ -87,6 +87,5 @@ feh --bg-fill -no-fehbg ~/OneDrive/Wallpapers/tokyo-night31.png
 # blueman-applet &
 # blueman-manager &
 # parcellite &
-# plank &
 # bash $HOME/.config/bspwm/scripts/fix-plank
-# dwall -s tokyo
+# plank &
