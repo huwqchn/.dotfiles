@@ -32,7 +32,7 @@ bspc monitor -d I II III IV V VI VII VIII IX X
 bspc config remove_disabled_monitors true
 bspc config remove_unplugged_monitors true
 
-bspc config border_width 3
+bspc config border_width 4
 bspc config window_gap 12
 
 bspc config split_ratio 0.50
@@ -83,8 +83,8 @@ udiskie &
 copyq &
 /usr/bin/emacs --daemon &
 feh --bg-fill -no-fehbg ~/OneDrive/Wallpapers/tokyo-night31.png
-blueman-applet &
-blueman-manager &
+# blueman-applet &
+# blueman-manager &
 # parcellite &
 # plank &
 # bash $HOME/.config/bspwm/scripts/fix-plank
