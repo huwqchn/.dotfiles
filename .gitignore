@@ -29,3 +29,4 @@ gtk-3.0/.config/gtk-3.0/bookmarks
 mpv/.config/mpv/watch_later
 clash/.config/clash/cache.db
 pacman/etc/pacman.d/gnupg
+polybar/.config/polybar/scripts/tray-status
