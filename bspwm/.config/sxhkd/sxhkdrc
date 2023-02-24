@@ -75,7 +75,7 @@ super + ctrl + shift + h
   bspc node "$(bspc query -N -n .hidden)" -g hidden=off
 
 # bsp layout
-super + ctrl + {_, shift + } l
+super + ctrl + {_, shift + }l
  bsp-layout {next,previous} --layout tiled,monocle,grid,wide,even
 
 #
@@ -109,6 +109,10 @@ super + {minus,equal}
 # focus the next/previous monitor
 super + shift + {less,greater}
   bspc monitor -f {prev,next}
+
+# send to monitor
+super + bracket{left,right}
+  bspc node -m {last, next} --follow
 
 # focus the last node/desktop
 super + {grave, shift + grave}
