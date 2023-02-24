@@ -240,44 +240,44 @@ return {
     end,
   },
 
-  {
-    "karb94/neoscroll.nvim",
-    keys = {
-      { "<C-k>", mode = { "n", "v" } },
-      { "<C-d>", mode = { "n", "v" } },
-      { "<C-b>", mode = { "n", "v" } },
-      { "<C-f>", mode = { "n", "v" } },
-      { "<C-y>", mode = { "n", "v" } },
-      { "<C-m>", mode = { "n", "v" } },
-      { "zt", mode = "n" },
-      { "zz", mode = "n" },
-      { "zb", mode = "n" },
-    },
-    config = function()
-      require("neoscroll").setup({
-        easing_function = "quadratic", -- Default easing function
-        -- Set any other options as needed
-      })
-
-      local t = {}
-      -- Syntax: t[keys] = {function, {function arguments}}
-      -- Use the "sine" easing function
-      t["<C-k>"] = { "scroll", { "-vim.wo.scroll", "true", "350", [['sine']] } }
-      t["<C-d>"] = { "scroll", { "vim.wo.scroll", "true", "350", [['sine']] } }
-      -- Use the "circular" easing function
-      t["<C-b>"] = { "scroll", { "-vim.api.nvim_win_get_height(0)", "true", "500", [['circular']] } }
-      t["<C-f>"] = { "scroll", { "vim.api.nvim_win_get_height(0)", "true", "500", [['circular']] } }
-      -- Pass "nil" to disable the easing animation (constant scrolling speed)
-      t["<C-y>"] = { "scroll", { "-0.10", "false", "100", nil } }
-      t["<C-m>"] = { "scroll", { "0.10", "false", "100", nil } }
-      -- When no easing function is provided the default easing function (in this case "quadratic") will be used
-      t["zt"] = { "zt", { "300" } }
-      t["zz"] = { "zz", { "300" } }
-      t["zb"] = { "zb", { "300" } }
-
-      require("neoscroll.config").set_mappings(t)
-    end,
-  },
+  -- {
+  --   "karb94/neoscroll.nvim",
+  --   keys = {
+  --     { "<C-k>", mode = { "n", "v" } },
+  --     { "<C-d>", mode = { "n", "v" } },
+  --     { "<C-b>", mode = { "n", "v" } },
+  --     { "<C-f>", mode = { "n", "v" } },
+  --     { "<C-y>", mode = { "n", "v" } },
+  --     { "<C-m>", mode = { "n", "v" } },
+  --     { "zt", mode = "n" },
+  --     { "zz", mode = "n" },
+  --     { "zb", mode = "n" },
+  --   },
+  --   config = function()
+  --     require("neoscroll").setup({
+  --       easing_function = "quadratic", -- Default easing function
+  --       -- Set any other options as needed
+  --     })
+  --
+  --     local t = {}
+  --     -- Syntax: t[keys] = {function, {function arguments}}
+  --     -- Use the "sine" easing function
+  --     t["<C-k>"] = { "scroll", { "-vim.wo.scroll", "true", "350", [['sine']] } }
+  --     t["<C-d>"] = { "scroll", { "vim.wo.scroll", "true", "350", [['sine']] } }
+  --     -- Use the "circular" easing function
+  --     t["<C-b>"] = { "scroll", { "-vim.api.nvim_win_get_height(0)", "true", "500", [['circular']] } }
+  --     t["<C-f>"] = { "scroll", { "vim.api.nvim_win_get_height(0)", "true", "500", [['circular']] } }
+  --     -- Pass "nil" to disable the easing animation (constant scrolling speed)
+  --     t["<C-y>"] = { "scroll", { "-0.10", "false", "100", nil } }
+  --     t["<C-m>"] = { "scroll", { "0.10", "false", "100", nil } }
+  --     -- When no easing function is provided the default easing function (in this case "quadratic") will be used
+  --     t["zt"] = { "zt", { "300" } }
+  --     t["zz"] = { "zz", { "300" } }
+  --     t["zb"] = { "zb", { "300" } }
+  --
+  --     require("neoscroll.config").set_mappings(t)
+  --   end,
+  -- },
 
   {
     "petertriho/nvim-scrollbar",
@@ -414,5 +414,5 @@ return {
     end,
   },
   { import = "saturn.plugins.extra.noice" },
-  -- { import = "saturn.plugins.extra.mini-animate" },
+  { import = "saturn.plugins.extra.mini-animate" },
 }

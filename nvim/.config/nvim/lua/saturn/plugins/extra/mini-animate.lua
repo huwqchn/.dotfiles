@@ -1,6 +1,6 @@
 return {
   {
-    "karb94/neoscroll.nvim",
+    "nacro90/numb.nvim",
     enabled = false,
   },
   -- animations

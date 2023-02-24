@@ -3,4 +3,5 @@ return {
   -- { import = "saturn.plugins.lang.rust" },
   { import = "saturn.plugins.lang.neorg" },
   { import = "saturn.plugins.lang.python" },
+  { import = "saturn.plugins.lang.yuck" },
 }

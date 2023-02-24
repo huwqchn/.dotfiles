@@ -524,6 +524,24 @@ return {
         desc = "Goto Symbol",
       },
       {
+        "<leader>sS",
+        Util.telescope("lsp_workspace_symbols", {
+          symbols = {
+            "Class",
+            "Function",
+            "Method",
+            "Constructor",
+            "Interface",
+            "Module",
+            "Struct",
+            "Trait",
+            "Field",
+            "Property",
+          },
+        }),
+        desc = "Goto Symbol (Workspace)",
+      },
+      {
         "<leader>s<tab>",
         "<cmd>lua require('telescope').extensions['telescope-tabs'].list_tabs(require('telescope.themes').get_dropdown{previewer = false, initial_mode='normal', prompt_title='Tabs'})<cr>",
         desc = "Find Tab",
@@ -1117,5 +1135,4 @@ return {
   },
 
   { import = "saturn.plugins.extra.ufo" },
-  { import = "saturn.plugins.extra.nvim-tree" },
 }

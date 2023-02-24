@@ -12,6 +12,15 @@ return {
   {
     "folke/noice.nvim",
     event = "VeryLazy",
+    init = function()
+      -- when noice is not enabled, install notify on VeryLazy
+      local Util = require("saturn.utils.plugin")
+      if not Util.has("noice.nvim") then
+        Util.on_very_lazy(function()
+          vim.notify = require("notify")
+        end)
+      end
+    end,
     cond = not isGui(),
     config = function()
       require("noice").setup({
