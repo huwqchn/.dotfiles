@@ -30,10 +30,6 @@ super + Tab
 super + Escape
 	pkill -USR1 -x sxhkd
 
-#applauncher
-# super + a ; {a, b}
-#   {arandr,brave}
-
 #
 # bspwm hotkeys
 #
@@ -71,16 +67,16 @@ super + {t,shift + t,shift + f,f}
 	bspc node -t {tiled,pseudo_tiled,\~floating,\~fullscreen}
 
 # set the node flags
-super + ctrl + {m,x,y,z}
-	bspc node -g {marked,locked,sticky,private}
+super + ctrl + {h,m,x,y,z,@space}
+	bspc node -g {hidden,marked,locked,sticky,private,urgent}
+
+# unhidden node
+super + ctrl + shift + h
+  bspc node "$(bspc query -N -n .hidden)" -g hidden=off
 
 # bsp layout
 super + ctrl + {_, shift + } l
  bsp-layout {next,previous} --layout tiled,monocle,grid,wide,even
-
-# adjust the split ratios
-# super + b
-# 	bspc node -B
 
 #
 # focus/swap
@@ -95,18 +91,20 @@ super + {_, shift + }v
  	bspc node -F {vertical,horizontal}
 #
 # focus the node for the given path jump
-# super + {p,b,comma,period}
-	# bspc node -f @{parent,brother,first,second}
+super + {p,b,comma,period}
+	bspc node -f @{parent,brother,first,second}
 
 # focus the next/previous window in the current desktop
 super + {_,shift + }k
 	bspc node -f {next,prev}.local.!hidden.window
 
-#
-
 # focus the next/previous desktop in the current monitor
 super + {h,o}
 	bspc desktop -f {prev,next}.local
+
+# resize gaps
+super + {minus,equal}
+	bspc config -d focused window_gap $((`bspc config -d focused window_gap` {-,+} 12 ))
 
 # focus the next/previous monitor
 super + shift + {less,greater}
@@ -166,6 +164,11 @@ super + ctrl + s
 super + ctrl + p
   peek
 
+# xkill
+super + ctrl + q
+  xkill
+
+
 #
 # move/resize
 #
@@ -181,14 +184,6 @@ super + alt + shift + {n,e,u,i}
 # move a floating window
 super + {Left,Down,Up,Right}
 	bspc node -v {-20 0,0 20,0 -20,20 0}
-
-# amixer
-super + {minus,equal}
-	amixer set Master {5%-,5%+}
-
-#brightnessctl
-super + bracket{left,right}
-  brightnessctl set {5%-,+5%}
 
 super + ctrl + alt + {n,e,u,i}
   n=10; \
@@ -227,14 +222,13 @@ Print
 shift + Print
 	$HOME/.scripts/screenshot --full-cb
 
-
 # Save screenshot to file with clipboard
 ctrl + shift + Print
 	$HOME/.scripts/screenshot --full
 
 # Screenshot Area and save it
 ctrl + Print
-        $HOME/.scripts/screenshot --area
+  $HOME/.scripts/screenshot --area
 
 # Volume Up
 XF86AudioRaiseVolume
@@ -258,4 +252,4 @@ XF86MonBrightnessDown
 
 # Toggle right click context menu.
 ~button3
-	  xqp 0 $(xdo id -N Bspwm -n root) && jgmenu_run 
+  xqp 0 $(xdo id -N Bspwm -n root) && jgmenu_run 
