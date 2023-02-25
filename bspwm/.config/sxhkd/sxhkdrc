@@ -25,6 +25,10 @@ super + @space
 super + shift + @space
  ~/.scripts/runmenu.sh
 
+# Open Clipboard manager
+super + v
+  ~/.scripts/clipmanager.sh
+
 # program switcher
 super + Tab
   ~/.scripts/appswitcher.sh
@@ -94,8 +98,9 @@ super + {_,shift + }{n,e,u,i}
 	bspc node -{f,s} {west,south,north,east}
 
 # flip nodes
-super + {_, shift + }v
- 	bspc node -F {vertical,horizontal}
+# super + {_, shift + }v
+#  	bspc node -F {vertical,horizontal}
+#
 #
 # focus the node for the given path jump
 super + {p,b,comma,period}
