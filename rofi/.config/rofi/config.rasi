@@ -1,7 +1,7 @@
 configuration{
-	modi: "run,drun";
+	modi: "run,drun,window";
 	lines: 5;
-	font: "Sofia Por 12";
+	font: "JetBrainsMono Nerd Font Medium 14";
 	show-icons: true;
 	icon-theme: "Papirus";
 	terminal: "kitty";
@@ -9,13 +9,10 @@ configuration{
 	location: 0;
 	disable-history: false;
 	hide-scrollbar: true;
-  /* display-drun: " 󰵆  Apps "; */
-  /* display-run: " 󰆍  Run "; */
-  /* display-window: " 󱂬  Window"; */
 	display-drun: "   Apps ";
 	display-run: "   Run ";
 	display-window: " 﩯  Window ";
-	/* display-Network: " 󰤨  Network"; */
+	display-Network: " 󰤨  Network";
 	sidebar-mode: true;
   dpi: 192;
 }
@@ -30,10 +27,10 @@ element-text, element-icon , mode-switcher {
 window {
 	height: 52.5%;
 	width: 35%;
-	/* border: 3px; */
+	border: 5px;
 	border-color: @border-col;
 	background-color: @bg-col;
-	border-radius: 12px;
+	border-radius: 15px;
 }
 
 mainbox {
@@ -82,7 +79,7 @@ element {
 }
 
 element-icon {
-	size: 56px;
+	size: 108px;
 	horizontal-align: 0.5;
 }
 
@@ -96,7 +93,7 @@ element-text {
 	vertical-align: 0.5;
 	horizontal-align: 0.5;
 	expand: true;
-	font: "Sofia Pro Bold 14";
+	font: "Sofia Pro Regular 12";
 }
 
 mode-switcher {

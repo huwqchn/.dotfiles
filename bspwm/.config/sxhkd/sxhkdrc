@@ -22,6 +22,9 @@ super + x
 super + @space
 	~/.scripts/applauncher.sh
 
+super + shift + @space
+ ~/.scripts/runmenu.sh
+
 # program switcher
 super + Tab
   ~/.scripts/appswitcher.sh
@@ -29,6 +32,10 @@ super + Tab
 # make sxhkd reload its configuration files:
 super + Escape
 	pkill -USR1 -x sxhkd
+
+# xkill
+super + BackSpace
+  xkill
 
 #
 # bspwm hotkeys
@@ -171,11 +178,6 @@ super + ctrl + s
 # peek
 super + ctrl + p
   peek
-
-# xkill
-super + ctrl + q
-  xkill
-
 
 #
 # move/resize
