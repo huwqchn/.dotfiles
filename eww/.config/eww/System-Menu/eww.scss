@@ -204,13 +204,13 @@
 
 .volume-slider-icon {
   color: $green;
-  font-size: 56px;
+  font-size: 84px;
   text-shadow: 0px 0px 4px #000000;
 }
 
 .brightness-slider-icon {
   color: $yellow;
-  font-size: 48px;
+  font-size: 84px;
   text-shadow: 0px 0px 4px #000000;
 }
 
@@ -249,9 +249,9 @@
 
 .volume-slider-button {
   font-size: 44px;
-  margin: 10px 20px 10px 20px;
+  margin: 25px 20px 25px 20px;
   background-color: $gray-alt;
-  padding: 4px 5px 4px 5px;
+  padding: 8px 5px 4px 5px;
   border-radius: 100px;
   font-weight: bold;
   font-family: "feather";
@@ -259,7 +259,7 @@
 
 .brightness-slider-button {
   font-size: 44px;
-  margin: 10px 20px 10px 20px;
+  margin: 25px 20px 25px 20px;
   background-color: $gray-alt;
   padding: 4px 5px 4px 5px;
   border-radius: 100px;
