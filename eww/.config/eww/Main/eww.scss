@@ -10,57 +10,57 @@
 
 .date-box {
   background-color: $gray-alt;
-  margin: 20px 20px 0px 20px;
-  min-width: 290px;
-  padding: 20px 10px 20px 10px;
-  border-radius: 15px;
+  margin: 40px 40px 0px 40px;
+  min-width: 580px;
+  padding: 40px 20px 40px 20px;
+  border-radius: 30px;
   color: $fg;
 }
 
 .time {
   font-family: "Sofia Pro";
   font-weight: bold;
-  font-size: 100px;
+  font-size: 200px;
 }
 
 .date {
   font-family: "Sofia Pro";
-  font-size: 30px;
+  font-size: 60px;
 }
 
 .weather-box {
   background-color: $gray-alt;
-  margin: 20px 20px 0px 0px;
-  padding: 20px 20px 20px 10px;
-  border-radius: 15px;
-  min-width: 200px;
+  margin: 40px 40px 0px 0px;
+  padding: 40px 40px 40px 20px;
+  border-radius: 30px;
+  min-width: 400px;
 }
 
 .weather-desc {
   color: $gray;
-  font-size: 20px;
+  font-size: 40px;
 }
 
 .weather-temp {
-  font-size: 34px;
+  font-size: 68px;
   color: $fg;
-  padding-top: 10px;
+  padding-top: 20px;
 }
 
 .weather-icon {
   font-family: "JetBrainsMono Nerd Font";
-  font-size: 60px;
+  font-size: 120px;
 }
 
 .stats-box {
   background-color: $gray-alt;
-  margin: 20px 20px 0px 20px;
-  padding: 20px 35px 20px 25px;
-  border-radius: 15px;
+  margin: 40px 40px 0px 40px;
+  padding: 40px 70px 40px 50px;
+  border-radius: 30px;
 }
 
 .stats-header {
-  font-size: 22px;
+  font-size: 44px;
   font-weight: bold;
   color: $gray;
 }
@@ -69,117 +69,117 @@
 .brightness-icon,
 .cpu-icon,
 .memory-icon {
-  font-size: 24px;
+  font-size: 48px;
   color: $fg;
 }
 
 .volume-scale trough, .brightness-scale trough, .cpu-scale trough, .memory-scale trough {
   all: unset;
   background-color: $gray;
-  min-height: 10px;
-  border-radius: 15px;
-  margin-left: 10px;
+  min-height: 20px;
+  border-radius: 30px;
+  margin-left: 20px;
 }
 
 .volume-scale highlight {
   background-color: $green;
-  border-radius: 15px;
+  border-radius: 30px;
 }
 
 .brightness-scale highlight {
   background-color: $yellow;
-  border-radius: 15px;
+  border-radius: 30px;
 }
 
 .cpu-scale highlight {
   background-color: $red;
-  border-radius: 15px;
+  border-radius: 30px;
 }
 
 .memory-scale highlight {
   background-color: $blue;
-  border-radius: 15px;
+  border-radius: 30px;
 }
 
 .critical-stuff-box {
-  margin: 20px 20px 0px 0px;
-  border-radius: 15px;
+  margin: 40px 40px 0px 0px;
+  border-radius: 30px;
   background-color: $gray-alt;
-  min-width: 205px;
+  min-width: 410px;
 }
 
 .critical-notification-circle label {
-  padding: 50px 50px 45px 50px;
+  padding: 100px 100px 90px 100px;
 }
 
 .critical-notification-circle {
   color: $red;
   background-color: $gray;
-  font-size: 40px;
-  margin: 20px 20px 20px 20px;
+  font-size: 80px;
+  margin: 40px 40px 40px 40px;
 }
 
 .critical-notification-text {
   background-color: $red;
   color: $fg;
-  border-radius: 0px 0px 15px 15px;
-  padding: 10px 0px 10px 0px;
-  font-size: 18px;
+  border-radius: 0px 0px 30px 30px;
+  padding: 20px 0px 20px 0px;
+  font-size: 36px;
   font-weight: bold;
 }
 
 .music-art-box {
   background-size: cover;
   background-repeat: no-repeat;
-  min-width: 450px;
-  min-height: 200px;
-  border-radius: 17px;
+  min-width: 900px;
+  min-height: 400px;
+  border-radius: 34px;
   background-position: center;
-  margin: 20px 0px 0px 20px;
+  margin: 40px 0px 0px 40px;
 }
 
 .music-title {
-  margin: 20px 0px 0px 20px;
-  font-size: 28px;
+  margin: 40px 0px 0px 40px;
+  font-size: 56px;
   font-weight: bold;
   color: $fg;
 }
 
 .music-artist {
-  margin: 10px 0px 0px 20px;
-  font-size: 20px;
+  margin: 20px 0px 0px 40px;
+  font-size: 40px;
   color: $fg-alt;
 }
 
 .music-length {
-  margin: 90px 0px 0px 20px;
-  font-size: 18px;
+  margin: 180px 0px 0px 40px;
+  font-size: 36px;
   font-weight: bold;
   color: $fg-alt;
 }
 
 .music-stuff-box {
-  min-height: 200px;
-  border-radius: 15px;
+  min-height: 400px;
+  border-radius: 30px;
   background: linear-gradient(to right, $bg-alt, transparent);
 }
 
 .music-controls-box {
-  margin: 20px 0px 0px 20px;
+  margin: 40px 0px 0px 40px;
   background-color: $gray-alt;
-  padding: 0px 23px 0px 23px;
-  border-radius: 15px;
-  min-width: 38px;
-  text-shadow: 0px 0px 10px rgba(0, 0, 0, 1);
+  padding: 0px 46px 0px 46px;
+  border-radius: 30px;
+  min-width: 76px;
+  text-shadow: 0px 0px 20px rgba(0, 0, 0, 1);
 }
 
 .music-next,
 .music-previous {
-  font-size: 30px;
+  font-size: 60px;
 }
 
 .music-pp {
-  font-size: 44px;
+  font-size: 88px;
   color: $fg;
 }
 
@@ -190,24 +190,24 @@
 }
 
 .profile-stuff-box {
-  margin: 20px 20px 0px 20px;
+  margin: 40px 40px 0px 40px;
   background-color: $gray-alt;
-  border-radius: 15px;
-  padding: 15px 20px 15px 20px;
+  border-radius: 30px;
+  padding: 30px 40px 30px 40px;
 }
 
 .profile-img {
-  border-radius: 10px;
+  border-radius: 20px;
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
-  min-width: 90px;
-  box-shadow: 0px 0px 30px rgba(0, 0, 0, 1);
+  min-width: 180px;
+  box-shadow: 0px 0px 60px rgba(0, 0, 0, 1);
 }
 
 .profile-stuff {
-  padding: 7px 0px 0px 30px;
-  font-size: 22px;
+  padding: 14px 0px 0px 60px;
+  font-size: 44px;
   color: $fg;
 }
 
@@ -220,31 +220,31 @@
 }
 
 .notification-headers {
-  padding: 20px 45px 20px 32px;
+  padding: 40px 90px 40px 64px;
   color: $blue;
 }
 
 .notification-headers-label {
-  font-size: 28;
+  font-size: 56;
   font-weight: bold;
   font-family: Sofia Pro;
-  text-shadow: 0px 0px 10px #000000;
-  padding: 0px 160px 0px 160px;
+  text-shadow: 0px 0px 20px #000000;
+  padding: 0px 320px 0px 320px;
 }
 
 .notification-card-eventbox {
   background-color: $gray-alt;
-  border-radius: 15px;
+  border-radius: 30px;
 }
 
 .notification-headers-clear {
-  margin: 20px 25px 25px 0px;
+  margin: 40px 50px 50px 0px;
   background-color: $gray-alt;
-  border-radius: 15px;
-  padding: 15px 15px 13px 15px;
-  font-size: 22px;
+  border-radius: 30px;
+  padding: 30px 30px 26px 30px;
+  font-size: 44px;
   font-weight: bold;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
 }
 
 .notification-headers-clear:hover {
@@ -252,94 +252,94 @@
 }
 
 .notifications-empty-box {
-  padding-left: 20px;
-  padding-right: 20px;
+  padding-left: 40px;
+  padding-right: 40px;
 }
 
 .notifications-empty-label {
-  padding-top: 10px;
+  padding-top: 20px;
   color: $red;
-  font-size: 30px;
+  font-size: 60px;
   font-weight: bold;
-  padding-left: 80px;
-  padding-right: 80px;
+  padding-left: 160px;
+  padding-right: 160px;
 }
 
 .notification-scroll-box {
-  margin: 0px 16px 0px 16px;
+  margin: 0px 32px 0px 32px;
 }
 
 .notification-card-box {
-  padding: 20px 20px 20px 20px;
+  padding: 40px 40px 40px 40px;
 }
 
 .notification-card-LOW {
   background-color: $gray-alt;
   color: $yellow;
-  padding: 0px 10px 0px 8px;
-  font-size: 30;
-  border-radius: 15px;
+  padding: 0px 20px 0px 16px;
+  font-size: 60;
+  border-radius: 30px;
 }
 
 .notification-card-NORMAL {
   background-color: $gray-alt;
   color: $blue;
-  padding: 0px 10px 0px 8px;
-  font-size: 30;
-  border-radius: 15px;
+  padding: 0px 20px 0px 8px;
+  font-size: 60;
+  border-radius: 30px;
 }
 
 .notification-card-CRITICAL {
   background-color: $gray-alt;
   color: $red;
-  padding: 0px 10px 0px 8px;
-  font-size: 30;
-  border-radius: 15px;
+  padding: 0px 20px 0px 16px;
+  font-size: 60;
+  border-radius: 30px;
 }
 
 .notification-card-OTHER {
   background-color: $gray-alt;
   color: $green;
-  padding: 0px 10px 0px 8px;
-  font-size: 30;
-  border-radius: 15px;
+  padding: 0px 20px 0px 8px;
+  font-size: 60;
+  border-radius: 30px;
 }
 
 .notification-summary {
   font-weight: bold;
-  font-size: 22px;
-  padding-bottom: 10px;
+  font-size: 44px;
+  padding-bottom: 20px;
   color: $fg;
 }
 
 .notification-card-notify-close {
   color: $red;
-  padding: 2px 2px 2px 2px;
-  font-size: 22px;
+  padding: 4px 4px 4px 4px;
+  font-size: 44px;
 }
 
 .notification-body {
   color: $fg;
-  font-size: 18px;
+  font-size: 36px;
 }
 
 .notification-image {
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
-  min-width: 60px;
-  border-radius: 10px;
-  margin: 16px 0px 16px 20px;
+  min-width: 120px;
+  border-radius: 20px;
+  margin: 32px 0px 32px 40px;
 }
 
 .notification-card-header-box {
   background-color: $bg-alt;
-  border-radius: 15px 15px 0px 0px;
-  padding: 5px 20px 5px 20px;
+  border-radius: 30px 30px 0px 0px;
+  padding: 10px 40px 10px 40px;
 }
 
 .notification-app-name {
-  font-size: 18px;
+  font-size: 36px;
   font-weight: bold;
   color: $fg;
 }
