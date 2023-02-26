@@ -108,6 +108,9 @@ return {
       filesystem = {
         bind_to_cwd = false,
         follow_current_file = true,
+        filtered_items = {
+          hide_dofiles = true,
+        },
       },
       window = {
         -- width = 30,
