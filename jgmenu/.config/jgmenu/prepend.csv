@@ -1,5 +1,5 @@
-@icon,,18,17,16,16,0,left,top,#7AA2F7,#7AA2F7,/home/johnson/.config/jgmenu/MenuIcons/search.png
-@search,,42,15,150,20,2,left,top,#c0caf5,#7aa2f7,Search
+@icon,,36,34,32,32,0,left,top,#7AA2F7,#7AA2F7,/home/johnson/.config/jgmenu/MenuIcons/search.png
+@search,,84,30,300,40,4,left,top,#c0caf5,#7aa2f7,Search
 Terminal,kitty,/home/johnson/.config/jgmenu/MenuIcons/terminal.png
 Web Browser,google-chrome-stable,/home/johnson/.config/jgmenu/MenuIcons/web-browser.png
 File manager,nautilus,/home/johnson/.config/jgmenu/MenuIcons/file-manager.png
