@@ -30,7 +30,7 @@
 }
 
 .main-wifi-button {
-  font-size: 56px;
+  font-size: 112px;
   padding: 0px 15px 0px 15px;
 }
 
@@ -58,7 +58,7 @@
 }
 
 .main-bluetooth-button {
-  font-size: 56px;
+  font-size: 112px;
   padding: 0px 15px 0px 15px;
 }
 
@@ -93,7 +93,7 @@
 }
 
 .main-airplane-button {
-  font-size: 56px;
+  font-size: 112px;
   padding: 0px 15px 0px 15px;
 }
 
@@ -121,7 +121,7 @@
 }
 
 .main-volume-button {
-  font-size: 64px;
+  font-size: 128px;
   padding: 0px 15px 0px 15px;
 }
 
@@ -133,7 +133,6 @@
 .volume-label-button {
   font-weight: bold;
 }
-
 
 .main-dnd-box-on {
   background-color: $blue;
@@ -150,7 +149,7 @@
 }
 
 .main-dnd-button {
-  font-size: 56px;
+  font-size: 112px;
   padding: 0px 15px 0px 15px;
 }
 
@@ -179,7 +178,7 @@
 }
 
 .main-redshift-button {
-  font-size: 56px;
+  font-size: 112px;
   padding: 0px 15px 0px 15px;
 }
 
@@ -250,7 +249,7 @@
 
 .volume-slider-button {
   font-size: 44px;
-  margin: 0px 20px 0px 20px;
+  margin: 10px 20px 10px 20px;
   background-color: $gray-alt;
   padding: 4px 5px 4px 5px;
   border-radius: 100px;
@@ -260,7 +259,7 @@
 
 .brightness-slider-button {
   font-size: 44px;
-  margin: 0px 20px 0px 20px;
+  margin: 10px 20px 10px 20px;
   background-color: $gray-alt;
   padding: 4px 5px 4px 5px;
   border-radius: 100px;
@@ -280,6 +279,7 @@
   background-size: cover;
   border-radius: 100px;
   margin: 10px 0px 10px 10px;
+  padding: 0px 5px 0px 5px;
 }
 
 .menu-profile-name {
@@ -287,35 +287,35 @@
 }
 
 .color-picker {
-  font-size: 36px;
+  font-size: 54px;
   margin: 20px 0px 0px 0px;
   background-color: $gray-alt;
   border-radius: 100px;
-  padding: 0px 11px 0px 11px;
+  padding: 0px 22px 0px 12px;
 }
 
 .menu-settings {
-  font-size: 36px;
+  font-size: 54px;
   margin: 20px 0px 0px 390px;
   background-color: $gray-alt;
   border-radius: 100px;
-  padding: 0px 11px 0px 11px;
+  padding: 0px 22px 0px 22px;
 }
 
 .menu-power {
-  font-size: 36px;
+  font-size: 54px;
   margin: 20px 0px 0px 0px;
   background-color: $gray-alt;
   border-radius: 100px;
-  padding: 0px 11px 0px 11px;
+  padding: 0px 22px 0px 22px;
 }
 
 .menu-exit {
-  font-size: 36px;
+  font-size: 54px;
   margin: 20px 0px 0px 0px;
   background-color: $gray-alt;
   border-radius: 100px;
-  padding: 0px 11px 0px 11px;
+  padding: 0px 22px 0px 22px;
 }
 
 .battery-box {
