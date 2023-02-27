@@ -44,29 +44,11 @@ return {
           },
           {
             filter = {
-              find = "lines",
-            },
-            view = "mini",
-          },
-          {
-            filter = {
-              find = "line",
-            },
-            view = "mini",
-          },
-          {
-            filter = {
               event = "msg_show",
               kind = "",
               find = "written",
             },
             opts = { skip = true },
-          },
-          {
-            filter = {
-              find = "search",
-            },
-            view = "mini",
           },
           {
             filter = {
