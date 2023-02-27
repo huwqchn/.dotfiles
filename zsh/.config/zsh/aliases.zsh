@@ -2,7 +2,7 @@ alias c='clear'
 alias s='neofetch --ascii $HOME/.config/neofetch/predator'
 alias lg='lazygit'
 # alias lnpm ='lazynpm'
-alias ra='ranger'
+alias ra='lfcd'
 alias t='tmux'
 alias ipy="ipython"
 alias cdiff='colordiff'
@@ -47,7 +47,7 @@ alias chwal="feh --bg-fill -no-fehbg"
 alias cm="cmatrix"
 alias g="gitui"
 alias top="btop"
-alias lf="lfrun"
+alias lf="lfcd"
 alias pm="pulsemixer"
 # confirm before overwriting something
 # alias cp="cp -i"
