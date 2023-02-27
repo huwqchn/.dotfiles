@@ -2,6 +2,9 @@
 
 pgrep -x sxhkd >/dev/null || sxhkd &
 
+LOGS=~/.cache/bspwm/logs
+
+exec >$LOGS/bspwm.log 2>&1
 # $HOME/.scripts/setcursor.sh
 
 # Get colors from .Xresources #
