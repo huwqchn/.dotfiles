@@ -30,3 +30,5 @@ mpv/.config/mpv/watch_later
 clash/.config/clash/cache.db
 pacman/etc/pacman.d/gnupg
 polybar/.config/polybar/scripts/tray-status
+eww/.config/eww/System-Menu/scripts/tips/tips-lock
+eww/.config/eww/Main/images/temp.png

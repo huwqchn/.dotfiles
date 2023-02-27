@@ -8,50 +8,50 @@
 }
 
 .spotify-header-logo {
-  font-size: 24px;
+  font-size: 48px;
   color: $green;
-  margin: 30px 0px 0px 300px;
+  margin: 60px 0px 0px 600px;
 }
 
 .spotify-header-title {
-  font-size: 28px;
+  font-size: 56px;
   color: $green;
   font-weight: bold;
-  margin-top: 30px;
+  margin-top: 60px;
 }
 
 .spotify-header-trademark {
-  font-size: 10px;
+  font-size: 20px;
   color: $green;
-  margin-top: 10px;
+  margin-top: 20px;
 }
 
 .spotify-header-player {
-  font-size: 28px;
+  font-size: 56px;
   color: $fg;
-  font-weight: 200;
-  margin-top: 30px;
+  font-weight: 400;
+  margin-top: 60px;
 }
 
 .player-cover-box {
-  background-size: 255px;
-  min-height: 250px;
-  min-width: 250px;
-  border-radius: 20px;
+  background-size: 510px;
+  min-height: 500px;
+  min-width: 500px;
+  border-radius: 40px;
   background-repeat: no-repeat;
   background-position: center;
-  margin: 0px 40px 0px 0px;
+  margin: 0px 80px 0px 0px;
 }
 
 .player-box {
   background-color: $bg;
-  margin: 40px 30px 30px 50px;
+  margin: 80px 60px 60px 100px;
 }
 
 
 .player-info-box {
-  margin: 20px 0px 0px 20px;
-  font-size: 20px;
+  margin: 40px 0px 0px 40px;
+  font-size: 40px;
 }
 
 .player-info-title, .player-info-artist {
@@ -65,10 +65,10 @@
 
 .player-info-button {
   background-color: $gray-alt;
-  padding: 15px;
-  border-radius: 20px;
+  padding: 30px;
+  border-radius: 40px;
   font-weight: bold;
-  margin-top: 10px;
+  margin-top: 20px;
 }
 
 .player-music-slider trough {
@@ -77,78 +77,78 @@
 
 .player-music-slider highlight {
   background-color: $blue;
-  padding: 3px;
+  padding: 6px;
 }
 
 .player-volume-slider trough {
   background-color: $gray;
-  border-radius: 15px;
+  border-radius: 30px;
 }
 
 .player-volume-slider highlight {
   background: linear-gradient(to right, $cyan, $blue);
-  border-radius: 15px;
-  padding: 7px;
+  border-radius: 30px;
+  padding: 14px;
 }
 
 .main-player-control-box {
   background-color: $bg-alt;
-  border-radius: 0px 0px 15px 15px;
-  padding: 10px;
+  border-radius: 0px 0px 30px 30px;
+  padding: 20px;
 }
 
 .player-volume-icon {
   color: $cyan;
-  font-size: 24px;
-  margin-left: 10px;
+  font-size: 48px;
+  margin-left: 20px;
 }
 
 .player-volume-box {
-  padding-top: 15px;
-  padding-bottom: 15px;
+  padding-top: 30px;
+  padding-bottom: 30px;
 }
 
 .shuffle-btn-on{
   color: $green;
-  font-size: 26px;
+  font-size: 52px;
   font-weight: lighter;
 }
 
 .shuffle-btn-off {
   color: $gray;
-  font-size: 26px;
+  font-size: 52px;
   font-weight: lighter;
 }
 
 .previous-btn, .next-btn {
-  font-size: 30px;
+  font-size: 60px;
   color: $fg;
 }
 
 .player-pp-btn {
-  font-size: 50px;
+  font-size: 100px;
   color: $blue;
 }
 
 .current-position {
   color: $fg;
-  font-size: 20px;
+  font-size: 40px;
 }
 
 .length-of-song {
   color: $gray;
-  font-size: 20px;
+  font-size: 40px;
 }
 
 .player-album-box {
-  background-size: 150px;
-  min-height: 150px;
-  min-width: 150px;
-  border-radius: 100px;
+  background-size: 300px;
+  min-height: 300px;
+  min-width: 300px;
+  border-radius: 200px;
   background-repeat: no-repeat;
   background-position: center;
-  border: 5px solid $cyan;
-  margin: 47px 0px 0px 0px;
+  border: 10px solid $cyan;
+  margin: 94px 0px 0px 0px;
 }
 
 .main-album-box {
@@ -157,97 +157,97 @@
 
 .lyrics-btn-off {
   background-color: $gray-alt;
-  padding: 8px;
-  font-size: 24px;
-  margin-left: 10px;
-  border-radius: 10px;
-  box-shadow: 0px 0px 20px 10px rgba(0, 0, 0, 0.3);
+  padding: 16px;
+  font-size: 48px;
+  margin-left: 20px;
+  border-radius: 20px;
+  box-shadow: 0px 0px 40px 20px rgba(0, 0, 0, 0.3);
 }
 
 .visualizer-btn-on {
   background-color: $gray-alt;
-  padding: 8px;
-  font-size: 24px;
-  border-radius: 10px;
+  padding: 16px;
+  font-size: 48px;
+  border-radius: 20px;
   color: $blue;
-  box-shadow: 0px 0px 20px 10px rgba(0, 0, 0, 0.3);
+  box-shadow: 0px 0px 40px 20px rgba(0, 0, 0, 0.3);
 }
 
 .lyrics-btn-on {
   background-color: $gray-alt;
-  padding: 8px;
-  font-size: 24px;
-  border-radius: 10px;
+  padding: 16px;
+  font-size: 48px;
+  border-radius: 20px;
   color: $blue;
-  box-shadow: 0px 0px 20px 10px rgba(0, 0, 0, 0.3);
+  box-shadow: 0px 0px 40px 20px rgba(0, 0, 0, 0.3);
 }
 
 .visualizer-btn-off {
   background-color: $gray-alt;
-  padding: 8px;
-  font-size: 24px;
-  border-radius: 10px;
-  box-shadow: 0px 0px 20px 10px rgba(0, 0, 0, 0.3);
+  padding: 16px;
+  font-size: 48px;
+  border-radius: 20px;
+  box-shadow: 0px 0px 40px 20px rgba(0, 0, 0, 0.3);
 }
 
 .equalizer-btn-on {
   background-color: $gray-alt;
-  padding: 8px;
-  font-size: 24px;
-  border-radius: 10px;
+  padding: 16px;
+  font-size: 48px;
+  border-radius: 20px;
   color: $blue;
-  box-shadow: 0px 0px 20px 10px rgba(0, 0, 0, 0.3);
+  box-shadow: 0px 0px 40px 20px rgba(0, 0, 0, 0.3);
 }
 
 .equalizer-btn-off {
   background-color: $gray-alt;
-  padding: 8px;
-  font-size: 24px;
-  border-radius: 10px;
-  box-shadow: 0px 0px 20px 10px rgba(0, 0, 0, 0.3);
+  padding: 16px;
+  font-size: 48px;
+  border-radius: 20px;
+  box-shadow: 0px 0px 40px 20px rgba(0, 0, 0, 0.3);
 }
 
 .player-buttons {
-  padding-left: 45px;
-  text-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+  padding-left: 90px;
+  text-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
 }
 
 .player-length-box {
-  padding-left: 50px;
+  padding-left: 100px;
 }
 
 .player-control-box-right{
-  padding: 15px 0px 15px 40px;
+  padding: 30px 0px 30px 80px;
 } 
 
 .lyrics-main-box {
   background-color: $bg;
-  border-radius: 20px;
+  border-radius: 40px;
 }
 
 .lyrics-label {
-  font-size: 22px;
+  font-size: 44px;
   font-weight: bold;
   text-decoration: underline;
-  text-shadow: 0px 0px 10px rgba(0, 0, 0, 1);
-  padding: 10px 0px 10px 0px;
+  text-shadow: 0px 0px 20px rgba(0, 0, 0, 1);
+  padding: 20px 0px 20px 0px;
 }
 
 
 .lyrics-title {
-  font-size: 19px;
+  font-size: 38px;
   color: $blue;
-  padding-bottom: 10px;
+  padding-bottom: 20px;
 }
 
 .lyrics {
-  font-size: 24px;
+  font-size: 48px;
   color: $fg;
-  padding-top: 50px;
+  padding-top: 100px;
 }
 
 .vz-title {
   padding: 0px 0px 0px 0px;
-  font-size: 22px;
+  font-size: 44px;
   color: $blue;
 }
