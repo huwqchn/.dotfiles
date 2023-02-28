@@ -77,6 +77,7 @@ alias znvim="cd ~/.config/nvim/"
 alias poly="~/.config/polybar/launch.sh"
 alias cc="cc -Wall -Werror -Wextra"
 alias pc="proxychains4"
+alias icat="kitty +kitten icat"
 
 # Function for extracting compressed files
 ex () {
