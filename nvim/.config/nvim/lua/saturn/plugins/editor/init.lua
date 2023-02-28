@@ -467,6 +467,9 @@ return {
       pcall(function()
         require("telescope").load_extension("live_grep_args")
       end)
+      pcall(function()
+        require("telescope").load_extension("noice")
+      end)
     end,
     keys = {
       -- { "<leader>,", "<cmd>Telescope buffers show_all_buffers=true<cr>", desc = "Switch Buffer" },

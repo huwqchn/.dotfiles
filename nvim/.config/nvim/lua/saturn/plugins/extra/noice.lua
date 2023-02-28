@@ -107,10 +107,6 @@ return {
           end)
         end,
       })
-
-      pcall(function()
-        require("telescope").load_extension("noice")
-      end)
     end,
 
     deactivate = function()
