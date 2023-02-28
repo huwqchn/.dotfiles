@@ -16,7 +16,7 @@ elif [[ $(uname) == 'Linux' ]]; then
   alias ed='/usr/bin/emacs --daemon &'
 	alias aic='ascii-image-converter'
 	# alias x='xmodmap ~/.Xmodmap' # use keyd instead
-	alias xr='xrandr --output HDMI-1 --scale 1.12x1.50'
+	# alias xr='xrandr --output HDMI-1 --scale 1.12x1.50'
 	# xrandr --output HDMI-1 --scale 2x2 --primary --output eDP-1 --auto --below HDMI-1
 	alias lo='betterlockscreen'
   alias mkdir="mkdir -p --verbose"
@@ -72,8 +72,33 @@ alias Q="shutdown -h now"
 alias R="reboot"
 
 # shortcuts
-alias utar="tar -zxvf"
+# alias utar="tar -zxvf"
 alias znvim="cd ~/.config/nvim/"
 alias poly="~/.config/polybar/launch.sh"
 alias cc="cc -Wall -Werror -Wextra"
 alias pc="proxychains4"
+
+# Function for extracting compressed files
+ex () {
+    if [ -f $1 ]; then
+        case $1 in
+            *.tar.bz2)  tar xjf $1  ;;
+            *.tar.gz)   tar xzf $1  ;;
+            *.bz2)      bunzip2 $1  ;;
+            *.rar)      unrar x $1  ;;
+            *.gz)       gunzip $1   ;;
+            *.tar)      tar xf $1   ;;
+            *.tbz2)     tar xjf $1  ;;
+            *.tgz)      tar xzf $1  ;;
+            *.zip)      unzip $1    ;;
+            *.Z)        uncompress $1 ;;
+            *.7z)       7z x $1     ;;
+            *.deb)      ar x $1     ;;
+            *.tar.xz)   tar xf $1   ;;
+            *.tar.zst)  tar xf $1   ;;
+            *)          echo "'$1' cannot be extracted using ex()" ;;
+        esac
+    else
+        echo "'$1' is not a valid file"
+    fi
+}
