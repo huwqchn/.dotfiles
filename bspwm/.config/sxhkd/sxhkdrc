@@ -184,6 +184,10 @@ super + ctrl + s
 super + ctrl + p
   peek
 
+# networkmanager_dmenu
+super + ctrl + w
+  networkmanager_dmenu
+
 #
 # move/resize
 #

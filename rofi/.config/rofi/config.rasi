@@ -27,8 +27,8 @@ element-text, element-icon , mode-switcher {
 window {
 	height: 52.5%;
 	width: 35%;
-	border: 5px;
-	border-color: @border-col;
+	/* border: 5px; */
+	/* border-color: @border-col; */
 	background-color: @bg-col;
 	border-radius: 15px;
 }
@@ -68,6 +68,7 @@ listview {
 	padding: 10 10 0;
 	margin: 10 10 0 10;
 	columns: 5;
+  spacing: 15;
 	background-color: @bg-col;
 }
 
@@ -93,7 +94,7 @@ element-text {
 	vertical-align: 0.5;
 	horizontal-align: 0.5;
 	expand: true;
-	font: "Sofia Pro Regular 12";
+	font: "Sofia Pro Bold 12";
 }
 
 mode-switcher {
@@ -104,13 +105,14 @@ mode-switcher {
 
 button {
 	padding: 10px;
-	background-color: @bg-col;
-	text-color: @empty;
+	background-color: @bg-col-light;
+	text-color: @fg-col;
 	vertical-align: 0.5;
 	horizontal-align: 0.5;
+  border-radius: 10px;
 }
 
 button selected {
-  background-color: @bg-col;
-  text-color: @blue;
+  background-color: @green;
+  text-color: @bg-col;
 }

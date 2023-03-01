@@ -63,14 +63,14 @@ bspc config pointer_modifier super
 
 
 # manage rules
-bspc rule -a Gimp desktop='^8' state=floating follow=on
+bspc rule -a Gimp state=floating follow=on
+bspc rule -a 1Password state = floating
+bspc rule -a Spotify state = floating desktop='^5' follow=on
 # bspc rule -a Chromium desktop='^2'
-bspc rule -a mplayer2 state=floating
 bspc rule -a Peek state=floating
-bspc rule -a Kupfer.py focus=on
 bspc rule -a Screenkey manage=off
 bspc rule -a Zathura state=tiled
 bspc rule -a Emacs state=tiled
-bspc rule -a GLava state=floating layer=below sticky=true locked=true border=off focus=off center=true follow=off rectangle=1920x1080+0+0
+bspc rule -a GLava state=floating layer=below sticky=true locked=true border=off focus=off center=true follow=off rectangle=3840x2160+0+0
 
 "$BSPWM_CONFIG/start" &

@@ -26,14 +26,14 @@ window {
     transparency:                   "real";
     background-color:               @BG;
     text-color:                     @FG;
-    border-radius:                  15px;
-    width:                          400px;
-    height:                         425px;
+    border-radius:                  30px;
+    width:                          40%;
+    height:                         35%;
 }
 
 prompt {
     enabled: 						true;
-	padding: 						4px 4px 6px 6px;
+	padding: 						8px 8px 12px 12px;
 	background-color: 				@BGA;
 	text-color: 					@FG;
 }
@@ -43,7 +43,7 @@ textbox-prompt-colon {
 	str: 							"󰖩";
     background-color:               @BGA;
     text-color:                     @IMG;
-    padding:                        4px 0px 0px 8px;
+    padding:                        8px 0px 0px 16px;
 	font:							"Material Design Icons Desktop 15";
 }
 
@@ -53,10 +53,10 @@ inputbar {
     text-color:                     @FG;
     expand:                         false;
     border:                  		0px 0px 0px 0px;
-    border-radius:                  10px;
+    border-radius:                  20px;
     border-color:                  	@BDR;
     margin:                         0px 0px 0px 0px;
-    padding:                        5px 0px 3px 0px;
+    padding:                        10px 0px 6px 0px;
     position:                       center;
 }
 
@@ -69,7 +69,7 @@ entry {
     horizontal-align:               0;
     placeholder:                    "";
     blink:                          true;
-    padding:                        4px 0px 0px 0px;
+    padding:                        8px 0px 0px 0px;
 }
 
 case-indicator {
@@ -83,7 +83,7 @@ listview {
     background-color:               @BG;
     columns:                        1;
     lines:                        	7;
-    spacing:                        5px;
+    spacing:                        10px;
     cycle:                          true;
     dynamic:                        true;
     layout:                         vertical;
@@ -92,24 +92,24 @@ listview {
 mainbox {
     background-color:               @BG;
     children:                       [ inputbar, listview ];
-    spacing:                       	10px;
-    padding:                        10px;
+    spacing:                       	20px;
+    padding:                        20px;
 }
 
 element {
     background-color:               @BG;
     text-color:                     @FG;
     orientation:                    horizontal;
-    border-radius:                  10px;
-    padding:                        6px 6px 6px 6px;
+    border-radius:                  20px;
+    padding:                        12px 12px 12px 12px;
 }
 
 element-icon {
     background-color: 				inherit;
     text-color:       				inherit;
-    horizontal-align:               0.5;
-    vertical-align:                 0.5;
-    size:                           24px;
+    horizontal-align:               1;
+    vertical-align:                 1;
+    size:                           48px;
     border:                         0px;
 }
 
@@ -119,14 +119,14 @@ element-text {
     expand:                         true;
     horizontal-align:               0;
     vertical-align:                 0;
-    margin:                         2px 0px 2px 2px;
+    margin:                         4px 0px 4px 4px;
 }
 
 element normal.urgent,
 element alternate.urgent {
     background-color:               @UGT;
     text-color:                     @FG;
-    border-radius:                  10px;
+    border-radius:                  20px;
 }
 
 element normal.active,
@@ -139,7 +139,7 @@ element selected {
     background-color:               @SEL;
     text-color:                     @BG;
     border:                  		0px;
-    border-radius:                  10px;
+    border-radius:                  20px;
     border-color:                  	@BDR;
 }
 
