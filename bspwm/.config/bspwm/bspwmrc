@@ -87,8 +87,8 @@ udiskie &
 parcellite &
 greenclip daemon &
 gebaard -b
-/usr/bin/emacs --daemon &
-alttab -d 1 -i 108x108 -bg "#1a1b26" -fg "#a9b1d6" -t 224x256 -frame "#9ece6a" -bc "#7aa2f7" -bw 5 -inact "#4abaaf" &
+# /usr/bin/emacs --daemon &
+# alttab -d 1 -i 108x108 -bg "#1a1b26" -fg "#a9b1d6" -t 224x256 -frame "#9ece6a" -bc "#7aa2f7" -bw 5 -inact "#4abaaf" &
 feh --bg-fill -no-fehbg ~/OneDrive/Wallpapers/tokyo-night31.png
 # update eww screen height and width
 

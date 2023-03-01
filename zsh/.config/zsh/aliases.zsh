@@ -6,8 +6,8 @@ alias ra='lfcd'
 alias t='tmux'
 alias ipy="ipython"
 alias cdiff='colordiff'
-alias ec="emacsclient -c -a 'emacs'"
-alias em="emacs -nw"
+alias E="emacsclient -c -a 'emacs'"
+alias e="emacs -nw"
 if [[ $(uname) == 'Darwin' ]]; then
 	alias ep='export https_proxy=http://127.0.0.1:19180 && export http_proxy=http://127.0.0.1:19180'
   alias ed='/opt/homebrew/bin/emacs --daemon &'

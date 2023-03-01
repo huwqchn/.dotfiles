@@ -33,3 +33,4 @@ polybar/.config/polybar/scripts/tray-status
 eww/.config/eww/System-Menu/scripts/tips/tips-lock
 eww/.config/eww/Main/images/temp.png
 emacs/.config/emacs/elpa
+emacs/.config/emacs/auto-save-list
