@@ -15,11 +15,23 @@ $HOME/.config/conky/Auva/start.sh &
 eww daemon &
 xfce4-power-manager &
 ukui-window-switch &
-dunst &
+
+killall dunst
+dunst > /dev/null 2> /dev/null &
+
 fcitx5 &
 udiskie &
 parcellite &
 greenclip daemon &
+
+killall blueman-applet
+killall pa-applet
+killall nm-applet
+blueman-applet &
+pa-applet --disable-key-grabbing --disable-notifications & 
+nm-applet &
+
+thunar --daemon &
 
 # gebaard -b
 
