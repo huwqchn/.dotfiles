@@ -761,6 +761,28 @@ return {
       { "<leader>tq", "<cmd>TroubleToggle quickfix<cr>", desc = "Quickfix List (Touble)" },
       { "<leader>tl", "<cmd>TroubleToggle loclist<cr>", desc = "Loclist List (Trouble)" },
       { "<leader>tr", "<cmd>TroubleToggle lsp_references<cr>", desc = "references" },
+      {
+        "[q",
+        function()
+          if require("trouble").is_open() then
+            require("trouble").previous({ skip_groups = true, jump = true })
+          else
+            vim.cmd.cprev()
+          end
+        end,
+        desc = "Previous trouble/quickfix item",
+      },
+      {
+        "]q",
+        function()
+          if require("trouble").is_open() then
+            require("trouble").next({ skip_groups = true, jump = true })
+          else
+            vim.cmd.cnext()
+          end
+        end,
+        desc = "Next trouble/quickfix item",
+      },
     },
     opts = {
       action_keys = { -- key mappings for actions in the trouble list

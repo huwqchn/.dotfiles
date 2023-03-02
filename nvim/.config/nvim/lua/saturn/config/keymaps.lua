@@ -232,6 +232,11 @@ map("n", "<leader>fn", "<cmd>enew<cr>", { desc = "New File" })
 map("n", "<leader>tl", "<cmd>lopen<cr>", { desc = "Location List" })
 map("n", "<leader>tq", "<cmd>copen<cr>", { desc = "Quickfix List" })
 
+if not Util.has("trouble.nvim") then
+  map("n", "[q", vim.cmd.cprev, { desc = "Previous quickfix" })
+  map("n", "]q", vim.cmd.cnext, { desc = "Next quickfix" })
+end
+
 -- Replace in selection
 map("x", "s<cr>", ":s/\\%V", { desc = "replace in selection" })
 
