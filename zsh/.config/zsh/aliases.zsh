@@ -7,12 +7,11 @@ alias ipy="ipython"
 alias cdiff='colordiff'
 alias E="emacsclient -c -a 'emacs'"
 alias e="emacs -nw"
+alias ra="echo 'please use lf'"
 if [[ $(uname) == 'Darwin' ]]; then
 	alias ep='export https_proxy=http://127.0.0.1:19180 && export http_proxy=http://127.0.0.1:19180'
   alias ed='/opt/homebrew/bin/emacs --daemon &'
-  alias ra='lf'
 elif [[ $(uname) == 'Linux' ]]; then
-  alias ra='lfcd'
   alias lf="lfcd"
 	alias ep='export all_proxy=http://127.0.0.1:7890'
   alias ed='/usr/bin/emacs --daemon &'
