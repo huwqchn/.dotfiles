@@ -4,5 +4,5 @@ return {
   { import = "saturn.plugins.lang.neorg" },
   { import = "saturn.plugins.lang.python" },
   { import = "saturn.plugins.lang.yuck" },
-  -- { import = "saturn.plugins.lang.cpp" },
+  { import = "saturn.plugins.lang.cpp" },
 }
