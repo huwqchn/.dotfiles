@@ -350,4 +350,5 @@ return {
   --   config = true,
   -- },
   { import = "saturn.plugins.extra.firenvim" },
+  { import = "saturn.plugins.extra.hologram" },
 }
