@@ -2,7 +2,6 @@ alias c='clear'
 alias s='neofetch --ascii $HOME/.config/neofetch/predator'
 alias lg='lazygit'
 # alias lnpm ='lazynpm'
-alias ra='lfcd'
 alias t='tmux'
 alias ipy="ipython"
 alias cdiff='colordiff'
@@ -11,7 +10,10 @@ alias e="emacs -nw"
 if [[ $(uname) == 'Darwin' ]]; then
 	alias ep='export https_proxy=http://127.0.0.1:19180 && export http_proxy=http://127.0.0.1:19180'
   alias ed='/opt/homebrew/bin/emacs --daemon &'
+  alias ra='lf'
 elif [[ $(uname) == 'Linux' ]]; then
+  alias ra='lfcd'
+  alias lf="lfcd"
 	alias ep='export all_proxy=http://127.0.0.1:7890'
   alias ed='/usr/bin/emacs --daemon &'
 	alias aic='ascii-image-converter'
@@ -47,7 +49,6 @@ alias chwal="feh --bg-fill -no-fehbg"
 alias cm="cmatrix"
 alias g="gitui"
 alias top="btop"
-alias lf="lfcd"
 alias pm="pulsemixer"
 # confirm before overwriting something
 # alias cp="cp -i"
