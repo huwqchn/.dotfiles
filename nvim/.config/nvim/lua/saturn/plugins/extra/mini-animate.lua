@@ -17,6 +17,11 @@ return {
           return key
         end, { expr = true })
       end
+      local search_scrolled = true
+      vim.keymap.set("c", "<CR>", function()
+        search_scrolled = true
+        return "<CR>"
+      end, { expr = true })
 
       local animate = require("mini.animate")
       return {
@@ -29,6 +34,9 @@ return {
             predicate = function(total_scroll)
               if mouse_scrolled then
                 mouse_scrolled = false
+                return false
+              elseif search_scrolled then
+                search_scrolled = false
                 return false
               end
               return total_scroll > 1

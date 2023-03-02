@@ -15,7 +15,7 @@ local function load(name)
     })
   end
   if vim.bo.filetype == "lazy" then
-    -- HACK: LazyVim may have overwritten options of the Lazy ui, so reset this here
+    -- HACK: Saturn may have overwritten options of the Lazy ui, so reset this here
     vim.cmd([[do VimResized]])
   end
 end
