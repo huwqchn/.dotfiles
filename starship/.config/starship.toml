@@ -1,6 +1,6 @@
 # Use custom format:
 format='''
-$directory$git_branch$git_status
+$os$directory$git_branch$git_status
 $character
 '''
 
@@ -13,14 +13,66 @@ vimcmd_replace_one_symbol = "[](#d19a66)"
 vimcmd_replace_symbol = "[](#e0af6e)"
 vimcmd_visual_symbol = "[](#c678dd)"
 
+[os]
+format = "[]($style)[$symbol](bg:#292E42 fg:#7aa2f7)"
+# style = "bg:#292E42 fg:#7aa2f7"
+style = "bg:#1a1b26 fg:#292E42"
+disabled = false
+
+[os.symbols]
+Windows = " "
+Macos = " "
+FreeBSD = " "
+Android = "󰀲 "
+Alpine = " "
+Amazon = " "
+Arch = " "
+CentOS = " "
+Debian = " "
+DragonFly = " "
+Emscripten = " "
+EndeavourOS = " "
+Fedora = " "
+Garuda = " "
+Gentoo = " "
+HardenedBSD = " "
+Illumos = " "
+Linux = " "
+Manjaro = " "
+Mariner = " "
+MidnightBSD = " "
+Mint = " "
+NetBSD = " "
+NixOS = " "
+OpenBSD = " "
+OpenCloudOS = " "
+openEuler = " "
+openSUSE = " "
+OracleLinux = " "
+Pop = " "
+Raspbian = " "
+Redhat = " "
+RedHatEnterprise = " "
+Redox = " "
+Solus = " "
+SUSE = " "
+Ubuntu = " "
+Unknown = " "
+
 [directory]
-format = "[]($style)[[ ](bg:#292E42 fg:#7aa2f7)$path](bg:#292E42 fg:#c0caf5)[ ]($style)"
+read_only = "  "
+read_only_style = "bg:#292E42 fg:#db4b4b"
+format = "[[$path](bg:#292E42 fg:#a9b1d6)](bg:#292E42 fg:#c0caf5)[$read_only]($read_only_style)[ ]($style)"
 style = "bg:#1a1b26 fg:#292E42"
 
 [git_branch]
-format = "[]($style)[[ ](bg:#292E42 fg:#db4b4b)$branch](bg:#292E42 fg:#c0caf5)[]($style)"
+symbol = " "
+format = "[]($style)[[$symbol](bg:#292E42 fg:#9ece6a)[$branch](bg:#292E42 fg:#a9b1d6)](bg:#292E42 fg:#c0caf5)"
 style = "bg:#1a1b26 fg:#292E42"
 
+[git_status]
+format = "[ $all_status$ahead_behind]($style)[](bg:#1a1b26 fg:#292E42)"
+style = "bg:#292E42 fg:#db4b4b"
 
 [battery]
 full_symbol = ""
