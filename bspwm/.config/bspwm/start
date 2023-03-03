@@ -1,7 +1,7 @@
 #!/bin/sh
 
 pgrep -x sxhkd >/dev/null || sxhkd &
-picom &
+picom >$HOME/.cache/picom/picom.log 2>&1 &
 xsetroot -cursor_name left_ptr &
 feh --bg-fill -no-fehbg ~/OneDrive/Wallpapers/tokyo-night31.png &
 sleep 10 && $HOME/.config/bspwm/scripts/bspfloat floating 5 &> $HOME/.log.bspfloat.txt &

@@ -3,7 +3,7 @@
 ## @@@@@@@@@@@@@@@@@@@@@@
 
 # Opacity of window during flash.
-flash-opacity: 0.5
+flash-opacity: 0.3
 
 # Windows are restored to this opacity value at the end of a flash.
 default-opacity: 1
@@ -51,16 +51,18 @@ flash-lone-windows: 'always'
 # Say I'd like to set all 'termite' windows to 80% opacity but leave other
 # windows at full opacity:
 #
-# rules:
-#   - window-class: Termite
-#     default-opacity: 0.8
+rules:
+  - window-class: kitty
+    default-opacity: 0.9
+  - window-class: Alacritty
+    default-opacity: 0.9
 #
 #
 # I also would prefer that firefox windows are not flashed on focus:
 #
-# rules:
-#   - window-class: firefox
-#     flash-on-focus: False
+rules:
+  - window-class: firefox
+    flash-on-focus: False
 #   - window-class: Termite
 #     default-opacity: 0.8
 #
