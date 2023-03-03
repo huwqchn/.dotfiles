@@ -1,11 +1,14 @@
 # Use custom format:
-format="$directory$git_branch$character"
+# format="$directory$git_branch$git_status$character"
 
 # Prompt symbols 
 [character]
 success_symbol = "[](#9ece6a bold)"
 error_symbol = "[](#db4b4b)"
 vicmd_symbol = "[](#9ece6a)"
+vimcmd_replace_one_symbol = "[](#d19a66)"
+vimcmd_replace_symbol = "[](#e0af6e)"
+vimcmd_visual_symbol = "[](#c678dd)"
 
 [directory]
 format = "[]($style)[[ ](bg:#292E42 fg:#7aa2f7)$path](bg:#292E42 fg:#c0caf5)[ ]($style)"
@@ -16,3 +19,85 @@ format = "[]($style)[[ ](bg:#292E42 fg:#db4b4b)$branch](bg:#292E42 fg:#c0c
 style = "bg:#1a1b26 fg:#292E42"
 
 
+[battery]
+full_symbol = ""
+charging_symbol = ""
+discharging_symbol = ""
+
+[aws]
+symbol = "  "
+
+[buf]
+symbol = " "
+
+[c]
+symbol = " "
+
+[conda]
+symbol = " "
+
+[dart]
+symbol = " "
+
+[docker_context]
+symbol = " "
+
+[elixir]
+symbol = " "
+
+[elm]
+symbol = " "
+
+[golang]
+symbol = " "
+
+[haskell]
+symbol = " "
+
+[hg_branch]
+symbol = " "
+
+[java]
+symbol = " "
+
+[julia]
+symbol = " "
+
+[lua]
+symbol = " "
+
+[memory_usage]
+symbol = " "
+
+[meson]
+symbol = "喝 "
+
+[nim]
+symbol = " "
+
+[nix_shell]
+symbol = " "
+
+[nodejs]
+symbol = " "
+
+[package]
+symbol = " "
+
+[python]
+symbol = " "
+
+[rlang]
+symbol = "ﳒ "
+
+[ruby]
+symbol = " "
+
+[rust]
+symbol = " "
+
+[scala]
+symbol = " "
+
+[spack]
+symbol = "🅢 "

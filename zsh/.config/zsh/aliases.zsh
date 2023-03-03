@@ -1,6 +1,7 @@
 alias c='clear'
 alias s='neofetch --ascii $HOME/.config/neofetch/predator'
 alias lg='lazygit'
+alias lzd='lazydocker'
 # alias lnpm ='lazynpm'
 alias t='tmux'
 alias ipy="ipython"
