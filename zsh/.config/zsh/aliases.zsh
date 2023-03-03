@@ -13,6 +13,7 @@ if [[ $(uname) == 'Darwin' ]]; then
   alias ed='/opt/homebrew/bin/emacs --daemon &'
 elif [[ $(uname) == 'Linux' ]]; then
   alias lf="lfcd"
+alias pm="pulsemixer"
 	alias ep='export all_proxy=http://127.0.0.1:7890'
   alias ed='/usr/bin/emacs --daemon &'
 	alias aic='ascii-image-converter'
@@ -25,7 +26,7 @@ elif [[ $(uname) == 'Linux' ]]; then
   alias convert2wallpaper="convert -resize $(xdpyinfo | grep dimensions | cut -d\  -f7 | cut -dx -f1)"
   alias pipes="pipes.sh"
 fi
-alias doom='~/.emacs.d/bin/doom'
+# alias doom='~/.emacs.d/bin/doom'
 alias v='nvim'
 alias ls="exa -aG --color=always --icons --group-directories-first"
 alias la="exa -a --color=always --icons --group-directories-first"
@@ -48,7 +49,6 @@ alias chwal="feh --bg-fill -no-fehbg"
 alias cm="cmatrix"
 alias g="gitui"
 alias top="btop"
-alias pm="pulsemixer"
 # confirm before overwriting something
 # alias cp="cp -i"
 # alias mv="mv -i"
