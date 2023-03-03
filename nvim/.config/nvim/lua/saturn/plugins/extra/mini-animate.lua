@@ -1,8 +1,8 @@
 return {
-  {
-    "nacro90/numb.nvim",
-    enabled = false,
-  },
+  -- {
+  --   "nacro90/numb.nvim",
+  --   enabled = false,
+  -- },
   -- animations
   {
     "echasnovski/mini.animate",

@@ -91,6 +91,26 @@ return {
     config = config,
   },
 
+  -- rose-pine
+  {
+    "rose-pine/neovim",
+    name = "rose-pine",
+    lazy = false,
+    cond = saturn.colorscheme == "rose-pine",
+    priority = 1000,
+    config = config,
+  },
+
+  -- dracula
+  {
+    "Mofiqul/dracula.nvim",
+    name = "dracula",
+    lazy = false,
+    cond = saturn.colorscheme == "dracula",
+    priority = 1000,
+    config = config,
+  },
+
   -- catppuccin
   {
     "catppuccin/nvim",
