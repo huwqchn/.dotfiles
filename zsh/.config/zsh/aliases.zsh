@@ -34,6 +34,8 @@ alias tree="lsd --tree"
 alias cat="bat"
 alias du="dust"
 alias ps="procs"
+alias hf="hyperfine"
+alias tk="tokei"
 
 # some git aliases
 alias gp="git push"
