@@ -33,6 +33,7 @@ alias la="exa -a --color=always --icons --group-directories-first"
 alias tree="lsd --tree"
 alias cat="bat"
 alias du="dust"
+alias ps="procs"
 
 # some git aliases
 alias gp="git push"
