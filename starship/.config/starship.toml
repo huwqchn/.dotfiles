@@ -1,10 +1,10 @@
 # Use custom format:
 format='''
-$os$directory$git_branch$git_status
+$directory$git_branch$git_status$conda$docker_context
 $character
 '''
 
-# Prompt symbols 
+# Prompt symbols
 [character]
 success_symbol = "[](#9ece6a bold)"
 error_symbol = "[](#db4b4b)"
@@ -17,7 +17,6 @@ vimcmd_visual_symbol = "[](#c678dd)"
 format = "[]($style)[$symbol](bg:#292E42 fg:#7aa2f7)"
 # style = "bg:#292E42 fg:#7aa2f7"
 style = "bg:#1a1b26 fg:#292E42"
-disabled = false
 
 [os.symbols]
 Windows = " "
@@ -62,7 +61,7 @@ Unknown = " "
 [directory]
 read_only = "  "
 read_only_style = "bg:#292E42 fg:#db4b4b"
-format = "[[$path](bg:#292E42 fg:#a9b1d6)](bg:#292E42 fg:#c0caf5)[$read_only]($read_only_style)[ ]($style)"
+format = "[]($style)[ ](bg:#292E42 fg:#7aa2f7)[[$path](bg:#292E42 fg:#a9b1d6)](bg:#292E42 fg:#c0caf5)[$read_only]($read_only_style)[ ]($style)"
 style = "bg:#1a1b26 fg:#292E42"
 
 [git_branch]
@@ -71,7 +70,7 @@ format = "[]($style)[[$symbol](bg:#292E42 fg:#9ece6a)[$branch](bg:#292E42 fg:
 style = "bg:#1a1b26 fg:#292E42"
 
 [git_status]
-format = "[ $all_status$ahead_behind]($style)[](bg:#1a1b26 fg:#292E42)"
+format = "[$all_status$ahead_behind]($style)[](bg:#1a1b26 fg:#292E42)"
 style = "bg:#292E42 fg:#db4b4b"
 
 [battery]
@@ -90,12 +89,16 @@ symbol = " "
 
 [conda]
 symbol = " "
+format = "[]($style)[$symbol$environment](bold green)[]($style)"
+style = "bg:#1a1b26 fg:#292E42"
 
 [dart]
 symbol = " "
 
 [docker_context]
 symbol = " "
+format = "[]($style)[$symbol$context](blue bold)[]($style)"
+style = "bg:#1a1b26 fg:#292E42"
 
 [elixir]
 symbol = " "

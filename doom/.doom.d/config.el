@@ -1,6 +1,6 @@
 ;;; config.el -*- lexical-binding: t; -*-
-(setq user-full-name "Johnson Hu"
-      user-mail-address "huwqchn@gmail.com"
+(setq user-full-name "Folke Lemaitre"
+      user-mail-address "folke.lemaitre@gmail.com"
       command-line-default-directory "~/"         ; set default directory to home
       +doom-dashboard-pwd-policy "~/"
       default-directory "~/"
@@ -15,12 +15,12 @@
       which-key-idle-secondary-delay 0
       shell-file-name "/bin/sh"       ; Use Bash as default shell for running term which is faster
       vterm-always-compile-module t               ; Compile the vterm-module when needed without asking
-      vterm-shell "/usr/bin/zsh")          ; Use Fish in vterm
+      vterm-shell "/usr/local/bin/fish")          ; Use Fish in vterm
 
 (after! projectile
   (setq projectile-project-root-files-bottom-up '("package.json" ".projectile" ".project" ".git")
         projectile-ignored-projects '("~/.emacs.d/")
-        projectile-project-search-path '("~/projects"))
+        projectile-project-search-path '("~/projects" "~/projects/splora/libs" "~/projects/splora/apps" "~/projects/splora/tools"))
   (defun projectile-ignored-project-function (filepath)
     "Return t if FILEPATH is within any of `projectile-ignored-projects'"
     (or (mapcar (lambda (p) (s-starts-with-p p filepath)) projectile-ignored-projects))))
@@ -322,7 +322,7 @@ lg:overflow-x-auto xl:px-32"
         <script>mermaid.initialize({startOnLoad:true});</script>"))
 
 (after! org-roam
-  (setq org-roam-directory "~/org/notes"
+  (setq org-roam-directory "~/projects/org/notes"
         org-roam-tag-sources '(prop all-directories)
         +org-roam-open-buffer-on-find-file t
         ;; Create new roam notes under ~/org/notes
