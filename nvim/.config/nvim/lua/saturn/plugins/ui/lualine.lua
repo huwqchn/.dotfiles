@@ -203,6 +203,14 @@ local lazy = {
   separator = { left = saturn.icons.ui.SeparatorLeft, right = saturn.icons.ui.SeparatorRight },
 }
 
+local lazy_space = {
+  function()
+    return " "
+  end,
+  color = { bg = colors.black, fg = colors.blue },
+  cond = require("lazy.status").has_updates,
+}
+
 local key = {
   function()
     return require("noice").api.status.command.get()
@@ -271,14 +279,38 @@ local python_env = {
     if vim.bo.filetype == "python" then
       local venv = os.getenv("CONDA_DEFAULT_ENV") or os.getenv("VIRTUAL_ENV")
       if venv then
-        local icons = require("nvim-web-devicons")
-        local py_icon, _ = icons.get_icon(".py")
-        return string.format(" " .. py_icon .. " (%s)", env_cleanup(venv))
+        -- local icons = require("nvim-web-devicons")
+        -- local py_icon, _ = icons.get_icon(".py")
+        return string.format("%s", env_cleanup(venv))
       end
     end
     return ""
   end,
-  color = { fg = colors.green },
+  color = { bg = colors.teal, fg = colors.grey },
+  separator = { left = saturn.icons.ui.SeparatorLeft, right = saturn.icons.ui.SeparatorRight },
+  cond = conditions.hide_in_width,
+}
+
+local python_env_icon = {
+  function()
+    if vim.bo.filetype == "python" then
+      local venv = os.getenv("CONDA_DEFAULT_ENV") or os.getenv("VIRTUAL_ENV")
+      if venv then
+        return require("nvim-web-devicons").get_icon(".py")
+      end
+    end
+    return ""
+  end,
+  color = { bg = colors.grey, fg = colors.teal },
+  separator = { left = saturn.icons.ui.SeparatorLeft, right = saturn.icons.ui.SeparatorRight },
+  cond = conditions.hide_in_width,
+}
+
+local hide_in_width_space = {
+  function()
+    return " "
+  end,
+  color = { bg = colors.black, fg = colors.blue },
   cond = conditions.hide_in_width,
 }
 
@@ -318,13 +350,16 @@ require("lualine").setup({
       space,
       branch,
       diff,
+      hide_in_width_space,
+      python_env,
+      python_env_icon,
       space,
       debug_mode,
       breakpoint_count,
     },
     lualine_x = {
       lazy,
-      space,
+      lazy_space,
       key,
       key_icon,
       space,
