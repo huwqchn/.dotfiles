@@ -4,6 +4,6 @@ return {
     opts = {
       auto_display = true,
     },
-    ft = { "markdown" },
+    ft = { "markdown", "norg" },
   },
 }

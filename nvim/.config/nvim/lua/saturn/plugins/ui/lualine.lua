@@ -237,31 +237,31 @@ local lsp_space = {
   cond = conditions.lsp_active,
 }
 
-local debug_mode = {
-  function()
-    return require("dap").status()
-  end,
-  color = { bg = colors.red, fg = colors.black },
-  separator = { left = saturn.icons.ui.SeparatorLeft, right = saturn.icons.ui.SeparatorRight },
-  cond = conditions.hide_in_width,
-}
-
-local breakpoint_count = {
-  function()
-    local breakpoints = require("dap.breakpoints").get()
-    local breakpointSum = 0
-    for buf, _ in pairs(breakpoints) do
-      breakpointSum = breakpointSum + #breakpoints[buf]
-    end
-    if breakpointSum == 0 then
-      return ""
-    end
-    return saturn.icons.ui.Bug .. " " .. tostring(breakpointSum)
-  end,
-  color = { bg = colors.grey, fg = colors.red },
-  separator = { left = saturn.icons.ui.SeparatorLeft, right = saturn.icons.ui.SeparatorRight },
-  cond = conditions.hide_in_width,
-}
+-- local debug_mode = {
+--   function()
+--     return require("dap").status()
+--   end,
+--   color = { bg = colors.red, fg = colors.black },
+--   separator = { left = saturn.icons.ui.SeparatorLeft, right = saturn.icons.ui.SeparatorRight },
+--   cond = conditions.hide_in_width,
+-- }
+--
+-- local breakpoint_count = {
+--   function()
+--     local breakpoints = require("dap.breakpoints").get()
+--     local breakpointSum = 0
+--     for buf, _ in pairs(breakpoints) do
+--       breakpointSum = breakpointSum + #breakpoints[buf]
+--     end
+--     if breakpointSum == 0 then
+--       return ""
+--     end
+--     return saturn.icons.ui.Bug .. " " .. tostring(breakpointSum)
+--   end,
+--   color = { bg = colors.grey, fg = colors.red },
+--   separator = { left = saturn.icons.ui.SeparatorLeft, right = saturn.icons.ui.SeparatorRight },
+--   cond = conditions.hide_in_width,
+-- }
 
 local function env_cleanup(venv)
   if string.find(venv, "/") then
@@ -353,9 +353,6 @@ require("lualine").setup({
       hide_in_width_space,
       python_env,
       python_env_icon,
-      space,
-      debug_mode,
-      breakpoint_count,
     },
     lualine_x = {
       lazy,

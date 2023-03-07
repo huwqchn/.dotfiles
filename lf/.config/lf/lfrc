@@ -195,3 +195,4 @@ map gl ${{clear; git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%C
 map go :fasd_dir
 
 map gs :fzf_search
+map gn cd ~/Notes/

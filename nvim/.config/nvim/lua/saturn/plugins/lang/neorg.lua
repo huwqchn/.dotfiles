@@ -7,18 +7,15 @@ return {
       load = {
         ["core.defaults"] = {},
         ["core.norg.concealer"] = {},
-        ["core.norg.completion"] = {
-          config = { engine = "nvim-cmp" },
-        },
+        -- ["core.norg.completion"] = {
+        --   config = { engine = "nvim-cmp" },
+        -- },
         ["core.norg.dirman"] = { -- Manages Neorg workspaces
           config = {
             workspaces = {
               notes = "~/Notes",
             },
           },
-        },
-        ["core.norg.completion"] = {
-          config = { engine = "nvim-cmp" },
         },
         ["core.keybinds"] = {
           config = {
