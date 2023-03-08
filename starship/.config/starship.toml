@@ -72,6 +72,15 @@ style = "bg:#1a1b26 fg:#292E42"
 [git_status]
 format = "[$all_status$ahead_behind]($style)[](bg:#1a1b26 fg:#292E42)"
 style = "bg:#292E42 fg:#db4b4b"
+conflicted = "󰈻 "
+up_to_date = "󰸞 "
+untracked = "󰷌 "
+modified = "󰏪 "
+renamed = "󱇧 "
+deleted = "󰆴 "
+ahead = "󰜷 "
+diverged = "󰹺 "
+behind = "󰜮 "
 
 [battery]
 full_symbol = ""

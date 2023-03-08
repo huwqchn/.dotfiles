@@ -15,6 +15,7 @@ return {
             workspaces = {
               notes = "~/Notes",
             },
+            index = "index.norg",
           },
         },
         ["core.keybinds"] = {
