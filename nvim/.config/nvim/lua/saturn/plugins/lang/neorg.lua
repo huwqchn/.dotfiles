@@ -22,6 +22,9 @@ return {
           config = {
             default_keybinds = true,
             neorg_leader = ",",
+            hook = function(keybinds)
+              keybinds.remap_event("norg", "n", "<leader>nc", "core.looking-glass.magnify-code-block")
+            end,
           },
         },
         -- ["core.integrations.nvim-cmp"] = {},

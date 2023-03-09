@@ -70,6 +70,12 @@ return {
           },
           {
             filter = {
+              find = "cmp_tabnine/source.lua:280",
+            },
+            opts = { skip = true },
+          },
+          {
+            filter = {
               event = "notify",
               min_height = 15,
             },
