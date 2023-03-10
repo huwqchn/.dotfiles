@@ -34,7 +34,7 @@ alias la="exa -a --color=always --icons --group-directories-first"
 alias tree="lsd --tree"
 alias cat="bat"
 alias du="dust"
-alias ps="procs"
+# alias ps="procs"
 alias hf="hyperfine"
 alias tk="tokei"
 
