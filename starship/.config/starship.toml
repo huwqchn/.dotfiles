@@ -70,17 +70,17 @@ format = "[]($style)[[$symbol](bg:#292E42 fg:#9ece6a)[$branch](bg:#292E42 fg:
 style = "bg:#1a1b26 fg:#292E42"
 
 [git_status]
-format = "[$all_status$ahead_behind]($style)[](bg:#1a1b26 fg:#292E42)"
+format = "[$all_status$ahead_behind]($style)[ ](bg:#1a1b26 fg:#292E42)"
 style = "bg:#292E42 fg:#db4b4b"
-conflicted = "󰈻 "
+conflicted = "󰈻"
 up_to_date = "󰸞 "
 untracked = "󰷌 "
 modified = "󰏪 "
 renamed = "󱇧 "
-deleted = "󰆴 "
-ahead = "󰜷 "
-diverged = "󰹺 "
-behind = "󰜮 "
+deleted = "󰆴"
+ahead = "󰜷"
+diverged = "󰹺"
+behind = "󰜮"
 
 [battery]
 full_symbol = ""
@@ -98,7 +98,7 @@ symbol = " "
 
 [conda]
 symbol = " "
-format = "[]($style)[$symbol$environment](bold green)[]($style)"
+format = "[]($style)[$symbol$environment](bg:#292e42 fg:#98c379)[]($style)"
 style = "bg:#1a1b26 fg:#292E42"
 
 [dart]
@@ -106,7 +106,7 @@ symbol = " "
 
 [docker_context]
 symbol = " "
-format = "[]($style)[$symbol$context](blue bold)[]($style)"
+format = "[]($style)[$symbol$context](bg:#1a1b26 fg:#98c379)[]($style)"
 style = "bg:#1a1b26 fg:#292E42"
 
 [elixir]
