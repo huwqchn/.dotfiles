@@ -81,6 +81,8 @@ deleted = "󰆴"
 ahead = "󰜷"
 diverged = "󰹺"
 behind = "󰜮"
+staged = " "
+stashed = "󰟇 "
 
 [battery]
 full_symbol = ""
