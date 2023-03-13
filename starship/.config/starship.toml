@@ -1,6 +1,6 @@
 # Use custom format:
 format='''
-$directory$git_branch$git_status$c$cmake$lua$python$rust$conda$docker_context$container$package
+$directory$git_branch$git_status$c$cmake$lua$python$rust$golang$java$nodejs$conda$docker_context$container$package
 $character
 '''
 
@@ -130,6 +130,8 @@ symbol = " "
 
 [golang]
 symbol = " "
+format = "[]($style)[$symbol$version](bg:#292e42 fg:#56b6c2)[ ]($style)"
+style = "bg:#1a1b26 fg:#292E42"
 
 [haskell]
 symbol = " "
@@ -139,6 +141,8 @@ symbol = " "
 
 [java]
 symbol = " "
+format = "[]($style)[$symbol$version](bg:#292e42 fg:#abb2bf)[ ]($style)"
+style = "bg:#1a1b26 fg:#292E42"
 
 [julia]
 symbol = " "
@@ -162,6 +166,8 @@ symbol = " "
 
 [nodejs]
 symbol = " "
+format = "[]($style)[$symbol$version](bg:#292e42 fg:#98c379)[ ]($style)"
+style = "bg:#1a1b26 fg:#292E42"
 
 [package]
 symbol = " "
