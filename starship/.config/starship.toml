@@ -1,6 +1,6 @@
 # Use custom format:
 format='''
-$directory$git_branch$git_status$conda$docker_context
+$directory$git_branch$git_status$c$cmake$lua$python$rust$conda$docker_context$package
 $character
 '''
 
@@ -91,14 +91,21 @@ discharging_symbol = ""
 symbol = "  "
 
 [buf]
-symbol = " "
+symbol = ""
 
 [c]
 symbol = " "
+format = "[]($style)[$symbol($version(-$name))](bg:#292e42 fg:#4abaaf)[ ]($style)"
+style = "bg:#1a1b26 fg:#292E42"
+
+[cmake]
+symbol = " "
+format = "[]($style)[$symbol($version)](bg:#292e42 fg:#7aa2f7)[ ]($style)"
+style = "bg:#1a1b26 fg:#292E42"
 
 [conda]
 symbol = " "
-format = "[]($style)[$symbol$environment](bg:#292e42 fg:#98c379)[]($style)"
+format = "[]($style)[$symbol$environment](bg:#292e42 fg:#98c379)[ ]($style)"
 style = "bg:#1a1b26 fg:#292E42"
 
 [dart]
@@ -106,7 +113,7 @@ symbol = " "
 
 [docker_context]
 symbol = " "
-format = "[]($style)[$symbol$context](bg:#1a1b26 fg:#98c379)[]($style)"
+format = "[]($style)[$symbol$context](bg:#292e42 fg:#61afef)[ ]($style)"
 style = "bg:#1a1b26 fg:#292E42"
 
 [elixir]
@@ -132,6 +139,8 @@ symbol = " "
 
 [lua]
 symbol = " "
+format = "[]($style)[$symbol$version](bg:#292e42 fg:#61afef)[ ]($style)"
+style = "bg:#1a1b26 fg:#292E42"
 
 [memory_usage]
 symbol = " "
@@ -150,9 +159,13 @@ symbol = " "
 
 [package]
 symbol = " "
+format = "[]($style)[$symbol$version](bg:#292e42 fg:#9a7ecc)[ ]($style)"
+style = "bg:#1a1b26 fg:#292E42"
 
 [python]
 symbol = " "
+format = "[]($style)[${symbol}${pyenv_prefix}${version}$virtualenv](bg:#292e42 fg:#e0af68)[ ]($style)"
+style = "bg:#1a1b26 fg:#292E42"
 
 [rlang]
 symbol = "ﳒ "
@@ -161,10 +174,13 @@ symbol = "ﳒ "
 symbol = " "
 
 [rust]
-symbol = " "
+symbol = "󱘗 "
+format = "[]($style)[$symbol$version](bg:#292e42 fg:#e06c75)[ ]($style)"
+style = "bg:#1a1b26 fg:#292E42"
 
 [scala]
 symbol = " "
 
 [spack]
 symbol = "🅢 "
+
