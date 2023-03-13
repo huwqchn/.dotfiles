@@ -157,18 +157,18 @@ local autosnippets = {
       }
     )
   ),
-  s(
-    "INF",
-    fmt(
-      [[
-      int INF = {};
-      {}
-      ]],
-      {
-        c(1, { i(1, "0x3f3f3f3f"), i(1, "1e9") }),
-        i(2),
-      }
-    )
-  ),
+  -- s(
+  --   "INF",
+  --   fmt(
+  --     [[
+  --     int INF = {};
+  --     {}
+  --     ]],
+  --     {
+  --       c(1, { i(1, "0x3f3f3f3f"), i(1, "1e9") }),
+  --       i(2),
+  --     }
+  --   )
+  -- ),
 }
 return snippets, autosnippets
