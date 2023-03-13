@@ -70,7 +70,7 @@ format = "[]($style)[[$symbol](bg:#292E42 fg:#9ece6a)[$branch](bg:#292E42 fg:
 style = "bg:#1a1b26 fg:#292E42"
 
 [git_status]
-format = "[$all_status$ahead_behind]($style)[ ](bg:#1a1b26 fg:#292E42)"
+format = "[ $all_status$ahead_behind]($style)[ ](bg:#1a1b26 fg:#292E42)"
 style = "bg:#292E42 fg:#db4b4b"
 conflicted = "󰈻"
 up_to_date = "󰸞 "
@@ -99,7 +99,7 @@ format = "[]($style)[$symbol($version(-$name))](bg:#292e42 fg:#4abaaf)[ ](
 style = "bg:#1a1b26 fg:#292E42"
 
 [cmake]
-symbol = " "
+symbol = "󰔶 "
 format = "[]($style)[$symbol($version)](bg:#292e42 fg:#7aa2f7)[ ]($style)"
 style = "bg:#1a1b26 fg:#292E42"
 
