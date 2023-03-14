@@ -206,6 +206,12 @@ return {
     "akinsho/bufferline.nvim",
     cond = not vim.g.started_by_firenvim,
     event = "VeryLazy",
+    dependencies = {
+      {
+        "tiagovla/scope.nvim",
+        config = true,
+      },
+    },
     keys = {
       { "<Tab>", "<cmd>BufferLineCycleNext<cr>", desc = "Next" },
       { "<S-Tab>", "<cmd>BufferLineCyclePrev<cr>", desc = "Previous" },

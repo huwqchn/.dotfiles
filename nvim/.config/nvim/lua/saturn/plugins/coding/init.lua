@@ -531,6 +531,7 @@ return {
       })
     end,
   },
+  { import = "saturn.plugins.extra.mini-bracketed" },
   -- {
   --   "dense-analysis/neural",
   --   cmd = "NeuralCode",
