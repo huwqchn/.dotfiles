@@ -72,12 +72,12 @@ style = "bg:#1a1b26 fg:#292E42"
 [git_status]
 format = "[ $all_status$ahead_behind]($style)[ ](bg:#1a1b26 fg:#292E42)"
 style = "bg:#292E42 fg:#db4b4b"
-conflicted = "󰈻"
-up_to_date = "󰸞 "
+conflicted = " "
+up_to_date = " "
 untracked = "󰷌 "
-modified = "󰏪 "
-renamed = "󱇧 "
-deleted = "󰆴 "
+modified = " "
+renamed = " "
+deleted = " "
 ahead = "󰜷"
 diverged = "󰹺"
 behind = "󰜮"
@@ -156,7 +156,7 @@ style = "bg:#1a1b26 fg:#292E42"
 symbol = " "
 
 [meson]
-symbol = "喝 "
+symbol = "喝"
 
 [nim]
 symbol = " "
