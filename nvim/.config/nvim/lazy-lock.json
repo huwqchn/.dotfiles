@@ -22,6 +22,7 @@
   "dracula": { "branch": "main", "commit": "798274ba3c454a9aa3cd71f95a86ea55cbbbb142" },
   "dressing.nvim": { "branch": "master", "commit": "5f44f829481640be0f96759c965ae22a3bcaf7ce" },
   "firenvim": { "branch": "master", "commit": "d6d69b087c2b3430d837ec80ff71671112b2874b" },
+  "flatten.nvim": { "branch": "main", "commit": "25b9aec2a4fad5d3d297e8a72aeed8de95a5e17a" },
   "flit.nvim": { "branch": "main", "commit": "4c1739137acd3e7f03e2065a7be8a4dc41c7e461" },
   "friendly-snippets": { "branch": "main", "commit": "2f5b8a41659a19bd602497a35da8d81f1e88f6d9" },
   "git-blame.nvim": { "branch": "master", "commit": "1ad47c6454a5a53d3f4ffdd4022e84f4a6e376cb" },

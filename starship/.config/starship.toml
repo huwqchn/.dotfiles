@@ -82,7 +82,7 @@ staged = " "
 ahead = "󰜷"
 diverged = "󰹺"
 behind = "󰜮"
-stashed = "󰋻 "
+stashed = " "
 
 [battery]
 full_symbol = ""
