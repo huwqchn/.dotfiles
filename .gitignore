@@ -34,3 +34,6 @@ eww/.config/eww/System-Menu/scripts/tips/tips-lock
 eww/.config/eww/Main/images/temp.png
 emacs/.config/emacs/elpa
 emacs/.config/emacs/auto-save-list
+aria2/.config/aria2/aria2.session
+aria2/.config/aria2/LICENSE
+aria2/.config/aria2/README.md

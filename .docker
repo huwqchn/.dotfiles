@@ -20,7 +20,7 @@ docker run -d \
     -v $HOME/Downloads:/downloads \
     p3terx/aria2-pro
 
-# bridge 网络模式
+# bridge network mode
 docker run -d \
     --name ariang \
     --restart unless-stopped \
@@ -28,7 +28,7 @@ docker run -d \
     -p 6880:6880 \
     p3terx/ariang
 
-# host 网络模式（如果你需要使用 IPv6 网络访问，这是最简单的方式）
+# host network mode (If you need to use IPv6 network access, this is the easiest way)#
 docker run -d \
     --name ariang \
     --log-opt max-size=1m \
