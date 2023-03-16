@@ -16,7 +16,7 @@ vimcmd_visual_symbol = "[](#c678dd)"
 [os]
 format = "[]($style)[$symbol](bg:#292E42 fg:#7aa2f7)"
 # style = "bg:#292E42 fg:#7aa2f7"
-style = "bg:#1a1b26 fg:#292E42"
+style = "#292E42"
 
 [os.symbols]
 Windows = " "
@@ -62,15 +62,15 @@ Unknown = " "
 read_only = "  "
 read_only_style = "bg:#292E42 fg:#db4b4b"
 format = "[]($style)[ ](bg:#292E42 fg:#7aa2f7)[[$path](bg:#292E42 fg:#a9b1d6)](bg:#292E42 fg:#c0caf5)[$read_only]($read_only_style)[ ]($style)"
-style = "bg:#1a1b26 fg:#292E42"
+style = "#292E42"
 
 [git_branch]
 symbol = " "
 format = "[]($style)[[$symbol](bg:#292E42 fg:#9ece6a)[$branch](bg:#292E42 fg:#a9b1d6)](bg:#292E42 fg:#c0caf5)"
-style = "bg:#1a1b26 fg:#292E42"
+style = "#292E42"
 
 [git_status]
-format = "[ $all_status$ahead_behind]($style)[ ](bg:#1a1b26 fg:#292E42)"
+format = "[ $all_status$ahead_behind]($style)[ ](#292E42)"
 style = "bg:#292E42 fg:#db4b4b"
 conflicted = " "
 up_to_date = " "
@@ -98,21 +98,21 @@ symbol = ""
 [c]
 symbol = " "
 format = "[]($style)[$symbol($version(-$name))](bg:#292e42 fg:#4abaaf)[ ]($style)"
-style = "bg:#1a1b26 fg:#292E42"
+style = "#292E42"
 
 [cmake]
 symbol = "󰔶 "
 format = "[]($style)[$symbol($version)](bg:#292e42 fg:#7aa2f7)[ ]($style)"
-style = "bg:#1a1b26 fg:#292E42"
+style = "#292E42"
 
 [conda]
 symbol = " "
 format = "[]($style)[$symbol$environment](bg:#292e42 fg:#98c379)[ ]($style)"
-style = "bg:#1a1b26 fg:#292E42"
+style = "#292E42"
 
 [container]
 format = "[]($style)[$symbol$name](bg:#292e42 fg:#9a7ecc)[ ]($style)"
-style = "bg:#1a1b26 fg:#292E42"
+style = "#292E42"
 
 [dart]
 symbol = " "
@@ -120,7 +120,7 @@ symbol = " "
 [docker_context]
 symbol = " "
 format = "[]($style)[$symbol$context](bg:#292e42 fg:#61afef)[ ]($style)"
-style = "bg:#1a1b26 fg:#292E42"
+style = "#292E42"
 
 [elixir]
 symbol = " "
@@ -131,7 +131,7 @@ symbol = " "
 [golang]
 symbol = " "
 format = "[]($style)[$symbol$version](bg:#292e42 fg:#56b6c2)[ ]($style)"
-style = "bg:#1a1b26 fg:#292E42"
+style = "#292E42"
 
 [haskell]
 symbol = " "
@@ -142,7 +142,7 @@ symbol = " "
 [java]
 symbol = " "
 format = "[]($style)[$symbol$version](bg:#292e42 fg:#abb2bf)[ ]($style)"
-style = "bg:#1a1b26 fg:#292E42"
+style = "#292E42"
 
 [julia]
 symbol = " "
@@ -150,7 +150,7 @@ symbol = " "
 [lua]
 symbol = " "
 format = "[]($style)[$symbol$version](bg:#292e42 fg:#61afef)[ ]($style)"
-style = "bg:#1a1b26 fg:#292E42"
+style = "#292E42"
 
 [memory_usage]
 symbol = " "
@@ -167,17 +167,17 @@ symbol = " "
 [nodejs]
 symbol = " "
 format = "[]($style)[$symbol$version](bg:#292e42 fg:#98c379)[ ]($style)"
-style = "bg:#1a1b26 fg:#292E42"
+style = "#292E42"
 
 [package]
 symbol = " "
 format = "[]($style)[$symbol$version](bg:#292e42 fg:#9a7ecc)[ ]($style)"
-style = "bg:#1a1b26 fg:#292E42"
+style = "#292E42"
 
 [python]
 symbol = " "
 format = "[]($style)[${symbol}${pyenv_prefix}${version}$virtualenv](bg:#292e42 fg:#e0af68)[ ]($style)"
-style = "bg:#1a1b26 fg:#292E42"
+style = "#292E42"
 
 [rlang]
 symbol = "ﳒ "
@@ -188,7 +188,7 @@ symbol = " "
 [rust]
 symbol = "󱘗 "
 format = "[]($style)[$symbol$version](bg:#292e42 fg:#e06c75)[ ]($style)"
-style = "bg:#1a1b26 fg:#292E42"
+style = "#292E42"
 
 [scala]
 symbol = " "
