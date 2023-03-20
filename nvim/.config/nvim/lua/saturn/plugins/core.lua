@@ -1,19 +1,20 @@
 local function load(name)
   local Util = require("lazy.core.util")
-  -- always load lazyvim, then user file
-  for _, mod in ipairs({ "saturn.config." .. name, "config." .. name }) do
+  local function _load(mod)
     Util.try(function()
       require(mod)
     end, {
       msg = "Failed loading " .. mod,
       on_error = function(msg)
-        local modpath = require("lazy.core.cache").find(mod)
-        if modpath then
-          Util.error(msg)
+        local info = require("lazy.core.cache").find(mod)
+        if info == nil or (type(info) == "table" and #info == 0) then
+          return
         end
+        Util.error(msg)
       end,
     })
   end
+  _load("saturn.config." .. name)
   if vim.bo.filetype == "lazy" then
     -- HACK: Saturn may have overwritten options of the Lazy ui, so reset this here
     vim.cmd([[do VimResized]])
@@ -25,9 +26,10 @@ end
 -- after installing missing plugins
 load("options")
 
-if vim.fn.argc() == 0 then
+if vim.fn.argc(-1) == 0 then
   -- autocmds and keymaps can wait to load
   vim.api.nvim_create_autocmd("User", {
+    group = vim.api.nvim_create_augroup("Saturn", { clear = true }),
     pattern = "VeryLazy",
     callback = function()
       load("autocmds")
@@ -35,6 +37,7 @@ if vim.fn.argc() == 0 then
     end,
   })
 else
+  -- load them now so they affect the opened buffers
   load("autocmds")
   load("keymaps")
 end
