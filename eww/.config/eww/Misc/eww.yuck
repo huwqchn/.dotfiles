@@ -89,7 +89,7 @@
   :windowtype "normal"
   :wm-ignore true
   :monitor 0
-  :geometry (geometry :anchor "center" :width "800px" :height "200px")
+  :geometry (geometry :anchor "center" :width "400px" :height "100px")
   (powermenu))
 
 (defwindow volume-indicator

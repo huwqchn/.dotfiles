@@ -28,10 +28,10 @@
         (label :class "spotify-header-trademark" :text "®" :halign "center")
         (label :class "spotify-header-player" :text "Player" :halign "center")))
     (box :class "player-box" :hexpand "false" :vexpand "false" :space-evenly "true"
-      (box :class "player-info-box" :hexpand "false" :vexpand "false" :space-evenly "false" :orientation "v" :spacing 30
-        (label :class "player-info-title" :text "󰝚  Title: ${title}" :halign "start" :limit-width 60 :tooltip "${title}")
-        (label :class "player-info-artist" :text "󰠃  Artist: ${artist}" :halign "start" :limit-width 60 :tooltip "${artist}")
-        (label :class "player-info-album" :text "󰀥  Album: ${album}" :halign "start" :limit-width 60 :tooltip "${album}")
+      (box :class "player-info-box" :hexpand "false" :vexpand "false" :space-evenly "false" :orientation "v" :spacing 15
+        (label :class "player-info-title" :text "󰝚  Title: ${title}" :halign "start" :limit-width 30 :tooltip "${title}")
+        (label :class "player-info-artist" :text "󰠃  Artist: ${artist}" :halign "start" :limit-width 30 :tooltip "${artist}")
+        (label :class "player-info-album" :text "󰀥  Album: ${album}" :halign "start" :limit-width 30 :tooltip "${album}")
         (label :class "player-info-length" :text "󰦚  Length: ${length-info}" :halign "start" :tooltip "${length-info}")
         (eventbox :cursor "pointer" (button :class "player-info-button" :halign "start" :tooltip "Open in Spotify" :onclick "xdg-open 'spotify:track:${trackid}'" "Open in Spotify")))
       (box :class "player-cover-box" :hexpand "false" :halign "end" :vexpand "false" :space-evenly "false" :style "background-image: url('${art}');"))
@@ -41,29 +41,29 @@
       :space-evenly "false"
       (scale :orientation "h" :class "player-music-slider" :min 0 :max length :value position :tooltip current-pos :onchange { hover ? "dbus-send --type=method_call --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.SetPosition objpath:${trackid} int64:{}" : "" }))
     (box :class "main-player-control-box" :hexpand "false" :vexpand "false" :space-evenly "false" :orientation "h" :height 70
-      (box :class "player-volume-box" :space-evenly "false" :hexpand "false" :vexpand "false" :spacing 20
+      (box :class "player-volume-box" :space-evenly "false" :hexpand "false" :vexpand "false" :spacing 10
         (label :class "player-volume-icon" :text "󰕾")
-        (scale :class "player-volume-slider" :width 600 :min 0 :max 100 :orientation "h" :value current-volume :halign "start" :onchange "Player/scripts/player --volume {}")
+        (scale :class "player-volume-slider" :width 150 :min 0 :max 100 :orientation "h" :value current-volume :halign "start" :onchange "Player/scripts/player --volume {}")
         (button :class "lyrics-btn ${ly-status == "On" ? "lyrics-btn-on" : "lyrics-btn-off"}" :onclick "Player/scripts/toggle-lyrics" "󰭷"))
-      (box :class "player-buttons" :space-evenly "false" :hexpand "false" :vexpand "false" :spacing 20
+      (box :class "player-buttons" :space-evenly "false" :hexpand "false" :vexpand "false" :spacing 10
         (button :class "shuffle-btn ${shuffle == "On" ? "shuffle-btn-on" : "shuffle-btn-off"}" :onclick "Player/scripts/player --shuffle" "󰒟")
         (button :class "previous-btn" :onclick "playerctl -p spotify previous" "󰒮")
         (button :class "player-pp-btn" :onclick "playerctl -p spotify play-pause" "${pp-icon}")
         (button :class "next-btn" :onclick "playerctl -p spotify next" "󰒭"))
-      (box :class "player-length-box" :space-evenly "false" :hexpand "false" :vexpand "false" :halign "end" :width 300
+      (box :class "player-length-box" :space-evenly "false" :hexpand "false" :vexpand "false" :halign "end" :width 150
         (label :class "current-position" :text "${current-pos} ")
         (label :class "length-of-song" :text "/ ${length-info}"))
-      (box :class "player-control-box-right" :space-evenly "false" :hexpand "false" :vexpand "false" :spacing 30 :halign "end"
+      (box :class "player-control-box-right" :space-evenly "false" :hexpand "false" :vexpand "false" :spacing 15 :halign "end"
         (button :class "visualizer-btn ${vz-status == "On" ? "visualizer-btn-on" : "visualizer-btn-off"}" :onclick "Player/scripts/visualizer" "󱑽")
         (button :class "equalizer-btn ${eq-status == "On" ? "equalizer-btn-on" : "equalizer-btn-off"}" :onclick "Player/scripts/equalizer" "󰺢")))))
 
 (defwidget visualizer []
-  (box :class "main-album-box" :hexpand "false" :vexpand "false" :space-evenly "false" :width 1440 :height 560 :orientation "v"
+  (box :class "main-album-box" :hexpand "false" :vexpand "false" :space-evenly "false" :width 720 :height 280 :orientation "v"
   (label :class "vz-title" :text "${title}" :halign "center" :vexpand "false" :space-evenly "false")
   (box :class "player-album-box" :halign "center" :valign "center" :hexpand "false" :vexpand "false" :space-evenly "false" :style "background-image: url('${art}');")))
 
 (defwidget lyrics []
-  (box :class "lyrics-main-box" :orientation "v" :hexpand "false" :vexpand "false" :space-evenly "false" :width 1440 :height 560 {get-lyrics} 
+  (box :class "lyrics-main-box" :orientation "v" :hexpand "false" :vexpand "false" :space-evenly "false" :width 720 :height 280 {get-lyrics} 
     (label :class "lyrics-label" :text "L Y R I C S" :halign "center" :vexpand "false" :space-evenly "false")
     (label :class "lyrics-title" :text "${title}" :halign "center" :vexpand "false" :space-evenly "false")
     (label :class "lyrics" :text lyrics)))
@@ -73,7 +73,7 @@
   :windowtype "normal"
   :wm-ignore true
   :monitor 0
-  :geometry (geometry :anchor "center" :height 900 :width 1600)
+  :geometry (geometry :anchor "center" :height 450 :width 800)
   (player))
 
 (defwindow visualizer

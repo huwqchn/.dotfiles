@@ -10,34 +10,34 @@
 
 .greeting {
   background-color: $bg-alt;
-  border-radius: 40px 40px 0px 0px;
-  padding: 20px;
-  font-size: 40px;
+  border-radius: 20px 20px 0px 0px;
+  padding: 10px;
+  font-size: 20px;
   font-weight: bold;
 }
 
 .main-buttons-box {
   background-color: $gray-alt;
-  margin: 40px 40px 40px 40px;
+  margin: 20px 20px 20px 20px;
   border-radius: 20px;
 }
 
 .shutdown {
   background-color: $bg;
   color: $red;
-  border-radius: 60px;
-  padding: 40px;
-  margin: 40px;
-  font-size: 160px;
+  border-radius: 30px;
+  padding: 20px;
+  margin: 20px;
+  font-size: 80px;
 }
 
 .reboot {
   background-color: $bg;
   color: $green;
-  border-radius: 60px;
-  padding: 40px;
-  margin: 40px 40px 40px 0px;
-  font-size: 160px;
+  border-radius: 30px;
+  padding: 20px;
+  margin: 20px 20px 20px 0px;
+  font-size: 80px;
 }
 
 .reboot:hover,
@@ -49,19 +49,19 @@
 .exit {
   background-color: $bg;
   color: $blue;
-  border-radius: 60px;
-  padding: 40px;
-  margin: 40px 40px 40px 0px;
-  font-size: 160px;
+  border-radius: 30px;
+  padding: 20px;
+  margin: 20px 20px 20px 0px;
+  font-size: 80px;
 }
 
 .lock {
   background-color: $bg;
   color: $yellow;
-  border-radius: 60px;
-  padding: 40px;
-  margin: 40px 40px 40px 0px;
-  font-size: 160px;
+  border-radius: 30px;
+  padding: 20px;
+  margin: 20px 20px 20px 0px;
+  font-size: 80px;
 }
 
 .volume-spacer,
