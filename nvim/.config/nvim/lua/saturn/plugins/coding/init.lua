@@ -53,8 +53,8 @@ return {
     cmd = "Copilot",
     keys = {
       "<leader>ap",
-      "<cmd>Copilot panel<cr>",
-      desc = "Copilot panel",
+      "<cmd>Copilotpanel<cr>",
+      desc = "CopilotPanel",
     },
     opts = {
       panel = {

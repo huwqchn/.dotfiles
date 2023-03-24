@@ -25,7 +25,7 @@ return {
     code_lens_refresh = true,
     installer = {
       setup = {
-        ensure_installed = { "lua_ls", "jsonls", "clangd", "pyright" },
+        ensure_installed = { "jsonls", "clangd", "pyright" },
         automatic_installation = {
           exclude = {},
         },
