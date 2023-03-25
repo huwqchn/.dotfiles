@@ -6,6 +6,8 @@ configuration{
 
 window {
 	height: 5%;
+  location: north;
+  y-offset: 8%;
 }
 
 listview {
