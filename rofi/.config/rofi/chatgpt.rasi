@@ -1,0 +1,13 @@
+@theme "~/.config/rofi/config.rasi"
+
+configuration{
+  lines: 0;
+}
+
+window {
+	height: 5%;
+}
+
+listview {
+	columns: 0;
+}

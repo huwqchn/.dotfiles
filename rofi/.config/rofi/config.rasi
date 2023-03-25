@@ -1,4 +1,4 @@
-configuration{
+configuration {
 	modi: "run,drun,window";
 	lines: 5;
 	font: "JetBrainsMono Nerd Font Medium 14";

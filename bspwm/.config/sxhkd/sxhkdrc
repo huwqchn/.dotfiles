@@ -41,6 +41,10 @@ super + Escape
 super + BackSpace
   xkill
 
+# chatgpt search
+super + s
+  ~/.scripts/chatgpt.sh
+
 #
 # bspwm hotkeys
 #
