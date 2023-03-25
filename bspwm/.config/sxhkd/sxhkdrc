@@ -45,6 +45,10 @@ super + BackSpace
 super + s
   ~/.scripts/chatgpt.sh
 
+# google search
+super + shift + s
+  ~/.scripts/google.sh
+
 #
 # bspwm hotkeys
 #

@@ -1,5 +1,5 @@
 #!/bin/bash
-INPUT=$(rofi -dmenu -p " 󰚩  " -icon-theme "Papirus" -show-icons -config ~/.config/rofi/chatgpt.rasi)
+INPUT=$(rofi -dmenu -p " 󰚩  " -icon-theme "Papirus" -show-icons -config ~/.config/rofi/search.rasi)
 if [[ -z $INPUT ]]; then
     exit 1
 fi
