@@ -52,9 +52,11 @@ return {
     event = "InsertEnter",
     cmd = "Copilot",
     keys = {
-      "<leader>ap",
-      "<cmd>Copilotpanel<cr>",
-      desc = "CopilotPanel",
+      {
+        "<leader>ap",
+        "<cmd>Copilot panel<cr>",
+        desc = "Copilot Panel",
+      },
     },
     opts = {
       panel = {
