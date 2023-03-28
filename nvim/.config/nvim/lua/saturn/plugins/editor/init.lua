@@ -149,6 +149,7 @@ return {
       { "<leader><cr><cr>", "<cmd>ToggleTerm direction=float<cr>", desc = "Float" },
       { "<leader><cr>h", "<cmd>ToggleTerm size=10 direction=horizontal<cr>", desc = "Horizontal" },
       { "<leader><cr>v", "<cmd>ToggleTerm size=80 direction=vertical<cr>", desc = "Vertical" },
+      { "<leader><cr>t", "<cmd>ToggleTerm direction=tab<cr>", desc = "Tab" },
       { "<leader>gg", "<cmd>lua require 'saturn.plugins.editor.toggleterm'.lazygit_toggle()<cr>", desc = "LazyGit" },
       { "<M-S-1>" },
       { "<M-S-2>" },
