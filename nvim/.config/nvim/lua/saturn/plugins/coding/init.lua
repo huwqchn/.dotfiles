@@ -563,6 +563,13 @@ return {
       "ChatGPTActAs",
       "ChatGPTEditWithInstructions",
     },
+    keys = {
+      {
+        "<leader>ac",
+        "<cmd>ChatGPT<cr>",
+        desc = "chatgpt",
+      },
+    },
     opts = {
       keymaps = {
         close = { "<C-c>", "<Esc>" },
