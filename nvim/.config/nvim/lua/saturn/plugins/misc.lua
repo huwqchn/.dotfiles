@@ -336,6 +336,18 @@ return {
       { "<leader>qd", function() require("persistence").stop() end, desc = "Don't Save Current Session" },
     },
   },
+  {
+    "wintermute-cell/gitignore.nvim",
+    keys = {
+      {
+        "<leader>gi",
+        function()
+          require("gitignore").generate()
+        end,
+        desc = "gitignore",
+      },
+    },
+  },
   -- {
   --   "phaazon/mind.nvim",
   --   cmd = {
