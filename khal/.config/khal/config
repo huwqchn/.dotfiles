@@ -25,3 +25,15 @@ color = ''
 default_color = yellow
 method = foreground
 multiple = ''
+
+[keybindings]
+delete = d,backspace
+down = down,e
+left = left,n
+right = right,i
+up = up,u
+export = space
+external_edit = k
+new = a
+
+
