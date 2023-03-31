@@ -35,3 +35,9 @@ docker run -d \
     --restart unless-stopped \
     --network host \
     p3terx/ariang --port 6880 --ipv6
+
+# start-gpt
+docker run --rm -it --net=host gpt-academic
+
+# start-page
+docker run --name start-page --restart=always -p 12790:3000 -d excalith/start-page
