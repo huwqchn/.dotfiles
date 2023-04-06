@@ -8,7 +8,7 @@ alias ipy="ipython"
 alias cdiff='colordiff'
 alias E="emacsclient -c -a 'emacs'"
 alias e="emacs -nw"
-alias ra="echo 'please use lf'"
+alias ra="ranger"
 if [[ $(uname) == 'Darwin' ]]; then
 	alias ep='export https_proxy=http://127.0.0.1:19180 && export http_proxy=http://127.0.0.1:19180'
   alias ed='/opt/homebrew/bin/emacs --daemon &'
@@ -36,6 +36,7 @@ alias cat="bat"
 alias du="dust"
 # alias ps="procs"
 alias hf="hyperfine"
+# code analysis
 alias tk="tokei"
 
 # some git aliases

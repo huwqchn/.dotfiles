@@ -58,8 +58,8 @@ return {
         float = opts.diagnostics.float,
       }
       vim.diagnostic.config(config)
-      vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, opts.float)
-      vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, opts.float)
+      -- vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, opts.float)
+      -- vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, opts.float)
       require("mason-lspconfig").setup(saturn.lsp.installer.setup)
       local util = require("lspconfig.util")
       -- automatic_installation is handled by lsp-manager
