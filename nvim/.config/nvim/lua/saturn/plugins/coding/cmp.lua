@@ -160,6 +160,7 @@ M.config = function()
         tmux = "(TMUX)",
         copilot = "(Copilot)",
         treesitter = "(TreeSitter)",
+        codeium = "(Codeium)",
       },
       duplicates = {
         buffer = 1,
@@ -199,6 +200,11 @@ M.config = function()
           if entry.source.name == "emoji" then
             vim_item.kind = saturn.icons.misc.Smiley
             vim_item.kind_hl_group = "CmpItemKindEmoji"
+          end
+
+          if entry.source.name == "codeium" then
+            vim_item.kind = saturn.icons.misc.Magic
+            vim_item.kind_hl_group = "CmpItemKindCodeium"
           end
         end
         vim_item.menu = saturn.plugins.cmp.formatting.source_names[entry.source.name]
@@ -264,6 +270,7 @@ M.config = function()
       { name = "path" },
       { name = "luasnip" },
       { name = "cmp_tabnine" },
+      { name = "codeium" },
       { name = "nvim_lua" },
       { name = "buffer" },
       { name = "calc" },

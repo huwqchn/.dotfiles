@@ -175,5 +175,6 @@ return {
     Alien = "",
     Palette = "",
     Keyboard = "",
+    Magic = "",
   },
 }

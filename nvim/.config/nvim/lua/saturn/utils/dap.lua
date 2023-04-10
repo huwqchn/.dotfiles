@@ -127,4 +127,26 @@ M.codelldb_config = function(dap)
   -- dap_keymap(dap)
 end
 
+M.netcoredbg_config = function(dap)
+  local mason_path = vim.fn.glob(vim.fn.stdpath("data")) .. "/mason/"
+  local netcoredbg = mason_path .. "packages/codelldb/netcoredbg"
+
+  dap.adapters.coreclr = {
+    type = "executable",
+    command = netcoredbg,
+    args = { "--interpreter=vscode" },
+  }
+
+  dap.configurations.cs = {
+    {
+      type = "coreclr",
+      name = "launch - netcoredbg",
+      request = "launch",
+      program = function()
+        return vim.fn.input("Path to dll", vim.fn.getcwd() .. "/bin/Debug/", "file")
+      end,
+    },
+  }
+end
+
 return M
