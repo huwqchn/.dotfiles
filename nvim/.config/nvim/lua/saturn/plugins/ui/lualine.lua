@@ -240,7 +240,10 @@ local lsp_space = {
 
 local debug_mode = {
   function()
-    return require("dap").status()
+    if saturn.plugins.dap.loaded then
+      return require("dap").status()
+    end
+    return ""
   end,
   color = { bg = colors.red, fg = colors.black },
   separator = { left = saturn.icons.ui.SeparatorLeft, right = saturn.icons.ui.SeparatorRight },
@@ -249,18 +252,30 @@ local debug_mode = {
 
 local breakpoint_count = {
   function()
-    local breakpoints = require("dap.breakpoints").get()
-    local breakpointSum = 0
-    for buf, _ in pairs(breakpoints) do
-      breakpointSum = breakpointSum + #breakpoints[buf]
+    if saturn.plugins.dap.loaded then
+      local breakpoints = require("dap.breakpoints").get()
+      local breakpointSum = 0
+      for buf, _ in pairs(breakpoints) do
+        breakpointSum = breakpointSum + #breakpoints[buf]
+      end
+      if breakpointSum == 0 then
+        return ""
+      end
+      return saturn.icons.ui.Bug .. " " .. tostring(breakpointSum)
     end
-    if breakpointSum == 0 then
-      return ""
-    end
-    return saturn.icons.ui.Bug .. " " .. tostring(breakpointSum)
+    return ""
   end,
   color = { bg = colors.grey, fg = colors.red },
   separator = { left = saturn.icons.ui.SeparatorLeft, right = saturn.icons.ui.SeparatorRight },
+  cond = conditions.hide_in_width,
+}
+
+local macros = {
+  function()
+    if saturn.plugins.NeoComposer.loaded then
+      return require("NeoComposer.ui").status_recording()
+    end
+  end,
   cond = conditions.hide_in_width,
 }
 
@@ -344,13 +359,16 @@ require("lualine").setup({
     },
     lualine_b = {
       space,
-    },
-    lualine_c = {
       filename,
       filetype,
       space,
+    },
+    lualine_c = {
       branch,
       diff,
+      hide_in_width_space,
+      debug_mode,
+      breakpoint_count,
       hide_in_width_space,
       python_env,
       python_env_icon,
@@ -358,7 +376,7 @@ require("lualine").setup({
     lualine_x = {
       lazy,
       lazy_space,
-      { require("NeoComposer.ui").status_recording },
+      macros,
       key,
       key_icon,
       space,

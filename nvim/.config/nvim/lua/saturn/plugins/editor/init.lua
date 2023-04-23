@@ -929,6 +929,7 @@ return {
     init = function()
       saturn.plugins.dap = {
         on_config_done = nil,
+        loaded = false,
       }
     end,
     keys = {
@@ -1038,6 +1039,7 @@ return {
       end
 
       dap.set_log_level(opts.log.level)
+      saturn.plugins.dap.loaded = true
       if saturn.plugins.dap.on_config_done then
         saturn.plugins.dap.on_config_done(dap)
       end

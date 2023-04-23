@@ -364,34 +364,42 @@ return {
   {
     "ecthelionvi/NeoComposer.nvim",
     dependencies = { "kkharji/sqlite.lua" },
+    init = function()
+      saturn.plugins.NeoComposer = {
+        loaded = false,
+      }
+    end,
     keys = {
       { "Q", mode = { "n", "v" } },
       { "yq", mode = { "n", "v" } },
       { "cq", mode = { "n", "v" } },
       { "q", mode = { "n", "v" } },
       { "<m-q>", mode = { "n", "v" } },
-      { "<c-n>", mode = "n" },
-      { "<c-p>", mode = "n" },
+      { "]Q", mode = "n" },
+      { "[Q", mode = "n" },
     },
     cmds = {
       "EditMacros",
       "ClearNeoComposer",
     },
-    opts = {
-      -- notify = true,
-      -- delay_timer = "150",
-      -- status_bg = saturn.colors.black,
-      -- preview_fg = "#ff9e64",
-      keymaps = {
-        play_macro = "Q",
-        yank_macro = "yq",
-        stop_macro = "cq",
-        toggle_record = "q",
-        cycle_next = "<c-n>",
-        cycle_prev = "<c-p>",
-        toggle_macro_menu = "<m-q>",
-      },
-    },
+    opts = function()
+      saturn.plugins.NeoComposer.loaded = true
+      return {
+        -- notify = true,
+        -- delay_timer = "150",
+        -- status_bg = saturn.colors.black,
+        -- preview_fg = "#ff9e64",
+        keymaps = {
+          play_macro = "Q",
+          yank_macro = "yq",
+          stop_macro = "cq",
+          toggle_record = "q",
+          cycle_next = "]Q",
+          cycle_prev = "[Q",
+          toggle_macro_menu = "<m-q>",
+        },
+      }
+    end,
   },
   { import = "saturn.plugins.extra.firenvim" },
   { import = "saturn.plugins.extra.hologram" },
