@@ -361,6 +361,38 @@ return {
   --   dependencies = { "nvim-lua/plenary.nvim" },
   --   config = true,
   -- },
+  {
+    "ecthelionvi/NeoComposer.nvim",
+    dependencies = { "kkharji/sqlite.lua" },
+    keys = {
+      { "Q", mode = { "n", "v" } },
+      { "yq", mode = { "n", "v" } },
+      { "cq", mode = { "n", "v" } },
+      { "q", mode = { "n", "v" } },
+      { "<m-q>", mode = { "n", "v" } },
+      { "<c-n>", mode = "n" },
+      { "<c-p>", mode = "n" },
+    },
+    cmds = {
+      "EditMacros",
+      "ClearNeoComposer",
+    },
+    opts = {
+      -- notify = true,
+      -- delay_timer = "150",
+      -- status_bg = saturn.colors.black,
+      -- preview_fg = "#ff9e64",
+      keymaps = {
+        play_macro = "Q",
+        yank_macro = "yq",
+        stop_macro = "cq",
+        toggle_record = "q",
+        cycle_next = "<c-n>",
+        cycle_prev = "<c-p>",
+        toggle_macro_menu = "<m-q>",
+      },
+    },
+  },
   { import = "saturn.plugins.extra.firenvim" },
   { import = "saturn.plugins.extra.hologram" },
 }

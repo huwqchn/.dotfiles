@@ -64,7 +64,7 @@ map({ "i", "v", "n", "s" }, "<C-s>", "<cmd>wa<cr><esc>")
 map("", "S", "<cmd>w<cr><esc>")
 
 -- quit
-map("n", "Q", "<cmd>q<cr>")
+-- map("n", "Q", "<cmd>q<cr>")
 map("n", "<leader>qq", "<cmd>qa<cr>", { desc = "Quit all" })
 
 -- select all

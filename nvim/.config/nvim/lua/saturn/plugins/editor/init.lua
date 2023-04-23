@@ -471,6 +471,9 @@ return {
       pcall(function()
         require("telescope").load_extension("noice")
       end)
+      pcall(function()
+        require("telescope").load_extension("macros")
+      end)
     end,
     keys = {
       -- { "<leader>,", "<cmd>Telescope buffers show_all_buffers=true<cr>", desc = "Switch Buffer" },
@@ -552,6 +555,11 @@ return {
         "<leader>s<tab>",
         "<cmd>lua require('telescope').extensions['telescope-tabs'].list_tabs(require('telescope.themes').get_dropdown{previewer = false, initial_mode='normal', prompt_title='Tabs'})<cr>",
         desc = "Find Tab",
+      },
+      {
+        "<leader>sq",
+        "<cmd>Telescope macros<cr>",
+        desc = "Macros",
       },
     },
   },

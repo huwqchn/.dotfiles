@@ -1,26 +1,27 @@
--- TODO:using saturn.colorscheme instead
--- local colors = {
---   silver = "#cdd6f4",
---   grey = "#181825",
---   dark_grey = "#202328",
---   dark_purple = "#242735",
---   black = "#1e1e2e",
---   white = "#313244",
---   light_green = "#6c7086",
---   orange = "#fab387",
---   green = "#a6e3a1",
---   blue = "#80A7EA",
---   violet = "#a9a1e1",
---   lilac = "#b4befe",
---   oyster = "#e2ddd1",
---   pink = "#f38ba8",
---   cyan = "#4abaaf",
---   purple = "#9a7ecc",
---   yellow = "#e0af68",
---   red = "#ec5f67",
---   prussian = "#003153",
--- }
 local colors = saturn.colors
+if colors == nil then
+  colors = {
+    silver = "#cdd6f4",
+    grey = "#181825",
+    dark_grey = "#202328",
+    dark_purple = "#242735",
+    black = "#1e1e2e",
+    white = "#313244",
+    light_green = "#6c7086",
+    orange = "#fab387",
+    green = "#a6e3a1",
+    blue = "#80A7EA",
+    violet = "#a9a1e1",
+    lilac = "#b4befe",
+    oyster = "#e2ddd1",
+    pink = "#f38ba8",
+    cyan = "#4abaaf",
+    purple = "#9a7ecc",
+    yellow = "#e0af68",
+    red = "#ec5f67",
+    prussian = "#003153",
+  }
+end
 
 -- auto change color according to neovims mode
 local mode_color = {
@@ -237,31 +238,31 @@ local lsp_space = {
   cond = conditions.lsp_active,
 }
 
--- local debug_mode = {
---   function()
---     return require("dap").status()
---   end,
---   color = { bg = colors.red, fg = colors.black },
---   separator = { left = saturn.icons.ui.SeparatorLeft, right = saturn.icons.ui.SeparatorRight },
---   cond = conditions.hide_in_width,
--- }
---
--- local breakpoint_count = {
---   function()
---     local breakpoints = require("dap.breakpoints").get()
---     local breakpointSum = 0
---     for buf, _ in pairs(breakpoints) do
---       breakpointSum = breakpointSum + #breakpoints[buf]
---     end
---     if breakpointSum == 0 then
---       return ""
---     end
---     return saturn.icons.ui.Bug .. " " .. tostring(breakpointSum)
---   end,
---   color = { bg = colors.grey, fg = colors.red },
---   separator = { left = saturn.icons.ui.SeparatorLeft, right = saturn.icons.ui.SeparatorRight },
---   cond = conditions.hide_in_width,
--- }
+local debug_mode = {
+  function()
+    return require("dap").status()
+  end,
+  color = { bg = colors.red, fg = colors.black },
+  separator = { left = saturn.icons.ui.SeparatorLeft, right = saturn.icons.ui.SeparatorRight },
+  cond = conditions.hide_in_width,
+}
+
+local breakpoint_count = {
+  function()
+    local breakpoints = require("dap.breakpoints").get()
+    local breakpointSum = 0
+    for buf, _ in pairs(breakpoints) do
+      breakpointSum = breakpointSum + #breakpoints[buf]
+    end
+    if breakpointSum == 0 then
+      return ""
+    end
+    return saturn.icons.ui.Bug .. " " .. tostring(breakpointSum)
+  end,
+  color = { bg = colors.grey, fg = colors.red },
+  separator = { left = saturn.icons.ui.SeparatorLeft, right = saturn.icons.ui.SeparatorRight },
+  cond = conditions.hide_in_width,
+}
 
 local function env_cleanup(venv)
   if string.find(venv, "/") then
@@ -357,6 +358,7 @@ require("lualine").setup({
     lualine_x = {
       lazy,
       lazy_space,
+      { require("NeoComposer.ui").status_recording },
       key,
       key_icon,
       space,
