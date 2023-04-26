@@ -1030,52 +1030,6 @@
           },
           "to": [
             {
-              "key_code": "open_bracket"
-            }
-          ]
-        },
-        {
-          "conditions": [
-            {
-              "name": "switch_mode",
-              "type": "variable_if",
-              "value": 1
-            }
-          ],
-          "type": "basic",
-          "from": {
-            "key_code": "period",
-            "modifiers": {
-              "optional": [
-                "any"
-              ]
-            }
-          },
-          "to": [
-            {
-              "key_code": "close_bracket"
-            }
-          ]
-        },
-        {
-          "conditions": [
-            {
-              "name": "switch_mode",
-              "type": "variable_if",
-              "value": 1
-            }
-          ],
-          "type": "basic",
-          "from": {
-            "key_code": "comma",
-            "modifiers": {
-              "mandatory": [
-                "shift"
-              ]
-            }
-          },
-          "to": [
-            {
               "key_code": "open_bracket",
               "modifiers": "left_shift"
             }
@@ -1093,8 +1047,8 @@
           "from": {
             "key_code": "period",
             "modifiers": {
-              "mandatory": [
-                "shift"
+              "optional": [
+                "any"
               ]
             }
           },
