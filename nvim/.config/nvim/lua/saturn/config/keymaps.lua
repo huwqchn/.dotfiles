@@ -24,6 +24,7 @@ map({ "n", "x", "o" }, "i", "l")
 -- colemak jump to start/end of the line
 map({ "n", "x", "o" }, "N", "^")
 map({ "n", "x", "o" }, "I", "$")
+
 -- colemak fast navigation
 map({ "n", "x", "o" }, "U", "5k")
 map({ "n", "x", "o" }, "E", "5j")
@@ -56,6 +57,7 @@ map({ "n", "i" }, "<esc>", "<cmd>noh<cr><esc>", { desc = "Escape and clear hlsea
 -- better cmd mode
 map({ "n", "x", "o" }, ":", ",")
 map({ "n", "x", "o" }, "<cr>", ":")
+
 -- backup cmd mode, some plugins will override <cr>
 map({ "n", "x", "o" }, "\\", ":")
 
@@ -72,6 +74,8 @@ map({ "n", "x", "i" }, "<C-a>", "<esc>ggVG")
 
 -- new space line
 map("n", "<C-cr>", "o<esc>")
+map("i", "<C-e>", "<esc>o")
+map("i", "<C-u>", "<esc>O")
 
 -- paste
 map("i", "<C-v>", "<C-g>u<Cmd>set paste<CR><C-r>+<Cmd>set nopaste<CR>")
@@ -143,8 +147,19 @@ map("t", "<esc><esc>", "<c-\\><c-n>", { desc = "Enter Normal Mode" })
 map("c", "<C-e>", 'pumvisible() ? "\\<C-n>" : "\\<C-j>"', { expr = true, noremap = true })
 map("c", "<C-u>", 'pumvisible() ? "\\<C-p>" : "\\<C-k>"', { expr = true, noremap = true })
 
--- goto new position in jumplist
-map("n", "<C-h>", "<C-i>")
+-- colemak goto new position in jumplist
+-- map("n", "<C-h>", "<C-i>")
+
+-- kill a line
+map("i", "<C-k>", "<esc>ddi")
+
+-- start / end of line
+map("i", "<C-,>", "<esc>I")
+map("i", "<C-.>", "<esc>A")
+
+-- forword / backward word
+map("i", "<C-f>", "<esc>ea")
+map("i", "<C-b>", "<esc>bi")
 
 -- Windows managenment
 --Better window movement
