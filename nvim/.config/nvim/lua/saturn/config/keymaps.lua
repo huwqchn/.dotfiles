@@ -70,7 +70,7 @@ map("", "S", "<cmd>w<cr><esc>")
 map("n", "<leader>qq", "<cmd>qa<cr>", { desc = "Quit all" })
 
 -- select all
-map({ "n", "x", "i" }, "<C-a>", "<esc>ggVG")
+map({ "n", "x", "i" }, "<C-a>", "<cmd>normal! ggVG<cr>")
 
 -- new space line
 map("n", "<C-cr>", "o<esc>")
