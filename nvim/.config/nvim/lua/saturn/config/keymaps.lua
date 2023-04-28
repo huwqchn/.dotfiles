@@ -48,8 +48,7 @@ map({ "n", "x", "o" }, "=", "'Nn'[v:searchforward]", { expr = true })
 map({ "n", "x", "o" }, "-", "'nN'[v:searchforward]", { expr = true })
 
 -- search work under cursor
-map("n", "gw", "*N")
-map("x", "gw", "*N")
+map({ "n", "x" }, "gw", "*N", { desc = "Search word under cursor" })
 
 -- clear search with <esc>
 map({ "n", "i" }, "<esc>", "<cmd>noh<cr><esc>", { desc = "Escape and clear hlsearch" })
@@ -62,8 +61,8 @@ map({ "n", "x", "o" }, "<cr>", ":")
 map({ "n", "x", "o" }, "\\", ":")
 
 -- save
-map({ "i", "v", "n", "s" }, "<C-s>", "<cmd>wa<cr><esc>")
-map("", "S", "<cmd>w<cr><esc>")
+map({ "i", "v", "n", "s" }, "<C-s>", "<cmd>wa<cr><esc>", { desc = "Save all files" })
+map("", "S", "<cmd>w<cr><esc>", { desc = "Save file" })
 
 -- quit
 -- map("n", "Q", "<cmd>q<cr>")
@@ -305,6 +304,20 @@ local conceallevel = vim.o.conceallevel > 0 and vim.o.conceallevel or 3
 map("n", "<leader>uc", function()
   Util.toggle("conceallevel", false, { 0, conceallevel })
 end, { desc = "Toggle Conceal" })
+
+-- highlights under cursor
+if vim.fn.has("nvim-0.9.0") == 1 then
+  map("n", "<leader>ui", vim.show_pos, { desc = "Inspect Pos" })
+end
+
+-- Clear search, diff update and redraw
+-- taken from runtime/lua/_editor.lua
+map(
+  "n",
+  "<leader>ur",
+  "<Cmd>nohlsearch<Bar>diffupdate<Bar>normal! <C-L><CR>",
+  { desc = "Redraw / clear hlsearch / diff update" }
+)
 
 -- Clear search, diff update and redraw
 -- taken from runtime/lua/_editor.lua
