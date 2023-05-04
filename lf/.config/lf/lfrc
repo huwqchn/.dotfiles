@@ -171,8 +171,8 @@ map zx extract
 map zi zip
 map zt tar
 
-map - search prev
-map = search next
+map - search-prev
+map = search-next
 
 map <c-e> down
 map <c-u> up
