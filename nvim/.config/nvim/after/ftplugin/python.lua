@@ -7,7 +7,19 @@ require("saturn.plugins.lsp.null-ls.formatters").setup({ { command = "black", fi
 -- set lsp for python
 require("saturn.plugins.lsp.manager").setup("pyright")
 
-saturn.plugins.which_key.mappings["<leader>n"] = { name = "+python" }
-vim.keymap.set("n", "<leader>nt", "<cmd>lua require('dap-python').test_method()<cr>", { desc = "Test Method" })
-vim.keymap.set("n", "<leader>nT", "<cmd>lua require('dap-python').test_class()<cr>", { desc = "Test Class" })
-vim.keymap.set("n", "<leader>nd", "<cmd>lua require('dap-python').debug_selection()<cr>", { desc = "Debug Selection" })
+--Setup dap for python
+local mason_path = vim.fn.glob(vim.fn.stdpath("data") .. "/mason/")
+pcall(function()
+  require("dap-python").setup(mason_path .. "packages/debugpy/venv/bin/python")
+end)
+
+-- Supported test frameworks are unittest, pytest and django. By default it
+-- tries to detect the runner by probing for pytest.ini and manage.py, if
+-- neither are present it defaults to unittest.
+pcall(function()
+  require("dap-python").test_runner = "pytest"
+end)
+
+vim.keymap.set("n", "<leader>dt", "<cmd>lua require('dap-python').test_method()<cr>", { desc = "Test Method" })
+vim.keymap.set("n", "<leader>dT", "<cmd>lua require('dap-python').test_class()<cr>", { desc = "Test Class" })
+vim.keymap.set("v", "<leader>ds", "<cmd>lua require('dap-python').debug_selection()<cr>", { desc = "Debug Selection" })
