@@ -84,6 +84,7 @@ alias cc="cc -Wall -Werror -Wextra"
 alias pc="proxychains4"
 alias icat="kitty +kitten icat"
 alias start-conda="source /opt/anaconda/bin/activate root"
+alias j="joshuto"
 
 # Function for extracting compressed files
 ex () {
