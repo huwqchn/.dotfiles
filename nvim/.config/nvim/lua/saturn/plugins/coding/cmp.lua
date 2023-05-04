@@ -178,7 +178,7 @@ M.config = function()
           vim_item.kind = saturn.plugins.cmp.formatting.kind_icons[vim_item.kind]
 
           if entry.source.name == "copilot" then
-            vim_item.kind = saturn.icons.git.Octoface
+            vim_item.kind = saturn.icons.misc.Copilot
             vim_item.kind_hl_group = "CmpItemKindCopilot"
           end
 

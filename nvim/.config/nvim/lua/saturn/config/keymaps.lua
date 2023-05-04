@@ -66,7 +66,8 @@ map("", "S", "<cmd>w<cr><esc>", { desc = "Save file" })
 
 -- quit
 -- map("n", "Q", "<cmd>q<cr>")
-map("n", "<leader>qq", "<cmd>qa<cr>", { desc = "Quit all" })
+map("n", "<leader>qa", "<cmd>qa<cr>", { desc = "Quit all" })
+map("n", "<leader>qq", "<cmd>q<cr>", { desc = "Quit" })
 
 -- select all
 map({ "n", "x", "i" }, "<C-a>", "<cmd>normal! ggVG<cr>")
