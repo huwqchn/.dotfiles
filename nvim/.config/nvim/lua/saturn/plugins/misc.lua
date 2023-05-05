@@ -402,5 +402,5 @@ return {
     end,
   },
   { import = "saturn.plugins.extra.firenvim" },
-  { import = "saturn.plugins.extra.hologram" },
+  -- { import = "saturn.plugins.extra.hologram" },
 }

@@ -62,7 +62,7 @@ map({ "n", "x", "o" }, "\\", ":")
 
 -- save
 map({ "i", "v", "n", "s" }, "<C-s>", "<cmd>wa<cr><esc>", { desc = "Save all files" })
-map("", "S", "<cmd>w<cr><esc>", { desc = "Save file" })
+map("n", "S", "<cmd>w<cr>", { desc = "Save file" })
 
 -- quit
 -- map("n", "Q", "<cmd>q<cr>")

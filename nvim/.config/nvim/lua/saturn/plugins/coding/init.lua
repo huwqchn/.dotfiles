@@ -12,16 +12,16 @@ return {
       { "hrsh7th/cmp-emoji" },
       { "hrsh7th/cmp-nvim-lua" },
       { "dmitmel/cmp-cmdline-history" },
-      {
-        "jcdickinson/codeium.nvim",
-        dependencies = {
-          {
-            "jcdickinson/http.nvim",
-            build = "cargo build --workspace --release",
-          },
-        },
-        config = true,
-      },
+      -- {
+      --   "jcdickinson/codeium.nvim",
+      --   dependencies = {
+      --     {
+      --       "jcdickinson/http.nvim",
+      --       build = "cargo build --workspace --release",
+      --     },
+      --   },
+      --   config = true,
+      -- },
       {
         "zbirenbaum/copilot-cmp",
         config = function()
