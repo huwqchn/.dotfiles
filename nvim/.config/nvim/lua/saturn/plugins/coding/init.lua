@@ -349,18 +349,8 @@ return {
       local ai = require("mini.ai")
       ai.setup(opts)
       --HACK: use k as inside
-      vim.api.nvim_set_keymap(
-        "x",
-        "k",
-        [[v:lua.require("mini.ai").expr_textobject('x', 'i')]],
-        { desc = "Inside textobject", expr = true, noremap = false }
-      )
-      vim.api.nvim_set_keymap(
-        "o",
-        "k",
-        [[v:lua.require("mini.ai").expr_textobject('o', 'i')]],
-        { desc = "Inside textobject", expr = true, noremap = false }
-      )
+      vim.keymap.set("x", "k", "i", { desc = "Inside textobject", noremap = true })
+      vim.keymap.set("o", "k", "i", { desc = "Inside textobject", noremap = true })
       vim.keymap.set("v", "i", "l")
       -- register all text objects with which-key
       -- if require("saturn.utils.plugin").has("which-key.nvim") then
