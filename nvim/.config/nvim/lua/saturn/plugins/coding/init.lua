@@ -419,6 +419,7 @@ return {
         noremap = true,
         silent = true,
         expr = false,
+        desc = "refactor seletion",
       },
       {
         "<leader>rb",
@@ -429,6 +430,7 @@ return {
         noremap = true,
         silent = true,
         expr = false,
+        desc = "extract block",
       },
       {
         "<leader>rB",
@@ -439,6 +441,7 @@ return {
         noremap = true,
         silent = true,
         expr = false,
+        desc = "extract block to file",
       },
       {
         "<leader>ri",
@@ -449,6 +452,7 @@ return {
         noremap = true,
         silent = true,
         expr = false,
+        desc = "inline variable",
       },
     },
     config = true,
@@ -623,75 +627,73 @@ return {
     config = true,
   },
   {
-    "is0n/jaq-nvim",
-    keys = {
-      { "<leader>c<space>", "<cmd>silent only | Jaq<cr>", desc = "Run" },
-    },
+    "CRAG666/code_runner.nvim",
     opts = {
-      cmds = {
-        internal = {
-          lua = "luafile %",
-          vim = "source %",
-        },
-        external = {
-          typescript = "deno run %",
-          javascript = "node %",
-          -- markdown = "glow %",
-          python = "python %",
-          -- rust = "rustc % && ./$fileBase && rm $fileBase",
-          rust = "cargo run",
-          cpp = "g++ % -o $fileBase && ./$fileBase",
-          go = "go run %",
-          sh = "sh %",
-        },
+      mode = "term",
+      focus = false,
+      startinsert = false,
+      term = {
+        position = "vert",
+        size = 8,
       },
+      float = {
+        close_key = "<ESC>",
+        -- Floating window border (see ':h nvim_open_win')
+        border = "rounded",
 
-      behavior = {
-        -- Default type
-        default = "terminal",
+        -- Num from `0 - 1` for measurements
+        height = 0.8,
+        width = 0.8,
+        x = 0.5,
+        y = 0.5,
 
-        -- Start in insert mode
-        startinsert = false,
+        -- Highlight group for floating window/border (see ':h winhl')
+        border_hl = "FloatBorder",
+        float_hl = "Normal",
 
-        -- Use `wincmd p` on startup
-        wincmd = false,
-
-        -- Auto-save files
-        autosave = false,
+        -- Floating Window Transparency (see ':h winblend')
+        blend = 0,
       },
-
-      -- UI settings
-      ui = {
-        -- Floating Window / FTerm settings
-        float = {
-          -- Floating window border (see ':h nvim_open_win')
-          border = "rounded",
-
-          -- Num from `0 - 1` for measurements
-          height = 0.8,
-          width = 0.8,
-          x = 0.5,
-          y = 0.5,
-
-          -- Highlight group for floating window/border (see ':h winhl')
-          border_hl = "FloatBorder",
-          float_hl = "Normal",
-
-          -- Floating Window Transparency (see ':h winblend')
-          blend = 0,
+      before_run_filetype = function()
+        vim.cmd(":w")
+      end,
+      -- put here the commands by filetype
+      filetype = {
+        c = {
+          "cd $dir &&",
+          "gcc $fileName",
+          "-o $fileNameWithoutExt &&",
+          "$dir/$fileNameWithoutExt",
         },
-
-        terminal = {
-          -- Position of terminal
-          position = "vert",
-
-          -- Open the terminal without line numbers
-          line_no = false,
-
-          -- Size of terminal
-          size = 15,
+        cpp = {
+          "cd $dir &&",
+          "g++ $fileName -o $fileNameWithoutExt &&",
+          "./$fileNameWithoutExt",
         },
+        python = "python3 -u",
+        typescript = "deno run",
+        rust = {
+          "cd $dir &&",
+          "rustc $fileName &&",
+          "$dir/$fileNameWithoutExt",
+        },
+        java = {
+          "cd $dir &&",
+          "javac $fileName &&",
+          "java $fileNameWithoutExt",
+        },
+        go = "go run $fileName",
+        sh = "bash",
       },
+    },
+    keys = {
+      { "<leader>c<space>", ":RunCode<CR>", noremap = true, silent = false, desc = "Run code" },
+      { "<leader>c.", ":RunFile<CR>", noremap = true, silent = false, desc = "Run file" },
+      { "<leader>ct", ":RunFile tab<CR>", noremap = true, silent = false, desc = "Run file on tab" },
+      { "<leader>cp", ":RunProject<CR>", noremap = true, silent = false, desc = "Run project" },
+      { "<leader>cx", ":RunClose<CR>", noremap = true, silent = false, desc = "Close runner" },
+      { "<leader>c/", ":CRFiletype<CR>", noremap = true, silent = false, desc = "Open json with supported file" },
+      { "<leader>c?", ":CRProjects<CR>", noremap = true, silent = false, desc = "Open json with list of projects" },
     },
   },
   -- {
