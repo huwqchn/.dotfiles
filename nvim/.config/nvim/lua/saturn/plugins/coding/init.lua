@@ -346,55 +346,71 @@ return {
       }
     end,
     config = function(_, opts)
+      --HACK: use k as inside, setup twich to get the mappings
       local ai = require("mini.ai")
+      opts = vim.tbl_deep_extend("force", opts, {
+        mappings = {
+          inside = "k",
+          inside_next = "kn",
+          inside_last = "kl",
+        },
+      })
       ai.setup(opts)
-      --HACK: use k as inside
-      vim.keymap.set("x", "k", "i", { desc = "Inside textobject", noremap = true })
-      vim.keymap.set("o", "k", "i", { desc = "Inside textobject", noremap = true })
-      vim.keymap.set("v", "i", "l")
+      opts = vim.tbl_deep_extend("force", ai.config, {
+        -- Module mappings. Use `''` (empty string) to disable one.
+        mappings = {
+          -- Main textobject prefixes
+          inside = "i",
+
+          -- Next/last variants
+          inside_next = "in",
+          inside_last = "il",
+        },
+      })
+      ai.setup(opts)
       -- register all text objects with which-key
-      -- if require("saturn.utils.plugin").has("which-key.nvim") then
-      --   ---@type table<string, string|table>
-      --   local i = {
-      --     [" "] = "Whitespace",
-      --     ['"'] = 'Balanced "',
-      --     ["'"] = "Balanced '",
-      --     ["`"] = "Balanced `",
-      --     ["("] = "Balanced (",
-      --     [")"] = "Balanced ) including white-space",
-      --     [">"] = "Balanced > including white-space",
-      --     ["<lt>"] = "Balanced <",
-      --     ["]"] = "Balanced ] including white-space",
-      --     ["["] = "Balanced [",
-      --     ["}"] = "Balanced } including white-space",
-      --     ["{"] = "Balanced {",
-      --     ["?"] = "User Prompt",
-      --     _ = "Underscore",
-      --     a = "Argument",
-      --     b = "Balanced ), ], }",
-      --     c = "Class",
-      --     f = "Function",
-      --     o = "Block, conditional, loop",
-      --     q = "Quote `, \", '",
-      --     t = "Tag",
-      --   }
-      --   local a = vim.deepcopy(i)
-      --   for k, v in pairs(a) do
-      --     a[k] = v:gsub(" including.*", "")
-      --   end
-      --
-      --   local ic = vim.deepcopy(i)
-      --   local ac = vim.deepcopy(a)
-      --   for key, name in pairs({ n = "Next", l = "Last" }) do
-      --     i[key] = vim.tbl_extend("force", { name = "Inside " .. name .. " textobject" }, ic)
-      --     a[key] = vim.tbl_extend("force", { name = "Around " .. name .. " textobject" }, ac)
-      --   end
-      --   require("which-key").register({
-      --     mode = { "o", "x" },
-      --     k = i,
-      --     a = a,
-      --   })
-      -- end
+      if require("saturn.utils.plugin").has("which-key.nvim") then
+        ---@type table<string, string|table>
+        local i = {
+          [" "] = "Whitespace",
+          ['"'] = 'Balanced "',
+          ["'"] = "Balanced '",
+          ["`"] = "Balanced `",
+          ["("] = "Balanced (",
+          [")"] = "Balanced ) including white-space",
+          [">"] = "Balanced > including white-space",
+          ["<lt>"] = "Balanced <",
+          ["]"] = "Balanced ] including white-space",
+          ["["] = "Balanced [",
+          ["}"] = "Balanced } including white-space",
+          ["{"] = "Balanced {",
+          ["?"] = "User Prompt",
+          _ = "Underscore",
+          a = "Argument",
+          b = "Balanced ), ], }",
+          c = "Class",
+          f = "Function",
+          o = "Block, conditional, loop",
+          q = "Quote `, \", '",
+          t = "Tag",
+        }
+        local a = vim.deepcopy(i)
+        for k, v in pairs(a) do
+          a[k] = v:gsub(" including.*", "")
+        end
+
+        local ic = vim.deepcopy(i)
+        local ac = vim.deepcopy(a)
+        for key, name in pairs({ n = "Next", l = "Last" }) do
+          i[key] = vim.tbl_extend("force", { name = "Inside " .. name .. " textobject" }, ic)
+          a[key] = vim.tbl_extend("force", { name = "Around " .. name .. " textobject" }, ac)
+        end
+        require("which-key").register({
+          mode = { "o", "x" },
+          k = i,
+          a = a,
+        })
+      end
     end,
   },
   {
