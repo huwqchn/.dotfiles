@@ -123,4 +123,3 @@
   "yuck.vim": { "branch": "master", "commit": "9b5e0370f70cc30383e1dabd6c215475915fe5c3" },
   "zen-mode.nvim": { "branch": "main", "commit": "6e6c963d70a8e47854fa656987666bfb863f9c4e" },
   "zk-nvim": { "branch": "main", "commit": "275578853dc76d282ee5b31f86cd3a4f02d91f2f" }
-}
