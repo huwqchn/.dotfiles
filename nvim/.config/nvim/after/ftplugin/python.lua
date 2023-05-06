@@ -2,15 +2,16 @@
 require("saturn.plugins.lsp.null-ls.formatters").setup({ { command = "black", filetype = { "python" } } })
 
 -- set a linter
--- require("saturn.plugins.lsp.null-ls.linters").setup({ { command = "flake8", filetypes = { "python" } } })
+require("saturn.plugins.lsp.null-ls.linters").setup({ { command = "flake8", filetypes = { "python" } } })
 
 -- set lsp for python
 require("saturn.plugins.lsp.manager").setup("pyright")
 
 --Setup dap for python
-local mason_path = vim.fn.glob(vim.fn.stdpath("data") .. "/mason/")
+-- local mason_path = vim.fn.glob(vim.fn.stdpath("data") .. "/mason/")
 pcall(function()
-  require("dap-python").setup(mason_path .. "packages/debugpy/venv/bin/python")
+  -- require("dap-python").setup(mason_path .. "packages/debugpy/venv/bin/python")
+  require("dap-python").setup("~/.virtualenvs/debugpy/bin/python")
 end)
 
 -- Supported test frameworks are unittest, pytest and django. By default it

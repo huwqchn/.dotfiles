@@ -1190,6 +1190,24 @@ return {
     },
   },
   {
+    "nvim-neotest/neotest",
+    keys = {
+      { "<leader>dm", "<cmd>lua require('neotest').run.run()<cr>", desc = "Test Method" },
+      { "<leader>dM", "<cmd>lua require('neotest').run.run({strategy = 'dap'})<cr>", desc = "Test Method DAP" },
+      { "<leader>df", "<cmd>lua require('neotest').run.run({vim.fn.expand('%')})<cr>", desc = "Test Class" },
+      {
+        "<leader>dF",
+        "<cmd>lua require('neotest').run.run({vim.fn.expand('%'), strategy = 'dap'})<cr>",
+        desc = "Test Class DAP",
+      },
+      {
+        "<leader>dS",
+        "<cmd>lua require('neotest').summary.toggle()<cr>",
+        desc = "Test Summary",
+      },
+    },
+  },
+  {
     "kevinhwang91/nvim-bqf",
     ft = "qf",
     cmd = "BqfAutoToggle",

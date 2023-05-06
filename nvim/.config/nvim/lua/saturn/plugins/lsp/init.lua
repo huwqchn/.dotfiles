@@ -67,7 +67,15 @@ return {
     end,
     dependencies = {
       { "williamboman/mason-lspconfig.nvim" },
-      { "folke/neodev.nvim", config = true },
+      {
+        "folke/neodev.nvim",
+        opts = {
+          library = {
+            plugins = { "neotest" },
+            types = true,
+          },
+        },
+      },
       { "smjonas/inc-rename.nvim", config = true },
       "mason.nvim",
       "cmp-nvim-lsp",
