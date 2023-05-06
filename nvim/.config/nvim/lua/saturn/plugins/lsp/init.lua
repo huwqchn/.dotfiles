@@ -121,7 +121,7 @@ return {
   },
   {
     "williamboman/mason.nvim",
-    cmd = "Mason",
+    cmd = { "Mason", "MasonInstall", "MasonUninstall", "MasonUninstallAll", "MasonLog" },
     keys = { { "<leader>cm", "<cmd>Mason<cr>", desc = "Mason" } },
     opts = {
       ui = {
