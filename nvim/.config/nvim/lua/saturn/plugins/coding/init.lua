@@ -12,18 +12,10 @@ return {
       { "hrsh7th/cmp-emoji" },
       { "hrsh7th/cmp-nvim-lua" },
       { "dmitmel/cmp-cmdline-history" },
-      -- {
-      --   "jcdickinson/codeium.nvim",
-      --   dependencies = {
-      --     {
-      --       "jcdickinson/http.nvim",
-      --       build = "cargo build --workspace --release",
-      --     },
-      --   },
-      --   config = true,
-      -- },
+      { "jcdickinson/codeium.nvim" },
       {
         "zbirenbaum/copilot-cmp",
+        cond = saturn.plugins.ai.copilot.enabled,
         config = function()
           require("copilot_cmp").setup({
             formatters = {
@@ -37,6 +29,7 @@ return {
       },
       {
         "tzachar/cmp-tabnine",
+        cond = saturn.plugins.ai.tabnine.enabled,
         build = "./install.sh",
         opts = {
           max_lines = 1000,
@@ -56,9 +49,11 @@ return {
       require("saturn.plugins.coding.cmp").config()
     end,
   },
+
   { "hrsh7th/cmp-nvim-lsp" },
   {
     "zbirenbaum/copilot.lua",
+    cond = saturn.plugins.ai.copilot.enabled,
     event = "InsertEnter",
     cmd = "Copilot",
     keys = {
@@ -119,7 +114,17 @@ return {
       },
     },
   },
-
+  {
+    "jcdickinson/codeium.nvim",
+    cond = saturn.plugins.ai.codeium.enabled,
+    dependencies = {
+      {
+        "jcdickinson/http.nvim",
+        build = "cargo build --workspace --release",
+      },
+    },
+    config = true,
+  },
   {
     "L3MON4D3/LuaSnip",
     config = function()
@@ -577,6 +582,7 @@ return {
   -- },
   {
     "jackMort/ChatGPT.nvim",
+    cond = saturn.plugins.ai.chatgpt.enabled,
     -- event = "VeryLazy",
     cmd = {
       "ChatGPT",
@@ -700,6 +706,15 @@ return {
       { "<leader>cx", ":RunClose<CR>", noremap = true, silent = false, desc = "Close runner" },
       { "<leader>c/", ":CRFiletype<CR>", noremap = true, silent = false, desc = "Open json with supported file" },
       { "<leader>c?", ":CRProjects<CR>", noremap = true, silent = false, desc = "Open json with list of projects" },
+    },
+  },
+  {
+    "chrisgrieser/nvim-spider",
+    keys = {
+      { "w", "<cmd>lua require('spider').motion('w')<CR>", mode = { "n", "o", "x" }, desc = "Spider-w" },
+      { "h", "<cmd>lua require('spider').motion('e')<CR>", mode = { "n", "o", "x" }, desc = "Spider-e" },
+      { "b", "<cmd>lua require('spider').motion('b')<CR>", mode = { "n", "o", "x" }, desc = "Spider-b" },
+      { "ge", "<cmd>lua require('spider').motion('ge')<CR>", mode = { "n", "o", "x" }, desc = "Spider-ge" },
     },
   },
   -- {

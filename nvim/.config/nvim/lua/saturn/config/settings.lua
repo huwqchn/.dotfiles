@@ -38,5 +38,19 @@ return {
     notify = {
       ignore_messages = {},
     },
+    ai = {
+      chatgpt = {
+        enabled = true,
+      },
+      codeium = {
+        enabled = true,
+      },
+      copilot = {
+        enabled = true,
+      },
+      tabnine = {
+        enabled = true,
+      },
+    },
   },
 }
