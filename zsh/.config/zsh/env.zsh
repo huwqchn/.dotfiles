@@ -29,6 +29,7 @@ elif [[ $(uname) == 'Linux' ]]; then
   export TERMINAL="kitty"
   export PATH=$PATH:/snap/bin
   export CPLUS_INCLUDE_PATH="$CPLUS_INCLUDE_PATH:/usr/include/python2.7/"
+  # export LD_LIBRARY_PATH="/usr/lib:$LD_LIBRARY_PATH"
 fi
 
 
