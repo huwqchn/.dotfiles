@@ -275,6 +275,7 @@ local macros = {
     if saturn.plugins.NeoComposer.loaded then
       return require("NeoComposer.ui").status_recording()
     end
+    return ""
   end,
   cond = conditions.hide_in_width,
 }
