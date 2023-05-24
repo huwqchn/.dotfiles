@@ -102,7 +102,7 @@ super + ctrl + {_, shift + }l
 #
 
 # focus the node in the given direction
-super + {_,shift + }{n,e,u,i}
+super + {_,shift + }{n,e,i,o}
 	bspc node -{f,s} {west,south,north,east}
 
 # flip nodes
@@ -165,7 +165,7 @@ super + ctrl + shift + {1-9,0}
 #
 
 # preselect the direction
-super + ctrl + {n,e,u,i}
+super + ctrl + {n,e,i,o}
 	bspc node -p {west,south,north,east}
 
 # preselect the ratio
@@ -209,15 +209,15 @@ super + ctrl + w
 # 	bspc node -z {right -20 0,top 0 20,bottom 0 -20,left 20 0}
 
 # resize mode
-super + r : {_,shift + }{n,e,u,i}
+super + r : {_,shift + }{n,e,i,o}
 	bspc node -z {left -20 0,right -20 0,bottom 0 20,top 0 20,top 0 -20,bottom 0 -20,right 20 0,left 20 0}
 
 # move a floating window
-super + alt + {n,e,u,i}
+super + alt + {n,e,i,o}
 	bspc node -v {-20 0,0 20,0 -20,20 0}
 
 # resize a floating window and normal window
-super + ctrl + alt + {n,e,u,i}
+super + ctrl + alt + {n,e,i,o}
   n=10; \
   { d1=left;   d2=right;  dx=-$n; dy=0;   \
   , d1=bottom; d2=top;    dx=0;   dy=$n;  \

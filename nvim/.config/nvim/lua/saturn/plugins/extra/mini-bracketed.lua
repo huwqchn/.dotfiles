@@ -54,8 +54,8 @@ return {
         end, { expr = true })
       end
       bracketed.setup(opts)
-      vim.keymap.set({ "n", "x", "o" }, "u", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
-      vim.keymap.set("n", "l", "u<Cmd>lua MiniBracketed.register_undo_state()<CR>")
+      -- vim.keymap.set({ "n", "x", "o" }, "u", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
+      -- vim.keymap.set("n", "l", "u<Cmd>lua MiniBracketed.register_undo_state()<CR>")
     end,
   },
 }

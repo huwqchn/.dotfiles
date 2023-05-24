@@ -17,30 +17,30 @@ local map = vim.keymap.set
 
 -- colemak movement
 map({ "n", "x", "o" }, "e", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
-map({ "n", "x", "o" }, "u", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
+map({ "n", "x", "o" }, "i", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 map({ "n", "x", "o" }, "n", "h")
-map({ "n", "x", "o" }, "i", "l")
+map({ "n", "x", "o" }, "o", "l")
 
 -- colemak jump to start/end of the line
 map({ "n", "x", "o" }, "N", "^")
-map({ "n", "x", "o" }, "I", "$")
+map({ "n", "x", "o" }, "O", "$")
 
 -- colemak fast navigation
-map({ "n", "x", "o" }, "U", "5k")
+map({ "n", "x", "o" }, "I", "5k")
 map({ "n", "x", "o" }, "E", "5j")
 
 -- colemak insert key
-map({ "n", "x", "o" }, "k", "i")
-map({ "n", "x", "o" }, "K", "I")
-map({ "n", "x", "o" }, "gk", "gi", { desc = "goto last insert" })
+map({ "n", "x", "o" }, "h", "i")
+map({ "n", "x", "o" }, "H", "I")
+map({ "n", "x", "o" }, "gh", "gi", { desc = "goto last insert" })
 
 -- colemake undo key
-map({ "n", "x", "o" }, "l", "u")
-map({ "n", "x", "o" }, "L", "U")
+map({ "n", "x", "o" }, "l", "o")
+map({ "n", "x", "o" }, "L", "O")
 
 -- colemak end of word
-map({ "n", "x", "o" }, "h", "e")
-map({ "n", "x", "o" }, "H", "K")
+map({ "n", "x", "o" }, "k", "e")
+-- map({ "n", "x", "o" }, "H", "K")
 
 -- colemake searching key
 -- https://github.com/mhinz/vim-galore#saner-behavior-of-n-and-n
@@ -75,7 +75,7 @@ map({ "n", "x", "i" }, "<C-a>", "<cmd>normal! ggVG<cr>")
 -- new space line
 map("n", "<C-cr>", "o<esc>")
 map("i", "<C-e>", "<esc>o")
-map("i", "<C-u>", "<esc>O")
+map("i", "<C-i>", "<esc>O")
 
 -- paste
 map("i", "<C-v>", "<C-g>u<Cmd>set paste<CR><C-r>+<Cmd>set nopaste<CR>")
@@ -104,9 +104,9 @@ map("v", "Y", '"+y')
 map("n", "<A-e>", ":m .+1<CR>==")
 map("v", "<A-e>", ":m '>+1<CR>gv=gv")
 map("i", "<A-e>", "<Esc>:m .+1<CR>==gi")
-map("n", "<A-u>", ":m .-2<CR>==")
-map("v", "<A-u>", ":m '<-2<CR>gv=gv")
-map("i", "<A-u>", "<Esc>:m .-2<CR>==gi")
+map("n", "<A-i>", ":m .-2<CR>==")
+map("v", "<A-i>", ":m '<-2<CR>gv=gv")
+map("i", "<A-i>", "<Esc>:m .-2<CR>==gi")
 
 -- Switch buffer with tab
 map("n", "<tab>", "<cmd>bnext<cr>")
@@ -136,8 +136,8 @@ map("n", "<leader>pd", "<cmd>Lazy debug<cr>", { desc = "Debug" })
 -- Terminal window navigation
 map("t", "<C-n>", "<C-\\><C-N><C-w>h", { desc = "move to left" })
 map("t", "<C-e>", "<C-\\><C-N><C-w>j", { desc = "move to down" })
-map("t", "<C-u>", "<C-\\><C-N><C-w>k", { desc = "move to up" })
-map("t", "<C-i>", "<C-\\><C-N><C-w>l", { desc = "move to right" })
+map("t", "<C-i>", "<C-\\><C-N><C-w>k", { desc = "move to up" })
+map("t", "<C-o>", "<C-\\><C-N><C-w>l", { desc = "move to right" })
 -- map tab to tab, because distinguish between <C-i>
 map("t", "<Tab>", "<Tab>")
 
@@ -145,10 +145,11 @@ map("t", "<esc><esc>", "<c-\\><c-n>", { desc = "Enter Normal Mode" })
 -- navigate tab completion with <c-e> and <c-j>
 -- runs conditionally
 map("c", "<C-e>", 'pumvisible() ? "\\<C-n>" : "\\<C-j>"', { expr = true, noremap = true })
-map("c", "<C-u>", 'pumvisible() ? "\\<C-p>" : "\\<C-k>"', { expr = true, noremap = true })
+map("c", "<C-i>", 'pumvisible() ? "\\<C-p>" : "\\<C-k>"', { expr = true, noremap = true })
 
 -- colemak goto new position in jumplist
--- map("n", "<C-h>", "<C-i>")
+map("n", "<C-,>", "<C-i>")
+map("n", "<C-.>", "<C-o>")
 
 -- kill a line
 map("i", "<C-k>", "<esc>ddi")
@@ -167,8 +168,8 @@ map("n", "<C-w>", "<C-w>w", { desc = "Switch window" })
 map("n", "<C-x>", "<C-w>x")
 map("n", "<C-n>", "<C-w>h", { desc = "Go to left window" })
 map("n", "<C-e>", "<C-w>j", { desc = "Go to lower window" })
-map("n", "<C-u>", "<C-w>k", { desc = "Go to upper window" })
-map("n", "<C-i>", "<C-w>l", { desc = "Go to right window" })
+map("n", "<C-i>", "<C-w>k", { desc = "Go to upper window" })
+map("n", "<C-o>", "<C-w>l", { desc = "Go to right window" })
 map("n", "<C-l>", "<C-w>o", { desc = "Clear other windwos" })
 map("n", "<C-q>", "<C-w>q", { desc = "Quit window" })
 
@@ -182,7 +183,7 @@ map("n", "<C-Right>", ":vertical resize +2<CR>", { desc = "Increase window width
 map({ "n", "x" }, "s", "<nop>", { desc = "split/surround/select" })
 
 -- split the screens
-map("n", "su", function()
+map("n", "si", function()
   vim.opt.splitbelow = false
   vim.cmd([[split]])
   vim.opt.splitbelow = true
@@ -195,13 +196,13 @@ map("n", "sn", function()
   vim.opt.splitright = false
   vim.cmd([[vsplit]])
 end, { desc = "split left" })
-map("n", "si", function()
+map("n", "so", function()
   vim.opt.splitright = true
   vim.cmd([[vsplit]])
 end, { desc = "split right" })
 
 -- Rotate window
-map("n", "<leader>wU", "<C-w>b<C-w>K", { desc = "rotate window up" })
+map("n", "<leader>wI", "<C-w>b<C-w>K", { desc = "rotate window up" })
 map("n", "<leader>wN", "<C-w>b<C-w>H", { desc = "rotate window left" })
 
 map("n", "<leader>ww", "<C-W>p", { desc = "other-window" })
@@ -209,8 +210,8 @@ map("n", "<leader>wd", "<C-W>c", { desc = "delete-window" })
 -- move current windwo to the far left, bottom, right, top
 map("n", "<leader>wn", "<C-w>H", { desc = "move to the far left" })
 map("n", "<leader>we", "<C-w>J", { desc = "move to the far bottom" })
-map("n", "<leader>wi", "<C-w>L", { desc = "move to the far right" })
-map("n", "<leader>wu", "<C-w>K", { desc = "move to the far top" })
+map("n", "<leader>wo", "<C-w>L", { desc = "move to the far right" })
+map("n", "<leader>wi", "<C-w>K", { desc = "move to the far top" })
 
 -- scroll
 map({ "n", "v" }, "<C-k>", "<C-u>")
@@ -225,7 +226,7 @@ map("n", "[<tab>", "<cmd>tabp<CR>", { desc = "Prev Tab" })
 map("n", "<leader><tab>d", "<cmd>tabclose<CR>", { desc = "Close" })
 map("n", "<leader><tab>s", "<cmd>tab split<CR>", { desc = "Split" })
 map("n", "<leader><tab>N", "<cmd>-tabmove<CR>", { desc = "Move to left" })
-map("n", "<leader><tab>I", "<cmd>+tabmove<CR>", { desc = "Move to right" })
+map("n", "<leader><tab>O", "<cmd>+tabmove<CR>", { desc = "Move to right" })
 map("n", "<leader><tab>l", "<cmd>tabonly<CR>", { desc = "Close all other tabs" })
 map("n", "<leader><tab>A", "<cmd>tabm 0<CR>", { desc = "Move to first" })
 map("n", "<leader><tab>Z", "<cmd>tabm<CR>", { desc = "Move to last" })

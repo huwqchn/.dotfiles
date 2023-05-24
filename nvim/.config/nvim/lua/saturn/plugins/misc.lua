@@ -10,7 +10,7 @@ return {
   },
   -- makes some plugins dot-repeatable like leap
   {
-    "huwqchn/vim-repeat",
+    "tpope/vim-repeat",
     -- event = "VeryLazy",
     keys = {
       ".",
@@ -276,14 +276,14 @@ return {
       mappings = {
         -- Move visual selection in Visual mode. Defaults are Alt (Meta) + hjkl.
         left = "<M-n>",
-        right = "<M-i>",
+        right = "<M-o>",
         down = "<M-e>",
-        up = "<M-u>",
+        up = "<M-i>",
         -- Move current line in Normal mode
         line_left = "<M-n>",
-        line_right = "<M-i>",
+        line_right = "<M-o>",
         line_down = "<M-e>",
-        line_up = "<M-u>",
+        line_up = "<M-i>",
       },
     },
     config = function(_, opts)

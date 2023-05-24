@@ -81,7 +81,7 @@ return {
         debounce = 75,
         keymap = {
           accept = "<M-cr>",
-          next = "<M-i>",
+          next = "<M-o>",
           prev = "<M-n>",
           dismiss = "<C-]>",
         },
@@ -234,7 +234,7 @@ return {
         highlight = "sh", -- Highlight surrounding
         replace = "sr", -- Replace surrounding
         update_n_lines = "sl", -- Update `n_lines`
-        suffix_last = "u", -- Suffix to search with "prev" method
+        suffix_last = "i", -- Suffix to search with "prev" method
         suffix_next = "e", -- Suffix to search with "next" method
       },
     },
@@ -284,7 +284,7 @@ return {
       { "[f", desc = "Prev function" },
       { "]f", desc = "Next function" },
       { "a", mode = { "x", "o" } },
-      { "k", mode = { "x", "o" } },
+      { "h", mode = { "x", "o" } },
     },
     dependencies = { "nvim-treesitter-textobjects" },
     opts = function()
@@ -351,13 +351,13 @@ return {
       }
     end,
     config = function(_, opts)
-      --HACK: use k as inside, setup twich to get the mappings
+      --HACK: use h as inside, setup twich to get the mappings
       local ai = require("mini.ai")
       opts = vim.tbl_deep_extend("force", opts, {
         mappings = {
-          inside = "k",
-          inside_next = "kn",
-          inside_last = "kl",
+          inside = "h",
+          inside_next = "hn",
+          inside_last = "hl",
         },
       })
       ai.setup(opts)
@@ -412,7 +412,7 @@ return {
         end
         require("which-key").register({
           mode = { "o", "x" },
-          k = i,
+          h = i,
           a = a,
         })
       end
@@ -600,7 +600,7 @@ return {
       keymaps = {
         close = { "<C-c>", "<Esc>" },
         yank_last = "<C-y>",
-        scroll_up = "<C-u>",
+        scroll_up = "<C-i>",
         scroll_down = "<C-e>",
         toggle_settings = "<C-o>",
         new_session = "<C-n>",
@@ -712,7 +712,7 @@ return {
     "chrisgrieser/nvim-spider",
     keys = {
       { "w", "<cmd>lua require('spider').motion('w')<CR>", mode = { "n", "o", "x" }, desc = "Spider-w" },
-      { "h", "<cmd>lua require('spider').motion('e')<CR>", mode = { "n", "o", "x" }, desc = "Spider-e" },
+      { "k", "<cmd>lua require('spider').motion('e')<CR>", mode = { "n", "o", "x" }, desc = "Spider-e" },
       { "b", "<cmd>lua require('spider').motion('b')<CR>", mode = { "n", "o", "x" }, desc = "Spider-b" },
       { "ge", "<cmd>lua require('spider').motion('ge')<CR>", mode = { "n", "o", "x" }, desc = "Spider-ge" },
     },

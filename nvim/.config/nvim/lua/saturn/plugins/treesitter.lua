@@ -121,8 +121,8 @@ return {
         enable = true,
         keymaps = {
           init_selection = "ss",
-          node_incremental = "su",
-          scope_incremental = "si",
+          node_incremental = "si",
+          scope_incremental = "so",
           node_decremental = "se",
         },
       },

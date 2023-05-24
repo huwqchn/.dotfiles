@@ -61,11 +61,11 @@ bind-key e down tagselection
 bind-key e next articlelist
 bind-key e down article
 bind-key E next-feed articlelist
-bind-key u up feedlist
-bind-key u prev articlelist
-bind-key u up tagselection
-bind-key u up article
-bind-key U prev-feed articlelist
+bind-key i up feedlist
+bind-key i prev articlelist
+bind-key i up tagselection
+bind-key i up article
+bind-key I prev-feed articlelist
 bind-key o open articlelist
 bind-key o open feedlist
 bind-key o open tagselection
@@ -74,7 +74,7 @@ bind-key G end
 bind-key gg home
 
 bind-key ^e pagedown
-bind-key ^u pageup
+bind-key ^i pageup
 
 
 # hide articles matching: ---------------------------------------------

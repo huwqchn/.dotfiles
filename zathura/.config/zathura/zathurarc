@@ -36,22 +36,22 @@ set completion-group-bg "#32333e"
 
 
 map [normal] n scroll left
-map [normal] i scroll right
+map [normal] o scroll right
 map [normal] e scroll down
-map [normal] u scroll up
+map [normal] i scroll up
 map [normal] <C-e> bisect backward
-map [normal] <C-u> bisect forward
+map [normal] <C-i> bisect forward
 map [normal] <A-n> scroll half-left
-map [normal] <A-i> scroll half-right
+map [normal] <A-o> scroll half-right
 map [normal] <A-e> scroll half-down
-map [normal] <A-u> scroll half-up
+map [normal] <A-i> scroll half-up
 map [normal] j jumplist forward
 map [normal] J jumplist backward
 map [normal] E navigate next
-map [normal] U navigate previous
+map [normal] I navigate previous
 map [normal] b toggle_statusbar
 map [normal] <Tab> toggle_index
-map [normal] k focus_inputbar
+map [normal] h focus_inputbar
 map [normal] - search forward
 map [normal] = search backward
 map [normal] <C--> zoom out
@@ -60,22 +60,22 @@ map [normal] <C-p> toggle_presentation
 map [normal] <C-f> toggle_fullscreen
 map [fullscreen] q toggle_fullscreen
 map [fullscreen] n scroll left
-map [fullscreen] i scroll right
+map [fullscreen] o scroll right
 map [fullscreen] e scroll down
-map [fullscreen] u scroll up
+map [fullscreen] i scroll up
 map [fullscreen] <C-e> bisect backward
-map [fullscreen] <C-u> bisect forward
+map [fullscreen] <C-i> bisect forward
 map [fullscreen] <A-n> scroll half-left
-map [fullscreen] <A-i> scroll half-right
+map [fullscreen] <A-o> scroll half-right
 map [fullscreen] <A-e> scroll half-down
-map [fullscreen] <A-u> scroll half-up
+map [fullscreen] <A-i> scroll half-up
 map [fullscreen] j jumplist forward
 map [fullscreen] J jumplist backward
 map [fullscreen] E navigate next
-map [fullscreen] U navigate previous
+map [fullscreen] I navigate previous
 map [fullscreen] b toggle_statusbar
 map [fullscreen] <Tab> toggle_index
-map [fullscreen] k focus_inputbar
+map [fullscreen] h focus_inputbar
 map [fullscreen] - search forward
 map [fullscreen] = search backward
 map [fullscreen] <C--> zoom out
@@ -84,14 +84,14 @@ map [fullscreen] <C-p> toggle_presentation
 map [fullscreen] <C-f> toggle_fullscreen
 map [presentation] q toggle_presentation
 map [presentation] e navigate next
-map [presentation] u navigate previous
+map [presentation] i navigate previous
 map [index] q toggle_index
 map [index] <Tab> toggle_index
 map [index] e navigate_index down
-map [index] u navigate_index up
+map [index] i navigate_index up
 map [index] n navigate_index collapse
-map [index] i navigate_index expand
-map [index] I navigate_index expand-all
+map [index] o navigate_index expand
+map [index] O navigate_index expand-all
 map [index] N navigate_index collapse-all
 map [index] <Space> navigate_index select
 map [index] <Return> navigate_index select

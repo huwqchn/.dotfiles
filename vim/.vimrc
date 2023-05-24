@@ -126,9 +126,8 @@ noremap <C-q> :q<CR>
 noremap <C-s> :w<CR>
 
 " Insert Key
-noremap k i
-noremap K I
-noremap l u
+noremap h i
+noremap H I
 
 " Indentation
 nnoremap < <<
@@ -152,31 +151,26 @@ vnoremap <LEADER>tt :s/    /\t/g
 " === Cursor Movement
 " ===
 " New cursor movement (the default arrow keys are used for resizing windows)
-"     ^
-"     u
-" < n   i >
-"     e
-"     v
-noremap <silent> u k
+noremap <silent> i k
 noremap <silent> n h
 noremap <silent> e j
-noremap <silent> i l
-noremap <silent> gu gk
+noremap <silent> o l
+noremap <silent> gi gk
 noremap <silent> ge gj
 
 " U/E keys for 5 times u/e (faster navigation)
-noremap <silent> U 5k
+noremap <silent> I 5k
 noremap <silent> E 5j
 
 " set h (same as n, cursor left) to 'end of word'
-noremap h e
+noremap k e
 
 " Faster in-line navigation
 noremap W 5w
 noremap B 5b
 
 " Ctrl + U or E will move up/down the view port without moving the cursor
-noremap <C-U> 5<C-y>
+noremap <C-I> 5<C-y>
 noremap <C-E> 5<C-e>
 
 " source $HOME/.config/nvim/cursor.vim
@@ -186,11 +180,11 @@ noremap <C-E> 5<C-e>
 " ===
 " Use Ctrl new arrow keys for moving the cursor around windows
 noremap <C-w> <C-w>w
-noremap <C-u> <C-w>k
+noremap <C-i> <C-w>k
 noremap <C-e> <C-w>j
 noremap <C-n> <C-w>h
-noremap <C-i> <C-w>l
-noremap <C-o> <C-w>o
+noremap <C-o> <C-w>l
+noremap <C-l> <C-w>o
 
 " edit
 noremap <LEADER>cw ciw
@@ -201,10 +195,10 @@ noremap <LEADER>pw viwp
 noremap s <nop>
 
 " split the screens to up (horizontal), down (horizontal), left (vertical), right (vertical)
-noremap su :set nosplitbelow<CR>:split<CR>:set splitbelow<CR>
+noremap si :set nosplitbelow<CR>:split<CR>:set splitbelow<CR>
 noremap se :set splitbelow<CR>:split<CR>
 noremap sn :set nosplitright<CR>:vsplit<CR>:set splitright<CR>
-noremap si :set splitright<CR>:vsplit<CR>
+noremap so :set splitright<CR>:vsplit<CR>
 
 " Resize splits with arrow keys
 noremap <C-up> :res +5<CR>
@@ -225,14 +219,14 @@ noremap srv <C-w>b<C-w>H
 noremap <LEADER>x <C-w>j:q<CR>
 
 " move line
-noremap <LEADER>u <Esc>:m .-2<CR>
+noremap <LEADER>i <Esc>:m .-2<CR>
 noremap <LEADER>e <Esc>:m .+1<CR>
-vnoremap <LEADER>u :m '<-2<CR>gv=gv
+vnoremap <LEADER>i :m '<-2<CR>gv=gv
 vnoremap <LEADER>e :m '>+1<CR>gv=gv
 
 " back/forward
 noremap <LEADER>n <C-o>
-noremap <LEADER>i <C-i>
+noremap <LEADER>o <C-i>
 
 " ===
 " === Tab management
@@ -243,11 +237,11 @@ noremap tU :tab split<CR>
 
 " Move around tabs with tn and ti
 noremap tn :-tabnext<CR>
-noremap ti :+tabnext<CR>
+noremap to :+tabnext<CR>
 
 " Move the tabs with tmn and tmi
 noremap tmn :-tabmove<CR>
-noremap tmi :+tabmove<CR>
+noremap tmo :+tabmove<CR>
 
 " ===
 " === Searching
@@ -269,12 +263,12 @@ inoremap <C-a> <ESC>A
 " ===
 " === Command Mode Cursor Movement
 " ===
-cnoremap <C-h> <Home>
-cnoremap <C-o> <End>
-cnoremap <C-u> <Up>
+cnoremap <C-,> <Home>
+cnoremap <C-.> <End>
+cnoremap <C-i> <Up>
 cnoremap <C-e> <Down>
 cnoremap <C-n> <Left>
-cnoremap <C-i> <Right>
+cnoremap <C-o> <Right>
 cnoremap <C-s> <S-Left>
 cnoremap <C-t> <S-Right>
 
@@ -294,7 +288,7 @@ noremap <silent> <LEADER>o za
 noremap <silent> N ^
 
 " go to the end of the line
-noremap <silent> I $
+noremap <silent> O $
 
 " set wrap
 noremap <LEADER>sw :set wrap<CR>

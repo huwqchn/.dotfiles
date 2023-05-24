@@ -280,7 +280,7 @@ M.config = function()
       { name = "tmux" },
     },
     mapping = cmp_mapping.preset.insert({
-      ["<C-u>"] = cmp_mapping(cmp_mapping.select_prev_item(), { "i", "c" }),
+      ["<C-i>"] = cmp_mapping(cmp_mapping.select_prev_item(), { "i", "c" }),
       ["<C-e>"] = cmp_mapping(cmp_mapping.select_next_item(), { "i", "c" }),
       ["<Down>"] = cmp_mapping(cmp_mapping.select_next_item({ behavior = SelectBehavior.Select }), { "i" }),
       ["<Up>"] = cmp_mapping(cmp_mapping.select_prev_item({ behavior = SelectBehavior.Select }), { "i" }),

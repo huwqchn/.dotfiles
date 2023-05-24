@@ -247,7 +247,7 @@ return {
               ["<C-p>"] = actions.cycle_history_prev,
 
               ["<C-e>"] = actions.move_selection_next,
-              ["<C-u>"] = actions.move_selection_previous,
+              ["<C-i>"] = actions.move_selection_previous,
 
               ["<C-b>"] = actions.results_scrolling_up,
               ["<C-f>"] = actions.results_scrolling_down,
@@ -294,8 +294,8 @@ return {
               ["<M-q>"] = actions.send_selected_to_qflist + actions.open_qflist,
 
               ["e"] = actions.move_selection_next,
-              ["u"] = actions.move_selection_previous,
-              ["U"] = actions.move_to_top,
+              ["i"] = actions.move_selection_previous,
+              ["I"] = actions.move_to_top,
               ["M"] = actions.move_to_middle,
               ["E"] = actions.move_to_bottom,
               ["q"] = actions.close,

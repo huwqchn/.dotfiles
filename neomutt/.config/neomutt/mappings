@@ -2,30 +2,30 @@
 
 # General rebindings
 bind attach <return> view-mailcap
-bind attach o view-mailcap
+bind attach m view-mailcap
 bind editor <space> noop
 bind pager c imap-fetch-mail
 bind index G last-entry
 bind index g noop
 bind index gg first-entry
-bind pager,attach h exit
+bind pager,attach q exit
 bind pager e next-line
-bind pager u previous-line
-bind pager i view-attachments
+bind pager i previous-line
+bind pager o view-attachments
 bind index d noop
 bind index dd delete-message
-bind index l undelete-message
-bind index L limit
+bind index u undelete-message
+bind index l limit
 bind index h noop
 bind index i display-message
 bind index e next-entry
-bind index u previous-entry
+bind index i previous-entry
 bind browser n goto-parent
-bind browser i select-entry
+bind browser o select-entry
 bind pager,browser gg top-page
 bind pager,browser G bottom-page
 bind index,pager,browser E half-down
-bind index,pager,browser U half-up
+bind index,pager,browser I half-up
 bind index,pager r group-reply
 bind index \031 previous-undeleted	# Mouse wheel
 bind index \005 next-undeleted		# Mouse wheel
@@ -35,7 +35,7 @@ bind editor <Tab> complete-query
 
 
 # sidebar mappings
-bind index,pager \Cu sidebar-prev
+bind index,pager \Ci sidebar-prev
 bind index,pager \Ce sidebar-next
 bind index,pager \Co sidebar-open
 bind index,pager \Cp sidebar-prev-new
