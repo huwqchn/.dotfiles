@@ -285,7 +285,7 @@
           ],
           "to_if_alone": [
             {
-              "key_code": "return_or_enter",
+              "key_code": "spacebar",
               "hold_down_milliseconds": 200
             }
           ]
