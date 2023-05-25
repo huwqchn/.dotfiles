@@ -299,11 +299,11 @@ return {
           }, {}),
           f = ai.gen_spec.treesitter({ a = "@function.outer", i = "@function.inner" }, {}),
           c = ai.gen_spec.treesitter({ a = "@class.outer", i = "@class.inner" }, {}),
+          w = { "()()%f[%w]%w+()[ \t]*()" },
         },
       }
     end,
     config = function(_, opts)
-      --HACK: use h as inside, setup twich to get the mappings
       local ai = require("mini.ai")
       opts = vim.tbl_deep_extend("force", opts, {
         mappings = {
@@ -313,18 +313,7 @@ return {
         },
       })
       ai.setup(opts)
-      -- opts = vim.tbl_deep_extend("force", ai.config, {
-      --   -- Module mappings. Use `''` (empty string) to disable one.
-      --   mappings = {
-      --     -- Main textobject prefixes
-      --     inside = "i",
-      --
-      --     -- Next/last variants
-      --     inside_next = "in",
-      --     inside_last = "il",
-      --   },
-      -- })
-      -- ai.setup(opts)
+      --FIXME:: not working
       -- register all text objects with which-key
       if require("saturn.utils.plugin").has("which-key.nvim") then
         ---@type table<string, string|table>
