@@ -47,6 +47,9 @@ map({ "n", "x", "o" }, "k", "e")
 map({ "n", "x", "o" }, "=", "'Nn'[v:searchforward]", { expr = true })
 map({ "n", "x", "o" }, "-", "'nN'[v:searchforward]", { expr = true })
 
+-- change word with <c-c>
+vim.keymap.set("n", "<C-c>", "<cmd>normal! ciw<cr>a")
+
 -- search work under cursor
 map({ "n", "x" }, "gw", "*N", { desc = "Search word under cursor" })
 
