@@ -214,9 +214,6 @@ return {
   {
     "echasnovski/mini.pairs",
     event = "InsertEnter",
-    config = function(_, opts)
-      require("mini.pairs").setup(opts)
-    end,
   },
 
   -- surround
@@ -253,13 +250,10 @@ return {
         suffix_next = "e", -- Suffix to search with "next" method
       },
     },
-    config = function(_, opts)
-      require("mini.surround").setup(opts)
-    end,
   },
 
   -- Comment
-  { "JoosepAlviste/nvim-ts-context-commentstring" },
+  -- { "JoosepAlviste/nvim-ts-context-commentstring" },
   {
     "echasnovski/mini.comment",
     keys = function(_, keys)
@@ -281,14 +275,19 @@ return {
         comment_line = "gcc",
         textobject = "gc",
       },
-      hooks = {
-        pre = function()
-          require("ts_context_commentstring.internal").update_commentstring({})
-        end,
-      },
+      -- hooks = {
+      --   pre = function()
+      --     require("ts_context_commentstring.internal").update_commentstring({})
+      --   end,
+      -- },
     },
     config = function(_, opts)
-      require("mini.comment").setup(opts)
+      local c = require("mini.comment")
+      c.setup(opts)
+      local H = require("saturn.utils.plugin").get_upvalue(c.setup, "H")
+      H.get_commentstring = function()
+        return require("ts_context_commentstring.internal").calculate_commentstring() or vim.bo.commentstring
+      end
     end,
   },
 

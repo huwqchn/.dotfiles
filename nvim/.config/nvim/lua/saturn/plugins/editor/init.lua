@@ -594,9 +594,10 @@ return {
           ["<leader>q"] = { name = "+session" },
           ["<leader>r"] = { name = "+refactor/replace" },
           ["<leader>s"] = { name = "+search" },
-          ["<leader>t"] = { name = "+trouble/todo" },
+          ["<leader>t"] = { name = "+test" },
           ["<leader>u"] = { name = "+ui" },
           ["<leader>w"] = { name = "+windows" },
+          ["<leader>x"] = { name = "+diagnostics/quickfix" },
           ["<leader>z"] = { name = "+zen" },
           ["<leader><tab>"] = { name = "+tabs" },
           ["<leader><cr>"] = { name = "+terminal" },
@@ -764,12 +765,12 @@ return {
     "folke/trouble.nvim",
     cmd = { "TroubleToggle", "Trouble" },
     keys = {
-      { "<leader>tt", "<cmd>TroubleToggle<cr>", desc = "trouble" },
-      { "<leader>tw", "<cmd>TroubleToggle workspace_diagnostics<cr>", desc = "Workspace Diagnostics (Trouble)" },
-      { "<leader>td", "<cmd>TroubleToggle document_diagnostics<cr>", desc = "Document Diagnostics (Trouble)" },
-      { "<leader>tq", "<cmd>TroubleToggle quickfix<cr>", desc = "Quickfix List (Touble)" },
-      { "<leader>tl", "<cmd>TroubleToggle loclist<cr>", desc = "Loclist List (Trouble)" },
-      { "<leader>tr", "<cmd>TroubleToggle lsp_references<cr>", desc = "references" },
+      { "<leader>xx", "<cmd>TroubleToggle<cr>", desc = "trouble" },
+      { "<leader>xw", "<cmd>TroubleToggle workspace_diagnostics<cr>", desc = "Workspace Diagnostics (Trouble)" },
+      { "<leader>xd", "<cmd>TroubleToggle document_diagnostics<cr>", desc = "Document Diagnostics (Trouble)" },
+      { "<leader>xq", "<cmd>TroubleToggle quickfix<cr>", desc = "Quickfix List (Touble)" },
+      { "<leader>xl", "<cmd>TroubleToggle loclist<cr>", desc = "Loclist List (Trouble)" },
+      { "<leader>xr", "<cmd>TroubleToggle lsp_references<cr>", desc = "references" },
       {
         "[q",
         function()
@@ -840,9 +841,10 @@ return {
         end,
         desc = "Previous todo comment",
       },
-      { "<leader>to", "<cmd>TodoTrouble<cr>", desc = "Todo (Trouble)" },
-      { "<leader>tk", "<cmd>TodoTrouble keywords=TODO,FIX,FIXME<cr>", desc = "Todo/Fix/Fixme (Trouble)" },
+      { "<leader>xt", "<cmd>TodoTrouble<cr>", desc = "Todo (Trouble)" },
+      { "<leader>xT", "<cmd>TodoTrouble keywords=TODO,FIX,FIXME<cr>", desc = "Todo/Fix/Fixme (Trouble)" },
       { "<leader>st", "<cmd>TodoTelescope<cr>", desc = "Todo" },
+      { "<leader>sT", "<cmd>TodoTelescope keywords=TODO,FIX,FIXME<cr>", desc = "Todo/Fix/Fixme" },
     },
   },
 
@@ -1192,20 +1194,105 @@ return {
   {
     "nvim-neotest/neotest",
     keys = {
-      { "<leader>dm", "<cmd>lua require('neotest').run.run()<cr>", desc = "Test Method" },
-      { "<leader>dM", "<cmd>lua require('neotest').run.run({strategy = 'dap'})<cr>", desc = "Test Method DAP" },
-      { "<leader>df", "<cmd>lua require('neotest').run.run({vim.fn.expand('%')})<cr>", desc = "Test Class" },
       {
-        "<leader>dF",
-        "<cmd>lua require('neotest').run.run({vim.fn.expand('%'), strategy = 'dap'})<cr>",
-        desc = "Test Class DAP",
+        "<leader>tr",
+        function()
+          require("neotest").run.run()
+        end,
+        desc = "Run Nearest",
       },
       {
-        "<leader>dS",
-        "<cmd>lua require('neotest').summary.toggle()<cr>",
-        desc = "Test Summary",
+        "<leader>tR",
+        function()
+          require("neotest").run.run(vim.fn.expand("%"))
+        end,
+        desc = "Run File",
+      },
+      {
+        "<leader>ts",
+        function()
+          require("neotest").summary.toggle()
+        end,
+        desc = "Toggle Summary",
+      },
+      {
+        "<leader>to",
+        function()
+          require("neotest").output.open({ enter = true, auto_close = true })
+        end,
+        desc = "Show Output",
+      },
+      {
+        "<leader>tO",
+        function()
+          require("neotest").output_panel.toggle()
+        end,
+        desc = "Toggle Output Panel",
+      },
+      {
+        "<leader>td",
+        function()
+          require("neotest").run.run({ strategy = "dap" })
+        end,
+        desc = "Debug Nearest",
+      },
+      {
+        "<leader>tS",
+        function()
+          require("neotest").run.stop()
+        end,
+        desc = "Stop",
+      },
+      {
+        "<leader>tD",
+        function()
+          require("neotest").run.run({ vim.fn.expand("%"), strategy = "dap" })
+        end,
+        desc = "Debug File",
       },
     },
+    opts = {
+      -- Can be a list of adapters like what neotest expects,
+      -- or a table of adapter names, mapped to adapter configs.
+      -- The adapter will then be automatically loaded with the config.
+      adapters = {},
+      -- Example for loading neotest-go with a custom config
+      -- adapters = {
+      --   ["neotest-go"] = {
+      --     args = { "-tags=integration" },
+      --   },
+      -- },
+    },
+    config = function(_, opts)
+      local neotest_ns = vim.api.nvim_create_namespace("neotest")
+      vim.diagnostic.config({
+        virtual_text = {
+          format = function(diagnostic)
+            -- Replace newline and tab characters with space for more compact diagnostics
+            local message = diagnostic.message:gsub("\n", " "):gsub("\t", " "):gsub("%s+", " "):gsub("^%s+", "")
+            return message
+          end,
+        },
+      }, neotest_ns)
+
+      if opts.adapters then
+        local adapters = {}
+        for name, config in pairs(opts.adapters or {}) do
+          if type(name) == "number" then
+            adapters[#adapters + 1] = config
+          elseif config ~= false then
+            local adapter = require(name)
+            if type(config) == "table" and not vim.tbl_isempty(config) then
+              adapter = adapter(config)
+            end
+            adapters[#adapters + 1] = adapter
+          end
+        end
+        opts.adapters = adapters
+      end
+
+      require("neotest").setup(opts)
+    end,
   },
   {
     "kevinhwang91/nvim-bqf",
