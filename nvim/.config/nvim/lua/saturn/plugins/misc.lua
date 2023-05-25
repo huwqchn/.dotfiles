@@ -370,13 +370,13 @@ return {
       }
     end,
     keys = {
-      { "Q", mode = { "n", "v" } },
-      { "yq", mode = { "n", "v" } },
-      { "cq", mode = { "n", "v" } },
-      { "q", mode = { "n", "v" } },
-      { "<m-q>", mode = { "n", "v" } },
-      { "]Q", mode = "n" },
-      { "[Q", mode = "n" },
+      { "Q", mode = { "n", "v" }, desc = "Plays queued macro" },
+      { "yq", mode = { "n", "v" }, desc = "Yanks macro" },
+      { "cq", mode = { "n", "v" }, desc = "Halts macro" },
+      { "q", mode = { "n", "v" }, desc = "Starts recordong" },
+      { "<m-q>", mode = { "n", "v" }, desc = "Toggles macro menu" },
+      { "]Q", mode = "n", desc = "Cycles to next macro" },
+      { "[Q", mode = "n", desc = "Cycles to previous macro" },
     },
     cmds = {
       "EditMacros",
