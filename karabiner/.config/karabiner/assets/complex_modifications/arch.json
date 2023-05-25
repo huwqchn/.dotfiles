@@ -162,7 +162,7 @@
           ],
           "type": "basic",
           "from": {
-            "key_code": "o",
+            "key_code": "semicolon",
             "modifiers": {
               "optional": [
                 "any"
@@ -991,6 +991,30 @@
           "to": [
             {
               "key_code": "left_shift"
+            }
+          ]
+        },
+        {
+          "conditions": [
+            {
+              "name": "switch_mode",
+              "type": "variable_if",
+              "value": 1
+            }
+          ],
+          "type": "basic",
+          "from": {
+            "key_code": "m",
+            "modifiers": {
+              "optional": [
+                "any"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "hyphen",
+              "modifiers": "left_shift"
             }
           ]
         },
