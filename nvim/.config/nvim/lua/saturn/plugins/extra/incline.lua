@@ -46,6 +46,11 @@ return {
           local filename = vim.fn.fnamemodify(vim.api.nvim_buf_get_name(props.buf), ":t")
           local ft_icon, ft_color = require("nvim-web-devicons").get_icon_color(filename)
           local modified = vim.api.nvim_buf_get_option(props.buf, "modified") and "bold,italic" or "bold"
+          local count = vim.fn.searchcount({ recompute = 1, maxcount = -1 })
+          local contents = vim.fn.getreg("/")
+          if string.len(contents) == 0 then
+            return ""
+          end
 
           local buffer = {
             { get_diagnostic_label(props) },
@@ -53,6 +58,18 @@ return {
             { ft_icon, guifg = ft_color },
             { " " },
             { filename, gui = modified },
+            {
+              " ? ",
+              group = "dkoStatusKey",
+            },
+            {
+              (" %s "):format(contents),
+              group = "IncSearch",
+            },
+            {
+              (" %d/%d "):format(count.current, count.total),
+              group = "dkoStatusValue",
+            },
           }
           return buffer
         end,
