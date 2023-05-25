@@ -52,8 +52,11 @@ keybinding:
   commits:
     moveDownCommit: '<c-e>'
     moveUpCommit: '<c-i>'
+    openInBrowser: B
   branches:
     viewGitFlowOptions: 'I'
     setUpstream: 'U'
+    createPullRequest: z
+    viewPullRequestOptions: Z
 reporting: "off"
 startuppopupversion: 1
