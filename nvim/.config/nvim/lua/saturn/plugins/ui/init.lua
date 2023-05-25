@@ -170,7 +170,7 @@ return {
     opts = {
       mappings = {
         -- Textobjects
-        object_scope = "ii", -- integrate with mini.ai
+        object_scope = "hi", -- integrate with mini.ai
         object_scope_with_border = "ai",
 
         -- Motions (jump to respective border line; if not present - body line)
