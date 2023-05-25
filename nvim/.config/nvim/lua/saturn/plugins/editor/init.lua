@@ -941,7 +941,7 @@ return {
             if not cond then
               return
             end
-            requrie("dap").set_breakpoint(nil, nil, cond)
+            require("dap").set_breakpoint(nil, nil, cond)
           end)
         end,
         desc = "Set conditonal breakpoint",
@@ -954,7 +954,7 @@ return {
             if not msg then
               return
             end
-            requrie("dap").set_breakpoint(nil, nil, msg)
+            require("dap").set_breakpoint(nil, nil, msg)
           end)
         end,
         desc = "Set log message breakpoint",
