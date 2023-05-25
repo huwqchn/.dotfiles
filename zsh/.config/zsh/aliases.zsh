@@ -85,6 +85,7 @@ alias pc="proxychains4"
 alias icat="kitty +kitten icat"
 alias start-conda="source /opt/anaconda/bin/activate root"
 alias j="joshuto"
+alias fm="frogmouth"
 
 # Function for extracting compressed files
 ex () {

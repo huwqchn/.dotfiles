@@ -214,7 +214,6 @@ map("n", "<leader>wo", "<C-w>L", { desc = "move to the far right" })
 map("n", "<leader>wi", "<C-w>K", { desc = "move to the far top" })
 
 -- scroll
-map({ "n", "v" }, "<C-k>", "<C-u>")
 map({ "n", "v" }, "<C-m>", "<C-e>")
 
 -- Tabs management
