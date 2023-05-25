@@ -143,11 +143,11 @@ return {
   },
   -- Join
   {
-    "Wansmer/treesj",
+    "echasnovski/mini.splitjoin",
+    opts = { mappings = { toggle = "J" } },
     keys = {
-      { "J", "<cmd>TSJToggle<cr>" },
+      { "J", desc = "Split/Join" },
     },
-    opts = { use_default_keymaps = false },
   },
   -- structural replace
   {
