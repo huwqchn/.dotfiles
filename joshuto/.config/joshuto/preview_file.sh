@@ -16,7 +16,7 @@ IFS=$'\n'
 ## 7	| images	| Display the file directly as an image
 
 FILE_PATH=""
-PREVIEW_IMAGE_ENABLED=1
+PREVIEW_IMAGE_ENABLED=0
 PREVIEW_WIDTH=10
 PREVIEW_HEIGHT=10
 PREVIEW_X_COORD=0
@@ -224,8 +224,9 @@ handle_mime() {
 		image/*)
 			## Preview as text conversion
 			# img2txt --gamma=0.6 --width="${PREVIEW_WIDTH}" -- "${FILE_PATH}" && exit 4
-			exiftool "${FILE_PATH}" && exit 5
-			exit 1;;
+			# exiftool "${FILE_PATH}" && exit 5
+			# exit 1;;
+      exit 5
 
 		## Video and audio
 		##  video/* | audio/*)

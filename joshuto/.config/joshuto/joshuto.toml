@@ -31,7 +31,7 @@ directories_first = true
 reverse = false
 
 [preview]
-max_preview_size = 2097152 # 2MB
+max_preview_size = 20971520 # 2MB
 preview_script = "~/.config/joshuto/preview_file.sh"
 preview_shown_hook_script = "~/.config/joshuto/kitty/on_preview_shown.sh"
 preview_removed_hook_script = "~/.config/joshuto/kitty/on_preview_removed.sh"
