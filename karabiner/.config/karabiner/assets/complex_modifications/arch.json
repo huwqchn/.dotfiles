@@ -270,7 +270,7 @@
           "to": [
             {
               "set_variable": {
-                "name": "switch_mode",
+                "name": "space_mode",
                 "value": 1
               }
             }
@@ -278,7 +278,7 @@
           "to_after_key_up": [
             {
               "set_variable": {
-                "name": "switch_mode",
+                "name": "space_mode",
                 "value": 0
               }
             }
@@ -293,7 +293,7 @@
         {
           "conditions": [
             {
-              "name": "switch_mode",
+              "name": "space_mode",
               "type": "variable_if",
               "value": 1
             }
@@ -316,7 +316,7 @@
         {
           "conditions": [
             {
-              "name": "switch_mode",
+              "name": "space_mode",
               "type": "variable_if",
               "value": 1
             }
@@ -339,7 +339,7 @@
         {
           "conditions": [
             {
-              "name": "switch_mode",
+              "name": "space_mode",
               "type": "variable_if",
               "value": 1
             }
@@ -362,7 +362,7 @@
         {
           "conditions": [
             {
-              "name": "switch_mode",
+              "name": "space_mode",
               "type": "variable_if",
               "value": 1
             }
@@ -385,7 +385,7 @@
         {
           "conditions": [
             {
-              "name": "switch_mode",
+              "name": "space_mode",
               "type": "variable_if",
               "value": 1
             }
@@ -408,7 +408,7 @@
         {
           "conditions": [
             {
-              "name": "switch_mode",
+              "name": "space_mode",
               "type": "variable_if",
               "value": 1
             }
@@ -431,7 +431,7 @@
         {
           "conditions": [
             {
-              "name": "switch_mode",
+              "name": "space_mode",
               "type": "variable_if",
               "value": 1
             }
@@ -454,7 +454,7 @@
         {
           "conditions": [
             {
-              "name": "switch_mode",
+              "name": "space_mode",
               "type": "variable_if",
               "value": 1
             }
@@ -477,7 +477,7 @@
         {
           "conditions": [
             {
-              "name": "switch_mode",
+              "name": "space_mode",
               "type": "variable_if",
               "value": 1
             }
@@ -500,7 +500,7 @@
         {
           "conditions": [
             {
-              "name": "switch_mode",
+              "name": "space_mode",
               "type": "variable_if",
               "value": 1
             }
@@ -523,7 +523,7 @@
         {
           "conditions": [
             {
-              "name": "switch_mode",
+              "name": "space_mode",
               "type": "variable_if",
               "value": 1
             }
@@ -547,7 +547,7 @@
         {
           "conditions": [
             {
-              "name": "switch_mode",
+              "name": "space_mode",
               "type": "variable_if",
               "value": 1
             }
@@ -571,7 +571,7 @@
         {
           "conditions": [
             {
-              "name": "switch_mode",
+              "name": "space_mode",
               "type": "variable_if",
               "value": 1
             }
@@ -595,7 +595,7 @@
         {
           "conditions": [
             {
-              "name": "switch_mode",
+              "name": "space_mode",
               "type": "variable_if",
               "value": 1
             }
@@ -619,7 +619,7 @@
         {
           "conditions": [
             {
-              "name": "switch_mode",
+              "name": "space_mode",
               "type": "variable_if",
               "value": 1
             }
@@ -643,7 +643,7 @@
         {
           "conditions": [
             {
-              "name": "switch_mode",
+              "name": "space_mode",
               "type": "variable_if",
               "value": 1
             }
@@ -667,7 +667,7 @@
         {
           "conditions": [
             {
-              "name": "switch_mode",
+              "name": "space_mode",
               "type": "variable_if",
               "value": 1
             }
@@ -691,7 +691,7 @@
         {
           "conditions": [
             {
-              "name": "switch_mode",
+              "name": "space_mode",
               "type": "variable_if",
               "value": 1
             }
@@ -715,7 +715,7 @@
         {
           "conditions": [
             {
-              "name": "switch_mode",
+              "name": "space_mode",
               "type": "variable_if",
               "value": 1
             }
@@ -739,7 +739,7 @@
         {
           "conditions": [
             {
-              "name": "switch_mode",
+              "name": "space_mode",
               "type": "variable_if",
               "value": 1
             }
@@ -763,7 +763,7 @@
         {
           "conditions": [
             {
-              "name": "switch_mode",
+              "name": "space_mode",
               "type": "variable_if",
               "value": 1
             }
@@ -786,7 +786,7 @@
         {
           "conditions": [
             {
-              "name": "switch_mode",
+              "name": "space_mode",
               "type": "variable_if",
               "value": 1
             }
@@ -809,7 +809,7 @@
         {
           "conditions": [
             {
-              "name": "switch_mode",
+              "name": "space_mode",
               "type": "variable_if",
               "value": 1
             }
@@ -832,7 +832,7 @@
         {
           "conditions": [
             {
-              "name": "switch_mode",
+              "name": "space_mode",
               "type": "variable_if",
               "value": 1
             }
@@ -855,7 +855,7 @@
         {
           "conditions": [
             {
-              "name": "switch_mode",
+              "name": "space_mode",
               "type": "variable_if",
               "value": 1
             }
@@ -879,7 +879,7 @@
         {
           "conditions": [
             {
-              "name": "switch_mode",
+              "name": "space_mode",
               "type": "variable_if",
               "value": 1
             }
@@ -903,7 +903,7 @@
         {
           "conditions": [
             {
-              "name": "switch_mode",
+              "name": "space_mode",
               "type": "variable_if",
               "value": 1
             }
@@ -927,7 +927,7 @@
         {
           "conditions": [
             {
-              "name": "switch_mode",
+              "name": "space_mode",
               "type": "variable_if",
               "value": 1
             }
@@ -951,7 +951,7 @@
         {
           "conditions": [
             {
-              "name": "switch_mode",
+              "name": "space_mode",
               "type": "variable_if",
               "value": 1
             }
@@ -974,7 +974,7 @@
         {
           "conditions": [
             {
-              "name": "switch_mode",
+              "name": "space_mode",
               "type": "variable_if",
               "value": 1
             }
@@ -997,7 +997,7 @@
         {
           "conditions": [
             {
-              "name": "switch_mode",
+              "name": "space_mode",
               "type": "variable_if",
               "value": 1
             }
@@ -1021,7 +1021,7 @@
         {
           "conditions": [
             {
-              "name": "switch_mode",
+              "name": "space_mode",
               "type": "variable_if",
               "value": 1
             }
@@ -1045,7 +1045,7 @@
         {
           "conditions": [
             {
-              "name": "switch_mode",
+              "name": "space_mode",
               "type": "variable_if",
               "value": 1
             }
@@ -1069,7 +1069,7 @@
         {
           "conditions": [
             {
-              "name": "switch_mode",
+              "name": "space_mode",
               "type": "variable_if",
               "value": 1
             }
@@ -1092,7 +1092,7 @@
         {
           "conditions": [
             {
-              "name": "switch_mode",
+              "name": "space_mode",
               "type": "variable_if",
               "value": 1
             }
@@ -1115,7 +1115,7 @@
         {
           "conditions": [
             {
-              "name": "switch_mode",
+              "name": "space_mode",
               "type": "variable_if",
               "value": 1
             }
@@ -1138,7 +1138,7 @@
         {
           "conditions": [
             {
-              "name": "switch_mode",
+              "name": "space_mode",
               "type": "variable_if",
               "value": 1
             }
@@ -1161,7 +1161,7 @@
         {
           "conditions": [
             {
-              "name": "switch_mode",
+              "name": "space_mode",
               "type": "variable_if",
               "value": 1
             }
@@ -1184,7 +1184,7 @@
         {
           "conditions": [
             {
-              "name": "switch_mode",
+              "name": "space_mode",
               "type": "variable_if",
               "value": 1
             }
@@ -1207,7 +1207,7 @@
         {
           "conditions": [
             {
-              "name": "switch_mode",
+              "name": "space_mode",
               "type": "variable_if",
               "value": 1
             }
@@ -1230,7 +1230,7 @@
         {
           "conditions": [
             {
-              "name": "switch_mode",
+              "name": "space_mode",
               "type": "variable_if",
               "value": 1
             }
@@ -1253,7 +1253,7 @@
         {
           "conditions": [
             {
-              "name": "switch_mode",
+              "name": "space_mode",
               "type": "variable_if",
               "value": 1
             }
@@ -1276,7 +1276,7 @@
         {
           "conditions": [
             {
-              "name": "switch_mode",
+              "name": "space_mode",
               "type": "variable_if",
               "value": 1
             }
@@ -1299,7 +1299,7 @@
         {
           "conditions": [
             {
-              "name": "switch_mode",
+              "name": "space_mode",
               "type": "variable_if",
               "value": 1
             }
@@ -1322,7 +1322,7 @@
         {
           "conditions": [
             {
-              "name": "switch_mode",
+              "name": "space_mode",
               "type": "variable_if",
               "value": 1
             }
@@ -1345,7 +1345,7 @@
         {
           "conditions": [
             {
-              "name": "switch_mode",
+              "name": "space_mode",
               "type": "variable_if",
               "value": 1
             }
@@ -1368,7 +1368,7 @@
         {
           "conditions": [
             {
-              "name": "switch_mode",
+              "name": "space_mode",
               "type": "variable_if",
               "value": 1
             }
