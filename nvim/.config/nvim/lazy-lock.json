@@ -1,6 +1,6 @@
 {
   "ChatGPT.nvim": { "branch": "main", "commit": "5a6287cdd90838c727cb8ac8dbd4787702445680" },
-  "LuaSnip": { "branch": "master", "commit": "4afcf6dd5937b3b9a4f83b2b0f2dde8a8a60675c" },
+  "LuaSnip": { "branch": "master", "commit": "2fc3ad4cba48ecbe15503d894d30d8f7e6d0d393" },
   "NeoComposer.nvim": { "branch": "main", "commit": "a22f5a5d7ff590f59cdeb0bf67fc617327452263" },
   "SchemaStore.nvim": { "branch": "main", "commit": "2efaef942ce43c7f0cf61cf11b4791fcea01ce19" },
   "alpha-nvim": { "branch": "main", "commit": "1838ae926e8d49fe5330d1498ee8289ae2c340bc" },
