@@ -38,6 +38,14 @@ alias du="dust"
 alias hf="hyperfine"
 # code analysis
 alias tk="tokei"
+# fast alternative to cut
+alias cut="choose"
+# rename
+alias rn="rnr"
+# better sysctl
+alias sysctl="systeroid"
+# alias uniq
+alias uniq="huniq"
 
 # some git aliases
 alias gp="git push"

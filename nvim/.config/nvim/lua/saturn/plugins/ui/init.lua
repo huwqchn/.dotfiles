@@ -246,7 +246,7 @@ return {
       navic.setup(conf.options)
     end,
   },
-  { import = "saturn.plugins.extra.incline" },
+  -- { import = "saturn.plugins.extra.incline" },
 
   -- {
   --   "karb94/neoscroll.nvim",

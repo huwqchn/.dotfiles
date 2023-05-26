@@ -8,7 +8,7 @@ function openlazygit {
     zle_eval lazygit
 }
 
-zle -N openlazygit; bindkey "^G" openlazygit
+zle -N openlazygit; bindkey "^l" openlazygit
 
 # lfcd () {
 #     tmp="$(mktemp)"
