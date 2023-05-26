@@ -94,6 +94,7 @@ alias icat="kitty +kitten icat"
 alias start-conda="source /opt/anaconda/bin/activate root"
 alias j="joshuto"
 alias fm="frogmouth"
+alias email="himalaya"
 
 # Function for extracting compressed files
 ex () {
