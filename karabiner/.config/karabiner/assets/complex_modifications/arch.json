@@ -33,7 +33,7 @@
           "to_if_alone": [
             {
               "key_code": "tab",
-              "hold_down_milliseconds": 200
+              "hold_down_milliseconds": 100
             }
           ]
         },
@@ -286,7 +286,7 @@
           "to_if_alone": [
             {
               "key_code": "spacebar",
-              "hold_down_milliseconds": 200
+              "hold_down_milliseconds": 100
             }
           ]
         },
