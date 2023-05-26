@@ -51,6 +51,8 @@ keymap = [
 	{ keys = [ "i" ],		command = "cursor_move_up" },
 	{ keys = [ "n" ],		command = "cd .." },
 	{ keys = [ "o" ],		command = "open" },
+	{ keys = [ "E" ],		command = "cursor_move_down 5" },
+	{ keys = [ "I" ],		command = "cursor_move_up 5" },
 	{ keys = [ "g", "g" ],		command = "cursor_move_home" },
 	{ keys = [ "G" ],		command = "cursor_move_end" },
 	{ keys = [ "O" ],		command = "open_with" },

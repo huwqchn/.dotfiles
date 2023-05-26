@@ -16,7 +16,7 @@ IFS=$'\n'
 ## 7	| images	| Display the file directly as an image
 
 FILE_PATH=""
-PREVIEW_IMAGE_ENABLED=0
+PREVIEW_IMAGE_ENABLED=1
 PREVIEW_WIDTH=10
 PREVIEW_HEIGHT=10
 PREVIEW_X_COORD=0
