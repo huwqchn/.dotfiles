@@ -401,6 +401,7 @@ return {
       }
     end,
   },
+  { import = "saturn.plugins.extra.smart-splits" },
   { import = "saturn.plugins.extra.firenvim" },
   -- { import = "saturn.plugins.extra.hologram" },
 }
