@@ -32,7 +32,7 @@ cycle() {
   set_kbdlayout "$next_layout"
   upper=$(echo $next_layout | tr '[:lower:]' '[:upper:]')
 
-  pop_report -m $upper -t keyboard > /dev/null     
+  pop_report -m $upper -t keyboard > /dev/null
 }
 
 

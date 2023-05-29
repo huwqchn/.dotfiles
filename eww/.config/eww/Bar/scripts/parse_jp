@@ -1,4 +1,4 @@
-#!/bin/python3 
+#!/bin/python3
 
 import sys
 # -*- coding:utf-8 -*-
@@ -38,7 +38,7 @@ ogstring = str(sys.argv[1])
 if len(ogstring) > 21:
   ogstring += "        "
 
-scroll = int(sys.argv[2]) 
+scroll = int(sys.argv[2])
 string = ogstring[scroll:] + ogstring[:scroll]
 string = string[0:20]
 string = string.replace("&", "&amp;")

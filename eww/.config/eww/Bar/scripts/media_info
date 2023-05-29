@@ -18,10 +18,10 @@ select_player () {
 		[[ ! -z $totalplayer ]] && player="$totalplayer"
 		echo "$player"
 	done;
-}	
+}
 
 update_cover () {
-	if [[ -z $newimg ]] 
+	if [[ -z $newimg ]]
     then
 		newimg="$imgdir/music.png"
 		cp "$newimg" "$imgdir/currmedia.png"
@@ -54,7 +54,7 @@ scroll_text () {
 	$eww update $eww_var="$text"
 	while true; do
 		text_parsed=`$HOME/.config/eww/mybar/scripts/parse_jp "$text" "$scroll_index"`
-		scroll_index=$(( (scroll_index + 1) % (text_len + 8) )) 
+		scroll_index=$(( (scroll_index + 1) % (text_len + 8) ))
 		$eww update $eww_var\_parsed="$text_parsed"
 		# Change the value below to control how fast text should scroll
 		sleep 0.3
@@ -80,7 +80,7 @@ while true; do
 		else
 			$eww update media_status=""
 		fi;
-		
+
 		# Update title and artist
 		last_title="$title"
 		title=`playerctl --player="$player" metadata xesam:title 2> /dev/null`
@@ -94,9 +94,9 @@ while true; do
 			done;
 
 			title_len=${#title}
-			if [[ $title_len -gt 21 ]] 
+			if [[ $title_len -gt 21 ]]
 			then
-				echo "Started a text scroll job for title" 
+				echo "Started a text scroll job for title"
 				scroll_text "$title" "$title_len" "title" &
 			else
 				title_parsed=`$HOME/.config/eww/mybar/scripts/parse_jp "$title" "0"`
@@ -116,9 +116,9 @@ while true; do
 			done;
 
 			artist_len=${#artist}
-			if [[ $artist_len -gt 21 ]] 
+			if [[ $artist_len -gt 21 ]]
 			then
-				echo "Started a text scroll job for artist" 
+				echo "Started a text scroll job for artist"
 				scroll_text "$artist" "$artist_len" "artist" &
 			else
 				artist_parsed=`$HOME/.config/eww/mybar/scripts/parse_jp "$artist" "0"`
@@ -161,4 +161,4 @@ while true; do
 		lastimg=""
 	fi;
 	sleep 1
-done;	
+done;

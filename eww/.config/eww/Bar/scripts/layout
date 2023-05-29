@@ -2,24 +2,24 @@
 eww="eww -c $HOME/.config/eww/Bar"
 
 bspc subscribe desktop_focus desktop_layout | while read line; do
-	case `bspc query -T -d | jq -r .layout` in    
-	    tall)    
-	        echo "Tall"    
-	        ;;    
-	    tiled)    
+	case `bspc query -T -d | jq -r .layout` in
+	    tall)
+	        echo "Tall"
+	        ;;
+	    tiled)
 			$eww update layout_button=
 			;;
 	    grid)
-	        echo "Grid"    
-	        ;;    
+	        echo "Grid"
+	        ;;
 	    monocle)
 			$eww update layout_button=
-			;;    
-	    even)    
-	        echo "Even"    
-	        ;;    
-	    *)    
-	        echo "?"    
-	        ;;    
+			;;
+	    even)
+	        echo "Even"
+	        ;;
+	    *)
+	        echo "?"
+	        ;;
 esac;
 done

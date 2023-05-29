@@ -1,27 +1,27 @@
 #!/bin/sh
 notify()
 {
-    case $1 in 
+    case $1 in
         charging)
             if  [[ $lstate -ne 3 ]]
             then
-                echo 3 > /tmp/batstate 
+                echo 3 > /tmp/batstate
                 pop_report -d 800 -m "<span>Charging</span><font size=\"-1\"> ﮣ</font>$icon" -t battery_charging -o "font-size: 70px" "font-family: Iosevka Curly" "padding-right: 30px"
-            fi;       
+            fi;
         ;;
         high)
             echo 2 > /tmp/batstate
         ;;
         mid)
-            if  [[ $lstate -gt 1 ]] 
+            if  [[ $lstate -gt 1 ]]
             then
                 echo 1 > /tmp/batstate
                 dunstify "Warning: $bat_level% Battery left" -i "${HOME}/.config/rice_assets/Icons/battery_mid.png" -t 10000 --replace=550 -u critical
             fi;
         ;;
         low)
-            if [[ $lstate -gt 0 ]] 
-            then 
+            if [[ $lstate -gt 0 ]]
+            then
                 echo 0 > /tmp/batstate
                 pop_report -m "Battery is critically low" -d 5000 -t battery_low
             fi;
@@ -40,7 +40,7 @@ discharging=`echo "$acpi" | grep -w 0: | grep -c Discharging`
 time=`echo "$acpi" | awk '{printf $5}'`
 time=${time::-3}
 
-if [[ $discharging -eq 0 ]] 
+if [[ $discharging -eq 0 ]]
 then
     notify charging > /dev/null
     $eww update battery_image="images/battery_charging.png"
@@ -92,7 +92,7 @@ case $1 in
         [[ $time != "" && $time != "discharg" ]] && echo "$time" || echo "00:00"
         ;;
     "--percentage")
-        echo "$bat_level" 
+        echo "$bat_level"
         ;;
     *)
         true

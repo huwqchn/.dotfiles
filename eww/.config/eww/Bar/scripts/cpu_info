@@ -2,9 +2,9 @@
 eww="eww -c ${HOME}/.config/eww/Bar"
 
 
-mpstat 2 | while read line; 
+mpstat 2 | while read line;
 do
-    cpu_usage=`echo $line | awk '{printf $4}' 2> /dev/null` 
+    cpu_usage=`echo $line | awk '{printf $4}' 2> /dev/null`
     $eww update cpu_percent=$cpu_usage
 done;
 
