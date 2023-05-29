@@ -17,7 +17,7 @@
 (defvar color14 "#8dffff")
 (defvar color15 "#ffc994")
 
-;; Specials 
+;; Specials
 (defvar left_bg "#0E1F2F")
 (defvar center_bg "#0E1F2F")
 (defvar right_bg "#0E1F2F")
@@ -52,14 +52,14 @@
 (defvar layout_button "")
 (defvar media_status "")
 (defvar artist "No artist")
-(defvar artist_parsed "No artist") 
-(defvar title "No title") 
-(defvar title_parsed "No title") 
+(defvar artist_parsed "No artist")
+(defvar title "No title")
+(defvar title_parsed "No title")
 (defvar length 100)
-(defvar position 0) 
-(defvar us_class "kb_button_active") 
-(defvar es_class "kb_button_inactive") 
-(defvar cpu_percent "0.00") 
+(defvar position 0)
+(defvar us_class "kb_button_active")
+(defvar es_class "kb_button_inactive")
+(defvar cpu_percent "0.00")
 
 (deflisten launch1 "scripts/workspaces")
 (deflisten launch2 "scripts/layout")
@@ -84,8 +84,8 @@
 ;; WINDOWS
 ;; Left bar
 (defwindow bar_left
-  :geometry 
-    (geometry 
+  :geometry
+    (geometry
       :anchor "top left"
       :x "20px"
       :y "20px"
@@ -94,13 +94,13 @@
   :stacking "bg"
   :reserve
     (struts
-      :distance "70px" 
+      :distance "70px"
       :side "top")
   :windowtype "dock"
   :wm-ignore "false"
 (widgets_left))
 
-;; Central bar 
+;; Central bar
 (defwindow bar_center
   :geometry
     (geometry
@@ -277,7 +277,7 @@
   (eventbox
     :onhover "${eww} update left_class=\"win_hovered\""
     :onhoverlost "${eww} update left_class=\"win_normal\""
-    (box 
+    (box
       :spacing 0
       :space-evenly "false"
       :class left_class
@@ -290,7 +290,7 @@
 
 
   (defwidget workspaces []
-    (box 
+    (box
       :orientation "h"
       :halign "start"
       :class "workspaces"
@@ -301,54 +301,54 @@
         :class "${launch1}, ${launch2}, ${launch3}, ${launch4}"
         (eventbox
           :cursor "pointer"
-          (button 
+          (button
             :tooltip "Switch to workspace 1"
             :onclick "bspc desktop -f 0"
             (label
-              :markup wp0 
+              :markup wp0
               :class "workspace_buttons")))
         (eventbox
           :cursor "pointer"
-          (button 
+          (button
             :tooltip "Switch to workspace 2"
             :onclick "bspc desktop -f 1"
             (label
-              :markup wp1 
+              :markup wp1
               :class "workspace_buttons")))
         (eventbox
           :cursor "pointer"
-          (button 
+          (button
             :tooltip "Switch to workspace 3"
             :onclick "bspc desktop -f 2"
             (label
-              :markup wp2 
+              :markup wp2
               :class "workspace_buttons")))
         (eventbox
           :cursor "pointer"
-          (button 
+          (button
             :tooltip "Switch to workspace 4"
             :onclick "bspc desktop -f 3"
             (label
-              :markup wp3 
+              :markup wp3
               :class "workspace_buttons")))
         (eventbox
           :cursor "pointer"
-          (button 
+          (button
             :tooltip "Switch to workspace 5"
             :onclick "bspc desktop -f 4"
             (label
-              :markup wp4 
+              :markup wp4
               :class "workspace_buttons")))
       )))
 
   (defwidget layout []
-    (box 
+    (box
       :orientation "h"
       :halign "start"
-      (box 
+      (box
         :orientation "h"
         :space-evenly "false"
-        (eventbox 
+        (eventbox
           :cursor "pointer"
           (button
             :tooltip "Change current layout"
@@ -359,10 +359,10 @@
       )))
 
   (defwidget music []
-    (eventbox 
+    (eventbox
       :onhover "${eww} update music_reveal=true"
       :onhoverlost "${eww} update music_reveal=false"
-      (box 
+      (box
         :class "music_box"
         :orientation "h"
         :spacing 0
@@ -370,7 +370,7 @@
         :halign "start"
         (eventbox
           :cursor "pointer"
-          (box 
+          (box
             :space_evenly "false"
             :halign "start"
             :tooltip "${title} by ${artist}"
@@ -415,33 +415,33 @@
               :reveal music_reveal
               :transition "slideup"
               :duration "350ms"
-              (box 
+              (box
                 :orientation "h"
                 :halign "center"
                 :class "media_buttons"
                 :space-evenly false
-                (eventbox 
+                (eventbox
                   :cursor "pointer"
-                  (button 
+                  (button
                     :class "prev_button"
                     :onclick "scripts/media_control --prev"
                     :tooltip "Previous"
                     ""))
-                (eventbox 
+                (eventbox
                   :cursor "pointer"
-                  (button 
+                  (button
                     :class "toggle_button"
                     :onclick "scripts/media_control --toggle"
                     :tooltip "Play/Pause"
                     "${media_status}"))
                 (eventbox
                   :cursor "pointer"
-                  (button 
+                  (button
                     :class "next_button"
                     :onclick "scripts/media_control --next"
                     :tooltip "Next"
                     "")))))
-          (box 
+          (box
             :space-evenly "false"
             :class media_bar_class
             :halign "center"
@@ -466,7 +466,7 @@
   (eventbox
     :onhover "${eww} update center_class=\"win_hovered\""
     :onhoverlost "${eww} update center_class=\"win_normal\""
-    (box 
+    (box
       :spacing 0
       :space-evenly "true"
       :class center_class
@@ -503,7 +503,7 @@
           :path "images/cpu.png"
           :image-width 30
           :image-height 30)
-        (box 
+        (box
           :orientation "v"
           :space-evenly "false"
           :vexpand "false"
@@ -542,7 +542,7 @@
                 :min 0
                 :max 100
                 :dynamic "true"
-                :line-style "round")) 
+                :line-style "round"))
             )))))
 
 (defwidget disk_status []
@@ -561,7 +561,7 @@
           :path "images/disk.png"
           :image-width 30
           :image-height 30)
-        (box 
+        (box
           :orientation "v"
           :space-evenly "false"
           :vexpand "false"
@@ -596,14 +596,14 @@
               :class "center_revealers"
               (label
                 :halign "center"
-                :text "${disk_free}G free")) 
+                :text "${disk_free}G free"))
             )))))
 (defwidget temperature_status []
   (eventbox
     :onhover "${eww} update temperature_reveal=\"true\""
     :onhoverlost "${eww} update temperature_reveal=\"false\""
     :tooltip "Internal temperature"
-    (box 
+    (box
       :orientation "h"
       :space-evenly "false"
       :class "temperature_box"
@@ -614,7 +614,7 @@
           :path "images/temperature.png"
           :image-width 30
           :image-height 30)
-        (box 
+        (box
           :orientation "v"
           :space-evenly "false"
           :vexpand "false"
@@ -653,7 +653,7 @@
                 :min 0
                 :max 100
                 :dynamic "true"
-                :line-style "round")) 
+                :line-style "round"))
             )))))
 
 (defwidget ram_status []
@@ -711,7 +711,7 @@
                 :min 0
                 :max ram_all
                 :dynamic "true"
-                :line-style "round")) 
+                :line-style "round"))
             )))))
 
 (defwidget battery_status []
@@ -764,7 +764,7 @@
               :class "center_revealers"
               (label
                 :halign "center"
-                :text battery_time)) 
+                :text battery_time))
             )))))
 
 
@@ -806,7 +806,7 @@
     :onhover "${eww} update date_reveal=true"
     :onhoverlost "${eww} update date_reveal=false"
     :cursor "pointer"
-    (button 
+    (button
       :onclick "scripts/popup_calendar"
       (box
         :class "time_box"
