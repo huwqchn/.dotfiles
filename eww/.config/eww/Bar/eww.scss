@@ -1,230 +1,268 @@
-/* Created   by https://github.com/rxyhn 
-   Designed  by https://github.com/rxyhn
-   Maintaned by https://github.com/rxyhn
-*/
+// EWW.SCSS 
+// GLOBALS
 
-// Global
+@import "colors.scss";
+
 *{
-  all: unset;
+    all: unset;
+    font-family: "Iosevka Curly";
+    font-weight: 800;
 }
 
-// Variable Color's
-$background: #1A1B26;
-$foreground: #A9B1D6;
-
-$black: #24283B;
-$gray: #565F89;
-$red: #F7768E;
-$green: #73DACA;
-$yellow: #E0AF68;
-$blue: #7AA2F7;
-$magenta: #BB9AF7;
-$cyan: #7DCFFF;
-$white: $foreground;
-
-// EWW BAR
-.eww_bar{
-  background-color: $background;
-  padding: .3rem;
+.win_normal {
+    background-image: url("images/background.png");
+    background-color: $color0;
+    border: 5px solid $color9;
+    border-radius: 40px;
 }
 
-// Launcher
-.launcher_icon{
-    color: $cyan;
-    font-family: "Font Awesome 6 Pro";
-    font-size: 1.7em;
-    padding: 1rem 0 1rem 0;
+.win_hovered {
+    background-image: url("images/background.png");
+    background-color: $color8;
+    border: 5px solid $color9;
+    border-radius: 40px;
 }
 
+// LEFT MODULES
 // Workspaces
-.works {
-font-family: "Font Awesome 6 Pro";
-padding: .2rem .7rem .2rem .7rem;
-background-color: $black;
-border-radius: 5px;
+.workspaces {
+    margin-left: 10px;
+    margin-top: -4px;
+}
+.workspace_buttons {
+    font-family: Hack;
+    font-size: 30px;
+    margin: 0 3 0 2;
+    color: $color15;
 }
 
-.0 , .01, .02, .03, .04, .05, .06,
-.011, .022, .033, .044, .055, .066{
-  margin: .55rem 0 .55rem 0;
+// Layout
+.layout {
+    all: unset;
+    font-family: "Hack";
+    color: $color15;
+    font-size: 25;
+    margin: -6 0 -6 10;
 }
 
-/* Unoccupied */
-.0 {
-color: $gray;
+// Music
+.music_box { 
+}
+.music_box_popup {
+    background-color: $color0;
+    background-image: url("images/background.png");
+    border: solid 5px $color9;
+    border-radius: 0 0 20 20;
+}
+.media_art {
+    border-right: solid 5px $color9;
+    border-left: solid 5px $color9;
+    background-color: $color9;
+    margin-left: 14px;
+    margin-right: 3px;
+}
+.media_art_popup {
+    border: solid 5px $color14;
+    border-radius: 5px;
+}
+.media_art_popup_box {
+    margin: 15 0 15 15;
+    min-height: 140px;
+}
+.media_data { 
+    margin-left: 10px;
+    margin-right: 17px;
+}
+.media_data_popup {
+}
+.media_title {
+    //font-family: "Meiryo";
+    font-size: 16px;
+    color: $color15;
+    margin-bottom: 1px;
+    margin-right: -1000px;
+    margin-left: -1000px;
+}
+.media_title_popup {
+    font-size: 22px;
+    color: $color15;
+}
+.media_artist_popup {
+    font-size: 15px;
+    margin: 0 15 0 10;
+    color: $color12;
+//    background-color: #31225a;
+}
+.media_buttons {
+    font-size: 20px;
+    margin-bottom: 2px;
 }
 
-/* Occupied */
-.01, .02, .03, .04, .05, .06 {
-  color: $gray;
+.prev_button, .toggle_button, .next_button {
+    font-size: 20px;
+    min-width: 30px;
+//    background-color: #ffffff;
 }
 
-/* Focused */
-.011,
-.022,
-.033,
-.044,
-.055,
-.066 {
-  color: $foreground;
+.playpause_popup {
+    font-size: 30px;
+    margin-right: 10px;
+    margin-left: 10px;
+    color: $color12;
+}
+.move_popup {
+    font-size: 30px;
+    margin-right: 10px;
+    margin-left: 10px;
+    color: $color15;
+}
+.nextprev_popup {
+    font-size: 30px;
+    margin-right: 10px;
+    margin-left: 10px;
+    color: $color13;
+}
+.media_buttons_box_popup {
+    
+}
+.toggle_button {
+    margin-left: 15px;
+    margin-right: 15px;
+}
+.bar_normal_popup scale trough highlight {
+    all: unset;
+    background-color: $color13;
+    border-radius: 15px;
+}
+.bar_normal_popup scale trough {
+    all: unset;
+    background-color: rgba($color15, 0.4);
+    min-height: 15px;
+    margin: 0 15 15 15;
+    border-radius: 15px;
+    border: solid 5px $color14;
+}
+.bar_highlighted_popup scale trough highlight {
+    all: unset;
+    background-color: $color15;
+    border-radius: 15px;
+}
+.bar_highlighted_popup scale trough {
+    all: unset;
+    background-color: rgba($color15, 0.4);
+    min-height: 15px;
+    margin: 0 15 15 15;
+    border-radius: 15px;
+    border: solid 5px $color14;
+}
+.bar_normal scale trough highlight {
+    all: unset;
+    background-color: $color12;
+    border-radius: 10px;
+}
+.bar_normal scale trough {
+    all: unset;
+    background-color: rgba($color15, 0.4);
+    min-width: 173px;
+    min-height: 10px;
+    border-radius: 10px;
+    margin-bottom: 5px;
+    margin-top: 0px;
+}
+.bar_highlighted scale trough highlight {
+    all: unset;
+    background-color: $color15;
+    border-radius: 10px;
+}
+.bar_highlighted scale trough {
+    all: unset;
+    background-color: rgba($color15, 0.4);
+    min-width: 173px;
+    min-height: 10px;
+    border-radius: 10px;
+    margin-bottom: 5px;
+    margin-top: 0px;
 }
 
-.0:nth-child(1),
-.0:nth-child(3){
-  font-size: 1.5em;
+// CENTER MODULES
+.center_icons {
+    margin-right: 5px;
+    margin-left: 15px;
 }
-.0:nth-child(2){
-  font-size: 1.4em;
+.center_labels {
+    font-size: 16px;
+    margin-bottom: -3px;
+    margin-top: 1px;
+    color: $color15;
 }
-.0:nth-child(4),
-.0:nth-child(5){
-  font-size: 1.6em;
+.center_revealers {
+    border-radius: 5px;
+    background-color: rgba($color0, 1);
+    min-height: 32px;
+    border: solid 2px $color11;
+    color: $color12;
 }
-.0:nth-child(6){
-  font-size: 1.7em;
+.center_info scale trough highlight {
+    all: unset;
+    background: $color3;
+    border-radius: 10px;            
+    border: solid 2px $color11;
 }
-.01,
-.011,
-.03,
-.033{
-  font-size: 1.5em;
-}
-.02,
-.022{
-  font-size: 1.4em;
-}
-.04,
-.05,
-.044,
-.055{
-  font-size: 1.6em;
-}
-.06,
-.066{
-  font-size: 1.7em;
+.center_info scale trough {
+    all: unset;
+    background-color: rgba($color15, 0.4);
+    border-radius: 10px;
+    min-width: 110px;
+    min-height: 10px;               
 }
 
-// Control Panel
-.control {
-padding: .5rem;
-font-family: Material Icons;
-font-size: 1.6em;
-background-color: $black;
-border-radius: 5px;
-}
-.bat{
-  font-family: JetBrainsMono Nerd Font;
-  font-size: 1.2em;
-  padding-right: .5rem;
-  color: $blue;
-}
-.wifi-icon{
-  margin-bottom: .2rem;
-  color: $magenta;
-}
-.brightness-icon{
-  margin: .2rem 0 .2rem 0;
-  color: $yellow;
-}
-.volume-icon{
-  margin: .2rem 0 .2rem 0;
-  color: $green;
-}
-scale trough {
-  all: unset;
-  background-color: $background;
-  border-radius: 5px;
-  min-height: 80px;
-  min-width: 10px;
-  margin: .3rem 0 .3rem 0;
-}
-.bribar trough highlight {
-  background-color: $yellow;
-  border-radius: 5px;
-}
-.volbar trough highlight {
-  background-color: $green;
-  border-radius: 5px;
-}
 
-// Clock
+// RIGHT MODULES 
+.power_button {
+    color: $color13;
+    font-size: 25px;
+    font-family: Caskaydia Cove Nerd Font;
+    margin: -10 18 -10 15;
+}
+.time_box {
+    margin-top: -10px;
+    margin-bottom: -10px;
+}
 .time {
-  font-family: Comic Mono;
-  font-weight: bold;
-  font-size: 1.2em;
-  background-color: $black;
-  color: $white;
-  border-radius: 5px;
-  padding: .7rem 0 .5rem 0;
-  margin: .5rem 0 .5rem 0;
+    color: $color15;
+    font-size: 30px;
+    margin-bottom: -20px;
+    margin-top: -20px;
 }
-
-// Calendar
-.cal-box {
-  background-color: $black;
-  font-family: Comic Mono;
-  font-size: 1em;
-  font-weight: bold;
-
-  .cal-inner-box {
-      padding: 1rem 1rem .2rem;
-
-      .cal {
-          &.highlight {
-              padding: 10rem;
-          }
-
-          padding: .8rem .25rem 0rem;
-          margin-left: 10px;
-      }
-  }
+.date {
+    color: $color15;
+    font-size: 30px;
+    margin-top: 8px;
 }
-
-calendar:selected {
-  color: $blue;
+.kb_box {
+    color: $color15;
+    font-size: 16px;
+    margin-left: 1px;
+    margin-right: 10px;
 }
-
-calendar.header {
-color: $blue;
-font-weight: bold;
+.kb_button_active {
+    font-size: 16px;
+    margin-bottom: -3px;
+    margin-top: -3px;
+    color: rgba($color15, 1);
 }
-
-calendar.button {
-color: $magenta;
+.kb_button_inactive {
+    font-size: 16px;
+    margin-top: -3px;
+    margin-bottom: -3px;
+    color: rgba($color15, 0.4);
 }
-
-calendar.highlight {
-color: $magenta;
-font-weight: bold;
-}
-
-calendar:indeterminate {
-color: $background;
-}
-
-// Powermenu
-.powermenu {
-  font-family: feather;
-  font-size: 1.4em;
-  font-weight: bold;
-}
-.button-bspres, .button-reb, .button-lock,
-.button-quit, .button-off{
-  padding: .5rem .2rem .3rem .2rem;
-}
-.button-off{
-  margin-bottom: .5rem;
-  color: $red;
-}
-.button-bspres{
-  color: $green;
-}
-.button-reb{
-  color: $yellow
-}
-.button-quit{
-  color: $magenta;
-}
-.button-lock{
-  color: $blue;
+.cal {
+    font-size: 18px;
+    background-color: $color0;
+    background-image: url("images/background.png");
+    color: $color15;
+    border: 5px solid $color9;
+    border-radius: 0 0 20 20;
+    padding: 10px;
 }
