@@ -158,6 +158,14 @@ local definitions = {
       command = "setlocal spell",
     },
   },
+  {
+    { "BufWritePre" },
+    {
+      group = "_remove_trailing_whitespace",
+      pattern = { "*" },
+      command = [[%s/\s\+$//e]],
+    },
+  },
   -- go to last loc when opening a buffer
   -- {
   --   "BufReadPost",

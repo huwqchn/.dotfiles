@@ -92,8 +92,8 @@
       :width "455px"
       :height "50px")
   :stacking "bg"
-  :reserve 
-    (struts 
+  :reserve
+    (struts
       :distance "70px" 
       :side "top")
   :windowtype "dock"
@@ -102,17 +102,17 @@
 
 ;; Central bar 
 (defwindow bar_center
-  :geometry 
-    (geometry 
+  :geometry
+    (geometry
       :anchor "top center"
       :x "0px"
       :y "20px"
       :width "930px"
       :height "50px")
   :stacking "bg"
-  :reserve 
-    (struts 
-      :distance "70px" 
+  :reserve
+    (struts
+      :distance "70px"
       :side "top")
   :windowtype "dock"
   :wm-ignore "false"
@@ -120,17 +120,17 @@
 
 ;; Right bar
 (defwindow bar_right
-  :geometry 
-    (geometry 
+  :geometry
+    (geometry
       :anchor "top right"
       :x "-20px"
       :y "20px"
       :width "455px"
       :height "50px")
   :stacking "bg"
-  :reserve 
-    (struts 
-      :distance "70px" 
+  :reserve
+    (struts
+      :distance "70px"
       :side "top")
   :windowtype "dock"
   :wm-ignore "false"
@@ -138,9 +138,9 @@
 
 ;; Calendar window
 (defwindow calendar
-  :geometry 
-    (geometry 
-      :x "1465px" 
+  :geometry
+    (geometry
+      :x "1465px"
       :y "65px"
       :width "415px"
       :height "100px")
@@ -248,7 +248,6 @@
                 :class "nextprev_popup"
                 :tooltip "Next"
                 ""))
-      
                 )))
       (eventbox
         :cursor "pointer"
@@ -359,13 +358,13 @@
               :text layout_button)))
       )))
 
-  (defwidget music []     
+  (defwidget music []
     (eventbox 
       :onhover "${eww} update music_reveal=true"
       :onhoverlost "${eww} update music_reveal=false"
       (box 
         :class "music_box"
-        :orientation "h" 
+        :orientation "h"
         :spacing 0
         :space-evenly "false"
         :halign "start"
@@ -425,21 +424,21 @@
                   :cursor "pointer"
                   (button 
                     :class "prev_button"
-                    :onclick "scripts/media_control --prev" 
+                    :onclick "scripts/media_control --prev"
                     :tooltip "Previous"
                     ""))
                 (eventbox 
                   :cursor "pointer"
                   (button 
                     :class "toggle_button"
-                    :onclick "scripts/media_control --toggle" 
+                    :onclick "scripts/media_control --toggle"
                     :tooltip "Play/Pause"
                     "${media_status}"))
                 (eventbox
                   :cursor "pointer"
                   (button 
                     :class "next_button"
-                    :onclick "scripts/media_control --next" 
+                    :onclick "scripts/media_control --next"
                     :tooltip "Next"
                     "")))))
           (box 
@@ -461,7 +460,7 @@
                 :tooltip "Seek"
                 :onchange "scripts/media_control --seek {} ${media_bar_is_active}"
                 )))))))
-        
+
 ;; Central widgets
 (defwidget widgets_center []
   (eventbox
@@ -479,7 +478,7 @@
         :space-evenly "true"
         :orientation "h"
         :valign "center"
-        :halign "fill" 
+        :halign "fill"
         (cpu_status)
         (ram_status)
         (temperature_status)
@@ -493,7 +492,7 @@
     :onhover "${eww} update cpu_reveal=\"true\""
     :onhoverlost "${eww} update cpu_reveal=\"false\""
     :tooltip "CPU usage"
-    (box 
+    (box
       :orientation "h"
       :space-evenly "false"
       :class "cpu_box"
@@ -551,7 +550,7 @@
     :onhover "${eww} update disk_reveal=\"true\""
     :onhoverlost "${eww} update disk_reveal=\"false\""
     :tooltip "Disk usage"
-    (box 
+    (box
       :orientation "h"
       :space-evenly "false"
       :class "disk_box"
@@ -662,7 +661,7 @@
     :onhover "${eww} update ram_reveal=\"true\""
     :onhoverlost "${eww} update ram_reveal=\"false\""
     :tooltip "RAM usage"
-    (box 
+    (box
       :orientation "h"
       :space-evenly "false"
       :class "ram_box"
@@ -673,7 +672,7 @@
           :path "images/ram.png"
           :image-width 30
           :image-height 30)
-        (box 
+        (box
           :orientation "v"
           :space-evenly "false"
           :vexpand "false"
@@ -720,7 +719,7 @@
     :onhover "${eww} update battery_reveal=\"true\""
     :onhoverlost "${eww} update battery_reveal=\"false\""
     :tooltip "Battery"
-    (box 
+    (box
       :orientation "h"
       :space-evenly "false"
       :class "battery_box"
@@ -731,7 +730,7 @@
           :path battery_image
           :image-width 30
           :image-height 30)
-        (box 
+        (box
           :orientation "v"
           :space-evenly "false"
           :vexpand "false"
@@ -776,7 +775,7 @@
   (eventbox
     :onhover "${eww} update right_class=\"win_hovered\""
     :onhoverlost "${eww} update right_class=\"win_normal\""
-    (box 
+    (box
       :spacing 0
       :space-evenly "false"
       :class right_class
@@ -792,7 +791,7 @@
   (eventbox
     :cursor "pointer"
     :tooltip "Logout options"
-    :width "20px" 
+    :width "20px"
     (button
       :valign "fill"
       :onclick "~/.bscripts/rofi.sh outopts&"
@@ -815,7 +814,7 @@
         :orientation "h"
         :valign "center"
         :halign "fill"
-        (label 
+        (label
           :valign "center"
           :class "time"
           :markup "<span font-weight=\"heavy\">${hour}</span><span font-weight=\"heavy\">:${minutes}</span><span font-size=\"xx-small\">${type}</span>" )
@@ -830,8 +829,8 @@
             :markup "<span font-size=\"xx-small\">${date}</span>"
             ))))))
 
-(defwidget keyboard [] 
-  (box 
+(defwidget keyboard []
+  (box
     :class "kb_box"
     :orientation "h"
     :valign "fill"
@@ -842,7 +841,7 @@
       :space-evenly "false"
       :valign "center"
       :halign "center"
-      (eventbox 
+      (eventbox
         :cursor "pointer"
         :tooltip "Change layout to US english"
         (button
