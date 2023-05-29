@@ -43,7 +43,7 @@ return {
         enabled = true,
       },
       codeium = {
-        enabled = true,
+        enabled = false,
       },
       copilot = {
         enabled = true,
