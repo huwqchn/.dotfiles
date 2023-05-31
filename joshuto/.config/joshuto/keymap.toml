@@ -125,7 +125,7 @@ keymap = [
 	{ keys = [ "m", "M" ],		command = "linemode sizemtime" },
 
   # bookmarks
-  { keys = [ "b", "m" ], command = "add_bookmark" },
+  { keys = [ "ctrl+b" ], command = "add_bookmark" },
   { keys = [ "B" ], command = "cd_bookmark" },
 
   # other applications
