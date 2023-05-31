@@ -13,7 +13,7 @@ if [[ $(uname) == 'Darwin' ]]; then
 	alias ep='export https_proxy=http://127.0.0.1:19180 && export http_proxy=http://127.0.0.1:19180'
   alias ed='/opt/homebrew/bin/emacs --daemon &'
 elif [[ $(uname) == 'Linux' ]]; then
-  alias lf="lfcd"
+  alias lf="echo -e 'lf is deprecated, please use joshuto instead\npress j to open joshuto'"
 alias pm="pulsemixer"
 	alias ep='export all_proxy=http://127.0.0.1:7890'
   alias ed='/usr/bin/emacs --daemon &'

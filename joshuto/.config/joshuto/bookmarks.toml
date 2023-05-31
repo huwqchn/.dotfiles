@@ -1,35 +1,39 @@
 [[bookmark]]
-key = "c"
-path = "~/.config"
-
-[[bookmark]]
-key = "r"
-path = "/"
-
-[[bookmark]]
-key = "v"
-path = "/home/johnson/.dotfiles/nvim/.config/nvim"
-
-[[bookmark]]
-key = "D"
-path = "~/Documents"
-
-[[bookmark]]
-key = "R"
-path = "~/Repos"
+key = "d"
+path = "~/Downloads"
 
 [[bookmark]]
 key = "j"
 path = "/home/johnson/.dotfiles/joshuto/.config/joshuto"
 
 [[bookmark]]
-key = "h"
-path = "~/"
+key = "r"
+path = "/"
+
+[[bookmark]]
+key = "c"
+path = "~/.config"
+
+[[bookmark]]
+key = "D"
+path = "~/Documents"
+
+[[bookmark]]
+key = "v"
+path = "/home/johnson/.dotfiles/nvim/.config/nvim"
+
+[[bookmark]]
+key = "R"
+path = "~/Repos"
 
 [[bookmark]]
 key = "e"
 path = "/etc"
 
 [[bookmark]]
-key = "d"
-path = "~/Downloads"
+key = "p"
+path = "/home/johnson/projects"
+
+[[bookmark]]
+key = "h"
+path = "~/"
