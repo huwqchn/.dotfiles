@@ -155,21 +155,10 @@ map("c", "<C-i>", 'pumvisible() ? "\\<C-p>" : "\\<C-k>"', { expr = true, noremap
 map("n", "<C-,>", "<C-i>")
 map("n", "<C-.>", "<C-o>")
 
--- kill a line
-map("i", "<C-k>", "<esc>ddi")
-
--- start / end of line
-map("i", "<C-,>", "<esc>I")
-map("i", "<C-.>", "<esc>A")
-
--- forword / backward word
-map("i", "<C-f>", "<esc>ea")
-map("i", "<C-b>", "<esc>bi")
-
 -- Windows managenment
 --Better window movement
 map("n", "<C-w>", "<C-w>w", { desc = "Switch window" })
-map("n", "<C-x>", "<C-w>x")
+-- map("n", "<C-x>", "<C-w>x")
 map("n", "<C-n>", "<C-w>h", { desc = "Go to left window" })
 map("n", "<C-e>", "<C-w>j", { desc = "Go to lower window" })
 map("n", "<C-i>", "<C-w>k", { desc = "Go to upper window" })
