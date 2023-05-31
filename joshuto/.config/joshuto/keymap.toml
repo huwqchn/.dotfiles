@@ -4,7 +4,7 @@ keymap = [
 	{ keys = [ "escape" ],		command = "escape" },
 	{ keys = [ "ctrl+t" ],		command = "new_tab" },
 	{ keys = [ "alt+t" ],		command = "new_tab --cursor" },
-	{ keys = [ "T" ],		command = "new_tab --current" },
+	{ keys = [ "t" ],		command = "new_tab --current" },
 	{ keys = [ "W" ],		command = "close_tab" },
 	{ keys = [ "ctrl+w" ],		command = "close_tab" },
 	{ keys = [ "q" ],		command = "close_tab" },
@@ -87,14 +87,14 @@ keymap = [
 	{ keys = [ "a" ],		command = "rename_append" },
 	{ keys = [ "A" ],		command = "rename_prepend" },
 
-	{ keys = [ "f", "t" ],		command = ":touch " },
+	{ keys = [ "T" ],		command = ":touch " },
 
 	{ keys = [ " " ],		command = "select --toggle=true" },
-	{ keys = [ "t" ],		command = "select --all=true --toggle=true" },
+	{ keys = [ "v" ],		command = "select --all=true --toggle=true" },
 	{ keys = [ "V" ],		command = "toggle_visual"},
 
 	{ keys = [ "w" ],		command = "show_tasks --exit-key=w" },
-	{ keys = [ "b", "b" ],		command = "bulk_rename" },
+	{ keys = [ "c", "b" ],		command = "bulk_rename" },
 	{ keys = [ "@" ],		command = "set_mode" },
 
 	{ keys = [ ":" ],		command = ":" },
@@ -108,7 +108,7 @@ keymap = [
 	{ keys = [ "|" ],		command = ":search_inc " },
 	{ keys = [ "\\" ],		command = ":search_glob " },
 	{ keys = [ "S" ],		command = "search_fzf" },
-	{ keys = [ "C" ],		command = "subdir_fzf" },
+	{ keys = [ "ctrl+f" ],		command = "subdir_fzf" },
 
 	{ keys = [ "=" ],		command = "search_next" },
 	{ keys = [ "-" ],		command = "search_prev" },
