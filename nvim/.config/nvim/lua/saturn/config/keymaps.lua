@@ -52,7 +52,10 @@ map({ "n", "x", "o" }, "K", "'nN'[v:searchforward]", { expr = true })
 map({ "n", "v" }, "<C-m>", "<C-e>")
 
 -- change word with <c-c>
-vim.keymap.set("n", "<C-c>", "<cmd>normal! ciw<cr>a")
+map("n", "<C-c>", "<cmd>normal! ciw<cr>a")
+
+-- emacs kill a line
+map("i", "<C-k>", "<cmd>normal! dd<cr>")
 
 -- search work under cursor
 map({ "n", "x" }, "gw", "*N", { desc = "Search word under cursor" })
