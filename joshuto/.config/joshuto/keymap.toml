@@ -128,9 +128,14 @@ keymap = [
   { keys = [ "b", "m" ], command = "add_bookmark" },
   { keys = [ "B" ], command = "cd_bookmark" },
 
+  # other applications
+  { keys = [ "ctrl+g" ], command = "shell lazygit"},
+
 	{ keys = [ "g", "r" ],		command = "cd /" },
 	{ keys = [ "g", "c" ],		command = "cd ~/.config" },
-	{ keys = [ "g", "d" ],		command = "cd ~/Downloads" },
+  { keys = [ "g", "d" ],    command = "cd ~/Documents" },
+	{ keys = [ "g", "D" ],		command = "cd ~/Downloads" },
+  { keys = [ "g", "." ],    command = "cd ~/.dotfiles"},
 	{ keys = [ "g", "e" ],		command = "cd /etc" },
 	{ keys = [ "g", "h" ],		command = "cd ~/" },
 	{ keys = [ "?" ],		command = "help" }
