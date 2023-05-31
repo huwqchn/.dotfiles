@@ -1,9 +1,31 @@
-bookmark = [
-	{ key = "r",	path = "/" },
-	{ key = "e",	path = "/etc" },
-	{ key = "h",	path = "~/" },
-  { key = "R",	path = "~/Repos" },
-  { key = "d",  path = "~/Downloads" },
-  { key = "D",  path = "~/Documents"},
-  { key = "c",  path = "~/.config"}
-]
+[[bookmark]]
+key = "R"
+path = "~/Repos"
+
+[[bookmark]]
+key = "h"
+path = "~/"
+
+[[bookmark]]
+key = "j"
+path = "/home/johnson/.dotfiles/joshuto/.config/joshuto"
+
+[[bookmark]]
+key = "d"
+path = "~/Downloads"
+
+[[bookmark]]
+key = "e"
+path = "/etc"
+
+[[bookmark]]
+key = "D"
+path = "~/Documents"
+
+[[bookmark]]
+key = "c"
+path = "~/.config"
+
+[[bookmark]]
+key = "r"
+path = "/"

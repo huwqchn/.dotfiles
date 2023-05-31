@@ -64,6 +64,9 @@ keymap = [
 	{ keys = [ "[" ],		command = "parent_cursor_move_up" },
 	{ keys = [ "]" ],		command = "parent_cursor_move_down" },
 
+	{ keys = [ "<" ],		command = "preview_cursor_move_up" },
+	{ keys = [ ">" ],		command = "preview_cursor_move_down" },
+
 	{ keys = [ "c", "d" ],		command = ":cd " },
 	{ keys = [ "d", "d" ],		command = "cut_files" },
 	{ keys = [ "y", "y" ],		command = "copy_files" },
@@ -120,6 +123,10 @@ keymap = [
 	{ keys = [ "m", "s" ],		command = "linemode size" },
 	{ keys = [ "m", "m" ],		command = "linemode mtime" },
 	{ keys = [ "m", "M" ],		command = "linemode sizemtime" },
+
+  # bookmarks
+  { keys = [ "b", "m" ], command = "add_bookmark" },
+  { keys = [ "B" ], command = "cd_bookmark" },
 
 	{ keys = [ "g", "r" ],		command = "cd /" },
 	{ keys = [ "g", "c" ],		command = "cd ~/.config" },
