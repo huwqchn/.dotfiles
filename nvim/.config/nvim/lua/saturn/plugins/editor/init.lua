@@ -683,7 +683,7 @@ return {
         map("n", "<leader>gb", function() gs.blame_line({ full = true }) end, "Blame Line")
         map("n", "<leader>gd", gs.diffthis, "Diff This")
         map("n", "<leader>gD", function() gs.diffthis("~") end, "Diff This ~")
-        map({ "o", "x" }, "kh", ":<C-U>Gitsigns select_hunk<CR>", "GitSigns Select Hunk")
+        map({ "o", "x" }, "hh", ":<C-U>Gitsigns select_hunk<CR>", "GitSigns Select Hunk")
       end,
     },
     event = { "BufReadPre", "BufNewFile" },
@@ -808,12 +808,12 @@ return {
         jump_close = { "o" }, -- jump to the diagnostic and close the list
         toggle_mode = "m", -- toggle between "workspace" and "document" diagnostics mode
         toggle_preview = "P", -- toggle auto_preview
-        hover = "H", -- opens a small popup with the full multiline message
+        hover = "h", -- opens a small popup with the full multiline message
         preview = "p", -- preview the diagnostic location
         close_folds = { "zM", "zm" }, -- close all folds
         open_folds = { "zR", "zr" }, -- open all folds
         toggle_fold = { "zA", "za" }, -- toggle fold of current file
-        previous = "u", -- previous item
+        previous = "i", -- previous item
         next = "e", -- next item
       },
       use_diagnostic_signs = true,
@@ -889,8 +889,8 @@ return {
         close = { "<Esc>", "q" },
         goto_location = "<Cr>",
         focus_location = "o",
-        hover_symbol = "<C-k>",
-        toggle_preview = "K",
+        hover_symbol = "<C-i>",
+        toggle_preview = "I",
         rename_symbol = "r",
         code_actions = "a",
       },
@@ -1063,7 +1063,7 @@ return {
                 expand = { "<CR>", "<2-LeftMouse>" },
                 open = "o",
                 remove = "d",
-                edit = "k",
+                edit = "h",
                 repl = "r",
                 toggle = "t",
               },

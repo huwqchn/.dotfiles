@@ -21,13 +21,13 @@ return {
     "ggandor/leap.nvim",
     keys = {
       {
-        "j",
+        "<leader>jj",
         "<cmd>lua require('leap').leap { target_windows = { vim.fn.win_getid() } }<cr>",
         desc = "jump",
         mode = { "n", "x" },
       },
       {
-        "gj",
+        "<leader>jw",
         "<cmd>lua require('leap').leap { target_windows = vim.tbl_filter(function (win) return vim.api.nvim_win_get_config(win).focusable end,vim.api.nvim_tabpage_list_wins(0))}<cr>",
         desc = "jump to any window",
         mode = { "n", "x" },
@@ -144,9 +144,9 @@ return {
   -- Join
   {
     "echasnovski/mini.splitjoin",
-    opts = { mappings = { toggle = "J" } },
+    opts = { mappings = { toggle = "E" } },
     keys = {
-      { "J", desc = "Split/Join" },
+      { "E", desc = "Split/Join" },
     },
   },
   -- structural replace
@@ -313,8 +313,8 @@ return {
         ["icons"] = { "ﱢ", "" },
         ["border"] = "rounded", -- none | single | double | rounded | solid | shadow
         ["keymap"] = { -- mapping example:
-          ["U"] = "<Plug>ColorPickerSlider5Decrease",
-          ["O"] = "<Plug>ColorPickerSlider5Increase",
+          ["E"] = "<Plug>ColorPickerSlider5Decrease",
+          ["I"] = "<Plug>ColorPickerSlider5Increase",
         },
         ["background_highlight_group"] = "Normal", -- default
         ["border_highlight_group"] = "FloatBorder", -- default

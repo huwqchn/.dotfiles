@@ -159,11 +159,12 @@ noremap <silent> gi gk
 noremap <silent> ge gj
 
 " U/E keys for 5 times u/e (faster navigation)
-noremap <silent> I 5k
-noremap <silent> E 5j
+" noremap <silent> I 5k
+" noremap <silent> E 5j
 
 " set h (same as n, cursor left) to 'end of word'
-noremap k e
+noremap j e
+noremap J E
 
 " Faster in-line navigation
 noremap W 5w
@@ -246,8 +247,8 @@ noremap tmo :+tabmove<CR>
 " ===
 " === Searching
 " ===
-noremap - N
-noremap = n
+noremap K N
+noremap k n
 
 " Open a new instance of st with the cwd
 nnoremap \t :tabe<CR>:-tabmove<CR>:term sh -c 'st'<CR><C-\><C-N>:q<CR>

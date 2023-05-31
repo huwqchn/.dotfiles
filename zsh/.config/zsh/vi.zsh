@@ -10,8 +10,8 @@ bindkey -M vicmd "O" vi-end-of-line
 bindkey -M vicmd "e" down-line-or-history
 bindkey -M vicmd "i" up-line-or-history
 bindkey -M vicmd "u" undo
-bindkey -M vicmd "=" vi-repeat-search
-bindkey -M vicmd "k" vi-forward-word-end
+bindkey -M vicmd "k" vi-repeat-search
+bindkey -M vicmd "j" vi-forward-word-end
 
 function zle-keymap-select {
 	if [[ ${KEYMAP} == vicmd ]] || [[ $1 = 'block' ]]; then

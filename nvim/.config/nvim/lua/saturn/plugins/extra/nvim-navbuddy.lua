@@ -14,7 +14,7 @@ return {
         ["u"] = actions.previous_sibling, -- up
 
         ["n"] = actions.parent, -- Move to left panel
-        ["i"] = actions.children, -- Move to right panel
+        ["o"] = actions.children, -- Move to right panel
 
         ["v"] = actions.visual_name, -- Visual selection of name
         ["V"] = actions.visual_scope, -- Visual selection of scope
@@ -22,8 +22,8 @@ return {
         ["y"] = actions.yank_name, -- Yank the name to system clipboard "+
         ["Y"] = actions.yank_scope, -- Yank the scope to system clipboard "+
 
-        ["k"] = actions.insert_name, -- Insert at start of name
-        ["K"] = actions.insert_scope, -- Insert at start of scope
+        ["h"] = actions.insert_name, -- Insert at start of name
+        ["H"] = actions.insert_scope, -- Insert at start of scope
 
         ["a"] = actions.append_name, -- Insert at end of name
         ["A"] = actions.append_scope, -- Insert at end of scope
@@ -38,7 +38,7 @@ return {
         ["c"] = actions.comment, -- Comment out current scope
 
         ["<enter>"] = actions.select, -- Goto selected symbol
-        ["o"] = actions.select,
+        ["s"] = actions.select,
       },
     }
   end,

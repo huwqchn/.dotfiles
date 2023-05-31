@@ -73,8 +73,8 @@ bind-key o open tagselection
 bind-key G end
 bind-key gg home
 
-bind-key ^e pagedown
-bind-key ^i pageup
+bind-key ^d pagedown
+bind-key ^u pageup
 
 
 # hide articles matching: ---------------------------------------------

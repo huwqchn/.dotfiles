@@ -52,8 +52,8 @@ map [normal] I navigate previous
 map [normal] b toggle_statusbar
 map [normal] <Tab> toggle_index
 map [normal] h focus_inputbar
-map [normal] - search forward
-map [normal] = search backward
+map [normal] k search forward
+map [normal] K search backward
 map [normal] <C--> zoom out
 map [normal] <C-=> zoom in
 map [normal] <C-p> toggle_presentation
@@ -76,8 +76,8 @@ map [fullscreen] I navigate previous
 map [fullscreen] b toggle_statusbar
 map [fullscreen] <Tab> toggle_index
 map [fullscreen] h focus_inputbar
-map [fullscreen] - search forward
-map [fullscreen] = search backward
+map [fullscreen] k search forward
+map [fullscreen] K search backward
 map [fullscreen] <C--> zoom out
 map [fullscreen] <C-=> zoom in
 map [fullscreen] <C-p> toggle_presentation

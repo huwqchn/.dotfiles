@@ -171,8 +171,8 @@ map zx extract
 map zi zip
 map zt tar
 
-map - search-prev
-map = search-next
+map K search-prev
+map k search-next
 
 map <c-e> down
 map <c-i> up
@@ -183,8 +183,8 @@ map i	up
 map	e down
 map n	updir
 map o open
-map E push 5e
-map I push 5i
+# map E push 5e
+# map I push 5i
 
 # git
 map gb :git_branch

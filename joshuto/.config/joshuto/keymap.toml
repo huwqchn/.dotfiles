@@ -51,8 +51,8 @@ keymap = [
 	{ keys = [ "i" ],		command = "cursor_move_up" },
 	{ keys = [ "n" ],		command = "cd .." },
 	{ keys = [ "o" ],		command = "open" },
-	{ keys = [ "E" ],		command = "cursor_move_down 5" },
-	{ keys = [ "I" ],		command = "cursor_move_up 5" },
+	# { keys = [ "E" ],		command = "cursor_move_down 5" },
+	# { keys = [ "I" ],		command = "cursor_move_up 5" },
 	{ keys = [ "g", "g" ],		command = "cursor_move_home" },
 	{ keys = [ "G" ],		command = "cursor_move_end" },
 	{ keys = [ "O" ],		command = "open_with" },
@@ -110,8 +110,8 @@ keymap = [
 	{ keys = [ "S" ],		command = "search_fzf" },
 	{ keys = [ "ctrl+f" ],		command = "subdir_fzf" },
 
-	{ keys = [ "=" ],		command = "search_next" },
-	{ keys = [ "-" ],		command = "search_prev" },
+	{ keys = [ "k" ],		command = "search_next" },
+	{ keys = [ "K" ],		command = "search_prev" },
 
 	{ keys = [ "s", "r" ],		command = "sort reverse" },
 	{ keys = [ "s", "l" ],		command = "sort lexical" },

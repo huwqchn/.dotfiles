@@ -183,10 +183,10 @@ def_key "{"
 def_key "}"
   scroll_down_artist
 #
-def_key "ctrl-i"
+def_key "ctrl-u"
   page_up
 #
-def_key "ctrl-e"
+def_key "ctrl-d"
   page_down
 #
 #def_key "home"
@@ -408,10 +408,10 @@ def_key "/"
 #def_key "?"
 #  find_item_backward
 #
-def_key "-"
+def_key "k"
   next_found_item
 #
-def_key "="
+def_key "K"
   previous_found_item
 #
 #def_key "w"

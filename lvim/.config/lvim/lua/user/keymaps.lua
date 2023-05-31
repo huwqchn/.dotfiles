@@ -10,25 +10,27 @@ vim.keymap.set("", "ge", "gj")
 vim.keymap.set("", "N", "^")
 vim.keymap.set("", "O", "$")
 -- colemak fast navigation
-vim.keymap.set("", "I", "<C-b>")
-vim.keymap.set("", "E", "<C-f>")
+vim.keymap.set("", "I", "K")
+vim.keymap.set("", "E", "J")
 
 -- colemak insert key
 vim.keymap.set("", "h", "i")
 vim.keymap.set("", "H", "I")
+vim.keymap.set("", "gh", "gi")
 
 -- colemake undo key
 -- vim.keymap.set("", "l", "u")
 -- vim.keymap.set("", "L", "U")
 
 -- colemak end of word
-vim.keymap.set("", "k", "e")
--- vim.keymap.set("", "H", "K")
+vim.keymap.set("", "j", "e")
+vim.keymap.set("", "J", "E")
+vim.keymap.set("", "gj", "ge")
 
 -- colemake searching key
 -- https://github.com/mhinz/vim-galore#saner-behavior-of-n-and-n
-vim.keymap.set("", "=", "'Nn'[v:searchforward]", { expr = true })
-vim.keymap.set("", "-", "'nN'[v:searchforward]", { expr = true })
+vim.keymap.set("", "k", "'Nn'[v:searchforward]", { expr = true })
+vim.keymap.set("", "K", "'nN'[v:searchforward]", { expr = true })
 
 -- clear search with <esc>
 vim.keymap.set({ "n", "i" }, "<esc>", "<cmd>noh<cr><esc>", { desc = "Escape and clear hlsearch" })

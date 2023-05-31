@@ -108,8 +108,8 @@ keybinding:
       - "3"
       - "4"
       - "5"
-    nextMatch: "="
-    prevMatch: "-"
+    nextMatch: "k"
+    prevMatch: "K"
     startSearch: /
     optionMenu: x
     optionMenu-alt1: "?"

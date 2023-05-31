@@ -34,7 +34,7 @@ return {
               -- the translation window. Either strings or function references are
               -- supported.
               ["e"] = "gj",
-              ["u"] = "gk",
+              ["i"] = "gk",
             },
             i = {
               -- Similar table but for insert mode. Using 'false' disables
@@ -47,7 +47,7 @@ return {
           select = {
             n = {
               ["e"] = "gj",
-              ["u"] = "gk",
+              ["i"] = "gk",
             },
           },
         },

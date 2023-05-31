@@ -153,6 +153,7 @@ return {
         "text",
         "lazy",
         "neo-tree",
+        "notify",
       },
       char = saturn.icons.ui.LineLeft,
       show_trailing_blankline_indent = false,

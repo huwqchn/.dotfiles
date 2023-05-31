@@ -26,8 +26,8 @@ map({ "n", "x", "o" }, "N", "^")
 map({ "n", "x", "o" }, "O", "$")
 
 -- colemak fast navigation
-map({ "n", "x", "o" }, "I", "5k")
-map({ "n", "x", "o" }, "E", "5j")
+map({ "n", "x", "o" }, "I", "K")
+map({ "n", "x", "o" }, "E", "J")
 
 -- colemak insert key
 map({ "n", "x", "o" }, "h", "i")
@@ -39,13 +39,17 @@ map({ "n", "x", "o" }, "l", "o")
 map({ "n", "x", "o" }, "L", "O")
 
 -- colemak end of word
-map({ "n", "x", "o" }, "k", "e")
--- map({ "n", "x", "o" }, "H", "K")
+map({ "n", "x", "o" }, "j", "e")
+map({ "n", "x", "o" }, "J", "E")
+map({ "n", "x", "o" }, "gj", "ge")
 
 -- colemake searching key
 -- https://github.com/mhinz/vim-galore#saner-behavior-of-n-and-n
-map({ "n", "x", "o" }, "=", "'Nn'[v:searchforward]", { expr = true })
-map({ "n", "x", "o" }, "-", "'nN'[v:searchforward]", { expr = true })
+map({ "n", "x", "o" }, "k", "'Nn'[v:searchforward]", { expr = true })
+map({ "n", "x", "o" }, "K", "'nN'[v:searchforward]", { expr = true })
+
+-- colemak scroll
+map({ "n", "v" }, "<C-m>", "<C-e>")
 
 -- change word with <c-c>
 vim.keymap.set("n", "<C-c>", "<cmd>normal! ciw<cr>a")
@@ -215,9 +219,6 @@ map("n", "<leader>wn", "<C-w>H", { desc = "move to the far left" })
 map("n", "<leader>we", "<C-w>J", { desc = "move to the far bottom" })
 map("n", "<leader>wo", "<C-w>L", { desc = "move to the far right" })
 map("n", "<leader>wi", "<C-w>K", { desc = "move to the far top" })
-
--- scroll
-map({ "n", "v" }, "<C-m>", "<C-e>")
 
 -- Tabs management
 map("n", "<leader><tab>a", "<cmd>tabfirst<CR>", { desc = "First" })

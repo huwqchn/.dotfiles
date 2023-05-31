@@ -18,6 +18,7 @@ return {
         "NvimTree",
         "Trouble",
         "text",
+        "notify",
       },
       char = saturn.icons.ui.LineLeft,
       show_trailing_blankline_indent = false,
