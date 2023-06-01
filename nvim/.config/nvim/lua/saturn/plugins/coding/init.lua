@@ -285,20 +285,12 @@ return {
         comment_line = "gcc",
         textobject = "gc",
       },
-      -- hooks = {
-      --   pre = function()
-      --     require("ts_context_commentstring.internal").update_commentstring({})
-      --   end,
-      -- },
+      options = {
+        custom_commentstring = function()
+          return require("ts_context_commentstring.internal").calculate_commentstring() or vim.bo.commentstring
+        end,
+      },
     },
-    config = function(_, opts)
-      local c = require("mini.comment")
-      c.setup(opts)
-      local H = require("saturn.utils.plugin").get_upvalue(c.setup, "H")
-      H.get_commentstring = function()
-        return require("ts_context_commentstring.internal").calculate_commentstring() or vim.bo.commentstring
-      end
-    end,
   },
 
   -- better text-objects
@@ -522,27 +514,6 @@ return {
     end,
   },
   { import = "saturn.plugins.extra.mini-bracketed" },
-  -- {
-  --   "dense-analysis/neural",
-  --   cmd = "NeuralCode",
-  --   dependencies = "MunifTanjim/nui.nvim",
-  --   config = function()
-  --     require("neural").setup({
-  --       mappings = {
-  --         swift = nil,
-  --         prompt = nil,
-  --       },
-  --       open_ai = {
-  --         api_key = vim.env.OPENAI_API_KEY, -- not committed, defined in config/private-settings.lua outside of repo
-  --         max_tokens = 1000,
-  --         temperature = 0.1,
-  --         presence_penalty = 0.5,
-  --         frequency_penalty = 0.5,
-  --       },
-  --       ui = { icon = saturn.icons.misc.Robot },
-  --     })
-  --   end,
-  -- },
   {
     "jackMort/ChatGPT.nvim",
     cond = saturn.plugins.ai.chatgpt.enabled,
@@ -680,31 +651,4 @@ return {
       { "gj", "<cmd>lua require('spider').motion('ge')<CR>", mode = { "n", "o", "x" }, desc = "Spider-ge" },
     },
   },
-  -- {
-  --   "MattesGroeger/vim-bookmarks",
-  --   config = true,
-  --   keys = {
-  --     { "<leader>ma", "<cmd>silent BookmarkAnnotate<cr>", desc = "Annotate" },
-  --     { "<leader>mc", "<cmd>silent BookmarkClear<cr>", desc = "Clear" },
-  --     { "<leader>mt", "<cmd>silent BookmarkToggle<cr>", desc = "Toggle" },
-  --     { "<leader>me", "<cmd>silent BookmarkNext<cr>", desc = "Next" },
-  --     { "<leader>mu", "<cmd>silent BookmarkPrev<cr>", desc = "Prev" },
-  --     { "<leader>ml", "<cmd>silent BookmarkShowAll<cr>", desc = "Show All" },
-  --     { "<leader>mx", "<cmd>BookmarkClearAll<cr>", desc = "Clear All" },
-  --   },
-  --   cmd = {
-  --     "BookmarkToggle",
-  --     "BookmarkAnnotate",
-  --     "BookmarkNext",
-  --     "BookmarkPrev",
-  --     "BookmarkShowAll",
-  --     "BookmarkClear",
-  --     "BookmarkClearAll",
-  --     "BookmarkMoveUp",
-  --     "BookmarkMoveDown",
-  --     "BookmarkMoveToLine",
-  --     "BookmarkSave",
-  --     "BookmarkLoad",
-  --   },
-  -- },
 }
