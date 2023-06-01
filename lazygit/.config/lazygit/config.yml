@@ -118,7 +118,7 @@ keybinding:
     confirm: <enter>
     confirm-alt1: "y"
     remove: d
-    new: "l"
+    new: "a"
     edit: h
     openFile: H
     scrollUpMain: <pgup>
@@ -170,8 +170,8 @@ keybinding:
     openMergeTool: M
     openStatusFilter: <c-b>
   branches:
-    createPullRequest: a
-    viewPullRequestOptions: A
+    createPullRequest: l
+    viewPullRequestOptions: L
     copyPullRequestURL: <c-y>
     checkoutBranchByName: c
     forceCheckoutBranch: F
