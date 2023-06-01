@@ -158,18 +158,18 @@ local definitions = {
       command = "setlocal spell",
     },
   },
-  {
-    { "BufWritePre" },
-    {
-      group = "_remove_trailing_whitespace",
-      pattern = { "*" },
-      callback = function()
-        local save_cursor = vim.fn.getpos(".")
-        vim.cmd([[%s/\s\+$//e]])
-        vim.fn.setpos(".", save_cursor)
-      end,
-    },
-  },
+  -- {
+  --   { "BufWritePre" },
+  --   {
+  --     group = "_remove_trailing_whitespace",
+  --     pattern = { "*" },
+  --     callback = function()
+  --       local save_cursor = vim.fn.getpos(".")
+  --       vim.cmd([[%s/\s\+$//e]])
+  --       vim.fn.setpos(".", save_cursor)
+  --     end,
+  --   },
+  -- },
   -- go to last loc when opening a buffer
   -- {
   --   "BufReadPost",
