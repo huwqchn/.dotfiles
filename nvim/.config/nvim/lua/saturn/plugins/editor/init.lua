@@ -151,6 +151,7 @@ return {
       { "<leader><cr>v", "<cmd>ToggleTerm size=80 direction=vertical<cr>", desc = "Vertical" },
       { "<leader><cr><tab>", "<cmd>ToggleTerm direction=tab<cr>", desc = "Tab" },
       { "<leader>gg", "<cmd>lua require 'saturn.plugins.editor.toggleterm'.lazygit_toggle()<cr>", desc = "LazyGit" },
+      { "<leader>xb", "<cmd>lua require 'saturn.plugins.editor.toggleterm'.btop_toggle()<cr>", desc = "btop" },
       { "<M-S-1>" },
       { "<M-S-2>" },
       { "<M-S-3>" },

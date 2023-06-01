@@ -69,6 +69,8 @@ local definitions = {
         "startuptime",
         "tspluayground",
         "PlenaryTestPopup",
+        "dap-float",
+        "httpResult",
       },
       callback = function()
         vim.keymap.set("n", "q", "<cmd>close<cr>", { buffer = true })
@@ -114,17 +116,6 @@ local definitions = {
             nnoremap <silent> <buffer> <esc> :qa<CR>
             set nobuflisted
           ]])
-      end,
-    },
-  },
-  {
-    "FileType",
-    {
-      group = "_filetype_settings",
-      pattern = "lir",
-      callback = function()
-        vim.opt_local.number = false
-        vim.opt_local.relativenumber = false
       end,
     },
   },

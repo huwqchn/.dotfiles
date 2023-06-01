@@ -109,4 +109,24 @@ M.lazygit_toggle = function()
   lazygit:toggle()
 end
 
+M.btop_toggle = function()
+  local Terminal = require("toggleterm.terminal").Terminal
+  local btop = Terminal:new({
+    cmd = "btop",
+    hidden = true,
+    direction = "float",
+    float_opts = {
+      border = "none",
+      width = 100000,
+      height = 100000,
+    },
+    on_open = function(_)
+      vim.cmd("startinsert!")
+    end,
+    on_close = function(_) end,
+    count = 98,
+  })
+  btop:toggle()
+end
+
 return M

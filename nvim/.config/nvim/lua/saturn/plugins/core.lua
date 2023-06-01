@@ -21,6 +21,8 @@ local function load(name)
   end
 end
 
+-- init saturn
+saturn = vim.deepcopy(require("saturn.config.settings"))
 -- load options here, before lazy init while sourcing plugin modules
 -- this is needed to make sure options will be correctly applied
 -- after installing missing plugins

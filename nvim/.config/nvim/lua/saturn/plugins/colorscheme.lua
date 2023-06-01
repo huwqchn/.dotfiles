@@ -1,3 +1,9 @@
+-- follow env theme
+local theme = os.getenv("THEME")
+if theme then
+  saturn.colorscheme = theme
+end
+
 local config = function(_, opts)
   local colorscheme = require(saturn.colorscheme)
   colorscheme.setup(opts)
