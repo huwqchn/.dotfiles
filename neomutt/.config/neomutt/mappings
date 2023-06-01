@@ -17,7 +17,7 @@ bind index dd delete-message
 bind index u undelete-message
 bind index l limit
 bind index h noop
-bind index i display-message
+bind index <enter> display-message
 bind index e next-entry
 bind index i previous-entry
 bind browser n goto-parent

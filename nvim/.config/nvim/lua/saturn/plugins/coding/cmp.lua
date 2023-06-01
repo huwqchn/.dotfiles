@@ -170,7 +170,7 @@ M.config = function()
       },
       duplicates_default = 0,
       format = function(entry, vim_item)
-        local max_width = saturn.plugins.cmp.formatting.max_width
+        local max_width = 0
         if max_width ~= 0 and #vim_item.abbr > max_width then
           vim_item.abbr = string.sub(vim_item.abbr, 1, max_width - 1) .. saturn.icons.ui.Ellipsis
         end
