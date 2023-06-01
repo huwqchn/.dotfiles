@@ -42,11 +42,11 @@ pcall(function()
       on_attach = function(client, bufnr)
         require("saturn.plugins.lsp.hooks").common_on_attach(client, bufnr)
         local rt = require("rust-tools")
-        vim.keymap.set("n", "H", rt.hover_actions.hover_actions, { buffer = bufnr })
+        vim.keymap.set("n", "I", rt.hover_actions.hover_actions, { buffer = bufnr })
         -- code actions
         vim.keymap.set("n", "<Leader>ca", rt.code_action_group.code_action_group, { buffer = bufnr })
         -- Join
-        vim.keymap.set("n", "J", rt.join_lines.join_lines, { buffer = bufnr })
+        vim.keymap.set("n", "E", rt.join_lines.join_lines, { buffer = bufnr })
         -- Leader key
         vim.keymap.set("n", "<leader>nr", "<cmd>RustRunnables<cr>", { desc = "Runnables" })
         vim.keymap.set("n", "<leader>nm", "<cmd>RustExpandMacro<cr>", { desc = "Expand Macro" })
