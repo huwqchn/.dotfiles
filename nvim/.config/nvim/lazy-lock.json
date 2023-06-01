@@ -25,7 +25,6 @@
   "diffview.nvim": { "branch": "main", "commit": "bff58a6ea3e081ca50049700f9848b2f84ea57be" },
   "dracula": { "branch": "main", "commit": "9128f2893767cf0fa5f57e6041770ee6cf1c4fdb" },
   "dressing.nvim": { "branch": "master", "commit": "f19cbd56f7f8cad212c58a7285d09c5d9c273896" },
-  "eyeliner.nvim": { "branch": "main", "commit": "fa3a0986cb072fe2ab29ef79e022514d2533f0db" },
   "firenvim": { "branch": "master", "commit": "e2d5a0f97d1f41e03c8d2a3c71ee60b1a4a6bb83" },
   "flatten.nvim": { "branch": "main", "commit": "d92c93959e9ac52a00002d6fd64c2d2ca5dd7192" },
   "flit.nvim": { "branch": "main", "commit": "f60e4b3d49bb5a5e97cfffe66f2e671eb422078e" },

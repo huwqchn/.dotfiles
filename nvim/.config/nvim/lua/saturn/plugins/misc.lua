@@ -38,7 +38,7 @@ return {
       { "X", "<Plug>(leap-backward-till)", desc = "leap backward till", mode = { "x", "o" } },
       { "gs", "<Plug>(leap-cross-window)", desc = "leap cross window", mode = { "n", "x", "o" } },
     },
-    dependencies = { { "ggandor/flit.nvim", opts = { labeled_modes = "o" } } },
+    dependencies = { { "ggandor/flit.nvim" } },
     config = function(_, opts)
       local leap = require("leap")
       for k, v in pairs(opts) do
@@ -46,6 +46,20 @@ return {
       end
       -- leap.add_default_mappings(true)
     end,
+  },
+
+  -- easily jump to any location and enhanced f/t motions for Leap
+  {
+    "ggandor/flit.nvim",
+    keys = function()
+      ---@type LazyKeys[]
+      local ret = {}
+      for _, key in ipairs({ "f", "F", "t", "T" }) do
+        ret[#ret + 1] = { key, mode = { "n", "x", "o" }, desc = key }
+      end
+      return ret
+    end,
+    opts = { labeled_modes = "nxo" },
   },
   -- scopes
   {
