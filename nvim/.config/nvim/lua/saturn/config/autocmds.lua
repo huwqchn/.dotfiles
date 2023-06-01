@@ -149,6 +149,15 @@ local definitions = {
       command = "setlocal spell",
     },
   },
+  {
+    { "BufEnter", "FileType" },
+    {
+      desc = "don't auto comment new line",
+      pattern = "*",
+      group = "_comment",
+      command = "setlocal formatoptions-=c formatoptions-=r formatoptions-=o",
+    },
+  },
   -- {
   --   { "BufWritePre" },
   --   {

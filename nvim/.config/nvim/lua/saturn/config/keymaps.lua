@@ -51,8 +51,13 @@ map({ "n", "x", "o" }, "K", "'nN'[v:searchforward]", { expr = true })
 -- colemak scroll
 map({ "n", "v" }, "<C-m>", "<C-e>")
 
+-- scroll window horizontally (scroll-horizontal)
+-- < reference: https://unix.stackexchange.com/questions/110251/how-to-put-current-line-at-top-center-bottom-of-screen-in-vim
+map("n", "[z", "zh", { desc = "scroll left", silent = true }) -- left
+map("n", "]z", "zl", { desc = "scroll right", silent = true }) -- right
+
 -- change word with <c-c>
-map("n", "<C-c>", "<cmd>normal! ciw<cr>a")
+-- map("n", "<C-c>", "<cmd>normal! ciw<cr>a")
 
 -- emacs kill a line
 map("i", "<C-k>", "<cmd>normal! dd<cr>")
@@ -66,6 +71,19 @@ map({ "n", "i" }, "<esc>", "<cmd>noh<cr><esc>", { desc = "Escape and clear hlsea
 -- better cmd mode
 map({ "n", "x", "o" }, ":", ",")
 map({ "n", "x", "o" }, "<cr>", ":")
+
+-- smart deletion, dd
+-- It solves the issue, where you want to delete empty line, but dd will override you last yank.
+-- Code above will check if u are deleting empty line, if so - use black hole register.
+-- [src: https://www.reddit.com/r/neovim/comments/w0jzzv/comment/igfjx5y/?utm_source=share&utm_medium=web2x&context=3]
+local function smart_dd()
+  if vim.api.nvim_get_current_line():match("^%s*$") then
+    return '"_dd'
+  else
+    return "dd"
+  end
+end
+vim.keymap.set("n", "dd", smart_dd, { noremap = true, expr = true })
 
 -- backup cmd mode, some plugins will override <cr>
 map({ "n", "x", "o" }, "\\", ":")
