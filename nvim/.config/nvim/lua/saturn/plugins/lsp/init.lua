@@ -155,5 +155,6 @@ return {
   },
   {
     "b0o/SchemaStore.nvim",
+    enabled = false,
   },
 }

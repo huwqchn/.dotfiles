@@ -62,86 +62,6 @@ return {
       filetype_exclude = { "markdown", "diff" },
     },
   },
-  -- -- enhance tTfF
-  -- {
-  --   "jinh0/eyeliner.nvim",
-  --   cmd = {
-  --     "EyelinerEnable",
-  --     "EyelinerDisable",
-  --     "EyelinerToggle",
-  --   },
-  --   keys = {
-  --     { "f", mode = { "x", "o", "v", "n" } },
-  --     { "F", mode = { "x", "o", "v", "n" } },
-  --     { "t", mode = { "x", "o", "v", "n" } },
-  --     { "T", mode = { "x", "o", "v", "n" } },
-  --   },
-  --   config = function()
-  --     require("eyeliner").setup({
-  --       highlight_on_key = true,
-  --       -- dim = true,
-  --     })
-
-  --     vim.api.nvim_create_autocmd("ColorScheme", {
-  --       pattern = "*",
-  --       callback = function()
-  --         vim.api.nvim_set_hl(0, "EyelinerPrimary", { bold = true, underline = true })
-  --       end,
-  --     })
-  --   end,
-  -- },
-  -- {
-  --   "phaazon/hop.nvim",
-  --   event = "VeryLazy",
-  --   config = function()
-  --     local hop = require("hop")
-  --     hop.setup({ keys = "eariosthdfuwyqzxcvbkmj" })
-  --     local directions = require("hop.hint").HintDirection
-  --     -- vim.keymap.set("", "j", ":HopChar1<cr>", { silent = true })
-  --     -- vim.keymap.set("", "<C-j>", ":HopChar2<cr>", { silent = true, desc = "Jump" })
-  --     -- vim.keymap.set("", "<leader>jj", ":HopPattern<cr>", { silent = true, desc = "Jump" })
-  --     vim.keymap.set("", "f", function()
-  --       hop.hint_char1({ direction = directions.AFTER_CURSOR, current_line_only = true })
-  --     end, { remap = true })
-  --     vim.keymap.set("", "F", function()
-  --       hop.hint_char1({ direction = directions.BEFORE_CURSOR, current_line_only = true })
-  --     end, { remap = true })
-  --     vim.keymap.set("", "t", function()
-  --       hop.hint_char1({ direction = directions.AFTER_CURSOR, current_line_only = true, hint_offset = -1 })
-  --     end, { remap = true })
-  --     vim.keymap.set("", "T", function()
-  --       hop.hint_char1({ direction = directions.BEFORE_CURSOR, current_line_only = true, hint_offset = 1 })
-  --     end, { remap = true })
-  --   end,
-  -- },
-  -- {
-  --   "abecodes/tabout.nvim",
-  --   event = "InsertEnter",
-  --   dependencies = {
-  --     "nvim-treesitter",
-  --   },
-  --   opts = {
-  --     tabkey = "<tab>", -- key to trigger tabout, set to an empty string to disable
-  --     backwards_tabkey = "<s-tab>", -- key to trigger backwards tabout, set to an empty string to disable
-  --     act_as_tab = true, -- shift content if tab out is not possible
-  --     act_as_shift_tab = false, -- reverse shift content if tab out is not possible (if your keyboard/terminal supports <S-Tab>)
-  --     default_tab = "<C-t>", -- shift default action (only at the beginning of a line, otherwise <TAB> is used)
-  --     default_shift_tab = "<C-d>", -- reverse shift default action,
-  --     enable_backwards = false, -- well ...
-  --     completion = true, -- if the tabkey is used in a completion pum
-  --     tabouts = {
-  --       { open = "'", close = "'" },
-  --       { open = '"', close = '"' },
-  --       { open = "`", close = "`" },
-  --       { open = "(", close = ")" },
-  --       { open = "[", close = "]" },
-  --       { open = "{", close = "}" },
-  --       { open = "<", close = ">" },
-  --     },
-  --     ignore_beginning = false, --[[ if the cursor is at the beginning of a filled element it will rather tab out than shift the content ]]
-  --     exclude = { "markdown" }, -- tabout will ignore these filetypes
-  --   },
-  -- },
   -- Preview number Jump
   {
     "nacro90/numb.nvim",
@@ -363,19 +283,6 @@ return {
       },
     },
   },
-  -- {
-  --   "phaazon/mind.nvim",
-  --   cmd = {
-  --     "MindOpenMain",
-  --     "MindOpenProject",
-  --     "MindOpenSmartProject",
-  --     "MindReloadState",
-  --     "MindClose",
-  --   },
-  --   version = "v2.2",
-  --   dependencies = { "nvim-lua/plenary.nvim" },
-  --   config = true,
-  -- },
   {
     "ecthelionvi/NeoComposer.nvim",
     dependencies = { "kkharji/sqlite.lua" },
