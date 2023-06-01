@@ -8,7 +8,15 @@ vim.g.maplocalleader = saturn.localleaderkey
 -- vim.opt.cmdheight = 1 -- move space in the neovim command line for displaying messages
 vim.opt.colorcolumn = "81"
 vim.opt.whichwrap:append("<,>,[,],h,l")
-vim.opt.listchars = { tab = "| ", trail = "▫" } -- replace special symbols
+-- vim.opt.listchars = { tab = "| ", trail = "▫" } -- replace special symbols
+vim.opt.listchars = {
+  nbsp = "⦸", -- CIRCLED REVERSE SOLIDUS (U+29B8, UTF-8: E2 A6 B8)
+  extends = "»", -- RIGHT-POINTING DOUBLE ANGLE QUOTATION MARK (U+00BB, UTF-8: C2 BB)
+  precedes = "«", -- LEFT-POINTING DOUBLE ANGLE QUOTATION MARK (U+00AB, UTF-8: C2 AB)
+  tab = "  ", -- '▷─' WHITE RIGHT-POINTING TRIANGLE (U+25B7, UTF-8: E2 96 B7) + BOX DRAWINGS HEAVY TRIPLE DASH HORIZONTAL (U+2505, UTF-8: E2 94 85)
+  trail = "•", -- BULLET (U+2022, UTF-8: E2 80 A2)
+  space = " ",
+}
 vim.opt.autowrite = true -- enable auto write
 vim.opt.clipboard = "unnamedplus" -- sync with system clipboard
 vim.opt.completeopt = "menu,menuone,noselect"
@@ -71,10 +79,14 @@ vim.opt.mousemoveevent = true
 vim.opt.fillchars = {
   foldopen = "",
   foldclose = "",
-  fold = " ",
+  -- fold = " ",
   foldsep = " ",
-  diff = "╱",
-  eob = " ",
+  -- diff = "╱",
+  -- eob = " ",
+  diff = "∙", -- BULLET OPERATOR (U+2219, UTF-8: E2 88 99)
+  eob = " ", -- NO-BREAK SPACE (U+00A0, UTF-8: C2 A0) to suppress ~ at EndOfBuffer
+  fold = "·", -- MIDDLE DOT (U+00B7, UTF-8: C2 B7)
+  vert = "│", -- window border when window splits vertically ─ ┴ ┬ ┤ ├ ┼
 }
 vim.o.foldlevel = 99 -- Using ufo provider need a large value, feel free to decrease the value
 vim.o.foldlevelstart = 99
