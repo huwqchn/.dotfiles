@@ -29,6 +29,7 @@ alias pm="pulsemixer"
 fi
 # alias doom='~/.emacs.d/bin/doom'
 alias v='nvim'
+alias vi='NVIM_APPNAME=lazyvim nvim'
 alias ls="exa -aG --color=always --icons --group-directories-first"
 alias la="exa -a --color=always --icons --group-directories-first"
 alias tree="lsd --tree"
