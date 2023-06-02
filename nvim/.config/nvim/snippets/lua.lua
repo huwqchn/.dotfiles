@@ -40,7 +40,7 @@ local snippets = {
 
 local autosnippets = {
   s(
-    "keymap",
+    "vks",
     fmt("vim.keymap.set({})", {
       i(1, ""),
     })

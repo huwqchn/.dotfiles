@@ -3,29 +3,11 @@ local autocmd = require("saturn.utils.autocmd")
 --- Load the default set of autogroups and autocommands.
 local definitions = {
   {
-    "TextYankPost",
-    {
-      group = "_general_settings",
-      pattern = "*",
-      desc = "Highlight text on yank",
-      callback = function()
-        vim.highlight.on_yank({ higroup = "Search", timeout = 100 })
-      end,
-    },
-  },
-  {
     "FileType",
     {
       group = "_hide_dap_repl",
       pattern = "dap-repl",
       command = "set nobuflisted",
-    },
-  },
-  {
-    { "FocusGained", "TermClose", "TermLeave" },
-    {
-      group = "checktime",
-      command = "checktime",
     },
   },
   {
@@ -51,24 +33,14 @@ local definitions = {
   {
     "FileType",
     {
-      group = "_buffer_mappings",
+      group = "close_with_q",
       pattern = {
-        "qf",
-        "help",
-        "man",
-        "notify",
         "floaterm",
-        "lspinfo",
         "lir",
         "lsp-installer",
         "null-ls-info",
-        "tsplayground",
         "DressingSelect",
         "Jaq",
-        "spectre_pannel",
-        "startuptime",
-        "tspluayground",
-        "PlenaryTestPopup",
         "dap-float",
         "httpResult",
       },
@@ -81,28 +53,9 @@ local definitions = {
   {
     "FileType",
     {
-      group = "wrap_spell",
-      pattern = { "gitcommit", "markdown" },
-      callback = function()
-        vim.opt_local.wrap = true
-        vim.opt_local.spell = true
-      end,
-    },
-  },
-  {
-    "FileType",
-    {
       group = "_filetype_settings",
       pattern = "qf",
       command = "set nobuflisted",
-    },
-  },
-  {
-    "VimResized",
-    {
-      group = "_auto_resize",
-      pattern = "*",
-      command = "tabdo wincmd =",
     },
   },
   {
@@ -144,7 +97,7 @@ local definitions = {
   {
     { "BufRead", "BufNewFile" },
     {
-      group = "_spell_check",
+      group = "wrap_spell",
       pattern = { "*.txt", "*.md", "*.tex" },
       command = "setlocal spell",
     },
@@ -167,20 +120,6 @@ local definitions = {
   --       local save_cursor = vim.fn.getpos(".")
   --       vim.cmd([[%s/\s\+$//e]])
   --       vim.fn.setpos(".", save_cursor)
-  --     end,
-  --   },
-  -- },
-  -- go to last loc when opening a buffer
-  -- {
-  --   "BufReadPost",
-  --   {
-  --     group = "last_loc",
-  --     callback = function()
-  --       local mark = vim.api.nvim_buf_get_mark(0, '"')
-  --       local lcount = vim.api.nvim_buf_line_count(0)
-  --       if mark[1] > 0 and mark[1] <= lcount then
-  --         pcall(vim.api.nvim_win_set_cursor, 0, mark)
-  --       end
   --     end,
   --   },
   -- },
@@ -207,3 +146,4 @@ local definitions = {
 }
 
 autocmd.create_autocmds(definitions)
+autocmd.clear_augroup("last_loc")

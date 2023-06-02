@@ -11,7 +11,8 @@
 -- o[nore]map     |  -   |  -  |  -  |  -  |  -  | yes |  -   |  -   |
 -- t[nore]map     |  -   |  -  |  -  |  -  |  -  |  -  | yes  |  -   |
 -- l[nore]map     |  -   | yes | yes |  -  |  -  |  -  |  -   | yes  |
-local map = vim.keymap.set
+local Util = require("util")
+local map = Util.lazy_keymap
 
 -- colemak movement
 map({ "n", "x", "o" }, "e", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
