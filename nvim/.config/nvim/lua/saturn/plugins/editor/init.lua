@@ -7,7 +7,7 @@ return {
     cmd = "Neotree",
     keys = {
       {
-        "<leader>eE",
+        "<leader>E",
         function()
           require("neo-tree.command").execute({
             toggle = true,
@@ -18,77 +18,11 @@ return {
         desc = "Filesystem Left(root dir)",
       },
       {
-        "<leader>ee",
+        "<leader>e",
         function()
           require("neo-tree.command").execute({ toggle = true, position = "left", dir = vim.loop.cwd() })
         end,
         desc = "Filesystem Left(cwd)",
-      },
-      {
-        "<leader>eF",
-        function()
-          require("neo-tree.command").execute({
-            toggle = true,
-            position = "float",
-            dir = require("saturn.utils.plugin").get_root(),
-          })
-        end,
-        desc = "Filesystem Float(root dir)",
-      },
-      {
-        "<leader>ef",
-        function()
-          require("neo-tree.command").execute({ toggle = true, position = "float", dir = vim.loop.cwd() })
-        end,
-        desc = "Filesystem Float(cwd)",
-      },
-      {
-        "<leader>eB",
-        function()
-          require("neo-tree.command").execute({
-            toggle = true,
-            position = "left",
-            dir = vim.loop.cwd(),
-            source = "buffers",
-          })
-        end,
-        desc = "Buffers Left(cwd)",
-      },
-      {
-        "<leader>eb",
-        function()
-          require("neo-tree.command").execute({
-            toggle = true,
-            position = "left",
-            dir = require("saturn.utils.plugin").get_root(),
-            source = "buffers",
-          })
-        end,
-        desc = "Buffers Left(cwd)",
-      },
-      {
-        "<leader>eG",
-        function()
-          require("neo-tree.command").execute({
-            toggle = true,
-            position = "left",
-            dir = vim.loop.cwd(),
-            source = "git_status",
-          })
-        end,
-        desc = "Git Status Left(cwd)",
-      },
-      {
-        "<leader>eg",
-        function()
-          require("neo-tree.command").execute({
-            toggle = true,
-            position = "left",
-            dir = require("saturn.utils.plugin").get_root(),
-            source = "git_status",
-          })
-        end,
-        desc = "Git Status Left(cwd)",
       },
     },
     deactivate = function()
@@ -586,7 +520,7 @@ return {
           ["<leader>b"] = { name = "+buffer" },
           ["<leader>c"] = { name = "+code" },
           ["<leader>d"] = { name = "+debug" },
-          ["<leader>e"] = { name = "+explorer" },
+          -- ["<leader>e"] = { name = "+explorer" },
           ["<leader>f"] = { name = "+file" },
           ["<leader>g"] = { name = "+git" },
           ["<leader>j"] = { name = "+jump" },
@@ -884,7 +818,7 @@ return {
   },
   {
     "simrat39/symbols-outline.nvim",
-    keys = { { "<leader>eo", "<cmd>SymbolsOutline<cr>", desc = "Symbols Outline" } },
+    keys = { { "<leader>cs", "<cmd>SymbolsOutline<cr>", desc = "Symbols Outline" } },
     opts = {
       keymaps = { -- These keymaps can be a string or a table for multiple keys
         close = { "<Esc>", "q" },
