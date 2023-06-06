@@ -61,12 +61,6 @@ return {
     end,
     opts = { labeled_modes = "nxo" },
   },
-  -- scopes
-  {
-    "tiagovla/scope.nvim",
-    event = "VeryLazy",
-    config = true,
-  },
 
   -- tidy
   {

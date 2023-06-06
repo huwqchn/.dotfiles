@@ -58,4 +58,46 @@ return {
 			use_background = true, -- can be light/dark/auto. When auto, background will be set to vim.o.background
 		},
 	},
+	{
+		"nvim-lualine/lualine.nvim",
+		opts = function(_, opts)
+			local colors = require("tokyonight.colors").setup()
+			opts.colors = {
+				grey = colors.bg_highlight,
+				dark_grey = colors.fg_dark,
+				black = colors.black,
+				red = colors.red1,
+				pink = colors.red,
+				yellow = colors.yellow,
+				blue = colors.blue,
+				green = colors.green,
+				sky = colors.blue1,
+				cyan = colors.cyan,
+				voilet = colors.magenta,
+				purple = colors.purple,
+				teal = colors.teal,
+				white = colors.fg,
+			}
+		end,
+	},
+	{
+		"petertriho/nvim-scrollbar",
+		optional = true,
+		opts = function()
+			local colors = require("tokyonight.colors").setup()
+			return {
+				handle = {
+					color = colors.bg_highlight,
+				},
+				marks = {
+					Search = { color = colors.orange },
+					Error = { color = colors.error },
+					Warn = { color = colors.warning },
+					Info = { color = colors.info },
+					Hint = { color = colors.hint },
+					Misc = { color = colors.purple },
+				},
+			}
+		end,
+	},
 }

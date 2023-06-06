@@ -27,7 +27,7 @@ vim.opt.guicursor = {
 vim.opt.hidden = true -- Enable modified buffers in background
 vim.opt.inccommand = "split" -- preview incremental substitute
 vim.opt.joinspaces = false -- No double spaces with join after a dot
--- vim.opt.pumblend = 0 -- Popup blend #### this will rendered pum icon incorrectly on kitty
+vim.opt.pumblend = 0
 vim.opt.spelllang:append("cjk")
 vim.opt.timeoutlen = 0
 vim.opt.mousemoveevent = true
@@ -55,4 +55,13 @@ if vim.fn.has("nvim-0.8") == 1 then
 	vim.opt.cmdheight = 0
 	vim.opt.backupdir = vim.fn.stdpath("state") .. "/backup"
 end
--- require("saturn.utils.status")
+-- require("utils.status")
+
+-- make all keymaps silent by default
+local keymap_set = vim.keymap.set
+---@diagnostic disable-next-line: duplicate-set-field
+vim.keymap.set = function(mode, lhs, rhs, opts)
+	opts = opts or {}
+	opts.silent = opts.silent ~= false
+	return keymap_set(mode, lhs, rhs, opts)
+end

@@ -23,6 +23,7 @@ require("lazy").setup({
 		-- lazyvim test core extension modules
 		{ import = "lazyvim.plugins.extras.test.core" },
 		{ import = "lazyvim.plugins.extras.util.mini-hipatterns" },
+		{ import = "lazyvim.plugins.extras.ui.mini-animate" },
 		-- { import = "lazyvim.plugins.extras.vscode" },
 		{ import = "plugins" },
 	},

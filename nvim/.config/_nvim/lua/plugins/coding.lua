@@ -8,7 +8,7 @@ return {
 	{ import = "plugins.extras.coding.motion.nvim-spider" },
 	{ import = "plugins.extras.coding.move.mini-move" },
 	{ import = "plugins.extras.coding.jump.leap" },
-	{ import = "plugins.extras.coding.jump.numb" },
+	-- { import = "plugins.extras.coding.jump.numb" },
 	{ import = "plugins.extras.coding.join.treesj" },
 	{ import = "plugins.extras.coding.incdes.dial" },
 	{ import = "plugins.extras.coding.symbols.symbols-outline" },

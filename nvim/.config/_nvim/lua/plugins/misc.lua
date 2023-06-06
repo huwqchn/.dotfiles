@@ -102,7 +102,7 @@ return {
 		opts = {
 			-- notify = true,
 			-- delay_timer = "150",
-			-- status_bg = saturn.colors.black,
+			-- status_bg = colors.black,
 			-- preview_fg = "#ff9e64",
 			keymaps = {
 				play_macro = "Q",
