@@ -56,12 +56,3 @@ if vim.fn.has("nvim-0.8") == 1 then
 	vim.opt.backupdir = vim.fn.stdpath("state") .. "/backup"
 end
 -- require("utils.status")
-
--- make all keymaps silent by default
-local keymap_set = vim.keymap.set
----@diagnostic disable-next-line: duplicate-set-field
-vim.keymap.set = function(mode, lhs, rhs, opts)
-	opts = opts or {}
-	opts.silent = opts.silent ~= false
-	return keymap_set(mode, lhs, rhs, opts)
-end

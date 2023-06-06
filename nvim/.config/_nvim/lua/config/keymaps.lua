@@ -11,13 +11,15 @@
 -- o[nore]map     |  -   |  -  |  -  |  -  |  -  | yes |  -   |  -   |
 -- t[nore]map     |  -   |  -  |  -  |  -  |  -  |  -  | yes  |  -   |
 -- l[nore]map     |  -   | yes | yes |  -  |  -  |  -  |  -   | yes  |
-local map = require("util").lazy_keymap
+local map = vim.keymap.set
 local unmap = vim.keymap.del
 local Util = require("lazyvim.util")
 unmap("n", "<C-h>")
 unmap("n", "<C-j>")
 unmap("n", "<C-k>")
 unmap("n", "<C-l>")
+-- local map = vim.keymap.set
+-- local Util = require("lazyvim.util")
 -- colemak-dh movement
 map({ "n", "x", "o" }, "e", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 map({ "n", "x", "o" }, "i", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
@@ -67,10 +69,10 @@ map("n", "<C-c>", "<cmd>normal! ciw<cr>a")
 map("i", "<C-k>", "<cmd>normal! dd<cr>")
 
 -- better cmd mode
-map({ "n", "x", "o" }, ":", ",")
-map({ "n", "x", "o" }, "<cr>", ":")
+map("n", ":", ",")
+map("n", "<cr>", ":")
 -- backup cmd mode, some plugins will override <cr>
-map({ "n", "x", "o" }, "\\", ":")
+map("n", "\\", ":")
 
 -- save
 -- map("n", "S", "<cmd>w<cr>", { desc = "Save file" })
@@ -256,6 +258,6 @@ vim.keymap.set("n", "dd", smart_dd, { noremap = true, expr = true })
 if vim.fn.executable("btop") == 1 and not Util.has("toggleterm.nvim") then
 	-- btop
 	map("n", "<leader>xb", function()
-		require("lazyvim.util").float_term({ "btop" })
+		Util.float_term({ "btop" })
 	end, { desc = "btop" })
 end
