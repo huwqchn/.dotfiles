@@ -123,6 +123,7 @@ map("t", "<C-n>", "<C-\\><C-N><C-w>h", { desc = "move to left" })
 map("t", "<C-e>", "<C-\\><C-N><C-w>j", { desc = "move to down" })
 map("t", "<C-i>", "<C-\\><C-N><C-w>k", { desc = "move to up" })
 map("t", "<C-o>", "<C-\\><C-N><C-w>l", { desc = "move to right" })
+map("t", "<C-q>", "<cmd>close<cr>", { desc = "Hide Terminal" })
 
 -- map tab to tab, because distinguish between <C-i>
 map("t", "<Tab>", "<Tab>")

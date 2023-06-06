@@ -1,3 +1,2 @@
--- init saturn
-saturn = vim.deepcopy(require("saturn.config.settings"))
-require("saturn.config.lazy")
+-- bootstrap lazy.nvim, LazyVim and your plugins
+require("config.lazy")
