@@ -3,7 +3,7 @@ return {
     "cshuaimin/ssr.nvim",
     keys = {
       {
-        "<leader>sR",
+        "<leader>R",
         function()
           require("ssr").open()
         end,

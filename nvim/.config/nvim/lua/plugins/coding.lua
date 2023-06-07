@@ -14,7 +14,7 @@ return {
   { import = "plugins.extras.coding.symbols.symbols-outline" },
   { import = "plugins.extras.coding.rename.inc-rename" },
   { import = "plugins.extras.coding.refactor.refactoring" },
-  { import = "plugins.extras.coding.yank.yanky" },
+  -- { import = "plugins.extras.coding.yank.yanky" },
   { import = "plugins.extras.coding.treesitter" },
   { import = "plugins.extras.coding.complete.cmp" },
   { import = "plugins.extras.coding.complete.supertab" },
