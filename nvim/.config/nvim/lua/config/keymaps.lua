@@ -62,9 +62,6 @@ map({ "n", "x", "o" }, "gK", "gN", { desc = "Search backwards and select" })
 -- colemak scroll
 map({ "n", "v" }, "<C-m>", "<C-e>")
 
--- change word with <c-c>
-map("n", "<C-c>", "<cmd>normal! ciw<cr>a")
-
 -- emacs kill a line
 map("i", "<C-k>", "<cmd>normal! dd<cr>")
 

@@ -2,6 +2,15 @@ return {
 	{
 		"petertriho/nvim-scrollbar",
 		event = "CursorMoved",
+		keys = {
+			{
+				"<leader>ub",
+				function()
+					require("scrollbar.utils").toggle()
+				end,
+				desc = "toggle scrollbar",
+			},
+		},
 		config = function(_, opts)
 			require("scrollbar").setup(opts)
 			pcall(function()

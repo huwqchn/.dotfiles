@@ -19,4 +19,5 @@ return {
 	{ import = "plugins.extras.coding.complete.cmp" },
 	{ import = "plugins.extras.coding.complete.supertab" },
 	{ import = "plugins.extras.coding.complete.luasnip" },
+	{ import = "plugins.extras.coding.complete.cmdline" },
 }

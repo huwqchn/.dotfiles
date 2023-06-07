@@ -6,6 +6,7 @@ return {
 			{ "hrsh7th/cmp-emoji" },
 			{ "hrsh7th/cmp-nvim-lua" },
 			{ "dmitmel/cmp-cmdline-history" },
+			{ "hrsh7th/cmp-nvim-lsp" },
 		},
 		opts = function(_, opts)
 			local cmp = require("cmp")
@@ -87,23 +88,10 @@ return {
 			}
 			opts.sources = cmp.config.sources(vim.list_extend(opts.sources, {
 				{ name = "emoji" },
-				-- { name = "nvim_lua" },
-				-- { name = "treesitter" },
-				-- {
-				-- 	name = "nvim_lsp",
-				-- 	entry_filter = function(entry, ctx)
-				-- 		local kind = require("cmp.types.lsp").CompletionItemKind[entry:get_kind()]
-				-- 		if kind == "Snippet" and ctx.prev_context.filetype == "java" then
-				-- 			return false
-				-- 		end
-				-- 		if kind == "Text" then
-				-- 			return false
-				-- 		end
-				-- 		return true
-				-- 	end,
-				-- },
+				{ name = "nvim_lua" },
+				{ name = "treesitter" },
+				{ name = "tmux" },
 			}))
-			-- TODO:enable cmdline
 		end,
 	},
 }
