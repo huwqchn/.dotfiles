@@ -16,7 +16,7 @@ require("lazy").setup({
     -- import LazyVim plugins
     { "LazyVim/LazyVim", import = "lazyvim.plugins", version = "^2.0" },
     -- lazyvim editor extension modules
-    { import = "lazyvim.plugins.extras.util.project" },
+    -- { import = "lazyvim.plugins.extras.util.project" },
     -- lazyvim dap core extension modules
     { import = "lazyvim.plugins.extras.dap.core" },
     { import = "lazyvim.plugins.extras.dap.nlua" },

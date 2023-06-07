@@ -19,7 +19,7 @@ return {
   { import = "plugins.extras.coding.complete.cmp" },
   { import = "plugins.extras.coding.complete.supertab" },
   { import = "plugins.extras.coding.complete.luasnip" },
-  { import = "plugins.extras.coding.complete.cmdline" },
+  -- { import = "plugins.extras.coding.complete.cmdline" },
   { import = "plugins.extras.coding.ai.hfcc" },
   { import = "plugins.extras.coding.ai.copilot" },
   { import = "plugins.extras.coding.ai.tabnine" },
