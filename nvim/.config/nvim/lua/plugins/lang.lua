@@ -9,4 +9,5 @@ return {
   { import = "plugins.extras.lang.yuck" },
   { import = "plugins.extras.lang.ymal" },
   { import = "plugins.extras.lang.markdown" },
+  { import = "plugins.extras.lang.http" },
 }
