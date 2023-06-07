@@ -118,17 +118,19 @@ map("i", "<A-Right>", "<C-\\><C-N><C-w>l")
 
 unmap("n", "<c-/>")
 unmap("t", "<c-/>")
+unmap("n", "<c-_>")
+unmap("t", "<c-_>")
 -- Terminal window navigation
 map("t", "<C-n>", "<C-\\><C-N><C-w>h", { desc = "move to left" })
 map("t", "<C-e>", "<C-\\><C-N><C-w>j", { desc = "move to down" })
 map("t", "<C-i>", "<C-\\><C-N><C-w>k", { desc = "move to up" })
 map("t", "<C-o>", "<C-\\><C-N><C-w>l", { desc = "move to right" })
 map("t", "<C-q>", "<cmd>close<cr>", { desc = "Hide Terminal" })
--- map("t", "<C-t>", "<cmd>close<cr>", { desc = "Hide Terminal" })
--- local lazyterm = function()
---   Util.float_term(nil, { cwd = Util.get_root() })
--- end
--- map("n", "<c-t>", lazyterm, { desc = "Terminal (root dir)" })
+local lazyterm = function()
+  Util.float_term(nil, { cwd = Util.get_root() })
+end
+map("n", "<M-/>", lazyterm, { desc = "Terminal (root dir)" })
+map("t", "<M-/>", "<cmd>close<cr>", { desc = "Hide Terminal" })
 -- map tab to tab, because distinguish between <C-i>
 map("t", "<Tab>", "<Tab>")
 
