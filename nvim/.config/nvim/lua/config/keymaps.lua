@@ -86,7 +86,7 @@ map("i", "<C-v>", "<C-g>u<Cmd>set paste<CR><C-r>+<Cmd>set nopaste<CR>")
 map("t", "<C-v>", "<C-\\><C-N>pi")
 map("c", "<C-v>", "<C-r>+")
 
--- inc/dec number
+--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 inc/dec number
 map("n", "<C-=>", "<C-a>")
 map("n", "<C-->", "<C-x>")
 
@@ -122,7 +122,11 @@ map("t", "<C-e>", "<C-\\><C-N><C-w>j", { desc = "move to down" })
 map("t", "<C-i>", "<C-\\><C-N><C-w>k", { desc = "move to up" })
 map("t", "<C-o>", "<C-\\><C-N><C-w>l", { desc = "move to right" })
 map("t", "<C-q>", "<cmd>close<cr>", { desc = "Hide Terminal" })
-
+-- map("t", "<C-t>", "<cmd>close<cr>", { desc = "Hide Terminal" })
+-- local lazyterm = function()
+--   Util.float_term(nil, { cwd = Util.get_root() })
+-- end
+-- map("n", "<c-t>", lazyterm, { desc = "Terminal (root dir)" })
 -- map tab to tab, because distinguish between <C-i>
 map("t", "<Tab>", "<Tab>")
 
