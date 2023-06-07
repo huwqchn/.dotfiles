@@ -1,7 +1,4 @@
 -- This file is automatically loaded by plugins.config
-
-vim.g.maplocalleader = ","
-
 vim.opt.colorcolumn = "81"
 vim.opt.whichwrap:append("<,>,[,],h,l")
 -- vim.opt.listchars = { tab = "| ", trail = "▫" } -- replace special symbols

@@ -67,9 +67,10 @@ map("i", "<C-k>", "<cmd>normal! dd<cr>")
 
 -- better cmd mode
 map("n", ":", ",")
-map("n", "<cr>", ":")
+-- map("n", "<cr>", ":")
 -- backup cmd mode, some plugins will override <cr>
 map("n", "\\", ":")
+map("n", ",", ":")
 
 -- save
 -- map("n", "S", "<cmd>w<cr>", { desc = "Save file" })
@@ -155,21 +156,21 @@ map({ "n", "x" }, "s", "<nop>", { desc = "split/surround/select" })
 
 -- split the screens
 map("n", "si", function()
-	vim.opt.splitbelow = false
-	vim.cmd([[split]])
-	vim.opt.splitbelow = true
+  vim.opt.splitbelow = false
+  vim.cmd([[split]])
+  vim.opt.splitbelow = true
 end, { desc = "split above" })
 map("n", "se", function()
-	vim.opt.splitbelow = true
-	vim.cmd([[split]])
+  vim.opt.splitbelow = true
+  vim.cmd([[split]])
 end, { desc = "split below" })
 map("n", "sn", function()
-	vim.opt.splitright = false
-	vim.cmd([[vsplit]])
+  vim.opt.splitright = false
+  vim.cmd([[vsplit]])
 end, { desc = "split left" })
 map("n", "so", function()
-	vim.opt.splitright = true
-	vim.cmd([[vsplit]])
+  vim.opt.splitright = true
+  vim.cmd([[vsplit]])
 end, { desc = "split right" })
 
 unmap("n", "<leader>w-")
@@ -205,36 +206,36 @@ map("n", "<leader><tab>t", "<cmd>tabs", { desc = "List all tabs" })
 
 -- close unused buffers
 local id = vim.api.nvim_create_augroup("startup", {
-	clear = false,
+  clear = false,
 })
 
 local persistbuffer = function(bufnr)
-	bufnr = bufnr or vim.api.nvim_get_current_buf()
-	vim.fn.setbufvar(bufnr, "bufpersist", 1)
+  bufnr = bufnr or vim.api.nvim_get_current_buf()
+  vim.fn.setbufvar(bufnr, "bufpersist", 1)
 end
 
 vim.api.nvim_create_autocmd({ "BufRead" }, {
-	group = id,
-	pattern = { "*" },
-	callback = function()
-		vim.api.nvim_create_autocmd({ "InsertEnter", "BufModifiedSet" }, {
-			buffer = 0,
-			once = true,
-			callback = function()
-				persistbuffer()
-			end,
-		})
-	end,
+  group = id,
+  pattern = { "*" },
+  callback = function()
+    vim.api.nvim_create_autocmd({ "InsertEnter", "BufModifiedSet" }, {
+      buffer = 0,
+      once = true,
+      callback = function()
+        persistbuffer()
+      end,
+    })
+  end,
 })
 
 map("n", "<leader>b<space>", function()
-	local curbufnr = vim.api.nvim_get_current_buf()
-	local buflist = vim.api.nvim_list_bufs()
-	for _, bufnr in ipairs(buflist) do
-		if vim.bo[bufnr].buflisted and bufnr ~= curbufnr and (vim.fn.getbufvar(bufnr, "bufpersist") ~= 1) then
-			vim.cmd("bd " .. tostring(bufnr))
-		end
-	end
+  local curbufnr = vim.api.nvim_get_current_buf()
+  local buflist = vim.api.nvim_list_bufs()
+  for _, bufnr in ipairs(buflist) do
+    if vim.bo[bufnr].buflisted and bufnr ~= curbufnr and (vim.fn.getbufvar(bufnr, "bufpersist") ~= 1) then
+      vim.cmd("bd " .. tostring(bufnr))
+    end
+  end
 end, { silent = true, desc = "Close unused buffers" })
 
 -- Replace in selection
@@ -245,17 +246,17 @@ map("x", "ss", ":s/\\%V", { desc = "replace in selection" })
 -- Code above will check if u are deleting empty line, if so - use black hole register.
 -- [src: https://www.reddit.com/r/neovim/comments/w0jzzv/comment/igfjx5y/?utm_source=share&utm_medium=web2x&context=3]
 local function smart_dd()
-	if vim.api.nvim_get_current_line():match("^%s*$") then
-		return '"_dd'
-	else
-		return "dd"
-	end
+  if vim.api.nvim_get_current_line():match("^%s*$") then
+    return '"_dd'
+  else
+    return "dd"
+  end
 end
 vim.keymap.set("n", "dd", smart_dd, { noremap = true, expr = true })
 
 if vim.fn.executable("btop") == 1 and not Util.has("toggleterm.nvim") then
-	-- btop
-	map("n", "<leader>xb", function()
-		Util.float_term({ "btop" })
-	end, { desc = "btop" })
+  -- btop
+  map("n", "<leader>xb", function()
+    Util.float_term({ "btop" })
+  end, { desc = "btop" })
 end
