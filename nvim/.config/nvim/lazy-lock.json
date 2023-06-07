@@ -86,6 +86,7 @@
   "nvim-window-picker": { "branch": "main", "commit": "5902827d0e338890a22849e2f18dc80d1cc1a8db" },
   "one-small-step-for-vimkind": { "branch": "main", "commit": "f239ca0dc772f214e7ff0627ccbd45bceae88bf8" },
   "package-info.nvim": { "branch": "master", "commit": "4d98c8cc90d970d87c472c04bf7ca712336cc753" },
+  "peek.nvim": { "branch": "master", "commit": "67752e7581f88da6899838985a05705b008e4185" },
   "persistence.nvim": { "branch": "main", "commit": "4b8051c01f696d8849a5cb8afa9767be8db16e40" },
   "playground": { "branch": "master", "commit": "2b81a018a49f8e476341dfcb228b7b808baba68b" },
   "plenary.nvim": { "branch": "master", "commit": "499e0743cf5e8075cd32af68baa3946a1c76adf1" },

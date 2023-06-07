@@ -8,4 +8,5 @@ return {
   { import = "lazyvim.plugins.extras.lang.json" },
   { import = "plugins.extras.lang.yuck" },
   { import = "plugins.extras.lang.ymal" },
+  { import = "plugins.extras.lang.markdown" },
 }
