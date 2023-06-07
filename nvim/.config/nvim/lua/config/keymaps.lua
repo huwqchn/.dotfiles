@@ -116,6 +116,8 @@ map("i", "<A-Down>", "<C-\\><C-N><C-w>j")
 map("i", "<A-Left>", "<C-\\><C-N><C-w>h")
 map("i", "<A-Right>", "<C-\\><C-N><C-w>l")
 
+unmap("n", "<c-/>")
+unmap("t", "<c-/>")
 -- Terminal window navigation
 map("t", "<C-n>", "<C-\\><C-N><C-w>h", { desc = "move to left" })
 map("t", "<C-e>", "<C-\\><C-N><C-w>j", { desc = "move to down" })
