@@ -103,12 +103,12 @@ map("n", "Y", "y$")
 map("v", "Y", '"+y')
 
 -- Move lines
--- map("n", "<A-e>", ":m .+1<CR>==")
--- map("v", "<A-e>", ":m '>+1<CR>gv=gv")
--- map("i", "<A-e>", "<Esc>:m .+1<CR>==gi")
--- map("n", "<A-i>", ":m .-2<CR>==")
--- map("v", "<A-i>", ":m '<-2<CR>gv=gv")
--- map("i", "<A-i>", "<Esc>:m .-2<CR>==gi")
+-- map("n", "<A-e>", "<cmd>m .+1<CR>==", { desc = "Move down" })
+-- map("n", "<A-i>", "<cmd>m .-2<CR>==", { desc = "Move up" })
+-- map("i", "<A-e>", "<Esc><cmd>m .+1<CR>==gi", { desc = "Move down" })
+-- map("i", "<A-i>", "<Esc><cmd>m .-2<CR>==gi", { desc = "Move up" })
+-- map("v", "<A-e>", ":m '>+1<CR>gv=gv", { desc = "Move down" })
+-- map("v", "<A-i>", ":m '<-2<CR>gv=gv", { desc = "Move up" })
 
 -- insert mode navigation
 map("i", "<A-Up>", "<C-\\><C-N><C-w>k")
