@@ -103,12 +103,12 @@ map("n", "Y", "y$")
 map("v", "Y", '"+y')
 
 -- Move lines
-map("n", "<A-e>", ":m .+1<CR>==")
-map("v", "<A-e>", ":m '>+1<CR>gv=gv")
-map("i", "<A-e>", "<Esc>:m .+1<CR>==gi")
-map("n", "<A-i>", ":m .-2<CR>==")
-map("v", "<A-i>", ":m '<-2<CR>gv=gv")
-map("i", "<A-i>", "<Esc>:m .-2<CR>==gi")
+-- map("n", "<A-e>", ":m .+1<CR>==")
+-- map("v", "<A-e>", ":m '>+1<CR>gv=gv")
+-- map("i", "<A-e>", "<Esc>:m .+1<CR>==gi")
+-- map("n", "<A-i>", ":m .-2<CR>==")
+-- map("v", "<A-i>", ":m '<-2<CR>gv=gv")
+-- map("i", "<A-i>", "<Esc>:m .-2<CR>==gi")
 
 -- insert mode navigation
 map("i", "<A-Up>", "<C-\\><C-N><C-w>k")
