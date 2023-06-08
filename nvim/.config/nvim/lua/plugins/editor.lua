@@ -11,4 +11,5 @@ return {
   { import = "plugins.extras.editor.runner.code-runner" },
   { import = "plugins.extras.editor.terminal.toggleterm" },
   { import = "plugins.extras.editor.terminal.flatten" },
+  { import = "plugins.extras.editor.debug.dap" },
 }

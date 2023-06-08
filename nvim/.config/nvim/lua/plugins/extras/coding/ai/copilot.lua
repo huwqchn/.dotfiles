@@ -1,5 +1,14 @@
 return {
   {
+    "folke/which-key.nvim",
+    optional = true,
+    opts = {
+      defaults = {
+        ["<leader>a"] = { name = "+AI" },
+      },
+    },
+  },
+  {
     "zbirenbaum/copilot.lua",
     event = "InsertEnter",
     keys = {
