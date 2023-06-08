@@ -43,6 +43,14 @@ return {
         },
         opts = { skip = true },
       })
+      table.insert(opts.routes, 1, {
+        filter = {
+          event = "msg_show",
+          kind = "",
+          find = "written",
+        },
+        opts = { skip = true },
+      })
       opts.presets = {
         bottom_search = false,
         command_palette = true,
