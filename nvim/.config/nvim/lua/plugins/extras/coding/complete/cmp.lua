@@ -17,30 +17,30 @@ return {
       opts.mapping = vim.tbl_extend("force", opts.mapping, {
         ["<C-e>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
         ["<C-i>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
-        -- ["<CR>"] = cmp.mapping(function(fallback)
-        --   if cmp.visible() then
-        --     local confirm_opts = {
-        --       behavior = cmp.ConfirmBehavior.Replace,
-        --       select = false,
-        --     }
-        --     local is_insert_mode = function()
-        --       return vim.api.nvim_get_mode().mode:sub(1, 1) == "i"
-        --     end
-        --     if is_insert_mode() then -- prevent overwriting brackets
-        --       confirm_opts.behavior = cmp.ConfirmBehavior.Insert
-        --     end
-        --     local entry = cmp.get_selected_entry()
-        --     local is_copilot = entry and entry.source.name == "copilot"
-        --     if is_copilot then
-        --       confirm_opts.behavior = cmp.ConfirmBehavior.Replace
-        --       confirm_opts.select = true
-        --     end
-        --     if cmp.confirm(confirm_opts) then
-        --       return -- success, exit early
-        --     end
-        --   end
-        --   fallback() -- if not exited early, always fallback
-        -- end),
+        ["<CR>"] = cmp.mapping(function(fallback)
+          if cmp.visible() then
+            local confirm_opts = {
+              behavior = cmp.ConfirmBehavior.Replace,
+              select = false,
+            }
+            local is_insert_mode = function()
+              return vim.api.nvim_get_mode().mode:sub(1, 1) == "i"
+            end
+            if is_insert_mode() then -- prevent overwriting brackets
+              confirm_opts.behavior = cmp.ConfirmBehavior.Insert
+            end
+            local entry = cmp.get_selected_entry()
+            local is_copilot = entry and entry.source.name == "copilot"
+            if is_copilot then
+              confirm_opts.behavior = cmp.ConfirmBehavior.Replace
+              confirm_opts.select = true
+            end
+            if cmp.confirm(confirm_opts) then
+              return -- success, exit early
+            end
+          end
+          fallback() -- if not exited early, always fallback
+        end),
       })
       opts.experimental = vim.tbl_extend("force", opts.experimental or {}, {
         native_menu = false,
