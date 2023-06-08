@@ -51,7 +51,7 @@ return {
       lsp_keys._keys = vim.tbl_extend("force", lsp_keys.get(), {
         { "I", vim.lsp.buf.hover, desc = "Hover" },
         { "gi", vim.lsp.buf.signature_help, desc = "Signature Help", has = "signatureHelp" },
-        { "<c-i>", vim.lsp.buf.signature_help, mode = "i", desc = "Signature Help", has = "signatureHelp" },
+        { "<c-h>", vim.lsp.buf.signature_help, mode = "i", desc = "Signature Help", has = "signatureHelp" },
       })
     end,
   },
