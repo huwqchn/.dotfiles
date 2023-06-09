@@ -1,0 +1,30 @@
+(defvar eww "eww -c $HOME/.config/eww/bar")
+
+(defwidget launcher []
+  (box
+    :orientation "h"
+    :space-evenly "false"
+    (button
+      :class "launcher_button"
+      :onclick "${EWW_CONFIG_DIR}/scripts/launcher toggle_menu app_launcher"
+      (label :class "icon" :text "󰊠" :valign "center")
+    )
+  )
+)
+
+(defwidget workspaces []
+  (box
+    :class "workspaces_panel"
+    (eventbox :class "workspaces_button"
+      (box
+        :space-evenly false
+        :orientation "h"
+        (for workspace in {workspaces.workspaces}
+          (button
+            :class "workspace_button"
+          )
+        )
+      )
+    )
+  )
+)
