@@ -17,6 +17,8 @@ return {
       opts.mapping = vim.tbl_extend("force", opts.mapping, {
         ["<C-e>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
         ["<C-i>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
+        ["<C-c>"] = cmp.mapping.abort(),
+        ["<C-o>"] = cmp.mapping.complete(),
         ["<CR>"] = cmp.mapping(function(fallback)
           if cmp.visible() then
             local confirm_opts = {
