@@ -231,7 +231,7 @@ super + ctrl + alt + {n,e,i,o}
 #
 
 # Play music
-XF86AudioPlay 
+XF86AudioPlay
   playerctl play
 
 # Pause music
@@ -264,24 +264,24 @@ ctrl + Print
 
 # Volume Up
 XF86AudioRaiseVolume
-  amixer sset Master 5%+ && $HOME/.config/eww/Misc/scripts/volume
+  amixer sset Master 5%+ && $HOME/.config/eww/misc/scripts/volume
 
 # Volume Down
 XF86AudioLowerVolume
-  amixer sset Master 5%- && $HOME/.config/eww/Misc/scripts/volume
+  amixer sset Master 5%- && $HOME/.config/eww/misc/scripts/volume
 
 # Volume Mute
 XF86AudioMute
-  amixer sset Master toggle && $HOME/.config/eww/Misc/scripts/volume
+  amixer sset Master toggle && $HOME/.config/eww/misc/scripts/volume
 
 # Brightness Up
 XF86MonBrightnessUp
-  brightnessctl s 20+ && $HOME/.config/eww/Misc/scripts/brightness
+  brightnessctl s 20+ && $HOME/.config/eww/misc/scripts/brightness
 
 # Brightness Down
 XF86MonBrightnessDown
-  brightnessctl s 20- && $HOME/.config/eww/Misc/scripts/brightness
+  brightnessctl s 20- && $HOME/.config/eww/misc/scripts/brightness
 
 # Toggle right click context menu.
 ~button3
-  xqp 0 $(xdo id -N Bspwm -n root) && jgmenu_run 
+  xqp 0 $(xdo id -N Bspwm -n root) && jgmenu_run
