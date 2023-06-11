@@ -1,0 +1,254 @@
+(defvar eww "eww -c $HOME/.config/eww/bar")
+
+;; volume
+(defvar volume-reveal)
+(defvar volume-value 50)
+(defvar volume-muted false)
+(defpoll current-volume :interval "1s" "amixer -D pulse sget Master | grep 'Left:' | awk -F'[][]' '{ print $2 }' | tr -d '%'")
+
+;; brightness
+(defvar brightness-reveal)
+(defvar brightness-value 50)
+(defpoll current-brightness :interval "1s" "brightnessctl -m -d amdgpu_bl0 | awk -F, '{print substr($4, 0, length($4)-1)}' | tr -d '%'")
+
+;; wifi
+(defpoll wifi-icon :interval "1s" "scripts/wifi icon")
+(defpoll wifi-name :interval "1s" "scripts/wifi name")
+
+;; battery
+
+(defpoll battery-capacity	:interval "1s"	"scripts/battery percent")
+
+(defwidget launcher []
+  (box
+    :orientation "h"
+    :space-evenly false
+    (button
+      :class "laucher_button"
+      :onclick "scripts/launcher"
+      (label
+        :class "icon"
+        :text "󰊠 "
+        :haligh "center"
+      )
+    )
+  )
+)
+
+(defwidget workspaces []
+  (box :class "button-bin"
+    (eventbox :class "workspaces_button"
+      (box
+        :space-evenly false
+        :orientation "h"
+        (for workspace in {workspaces.workspaces}
+          (button
+            :class "workspace-btn ${workspace.id == workspaces.active ? "active" : ""} ${workspace.windows > 0 ? "occupied" : "empty"}"
+            :onclick "wmctrl -r ${workspace.id}"
+            :valign "center"
+            (label :class "icon" :text {workspace.windows > 0 ? "${workspace.id == workspaces.active ? "" : ""}" : ""})
+          )
+        )
+      )
+    )
+  )
+)
+
+(defwidget volume []
+  (eventbox
+    :onhover "${eww} update volume-reveal=true"
+    :onhoverlost "${eww} update volume-reveal=false"
+    (box
+      :orientation "h"
+      :space-evenly false
+      :spacing 2
+      (revealer
+        :transition "slideleft"
+        :reveal volume
+        :duration "550ms"
+        (scale
+          :class "volume-bar"
+          :value current-volume
+          :orientation "h"
+          :flipped true
+          :tooltip "Volume: ${current-volume}%"
+          :max 101
+          :min 0
+          :onchange "amixer -D pulse sset Master {}%"
+        )
+      )
+      (label
+        :text {volume-muted ? "󰝟" :
+        volume-value == 0 ? "󰕿" :
+        volume-value < 25 ? "󰖀" :
+        volume-value < 50 ? "󰕾" :
+        volume-value < 75 ? "" :
+        ""}
+        :space-evenly "false"
+        :class 'indicator-volume-icon ${volume-muted ? "indicator-volume-icon-muted" : ""}'
+      )
+    )
+  )
+)
+
+(defwidget brightness []
+  (eventbox
+    :onhover "${eww} update brightness-reveal=true"
+    :onhoverlost "${eww} update brightness-reveal=true"
+    (box
+      :orientation "h"
+      :space-evenly false
+      :spacing 2
+      (revealer
+        :transition "slideleft"
+        :reveal bright-reveal
+        :duration "550ms"
+        (scale
+          :class "brightness-bar"
+          :value current-brightness
+          :tooltip "Brightness: ${current-brightness}%"
+          :onchange "brightnessctl set {}%"
+          :orientation "h"
+          :flipped true
+          :max 101
+          :min 0
+        )
+      )
+      (label
+        :text {brightness-value < 25 ? "󰃞" :
+        brightness-value < 50 ? "󰃟" :
+        brightness-value < 75 ? "󰃝" :
+        "󰃠"}
+        :space-evenly "false"
+        :class 'indicator-brightness-icon'
+      )
+    )
+  )
+)
+
+(defwidget wifi []
+  (box
+    :orientation "h"
+    :tooltip wifi-name
+    (button
+      :onclick "scripts/popup wifi"
+      :class "wifi-icon" wifi-icon
+    )
+  )
+)
+
+(defwight battery []
+  (box
+    :orientation "h"
+    :space-evenly false
+    (label
+      :text {battery-discharging ?
+      battery-capacity < 10 ? "󰂎" :
+      battery-capacity < 20 ? "󰁺" :
+      battery-capacity < 30 ? "󰁻" :
+      battery-capacity < 40 ? "󰁼" :
+      battery-capacity < 50 ? "󰁽" :
+      battery-capacity < 60 ? "󰁾" :
+      battery-capacity < 70 ? "󰁿" :
+      battery-capacity < 80 ? "󰂀" :
+      battery-capacity < 90 ? "󰂁" :
+      battery-capacity < 100 ? "󰂂" :
+      "󰁹"
+      :
+      battery-capacity < 10 ? "󰢟" :
+      battery-capacity < 20 ? "󰢜" :
+      battery-capacity < 30 ? "󰂆" :
+      battery-capacity < 40 ? "󰂇" :
+      battery-capacity < 50 ? "󰂈" :
+      battery-capacity < 60 ? "󰢝" :
+      battery-capacity < 70 ? "󰂉" :
+      battery-capacity < 80 ? "󰢞" :
+      battery-capacity < 90 ? "󰂊" :
+      battery-capacity < 100 ? "󰂋" :
+      "󰂅"}
+      :space-evenly "false"
+      :class 'indicator-battery-icon ${battery-discharging ? "indicator-battery-icon-discharging" : ""}'
+    )
+  )
+)
+
+(defwidget control []
+  (box
+    :orientation "h"
+    :space-evenly false
+    :class "control"
+    (volume)
+    (bright)
+    (wifi)
+    (battery)
+  )
+)
+
+;; TODO: make powermenu
+(defwidget powermenu []
+  (eventbox
+    :onhover "${eww} update powermenu-reveal=true"
+    :onhoverlost "${eww} update powermenu-reveal=false"
+    (revealer)
+  )
+)
+
+;; left bar
+(defwidget left []
+  (box
+    :orientation "h"
+    :space-evenly false
+    :halign "start"
+    (launcher)
+    (workspaces)
+  )
+)
+
+;; middle bar
+(defwidget middle []
+  (box
+    :orientation "h"
+    :space-evenly false
+    :halign "start"
+    (time)
+  )
+)
+
+;; right bar
+(defwidget right []
+  (box
+    :orientation "h"
+    :space-evenly false
+    :halign "start"
+    (control)
+    (powermenu)
+  )
+)
+
+(defwidget bar []
+  (box
+    :class "eww-bar"
+    :orientation "h"
+    :vexpand "false"
+    :hexpand "false"
+    (left)
+    (middle)
+    (right)
+  )
+)
+
+(defwindow bar
+  :geometry
+  (geometry
+    :x "0"
+    :y "0"
+    :height "100%"
+    :width "47px"
+  )
+  :monitor 0
+  :reserve (struts :distance "35px" :side "top")
+  :wm-ignore false
+  :hexpand "false"
+  :vexpand "false"
+  (bar)
+)
