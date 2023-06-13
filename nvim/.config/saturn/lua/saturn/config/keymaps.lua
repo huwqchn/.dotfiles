@@ -45,8 +45,12 @@ map({ "n", "x", "o" }, "gj", "ge")
 
 -- colemake searching key
 -- https://github.com/mhinz/vim-galore#saner-behavior-of-n-and-n
-map({ "n", "x", "o" }, "k", "'Nn'[v:searchforward]", { expr = true })
-map({ "n", "x", "o" }, "K", "'nN'[v:searchforward]", { expr = true })
+map("n", "k", "'Nn'[v:searchforward]", { expr = true, desc = "Next search result" })
+map("x", "k", "'Nn'[v:searchforward]", { expr = true, desc = "Next search result" })
+map("o", "k", "'Nn'[v:searchforward]", { expr = true, desc = "Next search result" })
+map("n", "K", "'nN'[v:searchforward]", { expr = true, desc = "Prev search result" })
+map("x", "K", "'nN'[v:searchforward]", { expr = true, desc = "Prev search result" })
+map("o", "K", "'nN'[v:searchforward]", { expr = true, desc = "Prev search result" })
 
 -- colemak scroll
 map({ "n", "v" }, "<C-m>", "<C-e>")
