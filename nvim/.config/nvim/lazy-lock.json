@@ -26,6 +26,7 @@
   "dial.nvim": { "branch": "master", "commit": "b3916370c24c498117a4c790b2752c437dab661a" },
   "diffview.nvim": { "branch": "main", "commit": "0ad3e4f834093412ebbf317b7eaa9c59568824b9" },
   "dressing.nvim": { "branch": "master", "commit": "f16d7586fcdd8b2e3850d0abb7e46f944125cc25" },
+  "edgy.nvim": { "branch": "main", "commit": "ab09d4f52b53d1db0b576f4b12ff506cdde94f1b" },
   "flatten.nvim": { "branch": "main", "commit": "d92c93959e9ac52a00002d6fd64c2d2ca5dd7192" },
   "flit.nvim": { "branch": "main", "commit": "f60e4b3d49bb5a5e97cfffe66f2e671eb422078e" },
   "friendly-snippets": { "branch": "main", "commit": "49ca2a0e0e26427b550b1f64272d7fe7e4d7d51b" },
