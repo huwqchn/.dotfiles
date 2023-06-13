@@ -257,7 +257,7 @@ map("n", "<leader>b<space>", function()
 end, { silent = true, desc = "Close unused buffers" })
 
 -- Replace in selection
-map("x", "ss", ":s/\\%V", { desc = "replace in selection" })
+map("x", "S", ":s/\\%V", { desc = "replace in selection" })
 
 -- smart deletion, dd
 -- It solves the issue, where you want to delete empty line, but dd will override you last yank.
