@@ -1,5 +1,4 @@
 {
-  "competitest.nvim": { "branch": "master", "commit": "01f29ad4c72420032e2ef4f856682c489b2fecf0" },
   "flit.nvim": { "branch": "main", "commit": "f60e4b3d49bb5a5e97cfffe66f2e671eb422078e" },
   "indent-blankline.nvim": { "branch": "master", "commit": "7075d7861f7a6bbf0de0298c83f8a13195e6ec01" },
   "lazy.nvim": { "branch": "main", "commit": "6b2311a46a3808e366bb251270f4cc04afb421ed" },
@@ -11,7 +10,6 @@
   "mini.pairs": { "branch": "main", "commit": "963b800d0524eadd297199207011b98684205ada" },
   "mini.splitjoin": { "branch": "main", "commit": "7d22e5f8d2f212c1aea94dd3b010d19a73edd6d0" },
   "mini.surround": { "branch": "main", "commit": "14f418209ecf52d1a8de9d091eb6bd63c31a4e01" },
-  "nui.nvim": { "branch": "main", "commit": "f008972ac7d24f7188521a7f8d158aac2fb0b07e" },
   "nvim-spectre": { "branch": "master", "commit": "8adb05dbfbd36862d700b5c3d1c26f0febf3f10d" },
   "nvim-spider": { "branch": "main", "commit": "04c6fc14d09823002dae486100745011fc3201ca" },
   "nvim-treesitter": { "branch": "master", "commit": "0ae494269acd469fbd896cf5d5a430dbbf4d4e95" },

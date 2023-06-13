@@ -27,8 +27,8 @@ map({ "n", "x" }, "n", "h")
 map({ "n", "x" }, "o", "l")
 
 -- colemak-dh jump to start/end of the line
-map({ "n", "x" }, "N", "^")
-map({ "n", "x" }, "O", "$")
+map({ "n", "x", "o" }, "N", "^")
+map({ "n", "x", "o" }, "O", "$")
 
 -- colemak-dh join/hover
 map({ "n", "x", "o" }, "I", "K")
@@ -121,7 +121,7 @@ map("i", "<A-Down>", "<C-\\><C-N><C-w>j")
 map("i", "<A-Left>", "<C-\\><C-N><C-w>h")
 map("i", "<A-Right>", "<C-\\><C-N><C-w>l")
 
-unmap("n", "<c-/>")
+-- unmap("n", "<c-/>")
 unmap("t", "<c-/>")
 unmap("n", "<c-_>")
 unmap("t", "<c-_>")

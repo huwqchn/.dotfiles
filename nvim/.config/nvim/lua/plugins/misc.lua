@@ -124,6 +124,16 @@ return {
       },
     },
   },
+  -- makes some plugins dot-repeatable like leap
+  {
+    "tpope/vim-repeat",
+    event = function()
+      return {}
+    end,
+    keys = {
+      ".",
+    },
+  },
   -- { import = "plugins.extras.misc.smart-splits" },
   { import = "plugins.extras.misc.zen-mode" },
 }
