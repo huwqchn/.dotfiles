@@ -12,7 +12,9 @@ end
 vim.opt.rtp:prepend(vim.env.LAZY or lazypath)
 
 require("lazy").setup({
-	spec = "saturn.plugins",
+	spec = {
+		{ import = "plugins" },
+	},
 	defaults = { lazy = true, version = false },
 	install = { colorscheme = { "tokyonight", "habamax" } },
 	ui = { border = "rounded" },

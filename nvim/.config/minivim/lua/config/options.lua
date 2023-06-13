@@ -95,7 +95,7 @@ vim.o.foldcolumn = "0"
 
 if vim.fn.has("nvim-0.8") == 1 then
 	vim.opt.backup = true
-	vim.opt.cmdheight = 0
+	vim.opt.cmdheight = 1
 	vim.opt.backupdir = vim.fn.stdpath("state") .. "/backup"
 end
 
@@ -106,4 +106,3 @@ end
 
 -- fix markdown indentation settings
 vim.g.markdown_recommended_style = 0
-require("saturn.utils.status")

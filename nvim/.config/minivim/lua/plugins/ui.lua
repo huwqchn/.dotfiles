@@ -63,14 +63,4 @@ return {
 			})
 		end,
 	},
-	{
-		"echasnovski/mini.statusline",
-		version = false,
-		config = true,
-	},
-	{
-		"echasnovski/mini.tabline",
-		version = false,
-		config = true,
-	},
 }

@@ -2,6 +2,8 @@ return {
 	-- tokyonight
 	{
 		"folke/tokyonight.nvim",
+		priority = 10000,
+		lazy = false,
 		opts = {
 			on_highlights = function(hl, c)
 				hl.CursorLineNr = { fg = c.orange, bold = true }
@@ -69,5 +71,10 @@ return {
 			lualine_bold = false, -- When `true`, section headers in the lualine theme will be bold
 			use_background = true, -- can be light/dark/auto. When auto, background will be set to vim.o.background
 		},
+		config = function(_, opts)
+			require("tokyonight").setup(opts)
+			vim.g.colors_name = "tokyonight"
+			vim.cmd("colorscheme " .. "tokyonight")
+		end,
 	},
 }

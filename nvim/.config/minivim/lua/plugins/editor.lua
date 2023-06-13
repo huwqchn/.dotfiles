@@ -67,31 +67,84 @@ return {
 			end
 		end,
 	},
+	-- {
+	-- 	"xeluxee/competitest.nvim",
+	-- 	dependencies = {
+	-- 		"MunifTanjim/nui.nvim",
+	-- 	},
+	-- 	keys = {
+	-- 		{ "<leader><space>", "<cmd>CompetiTestRun<cr>", desc = "Run with Test case" },
+	-- 	},
+	-- 	opts = {
+	-- 		picker_ui = {
+	-- 			mappings = {
+	-- 				focus_next = { "e", "<down>", "<Tab>" },
+	-- 				focus_prev = { "i", "<up>", "<S-Tab>" },
+	-- 				close = { "<esc>", "<C-c>", "q", "Q" },
+	-- 				submit = { "<cr>" },
+	-- 			},
+	-- 		},
+	-- 		editor_ui = {
+	-- 			normal_mode_mappings = {
+	-- 				switch_window = { "<C-n>", "<C-o>", "<C-i>" },
+	-- 				save_and_close = "<C-s>",
+	-- 				cancel = { "q", "Q" },
+	-- 			},
+	-- 			insert_mode_mappings = {
+	-- 				switch_window = { "<C-n>", "<C-o>", "<C-i>" },
+	-- 				save_and_close = "<C-s>",
+	-- 				cancel = "<C-q>",
+	-- 			},
+	-- 		},
+	-- 	},
+	-- },
 	{
-		"xeluxee/competitest.nvim",
+		"folke/which-key.nvim",
 		keys = {
-			{ "<leader><space>", "<cmd>CompetiTestRun<cr>", desc = "Run with Test case" },
+			{ "<leader>", mode = { "n", "v" } },
+			{ "g", mode = { "n", "v" } },
+			{ "s", mode = { "n", "v" } },
+			{ "[", mode = { "n", "v" } },
+			{ "]", mode = { "n", "v" } },
 		},
 		opts = {
-			picker_ui = {
-				mappings = {
-					focus_next = { "e", "<down>", "<Tab>" },
-					focus_prev = { "i", "<up>", "<S-Tab>" },
-					close = { "<esc>", "<C-c>", "q", "Q" },
-					submit = { "<cr>" },
+			defaults = {
+				mode = { "n", "v" },
+				["g"] = { name = "+goto" },
+				["s"] = { name = "+surround/split/select" },
+				["]"] = { name = "+next" },
+				["["] = { name = "+prev" },
+				["<leader><tab>"] = { name = "+tabs" },
+				["<leader>c"] = { name = "+code" },
+				["<leader>q"] = { name = "+quit/session" },
+				["<leader>w"] = { name = "+windows" },
+				["<leader>x"] = { name = "+diagnostics/quickfix" },
+			},
+			plugins = {
+				marks = false,
+				registers = false,
+				spelling = {
+					enabled = true,
+					suggestions = 20,
+				},
+				presets = {
+					operators = false,
+					motions = false,
+					text_objects = false,
+					windows = false,
+					nav = false,
+					z = false,
+					g = false,
 				},
 			},
-			editor_ui = {
-				normal_mode_mappings = {
-					switch_window = { "<C-n>", "<C-o>", "<C-i>" },
-					save_and_close = "<C-s>",
-					cancel = { "q", "Q" },
-				},
-				insert_mode_mappings = {
-					switch_window = { "<C-n>", "<C-o>", "<C-i>" },
-					save_and_close = "<C-s>",
-					cancel = "<C-q>",
-				},
+			operators = { gc = "Comments" },
+			key_labels = { ["<leader>"] = "SPC" },
+			window = {
+				border = "single", -- none, single, double, shadow
+				position = "bottom", -- bottom, top
+				margin = { 1, 0, 1, 0 }, -- extra window margin [top, right, bottom, left]
+				padding = { 2, 2, 2, 2 }, -- extra window padding [top, right, bottom, left]
+				winblend = 0,
 			},
 		},
 	},
