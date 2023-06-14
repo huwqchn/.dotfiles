@@ -253,15 +253,15 @@ return {
         cond = conditions.hide_in_width,
       }
 
-      local macros = {
-        function()
-          if package.loaded["NeoComposer"] then
-            return require("NeoComposer.ui").status_recording()
-          end
-          return ""
-        end,
-        cond = conditions.hide_in_width,
-      }
+      -- local macros = {
+      --   function()
+      --     if package.loaded["NeoComposer"] then
+      --       return require("NeoComposer.ui").status_recording()
+      --     end
+      --     return ""
+      --   end,
+      --   cond = conditions.hide_in_width,
+      -- }
 
       local function env_cleanup(venv)
         if string.find(venv, "/") then
@@ -360,7 +360,7 @@ return {
           lualine_x = {
             lazy,
             lazy_space,
-            macros,
+            -- macros,
             key,
             key_icon,
             space,

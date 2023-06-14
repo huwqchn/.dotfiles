@@ -123,8 +123,8 @@ keybinding:
     openFile: H
     scrollUpMain: <pgup>
     scrollDownMain: <pgdown>
-    scrollUpMain-alt1: I
-    scrollDownMain-alt1: E
+    # scrollUpMain-alt1: I
+    # scrollDownMain-alt1: E
     scrollUpMain-alt2: <c-u>
     scrollDownMain-alt2: <c-d>
     executeCustomCommand: ":"
@@ -159,7 +159,7 @@ keybinding:
     commitChangesWithoutHook: w
     amendLastCommit: A
     commitChangesWithEditor: C
-    IgnoreOrExcludeFile: I
+    ignoreFile: 'I'
     refreshFiles: r
     stashAllChanges: s
     viewStashOptions: S

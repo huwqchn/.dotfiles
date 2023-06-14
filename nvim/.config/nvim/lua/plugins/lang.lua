@@ -7,8 +7,8 @@ return {
   { import = "plugins.extras.lang.c" },
   { import = "lazyvim.plugins.extras.lang.go" },
   { import = "lazyvim.plugins.extras.lang.json" },
-  { import = "plugins.extras.lang.yuck" },
-  { import = "plugins.extras.lang.ymal" },
+  -- { import = "plugins.extras.lang.yuck" },
+  -- { import = "plugins.extras.lang.ymal" },
   { import = "plugins.extras.lang.markdown" },
   { import = "plugins.extras.lang.http" },
 }
