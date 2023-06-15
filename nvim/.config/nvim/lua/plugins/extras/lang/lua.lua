@@ -21,6 +21,7 @@ return {
           single_file_support = true,
           settings = {
             Lua = {
+              telemetry = { enable = false },
               workspace = {
                 checkThirdParty = false,
               },
