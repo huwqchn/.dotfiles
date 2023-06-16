@@ -23,7 +23,7 @@ return {
             return vim.notify("No treesitter parser for the current buffer", vim.log.levels.ERROR)
           end
 
-          local query = vim.treesitter.get_query(vim.bo.filetype, "textobjects")
+          local query = vim.treesitter.query.get(vim.bo.filetype, "textobjects")
           if not query then
             return vim.notify("No textobjects query for the current buffer", vim.log.levels.ERROR)
           end
