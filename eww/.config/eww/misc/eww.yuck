@@ -1,5 +1,5 @@
 ;;variables
-(defpoll greeting :interval "10h" "Misc/scripts/quote")
+(defpoll greeting :interval "10h" "misc/scripts/quote")
 (defvar volume-hidden false)
 (defvar volume-level 50)
 (defvar volume-muted false)
@@ -38,7 +38,7 @@
         ""}
         :space-evenly "false"
         :class 'indicator-volume-icon ${volume-muted ? "indicator-volume-icon-muted" : ""}')
-      
+
       (scale :class 'indicator-volume-slider ${volume-muted ? "volume-slider-muted" : ""}'
         :hexpand "true"
         :min 0
@@ -50,7 +50,7 @@
         :vexpand "false"
         :width 210
       :onchange "amixer set Master {}%")))))
-    
+
 (defwidget brightness-indicator[]
   (box :class "brightness-window"
     :orientation "v"
@@ -71,7 +71,7 @@
         "󰃠"}
         :space-evenly "false"
         :class 'indicator-brightness-icon')
-      
+
       (scale :class 'indicator-brightness-slider'
         :hexpand "true"
         :min 0

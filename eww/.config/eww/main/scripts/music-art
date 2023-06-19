@@ -1,6 +1,6 @@
 #!/bin/bash
 
-tmp_dir="$HOME/.config/eww/Main/images"
+tmp_dir="$HOME/.config/eww/main/images"
 tmp_cover_path=$tmp_dir/cover.png
 tmp_temp_path=$tmp_dir/temp.png
 
@@ -18,5 +18,5 @@ elif [[ -n $artFromBrowser ]]; then
 	cp $artFromBrowser $tmp_temp_path
 	echo $tmp_temp_path
 else
-	echo Main/images/default-music.svg
+	echo main/images/default-music.svg
 fi

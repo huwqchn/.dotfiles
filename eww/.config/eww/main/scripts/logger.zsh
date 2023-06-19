@@ -57,7 +57,7 @@ function create_cache() {
       body=$(python -c "print('${fixed_body}' + ' ...')")
     else
       body=$DUNST_BODY
-    fi 
+    fi
     if [[ ${#DUNST_SUMMARY} -ge 25 ]]
     then
       fixed_summary=$(echo $DUNST_SUMMARY | cut -c 1-25)
@@ -92,7 +92,7 @@ function compile_caches() { tr '\n' ' ' < "$DUNST_LOG" }
 function make_literal() {
   local caches="$(compile_caches)"
   [[ "$caches" == "" ]] \
-    && print '(box :class "notifications-empty-box" :height 660 :orientation "vertical" :space-evenly "false" (image :class "notifications-empty-banner" :valign "end" :vexpand true :path "Main/images/no-notifications.svg" :image-width 300 :image-height 300) (label :vexpand true :valign "start" :wrap true :class "notifications-empty-label" :text "No Notifications :("))' \
+    && print '(box :class "notifications-empty-box" :height 660 :orientation "vertical" :space-evenly "false" (image :class "notifications-empty-banner" :valign "end" :vexpand true :path "main/images/no-notifications.svg" :image-width 300 :image-height 300) (label :vexpand true :valign "start" :wrap true :class "notifications-empty-label" :text "No Notifications :("))' \
     || print "(scroll :height 660 :vscroll true (box :orientation 'vertical' :class 'notification-scroll-box' :spacing 20 :space-evenly 'false' $caches))"
 }
 
@@ -109,19 +109,19 @@ function drop() { sed -i '$d' "$DUNST_LOG" }
 
 function remove_line() { sed -i '/SL "'$1'"/d' "$DUNST_LOG" }
 
-function critical_count() { 
+function critical_count() {
   local crits=$(cat $DUNST_LOG | grep CRITICAL | wc --lines)
   local total=$(cat $DUNST_LOG | wc --lines)
   [ $total -eq 0 ] && echo 0 || echo $(((crits*100)/total))
 }
 
-function normal_count() { 
+function normal_count() {
   local norms=$(cat $DUNST_LOG | grep NORMAL | wc --lines)
   local total=$(cat $DUNST_LOG | wc --lines)
   [ $total -eq 0 ] && echo 0 || echo $(((norms*100)/total))
 }
 
-function low_count() { 
+function low_count() {
   local lows=$(cat $DUNST_LOG | grep LOW | wc --lines)
   local total=$(cat $DUNST_LOG | wc --lines)
   [ $total -eq 0 ] && echo 0 || echo $(((lows*100)/total))

@@ -2,27 +2,27 @@
 (defvar window false)
 (defpoll time :interval "1s" "date '+%I %M'")
 (defpoll date :interval "1s" "date '+%A, %B %d'")
-(deflisten notifications-cards "Main/scripts/logger.zsh subscribe")
-(defpoll notifications-crits :interval "1s" "Main/scripts/logger.zsh crits")
-(defpoll weather-icon :interval "20m" "Main/scripts/weather --icon")
-(defpoll weather-temp :interval "20m" "Main/scripts/weather --temp")
-(defpoll weather-desc :interval "20m" "Main/scripts/weather --stat")
-(deflisten weather-color :initial "#7aa2f7" "Main/scripts/weather --hex")
+(deflisten notifications-cards "main/scripts/logger.zsh subscribe")
+(defpoll notifications-crits :interval "1s" "main/scripts/logger.zsh crits")
+(defpoll weather-icon :interval "20m" "main/scripts/weather --icon")
+(defpoll weather-temp :interval "20m" "main/scripts/weather --temp")
+(defpoll weather-desc :interval "20m" "main/scripts/weather --stat")
+(deflisten weather-color :initial "#7aa2f7" "main/scripts/weather --hex")
 (defpoll calendar-day :interval "20h" "+%d")
 (defpoll calendar-year :interval "20h" "+%Y")
 (defpoll calendar-month :interval "20h" "%+B")
-(defpoll cpu :interval "1s" "Main/scripts/system --cpu")
-(defpoll memory :interval "1s" "Main/scripts/system --mem")
-(defpoll profile-image :interval "10h" "Main/scripts/details --image")
+(defpoll cpu :interval "1s" "main/scripts/system --cpu")
+(defpoll memory :interval "1s" "main/scripts/system --mem")
+(defpoll profile-image :interval "10h" "main/scripts/details --image")
 (defpoll profile-username :interval "1h" "whoami")
-(defpoll profile-name :interval "1h" "Main/scripts/details --name")
-(defpoll profile-kernel :interval "1h" "Main/scripts/details --kernel")
-(defpoll profile-os :interval "1h" "Main/scripts/details --os")
-(defpoll music-length :interval "1s" "Main/scripts/music-length")
-(defpoll music-title :interval "1s" "Main/scripts/music-title --status")
-(defpoll music-pp :interval "1s" "Main/scripts/music-title --icon")
-(defpoll music-artist :interval "1s" "Main/scripts/music-artist")
-(defpoll music-art :interval "1s" "Main/scripts/music-art")
+(defpoll profile-name :interval "1h" "main/scripts/details --name")
+(defpoll profile-kernel :interval "1h" "main/scripts/details --kernel")
+(defpoll profile-os :interval "1h" "main/scripts/details --os")
+(defpoll music-length :interval "1s" "main/scripts/music-length")
+(defpoll music-title :interval "1s" "main/scripts/music-title --status")
+(defpoll music-pp :interval "1s" "main/scripts/music-title --icon")
+(defpoll music-artist :interval "1s" "main/scripts/music-artist")
+(defpoll music-art :interval "1s" "main/scripts/music-art")
 
 
 ;; widgets
@@ -85,7 +85,7 @@
                 :class "notification-headers-label"
                 :halign "center"))
             (literal :content notifications-cards :class "notification-literal")
-            (button :onclick "Main/scripts/logger.zsh clear" :halign "end" :class "notification-headers-clear" "Clear All" )))))))
+            (button :onclick "main/scripts/logger.zsh clear" :halign "end" :class "notification-headers-clear" "Clear All" )))))))
 
 (defwidget notification-card [?class summary body image ?SL ?M ?L ?R application]
   (eventbox :onmiddleclick M
@@ -95,7 +95,7 @@
     (box :space-evenly false :orientation "v"
       (box :space-evenly "true" :orientation "h" :class "notification-card-header-box"
           (label :class "notification-app-name" :text "${application}" :halign "start")
-          (button :onclick "Main/scripts/logger.zsh rm_id ${SL}"
+          (button :onclick "main/scripts/logger.zsh rm_id ${SL}"
           :class "notification-card-notify-close" :halign "end"
           (label :text "󰅙" :tooltip "Remove this notification.")))
       (box :space-evenly "false" :orientation "h"
@@ -105,7 +105,7 @@
         :space-evenly false
         :hexpand true
         :class "notification-card-box"
-      
+
         (box :space-evenly false
           (label :limit-width 25
             :wrap true
@@ -118,7 +118,7 @@
           :text body
           :halign "start"
         :class "notification-body"))))))
-        
+
 ;; windows
 (defwindow main
   :windowtype "normal"

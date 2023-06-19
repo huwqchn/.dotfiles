@@ -1,21 +1,21 @@
 ;; variables
-(defpoll art :interval "1s" "Player/scripts/player --cover")
-(defpoll title :interval "1s" "Player/scripts/music-title --status")
-(defpoll artist :interval "1s" "Player/scripts/player --artist")
-(defpoll album :interval "1s" "Player/scripts/player --album")
-(defpoll current-pos :interval "1s" "Player/scripts/player --current-pos")
-(defpoll length-info :interval "1s" "Player/scripts/player --length-info")
-(defpoll length :interval "0s" "dbus-send --dest=org.mpris.MediaPlayer2.spotify --print-reply /org/mpris/MediaPlayer2 org.freedesktop.DBus.Properties.Get string:org.mpris.MediaPlayer2.Player string:Metadata | grep uint | awk '{print $3}'")
-(defpoll position :interval "1s" "dbus-send --dest=org.mpris.MediaPlayer2.spotify --print-reply /org/mpris/MediaPlayer2 org.freedesktop.DBus.Properties.Get string:org.mpris.MediaPlayer2.Player string:Position | awk 'FNR==2 {print $3}'")
+(defpoll art :interval "1s" "player/scripts/player --cover")
+(defpoll title :interval "1s" "player/scripts/music-title --status")
+(defpoll artist :interval "1s" "player/scripts/player --artist")
+(defpoll album :interval "1s" "player/scripts/player --album")
+(defpoll current-pos :interval "1s" "player/scripts/player --current-pos")
+(defpoll length-info :interval "1s" "player/scripts/player --length-info")
+(defpoll length :interval "0s" "dbus-send --dest=org.mpris.Mediaplayer2.spotify --print-reply /org/mpris/Mediaplayer2 org.freedesktop.DBus.Properties.Get string:org.mpris.Mediaplayer2.player string:Metadata | grep uint | awk '{print $3}'")
+(defpoll position :interval "1s" "dbus-send --dest=org.mpris.Mediaplayer2.spotify --print-reply /org/mpris/Mediaplayer2 org.freedesktop.DBus.Properties.Get string:org.mpris.Mediaplayer2.player string:Position | awk 'FNR==2 {print $3}'")
 (defpoll trackid :interval "1s" "playerctl -p spotify metadata mpris:trackid")
-(defpoll current-volume :interval "1s" "Player/scripts/player --current-volume")
-(defpoll pp-icon :interval "1s" "Player/scripts/music-title --icon")
+(defpoll current-volume :interval "1s" "player/scripts/player --current-volume")
+(defpoll pp-icon :interval "1s" "player/scripts/music-title --icon")
 (defpoll shuffle :interval "1s" "playerctl -p spotify shuffle")
-(deflisten eq-status "tail -F Player/status/eq-status")
-(deflisten vz-status "tail -F Player/status/vz-status")
-(deflisten ly-status "tail -F Player/status/ly-status")
-(defpoll get-lyrics :interval "1s" "python Player/scripts/lyrics.py")
-(defpoll lyrics :interval "300ms" "Player/scripts/fetch-lyrics")
+(deflisten eq-status "tail -F player/status/eq-status")
+(deflisten vz-status "tail -F player/status/vz-status")
+(deflisten ly-status "tail -F player/status/ly-status")
+(defpoll get-lyrics :interval "1s" "python player/scripts/lyrics.py")
+(defpoll lyrics :interval "300ms" "player/scripts/fetch-lyrics")
 (defvar hover false)
 
 ;; widgets
@@ -26,7 +26,7 @@
         (label :class "spotify-header-logo" :text "󰓇 " :halign "center")
         (label :class "spotify-header-title" :text "Spotify" :halign "center")
         (label :class "spotify-header-trademark" :text "®" :halign "center")
-        (label :class "spotify-header-player" :text "Player" :halign "center")))
+        (label :class "spotify-header-player" :text "player" :halign "center")))
     (box :class "player-box" :hexpand "false" :vexpand "false" :space-evenly "true"
       (box :class "player-info-box" :hexpand "false" :vexpand "false" :space-evenly "false" :orientation "v" :spacing 15
         (label :class "player-info-title" :text "󰝚  Title: ${title}" :halign "start" :limit-width 30 :tooltip "${title}")
@@ -39,14 +39,14 @@
       :onhoverlost "eww update hover=false"
       :cursor "pointer"
       :space-evenly "false"
-      (scale :orientation "h" :class "player-music-slider" :min 0 :max length :value position :tooltip current-pos :onchange { hover ? "dbus-send --type=method_call --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.SetPosition objpath:${trackid} int64:{}" : "" }))
+      (scale :orientation "h" :class "player-music-slider" :min 0 :max length :value position :tooltip current-pos :onchange { hover ? "dbus-send --type=method_call --print-reply --dest=org.mpris.Mediaplayer2.spotify /org/mpris/Mediaplayer2 org.mpris.Mediaplayer2.player.SetPosition objpath:${trackid} int64:{}" : "" }))
     (box :class "main-player-control-box" :hexpand "false" :vexpand "false" :space-evenly "false" :orientation "h" :height 70
       (box :class "player-volume-box" :space-evenly "false" :hexpand "false" :vexpand "false" :spacing 10
         (label :class "player-volume-icon" :text "󰕾")
-        (scale :class "player-volume-slider" :width 150 :min 0 :max 100 :orientation "h" :value current-volume :halign "start" :onchange "Player/scripts/player --volume {}")
-        (button :class "lyrics-btn ${ly-status == "On" ? "lyrics-btn-on" : "lyrics-btn-off"}" :onclick "Player/scripts/toggle-lyrics" "󰭷"))
+        (scale :class "player-volume-slider" :width 150 :min 0 :max 100 :orientation "h" :value current-volume :halign "start" :onchange "player/scripts/player --volume {}")
+        (button :class "lyrics-btn ${ly-status == "On" ? "lyrics-btn-on" : "lyrics-btn-off"}" :onclick "player/scripts/toggle-lyrics" "󰭷"))
       (box :class "player-buttons" :space-evenly "false" :hexpand "false" :vexpand "false" :spacing 10
-        (button :class "shuffle-btn ${shuffle == "On" ? "shuffle-btn-on" : "shuffle-btn-off"}" :onclick "Player/scripts/player --shuffle" "󰒟")
+        (button :class "shuffle-btn ${shuffle == "On" ? "shuffle-btn-on" : "shuffle-btn-off"}" :onclick "player/scripts/player --shuffle" "󰒟")
         (button :class "previous-btn" :onclick "playerctl -p spotify previous" "󰒮")
         (button :class "player-pp-btn" :onclick "playerctl -p spotify play-pause" "${pp-icon}")
         (button :class "next-btn" :onclick "playerctl -p spotify next" "󰒭"))
@@ -54,8 +54,8 @@
         (label :class "current-position" :text "${current-pos} ")
         (label :class "length-of-song" :text "/ ${length-info}"))
       (box :class "player-control-box-right" :space-evenly "false" :hexpand "false" :vexpand "false" :spacing 15 :halign "end"
-        (button :class "visualizer-btn ${vz-status == "On" ? "visualizer-btn-on" : "visualizer-btn-off"}" :onclick "Player/scripts/visualizer" "󱑽")
-        (button :class "equalizer-btn ${eq-status == "On" ? "equalizer-btn-on" : "equalizer-btn-off"}" :onclick "Player/scripts/equalizer" "󰺢")))))
+        (button :class "visualizer-btn ${vz-status == "On" ? "visualizer-btn-on" : "visualizer-btn-off"}" :onclick "player/scripts/visualizer" "󱑽")
+        (button :class "equalizer-btn ${eq-status == "On" ? "equalizer-btn-on" : "equalizer-btn-off"}" :onclick "player/scripts/equalizer" "󰺢")))))
 
 (defwidget visualizer []
   (box :class "main-album-box" :hexpand "false" :vexpand "false" :space-evenly "false" :width 720 :height 280 :orientation "v"
@@ -63,11 +63,11 @@
   (box :class "player-album-box" :halign "center" :valign "center" :hexpand "false" :vexpand "false" :space-evenly "false" :style "background-image: url('${art}');")))
 
 (defwidget lyrics []
-  (box :class "lyrics-main-box" :orientation "v" :hexpand "false" :vexpand "false" :space-evenly "false" :width 720 :height 280 {get-lyrics} 
+  (box :class "lyrics-main-box" :orientation "v" :hexpand "false" :vexpand "false" :space-evenly "false" :width 720 :height 280 {get-lyrics}
     (label :class "lyrics-label" :text "L Y R I C S" :halign "center" :vexpand "false" :space-evenly "false")
     (label :class "lyrics-title" :text "${title}" :halign "center" :vexpand "false" :space-evenly "false")
     (label :class "lyrics" :text lyrics)))
-    
+
 ;; windows
 (defwindow player
   :windowtype "normal"

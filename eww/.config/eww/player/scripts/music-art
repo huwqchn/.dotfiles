@@ -1,6 +1,6 @@
 #!/bin/bash
 
-tmp_dir="$HOME/.config/eww/Main/images"
+tmp_dir="$HOME/.config/eww/main/images"
 tmp_cover_path=$tmp_dir/cover.png
 tmp_temp_path=$tmp_dir/temp.png
 

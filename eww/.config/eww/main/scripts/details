@@ -1,17 +1,16 @@
 #!/bin/bash
 
 if [[ $1 == "--image" ]]; then
-    FILE=$HOME/.face
-    if [[ -f "$FILE" ]]; then
-        echo "../../.face"
-    else
-        echo "Main/images/profile.png"
-    fi
+	FILE=$HOME/.face
+	if [[ -f "$FILE" ]]; then
+		echo "../../.face"
+	else
+		echo "main/images/profile.png"
+	fi
 fi
 
-
 if [[ $1 == "--name" ]]; then
-    fullname=$(getent passwd "$(whoami)" | cut -d ':' -f 5 | cut -d ',' -f 1 | tr -d "\n")
+	fullname=$(getent passwd "$(whoami)" | cut -d ':' -f 5 | cut -d ',' -f 1 | tr -d "\n")
 	if [ -z "$fullname" ]; then
 		echo "$(whoami)@$(hostnamectl | awk 'FNR==1 {print $3}')"
 	else
@@ -20,9 +19,9 @@ if [[ $1 == "--name" ]]; then
 fi
 
 if [[ $1 == "--kernel" ]]; then
-    echo "$(uname -r)"
+	echo "$(uname -r)"
 fi
 
 if [[ $1 == "--os" ]]; then
-    echo "$(cat /etc/os-release | awk 'NR==1'| awk -F '"' '{print $2}')"
+	echo "$(cat /etc/os-release | awk 'NR==1' | awk -F '"' '{print $2}')"
 fi
