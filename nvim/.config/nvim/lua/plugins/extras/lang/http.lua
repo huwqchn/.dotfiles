@@ -1,4 +1,13 @@
 return {
+  -- add java to treesitter
+  {
+    "nvim-treesitter/nvim-treesitter",
+    opts = function(_, opts)
+      if type(opts.ensure_installed) == "table" then
+        vim.list_extend(opts.ensure_installed, { "http", "json" })
+      end
+    end,
+  },
   {
     "rest-nvim/rest.nvim",
     ft = "http",
@@ -40,7 +49,7 @@ return {
     end,
     keys = {
       {
-        "<leader>cp",
+        "<leader>cT",
         function()
           require("rest-nvim").run(true)
         end,

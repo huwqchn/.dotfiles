@@ -10,11 +10,10 @@ alias E="emacsclient -c -a 'emacs'"
 alias e="emacs -nw"
 alias ra="ranger"
 if [[ $(uname) == 'Darwin' ]]; then
-	alias ep='export https_proxy=http://127.0.0.1:19180 && export http_proxy=http://127.0.0.1:19180'
   alias ed='/opt/homebrew/bin/emacs --daemon &'
 elif [[ $(uname) == 'Linux' ]]; then
   alias lf="echo -e 'lf is deprecated, please use joshuto instead\npress j to open joshuto'"
-alias pm="pulsemixer"
+  alias pm="pulsemixer"
 	alias ep='export all_proxy=http://127.0.0.1:7890'
   alias ed='/usr/bin/emacs --daemon &'
 	alias aic='ascii-image-converter'
@@ -59,7 +58,7 @@ alias gC="git checkout"
 
 alias nc="ncmpcpp"
 alias m="neomutt"
-alias d="lazydocker"
+alias lzd="lazydocker"
 alias chwal="feh --bg-fill -no-fehbg"
 alias cm="cmatrix"
 alias g="gitui"

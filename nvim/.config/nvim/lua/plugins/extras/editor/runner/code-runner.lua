@@ -62,7 +62,7 @@ return {
     keys = {
       { "<leader>c,", "<cmd>RunCode<CR>", noremap = true, silent = false, desc = "Run code" },
       { "<leader>c.", "<cmd>RunFile<CR>", noremap = true, silent = false, desc = "Run file" },
-      { "<leader>ct", "<cmd>RunFile tab<CR>", noremap = true, silent = false, desc = "Run file on tab" },
+      { "<leader>c<tab>", "<cmd>RunFile tab<CR>", noremap = true, silent = false, desc = "Run file on tab" },
       { "<leader>cp", "<cmd>RunProject<CR>", noremap = true, silent = false, desc = "Run project" },
       { "<leader>cx", "<cmd>RunClose<CR>", noremap = true, silent = false, desc = "Close runner" },
       { "<leader>c/", "<cmd>CRFiletype<CR>", noremap = true, silent = false, desc = "Open json with supported file" },

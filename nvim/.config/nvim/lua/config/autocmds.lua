@@ -121,25 +121,25 @@ local definitions = {
       command = "setlocal formatoptions-=c formatoptions-=r formatoptions-=o",
     },
   },
-  {
-    "BufWinLeave",
-    {
-      group = "rememberCursorAndFolds",
-      pattern = "?*",
-      callback = function()
-        autocmd.remember("save")
-      end,
-    },
-  },
-  {
-    "BufWinEnter",
-    {
-      group = "rememberCursorAndFolds",
-      pattern = "?*",
-      callback = function()
-        autocmd.remember("load")
-      end,
-    },
-  },
+  -- {
+  --   "BufWinLeave",
+  --   {
+  --     group = "rememberCursorAndFolds",
+  --     pattern = "?*",
+  --     callback = function()
+  --       autocmd.remember("save")
+  --     end,
+  --   },
+  -- },
+  -- {
+  --   "BufWinEnter",
+  --   {
+  --     group = "rememberCursorAndFolds",
+  --     pattern = "?*",
+  --     callback = function()
+  --       autocmd.remember("load")
+  --     end,
+  --   },
+  -- },
 }
 load(definitions)
