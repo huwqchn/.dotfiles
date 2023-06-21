@@ -29,9 +29,18 @@ return {
     enabled = true,
     opts = { mode = "cursor" },
   },
+  -- {
+  --   "windwp/nvim-ts-autotag",
+  --   event = "InsertEnter",
+  --   opts = {
+  --     filetypes = { "html", "xml" },
+  --   },
+  -- },
   {
-    "windwp/nvim-ts-autotag",
-    event = "InsertEnter",
+    "nvim-treesitter/nvim-treesitter",
+    dependencies = {
+      { "windwp/nvim-ts-autotag", opts = {} },
+    },
   },
   {
     "nvim-treesitter/playground",
@@ -42,6 +51,19 @@ return {
     dependencies = {
       {
         "p00f/nvim-ts-rainbow",
+      },
+    },
+    opts = {
+      rainbow = {
+        enable = true,
+        extended_mode = true, -- Highlight also non-parentheses delimiters, boolean or table: lang -> boolean
+        max_file_lines = 1000, -- Do not enable for files with more than 1000 lines, int
+        colors = {
+          "DodgerBlue",
+          "Orchid",
+          "Gold",
+        },
+        disable = { "html" },
       },
     },
   },
@@ -79,16 +101,10 @@ return {
           show_help = "?",
         },
       },
-      rainbow = {
+      query_linter = {
         enable = true,
-        extended_mode = true, -- Highlight also non-parentheses delimiters, boolean or table: lang -> boolean
-        max_file_lines = 1000, -- Do not enable for files with more than 1000 lines, int
-        colors = {
-          "DodgerBlue",
-          "Orchid",
-          "Gold",
-        },
-        disable = { "html" },
+        use_virtual_text = true,
+        lint_events = { "BufWrite", "CursorHold" },
       },
     },
   },

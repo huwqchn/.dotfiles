@@ -8,9 +8,9 @@ return {
       { "a", mode = { "x", "o" } },
       { "h", mode = { "x", "o" } },
     },
-    event = function()
-      return {}
-    end,
+    -- event = function()
+    --   return {}
+    -- end,
     opts = function()
       -- add treesitter jumping
       ---@param capture string

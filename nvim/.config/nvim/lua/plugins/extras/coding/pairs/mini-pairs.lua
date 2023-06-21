@@ -2,7 +2,7 @@
 return {
   {
     "echasnovski/mini.pairs",
-    event = function(_, event)
+    event = function()
       return { "InsertEnter" }
     end,
   },
