@@ -13,6 +13,9 @@ lctrl + alt + cmd - c : open -n -a "Brave Browser"
 # close a window
 lctrl + alt + cmd - q : yabai -m window --close
 
+# hidden a window
+lctrl + alt + cmd - h : skhd --key "cmd - h"
+
 # focus window
 lctrl + alt + cmd - n : yabai -m window --focus west
 lctrl + alt + cmd - e : yabai -m window --focus south
