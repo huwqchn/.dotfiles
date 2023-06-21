@@ -1,9 +1,7 @@
-# TODO:uniform with linux bspwm shortkeys
-# open iTerm
-lctrl + alt + cmd - return : open -n -a iTerm
+lctrl + alt + cmd - return : open -n -a kitty
 
 # open chrome
-lctrl + alt + cmd - c : open -n -a "Google Chrome"
+lctrl + alt + cmd - c : open -n -a "Brave Browser"
 
 # focus window
 lctrl + alt + cmd - n : yabai -m window --focus west
@@ -39,8 +37,8 @@ lctrl + alt + cmd - 9 : yabai -m space --focus 9
 lctrl + alt + cmd - 0 : yabai -m space --focus 10
 
 # fast focus previous and next desktop
-lctrl + alt + cmd - [ : yabai -m space --focus prev
-lctrl + alt + cmd - ] : yabai -m space --focus next
+lctrl + alt + cmd - 0x21 : yabai -m space --focus prev
+lctrl + alt + cmd - 0x1E : yabai -m space --focus next
 
 # create and destroy spaces
 lctrl + alt + cmd - d : yabai -m space --create
@@ -59,8 +57,8 @@ lctrl + alt + cmd + shift - 9 : yabai -m window --space  9; yabai -m space --foc
 lctrl + alt + cmd + shift - 0 : yabai -m window --space  10; yabai -m space --focus 10
 
 # send window to previous and next desktop and follow focus
-lctrl + alt + cmd + shift - [ : yabai -m window --space  prev; yabai -m space --focus prev
-lctrl + alt + cmd + shift - ] : yabai -m window --space  next; yabai -m space --focus next
+lctrl + alt + cmd + shift - 0x21 : yabai -m window --space  prev; yabai -m space --focus prev
+lctrl + alt + cmd + shift - 0x1E : yabai -m window --space  next; yabai -m space --focus next
 
 # focus monitor
 lctrl + alt + cmd - p : yabai -m display --focus recent
