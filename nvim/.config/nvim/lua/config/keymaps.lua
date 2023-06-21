@@ -170,7 +170,7 @@ map("n", "<C-Left>", "<cmd>vertical resize -2<CR>", { desc = "Decrease window wi
 map("n", "<C-Right>", "<cmd>vertical resize +2<CR>", { desc = "Increase window width" })
 
 -- disable the default s key
-map({ "n", "x" }, "s", "<nop>", { desc = "split/surround/select" })
+-- map({ "n", "x" }, "s", "<nop>", { desc = "split/surround/select" })
 
 -- split the screens
 map("n", "si", function()
