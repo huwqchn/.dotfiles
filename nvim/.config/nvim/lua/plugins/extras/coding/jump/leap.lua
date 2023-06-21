@@ -2,6 +2,7 @@
 return {
   {
     "ggandor/leap.nvim",
+    optional = true,
     keys = function()
       return {
         {
