@@ -10,7 +10,6 @@ return {
   { import = "plugins.extras.coding.jump.leap" },
   -- { import = "plugins.extras.coding.jump.numb" },
   { import = "plugins.extras.coding.join.treesj" },
-  { import = "plugins.extras.coding.incdes.dial" },
   { import = "plugins.extras.coding.symbols.symbols-outline" },
   { import = "plugins.extras.coding.rename.inc-rename" },
   { import = "plugins.extras.coding.refactor.refactoring" },

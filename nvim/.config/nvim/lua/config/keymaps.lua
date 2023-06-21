@@ -191,6 +191,12 @@ map("n", "so", function()
   vim.cmd([[vsplit]])
 end, { desc = "split right" })
 
+-- swap windows with sn se si so
+map("n", "sN", "<C-w>H", { desc = "swap with left" })
+map("n", "sE", "<C-w>J", { desc = "swap with below" })
+map("n", "sI", "<C-w>K", { desc = "swap with above" })
+map("n", "sO", "<C-w>L", { desc = "swap with right" })
+
 unmap("n", "<leader>w-")
 unmap("n", "<leader>w|")
 unmap("n", "<leader>-")

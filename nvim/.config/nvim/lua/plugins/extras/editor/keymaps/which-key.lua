@@ -9,9 +9,9 @@ return {
       { "[", mode = { "n", "v" } },
       { "]", mode = { "n", "v" } },
     },
-    event = function()
-      return {}
-    end,
+    -- event = function()
+    --   return {}
+    -- end,
     opts = {
       window = {
         border = "single",
