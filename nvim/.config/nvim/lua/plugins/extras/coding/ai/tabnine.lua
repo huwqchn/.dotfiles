@@ -23,4 +23,34 @@ return {
       table.insert(opts.sources, 1, { name = "cmp_tabnine", group_index = 2 })
     end,
   },
+  {
+    "codota/tabnine-nvim",
+    build = "./dl_binaries.sh",
+    event = "InsertEnter",
+    cmd = {
+      "TabnineToggle",
+      "TabnineDisable",
+      "TabnineEnable",
+      "TabnineToggle",
+      "TabnineHub",
+    },
+    keys = {
+      {
+        "<leader>at",
+        "<cmd>TabnineToggle<CR>",
+        desc = "TabNine Toggle",
+      },
+    },
+    config = function()
+      require("tabnine").setup({
+        disable_auto_comment = true,
+        accept_keymap = "<Tab>",
+        dismiss_keymap = "<C-c>",
+        debounce_ms = 800,
+        suggestion_color = { gui = "#808080", cterm = 244 },
+        exclude_filetypes = { "TelescopePrompt" },
+        log_file_path = nil, -- absolute path to Tabnine log file
+      })
+    end,
+  },
 }
