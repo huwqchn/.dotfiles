@@ -22,7 +22,7 @@ require("lazy").setup({
     { import = "lazyvim.plugins.extras.dap.nlua" },
     -- lazyvim test core extension modules
     { import = "lazyvim.plugins.extras.test.core" },
-    -- { import = "lazyvim.plugins.extras.util.mini-hipatterns" },
+    { import = "lazyvim.plugins.extras.util.mini-hipatterns" },
     { import = "lazyvim.plugins.extras.ui.mini-animate" },
     { import = "lazyvim.plugins.extras.coding.copilot" },
     -- { import = "lazyvim.plugins.extras.ui.edgy" },
