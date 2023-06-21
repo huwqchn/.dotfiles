@@ -48,11 +48,16 @@ return {
     "neovim/nvim-lspconfig",
     init = function()
       local lsp_keys = require("lazyvim.plugins.lsp.keymaps")
-      lsp_keys._keys = vim.tbl_extend("force", lsp_keys.get(), {
-        { "I", vim.lsp.buf.hover, desc = "Hover" },
-        { "gi", vim.lsp.buf.signature_help, desc = "Signature Help", has = "signatureHelp" },
-        { "<c-h>", vim.lsp.buf.signature_help, mode = "i", desc = "Signature Help", has = "signatureHelp" },
-      })
+      local keys = lsp_keys.get()
+      for _, key in ipairs(keys) do
+        if key[1] == "K" then
+          key[1] = "I"
+        elseif key[1] == "gK" then
+          key[1] = "gi"
+        elseif key[1] == "<c-k>" then
+          key[1] = "<c-h>"
+        end
+      end
     end,
   },
 }
