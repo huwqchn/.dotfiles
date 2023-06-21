@@ -1,7 +1,17 @@
+# restart skhd
+lctrl + alt + cmd - 0x35 : skhd --restart-service
+
+# Restart Yabai
+lctrl + alt + cmd + shift - r : yabai --restart-service
+
+#  open terminal
 lctrl + alt + cmd - return : open -n -a kitty
 
-# open chrome
+# open browser
 lctrl + alt + cmd - c : open -n -a "Brave Browser"
+
+# close a window
+lctrl + alt + cmd - q : yabai -m window --close
 
 # focus window
 lctrl + alt + cmd - n : yabai -m window --focus west
@@ -95,12 +105,10 @@ lctrl + alt + cmd - f : yabai -m window --toggle zoom-fullscreen
 lctrl + alt + cmd - l : yabai -m window --toggle split
 
 # float / unfloat window and center on screen
-lctrl + alt + cmd - space : yabai -m window --toggle float
+lctrl + alt + cmd + shift - f : yabai -m window --toggle float
 
 # float / unfloat window and center on screen
-lctrl + alt + cmd - w : yabai -m window --toggle float;\
-           yabai -m window --grid 4:4:1:1:2:2
+# lctrl + alt + cmd - w : yabai -m window --toggle float;\
+#            yabai -m window --grid 4:4:1:1:2:2
 
-# Restart Yabai
-lctrl + alt + cmd - q : brew services restart yabai
-lctrl + alt + cmd + shift - q : osascript -e 'tell app "System Events" to log out'
+# lctrl + alt + cmd + shift - q : osascript -e 'tell app "System Events" to log out'
