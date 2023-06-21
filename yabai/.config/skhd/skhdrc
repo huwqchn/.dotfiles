@@ -11,7 +11,8 @@ lctrl + alt + cmd - return : open -n -a kitty
 lctrl + alt + cmd - c : open -n -a "Brave Browser"
 
 # close a window
-lctrl + alt + cmd - q : yabai -m window --close
+# lctrl + alt + cmd - q : yabai -m window --close
+lctrl + alt + cmd - q : skhd --key "cmd - q"
 
 # quit yabai
 lctrl + alt + cmd + shift - q : yabai --stop-service

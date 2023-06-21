@@ -1,12 +1,12 @@
 # Use custom format:
-format='''
+format = '''
 $directory$git_branch$git_status$c$cmake$lua$python$rust$golang$java$nodejs$conda$docker_context$container$package
 $character
 '''
 
 # Prompt symbols
 [character]
-success_symbol = "[](#9ece6a bold)"
+success_symbol = "[󰉁](#9ece6a bold)"
 error_symbol = "[](#db4b4b)"
 vicmd_symbol = "[](#9ece6a)"
 vimcmd_replace_one_symbol = "[](#d19a66)"
@@ -23,45 +23,45 @@ Windows = " "
 Macos = " "
 FreeBSD = " "
 Android = "󰀲 "
-Alpine = " "
-Amazon = " "
-Arch = " "
-CentOS = " "
-Debian = " "
-DragonFly = " "
-Emscripten = " "
-EndeavourOS = " "
-Fedora = " "
-Garuda = " "
-Gentoo = " "
-HardenedBSD = " "
-Illumos = " "
-Linux = " "
-Manjaro = " "
-Mariner = " "
-MidnightBSD = " "
-Mint = " "
-NetBSD = " "
-NixOS = " "
-OpenBSD = " "
-OpenCloudOS = " "
-openEuler = " "
-openSUSE = " "
-OracleLinux = " "
-Pop = " "
-Raspbian = " "
-Redhat = " "
-RedHatEnterprise = " "
-Redox = " "
-Solus = " "
-SUSE = " "
-Ubuntu = " "
+Alpine = "󰊠 "
+Amazon = "󰊠 "
+Arch = "󰊠 "
+CentOS = "󰊠 "
+Debian = "󰊠 "
+DragonFly = "󰊠 "
+Emscripten = "󰊠 "
+EndeavourOS = "󰊠 "
+Fedora = "󰊠 "
+Garuda = "󰊠 "
+Gentoo = "󰊠 "
+HardenedBSD = "󰊠 "
+Illumos = "󰊠 "
+Linux = "󰊠 "
+Manjaro = "󰊠 "
+Mariner = "󰊠 "
+MidnightBSD = "󰊠 "
+Mint = "󰊠 "
+NetBSD = "󰊠 "
+NixOS = "󰊠 "
+OpenBSD = "󰊠 "
+OpenCloudOS = "󰊠 "
+openEuler = "󰊠 "
+openSUSE = "󰊠 "
+OracleLinux = "󰊠 "
+Pop = "󰊠 "
+Raspbian = "󰊠 "
+Redhat = "󰊠 "
+RedHatEnterprise = "󰊠 "
+Redox = "󰊠 "
+Solus = "󰊠 "
+SUSE = "󰊠 "
+Ubuntu = "󰊠 "
 Unknown = " "
 
 [directory]
-read_only = "  "
+read_only = " 󰌾 "
 read_only_style = "bg:#292E42 fg:#db4b4b"
-format = "[]($style)[ ](bg:#292E42 fg:#7aa2f7)[[$path](bg:#292E42 fg:#a9b1d6)](bg:#292E42 fg:#c0caf5)[$read_only]($read_only_style)[ ]($style)"
+format = "[]($style)[󰊠 ](bg:#292E42 fg:#7aa2f7)[[$path](bg:#292E42 fg:#a9b1d6)](bg:#292E42 fg:#c0caf5)[$read_only]($read_only_style)[ ]($style)"
 style = "#292E42"
 
 [git_branch]
@@ -85,9 +85,9 @@ behind = "󰜮"
 stashed = " "
 
 [battery]
-full_symbol = ""
-charging_symbol = ""
-discharging_symbol = ""
+full_symbol = "󰁹"
+charging_symbol = "󰂄"
+discharging_symbol = "󰂃"
 
 [aws]
 symbol = "  "
@@ -159,7 +159,7 @@ symbol = " "
 symbol = "喝"
 
 [nim]
-symbol = " "
+symbol = ""
 
 [nix_shell]
 symbol = " "
@@ -195,4 +195,3 @@ symbol = " "
 
 [spack]
 symbol = "🅢 "
-
