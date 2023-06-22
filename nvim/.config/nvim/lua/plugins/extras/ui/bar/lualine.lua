@@ -317,7 +317,7 @@ return {
       return {
         options = {
           icons_enabled = true,
-          theme = os.getenv("THEME"),
+          theme = opts.theme,
           component_separators = { left = "", right = "" },
           section_separators = { left = "", right = "" },
           disabled_filetypes = {

@@ -1,7 +1,7 @@
 local M = {}
 local colorscheme = os.getenv("THEME")
 if colorscheme == nil then
-  colorscheme = "tokyonight"
+  colorscheme = "catppuccin"
 end
 local theme_path = "plugins.extras.ui.theme." .. colorscheme
 local has_theme, _ = pcall(require, theme_path)
