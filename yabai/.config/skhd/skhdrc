@@ -13,8 +13,14 @@ lctrl + alt + cmd - c : open -n -a "Brave Browser"
 # close a window
 lctrl + alt + cmd - q : yabai -m window --close
 
+# quit yabai
+lctrl + alt + cmd + shift - q : yabai --stop-service
+
 # hidden a window
 lctrl + alt + cmd - h : skhd --key "cmd - h"
+
+# sticky window
+lctrl + alt + cmd - y : yabai -m window --toggle sticky
 
 # focus window
 lctrl + alt + cmd - n : yabai -m window --focus west
