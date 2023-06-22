@@ -168,6 +168,10 @@ map("n", "<C-Up>", "<cmd>resize +2<CR>", { desc = "Increase window height" })
 map("n", "<C-Down>", "<cmd>resize -2<CR>", { desc = "Decrease window height" })
 map("n", "<C-Left>", "<cmd>vertical resize -2<CR>", { desc = "Decrease window width" })
 map("n", "<C-Right>", "<cmd>vertical resize +2<CR>", { desc = "Increase window width" })
+map("n", "s<Up>", "<cmd>resize +2<CR>", { desc = "Increase window height" })
+map("n", "s<Down>", "<cmd>resize -2<CR>", { desc = "Decrease window height" })
+map("n", "s<Left>", "<cmd>vertical resize -2<CR>", { desc = "Decrease window width" })
+map("n", "s<Right>", "<cmd>vertical resize +2<CR>", { desc = "Increase window width" })
 
 -- disable the default s key
 -- map({ "n", "x" }, "s", "<nop>", { desc = "split/surround/select" })
