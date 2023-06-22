@@ -91,14 +91,14 @@ lctrl + alt + cmd + shift - p : yabai -m window --display recent; yabai -m displ
 # shift + ctrl - s : yabai -m window --move rel:0:20
 
 # resize windows
-# lctrl + alt + cmd + shift - n : yabai -m window --resize left:-50:0; \
-#                   yabai -m window --resize right:-50:0
-# lctrl + alt + cmd + shift - e : yabai -m window --resize bottom:0:50; \
-#                   yabai -m window --resize top:0:50
-# lctrl + alt + cmd + shift - u : yabai -m window --resize top:0:-50; \
-#                   yabai -m window --resize bottom:0:-50
-# lctrl + alt + cmd + shift - i : yabai -m window --resize right:50:0; \
-#                   yabai -m window --resize left:50:0
+lctrl + alt - n : yabai -m window --resize left:-50:0; \
+            yabai -m window --resize right:-50:0
+lctrl + alt - e : yabai -m window --resize bottom:0:50; \
+            yabai -m window --resize top:0:50
+lctrl + alt - i : yabai -m window --resize top:0:-50; \
+            yabai -m window --resize bottom:0:-50
+lctrl + alt - o : yabai -m window --resize right:50:0; \
+                  yabai -m window --resize left:50:0
 
 # move managed window
 lctrl + alt + cmd + shift - i : yabai -m window --warp north
