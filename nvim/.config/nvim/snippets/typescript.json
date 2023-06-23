@@ -3,7 +3,7 @@
     "prefix": "fc",
     "body": [
       "\"use client\";",
-      "\n",
+      "",
       "const ${1:ComponentName} = () => {",
       "  return (",
       "    <div>",
@@ -11,7 +11,7 @@
       "    </div>",
       "  );",
       "}",
-      "\n",
+      "",
       "export default ${1:ComponentName};"
     ],
     "description": "add function component"
@@ -20,7 +20,7 @@
     "prefix": "ff",
     "body": [
       "\"use client\";",
-      "\n",
+      "",
       "const ${TM_FILENAME_BASE} = () => {",
       "  return (",
       "    <div>",
@@ -28,7 +28,7 @@
       "    </div>",
       "  );",
       "}",
-      "\n",
+      "",
       "export default ${TM_FILENAME_BASE};"
     ],
     "description": "add filebase function component"
