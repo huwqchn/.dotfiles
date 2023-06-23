@@ -11,6 +11,7 @@ return {
   {
     "zbirenbaum/copilot.lua",
     event = "InsertEnter",
+    optional = true,
     keys = {
       {
         "<leader>ap",
