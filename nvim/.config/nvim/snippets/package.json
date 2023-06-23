@@ -12,6 +12,13 @@
       {
         "language": "json",
         "path": "./json.json"
+      },
+      {
+        "language": [
+          "typescript",
+          "typescriptreact"
+        ],
+        "path": "./typescript.json"
       }
     ]
   }

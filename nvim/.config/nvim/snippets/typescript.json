@@ -1,0 +1,36 @@
+{
+  "add function component": {
+    "prefix": "fc",
+    "body": [
+      "\"use client\";",
+      "\n",
+      "const ${1:ComponentName} = () => {",
+      "  return (",
+      "    <div>",
+      "      ${1:ComponentName}",
+      "    </div>",
+      "  );",
+      "}",
+      "\n",
+      "export default ${1:ComponentName};"
+    ],
+    "description": "add function component"
+  },
+  "add filebase function component": {
+    "prefix": "ff",
+    "body": [
+      "\"use client\";",
+      "\n",
+      "const ${TM_FILENAME_BASE} = () => {",
+      "  return (",
+      "    <div>",
+      "      ${TM_FILENAME_BASE}",
+      "    </div>",
+      "  );",
+      "}",
+      "\n",
+      "export default ${TM_FILENAME_BASE};"
+    ],
+    "description": "add filebase function component"
+  }
+}
