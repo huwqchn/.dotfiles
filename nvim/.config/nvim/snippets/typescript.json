@@ -32,5 +32,14 @@
       "export default ${TM_FILENAME_BASE};"
     ],
     "description": "add filebase function component"
+  },
+  "function component interface": {
+    "prefix": "interface",
+    "body": [
+      "interface ${TM_FILENAME_BASE}Props {",
+      "  ${1:propName}: ${2:propType}",
+      "}"
+    ],
+    "description": "add function component interface"
   }
 }
