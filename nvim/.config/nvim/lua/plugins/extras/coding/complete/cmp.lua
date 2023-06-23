@@ -14,36 +14,36 @@ return {
         completion = cmp.config.window.bordered(),
         documentation = cmp.config.window.bordered(),
       }
-      opts.mapping = vim.tbl_extend("force", opts.mapping, {
-        ["<C-e>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
-        ["<C-i>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
-        ["<C-c>"] = cmp.mapping.abort(),
-        ["<C-o>"] = cmp.mapping.complete(),
-        ["<CR>"] = cmp.mapping(function(fallback)
-          if cmp.visible() then
-            local confirm_opts = {
-              behavior = cmp.ConfirmBehavior.Replace,
-              select = false,
-            }
-            local is_insert_mode = function()
-              return vim.api.nvim_get_mode().mode:sub(1, 1) == "i"
-            end
-            if is_insert_mode() then -- prevent overwriting brackets
-              confirm_opts.behavior = cmp.ConfirmBehavior.Insert
-            end
-            local entry = cmp.get_selected_entry()
-            local is_copilot = entry and entry.source.name == "copilot"
-            if is_copilot then
-              confirm_opts.behavior = cmp.ConfirmBehavior.Replace
-              confirm_opts.select = true
-            end
-            if cmp.confirm(confirm_opts) then
-              return -- success, exit early
-            end
+      cmp.mapping.preset["<C-Space>"] = nil -- disable C-space
+      opts.mapping["<C-Space>"] = nil
+      opts.mapping["<CR>"] = cmp.mapping(function(fallback)
+        if cmp.visible() then
+          local confirm_opts = {
+            behavior = cmp.ConfirmBehavior.Replace,
+            select = false,
+          }
+          local is_insert_mode = function()
+            return vim.api.nvim_get_mode().mode:sub(1, 1) == "i"
           end
-          fallback() -- if not exited early, always fallback
-        end),
-      })
+          if is_insert_mode() then -- prevent overwriting brackets
+            confirm_opts.behavior = cmp.ConfirmBehavior.Insert
+          end
+          local entry = cmp.get_selected_entry()
+          local is_copilot = entry and entry.source.name == "copilot"
+          if is_copilot then
+            confirm_opts.behavior = cmp.ConfirmBehavior.Replace
+            confirm_opts.select = true
+          end
+          if cmp.confirm(confirm_opts) then
+            return -- success, exit early
+          end
+        end
+        fallback() -- if not exited early, always fallback
+      end)
+      opts.mapping["<C-i>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert })
+      opts.mapping["<C-e>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert })
+      opts.mapping["<C-c>"] = cmp.mapping.abort()
+      opts.mapping["<C-o>"] = cmp.mapping.complete()
       opts.experimental = vim.tbl_extend("force", opts.experimental or {}, {
         native_menu = false,
       })

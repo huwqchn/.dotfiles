@@ -16,7 +16,7 @@ return {
   -- { import = "plugins.extras.coding.yank.yanky" },
   { import = "plugins.extras.coding.treesitter" },
   { import = "plugins.extras.coding.complete.cmp" },
-  { import = "plugins.extras.coding.complete.supertab" },
+  -- { import = "plugins.extras.coding.complete.supertab" },
   { import = "plugins.extras.coding.complete.luasnip" },
   { import = "plugins.extras.coding.complete.template" },
   -- { import = "plugins.extras.coding.complete.cmdline" },
