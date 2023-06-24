@@ -29,13 +29,6 @@ return {
     enabled = true,
     opts = { mode = "cursor" },
   },
-  -- {
-  --   "windwp/nvim-ts-autotag",
-  --   event = "InsertEnter",
-  --   opts = {
-  --     filetypes = { "html", "xml" },
-  --   },
-  -- },
   {
     "nvim-treesitter/nvim-treesitter",
     dependencies = {
@@ -50,20 +43,44 @@ return {
     "nvim-treesitter/nvim-treesitter",
     dependencies = {
       {
-        "p00f/nvim-ts-rainbow",
-      },
-    },
-    opts = {
-      rainbow = {
-        enable = true,
-        extended_mode = true, -- Highlight also non-parentheses delimiters, boolean or table: lang -> boolean
-        max_file_lines = 1000, -- Do not enable for files with more than 1000 lines, int
-        colors = {
-          "DodgerBlue",
-          "Orchid",
-          "Gold",
-        },
-        disable = { "html" },
+        "HiPhish/nvim-ts-rainbow2",
+        config = function()
+          local rainbow = require("ts-rainbow")
+
+          require("nvim-treesitter.configs").setup({
+            rainbow = {
+              enable = true,
+              -- list of languages you want to disable the plugin for
+              disable = {},
+              -- Which query to use for finding delimiters
+              query = {
+                "rainbow-parens",
+                html = "rainbow-tags",
+                latex = "rainbow-blocks",
+                tsx = "rainbow-tags",
+                vue = "rainbow-tags",
+              },
+              -- Highlight the entire buffer all at once
+              strategy = {
+                -- Use global strategy by default
+                rainbow.strategy["global"],
+                -- Use local for HTML
+                html = rainbow.strategy["local"],
+                -- Pick the strategy for LaTeX dynamically based on the buffer size
+                latex = function()
+                  -- Disabled for very large files, global strategy for large files,
+                  -- local strategy otherwise
+                  if vim.fn.line("$") > 10000 then
+                    return nil
+                  elseif vim.fn.line("$") > 1000 then
+                    return rainbow.strategy["global"]
+                  end
+                  return rainbow.strategy["local"]
+                end,
+              },
+            },
+          })
+        end,
       },
     },
   },
