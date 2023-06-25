@@ -16,7 +16,7 @@ return {
     end,
     opts = {
       globalStatus = true,
-      transparent = true,
+      transparent = false,
     },
   },
   {
