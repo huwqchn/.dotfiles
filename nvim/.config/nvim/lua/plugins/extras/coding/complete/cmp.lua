@@ -10,6 +10,7 @@ return {
     },
     opts = function(_, opts)
       local cmp = require("cmp")
+      local ls = require("luasnip")
       opts.window = {
         completion = cmp.config.window.bordered(),
         documentation = cmp.config.window.bordered(),
@@ -40,6 +41,22 @@ return {
         end
         fallback() -- if not exited early, always fallback
       end)
+      opts.mapping["<C-n>"] = cmp.mapping(function()
+        if ls.choice_active() then
+          ls.change_choice(1)
+        elseif cmp.visible() then
+          cmp.select_next_item({ behavior = cmp.SelectBehavior.Insert })
+        end
+        -- fallback()
+      end, { "i", "s" })
+      opts.mapping["<C-p>"] = cmp.mapping(function()
+        if ls.choice_active() then
+          ls.change_choice(-1)
+        elseif cmp.visible() then
+          cmp.select_prev_item({ behavior = cmp.SelectBehavior.Insert })
+        end
+        -- fallback()
+      end, { "i", "s" })
       opts.mapping["<C-i>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert })
       opts.mapping["<C-e>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert })
       opts.mapping["<C-c>"] = cmp.mapping.abort()
