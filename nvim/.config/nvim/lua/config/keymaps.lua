@@ -71,7 +71,7 @@ map({ "n", "v" }, "<C-m>", "<C-e>")
 map("i", "<C-k>", "<cmd>normal! dd<cr>")
 
 -- better cmd mode
-map("n", ":", ",")
+-- map("n", ":", ",")
 -- map("n", "<cr>", ":")
 -- backup cmd mode, some plugins will override <cr>
 map("n", "\\", ":")
