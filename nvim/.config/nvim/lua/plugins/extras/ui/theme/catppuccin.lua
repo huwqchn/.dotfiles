@@ -4,7 +4,7 @@ return {
     "catppuccin/nvim",
     name = "catppuccin",
     opts = {
-      transparent_background = false,
+      transparent_background = vim.g.transparent_enabled,
       interations = {
         notify = true,
         mini = true,

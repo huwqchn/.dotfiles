@@ -16,7 +16,7 @@ return {
     end,
     opts = {
       globalStatus = true,
-      transparent = false,
+      transparent = vim.g.transparent_enabled,
     },
   },
   {
