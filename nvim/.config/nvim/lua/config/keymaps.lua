@@ -68,7 +68,10 @@ map({ "n", "x", "o" }, "gK", "gN", { desc = "Search backwards and select" })
 map({ "n", "v" }, "<C-m>", "<C-e>")
 
 -- emacs kill a line
-map("i", "<C-k>", "<cmd>normal! dd<cr>")
+map("i", "<C-k>", "<cmd>normal! dd<cr>", { expr = true, silent = true })
+
+-- autocorrect spelling from previous error
+map("i", "<c-f>", "<c-g>u<Esc>[s1z=`]a<c-g>u", { expr = true, silent = true })
 
 -- better cmd mode
 -- map("n", ":", ",")
