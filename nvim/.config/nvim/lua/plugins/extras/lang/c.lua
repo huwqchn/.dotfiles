@@ -43,7 +43,6 @@ return {
     opts = {
       servers = {
         clangd = {
-
           cmd = {
             "clangd",
             "--background-index",

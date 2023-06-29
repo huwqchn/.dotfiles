@@ -30,6 +30,17 @@ return {
                 workspaceWord = true,
                 callSnippet = "Both",
               },
+              hint = {
+                enable = true,
+                setType = false,
+                paramType = true,
+                paramName = "Disable",
+                semicolon = "Disable",
+                arrayIndex = "Disable",
+              },
+              doc = {
+                privateName = { "^_" },
+              },
               misc = {
                 parameters = {
                   "--log-level=trace",
