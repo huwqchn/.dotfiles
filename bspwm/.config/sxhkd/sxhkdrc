@@ -4,7 +4,7 @@
 
 # terminal emulator
 super + Return
-	kitty
+	env GLFW_IM_MODULE=ibus kitty
 
 # browser
 super + c
