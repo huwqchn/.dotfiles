@@ -80,6 +80,7 @@ map("i", "<c-f>", "<c-g>u<Esc>[s1z=`]a<c-g>u", { expr = true, silent = true })
 map("n", "\\", ":")
 map("n", ",", ":")
 
+map("", "g:", "g,")
 -- save
 -- map("n", "S", "<cmd>w<cr>", { desc = "Save file" })
 
