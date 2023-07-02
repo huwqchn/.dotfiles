@@ -16,21 +16,19 @@ return {
     keys = function(_, keys)
       for _, key in ipairs(keys) do
         if key[1] == "s" then
-          key[1] = "j"
-          key.mode = { "n", "x" }
-          --HACK: override default key only when mode fully matches
-          local k = vim.deepcopy(key)
-          k.mode = { "x" }
-          table.insert(keys, k)
-        elseif key[1] == "S" then
-          key[1] = "J"
+          -- key.mode = { "o", "x" }
+          -- local key2 = vim.deepcopy(key)
+          -- key2[1] = "ss"
+          -- key2.mode = "n"
+          -- table.insert(keys, key2)
+          key[1] = ","
         end
       end
       for _, key in ipairs({ "f", "F", "t", "T", ";", ":" }) do
         table.insert(keys, key)
       end
       table.insert(keys, {
-        "gj",
+        "g,",
         function()
           local Flash = require("flash")
           Flash.jump({
@@ -65,6 +63,6 @@ return {
   },
   {
     "mfussenegger/nvim-treehopper",
-    enable = false,
+    enabled = false,
   },
 }

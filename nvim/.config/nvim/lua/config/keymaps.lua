@@ -47,12 +47,12 @@ map({ "n", "x", "o" }, "l", "o")
 map({ "n", "x", "o" }, "L", "O")
 
 -- colemak-dh end of word
-if not Util.has("flash.nvim") then
+if not Util.has("nvim-spider") then
   map({ "n", "x", "o" }, "j", "e")
-  map({ "n", "x", "o" }, "J", "E")
   map({ "n", "x", "o" }, "gj", "ge")
-  map({ "n", "x", "o" }, "gJ", "gE")
 end
+map({ "n", "x", "o" }, "J", "E")
+map({ "n", "x", "o" }, "gJ", "gE")
 
 -- colemake searching key
 -- https://github.com/mhinz/vim-galore#saner-behavior-of-n-and-n
@@ -76,13 +76,13 @@ map("i", "<C-k>", "<cmd>normal! dd<cr>", { expr = true, silent = true })
 map("i", "<c-f>", "<c-g>u<Esc>[s1z=`]a<c-g>u", { expr = true, silent = true })
 
 -- better cmd mode, swap ; and :
-map("", ",", ":")
 map("n", "\\", ":")
--- map("n", "<cr>", ":")
+map("n", "<cr>", ":")
 if not Util.has("leap.nvim") and Util.has("flash.nvim") and Util.has("flit.nvim") then
+  map("", ",", ":")
   map("", ":", ",")
+  map("", "g:", "g,")
 end
-map("", "g:", "g,")
 
 -- select all
 map({ "n", "x", "i" }, "<C-a>", "<cmd>normal! ggVG<cr>")
