@@ -31,10 +31,10 @@ map({ "n", "x", "o" }, "N", "^")
 map({ "n", "x", "o" }, "O", "$")
 
 -- colemak-dh join/hover
-map({ "n", "x", "o" }, "I", "K")
--- if not Util.has("treesj") or not Util.has("mini.splitjoin") then
--- 	map({ "n", "x", "o" }, "E", "J")
--- end
+-- map({ "n", "x", "o" }, "I", "K")
+if not Util.has("treesj") and not Util.has("mini.splitjoin") then
+  map("", "E", "J")
+end
 
 -- colemak-dh insert key
 map({ "n", "x", "o" }, "h", "i")
@@ -47,10 +47,12 @@ map({ "n", "x", "o" }, "l", "o")
 map({ "n", "x", "o" }, "L", "O")
 
 -- colemak-dh end of word
--- map({ "n", "x", "o" }, "j", "e")
--- map({ "n", "x", "o" }, "J", "E")
--- map({ "n", "x", "o" }, "gj", "ge")
--- map({ "n", "x", "o" }, "gJ", "gE")
+if not Util.has("flash.nvim") then
+  map({ "n", "x", "o" }, "j", "e")
+  map({ "n", "x", "o" }, "J", "E")
+  map({ "n", "x", "o" }, "gj", "ge")
+  map({ "n", "x", "o" }, "gJ", "gE")
+end
 
 -- colemake searching key
 -- https://github.com/mhinz/vim-galore#saner-behavior-of-n-and-n
@@ -81,8 +83,6 @@ map("n", "\\", ":")
 map("n", ",", ":")
 
 map("", "g:", "g,")
--- save
--- map("n", "S", "<cmd>w<cr>", { desc = "Save file" })
 
 -- select all
 map({ "n", "x", "i" }, "<C-a>", "<cmd>normal! ggVG<cr>")
@@ -112,12 +112,14 @@ map("n", "Y", "y$")
 map("v", "Y", '"+y')
 
 -- Move lines
--- map("n", "<A-e>", "<cmd>m .+1<CR>==", { desc = "Move down" })
--- map("n", "<A-i>", "<cmd>m .-2<CR>==", { desc = "Move up" })
--- map("i", "<A-e>", "<Esc><cmd>m .+1<CR>==gi", { desc = "Move down" })
--- map("i", "<A-i>", "<Esc><cmd>m .-2<CR>==gi", { desc = "Move up" })
--- map("v", "<A-e>", ":m '>+1<CR>gv=gv", { desc = "Move down" })
--- map("v", "<A-i>", ":m '<-2<CR>gv=gv", { desc = "Move up" })
+if not Util.has("mini.move") then
+  map("n", "<A-e>", "<cmd>m .+1<CR>==", { desc = "Move down" })
+  map("n", "<A-i>", "<cmd>m .-2<CR>==", { desc = "Move up" })
+  map("i", "<A-e>", "<Esc><cmd>m .+1<CR>==gi", { desc = "Move down" })
+  map("i", "<A-i>", "<Esc><cmd>m .-2<CR>==gi", { desc = "Move up" })
+  map("v", "<A-e>", ":m '>+1<CR>gv=gv", { desc = "Move down" })
+  map("v", "<A-i>", ":m '<-2<CR>gv=gv", { desc = "Move up" })
+end
 
 -- insert mode navigation
 map("i", "<A-Up>", "<C-\\><C-N><C-w>k")
@@ -271,7 +273,7 @@ map("n", "<leader>b<space>", function()
 end, { silent = true, desc = "Close unused buffers" })
 
 -- Replace in selection
-map("x", "s<cr>", ":s/\\%V", { desc = "replace in selection" })
+map("x", "S", ":s/\\%V", { desc = "replace in selection" })
 
 -- smart deletion, dd
 -- It solves the issue, where you want to delete empty line, but dd will override you last yank.
