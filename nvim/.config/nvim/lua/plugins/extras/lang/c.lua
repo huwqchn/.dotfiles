@@ -79,7 +79,7 @@ return {
             if client.name == "clangd" then
               vim.keymap.set(
                 "n",
-                "<F4>",
+                "s<space>",
                 "<cmd>ClangdSwitchSourceHeader<cr>",
                 { desc = "switch between header and source" }
               )
