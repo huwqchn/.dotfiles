@@ -67,8 +67,9 @@ return {
             require("lazyvim.util").on_attach(function(client, buffer)
                 -- stylua: ignore
                 if client.name == "rust_analyzer" then
-                  vim.keymap.set("n", "I", "<CMD>RustHoverActions<CR>", { buffer = buffer })
-                  vim.keymap.set("n", "<leader>ct", "<CMD>RustDebuggables<CR>", { buffer = buffer, desc = "Run Test" })
+                  vim.keymap.set("n", "I", "<cmd>RustHoverActions<cr>", { buffer = buffer, desc = "Hover Actions (Rust)" })
+                  vim.keymap.set( "n", "<leader>cR", "<cmd>RustCodeAction<cr>", { buffer = buffer, desc = "Code Action (Rust)" })
+                  vim.keymap.set( "n", "<leader>dr", "<cmd>RustDebuggables<cr>", { buffer = buffer, desc = "Run Debuggables (Rust)" })
                 end
             end)
             local mason_registry = require("mason-registry")
@@ -87,16 +88,23 @@ return {
                 settings = {
                   ["rust-analyzer"] = {
                     cargo = {
-                      features = "all",
+                      allFeatures = true,
+                      loadOutDirsFromCheck = true,
+                      runBuildScripts = true,
                     },
                     -- Add clippy lints for Rust.
-                    checkOnSave = true,
-                    check = {
+                    checkOnSave = {
+                      allFeatures = true,
                       command = "clippy",
-                      features = "all",
+                      extraArgs = { "--no-deps" },
                     },
                     procMacro = {
                       enable = true,
+                      ignored = {
+                        ["async-trait"] = { "async_trait" },
+                        ["napi-derive"] = { "napi" },
+                        ["async-recursion"] = { "async_recursion" },
+                      },
                     },
                   },
                 },
