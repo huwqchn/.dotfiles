@@ -2,10 +2,9 @@ return {
   {
     "folke/flash.nvim",
     optional = true,
-    event = "VeryLazy",
-    -- event = function()
-    --   return {}
-    -- end,
+    event = function()
+      return {}
+    end,
     opts = {
       labels = "arstgmneioqwfpbjluyxcdvzkh",
       char = {
@@ -15,14 +14,21 @@ return {
     keys = function(_, keys)
       for _, key in ipairs(keys) do
         if key[1] == "s" then
-          key[1] = "gj"
+          key[1] = "j"
+          key.mode = { "n", "x" }
+          --HACK: override default key only when mode fully matches
+          local k = vim.deepcopy(key)
+          k.mode = { "x" }
+          table.insert(keys, k)
+        elseif key[1] == "S" then
+          key[1] = "J"
         end
       end
       for _, key in ipairs({ "f", "F", "t", "T", ";", ":" }) do
         table.insert(keys, key)
       end
       table.insert(keys, {
-        "gJ",
+        "gj",
         function()
           local Flash = require("flash")
           Flash.jump({
@@ -52,37 +58,6 @@ return {
         end,
         mode = { "n", "o", "x" },
         desc = "2-char jump",
-      })
-      table.insert(keys, {
-        "j",
-        function()
-          require("flash").jump({
-            search = { forward = true, wrap = false, multi_window = false },
-          })
-        end,
-        mode = { "n", "x" },
-        desc = "jump forward",
-      })
-      --HACK: This is a hack, because LazyVim keymap bugs
-      table.insert(keys, {
-        "j",
-        function()
-          require("flash").jump({
-            search = { forward = true, wrap = false, multi_window = false },
-          })
-        end,
-        mode = { "o" },
-        desc = "jump forward",
-      })
-      table.insert(keys, {
-        "J",
-        function()
-          require("flash").jump({
-            search = { forward = false, wrap = false, multi_window = false },
-          })
-        end,
-        mode = { "n", "o", "x" },
-        desc = "jump previous",
       })
     end,
   },
