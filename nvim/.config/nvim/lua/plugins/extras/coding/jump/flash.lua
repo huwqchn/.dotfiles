@@ -7,8 +7,10 @@ return {
     end,
     opts = {
       labels = "arstgmneioqwfpbjluyxcdvzkh",
-      char = {
-        keys = { "f", "F", "t", "T", ";", ":" },
+      modes = {
+        char = {
+          keys = { "f", "F", "t", "T", ";", [","] = ":" },
+        },
       },
     },
     keys = function(_, keys)

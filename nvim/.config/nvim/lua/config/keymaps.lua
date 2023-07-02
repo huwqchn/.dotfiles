@@ -75,13 +75,13 @@ map("i", "<C-k>", "<cmd>normal! dd<cr>", { expr = true, silent = true })
 -- autocorrect spelling from previous error
 map("i", "<c-f>", "<c-g>u<Esc>[s1z=`]a<c-g>u", { expr = true, silent = true })
 
--- better cmd mode
-map("n", ":", ",")
--- map("n", "<cr>", ":")
--- backup cmd mode, some plugins will override <cr>
+-- better cmd mode, swap ; and :
+map("", ",", ":")
 map("n", "\\", ":")
-map("n", ",", ":")
-
+-- map("n", "<cr>", ":")
+if not Util.has("leap.nvim") and Util.has("flash.nvim") and Util.has("flit.nvim") then
+  map("", ":", ",")
+end
 map("", "g:", "g,")
 
 -- select all
