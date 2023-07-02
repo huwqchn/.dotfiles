@@ -11,9 +11,9 @@
 -- o[nore]map     |  -   |  -  |  -  |  -  |  -  | yes |  -   |  -   |
 -- t[nore]map     |  -   |  -  |  -  |  -  |  -  |  -  | yes  |  -   |
 -- l[nore]map     |  -   | yes | yes |  -  |  -  |  -  |  -   | yes  |
+local Util = require("lazyvim.util")
 local map = vim.keymap.set
 local unmap = vim.keymap.del
-local Util = require("lazyvim.util")
 unmap("n", "<C-h>")
 unmap("n", "<C-j>")
 unmap("n", "<C-k>")
@@ -47,10 +47,10 @@ map({ "n", "x", "o" }, "l", "o")
 map({ "n", "x", "o" }, "L", "O")
 
 -- colemak-dh end of word
-map({ "n", "x", "o" }, "j", "e")
-map({ "n", "x", "o" }, "J", "E")
-map({ "n", "x", "o" }, "gj", "ge")
-map({ "n", "x", "o" }, "gJ", "gE")
+-- map({ "n", "x", "o" }, "j", "e")
+-- map({ "n", "x", "o" }, "J", "E")
+-- map({ "n", "x", "o" }, "gj", "ge")
+-- map({ "n", "x", "o" }, "gJ", "gE")
 
 -- colemake searching key
 -- https://github.com/mhinz/vim-galore#saner-behavior-of-n-and-n
@@ -74,7 +74,7 @@ map("i", "<C-k>", "<cmd>normal! dd<cr>", { expr = true, silent = true })
 map("i", "<c-f>", "<c-g>u<Esc>[s1z=`]a<c-g>u", { expr = true, silent = true })
 
 -- better cmd mode
--- map("n", ":", ",")
+map("n", ":", ",")
 -- map("n", "<cr>", ":")
 -- backup cmd mode, some plugins will override <cr>
 map("n", "\\", ":")
@@ -271,7 +271,7 @@ map("n", "<leader>b<space>", function()
 end, { silent = true, desc = "Close unused buffers" })
 
 -- Replace in selection
-map("x", "S", ":s/\\%V", { desc = "replace in selection" })
+map("x", "s<cr>", ":s/\\%V", { desc = "replace in selection" })
 
 -- smart deletion, dd
 -- It solves the issue, where you want to delete empty line, but dd will override you last yank.

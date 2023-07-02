@@ -19,7 +19,7 @@ return {
         },
         { ";", "<Plug>(leap-forward-to)", desc = "leap forward to", mode = { "n", "x", "o" } },
         { ":", "<Plug>(leap-backward-to)", desc = "leap backward to", mode = { "n", "x", "o" } },
-        { "g:", "<Plug>(leap-cross-window)", desc = "leap cross window", mode = { "n", "x", "o" } },
+        { "s,", "<Plug>(leap-cross-window)", desc = "leap cross window", mode = { "n", "x", "o" } },
         { "x", "<Plug>(leap-forward-till)", desc = "leap forward till", mode = { "x", "o" } },
         { "X", "<Plug>(leap-backward-till)", desc = "leap backward till", mode = { "x", "o" } },
       }
