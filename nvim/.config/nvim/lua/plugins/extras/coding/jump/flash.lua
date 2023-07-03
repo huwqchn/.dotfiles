@@ -16,12 +16,9 @@ return {
     keys = function(_, keys)
       for _, key in ipairs(keys) do
         if key[1] == "s" then
-          -- key.mode = { "o", "x" }
-          -- local key2 = vim.deepcopy(key)
-          -- key2[1] = "ss"
-          -- key2.mode = "n"
-          -- table.insert(keys, key2)
           key[1] = ","
+        elseif key[1] == "R" then
+          table.insert(key.mode, "n")
         end
       end
       for _, key in ipairs({ "f", "F", "t", "T", ";", ":", "/", "?" }) do
