@@ -24,7 +24,7 @@ return {
           key[1] = ","
         end
       end
-      for _, key in ipairs({ "f", "F", "t", "T", ";", ":" }) do
+      for _, key in ipairs({ "f", "F", "t", "T", ";", ":", "/", "?" }) do
         table.insert(keys, key)
       end
       table.insert(keys, {
