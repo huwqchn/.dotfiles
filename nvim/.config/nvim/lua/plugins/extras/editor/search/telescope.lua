@@ -79,4 +79,11 @@ return {
       },
     },
   },
+  {
+    "ahmedkhalf/project.nvim",
+    optional = true,
+    event = function()
+      return {}
+    end,
+  },
 }
