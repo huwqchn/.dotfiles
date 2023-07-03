@@ -4,7 +4,7 @@ return {
   { import = "plugins.extras.lang.rust" },
   { import = "plugins.extras.lang.nodejs" },
   { import = "plugins.extras.lang.python" },
-  { import = "plugins.extras.lang.c" },
+  { import = "plugins.extras.lang.clangd" },
   { import = "lazyvim.plugins.extras.lang.go" },
   { import = "lazyvim.plugins.extras.lang.json" },
   { import = "lazyvim.plugins.extras.lang.tailwind" },
