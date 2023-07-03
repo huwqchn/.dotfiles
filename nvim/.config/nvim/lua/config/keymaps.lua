@@ -81,8 +81,8 @@ map("n", "<cr>", ":")
 if not Util.has("leap.nvim") and Util.has("flash.nvim") and Util.has("flit.nvim") then
   map("", ",", ":")
   map("", ":", ",")
-  map("", "g:", "g,")
 end
+map("", "g:", "g,")
 
 -- select all
 map({ "n", "x", "i" }, "<C-a>", "<cmd>normal! ggVG<cr>")
@@ -162,18 +162,29 @@ map("n", "]z", "zl", { desc = "scroll right", silent = true }) -- right
 -- Windows managenment
 --Better window movement
 map("n", "<C-w>", "<C-w>w", { desc = "Switch window" })
-map("n", "<C-n>", "<C-w>h", { desc = "Go to left window" })
-map("n", "<C-e>", "<C-w>j", { desc = "Go to lower window" })
-map("n", "<C-i>", "<C-w>k", { desc = "Go to upper window" })
-map("n", "<C-o>", "<C-w>l", { desc = "Go to right window" })
+if not Util.has("smart-splits.nvim") then
+  -- naviagate window
+  map("n", "<C-n>", "<C-w>h", { desc = "Go to left window" })
+  map("n", "<C-e>", "<C-w>j", { desc = "Go to lower window" })
+  map("n", "<C-i>", "<C-w>k", { desc = "Go to upper window" })
+  map("n", "<C-o>", "<C-w>l", { desc = "Go to right window" })
+
+  -- swap windows with sn se si so
+  map("n", "sN", "<C-w>H", { desc = "swap with left" })
+  map("n", "sE", "<C-w>J", { desc = "swap with below" })
+  map("n", "sI", "<C-w>K", { desc = "swap with above" })
+  map("n", "sO", "<C-w>L", { desc = "swap with right" })
+
+  -- Resize with arrows
+  map("n", "<C-Up>", "<cmd>resize +2<CR>", { desc = "Increase window height" })
+  map("n", "<C-Down>", "<cmd>resize -2<CR>", { desc = "Decrease window height" })
+  map("n", "<C-Left>", "<cmd>vertical resize -2<CR>", { desc = "Decrease window width" })
+  map("n", "<C-Right>", "<cmd>vertical resize +2<CR>", { desc = "Increase window width" })
+end
 map("n", "<C-l>", "<C-w>o", { desc = "Clear other windwos" })
 map("n", "<C-q>", "<C-w>q", { desc = "Quit window" })
 
 -- Resize with arrows
-map("n", "<C-Up>", "<cmd>resize +2<CR>", { desc = "Increase window height" })
-map("n", "<C-Down>", "<cmd>resize -2<CR>", { desc = "Decrease window height" })
-map("n", "<C-Left>", "<cmd>vertical resize -2<CR>", { desc = "Decrease window width" })
-map("n", "<C-Right>", "<cmd>vertical resize +2<CR>", { desc = "Increase window width" })
 map("n", "s<Up>", "<cmd>resize +2<CR>", { desc = "Increase window height" })
 map("n", "s<Down>", "<cmd>resize -2<CR>", { desc = "Decrease window height" })
 map("n", "s<Left>", "<cmd>vertical resize -2<CR>", { desc = "Decrease window width" })
@@ -200,12 +211,6 @@ map("n", "so", function()
   vim.opt.splitright = true
   vim.cmd([[vsplit]])
 end, { desc = "split right" })
-
--- swap windows with sn se si so
-map("n", "sN", "<C-w>H", { desc = "swap with left" })
-map("n", "sE", "<C-w>J", { desc = "swap with below" })
-map("n", "sI", "<C-w>K", { desc = "swap with above" })
-map("n", "sO", "<C-w>L", { desc = "swap with right" })
 
 unmap("n", "<leader>w-")
 unmap("n", "<leader>w|")

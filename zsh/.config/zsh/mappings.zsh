@@ -24,7 +24,7 @@ if [ -f "$LFCD" ]; then
     source "$LFCD"
 fi
 
-bindkey -s '^o' 'lfcd\n'
+# bindkey -s '^o' 'lfcd\n'
 
 # function openlazynpm {
 #     zle_eval lazynpm
