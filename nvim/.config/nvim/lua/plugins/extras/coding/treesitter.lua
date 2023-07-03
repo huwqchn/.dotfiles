@@ -94,7 +94,7 @@ return {
       incremental_selection = {
         enable = true,
         keymaps = {
-          init_selection = "s<space>",
+          init_selection = "ss",
           node_incremental = "si",
           scope_incremental = "so",
           node_decremental = "se",
