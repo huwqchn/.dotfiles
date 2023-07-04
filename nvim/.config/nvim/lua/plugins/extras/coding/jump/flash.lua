@@ -8,6 +8,11 @@ return {
     opts = {
       labels = "arstgmneioqwfpbjluyxcdvzkh",
       modes = {
+        treesitter_search = {
+          label = {
+            rainbow = { enabled = true },
+          },
+        },
         char = {
           keys = { "f", "F", "t", "T", ";", [","] = ":" },
         },
