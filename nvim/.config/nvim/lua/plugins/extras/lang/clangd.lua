@@ -1,25 +1,4 @@
 return {
-  {
-    "Civitasv/cmake-tools.nvim",
-    opts = {},
-    cmd = {
-      "CMakeGenerate",
-      "CMakeBuild",
-      "CMakeRun",
-      "CMakeDebug",
-      "CMakeLaunchArgs",
-      "CMakeSelectBuildType",
-      "CMakeSelectLaunchTarget",
-      "CMakeSelectKit",
-      "CMakeSelectConfigurePreset",
-      "CMakeSelectBuildPreset",
-      "CMakeOpen",
-      "CMakeClose",
-      "CMakeInstall",
-      "CMakeClean",
-      "CMakeStop",
-    },
-  },
   -- correctly setup lspconfig
   {
     "neovim/nvim-lspconfig",
