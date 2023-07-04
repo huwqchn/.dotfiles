@@ -96,8 +96,10 @@ map("t", "<C-v>", "<C-\\><C-N>pi")
 map("c", "<C-v>", "<C-r>+")
 
 -- inc/dec number
-map("n", "<C-=>", "<C-a>")
-map("n", "<C-->", "<C-x>")
+if not Util.has("dial.nvim") then
+  map("n", "+", "<C-a>")
+  map("n", "-", "<C-x>")
+end
 
 -- Column inc/dec numbers
 map("v", "g<C-=>", "g<C-a>")
