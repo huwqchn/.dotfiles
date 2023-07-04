@@ -46,7 +46,7 @@ return {
         },
       },
       other_win_hl_color = "#e35e4f",
-      selection_chars = "ARSTNEIOFPLUDHKMCV",
+      selection_chars = "ASTNEIOXFPLUDHKMCV",
     },
     config = function(_, opts)
       require("window-picker").setup(opts)
