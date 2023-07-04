@@ -4,11 +4,16 @@ return {
     "neovim/nvim-lspconfig",
     optional = true,
     opts = function(_, opts)
-      for _, server in ipairs(opts.servers) do
-        for _, key in ipairs(server.keys) do
-          if key[1] == "K" then
-            key[1] = "I"
-          end
+      for _, key in ipairs(opts.servers.rust_analyzer.keys) do
+        if key[1] == "K" then
+          key[1] = "I"
+          break
+        end
+      end
+      for _, key in ipairs(opts.servers.taplo.keys) do
+        if key[1] == "K" then
+          key[1] = "I"
+          break
         end
       end
     end,
