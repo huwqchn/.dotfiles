@@ -280,6 +280,11 @@ end, { silent = true, desc = "Close unused buffers" })
 -- Replace in selection
 map("x", "S", ":s/\\%V", { desc = "replace in selection" })
 
+-- toggle coloroclumn
+map("n", "<leader>uo", function()
+  require("util").toggle_colorcolumn()
+end, { desc = "Toggle colorcolumn" })
+
 -- smart deletion, dd
 -- It solves the issue, where you want to delete empty line, but dd will override you last yank.
 -- Code above will check if u are deleting empty line, if so - use black hole register.

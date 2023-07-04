@@ -77,4 +77,14 @@ function M.get_buf_option(opt)
   end
 end
 
+-- toggle colorcolumn
+M.toggle_colorcolumn = function()
+  local value = vim.api.nvim_get_option_value("colorcolumn", {})
+  if value == "" then
+    vim.api.nvim_set_option_value("colorcolumn", "81", {})
+  else
+    vim.api.nvim_set_option_value("colorcolumn", "", {})
+  end
+end
+
 return M
