@@ -39,6 +39,7 @@ require("lazy").setup({
     { import = "lazyvim.plugins.extras.linting.eslint" },
     { import = "plugins" },
   },
+  change_detection = { notify = false },
   defaults = { lazy = true, version = false },
   install = { colorscheme = { "tokyonight", "habamax" } },
   ui = { border = "rounded" },
