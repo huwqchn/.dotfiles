@@ -31,6 +31,7 @@
   "git-conflict.nvim": { "branch": "main", "commit": "3c89812a83ac749b8851a473863958325a1cd57c" },
   "gitignore.nvim": { "branch": "master", "commit": "6050f0b66d9b375c3fbcff90becea8aa204cd508" },
   "gitsigns.nvim": { "branch": "main", "commit": "dc2962f7fce953a2a98e7c6d3d7fc4c1d1f66758" },
+  "harpoon": { "branch": "master", "commit": "a2487c29dba9c3befbb57ccd8773b7f617fc593a" },
   "hfcc.nvim": { "branch": "main", "commit": "214def02936d4f76c82c2db28325ef3fdefb2e4f" },
   "inc-rename.nvim": { "branch": "main", "commit": "ed0f6f2b917cac4eb3259f907da0a481b27a3b7e" },
   "indent-blankline.nvim": { "branch": "master", "commit": "7075d7861f7a6bbf0de0298c83f8a13195e6ec01" },
