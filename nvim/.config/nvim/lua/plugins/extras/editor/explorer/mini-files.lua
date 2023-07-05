@@ -4,10 +4,10 @@ return {
     optional = true,
     opts = {
       mappings = {
-        go_in = "o",
-        go_in_plus = "O",
-        go_out = "n",
-        go_out_plus = "N",
+        go_in = "O",
+        go_in_plus = "]",
+        go_out = "N",
+        go_out_plus = "[",
       },
     },
   },
