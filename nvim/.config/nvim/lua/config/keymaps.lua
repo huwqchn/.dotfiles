@@ -105,9 +105,9 @@ end
 map("v", "g<C-=>", "g<C-a>")
 map("v", "g<C-->", "g<C-x>")
 
--- better indentation
-map("n", "<", "<<")
-map("n", ">", ">>")
+-- -- better indentation
+-- map("n", "<", "<<")
+-- map("n", ">", ">>")
 
 -- Better Copy
 map("n", "Y", "y$")
