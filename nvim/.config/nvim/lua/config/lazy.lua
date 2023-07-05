@@ -28,7 +28,7 @@ require("lazy").setup({
     { import = "lazyvim.plugins.extras.coding.copilot" },
     { import = "lazyvim.plugins.extras.coding.yanky" },
     { import = "lazyvim.plugins.extras.editor.flash" },
-    { import = "lazyvim.plugins.extras.vscode" },
+    { import = "lazyvim.plugins.extras.editor.mini-files" },
     -- lang
     { import = "lazyvim.plugins.extras.lang.clangd" },
     { import = "lazyvim.plugins.extras.lang.rust" },
@@ -37,6 +37,9 @@ require("lazy").setup({
     { import = "lazyvim.plugins.extras.lang.tailwind" },
     { import = "lazyvim.plugins.extras.lang.typescript" },
     { import = "lazyvim.plugins.extras.linting.eslint" },
+    --vscode
+    { import = "lazyvim.plugins.extras.vscode" },
+    -- my plugins
     { import = "plugins" },
   },
   change_detection = { notify = false },

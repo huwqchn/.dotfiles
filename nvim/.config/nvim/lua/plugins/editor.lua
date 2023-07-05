@@ -11,5 +11,6 @@ return {
   { import = "plugins.extras.editor.terminal.toggleterm" },
   { import = "plugins.extras.editor.terminal.flatten" },
   { import = "plugins.extras.editor.debug.dap" },
+  { import = "plugins.extras.editor.explorer.mini-files" },
   -- { import = "plugins.extras.editor.runner.competitest" },
 }
