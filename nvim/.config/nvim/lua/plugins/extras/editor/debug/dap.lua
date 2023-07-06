@@ -23,6 +23,7 @@ return {
           end,
           desc = "Step back",
         },
+        -- jetbrains-like debug keymaps
         { "<F7>", "<leader>dI", desc = "Step Into", remap = true },
         { "<S-F7>", "<leader>do", desc = "Step Out", remap = true },
         { "<F8>", "<leader>dO", desc = "Step Over", remap = true },
