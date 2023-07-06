@@ -54,7 +54,7 @@ end
 map({ "n", "x", "o" }, "J", "E")
 map({ "n", "x", "o" }, "gJ", "gE")
 
--- colemake searching key
+-- colemak-dh searching key
 -- https://github.com/mhinz/vim-galore#saner-behavior-of-n-and-n
 map("n", "k", "'Nn'[v:searchforward]", { expr = true, desc = "Next search result" })
 map("x", "k", "'Nn'[v:searchforward]", { expr = true, desc = "Next search result" })
@@ -105,14 +105,6 @@ end
 map("v", "g<C-=>", "g<C-a>")
 map("v", "g<C-->", "g<C-x>")
 
--- -- better indentation
--- map("n", "<", "<<")
--- map("n", ">", ">>")
-
--- Better Copy
-map("n", "Y", "y$")
-map("v", "Y", '"+y')
-
 -- Move lines
 if not Util.has("mini.move") then
   map("n", "<A-e>", "<cmd>m .+1<CR>==", { desc = "Move down" })
@@ -131,7 +123,7 @@ map("i", "<A-Right>", "<C-\\><C-N><C-w>l")
 
 -- unmap("n", "<c-/>")
 unmap("t", "<c-/>")
-unmap("n", "<c-_>")
+-- unmap("n", "<c-_>")
 unmap("t", "<c-_>")
 -- Terminal window navigation
 map("t", "<C-n>", "<C-\\><C-N><C-w>h", { desc = "move to left" })
@@ -280,7 +272,7 @@ map("n", "<leader>b<space>", function()
 end, { silent = true, desc = "Close unused buffers" })
 
 -- Replace in selection
-map("x", "S", ":s/\\%V", { desc = "replace in selection" })
+map("x", "ss", ":s/\\%V", { desc = "replace in selection" })
 
 -- toggle coloroclumn
 map("n", "<leader>uo", function()
