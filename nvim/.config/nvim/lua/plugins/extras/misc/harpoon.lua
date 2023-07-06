@@ -11,4 +11,13 @@ return {
     },
     config = true,
   },
+  {
+    "folke/which-key.nvim",
+    optional = true,
+    opts = {
+      defaults = {
+        ["<leader>m"] = { name = "+marks" },
+      },
+    },
+  },
 }

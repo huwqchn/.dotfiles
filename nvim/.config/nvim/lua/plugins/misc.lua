@@ -13,15 +13,6 @@ return {
       filetype_exclude = { "markdown", "diff" },
     },
   },
-  {
-    "folke/which-key.nvim",
-    optional = true,
-    opts = {
-      defaults = {
-        ["<leader>m"] = { name = "+marks" },
-      },
-    },
-  },
   -- pick color
   -- {
   --   "ziontee113/color-picker.nvim",
@@ -42,37 +33,6 @@ return {
   --   end,
   -- },
   -- {
-  --   "ecthelionvi/NeoComposer.nvim",
-  --   dependencies = { "kkharji/sqlite.lua" },
-  --   keys = {
-  --     { "Q", mode = { "n", "v" }, desc = "Plays queued macro" },
-  --     { "yq", mode = { "n", "v" }, desc = "Yanks macro" },
-  --     { "cq", mode = { "n", "v" }, desc = "Halts macro" },
-  --     { "q", mode = { "n", "v" }, desc = "Starts recordong" },
-  --     { "<m-q>", mode = { "n", "v" }, desc = "Toggles macro menu" },
-  --     { "]Q", mode = "n", desc = "Cycles to next macro" },
-  --     { "[Q", mode = "n", desc = "Cycles to previous macro" },
-  --   },
-  --   cmds = {
-  --     "EditMacros",
-  --     "ClearNeoComposer",
-  --   },
-  --   opts = {
-  --     -- notify = true,
-  --     -- delay_timer = "150",
-  --     -- status_bg = colors.black,
-  --     -- preview_fg = "#ff9e64",
-  --     keymaps = {
-  --       play_macro = "Q",
-  --       yank_macro = "yq",
-  --       stop_macro = "cq",
-  --       toggle_record = "q",
-  --       cycle_next = "]Q",
-  --       cycle_prev = "[Q",
-  --       toggle_macro_menu = "<m-q>",
-  --     },
-  --   },
-  -- },
   -- makes some plugins dot-repeatable like leap
   {
     "tpope/vim-repeat",
@@ -106,5 +66,5 @@ return {
   },
   -- { import = "plugins.extras.misc.smart-splits" },
   { import = "plugins.extras.misc.zen-mode" },
-  { import = "plugins.extras.misc.harpon" },
+  -- { import = "plugins.extras.misc.harpoon" },
 }
