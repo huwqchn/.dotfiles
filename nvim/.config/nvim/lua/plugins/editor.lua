@@ -3,7 +3,7 @@ return {
   { import = "plugins.extras.editor.search.telescope" },
   { import = "plugins.extras.editor.search.ssr" },
   { import = "plugins.extras.editor.fold.nvim-ufo" },
-  { import = "plugins.extras.editor.git.neogit" },
+  -- { import = "plugins.extras.editor.git.neogit" },
   { import = "plugins.extras.editor.git.misc" },
   { import = "plugins.extras.editor.git.diff" },
   { import = "plugins.extras.editor.keymaps.which-key" },
