@@ -97,10 +97,10 @@ map("c", "<C-v>", "<C-r>+")
 
 -- inc/dec number
 if not Util.has("dial.nvim") then
-  map({ "n", "v" }, "+", "<C-a>")
-  map({ "n", "v" }, "-", "<C-x>")
-  map({ "n", "v" }, "s+", "g<C-a>")
-  map({ "n", "v" }, "s-", "g<C-x>")
+  map({ "n", "v" }, "<C-=>", "<C-a>")
+  map({ "n", "v" }, "<C-->", "<C-x>")
+  map({ "n", "v" }, "g<C-=>", "g<C-a>")
+  map({ "n", "v" }, "g<C-->", "g<C-x>")
 end
 
 -- Move lines
