@@ -76,8 +76,8 @@ map("i", "<C-k>", "<cmd>normal! dd<cr>", { expr = true, silent = true })
 map("i", "<c-f>", "<c-g>u<Esc>[s1z=`]a<c-g>u", { expr = true, silent = true })
 
 -- better cmd mode, swap ; and :
-map("n", "\\", ":")
-map("n", "<cr>", ":")
+map("", "\\", ":", { silent = false })
+map("", "<cr>", ":", { silent = false })
 if not Util.has("leap.nvim") and Util.has("flash.nvim") and Util.has("flit.nvim") then
   map("", ",", ":")
   map("", ":", ",")
