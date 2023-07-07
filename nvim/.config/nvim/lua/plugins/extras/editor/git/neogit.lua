@@ -1,10 +1,15 @@
 return {
-	{
-		"TimUntersberger/neogit",
-		cmd = "Neogit",
-		keys = {
-			{ "<leader>gn", "<cmd>Neogit<cr>", desc = "Neogit" },
-		},
-		config = true,
-	},
+  {
+    "NeogitOrg/neogit",
+    dependencies = "nvim-lua/plenary.nvim",
+    cmd = "Neogit",
+    keys = {
+      { "<leader>gn", "<cmd>Neogit<cr>", desc = "Neogit" },
+    },
+    opts = {
+      intergration = {
+        diffview = true,
+      },
+    },
+  },
 }
