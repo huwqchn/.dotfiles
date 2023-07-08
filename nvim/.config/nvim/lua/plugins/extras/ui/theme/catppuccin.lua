@@ -5,19 +5,6 @@ return {
     name = "catppuccin",
     opts = {
       transparent_background = vim.g.transparent_enabled,
-      interations = {
-        notify = true,
-        mini = true,
-        harpon = true,
-        mason = true,
-        neogit = true,
-        noice = true,
-        treesitter_context = true,
-        treesitter = true,
-        symbols_outline = true,
-        which_key = true,
-        neo_tree = true,
-      },
     },
   },
   {
