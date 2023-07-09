@@ -296,3 +296,8 @@ if vim.fn.executable("btop") == 1 and not Util.has("toggleterm.nvim") then
     Util.float_term({ "btop" })
   end, { desc = "btop" })
 end
+
+-- https://www.reddit.com/r/vim/comments/wehg9/transpose_word_an_idea_borrowed_from_emacs/
+-- nnoremap <leader>h "_yiw?\w\+\_W\+\%#<CR>:s/\(\%#\w\+\)\(\_W\+\)\(\w\+\)/\3\2\1/<CR><C-o><C-l>
+-- nnoremap <leader>l "_yiw:s/\(\%#\w\+\)\(\_W\+\)\(\w\+\)/\3\2\1/<CR><C-o>/\w\+\_W\+<CR><C-l>
+-- TODO:Transpose word from emacs
