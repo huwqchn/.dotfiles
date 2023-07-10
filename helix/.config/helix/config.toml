@@ -1,0 +1,57 @@
+theme = "tokyonight"
+
+[editor]
+line-number = "relative"
+mouse = true
+cursorline = true
+bufferline = "multiple"
+auto-pairs = true
+
+[editor.whitespace.render]
+space = "all"
+tab = "all"
+newline = "none"
+
+[editor.whitespace.characters]
+space = "·"
+nbsp = "⍽"
+tab = "→"
+newline = "⏎"
+tabpad = "·"  # Tabs will look like "→···" (depending on tab width)
+
+[editor.indent-guides]
+render = true
+character = "╎" # Some characters that work well: "▏", "┆", "┊", "⸽"
+skip-levels = 1
+
+[editor.cursor-shape]
+insert = "bar"
+normal = "block"
+select = "underline"
+
+[editor.file-picker]
+hidden = false
+
+[keys.normal]
+# motion
+n = "move_char_left"
+e = "move_visual_line_down"
+i = "move_visual_line_up"
+o = "move_char_right"
+j = "move_next_word_end"
+J = "move_next_long_word_end"
+"C-," = "jump_forward"
+"C-." = "jump_backward"
+
+# changes
+h = "insert_mode"
+H = "insert_at_line_start"
+l = "open_below"
+L = "open_above"
+E = "join_selections"
+"A-J" = "join_selections_space"
+I = "keep_selections"
+"A-I" = "remove_selections"
+# search
+k = "search_next"
+K = "search_prev"

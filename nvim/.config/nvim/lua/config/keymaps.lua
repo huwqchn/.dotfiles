@@ -182,9 +182,6 @@ map("n", "s<Down>", "<cmd>resize -2<CR>", { desc = "Decrease window height" })
 map("n", "s<Left>", "<cmd>vertical resize -2<CR>", { desc = "Decrease window width" })
 map("n", "s<Right>", "<cmd>vertical resize +2<CR>", { desc = "Increase window width" })
 
--- disable the default s key
--- map({ "n", "x" }, "s", "<nop>", { desc = "split/surround/select" })
-
 -- split the screens
 map("n", "si", function()
   vim.opt.splitbelow = false
@@ -300,4 +297,3 @@ end
 -- https://www.reddit.com/r/vim/comments/wehg9/transpose_word_an_idea_borrowed_from_emacs/
 -- nnoremap <leader>h "_yiw?\w\+\_W\+\%#<CR>:s/\(\%#\w\+\)\(\_W\+\)\(\w\+\)/\3\2\1/<CR><C-o><C-l>
 -- nnoremap <leader>l "_yiw:s/\(\%#\w\+\)\(\_W\+\)\(\w\+\)/\3\2\1/<CR><C-o>/\w\+\_W\+<CR><C-l>
--- TODO:Transpose word from emacs
