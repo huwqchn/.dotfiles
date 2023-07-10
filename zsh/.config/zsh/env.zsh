@@ -13,6 +13,7 @@ export PATH="$PATH:$HOME/.cargo/bin"
 export TMUX_TMPDIR=$HOME/.tmux/tmp
 export CFLAYS="-Wall -Werror -Wextra"
 export CONDA_PREFIX=$HOME/.conda
+export RIPGREP_CONFIG_PATH=$HOME/.config/ripgrep/ripgreprc
 # for rust
 export RUST_BACKTRACE=1
 if [[ $(uname) == 'Darwin' ]]; then
