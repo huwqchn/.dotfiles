@@ -12,6 +12,7 @@ export PATH="$PATH:$HOME/.local/bin"
 export PATH="$PATH:$HOME/.cargo/bin"
 export TMUX_TMPDIR=$HOME/.tmux/tmp
 export CFLAYS="-Wall -Werror -Wextra"
+export CONDA_PREFIX=$HOME/.conda
 # for rust
 export RUST_BACKTRACE=1
 if [[ $(uname) == 'Darwin' ]]; then
