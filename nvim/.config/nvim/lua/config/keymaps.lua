@@ -143,8 +143,8 @@ map("c", "<C-e>", 'pumvisible() ? "\\<C-n>" : "\\<C-j>"', { expr = true, noremap
 map("c", "<C-i>", 'pumvisible() ? "\\<C-p>" : "\\<C-k>"', { expr = true, noremap = true })
 
 -- colemak goto new position in jumplist
-map("n", "<C-,>", "<C-i>")
-map("n", "<C-.>", "<C-o>")
+map("n", "<C-h>", "<C-i>")
+map("n", "<C-l>", "<C-o>")
 
 -- scroll window horizontally (scroll-horizontal)
 -- < reference: https://unix.stackexchange.com/questions/110251/how-to-put-current-line-at-top-center-bottom-of-screen-in-vim
@@ -173,7 +173,7 @@ if not Util.has("smart-splits.nvim") then
   map("n", "<C-Left>", "<cmd>vertical resize -2<CR>", { desc = "Decrease window width" })
   map("n", "<C-Right>", "<cmd>vertical resize +2<CR>", { desc = "Increase window width" })
 end
-map("n", "<C-l>", "<C-w>o", { desc = "Clear other windwos" })
+map("n", "<C-k>", "<C-w>o", { desc = "Clear other windwos" })
 map("n", "<C-q>", "<C-w>q", { desc = "Quit window" })
 
 -- Resize with arrows
