@@ -15,7 +15,6 @@ return {
       },
     },
   },
-  { "mfussenegger/nvim-dap-python", ft = "python" },
   {
     "jose-elias-alvarez/null-ls.nvim",
     opts = function(_, opts)
@@ -38,9 +37,6 @@ return {
   {
     "nvim-neotest/neotest",
     optional = true,
-    dependencies = {
-      "nvim-neotest/neotest-python",
-    },
     opts = {
       adapters = {
         ["neotest-python"] = {
@@ -53,5 +49,9 @@ return {
         },
       },
     },
+  },
+  {
+    "linux-cultist/venv-selector.nvim",
+    enabled = false,
   },
 }
