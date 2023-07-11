@@ -6,7 +6,7 @@
   "SchemaStore.nvim": { "branch": "main", "commit": "bdba0106f6e33fffb8e2ffea0162ce5565b18840" },
   "alpha-nvim": { "branch": "main", "commit": "9e33db324b8bb7a147bce9ea5496686ee859461d" },
   "bufferline.nvim": { "branch": "main", "commit": "cd27a52ecdfed7f14a41b61b7976f155e3d593c7" },
-  "catppuccin": { "branch": "main", "commit": "dfbc8e2b478a65104d34556698067f2d40f1c227" },
+  "catppuccin": { "branch": "main", "commit": "f36af062e3242f333b12fe9b730053fdda36e000" },
   "clangd_extensions.nvim": { "branch": "main", "commit": "6d0bf36870d15c0c2284f4b6693a66552a6bf127" },
   "cmake-tools.nvim": { "branch": "master", "commit": "5697db80fb9a49f638d8bde3317f06e6e4faccfd" },
   "cmp-buffer": { "branch": "main", "commit": "3022dbc9166796b644a841a02de8dd1cc1d311fa" },

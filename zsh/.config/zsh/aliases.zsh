@@ -94,6 +94,7 @@ alias icat="kitty +kitten icat"
 alias sc="source /opt/anaconda/bin/activate root"
 alias fm="frogmouth"
 alias email="himalaya"
+alias ns="netstat -tunlp"
 
 # Function for extracting compressed files
 ex () {
