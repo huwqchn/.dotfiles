@@ -47,4 +47,6 @@
     stash_open: Some(( code: Char('O'), modifiers: ( bits: 0,),)),
 
     abort_merge: Some(( code: Char('M'), modifiers: ( bits: 1,),)),
+    pull: Some(( code: Char('P'), modifiers: ( bits: 0,),)),
+    push: Some(( code: Char('P'), modifiers: ( bits: 1,),)),
 )
