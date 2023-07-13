@@ -6,6 +6,10 @@
 super + Return
 	env GLFW_IM_MODULE=ibus kitty
 
+# bind single quote to open kitty
+super + apostrophe
+  env GLFW_IM_MODULE=ibus kitty
+
 # browser
 super + c
   brave
