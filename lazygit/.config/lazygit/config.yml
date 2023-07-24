@@ -4,7 +4,7 @@ gui:
   scrollHeight: 2
   scrollPastBottom: true
   mouseEvents: true
-  skipUnstageLineWarning: false
+  skipDiscardChangeWarning: false
   skipStashWarning: false
   sidePanelWidth: 0.3333
   expandFocusedSidePanel: false
@@ -54,12 +54,8 @@ git:
   skipHookPrefix: WIP
   autoFetch: true
   autoRefresh: true
-  branchLogCmd:
-    git log --graph --color=always --abbrev-commit --decorate --date=relative
-    --pretty=medium {{branchName}} --
-  allBranchesLogCmd:
-    git log --graph --all --color=always --abbrev-commit --decorate
-    --date=relative  --pretty=medium
+  branchLogCmd: git log --graph --color=always --abbrev-commit --decorate --date=relative --pretty=medium {{branchName}} --
+  allBranchesLogCmd: git log --graph --all --color=always --abbrev-commit --decorate --date=relative  --pretty=medium
   overrideGpg: false
   disableForcePushing: false
   commitPrefixes: {}
@@ -191,8 +187,8 @@ keybinding:
     markCommitAsFixup: f
     createFixupCommit: F
     squashAboveCommits: S
-    moveDownCommit: <c-e>
-    moveUpCommit: <c-i>
+    moveDownCommit: <c-n>
+    moveUpCommit: <c-p>
     amendToCommit: A
     resetCommitAuthor: a
     pickCommit: p
