@@ -22,8 +22,7 @@ return {
       inlay_hints = { enabled = true },
     },
     init = function()
-      local lsp_keys = require("lazyvim.plugins.lsp.keymaps")
-      local keys = lsp_keys.get()
+      local keys = require("lazyvim.plugins.lsp.keymaps").get()
       for _, key in ipairs(keys) do
         if key[1] == "K" then
           key[1] = "I"
