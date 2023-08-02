@@ -32,4 +32,13 @@ return {
       },
     },
   },
+  {
+    "folke/which-key.nvim",
+    opts = {
+      defaults = {
+        mode = { "n", "x" },
+        ["<leader>C"] = { name = "+CompetiTest" },
+      },
+    },
+  },
 }
