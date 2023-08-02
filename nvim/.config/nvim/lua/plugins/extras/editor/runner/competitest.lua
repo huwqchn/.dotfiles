@@ -1,8 +1,13 @@
 return {
   {
     "xeluxee/competitest.nvim",
+    dependencies = "MunifTanjim/nui.nvim",
     keys = {
-      { "<leader>cT", "<cmd>CompetiTestRun<cr>", desc = "Run with Test case" },
+      { "<leader>Ca", "<cmd>CompetiTest add_testcase<cr>", desc = "add Test case" },
+      { "<leader>Ce", "<cmd>CompetiTest edit_testcase<cr>", desc = "edit Test case" },
+      { "<leader>Cr", "<cmd>CompitiTest run<cr>", desc = "run Test case" },
+      { "<leader>CR", "<cmd>CompitiTest run_no_compile<cr>", desc = "run Test case without compile" },
+      { "<leader>Cu", "<cmd>CompitiTest show_ui<cr>", desc = "show Test case UI" },
     },
     opts = {
       picker_ui = {
