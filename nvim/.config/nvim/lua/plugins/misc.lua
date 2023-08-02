@@ -72,6 +72,7 @@ return {
   },
   -- { import = "plugins.extras.misc.smart-splits" },
   { import = "plugins.extras.misc.zen-mode" },
+  -- { import = "plugins.extras.misc.image" },
   -- { import = "plugins.extras.misc.harpoon" },
   {
     "ecthelionvi/NeoSwap.nvim",
