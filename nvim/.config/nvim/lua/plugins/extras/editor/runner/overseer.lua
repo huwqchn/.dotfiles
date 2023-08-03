@@ -1,5 +1,9 @@
 return {
   {
+    "CRAG666/code_runner.nvim",
+    enabled = false,
+  },
+  {
     "stevearc/overseer.nvim",
     dependencies = {
       "mfussenegger/nvim-dap",
