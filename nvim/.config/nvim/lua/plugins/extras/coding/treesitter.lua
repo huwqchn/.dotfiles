@@ -16,6 +16,7 @@ return {
     cmd = "TSPlaygroundToggle",
     opts = {
       keybindings = {
+        toggle_query_editor = "l",
         toggle_hl_groups = "h",
         toggle_language_display = "H",
       },
