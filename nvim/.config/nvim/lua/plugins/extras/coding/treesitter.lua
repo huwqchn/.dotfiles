@@ -11,17 +11,15 @@ return {
       vim.g.matchup_matchpref = { html = { nolists = 1 } }
     end,
   },
-  { "nvim-treesitter/playground", cmd = "TSPlaygroundToggle" },
-
   {
-    "mfussenegger/nvim-treehopper",
-    keys = { { "m", mode = { "o", "x" } } },
-    config = function()
-      vim.cmd([[
-        omap     <silent> m :<C-U>lua require('tsht').nodes()<CR>
-        xnoremap <silent> m :lua require('tsht').nodes()<CR>
-      ]])
-    end,
+    "nvim-treesitter/playground",
+    cmd = "TSPlaygroundToggle",
+    opts = {
+      keybindings = {
+        toggle_hl_groups = "h",
+        toggle_language_display = "H",
+      },
+    },
   },
   {
     "nvim-treesitter/nvim-treesitter-context",
@@ -34,10 +32,6 @@ return {
     dependencies = {
       { "windwp/nvim-ts-autotag", opts = {} },
     },
-  },
-  {
-    "nvim-treesitter/playground",
-    cmd = "TSPlaygroundToggle",
   },
   {
     "nvim-treesitter/nvim-treesitter",
