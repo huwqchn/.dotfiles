@@ -40,7 +40,7 @@ return {
           end
         end
         fallback() -- if not exited early, always fallback
-      end)
+      end, { "i", "s" })
       opts.mapping["<C-n>"] = cmp.mapping(function()
         if ls.choice_active() then
           ls.change_choice(1)
