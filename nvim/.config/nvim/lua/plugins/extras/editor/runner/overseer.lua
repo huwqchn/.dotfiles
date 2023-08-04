@@ -1,7 +1,15 @@
 return {
   {
-    "CRAG666/code_runner.nvim",
-    enabled = false,
+    "Zeioth/compiler.nvim",
+    cmd = { "CompilerOpen", "CompilerToggleResults", "CompilerRedo" },
+    keys = {
+      { "<F6>", "<cmd>CompilerOpen<CR>", mode = "n" },
+      { "<S-F6>", "<cmd>CompilerToggleResults<CR>", mode = "n" },
+    },
+    dependencies = { "stevearc/overseer.nvim" },
+    config = function(_, opts)
+      require("compiler").setup(opts)
+    end,
   },
   {
     "stevearc/overseer.nvim",
@@ -16,6 +24,9 @@ return {
       "OverseerRun",
       "OverseerRunCmd",
       "OverseerToggle",
+      "OverseerRestartLast",
+      "CompilerOpen",
+      "CompilerToggleResults",
     },
     keys = {
       { "<leader>oo", "<cmd>OverseerToggle<CR>", mode = "n" },
@@ -25,9 +36,32 @@ return {
       { "<leader>ob", "<cmd>OverseerToggle! bottom<CR>", mode = "n" },
       { "<leader>od", "<cmd>OverseerQuickAction<CR>", mode = "n" },
       { "<leader>os", "<cmd>OverseerTaskAction<CR>", mode = "n" },
+      { "<leader>oR", "<cmd>OverseerRestartLast<CR>", mode = "n" },
     },
     opts = {
       strategy = { "jobstart" },
+      task_list = {
+        direction = "bottom",
+        min_height = 25,
+        max_height = 25,
+        default_detail = 1,
+        bindings = {
+          ["q"] = function()
+            vim.cmd("OverseerClose")
+          end,
+          ["<C-h>"] = "Edit",
+          ["<C-n>"] = "IncreaseDetails",
+          ["<C-o>"] = "DecreaseDetails",
+          ["N"] = "IncreaseAllDetail",
+          ["O"] = "DecreaseAllDetail",
+          ["{"] = "DecreaseWidth",
+          ["}"] = "IncreaseWidth",
+          ["["] = "PrevTask",
+          ["]"] = "NextTask",
+          ["<C-i>"] = "ScrollOutputUp",
+          ["<C-e>"] = "ScrollOutputDown",
+        },
+      },
       log = {
         {
           type = "echo",
@@ -37,13 +71,6 @@ return {
           type = "file",
           filename = "overseer.log",
           level = vim.log.levels.DEBUG,
-        },
-      },
-      task_launcher = {
-        bindings = {
-          n = {
-            ["<leader>c"] = "Cancel",
-          },
         },
       },
       component_aliases = {
@@ -100,6 +127,16 @@ return {
         })
         task:start()
       end, { nargs = "*", bang = true, bar = true, complete = "file" })
+
+      vim.api.nvim_create_user_command("OverseerRestartLast", function()
+        local overseer = require("overseer")
+        local tasks = overseer.list_tasks({ recent_first = true })
+        if vim.tbl_isempty(tasks) then
+          vim.notify("No tasks found", vim.log.levels.WARN)
+        else
+          overseer.run_action(tasks[1], "restart")
+        end
+      end, {})
 
       local has_dap = pcall(require, "dap")
       if has_dap then
