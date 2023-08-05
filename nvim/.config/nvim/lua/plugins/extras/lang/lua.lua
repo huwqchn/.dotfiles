@@ -43,7 +43,7 @@ return {
               },
               misc = {
                 parameters = {
-                  "--log-level=trace",
+                  -- "--log-level=trace",
                 },
               },
               diagnostics = {
