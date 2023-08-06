@@ -170,7 +170,7 @@
       ]
     },
     {
-      "description": "Right Command to Super",
+      "description": "Right Command to Super if hold, to return if alone",
       "manipulators": [
         {
           "type": "basic",
@@ -189,6 +189,12 @@
                 "right_option",
                 "left_control"
               ]
+            }
+          ],
+          "to_if_alone": [
+            {
+              "key_code": "return_or_enter",
+              "hold_down_milliseconds": 200
             }
           ]
         }

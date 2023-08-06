@@ -228,7 +228,7 @@
       ]
     },
     {
-      "description": "Left Command to Return if alone",
+      "description": "Left Command to Backspace if alone",
       "manipulators": [
         {
           "type": "basic",
@@ -247,7 +247,7 @@
           ],
           "to_if_alone": [
             {
-              "key_code": "return_or_enter",
+              "key_code": "delete_or_backspace",
               "hold_down_milliseconds": 200
             }
           ]

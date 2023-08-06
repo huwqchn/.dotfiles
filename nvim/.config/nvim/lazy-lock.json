@@ -38,6 +38,7 @@
   "hfcc.nvim": { "branch": "main", "commit": "cba4fb91d75a5a977ffe8d2bdff7873134103804" },
   "inc-rename.nvim": { "branch": "main", "commit": "ed0f6f2b917cac4eb3259f907da0a481b27a3b7e" },
   "indent-blankline.nvim": { "branch": "master", "commit": "4541d690816cb99a7fc248f1486aa87f3abce91c" },
+  "kanagawa.nvim": { "branch": "master", "commit": "1749cea392acb7d1548a946fcee1e6f1304cd3cb" },
   "lazy.nvim": { "branch": "main", "commit": "3ad55ae678876516156cca2f361c51f7952a924b" },
   "lualine.nvim": { "branch": "master", "commit": "45e27ca739c7be6c49e5496d14fcf45a303c3a63" },
   "luasnip-latex-snippets.nvim": { "branch": "main", "commit": "91b3eaa3c81ae0ad4ed2264c8a7d433e5f2a2694" },
