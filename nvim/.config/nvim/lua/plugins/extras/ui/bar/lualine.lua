@@ -72,7 +72,7 @@ return {
         function()
           return " "
         end,
-        color = { bg = colors.background },
+        color = { bg = "none" },
       }
 
       local filename = {
@@ -298,13 +298,8 @@ return {
         cond = conditions.hide_in_width,
       }
 
-      local hide_in_width_space = {
-        function()
-          return " "
-        end,
-        color = { bg = colors.background, fg = colors.blue },
-        cond = conditions.hide_in_width,
-      }
+      local hide_in_width_space = vim.deepcopy(space)
+      hide_in_width_space.cond = conditions.hide_in_width
 
       return {
         options = {
