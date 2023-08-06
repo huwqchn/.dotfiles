@@ -75,6 +75,7 @@ return {
     opts = function(_, opts)
       local colors = require("tokyonight.colors").setup()
       opts.colors = {
+        background = "#1a1b26",
         grey = colors.bg_highlight,
         dark_grey = colors.fg_dark,
         black = colors.black,
@@ -90,7 +91,9 @@ return {
         teal = colors.teal,
         white = colors.fg,
       }
-      opts.theme = "tokyonight"
+      local theme = require("lualine.themes.tokyonight")
+      theme.normal.c.bg = "none"
+      opts.theme = theme
     end,
   },
   {

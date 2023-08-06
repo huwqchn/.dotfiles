@@ -72,7 +72,7 @@ return {
         function()
           return " "
         end,
-        color = { bg = colors.black, fg = colors.blue },
+        color = { bg = colors.background, fg = colors.blue },
       }
 
       local filename = {
@@ -191,7 +191,7 @@ return {
         function()
           return " "
         end,
-        color = { bg = colors.black, fg = colors.blue },
+        color = { bg = colors.background, fg = colors.blue },
         cond = require("lazy.status").has_updates,
       }
 
@@ -217,7 +217,7 @@ return {
         function()
           return " "
         end,
-        color = { bg = colors.black, fg = colors.blue },
+        color = { bg = colors.background, fg = colors.blue },
         cond = conditions.lsp_active,
       }
 
@@ -310,7 +310,7 @@ return {
         function()
           return " "
         end,
-        color = { bg = colors.black, fg = colors.blue },
+        color = { bg = colors.background, fg = colors.blue },
         cond = conditions.hide_in_width,
       }
 

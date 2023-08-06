@@ -13,6 +13,7 @@ return {
     opts = function(_, opts)
       local colors = require("catppuccin.palettes.mocha")
       opts.colors = {
+        background = "#1a1b26",
         grey = colors.surface0,
         dark_grey = colors.overlay0,
         black = colors.base,

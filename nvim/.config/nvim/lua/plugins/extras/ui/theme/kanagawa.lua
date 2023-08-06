@@ -25,6 +25,7 @@ return {
     opts = function(_, opts)
       local colors = require("kanagawa.colors").setup()
       opts.colors = {
+        background = "#1a1b26",
         grey = colors.sumiInk4,
         dark_grey = colors.katanaGray,
         black = colors.sumiInk2,
