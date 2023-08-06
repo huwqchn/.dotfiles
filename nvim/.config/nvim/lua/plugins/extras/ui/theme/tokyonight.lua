@@ -30,6 +30,8 @@ return {
           bg = "#3b4261",
           underline = true,
         }
+        hl.StatusLine = { bg = "none" } -- status line of current window
+        hl.StatusLineNC = { bg = "none" } -- status lines of not-current windows Note: if this is equal to "StatusLine" Vim will use "^^^" in the status line of the current window.
         local prompt = "#2d3149"
         hl.TelescopeNormal = { bg = c.bg_dark, fg = c.fg_dark }
         hl.TelescopeBorder = { bg = c.bg_dark, fg = c.bg_dark }
@@ -93,6 +95,9 @@ return {
       }
       local theme = require("lualine.themes.tokyonight")
       theme.normal.c.bg = "none"
+      theme.inactive.a.bg = "none"
+      theme.inactive.b.bg = "none"
+      theme.inactive.c.bg = "none"
       opts.theme = theme
     end,
   },

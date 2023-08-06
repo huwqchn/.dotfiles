@@ -47,7 +47,7 @@ return {
     opts = {
       diagnostics = {
         virtual_text = {
-          prefix = "",
+          prefix = " ",
         },
       },
     },
