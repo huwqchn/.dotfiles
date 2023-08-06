@@ -72,7 +72,7 @@ return {
         function()
           return " "
         end,
-        color = { bg = colors.background, fg = colors.blue },
+        color = { bg = colors.background },
       }
 
       local filename = {
@@ -187,13 +187,10 @@ return {
         separator = { left = icons.SeparatorLeft, right = icons.SeparatorRight },
       }
 
-      local lazy_space = {
-        function()
-          return " "
-        end,
-        color = { bg = colors.background, fg = colors.blue },
-        cond = require("lazy.status").has_updates,
-      }
+      local lazy_space = vim.deepcopy(space)
+      lazy_space.cond = function()
+        return require("lazy.status").has_updates()
+      end
 
       local key = {
         function()
@@ -213,13 +210,8 @@ return {
         separator = { left = icons.SeparatorLeft, right = icons.SeparatorRight },
       }
 
-      local lsp_space = {
-        function()
-          return " "
-        end,
-        color = { bg = colors.background, fg = colors.blue },
-        cond = conditions.lsp_active,
-      }
+      local lsp_space = vim.deepcopy(space)
+      lsp_space.cond = conditions.lsp_active
 
       local debug_mode = {
         function()

@@ -3,9 +3,7 @@ local colorscheme = os.getenv("THEME")
 if colorscheme == nil then
   colorscheme = "catppuccin"
 end
-if vim.fn.has("mac") == 1 then
-  vim.g["transparent_enabled"] = 1
-end
+vim.g["transparent_enabled"] = 1
 local theme_path = "plugins.extras.ui.theme." .. colorscheme
 local has_theme, _ = pcall(require, theme_path)
 if has_theme then
