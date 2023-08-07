@@ -61,7 +61,6 @@ bspc config pointer_modifier super
 # bspc config pointer_action3 resize_side
 # bspc config pointer_action3 resize_corner
 
-
 # manage rules
 bspc rule -a Gimp state=floating follow=on
 bspc rule -a 1Password state = floating
@@ -73,4 +72,4 @@ bspc rule -a Zathura state=tiled
 bspc rule -a Emacs state=tiled
 bspc rule -a GLava state=floating layer=below sticky=true locked=true border=off focus=off center=true follow=off rectangle=3840x2160+0+0
 
-"$BSPWM_CONFIG/start" &
+"$BSPWM_CONFIG/autostart" &
