@@ -1,9 +1,10 @@
 #!/bin/sh
 
 pgrep -x sxhkd >/dev/null || sxhkd &
-picom >$HOME/.cache/picom/picom.log 2>&1 &
+picom --experimental-backends -b >$HOME/.cache/picom/picom.log 2>&1 &
 xsetroot -cursor_name left_ptr &
-feh --bg-fill -no-fehbg ~/.wallpapers/tokyo-night31.png &
+# feh --bg-fill -no-fehbg ~/.wallpapers/tokyo-night31.png &
+nitrogen --restore &
 sleep 10 && $HOME/.config/bspwm/scripts/bspfloat floating 5 &
 >$HOME/.log.bspfloat.txt &
 
@@ -38,7 +39,7 @@ safeeyes -e &
 # gebaard -b
 
 # /usr/bin/emacs --daemon &
-# alttab -d 1 -i 108x108 -bg "#1a1b26" -fg "#a9b1d6" -t 224x256 -frame "#9ece6a" -bc "#7aa2f7" -bw 5 -inact "#4abaaf" &
+alttab -d 1 -i 108x108 -bg "#1a1b26" -fg "#a9b1d6" -t 224x256 -frame "#9ece6a" -bc "#7aa2f7" -bw 5 -inact "#4abaaf" &
 
 # bash $HOME/.config/bspwm/scripts/fix-plank
 # plank &
