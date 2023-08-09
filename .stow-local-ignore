@@ -18,6 +18,7 @@ _darcs
 \.git
 \.gitignore
 \.bin
+\.keyboard
 \pkglist.*
 ^/.Xmodmap
 .+~          # emacs backup files
@@ -33,3 +34,5 @@ _darcs
 \dm
 \keyd
 \proxychains
+\icons
+\fonts
