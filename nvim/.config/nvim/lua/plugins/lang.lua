@@ -12,4 +12,5 @@ return {
   { import = "plugins.extras.lang.ymal" },
   { import = "plugins.extras.lang.latex" },
   { import = "plugins.extras.lang.yuck" },
+  -- { import = "plugins.extras.lang.norg" },
 }
