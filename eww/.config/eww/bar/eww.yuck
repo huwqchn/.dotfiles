@@ -1,16 +1,32 @@
-
 (defvar eww "eww -c $HOME/.config/eww/bar")
 
 (defwidget launcher []
 	(box :orientation "h"
 		 :space-evenly "false"
 		 :spacing -15
-  	(button :class "launcher-button"
-      :tooltip "Open Applications Launcher"
-      :onclick "scripts/launcher"  "󰊠 "
-    )
+  	(button :class "launcher"
+		   	:onclick "scripts/launcher" "󰊠 ")))
+
+(defwidget start []
+	(box	:orientation "h"
+    :space-evenly "false"
+    :valign "start"
+    (launcher)
   )
 )
+
+
+; (defwidget center [])
+;
+; (defwidget end [])
+;
+; (defwidget bar []
+;   (centerbox :class "bar" :orientation "h"
+;     (start)
+;     (center)
+;     (end)
+;   )
+; )
 
 (defwindow bar
   :monitor 0
@@ -19,9 +35,8 @@
     :x "0%"
     :y "0.5%"
     :width "99.5%"
-    :height "27px"
+    :height "3%"
     :anchor "top center")
   :stacking "bg"
-  :reserve (struts :side "top" :distance "4%")
-  (launcher)
+  :reserve (struts :side "top" :distance "3.5%")
 )

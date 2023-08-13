@@ -1,0 +1,1 @@
+(defvar eww "eww -c $HOME/.config/eww/bar")
