@@ -1,7 +1,7 @@
 return {
   { import = "plugins.extras.coding.pairs.mini-pairs" },
   { import = "plugins.extras.coding.surround.mini-surround" },
-  { import = "plugins.extras.coding.text-objects.mini-ai" },
+  { import = "plugins.extras.coding.operator.mini-ai" },
   { import = "plugins.extras.coding.comment.neogen" },
   { import = "plugins.extras.coding.comment.mini-comment" },
   { import = "plugins.extras.coding.motion.mini-bracketed" },
@@ -25,5 +25,5 @@ return {
   { import = "plugins.extras.coding.ai.tabnine" },
   { import = "plugins.extras.coding.ai.chatgpt" },
   { import = "plugins.extras.coding.ai.neoai" },
-  { import = "plugins.extras.coding.text-objects.mini-operators" },
+  { import = "plugins.extras.coding.operator.mini-operators" },
 }
