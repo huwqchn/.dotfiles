@@ -29,5 +29,5 @@ return {
   -- { import = "plugins.extras.misc.image" },
   -- { import = "plugins.extras.misc.harpoon" },
   -- { import = "plugins.extras.misc.ghost-text" },
-  { import = "plugins.extras.misc.neoswap" },
+  -- { import = "plugins.extras.misc.neoswap" },
 }

@@ -10,9 +10,9 @@ return {
       local plugin = require("lazy.core.config").spec.plugins["mini.comment"]
       local opts = require("lazy.core.plugin").values(plugin, "opts", false)
       local mappings = {
-        { opts.mappings.comment, mode = { "n", "x" } },
-        { opts.mappings.comment_line },
-        { opts.mappings.textobject },
+        { opts.mappings.comment, mode = { "n", "x" }, desc = "Comment" },
+        { opts.mappings.comment_line, desc = "Comment line" },
+        { opts.mappings.textobject, desc = "Comment text object" },
         { "<c-/>", opts.mappings.comment_line, remap = true },
         { "<c-/>", opts.mappings.comment, mode = "x", remap = true },
         { "<c-_>", opts.mappings.comment_line, remap = true },
