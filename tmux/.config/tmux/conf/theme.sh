@@ -3,7 +3,7 @@
 set_tmux_theme() {
 	tmux_conf_dir=~/.config/tmux/conf
 	if [ -z "${THEME}" ]; then
-		theme="catppuccino"
+		theme="catppuccin"
 	else
 		theme="${THEME}"
 	fi

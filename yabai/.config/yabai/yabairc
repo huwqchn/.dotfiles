@@ -56,11 +56,11 @@ yabai -m rule --add app="Spotify" space=4
 
 yabai -m rule --add app="^System Preferences$" manage=off
 yabai -m rule --add app="^System Settings$" manage=off
-yabai -m rule --add app="^System Information$" sticky=on layer=above manage=off
-yabai -m rule --add app="^Activity Monitor$" sticky=on layer=above manage=off
-yabai -m rule --add app="^Finder$" sticky=on layer=above manage=off
-yabai -m rule --add app="^Path Finder$" sticky=on layer=above manage=off
-yabai -m rule --add app="^GitHub Desktop$" sticky=on layer=above manage=off
+yabai -m rule --add app="^System Information$" sticky=on manage=off
+yabai -m rule --add app="^Activity Monitor$" sticky=on manage=off
+yabai -m rule --add app="^Finder$" sticky=on manage=off
+yabai -m rule --add app="^Path Finder$" sticky=on manage=off
+yabai -m rule --add app="^GitHub Desktop$" sticky=on manage=off
 yabai -m rule --add app="^CleanMyMac.*" manage=off
 yabai -m rule --add app="^Pocket cleaner Pro$" manage=off
 yabai -m rule --add app="^DaisyDisk$" manage=off
@@ -75,7 +75,7 @@ yabai -m rule --add app="^Bartender 4$" manage=off
 yabai -m rule --add app="^BetterTouchTool$" manage=off
 yabai -m rule --add app="^WeChat$" manage=off
 yabai -m rule --add app="^微信$" manage=off
-yabai -m rule --add app="^Alfred Preferences$" sticky=on layer=above manage=off
+yabai -m rule --add app="^Alfred Preferences$" sticky=on manage=off
 yabai -m rule --add app="^App Store$" manage=off
 yabai -m rule --add app="^Things$" manage=off
 yabai -m rule --add app="^Parallels Desktop$" manage=off
