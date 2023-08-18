@@ -31,7 +31,17 @@ getcolors() {
 getcolors
 
 # Mulithead behavior
-bspc monitor -d I II III IV V VI VII VIII IX X
+# bspc monitor -d I II III IV V VI VII VIII IX X
+bspc monitor -d 1 2 3 4 5 6 7 8 9 10
+# workspaces() {
+# 	name=1
+# 	for monitor in $(bspc query -M); do
+# 		# bspc monitor "${monitor}" -n "$name" -d '' '' '' '' '' '' ''
+# 		bspc monitor "${monitor}" -n "$name" -d '1' '2' '3' '4' '5' '6' '7' '8' '9' '10'
+# 		( (name++))
+# 	done
+# }
+# workspaces
 bspc config remove_disabled_monitors true
 bspc config remove_unplugged_monitors true
 

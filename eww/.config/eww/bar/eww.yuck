@@ -5,13 +5,37 @@
 		 :space-evenly "false"
 		 :spacing -15
   	(button :class "launcher"
-		   	:onclick "scripts/launcher" "󰊠 ")))
+		   	:onclick "scripts/launcher" "󰊠 "
+    )
+  )
+)
+
+(deflisten workspace "scripts/workspace")
+(defwidget workspace []
+  (eventbox
+    :onscroll "[ {} = down ] && bspc desktop -f next; \
+              [ {} = up ] && bspc desktop -f prev"
+    (box
+      :vexpand true :class "workspace"
+      (for index in workspace
+        (eventbox
+          :cursor "pointer"
+          :onclick {index.onclick}
+          (label
+            :class {index.class} :text {index.text}
+          )
+        )
+      )
+    )
+  )
+)
 
 (defwidget start []
 	(box	:orientation "h"
-    :space-evenly "false"
+    :space-evenly false
     :valign "start"
     (launcher)
+    (workspace)
   )
 )
 
@@ -39,4 +63,5 @@
     :anchor "top center")
   :stacking "bg"
   :reserve (struts :side "top" :distance "3.5%")
+  (start)
 )

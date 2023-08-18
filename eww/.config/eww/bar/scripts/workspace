@@ -1,6 +1,6 @@
-#!/bin/bash
+#!/usr/bin/env zsh
 
-source $XDG_CONFIG_HOME/eww/init.zsh
+source $XDG_CONFIG_HOME/eww/init
 
 # Find and store total number of workspaces in an array
 _workspaces=($(bspc query -D --names))
@@ -14,19 +14,20 @@ wrap() {
 }
 
 _query() {
-	bspc query -D -d $1 --names | grep -q "$index"
+	bspc query -D -d $1 --names | grep -q "$workspace"
 }
 
 # Pack current values into the structure with json format
 _pack() {
 	buffer="["
-	seq ${#_workspaces} | while read -r index; do
+	# for workspace in "${_workspaces[@]}"; do
+  seq ${#_workspaces} | while read -r workspace; do
 		if _query ".focused"; then
-			buffer+="$(wrap "bspc desktop -f $index" "" "focused_workspace"),"
+			buffer+="$(wrap "bspc desktop -f $workspace" "󰺕" "focused_workspace"),"
 		elif _query ".occupied"; then
-			buffer+="$(wrap "bspc desktop -f $index" "" "occupied_workspace phosphor"),"
+			buffer+="$(wrap "bspc desktop -f $workspace" "" "occupied_workspace"),"
 		else
-			buffer+="$(wrap "bspc desktop -f $index" "" "empty_workspace phosphor"),"
+			buffer+="$(wrap "bspc desktop -f $workspace" "" "empty_workspace"),"
 		fi
 	done
 
@@ -36,7 +37,7 @@ _pack() {
 
 # Run once on startup and then follow changes
 _pack
-bspc subscribe desktop node_add node_remove node_transfer 2>/dev/nullnode_transfer | while read -r _; do
+bspc subscribe desktop node_add node_remove node_transfer 2> /dev/null | while read -r _; do
 	_pack
 	_quit &
 done
