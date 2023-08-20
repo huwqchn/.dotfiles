@@ -3,12 +3,14 @@ return {
     "echasnovski/mini.operators",
     event = "BufRead",
     keys = {
-      { "<M-t>", "sthww.", desc = "transform word after", remap = true },
-      { "<M-S-t>", "sthwb.", desc = "transform word before", remap = true },
+      { "<M-t>", "sxhww.", desc = "transform word after", remap = true },
+      { "<M-S-t>", "sxhwb.", desc = "transform word before", remap = true },
+      { "<M-m>", "gmm", desc = "multiply line", remap = true },
+      { "<C-c>", "sciw", desc = "replace word", remap = true },
     },
     opts = {
       exchange = {
-        prefix = "st",
+        prefix = "sx",
       },
       replace = {
         prefix = "sc",
