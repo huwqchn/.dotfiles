@@ -70,7 +70,8 @@ map({ "n", "x", "o" }, "gK", "gN", { desc = "Search backwards and select" })
 map({ "n", "v" }, "<C-m>", "<C-e>")
 
 -- emacs kill a line
-map("i", "<C-k>", "<cmd>normal! dd<cr>")
+map("i", "<C-k>", "<cmd>normal! d$<cr>", { desc = "delete to end of line" })
+map("i", "<M-x>", "<cmd>normal! dd<cr>", { desc = "kill the whole line" })
 
 -- delete next word
 map("i", "<C-d>", "<cmd>normal! dw<cr>")
