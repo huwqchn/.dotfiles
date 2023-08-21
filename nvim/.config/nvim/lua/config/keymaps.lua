@@ -21,10 +21,10 @@ unmap("n", "<C-l>")
 -- local map = vim.keymap.set
 -- local Util = require("lazyvim.util")
 -- colemak-dh movement
-map({ "n", "x" }, "e", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
-map({ "n", "x" }, "i", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
-map({ "n", "x" }, "n", "h")
-map({ "n", "x" }, "o", "l")
+map({ "n", "x", "o" }, "e", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
+map({ "n", "x", "o" }, "i", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
+map({ "n", "x", "o" }, "n", "h")
+map({ "n", "x", "o" }, "o", "l")
 
 -- colemak-dh jump to start/end of the line
 map({ "n", "x", "o" }, "N", "^")
