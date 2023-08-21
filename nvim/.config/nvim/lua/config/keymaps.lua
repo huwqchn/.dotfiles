@@ -67,17 +67,22 @@ map({ "n", "x", "o" }, "gk", "gn", { desc = "Search forwards and select" })
 map({ "n", "x", "o" }, "gK", "gN", { desc = "Search backwards and select" })
 
 -- colemak scroll
-map({ "n", "v" }, "<C-m>", "<C-e>")
+map({ "n", "v" }, "<C-j>", "<C-e>")
 
--- emacs kill a line
+-- emacs delete end of line
 map("i", "<C-k>", "<cmd>normal! d$<cr>", { desc = "delete to end of line" })
+
+-- emacs kill a whole line
 map("i", "<M-x>", "<cmd>normal! dd<cr>", { desc = "kill the whole line" })
 
--- delete next word
-map("i", "<C-d>", "<cmd>normal! dw<cr>")
+-- emacs delete next word
+map("i", "<M-d>", "<cmd>normal! dw<cr>", { desc = "delete next word" })
+
+-- emacs delete char
+map("i", "<C-d>", "<DEL>", { desc = "delete char" })
 
 -- autocorrect spelling from previous error
-map("i", "<c-f>", "<c-g>u<Esc>[s1z=`]a<c-g>u", { expr = true, silent = true })
+map("i", "<C-f>", "<c-g>u<Esc>[s1z=`]a<c-g>u", { expr = true, silent = true })
 
 -- better cmd mode, swap ; and :
 map("", "\\", ":", { silent = false })

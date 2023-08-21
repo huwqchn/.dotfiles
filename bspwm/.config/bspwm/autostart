@@ -39,7 +39,7 @@ safeeyes -e &
 # gebaard -b
 
 # /usr/bin/emacs --daemon &
-alttab -d 1 -i 108x108 -bg "#1a1b26" -fg "#a9b1d6" -t 224x256 -frame "#9ece6a" -bc "#7aa2f7" -bw 5 -inact "#4abaaf" &
+# alttab -d 1 -i 108x108 -bg "#1a1b26" -fg "#a9b1d6" -t 224x256 -frame "#9ece6a" -bc "#7aa2f7" -bw 5 -inact "#4abaaf" &
 
 # bash $HOME/.config/bspwm/scripts/fix-plank
 # plank &
