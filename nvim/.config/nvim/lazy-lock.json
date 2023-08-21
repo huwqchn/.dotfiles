@@ -92,7 +92,7 @@
   "nvim-web-devicons": { "branch": "master", "commit": "cfc8824cc1db316a276b36517f093baccb8e799a" },
   "nvim-window-picker": { "branch": "main", "commit": "5902827d0e338890a22849e2f18dc80d1cc1a8db" },
   "one-small-step-for-vimkind": { "branch": "main", "commit": "aa1c4a876c3a4e14614cd0dd55794d00f810dae9" },
-  "overseer.nvim": { "branch": "master", "commit": "18c06d3d9bd9ea376240e34ae60f3da76f1aa5f9" },
+  "overseer.nvim": { "branch": "master", "commit": "020f63d4cb97f54b61caa533ad9d176c543ef0ab" },
   "package-info.nvim": { "branch": "master", "commit": "4d98c8cc90d970d87c472c04bf7ca712336cc753" },
   "peek.nvim": { "branch": "master", "commit": "67752e7581f88da6899838985a05705b008e4185" },
   "persistence.nvim": { "branch": "main", "commit": "4b8051c01f696d8849a5cb8afa9767be8db16e40" },
