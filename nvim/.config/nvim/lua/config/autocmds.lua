@@ -121,6 +121,30 @@ local definitions = {
       command = "setlocal formatoptions-=c formatoptions-=r formatoptions-=o",
     },
   },
+  {
+    "BufReadPost",
+    {
+      group = "fix_cr",
+      pattern = "quickfix",
+      callback = function()
+        vim.cmd([[
+            nnoremap <silent> <buffer> <cr> <cr>
+          ]])
+      end,
+    },
+  },
+  {
+    "CmdwinEnter",
+    {
+      group = "fix_cr",
+      pattern = "*",
+      callback = function()
+        vim.cmd([[
+            nnoremap <silent> <buffer> <cr> <cr>
+          ]])
+      end,
+    },
+  },
   -- {
   --   "BufWinLeave",
   --   {
