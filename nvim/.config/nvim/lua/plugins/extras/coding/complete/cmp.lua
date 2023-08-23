@@ -60,7 +60,7 @@ return {
       opts.mapping["<C-i>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert })
       opts.mapping["<C-e>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert })
       opts.mapping["<C-c>"] = cmp.mapping.abort()
-      opts.mapping["<C-o>"] = cmp.mapping.complete()
+      opts.mapping["<C-x>"] = cmp.mapping.complete()
       opts.experimental = vim.tbl_extend("force", opts.experimental or {}, {
         native_menu = false,
       })
