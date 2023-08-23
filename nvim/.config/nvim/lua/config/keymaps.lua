@@ -70,16 +70,24 @@ map({ "n", "x", "o" }, "gK", "gN", { desc = "Search backwards and select" })
 map({ "n", "v" }, "<C-j>", "<C-e>")
 
 -- emacs delete end of line
-map("i", "<C-k>", "<cmd>normal! d$<cr>", { desc = "delete to end of line" })
+map("i", "<C-k>", "<cmd>normal! d$<cr>", { silent = true, desc = "delete to end of line" })
 
 -- emacs kill a whole line
-map("i", "<M-x>", "<cmd>normal! dd<cr>", { desc = "kill the whole line" })
+map("i", "<M-x>", "<cmd>normal! dd<cr>", { silent = true, desc = "kill the whole line" })
 
 -- emacs delete next word
-map("i", "<M-d>", "<cmd>normal! dw<cr>", { desc = "delete next word" })
+map("i", "<M-d>", "<cmd>normal! dw<cr>", { silent = true, desc = "delete next word" })
 
 -- emacs delete char
-map("i", "<C-d>", "<DEL>", { desc = "delete char" })
+map("i", "<C-d>", "<DEL>", { silent = true, desc = "delete char" })
+
+-- emacs forward/backward word
+map("i", "<M-f>", "<C-Right>", { silent = true, desc = "forward word" })
+map("i", "<M-b>", "<C-Left>", { silent = true, desc = "backward word" })
+
+-- emacs begin/end of line
+-- map("i", "<C-a>", "<Home>", { silent = true, desc = "begin of line" })
+-- map("i", "<C-e>", "<End>", { silent = true, desc = "end of line" })
 
 -- autocorrect spelling from previous error
 map("i", "<C-f>", "<c-g>u<Esc>[s1z=`]a<c-g>u", { expr = true, silent = true })
@@ -305,3 +313,6 @@ end
 
 -- change word with <c-c>
 vim.keymap.set("n", "<C-c>", "<cmd>normal! ciw<cr>a")
+
+-- cmd keymaps use emacs keybindings
+map("c", "<C-a>", "<Home>", { silent = true, desc = "begin of line" })
