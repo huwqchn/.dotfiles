@@ -28,7 +28,6 @@ elif [[ $(uname) == 'Linux' ]]; then
 fi
 # alias doom='~/.emacs.d/bin/doom'
 alias v='nvim'
-alias vi='NVIM_APPNAME=lazyvim nvim'
 alias vim='NVIM_APPNAME=minivim nvim'
 alias ls="exa -aG --color=always --icons --group-directories-first"
 alias la="exa -a --color=always --icons --group-directories-first"
