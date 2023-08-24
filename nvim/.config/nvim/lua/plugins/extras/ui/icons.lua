@@ -34,11 +34,12 @@ return {
     opts = {
       icons = {
         Copilot = " ",
-        Robot = "ﮧ",
-        Package = "",
-        Smiley = "",
+        Robot = "󰚩 ",
+        Package = " ",
+        Smiley = " ",
         Magic = " ",
-        CircuitBoard = "",
+        CircuitBoard = " ",
+        Otter = " ",
       },
     },
   },

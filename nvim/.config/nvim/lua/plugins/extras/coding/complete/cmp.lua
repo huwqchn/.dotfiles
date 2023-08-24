@@ -85,6 +85,7 @@ return {
           copilot = "(Copilot)",
           treesitter = "(TreeSitter)",
           codeium = "(Codeium)",
+          otter = "(Otter)",
         },
         duplicates = {
           buffer = 1,
@@ -127,6 +128,10 @@ return {
           if entry.source.name == "codeium" then
             item.kind = opts.icons.Magic
             item.kind_hl_group = "CmpItemKindCodeium"
+          end
+          if entry.source.name == "otter" then
+            item.kind = opts.icons.otter
+            item.kind_hl_group = "CmpItemKindOtter"
           end
           item.menu = opts.formatting.source_names[entry.source.name]
           item.dup = opts.formatting.duplicates[entry.source.name] or opts.formatting.duplicates_default

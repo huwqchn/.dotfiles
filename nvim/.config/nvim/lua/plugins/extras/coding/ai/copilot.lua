@@ -37,8 +37,8 @@ return {
         debounce = 75,
         keymap = {
           accept = "<M-cr>",
-          next = "<M-o>",
-          prev = "<M-n>",
+          next = "<M-]>",
+          prev = "<M-[>",
           dismiss = "<C-]>",
         },
       },
