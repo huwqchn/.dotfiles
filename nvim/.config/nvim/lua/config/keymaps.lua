@@ -94,8 +94,12 @@ map("i", "<C-f>", "<c-g>u<Esc>[s1z=`]a<c-g>u", { expr = true, silent = true })
 
 -- better cmd mode, swap ; and :
 map("", "<cr>", ":", { silent = false })
+
 -- emacs style cmd mode keybindings for backup
 map("", "<M-x>", ":", { silent = false })
+
+-- cmd history
+map("", "q<cr>", "q:", { silent = false })
 
 if not Util.has("leap.nvim") and Util.has("flash.nvim") and Util.has("flit.nvim") then
   map("", ",", ":")

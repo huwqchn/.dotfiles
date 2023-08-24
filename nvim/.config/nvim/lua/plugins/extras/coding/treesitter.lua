@@ -87,9 +87,9 @@ return {
         enable = true,
         keymaps = {
           init_selection = "ss",
-          node_incremental = "si",
+          node_incremental = "s=",
+          node_decremental = "s-",
           scope_incremental = "so",
-          node_decremental = "se",
         },
       },
       playground = {
