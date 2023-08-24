@@ -93,8 +93,10 @@ map("i", "<M-b>", "<C-Left>", { silent = true, desc = "backward word" })
 map("i", "<C-f>", "<c-g>u<Esc>[s1z=`]a<c-g>u", { expr = true, silent = true })
 
 -- better cmd mode, swap ; and :
-map("", "\\", ":", { silent = false })
 map("", "<cr>", ":", { silent = false })
+-- emacs style cmd mode keybindings for backup
+map("", "<M-x>", ":", { silent = false })
+
 if not Util.has("leap.nvim") and Util.has("flash.nvim") and Util.has("flit.nvim") then
   map("", ",", ":")
   map("", ":", ",")
@@ -151,6 +153,10 @@ local lazyterm = function()
 end
 map("n", "<M-/>", lazyterm, { desc = "Terminal (root dir)" })
 map("t", "<M-/>", "<cmd>close<cr>", { desc = "Hide Terminal" })
+
+-- better terminal mode
+map("n", "\\", "<leader>fT", { remap = true })
+
 -- map tab to tab, because distinguish between <C-i>
 map("t", "<Tab>", "<Tab>")
 
@@ -313,6 +319,3 @@ end
 
 -- change word with <c-c>
 vim.keymap.set("n", "<C-c>", "<cmd>normal! ciw<cr>a")
-
--- cmd keymaps use emacs keybindings
-map("c", "<C-a>", "<Home>", { silent = true, desc = "begin of line" })
