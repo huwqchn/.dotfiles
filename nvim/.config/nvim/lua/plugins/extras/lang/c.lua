@@ -82,6 +82,11 @@ return {
         "<cmd>Cscope build<cr>",
         desc = "Build database",
       },
+      {
+        "<C-]>",
+        "<cmd>exe 'Cstag' expand('<cword>')<cr>",
+        desc = "ctag",
+      },
     },
     opts = {
       -- maps related defaults
@@ -93,7 +98,7 @@ return {
         -- location of cscope db file
         db_file = require("util").find_project_root() .. "/cscope.out",
         -- cscope executable
-        exec = "cscope", -- "cscope" or "gtags-cscope"
+        exec = "gtags-cscope", -- "cscope" or "gtags-cscope"
         -- choose your fav picker
         picker = "telescope", -- "telescope", "fzf-lua" or "quickfix"
         -- "true" does not open picker for single result, just JUMP
