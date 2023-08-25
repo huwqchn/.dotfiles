@@ -14,5 +14,4 @@ return {
   { import = "plugins.extras.editor.debug.dap" },
   { import = "plugins.extras.editor.explorer.mini-files" },
   { import = "plugins.extras.editor.runner.competitest" },
-  { import = "plugins.extras.editor.search.cscope" },
 }
