@@ -91,7 +91,7 @@ return {
       -- cscope related defaults
       cscope = {
         -- location of cscope db file
-        db_file = "~/Repos/linux/cscope.out",
+        db_file = require("util").find_project_root() .. "/cscope.out",
         -- cscope executable
         exec = "cscope", -- "cscope" or "gtags-cscope"
         -- choose your fav picker

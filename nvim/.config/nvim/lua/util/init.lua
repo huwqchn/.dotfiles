@@ -87,4 +87,16 @@ M.toggle_colorcolumn = function()
   end
 end
 
+-- find project root when git init
+function M.find_project_root()
+  local path = vim.fn.expand("%:p:h")
+  while path and path ~= "/" do
+    if vim.fn.isdirectory(path .. "/.git") == 1 then
+      return path
+    end
+    path = vim.fn.fnamemodify(path, ":h")
+  end
+  return "."
+end
+
 return M
