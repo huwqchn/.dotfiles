@@ -7,10 +7,10 @@ return {
   { import = "plugins.extras.lang.bash" },
   { import = "plugins.extras.lang.clangd" },
   { import = "plugins.extras.lang.typescript" },
-  { import = "plugins.extras.lang.markdown" },
+  -- { import = "plugins.extras.lang.markdown" },
   { import = "plugins.extras.lang.http" },
   { import = "plugins.extras.lang.ymal" },
-  { import = "plugins.extras.lang.latex" },
+  -- { import = "plugins.extras.lang.latex" },
   { import = "plugins.extras.lang.yuck" },
   -- { import = "plugins.extras.lang.norg" },
 }
