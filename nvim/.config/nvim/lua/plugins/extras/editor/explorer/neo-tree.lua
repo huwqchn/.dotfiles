@@ -7,7 +7,7 @@ return {
       filesystem = {
         window = {
           mappings = {
-            ["O"] = { "show_help", nowait = false, config = { title = "Order by", prefix_key = "o" } },
+            ["O"] = { "show_help", nowait = false, config = { title = "Order by", prefix_key = "O" } },
             ["Oc"] = { "order_by_created", nowait = false },
             ["Od"] = { "order_by_diagnostics", nowait = false },
             ["Og"] = { "order_by_git_status", nowait = false },
@@ -29,7 +29,7 @@ return {
       buffers = {
         window = {
           mappings = {
-            ["O"] = { "show_help", nowait = false, config = { title = "Order by", prefix_key = "o" } },
+            ["O"] = { "show_help", nowait = false, config = { title = "Order by", prefix_key = "O" } },
             ["Oc"] = { "order_by_created", nowait = false },
             ["Od"] = { "order_by_diagnostics", nowait = false },
             ["Om"] = { "order_by_modified", nowait = false },
@@ -49,7 +49,7 @@ return {
       git_status = {
         window = {
           mappings = {
-            ["O"] = { "show_help", nowait = false, config = { title = "Order by", prefix_key = "o" } },
+            ["O"] = { "show_help", nowait = false, config = { title = "Order by", prefix_key = "O" } },
             ["Oc"] = { "order_by_created", nowait = false },
             ["Od"] = { "order_by_diagnostics", nowait = false },
             ["Om"] = { "order_by_modified", nowait = false },
