@@ -1,11 +1,69 @@
 return {
   {
     "nvim-neo-tree/neo-tree.nvim",
+    optional = true,
     opts = {
       close_if_last_window = true,
       filesystem = {
-        filtered_items = {
-          hide_dofiles = true,
+        window = {
+          mappings = {
+            ["O"] = { "show_help", nowait = false, config = { title = "Order by", prefix_key = "o" } },
+            ["Oc"] = { "order_by_created", nowait = false },
+            ["Od"] = { "order_by_diagnostics", nowait = false },
+            ["Og"] = { "order_by_git_status", nowait = false },
+            ["Om"] = { "order_by_modified", nowait = false },
+            ["On"] = { "order_by_name", nowait = false },
+            ["Os"] = { "order_by_size", nowait = false },
+            ["Ot"] = { "order_by_type", nowait = false },
+            ["o"] = "none",
+            ["oc"] = "none",
+            ["od"] = "none",
+            ["og"] = "none",
+            ["om"] = "none",
+            ["on"] = "none",
+            ["os"] = "none",
+            ["ot"] = "none",
+          },
+        },
+      },
+      buffers = {
+        window = {
+          mappings = {
+            ["O"] = { "show_help", nowait = false, config = { title = "Order by", prefix_key = "o" } },
+            ["Oc"] = { "order_by_created", nowait = false },
+            ["Od"] = { "order_by_diagnostics", nowait = false },
+            ["Om"] = { "order_by_modified", nowait = false },
+            ["On"] = { "order_by_name", nowait = false },
+            ["Os"] = { "order_by_size", nowait = false },
+            ["Ot"] = { "order_by_type", nowait = false },
+            ["o"] = "none",
+            ["oc"] = "none",
+            ["od"] = "none",
+            ["om"] = "none",
+            ["on"] = "none",
+            ["os"] = "none",
+            ["ot"] = "none",
+          },
+        },
+      },
+      git_status = {
+        window = {
+          mappings = {
+            ["O"] = { "show_help", nowait = false, config = { title = "Order by", prefix_key = "o" } },
+            ["Oc"] = { "order_by_created", nowait = false },
+            ["Od"] = { "order_by_diagnostics", nowait = false },
+            ["Om"] = { "order_by_modified", nowait = false },
+            ["On"] = { "order_by_name", nowait = false },
+            ["Os"] = { "order_by_size", nowait = false },
+            ["Ot"] = { "order_by_type", nowait = false },
+            ["o"] = "none",
+            ["oc"] = "none",
+            ["od"] = "none",
+            ["om"] = "none",
+            ["on"] = "none",
+            ["os"] = "none",
+            ["ot"] = "none",
+          },
         },
       },
       window = {
@@ -18,6 +76,8 @@ return {
             "toggle_node",
             nowait = false,
           },
+          ["I"] = "show_file_details",
+          ["i"] = "none",
           -- ["w"] = "open",
         },
       },
