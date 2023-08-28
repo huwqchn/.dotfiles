@@ -2,6 +2,18 @@ return {
   {
     "nvim-neo-tree/neo-tree.nvim",
     optional = true,
+    keys = {
+      {
+        "<leader>be",
+        "<cmd>Neotree float buffers<cr>",
+        desc = "Explorer buffers",
+      },
+      {
+        "<leader>ge",
+        "<cmd>Neotree float git_status<cr>",
+        desc = "Explorer git status",
+      },
+    },
     opts = {
       close_if_last_window = true,
       filesystem = {
