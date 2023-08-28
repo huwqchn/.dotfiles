@@ -4,6 +4,7 @@ return {
     "catppuccin/nvim",
     name = "catppuccin",
     opts = {
+      flavour = "mocha",
       transparent_background = vim.g.transparent_enabled,
     },
   },
@@ -11,7 +12,7 @@ return {
     "nvim-lualine/lualine.nvim",
     optional = true,
     opts = function(_, opts)
-      local colors = require("catppuccin.palettes.mocha")
+      local colors = require("catppuccin.palettes.macchiato")
       opts.colors = {
         grey = colors.surface0,
         dark_grey = colors.overlay0,
@@ -35,7 +36,7 @@ return {
     "petertriho/nvim-scrollbar",
     optional = true,
     opts = function()
-      local colors = require("catppuccin.palettes.mocha")
+      local colors = require("catppuccin.palettes.macchiato")
       return {
         handle = {
           color = colors.overlay0,
