@@ -1,5 +1,6 @@
 return {
   "chrisgrieser/nvim-spider",
+  event = "VeryLazy",
   keys = {
     { "w", "<cmd>lua require('spider').motion('w')<CR>", mode = { "n", "o", "x" }, desc = "Spider-w" },
     { "j", "<cmd>lua require('spider').motion('e')<CR>", mode = { "n", "o", "x" }, desc = "Spider-e" },

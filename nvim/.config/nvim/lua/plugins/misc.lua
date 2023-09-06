@@ -13,16 +13,6 @@ return {
       filetype_exclude = { "markdown", "diff" },
     },
   },
-  -- repeat
-  {
-    "tpope/vim-repeat",
-    event = function()
-      return {}
-    end,
-    keys = {
-      ".",
-    },
-  },
   { import = "plugins.extras.misc.dial" },
   { import = "plugins.extras.misc.smart-splits" },
   { import = "plugins.extras.misc.zen-mode" },
