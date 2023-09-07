@@ -25,9 +25,10 @@ elif [[ $(uname) == 'Linux' ]]; then
   alias rmdir="rmdir -p --verbose"
   alias convert2wallpaper="convert -resize $(xdpyinfo | grep dimensions | cut -d\  -f7 | cut -dx -f1)"
   alias pipes="pipes.sh"
-  alias sudo="doas"
-  alias sudoedit="doas rvim"
 fi
+# light-weight sudo
+alias sudo="doas"
+alias sudoedit="doas rvim"
 # alias doom='~/.emacs.d/bin/doom'
 alias v='nvim'
 alias vim='NVIM_APPNAME=minivim nvim'
