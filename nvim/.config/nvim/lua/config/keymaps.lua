@@ -78,9 +78,6 @@ map("i", "<M-x>", "<cmd>normal! dd<cr>", { silent = true, desc = "kill the whole
 -- emacs delete next word
 map("i", "<M-d>", "<cmd>normal! dw<cr>", { silent = true, desc = "delete next word" })
 
--- emacs delete char
-map("i", "<C-d>", "<DEL>", { silent = true, desc = "delete char" })
-
 -- emacs forward/backward word
 map("i", "<M-f>", "<C-Right>", { silent = true, desc = "forward word" })
 map("i", "<M-b>", "<C-Left>", { silent = true, desc = "backward word" })
