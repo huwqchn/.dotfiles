@@ -90,7 +90,7 @@ map("i", "<M-b>", "<C-Left>", { silent = true, desc = "backward word" })
 -- map("i", "<C-e>", "<End>", { silent = true, desc = "end of line" })
 
 -- autocorrect spelling from previous error
-map("i", "<C-f>", "<c-g>u<Esc>[s1z=`]a<c-g>u", { expr = true, silent = true })
+-- map("i", "<C-f>", "<c-g>u<Esc>[s1z=`]a<c-g>u", { expr = true, silent = true })
 
 -- better cmd mode, swap ; and :
 map("", "<cr>", ":", { silent = false })
