@@ -302,7 +302,7 @@ map("n", "<leader>b<space>", function()
 end, { silent = true, desc = "Close unused buffers" })
 
 -- Replace in selection
-map("x", "ss", ":s/\\%V", { silent = false, desc = "replace in selection" })
+map("x", "s<cr>", ":s/\\%V", { silent = false, desc = "replace in selection" })
 
 -- toggle coloroclumn
 map("n", "<leader>uo", function()

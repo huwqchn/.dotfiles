@@ -87,8 +87,8 @@ return {
         enable = true,
         keymaps = {
           init_selection = "ss",
-          node_incremental = "s=",
-          node_decremental = "s-",
+          node_incremental = "ss",
+          node_decremental = "sS",
           scope_incremental = "so",
         },
       },
