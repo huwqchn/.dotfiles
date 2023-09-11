@@ -31,8 +31,8 @@ alias sudo="doas"
 alias sudoedit="doas rvim"
 # alias doom='~/.emacs.d/bin/doom'
 alias v='nvim'
-alias ls="exa -aG --color=always --icons --group-directories-first"
-alias la="exa -a --color=always --icons --group-directories-first"
+alias ls="eza -aG --color=always --icons --group-directories-first"
+alias la="eza -a --color=always --icons --group-directories-first"
 alias tree="lsd --tree"
 alias cat="bat"
 alias du="dust"
