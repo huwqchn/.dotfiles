@@ -4,6 +4,11 @@ export BSPWM_CONFIG="${XDG_CONFIG_HOME:-$HOME/.config}/bspwm"
 
 LOGS=~/.cache/bspwm/logs
 
+# if LOGS not exist, create it
+if [ ! -d "$LOGS" ]; then
+	mkdir -p $LOGS
+fi
+
 exec >$LOGS/bspwm.log 2>&1
 
 # Get colors from .Xresources #
