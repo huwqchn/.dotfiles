@@ -454,7 +454,7 @@
 #
 [logger]
 summary = "*"
-script = "~/.config/eww/Main/scripts/logger.zsh"
+script = "~/.config/eww/main/scripts/logger.zsh"
 
 [spotify]
 summary = "*"
