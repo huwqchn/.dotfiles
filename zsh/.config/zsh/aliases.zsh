@@ -36,6 +36,8 @@ alias la="eza -a --color=always --icons --group-directories-first"
 alias tree="lsd --tree"
 alias cat="bat"
 alias du="dust"
+# rm improved
+alias rm="rip"
 # alias ps="procs"
 alias hf="hyperfine"
 # code analysis
