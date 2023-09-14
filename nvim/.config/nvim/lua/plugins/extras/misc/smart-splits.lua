@@ -1,7 +1,7 @@
 return {
   {
     "mrjones2014/smart-splits.nvim",
-    run = "./kitty/install-kittens.bash",
+    build = "./kitty/install-kittens.bash",
     keys = {
       -- resizing splits
       {
