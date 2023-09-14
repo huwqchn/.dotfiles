@@ -3,13 +3,13 @@ return {
   {
     "tiagovla/scope.nvim",
     event = "VeryLazy",
-    opts = {},
+    config = true,
   },
   -- tidy
   {
     "mcauley-penney/tidy.nvim",
     event = "VeryLazy",
-    config = {
+    opts = {
       filetype_exclude = { "markdown", "diff" },
     },
   },
