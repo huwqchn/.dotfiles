@@ -123,7 +123,10 @@ keymap = [
 
   { keys = ["m", "s"], commands = ["linemode size"] },
   { keys = ["m", "m"], commands = ["linemode mtime"] },
-  { keys = ["m", "M"], commands = ["linemode sizemtime"] },
+  { keys = ["m", "M"], commands = ["linemode size | mtime"] },
+  { keys = ["m", "u"], commands = ["linemode user"] },
+  { keys = ["m", "U"], commands = ["linemode user | group"] },
+  { keys = ["m", "p"], commands = ["linemode perm"] },
 
   # bookmarks
   { keys = ["ctrl+b"], commands = ["add_bookmark"] },

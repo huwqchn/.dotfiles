@@ -96,7 +96,7 @@
     # If value is greater than 0, separator_height will be ignored and a border
     # of size frame_width will be drawn around each notification instead.
     # Click events on gaps do not currently propagate to applications below.
-    gap_size = 0
+    gap_size = 12
 
     # Define a color for the separator.
     # possible values are:
@@ -207,7 +207,6 @@
     icon_theme = "Papirus, Adwaita"
     enable_recursive_icon_lookup = true
 
-    always_run_scripts = true
     ### History ###
 
     # Should a notification popped up from history be sticky or timeout
