@@ -137,6 +137,7 @@ keybinds clear-defaults=true {
     shared_except "locked" {
         bind "Ctrl g" { SwitchToMode "Locked"; }
         bind "Ctrl q" { Quit; }
+        bind "Ctrl d" { Detach; }
         bind "Alt x" { CloseFocus; }
         bind "Alt f" { ToggleFocusFullscreen; }
         bind "Alt w" { ToggleFloatingPanes; }
@@ -244,18 +245,31 @@ themes {
     black 0 0 0
     white 255 255 255
   }
-  tokyonight {
-    fg 192 202 245
-    bg 36 40 59
-    red 247 118 142
-    green 158 206 106
-    yellow 224 175 104
-    blue 122 162 247
-    magenta 187 154 247
-    orange 255 158 100
-    cyan 125 207 255
-    black 29 32 47
-    white 169 177 214
+  tokyo-night {
+      fg 169 177 214
+      bg 26 27 38
+      black 56 62 90
+      red 249 51 87
+      green 158 206 106
+      yellow 224 175 104
+      blue 122 162 247
+      magenta 187 154 247
+      cyan 42 195 222
+      white 192 202 245
+      orange 255 158 100
+  }
+  tokyo-night-dark {
+      fg 169 177 214
+      bg 26 27 38
+      black 56 62 90
+      red 249 51 87
+      green 158 206 106
+      yellow 224 175 104
+      blue 122 162 247
+      magenta 187 154 247
+      cyan 42 195 222
+      white 192 202 245
+      orange 255 158 100
   }
 }
 
@@ -263,7 +277,7 @@ themes {
 // Choose the theme that is specified in the themes section.
 // Default: default
 //
-theme "tokyonight"
+theme "tokyo-night-dark"
 
 // The name of the default layout to load on startup
 // Default: "default"
