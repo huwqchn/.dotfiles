@@ -31,8 +31,8 @@ keybinds clear-defaults=true {
         bind "d" { NewPane "Down"; SwitchToMode "Normal"; }
         bind "r" { NewPane "Right"; SwitchToMode "Normal"; }
         bind "x" { CloseFocus; SwitchToMode "Normal"; }
-        bind "f" { ToggleFocusFullscreen; SwitchToMode "Normal"; }
         bind "z" { TogglePaneFrames; SwitchToMode "Normal"; }
+        bind "f" { ToggleFocusFullscreen; SwitchToMode "Normal"; }
         bind "w" { ToggleFloatingPanes; SwitchToMode "Normal"; }
         bind "e" { TogglePaneEmbedOrFloating; SwitchToMode "Normal"; }
         bind "c" { SwitchToMode "RenamePane"; PaneNameInput 0;}
@@ -137,7 +137,9 @@ keybinds clear-defaults=true {
     shared_except "locked" {
         bind "Ctrl g" { SwitchToMode "Locked"; }
         bind "Ctrl q" { Quit; }
-        bind "Ctrl w" { CloseFocus; }
+        bind "Ctrl x" { CloseFocus; }
+        bind "Ctrl f" { ToggleFocusFullscreen; SwitchToMode "Normal"; }
+        bind "Ctrl w" { ToggleFloatingPanes; SwitchToMode "Normal"; }
         bind "Alt a" { NewPane; }
         bind "Alt n" "Alt Left" { MoveFocusOrTab "Left"; }
         bind "Alt o" "Alt Right" { MoveFocusOrTab "Right"; }
