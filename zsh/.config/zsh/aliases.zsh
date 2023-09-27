@@ -37,6 +37,7 @@ alias la="eza -a --color=always --icons --group-directories-first"
 alias tree="lsd --tree"
 alias cat="bat"
 alias du="dust"
+alias dot="chezmoi"
 # rm improved
 alias rm="rip"
 # alias ps="procs"
