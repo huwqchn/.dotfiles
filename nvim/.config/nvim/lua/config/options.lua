@@ -52,7 +52,6 @@ if vim.fn.has("nvim-0.8") == 1 then
   vim.opt.cmdheight = 0
   vim.opt.backupdir = vim.fn.stdpath("state") .. "/backup"
 end
-require("util.status")
 
 -- make all keymaps silent by default
 local keymap_set = vim.keymap.set
