@@ -11,7 +11,7 @@ autopair-init
 unsetopt BEEP
 # source ~/.zim/modules/fzf-tab/fzf-tab.plugin.zsh
 
-source ~/.config/zsh/prompt.zsh
+# source ~/.config/zsh/prompt.zsh
 source ~/.config/zsh/eval.zsh
 
 # Check if neofetch is installed
