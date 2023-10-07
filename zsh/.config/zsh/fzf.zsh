@@ -51,7 +51,7 @@ fzf-history-widget() {
 	return $ret
 }
 zle -N fzf-history-widget
-bindkey '^R' fzf-history-widget
+# bindkey '^R' fzf-history-widget
 
 fif() {
   if [ ! "$#" -gt 0 ]; then echo "Need a string to search for!"; return 1; fi
@@ -63,4 +63,3 @@ find-in-file() {
 }
 zle -N find-in-file
 bindkey '^f' find-in-file
-

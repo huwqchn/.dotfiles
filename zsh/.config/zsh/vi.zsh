@@ -1,5 +1,5 @@
 # bindkey -e will be emacs mode
-bindkey '^v' edit-command-line
+# bindkey '^v' edit-command-line
 bindkey -v
 bindkey -M vicmd "h" vi-insert
 bindkey -M vicmd "H" vi-insert-bol
@@ -36,4 +36,3 @@ _fix_cursor() {
 precmd_functions+=(_fix_cursor)
 
 KEYTIMEOUT=1
-
