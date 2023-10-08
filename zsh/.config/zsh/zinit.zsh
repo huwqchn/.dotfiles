@@ -27,6 +27,7 @@ HISTSIZE=290000
 SAVEHIST=$HISTSIZE
 zinit ice wait="0a" lucid atload="_zsh_autosuggest_start"
 zinit light zsh-users/zsh-autosuggestions
+bindkey ',' autosuggest-accept
 # ZOXIDE
 zinit ice wait="0" lucid from="gh-r" as="program" pick="zoxide-*/zoxide -> zoxide" cp="zoxide-*/completions/_zoxide -> _zoxide" atclone="./zoxide init zsh > init.zsh" atpull="%atclone" src="init.zsh"
 zinit light ajeetdsouza/zoxide
@@ -65,6 +66,7 @@ zinit light junegunn/fzf
 # FZF-TAB
 zinit ice wait="1" lucid
 zinit light Aloxaf/fzf-tab
+
 zinit wait="0" lucid light-mode for \
     hlissner/zsh-autopair \
     hchbaw/zce.zsh \
@@ -96,5 +98,3 @@ zinit light bootandy/dust
 # SAD
 zinit ice from="gh-r" as="command"
 zinit light ms-jpq/sad
-
-bindkey ',' autosuggest-accept
