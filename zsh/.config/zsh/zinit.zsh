@@ -36,30 +36,18 @@ zinit light zsh-users/zsh-history-substring-search
 # TAB COMPLETIONS
 zinit ice wait="0b" lucid blockf atpull'zinit creinstall -q .'
 zinit light zsh-users/zsh-completions
-# zstyle ':completion:*' completer _expand _complete _ignored _approximate
-# zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
-# zstyle ':completion:*' menu select=2
-# zstyle ':completion:*' select-prompt '%SScrolling active: current selection at %p%s'
-# zstyle ':completion:*:descriptions' format '-- %d --'
-# zstyle ':completion:*:processes' command 'ps -au$USER'
-# zstyle ':completion:complete:*:options' sort false
-# zstyle ':fzf-tab:complete:_zlua:*' query-string input
-# zstyle ':completion:*:*:*:*:processes' command "ps -u $USER -o pid,user,comm,cmd -w -w"
-# zstyle ':fzf-tab:complete:kill:argument-rest' extra-opts --preview=$extract'ps --pid=$in[(w)1] -o cmd --no-headers -w -w' --preview-window=down:3:wrap
-# zstyle ":completion:*:git-checkout:*" sort false
-# zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
-# # FZF
-# zinit ice from="gh-r" as="command" bpick="*linux_amd64*"
-# zinit light junegunn/fzf
-# # FZF BYNARY AND TMUX HELPER SCRIPT
-# zinit ice lucid wait'0c' as="command" id-as="junegunn/fzf-tmux" pick="bin/fzf-tmux"
-# zinit light junegunn/fzf
-# # BIND MULTIPLE WIDGETS USING FZF
-# zinit ice lucid wait'0c' multisrc"shell/{completion,key-bindings}.zsh" id-as="junegunn/fzf_completions" pick="/dev/null"
-# zinit light junegunn/fzf
-# # FZF-TAB
-# zinit ice wait="1" lucid
-# zinit light Aloxaf/fzf-tab
+zstyle ':completion:*' completer _expand _complete _ignored _approximate
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
+zstyle ':completion:*' menu select=2
+zstyle ':completion:*' select-prompt '%SScrolling active: current selection at %p%s'
+zstyle ':completion:*:descriptions' format '-- %d --'
+zstyle ':completion:*:processes' command 'ps -au$USER'
+zstyle ':completion:complete:*:options' sort false
+zstyle ':fzf-tab:complete:_zlua:*' query-string input
+zstyle ':completion:*:*:*:*:processes' command "ps -u $USER -o pid,user,comm,cmd -w -w"
+zstyle ':fzf-tab:complete:kill:argument-rest' extra-opts --preview=$extract'ps --pid=$in[(w)1] -o cmd --no-headers -w -w' --preview-window=down:3:wrap
+zstyle ":completion:*:git-checkout:*" sort false
+zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 
 zinit wait="0b" lucid light-mode for \
     hlissner/zsh-autopair \
