@@ -19,7 +19,6 @@ zinit light-mode for \
 
 # SSH-AGENT
 zinit light bobsoppe/zsh-ssh-agent
-zinit light zdharma-continuum/fast-syntax-highlighting
 # AUTOSUGGESTIONS, TRIGGER PRECMD HOOK UPON LOAD
 ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
 [ -z "$HISTFILE" ] && HISTFILE="$HOME/.zhistory"
@@ -28,19 +27,14 @@ SAVEHIST=$HISTSIZE
 zinit ice wait="0a" lucid atload="_zsh_autosuggest_start"
 zinit light zsh-users/zsh-autosuggestions
 bindkey ',' autosuggest-accept
-# ZOXIDE
-zinit ice wait="0" lucid from="gh-r" as="program" pick="zoxide-*/zoxide -> zoxide" cp="zoxide-*/completions/_zoxide -> _zoxide" atclone="./zoxide init zsh > init.zsh" atpull="%atclone" src="init.zsh"
-zinit light ajeetdsouza/zoxide
 # HISTORY
-zinit ice wait="0b" lucid atload'bindkey "$terminfo[kcuu1]" history-substring-search-up; bindkey "$terminfo[kcud1]" history-substring-search-down'
-zinit light zsh-users/zsh-history-substring-search
 bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
 bindkey -M vicmd 'e' history-substring-search-up
 bindkey -M vicmd 'i' history-substring-search-down
 zinit light zsh-users/zsh-history-substring-search
 # TAB COMPLETIONS
-zinit ice wait="0b" lucid blockf
+zinit ice wait="0b" lucid blockf atpull'zinit creinstall -q .'
 zinit light zsh-users/zsh-completions
 # zstyle ':completion:*' completer _expand _complete _ignored _approximate
 # zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
@@ -67,13 +61,23 @@ zinit light zsh-users/zsh-completions
 # zinit ice wait="1" lucid
 # zinit light Aloxaf/fzf-tab
 
-zinit wait="0" lucid light-mode for \
+zinit wait="0b" lucid light-mode for \
     hlissner/zsh-autopair \
     hchbaw/zce.zsh \
     wfxr/forgit
 
-# TODO: add zinit auto install cmdline tools, git, nvim, tmux, ezd, fzf, etc
+zinit wait="0c" light-mode for \
+  blockf compile'lib/*f*~*.zwc' \
+    Aloxaf/fzf-tab \
+    autoload'#manydots-magic' \
+        knu/zsh-manydots-magic \
+        RobSis/zsh-reentry-hook \
+zinit ice wait lucid atinit'zpcompinit; zpcdreplay'
+zinit light zdharma-continuum/fast-syntax-highlighting
 
+# ZOXIDE
+zinit ice wait="0" lucid from="gh-r" as="program" pick="zoxide-*/zoxide -> zoxide" cp="zoxide-*/completions/_zoxide -> _zoxide" atclone="./zoxide init zsh > init.zsh" atpull="%atclone" src="init.zsh"
+zinit light ajeetdsouza/zoxide
 # RIPGREP
 zinit ice from="gh-r" as="program" bpick="*amd64.deb" pick="usr/bin/rg"
 zinit light BurntSushi/ripgrep
