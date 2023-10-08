@@ -55,8 +55,6 @@ zinit wait="0" lucid light-mode for \
     hlissner/zsh-autopair \
     hchbaw/zce.zsh \
     wfxr/forgit
-# zinit light skywind3000/z.lua
-# zinit light agkozak/zsh-z
 
-# zstyle ':completion:*' menu select
+# TODO: add zinit auto install cmdline tools, git, nvim, tmux, ezd, fzf, etc
 bindkey ',' autosuggest-accept
