@@ -12,7 +12,7 @@
 -- t[nore]map     |  -   |  -  |  -  |  -  |  -  |  -  | yes  |  -   |
 -- l[nore]map     |  -   | yes | yes |  -  |  -  |  -  |  -   | yes  |
 local Util = require("lazyvim.util")
-local map = vim.keymap.set
+local map = Util.safe_keymap_set
 local unmap = vim.keymap.del
 unmap("n", "<C-h>")
 unmap("n", "<C-j>")
