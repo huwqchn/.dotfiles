@@ -68,10 +68,10 @@ zinit wait="0b" lucid light-mode for \
 
 zinit wait="0c" light-mode for \
   blockf compile'lib/*f*~*.zwc' \
-    Aloxaf/fzf-tab \
-    autoload'#manydots-magic' \
-        knu/zsh-manydots-magic \
-        RobSis/zsh-reentry-hook \
+    Aloxaf/fzf-tab
+#     autoload'#manydots-magic' \
+#         knu/zsh-manydots-magic \
+#         RobSis/zsh-reentry-hook \
 zinit ice wait lucid atinit'zpcompinit; zpcdreplay'
 zinit light zdharma-continuum/fast-syntax-highlighting
 
