@@ -61,30 +61,30 @@ zinit wait="0c" lucid light-mode for \
 zinit ice wait lucid atinit'zpcompinit; zpcdreplay'
 zinit light zdharma-continuum/fast-syntax-highlighting
 
-# ZOXIDE
-zinit ice wait="0" lucid from="gh-r" as="program" pick="zoxide-*/zoxide -> zoxide" cp="zoxide-*/completions/_zoxide -> _zoxide" atclone="./zoxide init zsh > init.zsh" atpull="%atclone" src="init.zsh"
-zinit light ajeetdsouza/zoxide
-# RIPGREP
-zinit ice from="gh-r" as="program" bpick="*amd64.deb" pick="usr/bin/rg"
-zinit light BurntSushi/ripgrep
-# NEOVIM
-zinit ice from="gh-r" as="program" bpick="*linux64.tar.gz" ver="nightly" pick="nvim-linux64/bin/nvim" atload="alias v=nvim"
-zinit light neovim/neovim
-# LAZYGIT
-zinit ice lucid wait="0" as="program" from="gh-r" bpick="*Linux_x86_64*" pick="lazygit" atload="alias lg='lazygit'"
-zinit light jesseduffield/lazygit
-# LAZYDOCKER
-zinit ice lucid wait="0" as="program" from="gh-r" bpick="*Linux_x86_64*" pick="lazydocker" atload="alias lzd='lazydocker'"
-zinit light jesseduffield/lazydocker
-# FD
-zinit ice as="command" from="gh-r" bpick="*amd64.deb" pick="usr/bin/fd"
-zinit light sharkdp/fd
-# DELTA
-zinit ice lucid wait="0" as="program" from="gh-r" bpick="*amd64.deb" pick="usr/bin/delta"
-zinit light dandavison/delta
-# DUST
-zinit ice wait="2" lucid from="gh-r" as="program" bpick="*amd64.deb" pick="usr/bin/dust" atload="alias du=dust"
-zinit light bootandy/dust
-# SAD
-zinit ice from="gh-r" as="command"
-zinit light ms-jpq/sad
+# # ZOXIDE
+# zinit ice wait="0" lucid from="gh-r" as="program" pick="zoxide-*/zoxide -> zoxide" cp="zoxide-*/completions/_zoxide -> _zoxide" atclone="./zoxide init zsh > init.zsh" atpull="%atclone" src="init.zsh"
+# zinit light ajeetdsouza/zoxide
+# # RIPGREP
+# zinit ice from="gh-r" as="program" bpick="*amd64.deb" pick="usr/bin/rg"
+# zinit light BurntSushi/ripgrep
+# # NEOVIM
+# zinit ice from="gh-r" as="program" bpick="*linux64.tar.gz" ver="nightly" pick="nvim-linux64/bin/nvim" atload="alias v=nvim"
+# zinit light neovim/neovim
+# # LAZYGIT
+# zinit ice lucid wait="0" as="program" from="gh-r" bpick="*Linux_x86_64*" pick="lazygit" atload="alias lg='lazygit'"
+# zinit light jesseduffield/lazygit
+# # LAZYDOCKER
+# zinit ice lucid wait="0" as="program" from="gh-r" bpick="*Linux_x86_64*" pick="lazydocker" atload="alias lzd='lazydocker'"
+# zinit light jesseduffield/lazydocker
+# # FD
+# zinit ice as="command" from="gh-r" bpick="*amd64.deb" pick="usr/bin/fd"
+# zinit light sharkdp/fd
+# # DELTA
+# zinit ice lucid wait="0" as="program" from="gh-r" bpick="*amd64.deb" pick="usr/bin/delta"
+# zinit light dandavison/delta
+# # DUST
+# zinit ice wait="2" lucid from="gh-r" as="program" bpick="*amd64.deb" pick="usr/bin/dust" atload="alias du=dust"
+# zinit light bootandy/dust
+# # SAD
+# zinit ice from="gh-r" as="command"
+# zinit light ms-jpq/sad
