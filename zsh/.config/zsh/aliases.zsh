@@ -23,7 +23,7 @@ elif [[ $(uname) == 'Linux' ]]; then
 	alias lo='betterlockscreen'
   alias mkdir="mkdir -p --verbose"
   alias rmdir="rmdir -p --verbose"
-  alias convert2wallpaper="convert -resize $(xdpyinfo | grep dimensions | cut -d\  -f7 | cut -dx -f1)"
+  # alias convert2wallpaper="convert -resize $(xdpyinfo | grep dimensions | cut -d\  -f7 | cut -dx -f1)"
   alias pipes="pipes.sh"
 fi
 # light-weight sudo
@@ -45,7 +45,7 @@ alias hf="hyperfine"
 # code analysis
 alias tk="tokei"
 # fast alternative to cut
-alias cut="choose"
+# alias cut="choose"
 # rename
 alias rn="rnr"
 # better sysctl
