@@ -1,4 +1,4 @@
-function ex
+function extract
     if test -f $argv[1]
         switch $argv[1]
             case "*.tar.bz2"
