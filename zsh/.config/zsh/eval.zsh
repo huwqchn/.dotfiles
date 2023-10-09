@@ -1,6 +1,6 @@
 eval "$(zoxide init zsh)"
 eval "$(starship init zsh)"
-eval "$(atuin init zsh)"
+eval "$(atuin init zsh --disable-up-arrow)"
 eval "$(navi widget zsh)"
 # eval "$(zellij setup --generate-auto-start zsh)"
 if  [ -z "$TMUX" ]
