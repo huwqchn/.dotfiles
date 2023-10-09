@@ -2,6 +2,7 @@ export XDG_CONFIG_HOME=$HOME/.config
 export NVIM_BASE_DIR=XDG_CONFIG_HOME/nvim
 export TERM_ITALICS=true
 export EDITOR=nvim
+export BROWSER=brave
 export ZSH_AUTOSUGGEST_USE_ASYNC=1
 export ZSH_AUTOSUGGEST_MANUAL_REBIND=1
 export WORKON_HOME=$HOME/.venvs
