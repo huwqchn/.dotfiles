@@ -63,6 +63,7 @@ abbr pc proxychains4
 abbr icat 'kitty +kitten icat'
 abbr fm frogmouth
 abbr ns 'netstat -tunlp'
+abbr ex extract
 
 # Tmux
 abbr t tmux
