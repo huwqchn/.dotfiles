@@ -1,5 +1,5 @@
 alias c='clear'
-alias s='neofetch --ascii $HOME/.config/neofetch/predator'
+alias neofetch='neofetch --ascii $HOME/.config/neofetch/predator'
 alias lg='lazygit'
 alias lzd='lazydocker'
 # alias lnpm ='lazynpm'
@@ -12,7 +12,6 @@ alias ra="ranger"
 if [[ $(uname) == 'Darwin' ]]; then
   alias ed='/opt/homebrew/bin/emacs --daemon &'
 elif [[ $(uname) == 'Linux' ]]; then
-  alias lf="echo -e 'lf is deprecated, please use joshuto instead\npress j to open joshuto'"
   alias pm="pulsemixer"
 	alias ep='export all_proxy=http://127.0.0.1:7890'
   alias ed='/usr/bin/emacs --daemon &'
@@ -34,6 +33,7 @@ alias v='nvim'
 alias ze="zellij"
 alias ls="eza -aG --color=always --icons --group-directories-first"
 alias la="eza -a --color=always --icons --group-directories-first"
+alias ll="eza -al --color=always --icons --group-directories-first"
 alias tree="lsd --tree"
 alias cat="bat"
 alias du="dust"
