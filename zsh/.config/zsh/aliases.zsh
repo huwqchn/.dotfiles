@@ -142,10 +142,13 @@ j() {
 		101)
 			JOSHUTO_CWD=$(cat "$OUTPUT_FILE")
 			cd "$JOSHUTO_CWD"
+      rm "$OUTPUT_FILE"
 			;;
 		# output selected files
 		102)
-			;;
+      cat "$OUTPUT_FILE"
+      rm "$OUTPUT_FILE"
+      ;;
 		*)
 			echo "Exit code: $exit_code"
 			;;
