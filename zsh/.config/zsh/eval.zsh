@@ -1,5 +1,5 @@
 eval "$(zoxide init zsh)"
-eval "$(starship init zsh)"
+eval "$(starship init zsh --print-full-init)"
 eval "$(atuin init zsh --disable-up-arrow)"
 eval "$(navi widget zsh)"
 # eval "$(zellij setup --generate-auto-start zsh)"
