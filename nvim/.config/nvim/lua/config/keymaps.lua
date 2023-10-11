@@ -32,9 +32,7 @@ map({ "n", "x", "o" }, "O", "$")
 
 -- colemak-dh join/hover
 -- map({ "n", "x", "o" }, "I", "K")
-if not Util.has("treesj") and not Util.has("mini.splitjoin") then
-  map("", "E", "J")
-end
+map("n", "E", "J")
 
 -- colemak-dh insert key
 map({ "n", "x", "o" }, "h", "i")
@@ -47,10 +45,8 @@ map({ "n", "x", "o" }, "l", "o")
 map({ "n", "x", "o" }, "L", "O")
 
 -- colemak-dh end of word
-if not Util.has("nvim-spider") then
-  map({ "n", "x", "o" }, "j", "e")
-  map({ "n", "x", "o" }, "gj", "ge")
-end
+map({ "n", "x", "o" }, "j", "e")
+map({ "n", "x", "o" }, "gj", "ge")
 map({ "n", "x", "o" }, "J", "E")
 map({ "n", "x", "o" }, "gJ", "gE")
 
@@ -95,10 +91,8 @@ map("", "<cr>", ":", { silent = false })
 -- emacs style cmd mode keybindings for backup
 map("", "<M-x>", ":", { silent = false })
 
-if not Util.has("leap.nvim") and Util.has("flash.nvim") and Util.has("flit.nvim") then
-  map("", ",", ":")
-  map("", ":", ",")
-end
+map({ "n", "x", "o" }, ",", ":")
+map({ "n", "x", "o" }, ":", ",")
 map("", "g:", "g,")
 
 -- select all
@@ -113,22 +107,18 @@ map("t", "<C-v>", "<C-\\><C-N>pi")
 map("c", "<C-v>", "<C-r>+")
 
 -- inc/dec number
-if not Util.has("dial.nvim") then
-  map({ "n", "v" }, "<C-=>", "<C-a>")
-  map({ "n", "v" }, "<C-->", "<C-x>")
-  map({ "n", "v" }, "g<C-=>", "g<C-a>")
-  map({ "n", "v" }, "g<C-->", "g<C-x>")
-end
+map({ "n", "v" }, "<C-=>", "<C-a>")
+map({ "n", "v" }, "<C-->", "<C-x>")
+map({ "n", "v" }, "g<C-=>", "g<C-a>")
+map({ "n", "v" }, "g<C-->", "g<C-x>")
 
 -- Move lines
-if not Util.has("mini.move") then
-  map("n", "<A-e>", "<cmd>m .+1<CR>==", { desc = "Move down" })
-  map("n", "<A-i>", "<cmd>m .-2<CR>==", { desc = "Move up" })
-  map("i", "<A-e>", "<Esc><cmd>m .+1<CR>==gi", { desc = "Move down" })
-  map("i", "<A-i>", "<Esc><cmd>m .-2<CR>==gi", { desc = "Move up" })
-  map("v", "<A-e>", ":m '>+1<CR>gv=gv", { desc = "Move down" })
-  map("v", "<A-i>", ":m '<-2<CR>gv=gv", { desc = "Move up" })
-end
+map("n", "<A-e>", "<cmd>m .+1<CR>==", { desc = "Move down" })
+map("n", "<A-i>", "<cmd>m .-2<CR>==", { desc = "Move up" })
+map("i", "<A-e>", "<Esc><cmd>m .+1<CR>==gi", { desc = "Move down" })
+map("i", "<A-i>", "<Esc><cmd>m .-2<CR>==gi", { desc = "Move up" })
+map("x", "<A-e>", ":m '>+1<CR>gv=gv", { desc = "Move down" })
+map("x", "<A-i>", ":m '<-2<CR>gv=gv", { desc = "Move up" })
 
 -- insert mode navigation
 map("i", "<A-Up>", "<C-\\><C-N><C-w>k")
@@ -175,25 +165,23 @@ map("n", "]z", "zl", { desc = "scroll right", silent = true }) -- right
 -- Windows managenment
 --Better window movement
 map("n", "<C-w>", "<C-w>w", { desc = "Switch window" })
-if not Util.has("smart-splits.nvim") then
-  -- naviagate window
-  map("n", "<C-n>", "<C-w>h", { desc = "Go to left window" })
-  map("n", "<C-e>", "<C-w>j", { desc = "Go to lower window" })
-  map("n", "<C-i>", "<C-w>k", { desc = "Go to upper window" })
-  map("n", "<C-o>", "<C-w>l", { desc = "Go to right window" })
+-- naviagate window
+map("n", "<C-n>", "<C-w>h", { desc = "Go to left window" })
+map("n", "<C-e>", "<C-w>j", { desc = "Go to lower window" })
+map("n", "<C-i>", "<C-w>k", { desc = "Go to upper window" })
+map("n", "<C-o>", "<C-w>l", { desc = "Go to right window" })
 
-  -- swap windows with sn se si so
-  map("n", "sN", "<C-w>H", { desc = "swap with left" })
-  map("n", "sE", "<C-w>J", { desc = "swap with below" })
-  map("n", "sI", "<C-w>K", { desc = "swap with above" })
-  map("n", "sO", "<C-w>L", { desc = "swap with right" })
+-- swap windows with sn se si so
+map("n", "sN", "<C-w>H", { desc = "swap with left" })
+map("n", "sE", "<C-w>J", { desc = "swap with below" })
+map("n", "sI", "<C-w>K", { desc = "swap with above" })
+map("n", "sO", "<C-w>L", { desc = "swap with right" })
 
-  -- Resize with arrows
-  map("n", "<C-Up>", "<cmd>resize +2<CR>", { desc = "Increase window height" })
-  map("n", "<C-Down>", "<cmd>resize -2<CR>", { desc = "Decrease window height" })
-  map("n", "<C-Left>", "<cmd>vertical resize -2<CR>", { desc = "Decrease window width" })
-  map("n", "<C-Right>", "<cmd>vertical resize +2<CR>", { desc = "Increase window width" })
-end
+-- Resize with arrows
+map("n", "<C-Up>", "<cmd>resize +2<CR>", { desc = "Increase window height" })
+map("n", "<C-Down>", "<cmd>resize -2<CR>", { desc = "Decrease window height" })
+map("n", "<C-Left>", "<cmd>vertical resize -2<CR>", { desc = "Decrease window width" })
+map("n", "<C-Right>", "<cmd>vertical resize +2<CR>", { desc = "Increase window width" })
 map("n", "<C-k>", "<C-w>o", { desc = "Clear other windwos" })
 map("n", "<C-x>", "<C-w>x", { desc = "Exchange window" })
 map("n", "<C-q>", function()
