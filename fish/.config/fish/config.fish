@@ -2,7 +2,7 @@ set -gx EDITOR (which nvim)
 set -gx VISUAL $EDITOR
 set -gx SUDO_EDITOR $EDITOR
 
-set -gx BROWSER=brave
+set -gx BROWSER brave
 
 set -x fish_user_paths
 # PATH
