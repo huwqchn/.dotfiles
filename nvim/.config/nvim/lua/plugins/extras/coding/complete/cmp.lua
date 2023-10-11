@@ -1,6 +1,7 @@
 return {
   {
     "hrsh7th/nvim-cmp",
+    optional = true,
     dependencies = {
       { "hrsh7th/cmp-cmdline" },
       { "hrsh7th/cmp-emoji" },

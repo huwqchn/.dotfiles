@@ -1,6 +1,7 @@
 return {
   {
     "hrsh7th/nvim-cmp",
+    optional = true,
     event = "CmdlineEnter",
     opts = function(_, opts)
       opts.cmdline = {
