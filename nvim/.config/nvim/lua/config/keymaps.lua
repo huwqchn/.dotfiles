@@ -126,10 +126,6 @@ map("i", "<A-Down>", "<C-\\><C-N><C-w>j")
 map("i", "<A-Left>", "<C-\\><C-N><C-w>h")
 map("i", "<A-Right>", "<C-\\><C-N><C-w>l")
 
--- unmap("n", "<c-/>")
-unmap("t", "<c-/>")
--- unmap("n", "<c-_>")
-unmap("t", "<c-_>")
 -- Terminal window navigation
 map("t", "<C-n>", "<C-\\><C-N><C-w>h", { desc = "move to left" })
 map("t", "<C-e>", "<C-\\><C-N><C-w>j", { desc = "move to down" })
@@ -241,8 +237,6 @@ vim.keymap.set("n", "<tab>", "<cmd>bnext<cr>") -- confilct with <C-i>
 map("n", "<s-tab>", "<cmd>bprevious<cr>")
 
 -- Tabs management
-unmap("n", "<leader><tab>]")
-unmap("n", "<leader><tab>[")
 map("n", "]<tab>", "<cmd>tabn<CR>", { desc = "Next Tab" })
 map("n", "[<tab>", "<cmd>tabp<CR>", { desc = "Prev Tab" })
 map("n", "<leader><tab>s", "<cmd>tab split<CR>", { desc = "Split" })
