@@ -40,3 +40,8 @@ docker run -d \
 # start-page
 docker pull excalith/start-page:latest
 docker run --name start-page --restart=always -p 12790:3000 -d excalith/start-page
+
+# RSSHub
+wget https://raw.githubusercontent.com/DIYgod/RSSHub/master/docker-compose.yml
+docker volume create redis-data
+docker-compose up -d

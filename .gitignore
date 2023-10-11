@@ -43,3 +43,4 @@ aria2/.config/aria2/aria2.conf
 karabiner/.config/karabiner/karabiner.json
 cava/.config/cava/shaders
 polybar/.config/polybar/.module
+newsboat/.config/newsboat/urls
