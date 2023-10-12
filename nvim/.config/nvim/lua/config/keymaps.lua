@@ -99,7 +99,7 @@ map("", "g:", "g,")
 map({ "n", "x", "i" }, "<C-a>", "<cmd>normal! ggVG<cr>")
 
 -- new space line
-map("n", "<C-cr>", "<cmd>normal! o<cr>")
+map("n", "<C-cr>", "<cmd>normal! o<cr>k")
 
 -- paste
 map("i", "<C-v>", "<C-g>u<Cmd>set paste<CR><C-r>+<Cmd>set nopaste<CR>")
