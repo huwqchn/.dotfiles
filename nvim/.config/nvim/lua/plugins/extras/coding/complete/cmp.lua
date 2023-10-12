@@ -63,6 +63,14 @@ return {
         ["<C-x>"] = cmp.mapping.complete(),
         ["<C-b>"] = cmp.mapping.scroll_docs(-4),
         ["<C-f>"] = cmp.mapping.scroll_docs(4),
+        ["<S-CR>"] = cmp.mapping.confirm({
+          behavior = cmp.ConfirmBehavior.Replace,
+          select = true,
+        }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+        ["<C-CR>"] = function(fallback)
+          cmp.abort()
+          fallback()
+        end,
       })
       opts.experimental = vim.tbl_extend("force", opts.experimental or {}, {
         native_menu = false,
