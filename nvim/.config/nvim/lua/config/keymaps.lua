@@ -113,8 +113,8 @@ map({ "n", "v" }, "g<C-=>", "g<C-a>")
 map({ "n", "v" }, "g<C-->", "g<C-x>")
 
 -- Move lines
-unmap({ "n", "i", "x" }, "<A-e>")
-unmap({ "n", "i", "x" }, "<A-i>")
+unmap({ "n", "i", "x" }, "<A-k>")
+unmap({ "n", "i", "x" }, "<A-j>")
 map("n", "<A-e>", "<cmd>m .+1<CR>==", { desc = "Move down" })
 map("n", "<A-i>", "<cmd>m .-2<CR>==", { desc = "Move up" })
 map("i", "<A-e>", "<Esc><cmd>m .+1<CR>==gi", { desc = "Move down" })
