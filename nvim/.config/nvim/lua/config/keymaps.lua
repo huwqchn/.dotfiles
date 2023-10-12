@@ -138,9 +138,6 @@ end
 map("n", "<M-/>", lazyterm, { desc = "Terminal (root dir)" })
 map("t", "<M-/>", "<cmd>close<cr>", { desc = "Hide Terminal" })
 
--- better terminal mode
-map("n", "\\", "<leader>fT", { remap = true })
-
 -- map tab to tab, because distinguish between <C-i>
 map("t", "<Tab>", "<Tab>")
 
