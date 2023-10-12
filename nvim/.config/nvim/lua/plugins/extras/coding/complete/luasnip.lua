@@ -16,7 +16,7 @@ return {
         mode = { "i", "s" },
       },
       {
-        "<C-h>",
+        "<M-h>",
         "<cmd>lua require'luasnip.extras.select_choice'()<cr>",
         mode = "i",
         desc = "select snippet choice",
