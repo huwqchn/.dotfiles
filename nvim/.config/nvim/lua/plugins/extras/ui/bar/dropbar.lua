@@ -1,9 +1,5 @@
 return {
   {
-    "SmiteshP/nvim-navic",
-    enabled = false,
-  },
-  {
     "Bekaboo/dropbar.nvim",
     keys = {
       {

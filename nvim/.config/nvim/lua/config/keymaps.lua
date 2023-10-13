@@ -217,10 +217,6 @@ map("n", "so", function()
   vim.cmd([[vsplit]])
 end, { desc = "split right" })
 
-unmap("n", "<leader>w-")
-unmap("n", "<leader>w|")
-unmap("n", "<leader>-")
-unmap("n", "<leader>|")
 -- Rotate window
 map("n", "<leader>wI", "<C-w>b<C-w>K", { desc = "rotate window up" })
 map("n", "<leader>wN", "<C-w>b<C-w>H", { desc = "rotate window left" })

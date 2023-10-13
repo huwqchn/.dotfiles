@@ -11,7 +11,6 @@ return {
   { import = "plugins.extras.coding.jump.flash" },
   -- { import = "plugins.extras.coding.jump.numb" },
   { import = "plugins.extras.coding.join.treesj" },
-  { import = "plugins.extras.coding.symbols.symbols-outline" },
   { import = "plugins.extras.coding.rename.inc-rename" },
   -- { import = "plugins.extras.coding.refactor.refactoring" },
   { import = "plugins.extras.coding.treesitter" },

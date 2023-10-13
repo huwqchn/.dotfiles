@@ -139,8 +139,10 @@ return {
     keys = {
       { "<leader><cr>p", "<cmd>lua _PYTHON_TOGGLE()<cr>", desc = "python" },
       { "<leader><cr><cr>", "<cmd>ToggleTerm direction=float<cr>", desc = "Float" },
-      { "<leader><cr>/", "<cmd>ToggleTerm size=10 direction=horizontal<cr>", desc = "Horizontal" },
-      { "<leader><cr>\\", "<cmd>ToggleTerm size=80 direction=vertical<cr>", desc = "Vertical" },
+      { "<leader><cr>/", "<cmd>ToggleTerm size=10 direction=horizontal<cr>", desc = "Horizontal Terminal" },
+      { "<leader><cr>\\", "<cmd>ToggleTerm size=80 direction=vertical<cr>", desc = "Vertical Terminal" },
+      { "<leader>-", "<leader><cr>/", remap = true, desc = "Horizontal Terminal" },
+      { "<leader>|", "<leader><cr>\\", remap = true, desc = "Vertical Terminal" },
       { "<leader><cr><tab>", "<cmd>ToggleTerm direction=tab<cr>", desc = "Tab" },
       {
         "<leader>gg",

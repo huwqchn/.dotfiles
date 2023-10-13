@@ -15,16 +15,16 @@ return {
       },
     },
   },
-  {
-    "nvimtools/none-ls.nvim",
-    opts = function(_, opts)
-      local nls = require("null-ls")
-      vim.list_extend(opts.sources, {
-        nls.builtins.formatting.black,
-        nls.builtins.diagnostics.flake8,
-      })
-    end,
-  },
+  -- {
+  --   "nvimtools/none-ls.nvim",
+  --   opts = function(_, opts)
+  --     local nls = require("null-ls")
+  --     vim.list_extend(opts.sources, {
+  --       nls.builtins.formatting.black,
+  --       nls.builtins.diagnostics.flake8,
+  --     })
+  --   end,
+  -- },
   -- correctly setup mason lsp extensions
   {
     "williamboman/mason.nvim",

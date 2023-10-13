@@ -7,11 +7,11 @@ return {
   { import = "plugins.extras.editor.git.misc" },
   { import = "plugins.extras.editor.git.diff" },
   { import = "plugins.extras.editor.keymaps.which-key" },
-  -- { import = "plugins.extras.editor.runner.code-runner" },
   { import = "plugins.extras.editor.runner.overseer" },
   { import = "plugins.extras.editor.terminal.toggleterm" },
   -- { import = "plugins.extras.editor.terminal.flatten" },
   { import = "plugins.extras.editor.debug.dap" },
   { import = "plugins.extras.editor.explorer.mini-files" },
   { import = "plugins.extras.editor.runner.competitest" },
+  { import = "plugins.extras.editor.symbols.aerial" },
 }

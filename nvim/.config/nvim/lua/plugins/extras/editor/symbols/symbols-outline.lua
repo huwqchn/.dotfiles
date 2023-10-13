@@ -1,8 +1,7 @@
 return {
   {
     "simrat39/symbols-outline.nvim",
-    keys = { { "<leader>cs", "<cmd>SymbolsOutline<cr>", desc = "Symbols Outline" } },
-    cmd = "SymbolsOutline",
+    optional = true,
     opts = {
       keymaps = {
         close = { "<Esc>", "q" },
