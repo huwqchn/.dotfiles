@@ -19,18 +19,6 @@ return {
       "TSHighlightCapturesUnderCursor",
     },
   },
-  {
-    "nvim-treesitter/nvim-treesitter-context",
-    event = "BufReadPre",
-    enabled = true,
-    opts = { mode = "cursor" },
-  },
-  {
-    "nvim-treesitter/nvim-treesitter",
-    dependencies = {
-      { "windwp/nvim-ts-autotag", opts = {} },
-    },
-  },
   -- {
   --   "nvim-treesitter/nvim-treesitter",
   --   dependencies = {
