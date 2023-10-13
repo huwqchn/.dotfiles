@@ -25,4 +25,5 @@ return {
   { import = "plugins.extras.coding.ai.chatgpt" },
   { import = "plugins.extras.coding.ai.neoai" },
   { import = "plugins.extras.coding.operator.mini-operators" },
+  { import = "plugins.extras.coding.operator.mini-align" },
 }
