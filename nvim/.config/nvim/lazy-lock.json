@@ -32,7 +32,7 @@
   "diffview.nvim": { "branch": "main", "commit": "d38c1b5266850f77f75e006bcc26213684e1e141" },
   "dressing.nvim": { "branch": "master", "commit": "1f2d1206a03bd3add8aedf6251e4534611de577f" },
   "dropbar.nvim": { "branch": "master", "commit": "79309dccd5e5b94f9ddf5ee8587691d2bfea2858" },
-  "edgy.nvim": { "branch": "main", "commit": "b05fe0c4c0b198b66e21b0c5444e12eefedded3d" },
+  "edgy.nvim": { "branch": "main", "commit": "7c7610e41978ce3a6a0cae57630eceeb5c4bbdaa" },
   "flash.nvim": { "branch": "main", "commit": "6d76c5dee65181ab55cbdfb0760260e800d643f4" },
   "friendly-snippets": { "branch": "main", "commit": "43727c2ff84240e55d4069ec3e6158d74cb534b6" },
   "git-blame.nvim": { "branch": "master", "commit": "e4dafc79cc7dcf4eec0547dbc6f3f3821b2f2b14" },
