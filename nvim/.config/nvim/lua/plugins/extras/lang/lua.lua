@@ -21,19 +21,22 @@ return {
           single_file_support = true,
           settings = {
             Lua = {
-              telemetry = { enable = false },
               workspace = {
                 checkThirdParty = false,
-                library = vim.api.nvim_get_runtime_file("", true),
               },
               completion = {
                 workspaceWord = true,
                 callSnippet = "Both",
               },
+              misc = {
+                parameters = {
+                  -- "--log-level=trace",
+                },
+              },
               hint = {
                 enable = true,
                 setType = false,
-                paramType = false,
+                paramType = true,
                 paramName = "Disable",
                 semicolon = "Disable",
                 arrayIndex = "Disable",
@@ -41,13 +44,11 @@ return {
               doc = {
                 privateName = { "^_" },
               },
-              misc = {
-                parameters = {
-                  -- "--log-level=trace",
-                },
+              type = {
+                castNumberToInteger = true,
               },
               diagnostics = {
-                disable = { "incomplete-signature-doc" },
+                disable = { "incomplete-signature-doc", "trailing-space" },
                 -- enable = false,
                 groupSeverity = {
                   strong = "Warning",
@@ -70,7 +71,7 @@ return {
                 unusedLocalExclude = { "_*" },
               },
               format = {
-                enable = false,
+                enable = true,
                 defaultConfig = {
                   indent_style = "space",
                   indent_size = "2",

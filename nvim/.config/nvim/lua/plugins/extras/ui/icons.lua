@@ -1,5 +1,24 @@
 return {
   {
+    "LazyVim/LazyVim",
+    optional = true,
+    opts = {
+      icons = {
+        diagnostics = {
+          Error = " ",
+          Warning = " ",
+          Information = " ",
+          Hint = "󰌶 ",
+        },
+        git = {
+          added = " ",
+          modified = " ",
+          removed = " ",
+        },
+      },
+    },
+  },
+  {
     "nvim-lualine/lualine.nvim",
     optional = true,
     opts = {

@@ -1,5 +1,6 @@
 {
   "extras": [
+    "plugins.extras.ui.icons",
     "lazyvim.plugins.extras.dap.core",
     "lazyvim.plugins.extras.test.core",
     "lazyvim.plugins.extras.coding.codeium",
@@ -62,9 +63,9 @@
     "plugins.extras.editor.terminal.toggleterm",
     "plugins.extras.lang.bash",
     "plugins.extras.lang.c",
+    "plugins.extras.lang.lua",
     "plugins.extras.lang.clangd",
     "plugins.extras.lang.http",
-    "plugins.extras.lang.lua",
     "plugins.extras.lang.nodejs",
     "plugins.extras.lang.python",
     "plugins.extras.lang.rust",
@@ -79,7 +80,6 @@
     "plugins.extras.ui.bar.scrollbar",
     "plugins.extras.ui.dress.noice",
     "plugins.extras.ui.dress.notify",
-    "plugins.extras.ui.icons",
     "plugins.extras.ui.windows.window-picker",
     "plugins.extras.ui.windows.windows",
     "lazyvim.plugins.extras.editor.aerial"
