@@ -3,8 +3,9 @@
 #
 
 # terminal emulator
+# env GLFW_IM_MODULE=ibus kitty
 super + Return
-	env GLFW_IM_MODULE=ibus kitty
+  wezterm
 
 # bind single quote to open kitty
 super + apostrophe
