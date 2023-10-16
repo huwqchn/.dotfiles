@@ -40,6 +40,14 @@ return {
         "<cmd>TabnineToggle<CR>",
         desc = "TabNine Toggle",
       },
+      {
+        "<leader>aC",
+        function()
+          require("tabnine.chat").open()
+        end,
+        desc = "Tabnine Chat",
+        mode = { "n", "x" },
+      },
     },
     config = function()
       require("tabnine").setup({

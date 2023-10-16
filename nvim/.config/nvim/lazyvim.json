@@ -49,7 +49,6 @@
     "plugins.extras.editor.debug.dap",
     "plugins.extras.editor.explorer.mini-files",
     "plugins.extras.editor.explorer.neo-tree",
-    "plugins.extras.editor.fold.nvim-ufo",
     "plugins.extras.editor.git.diff",
     "plugins.extras.editor.git.misc",
     "plugins.extras.editor.keymaps.which-key",
