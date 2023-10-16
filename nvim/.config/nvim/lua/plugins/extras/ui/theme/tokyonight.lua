@@ -41,7 +41,7 @@ return {
         -- hl.TelescopePreviewTitle = { bg = c.bg_dark, fg = c.bg_dark }
         -- hl.TelescopeResultsTitle = { bg = c.bg_dark, fg = c.bg_dark }
       end,
-      style = "night",
+      style = "moon",
       transparent = vim.g.transparent_enabled, -- Enable this to disable setting the background color
       terminal_colors = true, -- Configure the colors used when opening a `:terminal` in Neovim
       styles = {
