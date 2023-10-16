@@ -1,9 +1,9 @@
 -- use bdelete instead
 return {
-	-- disable mini.bufremove
-	{ "echasnovski/mini.bufremove", enabled = false },
-	{
-		"famiu/bufdelete.nvim",
+  -- disable mini.bufremove
+  { "echasnovski/mini.bufremove", enabled = false },
+  {
+    "famiu/bufdelete.nvim",
     -- stylua: ignore
     config = function()
       -- switches to Alpha dashboard when last buffer is closed
@@ -23,9 +23,10 @@ return {
         end,
       })
     end,
-		keys = {
-			{ "<leader>bd", "<CMD>Bdelete<CR>", desc = "Delete Buffer" },
-			{ "<leader>bD", "<CMD>Bdelete!<CR>", desc = "Delete Buffer (Force)" },
-		},
-	},
+    keys = {
+      { "<leader>bd", "<CMD>Bdelete<CR>", desc = "Delete Buffer" },
+      { "<leader>bD", "<CMD>Bdelete!<CR>", desc = "Delete Buffer (Force)" },
+      { "<c-w>", "<leader>bd", remap = true },
+    },
+  },
 }

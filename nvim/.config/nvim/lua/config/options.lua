@@ -13,13 +13,16 @@ vim.opt.listchars = {
 vim.opt.fileencoding = "utf-8" -- the encoding written to a file
 
 -- gui options
-vim.opt.guifont = "FiraCode Nerd Font:h11"
-vim.opt.guicursor = {
-  "n-sm:block",
-  "i-ci-c-ve:ver25",
-  "r-cr-o-v:hor10",
-  "a:blinkwait200-blinkoff500-blinkon700",
-}
+if vim.g.neovide then
+  vim.opt.guifont = "FiraCode Nerd Font:h11"
+  vim.g.neovide_scale_factor = 0.3
+  vim.opt.guicursor = {
+    "n-sm:block",
+    "i-ci-c-ve:ver25",
+    "r-cr-o-v:hor10",
+    "a:blinkwait200-blinkoff500-blinkon700",
+  }
+end
 
 vim.opt.hidden = true -- Enable modified buffers in background
 vim.opt.inccommand = "split" -- preview incremental substitute
@@ -47,6 +50,8 @@ vim.o.foldlevelstart = 99
 vim.o.foldenable = true
 vim.o.foldcolumn = "0"
 
-vim.opt.backup = true
-vim.opt.cmdheight = 0
-vim.opt.backupdir = vim.fn.stdpath("state") .. "/backup"
+if vim.fn.has("nvim-0.8") == 1 then
+  vim.opt.backup = true
+  vim.opt.cmdheight = 0
+  vim.opt.backupdir = vim.fn.stdpath("state") .. "/backup"
+end

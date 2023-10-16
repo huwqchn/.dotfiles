@@ -61,6 +61,7 @@
     "plugins.extras.editor.search.telescope",
     "plugins.extras.editor.symbols.aerial",
     "plugins.extras.editor.terminal.toggleterm",
+    "plugins.extras.editor.buffer.mini-bufremove",
     "plugins.extras.lang.bash",
     "plugins.extras.lang.c",
     "plugins.extras.lang.lua",
