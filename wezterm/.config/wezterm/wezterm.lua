@@ -15,7 +15,7 @@ require("links").setup(config)
 --- color scheme
 config.color_scheme = "Tokyo Night Moon"
 -- opacity
-config.window_background_opacity = 0.9
+config.window_background_opacity = 0.85
 config.window_decorations = "RESIZE"
 config.window_close_confirmation = "AlwaysPrompt"
 config.scrollback_lines = 3000
