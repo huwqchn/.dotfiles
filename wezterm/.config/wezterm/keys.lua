@@ -80,7 +80,7 @@ function M.setup(config)
 		-- extended keys
 		{ mods = "CTRL", key = "h", action = act.SendString("\x1b[104;5u") },
 		{ mods = "CTRL", key = "m", action = act.SendString("\x1b[109;5u") },
-		{ mods = "CTRL", key = "i", action = act.SendString("\x1b[105;5u") },
+		-- { mods = "CTRL", key = "i", action = act.SendString("\x1b[105;5u") },
 		{ mods = "CTRL", key = "Enter", action = act.SendString("\x1b[105;5u") },
 		{ mods = "SHIFT", key = "\r", action = act.SendString("\033[\015;2u") },
 	}
@@ -100,6 +100,12 @@ M.pane_nav = {
 	Up = "i",
 	Right = "o",
 }
+M.ctrl_nav_str = {
+	Left = "\x0E",
+	Down = "\x05",
+	Up = "\x1b[105;5u",
+	Right = "\x0F",
+}
 M.pane_resize = {
 	Left = "LeftArrow",
 	Down = "DownArrow",
@@ -112,7 +118,8 @@ M.pane_mods = "CTRL"
 function M.activate_pane(dir)
 	return wezterm.action_callback(function(window, pane)
 		if M.is_vim(pane) then
-			window:perform_action(act.SendKey({ key = M.pane_nav[dir], mods = M.pane_mods }), pane)
+			-- window:perform_action(act.SendKey({ key = M.pane_nav[dir], mods = M.pane_mods }), pane)
+			window:perform_action(act.SendString(M.ctrl_nav_str[dir]), pane)
 		else
 			window:perform_action(act.ActivatePaneDirection(dir), pane)
 		end
