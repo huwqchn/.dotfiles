@@ -14,6 +14,14 @@ M.smart_split = wezterm.action_callback(function(window, pane)
 	end
 end)
 
+M.smart_quit = wezterm.action_callback(function(window, pane)
+	if M.is_vim(pane) then
+		window:perform_action(act.SendKey({ key = "q", mods = "CTRL" }), pane)
+	else
+		window:perform_action(act.CloseCurrentPane({ confirm = true }), pane)
+	end
+end)
+
 ---@param config Config
 function M.setup(config)
 	config.disable_default_key_bindings = true
@@ -27,27 +35,29 @@ function M.setup(config)
 		{ mods = M.mod, key = "n", action = act({ ActivateTabRelative = -1 }) },
 		-- New Tab
 		{ mods = "LEADER", key = "t", action = act.SpawnTab("CurrentPaneDomain") },
+		-- close pane
+		{ mods = "CTRL", key = "q", action = M.smart_quit },
 		-- Splits
 		{ mods = "LEADER", key = "Enter", action = M.smart_split },
 		{
 			mods = "LEADER",
 			key = "n",
-			action = act.SplitPane({ direction = "Left", command = { args = { "top" } }, size = { Percent = 50 } }),
+			action = act.SplitPane({ direction = "Left", size = { Percent = 50 } }),
 		},
 		{
 			mods = "LEADER",
 			key = "e",
-			action = act.SplitPane({ direction = "Down", command = { args = { "top" } }, size = { Percent = 50 } }),
+			action = act.SplitPane({ direction = "Down", size = { Percent = 50 } }),
 		},
 		{
 			mods = "LEADER",
 			key = "i",
-			action = act.SplitPane({ direction = "Up", command = { args = { "top" } }, size = { Percent = 50 } }),
+			action = act.SplitPane({ direction = "Up", size = { Percent = 50 } }),
 		},
 		{
 			mods = "LEADER",
 			key = "o",
-			action = act.SplitPane({ direction = "Right", command = { args = { "top" } }, size = { Percent = 50 } }),
+			action = act.SplitPane({ direction = "Right", size = { Percent = 50 } }),
 		},
 		-- Move Tabs
 		{ mods = "LEADER", key = ">", action = act.MoveTabRelative(1) },
@@ -95,7 +105,7 @@ M.pane_mods = "CTRL"
 ---@param dir "Right" | "Left" | "Up" | "Down"
 function M.activate_pane(dir)
 	return wezterm.action_callback(function(window, pane)
-		if M.is_nvim(pane) then
+		if M.is_vim(pane) then
 			window:perform_action(act.SendKey({ key = M.pane_nav[dir], mods = M.pane_mods }), pane)
 		else
 			window:perform_action(act.ActivatePaneDirection(dir), pane)
@@ -106,20 +116,18 @@ end
 ---@param dir "Right" | "Left" | "Up" | "Down"
 function M.resize_pane(dir)
 	return wezterm.action_callback(function(window, pane)
-		if M.is_nvim(pane) then
+		if M.is_vim(pane) then
 			window:perform_action(act.SendKey({ key = M.pane_resize[dir], mods = M.pane_mods }), pane)
 		else
-			window:perform_action(act.AdjustPaneSize(dir, 3), pane)
+			window:perform_action(act.AdjustPaneSize({ dir, 3 }), pane)
+			-- window:perform_action({ AdjustPaneSize = { dir, 3 } }, pane)
 		end
 	end)
 end
 
-function M.is_nvim(pane)
-	-- get_foreground_process_name On Linux, macOS and Windows,
-	-- the process can be queried to determine this path. Other operating systems
-	-- (notably, FreeBSD and other unix systems) are not currently supported
-	return pane:get_foreground_process_name():find("n?vim") ~= nil
-	-- return pane:get_title():find("n?vim") ~= nil
+function M.is_vim(pane)
+	-- this is set by the plugin, and unset on ExitPre in Neovim
+	return pane:get_user_vars().IS_NVIM == "true"
 end
 
 return M

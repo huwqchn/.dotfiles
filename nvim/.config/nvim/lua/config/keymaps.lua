@@ -177,6 +177,8 @@ map("n", "<C-Up>", "<cmd>resize +2<CR>", { desc = "Increase window height" })
 map("n", "<C-Down>", "<cmd>resize -2<CR>", { desc = "Decrease window height" })
 map("n", "<C-Left>", "<cmd>vertical resize -2<CR>", { desc = "Decrease window width" })
 map("n", "<C-Right>", "<cmd>vertical resize +2<CR>", { desc = "Increase window width" })
+
+-- other window keybindings
 map("n", "<C-k>", "<C-w>o", { desc = "Clear other windwos" })
 map("n", "<C-x>", "<C-w>x", { desc = "Exchange window" })
 map("n", "<C-q>", function()
