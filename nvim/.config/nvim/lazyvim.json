@@ -76,7 +76,6 @@
     "plugins.extras.misc.dial",
     "plugins.extras.misc.zen-mode",
     "plugins.extras.misc.wezterm-types",
-    "plugins.extras.misc.smart-splits",
     "plugins.extras.ui.bar.bufferline",
     "plugins.extras.ui.bar.dropbar",
     "plugins.extras.ui.bar.scrollbar",

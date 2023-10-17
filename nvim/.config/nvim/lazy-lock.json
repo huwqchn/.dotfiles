@@ -104,7 +104,6 @@
   "rest.nvim": { "branch": "main", "commit": "5bcaa1012ea8efd6093c69d2a4c67fbde760d043" },
   "rust-tools.nvim": { "branch": "master", "commit": "0cc8adab23117783a0292a0c8a2fbed1005dc645" },
   "scope.nvim": { "branch": "main", "commit": "01ce40fe7434fba9a122c01b4734479b3860609a" },
-  "smart-splits.nvim": { "branch": "master", "commit": "dbf2c13bad1b75ab207639ba817a7e8a8a450042" },
   "sqlite.lua": { "branch": "master", "commit": "b7e28c8463254c46a8e61c52d27d6a2040492fc3" },
   "ssr.nvim": { "branch": "main", "commit": "10d51ddaaba0cd03ccf9ae51620d6e8cad27f1e4" },
   "tabnine-nvim": { "branch": "master", "commit": "16ae8de781c27130e24dd767cab892e3cd06eff3" },

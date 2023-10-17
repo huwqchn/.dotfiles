@@ -4,18 +4,41 @@ set -gx SUDO_EDITOR $EDITOR
 
 set -gx BROWSER brave
 
-set -x fish_user_paths
+
+# Cursor styles
+set -gx fish_vi_force_cursor 1
+set -gx fish_cursor_default block
+set -gx fish_cursor_insert line blink
+set -gx fish_cursor_visual block
+set -gx fish_cursor_replace_one underscore
+
 # PATH
+set -x fish_user_paths
 fish_add_path ~/.dotfiles/.bin
 fish_add_path ~/.local/share/gem/ruby/3.0.0/bin
 fish_add_path ~/.local/share/nvim/mason/bin
 fish_add_path ~/.local/bin
 fish_add_path ~/.cargo/bin
 fish_add_path /snap/bin
+fish_add_path ~/.emacs.d/bin
+
+# Go
+set -x GOPATH ~/go
+fish_add_path $GOPATH $GOPATH/bin
 
 # FISH
 set fish_emoji_width 2
 
+# Exports
+set -x LESS -rF
+set -x COMPOSE_DOCKER_CLI_BUILD 1
+set -x HOMEBREW_NO_AUTO_UPDATE 1
+set -x DOTDROP_AUTOUPDATE no
+set -x MANPAGER "nvim +Man!"
+set -x MANROFFOPT -c
+set -x OPENCV_LOG_LEVEL ERROR
+
+abbr -a --position anywhere --set-cursor -- -h "-h 2>&1 | bat --plain --language=help"
 # alias
 alias cdiff colordiff
 alias sudo doas
