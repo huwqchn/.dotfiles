@@ -1,9 +1,9 @@
 return {
-  --TODO: need to refactor this
   -- { import = "plugins.extras.ui.bar.lualine" },
   {
     "nvim-lualine/lualine.nvim",
     opts = function(_, opts)
+      --TODO: rm opts.colors, use lazevim.util.ui.fg
       local sep = {
         left = opts.icons.SeparatorLeft,
         right = opts.icons.SeparatorRight,
