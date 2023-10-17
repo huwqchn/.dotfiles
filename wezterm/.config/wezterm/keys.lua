@@ -44,7 +44,7 @@ function M.setup(config)
 		-- close pane
 		{ mods = "CTRL", key = "q", action = M.smart_close("pane", "CTRL", "q") },
 		-- close pane
-		{ mods = "CTRL", key = "w", action = M.smart_close("tab", "CTRL", "w") },
+		-- { mods = "CTRL", key = "w", action = M.smart_close("tab", "CTRL", "w") },
 		-- Splits
 		{ mods = M.mod, key = "Enter", action = M.smart_split },
 		{
