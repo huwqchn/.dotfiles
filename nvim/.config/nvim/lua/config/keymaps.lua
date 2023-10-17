@@ -158,7 +158,7 @@ map("n", "[z", "zh", { desc = "scroll left", silent = true }) -- left
 map("n", "]z", "zl", { desc = "scroll right", silent = true }) -- right
 
 -- Windows managenment
---Better window movement
+-- Better window movement
 -- naviagate window
 map("n", "<C-n>", "<C-w>h", { desc = "Go to left window" })
 map("n", "<C-e>", "<C-w>j", { desc = "Go to lower window" })

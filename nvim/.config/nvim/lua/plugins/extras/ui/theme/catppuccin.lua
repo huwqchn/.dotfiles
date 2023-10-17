@@ -5,7 +5,7 @@ return {
     name = "catppuccin",
     opts = {
       flavour = "mocha",
-      transparent_background = vim.g.transparent_enabled,
+      transparent_background = true,
     },
   },
   {
