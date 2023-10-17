@@ -1,6 +1,5 @@
 {
   "extras": [
-    "plugins.extras.ui.icons",
     "lazyvim.plugins.extras.dap.core",
     "lazyvim.plugins.extras.test.core",
     "lazyvim.plugins.extras.coding.codeium",
@@ -26,6 +25,7 @@
     "lazyvim.plugins.extras.util.mini-hipatterns",
     "lazyvim.plugins.extras.util.project",
     "lazyvim.plugins.extras.vscode",
+    "plugins.extras.ui.icons",
     "plugins.extras.coding.ai.chatgpt",
     "plugins.extras.coding.ai.copilot",
     "plugins.extras.coding.ai.hfcc",

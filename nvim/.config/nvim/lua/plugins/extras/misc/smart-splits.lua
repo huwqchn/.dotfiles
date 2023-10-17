@@ -2,7 +2,7 @@ return {
   {
     "mrjones2014/smart-splits.nvim",
     build = "./kitty/install-kittens.bash",
-    event = "WinNew",
+    lazy = false,
     keys = {
       -- resizing splits
       {
