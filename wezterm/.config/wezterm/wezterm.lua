@@ -22,7 +22,10 @@ config.underline_thickness = 3
 config.cursor_thickness = 4
 config.underline_position = -6
 --- color scheme
-config.color_scheme = "Tokyo Night Moon"
+-- config.color_scheme = "Tokyo Night Moon"
+config.color_scheme_dirs = { wezterm.home_dir .. "/projects/tokyonight.nvim/extras/wezterm" }
+config.color_scheme = "tokyonight_night"
+wezterm.add_to_config_reload_watch_list(config.color_scheme_dirs[1] .. config.color_scheme .. ".toml")
 -- opacity
 config.window_background_opacity = 0.85
 config.term = "wezterm"

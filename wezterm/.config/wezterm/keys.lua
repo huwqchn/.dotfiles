@@ -81,8 +81,8 @@ function M.setup(config)
 		{ mods = "CTRL", key = "h", action = act.SendString("\x1b[104;5u") },
 		{ mods = "CTRL", key = "m", action = act.SendString("\x1b[109;5u") },
 		-- { mods = "CTRL", key = "i", action = act.SendString("\x1b[105;5u") },
-		{ mods = "CTRL", key = "Enter", action = act.SendString("\x1b[105;5u") },
-		{ mods = "SHIFT", key = "\r", action = act.SendString("\033[\015;2u") },
+		-- { mods = "CTRL", key = "Enter", action = act.SendString("\x1b[105;5u") },
+		-- { mods = "SHIFT", key = "\r", action = act.SendString("\033[\015;2u") },
 	}
 
 	for dir, key in pairs(M.pane_nav) do

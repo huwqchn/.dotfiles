@@ -35,6 +35,7 @@ M.icons = {
 	["wget"] = wezterm.nerdfonts.mdi_arrow_down_box,
 	["zsh"] = wezterm.nerdfonts.dev_terminal,
 	["lazygit"] = wezterm.nerdfonts.cod_github,
+	["joshuto"] = wezterm.nerdfonts.cod_go_to_file,
 }
 
 ---@param tab MuxTabObj
