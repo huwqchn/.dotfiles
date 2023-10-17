@@ -3,7 +3,7 @@ local wezterm = require("wezterm")
 local act = wezterm.action
 local M = {}
 
-M.leader = { key = "a", mods = "CTRL", timeout_milliseconds = 1000 }
+-- M.leader = { key = "a", mods = "CTRL", timeout_milliseconds = 1000 }
 M.mod = "SHIFT|CTRL"
 M.smart_split = wezterm.action_callback(function(window, pane)
 	local dim = pane:get_dimensions()
@@ -25,58 +25,58 @@ end)
 ---@param config Config
 function M.setup(config)
 	config.disable_default_key_bindings = true
-	config.leader = M.leader
+	-- config.leader = M.leader
 	config.keys = {
-		{ mods = "LEADER", key = "a", action = act.SendKey({ key = "a", mods = "CTRL" }) },
+		-- { mods = "LEADER", key = "a", action = act.SendKey({ key = "a", mods = "CTRL" }) },
 		-- Scrollback
-		{ mods = M.mod, key = "i", action = act.ScrollByPage(-0.5) },
-		{ mods = M.mod, key = "e", action = act.ScrollByPage(0.5) },
-		{ mods = M.mod, key = "o", action = act({ ActivateTabRelative = 1 }) },
-		{ mods = M.mod, key = "n", action = act({ ActivateTabRelative = -1 }) },
+		{ mods = M.mod, key = "u", action = act.ScrollByPage(-0.5) },
+		{ mods = M.mod, key = "d", action = act.ScrollByPage(0.5) },
+		-- { mods = M.mod, key = "o", action = act({ ActivateTabRelative = 1 }) },
+		-- { mods = M.mod, key = "n", action = act({ ActivateTabRelative = -1 }) },
 		-- New Tab
-		{ mods = "LEADER", key = "t", action = act.SpawnTab("CurrentPaneDomain") },
+		{ mods = M.mod, key = "t", action = act.SpawnTab("CurrentPaneDomain") },
 		-- close pane
 		{ mods = "CTRL", key = "q", action = M.smart_quit },
 		-- Splits
-		{ mods = "LEADER", key = "Enter", action = M.smart_split },
+		{ mods = M.mod, key = "Enter", action = M.smart_split },
 		{
-			mods = "LEADER",
+			mods = M.mod,
 			key = "n",
 			action = act.SplitPane({ direction = "Left", size = { Percent = 50 } }),
 		},
 		{
-			mods = "LEADER",
+			mods = M.mod,
 			key = "e",
 			action = act.SplitPane({ direction = "Down", size = { Percent = 50 } }),
 		},
 		{
-			mods = "LEADER",
+			mods = M.mod,
 			key = "i",
 			action = act.SplitPane({ direction = "Up", size = { Percent = 50 } }),
 		},
 		{
-			mods = "LEADER",
+			mods = M.mod,
 			key = "o",
 			action = act.SplitPane({ direction = "Right", size = { Percent = 50 } }),
 		},
 		-- Move Tabs
-		{ mods = "LEADER", key = ">", action = act.MoveTabRelative(1) },
-		{ mods = "LEADER", key = "<", action = act.MoveTabRelative(-1) },
+		{ mods = M.mod, key = ">", action = act.MoveTabRelative(1) },
+		{ mods = M.mod, key = "<", action = act.MoveTabRelative(-1) },
 		-- Acivate Tabs
-		{ mods = "LEADER", key = "]", action = act({ ActivateTabRelative = 1 }) },
-		{ mods = "LEADER", key = "[", action = act({ ActivateTabRelative = -1 }) },
-		{ mods = "LEADER", key = "r", action = wezterm.action.RotatePanes("Clockwise") },
+		{ mods = M.mod, key = "}", action = act({ ActivateTabRelative = 1 }) },
+		{ mods = M.mod, key = "{", action = act({ ActivateTabRelative = -1 }) },
+		{ mods = M.mod, key = "r", action = wezterm.action.RotatePanes("Clockwise") },
 		-- show the pane selection mode, but have it swap the active and selected panes
-		{ mods = "LEADER", key = "s", action = wezterm.action.PaneSelect({ mode = "SwapWithActive" }) },
+		{ mods = M.mod, key = "s", action = wezterm.action.PaneSelect({ mode = "SwapWithActive" }) },
 		-- Clipboard
-		{ mods = "LEADER", key = "c", action = act.CopyTo("Clipboard") },
-		{ mods = "LEADER", key = "Space", action = act.QuickSelect },
-		{ mods = "LEADER", key = "x", action = act.ActivateCopyMode },
-		{ mods = "LEADER", key = "f", action = act.Search("CurrentSelectionOrEmptyString") },
-		{ mods = "LEADER", key = "v", action = act.PasteFrom("Clipboard") },
-		{ mods = "LEADER", key = "z", action = act.TogglePaneZoomState },
-		{ mods = "LEADER", key = "p", action = act.ActivateCommandPalette },
-		{ mods = "LEADER", key = "d", action = act.ShowDebugOverlay },
+		{ mods = M.mod, key = "c", action = act.CopyTo("Clipboard") },
+		{ mods = M.mod, key = "Space", action = act.QuickSelect },
+		{ mods = M.mod, key = "x", action = act.ActivateCopyMode },
+		{ mods = M.mod, key = "f", action = act.Search("CurrentSelectionOrEmptyString") },
+		{ mods = M.mod, key = "v", action = act.PasteFrom("Clipboard") },
+		{ mods = M.mod, key = "z", action = act.TogglePaneZoomState },
+		{ mods = M.mod, key = "p", action = act.ActivateCommandPalette },
+		{ mods = M.mod, key = "?", action = act.ShowDebugOverlay },
 		-- extended keys
 		{ mods = "CTRL", key = "h", action = act.SendString("\x1b[104;5u") },
 		{ mods = "CTRL", key = "m", action = act.SendString("\x1b[109;5u") },
