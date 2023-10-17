@@ -36,7 +36,7 @@ return {
         {
           "branch",
           icon = opts.icons.GitBranch,
-          color = { bg = opts.colors.green, fg = opts.colors.grey },
+          color = { bg = opts.colors.sky, fg = opts.colors.grey },
           separator = sep,
         },
         {
