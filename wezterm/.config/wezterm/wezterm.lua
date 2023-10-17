@@ -12,17 +12,28 @@ require("keys").setup(config)
 require("links").setup(config)
 
 --- setting
+
+config.front_end = "WebGpu"
+config.webgpu_power_preference = "HighPerformance"
+-- config.animation_fps = 1
+config.cursor_blink_ease_in = "Constant"
+config.cursor_blink_ease_out = "Constant"
+config.underline_thickness = 3
+config.cursor_thickness = 4
+config.underline_position = -6
 --- color scheme
 config.color_scheme = "Tokyo Night Moon"
 -- opacity
 config.window_background_opacity = 0.85
+config.term = "wezterm"
 config.window_decorations = "RESIZE"
 config.window_close_confirmation = "AlwaysPrompt"
 config.scrollback_lines = 3000
 config.default_workspace = "home"
+
 --- font
 config.font_size = 12
-config.font = wezterm.font({ family = "JetBrainsMono Nerd Font" })
+config.font = wezterm.font({ family = "Fira Code" })
 config.bold_brightens_ansi_colors = true
 config.font_rules = {
 	{

@@ -4,40 +4,43 @@ local M = {}
 M.arrow_solid = ""
 M.arrow_thin = ""
 M.icons = {
-	["docker"] = wezterm.nerdfonts.linux_docker,
-	["docker-compose"] = wezterm.nerdfonts.linux_docker,
-	["psql"] = wezterm.nerdfonts.dev_postgresql,
-	["kuberlr"] = wezterm.nerdfonts.linux_docker,
-	["kubectl"] = wezterm.nerdfonts.linux_docker,
-	["nvim"] = wezterm.nerdfonts.custom_vim,
-	["make"] = wezterm.nerdfonts.seti_makefile,
-	["vim"] = wezterm.nerdfonts.dev_vim,
-	["fish"] = wezterm.nerdfonts.md_fish,
-	["node"] = wezterm.nerdfonts.mdi_hexagon,
-	["go"] = wezterm.nerdfonts.seti_go,
-	["zsh"] = wezterm.nerdfonts.dev_terminal,
+	["C:\\WINDOWS\\system32\\cmd.exe"] = wezterm.nerdfonts.md_console_line,
+	["Topgrade"] = wezterm.nerdfonts.md_rocket_launch,
 	["bash"] = wezterm.nerdfonts.cod_terminal_bash,
 	["btm"] = wezterm.nerdfonts.mdi_chart_donut_variant,
-	["htop"] = wezterm.nerdfonts.mdi_chart_donut_variant,
 	["cargo"] = wezterm.nerdfonts.dev_rust,
-	["sudo"] = wezterm.nerdfonts.fa_hashtag,
-	["lazydocker"] = wezterm.nerdfonts.linux_docker,
-	["git"] = wezterm.nerdfonts.dev_git,
-	["lua"] = wezterm.nerdfonts.seti_lua,
-	["wget"] = wezterm.nerdfonts.mdi_arrow_down_box,
 	["curl"] = wezterm.nerdfonts.mdi_flattr,
+	["docker"] = wezterm.nerdfonts.linux_docker,
+	["docker-compose"] = wezterm.nerdfonts.linux_docker,
+	["fish"] = wezterm.nerdfonts.md_fish,
 	["gh"] = wezterm.nerdfonts.dev_github_badge,
-	["ruby"] = wezterm.nerdfonts.cod_ruby,
+	["git"] = wezterm.nerdfonts.dev_git,
+	["go"] = wezterm.nerdfonts.seti_go,
+	["htop"] = wezterm.nerdfonts.md_chart_areaspline,
+	["btop"] = wezterm.nerdfonts.md_chart_areaspline,
+	["kubectl"] = wezterm.nerdfonts.linux_docker,
+	["kuberlr"] = wezterm.nerdfonts.linux_docker,
+	["lazydocker"] = wezterm.nerdfonts.linux_docker,
+	["lua"] = wezterm.nerdfonts.seti_lua,
+	["make"] = wezterm.nerdfonts.seti_makefile,
+	["node"] = wezterm.nerdfonts.mdi_hexagon,
+	["nvim"] = wezterm.nerdfonts.custom_vim,
 	["pacman"] = "󰮯 ",
 	["paru"] = "󰮯 ",
-	["Topgrade"] = wezterm.nerdfonts.md_rocket_launch,
+	["psql"] = wezterm.nerdfonts.dev_postgresql,
+	["pwsh.exe"] = wezterm.nerdfonts.md_console,
+	["ruby"] = wezterm.nerdfonts.cod_ruby,
+	["sudo"] = wezterm.nerdfonts.fa_hashtag,
+	["vim"] = wezterm.nerdfonts.dev_vim,
+	["wget"] = wezterm.nerdfonts.mdi_arrow_down_box,
+	["zsh"] = wezterm.nerdfonts.dev_terminal,
+	["lazygit"] = wezterm.nerdfonts.cod_github,
 }
 
 ---@param tab MuxTabObj
 ---@param max_width number
 function M.title(tab, max_width)
 	local title = (tab.tab_title and #tab.tab_title > 0) and tab.tab_title or tab.active_pane.title
-	wezterm.log_info("title: " .. title)
 	local process, other = title:match("^(%S+)%s*%-?%s*%s*(.*)$")
 
 	if M.icons[process] then
@@ -62,7 +65,7 @@ end
 ---@param config Config
 function M.setup(config)
 	config.use_fancy_tab_bar = false
-	config.tab_bar_at_bottom = false
+	config.tab_bar_at_bottom = true
 	config.hide_tab_bar_if_only_one_tab = true
 	config.tab_max_width = 32
 	config.unzoom_on_switch_pane = true
