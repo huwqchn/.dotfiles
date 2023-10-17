@@ -89,6 +89,7 @@ abbr icat 'kitty +kitten icat'
 abbr fm frogmouth
 abbr ns 'netstat -tunlp'
 abbr ex extract
+abbr nb newsboat
 
 # Tmux
 abbr t tmux

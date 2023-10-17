@@ -14,13 +14,19 @@ M.smart_split = wezterm.action_callback(function(window, pane)
 	end
 end)
 
-M.smart_quit = wezterm.action_callback(function(window, pane)
-	if M.is_vim(pane) then
-		window:perform_action(act.SendKey({ key = "q", mods = "CTRL" }), pane)
-	else
-		window:perform_action(act.CloseCurrentPane({ confirm = true }), pane)
-	end
-end)
+M.smart_close = function(pane_or_window, mods, key)
+	return wezterm.action_callback(function(window, pane)
+		if M.is_vim(pane) then
+			window:perform_action({ SendKey = { key = key, mods = mods } }, pane)
+		else
+			if pane_or_window == "pane" then
+				window:perform_action(act.CloseCurrentPane({ confirm = true }), pane)
+			else
+				window:perform_action(act.CloseCurrentTab({ confirm = true }), pane)
+			end
+		end
+	end)
+end
 
 ---@param config Config
 function M.setup(config)
@@ -36,7 +42,9 @@ function M.setup(config)
 		-- New Tab
 		{ mods = M.mod, key = "t", action = act.SpawnTab("CurrentPaneDomain") },
 		-- close pane
-		{ mods = "CTRL", key = "q", action = M.smart_quit },
+		{ mods = "CTRL", key = "q", action = M.smart_close("pane", "CTRL", "q") },
+		-- close pane
+		{ mods = "CTRL", key = "w", action = M.smart_close("tab", "CTRL", "w") },
 		-- Splits
 		{ mods = M.mod, key = "Enter", action = M.smart_split },
 		{
