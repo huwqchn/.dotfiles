@@ -29,7 +29,7 @@ return {
         teal = colors.teal,
         white = colors.text,
       }
-      opts.theme = "catppuccin"
+      opts.options.theme = "catppuccin"
     end,
   },
   {

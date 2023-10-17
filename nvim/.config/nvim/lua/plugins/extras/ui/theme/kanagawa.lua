@@ -40,7 +40,7 @@ return {
         teal = colors.dragonBlue,
         white = colors.fujiWhite,
       }
-      opts.theme = "kanagawa"
+      opts.options.theme = "kanagawa"
     end,
   },
   {

@@ -14,7 +14,6 @@ return {
         end,
         color = { bg = "none" },
       }
-      opts.options.theme = opts.theme
       opts.options.component_separators = { left = "", right = "" }
       opts.options.section_separators = { left = "", right = "" }
       opts.sections.lualine_a = {
@@ -50,12 +49,7 @@ return {
           padding = { left = 2, right = 1 },
           separator = sep,
         },
-        space,
       }
-      for i = 1, #opts.sections.lualine_c do
-        opts.sections.lualine_c[i].separator = sep
-      end
-
       opts.sections.lualine_y = {
         {
           "diagnostics",

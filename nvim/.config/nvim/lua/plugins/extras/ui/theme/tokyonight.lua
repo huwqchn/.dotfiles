@@ -94,7 +94,7 @@ return {
       }
       local theme = require("lualine.themes.tokyonight")
       theme.normal.c.bg = "none"
-      opts.theme = theme
+      opts.options.theme = theme
     end,
   },
   {
