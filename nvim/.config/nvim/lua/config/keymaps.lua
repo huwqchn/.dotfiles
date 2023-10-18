@@ -52,10 +52,10 @@ map({ "n", "x", "o" }, "gJ", "gE")
 
 -- colemak-dh searching key
 -- https://github.com/mhinz/vim-galore#saner-behavior-of-n-and-n
-map("n", "k", "'Nn'[v:searchforward]", { expr = true, desc = "Next search result" })
+map("n", "k", "'Nn'[v:searchforward].'zv'", { expr = true, desc = "Next search result" })
 map("x", "k", "'Nn'[v:searchforward]", { expr = true, desc = "Next search result" })
 map("o", "k", "'Nn'[v:searchforward]", { expr = true, desc = "Next search result" })
-map("n", "K", "'nN'[v:searchforward]", { expr = true, desc = "Prev search result" })
+map("n", "K", "'nN'[v:searchforward].'zv'", { expr = true, desc = "Prev search result" })
 map("x", "K", "'nN'[v:searchforward]", { expr = true, desc = "Prev search result" })
 map("o", "K", "'nN'[v:searchforward]", { expr = true, desc = "Prev search result" })
 

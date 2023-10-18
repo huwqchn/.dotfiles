@@ -3,6 +3,7 @@ set -gx VISUAL $EDITOR
 set -gx SUDO_EDITOR $EDITOR
 
 set -gx BROWSER brave
+set -gx THEME tokyonight
 
 
 # Cursor styles

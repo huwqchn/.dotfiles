@@ -67,7 +67,6 @@
     "plugins.extras.lang.c",
     "plugins.extras.lang.clangd",
     "plugins.extras.lang.http",
-    "plugins.extras.lang.lua",
     "plugins.extras.lang.nodejs",
     "plugins.extras.lang.python",
     "plugins.extras.lang.rust",
@@ -91,4 +90,3 @@
   },
   "version": 2
 }
-
