@@ -3,7 +3,6 @@ return {
   {
     "nvim-lualine/lualine.nvim",
     opts = function(_, opts)
-      --TODO: rm opts.colors, use lazevim.util.ui.fg
       local sep = {
         left = opts.icons.SeparatorLeft,
         right = opts.icons.SeparatorRight,
@@ -14,6 +13,7 @@ return {
         end,
         color = { bg = "none" },
       }
+      local Util = require("lazyvim.util")
       opts.options.component_separators = { left = "", right = "" }
       opts.options.section_separators = { left = "", right = "" }
       opts.sections.lualine_a = {
@@ -36,7 +36,7 @@ return {
         {
           "branch",
           icon = opts.icons.GitBranch,
-          color = { bg = opts.colors.sky, fg = opts.colors.grey },
+          color = { bg = Util.ui.fg("Operator").fg, fg = Util.ui.fg("Cursor").fg },
           separator = sep,
         },
         {
@@ -76,7 +76,7 @@ return {
             return ok and #clients > 0
           end,
           separator = sep,
-          color = { bg = opts.colors.pink, fg = opts.colors.grey },
+          color = { bg = Util.ui.fg("TSRainbowRed").fg, fg = Util.ui.fg("Cursor").fg },
         },
         space,
         {
