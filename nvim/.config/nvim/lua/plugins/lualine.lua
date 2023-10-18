@@ -7,12 +7,32 @@ return {
         left = opts.icons.SeparatorLeft,
         right = opts.icons.SeparatorRight,
       }
-      local space = {
-        function()
-          return " "
+      local conditions = {
+        buffer_not_empty = function()
+          return vim.fn.empty(vim.fn.expand("%:t")) ~= 1
         end,
-        color = { bg = "none" },
+        hide_in_width = function()
+          return vim.fn.winwidth(0) > 80
+        end,
+        check_git_workspace = function()
+          local filepath = vim.fn.expand("%:p:h")
+          local gitdir = vim.fn.finddir(".git", filepath .. ";")
+          return gitdir and #gitdir > 0 and #gitdir < #filepath
+        end,
+        check_lsp_active = function()
+          local ok, clients = pcall(require("lazyvim.util").lsp.get_clients, { bufnr = 0 })
+          if not ok or #clients == 1 and clients[1].name == "copilot" then
+            return false
+          end
+          return ok and #clients > 0
+        end,
       }
+      -- local space = {
+      --   function()
+      --     return " "
+      --   end,
+      --   color = { bg = "none" },
+      -- }
       local Util = require("lazyvim.util")
       opts.options.component_separators = { left = "", right = "" }
       opts.options.section_separators = { left = "", right = "" }
@@ -32,7 +52,13 @@ return {
           end,
           separator = sep,
         },
-        space,
+        {
+          function()
+            return " "
+          end,
+          color = { bg = "none" },
+          cond = conditions.check_git_workspace,
+        },
         {
           "branch",
           icon = opts.icons.GitBranch,
@@ -68,17 +94,17 @@ return {
             return opts.icons.LspPrefix .. clients[1].name
           end,
 
-          cond = function()
-            local ok, clients = pcall(require("lazyvim.util").lsp.get_clients, { bufnr = 0 })
-            if not ok then
-              return false
-            end
-            return ok and #clients > 0
-          end,
+          cond = conditions.check_lsp_active,
           separator = sep,
           color = { bg = Util.ui.fg("TSRainbowRed").fg, fg = Util.ui.fg("Cursor").fg },
         },
-        space,
+        {
+          function()
+            return " "
+          end,
+          color = { bg = "none" },
+          cond = conditions.check_lsp_active,
+        },
         {
           "fileformat",
           separator = sep,

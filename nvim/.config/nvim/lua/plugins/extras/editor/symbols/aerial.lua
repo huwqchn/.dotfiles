@@ -14,6 +14,12 @@ return {
         ["n"] = "actions.tree_close",
         ["N"] = "actions.tree_close_recursive",
       },
+      nav = {
+        keymaps = {
+          ["n"] = "actions.left",
+          ["o"] = "actions.right",
+        },
+      },
     },
   },
 }
