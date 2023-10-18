@@ -1,27 +1,5 @@
 return {
   {
-    "nvim-lualine/lualine.nvim",
-    optional = true,
-    opts = {
-      icons = {
-        Saturn = "",
-        SeparatorRight = "",
-        SeparatorLeft = "",
-        GitBranch = "",
-        GitLineAdded = "",
-        GitLineModified = "",
-        GitLineRemoved = "",
-        LspPrefix = " ",
-        DiagError = "",
-        DiagWarning = "",
-        DiagInformation = "",
-        DiagHint = "",
-        Keyboard = "",
-        Bug = "",
-      },
-    },
-  },
-  {
     "SmiteshP/nvim-navic",
     optional = true,
     opts = function(_, opts)
@@ -45,11 +23,33 @@ return {
   },
   {
     "neovim/nvim-lspconfig",
+    optional = true,
     opts = {
       diagnostics = {
         virtual_text = {
           prefix = " ",
         },
+      },
+    },
+  },
+  {
+    "nvim-lualine/lualine.nvim",
+    opts = {
+      icons = {
+        Saturn = "",
+        SeparatorRight = "",
+        SeparatorLeft = "",
+        GitBranch = "",
+        GitLineAdded = "",
+        GitLineModified = "",
+        GitLineRemoved = "",
+        LspPrefix = " ",
+        DiagError = "",
+        DiagWarning = "",
+        DiagInformation = "",
+        DiagHint = "",
+        Keyboard = "",
+        Bug = "",
       },
     },
   },

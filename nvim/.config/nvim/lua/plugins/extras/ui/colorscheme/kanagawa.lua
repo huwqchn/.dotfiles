@@ -19,4 +19,14 @@ return {
       transparent = true,
     },
   },
+  {
+    "LazyVim/LazyVim",
+    opts = {
+      colorscheme = function()
+        local colorscheme = "kanagawa"
+        vim.g.colors_name = colorscheme
+        vim.cmd.colorscheme(colorscheme)
+      end,
+    },
+  },
 }

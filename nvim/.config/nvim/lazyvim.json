@@ -26,6 +26,7 @@
     "lazyvim.plugins.extras.util.mini-hipatterns",
     "lazyvim.plugins.extras.util.project",
     "lazyvim.plugins.extras.vscode",
+    "plugins.extras.ui.colorscheme.tokyonight",
     "plugins.extras.coding.ai.chatgpt",
     "plugins.extras.coding.ai.copilot",
     "plugins.extras.coding.ai.hfcc",
@@ -80,7 +81,6 @@
     "plugins.extras.ui.bar.dropbar",
     "plugins.extras.ui.dress.noice",
     "plugins.extras.ui.dress.notify",
-    "plugins.extras.ui.icons",
     "plugins.extras.ui.windows.window-picker",
     "plugins.extras.ui.windows.windows"
   ],

@@ -64,6 +64,16 @@ return {
     },
   },
   {
+    "LazyVim/LazyVim",
+    opts = {
+      colorscheme = function()
+          local colorscheme = "tokyonight"
+        vim.g.colors_name = colorscheme
+        vim.cmd.colorscheme(colorscheme)
+      end,
+    },
+  },
+  {
     "nvim-lualine/lualine.nvim",
     opts = function(_, opts)
       local theme = require("lualine.themes.tokyonight")
