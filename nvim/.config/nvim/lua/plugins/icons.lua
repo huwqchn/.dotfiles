@@ -1,12 +1,5 @@
 return {
   {
-    "SmiteshP/nvim-navic",
-    optional = true,
-    opts = function(_, opts)
-      opts.separator = " " .. ">" .. " "
-    end,
-  },
-  {
     "hrsh7th/nvim-cmp",
     optional = true,
     opts = {
