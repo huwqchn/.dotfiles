@@ -1,29 +1,5 @@
 return {
   {
-    "nvim-cmp",
-    dependencies = {
-      {
-        "tzachar/cmp-tabnine",
-        build = "./install.sh",
-        opts = {
-          max_lines = 1000,
-          max_num_results = 20,
-          sort = true,
-          run_on_every_keystroke = true,
-          snippet_placeholder = "..",
-          ignored_file_types = { -- default is not to ignore
-            -- uncomment to ignore in lua:
-            -- lua = true
-          },
-          show_prediction_strength = true,
-        },
-      },
-    },
-    opts = function(_, opts)
-      table.insert(opts.sources, 1, { name = "cmp_tabnine", group_index = 2 })
-    end,
-  },
-  {
     "codota/tabnine-nvim",
     build = "./dl_binaries.sh",
     event = "InsertEnter",
@@ -59,15 +35,6 @@ return {
         exclude_filetypes = { "TelescopePrompt" },
         log_file_path = nil, -- absolute path to Tabnine log file
       })
-    end,
-  },
-  {
-    "nvim-lualine/lualine.nvim",
-    optional = true,
-    event = "VeryLazy",
-    opts = function(_, opts)
-      local icon = require("lazyvim.config").icons.kinds.TabNine
-      table.insert(opts.sections.lualine_x, 2, require("lazyvim.util").lualine.cmp_source("cmp_tabnine", icon))
     end,
   },
 }

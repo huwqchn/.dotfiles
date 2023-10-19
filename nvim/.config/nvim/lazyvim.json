@@ -4,6 +4,7 @@
     "lazyvim.plugins.extras.test.core",
     "lazyvim.plugins.extras.coding.codeium",
     "lazyvim.plugins.extras.coding.copilot",
+    "lazyvim.plugins.extras.coding.tabnine",
     "lazyvim.plugins.extras.coding.yanky",
     "lazyvim.plugins.extras.dap.nlua",
     "lazyvim.plugins.extras.editor.mini-files",
@@ -86,7 +87,8 @@
   ],
   "news": {
     "NEWS.md": "2123",
-    "doc/news.txt": "14101"
+    "doc/news.txt": "9272"
   },
   "version": 2
 }
+
