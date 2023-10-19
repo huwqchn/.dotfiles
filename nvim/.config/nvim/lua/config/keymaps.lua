@@ -18,31 +18,33 @@ unmap("n", "<C-h>")
 unmap("n", "<C-j>")
 unmap("n", "<C-k>")
 unmap("n", "<C-l>")
+unmap({ "n", "i", "x" }, "<A-k>")
+unmap({ "n", "i", "x" }, "<A-j>")
 -- local map = vim.keymap.set
 -- local Util = require("lazyvim.util")
 -- colemak-dh movement
-map({ "n", "x", "o" }, "e", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
-map({ "n", "x", "o" }, "i", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
-map({ "n", "x", "o" }, "n", "h")
-map({ "n", "x", "o" }, "o", "l")
+vim.keymap.set({ "n", "x", "o" }, "e", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
+vim.keymap.set({ "n", "x", "o" }, "i", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
+vim.keymap.set({ "n", "x", "o" }, "n", "h")
+vim.keymap.set({ "n", "x", "o" }, "o", "l")
 
 -- colemak-dh jump to start/end of the line
-map({ "n", "x", "o" }, "N", "^")
-map({ "n", "x", "o" }, "O", "$")
+vim.keymap.set({ "n", "x", "o" }, "N", "^")
+vim.keymap.set({ "n", "x", "o" }, "O", "$")
 
 -- colemak-dh join/hover
--- map({ "n", "x", "o" }, "I", "K")
-map("n", "E", "J")
+-- vim.keymap.set({ "n", "x", "o" }, "I", "K")
+vim.keymap.set("n", "E", "J")
 
 -- colemak-dh insert key
-map({ "n", "x", "o" }, "h", "i")
-map({ "n", "x", "o" }, "H", "I")
-map({ "n", "x", "o" }, "gh", "gi", { desc = "goto last insert" })
-map({ "n", "x", "o" }, "gH", "gI", { desc = "goto start of last insert line" })
+vim.keymap.set({ "n", "x", "o" }, "h", "i")
+vim.keymap.set({ "n", "x", "o" }, "H", "I")
+vim.keymap.set({ "n", "x", "o" }, "gh", "gi", { desc = "goto last insert" })
+vim.keymap.set({ "n", "x", "o" }, "gH", "gI", { desc = "goto start of last insert line" })
 
 -- colemake-dh undo key
-map({ "n", "x", "o" }, "l", "o")
-map({ "n", "x", "o" }, "L", "O")
+vim.keymap.set({ "n", "x", "o" }, "l", "o")
+vim.keymap.set({ "n", "x", "o" }, "L", "O")
 
 -- colemak-dh end of word
 map({ "n", "x", "o" }, "j", "e")
@@ -113,8 +115,6 @@ map({ "n", "v" }, "g<C-=>", "g<C-a>")
 map({ "n", "v" }, "g<C-->", "g<C-x>")
 
 -- Move lines
-unmap({ "n", "i", "x" }, "<A-k>")
-unmap({ "n", "i", "x" }, "<A-j>")
 map("n", "<A-e>", "<cmd>m .+1<CR>==", { desc = "Move down" })
 map("n", "<A-i>", "<cmd>m .-2<CR>==", { desc = "Move up" })
 map("i", "<A-e>", "<Esc><cmd>m .+1<CR>==gi", { desc = "Move down" })
@@ -229,8 +229,9 @@ map("n", "<leader>wo", "<C-w>L", { desc = "move to the far right" })
 map("n", "<leader>wi", "<C-w>K", { desc = "move to the far top" })
 
 -- Switch buffer with tab
-vim.keymap.set("n", "<tab>", "<cmd>bnext<cr>") -- confilct with <C-i>
-map("n", "<s-tab>", "<cmd>bprevious<cr>")
+-- vim.keymap.set("n", "<tab>", "<tab>")
+-- vim.keymap.set("n", "<tab>", "<tab>") -- confilct with <C-i>
+-- vim.keymap.set("n", "<s-tab>", "<cmd>bprevious<cr>")
 
 -- Tabs management
 map("n", "]<tab>", "<cmd>tabn<CR>", { desc = "Next Tab" })
@@ -267,7 +268,7 @@ vim.api.nvim_create_autocmd({ "BufRead" }, {
   end,
 })
 
-map("n", "<leader>b<space>", function()
+map("n", "<leader>bb", function()
   local curbufnr = vim.api.nvim_get_current_buf()
   local buflist = vim.api.nvim_list_bufs()
   for _, bufnr in ipairs(buflist) do

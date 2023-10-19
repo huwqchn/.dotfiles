@@ -5,7 +5,6 @@ set -gx SUDO_EDITOR $EDITOR
 set -gx BROWSER brave
 set -gx THEME tokyonight
 
-
 # Cursor styles
 set -gx fish_vi_force_cursor 1
 set -gx fish_cursor_default block

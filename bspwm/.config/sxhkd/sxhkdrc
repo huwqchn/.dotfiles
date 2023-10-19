@@ -3,17 +3,18 @@
 #
 
 # terminal emulator
-# env GLFW_IM_MODULE=ibus kitty
+# kitty
 super + Return
-  wezterm
-
-# bind single quote to open kitty
-super + apostrophe
   env GLFW_IM_MODULE=ibus kitty
+
+
+# bind single quote to open wezterm
+super + apostrophe
+  wezterm
 
 # browser
 super + c
-  brave --password-store=basic
+  brave
 
 # open app
 super + a ; {a, b, c, d, e, f, g, i, k, n, o, p, q, s, u, v, x, z}

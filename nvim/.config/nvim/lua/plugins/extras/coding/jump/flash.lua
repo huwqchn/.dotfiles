@@ -6,6 +6,7 @@ return {
       return {}
     end,
     opts = {
+      search = { enabled = false },
       labels = "arstgmneioqwfpbjluyxcdvzkh",
       modes = {
         treesitter_search = {

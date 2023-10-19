@@ -5,3 +5,7 @@
 #
 QT_QPA_PLATFORMTHEME=qt5ct
 GTK_THEME=Tokyonight-Dark-BL
+GTK_IM_MODULE=fcitx5
+QT_IM_MODULE=fcitx5
+SDL_IM_MODULE=fcitx5
+XMODIFIERS=@im=fcitx5
