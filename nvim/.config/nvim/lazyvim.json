@@ -1,11 +1,11 @@
 {
   "extras": [
+    "lazyvim.plugins.extras.dap.core",
+    "lazyvim.plugins.extras.test.core",
     "lazyvim.plugins.extras.coding.codeium",
     "lazyvim.plugins.extras.coding.copilot",
     "lazyvim.plugins.extras.coding.yanky",
-    "lazyvim.plugins.extras.dap.core",
     "lazyvim.plugins.extras.dap.nlua",
-    "lazyvim.plugins.extras.editor.aerial",
     "lazyvim.plugins.extras.editor.mini-files",
     "lazyvim.plugins.extras.formatting.prettier",
     "lazyvim.plugins.extras.lang.clangd",
@@ -19,14 +19,12 @@
     "lazyvim.plugins.extras.lang.rust",
     "lazyvim.plugins.extras.lang.tailwind",
     "lazyvim.plugins.extras.lang.typescript",
-    "lazyvim.plugins.extras.test.core",
     "lazyvim.plugins.extras.ui.edgy",
     "lazyvim.plugins.extras.ui.mini-animate",
     "lazyvim.plugins.extras.util.dot",
     "lazyvim.plugins.extras.util.mini-hipatterns",
     "lazyvim.plugins.extras.util.project",
     "lazyvim.plugins.extras.vscode",
-    "plugins.extras.ui.colorscheme.tokyonight",
     "plugins.extras.coding.ai.chatgpt",
     "plugins.extras.coding.ai.copilot",
     "plugins.extras.coding.ai.hfcc",
@@ -63,7 +61,6 @@
     "plugins.extras.editor.search.telescope",
     "plugins.extras.editor.symbols.aerial",
     "plugins.extras.editor.terminal.toggleterm",
-    "plugins.extras.misc.smart-splits",
     "plugins.extras.lang.bash",
     "plugins.extras.lang.c",
     "plugins.extras.lang.clangd",
@@ -75,18 +72,21 @@
     "plugins.extras.lang.ymal",
     "plugins.extras.lang.yuck",
     "plugins.extras.misc.dial",
+    "plugins.extras.misc.smart-splits",
     "plugins.extras.misc.wezterm-types",
     "plugins.extras.misc.zen-mode",
     "plugins.extras.ui.bar.bufferline",
     "plugins.extras.ui.bar.dropbar",
+    "plugins.extras.ui.colorscheme.tokyonight",
     "plugins.extras.ui.dress.noice",
     "plugins.extras.ui.dress.notify",
     "plugins.extras.ui.windows.window-picker",
-    "plugins.extras.ui.windows.windows"
+    "plugins.extras.ui.windows.windows",
+    "lazyvim.plugins.extras.editor.aerial"
   ],
   "news": {
     "NEWS.md": "2123",
-    "doc/news.txt": "14064"
+    "doc/news.txt": "9272"
   },
   "version": 2
 }
