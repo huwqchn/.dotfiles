@@ -229,9 +229,9 @@ map("n", "<leader>wo", "<C-w>L", { desc = "move to the far right" })
 map("n", "<leader>wi", "<C-w>K", { desc = "move to the far top" })
 
 -- Switch buffer with tab
--- vim.keymap.set("n", "<tab>", "<tab>")
 -- vim.keymap.set("n", "<tab>", "<tab>") -- confilct with <C-i>
--- vim.keymap.set("n", "<s-tab>", "<cmd>bprevious<cr>")
+vim.keymap.set("n", "<tab>", "]b", { desc = "Next buffer", remap = true, silent = true })
+vim.keymap.set("n", "<s-tab>", "[b", { desc = "Prev buffer", remap = true, silent = true })
 
 -- Tabs management
 map("n", "]<tab>", "<cmd>tabn<CR>", { desc = "Next Tab" })
