@@ -79,7 +79,7 @@ abbr neofetch 'neofetch --ascii $HOME/.config/neofetch/predator'
 abbr ncdu 'ncdu --color dark'
 abbr j joshuto
 abbr v nvim
-abbr g gitui
+abbr gg gitui
 abbr ze zellij
 abbr lg lazygit
 abbr lzd lazydocker
@@ -91,6 +91,19 @@ abbr fm frogmouth
 abbr ns 'netstat -tunlp'
 abbr ex extract
 abbr nb newsboat
+
+abbr git hub
+abbr topgit topgrade --only git_repos
+abbr g hub
+abbr gl 'hub l --color | devmoji --log --color | less -rXF'
+abbr gs "hub st"
+abbr gb "hub checkout -b"
+abbr gc "hub commit"
+abbr gpr "hub pr checkout"
+abbr gm "hub branch -l main | rg main > /dev/null 2>&1 && hub checkout main || hub checkout master"
+abbr gcp "hub commit -p"
+abbr gP "hub push"
+abbr gp "hub pull"
 
 # Tmux
 abbr t tmux

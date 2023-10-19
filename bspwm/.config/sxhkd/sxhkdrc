@@ -13,7 +13,7 @@ super + apostrophe
 
 # browser
 super + c
-  brave
+  brave --password-store=basic
 
 # open app
 super + a ; {a, b, c, d, e, f, g, i, k, n, o, p, q, s, u, v, x, z}
