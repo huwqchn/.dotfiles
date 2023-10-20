@@ -3,14 +3,12 @@
 #
 
 # terminal emulator
-# kitty
 super + Return
-  env GLFW_IM_MODULE=ibus kitty
-
+  wezterm
 
 # bind single quote to open wezterm
 super + apostrophe
-  wezterm
+  env GLFW_IM_MODULE=ibus kitty
 
 # browser
 super + c

@@ -48,7 +48,7 @@ if wezterm.target_triple:find("windows") then
 		gui:set_position((screen.width - width) / 2, (screen.height - height) / 2)
 	end)
 else
-	-- config.term = "wezterm"
+	config.term = "wezterm"
 	config.window_decorations = "RESIZE"
 end
 

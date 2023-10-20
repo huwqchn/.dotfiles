@@ -94,6 +94,7 @@ abbr nb newsboat
 abbr git hub
 abbr topgit topgrade --only git_repos
 abbr g hub
+abbr gi "hub clone"
 abbr gl 'hub l --color | devmoji --log --color | less -rXF'
 abbr gs "hub st"
 abbr gb "hub checkout -b"
@@ -119,8 +120,10 @@ abbr su "systemctl --user"
 abbr ss "command systemctl status"
 abbr sl "systemctl --type service --state running"
 abbr slu "systemctl --user --type service --state running"
-abbr se "sudo systemctl enable --now"
-abbr sd "sudo systemctl disable --now"
+abbr se "sudo systemctl enable"
+abbr sd "sudo systemctl disable"
+abbr sen "sudo systemctl enable --now"
+abbr sdn "sudo systemctl disable --now"
 abbr sr "sudo systemctl restart"
 abbr so "sudo systemctl stop"
 abbr sa "sudo systemctl start"
