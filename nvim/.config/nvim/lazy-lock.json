@@ -57,7 +57,7 @@
   "mini.bracketed": { "branch": "main", "commit": "d99f8f6c93e2a4cff1ebc27072d74ba400c8d241" },
   "mini.bufremove": { "branch": "main", "commit": "75be0b153b0cd2499c031e57d44cde8dad4766e4" },
   "mini.comment": { "branch": "main", "commit": "a27b9115e40519ef23991af9564f43ec14a41fe2" },
-  "mini.files": { "branch": "main", "commit": "f928a0775d6f6d7cd85c45c6b5baeb25743d204e" },
+  "mini.files": { "branch": "main", "commit": "e3f41d49c71ba353af0840e3981487b9cf8c6404" },
   "mini.hipatterns": { "branch": "main", "commit": "6d24ccb409f3a7a1f42fb5ec5354ae59ac299420" },
   "mini.indentscope": { "branch": "main", "commit": "cbc07203ca8faae952ca373c1f6cc5881ce97af0" },
   "mini.move": { "branch": "main", "commit": "b3bca8e493f8d1da343ff1be06c21a47e2fde1c0" },

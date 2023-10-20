@@ -17,7 +17,8 @@ return {
         check_git_workspace = function()
           local filepath = vim.fn.expand("%:p:h")
           local gitdir = vim.fn.finddir(".git", filepath .. ";")
-          return gitdir and #gitdir > 0 and #gitdir < #filepath
+          return gitdir and #gitdir > 0 and #gitdir - 4 < #filepath
+          -- why need -4, bec path + /.git sometime > path + dir(dirname < 4)
         end,
         check_lsp_active = function()
           local ok, clients = pcall(require("lazyvim.util").lsp.get_clients, { bufnr = 0 })
