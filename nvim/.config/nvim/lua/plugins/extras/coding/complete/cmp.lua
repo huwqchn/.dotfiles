@@ -79,10 +79,11 @@ return {
         ---@usage The minimum length of a word to complete on.
         keyword_length = 1,
       })
+      local icons = require("lazyvim.config").icons
       opts.formatting = {
         fields = { "kind", "abbr", "menu" },
         max_width = 0,
-        kind_icons = require("lazyvim.config").icons.kinds,
+        kind_icons = icons.kinds,
         source_names = {
           nvim_lsp = "(LSP)",
           emoji = "(Emoji)",
@@ -113,11 +114,12 @@ return {
           item.kind = opts.formatting.kind_icons[item.kind]
 
           if entry.source.name == "copilot" then
-            item.kind = opts.icons.Copilot
+            item.kind = icons.kinds.Copilot
             item.kind_hl_group = "CmpItemKindCopilot"
           end
+
           if entry.source.name == "cmp_tabnine" then
-            item.kind = opts.icons.Robot
+            item.kind = icons.kinds.TabNine
             item.kind_hl_group = "CmpItemKindTabnine"
           end
 
@@ -137,13 +139,15 @@ return {
           end
 
           if entry.source.name == "codeium" then
-            item.kind = opts.icons.Magic
+            item.kind = icons.kinds.Codeium
             item.kind_hl_group = "CmpItemKindCodeium"
           end
+
           if entry.source.name == "otter" then
             item.kind = opts.icons.otter
             item.kind_hl_group = "CmpItemKindOtter"
           end
+
           item.menu = opts.formatting.source_names[entry.source.name]
           item.dup = opts.formatting.duplicates[entry.source.name] or opts.formatting.duplicates_default
           return item
