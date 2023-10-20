@@ -74,7 +74,7 @@ abbr ka killall
 abbr hf hyperfine
 abbr tk tokei
 abbr df 'df -h'
-abbr neofetch 'neofetch --ascii $HOME/.config/neofetch/predator'
+# abbr neofetch 'neofetch --ascii $HOME/.config/neofetch/predator'
 abbr ncdu 'ncdu --color dark'
 abbr j joshuto
 abbr v nvim
