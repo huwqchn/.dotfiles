@@ -45,3 +45,4 @@ cava/.config/cava/shaders
 polybar/.config/polybar/.module
 newsboat/.config/newsboat/urls
 fish/.config/fish/.DS_Store
+fish/.config/fish/themes/tokyonight_moon.theme

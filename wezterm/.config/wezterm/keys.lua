@@ -91,59 +91,35 @@ function M.setup(config)
 		-- { mods = "CTRL", key = "i", action = act.SendString("\x1b[105;5u") },
 		-- { mods = "CTRL", key = "Enter", action = act.SendString("\x1b[105;5u") },
 		-- { mods = "SHIFT", key = "\r", action = act.SendString("\033[\015;2u") },
+		M.smart_nav("resize", "CTRL", "LeftArrow", "Right"),
+		M.smart_nav("resize", "CTRL", "RightArrow", "Left"),
+		M.smart_nav("resize", "CTRL", "UpArrow", "Up"),
+		M.smart_nav("resize", "CTRL", "DownArrow", "Down"),
+		M.smart_nav("move", "CTRL", "n", "Left"),
+		M.smart_nav("move", "CTRL", "e", "Down"),
+		M.smart_nav("move", "CTRL", "i", "Up"),
+		M.smart_nav("move", "CTRL", "o", "Right"),
 	}
-
-	for dir, key in pairs(M.pane_nav) do
-		table.insert(config.keys, { key = key, mods = M.pane_mods, action = M.activate_pane(dir) })
-	end
-
-	for dir, key in pairs(M.pane_resize) do
-		table.insert(config.keys, { key = key, mods = M.pane_mods, action = M.resize_pane(dir) })
-	end
 end
 
-M.pane_nav = {
-	Left = "n",
-	Down = "e",
-	Up = "i",
-	Right = "o",
-}
-M.ctrl_nav_str = {
-	Left = "\x0E",
-	Down = "\x05",
-	Up = "\x1b[105;5u",
-	Right = "\x0F",
-}
-M.pane_resize = {
-	Left = "LeftArrow",
-	Down = "DownArrow",
-	Up = "UpArrow",
-	Right = "RightArrow",
-}
-M.pane_mods = "CTRL"
-
----@param dir "Right" | "Left" | "Up" | "Down"
-function M.activate_pane(dir)
-	return wezterm.action_callback(function(window, pane)
+function M.smart_nav(resize_or_move, mods, key, dir)
+	local event = "smart_" .. resize_or_move .. "_" .. dir
+	wezterm.on(event, function(win, pane)
 		if M.is_vim(pane) then
-			-- window:perform_action(act.SendKey({ key = M.pane_nav[dir], mods = M.pane_mods }), pane)
-			window:perform_action(act.SendString(M.ctrl_nav_str[dir]), pane)
+			win:perform_action({ SendKey = { key = key, mods = mods } }, pane)
 		else
-			window:perform_action(act.ActivatePaneDirection(dir), pane)
+			if resize_or_move == "resize" then
+				win:perform_action({ AdjustPaneSize = { dir, 3 } }, pane)
+			else
+				win:perform_action({ ActivatePaneDirection = dir }, pane)
+			end
 		end
 	end)
-end
-
----@param dir "Right" | "Left" | "Up" | "Down"
-function M.resize_pane(dir)
-	return wezterm.action_callback(function(window, pane)
-		if M.is_vim(pane) then
-			window:perform_action(act.SendKey({ key = M.pane_resize[dir], mods = M.pane_mods }), pane)
-		else
-			window:perform_action(act.AdjustPaneSize({ dir, 3 }), pane)
-			-- window:perform_action({ AdjustPaneSize = { dir, 3 } }, pane)
-		end
-	end)
+	return {
+		key = key,
+		mods = mods,
+		action = wezterm.action.EmitEvent(event),
+	}
 end
 
 function M.is_vim(pane)
