@@ -20,7 +20,6 @@
     "lazyvim.plugins.extras.lang.rust",
     "lazyvim.plugins.extras.lang.tailwind",
     "lazyvim.plugins.extras.lang.typescript",
-    "lazyvim.plugins.extras.lang.go",
     "lazyvim.plugins.extras.ui.edgy",
     "lazyvim.plugins.extras.ui.mini-animate",
     "lazyvim.plugins.extras.util.dot",
@@ -93,4 +92,3 @@
   },
   "version": 2
 }
-
