@@ -6,13 +6,13 @@ return {
     -- stylua: ignore
     keys = {
       { "<C-=>", function() return require("dial.map").inc_normal() end, mode = "n", expr = true, desc = "Increment" },
-      { "<C-->", function() return require("dial.map").dec_normal() end, mode = "n", expr = true, desc = "Decrement" },
+      { "<C-_>", function() return require("dial.map").dec_normal() end, mode = "n", expr = true, desc = "Decrement" },
       { "g<C-=>", function() return require("dial.map").inc_gnormal() end, mode = "n", expr = true, desc = "Increment" },
-      { "g<C-->", function() return require("dial.map").dec_gnormal() end, mode = "n", expr = true, desc = "Decrement" },
+      { "g<C-_>", function() return require("dial.map").dec_gnormal() end, mode = "n", expr = true, desc = "Decrement" },
       { "<C-=>", function() return require("dial.map").inc_visual() end, mode = "v", expr = true, desc = "Increment" },
-      { "<C-->", function() return require("dial.map").dec_visual() end, mode = "v", expr = true, desc = "Decrement" },
+      { "<C-_>", function() return require("dial.map").dec_visual() end, mode = "v", expr = true, desc = "Decrement" },
       { "g<C-=>", function() return require("dial.map").inc_gvisual() end, mode = "v", expr = true, desc = "Increment" },
-      { "g<C-->", function() return require("dial.map").dec_gvisual() end, mode = "v", expr = true, desc = "Decrement" },
+      { "g<C-_>", function() return require("dial.map").dec_gvisual() end, mode = "v", expr = true, desc = "Decrement" },
     },
     config = function()
       local augend = require("dial.augend")

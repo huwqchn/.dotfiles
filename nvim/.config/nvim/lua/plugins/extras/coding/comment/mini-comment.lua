@@ -15,8 +15,8 @@ return {
         { opts.mappings.textobject, desc = "Comment text object" },
         { "<c-/>", opts.mappings.comment_line, remap = true },
         { "<c-/>", opts.mappings.comment, mode = "x", remap = true },
-        { "<c-_>", opts.mappings.comment_line, remap = true },
-        { "<c-_>", opts.mappings.comment, mode = "x", remap = true },
+        -- { "<c-_>", opts.mappings.comment_line, remap = true },
+        -- { "<c-_>", opts.mappings.comment, mode = "x", remap = true },
       }
       return vim.list_extend(mappings, keys)
     end,

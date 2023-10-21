@@ -5,7 +5,7 @@ lctrl + alt + cmd - 0x35 : skhd --restart-service
 lctrl + alt + cmd + shift - r : yabai --restart-service
 
 #  open terminal
-lctrl + alt + cmd - return : open -n -a kitty
+lctrl + alt + cmd - return : open -n -a wezterm
 lctrl + alt + cmd - 0x27 : open -n -a kitty
 
 # open browser

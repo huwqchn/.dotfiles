@@ -27,8 +27,8 @@ return {
         mode = "x",
         desc = "Comment toggle linewise (visual)",
       },
-      { "<c-_>", "<c-/>", mode = "x", remap = true },
-      { "<c-_>", "<c-/>", mode = "x", remap = true },
+      -- { "<c-_>", "<c-/>", mode = "x", remap = true },
+      -- { "<c-_>", "<c-/>", mode = "x", remap = true },
     },
     opts = {
       pre_hook = function(...)

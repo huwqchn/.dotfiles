@@ -85,6 +85,8 @@ function M.setup(config)
 		{ mods = M.mod, key = "z", action = act.TogglePaneZoomState },
 		{ mods = M.mod, key = "p", action = act.ActivateCommandPalette },
 		{ mods = M.mod, key = "?", action = act.ShowDebugOverlay },
+		{ mods = M.mod, key = "-", action = act.DecreaseFontSize },
+		{ mods = M.mod, key = "+", action = act.IncreaseFontSize },
 		-- extended keys
 		-- { mods = "CTRL", key = "h", action = act.SendString("\x1b[104;5u") },
 		-- { mods = "CTRL", key = "m", action = act.SendString("\x1b[109;5u") },

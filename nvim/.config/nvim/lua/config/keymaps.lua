@@ -110,7 +110,7 @@ map("c", "<C-v>", "<C-r>+")
 
 -- inc/dec number
 map({ "n", "v" }, "<C-=>", "<C-a>")
-map({ "n", "v" }, "<C-->", "<C-x>")
+map({ "n", "v" }, "<C-_>", "<C-x>")
 map({ "n", "v" }, "g<C-=>", "g<C-a>")
 map({ "n", "v" }, "g<C-->", "g<C-x>")
 
