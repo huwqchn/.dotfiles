@@ -19,6 +19,8 @@ export CONDA_PREFIX=$HOME/.conda
 export RIPGREP_CONFIG_PATH=$HOME/.config/ripgrep/ripgreprc
 export GTAGSLABEL="native-pygments"
 export GTAGSCONF="$HOME/.config/gtags/gtags.conf"
+export GO111MODULE=on
+export GOPROXY=https://goproxy.cn
 # for rust
 export RUST_BACKTRACE=1
 if [[ $(uname) == 'Darwin' ]]; then
