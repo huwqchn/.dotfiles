@@ -73,9 +73,9 @@ function M.setup(config)
 		-- Acivate Tabs
 		{ mods = M.mod, key = "}", action = act({ ActivateTabRelative = 1 }) },
 		{ mods = M.mod, key = "{", action = act({ ActivateTabRelative = -1 }) },
-		{ mods = M.mod, key = "r", action = wezterm.action.RotatePanes("Clockwise") },
+		{ mods = M.mod, key = "r", action = act.RotatePanes("Clockwise") },
 		-- show the pane selection mode, but have it swap the active and selected panes
-		{ mods = M.mod, key = "s", action = wezterm.action.PaneSelect({ mode = "SwapWithActive" }) },
+		{ mods = M.mod, key = "s", action = act.PaneSelect({ mode = "SwapWithActive" }) },
 		-- Clipboard
 		{ mods = M.mod, key = "c", action = act.CopyTo("Clipboard") },
 		{ mods = M.mod, key = "Space", action = act.QuickSelect },
