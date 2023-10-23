@@ -18,7 +18,7 @@ zinit light-mode for \
 # zinit load zdharma-continuum/history-search-multi-word
 
 # SSH-AGENT
-zinit light bobsoppe/zsh-ssh-agent
+# zinit light bobsoppe/zsh-ssh-agent
 # AUTOSUGGESTIONS, TRIGGER PRECMD HOOK UPON LOAD
 ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
 [ -z "$HISTFILE" ] && HISTFILE="$HOME/.zhistory"
