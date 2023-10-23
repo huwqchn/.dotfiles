@@ -35,10 +35,10 @@ function M.setup(config)
 	config.keys = {
 		-- { mods = "LEADER", key = "a", action = act.SendKey({ key = "a", mods = "CTRL" }) },
 		-- Scrollback
-		{ mods = M.mod, key = "u", action = act.ScrollByPage(-0.5) },
-		{ mods = M.mod, key = "d", action = act.ScrollByPage(0.5) },
-		-- { mods = M.mod, key = "o", action = act({ ActivateTabRelative = 1 }) },
-		-- { mods = M.mod, key = "n", action = act({ ActivateTabRelative = -1 }) },
+		{ mods = M.mod, key = "i", action = act.ScrollByPage(-0.5) },
+		{ mods = M.mod, key = "e", action = act.ScrollByPage(0.5) },
+		{ mods = M.mod, key = "o", action = act({ ActivateTabRelative = 1 }) },
+		{ mods = M.mod, key = "n", action = act({ ActivateTabRelative = -1 }) },
 		-- New Tab
 		{ mods = M.mod, key = "t", action = act.SpawnTab("CurrentPaneDomain") },
 		-- close pane
@@ -47,26 +47,26 @@ function M.setup(config)
 		-- { mods = "CTRL", key = "w", action = M.smart_close("tab", "CTRL", "w") },
 		-- Splits
 		{ mods = M.mod, key = "Enter", action = M.smart_split },
-		{
-			mods = M.mod,
-			key = "n",
-			action = act.SplitPane({ direction = "Left", size = { Percent = 50 } }),
-		},
-		{
-			mods = M.mod,
-			key = "e",
-			action = act.SplitPane({ direction = "Down", size = { Percent = 50 } }),
-		},
-		{
-			mods = M.mod,
-			key = "i",
-			action = act.SplitPane({ direction = "Up", size = { Percent = 50 } }),
-		},
-		{
-			mods = M.mod,
-			key = "o",
-			action = act.SplitPane({ direction = "Right", size = { Percent = 50 } }),
-		},
+		-- {
+		-- 	mods = M.mod,
+		-- 	key = "n",
+		-- 	action = act.SplitPane({ direction = "Left", size = { Percent = 50 } }),
+		-- },
+		-- {
+		-- 	mods = M.mod,
+		-- 	key = "e",
+		-- 	action = act.SplitPane({ direction = "Down", size = { Percent = 50 } }),
+		-- },
+		-- {
+		-- 	mods = M.mod,
+		-- 	key = "i",
+		-- 	action = act.SplitPane({ direction = "Up", size = { Percent = 50 } }),
+		-- },
+		-- {
+		-- 	mods = M.mod,
+		-- 	key = "o",
+		-- 	action = act.SplitPane({ direction = "Right", size = { Percent = 50 } }),
+		-- },
 		-- Move Tabs
 		{ mods = M.mod, key = ">", action = act.MoveTabRelative(1) },
 		{ mods = M.mod, key = "<", action = act.MoveTabRelative(-1) },
