@@ -2,7 +2,7 @@ eval "$(zoxide init zsh)"
 eval "$(starship init zsh --print-full-init)"
 eval "$(atuin init zsh --disable-up-arrow)"
 eval "$(navi widget zsh)"
-neofetch
+neofetch --config $HOME/.config/neofetch/config.conf
 # eval "$(zellij setup --generate-auto-start zsh)"
 # if  [ -z "$TMUX" ]
 # then
