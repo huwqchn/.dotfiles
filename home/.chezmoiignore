@@ -1,4 +1,6 @@
 key.txt.age
+.config/ranger
+.config/lf
 
 {{ if ne .chezmoi.os "darwin" }}
 .chezmoiscripts/darwin/**
@@ -13,11 +15,13 @@ key.txt.age
 .gtkrc-2.0
 .xprofile
 .Xresources
+.zshenv
 .config/Kvantum
 .config/MangoHud
 .config/bspwm
 .config/cava
 .config/conky
+.config/clash
 .config/dunst
 .config/eww
 .config/gammastep
