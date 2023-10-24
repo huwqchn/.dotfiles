@@ -1,6 +1,7 @@
 [user]
-	name = Johnson Hu
-	email = huwqchn@gmail.com
+	name = {{ .name }}
+	email = {{ .email }}
+	signingkey = {{- onepasswordRead "op://Personal/SSH Key/public key" .onepassword_account -}}
 [credential]
 	helper = store
 [filter "lfs"]
@@ -8,6 +9,8 @@
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 	required = true
+[include]
+  path = ~/projects/tokyonight.nvim/extras/delta/tokyonight_moon.gitconfig
 [color]
   ui = true
 [alias]
@@ -36,7 +39,11 @@
   user = huwqchn
 [init]
   defaultBranch = main
-; [commit]
-;   gpgsign = true
 [rebase]
 	autoStash = true
+[gpg]
+	format = ssh
+[gpg "ssh"]
+	program = /opt/1Password/op-ssh-sign
+[commit]
+	gpgsign = true

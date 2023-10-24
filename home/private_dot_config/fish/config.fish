@@ -153,13 +153,14 @@ abbr po "paru -Qo"
 
 # chezmoi
 abbr cz chezmoi
-abbr cza "chezmoi add"
-abbr czae "chezmoi add --encrypt"
-abbr czaf "chezmoi add --follow"
+abbr cza "chezmoi add --verbose"
+abbr czae "chezmoi add --encrypt --verbose"
+abbr czaf "chezmoi add --follow --verbose"
 abbr cze "chezmoi edit --apply"
 abbr czz "cd ~/.local/share/chezmoi/"
-abbr czA "chezmoi apply"
+abbr czA "chezmoi apply --verbose"
 abbr czd "chezmoi diff"
 abbr czc "chezmoi chattr"
 abbr czm "chezmoi merge"
+abbr czma "chezmoi merge-all"
 abbr czl "chezmoi list"
