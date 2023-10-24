@@ -23,10 +23,10 @@ unmap({ "n", "i", "x" }, "<A-j>")
 -- local map = vim.keymap.set
 -- local Util = require("lazyvim.util")
 -- colemak-dh movement
-vim.keymap.set({ "n", "x", "o" }, "e", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
-vim.keymap.set({ "n", "x", "o" }, "i", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
-vim.keymap.set({ "n", "x", "o" }, "n", "h")
-vim.keymap.set({ "n", "x", "o" }, "o", "l")
+vim.keymap.set({ "n", "x" }, "e", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
+vim.keymap.set({ "n", "x" }, "i", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
+vim.keymap.set({ "n", "x" }, "n", "h")
+vim.keymap.set({ "n", "x" }, "o", "l")
 
 -- colemak-dh jump to start/end of the line
 vim.keymap.set({ "n", "x", "o" }, "N", "^")
