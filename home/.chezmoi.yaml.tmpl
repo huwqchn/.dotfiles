@@ -1,0 +1,40 @@
+{{- /* Checks if running interactively */ -}}
+{{- $interactive := stdinIsATTY -}}
+
+{{- $name := "Your Name" -}}
+{{- /* If name was previously set, reuses it */ -}}
+{{- if hasKey . "name" -}}
+{{-   $name = .name -}}
+{{- else if $interactive -}}
+{{-   $name = promptString "name" $name -}}
+{{- end -}}
+
+{{- $email := "email@example.com" -}}
+{{- if hasKey . "email" -}}
+{{-   $email = .email -}}
+{{- else if $interactive -}}
+{{-   $email = promptString "email" $email -}}
+{{- end -}}
+
+{{- if $interactive -}}
+{{-   writeToStdout "💡 Tip: you can re-enter your data with `chezmoi init --data=false`.\n" -}}
+{{- end -}}
+
+data:
+  name: "{{ $name }}"
+  email: "{{ $email }}"
+
+encryption: age
+age:
+    identity: ~/.config/chezmoi/key.txt
+    recipient: age10ycmnfajddq3zzeudhh0xmh4p63nspd8khtrstelhejg2dctncwsjgr7e8
+
+merge:
+  command: nvim
+  args:
+    - -d
+    - "{{ "{{ .Destination }}" }}"
+    - "{{ "{{ .Source }}" }}"
+    - "{{ "{{ .Target }}" }}"
+git:
+  autoAdd: true
