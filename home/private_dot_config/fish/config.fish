@@ -150,3 +150,14 @@ abbr ps "paru -Ss"
 abbr pl "paru -Q"
 abbr pf "paru -Ql"
 abbr po "paru -Qo"
+
+# chezmoi
+abbr cz chezmoi
+abbr cza "chezmoi add"
+abbr czae "chezmoi add --encrypt"
+abbr czaf "chezmoi add --follow"
+abbr cze "chezmoi edit"
+abbr czh "z chezmoi"
+abbr czA "chezmoi apply"
+abbr czd "chezmoi diff"
+abbr czc "chezmoi chattr"
