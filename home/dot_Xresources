@@ -24,4 +24,4 @@ st.font: JetBrains Mono Nerd Font:pixelsize=30:style=SemiBold:antialias=true:aut
 ! 6 Cyan      14 Cyan
 ! 7 White     15 White
 
-#include "~/.Xthemes/TokyoNight.Xresources"
+#include "./.Xthemes/TokyoNight.Xresources"
