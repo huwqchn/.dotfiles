@@ -156,7 +156,7 @@ abbr cz chezmoi
 abbr cza "chezmoi add"
 abbr czae "chezmoi add --encrypt"
 abbr czaf "chezmoi add --follow"
-abbr cze "chezmoi edit"
+abbr cze "chezmoi edit --apply"
 abbr czz "z chezmoi"
 abbr czA "chezmoi apply"
 abbr czd "chezmoi diff"
