@@ -1,1 +1,51 @@
 key.txt.age
+
+{{ if ne .chezmoi.os "darwin" }}
+.chezmoiscripts/darwin/**
+.config/karabiner
+.config/hammerspoon
+.config/yabai
+.config/skhd
+.config/sketchybar
+{{ end }}
+
+{{ if ne .chezmoi.os "linux" }}
+.gtkrc-2.0
+.xprofile
+.Xresources
+.config/Kvantum
+.config/MangoHud
+.config/bspwm
+.config/cava
+.config/conky
+.config/dunst
+.config/eww
+.config/gammastep
+.config/glava
+.config/gtk-2.0
+.config/gtk-3.0
+.config/gtk-4.0
+.config/himalaya
+.config/hypr
+.config/i3
+.config/mpd
+.config/mpv
+.config/ncmpcpp
+.config/neomutt
+.config/networkmanager-dmenu
+.config/newsboat
+.config/nitrogen
+.config/picom
+.config/pipewire
+.config/plank
+.config/polybar
+.config/qt5ct
+.config/redshift
+.config/rofi
+.config/spotifyd
+.config/swww
+.config/sxhkd
+.config/tint2
+.config/zathura
+.config/stalonetrayrc
+{{ end }}
