@@ -1,7 +1,7 @@
 [user]
 	name = {{ .name }}
 	email = {{ .email }}
-	signingkey = {{ onepasswordRead "op://Personal/SSH Key/public key" .onepassword_account }}
+	signingkey = {{ onepasswordRead "op://Development/SSH Key/public key" .onepassword_account }}
 [credential]
 	helper = store
 [filter "lfs"]

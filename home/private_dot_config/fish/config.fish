@@ -29,6 +29,10 @@ fish_add_path $GOPATH $GOPATH/bin
 # FISH
 set fish_emoji_width 2
 
+# Go
+set -x GO111MODULE on
+set -x GOPROXY https://goproxy.cn
+
 # Exports
 set -x LESS -rF
 set -x COMPOSE_DOCKER_CLI_BUILD 1
