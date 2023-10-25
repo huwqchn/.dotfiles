@@ -21,15 +21,12 @@
 {{-   $osID = printf "%s-%s" .chezmoi.os .chezmoi.osRelease.id -}}
 {{- end -}}
 
+
 data:
-  name: "{{ $name }}"
-  email: "{{ $email }}"
+  name: {{ $name | quote }}
+  email: {{ $email | quote }}
   onepassword_account: "MV4P3XBQ55AYTKAPO4GP5JTR34"
   osid: {{ $osID | quote }}
-  openai_api_key: {{ onepasswordRead "op://Development/Openai API Key/credential" .onepassword_account | quote }}
-  hf_api_key: {{ onepasswordRead "op://Development/HF API Key/credential" .onepassword_account | quote }}
-  azure_openai_api_key: {{ onepasswordRead "op://Development/Azure Openai API Key/credential" .onepassword_account | quote }}
-  azure_openai_endpoint: {{ onepasswordRead "op://Development/Azure Openai API Key/url" .onepassword_account | quote }}
 
 encryption: age
 age:
