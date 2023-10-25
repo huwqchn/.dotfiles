@@ -153,6 +153,8 @@ abbr po "paru -Qo"
 
 # chezmoi
 abbr cz chezmoi
+abbr czi "chezmoi init"
+abbr czia 'chezmoi init --apply'
 abbr cza "chezmoi add --verbose"
 abbr czae "chezmoi add --encrypt --verbose"
 abbr czaf "chezmoi add --follow --verbose"
@@ -164,3 +166,4 @@ abbr czc "chezmoi chattr"
 abbr czm "chezmoi merge"
 abbr czma "chezmoi merge-all"
 abbr czl "chezmoi list"
+abbr czal "chezmoi add ~/.config/nvim/lazy-lock.json"
