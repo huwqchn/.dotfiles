@@ -3,7 +3,6 @@ key.txt.age
 .config/lf
 
 {{ if ne .chezmoi.os "darwin" }}
-.chezmoiscripts/darwin/**
 .config/karabiner
 .config/hammerspoon
 .config/yabai
