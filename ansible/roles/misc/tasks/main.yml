@@ -1,8 +1,9 @@
+---
 - name: Keyd
   become: true
   file:
     dest: /etc/keyd
-    src: keyd
+    src: "{{ role_files }}/keyd"
     state: link
     force: true
 
@@ -13,18 +14,10 @@
     enabled: yes
     state: started
 
-- name: icons
-  become: true
-  copy:
-    dest: /usr/share/icons/Bibata-Modern-TokyoNight
-    src: Bitmap-Modern-TokyoNight
-    owner: root
-    mode: 0644
-
-- name: icons index
+- name: environment
   become: true
   file:
-    dest: /usr/share/icons/default
-    src: icons_index
+    dest: /etc/environment
+    src: "{{ role_files }}/environment"
     state: link
     force: true

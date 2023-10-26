@@ -1,5 +1,16 @@
 - name: Setup Linux Workstation
   hosts: local
   roles:
-    - packages
-    - system
+    - role: packages
+      tags:
+        - install
+
+    - role: misc
+      tags:
+        - etc
+        - misc
+
+    - role: icons
+      tags:
+        - etc
+        - icons

@@ -1,3 +1,4 @@
+---
 - name: install packages
   become: true
   pacman:

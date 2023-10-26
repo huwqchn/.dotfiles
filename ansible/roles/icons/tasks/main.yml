@@ -1,0 +1,16 @@
+---
+- name: icons
+  become: true
+  file:
+    dest: /usr/share/icons/Bibata-Modern-TokyoNight
+    src: "{{ role_files }}/Bibata-Modern-TokyoNight"
+    state: link
+    force: true
+
+- name: icons index
+  become: true
+  file:
+    dest: /usr/share/icons/default
+    src: "{{ role_files }}/default"
+    state: link
+    force: true

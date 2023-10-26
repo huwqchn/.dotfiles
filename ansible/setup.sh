@@ -2,6 +2,12 @@
 
 set -e
 
+tags="$1"
+
+if [ -z $tags ]; then
+	tags="all"
+fi
+
 function have {
 	command -v "$1" &>/dev/null
 }
@@ -17,4 +23,4 @@ have ansible || paru ansible
 	ansible-galaxy collection install kewlfft.aur
 
 # Run Ansible
-ansible-playbook -i ./hosts ./playbook.yaml --ask-become-pass
+ansible-playbook -i ./hosts ./playbook.yaml --ask-become-pass --tags $tags
