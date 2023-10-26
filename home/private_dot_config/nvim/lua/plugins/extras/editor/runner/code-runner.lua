@@ -6,8 +6,8 @@ return {
       focus = false,
       startinsert = false,
       term = {
-        position = "vert",
-        size = 8,
+        position = "vertical",
+        size = 12,
       },
       float = {
         close_key = "<ESC>",
@@ -60,18 +60,34 @@ return {
       },
     },
     keys = {
-      { "<leader>c,", "<cmd>RunCode<CR>", noremap = true, silent = false, desc = "Run code" },
-      { "<leader>c.", "<cmd>RunFile<CR>", noremap = true, silent = false, desc = "Run file" },
-      { "<leader>c<tab>", "<cmd>RunFile tab<CR>", noremap = true, silent = false, desc = "Run file on tab" },
-      { "<leader>cp", "<cmd>RunProject<CR>", noremap = true, silent = false, desc = "Run project" },
-      { "<leader>cx", "<cmd>RunClose<CR>", noremap = true, silent = false, desc = "Close runner" },
-      { "<leader>c/", "<cmd>CRFiletype<CR>", noremap = true, silent = false, desc = "Open json with supported file" },
+      { "<leader>rr", "<cmd>RunCode<CR>", noremap = true, silent = false, desc = "Run code" },
+      { "<leader>rf", "<cmd>RunFile<CR>", noremap = true, silent = false, desc = "Run file" },
+      { "<leader>rt", "<cmd>RunFile tab<CR>", noremap = true, silent = false, desc = "Run file on tab" },
+      { "<leader>rp", "<cmd>RunProject<CR>", noremap = true, silent = false, desc = "Run project" },
+      { "<leader>rx", "<cmd>RunClose<CR>", noremap = true, silent = false, desc = "Close runner" },
+      { "<leader>r/", "<cmd>CRFiletype<CR>", noremap = true, silent = false, desc = "Open json with supported file" },
       {
-        "<leader>c?",
+        "<leader>rP",
         "<cmd>CRProjects<CR>",
         noremap = true,
         silent = false,
         desc = "Open json with list of projects",
+      },
+      {
+        "<leader>rF",
+        "<cmd>CRFiletype<CR>",
+        noremap = true,
+        silent = false,
+        desc = "Open json with list of filetypes",
+      },
+    },
+  },
+  {
+    "folke/which-key.nvim",
+    opts = {
+      defaults = {
+        mode = "n",
+        ["<leader>r"] = { name = "+run" },
       },
     },
   },

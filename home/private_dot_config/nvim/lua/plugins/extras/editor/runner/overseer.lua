@@ -30,16 +30,18 @@ return {
     },
     keys = {
       { "<leader>oo", "<cmd>OverseerToggle<CR>", mode = "n", desc = "Toggle" },
-      { "<leader>or", "<cmd>OverseerRun<CR>", mode = "n", decs = "Run" },
+      { "<leader>or", "<cmd>OverseerRun<CR>", mode = "n", desc = "Run" },
       { "<leader>oc", "<cmd>OverseerRunCmd<CR>", mode = "n", desc = "Run cmd" },
       { "<leader>ol", "<cmd>OverseerLoadBundle<CR>", mode = "n", desc = "Load bundle" },
       { "<leader>ob", "<cmd>OverseerToggle! bottom<CR>", mode = "n", desc = "Toggle bottom" },
       { "<leader>od", "<cmd>OverseerQuickAction<CR>", mode = "n", desc = "Quick action" },
-      { "<leader>os", "<cmd>OverseerTaskAction<CR>", mode = "n", decs = "Task action" },
+      { "<leader>os", "<cmd>OverseerTaskAction<CR>", mode = "n", desc = "Task action" },
       { "<leader>oR", "<cmd>OverseerRestartLast<CR>", mode = "n", desc = "Restart last" },
     },
     opts = {
+      templates = { "builtin", "cpp_build" },
       strategy = { "jobstart" },
+      dap = false,
       task_list = {
         direction = "bottom",
         min_height = 25,
@@ -90,6 +92,7 @@ return {
       post_setup = {},
     },
     config = function(_, opts)
+      -- opts.templates = vim.tbl_keys(opts.templates)
       local overseer = require("overseer")
       overseer.setup(opts)
       for _, cb in pairs(opts.post_setup) do
@@ -103,11 +106,7 @@ return {
         if num_subs == 0 then
           cmd = cmd .. " " .. args
         end
-        local cwd
-        local has_oil, oil = pcall(require, "oil")
-        if has_oil then
-          cwd = oil.get_current_dir()
-        end
+        local cwd = vim.loop.cwd()
         local task = overseer.new_task({
           cmd = cmd,
           cwd = cwd,
@@ -137,11 +136,6 @@ return {
           overseer.run_action(tasks[1], "restart")
         end
       end, {})
-
-      local has_dap = pcall(require, "dap")
-      if has_dap then
-        require("dap.ext.vscode").json_decode = require("overseer.util").decode_json
-      end
     end,
   },
   {

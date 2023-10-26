@@ -129,16 +129,22 @@ map("i", "<A-Left>", "<C-\\><C-N><C-w>h")
 map("i", "<A-Right>", "<C-\\><C-N><C-w>l")
 
 -- Terminal window navigation
+map("t", "<esc><esc>", "<c-\\><c-n>", { desc = "Enter Normal Mode" })
 map("t", "<C-n>", "<C-\\><C-N><C-w>h", { desc = "move to left" })
 map("t", "<C-e>", "<C-\\><C-N><C-w>j", { desc = "move to down" })
 map("t", "<C-i>", "<C-\\><C-N><C-w>k", { desc = "move to up" })
 map("t", "<C-o>", "<C-\\><C-N><C-w>l", { desc = "move to right" })
 map("t", "<C-q>", "<cmd>close<cr>", { desc = "Hide Terminal" })
 local lazyterm = function()
-  Util.float_term(nil, { cwd = Util.get_root() })
+  Util.terminal(nil, { cwd = Util.root() })
 end
 map("n", "<M-/>", lazyterm, { desc = "Terminal (root dir)" })
 map("t", "<M-/>", "<cmd>close<cr>", { desc = "Hide Terminal" })
+
+-- btop
+map("n", "<leader>xb", function()
+  Util.terminal({ "btop" }, { esc_esc = false, ctrl_hjkl = false })
+end, { desc = "btop" })
 
 -- map tab to tab, because distinguish between <C-i>
 map("t", "<Tab>", "<Tab>")
@@ -298,13 +304,6 @@ local function smart_dd()
   end
 end
 vim.keymap.set("n", "dd", smart_dd, { noremap = true, expr = true })
-
-if vim.fn.executable("btop") == 1 and not Util.has("toggleterm.nvim") then
-  -- btop
-  map("n", "<leader>xb", function()
-    Util.float_term({ "btop" })
-  end, { desc = "btop" })
-end
 
 -- change word with <c-c>
 vim.keymap.set("n", "<C-c>", "<cmd>normal! ciw<cr>a")
