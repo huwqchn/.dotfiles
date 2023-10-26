@@ -26,7 +26,7 @@ HISTSIZE=290000
 SAVEHIST=$HISTSIZE
 zinit ice wait="0a" lucid atload="_zsh_autosuggest_start"
 zinit light zsh-users/zsh-autosuggestions
-bindkey ',' autosuggest-accept
+bindkey '^f' autosuggest-accept
 # HISTORY
 bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down

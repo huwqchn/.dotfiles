@@ -19,5 +19,5 @@ function fish_user_key_bindings
     bind -M visual o forward-char
     bind -M visual e down-or-search
     bind -M visual i up-or-search
-    bind -M insert , accept-autosuggestion
+    # bind -M insert , accept-autosuggestion
 end

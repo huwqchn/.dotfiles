@@ -104,7 +104,6 @@ keymap = [
   { keys = ["'"], commands = [":shell "] },
   { keys = ["m", "k"], commands = [":mkdir "] },
   { keys = ["c", "w"], commands = [":rename "] },
-  { keys = ["a"], commands = [":chezmoi add "] },
 
   { keys = ["/"], commands = [":search "] },
   { keys = ["|"], commands = [":search_inc "] },
