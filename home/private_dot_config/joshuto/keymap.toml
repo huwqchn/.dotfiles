@@ -140,10 +140,9 @@ keymap = [
   { keys = ["g", "c"], commands = ["cd ~/.config"] },
   { keys = ["g", "d"], commands = ["cd ~/Documents"] },
   { keys = ["g", "D"], commands = ["cd ~/Downloads"] },
-  { keys = ["g", "."], commands = ["cd ~/.dotfiles"] },
   { keys = ["g", "e"], commands = ["cd /etc"] },
   { keys = ["g", "h"], commands = ["cd ~/"] },
-  { keyps = ["g", "H"], commands = ["cd ~/.local/share/chezmoi/"] },
+  { keys = ["g", "."], commands = ["cd ~/.local/share/chezmoi/"] },
   { keys = ["?"], commands = ["help"] },
 ]
 
