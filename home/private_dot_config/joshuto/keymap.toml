@@ -11,7 +11,7 @@ keymap = [
   { keys = ["ctrl+c"], commands = ["quit"] },
   { keys = ["Q"], commands = ["quit --output-current-directory"] },
 
-  { keys = ["R"], commands = ["reload_dirlist"] },
+  { keys = ["ctrl+r"], commands = ["reload_dirlist"] },
   { keys = ["z", "h"], commands = ["toggle_hidden"] },
   { keys = ["ctrl+h"], commands = ["toggle_hidden"] },
   { keys = ["\t"], commands = ["tab_switch 1"] },
@@ -84,8 +84,8 @@ keymap = [
   { keys = ["p", "p"], commands = ["paste_files"] },
   { keys = ["p", "o"], commands = ["paste_files --overwrite=true"] },
 
-  { keys = ["a"], commands = ["rename_append"] },
-  { keys = ["A"], commands = ["rename_prepend"] },
+  { keys = ["r"], commands = ["rename_append"] },
+  { keys = ["R"], commands = ["rename_prepend"] },
 
   { keys = ["t"], commands = [":touch "] },
 
@@ -104,6 +104,7 @@ keymap = [
   { keys = ["'"], commands = [":shell "] },
   { keys = ["m", "k"], commands = [":mkdir "] },
   { keys = ["c", "w"], commands = [":rename "] },
+  { keys = ["a"], commands = [":chezmoi add "] },
 
   { keys = ["/"], commands = [":search "] },
   { keys = ["|"], commands = [":search_inc "] },
@@ -142,6 +143,7 @@ keymap = [
   { keys = ["g", "."], commands = ["cd ~/.dotfiles"] },
   { keys = ["g", "e"], commands = ["cd /etc"] },
   { keys = ["g", "h"], commands = ["cd ~/"] },
+  { keyps = ["g", "H"], commands = ["cd ~/.local/share/chezmoi/"] },
   { keys = ["?"], commands = ["help"] },
 ]
 
