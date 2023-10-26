@@ -4,7 +4,7 @@ keymap = [
   { keys = ["escape"], commands = ["escape"] },
   { keys = ["ctrl+t"], commands = ["new_tab"] },
   { keys = ["alt+t"], commands = ["new_tab --cursor"] },
-  { keys = ["t"], commands = ["new_tab --current"] },
+  { keys = ["T"], commands = ["new_tab --current"] },
   { keys = ["W"], commands = ["close_tab"] },
   { keys = ["ctrl+w"], commands = ["close_tab"] },
   { keys = ["q"], commands = ["close_tab"] },
@@ -87,7 +87,7 @@ keymap = [
   { keys = ["a"], commands = ["rename_append"] },
   { keys = ["A"], commands = ["rename_prepend"] },
 
-  { keys = ["T"], commands = [":touch "] },
+  { keys = ["t"], commands = [":touch "] },
 
   { keys = [" "], commands = ["select --toggle=true"] },
   { keys = ["v"], commands = ["select --all=true --toggle=true"] },

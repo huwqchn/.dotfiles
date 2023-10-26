@@ -3,5 +3,5 @@
   pacman:
     name:
       - wine
-      - khal
+      - 1password
   when: ansible_distribution == 'ArchLinux'
