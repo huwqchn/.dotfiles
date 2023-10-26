@@ -1,11 +1,12 @@
 ---
 - name: icons
   become: true
-  file:
-    dest: /usr/share/icons/Bibata-Modern-TokyoNight
-    src: "{{ role_files }}/Bibata-Modern-TokyoNight"
-    state: link
-    force: true
+  copy:
+    dest: /usr/share/icons/Bibata-Modern-TokyoNight/
+    src: "{{ role_files }}/Bibata-Modern-TokyoNight/"
+    owner: root
+    group: root
+    mode: 0755
 
 - name: icons index
   become: true
