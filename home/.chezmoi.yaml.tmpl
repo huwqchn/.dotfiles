@@ -1,0 +1,44 @@
+{{- /* Checks if running interactively */ -}}
+{{- $interactive := stdinIsATTY -}}
+
+{{- $name := "Your Name" -}}
+{{- /* If name was previously set, reuses it */ -}}
+{{- if $interactive -}}
+{{-   $name = promptStringOnce . "name" "Your name?" -}}
+{{- end -}}
+
+{{- $email := "email@example.com" -}}
+{{- if $interactive -}}
+{{-   $email = promptStringOnce . "email" "Your email?" -}}
+{{- end -}}
+
+{{- if $interactive -}}
+{{-   writeToStdout "💡 Tip: you can re-enter your data with `chezmoi init --data=false`.\n" -}}
+{{- end -}}
+
+{{- $osID := .chezmoi.os -}}
+{{- if (and (eq .chezmoi.os "linux") (hasKey .chezmoi.osRelease "id")) -}}
+{{-   $osID = printf "%s-%s" .chezmoi.os .chezmoi.osRelease.id -}}
+{{- end -}}
+
+
+data:
+  name: {{ $name | quote }}
+  email: {{ $email | quote }}
+  onepassword_account: "MV4P3XBQ55AYTKAPO4GP5JTR34"
+  osid: {{ $osID | quote }}
+
+encryption: age
+age:
+    identity: ~/.config/chezmoi/key.txt
+    recipient: age10ycmnfajddq3zzeudhh0xmh4p63nspd8khtrstelhejg2dctncwsjgr7e8
+
+merge:
+  command: nvim
+  args:
+    - -d
+    - "{{ "{{ .Destination }}" }}"
+    - "{{ "{{ .Source }}" }}"
+    - "{{ "{{ .Target }}" }}"
+git:
+  autoAdd: true

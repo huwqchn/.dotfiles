@@ -1,0 +1,291 @@
+#
+# wm independent hotkeys
+#
+
+# terminal emulator
+super + Return
+  wezterm
+
+# bind single quote to open wezterm
+super + apostrophe
+  env GLFW_IM_MODULE=ibus kitty
+
+# browser
+super + c
+  brave
+
+# open app
+super + a ; {a, b, c, d, e, f, g, i, k, n, o, p, q, s, u, v, x, z}
+  {arandr,brave,clion,eudic,emacsclient -c -a 'emacs',flameshot gui,goland,idea,screenkey,neovide,obsidian,peek,qtcreator,spotify,unityhub,vscodium,xfce4-power-manager -c,zathura}
+
+# betterlockscreen
+super + x
+  ~/.scripts/lock
+
+# program launcher
+super + @space
+	~/.scripts/applauncher.sh
+
+super + shift + @space
+ ~/.scripts/runmenu.sh
+
+# Open Clipboard manager
+super + v
+  ~/.scripts/clipmanager.sh
+
+# program switcher
+super + Tab
+  ~/.scripts/appswitcher.sh
+
+# make sxhkd reload its configuration files:
+super + Escape
+	pkill -USR1 -x sxhkd
+
+# xkill
+super + BackSpace
+  xkill
+
+# chatgpt search
+super + s
+  ~/.scripts/chatgpt.sh
+
+# google search
+super + shift + s
+  ~/.scripts/google.sh
+
+#
+# bspwm hotkeys
+#
+
+# quit/restart bspwm
+super + shift + {Escape, r}
+	bspc {quit,wm -r}
+
+# close and kill
+super + {_,shift + }q
+	bspc node -{c,k}
+
+# rotate nodes
+super + {_,shift + }l
+	bspc node '@parent' -R {_,-}90
+
+# alternate between the tiled and monocle layout
+super + m
+	bspc desktop -l next
+
+# send the newest marked node to the newest preselected node
+super + y
+	bspc node newest.marked.local -n newest.!automatic.local
+
+# swap the current node and the biggest window
+super + g
+	bspc node -s biggest.window
+
+#
+# state/flags
+#
+
+# set the window state
+super + {t,shift + t,shift + f,f}
+	bspc node -t {tiled,pseudo_tiled,\~floating,\~fullscreen}
+
+# set the node flags
+super + ctrl + {h,m,x,y,z,@space}
+	bspc node -g {hidden,marked,locked,sticky,private,urgent}
+
+# unhidden node
+super + ctrl + shift + h
+  bspc node "$(bspc query -N -n .hidden)" -g hidden=off
+
+# bsp layout
+super + ctrl + {_, shift + }l
+ bsp-layout {next,previous} --layout tiled,monocle,grid,wide,even
+
+#
+# focus/swap
+#
+
+# focus the node in the given direction
+super + {_,shift + }{n,e,i,o}
+	bspc node -{f,s} {west,south,north,east}
+
+# flip nodes
+# super + {_, shift + }v
+#  	bspc node -F {vertical,horizontal}
+#
+#
+# focus the node for the given path jump
+super + {p,b,comma,period}
+	bspc node -f @{parent,brother,first,second}
+
+# focus the next/previous window in the current desktop
+super + {_,shift + }k
+	bspc node -f {next,prev}.local.!hidden.window
+
+# focus the next/previous desktop in the current monitor
+super + {bracketleft,bracketright}
+	bspc desktop -f {prev,next}.local
+
+# resize gaps
+super + {minus,equal}
+	bspc config -d focused window_gap $((`bspc config -d focused window_gap` {-,+} 12 ))
+
+# focus the next/previous monitor
+super + shift + {less,greater}
+  bspc monitor -f {prev,next}
+
+# send to monitor
+super + bracket{left,right}
+  bspc node -m {last, next} --follow
+
+# focus the last node/desktop
+super + {grave, shift + grave}
+	bspc {node,desktop} -f last
+
+# destory the current desktop
+super + shift + d
+  bspc desktop -r
+
+# create a new desktop
+super + d
+  bspc monitor -a new
+
+# focus the older or newer node in the focus history
+# super + {o,i}
+# 	bspc wm -h off; \
+# 	bspc node {older,newer} -f; \
+# 	bspc wm -h on
+
+# focus or send to the given desktop
+super + {_,shift + }{1-9,0}
+	bspc {desktop -f,node -d} '^{1-9,10}'
+
+
+super + ctrl + shift + {1-9,0}
+	bspc node -d '^{1-9,10}' --follow
+
+#
+# preselect
+#
+
+# preselect the direction
+super + ctrl + {n,e,i,o}
+	bspc node -p {west,south,north,east}
+
+# preselect the ratio
+super + ctrl + {1-9}
+	bspc node -o 0.{1-9}
+
+# cancel the preselection for the focused node
+super + ctrl + space
+	bspc node -p cancel
+
+# cancel the preselection for the focused desktop
+super + ctrl + shift + space
+	bspc query -N -d | xargs -I id -n 1 bspc node id -p cancel
+
+# screenkey
+super + ctrl + k
+  ~/.scripts/sk.sh
+
+# flameshot
+super + ctrl + s
+  flameshot gui
+
+# peek
+super + ctrl + p
+  peek
+
+# networkmanager_dmenu
+super + ctrl + w
+  networkmanager_dmenu
+
+#
+# move/resize
+#
+
+# expand a window by moving one of its side outward
+# super + alt + {n,e,u,i}
+# 	bspc node -z {left -20 0,bottom 0 20,top 0 -20,right 20 0}
+
+# contract a window by moving one of its side inward
+# super + alt + shift + {n,e,u,i}
+# 	bspc node -z {right -20 0,top 0 20,bottom 0 -20,left 20 0}
+
+# resize mode
+super + r : {_,shift + }{n,e,i,o}
+	bspc node -z {left -20 0,right -20 0,bottom 0 20,top 0 20,top 0 -20,bottom 0 -20,right 20 0,left 20 0}
+
+# move a floating window
+super + alt + {n,e,i,o}
+	bspc node -v {-20 0,0 20,0 -20,20 0}
+
+# resize a floating window and normal window
+super + ctrl + alt + {n,e,i,o}
+  n=10; \
+  { d1=left;   d2=right;  dx=-$n; dy=0;   \
+  , d1=bottom; d2=top;    dx=0;   dy=$n;  \
+  , d1=top;    d2=bottom; dx=0;   dy=-$n; \
+  , d1=right;  d2=left;   dx=$n;  dy=0;   \
+  } \
+  bspc node --resize $d1 $dx $dy || bspc node --resize $d2 $dx $dy
+
+#
+# System keys
+#
+
+# Play music
+XF86AudioPlay
+  playerctl play
+
+# Pause music
+XF86AudioPause
+	playerctl pause
+
+# Music next
+XF86AudioNext
+	playerctl next
+
+# Music previous
+XF86AudioPrev
+	playerctl previous
+
+# Screenshot Area
+Print
+	$HOME/.scripts/screenshot --area-cb
+
+# Screenshot Full
+shift + Print
+	$HOME/.scripts/screenshot --full-cb
+
+# Save screenshot to file with clipboard
+ctrl + shift + Print
+	$HOME/.scripts/screenshot --full
+
+# Screenshot Area and save it
+ctrl + Print
+  $HOME/.scripts/screenshot --area
+
+# Volume Up
+XF86AudioRaiseVolume
+  amixer sset Master 5%+ && $HOME/.config/eww/misc/scripts/volume
+
+# Volume Down
+XF86AudioLowerVolume
+  amixer sset Master 5%- && $HOME/.config/eww/misc/scripts/volume
+
+# Volume Mute
+XF86AudioMute
+  amixer sset Master toggle && $HOME/.config/eww/misc/scripts/volume
+
+# Brightness Up
+XF86MonBrightnessUp
+  brightnessctl s 20+ && $HOME/.config/eww/misc/scripts/brightness
+
+# Brightness Down
+XF86MonBrightnessDown
+  brightnessctl s 20- && $HOME/.config/eww/misc/scripts/brightness
+
+# Toggle right click context menu.
+~button3
+  xqp 0 $(xdo id -N Bspwm -n root) && jgmenu_run

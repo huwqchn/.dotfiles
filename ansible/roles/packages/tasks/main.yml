@@ -1,0 +1,7 @@
+- name: install packages
+  become: true
+  pacman:
+    name:
+      - wine
+      - 1password
+  when: ansible_distribution == 'ArchLinux'

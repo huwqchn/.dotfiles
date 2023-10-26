@@ -1,0 +1,24 @@
+[email-reading-format]
+type = "auto"
+
+[Company]
+backend = "imap"
+email = "johnson.hu@soundws.com"
+default = true
+display-name = "Johnson"
+sender = "smtp"
+smtp-host = "smtp.exmail.qq.com"
+smtp-port = 465
+smtp-ssl = true
+smtp-login = "johnson.hu@soundws.com"
+smtp-passwd-cmd = "pass show johnson.hu@soundws.com"
+sync = false
+sync-folders-strategy = "all"
+imap-host = "imap.exmail.qq.com"
+imap-port = 993
+imap-ssl = true
+imap-login = "johnson.hu@soundws.com"
+imap-passwd-cmd = "pass show johnson.hu@soundws.com"
+
+[Company.email-reading-format]
+type = "auto"

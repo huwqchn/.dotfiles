@@ -1,0 +1,32 @@
+@theme "~/.config/rofi/config.rasi"
+
+listview {
+  column: 1;
+  margin: 10 25 10 25;
+}
+
+entry {
+	font: "JetBrainsMono Nerd Font Medium 14";
+}
+
+element-icon {
+  size: 0px;
+}
+
+element-text {
+	margin: 5 5 5 15;
+	font: "JetBrainsMono Nerd Font Medium 12";
+}
+
+message {
+	margin: 10 0 0 0;
+	background-color: @bg-col;
+}
+
+textbox {
+	background-color: @bg-col;
+	margin: 5 0 5 0;
+	horizontal-align: 0.5;
+	text-color: @red;
+	font: "JetBrainsMono Nerd Font Medium 14";
+}
