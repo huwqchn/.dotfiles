@@ -124,6 +124,7 @@ onedrive
 openai-cli-git
 otf-font-awesome-4
 pa-applet-git
+pacman-contrib
 pamixer
 papirus-icon-theme
 parcellite
