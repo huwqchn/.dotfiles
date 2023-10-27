@@ -1,36 +1,56 @@
 #!bin/sh
 
-# clash
-docker pull dreamacro/clash
-docker run -d \
-    --name=clash \
-    --network=host \
-    -v "$HOME/.config/clash:/root/.config/clash" \
-    dreamacro/clash
+function have {
+  local container_name = "$1"
+  docker ps --all --filter "name=$container_name" --format "{{.Names}}" | grep -w "$container_name" > /dev/null 2>&1
+  return $?
+}
 
+
+# clash
+if have dreamacro/clash; then
+  echo "clash is already installed"
+else
+  docker pull dreamacro/clash
+  docker run -d \
+      --name=clash \
+      --network=host \
+      -v "$HOME/.config/clash:/root/.config/clash" \
+      dreamacro/clash
+fi
 
 # aria2-pro
-docker run -d \
-    --name aria2-pro \
-    --restart unless-stopped \
-    --log-opt max-size=1m \
-    -e PUID=$UID \
-    -e PGID=$GID \
-    -e UMASK_SET=022 \
-    -e RPC_SECRET=<TOKEN> \
-    -e RPC_PORT=6800 \
-    -p 6800:6800 \
-    -e LISTEN_PORT=6888 \
-    -p 6888:6888 \
-    -p 6888:6888/udp \
-    -v $PWD/aria2-config:/config \
-    -v $PWD/aria2-downloads:/downloads \
-    p3terx/aria2-pro
+if have p3terx/aria2-pro; then
+  echo "aria2-pro is already installed"
+else
+  docker pull p3terx/aria2-pro
+  docker run -d \
+      --name aria2-pro \
+      --restart unless-stopped \
+      --log-opt max-size=1m \
+      -e PUID=$UID \
+      -e PGID=$GID \
+      -e UMASK_SET=022 \
+      -e RPC_SECRET=<TOKEN> \
+      -e RPC_PORT=6800 \
+      -p 6800:6800 \
+      -e LISTEN_PORT=6888 \
+      -p 6888:6888 \
+      -p 6888:6888/udp \
+      -v $PWD/aria2-config:/config \
+      -v $PWD/aria2-downloads:/downloads \
+      p3terx/aria2-pro
+fi
 
 # aria2-ui
-docker run -d \
-    --name ariang \
-    --log-opt max-size=1m \
-    --restart unless-stopped \
-    --network host \
-    p3terx/ariang --port 6880 --ipv6
+if have p3terx/ariang; then
+  echo "ariang is already installed"
+else
+  docker pull p3terx/ariang
+  docker run -d \
+      --name ariang \
+      --log-opt max-size=1m \
+      --restart unless-stopped \
+      --network host \
+      p3terx/ariang --port 6880 --ipv6
+fi
