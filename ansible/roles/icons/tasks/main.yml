@@ -1,12 +1,17 @@
 ---
-- name: icons
+- name: Git Clone Bibata-Modern-TokyoNight
+  git:
+    repo: "https://github.com/huwqchn/Bibata-Modern-TokyoNight.git"
+    dest: "~/Downloads/Bibata-Modern-TokyoNight"
+    update: false
+
+- name: Sync Bibata-Modern-TokyoNight
   become: true
-  copy:
-    dest: /usr/share/icons/Bibata-Modern-TokyoNight/
-    src: "{{ role_files }}/Bibata-Modern-TokyoNight/"
-    owner: root
-    group: root
-    mode: 0755
+  synchronize:
+    dest: "/usr/share/icons/Bibata-Modern-TokyoNight/"
+    src: "~/Downloads/Bibata-Modern-TokyoNight/"
+    rsync_opts:
+      - "--exclude=.git"
 
 - name: icons index
   become: true

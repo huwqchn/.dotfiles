@@ -4,6 +4,7 @@
     - role: packages
       tags:
         - install
+        - packages
 
     - role: misc
       tags:

@@ -2,9 +2,11 @@
 - name: Git clone tokyonight GTK theme
   git:
     repo: "https://github.com/Fausto-Korpsvart/Tokyo-Night-GTK-Theme.git"
-    dest: ~/Downloads/
+    dest: "~/Downloads/"
+    update: false
 
 - name: Copy tokyonight GTK theme to system
+  become: true
   copy:
-    src: "~/Downloads/Tokyo-Night-GTK-Theme/themes/Tokyonight-Dark-BL"
+    src: "~/Downloads/Tokyo-Night-GTK-Theme/themes/"
     dest: "/usr/share/themes/"
