@@ -31,3 +31,17 @@
       - qt5ct
       - sd
       - pacman-contrib
+      - xdg-user-dirs
+      - udiskie
+      - ukui-window-switch
+      - fcitx5-anthy
+      - fcitx5-chinese-addons
+      - fcitx5-configtool
+      - fcitx5-gtk
+      - fcitx5-material-color
+      - fcitx5-pinyin-moegirl
+      - fcitx5-pinyin-zhwiki
+      - fcitx5-rime
+      - lsb-release
+      - nautilus
+      - newsboat

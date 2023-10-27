@@ -14,3 +14,6 @@
   package:
     name:
       - google-roboto-fonts
+      - ttf-maple
+      - ttf-fira-code
+      - ttf-fantasque-sans-mono
