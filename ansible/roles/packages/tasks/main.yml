@@ -1,8 +1,32 @@
 ---
 - name: install packages
   become: true
-  pacman:
+  pacage:
     name:
-      - wine
       - 1password
-  when: ansible_distribution == 'ArchLinux'
+      - git
+      - alacritty
+      - kitty
+      - wezterm
+      - atuin
+      - blueman
+      - rsync
+      - chezmoi
+      - hub
+      - wine
+      - safeeyes
+      - starship
+      - zoxide
+      - age
+      - btop
+      - docker
+      - eza
+      - lazygit
+      - gitui
+      - keyd
+      - lsd
+      - lsof
+      - lxappearance
+      - neofetch
+      - qt5ct
+      - sd

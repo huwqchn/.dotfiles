@@ -1,0 +1,14 @@
+---
+- name: Git clone my wallpapers
+  git:
+    repo: "https://github.com/huwqchn/wallpapers.git"
+    dest: ~/.wallpapers
+    update: true
+
+- name: link to etc
+  become: true
+  file:
+    dest: /usr/share/backgrounds
+    src: ~/.wallpapers
+    state: link
+    force: true

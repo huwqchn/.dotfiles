@@ -16,7 +16,18 @@
         - etc
         - icons
 
+    - role: fonts
+      tags:
+        - etc
+        - fonts
+
     - role: themes
       tags:
         - etc
         - themes
+
+    - role: wallpapers
+      tags:
+        - etc
+        - home
+        - wallpapers
