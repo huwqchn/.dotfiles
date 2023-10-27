@@ -45,3 +45,7 @@
       - lsb-release
       - nautilus
       - newsboat
+      - docker
+      - docker-compose
+      - dunst
+      - dust
