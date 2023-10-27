@@ -3,7 +3,7 @@
   roles:
     - role: packages
       tags:
-        - install
+        - system
         - packages
 
     - role: misc
@@ -15,3 +15,8 @@
       tags:
         - etc
         - icons
+
+    - role: themes
+      tags:
+        - etc
+        - themes
