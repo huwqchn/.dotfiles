@@ -21,3 +21,29 @@
     src: "{{ role_files }}/environment"
     state: link
     force: true
+
+- name: proxychain4
+  become: true
+  copy:
+    dest: /etc/proxychains.conf
+    src: "{{ role_files }}/proxychains.conf"
+
+- name: pacman config
+  become: true
+  copy:
+    dest: /etc/pacman.conf
+    src: "{{ role_files }}/pacman.conf"
+    owner: root
+    group: root
+    mode: "0644"
+  when: ansible_os_family == "Archlinux"
+
+- name: pacman reflector
+  become: true
+  copy:
+    dest: /etc/xdg/reflector/reflector.conf
+    src: "{{ role_files }}/reflector.conf"
+    owner: root
+    group: root
+    mode: "0644"
+  when: ansible_os_family == "Archlinux"
