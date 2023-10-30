@@ -56,8 +56,7 @@
     "plugins.extras.editor.git.diff",
     "plugins.extras.editor.git.misc",
     "plugins.extras.editor.keymaps.which-key",
-    "plugins.extras.editor.runner.competitest",
-    "plugins.extras.editor.runner.overseer",
+    "plugins.extras.editor.runner.code-runner",
     "plugins.extras.editor.search.ssr",
     "plugins.extras.editor.search.telescope",
     "plugins.extras.editor.symbols.aerial",
@@ -83,12 +82,11 @@
     "plugins.extras.ui.dress.noice",
     "plugins.extras.ui.dress.notify",
     "plugins.extras.ui.windows.window-picker",
-    "plugins.extras.ui.windows.windows",
     "lazyvim.plugins.extras.editor.aerial"
   ],
   "news": {
     "NEWS.md": "2123",
-    "doc/news.txt": "14101"
+    "doc/news.txt": "14377"
   },
   "version": 2
 }
