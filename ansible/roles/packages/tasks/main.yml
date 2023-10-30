@@ -74,6 +74,7 @@
       - inetutils
       - intel-ucode
       - jgmenu
+      - jq
       - joshuto
       - keyd-git
       - khal
@@ -198,3 +199,4 @@
       - yaru-sound-theme
       - zellij
       - zoxide
+      - zsh

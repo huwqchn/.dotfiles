@@ -33,3 +33,8 @@
     state: present
     name:
       - ttf-maple
+      - ttf-material-design-icons-desktop-git
+      - ttf-unifont
+      - ttf-all-the-icons
+      - ttf-poppins
+      - ttf-weather-icons
