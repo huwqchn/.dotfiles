@@ -1,0 +1,15 @@
+---
+- name: clone tmux repo
+  git:
+    repo: "https:/github.com/tiagovla/tmux.git"
+    dest: "~/Repos/tmux"
+    depth: 1
+    update: false
+
+- name: make tmux
+  shell:
+    cmd: |
+      sh autogen.sh
+      ./configure && make
+      sudo make install
+    chdir: "~/Repos/tmux"

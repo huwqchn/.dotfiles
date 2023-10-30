@@ -31,3 +31,17 @@
         - etc
         - home
         - wallpapers
+
+    - role: grub
+      tags:
+        - grub
+        - theme
+
+    - role: tmux
+      tags:
+        - tmux
+        - cli
+
+    - role: docker
+      tags:
+        - docker

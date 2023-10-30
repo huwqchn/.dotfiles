@@ -75,11 +75,12 @@
       - intel-ucode
       - jgmenu
       - jq
-      - joshuto
+      - joshuto-git
       - keyd-git
       - khal
       - kitty
       - kwallet-pam
+      - kvantmu
       - lazydocker-bin
       - lazygit
       - libconfig
