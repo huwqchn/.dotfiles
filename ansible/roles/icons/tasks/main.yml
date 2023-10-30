@@ -13,6 +13,12 @@
     rsync_opts:
       - "--exclude=.git"
 
+- name: remove icon default
+  become: true
+  file:
+    state: absent
+    path: /usr/share/icons/default/
+
 - name: icons index
   become: true
   file:

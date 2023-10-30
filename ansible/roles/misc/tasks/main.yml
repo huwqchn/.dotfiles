@@ -37,13 +37,3 @@
     group: root
     mode: "0644"
   when: ansible_os_family == "Archlinux"
-
-- name: pacman reflector
-  become: true
-  copy:
-    dest: /etc/xdg/reflector/reflector.conf
-    src: "{{ role_files }}/reflector.conf"
-    owner: root
-    group: root
-    mode: "0644"
-  when: ansible_os_family == "Archlinux"
