@@ -45,3 +45,7 @@
     - role: docker
       tags:
         - docker
+
+    - role: nvidia
+      tags:
+        - driver
