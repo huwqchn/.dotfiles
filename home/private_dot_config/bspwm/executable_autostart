@@ -1,6 +1,9 @@
 #!/bin/sh
 
 pgrep -x sxhkd >/dev/null || sxhkd &
+if [ ! -d "$HOME/.cache/picom" ]; then
+	mkdir -p $HOME/.cache/picom
+fi
 picom -b >$HOME/.cache/picom/picom.log 2>&1 &
 xsetroot -cursor_name left_ptr &
 # feh --bg-fill -no-fehbg ~/.wallpapers/tokyo-night31.png &
