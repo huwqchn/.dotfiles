@@ -107,6 +107,7 @@
       - networkmanager-dmenu-git
       - newsboat
       - noise-suppression-for-voice
+      - npm
       - nvidia-dkms
       - nvtop
       - nwg-look-bin

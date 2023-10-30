@@ -1,8 +1,6 @@
 key.txt.age
 .config/ranger
 .config/lf
-.config/nvim/lazyvim.json
-.config/nvim/lazy-lock.json
 
 {{ if ne .chezmoi.os "darwin" }}
 .config/karabiner
