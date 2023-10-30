@@ -39,7 +39,7 @@
       - ttf-poppins
       - ttf-weather-icons
 
-- name: Sync Bibata-Modern-TokyoNight
+- name: Copy SofiaPro
   become: true
   copy:
     dest: "~/.fonts/"
