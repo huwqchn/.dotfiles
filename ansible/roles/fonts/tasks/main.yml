@@ -40,7 +40,6 @@
       - ttf-weather-icons
 
 - name: Copy SofiaPro
-  become: true
   copy:
     dest: "~/.fonts/"
-    src: "{{ role_files }}/SofiaPro/"
+    src: "{{ role_files }}/"

@@ -24,8 +24,8 @@
       - brave-bin
       - brightnessctl
       - bspwm
+      - bsp-layout
       - btop
-      - cargo
       - cava-git
       - chezmoi
       - choose
@@ -49,6 +49,7 @@
       - fcitx5-pinyin-moegirl
       - fcitx5-pinyin-zhwiki - fcitx5-rime - fd - ffmpegthumbs
       - firefox
+      - fish
       - flake8
       - gamemode
       - gammastep
@@ -68,6 +69,9 @@
       - helix
       - himalaya
       - hub
+      - i3-gaps
+      - i3lock-color
+      - imagemagick
       - inetutils
       - intel-ucode
       - jgmenu
