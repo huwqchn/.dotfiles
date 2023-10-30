@@ -39,7 +39,7 @@
       - ttf-poppins
       - ttf-weather-icons
 
-- name: Copy SofiaPro
+- name: Copy self fonts
   copy:
     dest: "~/.fonts/"
     src: "{{ role_files }}/"
