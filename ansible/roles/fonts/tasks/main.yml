@@ -38,3 +38,9 @@
       - ttf-all-the-icons
       - ttf-poppins
       - ttf-weather-icons
+
+- name: Sync Bibata-Modern-TokyoNight
+  become: true
+  copy:
+    dest: "~/.fonts/"
+    src: "{{ role_files }}/SofiaPro/"
