@@ -128,6 +128,7 @@
       - polybar
       - prettier
       - proxychains-ng
+      - picom-arian8j2-git
       - python-dataclasses
       - qt5ct
       - recode
