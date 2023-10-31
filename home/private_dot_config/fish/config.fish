@@ -2,7 +2,8 @@ set -gx EDITOR (which nvim)
 set -gx VISUAL $EDITOR
 set -gx SUDO_EDITOR $EDITOR
 
-set -gx BROWSER brave
+set -gx BROWSER microsoft-edge-dev
+set -gx TERMINAL wezterm
 set -gx THEME tokyonight
 
 # Cursor styles
@@ -89,7 +90,7 @@ abbr lzd lazydocker
 abbr ipy ipython
 abbr cc 'cc -Wall -Werror -Wextra'
 abbr pc proxychains4
-abbr icat 'kitty +kitten icat'
+abbr icat="wezterm imgcat"
 abbr fm frogmouth
 abbr ns 'netstat -tunlp'
 abbr ex extract
