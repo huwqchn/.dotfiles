@@ -1,7 +1,6 @@
 [user]
 	name = {{ .name }}
 	email = {{ .email }}
-	signingkey = {{ onepasswordRead "op://Development/SSH Key/public key" .onepassword_account }}
 [credential]
 	helper = store
 [filter "lfs"]
@@ -41,9 +40,3 @@
   defaultBranch = main
 [rebase]
 	autoStash = true
-[gpg]
-	format = ssh
-[gpg "ssh"]
-	program = /opt/1Password/op-ssh-sign
-[commit]
-	gpgsign = true

@@ -12,7 +12,7 @@ super + apostrophe
 
 # browser
 super + c
-  brave
+  microsoft-edge-dev
 
 # open app
 super + a ; {a, b, c, d, e, f, g, i, k, n, o, p, q, s, u, v, x, z}

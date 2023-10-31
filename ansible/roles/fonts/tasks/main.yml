@@ -38,6 +38,7 @@
       - ttf-all-the-icons
       - ttf-poppins
       - ttf-weather-icons
+      - ttf-ms-fonts
 
 - name: Copy self fonts
   copy:

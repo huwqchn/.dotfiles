@@ -29,6 +29,7 @@
       - cava-git
       - chezmoi
       - choose
+      - chromium
       - cliphist
       - cmatrix
       - composer
@@ -37,6 +38,7 @@
       - discord
       - docker
       - docker-compose
+      - doxygen
       - dunst
       - dust
       - exfat-utils
@@ -50,6 +52,7 @@
       - fcitx5-pinyin-zhwiki - fcitx5-rime - fd - ffmpegthumbs
       - firefox
       - fish
+      - file-roller
       - flake8
       - gamemode
       - gammastep
@@ -69,6 +72,7 @@
       - helix
       - himalaya
       - hub
+      - hyperfine
       - i3-gaps
       - i3lock-color
       - imagemagick
@@ -105,6 +109,7 @@
       - neofetch
       - neomutt
       - neovim-git
+      - neovim-symlinks
       - net-tools
       - networkmanager-dmenu-git
       - newsboat
@@ -201,6 +206,9 @@
       - xorg-xwud
       - xqp
       - yaru-sound-theme
+      - zathura
+      - zathura-djvu
+      - zathura-pdf-mupdf
       - zellij
       - zoxide
       - zsh
