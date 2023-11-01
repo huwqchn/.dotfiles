@@ -161,6 +161,7 @@
       - usbutils
       - uthash
       - viewnior
+      - visual-studio-code-bin
       - waybar
       - webkit2gtk-4.1
       - wezterm
