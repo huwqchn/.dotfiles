@@ -24,7 +24,6 @@
       - brave-bin
       - brightnessctl
       - bspwm
-      - bsp-layout
       - btop
       - cava-git
       - chezmoi
@@ -74,7 +73,7 @@
       - hub
       - hyperfine
       - i3-gaps
-      - i3lock-color
+      - i3
       - imagemagick
       - inetutils
       - intel-ucode
@@ -102,6 +101,7 @@
       - moreutils
       - mousepad
       - mpv
+      - microsoft-edge-dev-bin
       - nautilus
       - navi
       - ncdu
