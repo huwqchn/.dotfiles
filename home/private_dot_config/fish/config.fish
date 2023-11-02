@@ -90,7 +90,7 @@ abbr lzd lazydocker
 abbr ipy ipython
 abbr cc 'cc -Wall -Werror -Wextra'
 abbr pc proxychains4
-abbr icat="wezterm imgcat"
+abbr icat "wezterm imgcat"
 abbr fm frogmouth
 abbr ns 'netstat -tunlp'
 abbr ex extract
