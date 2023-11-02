@@ -168,6 +168,7 @@
       - xbindkeys
       - xclip
       - xdg-user-dirs
+      - xlockmore
       - xf86-video-vesa
       - xfce4-power-manager
       - xfce4-settings
