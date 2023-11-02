@@ -56,7 +56,9 @@
       - gamemode
       - gammastep
       - gdm-settings-git
+      - git
       - git-delta
+      - git-lfs
       - gitui
       - glava
       - global
@@ -206,6 +208,7 @@
       - xorg-xwd
       - xorg-xwud
       - xqp
+      - yarn
       - yaru-sound-theme
       - zathura
       - zathura-djvu
