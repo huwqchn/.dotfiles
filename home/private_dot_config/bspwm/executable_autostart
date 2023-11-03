@@ -38,6 +38,7 @@ nm-applet &
 
 thunar --daemon &
 safeeyes -e &
+xsettingsd -c $HOME/.config/xsettingsd/xsettingsd.conf &
 
 # gebaard -b
 

@@ -202,6 +202,7 @@
       - xorg-xvinfo
       - xorg-xwd
       - xorg-xwud
+      - xsettingsd
       - xqp
       - yarn
       - yaru-sound-theme
