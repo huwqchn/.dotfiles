@@ -24,6 +24,7 @@
       - brave-bin
       - brightnessctl
       - bspwm
+      - bsp-layout
       - btop
       - cava-git
       - chezmoi
@@ -123,6 +124,7 @@
       - paru
       - pavucontrol
       - plank
+      - playerctl
       - polkit-gnome
       - polkit-kde-agent
       - polybar

@@ -11,8 +11,9 @@ require("links").setup(config)
 
 --- setting
 
-config.front_end = "WebGpu"
-config.webgpu_power_preference = "HighPerformance"
+config.front_end = "OpenGL"
+-- config.front_end = "WebGpu"
+-- config.webgpu_power_preference = "HighPerformance"
 -- config.animation_fps = 1
 config.cursor_blink_ease_in = "Constant"
 config.cursor_blink_ease_out = "Constant"

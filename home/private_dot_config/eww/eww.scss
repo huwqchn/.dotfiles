@@ -1,19 +1,76 @@
-/** Colors *******************************************/
-$bg: #1a1b26;
-$bg-alt: #16161e;
-$fg: #c0caf5;
-$fg-alt: #a9b1d6;
-$red: #db4b4b;
-$green: #9ece6a;
-$yellow: #e0af68;
-$orange: #ff9e64;
-$blue: #7aa2f7;
-$purple: #9d7cd8;
-$cyan: #7dcfff;
-$gray: #565f89;
-$gray-alt: #292E42;
+@import "colorschemes";
 
-@import "./system-menu/eww.scss";
-@import "./player/eww.scss";
-@import "./misc/eww.scss";
-@import "./main/eww.scss";
+* {
+  all: unset;
+}
+
+window {
+  color: $fg;
+  font-family: "Iosevka Nerd font";
+  font-size: 12px;
+}
+
+.bar {
+  background-color: $bg-alt;
+  border-radius: 15px;
+}
+
+.launcher {
+  font-size: 1.5em;
+  button {
+    color: $blue;
+    padding: 0 0.5em 0 0.5em;
+
+    &:hover {
+      color: $blue-alt;
+    }
+  }
+}
+
+.workspaces {
+  padding: 0.4em 0 0 0;
+  .workspace-button- {
+    color: $gray;
+  }
+  .workspace-button0-,
+  .workspace-button1-,
+  .workspace-button2-,
+  .workspace-button4-,
+  .workspace-button3-,
+  .workspace-button5-,
+  .workspace-button6-,
+  .workspace-button7-,
+  .workspace-button8-,
+  .workspace-button9- {
+    color: $yellow;
+  }
+  .workspace-button0-0,
+  .workspace-button1-1,
+  .workspace-button2-2,
+  .workspace-button3-3,
+  .workspace-button4-4,
+  .workspace-button5-5,
+  .workspace-button6-6,
+  .workspace-button7-7,
+  .workspace-button8-8,
+  .workspace-button9-9 {
+    color: $blue;
+  }
+  .workspace-button-0,
+  .workspace-button-1,
+  .workspace-button-2,
+  .workspace-button-3,
+  .workspace-button-4,
+  .workspace-button-5,
+  .workspace-button-6,
+  .workspace-button-7,
+  .workspace-button-8,
+  .workspace-button-9 {
+    color: $blue;
+  }
+}
+
+.layout {
+  padding: 0 0 0 10px;
+  color: $blue-alt;
+}

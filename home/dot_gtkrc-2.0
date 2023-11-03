@@ -1,7 +1,7 @@
 # DO NOT EDIT! This file will be overwritten by LXAppearance.
 # Any customization should be done in ~/.gtkrc-2.0.mine instead.
 
-# include "/home/johnson/.gtkrc-2.0.mine"
+include "/home/johnson/.gtkrc-2.0.mine"
 gtk-theme-name="Tokyonight-Dark-BL"
 gtk-icon-theme-name="Papirus-Dark"
 gtk-font-name="Cantarell 11"
@@ -12,8 +12,8 @@ gtk-toolbar-icon-size=GTK_ICON_SIZE_LARGE_TOOLBAR
 gtk-button-images=1
 gtk-menu-images=1
 gtk-enable-event-sounds=1
-gtk-enable-input-feedback-sounds=1
+gtk-enable-input-feedback-sounds=0
 gtk-xft-antialias=1
 gtk-xft-hinting=1
-gtk-xft-hintstyle="hintfull"
+gtk-xft-hintstyle="hintsfull"
 gtk-xft-rgba="rgb"
