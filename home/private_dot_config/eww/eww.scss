@@ -7,7 +7,7 @@
 window {
   color: $fg;
   font-family: "Iosevka Nerd font";
-  font-size: 12px;
+  font-size: 15px;
 }
 
 .bar {
@@ -28,7 +28,7 @@ window {
 }
 
 .workspaces {
-  padding: 0.4em 0 0 0;
+  padding: 0.3em 0 0 0;
   .workspace-button- {
     color: $gray;
   }
