@@ -11,7 +11,7 @@ window {
 }
 
 .bar {
-  background-color: $bg-alt;
+  background-color: $bg;
   border-radius: 15px;
 }
 
@@ -73,4 +73,19 @@ window {
 .layout {
   padding: 0 0 0 10px;
   color: $blue-alt;
+}
+
+.media-prev-button {
+  color: $green;
+  padding: 0 0 0 10px;
+}
+
+.media-next-button {
+  color: $green;
+  padding: 0 0 0 10px;
+}
+
+.media-toggle-button {
+  color: $green;
+  padding: 0 0 0 10px;
 }

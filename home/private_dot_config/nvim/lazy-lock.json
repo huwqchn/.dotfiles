@@ -6,7 +6,7 @@
   "aerial.nvim": { "branch": "master", "commit": "8e4090bf9412e24b05823c771cb3956c2ba72981" },
   "backseat.nvim": { "branch": "main", "commit": "3bb2781cdbf9b26c60e9ba45bfb22625e235c142" },
   "bufferline.nvim": { "branch": "main", "commit": "9e8d2f695dd50ab6821a6a53a840c32d2067a78a" },
-  "catppuccin": { "branch": "main", "commit": "40dc9f0621c55bd40da4ad0731fac44d15bb393a" },
+  "catppuccin": { "branch": "main", "commit": "d7521f6050b94cb0e23067f63829d86886f870fe" },
   "clangd_extensions.nvim": { "branch": "main", "commit": "34c8eaa12be192e83cd4865ce2375e9f53e728f2" },
   "cmake-tools.nvim": { "branch": "master", "commit": "56b4c34e31b435590af4fc39960089af053f79e5" },
   "cmp-buffer": { "branch": "main", "commit": "3022dbc9166796b644a841a02de8dd1cc1d311fa" },
