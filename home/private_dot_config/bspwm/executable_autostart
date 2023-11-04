@@ -28,6 +28,7 @@ fcitx5 &
 udiskie &
 parcellite &
 greenclip daemon &
+playerctld daemon &
 
 killall blueman-applet
 killall pa-applet
