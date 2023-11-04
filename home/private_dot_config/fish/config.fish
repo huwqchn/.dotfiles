@@ -151,7 +151,6 @@ abbr Po "sudo pacman -Qo"
 abbr p paru
 abbr pi "paru -S"
 abbr pr "paru -Rns"
-abbr ps "paru -Ss"
 abbr pl "paru -Q"
 abbr pf "paru -Ql"
 abbr po "paru -Qo"
