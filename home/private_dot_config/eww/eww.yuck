@@ -38,7 +38,7 @@
 
 
 (defvar music-reveal false)
-(defvar media-status "")
+(defvar media-status " ")
 (defvar media-bar-class "bar-normal")
 (defvar media-bar-is-active false)
 (defvar media-bar-class-popup "bar-normal-popup")
@@ -50,9 +50,11 @@
 (defvar cover "images/music.png")
 (defvar length 100)
 (defvar position 0)
+(deflisten media-info "~/.config/eww/scripts/media-info")
 
 (defwidget music []
   (eventbox
+    :class "${media-info}"
     :onhover "eww update music-reveal=true"
     :onhoverlost "eww update music-reveal=false"
     (box
@@ -126,7 +128,7 @@
                   :class "media-prev-button"
                   :onclick "scripts/media-control --prev"
                   :tooltip "Previous"
-                  "󰒮 "
+                  "󰒮"
                 )
               )
               (eventbox
@@ -144,7 +146,7 @@
                   :class "media-next-button"
                   :onclick "scripts/media-control --next"
                   :tooltip "Next"
-                  "󰒭 "
+                  "󰒭"
                 )
               )
             )

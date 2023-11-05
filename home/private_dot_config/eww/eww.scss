@@ -75,17 +75,21 @@ window {
   color: $blue-alt;
 }
 
+.media-body {
+  margin-bottom: 0.2rem;
+}
+
 .media-prev-button {
   color: $green;
-  padding: 0 0 0 10px;
+  padding: 0 0 0 0.5rem;
 }
 
 .media-next-button {
   color: $green;
-  padding: 0 0 0 10px;
+  padding: 0 0 0 0.3rem;
 }
 
 .media-toggle-button {
   color: $green;
-  padding: 0 0 0 10px;
+  padding: 0 0 0 0.5rem;
 }
