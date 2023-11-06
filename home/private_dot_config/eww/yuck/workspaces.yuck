@@ -1,0 +1,31 @@
+(deflisten workspaces "scripts/bspwm-workspaces")
+
+(defwidget workspaces []
+  (box
+    :valign "center"
+    :halign "start"
+    (literal :content workspaces)
+  )
+)
+
+(defwidget layout [click-action]
+  (box
+    :class "layout"
+    :orientation "h"
+    :halign "start"
+    :space-evenly false
+    (eventbox
+      :cursor "pointer"
+      (button
+        :class "layout-button"
+        :tooltip "Change current workspace layout"
+        :onclick click-action
+        :onrightclick click-action
+        (label
+          :class "layout-label"
+          :text "󰿣 "
+        )
+      )
+    )
+  )
+)

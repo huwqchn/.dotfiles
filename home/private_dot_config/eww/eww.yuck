@@ -1,53 +1,8 @@
+(include "yuck/launcher.yuck")
+(include "yuck/power.yuck")
+(include "yuck/workspaces.yuck")
 (include "yuck/music.yuck")
 (include "yuck/date.yuck")
-
-(defwidget launcher []
-  (box
-    :class "launcher"
-    :orientation "h"
-    :space-evenly false
-    (eventbox
-      :cursor "pointer"
-      (button
-        :class "launcher-button"
-        :tooltip "Open dashboard"
-        :onclick "~/.scripts/polylauncher.sh"
-        "󰊠 "
-      )
-    )
-  )
-)
-
-(deflisten workspaces "scripts/bspwm-workspaces")
-(defwidget workspaces []
-  (box
-    :valign "center"
-    :halign "start"
-    (literal :content workspaces)
-  )
-)
-
-(defwidget layout [click-action]
-  (box
-    :class "layout"
-    :orientation "h"
-    :halign "start"
-    :space-evenly false
-    (eventbox
-      :cursor "pointer"
-      (button
-        :class "layout-button"
-        :tooltip "Change current workspace layout"
-        :onclick click-action
-        :onrightclick click-action
-        (label
-          :class "layout-label"
-          :text "󰿣 "
-        )
-      )
-    )
-  )
-)
 
 (defwidget bar-start []
   (box
@@ -75,7 +30,7 @@
     :orientation "h"
     :halign "end"
     :space-evenly false
-    "placeholder"
+    (power)
   )
 )
 

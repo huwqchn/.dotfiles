@@ -1,0 +1,13 @@
+(defwidget launcher []
+  (eventbox
+    :cursor "pointer"
+    :tooltip "Open Dashboard"
+    :class "launcher"
+    (button
+      :class "launcher-button"
+      :valign "fill"
+      :onclick "~/.config/eww/scripts/popup-dashboard"
+      "󰊠 "
+    )
+  )
+)

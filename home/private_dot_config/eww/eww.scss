@@ -27,6 +27,18 @@ window {
   }
 }
 
+.power {
+  font-size: 1.5em;
+  button {
+    color: $red;
+    margin: 0 0.5em 0 0.5em;
+
+    &:hover {
+      color: $red-alt;
+    }
+  }
+}
+
 .workspaces {
   .workspace-button- {
     color: $gray;

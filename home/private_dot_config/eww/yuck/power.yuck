@@ -1,0 +1,13 @@
+(defwidget power []
+  (eventbox
+    :cursor "pointer"
+    :tooltip "Open System power button"
+    :class "power"
+    (button
+      :class "power-button"
+      :valign "fill"
+      :onclick "~/.config/eww/scripts/popup-power"
+      " "
+    )
+  )
+)
