@@ -95,6 +95,8 @@ window {
 
 .music-title {
   min-width: 8em;
+  color: $fg;
+  font-family: "JetBrainsMono Nerd Font";
 }
 
 .music-cover {
@@ -130,4 +132,14 @@ window {
 
 .bar-highlighted scale trough {
   @include bar-setup;
+}
+
+.time {
+  font-size: 1.5em;
+  color: $fg;
+}
+
+.date {
+  font-size: 1.5em;
+  color: $fg;
 }
