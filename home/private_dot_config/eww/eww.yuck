@@ -1,20 +1,29 @@
+(include "./yuck/music.yuck")
+
 (defwidget launcher []
   (box
     :class "launcher"
     :orientation "h"
     :space-evenly "false"
-    (button
-      :class "launcher-button"
-      :tooltip "Open dashboard"
-      :onclick "~/.scripts/polylauncher.sh"
-      "󰊠 "
+    (eventbox
+      :cursor "pointer"
+      (button
+        :class "launcher-button"
+        :tooltip "Open dashboard"
+        :onclick "~/.scripts/polylauncher.sh"
+        "󰊠 "
+      )
     )
   )
 )
 
-(deflisten workspaces "scripts/workspaces")
+(deflisten workspaces "scripts/bspwm-workspaces")
 (defwidget workspaces []
-  (literal :content workspaces)
+  (box
+    :valign "center"
+    :halign "start"
+    (literal :content workspaces)
+  )
 )
 
 (defwidget layout []
@@ -23,155 +32,16 @@
     :orientation "h"
     :halign "start"
     :space-evenly "false"
-    (button
-      :class "layout-button"
-      :tooltip "Change current workspace layout"
-      :onclick "bsp-layout next --layout tiled,monocle,grid,wide,even"
-      :onrightclick "bsp-layout previous --layout tiled,monocle,grid,wide,even"
-      (label
-        :class "layout-label"
-        :text "󰿣 "
-      )
-    )
-  )
-)
-
-
-(defvar music-reveal false)
-(defvar media-status " ")
-(defvar media-bar-class "bar-normal")
-(defvar media-bar-is-active false)
-(defvar media-bar-class-popup "bar-normal-popup")
-(defvar media-bar-is-active-popup false)
-(defvar artist "No artist")
-(defvar artist-parsed "No artist")
-(defvar title "No title")
-(defvar title-parsed "No title")
-(defvar cover "images/music.png")
-(defvar length 100)
-(defvar position 0)
-(deflisten media-info "~/.config/eww/scripts/media-info")
-
-(defwidget music []
-  (eventbox
-    :class "${media-info}"
-    :onhover "eww update music-reveal=true"
-    :onhoverlost "eww update music-reveal=false"
-    (box
-      :class "music"
-      :orientation "h"
-      :spacing 0
-      :space-evenly "false"
-      :halign "start"
-      (eventbox
-        :cursor "pointer"
-        (box
-          :space-evenly "false"
-          :halign "start"
-          :tooltip "${title} by ${artist}"
-          (button
-            :onclick "scripts/popup-music"
-            (image
-              :class "media-art"
-              :path cover
-              :image-height 25
-              :image-width 25
-            )
-          )
-        )
-      )
-      (box
-        :class "media-body"
-        :orientation "v"
-        :space-evenly "false"
-        :vexpand "false"
-        :hexpand "false"
-        :valign "end"
-        :halign "start"
-        (box
-          :orientation "v"
-          :space-evenly "false"
-          :vexpand "true"
-          :hexpand "true"
-          :valign "end"
-          :halign "start"
-          (revealer
-            :reveal "${!music-reveal}"
-            :transition "slidedown"
-            :duration "350ms"
-            (box
-              :orientation "v"
-              :valign "fill"
-              :halign "fill"
-              (label
-                :class "media-title"
-                :halign "center"
-                :markup title-parsed
-                :limit-width 15
-                :wrap true
-                :show-truncated true
-              )
-            )
-          )
-          (revealer
-            :reveal music-reveal
-            :transition "slideup"
-            :duration "350ms"
-            (box
-              :orientation "h"
-              :halign "center"
-              :class "media-buttons"
-              :space-evenly false
-              (eventbox
-                :cursor "pointer"
-                (button
-                  :class "media-prev-button"
-                  :onclick "scripts/media-control --prev"
-                  :tooltip "Previous"
-                  "󰒮"
-                )
-              )
-              (eventbox
-                :cursor "pointer"
-                (button
-                  :class "media-toggle-button"
-                  :onclick "scripts/media-control --toggle"
-                  :tooltip "Play/Pause"
-                  "${media-status}"
-                )
-              )
-              (eventbox
-                :cursor "pointer"
-                (button
-                  :class "media-next-button"
-                  :onclick "scripts/media-control --next"
-                  :tooltip "Next"
-                  "󰒭"
-                )
-              )
-            )
-          )
-        )
-        (box
-          :space-evenly false
-          :class media-bar-class
-          :halign 'center'
-          :vexpand false
-          :hexpand false
-          (eventbox
-            :cursor "pointer"
-            :onhover "eww update media-bar-class=bar-highlighted && eww update media-bar-is-active=true"
-            :onhoverlost "eww update media-bar-class=bar-normal && eww update media-bar-is-active=false"
-            (scale
-              :active media-bar-is-active
-              :min 0
-              :max length
-              :value position
-              :orientation "h"
-              :tooltip "Seek"
-              :onchange "scripts/media-control --seek {} ${media-bar-is-active}"
-            )
-          )
+    (eventbox
+      :cursor "pointer"
+      (button
+        :class "layout-button"
+        :tooltip "Change current workspace layout"
+        :onclick "bsp-layout next --layout tiled,monocle,grid,wide,even"
+        :onrightclick "bsp-layout previous --layout tiled,monocle,grid,wide,even"
+        (label
+          :class "layout-label"
+          :text "󰿣 "
         )
       )
     )

@@ -37,14 +37,14 @@ map("n", "I", "K")
 map("n", "E", "J")
 
 -- colemak-dh insert key
-map({ "n", "x", "o" }, "h", "i")
-map({ "n", "x", "o" }, "H", "I")
+vim.keymap.set({ "n", "x", "o" }, "h", "i")
+vim.keymap.set({ "n", "x", "o" }, "H", "I")
 map({ "n", "x", "o" }, "gh", "gi", { desc = "goto last insert" })
 map({ "n", "x", "o" }, "gH", "gI", { desc = "goto start of last insert line" })
 
 -- colemake-dh undo key
-map({ "n", "x", "o" }, "l", "o")
-map({ "n", "x", "o" }, "L", "O")
+vim.keymap.set({ "n", "x", "o" }, "l", "o")
+vim.keymap.set({ "n", "x", "o" }, "L", "O")
 
 -- colemak-dh end of word
 map({ "n", "x", "o" }, "j", "e")

@@ -19,7 +19,7 @@ window {
   font-size: 1.5em;
   button {
     color: $blue;
-    padding: 0 0.5em 0 0.5em;
+    margin: 0 0.5em 0 0.5em;
 
     &:hover {
       color: $blue-alt;
@@ -28,7 +28,6 @@ window {
 }
 
 .workspaces {
-  padding: 0.3em 0 0 0;
   .workspace-button- {
     color: $gray;
   }
@@ -71,25 +70,64 @@ window {
 }
 
 .layout {
-  padding: 0 0 0 10px;
+  margin: 0 0 0 10px;
   color: $blue-alt;
 }
 
-.media-body {
-  margin-bottom: 0.2rem;
+.music-header {
+  margin-left: 10px;
 }
 
-.media-prev-button {
-  color: $green;
-  padding: 0 0 0 0.5rem;
+.music-body {
+  margin-left: 5px;
 }
 
-.media-next-button {
-  color: $green;
-  padding: 0 0 0 0.3rem;
+.music-buttons {
+  button {
+    color: $green;
+    min-width: 1em;
+  }
 }
 
-.media-toggle-button {
-  color: $green;
-  padding: 0 0 0 0.5rem;
+.music-toggle-button {
+  margin: 0 1em 0 1em;
+}
+
+.music-title {
+  min-width: 5em;
+}
+
+.music-cover {
+  border: solid 1px $white-alt;
+  background-color: $white-alt;
+}
+
+@mixin bar-setup {
+  all: unset;
+  min-height: 0.3em;
+  min-width: 5em;
+  border-radius: 10px;
+  margin-bottom: 0px;
+  margin-top: 0px;
+  background-color: rgba($white, 0.4);
+}
+
+.bar-normal scale trough highlight {
+  all: unset;
+  background-color: $blue-alt;
+  border-radius: 10px;
+}
+
+.bar-normal scale trough {
+  @include bar-setup;
+}
+
+.bar-highlighted scale trough highlight {
+  all: unset;
+  background-color: $white;
+  border-radius: 10px;
+}
+
+.bar-highlighted scale trough {
+  @include bar-setup;
 }

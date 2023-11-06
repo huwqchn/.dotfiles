@@ -1,0 +1,76 @@
+#! /bin/sh
+
+# Selects player based on if they're playing or if they have a cover
+# Note: Being played takes priority
+select_player() {
+	local playing_player=""
+	local cover_player=""
+	local total_player=""
+  local player
+  local art
+  local status
+	while IFS=read -r player; do
+		art=$(playerctl --player="$player" metadata mpris:artUrl 2>/dev/null)
+		status=$(playerctl --player="$player" status 2>/dev/null)
+		[[ $status == "Playing" ]] && playing_player="$player"
+		[[ -n $art ]] && cover_player="$player"
+		[[ $status == "Playing" && -n $art ]] && total_player="$player"
+		[[ -n $coverplayer ]] && player="$coverplayer"
+		[[ -n $playingplayer ]] && player="$playingplayer"
+		[[ -n $totalplayer ]] && player="$totalplayer"
+		echo "$player"
+	done  < <(playerctl -l 2> /dev/null)
+}
+
+# Function definitions for play-pause toggle, seeking, and movement
+toggle() {
+	local status=$(playerctl --player="$player" status 2> /dev/null)
+  local play_icon=" "
+  local pause_icon=" "
+	if [[ $status == "Playing" ]]; then
+		eww update music-status="$play_icon"
+	else
+		eww update music-status="$pause_icon"
+	fi
+	playerctl --player="$player" play-pause 2> /dev/null
+}
+
+# Seek to an specific time
+seek() {
+	local seek_time=$1
+	local position=$(playerctl --player="$player" position 2> /dev/null)
+	if [[ $? -eq 0 ]]; then
+		playerctl --player="$player" position "$seek_time" 2> /dev/null
+	fi
+}
+
+move() {
+	local move=$1
+	local startpos=$(playerctl --player="$player" position 2> /dev/null)
+	local length=$(playerctl --player="$player" metadata mpris:length 2> /dev/null | awk '{print $1/1000000}')
+	local endpos
+
+	if [[ $? -eq 0 ]]; then
+		endpos=$(awk "BEGIN {print min($length, max(0, $startpos + $move))}")
+		playerctl --player="$player" position "$endpos" 2> /dev/null
+	fi
+}
+
+# Main control structure for player actions
+case $1 in
+  --toggle)
+    toggle
+    ;;
+  --seek)
+    [[ $3 == "true" ]] && seek $2
+    ;;
+  --move)
+    move $2
+    ;;
+  --next)
+    playerctl --player="$player" next 2> /dev/null
+    ;;
+  --prev)
+    playerctl --player="$player" previous 2> /dev/null
+    ;;
+esac

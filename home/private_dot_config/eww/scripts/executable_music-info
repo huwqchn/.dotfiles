@@ -1,0 +1,132 @@
+#! /bin/sh
+
+# Selects player based on if they're playing or if they have a cover
+# Note: Being played takes priority
+select_player() {
+	local playing_player=""
+	local cover_player=""
+	local total_player=""
+  local player
+  local art
+  local status
+	while IFS=read -r player; do
+		art=$(playerctl --player="$player" metadata mpris:artUrl 2>/dev/null)
+		status=$(playerctl --player="$player" status 2>/dev/null)
+		[[ $status == "Playing" ]] && playing_player="$player"
+		[[ -n $art ]] && cover_player="$player"
+		[[ $status == "Playing" && -n $art ]] && total_player="$player"
+		[[ -n $coverplayer ]] && player="$coverplayer"
+		[[ -n $playingplayer ]] && player="$playingplayer"
+		[[ -n $totalplayer ]] && player="$totalplayer"
+		echo "$player"
+	done  < <(playerctl -l 2> /dev/null)
+}
+
+update_cover() {
+	newimg="$1"
+	imgdir="$2"
+	if [[ -z $newimg ]]; then
+		newimg="$imgdir/music.png"
+		cp "$newimg" "$imgdir/current_music.png"
+		echo "Image is unknown, using template"
+	elif [[ $newimg =~ ^file:// ]]; then
+		newimg_path=$(echo "$newimg" | sed 's/file:\/\///g')
+		cp "$newimg_path" "$imgdir/current_music.png"
+		echo "Image is a file, successfully copied"
+	else
+		echo "Image is an url, trying to download..."
+		if curl "$newimg" -o "/tmp/current_music.png" -s --max-time 5; then
+			convert "/tmp/current_music.png" -resize 130x130 "$imgdir/current_music.png"
+			echo "Image successfully downloaded"
+		else
+			cp "$imgdir/music.png" "$imgdir/current_music.png"
+			echo "Failed to download image, using template"
+		fi
+	fi
+	eww update music-cover="$imgdir/current_music.png"
+}
+
+scroll_text() {
+	scroll_index=0
+	text="$1"
+	text_len="$2"
+	eww_var="$3"
+	eww update "$eww_var"="$text"
+	while true; do
+		text_parsed=$($HOME/.config/eww/scripts/parse "$text" "$scroll_index")
+		scroll_index=$(((scroll_index + 1) % (text_len + 8)))
+		eww update "${eww_var}-parsed"="$text_parsed"
+		# Change the value below to control how fast text should scroll
+		sleep 0.3
+	done
+}
+
+imgdir="$HOME/.config/eww/images"
+lastimg="none"
+play_icon=" "
+pause_icon=" "
+while true; do
+	if playerctl status 2>/dev/null; then
+		player=$(select_player 2>/dev/null | tail -n 1)
+		status=$(playerctl --player="$player" status 2>/dev/null)
+
+		# Update status button
+		if [[ $status == "Playing" ]]; then
+			eww update music-status="$play_icon"
+		else
+			eww update music-status="$pause_icon"
+		fi
+
+		# Update title and artist
+		last_title="$title"
+		title=$(playerctl --player="$player" metadata xesam:title 2>/dev/null)
+		[[ -z $title ]] && title="No title"
+		if [[ "$title" != "$last_title" ]]; then
+			pkill -f "scroll_text.*title"
+			title_len=${#title}
+			if [[ $title_len -gt 21 ]]; then
+				scroll_text "$title" "$title_len" "title" &
+			else
+				parsed_title=$($HOME/.config/eww/scripts/parse "$title" "0")
+				eww update music-title="$title" music-parsed-title="$parsed_title"
+			fi
+		fi
+
+		last_artist="$artist"
+		artist=$(playerctl --player="$player" metadata xesam:artist 2>/dev/null)
+		[[ -z $artist ]] && artist="No artist"
+		if [[ "$artist" != "$last_artist" ]]; then
+			pkill -f "scroll_text.*artist"
+			artist_len=${#artist}
+			if [[ $artist_len -gt 21 ]]; then
+				scroll_text "$artist" "$artist_len" "artist" &
+			else
+				parsed_artist=$($HOME/.config/eww/scripts/parse "$artist" "0")
+				eww update music-artist="$artist" music-parsed-artist="$parsed_artist"
+			fi
+		fi
+
+		# Update length and position
+		position=$(playerctl --player="$player" position 2>/dev/null)
+		[[ -z $position ]] && position=0
+		eww update music-slider-position="$position"
+
+		length=$(playerctl --player="$player" metadata mpris:length 2>/dev/null)
+		[[ -z $length ]] && length=100 || length=$(python -c "print($length/1000000)")
+		eww update music-slider-length="$length"
+
+		newimg=$(playerctl --player="$player" metadata mpris:artUrl 2>/dev/null | sed -E "s/https:\/\/i.ytimg.com\/vi\//https:\/\/img.youtube.com\/vi\//g" | sed -E "s/hq/maxres/g")
+
+		if [[ "$newimg" != "$lastimg" ]]; then
+			echo "New image $newimg detected"
+			lastimg="$newimg"
+			update_cover "$newimg" "$imgdir" &
+		fi
+	else
+		pkill -f "scroll_text"
+		# Update everything to default values
+		eww update music-status="$play_icon" music-parsed-title="No title" music-title="No title" music-artist="No artist" music-parsed-artist="No artist" music-slider-position=0 music-slider-length=100 music-cover="$imgdir/music.png"
+		lastimg=""
+	fi
+	sleep 1
+done
