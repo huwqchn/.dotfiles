@@ -15,9 +15,10 @@ sleep 10 && $HOME/.config/bspwm/scripts/bspfloat floating 5 &
 /usr/lib/mate-polkit/polkit-mate-authentication-agent-1 &
 
 $HOME/.scripts/inverse-scroll.sh &
-$HOME/.config/polybar/launch.sh &
+# $HOME/.config/polybar/launch.sh &
 $HOME/.config/conky/Auva/start.sh &
 eww daemon &
+eww open bar &
 xfce4-power-manager &
 ukui-window-switch &
 
