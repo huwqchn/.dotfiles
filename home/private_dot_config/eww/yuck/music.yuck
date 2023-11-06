@@ -3,9 +3,9 @@
 (defvar music-slider-class "bar-normal")
 (defvar music-slider-active false)
 (defvar music-artist "No artist")
-(defvar music-parsed-artist "No artist")
+(defvar music-artist-parsed "No artist")
 (defvar music-title "No title")
-(defvar music-parsed-title "No title")
+(defvar music-title-parsed "No title")
 (defvar music-cover "images/music.png")
 (defvar music-slider-length 100)
 (defvar music-slider-position 0)
@@ -65,7 +65,7 @@
               (label
                 :class "music-title"
                 :halign "center"
-                :markup music-parsed-title
+                :markup music-title-parsed
                 :limit-width 20
                 :wrap true
                 :show-truncated true

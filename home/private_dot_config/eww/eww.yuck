@@ -26,7 +26,7 @@
   )
 )
 
-(defwidget layout []
+(defwidget layout [click_action]
   (box
     :class "layout"
     :orientation "h"
@@ -37,8 +37,8 @@
       (button
         :class "layout-button"
         :tooltip "Change current workspace layout"
-        :onclick "bsp-layout next --layout tiled,monocle,grid,wide,even"
-        :onrightclick "bsp-layout previous --layout tiled,monocle,grid,wide,even"
+        :onclick click_action
+        :onrightclick click_action
         (label
           :class "layout-label"
           :text "󰿣 "
@@ -55,7 +55,7 @@
     :space-evenly "false"
     (launcher)
     (workspaces)
-    (layout)
+    (layout :click_action "bsp-layout next --layout tiled,monocle,grid,wide,even")
     (music)
   )
 )

@@ -88,7 +88,7 @@ while true; do
 				scroll_text "$title" "$title_len" "title" &
 			else
 				parsed_title=$($HOME/.config/eww/scripts/parse "$title" "0")
-				eww update music-title="$title" music-parsed-title="$parsed_title"
+				eww update music-title="$title" music-title-parsed="$parsed_title"
 			fi
 		fi
 
@@ -102,7 +102,7 @@ while true; do
 				scroll_text "$artist" "$artist_len" "artist" &
 			else
 				parsed_artist=$($HOME/.config/eww/scripts/parse "$artist" "0")
-				eww update music-artist="$artist" music-parsed-artist="$parsed_artist"
+				eww update music-artist="$artist" music-artist-parsed="$parsed_artist"
 			fi
 		fi
 
@@ -125,7 +125,7 @@ while true; do
 	else
 		pkill -f "scroll_text"
 		# Update everything to default values
-		eww update music-status="$play_icon" music-parsed-title="No title" music-title="No title" music-artist="No artist" music-parsed-artist="No artist" music-slider-position=0 music-slider-length=100 music-cover="$imgdir/music.png"
+		eww update music-status="$play_icon" music-title-parsed="No title" music-title="No title" music-artist="No artist" music-artist-parsed="No artist" music-slider-position=0 music-slider-length=100 music-cover="$imgdir/music.png"
 		lastimg=""
 	fi
 	sleep 1
