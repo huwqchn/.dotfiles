@@ -94,18 +94,18 @@ window {
 }
 
 .music-title {
-  min-width: 5em;
+  min-width: 8em;
 }
 
 .music-cover {
-  border: solid 3px $white-alt;
-  background-color: $white-alt;
+  border: solid 2px $fg;
+  background-color: $fg;
 }
 
 @mixin bar-setup {
   all: unset;
   min-height: 0.3em;
-  min-width: 5em;
+  min-width: 8em;
   border-radius: 10px;
   margin-bottom: 0px;
   margin-top: 0px;

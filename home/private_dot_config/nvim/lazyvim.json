@@ -31,7 +31,6 @@
     "plugins.extras.coding.ai.copilot",
     "plugins.extras.coding.ai.hfcc",
     "plugins.extras.coding.ai.neoai",
-    "plugins.extras.coding.ai.tabnine",
     "plugins.extras.coding.comment.mini-comment",
     "plugins.extras.coding.comment.neogen",
     "plugins.extras.coding.complete.cmdline",
@@ -91,4 +90,3 @@
   },
   "version": 2
 }
-

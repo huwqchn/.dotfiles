@@ -65,10 +65,10 @@
               (label
                 :class "music-title"
                 :halign "center"
-                :markup music-title-parsed
-                :limit-width 20
-                :wrap true
-                :show-truncated true
+                :text music-title-parsed
+                :limit-width 12
+                :wrap "true"
+                :show-truncated "false"
               )
             )
           )
