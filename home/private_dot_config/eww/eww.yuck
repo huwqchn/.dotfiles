@@ -1,10 +1,11 @@
-(include "./yuck/music.yuck")
+(include "yuck/music.yuck")
+(include "yuck/date.yuck")
 
 (defwidget launcher []
   (box
     :class "launcher"
     :orientation "h"
-    :space-evenly "false"
+    :space-evenly false
     (eventbox
       :cursor "pointer"
       (button
@@ -26,19 +27,19 @@
   )
 )
 
-(defwidget layout [click_action]
+(defwidget layout [click-action]
   (box
     :class "layout"
     :orientation "h"
     :halign "start"
-    :space-evenly "false"
+    :space-evenly false
     (eventbox
       :cursor "pointer"
       (button
         :class "layout-button"
         :tooltip "Change current workspace layout"
-        :onclick click_action
-        :onrightclick click_action
+        :onclick click-action
+        :onrightclick click-action
         (label
           :class "layout-label"
           :text "󰿣 "
@@ -48,17 +49,46 @@
   )
 )
 
-(defwidget bar []
+(defwidget bar-start []
   (box
     :orientation "h"
     :halign "start"
-    :space-evenly "false"
+    :space-evenly false
     (launcher)
     (workspaces)
-    (layout :click_action "bsp-layout next --layout tiled,monocle,grid,wide,even")
+    (layout :click-action "bsp-layout next --layout tiled,monocle,grid,wide,even")
     (music)
   )
 )
+
+(defwidget bar-center []
+  (box
+    :orientation "h"
+    :halign "center"
+    :space-evenly false
+    (time)
+  )
+)
+
+(defwidget bar-end []
+  (box
+    :orientation "h"
+    :halign "end"
+    :space-evenly false
+    "placeholder"
+  )
+)
+
+(defwidget bar []
+  (box
+    :orientation "h"
+    :class "bar"
+    (bar-start)
+    (bar-center)
+    (bar-end)
+  )
+)
+
 
 (defwindow bar
   :monitor 0

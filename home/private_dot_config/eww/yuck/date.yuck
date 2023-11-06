@@ -1,0 +1,40 @@
+(defvar date-reveal false)
+(defpoll hour :interval "1s" "date '+%I'")
+(defpoll minutes :interval "1s" "date '+%M'")
+(defpoll type :interval "1s" "date '+%p'")
+(defpoll date :interval "1s" "date '+ %a, %b %d'")
+
+(defwidget time []
+  (eventbox
+    :tooltip "Current time"
+    :onhover "eww update date-reveal=true"
+    :onhoverlost "eww update date-reveal=false"
+    :cursor "pointer"
+    (button
+      :onclick "scripts/popup-calendar"
+      (box
+        :class "time-box"
+        :space-evenly false
+        :orientation "h"
+        :valign "center"
+        :halign "fill"
+        (label
+          :valign "center"
+          :class "time"
+          :markup "<span font-weight=\"heavy\">${hour}</span><span font-weight=\"heavy\">:${minutes}</span><span font-size=\"xx-small\">${type}</span>"
+        )
+        (revealer
+          :reveal date-reveal
+          :transition "slideright"
+          :duration "350ms"
+          :valign "fill"
+          (label
+            :valign "fill"
+            :class "date"
+            :markup "<span font-size=\"xx-small\">${date}</span>"
+          )
+        )
+      )
+    )
+  )
+)
