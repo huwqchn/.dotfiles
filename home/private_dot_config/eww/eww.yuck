@@ -4,6 +4,22 @@
 (include "yuck/music.yuck")
 (include "yuck/date.yuck")
 
+;; TODO: get workspaces and layout add in a group
+;; TODO: make music not show up when no player
+;; TODO: popup-player scrpits
+;; TODO: popup-dashboard scripts
+;; TODO: popup-calender scripts
+;; TODO: popup-power scripts
+;; TODO: plyaer window
+;; TODO: power menu window
+;; TODO: calender window
+;; TODO: dashboard window
+;; TODO: lock window
+;; TODO: right bar basic system modules group: battery wifi volume brightness bluetooth(optional) system-tray(optional)
+;; TODO: right bar hardware modules(reveal): cpu(graph) ram(graph) disk(scale) temperature(graph)
+;; TODO: left bar tools: screenshot colorpick screenrecord vpn
+
+
 (defwidget bar-start []
   (box
     :orientation "h"
