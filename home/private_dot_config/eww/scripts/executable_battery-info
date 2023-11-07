@@ -23,8 +23,8 @@ charging_animation() {
 	local icons=("󰢟" "󰢜" "󰂆" "󰂇" "󰂈" "󰢝" "󰂉" "󰢞" "󰂊" "󰂋" "󰂅")
 	while [[ "$(status)" != "Full" ]]; do
 		for icon in "${icons[@]}"; do
-			# eww update battery-icon="$icon"
-			echo "$icon"
+			eww update battery-icon="$icon"
+			eww update battery-percentage="$(percentage)"
 			sleep 0.3
 		done
 	done
@@ -34,34 +34,36 @@ low_power_alert_animation() {
 	local icons=("󱃍" "󰂎")
 	while [[ "$(status)" == "Discharging" ]]; do
 		for icon in "${icons[@]}"; do
-			# eww update battery-icon="$icon"
-			echo "$icon"
+			eww update battery-icon="$icon"
+			eww update battery-percentage="$(percentage)"
 			sleep 0.3
 		done
 	done
 }
 
-level() {
+state() {
 	local capacity=$(percentage)
 	if [[ $capacity -ge 80 ]]; then
-		echo "high"
+		echo "High"
 	elif [[ $capactiy -ge 20 ]]; then
-		echo "mid"
+		echo "Mid"
 	else
-		echo "low"
+		echo "Low"
 	fi
 }
 
-icon() {
+update() {
 	while true; do
 		local icon
+		eww update battery-state="$(state)"
+		eww update battery-percentage="$(percentage)"
 		if [[ "$(status)" == "Charging" ]]; then
+			eww update battery-state="Charging"
 			charging_animation
 			continue
 		elif [[ "$(status)" == "Full" ]]; then
-			icon="󰂅"
+			eww update battery-state="Full"
 			eww update battery-icon="󰂅"
-			echo "$icon"
 			sleep 1
 			continue
 		fi
@@ -114,16 +116,17 @@ if have_battery; then
 		echo "true"
 		exit 0
 		;;
-	--icon)
-		icon
+	--update)
+		eww update battery-active=true
+		update
 		exit 0
 		;;
-	--level)
-		level
+	--state)
+		state
 		exit 0
 		;;
 	*)
-		echo "Usage: $0 --percentage | --status | --exists | --icon | --level"
+		echo "Usage: $0 --percentage | --status | --exists | --update | --state"
 		exit 1
 		;;
 	esac

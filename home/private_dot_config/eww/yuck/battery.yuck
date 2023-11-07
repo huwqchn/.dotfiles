@@ -1,14 +1,13 @@
 (defvar battery-reveal false)
 (defvar battery-icon "󰂑")
-(deflisten battery-info "~/.config/eww/scripts/battery-info --icon")
-;; remove all pollers
-(defpoll battery-percentage :interval "3s" "~/.config/eww/scripts/battery-info --percentage")
-(defpoll battery-level :interval "60s" "~/.config/eww/scripts/battery-info --level")
-; (deflisten have-battery "~/.config/eww/scripts/battery-info --exists")
+(defvar battery-state "Unknown")
+(defvar battery-percent 0)
+(defvar battery-active false)
+(deflisten battery-info "~/.config/eww/scripts/battery-info --update")
 
 (defwidget battery []
-  ; :active "${have-battery}"
   (eventbox
+    :active battery-active
     :onhover "eww update battery-reveal=true"
     :onhoverlost "eww update battery-reveal=false"
     :cursor "pointer"
@@ -17,8 +16,8 @@
       :class "battery-box"
       :orientation "h"
       :space-evenly false
-      :vexpand true
-      :hexpand true
+      :vexpand false
+      :hexpand false
       :valign "center"
       :halign "end"
       (revealer
@@ -30,7 +29,7 @@
           :valign "fill"
           :halign "fill"
           (label
-            :class "battery-${battery-level}"
+            :class "battery-${battery-state}"
             :text "${battery-icon}"
           )
         )
@@ -40,13 +39,13 @@
         :transiton "slideup"
         :duration "350ms"
         (box
-          :orientation "h"
+          :orientation "v"
           :halign "fill"
           :valign "fill"
           (circular-progress
             :class "battery-bar"
             :thickness 4
-            :value battery-percentage
+            :value battery-percent
           )
         )
       )

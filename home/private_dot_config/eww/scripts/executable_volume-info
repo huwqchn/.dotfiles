@@ -1,0 +1,49 @@
+#!/bin/bash
+
+percentage() {
+  amixer -D pulse sget Master | grep 'Left:' | awk -F'[][]' '{ print $2 }' | tr -d '%'
+}
+
+state() {
+  local output=$(amixer get Master)
+
+  local mute_status=$(echo "$output" | grep -oP '\[(on|off)\]' | head -1)
+
+  if [[ "$mute_status" == "[off]" ]]; then
+    echo "Muted"
+  else
+    echo "Unmuted"
+  fi
+}
+
+icon() {
+  local icon
+  local percent=$(percentage)
+  if [[ $percent -gt 70 ]]; then
+    icon="󰕾"
+  elif [ $percent -gt 40 ]; then
+    icon="󰖀"
+  else
+    icon="󰕿"
+  fi
+  echo $icon
+}
+
+case "$1" in
+	--percentage)
+		percentage
+		exit 0
+		;;
+	--icon)
+		icon
+		exit 0
+		;;
+  --state)
+    state
+    exit 0
+    ;;
+	*)
+		echo "Usage: $0 --percentage | --icon | state"
+		exit 1
+		;;
+esac

@@ -1,0 +1,54 @@
+#!/bin/bash
+
+percentage() {
+	brightnessctl -m -d intel_backlight | awk -F, '{print substr($4, 0, length($4)-1)}' | tr -d '%'
+}
+
+state() {
+	local percent=$(percentage)
+	if [[ percent -gt 50 ]]; then
+		echo "High"
+	else
+		echo "Low"
+	fi
+}
+
+icon() {
+	local icon
+	local percent=$(percentage)
+	if [[ $percent -gt 95 ]]; then
+		icon="󰃠"
+	elif [ $percent -gt 80 ]; then
+		icon="󰃝"
+	elif [ $percent -gt 65 ]; then
+		icon="󰃟"
+	elif [ $percent -gt 50 ]; then
+		icon="󰃞"
+	elif [ $percent -gt 35 ]; then
+		icon="󰃜"
+	elif [ $percent -gt 20 ]; then
+		icon="󰃛"
+	else
+		icon="󰃚"
+	fi
+	echo $icon
+}
+
+case "$1" in
+--percentage)
+	percentage
+	exit 0
+	;;
+--icon)
+	icon
+	exit 0
+	;;
+--state)
+	state
+	exit 0
+	;;
+*)
+	echo "Usage: $0 --percentage | --icon | --state"
+	exit 1
+	;;
+esac
