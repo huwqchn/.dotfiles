@@ -8,24 +8,18 @@
   )
 )
 
-(defwidget layout [click-action]
-  (box
+(defwidget layout [left-click-action right-click-action]
+  (eventbox
     :class "layout"
-    :orientation "h"
-    :halign "start"
-    :space-evenly false
-    (eventbox
-      :cursor "pointer"
-      (button
-        :class "layout-button"
-        :tooltip "Change current workspace layout"
-        :onclick click-action
-        :onrightclick click-action
-        (label
-          :class "layout-label"
-          :text "󰿣 "
-        )
-      )
+    :cursor "pointer"
+    (button
+      :class "layout-button"
+      :orientation "h"
+      :halign "start"
+      :tooltip "Change current workspace layout"
+      :onclick left-click-action
+      :onrightclick right-click-action
+      "󰿣 "
     )
   )
 )

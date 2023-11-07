@@ -1,4 +1,4 @@
-#! /bin/sh
+#!/bin/bash
 
 # Selects player based on if they're playing or if they have a cover
 # Note: Being played takes priority
@@ -6,9 +6,9 @@ select_player() {
 	local playing_player=""
 	local cover_player=""
 	local total_player=""
-  local player
-  local art
-  local status
+	local player
+	local art
+	local status
 	while IFS=read -r player; do
 		art=$(playerctl --player="$player" metadata mpris:artUrl 2>/dev/null)
 		status=$(playerctl --player="$player" status 2>/dev/null)
@@ -19,7 +19,7 @@ select_player() {
 		[[ -n $playingplayer ]] && player="$playingplayer"
 		[[ -n $totalplayer ]] && player="$totalplayer"
 		echo "$player"
-	done  < <(playerctl -l 2> /dev/null)
+	done < <(playerctl -l 2>/dev/null)
 }
 
 update_cover() {
@@ -82,11 +82,11 @@ while true; do
 		title=$(playerctl --player="$player" metadata xesam:title 2>/dev/null)
 		[[ -z $title ]] && title="No title"
 		if [[ "$title" != "$last_title" ]]; then
-      jobs -l | grep "scroll_text \"\$title\"" | while read line; do
-        title_job_pid=`echo $line | awk '{printf$2}'`
-        echo $title_job_pid
-        kill $title_job_pid 2> /dev/null && echo "killed job at $title_job_pid"
-      done;
+			jobs -l | grep "scroll_text \"\$title\"" | while read line; do
+				title_job_pid=$(echo $line | awk '{printf$2}')
+				echo $title_job_pid
+				kill $title_job_pid 2>/dev/null && echo "killed job at $title_job_pid"
+			done
 
 			title_len=${#title}
 			if [[ $title_len -gt 10 ]]; then
@@ -101,10 +101,10 @@ while true; do
 		artist=$(playerctl --player="$player" metadata xesam:artist 2>/dev/null)
 		[[ -z $artist ]] && artist="No artist"
 		if [[ "$artist" != "$last_artist" ]]; then
-      jobs -l | grep "scroll_text \"\$artist\"" | while read line; do
-        artist_job_pid=`echo $line | awk '{printf$2}'`
-        kill $artist_job_pid 2> /dev/null && echo "killed job at $artist_job_pid"
-      done;
+			jobs -l | grep "scroll_text \"\$artist\"" | while read line; do
+				artist_job_pid=$(echo $line | awk '{printf$2}')
+				kill $artist_job_pid 2>/dev/null && echo "killed job at $artist_job_pid"
+			done
 
 			artist_len=${#artist}
 			if [[ $artist_len -gt 10 ]]; then

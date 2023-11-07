@@ -20,12 +20,12 @@
       :class "music-header"
       :orientation "h"
       :spacing 0
-      :space-evenly "false"
+      :space-evenly false
       :halign "start"
       (eventbox
         :cursor "pointer"
         (box
-          :space-evenly "false"
+          :space-evenly false
           :halign "start"
           :tooltip "${music-title} by ${music-artist}"
           (button
@@ -42,16 +42,16 @@
       (box
         :class "music-body"
         :orientation "v"
-        :space-evenly "false"
-        :vexpand "false"
-        :hexpand "false"
+        :space-evenly false
+        :vexpand false
+        :hexpand false
         :valign "end"
         :halign "start"
         (box
           :orientation "v"
-          :space-evenly "false"
-          :vexpand "true"
-          :hexpand "true"
+          :space-evenly false
+          :vexpand true
+          :hexpand true
           :valign "end"
           :halign "start"
           (revealer
@@ -67,8 +67,8 @@
                 :halign "center"
                 :text music-title-parsed
                 :limit-width 12
-                :wrap "true"
-                :show-truncated "false"
+                :wrap true
+                :show-truncated false
               )
             )
           )
