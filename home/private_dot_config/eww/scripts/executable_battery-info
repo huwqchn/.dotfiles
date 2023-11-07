@@ -19,80 +19,83 @@ status() {
 	cat "$battery/status"
 }
 
-time() {
-  if [ "$(status)" == "Discharging" ]; then
-    echo "Discharging"
-    return
-  fi
-  acpi=$(acpi -b)
-  time=$(echo "$acpi" | awk '{printf $5}')
-  time=${time::-3}
-  echo "$time"
+charging_animation() {
+	local icons=("󰢟" "󰢜" "󰂆" "󰂇" "󰂈" "󰢝" "󰂉" "󰢞" "󰂊" "󰂋" "󰂅")
+	while [[ "$(status)" != "Full" ]]; do
+		for icon in "${icons[@]}"; do
+			# eww update battery-icon="$icon"
+			echo "$icon"
+			sleep 0.3
+		done
+	done
 }
 
-charging_animation() {
-  local icons = ("󰢟" "󰢜" "󰂆" "󰂇" "󰂈" "󰢝" "󰂉" "󰢞" "󰂊" "󰂋" "󰂅")
-  while [[ "$(status)" != "Full" ]]; do
-    for icon in "${icons[@]}"; do
-      eww update battery-icon="$icon"
-      sleep 0.3
-    done
-  done
+low_power_alert_animation() {
+	local icons=("󱃍" "󰂎")
+	while [[ "$(status)" == "Discharging" ]]; do
+		for icon in "${icons[@]}"; do
+			# eww update battery-icon="$icon"
+			echo "$icon"
+			sleep 0.3
+		done
+	done
 }
 
 level() {
-  local capacity=$(percentage)
-  if [[ $percentage >= 80 ]]; then
-    echo "high"
-  elif [[ $percentage >= 20 ]]; then
-    echo "mid"
-  else
-    echo "low"
-  fi
+	local capacity=$(percentage)
+	if [[ $capacity -ge 80 ]]; then
+		echo "high"
+	elif [[ $capactiy -ge 20 ]]; then
+		echo "mid"
+	else
+		echo "low"
+	fi
 }
 
 icon() {
-  while true; do
-    local icon=""
+	while true; do
+		local icon
+		if [[ "$(status)" == "Charging" ]]; then
+			charging_animation
+			continue
+		elif [[ "$(status)" == "Full" ]]; then
+			icon="󰂅"
+			eww update battery-icon="󰂅"
+			echo "$icon"
+			sleep 1
+			continue
+		fi
 
-    if [[ "$(status)" == "Charging" ]]; then
-      charging_animation
-      continue
-    elif [[ "$(status)" == "Full" ]]; then
-      icon=""
-      eww update battery-icon="$icon"
-      sleep 1
-      continue
-    fi
-
-    local percentage=$(percentage)
-
-    if [[ $percentage >= 90 ]]; then
-      icon=""
-    elif [ $percentage >= 80 ]; then
-      icon=""
-    elif [ $percentage >= 70 ]; then
-      icon=""
-    elif [ $percentage >= 60 ]; then
-      icon=""
-    elif [ $percentage >= 50 ]; then
-      icon=""
-    elif [ $percentage >= 40 ]; then
-      icon=""
-    elif [ $percentage >= 30 ]; then
-      icon=""
-    elif [ $percentage >= 20 ]; then
-      icon=""
-    elif [ $percentage >= 10 ]; then
-      icon=""
-      notify-send -u critical "Battery Low" "Connect Charger"
-    else
-      icon = ""
-      notify-send -u critical "Battery Low" "Connect Charger"
-    fi
-    eww update battery-icon="$icon"
-    sleep 1
-  done
+		local capacity=$(percentage)
+		if [[ $capacity -eq 100 ]]; then
+			icon="󰁹"
+		elif [[ $capacity -gt 90 ]]; then
+			icon="󰂂"
+		elif [ $capacity -gt 80 ]; then
+			icon="󰂁"
+		elif [ $capacity -gt 70 ]; then
+			icon="󰂀"
+		elif [ $capacity -gt 60 ]; then
+			icon="󰁿"
+		elif [ $capacity -gt 50 ]; then
+			icon="󰁾"
+		elif [ $capacity -gt 40 ]; then
+			icon="󰁽"
+		elif [ $capacity -gt 30 ]; then
+			icon="󰁼"
+		elif [ $capacity -gt 20 ]; then
+			icon="󰁻"
+		elif [ $capacity -gt 10 ]; then
+			notify-send -u critical "Battery Low" "Connect Charger"
+			icon="󰁺"
+		else
+			notify-send -u critical "Battery Low" "Connect Charger"
+			low_power_alert_animation
+		fi
+		eww update battery-icon="$icon"
+		echo "$icon"
+		sleep 1
+	done
 }
 
 # Check if we have a battery
@@ -104,27 +107,23 @@ if have_battery; then
 		exit 0
 		;;
 	--status)
-    status
-    exit 0
+		status
+		exit 0
 		;;
-  --time)
-    time
-    exit 0
-    ;;
-  --exists)
-    echo "true"
-    exit 0
-    ;;
-  --icon)
-    icon
-    exit 0
-    ;;
-  --level)
-    level
-    exit 0
-    ;;
+	--exists)
+		echo "true"
+		exit 0
+		;;
+	--icon)
+		icon
+		exit 0
+		;;
+	--level)
+		level
+		exit 0
+		;;
 	*)
-		echo "Usage: $0 --percentage | --status | --time | --exists | --icon | --level"
+		echo "Usage: $0 --percentage | --status | --exists | --icon | --level"
 		exit 1
 		;;
 	esac

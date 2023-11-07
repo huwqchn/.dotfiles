@@ -3,6 +3,7 @@
 (include "yuck/workspaces.yuck")
 (include "yuck/music.yuck")
 (include "yuck/date.yuck")
+(include "yuck/battery.yuck")
 
 ;; TODO: get workspaces and layout add in a group
 ;; TODO: make music not show up when no player
@@ -47,6 +48,7 @@
     :orientation "h"
     :halign "end"
     :space-evenly false
+    (battery)
     (power)
   )
 )
