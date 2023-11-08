@@ -1,0 +1,32 @@
+(defvar cpu-reveal false)
+(defpoll cpu-state :interval "1s" "scripts/cpu-info --state")
+(defpoll cpu-percent :interval "1s" "scripts/cpu-info --percent")
+
+
+(defwidget cpu []
+  (eventbox
+    :onhover "eww update cpu-reveal=true"
+    :onhoverlost "eww update cpu-reveal=false"
+    :tooltip "CPU usage"
+    (label
+      :class "CPU-${cup-state}"
+      :markup " ${cpu-percent}%"
+    )
+    (revealer
+      :reveal cpu-reveal
+      :transition "slideright"
+      :duration "350ms"
+      :valign "center"
+      (graph
+        :class "CPU-graph-${cpu-state}"
+        :thickness 3
+        :value cpu-percent
+        :time-range "20s"
+        :min 0
+        :max 100
+        :dynamic true
+        :line-style "round"
+      )
+    )
+  )
+)
