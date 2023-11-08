@@ -1,5 +1,7 @@
 #!/bin/bash
 
+limit_width=12
+
 # Selects player based on if they're playing or if they have a cover
 # Note: Being played takes priority
 select_player() {
@@ -46,16 +48,27 @@ update_cover() {
 	eww update music-cover="$imgdir/current_music.png"
 }
 
+contains_cjk() {
+	local text="$1"
+	if echo "$text" | grep -qP '[\p{Han}\p{Hiragana}\p{Katakana}\p{Hangul}]'; then
+		return 0 # Text contains CJK characters
+	else
+		return 1 # Text does not contain CJK characters
+	fi
+}
+
 scroll_text() {
-	scroll_index=0
 	text="$1"
 	text_len="$2"
 	eww_var="$3"
+	scroll_index=0
+	scroll_text="$text    $text"
+	scroll_width=$limit_width
 	eww update "$eww_var"="$text"
 	while true; do
-		text_parsed=$($HOME/.config/eww/scripts/parse "$text" "$scroll_index")
-		scroll_index=$(((scroll_index + 1) % (text_len + 8)))
+		text_parsed="${scroll_text:scroll_index:scroll_width}"
 		eww update "${eww_var}-parsed"="$text_parsed"
+		scroll_index=$(((scroll_index + 1) % (text_len + 4)))
 		# Change the value below to control how fast text should scroll
 		sleep 0.3
 	done
@@ -89,11 +102,14 @@ while true; do
 			done
 
 			title_len=${#title}
-			if [[ $title_len -gt 10 ]]; then
+			if contains_cjk "$title"; then
+				limit_width=8
+			fi
+			if [[ $title_len -gt $limit_width ]]; then
 				scroll_text "$title" "$title_len" "music-title" &
 			else
-				parsed_title=$($HOME/.config/eww/scripts/parse "$title" "0")
-				eww update music-title="$title" music-title-parsed="$parsed_title"
+				# parsed_title=$($HOME/.config/eww/scripts/parse "$title" "0")
+				eww update music-title="$title" music-title-parsed="$title"
 			fi
 		fi
 
@@ -107,11 +123,14 @@ while true; do
 			done
 
 			artist_len=${#artist}
-			if [[ $artist_len -gt 10 ]]; then
+			if contains_cjk "$artist"; then
+				limit_width=8
+			fi
+			if [[ $artist_len -gt $limit_width ]]; then
 				scroll_text "$artist" "$artist_len" "music-artist" &
 			else
-				parsed_artist=$($HOME/.config/eww/scripts/parse "$artist" "0")
-				eww update music-artist="$artist" music-artist-parsed="$parsed_artist"
+				# parsed_artist=$($HOME/.config/eww/scripts/parse "$artist" "0")
+				eww update music-artist="$artist" music-artist-parsed="$artist"
 			fi
 		fi
 

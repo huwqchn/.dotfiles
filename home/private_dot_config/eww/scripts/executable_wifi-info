@@ -1,0 +1,144 @@
+#!/bin/bash
+
+icon() {
+	local level=$(state)
+	case $level in
+	0)
+		echo "󰤫"
+		;;
+	1)
+		echo "󰤯"
+		;;
+	2)
+		echo "󰤟"
+		;;
+	3)
+		echo "󰤢"
+		;;
+	4)
+		echo "󰤥"
+		;;
+	5)
+		echo "󰤨"
+		;;
+	*)
+		echo "󰤮"
+		;;
+	esac
+}
+
+get() {
+	any_interface_up=false
+	wifi_interface=""
+
+	# Loop through all interfaces that start with 'w'
+	for interface in /sys/class/net/w*/operstate; do
+		if [[ $(cat "$interface") == "up" ]]; then
+			any_interface_up=true
+			wifi_interface=$(basename $(dirname "$interface"))
+			break
+		fi
+	done
+
+	# Check the flag and echo "connected" if any interface is up
+	if ! $any_interface_up; then
+		wifi_interface=""
+	fi
+	echo $wifi_interface
+}
+
+state() {
+	local wifi_level=0
+	local interface=$(get)
+	# Check the flag and echo "connected" if any interface is up
+	if [[ -n $interface ]]; then
+		# Extract the wifi quality using iwconfig
+		# Note: You may need to install 'wireless-tools' for iwconfig
+		wifi_quality=$(iwconfig $interface | grep -o "Link Quality=[0-9]*/[0-9]*" | awk -F= '{print $2}')
+		if [ -n "$wifi_quality" ]; then
+			# Extract the current and maximum quality values
+			current_quality=$(echo $wifi_quality | cut -d '/' -f 1)
+			max_quality=$(echo $wifi_quality | cut -d '/' -f 2)
+			# Calculate the wifi level on a scale of 1 to 5
+			wifi_level=$((($current_quality * 5 + ($max_quality / 2)) / $max_quality))
+		fi
+	else
+		wifi_level=-1
+	fi
+	echo $wifi_level
+}
+
+name() {
+	iwgetid -r
+}
+
+convert_speed() {
+	local speed=$1 # Speed in bytes per second
+	local unit="B/s"
+
+	if [ $speed -gt 1024 ]; then
+		speed=$((speed / 1024))
+		unit="KB/s"
+	fi
+	if [ $speed -gt 1024 ]; then
+		speed=$((speed / 1024))
+		unit="MB/s"
+	fi
+	if [ $speed -gt 1024 ]; then
+		speed=$((speed / 1024))
+		unit="GB/s"
+	fi
+
+	echo "$speed $unit"
+}
+
+down() {
+	local interface=$(get)
+	# Calculate speed
+	rx_bytes_before=$(cat /sys/class/net/$interface/statistics/rx_bytes)
+	sleep 1
+	rx_bytes_after=$(cat /sys/class/net/$interface/statistics/rx_bytes)
+	rx_speed=$(((rx_bytes_after - rx_bytes_before)))
+	# echo "Current Download Speed: $rx_speed bytes/sec"
+	rx_speed=$(convert_speed $rx_speed)
+	echo "$rx_speed"
+}
+
+up() {
+	local interface=$(get)
+	# Calculate speed
+	tx_bytes_before=$(cat /sys/class/net/$interface/statistics/tx_bytes)
+	sleep 1
+	tx_bytes_after=$(cat /sys/class/net/$interface/statistics/tx_bytes)
+	tx_speed=$(((tx_bytes_after - tx_bytes_before)))
+	# echo "Current Upload Speed: $tx_speed bytes/sec"
+	tx_speed=$(convert_speed $tx_speed)
+	echo "$tx_speed"
+}
+
+case "$1" in
+--icon)
+	icon
+	exit 0
+	;;
+--name)
+	name
+	exit 0
+	;;
+--state)
+	state
+	exit 0
+	;;
+--download)
+	down
+	exit 0
+	;;
+--upload)
+	up
+	exit 0
+	;;
+*)
+	echo "Usage: $0 | --icon | --name | --state | --download | --upload "
+	exit 1
+	;;
+esac

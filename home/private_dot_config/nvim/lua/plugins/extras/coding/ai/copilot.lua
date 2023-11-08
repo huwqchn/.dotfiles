@@ -36,7 +36,7 @@ return {
         auto_trigger = false,
         debounce = 75,
         keymap = {
-          accept = "<M-cr>",
+          accept = "<C-f>",
           next = "<M-]>",
           prev = "<M-[>",
           dismiss = "<C-]>",

@@ -6,7 +6,7 @@
     (button
       :class "launcher-button"
       :valign "fill"
-      :onclick "~/.config/eww/scripts/popup-dashboard"
+      :onclick "scripts/popup-dashboard"
       "󰊠 "
     )
   )

@@ -1,0 +1,19 @@
+(include "yuck/battery.yuck")
+(include "yuck/wifi.yuck")
+(include "yuck/brightness.yuck")
+(include "yuck/volume.yuck")
+
+(defwidget controller []
+  (box
+    :orientation "h"
+    :space-evenly false
+    :class "controller"
+    :valign "center"
+    :halign "start"
+    :spacing 15
+    (volume)
+    (brightness)
+    (wifi)
+    (battery)
+  )
+)

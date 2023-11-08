@@ -39,7 +39,14 @@ window {
   }
 }
 
+@mixin box-setup {
+  background-color: $bg-alt;
+  border-radius: 5px;
+  padding: 0.3rem 0.7rem 0.3rem 0.7rem;
+}
+
 .workspaces {
+  @include box-setup;
   .workspace-button- {
     color: $gray;
   }
@@ -79,11 +86,6 @@ window {
   .workspace-button-9 {
     color: $blue;
   }
-}
-
-.layout {
-  margin: 0 0 0 10px;
-  color: $blue-alt;
 }
 
 .music-header {
@@ -154,4 +156,74 @@ window {
 .date {
   font-size: 1.5em;
   color: $fg;
+}
+
+@mixin control-setup {
+  font-family: "Material Design Icons Desktop, Feather, Grid Styles";
+  font-size: 1.2em;
+  min-width: 1.2em;
+}
+
+.controller {
+  @include box-setup;
+  .battery-Unknown {
+    @include control-setup;
+    color: $gray-alt;
+  }
+  .battery-High {
+    @include control-setup;
+    color: $green-alt;
+  }
+  .battery-Medium {
+    @include control-setup;
+    color: $yellow;
+  }
+  .battery-Low {
+    @include control-setup;
+    color: $red-alt;
+  }
+  .brightness-High {
+    @include control-setup;
+    color: $yellow-alt;
+  }
+  .brightness-Low {
+    @include control-setup;
+    color: $blue-alt;
+  }
+  .volume-Muted {
+    @include control-setup;
+    font-size: 1.5em;
+    color: $red;
+  }
+  .volume-Unmuted {
+    @include control-setup;
+    font-size: 1.5em;
+    color: $cyan-alt;
+  }
+
+  .wifi--1,
+  .wifi-0,
+  .wifi-1,
+  .wifi-2 {
+    @include control-setup;
+    color: $red;
+  }
+
+  .wifi-3,
+  .wifi-4 {
+    @include control-setup;
+    color: $purple;
+  }
+
+  .wifi-5 {
+    @include control-setup;
+    color: $purple-alt;
+  }
+  .wifi-upload-speed-label,
+  .wifi-download-speed-label {
+    font-family: "JetBrainsMono Nerd Font";
+    font-size: 0.5em;
+    color: $green-alt;
+    // max-height: 0.4em;
+  }
 }

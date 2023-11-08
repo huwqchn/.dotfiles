@@ -17,19 +17,19 @@ icon() {
 	local icon
 	local percent=$(percentage)
 	if [[ $percent -gt 95 ]]; then
-		icon="󰃠"
+		icon="󰃠 "
 	elif [ $percent -gt 80 ]; then
-		icon="󰃝"
+		icon="󰃝 "
 	elif [ $percent -gt 65 ]; then
-		icon="󰃟"
+		icon="󰃟 "
 	elif [ $percent -gt 50 ]; then
-		icon="󰃞"
+		icon="󰃞 "
 	elif [ $percent -gt 35 ]; then
-		icon="󰃜"
+		icon="󰃜 "
 	elif [ $percent -gt 20 ]; then
-		icon="󰃛"
+		icon="󰃛 "
 	else
-		icon="󰃚"
+		icon="󰃚 "
 	fi
 	echo $icon
 }

@@ -2,6 +2,9 @@
 
 workspaces() {
 	icon=" "
+	# layout=$(bsp-layout get)
+	# layout_image_path="images/layout-$layout"
+	# eww updaet workspace-layout-image-path=$layout_image_path
 	ws0=0
 	ws1=1
 	ws2=2
@@ -36,11 +39,10 @@ workspaces() {
 	f7=$(bspc query -D -d focused --names | grep "$ws7")
 	f8=$(bspc query -D -d focused --names | grep "$ws8")
 	f9=$(bspc query -D -d focused --names | grep "$ws9")
-
-	echo "(box :class \"workspaces\" :orientation \"h\" :spacing \"10\" (eventbox :cursor \"pointer\" (button :tooltip \"switch to workspace 1\" :onclick \"bspc desktop -f $ws0\" :class \"workspace-button$o0-$f0\" \"$icon\")) (eventbox :cursor \"pointer\" (button :tooltip \"switch to workspace 2\" :onclick \"bspc desktop -f $ws1\" :class \"workspace-button$o1-$f1\" \"$icon\")) (eventbox :cursor \"pointer\" (button :tooltip \"switch to workspace 3\" :onclick \"bspc desktop -f $ws2\" :class \"workspace-button$o2-$f2\" \"$icon\")) (eventbox :cursor \"pointer\" (button :tooltip \"switch to workspace 4\" :onclick \"bspc desktop -f $ws3\" :class \"workspace-button$o3-$f3\" \"$icon\")) (eventbox :cursor \"pointer\" (button :tooltip \"switch to workspace 5\" :onclick \"bspc desktop -f $ws4\" :class \"workspace-button$o4-$f4\" \"$icon\" )) (eventbox :cursor \"pointer\" (button :tooltip \"switch to workspace 6\" :onclick \"bspc desktop -f $ws5\" :class \"workspace-button$o5-$f5\" \"$icon\")) (eventbox :cursor \"pointer\" (button :tooltip \"switch to workspace 7\" :onclick \"bspc desktop -f $ws6\" :class \"workspace-button$o6-$f6\" \"$icon\")) (eventbox :cursor \"pointer\" (button :tooltip \"switch to workspace 8\" :onclick \"bspc desktop -f $ws7\"	:class \"workspace-button$o7-$f7\" \"$icon\")) (eventbox :cursor \"pointer\" (button :tooltip \"switch to workspace 9\" :onclick \"bspc desktop -f $ws8\"	:class \"workspace-button$o8-$f8\" \"$icon\")) (eventbox :cursor \"pointer\" (button :tooltip \"switch to workspace 10\" :onclick \"bspc desktop -f $ws9\" :class \"workspace-button$o9-$f9\" \"$icon\")))"
+	echo "(box :class \"workspaces\" :orientation \"h\" :spacing \"10\" :valign \"center\" :halign \"center\" :space-evenly false (eventbox :cursor \"pointer\" (button :tooltip \"switch to workspace 1\" :onclick \"bspc desktop -f $ws0\" :class \"workspace-button$o0-$f0\" \"$icon\")) (eventbox :cursor \"pointer\" (button :tooltip \"switch to workspace 2\" :onclick \"bspc desktop -f $ws1\" :class \"workspace-button$o1-$f1\" \"$icon\")) (eventbox :cursor \"pointer\" (button :tooltip \"switch to workspace 3\" :onclick \"bspc desktop -f $ws2\" :class \"workspace-button$o2-$f2\" \"$icon\")) (eventbox :cursor \"pointer\" (button :tooltip \"switch to workspace 4\" :onclick \"bspc desktop -f $ws3\" :class \"workspace-button$o3-$f3\" \"$icon\")) (eventbox :cursor \"pointer\" (button :tooltip \"switch to workspace 5\" :onclick \"bspc desktop -f $ws4\" :class \"workspace-button$o4-$f4\" \"$icon\" )) (eventbox :cursor \"pointer\" (button :tooltip \"switch to workspace 6\" :onclick \"bspc desktop -f $ws5\" :class \"workspace-button$o5-$f5\" \"$icon\")) (eventbox :cursor \"pointer\" (button :tooltip \"switch to workspace 7\" :onclick \"bspc desktop -f $ws6\" :class \"workspace-button$o6-$f6\" \"$icon\")) (eventbox :cursor \"pointer\" (button :tooltip \"switch to workspace 8\" :onclick \"bspc desktop -f $ws7\"	:class \"workspace-button$o7-$f7\" \"$icon\")) (eventbox :cursor \"pointer\" (button :tooltip \"switch to workspace 9\" :onclick \"bspc desktop -f $ws8\"	:class \"workspace-button$o8-$f8\" \"$icon\")) (eventbox :cursor \"pointer\" (button :tooltip \"switch to workspace 10\" :onclick \"bspc desktop -f $ws9\" :class \"workspace-button$o9-$f9\" \"$icon\")))"
 }
 
 workspaces
-bspc subscribe all | while read -r _; do
+bspc subscribe desktop node_transfer | while read -r _; do
 	workspaces
 done

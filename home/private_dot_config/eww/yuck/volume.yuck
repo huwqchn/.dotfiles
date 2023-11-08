@@ -1,7 +1,7 @@
 (defvar volume-reveal false)
-(defpoll volume-percent :interval "1s" "~/.config/eww/scripts/volume-info --percentage")
-(defpoll volume-icon :interval "1s" "~/.config/eww/scripts/volume-info --icon")
-(defpoll volume-state :interval "1s" "~/.config/eww/scripts/volume-info --state")
+(defpoll volume-percent :interval "1s" "scripts/volume-info --percentage")
+(defpoll volume-icon :interval "1s" "scripts/volume-info --icon")
+(defpoll volume-state :interval "1s" "scripts/volume-info --state")
 (defwidget volume []
   (eventbox
     :onhover "eww update volume-reveal=true"
@@ -9,14 +9,17 @@
     :cursor "pointer"
     (box
       :class "volume-box"
-      :space-evenly "false"
+      :space-evenly false
       :orientation "h"
-      (label
+      :valign "center"
+      :halign "end"
+      (button
         :class "volume-${volume-state}"
-        :markup "${volume-icon}"
+        :onclick "amixer sset Master toggle"
+        volume-icon
       )
       (revealer
-        :transition "slideup"
+        :transition "slideright"
         :reveal volume-reveal
         :duration "350ms"
         (scale

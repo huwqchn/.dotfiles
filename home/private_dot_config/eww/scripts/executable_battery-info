@@ -20,7 +20,7 @@ status() {
 }
 
 charging_animation() {
-	local icons=("󰢟" "󰢜" "󰂆" "󰂇" "󰂈" "󰢝" "󰂉" "󰢞" "󰂊" "󰂋" "󰂅")
+	local icons=("󰢟 " "󰢜 " "󰂆 " "󰂇 " "󰂈 " "󰢝 " "󰂉 " "󰢞 " "󰂊 " "󰂋 " "󰂅 ")
 	while [[ "$(status)" != "Full" ]]; do
 		for icon in "${icons[@]}"; do
 			eww update battery-icon="$icon"
@@ -31,7 +31,7 @@ charging_animation() {
 }
 
 low_power_alert_animation() {
-	local icons=("󱃍" "󰂎")
+	local icons=("󱃍 " "󰂎 ")
 	while [[ "$(status)" == "Discharging" ]]; do
 		for icon in "${icons[@]}"; do
 			eww update battery-icon="$icon"
@@ -46,7 +46,7 @@ state() {
 	if [[ $capacity -ge 80 ]]; then
 		echo "High"
 	elif [[ $capactiy -ge 20 ]]; then
-		echo "Mid"
+		echo "Midium"
 	else
 		echo "Low"
 	fi
@@ -63,33 +63,33 @@ update() {
 			continue
 		elif [[ "$(status)" == "Full" ]]; then
 			eww update battery-state="Full"
-			eww update battery-icon="󰂅"
+			eww update battery-icon="󰂅 "
 			sleep 1
 			continue
 		fi
 
 		local capacity=$(percentage)
 		if [[ $capacity -eq 100 ]]; then
-			icon="󰁹"
+			icon="󰁹 "
 		elif [[ $capacity -gt 90 ]]; then
-			icon="󰂂"
+			icon="󰂂 "
 		elif [ $capacity -gt 80 ]; then
-			icon="󰂁"
+			icon="󰂁 "
 		elif [ $capacity -gt 70 ]; then
-			icon="󰂀"
+			icon="󰂀 "
 		elif [ $capacity -gt 60 ]; then
-			icon="󰁿"
+			icon="󰁿 "
 		elif [ $capacity -gt 50 ]; then
-			icon="󰁾"
+			icon="󰁾 "
 		elif [ $capacity -gt 40 ]; then
-			icon="󰁽"
+			icon="󰁽 "
 		elif [ $capacity -gt 30 ]; then
-			icon="󰁼"
+			icon="󰁼 "
 		elif [ $capacity -gt 20 ]; then
-			icon="󰁻"
+			icon="󰁻 "
 		elif [ $capacity -gt 10 ]; then
 			notify-send -u critical "Battery Low" "Connect Charger"
-			icon="󰁺"
+			icon="󰁺 "
 		else
 			notify-send -u critical "Battery Low" "Connect Charger"
 			low_power_alert_animation

@@ -1,54 +1,37 @@
 (defvar battery-reveal false)
-(defvar battery-icon "󰂑")
+(defvar battery-icon "󱉞")
 (defvar battery-state "Unknown")
 (defvar battery-percent 0)
 (defvar battery-active false)
-(deflisten battery-info "~/.config/eww/scripts/battery-info --update")
+(deflisten battery-info "scripts/battery-info --update")
 
 (defwidget battery []
   (eventbox
-    :active battery-active
+    ; :active battery-active
     :onhover "eww update battery-reveal=true"
     :onhoverlost "eww update battery-reveal=false"
     :cursor "pointer"
-    :class "${battery-info}"
+    ; :class "${battery-info}"
     (box
       :class "battery-box"
       :orientation "h"
       :space-evenly false
-      :vexpand false
-      :hexpand false
       :valign "center"
       :halign "end"
-      (revealer
-        :reveal "${!battery-reveal}"
-        :transition "slidedown"
-        :duration "350ms"
-        (box
-          :orientation "v"
-          :valign "fill"
-          :halign "fill"
-          (label
-            :class "battery-${battery-state}"
-            :text "${battery-icon}"
-          )
-        )
+      (label
+        :class "battery-${battery-state}"
+        :markup battery-icon
       )
-      (revealer
-        :revael battery-reveal
-        :transiton "slideup"
-        :duration "350ms"
-        (box
-          :orientation "v"
-          :halign "fill"
-          :valign "fill"
-          (circular-progress
-            :class "battery-bar"
-            :thickness 4
-            :value battery-percent
-          )
-        )
-      )
+      ; (revealer
+      ;   :transiton "slideright"
+      ;   :revael battery-reveal
+      ;   :duration "350ms"
+      ;   (circular-progress
+      ;     :class "battery-bar"
+      ;     :thickness 4
+      ;     :value battery-percent
+      ;   )
+      ; )
     )
   )
 )

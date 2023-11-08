@@ -3,9 +3,7 @@
 (include "yuck/workspaces.yuck")
 (include "yuck/music.yuck")
 (include "yuck/date.yuck")
-(include "yuck/battery.yuck")
-(include "yuck/brightness.yuck")
-(include "yuck/volume.yuck")
+(include "yuck/controller.yuck")
 
 ;; TODO: get workspaces and layout add in a group
 ;; TODO: make music not show up when no player
@@ -31,7 +29,6 @@
     :space-evenly false
     (launcher)
     (workspaces)
-    (layout :left-click-action "bsp-layout next" :right-click-action "bsp-layout previous")
     (music)
   )
 )
@@ -50,9 +47,7 @@
     :orientation "h"
     :halign "end"
     :space-evenly false
-    (volume)
-    (brightness)
-    (battery)
+    (controller)
     (power)
   )
 )

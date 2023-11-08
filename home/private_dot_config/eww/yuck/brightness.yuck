@@ -1,7 +1,7 @@
 (defvar brightness-reveal false)
-(defpoll brightness-percent :interval "1s" "~/.config/eww/scripts/brightness-info --percentage")
-(defpoll brightness-icon :interval "1s" "~/.config/eww/scripts/brightness-info --icon")
-(defpoll brightness-state :interval "1s" "~/.config/eww/scripts/brightness-info --state")
+(defpoll brightness-percent :interval "1s" "scripts/brightness-info --percentage")
+(defpoll brightness-icon :interval "1s" "scripts/brightness-info --icon")
+(defpoll brightness-state :interval "1s" "scripts/brightness-info --state")
 (defwidget brightness []
   (eventbox
     :onhover "eww update brightness-reveal=true"
@@ -11,6 +11,8 @@
       :class "brightness-box"
       :space-evenly "false"
       :orientation "h"
+      :valign "center"
+      :halign "end"
       (label
         :class "brightness-${brightness-state}"
         :markup "${brightness-icon}"

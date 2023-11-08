@@ -54,12 +54,12 @@ map({ "n", "x", "o" }, "gJ", "gE")
 
 -- colemak-dh searching key
 -- https://github.com/mhinz/vim-galore#saner-behavior-of-n-and-n
-map("n", "k", "'Nn'[v:searchforward].'zv'", { expr = true, desc = "Next search result" })
-map("x", "k", "'Nn'[v:searchforward]", { expr = true, desc = "Next search result" })
-map("o", "k", "'Nn'[v:searchforward]", { expr = true, desc = "Next search result" })
-map("n", "K", "'nN'[v:searchforward].'zv'", { expr = true, desc = "Prev search result" })
-map("x", "K", "'nN'[v:searchforward]", { expr = true, desc = "Prev search result" })
-map("o", "K", "'nN'[v:searchforward]", { expr = true, desc = "Prev search result" })
+vim.keymap.set("n", "k", "'Nn'[v:searchforward].'zv'", { expr = true, desc = "Next search result" })
+vim.keymap.set("x", "k", "'Nn'[v:searchforward]", { expr = true, desc = "Next search result" })
+vim.keymap.set("o", "k", "'Nn'[v:searchforward]", { expr = true, desc = "Next search result" })
+vim.keymap.set("n", "K", "'nN'[v:searchforward].'zv'", { expr = true, desc = "Prev search result" })
+vim.keymap.set("x", "K", "'nN'[v:searchforward]", { expr = true, desc = "Prev search result" })
+vim.keymap.set("o", "K", "'nN'[v:searchforward]", { expr = true, desc = "Prev search result" })
 
 map({ "n", "x", "o" }, "gk", "gn", { desc = "Search forwards and select" })
 map({ "n", "x", "o" }, "gK", "gN", { desc = "Search backwards and select" })

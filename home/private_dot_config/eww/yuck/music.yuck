@@ -9,7 +9,7 @@
 (defvar music-cover "images/music.png")
 (defvar music-slider-length 100)
 (defvar music-slider-position 0)
-(deflisten music-info "~/.config/eww/scripts/music-info")
+(deflisten music-info "scripts/music-info")
 
 (defwidget music []
   (eventbox
