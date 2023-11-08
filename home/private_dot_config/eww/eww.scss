@@ -27,6 +27,18 @@ window {
   }
 }
 
+.VPN {
+  font-size: 1.3em;
+  .VPN-true {
+    margin-left: 0.5em;
+    color: $green;
+  }
+  .VPN-false {
+    margin-left: 0.5em;
+    color: $gray-alt;
+  }
+}
+
 .power {
   font-size: 1.5em;
   button {
@@ -189,6 +201,10 @@ window {
   .brightness-Low {
     @include control-setup;
     color: $blue-alt;
+  }
+  .brightness-Unknown {
+    @include control-setup;
+    color: $gray-alt;
   }
   .volume-Muted {
     @include control-setup;

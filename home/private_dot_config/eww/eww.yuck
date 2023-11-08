@@ -4,6 +4,7 @@
 (include "yuck/music.yuck")
 (include "yuck/date.yuck")
 (include "yuck/controller.yuck")
+(include "yuck/vpn.yuck")
 
 ;; TODO: get workspaces and layout add in a group
 ;; TODO: make music not show up when no player
@@ -30,6 +31,7 @@
     (launcher)
     (workspaces)
     (music)
+    (vpn)
   )
 )
 

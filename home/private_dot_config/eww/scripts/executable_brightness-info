@@ -8,8 +8,10 @@ state() {
 	local percent=$(percentage)
 	if [[ percent -gt 50 ]]; then
 		echo "High"
-	else
+	elif [[ percent -gt 0 ]]; then
 		echo "Low"
+	else
+		echo "Unknown"
 	fi
 }
 
