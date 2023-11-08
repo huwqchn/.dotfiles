@@ -70,8 +70,8 @@ bspc config presel_feedback_color "$GREEN"
 
 # mouse
 bspc config pointer_modifier super
-# bspc config pointer_action1 move
-# bspc config pointer_action3 resize_side
+bspc config pointer_action1 move
+bspc config pointer_action3 resize_side
 # bspc config pointer_action3 resize_corner
 
 # manage rules
