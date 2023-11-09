@@ -37,10 +37,9 @@
         - grub
         - theme
 
-    - role: tmux
+    - role: build
       tags:
-        - tmux
-        - cli
+        - build
 
     - role: docker
       tags:

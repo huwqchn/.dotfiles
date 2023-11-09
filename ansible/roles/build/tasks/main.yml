@@ -13,3 +13,17 @@
       ./configure && make
       sudo make install
     chdir: "~/Repos/tmux"
+
+- name: clone eww repo
+  git:
+    repos: "https://github.com/elkowar/eww.git"
+    dest: "~/Repos/eww"
+    depth: 1
+
+- name: make eww
+  shell:
+    cmd: |
+      cargo build --release -j $(nproc)
+      cd target/release
+      sudo mv eww /usr/bin/eww
+  chdir: "~/Repos/eww"

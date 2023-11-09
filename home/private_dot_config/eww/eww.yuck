@@ -68,14 +68,14 @@
 
 
 (defwindow bar
-  :monitor 0
-  :geometry (geometry
-              :x "0"
-              :y "5px"
-              :width "99.5%"
-              :height "25px"
-              :anchor "top center"
-            )
+  :geometry
+    (geometry
+      :x "0"
+      :y "5px"
+      :width "99.5%"
+      :height "25px"
+      :anchor "top center"
+    )
   :stacking "bg"
   :reserve (struts :distance "35px" :side "top")
   :windowtype "dock"
