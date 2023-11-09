@@ -1,0 +1,47 @@
+(defvar disk-reveal false)
+
+(defwidget disk []
+  (eventbox
+    :onhover "eww update disk-reveal=true"
+    :onhoverlost "eww update disk-reveal=false"
+    :tooltip "disk usage"
+    (box
+      :class 'disk-box'
+      :orientation "h"
+      :space-evenly false
+      :valign "center"
+      :halign "end"
+      :tooltip "disk"
+      (label
+        :class "disk-icon-${EWW_DISK['/'].used_perc > 50 ? EWW_DISK['/'].used_perc > 90 ? 'critical' : 'warning' : 'normal'}"
+        :markup "󰋊 "
+      )
+      (revealer
+        :reveal "${!disk-reveal}"
+        :transition "slideleft"
+        :duration "350ms"
+        :valign "center"
+        (label
+          :class "disk-value-${EWW_DISK['/'].used_perc > 50 ? EWW_DISK['/'].used_perc > 90 ? 'critical' : 'warning' : 'normal'}"
+          :markup "${round(EWW_DISK['/'].used_perc, 1)}%"
+        )
+      )
+      (revealer
+        :reveal disk-reveal
+        :transition "slideright"
+        :duration "350ms"
+        :valign "center"
+        (graph
+          :class "disk-graph-${EWW_DISK['/'].used_perc > 50 ? EWW_DISK['/'].used_perc > 90 ? 'critical' : 'warning' : 'normal'}"
+          :thickness 3
+          :value "${round(EWW_DISK['/'].used_perc, 3)}"
+          :time-range "120s"
+          :min 0
+          :max 100
+          :dynamic true
+          :line-style "round"
+        )
+      )
+    )
+  )
+)

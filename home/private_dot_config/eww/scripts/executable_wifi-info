@@ -137,6 +137,10 @@ case "$1" in
 	up
 	exit 0
 	;;
+--interface)
+	get
+	exit 0
+	;;
 *)
 	echo "Usage: $0 | --icon | --name | --state | --download | --upload "
 	exit 1

@@ -1,0 +1,48 @@
+(defvar ram-reveal false)
+
+(defwidget ram []
+  (eventbox
+    :onhover "eww update ram-reveal=true"
+    :onhoverlost "eww update ram-reveal=false"
+    :tooltip "RAM usage"
+    (box
+      :class 'RAM-box'
+      :orientation "h"
+      :space-evenly false
+      :valign "center"
+      :halign "end"
+      :tooltip "RAM"
+      :spacing 3
+      (label
+        :class "ram-icon-${EWW_RAM.used_mem_perc > 50 ? EWW_RAM.used_mem_perc > 90 ? 'critical' : 'warning' : 'normal'}"
+        :markup " "
+      )
+      (revealer
+        :reveal "${!ram-reveal}"
+        :transition "slideleft"
+        :duration "350ms"
+        :valign "center"
+        (label
+          :class "ram-value-${EWW_RAM.used_mem_perc > 50 ? EWW_RAM.used_mem_perc > 90 ? 'critical' : 'warning' : 'normal'}"
+          :markup "${round(EWW_RAM.used_mem_perc, 1)}%"
+        )
+      )
+      (revealer
+        :reveal ram-reveal
+        :transition "slideright"
+        :duration "350ms"
+        :valign "center"
+        (graph
+          :class "ram-graph-${EWW_RAM.used_mem_perc > 50 ? EWW_RAM.used_mem_perc > 90 ? 'critical' : 'warning' : 'normal'}"
+          :thickness 3
+          :value "${round(EWW_RAM.used_mem_perc, 3)}"
+          :time-range "20s"
+          :min 0
+          :max 100
+          :dynamic true
+          :line-style "round"
+        )
+      )
+    )
+  )
+)

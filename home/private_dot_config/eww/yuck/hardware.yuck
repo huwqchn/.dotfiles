@@ -1,0 +1,19 @@
+(include "yuck/cpu.yuck")
+(include "yuck/ram.yuck")
+(include "yuck/disk.yuck")
+(include "yuck/temperature.yuck")
+
+(defwidget hardware []
+  (box
+    :orientation "h"
+    :space-evenly false
+    :class "hardware"
+    :valign "center"
+    :halign "start"
+    :spacing 15
+    (temperature)
+    (cpu)
+    (ram)
+    (disk)
+  )
+)

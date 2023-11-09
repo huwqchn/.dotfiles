@@ -243,3 +243,8 @@ window {
     // max-height: 0.4em;
   }
 }
+
+.hardware {
+  @include box-setup;
+  margin: 0 0.5em 0 0.5em;
+}

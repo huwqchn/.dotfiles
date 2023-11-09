@@ -5,6 +5,7 @@
 (include "yuck/date.yuck")
 (include "yuck/controller.yuck")
 (include "yuck/vpn.yuck")
+(include "yuck/hardware.yuck")
 
 ;; TODO: get workspaces and layout add in a group
 ;; TODO: make music not show up when no player
@@ -49,6 +50,7 @@
     :orientation "h"
     :halign "end"
     :space-evenly false
+    (hardware)
     (controller)
     (power)
   )
@@ -74,7 +76,7 @@
               :height "25px"
               :anchor "top center"
             )
-  :stacking "fg"
+  :stacking "bg"
   :reserve (struts :distance "35px" :side "top")
   :windowtype "dock"
   :wm-ignore false

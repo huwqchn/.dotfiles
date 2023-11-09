@@ -1,0 +1,57 @@
+#!/bin/bash
+value() {
+	temp=$(sensors | grep 'Package id 0:\|Tdie' | grep ':[ ]*+[0-9]*.[0-9]*°C' -o | grep '[0-9]*.[0-9]*°C' -o)
+	temp=${temp::-4}
+	echo "$temp"
+}
+
+icon() {
+	local val=$(value)
+	if [[ $val -gt 100 ]]; then
+		icon=" "
+	elif [ $val -gt 80 ]; then
+		icon=" "
+	elif [ $val -gt 60 ]; then
+		icon=" "
+	elif [ $val -gt 40 ]; then
+		icon=" "
+	else
+		icon=" "
+	fi
+	echo $icon
+}
+
+state() {
+	local val=$(value)
+	if [[ $val -gt 100 ]]; then
+		level="critical"
+	elif [ $val -gt 80 ]; then
+		level="warning"
+	elif [ $val -gt 60 ]; then
+		level="high"
+	elif [ $val -gt 40 ]; then
+		level="medium"
+	else
+		level="low"
+	fi
+	echo $level
+}
+
+case "$1" in
+--value)
+	value
+	exit 0
+	;;
+--icon)
+	icon
+	exit 0
+	;;
+--state)
+	state
+	exit 0
+	;;
+*)
+	echo "Usage: $0 --icon | --value | state"
+	exit 1
+	;;
+esac
