@@ -268,7 +268,6 @@ window {
     font-family: "JetBrainsMono Nerd Font";
     font-size: 0.5em;
     color: $green-alt;
-    // max-height: 0.4em;
   }
 }
 
@@ -279,6 +278,13 @@ window {
 
 @mixin hardware-value-setup {
   font-family: "JetBrainsMono Nerd Font";
+}
+
+@mixin graph-setup {
+  background-color: $bg-alt;
+  border-radius: 5px;
+  min-height: 1.3rem;
+  border: solid 2px $fg;
 }
 
 .hardware {
@@ -292,20 +298,33 @@ window {
     @include hardware-icon-setup;
   }
 
+  .temperature-graph-low,
+  .temperature-graph-medium,
+  .temperature-graph-high,
+  .temperature-graph-warning,
+  .temperature-graph-critical {
+    @include graph-setup;
+  }
+
+  .temperature-graph-low,
   .temperature-icon-low {
     color: $blue-alt;
   }
 
+  .temperature-graph-high,
+  .temperature-graph-medium,
   .temperature-icon-high,
   .temperature-icon-medium {
     color: $yellow;
   }
 
+  .temperature-graph-warning,
   .temperature-icon-warning {
     color: $yellow-alt;
   }
 
-  .temnperature-icon-critical {
+  .temperature-graph-critical,
+  .temperature-icon-critical {
     color: $red-alt;
   }
 
@@ -337,14 +356,23 @@ window {
     @include hardware-icon-setup;
   }
 
+  .CPU-graph-normal,
+  .CPU-graph-warning,
+  .CPU-graph-critical {
+    @include graph-setup;
+  }
+
+  .CPU-graph-normal,
   .CPU-icon-normal {
     color: $cyan-alt;
   }
 
+  .CPU-graph-warning,
   .CPU-icon-warning {
     color: $yellow-alt;
   }
 
+  .CPU-graph-critical,
   .CPU-icon-critical {
     color: $red-alt;
   }
@@ -370,14 +398,23 @@ window {
     @include hardware-icon-setup;
   }
 
+  .RAM-graph-normal,
+  .RAM-graph-warning,
+  .RAM-graph-critical {
+    @include graph-setup;
+  }
+
+  .RAM-graph-normal,
   .RAM-icon-normal {
     color: $purple-alt;
   }
 
+  .RAM-graph-warning,
   .RAM-icon-warning {
     color: $yellow-alt;
   }
 
+  .RAM-graph-critical,
   .RAM-icon-critical {
     color: $red-alt;
   }
@@ -428,5 +465,31 @@ window {
 
   .disk-value-critical {
     color: $red;
+  }
+
+  .disk-bar-icon-noraml,
+  .disk-bar-icon-warning,
+  .disk-bar-icon-critical,
+  .disk-bar-noraml,
+  .disk-bar-warning,
+  .disk-bar-critical {
+    background-color: #38384d;
+    border-radius: 10px;
+    font-size: 2em;
+  }
+
+  .disk-bar-icon-noraml,
+  .disk-bar-normal {
+    color: $green-alt;
+  }
+
+  .disk-bar-icon-warning,
+  .disk-bar-warning {
+    color: $yellow-alt;
+  }
+
+  .disk-bar-icon-critical,
+  .disk-bar-critical {
+    color: $red-alt;
   }
 }

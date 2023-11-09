@@ -18,18 +18,39 @@
       :space-evenly false
       :valign "center"
       :halign "end"
-      (label
-        :class "battery-${battery-state}"
-        :markup battery-icon
-      )
       ; (revealer
-      ;   :transiton "slideright"
+      ;   :transiton "slideup"
+      ;   :revael "${!battery-reveal}"
+      ;   :duration "350ms"
+      ;   :valign "center"
+        (label
+          :class "battery-${battery-state}"
+          :limit-width 2
+          :tooltip "battery on ${battery-percent}%"
+          :show_truncated false
+          :wrap false
+          :markup battery-icon
+        )
+      ; )
+      ; (revealer
+      ;   :transiton "slideup"
       ;   :revael battery-reveal
       ;   :duration "350ms"
+      ;   :valign "center"
       ;   (circular-progress
-      ;     :class "battery-bar"
-      ;     :thickness 4
       ;     :value battery-percent
+      ;     :class "battery-bar"
+      ;     :start-angle 0
+      ;     :thickness 3
+      ;     (button
+      ;       :class "battery-${battery-state}"
+      ;       :limit-width 2
+      ;       :tooltip "battery on ${battery-percent}%"
+      ;       :show_truncated false
+      ;       :onclick "scripts/pop-system"
+      ;       :wrap false
+      ;       battery-icon
+      ;     )
       ;   )
       ; )
     )
