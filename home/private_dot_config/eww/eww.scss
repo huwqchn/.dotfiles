@@ -244,7 +244,161 @@ window {
   }
 }
 
+@mixin hardware-icon-setup {
+  font-size: 1.1em;
+  min-width: 1.1em;
+}
+
+@mixin hardware-value-setup {
+  font-family: "JetBrainsMono Nerd Font";
+}
+
 .hardware {
   @include box-setup;
   margin: 0 0.5em 0 0.5em;
+  .temperature-icon-low,
+  .temperature-icon-medium,
+  .temperature-icon-high,
+  .temperature-icon-warning,
+  .temperature-icon-critical {
+    @include hardware-icon-setup;
+  }
+
+  .temperature-icon-low {
+    color: $blue-alt;
+  }
+
+  .temperature-icon-high,
+  .temperature-icon-medium {
+    color: $yellow;
+  }
+
+  .temperature-icon-warning {
+    color: $yellow-alt;
+  }
+
+  .temnperature-icon-critical {
+    color: $red-alt;
+  }
+
+  .temperature-value-low,
+  .tmperature-value-medium,
+  .temperature-value-high,
+  .temperature-value-warning,
+  .temperature-value-critical {
+    @include hardware-value-setup;
+  }
+
+  .temperature-value-low,
+  .tmperature-value-medium,
+  .temperature-value-high {
+    color: $fg;
+  }
+
+  .temperature-value-warning {
+    color: $yellow;
+  }
+
+  .temperature-value-critical {
+    color: $red;
+  }
+
+  .CPU-icon-normal,
+  .CPU-icon-warning,
+  .CPU-icon-critical {
+    @include hardware-icon-setup;
+  }
+
+  .CPU-icon-normal {
+    color: $cyan-alt;
+  }
+
+  .CPU-icon-warning {
+    color: $yellow-alt;
+  }
+
+  .CPU-icon-critical {
+    color: $red-alt;
+  }
+
+  .CPU-value-normal,
+  .CPU-value-warning,
+  .CPU-value-critical {
+    @include hardware-value-setup;
+  }
+
+  .CPU-value-normal,
+  .CPU-value-warning {
+    color: $fg;
+  }
+
+  .CPU-value-critical {
+    color: $red;
+  }
+
+  .RAM-icon-normal,
+  .RAM-icon-warning,
+  .RAM-icon-critical {
+    @include hardware-icon-setup;
+  }
+
+  .RAM-icon-normal {
+    color: $purple-alt;
+  }
+
+  .RAM-icon-warning {
+    color: $yellow-alt;
+  }
+
+  .RAM-icon-critical {
+    color: $red-alt;
+  }
+
+  .RAM-value-normal,
+  .RAM-value-warning,
+  .RAM-value-critical {
+    @include hardware-value-setup;
+  }
+
+  .RAM-value-normal,
+  .RAM-value-warning {
+    color: $fg;
+  }
+
+  .RAM-value-critical {
+    color: $red;
+  }
+
+  .disk-icon-normal,
+  .disk-icon-warning,
+  .disk-icon-critical {
+    @include hardware-icon-setup;
+  }
+
+  .disk-icon-normal {
+    color: $green-alt;
+  }
+
+  .disk-icon-warning {
+    color: $yellow-alt;
+  }
+
+  .disk-icon-critical {
+    color: $red-alt;
+  }
+
+  .disk-value-normal,
+  .disk-value-warning,
+  .disk-value-critical {
+    @include hardware-value-setup;
+  }
+
+  .disk-value-normal,
+  .disk-value-warning {
+    color: $fg;
+  }
+
+  .disk-value-critical {
+    color: $red;
+  }
 }

@@ -14,7 +14,7 @@
       :tooltip "RAM"
       :spacing 3
       (label
-        :class "ram-icon-${EWW_RAM.used_mem_perc > 50 ? EWW_RAM.used_mem_perc > 90 ? 'critical' : 'warning' : 'normal'}"
+        :class "RAM-icon-${EWW_RAM.used_mem_perc > 50 ? EWW_RAM.used_mem_perc > 90 ? 'critical' : 'warning' : 'normal'}"
         :markup " "
       )
       (revealer
@@ -23,7 +23,7 @@
         :duration "350ms"
         :valign "center"
         (label
-          :class "ram-value-${EWW_RAM.used_mem_perc > 50 ? EWW_RAM.used_mem_perc > 90 ? 'critical' : 'warning' : 'normal'}"
+          :class "RAM-value-${EWW_RAM.used_mem_perc > 50 ? EWW_RAM.used_mem_perc > 90 ? 'critical' : 'warning' : 'normal'}"
           :markup "${round(EWW_RAM.used_mem_perc, 1)}%"
         )
       )
@@ -33,7 +33,7 @@
         :duration "350ms"
         :valign "center"
         (graph
-          :class "ram-graph-${EWW_RAM.used_mem_perc > 50 ? EWW_RAM.used_mem_perc > 90 ? 'critical' : 'warning' : 'normal'}"
+          :class "RAM-graph-${EWW_RAM.used_mem_perc > 50 ? EWW_RAM.used_mem_perc > 90 ? 'critical' : 'warning' : 'normal'}"
           :thickness 3
           :value "${round(EWW_RAM.used_mem_perc, 3)}"
           :time-range "20s"
