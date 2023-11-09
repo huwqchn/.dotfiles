@@ -6,55 +6,47 @@
     :onhoverlost "eww update disk-reveal=false"
     :tooltip "disk usage"
     (box
-      :orientation "v"
+      :class "disk-box"
+      :orientation "h"
       :space-evenly false
-      :valign "full"
-      :halign "full"
-      (revealer
-        :reveal "${!disk-reveal}"
-        :transition "slidedown"
-        :duration "350ms"
+      :valign "center"
+      :halign "end"
+      :tooltip "disk"
+      (label
+        :class "disk-icon-${EWW_DISK['/'].used_perc > 50 ? EWW_DISK['/'].used_perc > 90 ? 'critical' : 'warning' : 'normal'}"
+        :markup "󰋊 "
+      )
+      (box
+        :orientation "v"
+        :space-evenly false
+        :vexpand false
+        :hexpand false
         :valign "center"
-        :halign "center"
-        (box
-          :class 'disk-box'
-          :orientation "h"
-          :space-evenly false
+        (revealer
+          :reveal "${!disk-reveal}"
+          :transition "slidedown"
+          :duration "350ms"
           :valign "center"
-          :halign "end"
-          (label
-            :class "disk-icon-${EWW_DISK['/'].used_perc > 50 ? EWW_DISK['/'].used_perc > 90 ? 'critical' : 'warning' : 'normal'}"
-            :markup "󰋊 "
-          )
           (label
             :class "disk-value-${EWW_DISK['/'].used_perc > 50 ? EWW_DISK['/'].used_perc > 90 ? 'critical' : 'warning' : 'normal'}"
             :markup "${round(EWW_DISK['/'].used_perc, 1)}%"
           )
         )
-      )
-      (revealer
-        :reveal disk-reveal
-        :transition "slideup"
-        :duration "350ms"
-        (box
-          :orientation "h"
-          :vexpand false
-          :hexpand false
-          :valign "center"
-          :halign "center"
-          :space-evenly false
-          (circular-progress
-            :class "disk-bar-${EWW_DISK['/'].used_perc > 50 ? EWW_DISK['/'].used_perc > 90 ? 'critical' : 'warning' : 'normal'}"
-            :thickness 4
-            :start-angle 0
-            :value "${round(EWW_DISK['/'].used_perc, 3)}"
-            (label
-              :class "disk-bar-icon-${EWW_DISK['/'].used_perc > 50 ? EWW_DISK['/'].used_perc > 90 ? 'critical' : 'warning' : 'normal'}"
-              :limit-width 2
-              :tooltip "Disk usage: ${EWW_DISK['/'].used_perc}%"
-              :show_truncated false
-              :wrap false
-              :markup ""
+        (revealer
+          :reveal disk-reveal
+          :transition "slideup"
+          :duration "350ms"
+          (box
+            :valign "center"
+            :class "disk-graph-${EWW_DISK['/'].used_perc > 50 ? EWW_DISK['/'].used_perc > 90 ? 'critical' : 'warning' : 'normal'}"
+            (graph
+              :thickness 3
+              :value "${round(EWW_DISK['/'].used_perc, 3)}"
+              :time-range "3d"
+              :min 0
+              :max 100
+              :dynamic true
+              :line-style "round"
             )
           )
         )

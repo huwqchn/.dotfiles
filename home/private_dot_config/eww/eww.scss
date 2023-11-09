@@ -435,20 +435,29 @@ window {
     color: $red;
   }
 
+  .disk-graph-normal,
+  .disk-graph-warning,
+  .disk-graph-critical {
+    @include graph-setup;
+  }
+
   .disk-icon-normal,
   .disk-icon-warning,
   .disk-icon-critical {
     @include hardware-icon-setup;
   }
 
+  .disk-graph-normal,
   .disk-icon-normal {
     color: $green-alt;
   }
 
+  .disk-graph-warning,
   .disk-icon-warning {
     color: $yellow-alt;
   }
 
+  .disk-graph-critical,
   .disk-icon-critical {
     color: $red-alt;
   }
@@ -466,31 +475,5 @@ window {
 
   .disk-value-critical {
     color: $red;
-  }
-
-  .disk-bar-icon-noraml,
-  .disk-bar-icon-warning,
-  .disk-bar-icon-critical,
-  .disk-bar-noraml,
-  .disk-bar-warning,
-  .disk-bar-critical {
-    background-color: #38384d;
-    border-radius: 10px;
-    font-size: 2em;
-  }
-
-  .disk-bar-icon-noraml,
-  .disk-bar-normal {
-    color: $green-alt;
-  }
-
-  .disk-bar-icon-warning,
-  .disk-bar-warning {
-    color: $yellow-alt;
-  }
-
-  .disk-bar-icon-critical,
-  .disk-bar-critical {
-    color: $red-alt;
   }
 }

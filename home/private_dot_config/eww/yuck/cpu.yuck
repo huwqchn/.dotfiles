@@ -6,7 +6,7 @@
     :onhoverlost "eww update cpu-reveal=false"
     :tooltip "CPU usage"
     (box
-      :class 'CPU-box'
+      :class "CPU-box"
       :orientation "h"
       :space-evenly false
       :valign "center"
