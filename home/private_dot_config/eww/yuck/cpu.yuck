@@ -17,30 +17,40 @@
         :class "CPU-icon-${EWW_CPU.avg > 50 ? EWW_CPU.avg > 90 ? 'critical' : 'warning' : 'normal'}"
         :markup " "
       )
-      (revealer
-        :reveal "${!cpu-reveal}"
-        :transition "slideleft"
-        :duration "350ms"
+      (box
+        :orientation "v"
+        :space-evenly false
+        :vexpand false
+        :hexpand false
         :valign "center"
-        (label
-          :class "CPU-value-${EWW_CPU.avg > 50 ? EWW_CPU.avg > 90 ? 'critical' : 'warning' : 'normal'}"
-          :markup "${round(EWW_CPU.avg, 1)}%"
+        (revealer
+          :reveal "${!cpu-reveal}"
+          :transition "slidedown"
+          :duration "350ms"
+          :valign "center"
+          (label
+            :class "CPU-value-${EWW_CPU.avg > 50 ? EWW_CPU.avg > 90 ? 'critical' : 'warning' : 'normal'}"
+            :markup "${round(EWW_CPU.avg, 1)}%"
+          )
         )
-      )
-      (revealer
-        :reveal cpu-reveal
-        :transition "slideright"
-        :duration "350ms"
-        :valign "center"
-        (graph
-          :class "CPU-graph-${EWW_CPU.avg > 50 ? EWW_CPU.avg > 90 ? 'critical' : 'warning' : 'normal'}"
-          :thickness 3
-          :value "${round(EWW_CPU.avg, 3)}"
-          :time-range "20s"
-          :min 0
-          :max 100
-          :dynamic true
-          :line-style "round"
+        (revealer
+          :reveal cpu-reveal
+          :transition "slideup"
+          :duration "350ms"
+          :valign "center"
+          (box
+            :valign "center"
+            :class "CPU-graph-${EWW_CPU.avg > 50 ? EWW_CPU.avg > 90 ? 'critical' : 'warning' : 'normal'}"
+            (graph
+              :thickness 3
+              :value "${round(EWW_CPU.avg, 3)}"
+              :time-range "20s"
+              :min 0
+              :max 100
+              :dynamic true
+              :line-style "round"
+            )
+          )
         )
       )
     )

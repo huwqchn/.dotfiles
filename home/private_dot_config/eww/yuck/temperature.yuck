@@ -14,35 +14,45 @@
       :valign "center"
       :halign "end"
       :tooltip "temperature"
-      :spacing 5
+      :spacing 3
       (label
         :class "temperature-icon-${temperature-state}"
         :markup "${temperature-icon}"
       )
-      (revealer
-        :reveal "${!temperature-reveal}"
-        :transition "slideleft"
-        :duration "350ms"
+      (box
+        :orientation "v"
+        :space-evenly false
+        :vexpand false
+        :hexpand false
         :valign "center"
-        (label
-          :class "temperature-value-${temperature-state}"
-          :markup "${temperature-value}°C"
+        (revealer
+          :reveal "${!temperature-reveal}"
+          :transition "slidedown"
+          :duration "350ms"
+          :valign "center"
+          (label
+            :class "temperature-value-${temperature-state}"
+            :markup "${temperature-value}°C"
+          )
         )
-      )
-      (revealer
-        :reveal temperature-reveal
-        :transition "slideright"
-        :duration "350ms"
-        :valign "center"
-        (graph
-          :class "temperature-graph-${temperature-state}"
-          :thickness 3
-          :value temperature-value
-          :time-range "20s"
-          :min 0
-          :max 120
-          :dynamic true
-          :line-style "round"
+        (revealer
+          :reveal temperature-reveal
+          :transition "slideup"
+          :duration "350ms"
+          :valign "center"
+          (box
+            :valign "center"
+            :class "temperature-graph-${temperature-state}"
+            (graph
+              :thickness 3
+              :value temperature-value
+              :time-range "20s"
+              :min 0
+              :max 120
+              :dynamic true
+              :line-style "round"
+            )
+          )
         )
       )
     )

@@ -272,8 +272,9 @@ window {
 }
 
 @mixin hardware-icon-setup {
-  font-size: 1.1em;
-  min-width: 1.1em;
+  font-size: 1.1rem;
+  padding-top: 0.1rem;
+  font-family: "JetBrainsMono Nerd Font";
 }
 
 @mixin hardware-value-setup {
@@ -329,7 +330,7 @@ window {
   }
 
   .temperature-value-low,
-  .tmperature-value-medium,
+  .temperature-value-medium,
   .temperature-value-high,
   .temperature-value-warning,
   .temperature-value-critical {
@@ -337,7 +338,7 @@ window {
   }
 
   .temperature-value-low,
-  .tmperature-value-medium,
+  .temperature-value-medium,
   .temperature-value-high {
     color: $fg;
   }
