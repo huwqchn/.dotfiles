@@ -19,14 +19,15 @@
         volume-icon
       )
       (revealer
-        :transition "slideright"
         :reveal volume-reveal
+        :transition "slideright"
         :duration "350ms"
+        :valign "center"
         (scale
           :class "volume-bar"
           :value volume-percent
           :orientation "h"
-          :tooltip "${volume-percent}%"
+          :tooltip "Volume: ${volume-percent}%"
           :max 100
           :min 0
           :onchange "amixer -D pulse sset Master {}%"

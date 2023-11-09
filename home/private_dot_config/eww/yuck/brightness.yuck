@@ -19,14 +19,15 @@
         :markup "${brightness-icon}"
       )
       (revealer
-        :transition "slideup"
         :reveal brightness-reveal
+        :transition "slideright"
         :duration "350ms"
+        :valign "center"
         (scale
           :class "brightness-bar"
           :value brightness-percent
           :orientation "h"
-          :tooltip "${brightness-percent}%"
+          :tooltip "Brightness: ${brightness-percent}%"
           :max 100
           :min 0
           :onchange "brightnessctl set {}%"

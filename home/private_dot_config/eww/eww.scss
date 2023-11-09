@@ -217,6 +217,34 @@ window {
     color: $cyan-alt;
   }
 
+  scale trough {
+    all: unset;
+    background-color: #22242b;
+    box-shadow: 0 2px 3px 2px #06060b;
+    border-radius: 16px;
+    min-height: 10px;
+    min-width: 70px;
+    margin: 0px 10px 0px 0px;
+  }
+  .brightness-bar trough highlight {
+    background-image: linear-gradient(
+      to right,
+      #e4c9af 30%,
+      #f2cdcd 50%,
+      #e0b089 100% * 50
+    );
+    border-radius: 10px;
+  }
+  .volume-bar trough highlight {
+    background-image: linear-gradient(
+      to right,
+      #afcee0 30%,
+      #a1bdce 50%,
+      #77a5bf 100% * 50
+    );
+    border-radius: 10px;
+  }
+
   .wifi--1,
   .wifi-0,
   .wifi-1,
