@@ -19,9 +19,6 @@
 ;; TODO: calender window
 ;; TODO: dashboard window
 ;; TODO: lock window
-;; TODO: right bar basic system modules group: battery wifi volume brightness bluetooth(optional) system-tray(optional)
-;; TODO: right bar hardware modules(reveal): cpu(graph) ram(graph) disk(scale) temperature(graph)
-;; TODO: left bar tools: screenshot colorpick screenrecord vpn
 ;; TODO: change layout png
 
 
