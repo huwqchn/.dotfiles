@@ -4,7 +4,7 @@
 (defpoll brightness-state :interval "1s" "scripts/brightness-info --state")
 (defwidget brightness []
   (eventbox
-    :active "${brightness-state} != Unknown"
+    :visible "${brightness-state} != Unknown"
     :onhover "eww update brightness-reveal=true"
     :onhoverlost "eww update brightness-reveal=false"
     :cursor "pointer"

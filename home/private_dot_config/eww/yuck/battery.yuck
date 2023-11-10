@@ -7,7 +7,7 @@
 
 (defwidget battery []
   (eventbox
-    :active battery-active
+    :visible battery-active
     :onhover "eww update battery-reveal=true"
     :onhoverlost "eww update battery-reveal=false"
     :cursor "pointer"

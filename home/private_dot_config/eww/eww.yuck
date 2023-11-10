@@ -59,7 +59,7 @@
 )
 
 (defwidget bar []
-  (box
+  (centerbox
     :orientation "h"
     :class "bar"
     (bar-start)
