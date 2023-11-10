@@ -19,7 +19,7 @@
         :markup "${brightness-icon}"
       )
       (revealer
-        :reveal brightness-reveal
+        :reveal "${brightness-reveal && brightness-state != "Unknown"}"
         :transition "slideright"
         :duration "350ms"
         :valign "center"
