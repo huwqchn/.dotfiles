@@ -47,7 +47,11 @@
       - fcitx5-gtk
       - fcitx5-material-color
       - fcitx5-pinyin-moegirl
-      - fcitx5-pinyin-zhwiki - fcitx5-rime - fd - ffmpegthumbs
+      - fcitx5-pinyin-zhwiki
+      - fcitx5-rime
+      - fd
+      - ffmpegthumbs
+      - ffmpegthumbnailer
       - firefox
       - fish
       - flake8
