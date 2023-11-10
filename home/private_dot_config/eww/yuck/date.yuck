@@ -1,6 +1,9 @@
 (defvar date-reveal false)
 (defpoll hour :interval "1s" "date '+%I'")
 (defpoll minutes :interval "1s" "date '+%M'")
+(defpoll day :interval "20h" "date '+%d'")
+(defpoll year :interval "20h" "date '+%Y'")
+(defpoll month :interval "20h" "date '+%m'")
 (defpoll type :interval "1s" "date '+%p'")
 (defpoll date :interval "1s" "date '+ %a, %b %d'")
 
@@ -37,4 +40,35 @@
       )
     )
   )
+)
+
+(defwidget cal []
+  (box
+    :class "calendar"
+    :orientation "h"
+    :valign "fill"
+    :halign "fill"
+    (calendar
+      :day day
+      :month month
+      :year year
+      :show-details true
+      :show-heading true
+      :show-day-names true
+    )
+  )
+)
+
+(defwindow calendar
+  :geometry
+    (geometry
+      :anchor: "center top"
+      :x "764px"
+      :y "35px"
+      :width "15%"
+      :height "20%"
+    )
+  :stacking "fg"
+  :wm-ignore false
+  (cal)
 )

@@ -43,10 +43,10 @@ low_power_alert_animation() {
 
 state() {
 	local capacity=$(percentage)
-	if [[ $capacity -ge 80 ]]; then
+	if [[ $capacity -gt 80 ]]; then
 		echo "High"
-	elif [[ $capactiy -ge 20 ]]; then
-		echo "Midium"
+	elif [[ $capacity -gt 20 ]]; then
+		echo "Medium"
 	else
 		echo "Low"
 	fi
