@@ -8,8 +8,6 @@
 (include "yuck/hardware.yuck")
 (include "yuck/weather.yuck")
 
-;; TODO: get workspaces and layout add in a group
-;; TODO: make music not show up when no player
 ;; TODO: popup-player scrpits
 ;; TODO: popup-dashboard scripts
 ;; TODO: popup-calender scripts
@@ -19,7 +17,6 @@
 ;; TODO: calender window
 ;; TODO: dashboard window
 ;; TODO: lock window
-;; TODO: change layout png
 
 
 (defwidget bar-start []
@@ -29,6 +26,7 @@
     :space-evenly false
     (launcher)
     (workspaces)
+    (layout)
     (music)
     (vpn)
   )

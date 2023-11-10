@@ -1,4 +1,19 @@
 (deflisten workspaces "scripts/bspwm-workspaces")
+(deflisten layout "scripts/bspwm-layout")
+(defvar layout-icon " ")
 (defwidget workspaces []
   (literal :content workspaces)
+)
+
+(defwidget layout []
+  (eventbox
+    :cursor "pointer"
+    :class "${layout}"
+    (button
+      :class "layout"
+      :tooltip "Change current layout"
+      :onclick "bspc desktop focused --layout next"
+      layout-icon
+    )
+  )
 )
