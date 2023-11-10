@@ -1,4 +1,5 @@
 (defvar weather-reveal false)
+(defpoll weather-get :interval "10m" "scripts/weather-info --get")
 (defpoll weather-icon	:interval "10m"  "scripts/weather-info --icon")
 (defpoll weather-code :interval "10m" "scripts/weather-info --code")
 (defpoll weathere-temperature	:interval "10m"  "scripts/weather-info --temp")

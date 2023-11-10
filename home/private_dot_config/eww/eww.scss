@@ -249,6 +249,8 @@ window {
     @include control-setup;
     color: $gray-alt;
   }
+  .battery-Full,
+  .battery-Charging,
   .battery-High {
     @include control-setup;
     color: $green-alt;
@@ -261,6 +263,7 @@ window {
     @include control-setup;
     color: $red-alt;
   }
+
   .brightness-High {
     @include control-setup;
     color: $yellow-alt;

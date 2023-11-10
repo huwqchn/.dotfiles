@@ -21,11 +21,11 @@ status() {
 
 charging_animation() {
 	local icons=("󰢟 " "󰢜 " "󰂆 " "󰂇 " "󰂈 " "󰢝 " "󰂉 " "󰢞 " "󰂊 " "󰂋 " "󰂅 ")
-	while [[ "$(status)" != "Full" ]]; do
+	while [[ "$(status)" == "Charging" ]]; do
 		for icon in "${icons[@]}"; do
 			eww update battery-icon="$icon"
-			eww update battery-percentage="$(percentage)"
-			sleep 0.3
+			eww update battery-percent="$(percentage)"
+			sleep 0.5
 		done
 	done
 }
@@ -35,8 +35,8 @@ low_power_alert_animation() {
 	while [[ "$(status)" == "Discharging" ]]; do
 		for icon in "${icons[@]}"; do
 			eww update battery-icon="$icon"
-			eww update battery-percentage="$(percentage)"
-			sleep 0.3
+			eww update battery-percent="$(percentage)"
+			sleep 0.5
 		done
 	done
 }
@@ -56,7 +56,7 @@ update() {
 	while true; do
 		local icon
 		eww update battery-state="$(state)"
-		eww update battery-percentage="$(percentage)"
+		eww update battery-percent="$(percentage)"
 		if [[ "$(status)" == "Charging" ]]; then
 			eww update battery-state="Charging"
 			charging_animation
