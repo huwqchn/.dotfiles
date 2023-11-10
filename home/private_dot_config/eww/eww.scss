@@ -161,12 +161,79 @@ window {
 }
 
 .time {
+  font-family: "JetBrainsMono Nerd Font";
   font-size: 1.5em;
   color: $fg;
 }
 
 .date {
+  font-family: "JetBrainsMono Nerd Font";
+  font-size: 1.2em;
+  color: $fg;
+}
+
+.weather-50d,
+.weather-50n,
+.weather-01d,
+.weather-01n,
+.weather-02d,
+.weather-02n,
+.weather-03d,
+.weather-03n,
+.weather-04d,
+.weather-04n,
+.weather-09d,
+.weather-09n,
+.weather-10d,
+.weather-10n,
+.weather-11d,
+.weather-11n,
+.weather-13d,
+.weather-13n {
+  font-weight: bold;
   font-size: 1.5em;
+}
+
+.weather-50d,
+.weather-50n,
+.weather-09d,
+.weather-09n,
+.weather-10d,
+.weather-10n {
+  color: $blue;
+}
+
+.weather-01d,
+.weather-11n,
+.weather-11d {
+  color: $yellow;
+}
+
+.weather-01n {
+  color: $purple;
+}
+
+.weather-02d,
+.weather-02n,
+.weather-03d,
+.weather-03n,
+.weather-04d,
+.weather-04n {
+  color: $white;
+}
+
+.weather-13d,
+.weather-13n {
+  color: $fg;
+}
+
+.weather-x {
+  color: $gray-alt;
+}
+
+.weather-label {
+  font-family: "JetBrainsMono Nerd Font";
+  font-size: 0.8em;
   color: $fg;
 }
 

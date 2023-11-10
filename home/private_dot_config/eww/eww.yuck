@@ -6,6 +6,7 @@
 (include "yuck/controller.yuck")
 (include "yuck/vpn.yuck")
 (include "yuck/hardware.yuck")
+(include "yuck/weather.yuck")
 
 ;; TODO: get workspaces and layout add in a group
 ;; TODO: make music not show up when no player
@@ -41,6 +42,7 @@
     :orientation "h"
     :halign "center"
     :space-evenly false
+    (weather)
     (time)
   )
 )

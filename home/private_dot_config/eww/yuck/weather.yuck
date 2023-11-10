@@ -1,0 +1,40 @@
+(defvar weather-reveal false)
+(defpoll weather-icon	:interval "10m"  "scripts/weather-info --icon")
+(defpoll weather-code :interval "10m" "scripts/weather-info --code")
+(defpoll weathere-temperature	:interval "10m"  "scripts/weather-info --temp")
+(defpoll weather-stat :interval "10m"  "scripts/weather-info --stat")
+
+(defwidget weather []
+  (eventbox
+    :tooltip "Current weather: ${weather-stat}, ${weathere-temperature}"
+    :onhover "eww update weather-reveal=true"
+    :onhoverlost "eww update weather-reveal=false"
+    :cursor "pointer"
+    (button
+      :onclick "scripts/popup-weather"
+      (box
+        :class "weather-box"
+        :space-evenly false
+        :orientation "h"
+        :valign "center"
+        :halign "fill"
+        (label
+          :valign "center"
+          :class "weather-${weather-code}"
+          :markup "${weather-icon}"
+        )
+        (revealer
+          :reveal weather-reveal
+          :transition "slideright"
+          :duration "350ms"
+          :valign "fill"
+          (label
+            :valign "fill"
+            :class "weather-label"
+            :markup "<span font-weight=\"heavy\">${weathere-temperature}</span><span font-size=\"xx-small\"> ${weather-stat}</span>"
+          )
+        )
+      )
+    )
+  )
+)
