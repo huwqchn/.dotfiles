@@ -17,6 +17,11 @@ sleep 10 && $HOME/.config/bspwm/scripts/bspfloat floating 5 &
 $HOME/.scripts/inverse-scroll.sh &
 # $HOME/.config/polybar/launch.sh &
 $HOME/.config/conky/Auva/start.sh &
+if [ ! -d "$HOME/.config/glava" ]; then
+	glava --copy-config &
+fi
+glava --desktop &
+
 $HOME/.config/eww/launch.sh &
 xfce4-power-manager &
 ukui-window-switch &
