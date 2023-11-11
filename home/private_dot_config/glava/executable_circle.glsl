@@ -1,17 +1,17 @@
 /* center radius (pixels) */
-#define C_RADIUS 128
+#define C_RADIUS 667
 /* center line thickness (pixels) */
-#define C_LINE 1.5
+#define C_LINE 3
 /* outline color */
-#define OUTLINE #333333
+#define OUTLINE #7dcfff
 /* Amplify magnitude of the results each bar displays */
-#define AMPLIFY 150
+#define AMPLIFY 300
 /* Angle (in radians) for how much to rotate the visualizer */
 #define ROTATE (PI / 2)
 /* Whether to switch left/right audio buffers */
 #define INVERT 0
 /* Whether to fill in the space between the line and inner circle */
-#define C_FILL 0
+#define C_FILL 1
 /* Whether to apply a post-processing image smoothing effect
    1 to enable, 0 to disable. Only works with `xroot` transparency,
    and improves performance if disabled. */
