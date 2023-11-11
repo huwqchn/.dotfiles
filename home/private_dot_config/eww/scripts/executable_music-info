@@ -1,7 +1,5 @@
 #!/bin/bash
 
-limit_width=12
-
 # Selects player based on if they're playing or if they have a cover
 # Note: Being played takes priority
 select_player() {
@@ -27,6 +25,7 @@ select_player() {
 update_cover() {
 	newimg="$1"
 	imgdir="$2"
+	title="$3"
 	if [[ -z $newimg ]]; then
 		newimg="$imgdir/music.png"
 		cp "$newimg" "$imgdir/current_music.png"
@@ -36,13 +35,18 @@ update_cover() {
 		cp "$newimg_path" "$imgdir/current_music.png"
 		echo "Image is a file, successfully copied"
 	else
-		echo "Image is an url, trying to download..."
-		if curl "$newimg" -o "/tmp/current_music.png" -s --max-time 5; then
-			convert "/tmp/current_music.png" -resize 130x130 "$imgdir/current_music.png"
-			echo "Image successfully downloaded"
+		temp_img="$HOMO/.cache/temp-${title}.png"
+		if [[ -f temp_img ]]; then
+			cp "$temp_img" "$imgdir/current_music.png"
 		else
-			cp "$imgdir/music.png" "$imgdir/current_music.png"
-			echo "Failed to download image, using template"
+			echo "Image is an url, trying to download..."
+			if curl "$newimg" -o "/tmp/current_music.png" -s --max-time 5; then
+				convert "/tmp/current_music.png" -resize 130x130 "$imgdir/current_music.png"
+				echo "Image successfully downloaded"
+			else
+				cp "$imgdir/music.png" "$imgdir/current_music.png"
+				echo "Failed to download image, using template"
+			fi
 		fi
 	fi
 	eww update music-cover="$imgdir/current_music.png"
@@ -102,10 +106,9 @@ while true; do
 			done
 
 			title_len=${#title}
+			limit_width=12
 			if contains_cjk "$title"; then
 				limit_width=8
-			else
-				limit_width=12
 			fi
 			if [[ $title_len -gt $limit_width ]]; then
 				scroll_text "$title" "$title_len" "music-title" &
@@ -125,10 +128,9 @@ while true; do
 			done
 
 			artist_len=${#artist}
+			limit_width=12
 			if contains_cjk "$artist"; then
 				limit_width=8
-			else
-				limit_width=12
 			fi
 			if [[ $artist_len -gt $limit_width ]]; then
 				scroll_text "$artist" "$artist_len" "music-artist" &
@@ -152,7 +154,7 @@ while true; do
 		if [[ "$newimg" != "$lastimg" ]]; then
 			echo "New image $newimg detected"
 			lastimg="$newimg"
-			update_cover "$newimg" "$imgdir" &
+			update_cover "$newimg" "$imgdir" "$title" &
 		fi
 	else
 		pkill -f "scroll_text"
