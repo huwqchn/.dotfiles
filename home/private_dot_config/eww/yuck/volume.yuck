@@ -2,6 +2,7 @@
 (defpoll volume-percent :interval "1s" "scripts/volume-info --percentage")
 (defpoll volume-icon :interval "1s" "scripts/volume-info --icon")
 (defpoll volume-state :interval "1s" "scripts/volume-info --state")
+
 (defwidget volume []
   (eventbox
     :onhover "eww update volume-reveal=true"
@@ -35,4 +36,47 @@
       )
     )
   )
+)
+
+(defwidget volume-indicator []
+  (box
+    :class "volume-indicator"
+    :orientation "v"
+    :space-evenly false
+    (box
+      :orientation "v"
+      :space-evenly false
+      :spacing 10
+      :valign "center"
+      :halign "center"
+      (label
+        :space-evenly false
+        :text volume-icon
+        :class "volume-indicator-label-${volume-state}"
+      )
+      (scale
+        :class "volume-indicator-bar-${volume-state}"
+        :space-evenly false
+        :hexpand true
+        :value volume-percent
+        :onchange "amixer -D pulse sset Master {}%"
+      )
+    )
+  )
+)
+
+(defwindow volume-indicator
+  :monitor 0
+  :geometry
+    (geometry
+      :x "0px"
+      :y "400px"
+      :width "500px"
+      :height "200px"
+      :anchor "center bottom"
+    )
+  :windowtype "dock"
+  :wm-ignore true
+  :stacking "fg"
+  (volume-indicator)
 )

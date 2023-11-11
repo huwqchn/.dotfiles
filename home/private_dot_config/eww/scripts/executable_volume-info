@@ -20,13 +20,17 @@ icon() {
 	local icon
 	local percent=$(percentage)
 	local state=$(state)
-	[[ $state == "Muted" ]] && echo "󰸈 " && exit 0
-	if [[ $percent -gt 70 ]]; then
-		icon="󰕾 "
-	elif [ $percent -gt 40 ]; then
-		icon="󰖀 "
+	[[ $state == "Muted" ]] && echo " " && exit 0
+	if [[ $percent -gt 75 ]]; then
+		icon=" "
+	elif [ $percent -gt 50 ]; then
+		icon=" "
+	elif [ $percent -gt 25 ]; then
+		icon=" "
+	elif [ $percent -gt 0 ]; then
+		icon=" "
 	else
-		icon="󰕿 "
+		icon=" "
 	fi
 	echo $icon
 }

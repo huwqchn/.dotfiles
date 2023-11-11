@@ -104,6 +104,8 @@ while true; do
 			title_len=${#title}
 			if contains_cjk "$title"; then
 				limit_width=8
+			else
+				limit_width=12
 			fi
 			if [[ $title_len -gt $limit_width ]]; then
 				scroll_text "$title" "$title_len" "music-title" &
@@ -125,6 +127,8 @@ while true; do
 			artist_len=${#artist}
 			if contains_cjk "$artist"; then
 				limit_width=8
+			else
+				limit_width=12
 			fi
 			if [[ $artist_len -gt $limit_width ]]; then
 				scroll_text "$artist" "$artist_len" "music-artist" &

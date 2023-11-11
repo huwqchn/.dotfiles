@@ -14,7 +14,7 @@
       :valign "center"
       :halign "end"
       :tooltip "temperature"
-      :spacing 3
+      :spacing 5
       (label
         :class "temperature-icon-${temperature-state}"
         :markup "${temperature-icon}"

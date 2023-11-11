@@ -292,12 +292,10 @@ window {
   }
   .volume-Muted {
     @include control-setup;
-    font-size: 1.5em;
     color: $red;
   }
   .volume-Unmuted {
     @include control-setup;
-    font-size: 1.5em;
     color: $cyan-alt;
   }
 
@@ -353,6 +351,11 @@ window {
     font-size: 0.5em;
     color: $green-alt;
   }
+}
+
+.volume-indicator {
+  border-radius: 15px;
+  background-color: unset;
 }
 
 @mixin hardware-icon-setup {
