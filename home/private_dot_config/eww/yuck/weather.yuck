@@ -7,6 +7,7 @@
 
 (defwidget weather []
   (eventbox
+    :class weather-get
     :tooltip "Current weather: ${weather-stat}, ${weathere-temperature}"
     :onhover "eww update weather-reveal=true"
     :onhoverlost "eww update weather-reveal=false"
