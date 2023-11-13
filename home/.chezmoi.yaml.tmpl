@@ -13,13 +13,11 @@
 {{- end -}}
 
 
-{{- $resolution := "3456x2160" -}}
+{{- $resolution := "0x0"}}
 {{- if $interactive -}}
 {{-   $choices := list "3840x2400" "3456x2160" -}}
-{{-   $resolution = promptChoiceOnce . "resolution" "Your screen resolution?" -}}
+{{-   $resolution = promptChoiceOnce . "resolution" "Your screen resolution?" $choices -}}
 {{- end -}}
-
-
 
 {{- if $interactive -}}
 {{-   writeToStdout "💡 Tip: you can re-enter your data with `chezmoi init --data=false`.\n" -}}
