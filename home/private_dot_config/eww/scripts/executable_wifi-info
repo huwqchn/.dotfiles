@@ -116,6 +116,14 @@ up() {
 	echo "$tx_speed"
 }
 
+toggle() {
+	if [ $(nmcli radio wifi | awk '/led/ {print}') = 'enabled' ]; then
+		nmcli radio wifi off
+	else
+		nmcli radio wifi on
+	fi
+}
+
 case "$1" in
 --icon)
 	icon
@@ -139,6 +147,10 @@ case "$1" in
 	;;
 --interface)
 	get
+	exit 0
+	;;
+--toggle)
+	toggle
 	exit 0
 	;;
 *)

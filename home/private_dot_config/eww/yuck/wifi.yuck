@@ -18,7 +18,7 @@
       :halign "end"
       :tooltip wifi-name
       (button
-        :onclick "scripts/popup-wifi"
+        :onclick "scripts/wifi-info --toggle"
         :class "wifi-${wifi-state}"
         wifi-icon
       )
