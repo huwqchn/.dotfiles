@@ -29,47 +29,15 @@ window {
 
 .conky-left-bottom {
   // border: solid 2px $fg;
-  .conky-weekday-prefix {
+  .conky-weekday-prefix,
+  .conky-weekday {
     font-family: "Sofia Pro";
     font-weight: bold;
     font-size: 1.5rem;
-    padding-right: 0.5rem;
+    padding-bottom: 0.5rem;
   }
   .conky-weekday {
-    font-family: "Big john";
-    font-weight: bold;
-    font-size: 3rem;
-    margin: 0;
-    padding: 0;
-  }
-  .conky-weekday-text-1,
-  .conky-weekday-text-2,
-  .conky-weekday-text-3,
-  .conky-weekday-text-4,
-  .conky-weekday-text-5,
-  .conky-weekday-text-6,
-  .conky-weekday-text-7 {
-    margin: 0;
-    padding: 0;
-  }
-
-  .conky-weekday-text-1 {
-    color: #3a3b45;
-  }
-  .conky-weekday-text-2 {
-    color: #5b5c64;
-  }
-  .conky-weekday-text-3 {
-    color: #7c7c83;
-  }
-  .conky-weekday-text-4 {
-    color: #9c9da2;
-  }
-  .conky-weekday-text-5 {
-    color: #bdbdc1;
-  }
-  .conky-weekday-text-6 {
-    color: #dedee0;
+    color: $blue;
   }
   .conky-workspaces {
     font-size: 1.5rem;
@@ -78,24 +46,28 @@ window {
   .conky-welcome {
     font-family: "Big john";
     font-weight: bold;
-    font-size: 2rem;
+    font-size: 2.5rem;
   }
-  .conky-weather {
-    margin: 0px;
-    padding: 0px;
+  .conky-welcome-text-1,
+  .conky-welcome-text-2,
+  .conky-welcome-text-3 {
+    padding-bottom: 0.5rem;
   }
-  .conky-weather-icon {
-    font-family: "Iosevka Nerd font";
-    font-size: 5rem;
-  }
-
   .conky-weather-text {
     font-family: "Sofia Pro";
-    font-size: 1.3rem;
+    font-size: 1.8rem;
   }
+
+  .conky-weather-temp-text,
+  .conky-weather-stat-text,
+  .conky-weather-position-text {
+    padding-bottom: 0.5rem;
+  }
+
   .conky-time {
     font-family: "Sofia Pro";
     font-size: 3rem;
+    color: $magenta-alt;
   }
 
   .cpu-radial-box,

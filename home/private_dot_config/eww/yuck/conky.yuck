@@ -3,7 +3,7 @@
   :geometry
     (geometry
       :x "2%"
-      :y "0"
+      :y "-5%"
       :width "33%"
       :height "50%"
       :anchor "left bottom"
@@ -66,7 +66,7 @@
 )
 
 (defpoll user :interval "5s" "whoami")
-; (defpoll hostname :interval "5s" "hostname")
+(defpoll hostname :interval "5s" "hostname")
 (deflisten conky-workspaces "scripts/bspwm-conky-workspaces")
 
 
@@ -83,97 +83,78 @@
       :space-evenly false
       (label
         :class "conky-weekday-prefix"
-        :text "It's"
+        :text "It's "
         :halign "start"
         :valign "end"
       )
-      (box
+      (label
         :class "conky-weekday"
-        :orientation "v"
-        :halign "center"
+        :text weekday
+        :halign "start"
         :valign "end"
-        :vexpand true
-        :spacing 0
-        (label
-          :class "conky-weekday-text-1"
-          :text weekday
-          :halign "start"
-          :valign "end"
-        )
-        (label
-          :class "conky-weekday-text-2"
-          :text weekday
-          :halign "start"
-          :valign "end"
-        )
-        (label
-          :class "conky-weekday-text-3"
-          :text weekday
-          :halign "start"
-          :valign "end"
-        )
-        (label
-          :class "conky-weekday-text-4"
-          :text weekday
-          :halign "start"
-          :valign "end"
-        )
-        (label
-          :class "conky-weekday-text-5"
-          :text weekday
-          :halign "start"
-          :valign "end"
-        )
-        (label
-          :class "conky-weekday-text-6"
-          :text weekday
-          :halign "start"
-          :valign "end"
-        )
-        (label
-          :class "conky-weekday-text-7"
-          :text weekday
-          :halign "start"
-          :valign "end"
-        )
       )
     )
-    (label
-      :class "conky-welcome"
+    (box
+      :orientation "v"
       :halign "start"
       :valign "center"
-      :markup "<span font-weight=\"heavy\">Welcome, ${user}!</span>"
+      :space-evenly false
+      :class "conky-welcome"
+      (label
+        :halign "start"
+        :valign "center"
+        :class "conky-welcome-text-1"
+        :text "Welcome to ${hostname},"
+      )
+      (label
+        :halign "start"
+        :valign "center"
+        :class "conky-welcome-text-2"
+        :text "Hope you have a nice day,"
+      )
+      (label
+        :halign "start"
+        :valign "center"
+        :class "conky-welcome-text-3"
+        :text "${user}!"
+      )
     )
     (box
       :class "conky-weather"
       :orientation "h"
       :space-evenly false
       :halign "start"
-      :valign "center"
-      (label
-        :class "conky-weather-icon"
-        :markup weather-icon
-        :halign "start"
-        :valign "fill"
-      )
+      :valign "start"
       (box
         :class "conky-weather-text"
-        :halign "end"
+        :halign "start"
         :valign "center"
         :orientation "v"
         :space-evenly false
         (label
-          :markup "<span font-weight=\"heavy\">${weather-temperature}</span>"
+          :class "conky-weather-temp-text"
+          :text "Current temp is ${weather-temperature}"
           :valign "start"
+          :halign "start"
         )
         (label
-          :markup "<span font-weight=\"heavy\">${weather-stat}</span>"
+          :class "conky-weather-stat-text"
+          :text "${weather-stat} outside"
           :valign "center"
+          :halign "start"
         )
         (label
-          :markup "<span font-weight=\"heavy\">${weather-city},${weather-country}</span>"
-          :valign "center"
+          :class "conky-weather-position-text"
+          :text "In ${weather-city},${weather-country}"
+          :valign "end"
+          :halign "start"
         )
+      )
+      (image
+        :class "conky-weather-image"
+        :image-height 100
+        :image-width 100
+        :path "images/${weather-code}.png"
       )
     )
     (box
