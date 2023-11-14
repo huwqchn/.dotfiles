@@ -32,41 +32,41 @@ get() {
 
 		#Big long if statement of doom
 		if [ "$weather_icon_code" == "50d" ]; then
-			weather_icon=" "
+			weather_icon=" "
 		elif [ "$weather_icon_code" == "50n" ]; then
-			weather_icon=" "
+			weather_icon=" "
 		elif [ "$weather_icon_code" == "01d" ]; then
-			weather_icon=" "
+			weather_icon=" "
 		elif [ "$weather_icon_code" == "01n" ]; then
-			weather_icon=" "
+			weather_icon=" "
 		elif [ "$weather_icon_code" == "02d" ]; then
 			weather_icon=" "
 		elif [ "$weather_icon_code" == "02n" ]; then
 			weather_icon=" "
 		elif [ "$weather_icon_code" == "03d" ]; then
-			weather_icon="󰖐 "
+			weather_icon=" "
 		elif [ "$weather_icon_code" == "03n" ]; then
-			weather_icon="󰖐 "
+			weather_icon=" "
 		elif [ "$weather_icon_code" == "04d" ]; then
 			weather_icon=" "
 		elif [ "$weather_icon_code" == "04n" ]; then
 			weather_icon=" "
 		elif [ "$weather_icon_code" == "09d" ]; then
-			weather_icon=" "
+			weather_icon=" "
 		elif [ "$weather_icon_code" == "09n" ]; then
-			weather_icon=" "
+			weather_icon=" "
 		elif [ "$weather_icon_code" == "10d" ]; then
 			weather_icon=" "
 		elif [ "$weather_icon_code" == "10n" ]; then
 			weather_icon=" "
 		elif [ "$weather_icon_code" == "11d" ]; then
-			weather_icon=" "
+			weather_icon=" "
 		elif [ "$weather_icon_code" == "11n" ]; then
-			weather_icon=" "
+			weather_icon=" "
 		elif [ "$weather_icon_code" == "13d" ]; then
-			weather_icon="󰖘 "
+			weather_icon=" "
 		elif [ "$weather_icon_code" == "13n" ]; then
-			weather_icon="󰖘 "
+			weather_icon=" "
 		else
 			weather_icon=" "
 		fi
