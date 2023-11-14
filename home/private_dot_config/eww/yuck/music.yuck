@@ -14,6 +14,7 @@
 (defwidget music []
   (eventbox
     :class "${music-info}"
+    :visible "${music-title != 'No title' && music-artist != 'No artist'}"
     :onhover "eww update music-reveal=true"
     :onhoverlost "eww update music-reveal=false"
     (box
@@ -47,7 +48,6 @@
         :hexpand false
         :valign "end"
         :halign "start"
-        :visible "${music-title != 'No title' && music-artist != 'No artist'}"
         (box
           :orientation "v"
           :space-evenly false

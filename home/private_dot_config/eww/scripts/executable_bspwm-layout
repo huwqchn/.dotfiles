@@ -1,0 +1,14 @@
+#!/bin/bash
+bspc subscribe desktop_focus desktop_layout | while read line; do
+	case $(bspc query -T -d | jq -r .layout) in
+	tiled)
+		eww update layout-icon=" "
+		;;
+	monocle)
+		eww update layout-icon=" "
+		;;
+	*)
+		echo "?"
+		;;
+	esac
+done

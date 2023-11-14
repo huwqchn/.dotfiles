@@ -27,6 +27,128 @@ window {
   }
 }
 
+.conky-left-bottom {
+  // border: solid 2px $fg;
+  .conky-weekday-prefix {
+    font-family: "Sofia Pro";
+    font-weight: bold;
+    font-size: 1.5rem;
+    padding-right: 0.5rem;
+  }
+  .conky-weekday {
+    font-family: "Big john";
+    font-weight: bold;
+    font-size: 3rem;
+    margin: 0;
+    padding: 0;
+  }
+  .conky-weekday-text-1,
+  .conky-weekday-text-2,
+  .conky-weekday-text-3,
+  .conky-weekday-text-4,
+  .conky-weekday-text-5,
+  .conky-weekday-text-6,
+  .conky-weekday-text-7 {
+    margin: 0;
+    padding: 0;
+  }
+
+  .conky-weekday-text-1 {
+    color: #3a3b45;
+  }
+  .conky-weekday-text-2 {
+    color: #5b5c64;
+  }
+  .conky-weekday-text-3 {
+    color: #7c7c83;
+  }
+  .conky-weekday-text-4 {
+    color: #9c9da2;
+  }
+  .conky-weekday-text-5 {
+    color: #bdbdc1;
+  }
+  .conky-weekday-text-6 {
+    color: #dedee0;
+  }
+  .conky-workspaces {
+    font-size: 1.5rem;
+    padding-left: 0.1rem;
+  }
+  .conky-welcome {
+    font-family: "Big john";
+    font-weight: bold;
+    font-size: 2rem;
+  }
+  .conky-weather {
+    margin: 0px;
+    padding: 0px;
+  }
+  .conky-weather-icon {
+    font-family: "Iosevka Nerd font";
+    font-size: 5rem;
+  }
+
+  .conky-weather-text {
+    font-family: "Sofia Pro";
+    font-size: 1.3rem;
+  }
+  .conky-time {
+    font-family: "Sofia Pro";
+    font-size: 3rem;
+  }
+
+  .cpu-radial-box,
+  .ram-radial-box,
+  .disk-radial-box,
+  .temp-radial-box {
+    padding: 1rem 0.1rem 2rem 0.1rem;
+  }
+
+  .cpu-radial,
+  .ram-radial,
+  .disk-radial,
+  .temp-radial {
+    font-family: "Material Design Icons Desktop, Feather, Grid Styles";
+    font-size: 1.3rem;
+    background-color: $bg-alt;
+  }
+
+  .cpu-radial-label,
+  .ram-radial-label,
+  .disk-radial-label,
+  .temp-radial-label {
+    padding: 1.3rem;
+  }
+
+  .cpu-label,
+  .disk-label,
+  .disk-label,
+  .temp-label {
+    font-family: "JetBrainsMono Nerd Font";
+  }
+
+  .cpu-radial {
+    color: $cyan-alt;
+  }
+
+  .ram-radial {
+    color: $magenta;
+  }
+
+  .disk-radial {
+    color: $green-alt;
+  }
+
+  .temp-radial {
+    color: $red;
+  }
+}
+
+.conky-right-top {
+  border: solid 2px $fg;
+}
+
 .VPN {
   font-size: 1.2em;
   .VPN-true {

@@ -1,11 +1,14 @@
 (defvar date-reveal false)
 (defpoll hour :interval "1s" "date '+%I'")
+(defpoll Hour :interval "1s" "date '+%H'")
 (defpoll minutes :interval "1s" "date '+%M'")
 (defpoll day :interval "20h" "date '+%d'")
 (defpoll year :interval "20h" "date '+%Y'")
 (defpoll month :interval "20h" "date '+%m'")
+(defpoll Month :interval "20h" "date '+%b'")
 (defpoll type :interval "1s" "date '+%p'")
 (defpoll date :interval "1s" "date '+ %a, %b %d'")
+(defpoll weekday :interval "1h" "date '+%A'")
 
 (defwidget time []
   (eventbox

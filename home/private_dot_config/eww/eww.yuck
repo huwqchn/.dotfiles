@@ -7,6 +7,7 @@
 (include "yuck/vpn.yuck")
 (include "yuck/hardware.yuck")
 (include "yuck/weather.yuck")
+(include "yuck/conky.yuck")
 
 ;; TODO: popup-player scrpits
 ;; TODO: popup-dashboard scripts

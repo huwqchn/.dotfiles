@@ -1,0 +1,203 @@
+(include "yuck/circular.yuck")
+(defwindow conky-left-bottom
+  :geometry
+    (geometry
+      :x "2%"
+      :y "0"
+      :width "33%"
+      :height "50%"
+      :anchor "left bottom"
+    )
+  :stacking "bg"
+  :windowtype "desktop"
+  :wm-ignore true
+  (conky-left-bottom)
+)
+
+(defwindow conky-right-top
+  :geometry
+    (geometry
+      :x "5%"
+      :y "10%"
+      :width "25%"
+      :height "33%"
+      :anchor "right top"
+    )
+  :stacking "bg"
+  :windowtype "desktop"
+  :wm-ignore true
+  (conky-right-top)
+)
+
+(defwidget conky-right-top []
+  (box
+    :orientation "v"
+    :halign "start"
+    :valign "start"
+    :space-evenly false
+    :class "conky-right-top"
+    (box
+      :orientation "v"
+      :halign "start"
+      :valign "start"
+      :class "conky-year-box"
+      :spacing 0
+      (label
+        :text "${round(year / 100, 0)}"
+      )
+      (label
+        :text "${year % 1000}"
+      )
+    )
+    (box
+      :orientation "v"
+      :halign "end"
+      :valign "end"
+      :class "conky-date-box"
+      :spacing 0
+      (label
+        :text day
+      )
+      (label
+        :text Month
+      )
+    )
+  )
+)
+
+(defpoll user :interval "5s" "whoami")
+; (defpoll hostname :interval "5s" "hostname")
+(deflisten conky-workspaces "scripts/bspwm-conky-workspaces")
+
+
+(defwidget conky-left-bottom []
+  (box
+    :orientation "v"
+    :halign "start"
+    :valign "end"
+    :space-evenly false
+    :class "conky-left-bottom"
+    (box
+      :orientation "h"
+      :halign "start"
+      :space-evenly false
+      (label
+        :class "conky-weekday-prefix"
+        :text "It's"
+        :halign "start"
+        :valign "end"
+      )
+      (box
+        :class "conky-weekday"
+        :orientation "v"
+        :halign "center"
+        :valign "end"
+        :vexpand true
+        :spacing 0
+        (label
+          :class "conky-weekday-text-1"
+          :text weekday
+          :halign "start"
+          :valign "end"
+        )
+        (label
+          :class "conky-weekday-text-2"
+          :text weekday
+          :halign "start"
+          :valign "end"
+        )
+        (label
+          :class "conky-weekday-text-3"
+          :text weekday
+          :halign "start"
+          :valign "end"
+        )
+        (label
+          :class "conky-weekday-text-4"
+          :text weekday
+          :halign "start"
+          :valign "end"
+        )
+        (label
+          :class "conky-weekday-text-5"
+          :text weekday
+          :halign "start"
+          :valign "end"
+        )
+        (label
+          :class "conky-weekday-text-6"
+          :text weekday
+          :halign "start"
+          :valign "end"
+        )
+        (label
+          :class "conky-weekday-text-7"
+          :text weekday
+          :halign "start"
+          :valign "end"
+        )
+      )
+    )
+    (label
+      :class "conky-welcome"
+      :halign "start"
+      :valign "center"
+      :markup "<span font-weight=\"heavy\">Welcome, ${user}!</span>"
+    )
+    (box
+      :class "conky-weather"
+      :orientation "h"
+      :space-evenly false
+      :halign "start"
+      :valign "center"
+      (label
+        :class "conky-weather-icon"
+        :markup weather-icon
+        :halign "start"
+        :valign "fill"
+      )
+      (box
+        :class "conky-weather-text"
+        :halign "end"
+        :valign "center"
+        :orientation "v"
+        :space-evenly false
+        (label
+          :markup "<span font-weight=\"heavy\">${weather-temperature}</span>"
+          :valign "start"
+        )
+        (label
+          :markup "<span font-weight=\"heavy\">${weather-stat}</span>"
+          :valign "center"
+        )
+        (label
+          :markup "<span font-weight=\"heavy\">${weather-city},${weather-country}</span>"
+          :valign "center"
+        )
+      )
+    )
+    (box
+      :class "conky-time-box"
+      :halign "start"
+      :valign "center"
+      :orientation "h"
+      (label
+        :class "conky-time"
+        :markup "<span font-weight=\"heavy\">${Hour}:${minutes}</span>"
+      )
+    )
+    (literal :content conky-workspaces)
+    (box
+      :class "conky-system-box"
+      :orientation "h"
+      :valign "center"
+      :halign "start"
+      :vexpand true
+      :hexpand true
+      (circular-cpu)
+      (circular-ram)
+      (circular-disk)
+      (circular-temp)
+    )
+  )
+)

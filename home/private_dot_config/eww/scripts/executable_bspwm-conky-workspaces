@@ -1,0 +1,55 @@
+#!/bin/bash
+
+workspaces() {
+	ws0=0
+	ws1=1
+	ws2=2
+	ws3=3
+	ws4=4
+	ws5=5
+	ws6=6
+	ws7=7
+	ws8=8
+	ws9=9
+
+	# check if Focused
+	f0=$(bspc query -D -d focused --names | grep "$ws0")
+	f1=$(bspc query -D -d focused --names | grep "$ws1")
+	f2=$(bspc query -D -d focused --names | grep "$ws2")
+	f3=$(bspc query -D -d focused --names | grep "$ws3")
+	f4=$(bspc query -D -d focused --names | grep "$ws4")
+	f5=$(bspc query -D -d focused --names | grep "$ws5")
+	f6=$(bspc query -D -d focused --names | grep "$ws6")
+	f7=$(bspc query -D -d focused --names | grep "$ws7")
+	f8=$(bspc query -D -d focused --names | grep "$ws8")
+	f9=$(bspc query -D -d focused --names | grep "$ws9")
+
+	# workspace icon
+	icon0="●"
+	icon1="●"
+	icon2="●"
+	icon3="●"
+	icon4="●"
+	icon5="●"
+	icon6="●"
+	icon7="●"
+	icon8="●"
+	icon9="●"
+	[ ! -z $f0 ] && icon0="○"
+	[ ! -z $f1 ] && icon1="○"
+	[ ! -z $f2 ] && icon2="○"
+	[ ! -z $f3 ] && icon3="○"
+	[ ! -z $f4 ] && icon4="○"
+	[ ! -z $f5 ] && icon5="○"
+	[ ! -z $f6 ] && icon6="○"
+	[ ! -z $f7 ] && icon7="○"
+	[ ! -z $f8 ] && icon8="○"
+	[ ! -z $f9 ] && icon9="○"
+
+	echo "(box :class \"conky-workspaces\" :orientation \"h\" :spacing \"10\" :valign \"center\" :halign \"start\" :space-evenly false (eventbox :cursor \"pointer\" (button :tooltip \"switch to workspace 1\" :onclick \"bspc desktop -f $ws0\" :class \"conky-workspace-button$f0\" \"$icon0\")) (eventbox :cursor \"pointer\" (button :tooltip \"switch to workspace 2\" :onclick \"bspc desktop -f $ws1\" :class \"conky-workspace-button-$f1\" \"$icon1\")) (eventbox :cursor \"pointer\" (button :tooltip \"switch to workspace 3\" :onclick \"bspc desktop -f $ws2\" :class \"conky-workspace-button-$f2\" \"$icon2\")) (eventbox :cursor \"pointer\" (button :tooltip \"switch to workspace 4\" :onclick \"bspc desktop -f $ws3\" :class \"conky-workspace-button-$f3\" \"$icon3\")) (eventbox :cursor \"pointer\" (button :tooltip \"switch to workspace 5\" :onclick \"bspc desktop -f $ws4\" :class \"conky-workspace-button-$f4\" \"$icon4\" )) (eventbox :cursor \"pointer\" (button :tooltip \"switch to workspace 6\" :onclick \"bspc desktop -f $ws5\" :class \"conky-workspace-button-$f5\" \"$icon5\")) (eventbox :cursor \"pointer\" (button :tooltip \"switch to workspace 7\" :onclick \"bspc desktop -f $ws6\" :class \"conky-workspace-button-$f6\" \"$icon6\")) (eventbox :cursor \"pointer\" (button :tooltip \"switch to workspace 8\" :onclick \"bspc desktop -f $ws7\"	:class \"conky-workspace-button-$f7\" \"$icon7\")) (eventbox :cursor \"pointer\" (button :tooltip \"switch to workspace 9\" :onclick \"bspc desktop -f $ws8\"	:class \"conky-workspace-button-$f8\" \"$icon8\")) (eventbox :cursor \"pointer\" (button :tooltip \"switch to workspace 10\" :onclick \"bspc desktop -f $ws9\" :class \"conky-workspace-button-$f9\" \"$icon9\")))"
+}
+
+workspaces
+bspc subscribe desktop | while read -r _; do
+	workspaces
+done

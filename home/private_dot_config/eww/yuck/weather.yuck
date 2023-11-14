@@ -2,13 +2,15 @@
 (defpoll weather-get :interval "10m" "scripts/weather-info --get")
 (defpoll weather-icon	:interval "10m"  "scripts/weather-info --icon")
 (defpoll weather-code :interval "10m" "scripts/weather-info --code")
-(defpoll weathere-temperature	:interval "10m"  "scripts/weather-info --temp")
+(defpoll weather-temperature	:interval "10m"  "scripts/weather-info --temp")
 (defpoll weather-stat :interval "10m"  "scripts/weather-info --stat")
+(defpoll weather-city :interval "10m"  "scripts/weather-info --city")
+(defpoll weather-country :interval "10m"  "scripts/weather-info --country")
 
 (defwidget weather []
   (eventbox
     :class weather-get
-    :tooltip "Current weather: ${weather-stat}, ${weathere-temperature}"
+    :tooltip "Current weather: ${weather-stat}, ${weather-temperature}"
     :onhover "eww update weather-reveal=true"
     :onhoverlost "eww update weather-reveal=false"
     :cursor "pointer"
@@ -23,7 +25,7 @@
         (label
           :valign "center"
           :class "weather-${weather-code}"
-          :markup "${weather-icon}"
+          :markup weather-icon
         )
         (revealer
           :reveal weather-reveal
@@ -33,7 +35,7 @@
           (label
             :valign "fill"
             :class "weather-label"
-            :markup "<span font-weight=\"heavy\">${weathere-temperature}</span><span font-size=\"xx-small\"> ${weather-stat}</span>"
+            :markup "<span font-weight=\"heavy\">${weather-temperature}</span><span font-size=\"xx-small\"> ${weather-stat}</span>"
           )
         )
       )
