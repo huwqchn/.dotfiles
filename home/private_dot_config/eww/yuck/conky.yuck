@@ -105,7 +105,7 @@
         :halign "start"
         :valign "center"
         :class "conky-welcome-text-1"
-        :text "Hope Your ${greeting}"
+        :text "Hope Your${greeting}"
       )
       (label
         :halign "start"

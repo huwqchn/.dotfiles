@@ -34,7 +34,7 @@
         :class "cpu-radial"
       )
       (label
-        :text "CPU: ${round(EWW_CPU.avg, 1)}%"
+        :text "${round(EWW_CPU.avg, 1)}%"
         :class "cpu-label"
         :warp false
         :show-truncated false
@@ -62,7 +62,7 @@
         :class "ram-radial"
       )
       (label
-        :text "Ram: ${round(EWW_RAM.used_mem_perc, 1)}%"
+        :text "${round(EWW_RAM.used_mem_perc, 1)}%"
         :class "ram-label"
         :warp false
         :show-truncated false
@@ -90,7 +90,7 @@
         :class "disk-radial"
       )
       (label
-        :text "Disk: ${round(EWW_DISK['/'].used_perc, 1)}%"
+        :text "${round(EWW_DISK['/'].used_perc, 1)}%"
         :class "disk-label"
         :warp false
         :show-truncated false
@@ -118,7 +118,7 @@
         :class "temp-radial"
       )
       (label
-        :text "Temp: ${temperature-value}°C"
+        :text "${temperature-value}°C"
         :class "temp-label"
         :warp false
         :show-truncated false
