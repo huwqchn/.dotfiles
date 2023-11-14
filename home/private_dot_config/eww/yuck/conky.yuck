@@ -66,7 +66,8 @@
 )
 
 (defpoll user :interval "5s" "whoami")
-(defpoll hostname :interval "5s" "hostname")
+; (defpoll hostname :interval "5s" "hostname")
+(defpoll greeting :interval "30m" "scripts/greeting")
 (deflisten conky-workspaces "scripts/bspwm-conky-workspaces")
 
 
@@ -104,13 +105,13 @@
         :halign "start"
         :valign "center"
         :class "conky-welcome-text-1"
-        :text "Welcome to ${hostname},"
+        :text "Hope Your ${greeting}"
       )
       (label
         :halign "start"
         :valign "center"
         :class "conky-welcome-text-2"
-        :text "Hope you have a nice day,"
+        :text "is going well,"
       )
       (label
         :halign "start"
@@ -149,12 +150,6 @@
           :valign "end"
           :halign "start"
         )
-      )
-      (image
-        :class "conky-weather-image"
-        :image-height 100
-        :image-width 100
-        :path "images/${weather-code}.png"
       )
     )
     (box
