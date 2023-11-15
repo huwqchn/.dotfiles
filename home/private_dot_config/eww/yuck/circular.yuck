@@ -113,7 +113,7 @@
       :tooltip "Temperature: ${temperature-value}°C"
       (radialmeter
         :value temperature-value
-        :text " 󰎓"
+        :text " 󰈸"
         :labelclass "temp-radial-label"
         :class "temp-radial"
       )
