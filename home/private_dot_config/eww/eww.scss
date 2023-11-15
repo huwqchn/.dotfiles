@@ -302,8 +302,6 @@ window {
   font-size: 1.5em;
 }
 
-.weather-50d,
-.weather-50n,
 .weather-09d,
 .weather-09n,
 .weather-10d,
@@ -311,18 +309,21 @@ window {
   color: $blue;
 }
 
-.weather-01d,
 .weather-11n,
 .weather-11d {
+  color: $yellow-alt;
+}
+
+.weather-02d,
+.weather-01d {
   color: $yellow;
 }
 
+.weather-02n,
 .weather-01n {
   color: $purple;
 }
 
-.weather-02d,
-.weather-02n,
 .weather-03d,
 .weather-03n,
 .weather-04d,
@@ -330,9 +331,11 @@ window {
   color: $white;
 }
 
+.weather-50d,
+.weather-50n,
 .weather-13d,
 .weather-13n {
-  color: $fg;
+  color: $cyan;
 }
 
 .weather-x {
