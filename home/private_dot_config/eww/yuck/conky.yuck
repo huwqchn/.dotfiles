@@ -30,23 +30,41 @@
 )
 
 (defwidget conky-right-top []
-  (box
+  (overlay
     :orientation "v"
     :halign "start"
     :valign "start"
     :space-evenly false
-    :class "conky-right-top"
+    :class "conky-right-top-box"
+    (image
+      :path "images/right-top.png"
+      :image-width 350
+      :image-height 350
+    )
     (box
       :orientation "v"
       :halign "start"
       :valign "start"
       :class "conky-year-box"
       :spacing 0
-      (label
-        :text "${round(year / 100, 0)}"
-      )
-      (label
-        :text "${year % 1000}"
+      (box
+        :orientation "v"
+        :halign "center"
+        :valign "center"
+        :class "conky-year"
+        :spacing 0
+        (label
+          :class "conky-year1"
+          :halign "center"
+          :valign "center"
+          :text "${round(year / 100, 0)}"
+        )
+        (label
+          :class "conky-year2"
+          :halign "center"
+          :valign "center"
+          :text "${year % 1000}"
+        )
       )
     )
     (box
@@ -55,11 +73,23 @@
       :valign "end"
       :class "conky-date-box"
       :spacing 0
-      (label
-        :text day
-      )
-      (label
-        :text Month
+      (box
+        :orientation "v"
+        :halign "center"
+        :valign "center"
+        :class "conky-date"
+        (label
+          :class "conky-day"
+          :halign "center"
+          :valign "start"
+          :text day
+        )
+        (label
+          :class "conky-month"
+          :halign "center"
+          :valign "start"
+          :text Month
+        )
       )
     )
   )

@@ -9,7 +9,9 @@ fi
 ## Open widgets
 run_eww() {
 	eww open-many \
-		bar
+		bar \
+		conky-right-top \
+		conky-left-bottom
 }
 
 run_eww && bspc config top_padding 63 && bspc config top_monocle_padding 12

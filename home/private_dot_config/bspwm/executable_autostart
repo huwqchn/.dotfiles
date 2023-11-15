@@ -6,8 +6,6 @@ if [ ! -d "$HOME/.cache/picom" ]; then
 fi
 picom -b >$HOME/.cache/picom/picom.log 2>&1 &
 xsetroot -cursor_name left_ptr &
-# feh --bg-fill -no-fehbg ~/.wallpapers/tokyo-night31.png &
-nitrogen --restore &
 sleep 10 && $HOME/.config/bspwm/scripts/bspfloat floating 5 &
 >$HOME/.log.bspfloat.txt &
 
@@ -20,9 +18,11 @@ if [ ! -d "$HOME/.config/glava" ]; then
 	glava --copy-config &
 fi
 glava --desktop &
-$HOME/.config/conky/Auva/start.sh &
+# $HOME/.config/conky/Auva/start.sh &
 
 $HOME/.config/eww/launch.sh &
+# feh --bg-fill -no-fehbg ~/.wallpapers/tokyo-night31.png &
+nitrogen --restore &
 xfce4-power-manager &
 ukui-window-switch &
 
