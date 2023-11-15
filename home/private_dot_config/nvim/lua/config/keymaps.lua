@@ -31,6 +31,7 @@ vim.keymap.set({ "n", "x" }, "o", "l")
 -- colemak-dh jump to start/end of the line
 map({ "n", "x", "o" }, "N", "^")
 map({ "n", "x", "o" }, "O", "$")
+map({ "n", "x", "o" }, "gn", "gH")
 
 -- colemak-dh join/hover
 map("n", "I", "K")
@@ -81,7 +82,7 @@ map("i", "<M-f>", "<C-Right>", { silent = true, desc = "forward word" })
 map("i", "<M-b>", "<C-Left>", { silent = true, desc = "backward word" })
 
 -- emacs begin/end of line
--- map("i", "<C-a>", "<Home>", { silent = true, desc = "begin of line" })
+-- map("i", "</-a>", "<Home>", { silent = true, desc = "begin of line" })
 -- map("i", "<C-e>", "<End>", { silent = true, desc = "end of line" })
 
 -- autocorrect spelling from previous error
@@ -304,6 +305,3 @@ local function smart_dd()
   end
 end
 vim.keymap.set("n", "dd", smart_dd, { noremap = true, expr = true })
-
--- change word with <c-c>
-vim.keymap.set("n", "<C-c>", "<cmd>normal! ciw<cr>a")
