@@ -17,7 +17,11 @@ $HOME/.scripts/inverse-scroll.sh &
 if [ ! -d "$HOME/.config/glava" ]; then
 	glava --copy-config &
 fi
-# glava --desktop &
+
+{{ if eq .resolution "3456x2160" }}
+glava --desktop &
+{{ end }}
+
 # $HOME/.config/conky/Auva/start.sh &
 
 $HOME/.config/eww/launch.sh &
