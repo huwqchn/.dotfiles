@@ -17,14 +17,15 @@ $HOME/.scripts/inverse-scroll.sh &
 if [ ! -d "$HOME/.config/glava" ]; then
 	glava --copy-config &
 fi
-glava --desktop &
+# glava --desktop &
 # $HOME/.config/conky/Auva/start.sh &
 
 $HOME/.config/eww/launch.sh &
-# feh --bg-fill -no-fehbg ~/.wallpapers/tokyo-night31.png &
-nitrogen --restore &
 xfce4-power-manager &
 ukui-window-switch &
+
+# feh --bg-fill -no-fehbg ~/.wallpapers/tokyo-night31.png &
+nitrogen --restore &
 
 killall dunst
 dunst >/dev/null 2>/dev/null &
