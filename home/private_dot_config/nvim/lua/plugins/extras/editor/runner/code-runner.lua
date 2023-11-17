@@ -6,7 +6,7 @@ return {
       focus = false,
       startinsert = false,
       term = {
-        position = "vertical",
+        position = "horizontal",
         size = 12,
       },
       float = {

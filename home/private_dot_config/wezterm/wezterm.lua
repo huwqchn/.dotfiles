@@ -55,7 +55,7 @@ end
 
 --- font
 config.font_size = 12
-config.font = wezterm.font({ family = "Fira Code" })
+config.font = wezterm.font({ family = "JetBrainsMono Nerd Font" })
 config.bold_brightens_ansi_colors = true
 config.font_rules = {
 	{
