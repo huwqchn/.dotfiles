@@ -71,6 +71,7 @@
     "plugins.extras.lang.typescript",
     "plugins.extras.lang.ymal",
     "plugins.extras.lang.yuck",
+    "plugins.extras.lang.dts",
     "plugins.extras.misc.dial",
     "plugins.extras.misc.smart-splits",
     "plugins.extras.misc.smart-splits",
@@ -90,3 +91,4 @@
   },
   "version": 2
 }
+
