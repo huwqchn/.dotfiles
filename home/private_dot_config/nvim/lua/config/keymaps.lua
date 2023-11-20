@@ -88,16 +88,6 @@ map("i", "<M-b>", "<C-Left>", { silent = true, desc = "backward word" })
 -- autocorrect spelling from previous error
 -- map("i", "<C-f>", "<c-g>u<Esc>[s1z=`]a<c-g>u", { expr = true, silent = true })
 
--- better cmd mode, swap ; and :
-map("", "<cr>", ":", { silent = false })
-
--- emacs style cmd mode keybindings for backup
-map("", "<M-x>", ":", { silent = false })
-
-map({ "n", "x", "o" }, ",", ":")
-map({ "n", "x", "o" }, ":", ",")
-map("", "g:", "g,")
-
 -- select all
 map({ "n", "x", "i" }, "<C-a>", "<cmd>normal! ggVG<cr>")
 
