@@ -23,6 +23,8 @@ return {
       for _, key in ipairs(keys) do
         if key[1] == "s" then
           key[1] = "<cr>"
+        elseif key[1] == "S" then
+          key[1] = "<S-cr>"
         elseif key[1] == "R" then
           table.insert(key.mode, "n")
         end
