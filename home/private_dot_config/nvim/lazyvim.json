@@ -64,6 +64,7 @@
     "plugins.extras.lang.bash",
     "plugins.extras.lang.c",
     "plugins.extras.lang.clangd",
+    "plugins.extras.lang.dts",
     "plugins.extras.lang.http",
     "plugins.extras.lang.nodejs",
     "plugins.extras.lang.python",
@@ -71,12 +72,12 @@
     "plugins.extras.lang.typescript",
     "plugins.extras.lang.ymal",
     "plugins.extras.lang.yuck",
-    "plugins.extras.lang.dts",
     "plugins.extras.misc.dial",
     "plugins.extras.misc.smart-splits",
     "plugins.extras.misc.smart-splits",
     "plugins.extras.misc.wezterm-types",
     "plugins.extras.misc.zen-mode",
+    "plugins.extras.misc.text-case",
     "plugins.extras.ui.bar.bufferline",
     "plugins.extras.ui.bar.dropbar",
     "plugins.extras.ui.colorscheme.tokyonight",
@@ -87,7 +88,7 @@
   ],
   "news": {
     "NEWS.md": "2123",
-    "doc/news.txt": "15663"
+    "doc/news.txt": "17744"
   },
   "version": 2
 }
