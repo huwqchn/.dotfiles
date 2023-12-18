@@ -75,9 +75,9 @@
     "plugins.extras.misc.dial",
     "plugins.extras.misc.smart-splits",
     "plugins.extras.misc.smart-splits",
+    "plugins.extras.misc.text-case",
     "plugins.extras.misc.wezterm-types",
     "plugins.extras.misc.zen-mode",
-    "plugins.extras.misc.text-case",
     "plugins.extras.ui.bar.bufferline",
     "plugins.extras.ui.bar.dropbar",
     "plugins.extras.ui.colorscheme.tokyonight",
@@ -88,8 +88,7 @@
   ],
   "news": {
     "NEWS.md": "2123",
-    "doc/news.txt": "17744"
+    "doc/news.txt": "18962"
   },
   "version": 2
 }
-
