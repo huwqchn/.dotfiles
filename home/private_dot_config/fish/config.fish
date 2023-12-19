@@ -23,18 +23,32 @@ fish_add_path ~/.cargo/bin
 fish_add_path /snap/bin
 fish_add_path ~/.emacs.d/bin
 
+set -x LD_LIBRARY_PATH /usr/lib $LD_LIBRARY_PATH
+
 # Go
+set -x GO111MODULE on
+set -x GOPROXY https://goproxy.cn
 set -x GOPATH ~/go
 fish_add_path $GOPATH $GOPATH/bin
 
 # FISH
 set fish_emoji_width 2
 
-# Go
-set -x GO111MODULE on
-set -x GOPROXY https://goproxy.cn
+# CFLAGS
+set -x CFLAGS "-Wall -Werror -Wextra"
+
+# Ripgrep
+set -x RIPGREP_CONFIG_PATH $HOME/.config/ripgrep/ripgreprc
+
+# gtags
+set -x GTAGSLABEL native-pygments
+set -x GTAGSCONF $HOME/.config/gtags/gtags.conf
+
+# tmux
+set -x TMUX_TMPDIR $HOME/.tmux/tmp
 
 # Exports
+set -x RUST_BACKTRACE 1
 set -x LESS -rF
 set -x COMPOSE_DOCKER_CLI_BUILD 1
 set -x HOMEBREW_NO_AUTO_UPDATE 1
