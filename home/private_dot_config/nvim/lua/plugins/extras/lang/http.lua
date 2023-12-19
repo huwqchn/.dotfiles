@@ -10,6 +10,12 @@ return {
   },
   {
     "rest-nvim/rest.nvim",
+    dependencies = {
+      {
+        "gennaro-tedesco/nvim-jqx",
+        ft = { "json", "yaml" },
+      },
+    },
     ft = "http",
     config = function()
       require("rest-nvim").setup({

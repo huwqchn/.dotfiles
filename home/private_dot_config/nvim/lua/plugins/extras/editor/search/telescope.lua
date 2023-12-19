@@ -77,6 +77,9 @@ return {
             ["<C-s>"] = function(...)
               return require("telescope.actions").select_tab(...)
             end,
+            ["<C-p>"] = function(...)
+              return require("telescope.actions.layout").toggle_preview(...)
+            end,
           },
           n = {
             ["e"] = function(...)
@@ -95,6 +98,15 @@ return {
             end,
             ["s"] = function(...)
               return require("telescope.actions").select_tab(...)
+            end,
+            ["gg"] = function(...)
+              return require("telescope.actions").move_to_top(...)
+            end,
+            ["G"] = function(...)
+              return require("telescope.actions").move_to_bottom(...)
+            end,
+            ["p"] = function(...)
+              return require("telescope.actions.layout").toggle_preview(...)
             end,
           },
         },
