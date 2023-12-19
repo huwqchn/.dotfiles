@@ -4,12 +4,9 @@ return {
     "neovim/nvim-lspconfig",
     optional = true,
     opts = function(_, opts)
-      for _, key in ipairs(opts.servers.clangd.keys) do
-        if key[1] == "<leader>cR" then
-          key[1] = "s<space>"
-          break
-        end
-      end
+      local keys = opts.servers.clangd.keys
+      keys[#keys + 1] = { "<leader>cR", false }
+      keys[#keys + 1] = { "s<space>", "<cmd>ClangdSwitchSourceHeader<cr>", desc = "Switch Source/Header (C/C++)" }
     end,
   },
 }

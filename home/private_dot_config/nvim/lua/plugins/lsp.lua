@@ -23,15 +23,16 @@ return {
     },
     init = function()
       local keys = require("lazyvim.plugins.lsp.keymaps").get()
-      for _, key in ipairs(keys) do
-        if key[1] == "K" then
-          key[1] = "I"
-        elseif key[1] == "gK" then
-          key[1] = "gi"
-        elseif key[1] == "<c-k>" then
-          key[1] = "<c-h>"
-        end
-      end
+      -- disable default help keys
+      keys[#keys + 1] = { "K", false }
+      keys[#keys + 1] = { "gK", false }
+      keys[#keys + 1] = { "<c-k>", false, mode = "i" }
+
+      -- enable my custom keys
+      keys[#keys + 1] = { "I", vim.lsp.buf.hover, desc = "Hover" }
+      keys[#keys + 1] = { "gI", vim.lsp.buf.signature_help, desc = "Signature Help", has = "signatureHelp" }
+      keys[#keys + 1] =
+        { "<c-h>", vim.lsp.buf.signature_help, mode = "i", desc = "Signature Help", has = "signatureHelp" }
     end,
   },
 }
