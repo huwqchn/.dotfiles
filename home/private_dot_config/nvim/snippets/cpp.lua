@@ -1,5 +1,52 @@
 require("luasnip").filetype_extend("cpp", { "c" })
+
+local function filename_base(_, snip)
+  return snip.env.TM_FILENAME_BASE
+end
+
+local function header_guard(_, snip)
+  return filename_base(_, snip):upper() .. "_H"
+end
+
 local snippets = {
+  -- header guard
+  s("ifndef", {
+    t("#ifndef "),
+    f(header_guard, {}),
+    t({ "", "#define " }),
+    f(header_guard, {}),
+    t({ "", "" }),
+    i(1),
+    t({ "", "#endif // " }),
+    f(header_guard, {}),
+  }),
+  s("qwidget", {
+    t("#include <QWidget>"),
+    t({ "", "", "class " }),
+    f(filename_base, {}),
+    t({ " : public QWidget {", "" }),
+    t({ "  Q_OBJECT", "", "public:", "  explicit " }),
+    f(filename_base, {}),
+    t("(QWidget *parent = nullptr);"),
+    t({ "", "  ~" }),
+    f(filename_base, {}),
+    t("();"),
+    t({ "", "};" }),
+  }),
+  s("include", {
+    t("#include "),
+    t('"'),
+    f(filename_base, {}),
+    t({ '.h"', "" }),
+    f(filename_base, {}),
+    t("::"),
+    f(filename_base, {}),
+    t({ "(QWidget *parent) : QWidget(parent) {}", "", "" }),
+    f(filename_base, {}),
+    t("::~"),
+    f(filename_base, {}),
+    t("() {}"),
+  }),
   s("class", {
     -- Choice: Switch between two different Nodes, first parameter is its position, second a list of nodes.
     c(1, {

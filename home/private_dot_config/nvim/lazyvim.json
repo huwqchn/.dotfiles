@@ -37,7 +37,6 @@
     "plugins.extras.coding.complete.cmp",
     "plugins.extras.coding.complete.luasnip",
     "plugins.extras.coding.complete.supertab",
-    "plugins.extras.coding.complete.template",
     "plugins.extras.coding.join.treesj",
     "plugins.extras.coding.jump.flash",
     "plugins.extras.coding.motion.mini-bracketed",
