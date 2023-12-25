@@ -39,6 +39,7 @@
       - docker-compose
       - dunst
       - dust
+      - emscripten
       - exfat-utils
       - eza
       - fcitx5-anthy

@@ -23,6 +23,10 @@ fish_add_path ~/.cargo/bin
 fish_add_path /snap/bin
 fish_add_path ~/.emacs.d/bin
 
+# emscripten
+fish_add_path /usr/lib/emsdk
+fish_add_path /usr/lib/emsdk/upstream/emscripten
+
 set -x LD_LIBRARY_PATH /usr/lib $LD_LIBRARY_PATH
 
 # Go

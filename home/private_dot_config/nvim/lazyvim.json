@@ -78,9 +78,9 @@
     "plugins.extras.misc.smart-splits",
     "plugins.extras.misc.smart-splits",
     "plugins.extras.misc.text-case",
+    "plugins.extras.misc.tidy",
     "plugins.extras.misc.wezterm-types",
     "plugins.extras.misc.zen-mode",
-    "plugins.extras.misc.tidy",
     "plugins.extras.ui.bar.bufferline",
     "plugins.extras.ui.bar.dropbar",
     "plugins.extras.ui.colorscheme.tokyonight",
@@ -91,7 +91,7 @@
   ],
   "news": {
     "NEWS.md": "2123",
-    "doc/news.txt": "18962"
+    "doc/news.txt": "19113"
   },
   "version": 2
 }
