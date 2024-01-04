@@ -139,6 +139,7 @@
       - picom-arian8j2-git
       - python-dataclasses
       - qt5ct
+      - realvnc-vnc-viewer
       - recode
       - ripgrep
       - rofi
