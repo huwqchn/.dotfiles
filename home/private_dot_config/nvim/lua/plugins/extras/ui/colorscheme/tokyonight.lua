@@ -31,6 +31,7 @@ return {
           underline = true,
         }
         hl.StatusLine = { bg = "none" } -- status line of current window
+        hl.WinBar = { bg = "none" } -- window bar of current window
       end,
       style = "moon",
       transparent = true, -- Enable this to disable setting the background color
@@ -67,7 +68,7 @@ return {
     "LazyVim/LazyVim",
     opts = {
       colorscheme = function()
-          local colorscheme = "tokyonight"
+        local colorscheme = "tokyonight"
         vim.g.colors_name = colorscheme
         vim.cmd.colorscheme(colorscheme)
       end,
