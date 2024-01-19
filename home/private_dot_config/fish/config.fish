@@ -27,8 +27,6 @@ fish_add_path ~/.emacs.d/bin
 fish_add_path /usr/lib/emsdk
 fish_add_path /usr/lib/emsdk/upstream/emscripten
 
-set -x LD_LIBRARY_PATH /usr/lib $LD_LIBRARY_PATH
-
 # Go
 set -x GO111MODULE on
 set -x GOPROXY https://goproxy.cn
