@@ -27,7 +27,7 @@ return {
           jump_prev = "[[",
           jump_next = "]]",
           accept = "<CR>",
-          refresh = "<M-r>",
+          refresh = "<M-Tab>",
           open = "<M-space>",
         },
       },
