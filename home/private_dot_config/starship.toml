@@ -113,7 +113,7 @@ style = "#292E42"
 symbol = " "
 format = "[]($style)[$symbol$environment](bg:#292e42 fg:#98c379)[ ]($style)"
 style = "#292E42"
-ignore_base = false
+ignore_base = true
 
 [container]
 format = "[]($style)[$symbol$name](bg:#292e42 fg:#9a7ecc)[ ]($style)"

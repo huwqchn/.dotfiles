@@ -26,4 +26,4 @@
       cargo build --release -j $(nproc)
       cd target/release
       sudo mv eww /usr/bin/eww
-  chdir: "~/Repos/eww"
+    chdir: "~/Repos/eww"
