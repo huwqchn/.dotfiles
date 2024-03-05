@@ -9,5 +9,10 @@ else
         set -x PATH /opt/anaconda/bin $PATH
     end
 end
+
+# don't add the conda prompt. This is done by starship
+function __conda_add_prompt
+end
+
 # <<< conda initialize <<<
 export TERMINFO=/usr/share/terminfo
