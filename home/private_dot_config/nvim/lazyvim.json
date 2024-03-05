@@ -76,7 +76,6 @@
     "plugins.extras.lang.yuck",
     "plugins.extras.misc.dial",
     "plugins.extras.misc.smart-splits",
-    "plugins.extras.misc.smart-splits",
     "plugins.extras.misc.text-case",
     "plugins.extras.misc.tidy",
     "plugins.extras.misc.wezterm-types",
