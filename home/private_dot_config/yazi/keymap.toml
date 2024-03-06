@@ -29,12 +29,10 @@ prepend_keymap = [
     "n",
   ], exec = [
     "leave",
-    "escape --visual --select",
   ] },
   { on = [
     "o",
   ], exec = [
-    "enter",
     "plugin --sync enter-or-open",
   ] },
 
