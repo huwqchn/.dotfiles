@@ -116,7 +116,7 @@ abbr fm frogmouth
 abbr ns 'netstat -tunlp'
 abbr ex extract
 abbr nb newsboat
-abbr y yazi
+abbr ya yazi
 
 abbr git hub
 abbr topgit topgrade --only git_repos

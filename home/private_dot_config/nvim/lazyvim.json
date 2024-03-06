@@ -23,7 +23,6 @@
     "lazyvim.plugins.extras.lang.typescript",
     "lazyvim.plugins.extras.ui.edgy",
     "lazyvim.plugins.extras.ui.mini-animate",
-    "lazyvim.plugins.extras.util.dot",
     "lazyvim.plugins.extras.util.mini-hipatterns",
     "lazyvim.plugins.extras.util.project",
     "lazyvim.plugins.extras.vscode",
@@ -94,3 +93,4 @@
   },
   "version": 2
 }
+

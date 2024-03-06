@@ -37,6 +37,7 @@
       - discord
       - docker
       - docker-compose
+      - dragon
       - dunst
       - dust
       - emscripten
