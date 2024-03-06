@@ -118,6 +118,11 @@ abbr ex extract
 abbr nb newsboat
 abbr ya yazi
 
+# shortcuts for functions
+abbr bk backup
+abbr re restore
+
+
 abbr git hub
 abbr topgit topgrade --only git_repos
 abbr g hub
