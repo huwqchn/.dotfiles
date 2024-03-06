@@ -44,11 +44,11 @@ prepend_keymap = [
   ], exec = "forward" },
 
   { on = [
-    "<C-i>",
-  ], exec = "peek -5" },
+    "<C-u>",
+  ], exec = "seek -5" },
   { on = [
-    "<C-e>",
-  ], exec = "peek 5" },
+    "<C-d>",
+  ], exec = "seek 5" },
 
   # Operation
   { on = [
@@ -135,9 +135,9 @@ prepend_keymap = [
 
 prepend_keymap = [
   { on = [
-    "<C-i>",
+    "<C-u>",
   ], exec = "arrow -1" },
   { on = [
-    "<C-e>",
+    "<C-d>",
   ], exec = "arrow 1" },
 ]
