@@ -8,13 +8,12 @@
 (include "yuck/hardware.yuck")
 (include "yuck/weather.yuck")
 (include "yuck/conky.yuck")
+(include "yuck/powermenu.yuck")
 
 ;; TODO: popup-player scrpits
 ;; TODO: popup-dashboard scripts
-;; TODO: popup-power scripts
+;; TODO: popup-indicator scripts
 ;; TODO: plyaer window
-;; TODO: power menu window
-;; TODO: calender window
 ;; TODO: dashboard window
 ;; TODO: lock window
 

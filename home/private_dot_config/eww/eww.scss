@@ -169,6 +169,38 @@ window {
   padding: 10px;
 }
 
+.powermenu {
+  background-color: $bg;
+  border-radius: 20px;
+  font-size: 5em;
+  .shutdown-button,
+  .reboot-button,
+  .exit-button,
+  .lock-button {
+    border-radius: 30px;
+  }
+
+  .shutdown-button:hover,
+  .reboot-button:hover,
+  .exit-button:hover,
+  .lock-button:hover {
+    background-color: $bg-alt;
+  }
+
+  .shutdown-button {
+    color: $red;
+  }
+  .reboot-button {
+    color: $green;
+  }
+  .exit-button {
+    color: $blue;
+  }
+  .lock-button {
+    color: $yellow;
+  }
+}
+
 @mixin box-setup {
   background-color: $bg-alt;
   border-radius: 5px;

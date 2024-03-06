@@ -6,7 +6,7 @@
     (button
       :class "power-button"
       :valign "fill"
-      :onclick "~/.config/eww/scripts/popup-power"
+      :onclick "scripts/popup-powermenu"
       " "
     )
   )
