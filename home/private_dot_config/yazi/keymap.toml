@@ -14,7 +14,7 @@ keymap = [
   { on = ["I"], exec = "arrow 5" },
 
   { on = ["n"], exec = ["leave", "escape --visual --select"] },
-  { on = ["o"], exec = ["enter", "escape --visual --select"] },
+  { on = ["o"], exec = ["enter", "plugin enter-or-open --sync"] },
 
   { on = ["N"], exec = "back" },
   { on = ["O"], exec = "forward" },
