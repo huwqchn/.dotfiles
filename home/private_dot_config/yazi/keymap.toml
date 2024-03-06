@@ -50,6 +50,10 @@ prepend_keymap = [
     "<C-d>",
   ], exec = "seek 5" },
 
+  { on = [
+    "h",
+  ], exec = "hidden toggle" },
+
   # Operation
   { on = [
     "l",
