@@ -130,6 +130,7 @@
       - parcellite
       - paru
       - pavucontrol
+      - perl-image-exiftool
       - plank
       - playerctl
       - polkit-gnome
