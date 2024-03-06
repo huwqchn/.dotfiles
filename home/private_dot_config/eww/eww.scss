@@ -498,9 +498,83 @@ window {
   }
 }
 
+@mixin indicator-label-setup {
+  font-family: "Material Design Icons Desktop, Feather, Grid Styles";
+  font-size: 5em;
+  margin-top: 0.8em;
+  margin-bottom: 0.6em;
+  padding: 0em;
+}
+
+.brightness-indicator,
 .volume-indicator {
   border-radius: 15px;
-  background-color: unset;
+  background-color: $bg;
+}
+
+.volume-indicator-bar-Unmuted {
+  all: unset;
+  background-color: $bg;
+  border-radius: 100px;
+  margin-bottom: 0px;
+  margin-top: 0px;
+}
+
+.volume-indicator-bar-Unmuted trough {
+  border-radius: 100px;
+  slider {
+    background-color: transparent;
+  }
+}
+
+.volume-indicator-bar-Unmuted highlight {
+  border-radius: 100px;
+  padding: 4px;
+  background: $fg;
+}
+
+.volume-indicator-bar-Muted trough {
+  background-color: $gray;
+}
+
+.volume-indicator-bar-Muted highlight {
+  background: $red;
+}
+
+.volume-indicator-label-Muted {
+  @include indicator-label-setup;
+  color: $red;
+}
+
+.volume-indicator-label-Unmuted {
+  @include indicator-label-setup;
+  color: $fg;
+}
+
+.brightness-indicator-label {
+  @include indicator-label-setup;
+  color: $fg;
+}
+
+.brighness-indicator-bar {
+  all: unset;
+  background-color: $bg;
+  border-radius: 100px;
+  margin-bottom: 0px;
+  margin-top: 0px;
+}
+
+.brighness-indicator-bar trough {
+  border-radius: 100px;
+  slider {
+    background-color: transparent;
+  }
+}
+
+.brighness-indicator-bar highlight {
+  border-radius: 100px;
+  padding: 4px;
+  background: $fg;
 }
 
 @mixin hardware-icon-setup {

@@ -1,0 +1,4 @@
+
+#!/bin/bash
+
+eww close brightness-indicator || eww open brightness-indicator && sleep 1.5 && eww close brightness-indicator

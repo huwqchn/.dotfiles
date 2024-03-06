@@ -43,24 +43,21 @@
     :class "volume-indicator"
     :orientation "v"
     :space-evenly false
-    (box
-      :orientation "v"
+    :hexpand false
+    :vexpand false
+    (label
+      :class "volume-indicator-label-${volume-state}"
       :space-evenly false
-      :spacing 10
+      :text volume-icon
       :valign "center"
-      :halign "center"
-      (label
-        :space-evenly false
-        :text volume-icon
-        :class "volume-indicator-label-${volume-state}"
-      )
-      (scale
-        :class "volume-indicator-bar-${volume-state}"
-        :space-evenly false
-        :hexpand true
-        :value volume-percent
-        :onchange "amixer -D pulse sset Master {}%"
-      )
+    )
+    (scale
+      :class "volume-indicator-bar-${volume-state}"
+      :orientation "h"
+      :max 100
+      :min 0
+      :value volume-percent
+      :onchange "amixer -D pulse sset Master {}%"
     )
   )
 )
@@ -69,9 +66,9 @@
   :monitor 0
   :geometry
     (geometry
-      :x "0px"
-      :y "400px"
-      :width "500px"
+      :x 0
+      :y "-5%"
+      :width "200px"
       :height "200px"
       :anchor "center bottom"
     )
