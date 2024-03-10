@@ -102,7 +102,8 @@ abbr tk tokei
 abbr df 'df -h'
 abbr f neofetch
 abbr ncdu 'ncdu --color dark'
-abbr j joshuto
+abbr j yazi
+abbr ya yazi
 abbr v nvim
 abbr gg gitui
 abbr ze zellij
@@ -116,7 +117,6 @@ abbr fm frogmouth
 abbr ns 'netstat -tunlp'
 abbr ex extract
 abbr nb newsboat
-abbr ya yazi
 
 # shortcuts for functions
 abbr bk backup
