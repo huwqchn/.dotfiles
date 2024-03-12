@@ -18,7 +18,6 @@
     "lazyvim.plugins.extras.lang.omnisharp",
     "lazyvim.plugins.extras.lang.python",
     "lazyvim.plugins.extras.lang.python-semshi",
-    "lazyvim.plugins.extras.lang.rust",
     "lazyvim.plugins.extras.lang.tailwind",
     "lazyvim.plugins.extras.lang.typescript",
     "lazyvim.plugins.extras.ui.edgy",
@@ -69,7 +68,6 @@
     "plugins.extras.lang.http",
     "plugins.extras.lang.nodejs",
     "plugins.extras.lang.python",
-    "plugins.extras.lang.rust",
     "plugins.extras.lang.typescript",
     "plugins.extras.lang.ymal",
     "plugins.extras.lang.yuck",
@@ -85,12 +83,13 @@
     "plugins.extras.ui.dress.noice",
     "plugins.extras.ui.dress.notify",
     "plugins.extras.ui.windows.window-picker",
+    "plugins.extras.ui.windows.windows",
     "lazyvim.plugins.extras.editor.aerial"
   ],
   "news": {
     "NEWS.md": "2123",
     "doc/news.txt": "24277"
   },
-  "version": 2
+  "version": 3
 }
 

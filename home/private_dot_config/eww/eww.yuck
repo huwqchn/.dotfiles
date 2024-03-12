@@ -12,10 +12,8 @@
 
 ;; TODO: popup-player scrpits
 ;; TODO: popup-dashboard scripts
-;; TODO: popup-indicator scripts
 ;; TODO: plyaer window
 ;; TODO: dashboard window
-;; TODO: lock window
 
 
 (defwidget bar-start []
