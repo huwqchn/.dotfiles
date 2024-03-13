@@ -10,9 +10,7 @@
 (include "yuck/conky.yuck")
 (include "yuck/powermenu.yuck")
 
-;; TODO: popup-player scrpits
 ;; TODO: popup-dashboard scripts
-;; TODO: plyaer window
 ;; TODO: dashboard window
 
 
