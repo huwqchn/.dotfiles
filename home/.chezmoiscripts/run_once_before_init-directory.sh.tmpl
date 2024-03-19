@@ -1,4 +1,7 @@
+{{ if ne .chezmoi.os "windows" }}
+
 #!/bin/sh
+
 
 # if xdg directory is not set, set it to default
 if [ -d "${HOME}/Download" ]; then
@@ -25,3 +28,5 @@ fi
 if [ -d "${HMOE}/.backup" ]; then
   mkdir -p ${HOME}/.backup
 fi
+
+{{ end }}
