@@ -59,4 +59,8 @@ key.txt.age
 
 {{ if eq .chezmoi.os "windows" }}
 *
+!.config/nvim
+!.config/yazi
+!.config/wezterm
+!.config/lazygit
 {{ end }}
