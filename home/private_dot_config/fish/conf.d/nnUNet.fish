@@ -1,3 +1,3 @@
-set -x nnUNet_raw $HOME/Repos/dl-repos/nnUNet/nnUNetFrame/DATASET/nnUNet_raw
-set -x nnUNet_results $HOME/Repos/dl-repos/nnUNet/nnUNetFrame/DATASET/nnUNet_results
-set -x nnUNet_preprocessed $HOME/Repos/dl-repos/nnUNet/nnUNetFrame/DATASET/nnUNet_preprocessed
+set -x nnUNet_raw $HOME/Extend/nnUNet/raw
+set -x nnUNet_results $HOME/Extend/nnUNet/results
+set -x nnUNet_preprocessed $HOME/Extend/nnUNet/preprocessed

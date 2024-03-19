@@ -57,6 +57,7 @@
       - firefox
       - fish
       - flake8
+      - fortune-mod
       - gamemode
       - gammastep
       - gdm-settings-git
