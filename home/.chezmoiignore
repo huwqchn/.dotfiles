@@ -14,7 +14,9 @@ key.txt.age
 .gtkrc-2.0
 .xprofile
 .Xresources
+.Xthemes
 .zshenv
+.scripts
 .config/Kvantum
 .config/MangoHud
 .config/bspwm
@@ -23,6 +25,7 @@ key.txt.age
 .config/clash
 .config/dunst
 .config/eww
+.config/fcitx5
 .config/gammastep
 .config/glava
 .config/gtk-2.0
@@ -31,6 +34,7 @@ key.txt.age
 .config/himalaya
 .config/hypr
 .config/i3
+.config/jgmenu
 .config/mpd
 .config/mpv
 .config/ncmpcpp
@@ -51,4 +55,8 @@ key.txt.age
 .config/tint2
 .config/zathura
 .config/stalonetrayrc
+{{ end }}
+
+{{ if eq .chezmoi.os "windows" }}
+*
 {{ end }}

@@ -163,6 +163,9 @@
       - swaylock-effects
       - swww
       - topgrade
+      - texlive-latexextra
+      - texlive-science
+      - texlive-bibtexextra
       - udiskie
       - ueberzug
       - ukui-window-switch
