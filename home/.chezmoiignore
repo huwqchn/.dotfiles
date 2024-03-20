@@ -15,10 +15,10 @@ key.txt.age
 .xprofile
 .Xresources
 .Xthemes
-.zshenv
 .scripts
 .config/Kvantum
 .config/MangoHud
+.config/avizo
 .config/bspwm
 .config/cava
 .config/conky
@@ -58,9 +58,30 @@ key.txt.age
 {{ end }}
 
 {{ if eq .chezmoi.os "windows" }}
-*
-!.config/nvim
-!.config/yazi
-!.config/wezterm
-!.config/lazygit
+.config/BetterDiscord
+.config/alacritty
+.config/aria2
+.config/atuin
+.config/*.conf
+.config/fish
+.config/gammastep
+.config/gitui
+.config/joshuto
+.config/kitty
+.config/lvim
+.config/neofetch
+.config/procs
+.config/tmux
+.config/zellij
+.config/zsh
+.config/spotifyd
+.config/starship.toml
+.config/ripgrep
+.config/himalaya
+.config/helix
+.config/gtags
+.ssh
+.zshenv
+.zshrc
+.vimrc
 {{ end }}

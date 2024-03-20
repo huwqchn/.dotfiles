@@ -6,8 +6,8 @@
     "lazyvim.plugins.extras.coding.tabnine",
     "lazyvim.plugins.extras.coding.yanky",
     "lazyvim.plugins.extras.dap.nlua",
-    "lazyvim.plugins.extras.editor.mini-files",
     "lazyvim.plugins.extras.editor.harpoon2",
+    "lazyvim.plugins.extras.editor.mini-files",
     "lazyvim.plugins.extras.formatting.prettier",
     "lazyvim.plugins.extras.lang.clangd",
     "lazyvim.plugins.extras.lang.docker",
@@ -88,7 +88,7 @@
   ],
   "news": {
     "NEWS.md": "2123",
-    "doc/news.txt": "24277"
+    "doc/news.txt": "24477"
   },
   "version": 3
 }
