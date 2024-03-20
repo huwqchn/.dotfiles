@@ -38,42 +38,42 @@
   )
 )
 
-(defwidget volume-indicator []
-  (box
-    :class "volume-indicator"
-    :orientation "v"
-    :space-evenly false
-    :hexpand false
-    :vexpand false
-    (label
-      :class "volume-indicator-label-${volume-state}"
-      :space-evenly false
-      :text volume-icon
-      :valign "center"
-    )
-    (scale
-      :class "volume-indicator-bar-${volume-state}"
-      :orientation "h"
-      :max 100
-      :min 0
-      :value volume-percent
-      :onchange "amixer -D pulse sset Master {}%"
-    )
-  )
-)
-
-(defwindow volume-indicator
-  :monitor 0
-  :geometry
-    (geometry
-      :x 0
-      :y "-5%"
-      :width "200px"
-      :height "200px"
-      :anchor "center bottom"
-    )
-  :windowtype "dock"
-  :wm-ignore true
-  :stacking "fg"
-  (volume-indicator)
-)
+; (defwidget volume-indicator []
+;   (box
+;     :class "volume-indicator"
+;     :orientation "v"
+;     :space-evenly false
+;     :hexpand false
+;     :vexpand false
+;     (label
+;       :class "volume-indicator-label-${volume-state}"
+;       :space-evenly false
+;       :text volume-icon
+;       :valign "center"
+;     )
+;     (scale
+;       :class "volume-indicator-bar-${volume-state}"
+;       :orientation "h"
+;       :max 100
+;       :min 0
+;       :value volume-percent
+;       :onchange "amixer -D pulse sset Master {}%"
+;     )
+;   )
+; )
+;
+; (defwindow volume-indicator
+;   :monitor 0
+;   :geometry
+;     (geometry
+;       :x 0
+;       :y "-5%"
+;       :width "200px"
+;       :height "200px"
+;       :anchor "center bottom"
+;     )
+;   :windowtype "dock"
+;   :wm-ignore true
+;   :stacking "fg"
+;   (volume-indicator)
+; )

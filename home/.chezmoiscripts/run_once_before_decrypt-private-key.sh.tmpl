@@ -1,5 +1,3 @@
-{{ if ne .chezmoi.os "windows" }}
-
 #!/bin/sh
 
 if [ ! -f "${HOME}/.config/chezmoi/key.txt" ]; then
@@ -7,5 +5,3 @@ if [ ! -f "${HOME}/.config/chezmoi/key.txt" ]; then
     chezmoi age decrypt --output "${HOME}/.config/chezmoi/key.txt" --passphrase "{{ .chezmoi.sourceDir }}/key.txt.age"
     chmod 600 "${HOME}/.config/chezmoi/key.txt"
 fi
-
-{{ end }}

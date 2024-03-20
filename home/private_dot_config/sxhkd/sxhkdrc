@@ -268,23 +268,27 @@ ctrl + Print
 
 # Volume Up
 XF86AudioRaiseVolume
-  amixer sset Master 5%+ && $HOME/.config/eww/scripts/popup-volume
+  volumectl -u up
 
 # Volume Down
 XF86AudioLowerVolume
-  amixer sset Master 5%- && $HOME/.config/eww/scripts/popup-volume
+  volumectl -u down
 
 # Volume Mute
 XF86AudioMute
-  amixer sset Master toggle && $HOME/.config/eww/scripts/popup-volume
+  volumectl toggle-mute
+
+# Volume mic mute
+XF86AudioMicMute
+  volumectl -m toggle-mute
 
 # Brightness Up
 XF86MonBrightnessUp
-  brightnessctl s 20+ && $HOME/.config/eww/scripts/popup-brightness
+  lightctl up
 
 # Brightness Down
 XF86MonBrightnessDown
-  brightnessctl s 20- && $HOME/.config/eww/scripts/popup-brightness
+  lightctl down
 
 # Toggle right click context menu.
 ~button3

@@ -1,3 +1,0 @@
-#!/bin/bash
-
-eww open brightness-indicator && sleep 3 && eww close brightness-indicator
