@@ -4,9 +4,13 @@ return {
     dependencies = {
       {
         "debugloop/telescope-undo.nvim",
+        event = "VeryLazy",
         keys = { { "<leader>U", "<cmd>Telescope undo<cr>" } },
-        config = function()
-          require("telescope").load_extension("undo")
+        config = function(_, opts)
+          require("scope").setup(opts)
+          require("lazyvim.util").on_load("telescope.nvim", function()
+            require("telescope").load_extension("undo")
+          end)
         end,
       },
       -- {
@@ -57,6 +61,14 @@ return {
           override_file_sorter = true, -- override the file sorter
           case_mode = "smart_case", -- or "ignore_case" or "respect_case"
           -- the default case_mode is "smart_case"
+        },
+        undo = {
+          use_delta = true,
+          side_by_side = true,
+          layout_strategy = "vertical",
+          layout_config = {
+            preview_height = 0.4,
+          },
         },
       },
       defaults = {
