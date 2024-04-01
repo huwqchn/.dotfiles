@@ -37,7 +37,7 @@ config.window_background_opacity = 0.85
 -- config.default_workspace = "home"
 
 -- enabled IME
-config.use_ime = true
+-- config.use_ime = true
 -- config.xim_im_name = "fcitx"
 
 if wezterm.target_triple:find("windows") then

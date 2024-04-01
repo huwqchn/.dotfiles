@@ -6,9 +6,11 @@
     "lazyvim.plugins.extras.coding.tabnine",
     "lazyvim.plugins.extras.coding.yanky",
     "lazyvim.plugins.extras.dap.nlua",
+    "lazyvim.plugins.extras.editor.dial",
     "lazyvim.plugins.extras.editor.harpoon2",
     "lazyvim.plugins.extras.editor.mini-files",
-    "lazyvim.plugins.extras.editor.dial",
+    "lazyvim.plugins.extras.editor.mini-diff",
+    "lazyvim.plugins.extras.editor.trouble-v3",
     "lazyvim.plugins.extras.formatting.prettier",
     "lazyvim.plugins.extras.lang.clangd",
     "lazyvim.plugins.extras.lang.cmake",
@@ -43,10 +45,10 @@
     "plugins.extras.coding.motion.mini-bracketed",
     "plugins.extras.coding.motion.nvim-spider",
     "plugins.extras.coding.move.mini-move",
+    "plugins.extras.coding.operator.dial",
     "plugins.extras.coding.operator.mini-ai",
     "plugins.extras.coding.operator.mini-align",
     "plugins.extras.coding.operator.mini-operators",
-    "plugins.extras.coding.operator.dial",
     "plugins.extras.coding.pairs.mini-pairs",
     "plugins.extras.coding.rename.inc-rename",
     "plugins.extras.coding.surround.mini-surround",
@@ -62,7 +64,6 @@
     "plugins.extras.editor.runner.code-runner",
     "plugins.extras.editor.search.ssr",
     "plugins.extras.editor.search.telescope",
-    "plugins.extras.editor.symbols.aerial",
     "plugins.extras.editor.terminal.toggleterm",
     "plugins.extras.editor.test.coverage",
     "plugins.extras.lang.bash",
@@ -86,11 +87,10 @@
     "plugins.extras.ui.dress.noice",
     "plugins.extras.ui.dress.notify",
     "plugins.extras.ui.windows.window-picker",
-    "plugins.extras.ui.windows.windows",
-    "lazyvim.plugins.extras.editor.aerial"
+    "plugins.extras.ui.windows.windows"
   ],
   "news": {
-    "NEWS.md": "2850",
+    "NEWS.md": "3314",
     "doc/news.txt": "24477"
   },
   "version": 3
