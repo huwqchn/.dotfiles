@@ -25,8 +25,8 @@ unmap({ "n", "i", "x" }, "<A-j>")
 -- colemak-dh movement
 vim.keymap.set({ "n", "x" }, "e", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 vim.keymap.set({ "n", "x" }, "i", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
-vim.keymap.set({ "n", "x" }, "n", "h")
-vim.keymap.set({ "n", "x" }, "o", "l")
+vim.keymap.set({ "n", "x" }, "n", "h", { expr = true, silent = true })
+vim.keymap.set({ "n", "x" }, "o", "l", { expr = true, silent = true })
 
 -- colemak-dh jump to start/end of the line
 map({ "n", "x", "o" }, "N", "^")

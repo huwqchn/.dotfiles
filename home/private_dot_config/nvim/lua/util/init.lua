@@ -39,4 +39,36 @@ function M.find_project_root()
   return "."
 end
 
+-- cowboy
+function M.cowboy(mode, key, map, opts)
+  local id
+  local ok = true
+  local count = 0
+  local timer = assert(vim.uv.new_timer())
+  vim.keymap.set(mode, key, function()
+    if vim.v.count > 0 then
+      count = 0
+    end
+    if count >= 10 and vim.bo.buftype ~= "nofile" then
+      ok, id = pcall(vim.notify, "Hold it Cowboy!", vim.log.levels.WARN, {
+        icon = "🤠",
+        replace = id,
+        keep = function()
+          return count >= 10
+        end,
+      })
+      if not ok then
+        id = nil
+        return map
+      end
+    else
+      count = count + 1
+      timer:start(2000, 0, function()
+        count = 0
+      end)
+      return map
+    end
+  end, opts)
+end
+
 return M
