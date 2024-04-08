@@ -93,6 +93,7 @@ return {
   {
     "CopilotC-Nvim/CopilotChat.nvim",
     branch = "canary",
+    -- version = "v2.4.3",
     dependencies = {
       { "zbirenbaum/copilot.lua" }, -- or github/copilot.vim
       { "nvim-lua/plenary.nvim" }, -- for curl, log wrapper
@@ -103,7 +104,6 @@ return {
       error_header = "## Error ",
       separator = " ", -- Separator to use in chat
       prompts = prompts,
-      auto_follow_cursor = false, -- Don't follow the cursor after getting response
       show_help = false, -- Show help in virtual text, set to true if that's 1st time using Copilot Chat
       mappings = {
         -- Use tab for completion
@@ -298,4 +298,21 @@ return {
       })
     end,
   },
+  -- {
+  --   "folke/edgy.nvim",
+  --   optional = true,
+  --   opts = {
+  --     right = {
+  --       {
+  --         title = "CopilotChat.nvim",
+  --         ft = "copilot-chat",
+  --         size = { width = 0.5 },
+  --         -- exclude floating windows
+  --         filter = function(buf, win)
+  --           return vim.api.nvim_win_get_config(win).relative == ""
+  --         end,
+  --       },
+  --     },
+  --   },
+  -- },
 }
