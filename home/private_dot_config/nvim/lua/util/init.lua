@@ -40,11 +40,23 @@ function M.find_project_root()
 end
 
 -- cowboy
-function M.cowboy(mode, key, map, opts)
+function M.cowboy(mode, key, map)
   local id
   local ok = true
   local count = 0
   local timer = assert(vim.uv.new_timer())
+  local eval = function(m)
+    if type(m) == "function" then
+      return m()
+    else
+      if string.match(m, "^v:") then
+        local key_to_feed = vim.api.nvim_eval(m)
+        vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes(key_to_feed, true, false, true), "n", false)
+      else
+        return m
+      end
+    end
+  end
   vim.keymap.set(mode, key, function()
     if vim.v.count > 0 then
       count = 0
@@ -59,16 +71,16 @@ function M.cowboy(mode, key, map, opts)
       })
       if not ok then
         id = nil
-        return map
+        return eval(map)
       end
     else
       count = count + 1
       timer:start(2000, 0, function()
         count = 0
       end)
-      return map
+      return eval(map)
     end
-  end, opts)
+  end, { expr = true, silent = true })
 end
 
 return M

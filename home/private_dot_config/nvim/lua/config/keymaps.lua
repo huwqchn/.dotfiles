@@ -14,6 +14,7 @@
 local Util = require("lazyvim.util")
 local map = Util.safe_keymap_set
 local unmap = vim.keymap.del
+local cowboy = require("util").cowboy
 unmap("n", "<C-h>")
 unmap("n", "<C-j>")
 unmap("n", "<C-k>")
@@ -23,10 +24,10 @@ unmap({ "n", "i", "x" }, "<A-j>")
 -- local map = vim.keymap.set
 -- local Util = require("lazyvim.util")
 -- colemak-dh movement
-vim.keymap.set({ "n", "x" }, "e", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
-vim.keymap.set({ "n", "x" }, "i", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
-vim.keymap.set({ "n", "x" }, "n", "h", { silent = true })
-vim.keymap.set({ "n", "x" }, "o", "l", { silent = true })
+cowboy({ "n", "x" }, "e", "v:count == 0 ? 'gj' : 'j'")
+cowboy({ "n", "x" }, "i", "v:count == 0 ? 'gk' : 'k'")
+cowboy({ "n", "x" }, "n", "h")
+cowboy({ "n", "x" }, "o", "l")
 
 -- colemak-dh jump to start/end of the line
 map({ "n", "x", "o" }, "N", "^")
@@ -82,7 +83,7 @@ map("i", "<M-f>", "<C-Right>", { silent = true, desc = "forward word" })
 map("i", "<M-b>", "<C-Left>", { silent = true, desc = "backward word" })
 
 -- emacs begin/end of line
--- map("i", "</-a>", "<Home>", { silent = true, desc = "begin of line" })
+-- map("i", "<C-a>", "<Home>", { silent = true, desc = "begin of line" })
 -- map("i", "<C-e>", "<End>", { silent = true, desc = "end of line" })
 
 -- autocorrect spelling from previous error
