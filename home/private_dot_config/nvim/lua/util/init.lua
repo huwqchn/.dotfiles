@@ -51,7 +51,8 @@ function M.cowboy(mode, key, map)
     else
       if string.match(m, "^v:") then
         local key_to_feed = vim.api.nvim_eval(m)
-        vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes(key_to_feed, true, false, true), "n", false)
+        -- vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes(key_to_feed, true, false, true), "n", false)
+        return key_to_feed
       else
         return m
       end
