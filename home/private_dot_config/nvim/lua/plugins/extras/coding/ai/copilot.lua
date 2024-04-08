@@ -232,7 +232,7 @@ return {
       -- Clear buffer and chat history
       { "<leader>al", "<cmd>CopilotChatReset<cr>", desc = "CopilotChat - Clear buffer and chat history" },
       -- Toggle Copilot Chat Vsplit
-      { "<leader>av", "<cmd>CopilotChatToggle<cr>", desc = "CopilotChat - Toggle" },
+      { "<leader>at", "<cmd>CopilotChatToggle<cr>", desc = "CopilotChat - Toggle" },
       { "gmd", desc = "Show diff" },
       { "gmp", desc = "System prompt" },
       { "gms", desc = "Show selection" },

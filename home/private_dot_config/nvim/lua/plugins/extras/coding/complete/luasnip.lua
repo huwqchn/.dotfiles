@@ -66,7 +66,7 @@ return {
         desc = "edit snippet",
       },
       {
-        "<leader>a",
+        "<leader>cn",
         function()
           require("scissors").addNewSnippet()
         end,
