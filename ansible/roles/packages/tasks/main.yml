@@ -127,6 +127,7 @@
       - nwg-look-bin
       - obsidian
       - onedrive
+      - ollama
       - pa-applet-git
       - pacman-contrib
       - pamixer

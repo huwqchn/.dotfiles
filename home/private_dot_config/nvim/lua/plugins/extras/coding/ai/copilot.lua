@@ -1,22 +1,3 @@
-local prompts = {
-  -- Code related prompts
-  Explain = "Please explain how the following code works.",
-  Review = "Please review the following code and provide suggestions for improvement.",
-  Tests = "Please explain how the selected code works, then generate unit tests for it.",
-  Refactor = "Please refactor the following code to improve its clarity and readability.",
-  FixCode = "Please fix the following code to make it work as intended.",
-  FixError = "Please explain the error in the following text and provide a solution.",
-  BetterNamings = "Please provide better names for the following variables and functions.",
-  Documentation = "Please provide documentation for the following code.",
-  SwaggerApiDocs = "Please provide documentation for the following API using Swagger.",
-  SwaggerJsDocs = "Please write JSDoc for the following API using Swagger.",
-  -- Text related prompts
-  Summarize = "Please summarize the following text.",
-  Spelling = "Please correct any grammar and spelling errors in the following text.",
-  Wording = "Please improve the grammar and wording of the following text.",
-  Concise = "Please rewrite the following text to make it more concise.",
-}
-
 return {
   {
     "folke/which-key.nvim",
@@ -104,7 +85,6 @@ return {
       answer_header = "## Copilot ",
       error_header = "## Error ",
       separator = " ", -- Separator to use in chat
-      prompts = prompts,
       show_help = false, -- Show help in virtual text, set to true if that's 1st time using Copilot Chat
       mappings = {
         -- Use tab for completion
@@ -204,6 +184,28 @@ return {
         end,
         desc = "CopilotChat - Ask input",
       },
+      -- save and load
+      {
+        "<leader>as",
+        function()
+          local input = vim.fn.input("Save chat name as: ")
+          if input ~= "" then
+            vim.cmd("CopilotChatSave " .. input)
+          end
+        end,
+        desc = "CoplitChat - Save chat",
+      },
+      {
+        "<leader>ao",
+        function()
+          local input = vim.fn.input("Load chat name: ")
+          if input ~= "" then
+            vim.cmd("CopilotChatLoad " .. input)
+          end
+        end,
+        desc = "CopilotChat - load chat",
+      },
+
       -- Generate commit message based on the git diff
       {
         "<leader>am",
@@ -247,15 +249,62 @@ return {
       opts.selection = select.unnamed
 
       -- Override the git prompts message
-      opts.prompts.Commit = {
-        prompt = "Write commit message for the change with commitizen convention",
-        selection = select.gitdiff,
-      }
-      opts.prompts.CommitStaged = {
-        prompt = "Write commit message for the change with commitizen convention",
-        selection = function(source)
-          return select.gitdiff(source, true)
-        end,
+
+      opts.prompts = {
+        -- Code related prompts
+        Explain = {
+          prompt = "/COPILOT_EXPLAIN Please explain how the following code works.",
+        },
+        Review = {
+          prompt = "Please review the following code and provide suggestions for improvement.@buffer",
+        },
+        Tests = {
+          prompt = "/COPILOT_TESTS Please explain how the selected code works, then generate unit tests for it.",
+        },
+        Refactor = {
+          prompt = "Please refactor the following code to improve its clarity and readability.",
+        },
+        Fix = {
+          prompt = "/COPILOT_FIX Please fix the following code to make it work as intended.",
+        },
+        FixError = {
+          prompt = "Please explain the error in the following text and provide a solution.",
+        },
+        BetterNamings = {
+          prompt = "Please provide better names for the following variables and functions.",
+        },
+        Documentation = {
+          prompt = "Please provide documentation for the following code.",
+        },
+        SwaggerApiDocs = {
+          prompt = "Please provide documentation for the following API using Swagger.",
+        },
+        SwaggerJsDocs = {
+          prompt = "Please write JSDoc for the following API using Swagger.",
+        },
+        -- Text related prompts
+        Summarize = {
+          prompt = "Please summarize the following text.",
+        },
+        Spelling = {
+          prompt = "Please correct any grammar and spelling errors in the following text.",
+        },
+        Wording = {
+          prompt = "Please improve the grammar and wording of the following text.",
+        },
+        Concise = {
+          prompt = "Please rewrite the following text to make it more concise.",
+        },
+        Commit = {
+          prompt = "Write commit message for the change with commitizen convention",
+          selection = select.gitdiff,
+        },
+        CommitStaged = {
+          prompt = "Write commit message for the change with commitizen convention",
+          selection = function(source)
+            return select.gitdiff(source, true)
+          end,
+        },
       }
 
       chat.setup(opts)
