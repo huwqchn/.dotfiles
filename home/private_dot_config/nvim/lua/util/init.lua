@@ -48,14 +48,14 @@ function M.cowboy(mode, key, map)
   local eval = function(m)
     if type(m) == "function" then
       return m()
+    elseif m == nil then
+      return key
+    elseif string.match(m, "^v:") then
+      local key_to_feed = vim.api.nvim_eval(m)
+      -- vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes(key_to_feed, true, false, true), "n", false)
+      return key_to_feed
     else
-      if string.match(m, "^v:") then
-        local key_to_feed = vim.api.nvim_eval(m)
-        -- vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes(key_to_feed, true, false, true), "n", false)
-        return key_to_feed
-      else
-        return m
-      end
+      return m
     end
   end
   vim.keymap.set(mode, key, function()

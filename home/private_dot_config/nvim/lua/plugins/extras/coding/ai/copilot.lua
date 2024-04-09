@@ -94,6 +94,7 @@ return {
     "CopilotC-Nvim/CopilotChat.nvim",
     branch = "canary",
     -- version = "v2.4.3",
+    -- event = "VeryLazy",
     dependencies = {
       { "zbirenbaum/copilot.lua" }, -- or github/copilot.vim
       { "nvim-lua/plenary.nvim" }, -- for curl, log wrapper
@@ -298,21 +299,21 @@ return {
       })
     end,
   },
-  -- {
-  --   "folke/edgy.nvim",
-  --   optional = true,
-  --   opts = {
-  --     right = {
-  --       {
-  --         title = "CopilotChat.nvim",
-  --         ft = "copilot-chat",
-  --         size = { width = 0.5 },
-  --         -- exclude floating windows
-  --         filter = function(buf, win)
-  --           return vim.api.nvim_win_get_config(win).relative == ""
-  --         end,
-  --       },
-  --     },
-  --   },
-  -- },
+  {
+    "folke/edgy.nvim",
+    optional = true,
+    opts = {
+      right = {
+        {
+          title = "CopilotChat.nvim",
+          ft = "copilot-chat",
+          size = { width = 0.5 },
+          -- exclude floating windows
+          filter = function(buf, win)
+            return vim.api.nvim_win_get_config(win).relative == ""
+          end,
+        },
+      },
+    },
+  },
 }

@@ -28,6 +28,8 @@ cowboy({ "n", "x" }, "e", "v:count == 0 ? 'gj' : 'j'")
 cowboy({ "n", "x" }, "i", "v:count == 0 ? 'gk' : 'k'")
 cowboy({ "n", "x" }, "n", "h")
 cowboy({ "n", "x" }, "o", "l")
+cowboy({ "n", "x" }, "+")
+cowboy({ "n", "x" }, "-")
 
 -- colemak-dh jump to start/end of the line
 map({ "n", "x", "o" }, "N", "^")
@@ -101,10 +103,10 @@ map("t", "<C-v>", "<C-\\><C-N>pi")
 map("c", "<C-v>", "<C-r>+")
 
 -- inc/dec number
-map({ "n", "v" }, "+", "<C-a>")
-map({ "n", "v" }, "-", "<C-x>")
-map({ "n", "v" }, "g+", "g<C-a>")
-map({ "n", "v" }, "g-", "g<C-x>")
+map({ "n", "v" }, "<C-=>", "<C-a>")
+map({ "n", "v" }, "<C-->", "<C-x>")
+map({ "n", "v" }, "g<C-=>", "g<C-a>")
+map({ "n", "v" }, "g<C-->", "g<C-x>")
 
 -- Move lines
 map("n", "<A-e>", "<cmd>m .+1<CR>==", { desc = "Move down" })

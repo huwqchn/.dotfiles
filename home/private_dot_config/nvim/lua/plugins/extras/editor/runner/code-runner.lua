@@ -91,4 +91,21 @@ return {
       },
     },
   },
+  -- {
+  --   "folke/edgy.nvim",
+  --   optional = true,
+  --   opts = {
+  --     right = {
+  --       {
+  --         title = "Runner",
+  --         ft = "crunner_*",
+  --         size = { width = 0.4 },
+  --         -- exclude floating windows
+  --         filter = function(buf, win)
+  --           return vim.api.nvim_win_get_config(win).relative == ""
+  --         end,
+  --       },
+  --     },
+  --   },
+  -- },
 }
