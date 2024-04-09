@@ -30,6 +30,7 @@ cowboy({ "n", "x" }, "n", "h")
 cowboy({ "n", "x" }, "o", "l")
 cowboy({ "n", "x" }, "+")
 cowboy({ "n", "x" }, "-")
+cowboy({ "n", "x" }, "x")
 
 -- colemak-dh jump to start/end of the line
 map({ "n", "x", "o" }, "N", "^")
