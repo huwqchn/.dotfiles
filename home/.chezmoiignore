@@ -1,6 +1,7 @@
 key.txt.age
 .config/ranger
 .config/lf
+.config/joshuto
 
 {{ if ne .chezmoi.os "darwin" }}
 .config/karabiner
@@ -16,6 +17,8 @@ key.txt.age
 .Xresources
 .Xthemes
 .scripts
+.config/topgrade.toml
+.config/xsettingsd
 .config/Kvantum
 .config/MangoHud
 .config/avizo
@@ -66,7 +69,6 @@ key.txt.age
 .config/fish
 .config/gammastep
 .config/gitui
-.config/joshuto
 .config/kitty
 .config/lvim
 .config/neofetch
