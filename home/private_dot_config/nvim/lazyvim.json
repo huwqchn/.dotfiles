@@ -31,6 +31,7 @@
     "lazyvim.plugins.extras.util.project",
     "lazyvim.plugins.extras.vscode",
     "plugins.extras.coding.ai.copilot",
+    "plugins.extras.coding.ai.gen",
     "plugins.extras.coding.comment.mini-comment",
     "plugins.extras.coding.comment.neogen",
     "plugins.extras.coding.complete.cmdline",
