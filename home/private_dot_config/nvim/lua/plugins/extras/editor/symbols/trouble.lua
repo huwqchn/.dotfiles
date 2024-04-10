@@ -3,6 +3,7 @@ return {
     "folke/trouble.nvim",
     optional = true,
     opts = {
+      focus = true,
       keys = {
         I = "inspect",
         e = "next",
