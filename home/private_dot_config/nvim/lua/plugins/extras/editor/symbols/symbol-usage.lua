@@ -14,6 +14,7 @@ return {
     opts = function(_, opts)
       opts.definition = { enabled = true }
       opts.implementation = { enabled = true }
+      opts.disable = { filetypes = { "lua" } }
       local function h(name)
         return vim.api.nvim_get_hl(0, { name = name })
       end
