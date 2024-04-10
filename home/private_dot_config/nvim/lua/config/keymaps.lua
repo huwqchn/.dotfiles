@@ -104,10 +104,10 @@ map("t", "<C-v>", "<C-\\><C-N>pi")
 map("c", "<C-v>", "<C-r>+")
 
 -- inc/dec number
-map({ "n", "v" }, "<C-=>", "<C-a>")
-map({ "n", "v" }, "<C-->", "<C-x>")
-map({ "n", "v" }, "g<C-=>", "g<C-a>")
-map({ "n", "v" }, "g<C-->", "g<C-x>")
+map({ "n", "v" }, "<C-=>", "<C-a>", { desc = "Increment number" })
+map({ "n", "v" }, "<C-->", "<C-x>", { desc = "Decrement number" })
+map({ "n", "v" }, "g<C-=>", "g<C-a>", { desc = "Increment number" })
+map({ "n", "v" }, "g<C-->", "g<C-x>", { desc = "Decrement number" })
 
 -- Move lines
 map("n", "<A-e>", "<cmd>m .+1<CR>==", { desc = "Move down" })
