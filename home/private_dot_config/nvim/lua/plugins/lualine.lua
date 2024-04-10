@@ -114,8 +114,11 @@ return {
         { "progress", separator = " ", padding = { left = 1, right = 0 } },
         { "location", separator = sep, padding = { left = 0, right = 0 } },
       }
+      -- remove lazyvim diff
       table.remove(opts.sections.lualine_x, #opts.sections.lualine_x)
+      -- remove lazyvim symbols
       table.remove(opts.sections.lualine_c, #opts.sections.lualine_c)
+      -- remove lazyvim diagnostics
       table.remove(opts.sections.lualine_c, 2)
     end,
   },

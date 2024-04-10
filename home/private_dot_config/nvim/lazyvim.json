@@ -30,6 +30,7 @@
     "lazyvim.plugins.extras.util.project",
     "lazyvim.plugins.extras.vscode",
     "plugins.extras.editor.symbols.symbol-usage",
+    "plugins.extras.editor.symbols.trouble",
     "plugins.extras.coding.ai.copilot",
     "plugins.extras.coding.ai.gen",
     "plugins.extras.coding.comment.mini-comment",

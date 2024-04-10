@@ -33,7 +33,7 @@ return {
         table.insert(keys, key)
       end
       table.insert(keys, {
-        "g,",
+        "g<cr>",
         function()
           local Flash = require("flash")
           Flash.jump({
