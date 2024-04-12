@@ -3,13 +3,12 @@
   roles:
     - role: packages
       tags:
-        - system
         - packages
 
-    - role: misc
+    - role: system
       tags:
         - etc
-        - misc
+        - system
 
     - role: icons
       tags:
@@ -35,7 +34,6 @@
     - role: grub
       tags:
         - grub
-        - theme
 
     - role: build
       tags:
