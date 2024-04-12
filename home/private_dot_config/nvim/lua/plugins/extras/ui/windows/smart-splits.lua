@@ -4,9 +4,10 @@ return {
     build = "./kitty/install-kittens.bash",
     lazy = false,
     keys = {
+      { "<leader>wr", "<Cmd>SmartResizeMode<CR>", mode = "n", desc = "Resize mode" },
       -- resizing splits
       {
-        mode = "n",
+        mode = { "n", "t" },
         "<C-Left>",
         function()
           require("smart-splits").resize_left()
@@ -14,7 +15,7 @@ return {
         desc = "resize left",
       },
       {
-        mode = "n",
+        mode = { "n", "t" },
         "<C-Down>",
         function()
           require("smart-splits").resize_down()
@@ -22,7 +23,7 @@ return {
         desc = "resize down",
       },
       {
-        mode = "n",
+        mode = { "n", "t" },
         "<C-Up>",
         function()
           require("smart-splits").resize_up()
@@ -30,7 +31,7 @@ return {
         desc = "resize up",
       },
       {
-        mode = "n",
+        mode = { "n", "t" },
         "<C-Right>",
         function()
           require("smart-splits").resize_right()
@@ -39,7 +40,7 @@ return {
       },
       -- moving between splits
       {
-        mode = "n",
+        mode = { "n", "t" },
         "<C-n>",
         function()
           require("smart-splits").move_cursor_left()
@@ -47,7 +48,7 @@ return {
         desc = "move cursor left",
       },
       {
-        mode = "n",
+        mode = { "n", "t" },
         "<C-e>",
         function()
           require("smart-splits").move_cursor_down()
@@ -55,7 +56,7 @@ return {
         desc = "move cursor down",
       },
       {
-        mode = "n",
+        mode = { "n", "t" },
         "<C-i>",
         function()
           require("smart-splits").move_cursor_up()
@@ -63,7 +64,7 @@ return {
         desc = "move cursor up",
       },
       {
-        mode = "n",
+        mode = { "n", "t" },
         "<C-o>",
         function()
           require("smart-splits").move_cursor_right()
@@ -72,7 +73,7 @@ return {
       },
       -- swapping buffers between windows
       {
-        mode = "n",
+        mode = { "n", "t" },
         "sN",
         function()
           require("smart-splits").swap_buf_left()
@@ -80,7 +81,7 @@ return {
         desc = "swap buffer left",
       },
       {
-        mode = "n",
+        mode = { "n", "t" },
         "sE",
         function()
           require("smart-splits").swap_buf_down()
@@ -88,7 +89,7 @@ return {
         desc = "swap buffer down",
       },
       {
-        mode = "n",
+        mode = { "n", "t" },
         "sI",
         function()
           require("smart-splits").swap_buf_up()
@@ -96,7 +97,7 @@ return {
         desc = "swap buffer up",
       },
       {
-        mode = "n",
+        mode = { "n", "t" },
         "sO",
         function()
           require("smart-splits").swap_buf_right()

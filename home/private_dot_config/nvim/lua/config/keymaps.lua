@@ -35,7 +35,8 @@ cowboy({ "n", "x" }, "x")
 -- colemak-dh jump to start/end of the line
 map({ "n", "x", "o" }, "N", "^")
 map({ "n", "x", "o" }, "O", "$")
-map({ "n", "x", "o" }, "gn", "gH")
+map({ "n", "x", "o" }, "gn", "gh")
+map({ "n", "x", "o" }, "gN", "gH")
 
 -- colemak-dh join/hover
 map("n", "I", "K")
@@ -96,7 +97,8 @@ map("i", "<M-b>", "<C-Left>", { silent = true, desc = "backward word" })
 map({ "n", "x", "i" }, "<C-a>", "<cmd>normal! ggVG<cr>")
 
 -- new space line
-map("n", "<C-cr>", "<cmd>normal! o<cr>k")
+map("n", "gL", "<Cmd>call append(line('.') - 1, repeat([''], v:count1))<CR>", { desc = "Put empty line above" })
+map("n", "gl", "<Cmd>call append(line('.'), repeat([''], v:count1))<CR>", { desc = "Put empty line below" })
 
 -- paste
 map("i", "<C-v>", "<C-g>u<Cmd>set paste<CR><C-r>+<Cmd>set nopaste<CR>")
@@ -135,6 +137,10 @@ local lazyterm = function()
 end
 map("n", "<M-/>", lazyterm, { desc = "Terminal (root dir)" })
 map("t", "<M-/>", "<cmd>close<cr>", { desc = "Hide Terminal" })
+map("n", "<C-cr>", function()
+  Util.terminal(nil, { ft = "", border = "rounded" })
+end, { desc = "Float Terminal" })
+map("t", "<C-cr>", "<cmd>close<cr>", { desc = "Hide Terminal" })
 
 -- btop
 map("n", "<leader>xb", function()
@@ -245,6 +251,37 @@ map("n", "<leader><tab>F", "<cmd>tabm 0<CR>", { desc = "Move to first" })
 map("n", "<leader><tab>L", "<cmd>tabm<CR>", { desc = "Move to last" })
 map("n", "<leader><tab>t", "<cmd>tabs", { desc = "List all tabs" })
 
+map("n", "<leader><TAB>n", "<Cmd>tabnew<CR>", { desc = "New tab" })
+map("n", "<leader><TAB><TAB>", function()
+  vim.ui.select(vim.api.nvim_list_tabpages(), {
+    prompt = "Select Tab:",
+    format_item = function(tabid)
+      local wins = vim.api.nvim_tabpage_list_wins(tabid)
+      local not_floating_win = function(winid)
+        return vim.api.nvim_win_get_config(winid).relative == ""
+      end
+      wins = vim.tbl_filter(not_floating_win, wins)
+      local bufs = {}
+      for _, win in ipairs(wins) do
+        local buf = vim.api.nvim_win_get_buf(win)
+        local buftype = vim.api.nvim_get_option_value("buftype", { buf = buf })
+        if buftype ~= "nofile" then
+          local fname = vim.api.nvim_buf_get_name(buf)
+          table.insert(bufs, vim.fn.fnamemodify(fname, ":t"))
+        end
+      end
+      local tabnr = vim.api.nvim_tabpage_get_number(tabid)
+      local cwd = string.format(" %8s: ", vim.fn.fnamemodify(vim.fn.getcwd(-1, tabnr), ":t"))
+      local is_current = vim.api.nvim_tabpage_get_number(0) == tabnr and "✸" or " "
+      return tabnr .. is_current .. cwd .. table.concat(bufs, ", ")
+    end,
+  }, function(tabid)
+    if tabid ~= nil then
+      vim.cmd(tabid .. "tabnext")
+    end
+  end)
+end, { desc = "Select tab" })
+
 -- close unused buffers
 local id = vim.api.nvim_create_augroup("startup", {
   clear = false,
@@ -280,7 +317,9 @@ map("n", "<leader>bb", function()
 end, { silent = true, desc = "Close unused buffers" })
 
 -- Replace in selection
-map("x", "s<cr>", ":s/\\%V", { silent = false, desc = "replace in selection" })
+map("x", "s/", ":s/\\%V", { silent = false, desc = "replace in selection" })
+-- search in selection
+map("x", "g/", ":/\\%V", { silent = false, desc = "search in selection" })
 
 -- toggle coloroclumn
 map("n", "<leader>uo", function()

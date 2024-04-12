@@ -74,7 +74,7 @@
     "plugins.extras.lang.typescript",
     "plugins.extras.lang.ymal",
     "plugins.extras.lang.yuck",
-    "plugins.extras.misc.smart-splits",
+    "plugins.extras.ui.windows.smart-splits",
     "plugins.extras.misc.text-case",
     "plugins.extras.misc.tidy",
     "plugins.extras.misc.wezterm-types",
@@ -84,6 +84,7 @@
     "plugins.extras.ui.colorscheme.tokyonight",
     "plugins.extras.ui.dress.noice",
     "plugins.extras.ui.dress.notify",
+    "plugins.extras.ui.windows.winshift",
     "plugins.extras.ui.windows.window-picker",
     "plugins.extras.ui.windows.windows"
   ],
