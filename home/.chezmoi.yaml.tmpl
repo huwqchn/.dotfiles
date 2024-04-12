@@ -1,8 +1,7 @@
-{{- /* Checks if running interactively */ -}}
+
 {{- $interactive := stdinIsATTY -}}
 
 {{- $name := "Your Name" -}}
-{{- /* If name was previously set, reuses it */ -}}
 {{- if $interactive -}}
 {{-   $name = promptStringOnce . "name" "Your name?" -}}
 {{- end -}}
