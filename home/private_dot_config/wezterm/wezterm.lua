@@ -59,7 +59,8 @@ end
 
 --- font
 config.font_size = 12
-config.font = wezterm.font({ family = "JetBrainsMono Nerd Font" })
+-- config.font = wezterm.font({ family = "JetBrainsMono Nerd Font" })
+config.font = wezterm.font({ family = "CaskaydiaCove Nerd Font Mono" })
 config.bold_brightens_ansi_colors = true
 config.font_rules = {
 	{
@@ -82,7 +83,7 @@ config.font_rules = {
 -- Cursor
 config.default_cursor_style = "BlinkingBar"
 config.force_reverse_video_cursor = true
-config.window_padding = { left = 0, right = 0, top = 0, bottom = 0 }
+config.window_padding = { left = 10, right = 10, top = 10, bottom = 10 }
 -- window_background_opacity = 0.9,
 -- cell_width = 0.9,
 config.scrollback_lines = 10000

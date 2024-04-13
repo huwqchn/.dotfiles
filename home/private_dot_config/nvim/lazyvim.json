@@ -7,9 +7,8 @@
     "lazyvim.plugins.extras.dap.nlua",
     "lazyvim.plugins.extras.editor.dial",
     "lazyvim.plugins.extras.editor.harpoon2",
-    "lazyvim.plugins.extras.editor.mini-files",
     "lazyvim.plugins.extras.editor.mini-diff",
-    "lazyvim.plugins.extras.editor.trouble-v3",
+    "lazyvim.plugins.extras.editor.mini-files",
     "lazyvim.plugins.extras.formatting.prettier",
     "lazyvim.plugins.extras.lang.clangd",
     "lazyvim.plugins.extras.lang.cmake",
@@ -29,8 +28,6 @@
     "lazyvim.plugins.extras.util.mini-hipatterns",
     "lazyvim.plugins.extras.util.project",
     "lazyvim.plugins.extras.vscode",
-    "plugins.extras.editor.symbols.symbol-usage",
-    "plugins.extras.editor.symbols.trouble",
     "plugins.extras.coding.ai.copilot",
     "plugins.extras.coding.ai.gen",
     "plugins.extras.coding.comment.mini-comment",
@@ -63,6 +60,8 @@
     "plugins.extras.editor.runner.code-runner",
     "plugins.extras.editor.search.ssr",
     "plugins.extras.editor.search.telescope",
+    "plugins.extras.editor.symbols.symbol-usage",
+    "plugins.extras.editor.symbols.trouble",
     "plugins.extras.editor.test.coverage",
     "plugins.extras.lang.bash",
     "plugins.extras.lang.c",
@@ -74,7 +73,6 @@
     "plugins.extras.lang.typescript",
     "plugins.extras.lang.ymal",
     "plugins.extras.lang.yuck",
-    "plugins.extras.ui.windows.smart-splits",
     "plugins.extras.misc.text-case",
     "plugins.extras.misc.tidy",
     "plugins.extras.misc.wezterm-types",
@@ -84,13 +82,15 @@
     "plugins.extras.ui.colorscheme.tokyonight",
     "plugins.extras.ui.dress.noice",
     "plugins.extras.ui.dress.notify",
-    "plugins.extras.ui.windows.winshift",
+    "plugins.extras.ui.windows.smart-splits",
     "plugins.extras.ui.windows.window-picker",
-    "plugins.extras.ui.windows.windows"
+    "plugins.extras.ui.windows.windows",
+    "plugins.extras.ui.windows.winshift",
+    "lazyvim.plugins.extras.editor.trouble-v3"
   ],
   "news": {
     "NEWS.md": "3314",
-    "doc/news.txt": "24477"
+    "doc/news.txt": "24921"
   },
   "version": 3
 }
