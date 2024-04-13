@@ -1,26 +1,28 @@
 ---
 - name: Keyd
   become: true
-  file:
+  copy:
     dest: /etc/keyd
     src: "{{ role_files }}/keyd"
-    state: link
-    force: true
+    owner: root
+    group: root
+    mode: "0644"
 
 - name: Enable Keyd Daemon
   become: true
   ansible.builtin.systemd:
     name: keyd
-    enabled: yes
-    state: started
+    enabled: no
+    state: stopped
 
 - name: environment
   become: true
   file:
     dest: /etc/environment
     src: "{{ role_files }}/environment"
-    state: link
-    force: true
+    owner: root
+    group: root
+    mode: "0644"
 
 - name: proxychain4
   become: true
