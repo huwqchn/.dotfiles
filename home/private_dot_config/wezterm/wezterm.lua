@@ -59,8 +59,8 @@ end
 
 --- font
 config.font_size = 10
--- config.font = wezterm.font({ family = "JetBrainsMono Nerd Font" })
-config.font = wezterm.font({ family = "CaskaydiaCove Nerd Font Mono" })
+config.font = wezterm.font({ family = "JetBrainsMono Nerd Font" })
+-- config.font = wezterm.font({ family = "CaskaydiaCove Nerd Font Mono" })
 config.bold_brightens_ansi_colors = true
 config.font_rules = {
 	{
