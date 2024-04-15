@@ -76,11 +76,6 @@ return {
           separator = sep,
         },
       }
-      opts.sections.lualine_c = {
-        Util.lualine.root_dir(),
-        { "filetype", icon_only = true, separator = "", padding = { left = 0, right = 0 } },
-        { Util.lualine.pretty_path(), separator = "", padding = { left = 0, right = 0 } },
-      }
       opts.sections.lualine_y = {
         {
           "diagnostics",
@@ -122,9 +117,11 @@ return {
       -- remove lazyvim diff
       table.remove(opts.sections.lualine_x, #opts.sections.lualine_x)
       -- remove lazyvim symbols
-      -- table.remove(opts.sections.lualine_c, #opts.sections.lualine_c)
+      table.remove(opts.sections.lualine_c, #opts.sections.lualine_c)
+      -- remove padding of path
+      opts.sections.lualine_c[4].padding = { left = 0, right = 0 }
       -- remove lazyvim diagnostics
-      -- table.remove(opts.sections.lualine_c, 2)
+      table.remove(opts.sections.lualine_c, 2)
     end,
   },
 }
