@@ -22,6 +22,7 @@ fish_add_path ~/.local/bin
 fish_add_path ~/.cargo/bin
 fish_add_path /snap/bin
 fish_add_path ~/.emacs.d/bin
+fish_add_path ~/.local/share/bin
 
 set -x LD_LIBRARY_PATH /usr/lib $LD_LIBRARY_PATH
 
@@ -117,6 +118,13 @@ abbr fm frogmouth
 abbr ns 'netstat -tunlp'
 abbr ex extract
 abbr nb newsboat
+
+# Handy change dir shortcuts
+abbr .. 'cd ..'
+abbr ... 'cd ../..'
+abbr .3 'cd ../../..'
+abbr .4 'cd ../../../..'
+abbr .5 'cd ../../../../..'
 
 # shortcuts for functions
 abbr bk backup
