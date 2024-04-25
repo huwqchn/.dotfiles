@@ -40,7 +40,9 @@ fish_add_path $GOPATH $GOPATH/bin
 set fish_emoji_width 2
 
 # CFLAGS
-set -x CFLAGS "-Wall -Werror -Wextra"
+# set -x CFLAGS "-Wall -Werror -Wextra"
+set -x CFLAGS "-Wall -O2"
+set -x CXXFLAGS "-Wall -O2"
 
 # Ripgrep
 set -x RIPGREP_CONFIG_PATH $HOME/.config/ripgrep/ripgreprc

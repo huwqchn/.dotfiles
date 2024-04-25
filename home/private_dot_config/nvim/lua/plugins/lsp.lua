@@ -18,9 +18,6 @@ return {
   },
   {
     "neovim/nvim-lspconfig",
-    opts = {
-      inlay_hints = { enabled = true },
-    },
     init = function()
       local keys = require("lazyvim.plugins.lsp.keymaps").get()
       -- disable default help keys
