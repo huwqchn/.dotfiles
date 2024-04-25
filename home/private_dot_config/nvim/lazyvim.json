@@ -69,7 +69,6 @@
     "plugins.extras.lang.dts",
     "plugins.extras.lang.http",
     "plugins.extras.lang.nodejs",
-    "plugins.extras.lang.python",
     "plugins.extras.lang.typescript",
     "plugins.extras.lang.ymal",
     "plugins.extras.lang.yuck",
@@ -94,3 +93,4 @@
   },
   "version": 3
 }
+
