@@ -326,17 +326,6 @@ map("n", "<leader>uo", function()
   require("util").toggle_colorcolumn()
 end, { desc = "Toggle colorcolumn" })
 
--- toggle inlay hints
-if vim.lsp.inlay_hint then
-  map("n", "<leader>uh", function()
-    if vim.lsp.inlay_hint.is_enabled() then
-      vim.lsp.inlay_hint.enable(0, false)
-    else
-      vim.lsp.inlay_hint.enable(0, true)
-    end
-  end, { desc = "Toggle Inlay Hints" })
-end
-
 -- smart deletion, dd
 -- It solves the issue, where you want to delete empty line, but dd will override you last yank.
 -- Code above will check if u are deleting empty line, if so - use black hole register.
