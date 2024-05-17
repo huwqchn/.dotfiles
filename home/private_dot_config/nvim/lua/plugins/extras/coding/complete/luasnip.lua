@@ -1,7 +1,12 @@
 return {
   {
+    "garymjr/nvim-snippets",
+    enabled = false,
+  },
+  {
     "L3MON4D3/LuaSnip",
     event = "InsertCharPre",
+    optianal = true,
     opts = {
       enable_autosnippets = true,
       updateevents = "TextChanged,TextChangedI",

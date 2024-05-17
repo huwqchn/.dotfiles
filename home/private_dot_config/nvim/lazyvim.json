@@ -6,6 +6,7 @@
     "lazyvim.plugins.extras.coding.yanky",
     "lazyvim.plugins.extras.coding.mini-ai",
     "lazyvim.plugins.extras.coding.mini-surround",
+    "lazyvim.plugins.extras.coding.luasnip",
     "lazyvim.plugins.extras.dap.nlua",
     "lazyvim.plugins.extras.editor.dial",
     "lazyvim.plugins.extras.editor.harpoon2",
