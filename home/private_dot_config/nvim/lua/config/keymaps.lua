@@ -12,6 +12,7 @@
 -- t[nore]map     |  -   |  -  |  -  |  -  |  -  |  -  | yes  |  -   |
 -- l[nore]map     |  -   | yes | yes |  -  |  -  |  -  |  -   | yes  |
 local Util = require("lazyvim.util")
+-- HACK: very careful with this
 local map = Util.safe_keymap_set
 local unmap = vim.keymap.del
 local cowboy = require("util").cowboy

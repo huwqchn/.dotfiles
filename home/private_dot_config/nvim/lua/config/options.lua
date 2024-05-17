@@ -25,9 +25,9 @@ if vim.g.neovide then
 end
 
 vim.opt.hidden = true -- Enable modified buffers in background
-vim.opt.inccommand = "split" -- preview incremental substitute
+-- vim.opt.inccommand = "split" -- preview incremental substitute
 vim.opt.joinspaces = false -- No double spaces with join after a dot
-vim.opt.pumblend = 0
+vim.opt.pumblend = 0 -- Popup menu transparency, set not zero will show some bugs
 vim.opt.spelllang:append("cjk")
 vim.opt.timeoutlen = 0
 vim.opt.mousemoveevent = true
@@ -36,24 +36,17 @@ vim.opt.mousemoveevent = true
 vim.opt.fillchars = {
   foldopen = "",
   foldclose = "",
-  -- fold = " ",
   foldsep = " ",
-  -- diff = "╱",
-  -- eob = " ",
   diff = "∙", -- BULLET OPERATOR (U+2219, UTF-8: E2 88 99)
   eob = " ", -- NO-BREAK SPACE (U+00A0, UTF-8: C2 A0) to suppress ~ at EndOfBuffer
   fold = "·", -- MIDDLE DOT (U+00B7, UTF-8: C2 B7)
   vert = "│", -- window border when window splits vertically ─ ┴ ┬ ┤ ├ ┼
 }
-vim.o.foldlevel = 99 -- Using ufo provider need a large value, feel free to decrease the value
 vim.o.foldlevelstart = 99
 vim.o.foldenable = true
 vim.o.foldcolumn = "0"
 
-if vim.fn.has("nvim-0.8") == 1 then
-  vim.opt.backup = true
-  vim.opt.cmdheight = 0
-  vim.opt.backupdir = vim.fn.stdpath("state") .. "/backup"
-end
+vim.opt.backup = true
+vim.opt.backupdir = vim.fn.stdpath("state") .. "/backup"
 
 vim.g.lazyvim_python_lsp = "basedpyright"

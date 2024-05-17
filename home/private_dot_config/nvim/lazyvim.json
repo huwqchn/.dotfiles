@@ -4,6 +4,8 @@
     "lazyvim.plugins.extras.test.core",
     "lazyvim.plugins.extras.coding.copilot",
     "lazyvim.plugins.extras.coding.yanky",
+    "lazyvim.plugins.extras.coding.mini-ai",
+    "lazyvim.plugins.extras.coding.mini-surround",
     "lazyvim.plugins.extras.dap.nlua",
     "lazyvim.plugins.extras.editor.dial",
     "lazyvim.plugins.extras.editor.harpoon2",
@@ -25,12 +27,13 @@
     "lazyvim.plugins.extras.lang.typescript",
     "lazyvim.plugins.extras.ui.edgy",
     "lazyvim.plugins.extras.ui.mini-animate",
+    "lazyvim.plugins.extras.ui.mini-indentscope",
+    "lazyvim.plugins.extras.ui.treesitter-context",
     "lazyvim.plugins.extras.util.mini-hipatterns",
     "lazyvim.plugins.extras.util.project",
     "lazyvim.plugins.extras.vscode",
     "plugins.extras.coding.ai.copilot",
     "plugins.extras.coding.ai.gen",
-    "plugins.extras.coding.comment.mini-comment",
     "plugins.extras.coding.comment.neogen",
     "plugins.extras.coding.complete.cmdline",
     "plugins.extras.coding.complete.cmp",
@@ -88,7 +91,7 @@
     "lazyvim.plugins.extras.editor.trouble-v3"
   ],
   "news": {
-    "NEWS.md": "3314",
+    "NEWS.md": "4578",
     "doc/news.txt": "26396"
   },
   "version": 3
