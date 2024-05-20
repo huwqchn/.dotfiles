@@ -18,7 +18,7 @@ return {
       }
       opts.mapping = cmp.mapping.preset.insert({
         ["<CR>"] = cmp.mapping(function(fallback)
-          if cmp.visible() then
+          if cmp.core.view:visible() or vim.fn.pumvisible() == 1 then
             local confirm_opts = {
               behavior = cmp.ConfirmBehavior.Replace,
               select = false,

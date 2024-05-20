@@ -3,16 +3,16 @@
     "lazyvim.plugins.extras.dap.core",
     "lazyvim.plugins.extras.test.core",
     "lazyvim.plugins.extras.coding.copilot",
-    "lazyvim.plugins.extras.coding.yanky",
-    "lazyvim.plugins.extras.coding.mini-ai",
-    "lazyvim.plugins.extras.coding.mini-surround",
     "lazyvim.plugins.extras.coding.luasnip",
+    "lazyvim.plugins.extras.coding.mini-surround",
+    "lazyvim.plugins.extras.coding.yanky",
     "lazyvim.plugins.extras.dap.nlua",
     "lazyvim.plugins.extras.editor.dial",
     "lazyvim.plugins.extras.editor.harpoon2",
     "lazyvim.plugins.extras.editor.mini-diff",
     "lazyvim.plugins.extras.editor.mini-files",
     "lazyvim.plugins.extras.formatting.prettier",
+    "lazyvim.plugins.extras.lang.ansible",
     "lazyvim.plugins.extras.lang.clangd",
     "lazyvim.plugins.extras.lang.cmake",
     "lazyvim.plugins.extras.lang.docker",
@@ -53,7 +53,6 @@
     "plugins.extras.coding.rename.inc-rename",
     "plugins.extras.coding.surround.mini-surround",
     "plugins.extras.coding.treesitter",
-    "plugins.extras.editor.buffer.mini-bufremove",
     "plugins.extras.editor.buffer.scope",
     "plugins.extras.editor.debug.dap",
     "plugins.extras.editor.explorer.mini-files",
@@ -92,8 +91,9 @@
     "lazyvim.plugins.extras.editor.trouble-v3"
   ],
   "news": {
-    "NEWS.md": "4578",
+    "NEWS.md": "4964",
     "doc/news.txt": "26396"
   },
-  "version": 3
+  "version": 4
 }
+

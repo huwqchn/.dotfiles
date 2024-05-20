@@ -317,6 +317,10 @@ map("n", "<leader>bb", function()
   end
 end, { silent = true, desc = "Close unused buffers" })
 
+map("n", "<C-w>", "<leader>bd", { remap = true, desc = "Close Buffer" })
+map("n", "<C-/>", "gcc", { remap = true, desc = "Comment line" })
+map("x", "<C-/>", "gc", { remap = true, desc = "Comment selection" })
+
 -- Replace in selection
 map("x", "s/", ":s/\\%V", { silent = false, desc = "replace in selection" })
 -- search in selection
