@@ -9,8 +9,9 @@
     "lazyvim.plugins.extras.dap.nlua",
     "lazyvim.plugins.extras.editor.dial",
     "lazyvim.plugins.extras.editor.harpoon2",
-    "lazyvim.plugins.extras.editor.mini-diff",
     "lazyvim.plugins.extras.editor.mini-files",
+    "lazyvim.plugins.extras.coding.mini-comment",
+    "lazyvim.plugins.extras.editor.mini-diff",
     "lazyvim.plugins.extras.formatting.prettier",
     "lazyvim.plugins.extras.lang.ansible",
     "lazyvim.plugins.extras.lang.clangd",
@@ -34,7 +35,9 @@
     "lazyvim.plugins.extras.ui.treesitter-context",
     "lazyvim.plugins.extras.util.mini-hipatterns",
     "lazyvim.plugins.extras.util.project",
+    "lazyvim.plugins.extras.coding.copilot-chat",
     "lazyvim.plugins.extras.vscode",
+    "plugins.extras.coding.comment.mini-comment",
     "plugins.extras.coding.ai.copilot",
     "plugins.extras.coding.ai.gen",
     "plugins.extras.coding.comment.neogen",
@@ -89,12 +92,11 @@
     "plugins.extras.ui.windows.smart-splits",
     "plugins.extras.ui.windows.window-picker",
     "plugins.extras.ui.windows.windows",
-    "plugins.extras.ui.windows.winshift",
-    "lazyvim.plugins.extras.editor.trouble-v3"
+    "plugins.extras.ui.windows.winshift"
   ],
   "news": {
     "NEWS.md": "4964",
     "doc/news.txt": "26396"
   },
-  "version": 4
+  "version": 6
 }

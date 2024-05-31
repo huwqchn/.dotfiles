@@ -7,7 +7,7 @@ return {
       keys = {
         I = "inspect",
         e = "next",
-        i = "prev",
+        i = "",
       },
       modes = {
         cascade = {

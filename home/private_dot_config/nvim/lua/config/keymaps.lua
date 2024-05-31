@@ -321,6 +321,12 @@ map("n", "<C-w>", "<leader>bd", { remap = true, desc = "Close Buffer" })
 map("n", "<C-/>", "gcc", { remap = true, desc = "Comment line" })
 map("x", "<C-/>", "gc", { remap = true, desc = "Comment selection" })
 
+-- commenting
+unmap("n", "gco")
+unmap("n", "gcO")
+map("n", "gcl", "o<esc>Vcx<esc><cmd>normal gcc<cr>fxa<bs>", { desc = "Add Comment Below" })
+map("n", "gcL", "O<esc>Vcx<esc><cmd>normal gcc<cr>fxa<bs>", { desc = "Add Comment Above" })
+
 -- Replace in selection
 map("x", "s/", ":s/\\%V", { silent = false, desc = "replace in selection" })
 -- search in selection
