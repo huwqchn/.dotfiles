@@ -1,5 +1,11 @@
 return {
   {
+    import = "lazyvim.plugins.extras.coding.copilot",
+  },
+  {
+    import = "lazyvim.plugins.extras.coding.copilot-chat",
+  },
+  {
     "zbirenbaum/copilot.lua",
     event = "InsertEnter",
     optional = true,
@@ -33,17 +39,7 @@ return {
           dismiss = "<C-]>",
         },
       },
-      filetypes = {
-        yaml = false,
-        markdown = true,
-        help = false,
-        gitcommit = false,
-        gitrebase = false,
-        hgcommit = false,
-        svn = false,
-        cvs = false,
-        ["."] = false,
-      },
+      filetypes = { ["*"] = true },
       copilot_node_command = "node", -- Node version must be < 18
       cmp = {
         enabled = true,

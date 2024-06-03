@@ -317,9 +317,9 @@ map("n", "<leader>bb", function()
   end
 end, { silent = true, desc = "Close unused buffers" })
 
-map("n", "<C-w>", "<leader>bd", { remap = true, desc = "Close Buffer" })
-map("n", "<C-/>", "gcc", { remap = true, desc = "Comment line" })
-map("x", "<C-/>", "gc", { remap = true, desc = "Comment selection" })
+vim.keymap.set("n", "<C-w>", "<leader>bd", { remap = true, desc = "Close Buffer" })
+vim.keymap.set("n", "<C-/>", "gcc", { remap = true, desc = "Comment line" })
+vim.keymap.set("x", "<C-/>", "gc", { remap = true, desc = "Comment selection" })
 
 -- commenting
 unmap("n", "gco")

@@ -1,4 +1,5 @@
 return {
+  { import = "lazyvim.plugins.extras.coding.luasnip" },
   {
     "garymjr/nvim-snippets",
     enabled = false,

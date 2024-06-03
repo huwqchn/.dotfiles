@@ -1,9 +1,0 @@
-{
-  "$schema": "https://raw.githubusercontent.com/sumneko/vscode-lua/master/setting/schema.json",
-  "Lua.completion.autoRequire": false,
-  "Lua.diagnostics.globals": ["set_lead_space"],
-    "diagnostics.disable": [
-        "incomplete-signature-doc",
-        "need-check-nil"
-    ]
-}

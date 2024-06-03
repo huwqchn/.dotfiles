@@ -1,6 +1,7 @@
 return {
   {
     "folke/neodev.nvim",
+    optional = true
     opts = {
       library = {
         plugins = { "neotest" },
