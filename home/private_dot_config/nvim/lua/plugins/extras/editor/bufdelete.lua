@@ -1,7 +1,5 @@
 -- use bdelete instead
 return {
-  -- disable mini.bufremove
-  { "echasnovski/mini.bufremove", enabled = false },
   {
     "famiu/bufdelete.nvim",
     -- stylua: ignore

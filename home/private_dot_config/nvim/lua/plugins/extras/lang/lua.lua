@@ -1,18 +1,5 @@
 return {
   {
-    "folke/neodev.nvim",
-    optional = true
-    opts = {
-      library = {
-        plugins = { "neotest" },
-        types = true,
-      },
-      experimental = {
-        pathStrict = true,
-      },
-    },
-  },
-  {
     "neovim/nvim-lspconfig",
     opts = {
       servers = {
