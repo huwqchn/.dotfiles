@@ -62,7 +62,10 @@
     "plugins.extras.ui.window-picker",
     "plugins.extras.ui.windows",
     "plugins.extras.ui.winshift",
-    "plugins.extras.ui.mini-animate"
+    "plugins.extras.ui.mini-animate",
+    "plugins.extras.coding.nvim-scissors",
+    "plugins.extras.coding.luasnip",
+    "plugins.extras.coding.neotab"
   ],
   "news": {
     "NEWS.md": "5204",

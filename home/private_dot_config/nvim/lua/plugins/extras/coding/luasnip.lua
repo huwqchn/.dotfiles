@@ -1,63 +1,65 @@
 return {
+  { import = "lazyvim.plugins.extras.coding.luasnip" },
   {
-    "kawre/neotab.nvim",
-    event = "InsertEnter",
+    "garymjr/nvim-snippets",
+    enabled = false,
+  },
+  {
+    "L3MON4D3/LuaSnip",
+    event = "InsertCharPre",
+    optianal = true,
     opts = {
-      tabkey = "",
-      act_as_tab = true,
-      behavior = "nested",
-      pairs = {
-        { open = "(", close = ")" },
-        { open = "[", close = "]" },
-        { open = "{", close = "}" },
-        { open = "'", close = "'" },
-        { open = '"', close = '"' },
-        { open = "`", close = "`" },
-        { open = "<", close = ">" },
+      enable_autosnippets = true,
+      updateevents = "TextChanged,TextChangedI",
+    },
+    keys = {
+      {
+        "<C-n>",
+        mode = { "i", "s" },
       },
-      exclude = {},
-      smart_punctuators = {
-        enabled = false,
-        semicolon = {
-          enabled = false,
-          ft = { "cs", "c", "cpp", "java" },
-        },
-        escape = {
-          enabled = true,
-          triggers = {
-            ["+"] = {
-              pairs = {
-                { open = '"', close = '"' },
-              },
-              space = { before = true, after = true },
-              -- string.format(format, typed_char)
-              format = " %s ", -- " + "
-              ft = { "java" },
-            },
-            [","] = {
-              pairs = {
-                { open = "'", close = "'" },
-                { open = '"', close = '"' },
-              },
-              format = "%s ", -- ", "
-            },
-            ["="] = {
-              pairs = {
-                { open = "(", close = ")" },
-              },
-              ft = { "javascript", "typescript" },
-              format = " %s> ", -- ` => `
-              -- string.match(text_between_pairs, cond)
-              cond = "^$", -- match only pairs with empty content
-            },
-          },
-        },
+      {
+        "<C-p>",
+        mode = { "i", "s" },
+      },
+      {
+        "<M-h>",
+        "<cmd>lua require'luasnip.extras.select_choice'()<cr>",
+        mode = "i",
+        desc = "select snippet choice",
       },
     },
+    config = function(_, opts)
+      local ls = require("luasnip")
+      ls.config.set_config(opts)
+      local user_snippets = vim.fn.stdpath("config") .. "/snippets"
+      require("luasnip.loaders.from_lua").lazy_load({ paths = user_snippets })
+      require("luasnip.loaders.from_vscode").lazy_load({ paths = user_snippets })
+      -- require("luasnip.loaders.from_snipmate").lazy_load()
+
+      _G.s = ls.snippet
+      _G.sn = ls.snippet_node
+      _G.t = ls.text_node
+      _G.i = ls.insert_node
+      _G.f = ls.function_node
+      _G.c = ls.choice_node
+      _G.d = ls.dynamic_node
+      _G.r = ls.restore_node
+      _G.l = require("luasnip.extras").lambda
+      _G.rep = require("luasnip.extras").rep
+      _G.p = require("luasnip.extras").partial
+      _G.m = require("luasnip.extras").match
+      _G.n = require("luasnip.extras").nonempty
+      _G.dl = require("luasnip.extras").dynamic_lambda
+      _G.fmt = require("luasnip.extras.fmt").fmt
+      _G.fmta = require("luasnip.extras.fmt").fmta
+      _G.types = require("luasnip.util.types")
+      _G.conds = require("luasnip.extras.conditions")
+      _G.conds_expand = require("luasnip.extras.conditions.expand")
+    end,
   },
   {
     "hrsh7th/nvim-cmp",
-    ---@param opts cmp.ConfigSchema
+    optional = true,
     opts = function(_, opts)
       ---when inside a snippet, seeks to the nearest luasnip field if possible, and checks if it is jumpable
       ---@param dir number 1 for forward, -1 for backward; defaults to 1
@@ -157,36 +159,49 @@ return {
         local line, col = unpack(vim.api.nvim_win_get_cursor(0))
         return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
       end
-
-      local luasnip = require("luasnip")
       local cmp = require("cmp")
-      local neotab = require("neotab")
-
-      opts.mapping = vim.tbl_extend("force", opts.mapping, {
+      local ls = require("luasnip")
+      local neotab_ok, neotab = pcall(require, "neotab")
+      opts.mapping = vim.tbl_deep_extend("force", opts.mapping, {
+        ["<C-n>"] = cmp.mapping(function(fallback)
+          if ls.choice_active() then
+            ls.change_choice(1)
+          elseif cmp.visible() then
+            cmp.select_next_item({ behavior = cmp.SelectBehavior.Insert })
+          end
+          return fallback()
+        end, { "i", "s" }),
+        ["<C-p>"] = cmp.mapping(function(fallback)
+          if ls.choice_active() then
+            ls.change_choice(-1)
+          elseif cmp.visible() then
+            cmp.select_prev_item({ behavior = cmp.SelectBehavior.Insert })
+          end
+          return fallback()
+        end, { "i", "s" }),
         ["<Tab>"] = cmp.mapping(function(fallback)
           if cmp.visible() then
             cmp.select_next_item()
           -- You could replace the expand_or_jumpable() calls with expand_or_locally_jumpable()
           -- this way you will only jump inside the snippet region
-          elseif luasnip.expand_or_locally_jumpable() then
-            luasnip.expand_or_jump()
+          elseif ls.expand_or_locally_jumpable() then
+            ls.expand_or_jump()
           elseif jumpable(1) then
-            luasnip.jump(1)
-          -- elseif has_words_before() then
-          --   cmp.complete()
-          else
-            -- fallback()
+            ls.jump(1)
+          elseif has_words_before() then
+            cmp.complete()
+          elseif neotab_ok then
             neotab.tabout()
           end
+          return fallback()
         end, { "i", "s" }),
         ["<S-Tab>"] = cmp.mapping(function(fallback)
           if cmp.visible() then
             cmp.select_prev_item()
-          elseif luasnip.jumpable(-1) then
-            luasnip.jump(-1)
-          else
-            fallback()
+          elseif ls.jumpable(-1) then
+            ls.jump(-1)
           end
+          return fallback()
         end, { "i", "s" }),
       })
     end,

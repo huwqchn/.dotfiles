@@ -9,8 +9,13 @@ return {
       { "dmitmel/cmp-cmdline-history" },
       { "hrsh7th/cmp-nvim-lsp" },
     },
+    keys = {
+      { "<Tab>", mode = { "i", "s" } },
+      { "<S-Tab>", mode = { "i", "s" } },
+    },
     opts = function(_, opts)
       local cmp = require("cmp")
+      local neotab_ok, neotab = pcall(require, "neotab")
       opts.window = {
         completion = cmp.config.window.bordered(),
         documentation = cmp.config.window.bordered(),
@@ -19,12 +24,18 @@ return {
         ["<Tab>"] = cmp.mapping(function(fallback)
           if cmp.visible() then
             cmp.select_next_item()
+          elseif vim.snippet.active({ direction = 1 }) then
+            vim.snippet.jump(1)
+          elseif neotab_ok then
+            neotab.tabout()
           end
           return fallback()
         end),
         ["<S-Tab>"] = cmp.mapping(function(fallback)
           if cmp.visible() then
             cmp.select_prev_item()
+          elseif vim.snippet.active({ direction = -1 }) then
+            vim.snippet.jump(-1)
           end
           return fallback()
         end),
