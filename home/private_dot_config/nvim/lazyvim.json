@@ -20,7 +20,6 @@
     "lazyvim.plugins.extras.lang.tailwind",
     "lazyvim.plugins.extras.lang.toml",
     "lazyvim.plugins.extras.lang.tex",
-    "lazyvim.plugins.extras.lang.r",
     "lazyvim.plugins.extras.lang.vue",
     "lazyvim.plugins.extras.ui.edgy",
     "lazyvim.plugins.extras.ui.treesitter-context",
@@ -66,7 +65,7 @@
   ],
   "news": {
     "NEWS.md": "5204",
-    "doc/news.txt": "26396"
+    "doc/news.txt": "3853"
   },
   "version": 6
 }
