@@ -10,6 +10,10 @@ end
 
 local snippets = {
   -- header guard
+  s("ii", {
+    t("#include <iostream>"),
+    t("using namespace std;"),
+  }),
   s("ifndef", {
     t("#ifndef "),
     f(header_guard, {}),
