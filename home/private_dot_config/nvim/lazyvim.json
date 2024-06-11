@@ -5,6 +5,7 @@
     "lazyvim.plugins.extras.test.core",
     "lazyvim.plugins.extras.coding.codeium",
     "lazyvim.plugins.extras.coding.yanky",
+    "lazyvim.plugins.extras.coding.neogen",
     "lazyvim.plugins.extras.editor.harpoon2",
     "lazyvim.plugins.extras.editor.mini-diff",
     "lazyvim.plugins.extras.editor.inc-rename",
@@ -21,6 +22,7 @@
     "lazyvim.plugins.extras.lang.toml",
     "lazyvim.plugins.extras.lang.tex",
     "lazyvim.plugins.extras.lang.vue",
+    "lazyvim.plugins.extras.lang.git",
     "lazyvim.plugins.extras.ui.edgy",
     "lazyvim.plugins.extras.ui.treesitter-context",
     "lazyvim.plugins.extras.util.mini-hipatterns",
@@ -29,6 +31,7 @@
     "plugins.extras.ui.mini-indentscope",
     "plugins.extras.ui.mini-animate",
     "plugins.extras.coding.mini-surround",
+    "plugins.extras.coding.dial",
     "plugins.extras.coding.ai.copilot",
     "plugins.extras.coding.ai.gen",
     "plugins.extras.coding.ai.hfcc",
@@ -36,8 +39,6 @@
     "plugins.extras.editor.mini-files",
     "plugins.extras.editor.mini-move",
     "plugins.extras.colorscheme.tokyonight",
-    "plugins.extras.coding.neogen",
-    "plugins.extras.coding.dial",
     "plugins.extras.util.project",
     "plugins.extras.editor.dap",
     "plugins.extras.editor.code-runner",
@@ -65,8 +66,9 @@
     "plugins.extras.coding.neotab"
   ],
   "news": {
-    "NEWS.md": "5204",
+    "NEWS.md": "6077",
     "doc/news.txt": "3853"
   },
   "version": 6
 }
+
