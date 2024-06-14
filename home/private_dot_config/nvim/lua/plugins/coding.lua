@@ -145,6 +145,7 @@ return {
   },
   {
     "echasnovski/mini.ai",
+    optional = true,
     keys = {
       { "a", mode = { "x", "o" } },
       { "h", mode = { "x", "o" } },
