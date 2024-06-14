@@ -9,6 +9,7 @@
     "lazyvim.plugins.extras.editor.harpoon2",
     "lazyvim.plugins.extras.editor.mini-diff",
     "lazyvim.plugins.extras.editor.inc-rename",
+    "lazyvim.plugins.extras.editor.fzf",
     "lazyvim.plugins.extras.formatting.prettier",
     "lazyvim.plugins.extras.lang.ansible",
     "lazyvim.plugins.extras.lang.cmake",
@@ -23,6 +24,7 @@
     "lazyvim.plugins.extras.lang.tex",
     "lazyvim.plugins.extras.lang.vue",
     "lazyvim.plugins.extras.lang.git",
+    "lazyvim.plugins.extras.lang.sql",
     "lazyvim.plugins.extras.ui.edgy",
     "lazyvim.plugins.extras.ui.treesitter-context",
     "lazyvim.plugins.extras.util.mini-hipatterns",
@@ -67,8 +69,7 @@
   ],
   "news": {
     "NEWS.md": "6077",
-    "doc/news.txt": "3853"
+    "doc/news.txt": "4037"
   },
   "version": 6
 }
-
