@@ -11,7 +11,14 @@ set --global _fzf_search_vars_command '_fzf_search_variables (set --show | psub)
 
 
 # Install the default bindings, which are mnemonic and minimally conflict with fish's preset bindings
-fzf_configure_bindings
+# fzf_configure_bindings
+fzf_configure_bindings \
+    --directory=\ct \
+    --git_log=\cg \
+    --git_status= \
+    --history= \
+    --processes=\cp \
+    --variables=\c\ev
 
 # Doesn't erase autoloaded _fzf_* functions because they are not easily accessible once key bindings are erased
 function _fzf_uninstall --on-event fzf_uninstall
@@ -26,3 +33,21 @@ function _fzf_uninstall --on-event fzf_uninstall
     echo "You may need to manually remove fzf_configure_bindings from your config.fish if you were using custom key bindings."
     set_color normal
 end
+
+bind -M insert \ch __fzf_tldr
+
+source ~/Repos/tokyonight.nvim/extras/fzf/tokyonight_moon.sh
+
+set -x FZF_DEFAULT_OPTS "$FZF_DEFAULT_OPTS
+  --cycle
+  --layout=reverse
+  --height 60%
+  --ansi
+  --preview-window=right:70%
+  --bind=ctrl-u:half-page-up,ctrl-d:half-page-down,ctrl-x:jump
+  --bind=ctrl-f:preview-page-down,ctrl-b:preview-page-up
+  --bind=ctrl-a:beginning-of-line,ctrl-e:end-of-line
+  --bind=ctrl-j:down,ctrl-k:up
+"
+
+set fzf_diff_highlighter delta --paging=never --width=20
