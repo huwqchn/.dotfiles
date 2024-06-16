@@ -18,7 +18,7 @@ fzf_configure_bindings \
     --git_status= \
     --history= \
     --processes=\cp \
-    --variables=\c\ev
+    --variables=\e\cv
 
 # Doesn't erase autoloaded _fzf_* functions because they are not easily accessible once key bindings are erased
 function _fzf_uninstall --on-event fzf_uninstall
