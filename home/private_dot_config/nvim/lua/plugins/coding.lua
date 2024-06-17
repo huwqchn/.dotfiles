@@ -44,8 +44,8 @@ return {
         ["<C-e>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
         ["<C-i>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
         ["<C-c>"] = cmp.mapping.abort(),
-        ["<C-x>"] = cmp.mapping.complete(),
-        ["<C-Space>"] = nil,
+        -- ["<C-x>"] = cmp.mapping.complete(),
+        -- ["<C-Space>"] = nil,
       })
       opts.experimental = vim.tbl_extend("force", opts.experimental or {}, {
         native_menu = false,
