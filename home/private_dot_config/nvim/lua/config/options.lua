@@ -29,7 +29,8 @@ vim.opt.hidden = true -- Enable modified buffers in background
 vim.opt.joinspaces = false -- No double spaces with join after a dot
 vim.opt.pumblend = 0 -- Popup menu transparency, set not zero will show some bugs
 vim.opt.spelllang:append("cjk")
-vim.opt.timeoutlen = 0
+--WARN: vim.opt.timeoutlen = 0 make some keymaps not working
+-- vim.opt.timeoutlen = 0
 vim.opt.mousemoveevent = true
 
 -- fold options

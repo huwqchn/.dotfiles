@@ -127,11 +127,12 @@ map("i", "<A-Left>", "<C-\\><C-N><C-w>h")
 map("i", "<A-Right>", "<C-\\><C-N><C-w>l")
 
 -- Terminal window navigation
-map("t", "<esc><esc>", "<c-\\><c-n>", { desc = "Enter Normal Mode" })
-map("t", "<C-n>", "<C-\\><C-N><C-w>h", { desc = "move to left" })
-map("t", "<C-e>", "<C-\\><C-N><C-w>j", { desc = "move to down" })
-map("t", "<C-i>", "<C-\\><C-N><C-w>k", { desc = "move to up" })
-map("t", "<C-o>", "<C-\\><C-N><C-w>l", { desc = "move to right" })
+--WARN: <esc><esc> is not work when timeoutlen=0
+map("t", "<C-esc>", "<c-\\><c-n>", { desc = "Enter Normal Mode" })
+map("t", "<C-n>", "<cmd>wincmd h<cr>", { desc = "Go to Left Window" })
+map("t", "<C-e>", "<cmd>wincmd j<cr>", { desc = "Go to Down Window" })
+map("t", "<C-i>", "<cmd>wincmd k<cr>", { desc = "Go to Up Window" })
+map("t", "<C-o>", "<cmd>wincmd l<cr>", { desc = "Go to Right Window" })
 map("t", "<C-q>", "<cmd>close<cr>", { desc = "Hide Terminal" })
 local lazyterm = function()
   Util.terminal(nil, { cwd = Util.root() })
