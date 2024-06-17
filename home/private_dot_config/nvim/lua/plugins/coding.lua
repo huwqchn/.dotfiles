@@ -28,16 +28,18 @@ return {
             vim.snippet.jump(1)
           elseif neotab_ok then
             neotab.tabout()
+          else
+            return fallback()
           end
-          return fallback()
         end),
         ["<S-Tab>"] = cmp.mapping(function(fallback)
           if cmp.visible() then
             cmp.select_prev_item()
           elseif vim.snippet.active({ direction = -1 }) then
             vim.snippet.jump(-1)
+          else
+            return fallback()
           end
-          return fallback()
         end),
         ["<C-e>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
         ["<C-i>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),

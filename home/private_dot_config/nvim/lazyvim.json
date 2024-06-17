@@ -63,7 +63,6 @@
     "plugins.extras.misc.wezterm-types",
     "plugins.extras.misc.zen-mode",
     "plugins.extras.ui.window-picker",
-    "plugins.extras.ui.windows",
     "plugins.extras.ui.winshift",
     "plugins.extras.ui.mini-animate",
     "plugins.extras.coding.neotab"
