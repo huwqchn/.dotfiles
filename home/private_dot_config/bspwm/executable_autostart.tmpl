@@ -17,10 +17,10 @@ $HOME/.scripts/inverse-scroll.sh &
 if [ ! -d "$HOME/.config/glava" ]; then
 	glava --copy-config &
 fi
-
 {{ if eq .resolution "3456x2160" }}
 glava --desktop &
 {{ end }}
+
 
 # $HOME/.config/conky/Auva/start.sh &
 
@@ -51,6 +51,9 @@ thunar --daemon &
 safeeyes -e &
 xsettingsd -c $HOME/.config/xsettingsd/xsettingsd.conf &
 avizo-service &
+
+# swap ctrl and caps
+setxkbmap -option ctrl:nocaps &
 
 # gebaard -b
 
