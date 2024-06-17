@@ -65,8 +65,7 @@
     "plugins.extras.ui.window-picker",
     "plugins.extras.ui.winshift",
     "plugins.extras.ui.mini-animate",
-    "plugins.extras.coding.neotab",
-    "plugins.extras.editor.toggleterm"
+    "plugins.extras.coding.neotab"
   ],
   "news": {
     "NEWS.md": "6077",
