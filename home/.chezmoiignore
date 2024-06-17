@@ -61,6 +61,7 @@ key.txt.age
 {{ end }}
 
 {{ if eq .chezmoi.os "windows" }}
+.condarc
 .chezmoiscripts/*.sh
 .config/BetterDiscord
 .config/alacritty
