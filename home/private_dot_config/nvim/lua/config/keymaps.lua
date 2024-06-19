@@ -11,9 +11,8 @@
 -- o[nore]map     |  -   |  -  |  -  |  -  |  -  | yes |  -   |  -   |
 -- t[nore]map     |  -   |  -  |  -  |  -  |  -  |  -  | yes  |  -   |
 -- l[nore]map     |  -   | yes | yes |  -  |  -  |  -  |  -   | yes  |
-local Util = require("lazyvim.util")
 -- HACK: very careful with this
-local map = Util.safe_keymap_set
+local map = LazyVim.safe_keymap_set
 local unmap = vim.keymap.del
 local cowboy = require("util").cowboy
 unmap("n", "<C-h>")
@@ -23,7 +22,7 @@ unmap("n", "<C-l>")
 unmap({ "n", "i", "x" }, "<A-k>")
 unmap({ "n", "i", "x" }, "<A-j>")
 -- local map = vim.keymap.set
--- local Util = require("lazyvim.util")
+-- local LazyVim = require("lazyvim.util")
 -- colemak-dh movement
 cowboy({ "n", "x" }, "e", "v:count == 0 ? 'gj' : 'j'")
 cowboy({ "n", "x" }, "i", "v:count == 0 ? 'gk' : 'k'")
@@ -135,18 +134,18 @@ map("t", "<C-i>", "<cmd>wincmd k<cr>", { desc = "Go to Up Window" })
 map("t", "<C-o>", "<cmd>wincmd l<cr>", { desc = "Go to Right Window" })
 map("t", "<C-q>", "<cmd>close<cr>", { desc = "Hide Terminal" })
 local lazyterm = function()
-  Util.terminal(nil, { cwd = Util.root() })
+  LazyVim.terminal(nil, { cwd = LazyVim.root() })
 end
 map("n", "<M-/>", lazyterm, { desc = "Terminal (root dir)" })
 map("t", "<M-/>", "<cmd>close<cr>", { desc = "Hide Terminal" })
 map("n", "<C-cr>", function()
-  Util.terminal(nil, { ft = "", border = "rounded" })
+  LazyVim.terminal(nil, { ft = "", border = "rounded" })
 end, { desc = "Float Terminal" })
 map("t", "<C-cr>", "<cmd>close<cr>", { desc = "Hide Terminal" })
 
 -- btop
 map("n", "<leader>xb", function()
-  Util.terminal({ "btop" }, { esc_esc = false, ctrl_hjkl = false })
+  LazyVim.terminal({ "btop" }, { esc_esc = false, ctrl_hjkl = false })
 end, { desc = "btop" })
 
 -- map tab to tab, because distinguish between <C-i>
