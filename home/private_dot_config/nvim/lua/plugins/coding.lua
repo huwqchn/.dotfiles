@@ -54,10 +54,9 @@ return {
         ---@usage The minimum length of a word to complete on.
         keyword_length = 1,
       })
-      local icons = require("lazyvim.config").icons
+      local icons = LazyVim.config.icons
       opts.formatting = {
         fields = { "kind", "abbr", "menu" },
-        max_width = 0,
         kind_icons = icons.kinds,
         source_names = {
           nvim_lsp = "(LSP)",
@@ -82,9 +81,15 @@ return {
         },
         duplicates_default = 0,
         format = function(entry, item)
-          local max_width = opts.formatting.max_width
-          if max_width ~= 0 and #item.abbr > max_width then
-            item.abbr = string.sub(item.abbr, 1, max_width - 1) .. ""
+          local widths = {
+            abbr = vim.g.cmp_widths and vim.g.cmp_widths.abbr or 40,
+            menu = vim.g.cmp_widths and vim.g.cmp_widths.menu or 30,
+          }
+
+          for key, width in pairs(widths) do
+            if item[key] and vim.fn.strdisplaywidth(item[key]) > width then
+              item[key] = vim.fn.strcharpart(item[key], 0, width - 1) .. "…"
+            end
           end
           item.kind = opts.formatting.kind_icons[item.kind]
 
@@ -101,11 +106,6 @@ return {
           if entry.source.name == "crates" then
             item.kind = opts.icons.Package
             item.kind_hl_group = "CmpItemKindCrate"
-          end
-
-          if entry.source.name == "lab.quick_data" then
-            item.kind = opts.icons.CircuitBoard
-            item.kind_hl_group = "CmpItemKindConstant"
           end
 
           if entry.source.name == "emoji" then

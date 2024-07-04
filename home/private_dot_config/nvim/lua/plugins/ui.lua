@@ -389,7 +389,6 @@ return {
       --   end,
       --   color = { bg = "none" },
       -- }
-      local Util = require("lazyvim.util")
       opts.options.component_separators = { left = "", right = "" }
       opts.options.section_separators = { left = "", right = "" }
       opts.sections.lualine_a = {
@@ -418,7 +417,7 @@ return {
         {
           "branch",
           icon = opts.icons.GitBranch,
-          color = { bg = Util.ui.fg("Operator").fg, fg = Util.ui.fg("Cursor").fg },
+          color = { bg = LazyVim.ui.color("Operator"), fg = LazyVim.ui.color("Cursor") },
           separator = sep,
         },
         {
@@ -446,13 +445,13 @@ return {
         },
         {
           function()
-            local clients = require("lazyvim.util").lsp.get_clients()
+            local clients = LazyVim.lsp.get_clients()
             return opts.icons.LspPrefix .. clients[1].name
           end,
 
           cond = conditions.check_lsp_active,
           separator = sep,
-          color = { bg = Util.ui.fg("TSRainbowRed").fg, fg = Util.ui.fg("Cursor").fg },
+          color = { bg = LazyVim.ui.color("Substitute", true), fg = LazyVim.ui.color("Cursor") },
         },
         {
           function()
