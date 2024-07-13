@@ -49,8 +49,8 @@ map({ "n", "x", "o" }, "gh", "gi", { desc = "goto last insert" })
 map({ "n", "x", "o" }, "gH", "gI", { desc = "goto start of last insert line" })
 
 -- colemake-dh undo key
-vim.keymap.set({ "n", "x" }, "l", "o")
-vim.keymap.set({ "n", "x" }, "L", "O")
+vim.keymap.set({ "n", "x", "o" }, "l", "o")
+vim.keymap.set({ "n", "x", "o" }, "L", "O")
 
 -- colemak-dh end of word
 map({ "n", "x", "o" }, "j", "e")
