@@ -173,9 +173,7 @@ return {
       return {}
     end,
     opts = {
-      window = {
-        border = "single",
-      },
+      preset = "modern",
       plugins = {
         marks = true,
         registers = true,

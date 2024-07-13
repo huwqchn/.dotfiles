@@ -3,8 +3,11 @@ return {
     "folke/which-key.nvim",
     optional = true,
     opts = {
-      defaults = {
-        ["<leader>i"] = { name = "+Cscope" },
+      spec = {
+        {
+          mode = "n",
+          { "<leader>i", group = "Cscope" },
+        },
       },
     },
   },

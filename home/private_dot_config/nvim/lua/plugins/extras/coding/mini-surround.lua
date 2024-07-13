@@ -19,12 +19,13 @@ return {
   {
     "folke/which-key.nvim",
     optional = true,
-    opts = function(_, opts)
-      table.insert(opts.defaults, 2, {
-        ["s"] = { name = "+surround/select/split" },
-      })
-      opts.defaults["gz"] = nil
-      return opts
-    end,
+    opts = {
+      spec = {
+        {
+          mode = { "n", "v" },
+          { "s", group = "surround/select/split" },
+        },
+      },
+    },
   },
 }

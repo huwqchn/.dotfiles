@@ -85,9 +85,11 @@ return {
   {
     "folke/which-key.nvim",
     opts = {
-      defaults = {
-        mode = "n",
-        ["<leader>r"] = { name = "+run" },
+      spec = {
+        {
+          mode = "n",
+          { "<leader>r", group = "run" },
+        },
       },
     },
   },
