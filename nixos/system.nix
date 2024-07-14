@@ -15,8 +15,26 @@
   };
   
   # boot
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
+  boot.loader.systemd-boot.enable = false;
+  # boot.loader.efi.canTouchEfiVariables = true;
+  boot.loader = {
+    efi = {
+      canTouchEfiVariables = true;
+      # efiSysMountPoint = "/boot/efi";
+    };
+    grub = {
+      enable = true;
+      device = "nodev";
+      efiSupport = true;
+
+      dedsec-theme = {
+        enable = true;
+	style = "compact";
+	icon = "color";
+	resolution = "1080p";
+      };
+    };
+  };
 
   # define hostname
   networking.hostName = "nixos";

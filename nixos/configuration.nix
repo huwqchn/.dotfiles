@@ -6,13 +6,11 @@
   inherit (myvars) username;
 in {
   imports = [
-    /etc/nixos/hardware-configuration.nix
+    ./hardware-configuration.nix
     ./system.nix
   ];
 
-  # Enable flakes
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
-
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
@@ -73,6 +71,7 @@ in {
       home.homeDirectory = "/home/${username}";
       imports = [
         ../home/git.nix
+	../home/nvim.nix
         ./home.nix
       ];
     };

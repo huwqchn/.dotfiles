@@ -28,9 +28,14 @@
       url = "github:cachix/pre-commit-hooks.nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    dedsec-grub-theme = {
+      url = "gitlab:VandalByte/dedsec-grub-theme";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { self, nixpkgs, home-manager, ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, dedsec-grub-theme, ... }@inputs:
   let
     inherit (inputs.nixpkgs) lib;
     myvars = import ./vars { inherit lib; };
@@ -42,6 +47,7 @@
         inherit inputs myvars system;
       };
       modules = [
+        dedsec-grub-theme.nixosModule
         ./nixos/configuration.nix
         home-manager.nixosModules.home-manager
       ];
