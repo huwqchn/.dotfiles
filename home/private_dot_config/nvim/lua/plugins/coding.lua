@@ -152,9 +152,6 @@ return {
       { "a", mode = { "x", "o" } },
       { "h", mode = { "x", "o" } },
     },
-    -- event = function()
-    --   return {}
-    -- end,
     opts = {
       n_lines = 500,
       custom_textobjects = {
