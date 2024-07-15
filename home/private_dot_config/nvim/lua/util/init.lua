@@ -1,7 +1,6 @@
 local M = {}
 M.autocmd = require("util.autocmd")
 M.lualine = require("util.lualine")
-M.mini = require("util.mini")
 
 --- lazy load lsp module by filetype
 ---@param filetype string|table
