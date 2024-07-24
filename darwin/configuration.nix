@@ -1,4 +1,4 @@
-{ lib, pkgs, inputs, myvars, ... }: let
+{ inputs, mylib, myvars, ... }: let
   inherit (myvars) username;
   inherit (inputs) nixpkgs;
 in {
@@ -15,7 +15,7 @@ in {
     backupFileExtension = "backup";
     useGlobalPkgs = true;
     useUserPackages = true;
-    extraSpecialArgs = {inherit inputs myvars;};
+    extraSpecialArgs = {inherit inputs mylib myvars;};
     users.${username} = {
       imports = [
         ../home/git.nix

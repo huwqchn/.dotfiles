@@ -1,6 +1,6 @@
-{ pkgs, lib, ... }: {
+{ pkgs, lib, mylib, ... }: {
   xdg = {
-    configFile.nvim.source = ../config/nvim;
+    configFile.nvim.source = mylib.symlink "nvim";
     desktopEntries."nvim" = lib.mkIf pkgs.stdenv.isLinux {
       name = "NeoVim";
       comment = "Edit text files";
@@ -18,7 +18,7 @@
     defaultEditor = true;
     viAlias = true;
     vimAlias = true;
-    
+
     withRuby = true;
     withNodeJs = true;
     withPython3 = true;

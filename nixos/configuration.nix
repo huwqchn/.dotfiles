@@ -2,9 +2,8 @@
 # your system. Help is available in the configuration.nix(5) man page, on
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
 
-{ lib, pkgs, inputs, myvars, ... } @ args: let
+{ pkgs, inputs, mylib, myvars, ... }: let
   inherit (myvars) username;
-  inherit (inputs) nixpkgs;
 in {
   imports = [
     ./hardware-configuration.nix
@@ -28,7 +27,7 @@ in {
   services.xserver.desktopManager.plasma5.enable = true;
   services.displayManager.sddm.enable = true;
 
-  
+
 
   # Configure keymap in X11
   services.xserver.xkb.layout = "us";
@@ -51,7 +50,7 @@ in {
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.${username} = {
     isNormalUser = true;
-    extraGroups = [ 
+    extraGroups = [
       "wheel"
       "docker"
     ];
@@ -66,7 +65,7 @@ in {
     backupFileExtension = "backup";
     useGlobalPkgs = true;
     useUserPackages = true;
-    extraSpecialArgs = {inherit inputs myvars;};
+    extraSpecialArgs = {inherit inputs mylib myvars;};
     users.${username} = {
       imports = [
         ../home/git.nix
@@ -95,4 +94,3 @@ in {
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
 }
-

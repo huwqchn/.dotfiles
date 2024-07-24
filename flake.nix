@@ -3,13 +3,13 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    
+
     # user configuration management
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    
+
     hyprland = {
       url = "github:hyprwm/Hyprland";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -58,7 +58,7 @@
 
     ags.url = "github:Aylur/ags";
 
-   
+
     disko = {
       url = "github:nix-community/disko/v1.6.1";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -78,9 +78,10 @@
   outputs = { self, nixpkgs, home-manager, nix-darwin, dedsec-grub-theme, ... } @ inputs:
   let
     inherit (inputs.nixpkgs) lib;
+    mylib = import ../lib { inherit lib; };
     myvars = import ./vars { inherit lib; };
     specialArgs = {
-      inherit inputs myvars;
+      inherit inputs mylib myvars;
     };
     nixosSystem = "x86_64-linux";
     darwinSystem = "aarch64-darwin";
