@@ -89,8 +89,11 @@ return {
     "folke/which-key.nvim",
     optional = true,
     opts = {
-      defaults = {
-        ["<leader><cr>"] = { name = "+Terminal" },
+      spec = {
+        {
+          mode = "n",
+          { "<leader><cr>", group = "Terminal" },
+        },
       },
     },
   },

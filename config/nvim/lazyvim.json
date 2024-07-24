@@ -21,7 +21,10 @@
     "lazyvim.plugins.extras.lang.python",
     "lazyvim.plugins.extras.lang.tailwind",
     "lazyvim.plugins.extras.lang.toml",
+    "lazyvim.plugins.extras.lang.json",
+    "lazyvim.plugins.extras.lang.yaml",
     "lazyvim.plugins.extras.lang.tex",
+    "lazyvim.plugins.extras.lang.nix",
     "lazyvim.plugins.extras.lang.vue",
     "lazyvim.plugins.extras.lang.git",
     "lazyvim.plugins.extras.lang.sql",
@@ -70,7 +73,7 @@
     "plugins.extras.coding.neotab"
   ],
   "news": {
-    "NEWS.md": "6077",
+    "NEWS.md": "6296",
     "doc/news.txt": "4037"
   },
   "version": 6

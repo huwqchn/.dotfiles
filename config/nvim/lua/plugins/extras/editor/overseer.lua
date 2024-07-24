@@ -138,13 +138,4 @@ return {
       end, {})
     end,
   },
-  {
-    "folke/which-key.nvim",
-    opts = {
-      defaults = {
-        mode = { "n", "x" },
-        ["<leader>o"] = { name = "+Overseer" },
-      },
-    },
-  },
 }
