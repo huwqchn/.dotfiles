@@ -162,7 +162,7 @@ return {
       local cmp = require("cmp")
       local ls = require("luasnip")
       local neotab_ok, neotab = pcall(require, "neotab")
-      opts.mapping = vim.tbl_deep_extend("force", opts.mapping, {
+      opts.mapping = {
         ["<C-n>"] = cmp.mapping(function(fallback)
           if ls.choice_active() then
             ls.change_choice(1)
@@ -205,7 +205,7 @@ return {
             return fallback()
           end
         end, { "i", "s" }),
-      })
+      }
     end,
   },
 }
