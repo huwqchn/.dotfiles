@@ -29,9 +29,9 @@
 
       dedsec-theme = {
         enable = true;
-	style = "compact";
-	icon = "color";
-	resolution = "1080p";
+	      style = "compact";
+	      icon = "color";
+	      resolution = "1080p";
       };
     };
   };

@@ -1,0 +1,3 @@
+*.lock merge=ours linguist-generated=true
+*.age linguist-generated=true
+*.png binary

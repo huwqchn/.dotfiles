@@ -1,6 +1,21 @@
 { pkgs, lib, ... }: {
+  xdg = {
+    configFile.nvim.source = ../config/nvim;
+    desktopEntries."nvim" = lib.mkIf pkgs.stdenv.isLinux {
+      name = "NeoVim";
+      comment = "Edit text files";
+      icon = "nvim";
+      exec = "xterm -e ${pkgs.neovim}/bin/nvim %F";
+      categories = [ "TerminalEmulator" ];
+      terminal = false;
+      mimeType = [ "text/plain" ];
+    };
+  };
+
   programs.neovim = {
     enable = true;
+
+    defaultEditor = true;
     viAlias = true;
     vimAlias = true;
     
