@@ -180,6 +180,9 @@ return {
           g = true,
         },
       },
+      triggers = {
+        { "s", mode = { "n", "x" } },
+      },
     },
   },
   {
