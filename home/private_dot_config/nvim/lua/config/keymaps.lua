@@ -183,12 +183,6 @@ map("n", "sE", "<C-w>J", { desc = "swap with below" })
 map("n", "sI", "<C-w>K", { desc = "swap with above" })
 map("n", "sO", "<C-w>L", { desc = "swap with right" })
 
--- window zoom
-map("n", "<leader>wz", function()
-  LazyVim.toggle.maximize()
-end, { desc = "Window zoom" })
-map("n", "sz", "<leader>wz", { remap = true, desc = "Window zoom" })
-
 -- Resize with arrows
 map("n", "<C-Up>", "<cmd>resize +2<CR>", { desc = "Increase window height" })
 map("n", "<C-Down>", "<cmd>resize -2<CR>", { desc = "Decrease window height" })
