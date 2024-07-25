@@ -193,7 +193,7 @@ map("n", "<C-Right>", "<cmd>vertical resize +2<CR>", { desc = "Increase window w
 
 -- other window keybindings
 map("n", "<C-k>", "<C-w>o", { desc = "Clear other windwos" })
-map("n", "<C-x>", "<C-w>x", { desc = "Exchange window" })
+-- map("n", "<C-x>", "<C-w>x", { desc = "Exchange window" })
 map("n", "<C-q>", function()
   -- close current window if there are more than 1 window
   -- else close current tab if there are more than 1 tab
