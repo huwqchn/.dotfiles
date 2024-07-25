@@ -44,8 +44,8 @@ return {
         ["<C-e>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
         ["<C-i>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
         ["<C-c>"] = cmp.mapping.abort(),
-        -- ["<C-x>"] = cmp.mapping.complete(),
-        -- ["<C-Space>"] = nil,
+        ["<C-x>"] = cmp.mapping.complete(),
+        ["<C-Space>"] = nil,
       })
       opts.experimental = vim.tbl_extend("force", opts.experimental or {}, {
         native_menu = false,
@@ -54,80 +54,6 @@ return {
         ---@usage The minimum length of a word to complete on.
         keyword_length = 1,
       })
-      local icons = LazyVim.config.icons
-      opts.formatting = {
-        fields = { "kind", "abbr", "menu" },
-        kind_icons = icons.kinds,
-        source_names = {
-          nvim_lsp = "(LSP)",
-          emoji = "(Emoji)",
-          path = "(Path)",
-          calc = "(Calc)",
-          cmp_tabnine = "(Tabnine)",
-          vsnip = "(Snippet)",
-          luasnip = "(Snippet)",
-          buffer = "(Buffer)",
-          tmux = "(TMUX)",
-          copilot = "(Copilot)",
-          treesitter = "(TreeSitter)",
-          codeium = "(Codeium)",
-          otter = "(Otter)",
-        },
-        duplicates = {
-          buffer = 1,
-          path = 1,
-          nvim_lsp = 0,
-          luasnip = 1,
-        },
-        duplicates_default = 0,
-        format = function(entry, item)
-          local widths = {
-            abbr = vim.g.cmp_widths and vim.g.cmp_widths.abbr or 40,
-            menu = vim.g.cmp_widths and vim.g.cmp_widths.menu or 30,
-          }
-
-          for key, width in pairs(widths) do
-            if item[key] and vim.fn.strdisplaywidth(item[key]) > width then
-              item[key] = vim.fn.strcharpart(item[key], 0, width - 1) .. "…"
-            end
-          end
-          item.kind = opts.formatting.kind_icons[item.kind]
-
-          if entry.source.name == "copilot" then
-            item.kind = icons.kinds.Copilot
-            item.kind_hl_group = "CmpItemKindCopilot"
-          end
-
-          if entry.source.name == "cmp_tabnine" then
-            item.kind = icons.kinds.TabNine
-            item.kind_hl_group = "CmpItemKindTabnine"
-          end
-
-          if entry.source.name == "crates" then
-            item.kind = opts.icons.Package
-            item.kind_hl_group = "CmpItemKindCrate"
-          end
-
-          if entry.source.name == "emoji" then
-            item.kind = opts.icons.Smiley
-            item.kind_hl_group = "CmpItemKindEmoji"
-          end
-
-          if entry.source.name == "codeium" then
-            item.kind = icons.kinds.Codeium
-            item.kind_hl_group = "CmpItemKindCodeium"
-          end
-
-          if entry.source.name == "otter" then
-            item.kind = opts.icons.otter
-            item.kind_hl_group = "CmpItemKindOtter"
-          end
-
-          item.menu = opts.formatting.source_names[entry.source.name]
-          item.dup = opts.formatting.duplicates[entry.source.name] or opts.formatting.duplicates_default
-          return item
-        end,
-      }
       opts.sources = cmp.config.sources(vim.list_extend(opts.sources, {
         { name = "emoji" },
         { name = "nvim_lua" },
