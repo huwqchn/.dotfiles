@@ -181,6 +181,7 @@ return {
         },
       },
       triggers = {
+        { "<auto>", mode = "nixsotc" },
         { "s", mode = { "n", "x" } },
       },
     },
