@@ -32,6 +32,10 @@ cowboy({ "n", "x" }, "+")
 cowboy({ "n", "x" }, "-")
 cowboy({ "n", "x" }, "x")
 
+-- Search visually selected text (slightly better than builtins in Neovim>=0.8)
+map("x", "*", [[y/\V<C-R>=escape(@", '/\')<CR><CR>]])
+map("x", "#", [[y?\V<C-R>=escape(@", '?\')<CR><CR>]])
+
 -- colemak-dh jump to start/end of the line
 map({ "n", "x", "o" }, "N", "^")
 map({ "n", "x", "o" }, "O", "$")
@@ -207,6 +211,8 @@ map("n", "<C-q>", function()
   end
 end, { desc = "Super Quit" })
 
+-- map s to <nop>
+vim.keymap.set("n", "s", "<nop>", { noremap = true, desc = "split/surround/selection" })
 -- Resize with arrows
 map("n", "s<Up>", "<cmd>resize +2<CR>", { desc = "Increase window height" })
 map("n", "s<Down>", "<cmd>resize -2<CR>", { desc = "Decrease window height" })
@@ -354,4 +360,26 @@ local function smart_dd()
     return "dd"
   end
 end
-vim.keymap.set("n", "dd", smart_dd, { noremap = true, expr = true })
+vim.keymap.set("n", "dd", smart_dd, { noremap = true, expr = true, desc = "Don't yank empty line" })
+
+-- delete current line marks
+-- [src: https://github.com/lkhphuc/dotfiles/blob/master/nvim/lua/config/keymaps.lua]
+local function delete_marks()
+  local cur_line = vim.fn.line(".")
+  -- Delete buffer local mark
+  for _, mark in ipairs(vim.fn.getmarklist("%")) do
+    if mark.pos[2] == cur_line and mark.mark:match("[a-zA-Z]") then
+      vim.api.nvim_buf_del_mark(0, string.sub(mark.mark, 2, #mark.mark))
+      return
+    end
+  end
+  -- Delete global marks
+  local cur_buf = vim.api.nvim_win_get_buf(vim.api.nvim_get_current_win())
+  for _, mark in ipairs(vim.fn.getmarklist()) do
+    if mark.pos[1] == cur_buf and mark.pos[2] == cur_line and mark.mark:match("[a-zA-Z]") then
+      vim.api.nvim_buf_del_mark(0, string.sub(mark.mark, 2, #mark.mark))
+      return
+    end
+  end
+end
+vim.keymap.set("n", "dm", delete_marks, { noremap = true, desc = "Delete mark on the current line" })

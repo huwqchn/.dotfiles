@@ -166,7 +166,7 @@ return {
     "folke/which-key.nvim",
     optional = true,
     opts = {
-      preset = "modern",
+      preset = "helix",
       plugins = {
         marks = true,
         registers = true,
@@ -469,4 +469,5 @@ return {
       }
     end,
   },
+  { "HiPhish/rainbow-delimiters.nvim", event = "BufEnter" },
 }
