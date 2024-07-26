@@ -3,10 +3,12 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable-small";
+    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.05";
 
     # user configuration management
     home-manager = {
-      url = "github:nix-community/home-manager";
+      url = "github:nix-community/home-manager/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -15,12 +17,16 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    # neovim nightly overlay
+    neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
+
     # for macos
     nixpkgs-darwin.url = "github:nixos/nixpkgs/nixpkgs-24.05-darwin";
     nix-darwin = {
       url = "github:lnl7/nix-darwin";
       inputs.nixpkgs.follows = "nixpkgs-darwin";
     };
+    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
     # generate iso/qcow2/docker/... image from nixos configuration
     nixos-generators = {
@@ -30,7 +36,7 @@
 
     # secrets management
     agenix = {
-      url = "github:ryantm/agenix";
+      url = "github:yaxitech/ragenix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 

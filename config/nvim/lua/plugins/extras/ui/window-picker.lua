@@ -16,7 +16,7 @@ return {
       },
       { "sw", "<leader>ww", remap = true, desc = "Pick window" },
       {
-        "<leader>ws",
+        "<leader>wx",
         function()
           local picker = require("window-picker")
           local window = picker.pick_window({
@@ -28,7 +28,7 @@ return {
           -- Set current window to contain target buffer
           vim.api.nvim_win_set_buf(0, target_buffer)
         end,
-        desc = "Swap a window",
+        desc = "Exchange a window",
       },
       { "sW", "<leader>ws", remap = true, desc = "Swap window" },
     },

@@ -26,6 +26,6 @@ return {
         },
       },
     },
-    keys = { { "<leader>wm", "<CMD>WinShift<CR>", desc = "Move mode" } },
+    keys = { { "<leader>ws", "<CMD>WinShift<CR>", desc = "Window Shift" } },
   },
 }

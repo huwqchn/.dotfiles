@@ -5,6 +5,9 @@ return {
     opts = {
       close_if_last_window = true,
       filesystem = {
+        filtered_items = {
+          hide_dotfiles = false,
+        },
         window = {
           mappings = {
             ["h"] = "none",
@@ -163,7 +166,7 @@ return {
     "folke/which-key.nvim",
     optional = true,
     opts = {
-      preset = "modern",
+      preset = "helix",
       plugins = {
         marks = true,
         registers = true,
@@ -176,6 +179,10 @@ return {
           z = true,
           g = true,
         },
+      },
+      triggers = {
+        { "<auto>", mode = "nixsotc" },
+        { "s", mode = { "n", "x" } },
       },
     },
   },

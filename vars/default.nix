@@ -1,5 +1,5 @@
 { lib }: {
-  username = "johnson";
-  userfullname = "Johnson Hu";
-  useremail = "huwqchn@gmail.com";
+  userName = "johnson";
+  userFullName = "Johnson Hu";
+  userEmail = "huwqchn@gmail.com";
 }

@@ -67,6 +67,7 @@
     "plugins.extras.misc.tidy",
     "plugins.extras.misc.wezterm-types",
     "plugins.extras.misc.zen-mode",
+    "plugins.extras.misc.image",
     "plugins.extras.ui.window-picker",
     "plugins.extras.ui.winshift",
     "plugins.extras.ui.mini-animate",
@@ -78,3 +79,4 @@
   },
   "version": 6
 }
+

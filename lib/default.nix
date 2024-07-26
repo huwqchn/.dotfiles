@@ -1,7 +1,8 @@
 { config,lib, ... }: rec {
   # use path relative to the root of the project
   relativeToRoot = lib.path.append ../.;
-  symlink = path: config.lib.file.mkOutOfStoreSymlink (relativeToRoot "config/${path}");
+  relativeToConfig = lib.path.append ../config/.;
+  symlink = path: config.lib.file.mkOutOfStoreSymlink (relativeToConfig "{path}");
   scanPaths = path:
     builtins.map
     (f: (path + "/${f}"))
