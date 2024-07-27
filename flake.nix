@@ -64,6 +64,10 @@
 
     ags.url = "github:Aylur/ags";
 
+    firefox-gnome-theme = {
+      url = "github:rafaelmardojai/firefox-gnome-theme";
+      flake = false;
+    };
 
     disko = {
       url = "github:nix-community/disko/v1.6.1";

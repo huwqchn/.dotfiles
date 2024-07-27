@@ -1,4 +1,4 @@
-{ ... }: 
+{ pkgs-unstable, ... }:
 {
   home.sessionPath = [
 
@@ -14,10 +14,29 @@
     MANPAGER = "nvim +Man!";
     TMUX_TMPDIR = "$HOME/.tmux/tmp";
   };
-  
+
   home.shellAliases = {
     v = "nvim";
     g = "git";
     lg = "lazygit";
   };
+  programs.nushell = {
+    enable = true;
+    package = pkgs-unstable.nushell;
+    configFile.source = ./config.nu;
+  };
+
+  programs.bash = {
+    enable = true;
+    enableCompletion = true;
+  };
+
+  programs.zhs = {
+    enable = true;
+    enableCompletion = true;
+  };
+
+  imports = [
+    ./fish.nix
+  ];
 }

@@ -1,18 +1,15 @@
-{ config, ... }: {
+{ pkgs, config, ... }: {
   environment.systemPackages = with pkgs; [
     fishPlugins.done
     fishPlugins.fzf-fish
     fishPlugins.forgit
-    fishPlugins.hydro
+    fishPlugins.autopair
     fzf
     fishPlugins.grc
     grc
   ];
-  programs.fish {
+  programs.fish = {
     enable = true;
-    interactiveShellInit = ''
-      neofetch
-    '';
     shellAbbrs = {
       c = "clear";
       Q = "shutdown -h now";
@@ -21,7 +18,6 @@
       cp = "cp -riv";
       mkdir = "mkdir -vp";
       rmdir = "rmdir -vp";
-      j = "yazi";
       v = "nvim";
       lg = "lazygit";
       lzd = "lazydocker";
@@ -77,5 +73,5 @@
       jg = "journalctl -b --grep";
       ju = "journalctl --unit";
     };
-  }
+  };
 }

@@ -14,11 +14,15 @@
   modules = {
     nixos-modules = map mylib.relativeToRoot [
       "hosts/${name}"
-      "modules/base"
-      "modules/desktop"
+      "modules/base.nix"
+      "modules/nixos/base"
+      "modules/nixos/desktop"
     ];
     home-modules = map mylib.relativeToRoot [
       "hosts/${name}/home.nix"
+      "home/base"
+      "home/linux/ags.nix"
+      "home/linux/hyprland.nix"
     ];
   };
 
