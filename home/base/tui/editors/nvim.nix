@@ -1,6 +1,9 @@
-{ inputs, pkgs, lib, mylib, ... }: {
+{ config, pkgs, lib, mylib, ... }:
+let
+  symlink = path: config.lib.file.mkOutOfStoreSymlink (mylib.relativeToConfig "{path}");
+in {
   xdg = {
-    configFile.nvim.source = mylib.symlink "nvim";
+    configFile.nvim.source = symlink "nvim";
     desktopEntries."nvim" = lib.mkIf pkgs.stdenv.isLinux {
       name = "NeoVim";
       comment = "Edit text files";
