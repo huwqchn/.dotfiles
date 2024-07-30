@@ -1,4 +1,10 @@
-{ config,lib, ... }: rec {
+{ lib, ... }: rec {
+  colmenaSystem = import ./colmenaSystem.nix;
+  macosSystem = import ./macosSystem.nix;
+  nixosSystem = import ./nixosSystem.nix;
+  
+  attrs = import ./attrs.nix { inherit lib; };
+
   # use path relative to the root of the project
   relativeToRoot = lib.path.append ../.;
   relativeToConfig = lib.path.append ../config/.;

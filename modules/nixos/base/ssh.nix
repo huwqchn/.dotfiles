@@ -8,7 +8,7 @@
   # Or disable the firewall altogether.
   networking.firewall.enable = lib.mkDefault false;
 
-  programs.ssh = myvars.networking.ssh;
+  # programs.ssh = myvars.networking.ssh;
 
   # Enable the OpenSSH daemon.
   services.openssh = {

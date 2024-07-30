@@ -9,7 +9,7 @@
     publish = {
       enable = true;
       domain = true;
-      userService = true;
+      userServices = true;
     };
   };
 }

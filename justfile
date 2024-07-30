@@ -1,5 +1,5 @@
 switch:
-  sudo nixos-rebuild switch --flake .#nixos --show-trace -L -v --impure
+  sudo nixos-rebuild switch --flake .#hacker --show-trace -L -v --impure
 
 update:
   nix flake update

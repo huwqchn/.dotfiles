@@ -1,5 +1,5 @@
 { pkgs, config, ... }: {
-  environment.systemPackages = with pkgs; [
+  home.packages = with pkgs; [
     fishPlugins.done
     fishPlugins.fzf-fish
     fishPlugins.forgit

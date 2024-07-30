@@ -94,6 +94,6 @@
     pam.services = {
       swaylock = {};
       ags = {};
-    }
+    };
   };
 }

@@ -8,7 +8,6 @@
     fd
     sd
     moreutils # ts, etc.
-    quniq
     tokei
 
     # Broken, https://github.com/NixOS/nixpkgs/issues/299680
@@ -16,20 +15,14 @@
 
     # Useful for Nix development
     nixci
-    nixci-build-remote
-    ci
-    omnix
     nixpkgs-fmt
     just
 
     # Publishing
     asciinema
-    twitter-convert
 
     # Dev
     gh
-    fuckport
-    sshuttle-via
     entr
 
     # Txns
@@ -117,8 +110,8 @@
         hide_env_diff = true;
       };
     };
-    nix-index.enable = true;
-    nix-index-database.comma.enable = true;
+    # nix-index.enable = true;
+    # nix-index-database.comma.enable = true;
     jq.enable = true;
     rio.enable = true;
   };

@@ -4,7 +4,7 @@
   ...
 }: {
   imports = [
-    impermanence.nixosMoules.impermanence
+    impermanence.nixosModules.impermanence
   ];
 
   environment.systemPackages = [

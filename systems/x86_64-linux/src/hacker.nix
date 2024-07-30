@@ -21,8 +21,6 @@
     home-modules = map mylib.relativeToRoot [
       "hosts/${name}/home.nix"
       "home/base"
-      "home/linux/ags.nix"
-      "home/linux/hyprland.nix"
     ];
   };
 

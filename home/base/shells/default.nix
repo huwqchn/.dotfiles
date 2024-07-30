@@ -1,8 +1,8 @@
 { pkgs-unstable, ... }:
 {
-  home.sessionPath = [
-
-  ];
+  # home.sessionPath = [
+  #
+  # ];
 
   home.sessionVariables = rec {
     EDITOR = "nvim";
@@ -23,7 +23,6 @@
   programs.nushell = {
     enable = true;
     package = pkgs-unstable.nushell;
-    configFile.source = ./config.nu;
   };
 
   programs.bash = {
@@ -31,7 +30,7 @@
     enableCompletion = true;
   };
 
-  programs.zhs = {
+  programs.zsh = {
     enable = true;
     enableCompletion = true;
   };

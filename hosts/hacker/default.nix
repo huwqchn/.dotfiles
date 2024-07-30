@@ -1,7 +1,7 @@
 let
   hostName = "hacker";
 in {
-  import = [
+  imports = [
     ./hardware-configuration.nix
     ./boot.nix
     ./impermanence.nix
