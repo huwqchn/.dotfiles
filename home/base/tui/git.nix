@@ -2,7 +2,7 @@
   lib,
   myvars,
   ...
-}: let 
+}: let
   inherit (myvars) userFullName userEmail;
 in {
   # `programs.git` will generate the config file: ~/.config/git/config
@@ -15,7 +15,7 @@ in {
   programs.git = {
     enable = true;
     lfs.enable = true;
-    
+
     userName = userFullName;
     userEmail = userEmail;
 

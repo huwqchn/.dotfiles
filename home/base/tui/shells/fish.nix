@@ -68,6 +68,7 @@
       sa = "sudo systemctl start";
       sf = "systemctl --failed --all";
       # journalctl
+      j = "journalctl";
       jb = "journalctl -b";
       jf = "journalctl --follow";
       jg = "journalctl -b --grep";
