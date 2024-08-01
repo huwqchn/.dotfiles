@@ -1,0 +1,172 @@
+{ config, ... }: {
+  wayland.windowManager.hyprland.settings = {
+    env = [
+      "CLUTTER_BACKEND,wayland"
+      "GDK_BACKEND,wayland,x11"
+      "XDG_CURRENT_DESKTOP,Hyprland"
+      "XDG_SESSION_TYPE,wayland"
+      "XDG_SESSION_DESKTOP,Hyprland"
+      "QT_AUTO_SCREEN_SCALE_FACTOR,1"
+      "QT_QPA_PLATFORM,wayland;xcb"
+      "QT_QPA_PLATFORMTHEME,qt6ct"
+      "QT_WAYLAND_DISABLE_WINDOWDECORATION,1"
+      "QT_AUTO_SCREEN_SCALE_FACTOR,1"
+      "MOZ_ENABLE_WAYLAND,1"
+      "GDK_SCALE,1"
+      "GDK_DPI_SCALE,1"
+      "SDL_VIDEODRIVER,wayland"
+      "WLR_NO_HARDWARE_CURSORS,1"
+      "SDL_VIDEODRIVER,wayland"
+    ];
+
+    exec = [
+      # "gsettings set ${gnome-schema} gtk-theme $system_theme"
+      # "gsettings set ${gnome-schema} icon-theme $icon_theme"
+      # "gsettings set ${gnome-schema} cursor-theme $cursor_theme"
+      "gsettings set org.gnome.desktop.interface text-scaling-factor $text_scale"
+      "gsettings set org.gnome.desktop.interface cursor-size $cursor_size"
+      "hyprshade auto"
+
+    ];
+
+    exec-once = [
+      "eystemctl --user import-environment"
+      "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP XAUTHORITY"
+      "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"
+      "gnome-keyring-daemon --start"
+      "ags"
+      "easyeffects --gapplication-service"
+      "hypridle"
+      "hyprpaper"
+      "safeeyes -e"
+      "wl-clip-persist --clipboard regular"
+      "wl-paste --watch cliphist store"
+      "xhost si:localuser:root"
+      "hyprlock"
+    ];
+
+    inputs = {
+      kb_layout = "us";
+      # focus change on cursor move
+      follow_mouse = 1;
+      accel_profile = "flat";
+      touchpad.scroll_factor = 0.2;
+    };
+
+    general = {
+      allow_tearing = true;
+      gaps_in = 10;
+      gaps_out = 10;
+      border_size = 3;
+      col.active_border = "rgba(07b5efff)";
+      col.inactive_border = "rgba(ffffff00)";
+      layout = "dwindle";
+    };
+
+    dwindle = {
+      pseudotile = true;
+      preserve_split = true;
+    };
+
+    misc = {
+      disable_hyprland_logo = true;
+      disable_splash_rendering = true;
+      mouse_move_enables_dpms = true;
+      force_default_wallpaper = 0;
+      enalbe_swallow = false;
+      swallow_regex = "^(org\.wezfurlong\.wezterm)$";
+      # disable dragging animation
+      animate_mouse_windowdragging = false;
+      # enable variable refresh rate (effective depending on hardware)
+      vrr = 1;
+    };
+
+    decoration = {
+      rounding = 8;
+      blur = {
+        enabled = true;
+        brightness = 1.0;
+        contrast = 1.0;
+        noise = 0.01;
+
+        vibrancy = 0.2;
+        vibrancy_darkness = 0.5;
+
+        size = 3;
+        passes = 2;
+
+        popups = true;
+        popups_ignorealpha = 0.2;
+      };
+
+      drop_shadow = true;
+      shadow_ignore_window = true;
+      shadow_offset = "2 2";
+      shadow_range = 8;
+      shadow_render_power = 2;
+      shadow_scale = 0.97;
+      "col.shadow" = "0x66000000";
+    };
+
+    animations = {
+      enabled = true;
+      bezier = [
+        "overshot, 0.05, 0.9, 0.1, 1.05"
+        "smoothOut, 0.36, 0, 0.66, -0.56"
+        "smoothIn, 0.25, 1, 0.5, 1"
+      ];
+      animations = [
+        "windows, 1, 5, overshot, slide"
+        "windowsOut, 1, 4, smoothOut, slide"
+        "windowsMove, 1, 4, default"
+        "border, 1, 10, default"
+        "fade, 1, 10, smoothIn"
+        "fadeDim, 1, 10, smoothIn"
+        "workspaces, 1, 6, default"
+        "specialWorkspace, 1, 4, default, slidevert "
+      ];
+
+    };
+
+    # touchpad gestures
+    gestures = {
+      workspace_swipe = true;
+      workspace_swipe_forever = true;
+    };
+
+    group = {
+      # groupbar = {
+      #   font_size = 10;
+      #   gradients = false;
+      #   text_color = "rgb(${c.primary})";
+      # };
+      "col.border_active" = "rgba(ca9ee6ff) rgba(f2d5cfff) 45deg";
+      "col.border_inactive" = "rgba(b4befecc) rgba(6c7086cc) 45deg";
+      "col.border_locked_active" = "rgba(ca9ee6ff) rgba(f2d5cfff) 45deg";
+      "col.border_locked_inactive" = "rgba(b4befecc) rgba(6c7086cc) 45deg";
+    };
+
+    xwayland.force_zero_scaling = true;
+
+    # debug.disable_logs = false;
+
+    plugin = {
+      csgo-vulkan-fix = {
+        res_w = 1280;
+        res_h = 800;
+        class = "cs2";
+      };
+
+
+      hyprexpo = {
+        columns = 3;
+        gap_size = 4;
+        bg_col = "rgb(000000)";
+
+        enable_gesture = true;
+        gesture_distance = 300;
+        gesture_positive = false;
+      };
+    };
+  };
+}

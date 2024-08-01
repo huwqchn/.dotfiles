@@ -21,6 +21,7 @@ in {
     defaultEditor = true;
     viAlias = true;
     vimAlias = true;
+    vimdiffAlias = true;
 
     withRuby = true;
     withNodeJs = true;

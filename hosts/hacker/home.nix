@@ -1,4 +1,17 @@
 {
+  modules.desktop = {
+    hyprland = {
+      nvidia = true;
+      settings = {
+        # Configure your Display resolution, offset, scale and Monitors here, use `hyprctl monitors` to get the info.
+        #   highres:      get the best possible resolution
+        #   auto:         position automatically
+        #   1:          scale to 1 times
+        #   bitdepth,10:  enable 10 bit support
+        monitor = "DP-2,highres,auto,1,bitdepth,10";
+      };
+    };
+  };
   programs.ssh = {
     enable = true;
     extraConfig = ''
