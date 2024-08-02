@@ -136,5 +136,22 @@ in {
       ", XF86MonBrightnessUp, exec, brillo -q -u 300000 -A 5"
       ", XF86MonBrightnessDown, exec, brillo -q -u 300000 -U 5"
     ];
+
+    extraConfig = ''
+      # window resize
+      bind = $mod, R, sudmap, resize
+
+      submap = resize
+      binde = , N, resizeactive, 10 0
+      binde = , E, resizeactive, 0 10
+      binde = , I, resizeactive, 0 -10
+      binde = , O, resizeactive, -10 0
+      binde = , right, resizeactive, 10 0
+      binde = , left, resizeactive, -10 0
+      binde = , up, resizeactive, 0 -10
+      binde = , down, resizeactive, 0 10
+      bind = , escape, submap, reset
+      submap = reset
+    '';
   };
 }
