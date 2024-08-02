@@ -26,7 +26,6 @@
       "gsettings set org.gnome.desktop.interface text-scaling-factor $text_scale"
       "gsettings set org.gnome.desktop.interface cursor-size $cursor_size"
       "hyprshade auto"
-
     ];
 
     exec-once = [

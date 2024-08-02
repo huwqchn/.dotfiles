@@ -10,12 +10,12 @@
     ./binds.nix
   ];
   home.packages = with pkgs; [
-    swaylock
     playerctl
     avizo
     wireplumber
     brillo
-    wl-clipboard
+    wl-clip-persist
+    wl-clipboard-rs
     wl-screenrec
     wlr-randr
   ];

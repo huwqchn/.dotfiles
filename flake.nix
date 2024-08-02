@@ -166,7 +166,6 @@
       flake = false;
     };
 
-
     disko = {
       url = "github:nix-community/disko/v1.6.1";
       inputs.nixpkgs.follows = "nixpkgs";
