@@ -2,7 +2,7 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    neofetch
+    fastfetch
     inputs.neovim-nightly-overlay.packages.${pkgs.system}.default
     # system call monitoring
     strace # system call monitoring

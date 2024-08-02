@@ -149,6 +149,24 @@
       flake = false;
     };
 
+    # for colorshemes generation by wallpaper
+    matugen = {
+      url = "github:InioX/matugen";
+      inpust.nixpkgs.follows = "nixpkgs";
+    };
+
+    stylix = {
+      url = "github:danth/stylix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    # my wallpapers
+    wallpapers = {
+      url = "github:huwqchn/wallpapers";
+      flake = false;
+    };
+
+
     disko = {
       url = "github:nix-community/disko/v1.6.1";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -165,9 +183,5 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # stylix = {
-    #   url = "github:danth/stylix";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
   };
 }
