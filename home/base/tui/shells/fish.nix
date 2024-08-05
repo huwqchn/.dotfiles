@@ -10,6 +10,16 @@
   ];
   programs.fish = {
     enable = true;
+    shellInit = ''
+      set -gx fish_vi_force_cursor 1
+      set -gx fish_cursor_default block
+      set -gx fish_cursor_insert line blink
+      set -gx fish_cursor_visual block
+      set -gx fish_cursor_replace_one underscore
+      set fish_emoji_width 2
+
+      abbr -a --position anywhere --set-cursor -- -h "-h 2>&1 | bat --plain --language=help"
+    '';
     shellAbbrs = {
       c = "clear";
       Q = "shutdown -h now";

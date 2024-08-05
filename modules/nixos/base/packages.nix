@@ -3,7 +3,6 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     fastfetch
-    inputs.neovim-nightly-overlay.packages.${pkgs.system}.default
     # system call monitoring
     strace # system call monitoring
     ltrace # library call monitoring
