@@ -31,6 +31,10 @@
     tumbler.enable = true; # Thumbnail support for images
   };
 
+  # fix kitty/wezterm not able to input Chinese
+  # https://github.com/kovidgoyal/kitty/issues/403
+  environment.variables.GLFW_IM_MODULE = "ibus";
+
   programs = {
     # The OpenSSH agent remembers private keys for you
     # so that you don’t have to type in passphrases every time you make an SSH connection.
