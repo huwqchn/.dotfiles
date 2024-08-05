@@ -70,8 +70,8 @@
         { on = [ "i" ]; run = "arrow -1"; }
         { on = [ "e" ]; run = "arrow 1"; }
 
-        { on = [ "E" ]; run = "arrow -5"; }
-        { on = [ "I" ]; run = "arrow 5"; }
+        { on = [ "I" ]; run = "arrow -5"; }
+        { on = [ "E" ]; run = "arrow 5"; }
 
         { on = [ "n" ]; run = [ "leave" ]; }
         { on = [ "o" ]; run = [ "plugin --sync enter-or-open" ]; }
