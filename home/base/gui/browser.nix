@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 { firefox-gnome-theme, ...}: {
+=======
+{ inputs, ...}: {
+>>>>>>> 7715254 (fix: sha256 replace)
   home = {
     sessionVariables.BROWSER = "firefox";
 

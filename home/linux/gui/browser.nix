@@ -25,5 +25,5 @@
       enableGnomeExtensions = false;
       package = pkgs.firefox-wayland; # firefox with wayland support
     };
-  }
+  };
 }
