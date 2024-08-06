@@ -18,6 +18,16 @@
         "modules/base.nix"
         "modules/nixos/base"
         "modules/nixos/desktop"
+        # "modules/nixos/desktop/game"
+        # "modules/nixos/desktop/fhs.nix"
+        # "modules/nixos/desktop/fonts.nix"
+        # "modules/nixos/desktop/graphic.nix"
+        # "modules/nixos/desktop/guix.nix"
+        # "modules/nixos/desktop/misc.nix"
+        # "modules/nixos/desktop/peripherals.nix"
+        # "modules/nixos/desktop/security.nix"
+        # "modules/nixos/desktop/virtualisation.nix"
+        # "modules/nixos/desktop/wayland.nix"
         "modules/nixos/desktop.nix"
       ])
       ++ [

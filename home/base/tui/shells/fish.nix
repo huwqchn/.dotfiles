@@ -17,7 +17,7 @@
           owner = "oh-my-fish";
           repo = "plugin-bang-bang";
           rev = "ec991b80ba7d4dda7a962167b036efc5c2d79419";
-          sha256 = "1wfadqbv18ms14660qdmjwr4wb4cj2h11h69cv8g00r3383w0jz3";
+          sha256 = "sha256-oPPCtFN2DPuM//c48SXb4TrFRjJtccg0YPXcAo0Lxq0=";
         };
       }
     ];

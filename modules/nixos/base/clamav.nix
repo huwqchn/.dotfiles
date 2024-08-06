@@ -9,13 +9,22 @@ in {
     daemon = {
       enable = true;
       settings = {
+        DetectPUA = true;
+        ExtendedDetectionInfo = true;
+        FollowDirectorySymlinks = true;
+        FollowFileSymlinks = true;
+        LogFile = "/var/log/clamd.log";
+        LogSyslog = true;
+        LogTime = true;
+        MaxDirectoryRecursion = 30;
         OnAccessIncludePath = [
           "/home/${userName}/Downloads"
           "/home/${userName}/Documents"
           "/home/${userName}/Music"
           "/home/${userName}/tmp"
         ];
-        OnAccessPrevention = "yes";
+        OnAccessPrevention = true;
+        OnAccessExtraScanning = true;
         OnAccessExcludeUname = "clamav";
         VirusEvent =
           ''/run/wrappers/bin/sudo -u ${userName} ''
@@ -24,6 +33,11 @@ in {
           + ''"Virus Found" "Virus $CLAM_VIRUSEVENT_VIRUSNAME found in ''
           + ''$CLAM_VIRUSEVENT_FILENAME.\nFile moved to /root/quarantine."'';
       };
+    };
+    
+    scanner = {
+      enable = true;
+      scanDirectories = [ "/etc" "/home" "/srv" "/tmp" "/var/lib" "/var/tmp" ];
     };
 
     updater = {

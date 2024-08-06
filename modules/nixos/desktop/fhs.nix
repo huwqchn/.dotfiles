@@ -1,21 +1,21 @@
 {pkgs, ...}: {
   # FHS environment, flatpak, appImage, etc.
-  environment.systemPackages = [
+  # environment.systemPackages = [
     # create a fhs environment by command `fhs`, so we can run non-nixos packages in nixos!
-    (
-      let
-        base = pkgs.appimageTools.defaultFhsEnvArgs;
-      in
-        pkgs.buildFHSUserEnv (base
-          // {
-            name = "fhs";
-            targetPkgs = pkgs: (base.targetPkgs pkgs) ++ [pkgs.pkg-config];
-            profile = "export FHS=1";
-            runScript = "bash";
-            extraOutputsToInstall = ["dev"];
-          })
-    )
-  ];
+  #  (
+  #    let
+  #      base = pkgs.appimageTools.defaultFhsEnvArgs;
+  #    in
+  #      pkgs.buildFHSUserEnv (base
+  #        // {
+  #          name = "fhs";
+  #          targetPkgs = pkgs: (base.targetPkgs pkgs) ++ [pkgs.pkg-config];
+  #          profile = "export FHS=1";
+  #          runScript = "bash";
+  #          extraOutputsToInstall = ["dev"];
+  #        })
+  #  )
+  #];
 
   # https://github.com/Mic92/nix-ld
   #
@@ -36,10 +36,10 @@
   #
   # You can overwrite `NIX_LD_LIBRARY_PATH` in the environment where you run the non-NixOS binaries to customize the
   # search path for shared libraries.
-  programs.nix-ld = {
-    enable = true;
-    libraries = with pkgs; [
-      stdenv.cc.cc
-    ];
-  };
+  #programs.nix-ld = {
+  #  enable = true;
+  #  libraries = with pkgs; [
+  #    stdenv.cc.cc
+  #  ];
+  # };
 }

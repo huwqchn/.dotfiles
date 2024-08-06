@@ -12,8 +12,8 @@
   nixpkgs.overlays =
     [
       neovim-nightly-overlay.overlays.default
-      hyprlock.overlays.default
-      hyprland.overlays.default
+      # hyprlock.overlays.default
+      # hyprland.overlays.default
     ]; # ++ (import ../overlays args);
 
   # auto upgrade nix to the unstable version
