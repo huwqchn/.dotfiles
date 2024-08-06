@@ -13,7 +13,7 @@ in {
   ];
 
   options.modules.desktop.hyprland = {
-    enable = mkEnaleOption "hyprland compositor";
+    enable = mkEnableOption "hyprland compositor";
     settings = lib.mkOption {
       type = with lib.types; let
         valueType =
