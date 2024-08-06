@@ -10,7 +10,7 @@
   nixpkgs.overlays =
     [
       neovim-nightly-overlay.overlays.default
-    ] ++ (import ../overlays args);
+    ]; # ++ (import ../overlays args);
 
   # auto upgrade nix to the unstable version
   # https://github.com/NixOS/nixpkgs/blob/nixos-unstable/pkgs/tools/package-management/nix/default.nix#L284
