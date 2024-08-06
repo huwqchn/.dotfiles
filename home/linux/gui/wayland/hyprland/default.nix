@@ -17,7 +17,7 @@ in {
     settings = lib.mkOption {
       type = with lib.types; let
         valueType =
-          nullor (oneOf [
+          nullOr (oneOf [
             bool
             int
             float

@@ -1,9 +1,9 @@
 {
-  inputs,
   pkgs,
   mylib,
   system,
   ags,
+  matugen,
   ...
 }: {
   imports = [
@@ -16,7 +16,7 @@
     fd
     brightnessctl
     swww
-    inputs.matugen.packages.${system}.default
+    matugen.packages.${system}.default
     slurp
     wf-recorder
     wl-clipboard
@@ -30,7 +30,7 @@
 
   programs.ags = {
     enable = true;
-    configDir = mylib.relativeToRoot "config/ags";
+    configDir = mylib.relativeToConfig "ags";
     extraPackages = with pkgs; [
       accountsservice
     ];

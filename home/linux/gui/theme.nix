@@ -11,10 +11,12 @@
     gtk.enable = true;
     x11.enable = true;
     package = pkgs.bibata-cursors;
+    name = "Bibata-Modern-Ice";
+    size = 24;
   };
 
   # set dpi for 4k monitor
-  xresourecs.properties = {
+  xresources.properties = {
     # dpi for Xorg.s font
     "Xft.dpi" = 192;
     # or set a generic dpi
@@ -62,7 +64,7 @@
 
   qt = {
     enable = true;
-    platformTheme = "qt5ct";
+    platformTheme = "qtct";
     style = {
       package = pkgs.catppuccin-kvantum;
       name = "Kvantum";
