@@ -6,7 +6,7 @@
 }: {
   programs.hyprlock = {
     enable = true;
-    package = hyprlock.package.${pkgs.system}.hyprlock;
+    package = hyprlock.packages.${pkgs.system}.hyprlock;
 
     settings = {
       general = {

@@ -1,7 +1,6 @@
 {
   pkgs,
   mylib,
-  system,
   ags,
   matugen,
   ...
@@ -16,7 +15,7 @@
     fd
     brightnessctl
     swww
-    matugen.packages.${system}.default
+    matugen.packages.${pkgs.system}.default
     slurp
     wf-recorder
     wl-clipboard
