@@ -13,19 +13,23 @@
   name = "hacker";
   modules = {
     nixos-modules = map mylib.relativeToRoot [
+      {
+        modules.desktop.wayland.enable = true;
+      }
       "hosts/${name}"
       "modules/base.nix"
       "modules/nixos/base"
       "modules/nixos/desktop"
       "modules/nixos/desktop.nix"
-    ] ++ [
-      {
-        modules.desktop.wayland.enable = true;
-      }
+
     ];
     home-modules = map mylib.relativeToRoot [
+      {
+        modules.desktop.hyprland.enable = true;
+      }
       "hosts/${name}/home.nix"
       "home/base"
+      "home/linux"
     ];
   };
 
