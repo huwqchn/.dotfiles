@@ -1,7 +1,6 @@
 { pkgs, myvars, ... }:
 {
-  environment.systemPackages = with pkgs;
-    with gnome; [
+  environment.systemPackages = with pkgs; [
       morewaita-icon-theme
       adwaita-icon-theme
       qogir-icon-theme
