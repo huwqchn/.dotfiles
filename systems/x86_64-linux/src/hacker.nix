@@ -18,6 +18,10 @@
       "modules/nixos/base"
       "modules/nixos/desktop"
       "modules/nixos/desktop.nix"
+    ] ++ [
+      {
+        modeles.desktop.wayland.enable = true;
+      }
     ];
     home-modules = map mylib.relativeToRoot [
       "hosts/${name}/home.nix"
