@@ -6,7 +6,7 @@
 with lib; let
   cfg = config.modules.desktop.hyprland;
 in {
-  improts = [
+  imports = [
     ./options
   ];
 
