@@ -22,7 +22,7 @@
       # gkt im module
       fcitx5-gtk
       # qt lib
-      fcitx5-qt
+      # fcitx5-qt
       # pinyin dictionary
       fcitx5-pinyin-moegirl
       fcitx5-pinyin-zhwiki
