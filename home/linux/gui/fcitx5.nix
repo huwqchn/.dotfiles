@@ -26,7 +26,7 @@
       # pinyin dictionary
       fcitx5-pinyin-moegirl
       fcitx5-pinyin-zhwiki
-      fcitx5-pinyin-sougou
+      # fcitx5-pinyin-sougou
       # material color theme
       fcitx5-material-color
     ];
