@@ -103,13 +103,6 @@
       enable = true;
       flags = [ "--disable-up-arrow" ];
     };
-    direnv = {
-      enable = true;
-      nix-direnv.enable = true;
-      config.global = {
-        hide_env_diff = true;
-      };
-    };
     # nix-index.enable = true;
     # nix-index-database.comma.enable = true;
     jq.enable = true;
