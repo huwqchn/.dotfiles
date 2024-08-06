@@ -152,7 +152,7 @@
     # for colorshemes generation by wallpaper
     matugen = {
       url = "github:InioX/matugen";
-      inpust.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     stylix = {
@@ -174,7 +174,7 @@
     pre-commit-hooks = {
       url = "github:cachix/pre-commit-hooks.nix";
       inputs.nixpkgs.follows = "nixpkgs";
-      inpust.flake-compat.follows = "flake-compat";
+      inputs.flake-compat.follows = "flake-compat";
     };
 
     dedsec-grub-theme = {
