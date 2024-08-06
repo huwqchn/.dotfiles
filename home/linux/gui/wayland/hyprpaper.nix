@@ -2,6 +2,7 @@
   pkgs,
   config,
   hyprpaper,
+  wallpapers,
   ...
 }: {
   services.hyprpaper = {
@@ -9,8 +10,8 @@
     package = hyprpaper.packages.${pkgs.system}.default;
 
     settings = {
-      preload = ["${config.theme.wallpaper}"];
-      wallpaper = [", ${config.theme.wallpaper}"];
+      preload = [ "${wallpapers.CyberPunk.png}" ];
+      wallpaper = [", ${wallpapers.CyberPunk.png}"];
     };
   };
 }
