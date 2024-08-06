@@ -7,7 +7,7 @@
   c = config.xdg.configHome;
   cache = config.xdg.cacheHome;
 in {
-  home.homeDirectory = "/home/${myvars.username}";
+  home.homeDirectory = "/home/${myvars.userName}";
 
   # environment variables that always set at login
   home.sessionVariables = {
