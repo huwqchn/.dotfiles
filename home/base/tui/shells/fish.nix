@@ -206,7 +206,7 @@
     };
   };
   xdg.configFile = {
-    "fish/conf.d/~1.fzf.fish".source = ''
+    "fish/conf.d/~1.fzf.fish".text = ''
       bind -M insert \ch __fzf_tldr
 
       source ~/projects/tokyonight.nvim/extras/fzf/tokyonight_moon.sh
@@ -232,6 +232,6 @@
           --processes=\cp \
           --variables=
     '';
-    "fish/conf.d/~2.atuin.fish".source = "atuin init fish --disable-up-arrow | source";
+    "fish/conf.d/~2.atuin.fish".text = "atuin init fish --disable-up-arrow | source";
   };
 }
