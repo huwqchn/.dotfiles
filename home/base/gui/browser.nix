@@ -1,10 +1,10 @@
-{inputs, ...}: {
+{ firefox-gnome-theme, ...}: {
   home = {
     sessionVariables.BROWSER = "firefox";
 
     file."firefox-gnome-theme" = {
       target = ".mozilla/firefox/default/chrome/firefox-gnome-theme";
-      source = inputs.firefox-gnome-theme;
+      source = firefox-gnome-theme;
     };
   };
 
