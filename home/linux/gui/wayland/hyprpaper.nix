@@ -10,8 +10,8 @@
     package = hyprpaper.packages.${pkgs.system}.default;
 
     settings = {
-      preload = [ "${wallpapers.CyberPunk.png}" ];
-      wallpaper = [", ${wallpapers.CyberPunk.png}"];
+      preload = [ "${wallpapers}/CyberPunk.png" ];
+      wallpaper = [", ${wallpapers}/CyberPunk.png}"];
     };
   };
 }

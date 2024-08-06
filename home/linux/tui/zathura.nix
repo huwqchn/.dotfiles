@@ -9,7 +9,7 @@
       selection-clipboard = "clipboard";
 
       # keep several lines of text when scrolling a screenful
-      scroll-full-overlap = 0.2;
+      scroll-full-overlap = "0.2";
 
       scroll-page-aware = true;
       window-title-basename = true;
