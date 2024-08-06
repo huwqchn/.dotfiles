@@ -17,6 +17,7 @@
       "modules/base.nix"
       "modules/nixos/base"
       "modules/nixos/desktop"
+      "modules/nixos/desktop.nix"
     ];
     home-modules = map mylib.relativeToRoot [
       "hosts/${name}/home.nix"
