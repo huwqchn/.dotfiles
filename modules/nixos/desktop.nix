@@ -30,7 +30,7 @@ in {
         ];
       };
 
-      services.xserver.enable = false; # disable xorg server
+      services.xserver.enable = lib.mkForce false; # disable xorg server
 
       # fix https://github.com/ryan4yin/nix-config/issues/10
       security.pam.services.swaylock = {};
