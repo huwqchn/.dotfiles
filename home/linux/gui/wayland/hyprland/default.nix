@@ -1,6 +1,8 @@
 {
+  pkgs,
   config,
   lib,
+  hyprland-plugins,
   ...
 } @ args:
 with lib; let
