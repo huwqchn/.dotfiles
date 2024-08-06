@@ -1,9 +1,9 @@
 {
   pkgs,
-  myvar,
+  myvars,
   ...
 }: let
-  inherit (myvar) userName;
+  inherit (myvars) userName;
 in {
   services.clamav = {
     daemon = {

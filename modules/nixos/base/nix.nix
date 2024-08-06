@@ -13,14 +13,13 @@
   # do garbage collection weekly to keep disk usage low
   nix.gc = {
     automatic = lib.mkDefault true;
-    dates = lib.mkDefault [ "weekly" ];
+    dates = lib.mkDefault "weekly";
     options = lib.mkDefault "--delete-older-than 7d";
   };
 
-  # Disable auto-optimise-store because of this issue:
-  #   https://github.com/NixOS/nix/issues/7273
-  # "error: cannot link '/nix/store/.tmp-link-xxxxx-xxxxx' to '/nix/store/.links/xxxx': File exists"
-  nix.settings.auto-optimise-store = false;
+  # Manual optimise storage: nix-store --optimise
+  # https://nixos.org/manual/nix/stable/command-ref/conf-file.html#conf-auto-optimise-store
+  nix.settings.auto-optimise-store = true;
 
   nix.channel.enable = false; # remove nix-channel related tools & configs, we use flakes instead.
 }
