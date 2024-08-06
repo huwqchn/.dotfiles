@@ -20,7 +20,7 @@
       "modules/nixos/desktop.nix"
     ] ++ [
       {
-        modeles.desktop.wayland.enable = true;
+        modules.desktop.wayland.enable = true;
       }
     ];
     home-modules = map mylib.relativeToRoot [
