@@ -12,7 +12,7 @@
     CXXFLAGS = CFLAGS;
     RUST_BACKTRACE = 1;
     MANPAGER = "nvim +Man!";
-    TMUX_TMPDIR = "$HOME/.tmux/tmp";
+    # TMUX_TMPDIR = "$HOME/.tmux/tmp";
   };
 
   home.shellAliases = {
