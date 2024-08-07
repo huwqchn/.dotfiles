@@ -4,9 +4,7 @@ in {
   imports = [
     ./hardware-configuration.nix
     ./boot.nix
-    ./impermanence.nix
-
-];
+  ];
 
   networking = {
     inherit hostName;
