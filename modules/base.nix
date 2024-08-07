@@ -3,11 +3,8 @@
   pkgs,
   nixpkgs,
   myvars,
-  neovim-nightly-overlay,
-  hyprland,
-  hyprlock,
   ...
-} @ args: {
+}: {
 
   # nixpkgs.overlays =
   #   [
