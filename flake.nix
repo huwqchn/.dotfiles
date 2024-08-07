@@ -150,10 +150,10 @@
     };
 
     # for colorshemes generation by wallpaper
-    matugen = {
-      url = "github:InioX/matugen";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    # matugen = {
+    #   url = "github:InioX/matugen";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
 
     stylix = {
       url = "github:danth/stylix";
