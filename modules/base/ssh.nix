@@ -14,7 +14,7 @@
   services.openssh = {
     enable = true;
     settings = {
-      X11Forwarding = true;
+      # X11Forwarding = true;
       # root user is used for remote deployment, so we need to allow it
       PermitRootLogin = "prohibit-password";
       PasswordAuthentication = false; # disable password login
