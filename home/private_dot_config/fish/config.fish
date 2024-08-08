@@ -105,8 +105,7 @@ abbr tk tokei
 abbr df 'df -h'
 abbr f neofetch
 abbr ncdu 'ncdu --color dark'
-abbr j yazi
-abbr ya yazi
+abbr y yazi
 abbr v nvim
 abbr gg gitui
 abbr ze zellij
@@ -172,6 +171,7 @@ abbr sa "sudo systemctl start"
 abbr sf "systemctl --failed --all"
 
 # journalctl
+abbr j journalctl
 abbr jb "journalctl -b"
 abbr jf "journalctl --follow"
 abbr jg "journalctl -b --grep"
