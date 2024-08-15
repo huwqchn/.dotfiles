@@ -1,4 +1,4 @@
-let 
+{ pkgs-unstable, ... }: let 
   shellAliases = {
     "y" = "yazi";
   };
@@ -15,6 +15,7 @@ in {
   # terminal file manager
   programs.yazi = {
     enable = true;
+    package = pkgs-unstable.yazi;
     # shellWrapperName = "y";
     enableBashIntegration = true;
     enableZshIntegration = true;
