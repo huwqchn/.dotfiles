@@ -1,4 +1,4 @@
- {
+{
   description = "my NixOS flakes configuration for test";
 
   outputs = inputs@{ self, nixpkgs, home-manager, ... }: let
@@ -9,6 +9,10 @@
     specialArgs = inputs // {
       inherit mylib myvars;
       pkgs-unstable = import inputs.nixpkgs-unstable {
+        inherit system;
+        config.allowUnfree = true;
+      };
+      pkgs-stable = import inputs.nixpkgs-stable {
         inherit system;
         config.allowUnfree = true;
       };
@@ -37,17 +41,19 @@
 
   inputs = {
     # Official NixOS package source, using nixos's unstable branch by default
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-24.05";
-    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.05";
+    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable-small";
     home-manager = {
-      url = "github:nix-community/home-manager/release-24.05";
+      # url = "github:nix-community/home-manager/release-24.05";
+      url = "github:nix-community/home-manager/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    yazi = {
-      url = "github:sxyazi/yazi";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    # yazi = {
+    #  url = "github:sxyazi/yazi";
+    #  inputs.nixpkgs.follows = "nixpkgs";
+    # };
 
     ags = {
       url = "github:Aylur/ags";
@@ -104,7 +110,7 @@
     # };
 
     # neovim nightly overlay
-    neovim-nightly.url = "github:nix-community/neovim-nightly-overlay";
+    # neovim-nightly.url = "github:nix-community/neovim-nightly-overlay";
 
     # pre-commit-hooks = {
     #   url = "github:cachix/pre-commit-hooks.nix";

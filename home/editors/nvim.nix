@@ -1,4 +1,4 @@
-{ pkgs, lib, mylib, neovim-nightly, ... }:
+{ pkgs, pkgs-unstable, lib, mylib, neovim-nightly, ... }:
 {
   xdg = {
     configFile.nvim.source = mylib.relativeToConfig "nvim";
@@ -6,7 +6,7 @@
       name = "NeoVim";
       comment = "Edit text files";
       icon = "nvim";
-      exec = "xterm -e ${pkgs.neovim}/bin/nvim %F";
+      exec = "xterm -e ${pkgs-unstable.neovim}/bin/nvim %F";
       categories = [ "TerminalEmulator" ];
       terminal = false;
       mimeType = [ "text/plain" ];
@@ -15,7 +15,7 @@
 
   programs.neovim = {
     enable = true;
-    package = neovim-nightly.packages.${pkgs.system}.default;
+    package = pkgs-unstable.neovim;
 
     defaultEditor = true;
     viAlias = true;
@@ -33,7 +33,9 @@
       python313
       libclang
       luarocks
+      # lsp
       ruff
+      nodePackages.volar
       zig
       gopls
       rustc
