@@ -29,7 +29,10 @@
     extraPackages = with pkgs; [
       git
       gcc
+      lua
+      python313
       libclang
+      luarocks
       zig
       rustc
       gnumake

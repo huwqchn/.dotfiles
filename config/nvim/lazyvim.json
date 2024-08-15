@@ -56,12 +56,10 @@
     "plugins.extras.lang.bash",
     "plugins.extras.lang.clangd",
     "plugins.extras.lang.dts",
-    "plugins.extras.lang.http",
     "plugins.extras.lang.nodejs",
     "plugins.extras.lang.typescript",
     "plugins.extras.lang.ymal",
     "plugins.extras.lang.yuck",
-    "plugins.extras.lang.rust",
     "plugins.extras.lang.markdown",
     "plugins.extras.misc.text-case",
     "plugins.extras.misc.tidy",
@@ -75,8 +73,7 @@
   ],
   "news": {
     "NEWS.md": "6520",
-    "doc/news.txt": "4037"
+    "doc/news.txt": "6252"
   },
   "version": 6
 }
-
