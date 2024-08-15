@@ -33,7 +33,9 @@
       python313
       libclang
       luarocks
+      ruff
       zig
+      gopls
       rustc
       gnumake
       unzip

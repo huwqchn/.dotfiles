@@ -73,6 +73,10 @@
       "rounding 0, xwayland:1"
       "center, class:^(.*jetbrains.*)$, title:^(Confirm Exit|Open Project|win424|win201|splash)$"
       "size 640 400, class:^(.*jetbrains.*)$, title:^(splash)$"
+
+      # opacity rules
+      "opacity 0.80 0.80,class:^(kitty)$"
+      "opacity 0.70 0.70,class:^(Spotify)$"
     ];
 
   };
