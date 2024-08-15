@@ -1,12 +1,12 @@
 {
   pkgs,
   config,
-  wallpapers,
   myvars,
+  wallpapers,
   ...
 }:let
   package = pkgs.hyprpaper;
-  wallPath = "${wallpapers}/${myvars.userWall}"
+  wallPath = "${wallpapers}/${myvars.userWall}";
 in {
   services.hyprpaper = {
     enable = true;

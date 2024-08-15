@@ -46,7 +46,7 @@ in {
       git = {
         paging = {
           colorArg = "always";
-          pager = "delta --dark --paging=nevre";
+          pager = "delta --dark --paging=never";
           useConfig = false;
         };
         commit.signOff = false;

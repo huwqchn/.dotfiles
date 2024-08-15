@@ -1,5 +1,5 @@
  {
-  description = "my NixOS flakes configuration";
+  description = "my NixOS flakes configuration for test";
 
   outputs = inputs@{ self, nixpkgs, home-manager, ... }: let
     inherit (inputs.nixpkgs) lib;
@@ -7,10 +7,10 @@
     myvars = import ./vars { inherit lib; };
     system = "x86_64-linux";
     specialArgs = inputs // {
-      inherit mylib myvars; 
+      inherit mylib myvars;
       pkgs-unstable = import inputs.nixpkgs-unstable {
         inherit system;
-	config.allowUnfree = true;
+        config.allowUnfree = true;
       };
     };
   in {
@@ -18,9 +18,10 @@
       inherit system specialArgs;
       modules = [
         ./hosts/hacker
-	./modules/nixos
-	home-manager.nixosModules.home-manager
+        ./modules/nixos
+        home-manager.nixosModules.home-manager
         {
+          home-manager.backupFileExtension = "hm-bak";
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
 
@@ -52,7 +53,7 @@
       url = "github:Aylur/ags";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    
+
     wallpapers = {
       url = "github:huwqchn/wallpapers";
       flake = false;
@@ -96,7 +97,7 @@
     #  url = "https://github.com/hyprwm/Hyprland";
     #  submodules = true;
     # };
-    
+
     # hyprland-plugins = {
     #  url = "github:hyprwm/hyprland-plugins";
     #  inputs.hyprland.follows = "hyprland";
@@ -110,4 +111,4 @@
     #   inputs.nixpkgs.follows = "nixpkgs";
     # };
   };
-}   
+}
