@@ -28,7 +28,7 @@ in {
   wayland.windowManager.hyprland.settings = {
     "$mod" = "SUPER";
     "$browser" = "firefox";
-    "$terminal" = "kitty";
+    "$terminal" = "wezterm";
     # keybindings
     bind = [
       # command

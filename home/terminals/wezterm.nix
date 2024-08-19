@@ -1,4 +1,5 @@
 { mylib, ... }: {
+  home.sessionVariables = { TERMINAL = "wezterm"; };
   programs.wezterm = {
     enable = true;
   };
