@@ -67,7 +67,7 @@ end
 ---@param config Config
 function M.setup(config)
 	config.use_fancy_tab_bar = false
-	config.tab_bar_at_bottom = false
+	config.tab_bar_at_bottom = true
 	config.hide_tab_bar_if_only_one_tab = true
 	config.tab_max_width = 32
 	config.unzoom_on_switch_pane = true

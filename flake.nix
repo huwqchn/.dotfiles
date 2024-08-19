@@ -113,6 +113,9 @@
     # neovim nightly overlay
     neovim-nightly.url = "github:nix-community/neovim-nightly-overlay";
 
+    # wezterm git
+    wezterm-git.url = "github:wez/wezterm?dir=nix";
+
     # pre-commit-hooks = {
     #   url = "github:cachix/pre-commit-hooks.nix";
     #   inputs.nixpkgs.follows = "nixpkgs";
