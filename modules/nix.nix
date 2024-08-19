@@ -1,7 +1,7 @@
 { myvars, lib,pkgs, nixpkgs, ... } @ args: {
   nixpkgs.overlays = [
-    (import ../overlays/delta.nix)
-  ];
+    # Add the nixpkgs overlay
+  ] ++ (import ../overlays args);
   # Allow unfree packages
   nixpkgs.config.allowUnfree = lib.mkForce true;
 

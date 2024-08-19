@@ -3,7 +3,7 @@
 #
 #       looks like this has been fixed upstream but is not released yet, so just override the
 #       pkg to build from latest commit as of date.
-self: super:
+_: (_: super:
 let
   version = "0.17.0";
   src = super.fetchFromGitHub {
@@ -22,4 +22,4 @@ in
       outputHash = "sha256-QwBhtIddxkf2uVWBsYZRZ1EVOe7L8v31xK2ihhvCDlo=";
     });
   });
-}
+})

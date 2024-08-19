@@ -8,6 +8,9 @@
   inherit (myvars) userTheme;
   themeName = builtins.replaceStrings ["-"] ["_"] userTheme;
 in {
+  home.sessionVariables = {
+    MY_THEME = themeName;
+  };
   imports = [
     ./${userTheme}.nix
   ];
@@ -49,12 +52,12 @@ in {
       "$scheme" = "https://yazi-rs.github.io/schemas/theme.json";
       flavor.use = themeName;
     };
-    wezterm.extraConfig = ''
-      -- config.color_scheme = "Tokyo Night Moon"
-      config.color_scheme_dirs = { wezterm.config_dir .. "/wezterm/themes" }
-      config.color_scheme = "${themeName}"
-      wezterm.add_to_config_reload_watch_list(config.color_scheme_dirs[1] .. config.color_scheme .. ".toml")
-    '';
+    # wezterm.extraConfig = ''
+    #   -- config.color_scheme = "Tokyo Night Moon"
+    #   config.color_scheme_dirs = { wezterm.config_dir .. "/wezterm/themes" }
+    #   config.color_scheme = "${themeName}"
+    #   wezterm.add_to_config_reload_watch_list(config.color_scheme_dirs[1] .. config.color_scheme .. ".toml")
+    # '';
     alacritty.settings = {
       import = [
         "${src}/extras/alacritty/${themeName}.yml"
@@ -66,7 +69,7 @@ in {
   xdg.configFile = {
     "fish/themes".source = "${src}/extras/fish_themes";
     "yazi/flavors/${themeName}.yazi/flavor.toml".source = "${src}/extras/yazi/${themeName}.toml";
-    "wezterm/themes".source = "${src}/extras/wezterm";
+    "wezterm/themes/${themeName}.toml".source = "${src}/extras/wezterm/${themeName}.toml";
     "zathura/${themeName}.zathurarc".source = "${src}/extras/zathura/${themeName}.zathurarc";
   };
 }

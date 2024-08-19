@@ -1,7 +1,6 @@
 ---@type Wezterm
 local wezterm = require("wezterm")
 local config = wezterm.config_builder()
-
 wezterm.log_info("reloading")
 
 require("tabs").setup(config)
@@ -11,8 +10,8 @@ require("links").setup(config)
 
 --- setting
 
--- config.front_end = "WebGpu"
-config.front_end = "OpenGL" -- current work-around for https://github.com/wez/wezterm/issues/4825
+config.front_end = "WebGpu"
+-- config.front_end = "OpenGL" -- current work-around for https://github.com/wez/wezterm/issues/4825
 config.enable_wayland = true
 config.webgpu_power_preference = "HighPerformance"
 -- config.animation_fps = 1
@@ -24,7 +23,7 @@ config.cursor_thickness = 4
 config.underline_position = -6
 
 -- -- opacity
-config.window_background_opacity = 0.85
+-- config.window_background_opacity = 0.85
 -- config.term = "wezterm"
 -- config.window_decorations = "RESIZE"
 -- config.window_close_confirmation = "AlwaysPrompt"
@@ -49,8 +48,15 @@ if wezterm.target_triple:find("windows") then
 	end)
 else
 	config.term = "wezterm"
-	config.window_decorations = "RESIZE"
+	config.window_decorations = "NONE"
 end
+
+-- colorschemes
+-- config.color_scheme = "Tokyo Night Moon"
+config.color_scheme_dirs = { wezterm.config_dir .. "/wezterm/themes" }
+local colorscheme = os.getenv("MY_THEME")
+config.color_scheme = colorscheme
+wezterm.add_to_config_reload_watch_list(config.color_scheme_dirs[1] .. config.color_scheme .. ".toml")
 
 --- font
 config.font_size = 11
@@ -83,6 +89,5 @@ config.window_padding = { left = 50, right = 50, top = 50, bottom = 50 }
 -- cell_width = 0.9,
 config.scrollback_lines = 10000
 
-config.adjust_window_size_when_changing_font_size = false
-
+config.command_palette_font_size = 13
 return config --[[@as Wezterm]]
