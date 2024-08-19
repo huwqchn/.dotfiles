@@ -69,7 +69,20 @@ in {
   xdg.configFile = {
     "fish/themes".source = "${src}/extras/fish_themes";
     "yazi/flavors/${themeName}.yazi/flavor.toml".source = "${src}/extras/yazi/${themeName}.toml";
-    "wezterm/themes/${themeName}.toml".source = "${src}/extras/wezterm/${themeName}.toml";
     "zathura/${themeName}.zathurarc".source = "${src}/extras/zathura/${themeName}.zathurarc";
+    "wezterm/theme.lua".text = ''
+      local wezterm = require("wezterm")
+
+      local M = {}
+
+      ---@param config Config
+      function M.setup(config)
+        config.color_scheme_dirs = { "${src}/extras/wezterm" }
+        config.color_scheme = "${themeName}"
+        wezterm.add_to_config_reload_watch_list(config.color_scheme_dirs[1] .. config.color_scheme .. ".toml")
+      end
+
+      return M
+    '';
   };
 }

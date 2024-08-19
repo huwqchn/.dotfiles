@@ -7,10 +7,11 @@ require("tabs").setup(config)
 require("mouse").setup(config)
 require("keys").setup(config)
 require("links").setup(config)
+require("theme").setup(config)
 
 --- setting
 
-config.front_end = "WebGpu"
+-- config.front_end = "WebGpu"
 -- config.front_end = "OpenGL" -- current work-around for https://github.com/wez/wezterm/issues/4825
 config.enable_wayland = true
 config.webgpu_power_preference = "HighPerformance"
@@ -53,10 +54,10 @@ end
 
 -- colorschemes
 -- config.color_scheme = "Tokyo Night Moon"
-config.color_scheme_dirs = { wezterm.config_dir .. "/wezterm/themes" }
-local colorscheme = os.getenv("MY_THEME")
-config.color_scheme = colorscheme
-wezterm.add_to_config_reload_watch_list(config.color_scheme_dirs[1] .. config.color_scheme .. ".toml")
+-- config.color_scheme_dirs = { wezterm.config_dir .. "/wezterm/themes" }
+-- local colorscheme = os.getenv("MY_THEME")
+-- config.color_scheme = colorscheme
+-- wezterm.add_to_config_reload_watch_list(config.color_scheme_dirs[1] .. config.color_scheme .. ".toml")
 
 --- font
 config.font_size = 11

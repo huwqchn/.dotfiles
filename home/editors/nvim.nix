@@ -1,12 +1,13 @@
-{ pkgs, lib, mylib, neovim-nightly, ... }:
-{
+{ config, pkgs, lib, mylib, neovim-nightly, ... }: let
+  inherit (config.lib.file) mkOutOfStoreSymlink;
+in {
   home.sessionVariables = {
     EDITOR = "nvim";
     VISUAL = "nvim";
     GIT_EDITOR = "nvim";
   };
   xdg = {
-    configFile.nvim.source = mylib.relativeToConfig "nvim";
+    configFile.nvim.source = mkOutOfStoreSymlink (mylib.relativeToConfig "nvim");
     desktopEntries."nvim" = lib.mkIf pkgs.stdenv.isLinux {
       name = "NeoVim";
       comment = "Edit text files";
