@@ -46,7 +46,8 @@ in {
       '';
     };
     yazi.theme = {
-      flavors.use = "${themeName}.toml";
+      "$scheme" = "https://yazi-rs.github.io/schemas/theme.json";
+      flavor.use = themeName;
     };
     wezterm.extraConfig = ''
       -- config.color_scheme = "Tokyo Night Moon"
