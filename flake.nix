@@ -18,24 +18,44 @@
       };
     };
   in {
-    nixosConfigurations.oldman = nixpkgs.lib.nixosSystem {
-      inherit system specialArgs;
-      modules = [
-        ./hosts/oldman
-        ./modules/nix.nix
-        ./modules/nixos
-        home-manager.nixosModules.home-manager
-        {
-          home-manager.backupFileExtension = "hm-bak";
-          home-manager.useGlobalPkgs = true;
-          home-manager.useUserPackages = true;
+    nixosConfigurations = {
+      oldman = nixpkgs.lib.nixosSystem {
+        inherit system specialArgs;
+        modules = [
+          ./hosts/oldman
+          ./modules/nix.nix
+          ./modules/nixos
+          home-manager.nixosModules.home-manager
+          {
+            home-manager.backupFileExtension = "hm-bak";
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
 
-          home-manager.extraSpecialArgs = specialArgs;
-          home-manager.users."${myvars.userName}".imports = [
-            ./home
-          ];
-        }
-      ];
+            home-manager.extraSpecialArgs = specialArgs;
+            home-manager.users."${myvars.userName}".imports = [
+              ./home
+            ];
+          }
+        ];
+      };
+      hacker = nixpkgs.lib.nixosSystem {
+        inherit system specialArgs;
+        modules = [
+          ./hosts/hacker
+          ./modules/nix.nix
+          ./modules/nixos
+          home-manager.nixosModules.home-manager
+          {
+            home-manager.backupFileExtension = "hm-bak";
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.extraSpecialArgs = specialArgs;
+            home-manager.users."${myvars.userName}".imports = [
+              ./home
+            ];
+          }
+        ];
+      };
     };
     formatter.${system} = nixpkgs.legacyPackages.${system}.alejandra;
   };
