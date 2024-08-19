@@ -12,16 +12,12 @@
         inherit system;
         config.allowUnfree = true;
       };
-      pkgs-stable = import inputs.nixpkgs-stable {
-        inherit system;
-        config.allowUnfree = true;
-      };
     };
   in {
-    nixosConfigurations.hacker = nixpkgs.lib.nixosSystem {
+    nixosConfigurations.oldman = nixpkgs.lib.nixosSystem {
       inherit system specialArgs;
       modules = [
-        ./hosts/hacker
+        ./hosts/oldman
         ./modules/nixos
         home-manager.nixosModules.home-manager
         {
@@ -41,12 +37,12 @@
 
   inputs = {
     # Official NixOS package source, using nixos's unstable branch by default
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.05";
-    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable-small";
+    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-24.05";
+    # nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable-small";
     home-manager = {
-      # url = "github:nix-community/home-manager/release-24.05";
-      url = "github:nix-community/home-manager";
+      url = "github:nix-community/home-manager/release-24.05";
+      # url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
