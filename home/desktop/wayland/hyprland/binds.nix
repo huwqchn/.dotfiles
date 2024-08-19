@@ -56,7 +56,6 @@ in {
       "$mod, M, fullscreen, 1"
       "$mod, G, togglegroup,"
       "$mod, P, pin,"
-      "$mod SHIFT, F, fakefullscreen, 0"
       # move focuse
       "$mod, N, movefocus, l"
       "$mod, E, movefocus, d"

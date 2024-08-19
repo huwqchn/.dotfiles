@@ -1,4 +1,7 @@
-{ myvars, lib, pkgs, nixpkgs, ... }: {
+{ myvars, lib,pkgs, nixpkgs, ... } @ args: {
+  nixpkgs.overlays = [
+    (import ../overlays/delta.nix)
+  ];
   # Allow unfree packages
   nixpkgs.config.allowUnfree = lib.mkForce true;
 
@@ -9,7 +12,7 @@
   # nix.useDaemon = true;
   nix = {
     # auto upgrade nix to the unstable version
-    # https://github.com/NixOS/nixpkgs/blob/nixos-unstable/pkgs/tools/package-management/nix/default.nix#L284
+    # htitps://github.com/NixOS/nixpkgs/blob/nixos-unstable/pkgs/tools/package-management/nix/default.nix#L284
     package = pkgs.nixVersions.latest;
     # make `nix repl '<nixpkgs>'` use the same nixpkgs as the one used by this flake.
     # discard all the default paths, and only use the one from this flake.

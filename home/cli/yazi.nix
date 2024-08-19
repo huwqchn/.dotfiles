@@ -1,9 +1,4 @@
-{ pkgs-unstable, ... }: let 
-  shellAliases = {
-    "y" = "yazi";
-  };
-in {
-  home.shellAliases = shellAliases;
+{ yazi, pkgs, ...}: {
   xdg.configFile."yazi/plugins/enter-or-open.yazi/init.lua".text = ''
     return {
       entry = function()
@@ -15,8 +10,8 @@ in {
   # terminal file manager
   programs.yazi = {
     enable = true;
-    package = pkgs-unstable.yazi;
-    # shellWrapperName = "y";
+    package = yazi.packages.${pkgs.system}.default;
+    shellWrapperName = "y";
     enableBashIntegration = true;
     enableZshIntegration = true;
     enableFishIntegration = true;
