@@ -6,7 +6,7 @@ Set-Alias -Name g -Value git
 Set-Alias -Name lg -Value lazygit
 #Set-Alias -Name y -Value yazi
 # yazi
-function yy {
+function y {
     $tmp = [System.IO.Path]::GetTempFileName()
     yazi $args --cwd-file="$tmp"
     $cwd = Get-Content -Path $tmp
