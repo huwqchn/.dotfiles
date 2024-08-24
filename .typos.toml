@@ -1,0 +1,7 @@
+[files]
+ignore-dot = true
+ignore-files = true
+extend-exclude = ["themes/*"]
+
+[default]
+binary = false

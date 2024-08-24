@@ -1,7 +1,7 @@
 {
   description = "my NixOS flakes configuration for test";
 
-  outputs = inputs@{ self, nixpkgs, home-manager, flake-utils-plus, haumea, ... }: let
+  outputs = inputs@{ self, nixpkgs, home-manager, flake-utils-plus, haumea, pre-commit-hooks, ... }: let
     inherit (inputs.nixpkgs) lib;
     mylib = import ./lib { inherit lib; };
     myvars = import ./vars { inherit lib; };
@@ -20,7 +20,8 @@
     hl = haumea.lib;
     hosts = hl.load {
       src = ./hosts;
-      inputs = {};
+      # Load it without passing inputs
+      loader = hl.loaders.verbatim;
       # Make the default.nix's attrs directly children of lib
       transformer = hl.transformers.liftDefault;
     };
@@ -56,6 +57,31 @@
     outputsBuilder = channels: let
       pkgs = channels.nixpkgs;
     in {
+      checks = {
+        pre-commit-check = pre-commit-hooks.lib."${channels.nixpkgs.system}".run {
+          src = ./.;
+          hooks = {
+            alejandra.enable = true; # formatter
+            typos = {
+              enable = true;
+              settings = {
+                write = true; # Automatically fix typos
+                configPath = "./.typos.toml"; # relative to the flake root
+              };
+            };
+            prettier = {
+              enable = true;
+              settings = {
+                write = true; # Automatically format files
+                configPath = "./.prettierrc.yaml"; # relative to the flake root
+              };
+            };
+            deadnix.enable = true; # detect unused variable bindings in "*.nix"
+            statix.enable = true; # lints and suggestions for Nix code
+
+          };
+        };
+      };
       formatter = pkgs.alejandra;
     };
   };
@@ -100,6 +126,22 @@
     # The list of supported systems.
     systems.url = "github:nix-systems/default-linux";
 
+    # disko for declarative partitioning
+    disko = {
+      url = "github:nix-community/disko";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    # nixos-generators = {
+    #   url = "github:nix-community/nixos-generators";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
+
+    nix-index-database = {
+      url = "github:nix-community/nix-index-database";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     wallpapers = {
       url = "github:huwqchn/wallpapers";
       flake = false;
@@ -110,31 +152,9 @@
     #  inputs.nixpkgs.follows = "nixpkgs";
     # };
 
-    # haumea = {
-    #   url = "github:nix-community/haumea/v0.2.2";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
-
-    #nixos-generators = {
-    #  url = "github:nix-community/nixos-generators";
-    #  inputs.nixpkgs.follows = "nixpkgs";
-    #};
-
-    #nix-index-database = {
-    #  url = "github:nix-community/nix-index-database";
-    #  inputs.nixpkgs.follows = "nixpkgs";
-    #};
-
     # lanzaboote = {
     #   url = "github:nix-community/lanzaboote/v0.4.1";
     #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
-
-    # flake-utils.url = "github:gytis-ivaskevicius/flake-utils-plus/v1.4.0";
-
-    # wallpaper = {
-    #   url = "github:huwqchn/wallpapers";
-    #   flake = false;
     # };
 
     # hyprwm
@@ -158,9 +178,9 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # pre-commit-hooks = {
-    #   url = "github:cachix/pre-commit-hooks.nix";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
+    pre-commit-hooks = {
+      url = "github:cachix/git-hooks.nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 }

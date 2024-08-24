@@ -1,23 +1,30 @@
-# NOTE: ... is needed because dikso passes diskoFile
+# NOTE: ... is needed because disko passes diskoFile
 { lib
-, disk ? throw "Set this to your disk device, e.g. /dev/sda"
+, device ? throw "Set this to your disk device, e.g. /dev/sda"
 , withSwap ? false
 , swapSize
-, configVars
+# , configVars
 , ...
 }:
 {
-  disko.devices = {
-    disk = {
+  disko = {
+    # Do not let Disko manage fileSystems.* config for NixOS.
+    # Reason is that Disko mounts partitions by GPT partition names, which are
+    # easily overwritten with tools like fdisk. When you fail to deploy a new
+    # config in this case, the old config that comes with the disk image will
+    # not boot either.
+    enableConfig = false;
+    devices.disk = {
       main = {
         type = "disk";
-        device = disk;
+        inherit device;
         content = {
           type = "gpt";
           partitions = {
             ESP = {
               priority = 1;
               name = "ESP";
+              label = "BOOT";
               start = "1M";
               end = "512M";
               type = "EF00";
@@ -29,6 +36,8 @@
               };
             };
             root = {
+              name = "root";
+              label = "ROOT";
               size = "100%";
               content = {
                 type = "btrfs";
@@ -43,13 +52,13 @@
                       "noatime"
                     ];
                   };
-                  "@persist" = {
-                    mountpoint = "${configVars.persistFolder}";
-                    mountOptions = [
-                      "compress=zstd"
-                      "noatime"
-                    ];
-                  };
+                  # "@persist" = {
+                  #   mountpoint = "${configVars.persistFolder}";
+                  #   mountOptions = [
+                  #     "compress=zstd"
+                  #     "noatime"
+                  #   ];
+                  # };
                   "@nix" = {
                     mountpoint = "/nix";
                     mountOptions = [
