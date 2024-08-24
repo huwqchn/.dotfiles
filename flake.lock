@@ -134,6 +134,26 @@
         "type": "github"
       }
     },
+    "dedsec-grub-theme": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1662253348,
+        "narHash": "sha256-Cq/espQSpscC89oIuJGE4IP2p6zYpuzp88L6M38uayA=",
+        "owner": "VandalByte",
+        "repo": "dedsec-grub-theme",
+        "rev": "8ccb1beb831f459987522d58263b076827624119",
+        "type": "gitlab"
+      },
+      "original": {
+        "owner": "VandalByte",
+        "repo": "dedsec-grub-theme",
+        "type": "gitlab"
+      }
+    },
     "disko": {
       "inputs": {
         "nixpkgs": [
@@ -893,6 +913,7 @@
       "inputs": {
         "agenix": "agenix",
         "ags": "ags",
+        "dedsec-grub-theme": "dedsec-grub-theme",
         "disko": "disko",
         "flake-utils": "flake-utils_2",
         "flake-utils-plus": "flake-utils-plus",

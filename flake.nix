@@ -185,10 +185,10 @@
     #  inputs.hyprland.follows = "hyprland";
     # };
 
-    # dedsec-grub-theme = {
-    #   url = "gitlab:VandalByte/dedsec-grub-theme";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
+    dedsec-grub-theme = {
+      url = "gitlab:VandalByte/dedsec-grub-theme";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     # neovim nightly overlay
     neovim-nightly.url = "github:nix-community/neovim-nightly-overlay";
