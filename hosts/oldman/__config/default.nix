@@ -16,6 +16,7 @@ in {
       ./hardware-configuration.nix
       disko.nixosModules.disko
       disko-config
+      # ../../_internal/lanzaboote.nix
     ];
 
   # Use the systemd-boot EFI boot loader.

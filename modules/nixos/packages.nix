@@ -67,5 +67,6 @@
     hdparm # for disk performance, command
     dmidecode # a tool that reads information about your system's hardware from the BIOS according to the SMBIOS/DMI standard
     parted
+    sbctl # a tool to control the system behavior
   ];
 }
