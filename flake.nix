@@ -1,7 +1,7 @@
 {
   description = "my NixOS flakes configuration for test";
 
-  outputs = inputs@{ self, nixpkgs, home-manager, ... }: let
+  outputs = inputs@{ self, nixpkgs, home-manager, flake-utils-plus, haumea, ... }: let
     inherit (inputs.nixpkgs) lib;
     mylib = import ./lib { inherit lib; };
     myvars = import ./vars { inherit lib; };
@@ -17,47 +17,47 @@
         config.allowUnfree = true;
       };
     };
-  in {
-    nixosConfigurations = {
-      oldman = nixpkgs.lib.nixosSystem {
-        inherit system specialArgs;
-        modules = [
-          ./hosts/oldman
-          ./modules/nix.nix
-          ./modules/nixos
-          home-manager.nixosModules.home-manager
-          {
-            home-manager.backupFileExtension = "hm-bak";
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-
-            home-manager.extraSpecialArgs = specialArgs;
-            home-manager.users."${myvars.userName}".imports = [
-              ./home
-            ];
-          }
-        ];
-      };
-      hacker = nixpkgs.lib.nixosSystem {
-        inherit system specialArgs;
-        modules = [
-          ./hosts/hacker
-          ./modules/nix.nix
-          ./modules/nixos
-          home-manager.nixosModules.home-manager
-          {
-            home-manager.backupFileExtension = "hm-bak";
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.extraSpecialArgs = specialArgs;
-            home-manager.users."${myvars.userName}".imports = [
-              ./home
-            ];
-          }
-        ];
-      };
+    hl = haumea.lib;
+    hosts = hl.load {
+      src = ./hosts;
+      inputs = {};
+      # Make the default.nix's attrs directly children of lib
+      transformer = hl.transformers.liftDefault;
     };
-    formatter.${system} = nixpkgs.legacyPackages.${system}.alejandra;
+  in flake-utils-plus.lib.mkFlake {
+    inherit self inputs;
+
+    channelsConfig = {
+      allowUnfree = true;
+      allowBroken = true;
+    };
+
+    hostDefaults = {
+      inherit specialArgs;
+      modules = [
+        ./modules/nix.nix
+        ./modules/nixos
+        home-manager.nixosModules.home-manager
+        {
+          home-manager.backupFileExtension = "hm-bak";
+          home-manager.useGlobalPkgs = true;
+          home-manager.useUserPackages = true;
+
+          home-manager.extraSpecialArgs = specialArgs;
+          home-manager.users."${myvars.userName}".imports = [
+            ./home
+          ];
+        }
+      ];
+    };
+
+    inherit hosts;
+
+    outputsBuilder = channels: let
+      pkgs = channels.nixpkgs;
+    in {
+      formatter = pkgs.alejandra;
+    };
   };
 
   inputs = {
@@ -80,6 +80,25 @@
       url = "github:Aylur/ags";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    flake-utils = {
+      url = "github:numtide/flake-utils";
+      inputs.systems.follows = "systems";
+    };
+
+    flake-utils-plus = {
+      url = "github:gytis-ivaskevicius/flake-utils-plus/v1.4.0";
+      inputs.flake-utils.follows = "flake-utils";
+    };
+
+    haumea = {
+      url = "github:nix-community/haumea/v0.2.2";
+      inputs.nixpkgs.follows = "nixpkgs";
+
+    };
+
+    # The list of supported systems.
+    systems.url = "github:nix-systems/default-linux";
 
     wallpapers = {
       url = "github:huwqchn/wallpapers";

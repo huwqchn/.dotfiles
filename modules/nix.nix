@@ -3,7 +3,7 @@
     # Add the nixpkgs overlay
   ] ++ (import ../overlays args);
   # Allow unfree packages
-  nixpkgs.config.allowUnfree = lib.mkForce true;
+  # nixpkgs.config.allowUnfree = lib.mkForce true;
 
   # Auto upgrade nix package and the daemon service.
   # services.nix-daemon.enable = true;
