@@ -20,8 +20,6 @@
     hl = haumea.lib;
     hosts = hl.load {
       src = ./hosts;
-      # Load it without passing inputs
-      loader = hl.loaders.verbatim;
       # Make the default.nix's attrs directly children of lib
       transformer = hl.transformers.liftDefault;
     };
@@ -38,6 +36,7 @@
       modules = [
         ./modules/nix.nix
         ./modules/nixos
+        ./secrets
         home-manager.nixosModules.home-manager
         {
           home-manager.backupFileExtension = "hm-bak";
@@ -78,7 +77,6 @@
             };
             deadnix.enable = true; # detect unused variable bindings in "*.nix"
             statix.enable = true; # lints and suggestions for Nix code
-
           };
         };
       };
@@ -129,6 +127,13 @@
     # disko for declarative partitioning
     disko = {
       url = "github:nix-community/disko";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    # secrets management
+    agenix = {
+      # type-safe reimplementation of agenix to get a better error messages and less bugs
+      url = "github:yaxitech/ragenix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
