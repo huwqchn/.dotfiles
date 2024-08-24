@@ -3,7 +3,6 @@
 , device ? throw "Set this to your disk device, e.g. /dev/sda"
 , withSwap ? false
 , swapSize
-# , configVars
 , ...
 }:
 {
@@ -52,13 +51,13 @@
                       "noatime"
                     ];
                   };
-                  # "@persist" = {
-                  #   mountpoint = "${configVars.persistFolder}";
-                  #   mountOptions = [
-                  #     "compress=zstd"
-                  #     "noatime"
-                  #   ];
-                  # };
+                  "@persist" = {
+                    mountpoint = "/persist";
+                    mountOptions = [
+                      "compress=zstd"
+                      "noatime"
+                    ];
+                  };
                   "@nix" = {
                     mountpoint = "/nix";
                     mountOptions = [

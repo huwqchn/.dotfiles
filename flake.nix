@@ -1,7 +1,7 @@
 {
   description = "my NixOS flakes configuration for test";
 
-  outputs = inputs@{ self, nixpkgs, home-manager, flake-utils-plus, haumea, pre-commit-hooks, ... }: let
+  outputs = inputs@{ self, nixpkgs, home-manager, flake-utils-plus, haumea, pre-commit-hooks, programs-sqlite, ... }: let
     inherit (inputs.nixpkgs) lib;
     mylib = import ./lib { inherit lib; };
     myvars = import ./vars { inherit lib; };
@@ -37,6 +37,7 @@
         ./modules/nix.nix
         ./modules/nixos
         ./secrets
+        programs-sqlite.nixosModules.programs-sqlite
         home-manager.nixosModules.home-manager
         {
           home-manager.backupFileExtension = "hm-bak";
@@ -137,6 +138,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    lanzaboote = {
+      url = "github:nix-community/lanzaboote/v0.4.1";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     # nixos-generators = {
     #   url = "github:nix-community/nixos-generators";
     #   inputs.nixpkgs.follows = "nixpkgs";
@@ -145,6 +151,11 @@
     nix-index-database = {
       url = "github:nix-community/nix-index-database";
       inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    programs-sqlite = {
+      url = "github:wamserma/flake-programs-sqlite";
+      # inputs.nixpkgs.follows = "nixpkgs";
     };
 
     wallpapers = {
