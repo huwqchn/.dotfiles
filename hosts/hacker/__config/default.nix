@@ -1,23 +1,18 @@
 # Edit this configuration file to define what should be installed on
 # your system. Help is available in the configuration.nix(5) man page, on
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
+_: {
+  imports = [
+    # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+  ];
 
-{ config, lib, pkgs, ... }:
-let
-  hostName = "hacker";
-in {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-    ];
-  
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
   networking = {
-    inherit hostName;
-    networkmanager.enable = true;  # Easiest to use and most distros use this by default.
+    networkmanager.enable = true; # Easiest to use and most distros use this by default.
   };
   hardware.nvidia = {
     # Optionally, you may need to select the appropriate driver version for your specific GPU.
@@ -37,7 +32,7 @@ in {
   # virtualisation
   #hardware.graphics = {
   #  enable = true;
-    # needed by nvidia-docker
+  # needed by nvidia-docker
   #  enable32Bit = true;
   #};
   system.stateVersion = "24.05"; # Did you read the comment?
