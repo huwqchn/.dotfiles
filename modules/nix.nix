@@ -4,8 +4,8 @@
   pkgs,
   nixpkgs,
   ...
-} @ args: {
-  nixpkgs.overlays = import ../overlays args;
+}: {
+  # nixpkgs.overlays = import ../overlays args;
   # Allow unfree packages
   # nixpkgs.config.allowUnfree = lib.mkForce true;
 

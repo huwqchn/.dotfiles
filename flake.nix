@@ -44,8 +44,10 @@
         allowBroken = true;
       };
 
+      sharedOverlays = import ./overlays inputs;
+
       hostDefaults = {
-        inherit specialArgs;
+        inherit system specialArgs;
         modules = [
           ./modules/nix.nix
           ./modules/nixos
