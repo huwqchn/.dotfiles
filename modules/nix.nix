@@ -5,10 +5,6 @@
   nixpkgs,
   ...
 }: {
-  # nixpkgs.overlays = import ../overlays args;
-  # Allow unfree packages
-  # nixpkgs.config.allowUnfree = lib.mkForce true;
-
   # Auto upgrade nix package and the daemon service.
   # services.nix-daemon.enable = true;
   # Use this instead of services.nix-daemon.enable if you
