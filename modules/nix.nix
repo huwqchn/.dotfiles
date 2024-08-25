@@ -1,7 +1,11 @@
-{ myvars, lib, pkgs, nixpkgs, ... } @ args: {
-  nixpkgs.overlays = [
-    # Add the nixpkgs overlay
-  ] ++ (import ../overlays args);
+{
+  myvars,
+  lib,
+  pkgs,
+  nixpkgs,
+  ...
+} @ args: {
+  nixpkgs.overlays = import ../overlays args;
   # Allow unfree packages
   # nixpkgs.config.allowUnfree = lib.mkForce true;
 
@@ -16,7 +20,7 @@
     package = pkgs.nixVersions.latest;
     # make `nix repl '<nixpkgs>'` use the same nixpkgs as the one used by this flake.
     # discard all the default paths, and only use the one from this flake.
-    nixPath = lib.mkForce [ "/etc/nix/inputs" ];
+    nixPath = lib.mkForce ["/etc/nix/inputs"];
     # do garbage collection weekly to keep disk usage low
     gc = {
       automatic = lib.mkDefault true;

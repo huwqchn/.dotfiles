@@ -2,7 +2,9 @@
   myvars,
   config,
   ...
-}: {
+}: let
+  cfgUser = config.users.users."${myvars.userName}";
+in {
   users = {
     # Don't allow mutation of users outside the config.
     mutableUsers = false;
@@ -39,8 +41,8 @@
       };
       # root's ssh key are mainly used for remote deployment
       root = {
-        initialHashedPassword = config.users.users."${myvars.userName}".initialHashedPassword;
-        openssh.authorizedKeys.keys = config.users.users."${myvars.userName}".openssh.authorizedKeys.keys;
+        inherit (cfgUser) initialHashedPassword;
+        openssh.authorizedKeys.keys = cfgUser.openssh.authorizedKeys.keys;
       };
     };
   };
