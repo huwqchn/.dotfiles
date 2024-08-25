@@ -5,3 +5,7 @@ extend-exclude = ["themes/*"]
 
 [default]
 binary = false
+
+
+[default.extend-words]
+ags = "ags"

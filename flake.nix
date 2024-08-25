@@ -1,89 +1,122 @@
 {
   description = "my NixOS flakes configuration for test";
 
-  outputs = inputs@{ self, nixpkgs, home-manager, flake-utils-plus, haumea, pre-commit-hooks, programs-sqlite, ... }: let
+  outputs = inputs @ {
+    self,
+    nixpkgs,
+    home-manager,
+    flake-utils-plus,
+    haumea,
+    pre-commit-hooks,
+    programs-sqlite,
+    nixos-generators,
+    ...
+  }: let
     inherit (inputs.nixpkgs) lib;
-    mylib = import ./lib { inherit lib; };
-    myvars = import ./vars { inherit lib; };
+    mylib = import ./lib {inherit lib;};
+    myvars = import ./vars {inherit lib;};
     system = "x86_64-linux";
-    specialArgs = inputs // {
-      inherit mylib myvars;
-      pkgs-stable = import inputs.nixpkgs-stable {
-        inherit system;
-        config.allowUnfree = true;
+    specialArgs =
+      inputs
+      // {
+        inherit mylib myvars;
+        pkgs-stable = import inputs.nixpkgs-stable {
+          inherit system;
+          config.allowUnfree = true;
+        };
+        pkgs-unstable = import inputs.nixpkgs-unstable {
+          inherit system;
+          config.allowUnfree = true;
+        };
       };
-      pkgs-unstable = import inputs.nixpkgs-unstable {
-        inherit system;
-        config.allowUnfree = true;
-      };
-    };
     hl = haumea.lib;
     hosts = hl.load {
       src = ./hosts;
       # Make the default.nix's attrs directly children of lib
       transformer = hl.transformers.liftDefault;
     };
-  in flake-utils-plus.lib.mkFlake {
-    inherit self inputs;
+  in
+    flake-utils-plus.lib.mkFlake {
+      inherit self inputs;
 
-    channelsConfig = {
-      allowUnfree = true;
-      allowBroken = true;
-    };
+      channelsConfig = {
+        allowUnfree = true;
+        allowBroken = true;
+      };
 
-    hostDefaults = {
-      inherit specialArgs;
-      modules = [
-        ./modules/nix.nix
-        ./modules/nixos
-        ./secrets
-        programs-sqlite.nixosModules.programs-sqlite
-        home-manager.nixosModules.home-manager
-        {
-          home-manager.backupFileExtension = "hm-bak";
-          home-manager.useGlobalPkgs = true;
-          home-manager.useUserPackages = true;
-
-          home-manager.extraSpecialArgs = specialArgs;
-          home-manager.users."${myvars.userName}".imports = [
-            ./home
-          ];
-        }
-      ];
-    };
-
-    inherit hosts;
-
-    outputsBuilder = channels: let
-      pkgs = channels.nixpkgs;
-    in {
-      checks = {
-        pre-commit-check = pre-commit-hooks.lib."${channels.nixpkgs.system}".run {
-          src = ./.;
-          hooks = {
-            alejandra.enable = true; # formatter
-            typos = {
-              enable = true;
-              settings = {
-                write = true; # Automatically fix typos
-                configPath = "./.typos.toml"; # relative to the flake root
-              };
+      hostDefaults = {
+        inherit specialArgs;
+        modules = [
+          ./modules/nix.nix
+          ./modules/nixos
+          ./secrets
+          nixos-generators.nixosModules.all-formats
+          programs-sqlite.nixosModules.programs-sqlite
+          home-manager.nixosModules.home-manager
+          {
+            home-manager = {
+              backupFileExtension = "hm-bak";
+              useGlobalPkgs = true;
+              useUserPackages = true;
+              extraSpecialArgs = specialArgs;
+              users."${myvars.userName}".imports = [
+                ./home
+              ];
             };
-            prettier = {
-              enable = true;
-              settings = {
-                write = true; # Automatically format files
-                configPath = "./.prettierrc.yaml"; # relative to the flake root
+          }
+        ];
+      };
+
+      inherit hosts;
+
+      outputsBuilder = channels: let
+        pkgs = channels.nixpkgs;
+      in {
+        checks = {
+          pre-commit-check = pre-commit-hooks.lib."${channels.nixpkgs.system}".run {
+            src = ./.;
+            hooks = {
+              alejandra.enable = true; # formatter
+              typos = {
+                enable = true;
+                settings = {
+                  write = true; # Automatically fix typos
+                  configPath = "./.typos.toml"; # relative to the flake root
+                };
               };
+              prettier = {
+                enable = true;
+                settings = {
+                  write = true; # Automatically format files
+                  configPath = "./.prettierrc.yaml"; # relative to the flake root
+                };
+              };
+              deadnix.enable = true; # detect unused variable bindings in "*.nix"
+              statix.enable = true; # lints and suggestions for Nix code
             };
-            deadnix.enable = true; # detect unused variable bindings in "*.nix"
-            statix.enable = true; # lints and suggestions for Nix code
           };
         };
+
+        # Development Shells
+        devShells.default = pkgs.mkShell {
+          packages = with pkgs; [
+            bashInteractive
+            gcc
+            alejandra
+            deadnix
+            statix
+            typos
+            nodePackages.prettier
+          ];
+          name = "dots";
+          shellHook = ''
+            ${self.checks.${system}.pre-commit-check.shellHook}
+          '';
+        };
+
+        formatter = pkgs.alejandra;
       };
-      formatter = pkgs.alejandra;
     };
-  };
 
   inputs = {
     # Official NixOS package source, using nixos's unstable branch by default
@@ -119,7 +152,6 @@
     haumea = {
       url = "github:nix-community/haumea/v0.2.2";
       inputs.nixpkgs.follows = "nixpkgs";
-
     };
 
     # The list of supported systems.
@@ -143,10 +175,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # nixos-generators = {
-    #   url = "github:nix-community/nixos-generators";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
+    # generate iso/qcow2/docker/... image from nixos configuration
+    nixos-generators = {
+      url = "github:nix-community/nixos-generators";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     nix-index-database = {
       url = "github:nix-community/nix-index-database";

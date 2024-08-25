@@ -17,7 +17,7 @@ in {
     lfs.enable = true;
 
     userName = userFullName;
-    userEmail = userEmail;
+    inherit userEmail;
 
     extraConfig = {
       color.ui = true;
@@ -32,7 +32,7 @@ in {
       enable = true;
       options = {
         features = "side-by-side";
-        navigate = true;    # use n and N to move between diff sections
+        navigate = true; # use n and N to move between diff sections
         line-numbers = true;
       };
     };

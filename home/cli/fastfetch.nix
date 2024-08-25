@@ -1,19 +1,30 @@
-{ config, mylib, ... }: let
+{
+  config,
+  mylib,
+  ...
+}: let
   shellAliases = {
     "fetch" = "fastfetch";
   };
-  kitty = config.programs.kitty;
+  inherit (config.programs) kitty;
 in {
-  home.shellAliases = shellAliases;
-  programs.nushell.shellAliases = shellAliases;
+  home = {
+    inherit shellAliases;
+  };
+  programs.nushell = {
+    inherit shellAliases;
+  };
   programs.fastfetch = {
     enable = true;
     settings = {
       "$schema" = "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json";
       logo = {
-        type = if kitty.enable then "kitty-direct" else "chafa";
+        type =
+          if kitty.enable
+          then "kitty-direct"
+          else "chafa";
         # width = 60;
-	height = 18;
+        height = 18;
         printRemaining = false;
         source = "$(find $HOME/.config/fastfetch/pngs/ -name '*.png' | sort -R | head -n 1)";
         chafa = {
@@ -32,98 +43,98 @@ in {
       };
       modules = [
         {
-            type = "custom";
-            format = " 󰊠  コンピューター";
+          type = "custom";
+          format = " 󰊠  コンピューター";
         }
         {
-            type = "custom";
-            format = "┌──────────────────────────────────────────┐";
+          type = "custom";
+          format = "┌──────────────────────────────────────────┐";
         }
         {
-            type = "os";
-            key = "   OS";
-            keyColor = "red";
+          type = "os";
+          key = "   OS";
+          keyColor = "red";
         }
         {
-            type = "kernel";
-            key = "   Kernel";
-            keyColor = "red";
+          type = "kernel";
+          key = "   Kernel";
+          keyColor = "red";
         }
         {
-            type = "packages";
-            key = "  󰏓 Packages";
-            keyColor = "green";
+          type = "packages";
+          key = "  󰏓 Packages";
+          keyColor = "green";
         }
         {
-            type = "display";
-            key = "  󰍹 Display";
-            keyColor = "green";
+          type = "display";
+          key = "  󰍹 Display";
+          keyColor = "green";
         }
         {
-            type = "wm";
-            key = "   WM";
-            keyColor = "yellow";
+          type = "wm";
+          key = "   WM";
+          keyColor = "yellow";
         }
         {
-            type = "terminal";
-            key = "   Terminal";
-            keyColor = "yellow";
+          type = "terminal";
+          key = "   Terminal";
+          keyColor = "yellow";
         }
         {
-            type = "custom";
-            format = "└──────────────────────────────────────────┘";
+          type = "custom";
+          format = "└──────────────────────────────────────────┘";
         }
         "break"
         {
-            type = "title";
-            key = "  ";
+          type = "title";
+          key = "  ";
         }
         {
-            type = "custom";
-            format = "┌──────────────────────────────────────────┐";
+          type = "custom";
+          format = "┌──────────────────────────────────────────┐";
         }
         {
-            type = "cpu";
-            format = "{1}";
-            key = "  󰍛 CPU";
-            keyColor = "blue";
+          type = "cpu";
+          format = "{1}";
+          key = "  󰍛 CPU";
+          keyColor = "blue";
         }
         {
-            type = "gpu";
-            format = "{2}";
-            key = "   GPU";
-            keyColor = "blue";
+          type = "gpu";
+          format = "{2}";
+          key = "   GPU";
+          keyColor = "blue";
         }
         {
-            type = "gpu";
-            format = "{3}";
-            key = "   GPU Driver";
-            keyColor = "magenta";
+          type = "gpu";
+          format = "{3}";
+          key = "   GPU Driver";
+          keyColor = "magenta";
         }
         {
-            type = "memory";
-            key = "   Memory";
-            keyColor = "magenta";
-        }      
-        {
-            type = "command";
-            key = "  󱦟 OS Age ";
-            keyColor = "31";
-            text = "birth_install=$(stat -c %W /); current=$(date +%s); time_progression=$((current - birth_install)); days_difference=$((time_progression / 86400)); echo $days_difference days";
+          type = "memory";
+          key = "   Memory";
+          keyColor = "magenta";
         }
         {
-            type = "uptime";
-            key = "  󱫐 Uptime ";
-            keyColor = "red";
+          type = "command";
+          key = "  󱦟 OS Age ";
+          keyColor = "31";
+          text = "birth_install=$(stat -c %W /); current=$(date +%s); time_progression=$((current - birth_install)); days_difference=$((time_progression / 86400)); echo $days_difference days";
         }
         {
-            type = "custom";
-            format = "└──────────────────────────────────────────┘";
+          type = "uptime";
+          key = "  󱫐 Uptime ";
+          keyColor = "red";
         }
-	{
-            type = "colors";
-            paddingLeft = 2;
-            symbol = "circle";
+        {
+          type = "custom";
+          format = "└──────────────────────────────────────────┘";
+        }
+        {
+          type = "colors";
+          paddingLeft = 2;
+          symbol = "circle";
         }
         "break"
       ];
