@@ -1,10 +1,19 @@
 Invoke-Expression (& { (zoxide init powershell | Out-String) })
 Invoke-Expression (&starship init powershell)
+# set nvim as default editor
+Set-Item Env:EDITOR nvim
 # alias
 Set-Alias -Name v -Value nvim
 Set-Alias -Name g -Value git
 Set-Alias -Name lg -Value lazygit
+Set-Alias -Name c -Value Clear-Host
+Set-Alias -Name top -Value btop
+Set-Alias -Name du -Value dust
+Set-Alias -Name reboot -Value Restart-Computer
+Set-Alias -Name shutdown -Value Stop-Computer
+Set-Alias -Name cat -Value bat
 #Set-Alias -Name y -Value yazi
+
 # yazi
 function y {
     $tmp = [System.IO.Path]::GetTempFileName()
@@ -41,37 +50,37 @@ function new_treela { eza --tree -a --color=always --icons=always --group-direct
 # Fzf
 # FZF config
 # Enable fd integration
-$env:FZF_DEFAULT_COMMAND='fd --type=f --strip-cwd-prefix --hidden --follow --exclude .git'
-$env:FZF_CTRL_T_COMMAND=$env:FZF_DEFAULT_COMMAND
-$env:FZF_ALT_C_COMMAND='fd --type=d --strip-cwd-prefix --hidden --follow --exclude .git'
+# $env:FZF_DEFAULT_COMMAND='fd --type=f --strip-cwd-prefix --hidden --follow --exclude .git'
+# $env:FZF_CTRL_T_COMMAND=$env:FZF_DEFAULT_COMMAND
+# $env:FZF_ALT_C_COMMAND='fd --type=d --strip-cwd-prefix --hidden --follow --exclude .git'
 # Use bat to show file preview
-$env:FZF_CTRL_T_OPTS="--preview 'bat -n --color=always --line-range :500 {}'"
-$env:FZF_ALT_C_OPTS="--preview 'eza --tree --color=always {}'"
+# $env:FZF_CTRL_T_OPTS="--preview 'bat -n --color=always --line-range :500 {}'"
+# $env:FZF_ALT_C_OPTS="--preview 'eza --tree --color=always {}'"
 # Customise the look of fzf
 
-$env:FZF_DEFAULT_OPTS="
- --highlight-line \
- --info=inline-right \
- --ansi \
- --layout=reverse \
- --border=none \
- --color=bg+:#2d3f76 \
- --color=bg:#1e2030 \
- --color=border:#589ed7 \
- --color=fg:#c8d3f5 \
- --color=gutter:#1e2030 \
- --color=header:#ff966c \
- --color=hl+:#65bcff \
- --color=hl:#65bcff \
- --color=info:#545c7e \
- --color=marker:#ff007c \
- --color=pointer:#ff007c \
- --color=prompt:#65bcff \
- --color=query:#c8d3f5:regular \
- --color=scrollbar:#589ed7 \
- --color=separator:#ff966c \
- --color=spinner:#ff007c \
- "
+# $env:FZF_DEFAULT_OPTS="
+#  --highlight-line \
+#  --info=inline-right \
+#  --ansi \
+#  --layout=reverse \
+#  --border=none \
+#  --color=bg+:#2d3f76 \
+#  --color=bg:#1e2030 \
+#  --color=border:#589ed7 \
+#  --color=fg:#c8d3f5 \
+#  --color=gutter:#1e2030 \
+#  --color=header:#ff966c \
+#  --color=hl+:#65bcff \
+#  --color=hl:#65bcff \
+#  --color=info:#545c7e \
+#  --color=marker:#ff007c \
+#  --color=pointer:#ff007c \
+#  --color=prompt:#65bcff \
+#  --color=query:#c8d3f5:regular \
+#  --color=scrollbar:#589ed7 \
+#  --color=separator:#ff966c \
+#  --color=spinner:#ff007c \
+#  "
 
 # prompt
 $prompt = ""
