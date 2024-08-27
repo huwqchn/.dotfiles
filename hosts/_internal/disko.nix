@@ -1,4 +1,10 @@
 # NOTE: ... is needed because disko passes diskoFile
+# sudo nix --experimental-features "nix-command flakes" run github:nix-community/disko -- \
+# --mode disko /tmp/disko.nix \
+# --argstr device "/dev/vda" \
+# --arg lib '<nixpkgs/lib>' \
+# --arg withSwap true \
+# --arg swapSize 8
 { lib
 , device ? throw "Set this to your disk device, e.g. /dev/sda"
 , withSwap ? false
@@ -12,7 +18,7 @@
     # easily overwritten with tools like fdisk. When you fail to deploy a new
     # config in this case, the old config that comes with the disk image will
     # not boot either.
-    enableConfig = false;
+    # enableConfig = false;
     devices.disk = {
       main = {
         type = "disk";
