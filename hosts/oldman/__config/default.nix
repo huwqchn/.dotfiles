@@ -6,7 +6,7 @@
   disko,
   ...
 }: let
-  disko-config = import ../../_internal/disko.nix {
+  disko-config = import ../../_internal/disko/simple-disk.nix {
     inherit lib;
     device = "/dev/nvme0n1";
     withSwap = true;

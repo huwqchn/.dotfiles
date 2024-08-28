@@ -1,10 +1,12 @@
-# NOTE: ... is needed because disko passes diskoFile
 # sudo nix --experimental-features "nix-command flakes" run github:nix-community/disko -- \
 # --mode disko /tmp/disko.nix \
 # --argstr device "/dev/vda" \
 # --arg lib '<nixpkgs/lib>' \
 # --arg withSwap true \
 # --arg swapSize 8
+
+# sudo nixos-generate-config \
+#   --no-filesystems --root /mnt
 { lib
 , device ? throw "Set this to your disk device, e.g. /dev/sda"
 , withSwap ? false
