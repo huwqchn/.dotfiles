@@ -99,14 +99,6 @@
                 mountOptions = [ "subvol=nix" ] ++ mountOptions;
                 mountpoint = "/nix";
               };
-              "@persist" = {
-                mountOptions = [ "subvol=persist" ] ++ mountOptions;
-                mountpoint = "/persist";
-              };
-              "@snapshots" = {
-                mountOptions = [ "subvol=snapshots" ] ++ mountOptions;
-                mountpoint = "/snapshots";
-              };
               "@log" = {
                 inherit mountOptions;
                 mountpoint = "/var/log";
@@ -115,8 +107,16 @@
                 mountpoint = "/tmp";
                 mountOptions = [ "noatime" ];
               };
+              "@persist" = {
+                mountOptions = [ "subvol=persist" ] ++ mountOptions;
+                mountpoint = "/persist";
+              };
+              "@snapshots" = {
+                mountOptions = [ "subvol=snapshots" ] ++ mountOptions;
+                mountpoint = "/.snapshots";
+              };
               "@swap" = {
-                mountpoint = "/.swap";
+                mountpoint = "/.swapvol";
                 mountOptions = [ "noatime" ]
                 swap.swapfile.size = "${swapSize}G";
               };
@@ -135,4 +135,6 @@
       ];
     }
   };
+  fileSystems."/persist".neededForBoot = true; # required by impermanence
+  fileSystems."/var/log".neededForBoot = true; # required by nixos
 }
