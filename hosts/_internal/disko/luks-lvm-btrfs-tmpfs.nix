@@ -65,14 +65,14 @@
     lvm_vg.pool = {
       type = "lvm_vg";
       lvs = {
-        swap = {
-          name = "swap";
-          size = swapSize;
-          content = {
-            type = "swap";
-            resumeDevice = true; # resume from hiberation from this device
-          };
-        };
+        # swap = {
+        #   name = "swap";
+        #   size = swapSize;
+        #   content = {
+        #     type = "swap";
+        #     resumeDevice = true; # resume from hiberation from this device
+        #   };
+        # };
         nixos = {
           # Uses different format for specifying size
           # Based on `lvcreate` arguments
@@ -111,7 +111,16 @@
                 inherit mountOptions;
                 mountpoint = "/var/log";
               };
-            }
+              "@tmp" = {
+                mountpoint = "/tmp";
+                mountOptions = [ "noatime" ];
+              };
+              "@swap" = {
+                mountpoint = "/.swap";
+                mountOptions = [ "noatime" ]
+                swap.swapfile.size = "${swapSize}G";
+              };
+            };
           };
         };
       };
