@@ -17,20 +17,8 @@
   zipRange = lst: lib.lists.zipListsWith (device: deviceIndex: {inherit device deviceIndex;}) (lib.lists.range 0 ((builtins.length lst) - 1)) lst;
 in {
   disko.devices = {
-    disk.${builtins.elemAt devices 0}.content.partitions.ESP = {
-      priority = 1;
-      size = size.esp;
-      type = "EF00";
-      label = "boot";
-      content = {
-        type = "filesystem";
-        format = "vfat";
-        mountpoint = "/boot";
-        mountOptions = [ "default" ];
-      };
-    };
     disk = builtins.listToAttrs (builtins.map ({device, deviceIndex}: {
-      name = disk;
+      name = device;
       value = {
         type = "disk";
         inherit device;
@@ -138,8 +126,8 @@ in {
               };
               "@swap" = {
                 mountpoint = "/.swapvol";
-                mountOptions = [ "noatime" ]
-                swap.swapfile.size = size.swap;
+                mountOptions = [ "noatime" ];
+                swap.swapfile.size = sizes.swap;
               };
             };
           };
@@ -154,7 +142,7 @@ in {
         # relatime: Update inode access times relative to modify or change time.
         "mode=755"
       ];
-    }
+    };
   };
   fileSystems."/persist".neededForBoot = true; # required by impermanence
   fileSystems."/var/log".neededForBoot = true; # required by nixos

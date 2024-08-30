@@ -117,7 +117,7 @@
               };
               "@swap" = {
                 mountpoint = "/.swapvol";
-                mountOptions = [ "noatime" ]
+                mountOptions = [ "noatime" ];
                 swap.swapfile.size = "${swapSize}G";
               };
             };
@@ -133,7 +133,7 @@
         # relatime: Update inode access times relative to modify or change time.
         "mode=755"
       ];
-    }
+    };
   };
   fileSystems."/persist".neededForBoot = true; # required by impermanence
   fileSystems."/var/log".neededForBoot = true; # required by nixos
