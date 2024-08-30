@@ -1,4 +1,4 @@
-set shell := ["fish", "-c"]
+set shell := ["bash", "-c"]
 
 # List all the just commands
 default:

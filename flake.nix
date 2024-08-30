@@ -51,7 +51,7 @@
         modules = [
           ./modules/nix.nix
           ./modules/nixos
-          ./secrets
+          # ./secrets
           nixos-generators.nixosModules.all-formats
           programs-sqlite.nixosModules.programs-sqlite
           home-manager.nixosModules.home-manager

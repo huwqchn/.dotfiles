@@ -7,9 +7,7 @@
 
 # sudo nixos-generate-config \
 #   --no-filesystems --root /mnt
-{ lib
-, device ? throw "Set this to your disk device, e.g. /dev/sda"
-, withSwap ? false
+{ device ? throw "Set this to your disk device, e.g. /dev/sda"
 , swapSize
 , ...
 }:
@@ -73,8 +71,9 @@
                       "noatime"
                     ];
                   };
-                  "@swap" = lib.mkIf withSwap {
-                    mountpoint = "/.swap";
+                  "@swap" = {
+                    mountpoint = "/.swapvol";
+		    mountOptions = [ "noatime" ];
                     swap.swapfile.size = "${swapSize}G";
                   };
                 };
