@@ -9,10 +9,11 @@
 {
   devices ? [ "nvme0n1" ],
   sizes ? {
-    swap = "8G";
+    swap = "32G";
     esp = "512M";
   },
-  lib
+  lib,
+  ...
 }: let
   zipRange = lst: lib.lists.zipListsWith (device: deviceIndex: {inherit device deviceIndex;}) (lib.lists.range 0 ((builtins.length lst) - 1)) lst;
 in {
@@ -144,6 +145,6 @@ in {
       ];
     };
   };
-  fileSystems."/persist".neededForBoot = true; # required by impermanence
-  fileSystems."/var/log".neededForBoot = true; # required by nixos
+  # fileSystems."/persist".neededForBoot = true; # required by impermanence
+  # fileSystems."/var/log".neededForBoot = true; # required by nixos
 }

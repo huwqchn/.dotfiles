@@ -7,7 +7,8 @@
 #   --no-filesystems --root /mnt
 {
   device ? throw "Set this to your device, e.g. /dev/nvme0n1",
-  swapSize
+  swapSize,
+  ...
 }:
 {
   disko.devices = {
@@ -135,6 +136,6 @@
       ];
     };
   };
-  fileSystems."/persist".neededForBoot = true; # required by impermanence
-  fileSystems."/var/log".neededForBoot = true; # required by nixos
+  # fileSystems."/persist".neededForBoot = true; # required by impermanence
+  # fileSystems."/var/log".neededForBoot = true; # required by nixos
 }
