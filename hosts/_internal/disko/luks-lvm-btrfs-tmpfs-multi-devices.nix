@@ -101,9 +101,13 @@ in {
                 "nofail"
               ];
             in {
-              "@root" = {
-                mountpoint = "/";
-                inherit mountOptions;
+             # mount the top-level subvolume at /btr_pool
+              # it will be used by btrbk to create snapshots
+              "/" = {
+                mountpoint = "/btr_pool";
+                # btrfs's top-level subvolume, internally has an id 6
+                # we can access all other subvolumes from this subvolume.
+                mountOptions = [ "subvolid = 6" ];
               };
               "@nix" = {
                 mountOptions = [ "subvol=nix" ] ++ mountOptions;

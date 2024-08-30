@@ -8,7 +8,7 @@
 # sudo nixos-generate-config \
 #   --no-filesystems --root /mnt
 { device ? throw "Set this to your disk device, e.g. /dev/sda"
-, swapSize
+, swapSize ? "32G"
 , ...
 }:
 {
@@ -73,8 +73,8 @@
                   };
                   "@swap" = {
                     mountpoint = "/.swapvol";
-		    mountOptions = [ "noatime" ];
-                    swap.swapfile.size = "${swapSize}G";
+		                mountOptions = [ "noatime" ];
+                    swap.swapfile.size = swapSize;
                   };
                 };
               };
