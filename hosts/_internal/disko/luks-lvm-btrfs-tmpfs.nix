@@ -20,7 +20,7 @@
         partitions = {
           ESP = {
             # priority = 1;
-            size = "512MiB";
+            size = "512M";
             type = "EF00";
             label = "boot";
             content = {
