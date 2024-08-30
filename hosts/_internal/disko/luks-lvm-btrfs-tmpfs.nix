@@ -6,8 +6,8 @@
 # sudo nixos-generate-config \
 #   --no-filesystems --root /mnt
 {
-  device ? throw "Set this to your device, e.g. /dev/nvme0n1",
-  swapSize,
+  device ?  "/dev/nvme0n1",
+  swapSize ? "32G",
   ...
 }:
 {
@@ -19,7 +19,7 @@
         type = "gpt";
         partitions = {
           ESP = {
-            priority = 1;
+            # priority = 1;
             size = "512MiB";
             type = "EF00";
             label = "boot";
@@ -92,9 +92,9 @@
                 "nofail"
               ];
             in {
-              "@root" = {
-                mountpoint = "/";
-                inherit mountOptions;
+              "/" = {
+                mountpoint = "/btr_pool";
+                mountOptions = [ "subvolid = 5" ];
               };
               "@nix" = {
                 mountOptions = [ "subvol=nix" ] ++ mountOptions;
@@ -119,7 +119,7 @@
               "@swap" = {
                 mountpoint = "/.swapvol";
                 mountOptions = [ "noatime" ];
-                swap.swapfile.size = "${swapSize}G";
+                swap.swapfile.size = swapSize;
               };
             };
           };
