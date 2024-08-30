@@ -7,10 +7,8 @@
   ...
 }: let
   disko-config = import ../../_internal/disko/simple-disk.nix {
-    inherit lib;
     device = "/dev/nvme0n1";
-    withSwap = true;
-    swapSize = "8G";
+    swapSize = 32;
   };
 in {
   imports = [
