@@ -42,7 +42,7 @@ in {
               size = "100%";
               content = {
                 type = "luks";
-                name = "crypted${deviceIndex}";
+                name = "crypted${builtins.toString deviceIndex}";
                 settings = {
                   allowDiscards = true; # SSD optimization
                   bypassWorkqueues = true; # SSD optimization
