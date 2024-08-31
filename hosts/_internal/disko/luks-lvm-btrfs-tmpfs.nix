@@ -3,6 +3,9 @@
 # --argstr device "/dev/nvme0n1" \
 # --arg swapSize 8
 
+# mkdir -p /mnt/boot
+# mount -o umask=077 /dev/nvme0n1p1 /mnt/boot
+
 # sudo nixos-generate-config \
 #   --no-filesystems --root /mnt
 {
