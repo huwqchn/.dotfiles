@@ -1,6 +1,6 @@
 {
   device ?  "/dev/nvme0n1",
-  swapSize ? "32G",
+  sizes ? { tmp = "8G"; esp = "512M"; swap = "32G"; },
   ...
 }:
 {
@@ -9,7 +9,7 @@
       fsType = "tmpfs";
       mountOptions = [
         "defaults"
-        "size=8G"
+        "size=${sizes.tmp}"
         "mode=755"
       ];
     };
@@ -23,7 +23,7 @@
         partitions = {
           ESP = {
             priority = 1;
-            size = "512M";
+            size = sizes.esp;
             type = "EF00";
             content = {
               type = "filesystem";
@@ -70,30 +70,33 @@
                     # we can access all other subvolumes from this subvolume.
                     mountOptions = [ "subvolid = 5" ];
                   };
-                  nix = {
+                  # why use @ in btrfs subvolume names: 
+                  # https://askubuntu.com/questions/987104/why-the-in-btrfs-subvolume-names
+                  # https://www.reddit.com/r/btrfs/comments/11wnyoj/btrfs_what_is/
+                  "@nix" = {
                     mountpoint = "/nix";
                     mountOptions = ["compress=zstd" "noatime"];
                   };
-                  persist = {
+                  "@persist" = {
                     mountpoint = "/persist";
                     mountOptions = ["compress=zstd" "noatime"];
                   };
-                  log = {
+                  "@log" = {
                     mountpoint = "/var/log";
                     mountOptions = ["compress=zstd" "noatime"];
                   };
-                  tmp = {
+                  "@tmp" = {
                     mountpoint = "/tmp";
                     mountOptions = ["noatime"];
                   };
-                  snapshots = {
+                  "@snapshots" = {
                     mountpoint = "/.snapshots";
                     mountOptions = ["compress=zstd" "noatime"];
                   };
-                  swap = {
+                  "@swap" = {
                     mountpoint = "/.swap";
                     mountOptions = ["noatime"];
-                    swap.swapfile.size = swapSize;
+                    swap.swapfile.size = sizes.swap;
                   };
                 };
               };
