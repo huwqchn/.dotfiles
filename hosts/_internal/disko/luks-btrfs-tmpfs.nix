@@ -29,9 +29,9 @@
               type = "filesystem";
               format = "vfat";
               mountpoint = "/boot";
-              mountOptions = [
-                "defaults"
-              ];
+              # Fix world-accessible /boot/loader/random-seed
+              # https://github.com/nix-community/disko/issues/527#issuecomment-1924076948
+              mountOptions = [ "umask=0077" ];
             };
           };
 
