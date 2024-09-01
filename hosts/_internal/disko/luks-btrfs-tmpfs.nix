@@ -68,32 +68,32 @@
                     mountpoint = "/btr_pool";
                     # btrfs's top-level subvolume, internally has an id 5
                     # we can access all other subvolumes from this subvolume.
-                    mountOptions = [ "subvolid = 5" ];
+                    mountOptions = ["subvolid=5"];
                   };
                   # why use @ in btrfs subvolume names: 
                   # https://askubuntu.com/questions/987104/why-the-in-btrfs-subvolume-names
                   # https://www.reddit.com/r/btrfs/comments/11wnyoj/btrfs_what_is/
-                  nix = {
+                  "@nix" = {
                     mountpoint = "/nix";
                     mountOptions = ["compress=zstd" "noatime"];
                   };
-                  persist = {
+                  "@persist" = {
                     mountpoint = "/persist";
                     mountOptions = ["compress=zstd" "noatime"];
                   };
-                  log = {
+                  "@log" = {
                     mountpoint = "/var/log";
                     mountOptions = ["compress=zstd" "noatime"];
                   };
-                  tmp = {
+                  "@tmp" = {
                     mountpoint = "/tmp";
                     mountOptions = ["noatime"];
                   };
-                  snapshots = {
+                  "@snapshots" = {
                     mountpoint = "/.snapshots";
                     mountOptions = ["compress=zstd" "noatime"];
                   };
-                  swap = {
+                  "@swap" = {
                     mountpoint = "/.swap";
                     mountOptions = ["noatime"];
                     swap.swapfile.size = swapSize;
