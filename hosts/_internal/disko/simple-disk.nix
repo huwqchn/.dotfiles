@@ -7,7 +7,7 @@
 
 # sudo nixos-generate-config \
 #   --no-filesystems --root /mnt
-{ device ? "/dev/nvme0n0"
+{ device ? "/dev/nvme0n1"
 , swapSize ? "32G"
 , ...
 }:
