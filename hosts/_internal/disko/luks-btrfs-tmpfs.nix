@@ -1,6 +1,6 @@
 {
   device ?  "/dev/nvme0n1",
-  sizes ? { tmp = "8G"; esp = "512M"; swap = "32G"; },
+  swapSize ? "32G",
   ...
 }:
 {
@@ -9,7 +9,7 @@
       fsType = "tmpfs";
       mountOptions = [
         "defaults"
-        "size=${sizes.tmp}"
+        "size=8G"
         "mode=755"
       ];
     };
@@ -23,7 +23,7 @@
         partitions = {
           ESP = {
             priority = 1;
-            size = sizes.esp;
+            size = "512M";
             type = "EF00";
             content = {
               type = "filesystem";
@@ -73,30 +73,30 @@
                   # why use @ in btrfs subvolume names: 
                   # https://askubuntu.com/questions/987104/why-the-in-btrfs-subvolume-names
                   # https://www.reddit.com/r/btrfs/comments/11wnyoj/btrfs_what_is/
-                  "@nix" = {
+                  nix = {
                     mountpoint = "/nix";
                     mountOptions = ["compress=zstd" "noatime"];
                   };
-                  "@persist" = {
+                  persist = {
                     mountpoint = "/persist";
                     mountOptions = ["compress=zstd" "noatime"];
                   };
-                  "@log" = {
+                  log = {
                     mountpoint = "/var/log";
                     mountOptions = ["compress=zstd" "noatime"];
                   };
-                  "@tmp" = {
+                  tmp = {
                     mountpoint = "/tmp";
                     mountOptions = ["noatime"];
                   };
-                  "@snapshots" = {
+                  snapshots = {
                     mountpoint = "/.snapshots";
                     mountOptions = ["compress=zstd" "noatime"];
                   };
-                  "@swap" = {
+                  swap = {
                     mountpoint = "/.swap";
                     mountOptions = ["noatime"];
-                    swap.swapfile.size = sizes.swap;
+                    swap.swapfile.size = swapSize;
                   };
                 };
               };
