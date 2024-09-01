@@ -101,7 +101,7 @@
                 mountpoint = "/btr_pool";
                 # btrfs's top-level subvolume, internally has an id 5
                 # we can access all other subvolumes from this subvolume.
-                mountOptions = [ "subvolid = 5" ];
+                mountOptions = [ "subvolid=5" ];
               };
               "@nix" = {
                 mountOptions = [ "subvol=nix" ] ++ mountOptions;
