@@ -625,6 +625,21 @@
         "type": "github"
       }
     },
+    "impermanence": {
+      "locked": {
+        "lastModified": 1724489415,
+        "narHash": "sha256-ey8vhwY/6XCKoh7fyTn3aIQs7WeYSYtLbYEG87VCzX4=",
+        "owner": "nix-community",
+        "repo": "impermanence",
+        "rev": "c7f5b394397398c023000cf843986ee2571a1fd7",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "repo": "impermanence",
+        "type": "github"
+      }
+    },
     "lanzaboote": {
       "inputs": {
         "crane": "crane_2",
@@ -955,6 +970,7 @@
         "flake-utils-plus": "flake-utils-plus",
         "haumea": "haumea",
         "home-manager": "home-manager_2",
+        "impermanence": "impermanence",
         "lanzaboote": "lanzaboote",
         "neovim-nightly": "neovim-nightly",
         "nix-index-database": "nix-index-database",

@@ -176,6 +176,8 @@
       url = "github:nix-community/lanzaboote/v0.4.1";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    
+    impermanence.url = "github:nix-community/impermanence";
 
     # generate iso/qcow2/docker/... image from nixos configuration
     nixos-generators = {
