@@ -5,23 +5,19 @@
   lib,
   disko,
   ...
-}: let
-  disko-config = import ../../_internal/disko/simple-disk.nix {
-    device = "/dev/nvme0n1";
-    swapSize = 32;
-  };
-in {
+}: {
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
     disko.nixosModules.disko
-    disko-config
+    ../../_internal/disko/luks-lvm-btrfs-tmpfs.nix
     ./boot.nix
+    ./impermanence.nix
     # ../../_internal/lanzaboote.nix
   ];
 
   # fix timed out for device /dev/tpmrm0
-  systemd.units."dev-tpmrm0.device".enable = false;
+  # systemd.units."dev-tpmrm0.device".enable = false;
 
   # Use the systemd-boot EFI boot loader.
   # boot.loader.systemd-boot.enable = true;
