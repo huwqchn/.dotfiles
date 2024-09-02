@@ -1,12 +1,3 @@
-# sudo nix --experimental-features "nix-command flakes" run github:nix-community/disko -- \
-# --mode disko /tmp/disko.nix \
-# --argstr device "/dev/vda" \
-# --arg lib '<nixpkgs/lib>' \
-# --arg withSwap true \
-# --arg swapSize 8
-
-# sudo nixos-generate-config \
-#   --no-filesystems --root /mnt
 { device ? "/dev/nvme0n1"
 , swapSize ? "32G"
 , ...
