@@ -46,7 +46,47 @@
 
     users.${myvars.userName} = {
       directories = [
+        "Downloads"
+        "Documents"
+        "Desktop"
+        "Music"
+        "Videos"
+        "Public"
+        "Templates"
+        "Pictures"
+
+        "Projects"
+        "Repos"
+        "Workspaces"
+
         ".dotfiles"
+        {
+          directory = ".ssh";
+          mode = "0700";
+        }
+        {
+          directory = ".gnupg";
+          mode = "0700";
+        }
+        {
+          directory = ".docker";
+          mode = "0700";
+        }
+
+        ".local/share"
+        ".local/state"
+
+        # browsers
+        ".mozilla"
+        ".config/google-chrome"
+
+        # languages package managers
+        ".npm"
+        ".conda"
+        "go"
+
+        # mise
+        ".config/pulse"
       ];
     };
   };
