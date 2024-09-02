@@ -76,8 +76,9 @@
         ".local/share"
         ".local/state"
 
-        # my AI
+        # my neovim AI plugin
         ".config/github-copilot"
+        ".config/TabNine"
 
         # browsers
         ".mozilla"
