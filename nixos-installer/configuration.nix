@@ -19,11 +19,10 @@
   boot = {
     kernelParams = [ "loglevel=5" "splash" "nowatchdog" ];
     loader.grub = {
-        enable = true;
-        device = "nodev";
-        efiSupport = true;
-        efiInstallAsRemovable = true;
-      };
+      enable = true;
+      device = "nodev";
+      efiSupport = true;
+      efiInstallAsRemovable = true;
     };
   };
   # networking.hostName = "nixos"; # Define your hostname.
