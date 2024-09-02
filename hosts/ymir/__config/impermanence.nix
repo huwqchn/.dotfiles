@@ -2,6 +2,8 @@
   impermanence,
   pkgs,
   myvars,
+  config,
+  lib,
   ...
 }: {
   imports = [
