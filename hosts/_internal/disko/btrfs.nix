@@ -51,27 +51,27 @@
                 extraArgs = [ "-f" ]; # Override existing partition
                 # Subvolumes must set a mountpoint in order to be mounted,
                 # unless their parent is mounted
-                subvolumes = {
+                subvolumes = let
+                  mountOptions = [
+                    "compress=zstd"
+                    "noatime"
+                  ];
+                in {
                   "@root" = {
                     mountpoint = "/";
-                    mountOptions = [
-                      "compress=zstd"
-                      "noatime"
-                    ];
+                    inherit mountOptions;
                   };
                   "@persist" = {
                     mountpoint = "/persist";
-                    mountOptions = [
-                      "compress=zstd"
-                      "noatime"
-                    ];
+                    inherit mountOptions;
                   };
                   "@nix" = {
                     mountpoint = "/nix";
-                    mountOptions = [
-                      "compress=zstd"
-                      "noatime"
-                    ];
+                    inherit mountOptions;
+                  };
+                  "@snapshots" = {
+                    mountpoint = "/.snapshots";
+                    inherit mountOptions;
                   };
                   "@swap" = {
                     mountpoint = "/.swapvol";
