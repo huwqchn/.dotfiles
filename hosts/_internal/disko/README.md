@@ -18,5 +18,12 @@ imports =
    ./disk-config.nix
  ];
 ```
+and grub config
+```
+boot.loader.grub.device = "nodev";
+boot.loader.grub.enable = true;
+boot.loader.grub.efiSupport = true;
+boot.loader.grub.efiInstallAsRemovable = true;
+```
 
 6. run `nixos-install --root /mnt --no-root-password`
