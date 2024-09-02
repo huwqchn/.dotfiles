@@ -82,23 +82,38 @@
               mountOptions = [
                 "compress=zstd"
                 "noatime"
+                "nodiratime"
+                "discard"
+                "nofail"
               ];
             in {
-              "@root" = {
-                mountpoint = "/";
-                inherit mountOptions;
+              # mount the top-level subvolume at /btr_pool
+              # it will be used by btrbk to create snapshots
+              "/" = {
+                mountpoint = "/btr_pool";
+                # btrfs's top-level subvolume, internally has an id 5
+                # we can access all other subvolumes from this subvolume.
+                mountOptions = [ "subvolid=5" ];
               };
               "@nix" = {
+                mountOptions = [ "subvol=nix" ] ++ mountOptions;
                 mountpoint = "/nix";
+              };
+              "@log" = {
                 inherit mountOptions;
+                mountpoint = "/var/log";
+              };
+              "@tmp" = {
+                mountpoint = "/tmp";
+                mountOptions = [ "noatime" ];
               };
               "@persist" = {
+                mountOptions = [ "subvol=persist" ] ++ mountOptions;
                 mountpoint = "/persist";
-                inherit mountOptions;
               };
               "@snapshots" = {
+                mountOptions = [ "subvol=snapshots" ] ++ mountOptions;
                 mountpoint = "/.snapshots";
-                inherit mountOptions;
               };
               "@swap" = {
                 mountpoint = "/.swap";
@@ -109,6 +124,15 @@
           };
         };
       };
+    };
+    nodev."/" = {
+      fsType = "tmpfs";
+      mountOptions = [
+        "defaults"
+        # set mode to 755, otherwise systemd will set it to 777, which cause problems.
+        # relatime: Update inode access times relative to modify or change time.
+        "mode=755"
+      ];
     };
   };
 }

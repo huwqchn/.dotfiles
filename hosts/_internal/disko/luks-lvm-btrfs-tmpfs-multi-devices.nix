@@ -1,11 +1,3 @@
-# sudo nix --experimental-features "nix-command flakes" run github:nix-community/disko -- \
-# --mode disko /tmp/disko.nix \
-# --arg devices '[ "/dev/nvme0n1" ]' \
-# --arg sizes '{ swap = "8G"; esp = "512M"; }' \
-# --arg lib '<nixpkgs/lib' \
-
-# sudo nixos-generate-config \
-#   --no-filesystems --root /mnt
 {
   devices ? [ "nvme0n1" ],
   sizes ? {
@@ -151,6 +143,4 @@ in {
       ];
     };
   };
-  # fileSystems."/persist".neededForBoot = true; # required by impermanence
-  # fileSystems."/var/log".neededForBoot = true; # required by nixos
 }
