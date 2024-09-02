@@ -61,7 +61,12 @@
               content = {
                 type = "btrfs";
                 extraArgs = ["-f"];
-                subvolumes = {
+                subvolumes = let
+                  mountOptions = [
+                    "compress=zstd"
+                    "noatime"
+                  ];
+                in {
                   # mount the top-level subvolume at /btr_pool
                   # it will be used by btrbk to create snapshots
                   "/" = {
@@ -75,15 +80,15 @@
                   # https://www.reddit.com/r/btrfs/comments/11wnyoj/btrfs_what_is/
                   "@nix" = {
                     mountpoint = "/nix";
-                    mountOptions = ["compress=zstd" "noatime"];
+                    inherit mountOptions;
                   };
                   "@persist" = {
                     mountpoint = "/persist";
-                    mountOptions = ["compress=zstd" "noatime"];
+                    inherit mountOptions;
                   };
                   "@log" = {
                     mountpoint = "/var/log";
-                    mountOptions = ["compress=zstd" "noatime"];
+                    inherit mountOptions;
                   };
                   "@tmp" = {
                     mountpoint = "/tmp";
@@ -91,7 +96,7 @@
                   };
                   "@snapshots" = {
                     mountpoint = "/.snapshots";
-                    mountOptions = ["compress=zstd" "noatime"];
+                    inherit mountOptions;
                   };
                   "@swap" = {
                     mountpoint = "/.swap";
