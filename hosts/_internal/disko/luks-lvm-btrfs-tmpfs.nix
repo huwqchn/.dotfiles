@@ -126,7 +126,7 @@
                 mountpoint = "/.snapshots";
               };
               "@swap" = {
-                mountpoint = "/.swapvol";
+                mountpoint = "/.swap";
                 mountOptions = [ "noatime" ];
                 swap.swapfile.size = swapSize;
               };
