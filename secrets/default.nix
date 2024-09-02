@@ -1,4 +1,9 @@
-{ pkgs, agenix, myvars, ... }: {
+{
+  pkgs,
+  agenix,
+  myvars,
+  ...
+}: {
   imports = [
     agenix.nixosModules.default
   ];
@@ -22,16 +27,6 @@
       path = "/home/${myvars.userName}/.git-credentials";
       # encrypted file path
       file = ./git-credentials.age;
-      mode = "0700";
-      owner = "${myvars.userName}";
-    };
-    "gihtub-copilot-hosts.json" = {
-      # whether secrets are symlinked to age.secrets.<name>.path
-      symlink = true;
-      # target path for decrypted file
-      path = "/home/${myvars.userName}/.config/github-copilot/hosts.json";
-      # encrypted file path
-      file = ./github-copilot-hosts.age;
       mode = "0700";
       owner = "${myvars.userName}";
     };

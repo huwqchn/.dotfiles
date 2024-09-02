@@ -51,7 +51,7 @@
         modules = [
           ./modules/nix.nix
           ./modules/nixos
-          # ./secrets
+          ./secrets
           nixos-generators.nixosModules.all-formats
           programs-sqlite.nixosModules.programs-sqlite
           home-manager.nixosModules.home-manager
@@ -176,7 +176,7 @@
       url = "github:nix-community/lanzaboote/v0.4.1";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    
+
     impermanence.url = "github:nix-community/impermanence";
 
     # generate iso/qcow2/docker/... image from nixos configuration
