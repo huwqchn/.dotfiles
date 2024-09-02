@@ -76,6 +76,9 @@
         ".local/share"
         ".local/state"
 
+        # my AI
+        ".config/github-copilot"
+
         # browsers
         ".mozilla"
         ".config/google-chrome"
