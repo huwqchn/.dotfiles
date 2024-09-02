@@ -13,9 +13,27 @@
     ];
 
   # Use the systemd-boot EFI boot loader.
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
+  # boot.loader.systemd-boot.enable = true;
+  # boot.loader.efi.canTouchEfiVariables = true;
+  # boot
+  boot = {
+    kernelParams = [ "loglevel=5" "splash" "nowatchdog" ];
+    loader = {
+      systemd-boot = {
+        enable = false;
+      };
+      efi = {
+        canTouchEfiVariables = true;
+        efiSysMountPoint = "/boot/EFI";
+      };
+      grub = {
+        enable = true;
+        device = "nodev";
+        efiSupport = true;
 
+      };
+    };
+  };
   # networking.hostName = "nixos"; # Define your hostname.
   # Pick only one of the below networking options.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -64,7 +82,7 @@
   users.users.johnson = {
     isNormalUser = true;
     extraGroups = [ "wheel" "johnson" ]; # Enable ‘sudo’ for the user.
-    initialPassword = "719129";
+    initialPassword = "1";
   };
 
   # List packages installed in system profile. To search, run:
