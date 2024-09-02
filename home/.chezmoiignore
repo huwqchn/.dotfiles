@@ -6,9 +6,8 @@ key.txt.age
 {{ if ne .chezmoi.os "darwin" }}
 .config/karabiner
 .config/hammerspoon
-.config/yabai
-.config/skhd
 .config/sketchybar
+.config/aerospace
 {{ end }}
 
 {{ if ne .chezmoi.os "linux" }}
