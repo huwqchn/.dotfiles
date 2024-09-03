@@ -93,6 +93,9 @@
         # mise
         ".config/pulse"
       ];
+      files = [
+        ".config/gh/hosts.yml"
+      ];
     };
   };
   programs.fuse.userAllowOther = true;
