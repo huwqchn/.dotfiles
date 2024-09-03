@@ -73,6 +73,7 @@
           mode = "0700";
         }
 
+        ".cache"
         ".local/share"
         ".local/state"
 
