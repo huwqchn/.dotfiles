@@ -9,7 +9,8 @@
       fsType = "tmpfs";
       mountOptions = [
         "defaults"
-        "size=8G"
+        # set mode to 755, otherwise systemd will set it to 777, which cause problems.
+        # relatime: Update inode access times relative to modify or change time.
         "mode=755"
       ];
     };
@@ -65,6 +66,9 @@
                   mountOptions = [
                     "compress=zstd"
                     "noatime"
+                    "nodiratime"
+                    "discard"
+                    "nofail"
                   ];
                 in {
                   # mount the top-level subvolume at /btr_pool
@@ -75,7 +79,7 @@
                     # we can access all other subvolumes from this subvolume.
                     mountOptions = ["subvolid=5"];
                   };
-                  # why use @ in btrfs subvolume names: 
+                  # why use @ in btrfs subvolume names:
                   # https://askubuntu.com/questions/987104/why-the-in-btrfs-subvolume-names
                   # https://www.reddit.com/r/btrfs/comments/11wnyoj/btrfs_what_is/
                   "@nix" = {

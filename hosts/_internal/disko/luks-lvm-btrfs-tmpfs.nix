@@ -61,14 +61,6 @@
     lvm_vg.pool = {
       type = "lvm_vg";
       lvs = {
-        # swap = {
-        #   name = "swap";
-        #   size = swapSize;
-        #   content = {
-        #     type = "swap";
-        #     resumeDevice = true; # resume from hiberation from this device
-        #   };
-        # };
         nixos = {
           # Uses different format for specifying size
           # Based on `lvcreate` arguments
@@ -95,6 +87,9 @@
                 # we can access all other subvolumes from this subvolume.
                 mountOptions = [ "subvolid=5" ];
               };
+              # why use @ in btrfs subvolume names:
+              # https://askubuntu.com/questions/987104/why-the-in-btrfs-subvolume-names
+              # https://www.reddit.com/r/btrfs/comments/11wnyoj/btrfs_what_is/
               "@nix" = {
                 mountOptions = [ "subvol=nix" ] ++ mountOptions;
                 mountpoint = "/nix";
