@@ -15,6 +15,6 @@ let
 in {
   "git-credentials.age".publicKeys = systems;
   # "johnson-hu-gpg-primary-key.priv.age.age".publicKeys = systems;
-  # "johnson-hu-gpg-subkeys.priv.age.age".publicKeys = systems;
+  "johnson-hu-gpg-subkeys.priv.age.age".publicKeys = systems;
   "johnson-hu-ssh-key.age".publicKeys = systems;
 }

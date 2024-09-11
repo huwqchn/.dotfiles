@@ -1,10 +1,10 @@
 [files]
-extend-exclude = ["themes/*", "**.age"]
+extend-exclude = ["themes/*", "**.age", "**.pub"]
 ignore-dot = true
 ignore-files = true
 
 [type.age]
-extend-glob = ["*.age"]
+extend-glob = ["*.age", "*.pub"]
 check-file = false
 
 [default]
