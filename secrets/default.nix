@@ -44,18 +44,18 @@ in {
       }
       // user_readable;
 
-    # "johnson-hu-gpg-subkeys.priv.age" =
-    #   {
-    #     path = "/home/${myvars.userName}/.gnupg/johnson-hu-gpg-subkeys.priv.age";
-    #     file = ./johnson-hu-gpg-subkeys.priv.age.age;
-    #   }
-    #   // user_readable;
-    #
-    # "johnson-hu-ssh-key.age" =
-    #   {
-    #     path = "/home/${myvars.userName}/.ssh/johnson-hu-ssh-key";
-    #     file = ./johnson-hu-ssh-key.age;
-    #   }
-    #   // user_readable;
+    "johnson-hu-gpg-subkeys.priv.age" =
+      {
+        path = "/home/${myvars.userName}/.gnupg/johnson-hu-gpg-subkeys.priv.age";
+        file = ./johnson-hu-gpg-subkeys.priv.age.age;
+      }
+      // user_readable;
+
+    "johnson-hu-ssh-key.age" =
+      {
+        path = "/home/${myvars.userName}/.ssh/johnson-hu-ssh-key";
+        file = ./johnson-hu-ssh-key.age;
+      }
+      // user_readable;
   };
 }
