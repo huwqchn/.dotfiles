@@ -6,7 +6,7 @@
 }: let
   package = pkgs.hypridle;
   suspendScript = pkgs.writeShellScript "suspend-script" ''
-    # check if any player has statuse "Playing"
+    # check if any player has statutes "Playing"
     ${lib.getExe pkgs.playerctl} -a status | ${lib.getExe pkgs.ripgrep} Playing -q
     # only suspend if nothing is playing
     if [ $? == 1 ]; then
@@ -26,10 +26,9 @@ in {
     enable = true;
     inherit package;
 
-
     settings = {
       general = {
-        # avoid starting mulitple hyprlock instances
+        # avoid starting multiple hyprlock instances
         lock_cmd = "pidof ${hyprlock} || ${hyprlock}";
 
         # lock before suspend
@@ -58,25 +57,24 @@ in {
           on-resume = "brightnessctl -rd dell::kbd_backlight";
         }
         {
-            # 5min
-            timeout = 300;
-            # lock screen when timeout has passed
-            on-timeout = "loginctl lock-session";
+          # 5min
+          timeout = 300;
+          # lock screen when timeout has passed
+          on-timeout = "loginctl lock-session";
         }
         {
-            inherit timeout;
-            # screen off when timeout has passed
-            on-timeout = "hyprctl dispatch dpms off";
-            # screen on when activity is detected after timeout has fired.
-            on-resume = "hyprctl dispatch dpms on";
+          inherit timeout;
+          # screen off when timeout has passed
+          on-timeout = "hyprctl dispatch dpms off";
+          # screen on when activity is detected after timeout has fired.
+          on-resume = "hyprctl dispatch dpms on";
         }
         {
-            timeout = timeout + 10;
-            # suspend pc
-            on-timeout = suspendScript.outPath;
+          timeout = timeout + 10;
+          # suspend pc
+          on-timeout = suspendScript.outPath;
         }
       ];
     };
   };
 }
-

@@ -1,5 +1,6 @@
 {
   pkgs,
+  config,
   ags,
   mylib,
   ...
@@ -18,6 +19,12 @@
     extraPackages = with pkgs; [
       accountsservice
     ];
+  };
 
+  home.persistence = {
+    "/persist/${config.home.homeDirectory}".directories = [
+      ".cache/ags"
+      ".local/share/com.github.Aylur.ags"
+    ];
   };
 }

@@ -1,22 +1,19 @@
-{
-  lib,
-  ...
-}: let
+{lib, ...}: let
   # workspaces
   # binds $mod + [shift +] {1..10} to [move to] workspace {1..10}
   workspaces = builtins.concatLists (builtins.genList (
-    x: let
-      ws = let
-        c = (x + 1) / 10;
-      in
-        builtins.toString (x + 1 - (c * 10));
-    in [
-      "$mod, ${ws}, workspace, ${toString (x + 1)}"
-      "$mod SHIFT, ${ws}, movetoworkspace, ${toString (x + 1)}"
-      "$mod CTRL, ${ws}, movetoworkspacesilent, ${toString (x + 1)}"
-    ]
-  )
-  10);
+      x: let
+        ws = let
+          c = (x + 1) / 10;
+        in
+          builtins.toString (x + 1 - (c * 10));
+      in [
+        "$mod, ${ws}, workspace, ${toString (x + 1)}"
+        "$mod SHIFT, ${ws}, movetoworkspace, ${toString (x + 1)}"
+        "$mod CTRL, ${ws}, movetoworkspacesilent, ${toString (x + 1)}"
+      ]
+    )
+    10);
 
   toggle = program: service: let
     prog = builtins.substring 0 14 program;
@@ -30,70 +27,72 @@ in {
     "$browser" = "firefox";
     "$terminal" = "wezterm";
     # keybindings
-    bind = [
-      # command
-      "$mod, Escape, exit,"
-      "$mod, Backspace, exec, ${toggle "wlogout" true} -p layer-shell"
-      "$mod, Q, killactive,"
-      "$mod, L, exec, ${runOnce "hyprlock"}"
-      "$mod, B, exec, $browser"
-      "$mod, return, exec, $terminal"
-      "$mod, space, exec, ags -t launcher"
-      "$mod, A, exec, ags -q; ags"
-      # "SUPER ALT, E,           exec, ags -r 'launcher.open(\":em \")'"
-      # "SUPER ALT, V,           exec, ags -r 'launcher.open(\":ch \")'"
-      ",Print, exec, ags -r 'recorder.screenshot()'"
-      "$mod, Print, exec, ags -r 'recorder.screenshot(true)'"
-      "$mod ALT,Print, exec, ags -r 'recorder.start()'"
-      ",XF86PowerOff, exec, ags -t powermenu"
-      "$mod, space, exec, ags -t launcher"
-      "$mod, U, exec, XDG_CURRENT_DESKTOP=GNOME gnome-control-center"
+    bind =
+      [
+        # command
+        "$mod, Escape, exit,"
+        "$mod, Backspace, exec, ${toggle "wlogout" true} -p layer-shell"
+        "$mod, Q, killactive,"
+        "$mod, L, exec, ${runOnce "hyprlock"}"
+        "$mod, B, exec, $browser"
+        "$mod, return, exec, $terminal"
+        "$mod, space, exec, ags -t launcher"
+        "$mod, A, exec, ags -q; ags"
+        # "SUPER ALT, E,           exec, ags -r 'launcher.open(\":em \")'"
+        # "SUPER ALT, V,           exec, ags -r 'launcher.open(\":ch \")'"
+        ",Print, exec, ags -r 'recorder.screenshot()'"
+        "$mod, Print, exec, ags -r 'recorder.screenshot(true)'"
+        "$mod ALT,Print, exec, ags -r 'recorder.start()'"
+        ",XF86PowerOff, exec, ags -t powermenu"
+        "$mod, space, exec, ags -t launcher"
+        "$mod, U, exec, XDG_CURRENT_DESKTOP=GNOME gnome-control-center"
 
-      "$mod, T, togglefloating,"
-      "$mod SHIFT, T, pseudo,"
-      "$mod, J, togglesplit,"
-      "$mod, F, fullscreen, 0"
-      "$mod, M, fullscreen, 1"
-      "$mod, G, togglegroup,"
-      "$mod, P, pin,"
-      # move focuse
-      "$mod, N, movefocus, l"
-      "$mod, E, movefocus, d"
-      "$mod, I, movefocus, u"
-      "$mod, O, movefocus, r"
-      # move window
-      "$mod SHIFT, N, movewindow, l"
-      "$mod SHIFT, E, movewindow, d"
-      "$mod SHIFT, I, movewindow, u"
-      "$mod SHIFT, O, movewindow, r"
-      # special workspace
-      "$mod SHIFT, grave, togglespecialworkspace"
-      "$mod, grave, movetoworkspace, special"
-      "$mod CTRL, grave, movetoworkspacesilent, special"
-      # monitors
-      "$mod, comma, focusmonitor, l"
-      "$mod, period, focusmonitor, r"
-      "$mod SHIFT, comma, movecurrentworkspacetomonitor, l"
-      "$mod SHIFT, period, movecurrentworkspacetomonitor, r"
-      # workspace
-      "$mod, W, workspace, empty" # move to the first empty worksapce
-      "$mod, tab, workspace, m+1"
-      "$mod SHIFT, tab, workspace, m-1"
-      "ALT, tab, cyclenext,"
-      "ALT SHIFT, tab, bringactivetotop,"
-      "$mod, mouse_down, workspace, e+1"
-      "$mod, mouse_up, workspace, e-1"
-      "$mod, bracketleft, workspace, e+1"
-      "$mod, bracketright, workspace, e-1"
-      "$mod SHIFT, bracketleft, movetoworkspace, -1"
-      "$mod SHIFT, bracketright, movetoworkspace, +1"
-      # send focused workspace to left/right monitor
-      "$mod SHIFT, bracketleft, movecurrentworkspacetomonitor, l"
-      "$mod SHIFT, bracketright, movecurrentworkspacetomonitor, r"
-      # send focused workspace to left/right space silent
-      "$mod CTRL, bracketleft, movetoworkspacesilent, -1"
-      "$mod CTRL, bracketright, movetoworkspacesilent, +1"
-    ] ++ workspaces;
+        "$mod, T, togglefloating,"
+        "$mod SHIFT, T, pseudo,"
+        "$mod, J, togglesplit,"
+        "$mod, F, fullscreen, 0"
+        "$mod, M, fullscreen, 1"
+        "$mod, G, togglegroup,"
+        "$mod, P, pin,"
+        # move focus
+        "$mod, N, movefocus, l"
+        "$mod, E, movefocus, d"
+        "$mod, I, movefocus, u"
+        "$mod, O, movefocus, r"
+        # move window
+        "$mod SHIFT, N, movewindow, l"
+        "$mod SHIFT, E, movewindow, d"
+        "$mod SHIFT, I, movewindow, u"
+        "$mod SHIFT, O, movewindow, r"
+        # special workspace
+        "$mod SHIFT, grave, togglespecialworkspace"
+        "$mod, grave, movetoworkspace, special"
+        "$mod CTRL, grave, movetoworkspacesilent, special"
+        # monitors
+        "$mod, comma, focusmonitor, l"
+        "$mod, period, focusmonitor, r"
+        "$mod SHIFT, comma, movecurrentworkspacetomonitor, l"
+        "$mod SHIFT, period, movecurrentworkspacetomonitor, r"
+        # workspace
+        "$mod, W, workspace, empty" # move to the first empty worksapce
+        "$mod, tab, workspace, m+1"
+        "$mod SHIFT, tab, workspace, m-1"
+        "ALT, tab, cyclenext,"
+        "ALT SHIFT, tab, bringactivetotop,"
+        "$mod, mouse_down, workspace, e+1"
+        "$mod, mouse_up, workspace, e-1"
+        "$mod, bracketleft, workspace, e+1"
+        "$mod, bracketright, workspace, e-1"
+        "$mod SHIFT, bracketleft, movetoworkspace, -1"
+        "$mod SHIFT, bracketright, movetoworkspace, +1"
+        # send focused workspace to left/right monitor
+        "$mod SHIFT, bracketleft, movecurrentworkspacetomonitor, l"
+        "$mod SHIFT, bracketright, movecurrentworkspacetomonitor, r"
+        # send focused workspace to left/right space silent
+        "$mod CTRL, bracketleft, movetoworkspacesilent, -1"
+        "$mod CTRL, bracketright, movetoworkspacesilent, +1"
+      ]
+      ++ workspaces;
 
     bindm = [
       # Move/resize windows with mainMod + LMB/RMB and dragging
@@ -134,7 +133,6 @@ in {
       ", XF86MonBrightnessUp, exec, brillo -q -u 300000 -A 5"
       ", XF86MonBrightnessDown, exec, brillo -q -u 300000 -U 5"
     ];
-
   };
   wayland.windowManager.hyprland.extraConfig = ''
     # window resize

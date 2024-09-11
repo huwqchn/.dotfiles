@@ -1,4 +1,8 @@
-{ config, pkgs, ... }: {
+{
+  config,
+  pkgs,
+  ...
+}: {
   home.packages = with pkgs; [
     fishPlugins.done
     fishPlugins.fzf-fish
@@ -134,9 +138,9 @@
           end
         '';
       };
-     fish_greeting = {
-       body = "fastfetch";
-     };
+      fish_greeting = {
+        body = "fastfetch";
+      };
       backup = {
         argumentNames = "filename";
         body = "cp $filename $filename.bak";
@@ -203,5 +207,7 @@
       };
     };
   };
+  home.persistence = {
+    "/persist/${config.home.homeDirectory}".files = [".local/share/fish/fish_history"];
+  };
 }
-

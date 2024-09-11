@@ -1,7 +1,7 @@
-{
+{config, ...}: {
   programs.atuin = {
     enable = true;
-    flags = [ "--disable-up-arrow" ];
+    flags = ["--disable-up-arrow"];
     settings = {
       ## enable or disable automatic sync
       auto_sync = true;
@@ -33,5 +33,10 @@
       ## possible values: emacs, subl
       word_jump_mode = "emacs";
     };
+  };
+  home.persistence = {
+    "/persist/${config.home.homeDirectory}".directories = [
+      ".local/share/atuin"
+    ];
   };
 }

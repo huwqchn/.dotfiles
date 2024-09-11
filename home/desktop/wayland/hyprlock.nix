@@ -1,7 +1,4 @@
-{
-  pkgs,
-  ...
-}: let
+{pkgs, ...}: let
   package = pkgs.hyprlock;
 in {
   programs.hyprlock = {
@@ -13,7 +10,7 @@ in {
         disable_loading_bar = true;
       };
 
-      backgroud = [
+      background = [
         {
           monitor = "";
           path = "./tokyonight.png";
@@ -72,4 +69,3 @@ in {
     };
   };
 }
-

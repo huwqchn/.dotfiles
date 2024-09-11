@@ -1,4 +1,8 @@
-{ pkgs, ... }:
+{
+  pkgs,
+  config,
+  ...
+}:
 # Platform-independent terminal setup
 {
   home.packages = with pkgs; [
@@ -78,11 +82,25 @@
     # It's really useful when you work on a project for a long time.
     git-trim
     gitleaks
-
   ];
 
   programs = {
     jq.enable = true;
     rio.enable = true;
+  };
+
+  home.persistence = {
+    "/persist/${config.home.homeDirectory}" = {
+      directories = [
+        ".cache/brillo"
+        ".cache/fontconfig"
+        # I dont know what this is, but it's huge, so it probably useful
+        ".cache/mesa_shader_cache"
+        ".config/pulse"
+      ];
+      files = [
+        ".local/state/lesshst"
+      ];
+    };
   };
 }

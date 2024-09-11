@@ -141,4 +141,7 @@ in {
     };
   };
   xdg.configFile."fastfetch/pngs".source = mylib.relativeToConfig "fastfetch/pngs";
+  home.persistence = {
+    "/persist/${config.home.homeDirectory}".directories = [".cache/fastfetch"];
+  };
 }

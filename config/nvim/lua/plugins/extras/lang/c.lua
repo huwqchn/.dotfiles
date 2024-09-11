@@ -29,7 +29,7 @@ return {
         function()
           require("cscope_maps").cscope_prompt("g", vim.fn.expand("<cword>"))
         end,
-        desc = "Find this global defination",
+        desc = "Find this global definition",
       },
       {
         "<leader>ic",

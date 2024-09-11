@@ -1,7 +1,6 @@
 {
   impermanence,
   pkgs,
-  myvars,
   config,
   lib,
   ...
@@ -43,60 +42,6 @@
       "/etc/ssh/ssh_host_rsa_key"
       "/etc/ssh/ssh_host_rsa_key.pub"
     ];
-
-    users.${myvars.userName} = {
-      directories = [
-        "Downloads"
-        "Documents"
-        "Desktop"
-        "Music"
-        "Videos"
-        "Public"
-        "Templates"
-        "Pictures"
-
-        "Projects"
-        "Repos"
-        "Workspaces"
-
-        ".dotfiles"
-        {
-          directory = ".ssh";
-          mode = "0700";
-        }
-        {
-          directory = ".gnupg";
-          mode = "0700";
-        }
-        {
-          directory = ".docker";
-          mode = "0700";
-        }
-
-        ".cache"
-        ".local/share"
-        ".local/state"
-
-        # my neovim AI plugin
-        ".config/github-copilot"
-        ".config/TabNine"
-
-        # browsers
-        ".mozilla"
-        ".config/google-chrome"
-
-        # languages package managers
-        ".npm"
-        ".conda"
-        "go"
-
-        # mise
-        ".config/pulse"
-      ];
-      files = [
-        ".config/gh/hosts.yml"
-      ];
-    };
   };
   programs.fuse.userAllowOther = true;
 

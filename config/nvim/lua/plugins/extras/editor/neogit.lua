@@ -7,7 +7,7 @@ return {
       { "<leader>gn", "<cmd>Neogit<cr>", desc = "Neogit" },
     },
     opts = {
-      intergration = {
+      integration = {
         diffview = true,
       },
     },
