@@ -3,7 +3,7 @@ return {
     "chipsenkbeil/distant.nvim.git",
     branch = "v0.2",
     cmd = {
-      "DistantLauch",
+      "DistantLaunch",
       "DistantOpen",
       "DistantConnect",
       "DistantInstall",

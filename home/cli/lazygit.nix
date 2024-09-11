@@ -1,4 +1,4 @@
-let
+{config, ...}: let
   shellAliases = {
     "lg" = "lazygit";
   };
@@ -23,16 +23,16 @@ in {
         timeFormat = "02 Jan 06 15:04 MST";
         theme = {
           lightTheme = false;
-          activeBorderColor = [ "green" "bold" ];
-          inactiveBorderColor = [ "black" ];
-          optionsTextColor = [ "white" ];
-          selectedLineBgColor = [ "reverse" ];
-          selectedRangeBgColor = [ "blue" ];
-          cherryPickedCommitBgColor = [ "cyan" ];
-          cherryPickedCommitFgColor = [ "blue" ];
-          unstagedChangesColor = [ "red" ];
+          activeBorderColor = ["green" "bold"];
+          inactiveBorderColor = ["black"];
+          optionsTextColor = ["white"];
+          selectedLineBgColor = ["reverse"];
+          selectedRangeBgColor = ["blue"];
+          cherryPickedCommitBgColor = ["cyan"];
+          cherryPickedCommitFgColor = ["blue"];
+          unstagedChangesColor = ["red"];
         };
-        commitLenght.show = true;
+        commitLength.show = true;
         skipNoStagedFilesWarning = false;
         showListFooter = true;
         showFileTree = true;
@@ -104,7 +104,7 @@ in {
           nextBlock-alt = "o";
           nextBlock-alt2 = "<tab>";
           prevBlock-alt2 = "<backtab>";
-          jumpToBlock = [ "1" "2" "3" "4" "5" ];
+          jumpToBlock = ["1" "2" "3" "4" "5"];
           nextMatch = "k";
           prevMatch = "K";
           startSearch = "/";
@@ -154,7 +154,6 @@ in {
           allBranchesLogGraph = "a";
         };
         files = {
-
           commitChanges = "c";
           commitChangesWithoutHook = "w";
           amendLastCommit = "A";
@@ -233,5 +232,8 @@ in {
       notARepository = "skip";
       promptToReturnFromSubprocess = true;
     };
+  };
+  home.persistence = {
+    "/persist/${config.home.homeDirectory}".files = [".local/state/lazygit"];
   };
 }

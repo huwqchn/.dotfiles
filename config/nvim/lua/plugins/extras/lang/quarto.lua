@@ -53,7 +53,7 @@ return {
     end,
   },
 
-  -- send code from python/r/qmd documets to a terminal or REPL
+  -- send code from python/r/qmd documents to a terminal or REPL
   -- like ipython, R, bash
   {
     "jpalardy/vim-slime",

@@ -1,4 +1,11 @@
-{ config, pkgs, lib, mylib, neovim-nightly, ... }: let
+{
+  config,
+  pkgs,
+  lib,
+  mylib,
+  neovim-nightly,
+  ...
+}: let
   inherit (config.lib.file) mkOutOfStoreSymlink;
 in {
   home.sessionVariables = {
@@ -13,9 +20,9 @@ in {
       comment = "Edit text files";
       icon = "nvim";
       exec = "xterm -e ${pkgs.neovim}/bin/nvim %F";
-      categories = [ "TerminalEmulator" ];
+      categories = ["TerminalEmulator"];
       terminal = false;
-      mimeType = [ "text/plain" ];
+      mimeType = ["text/plain"];
     };
   };
 
@@ -56,6 +63,18 @@ in {
       lua-language-server
       stylua
       alejandra
+    ];
+  };
+
+  home.persistence = {
+    "/persist/${config.home.homeDirectory}".directories = [
+      ".local/state/nvim"
+      ".local/share/nvim"
+      ".cache/nvim"
+      ".local/share/TabNine"
+      ".config/TabNine"
+      ".config/gihhub-copilot"
+      ".codeium"
     ];
   };
 }

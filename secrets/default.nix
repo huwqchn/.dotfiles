@@ -3,7 +3,20 @@
   agenix,
   myvars,
   ...
-}: {
+}: let
+  # noaccess = {
+  #   mode = "0000";
+  #   owner = "root";
+  # };
+  # high_security = {
+  #   mode = "0500";
+  #   owner = "root";
+  # };
+  user_readable = {
+    mode = "0500";
+    owner = myvars.userName;
+  };
+in {
   imports = [
     agenix.nixosModules.default
   ];
@@ -20,15 +33,29 @@
   ];
 
   age.secrets = {
-    "git-credentials" = {
-      # whether secrets are symlinked to age.secrets.<name>.path
-      symlink = true;
-      # target path for decrypted file
-      path = "/home/${myvars.userName}/.git-credentials";
-      # encrypted file path
-      file = ./git-credentials.age;
-      mode = "0700";
-      owner = "${myvars.userName}";
-    };
+    "git-credentials" =
+      {
+        # whether secrets are symlinked to age.secrets.<name>.path
+        symlink = true;
+        # target path for decrypted file
+        path = "/home/${myvars.userName}/.git-credentials";
+        # encrypted file path
+        file = ./git-credentials.age;
+      }
+      // user_readable;
+
+    "johnson-hu-gpg-subkeys.priv.age" =
+      {
+        path = "/home/${myvars.userName}/.gnupg/johnson-hu-gpg-subkeys.priv.age";
+        file = ./johnson-hu-gpg-subkeys.priv.age.age;
+      }
+      // user_readable;
+
+    "johnson-hu-ssh-key.age" =
+      {
+        path = "/home/${myvars.userName}/.ssh/johnson-hu-ssh-key";
+        file = ./johnson-hu-ssh-key.age;
+      }
+      // user_readable;
   };
 }

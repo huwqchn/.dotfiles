@@ -1,11 +1,16 @@
 [files]
+extend-exclude = ["themes/*", "**.age"]
 ignore-dot = true
 ignore-files = true
-extend-exclude = ["themes/*"]
+
+[type.age]
+extend-glob = ["*.age"]
+check-file = false
 
 [default]
 binary = false
 
-
 [default.extend-words]
 ags = "ags"
+crypted = "crypted"
+nore = "nore"

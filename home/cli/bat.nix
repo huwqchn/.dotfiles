@@ -1,4 +1,8 @@
-{ pkgs-stable, ... }: let
+{
+  pkgs-stable,
+  config,
+  ...
+}: let
   shellAliases = {
     "cat" = "bat";
   };
@@ -16,5 +20,8 @@ in {
       batgrep
       batwatch
     ];
+  };
+  home.persistence = {
+    "/persist/${config.home.homeDirectory}".files = [".cache/bat"];
   };
 }

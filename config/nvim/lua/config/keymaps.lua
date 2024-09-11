@@ -169,7 +169,7 @@ map("n", "<C-l>", "<C-o>")
 map("n", "[z", "zh", { desc = "scroll left", silent = true }) -- left
 map("n", "]z", "zl", { desc = "scroll right", silent = true }) -- right
 
--- Windows managenment
+-- Windows management
 -- Better window movement
 -- naviagate window
 map("n", "<C-n>", "<C-w>h", { desc = "Go to left window" })
@@ -190,7 +190,7 @@ map("n", "<C-Left>", "<cmd>vertical resize -2<CR>", { desc = "Decrease window wi
 map("n", "<C-Right>", "<cmd>vertical resize +2<CR>", { desc = "Increase window width" })
 
 -- other window keybindings
-map("n", "<C-k>", "<C-w>o", { desc = "Clear other windwos" })
+map("n", "<C-k>", "<C-w>o", { desc = "Clear other windows" })
 -- map("n", "<C-x>", "<C-w>x", { desc = "Exchange window" })
 map("n", "<C-q>", function()
   -- close current window if there are more than 1 window
@@ -236,14 +236,14 @@ end, { desc = "split right" })
 map("n", "<leader>wI", "<C-w>b<C-w>K", { desc = "rotate window up" })
 map("n", "<leader>wN", "<C-w>b<C-w>H", { desc = "rotate window left" })
 
--- move current windwo to the far left, bottom, right, top
+-- move current window to the far left, bottom, right, top
 map("n", "<leader>wn", "<C-w>H", { desc = "move to the far left" })
 map("n", "<leader>we", "<C-w>J", { desc = "move to the far bottom" })
 map("n", "<leader>wo", "<C-w>L", { desc = "move to the far right" })
 map("n", "<leader>wi", "<C-w>K", { desc = "move to the far top" })
 
 -- Switch buffer with tab
--- vim.keymap.set("n", "<tab>", "<tab>") -- confilct with <C-i>
+-- vim.keymap.set("n", "<tab>", "<tab>") -- conflict with <C-i>
 vim.keymap.set("n", "<tab>", "]b", { desc = "Next buffer", remap = true, silent = true })
 vim.keymap.set("n", "<s-tab>", "[b", { desc = "Prev buffer", remap = true, silent = true })
 

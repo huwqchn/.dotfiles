@@ -59,7 +59,7 @@
 
     # cursorTheme = {
     #   name = "Bibata-Modern";
-    #   paackage = pkgs.bibata-cursors;
+    #   package = pkgs.bibata-cursors;
     #   size = 0;
     # };
   };

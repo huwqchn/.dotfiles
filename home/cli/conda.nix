@@ -1,5 +1,9 @@
-{ pkgs, ... }: {
-  home.packages = [ pkgs.conda ];
+{
+  pkgs,
+  config,
+  ...
+}: {
+  home.packages = [pkgs.conda];
 
   home.file.".condarc" = {
     text = ''
@@ -12,4 +16,7 @@
     executable = false;
   };
 
+  home.persistence = {
+    "/persist/${config.home.homeDirectory}".directories = [".conda"];
+  };
 }
