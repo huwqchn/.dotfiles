@@ -4,17 +4,10 @@
   myvars,
   ...
 }: let
-  # noaccess = {
-  #   mode = "0000";
-  #   owner = "root";
-  # };
-  # high_security = {
-  #   mode = "0500";
-  #   owner = "root";
-  # };
   user_readable = {
-    mode = "0500";
+    symlink = false;
     owner = myvars.userName;
+    mode = "0500";
   };
 in {
   imports = [
@@ -35,8 +28,6 @@ in {
   age.secrets = {
     "git-credentials" =
       {
-        # whether secrets are symlinked to age.secrets.<name>.path
-        symlink = true;
         # target path for decrypted file
         path = "/home/${myvars.userName}/.git-credentials";
         # encrypted file path
