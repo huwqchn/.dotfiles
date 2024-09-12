@@ -3,6 +3,7 @@
   config,
   ags,
   mylib,
+  matugen,
   ...
 }: {
   imports = [
@@ -12,6 +13,10 @@
     bun
     dart-sass
     hyprpicker
+    matugen.packages.${pkgs.system}.default
+    swww
+    brightnessctl
+    slurp
   ];
   programs.ags = {
     enable = true;

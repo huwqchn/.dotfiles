@@ -200,6 +200,11 @@
       # inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    matugen = {
+      url = "github:/InioX/Matugen";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     wallpapers = {
       url = "github:huwqchn/wallpapers";
       flake = false;
