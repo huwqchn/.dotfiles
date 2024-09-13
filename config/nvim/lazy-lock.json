@@ -1,5 +1,5 @@
 {
-  "CopilotChat.nvim": { "branch": "canary", "commit": "9e7010bd33808e31d3f729b5e18a772d8e84f704" },
+  "CopilotChat.nvim": { "branch": "canary", "commit": "d43fab67c328946fbf8e24fdcadfdb5410517e1f" },
   "LazyVim": { "branch": "main", "commit": "12818a6cb499456f4903c5d8e68af43753ebc869" },
   "SchemaStore.nvim": { "branch": "main", "commit": "76cd2aeb3080d575617dd88da887cfa9d8c66014" },
   "bufferline.nvim": { "branch": "main", "commit": "0b2fd861eee7595015b6561dade52fb060be10c4" },
@@ -50,12 +50,11 @@
   "lazydev.nvim": { "branch": "main", "commit": "491452cf1ca6f029e90ad0d0368848fac717c6d2" },
   "lualine.nvim": { "branch": "master", "commit": "b431d228b7bbcdaea818bdc3e25b8cdbe861f056" },
   "luvit-meta": { "branch": "main", "commit": "ce76f6f6cdc9201523a5875a4471dcfe0186eb60" },
-  "maim.nvim": { "branch": "main", "commit": "eed9b174c54df28de7cd25eb738147f8334b9cc1" },
   "markdown-preview.nvim": {
     "branch": "master",
     "commit": "a923f5fc5ba36a3b17e289dc35dc17f66d0548ee"
   },
-  "markdown.nvim": { "branch": "main", "commit": "cdb58fc97c49a1ab75b35d99183c35b5863e845a" },
+  "markdown.nvim": { "branch": "main", "commit": "2ddb145c9e60267a723083b5966189b13febc72b" },
   "mason-lspconfig.nvim": {
     "branch": "main",
     "commit": "25c11854aa25558ee6c03432edfa0df0217324be"
@@ -117,12 +116,15 @@
     "commit": "0f0d5bc67786c36edc2cb6fb5faa5c09dd1a6e10"
   },
   "overseer.nvim": { "branch": "master", "commit": "236e60cdac6410dd95ea5cecafdb801a304d6a41" },
-  "peek.nvim": { "branch": "master", "commit": "5820d937d5414baea5f586dc2a3d912a74636e5b" },
   "persistence.nvim": { "branch": "main", "commit": "f6aad7dde7fcf54148ccfc5f622c6d5badd0cc3d" },
   "playground": { "branch": "master", "commit": "ba48c6a62a280eefb7c85725b0915e021a1a0749" },
   "plenary.nvim": { "branch": "master", "commit": "ec289423a1693aeae6cd0d503bac2856af74edaa" },
   "project.nvim": { "branch": "main", "commit": "8c6bad7d22eef1b71144b401c9f74ed01526a4fb" },
   "qmk.nvim": { "branch": "main", "commit": "cfa6cecae362d23778cd97317d33ab12671e157c" },
+  "render-markdown.nvim": {
+    "branch": "main",
+    "commit": "2ddb145c9e60267a723083b5966189b13febc72b"
+  },
   "rustaceanvim": { "branch": "master", "commit": "047f9c9d8cd2861745eb9de6c1570ee0875aa795" },
   "scope.nvim": { "branch": "main", "commit": "5e3f5ead970317b2f276d38dc031cb4bc5742cd4" },
   "smart-splits.nvim": { "branch": "master", "commit": "929349c8e0ee1dfea99ccfdcb1c45207b18afe96" },
