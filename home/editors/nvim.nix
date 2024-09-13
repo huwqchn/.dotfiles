@@ -63,7 +63,10 @@ in {
       lua-language-server
       stylua
       alejandra
+      # image tools
+      imagemagick
     ];
+    extraLuaPackages = ps: [ps.magick];
   };
 
   home.persistence = {
