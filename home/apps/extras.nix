@@ -3,5 +3,8 @@
     # instant messaging
     telegram-desktop
     discord
+
+    # note taking
+    obsidian
   ];
 }
