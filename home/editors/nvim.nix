@@ -73,7 +73,7 @@ in {
       ".cache/nvim"
       ".local/share/TabNine"
       ".config/TabNine"
-      ".config/gihhub-copilot"
+      ".config/github-copilot"
       ".codeium"
     ];
   };
