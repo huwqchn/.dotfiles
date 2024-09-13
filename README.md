@@ -1,5 +1,5 @@
 ## My Nixos Configuration
 
-# TODO
+### TODO
 
 [ ] use home.persistent instead of envirmenent.persistent
