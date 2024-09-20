@@ -82,6 +82,8 @@
     # It's really useful when you work on a project for a long time.
     git-trim
     gitleaks
+
+    brotab
   ];
 
   programs = {
