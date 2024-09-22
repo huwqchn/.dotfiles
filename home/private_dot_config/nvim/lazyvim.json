@@ -50,7 +50,6 @@
     "plugins.extras.editor.dap",
     "plugins.extras.editor.code-runner",
     "plugins.extras.editor.ssr",
-    "plugins.extras.editor.symbol-usage",
     "plugins.extras.editor.fzf",
     "plugins.extras.test.coverage",
     "plugins.extras.lang.bash",
@@ -74,8 +73,9 @@
     "plugins.extras.coding.neotab"
   ],
   "news": {
-    "NEWS.md": "6077",
-    "doc/news.txt": "9272"
+    "NEWS.md": "6520",
+    "doc/news.txt": "24450"
   },
   "version": 6
 }
+
