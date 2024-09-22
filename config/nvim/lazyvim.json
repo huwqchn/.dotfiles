@@ -45,7 +45,6 @@
     "plugins.extras.editor.dap",
     "plugins.extras.editor.code-runner",
     "plugins.extras.editor.ssr",
-    "plugins.extras.editor.symbol-usage",
     "plugins.extras.editor.fzf",
     "plugins.extras.test.coverage",
     "plugins.extras.lang.bash",
