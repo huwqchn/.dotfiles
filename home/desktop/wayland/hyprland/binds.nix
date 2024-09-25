@@ -44,7 +44,6 @@ in {
         "$mod, Print, exec, ags -r 'recorder.screenshot(true)'"
         "$mod ALT,Print, exec, ags -r 'recorder.start()'"
         ",XF86PowerOff, exec, ags -t powermenu"
-        "$mod, space, exec, ags -t launcher"
         "$mod, U, exec, XDG_CURRENT_DESKTOP=GNOME gnome-control-center"
 
         "$mod, T, togglefloating,"
