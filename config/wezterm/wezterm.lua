@@ -24,7 +24,7 @@ config.cursor_thickness = 4
 config.underline_position = -6
 
 -- -- opacity
--- config.window_background_opacity = 0.85
+config.window_background_opacity = 0.85
 -- config.term = "wezterm"
 -- config.window_decorations = "RESIZE"
 -- config.window_close_confirmation = "AlwaysPrompt"
