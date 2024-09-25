@@ -37,7 +37,8 @@ in {
         "$mod, B, exec, $browser"
         "$mod, return, exec, $terminal"
         "$mod, space, exec, ags -t launcher"
-        "$mod, A, exec, ags -q; ags"
+        "$mod SHIFT, R, exec, ags -q; ags"
+        "$mod, A, exec, ags -t overview"
         # "SUPER ALT, E,           exec, ags -r 'launcher.open(\":em \")'"
         # "SUPER ALT, V,           exec, ags -r 'launcher.open(\":ch \")'"
         ",Print, exec, ags -r 'recorder.screenshot()'"
@@ -85,8 +86,8 @@ in {
         "$mod SHIFT, bracketleft, movetoworkspace, -1"
         "$mod SHIFT, bracketright, movetoworkspace, +1"
         # send focused workspace to left/right monitor
-        "$mod SHIFT, bracketleft, movecurrentworkspacetomonitor, l"
-        "$mod SHIFT, bracketright, movecurrentworkspacetomonitor, r"
+        "$mod ALT, bracketleft, movecurrentworkspacetomonitor, l"
+        "$mod ALT, bracketright, movecurrentworkspacetomonitor, r"
         # send focused workspace to left/right space silent
         "$mod CTRL, bracketleft, movetoworkspacesilent, -1"
         "$mod CTRL, bracketright, movetoworkspacesilent, +1"
