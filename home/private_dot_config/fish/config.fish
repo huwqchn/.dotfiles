@@ -77,7 +77,6 @@ alias top btop
 alias cat bat
 alias du dust
 alias dot chezmoi
-alias rm rip
 alias rn rnr
 alias sysctl systeroid
 alias uniq huniq
