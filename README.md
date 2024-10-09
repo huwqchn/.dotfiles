@@ -1,5 +1,7 @@
 # My Nixos Configuration
 
+Nixos is a rabbit hole that I have been wanting to go down for a while.
+
 ## WIP
 
 This nixos configuration is a work in progress. I am currently using it on my personal laptop, but
@@ -15,9 +17,10 @@ are many improvements that can be made. I will update this README as I make prog
   - [ ] zsh
   - [ ] nushell
 - [ ] complete hyprland config
-  - [ ] border
-  - [ ] monitor self-defined module
-  - [ ] nvidia self-defined module
+  - [ ] borders/gaps/colors
+  - [ ] fix unused keybindings
+  - [ ] monitor
+  - [ ] nvidia
   - [ ] hyprlock
 - [ ] themes (create a nix repos for themes, name of `nixporn`)
   - [ ] toykonight
@@ -26,8 +29,12 @@ are many improvements that can be made. I will update this README as I make prog
   - [ ] nord
   - [ ] rose-pine
   - [ ] kawagana
-- [ ] networks
+- [ ] networks (for vpn)
   - [ ] dae
   - [ ] sing-box
 - [ ] onedrive
 - [ ] complete firefox config
+- [ ] remote deployment
+- [ ] pkgs
+  - [ ] wallpapers
+  - [ ] other cursors
