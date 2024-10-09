@@ -78,6 +78,7 @@ in {
         refreshInterval = 10;
         fetchInterval = 60;
       };
+      reporting = "undetermined";
       splashUpdatesIndex = 0;
       confirmOnQuit = false;
       quitOnTopLevelReturn = false;
@@ -124,7 +125,7 @@ in {
           # scrollDownMain-alt1 = "E";
           scrollUpMain-alt2 = "<c-u>";
           scrollDownMain-alt2 = "<c-d>";
-          executeCustomCommand = ":";
+          executeShellCommand = ":";
           createRebaseOptionsMenu = "m";
           pushFiles = "P";
           pullFiles = "p";
