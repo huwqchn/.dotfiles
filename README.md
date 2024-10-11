@@ -12,6 +12,7 @@ are many improvements that can be made. I will update this README as I make prog
 
 - [ ] ags config
 - [ ] fcitx and rime
+- [ ] integrate yubikey
 - [ ] shells
   - [ ] bash
   - [ ] zsh
@@ -38,3 +39,6 @@ are many improvements that can be made. I will update this README as I make prog
 - [ ] pkgs
   - [ ] wallpapers
   - [ ] other cursors
+- [ ] apps
+- [ ] make shells (for dev)
+- [ ] templates (for creating projects)
