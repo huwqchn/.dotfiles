@@ -10,7 +10,7 @@ test:
   nix eval .#evalTests --show-trace --print-build-logs --verbose
 
 [group('nix')]
-switch host:
+rebuild host:
   sudo nixos-rebuild switch --flake .#{{host}} --show-trace -L -v --impure
 
 [group('nix')]
