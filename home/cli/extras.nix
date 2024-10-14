@@ -13,6 +13,9 @@
     tokei
     hub # wrapper for git
 
+    # trashing files tool
+    trashy
+
     # Broken, https://github.com/NixOS/nixpkgs/issues/299680
     # ncdu
 
