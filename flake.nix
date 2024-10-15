@@ -3,7 +3,6 @@
 
   outputs = inputs @ {
     self,
-    nixpkgs,
     home-manager,
     flake-utils-plus,
     haumea,

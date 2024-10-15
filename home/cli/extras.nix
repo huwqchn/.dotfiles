@@ -102,6 +102,7 @@
         # I dont know what this is, but it's huge, so it probably useful
         ".cache/mesa_shader_cache"
         ".config/pulse"
+        ".local/share/Trash"
       ];
       files = [
         ".local/state/lesshst"
