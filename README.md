@@ -42,3 +42,4 @@ are many improvements that can be made. I will update this README as I make prog
 - [ ] apps
 - [ ] make shells (for dev)
 - [ ] templates (for creating projects)
+- [ ] specialisation
