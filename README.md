@@ -23,6 +23,7 @@ are many improvements that can be made. I will update this README as I make prog
   - [ ] monitor
   - [ ] nvidia
   - [ ] hyprlock
+  - [ ] hyprcursor
 - [ ] themes (create a nix repos for themes, name of `nixporn`)
   - [ ] toykonight
   - [ ] gruvbox
@@ -30,6 +31,7 @@ are many improvements that can be made. I will update this README as I make prog
   - [ ] nord
   - [ ] rose-pine
   - [ ] kawagana
+  - [ ] decay
 - [ ] networks (for vpn)
   - [ ] dae
   - [ ] sing-box
