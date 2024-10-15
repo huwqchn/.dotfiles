@@ -1,8 +1,4 @@
-{
-  pkgs-stable,
-  config,
-  ...
-}: let
+{config, ...}: let
   shellAliases = {
     "cat" = "bat";
   };
@@ -14,12 +10,12 @@ in {
     config = {
       pager = "leff -FR";
     };
-    extraPackages = with pkgs-stable.bat-extras; [
-      batdiff
-      batman
-      batgrep
-      batwatch
-    ];
+    # extraPackages = with pkgs.bat-extras; [
+    #   batdiff
+    #   batman
+    #   batgrep
+    #   batwatch
+    # ];
   };
   home.persistence = {
     "/persist/${config.home.homeDirectory}".files = [".cache/bat"];
