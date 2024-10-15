@@ -30,7 +30,7 @@
     mkFlake {
       inherit self inputs;
 
-      supportedSystems = ["x86_64-linux" "aarch64-linux"];
+      supportedSystems = import inputs.systems;
 
       channelsConfig = {
         allowUnfree = true;
@@ -140,8 +140,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    systems.url = "github:nix-systems/default-linux";
+
     flake-utils = {
       url = "github:numtide/flake-utils";
+      inputs.systems.follows = "systems";
     };
 
     flake-utils-plus = {
