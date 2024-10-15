@@ -193,6 +193,23 @@ local definitions = {
       end,
     },
   },
+  -- NOTE: nix not respect my keymap settings, force it to work
+  {
+    "FileType",
+    {
+      pattern = "nix",
+      callback = function()
+        vim.keymap.set(
+          "n",
+          "K",
+          "'nN'[v:searchforward].'zv'",
+          { buffer = true, expr = true, desc = "Prev search result" }
+        )
+        vim.keymap.set("x", "K", "'nN'[v:searchforward]", { buffer = true, expr = true, desc = "Prev search result" })
+        vim.keymap.set("o", "K", "'nN'[v:searchforward]", { buffer = true, expr = true, desc = "Prev search result" })
+      end,
+    },
+  },
   -- {
   --   "BufWinLeave",
   --   {
