@@ -13,21 +13,13 @@
     ...
   }: let
     inherit (inputs.nixpkgs) lib;
+    inherit (flake-utils-plus.lib) mkFlake;
     mylib = import ./lib {inherit lib;};
     myvars = import ./vars {inherit lib;};
-    system = "x86_64-linux";
     specialArgs =
       inputs
       // {
         inherit mylib myvars;
-        pkgs-stable = import inputs.nixpkgs-stable {
-          inherit system;
-          config.allowUnfree = true;
-        };
-        pkgs-unstable = import inputs.nixpkgs-unstable {
-          inherit system;
-          config.allowUnfree = true;
-        };
       };
     hl = haumea.lib;
     hosts = hl.load {
@@ -36,19 +28,28 @@
       transformer = hl.transformers.liftDefault;
     };
   in
-    flake-utils-plus.lib.mkFlake {
+    mkFlake {
       inherit self inputs;
-      inherit hosts;
+
+      supportedSystems = ["x86_64-linux" "aarch64-linux"];
 
       channelsConfig = {
         allowUnfree = true;
         allowBroken = true;
       };
 
+      # channels.nixpkgs.overlaysBuilder = channels: [
+      #   (final: prev: { inherit (channels.nixpkgs-stable) bat-extras; })
+      # ];
+
       sharedOverlays = import ./overlays inputs;
 
+      #########
+      # Hosts #
+      #########
+      inherit hosts;
       hostDefaults = {
-        inherit system specialArgs;
+        inherit specialArgs;
         modules = [
           ./modules/nix.nix
           ./modules/nixos
@@ -74,7 +75,7 @@
         pkgs = channels.nixpkgs;
       in {
         checks = {
-          pre-commit-check = pre-commit-hooks.lib."${channels.nixpkgs.system}".run {
+          pre-commit-check = pre-commit-hooks.lib."${pkgs.system}".run {
             src = ./.;
             hooks = {
               alejandra.enable = true; # formatter
@@ -111,7 +112,7 @@
           ];
           name = "dots";
           shellHook = ''
-            ${self.checks.${system}.pre-commit-check.shellHook}
+            ${self.checks.${pkgs.system}.pre-commit-check.shellHook}
           '';
         };
 
@@ -123,7 +124,7 @@
     # Official NixOS package source, using nixos's unstable branch by default
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.05";
-    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable-small";
+    nixpkgs-small.url = "github:nixos/nixpkgs/nixos-unstable-small";
     home-manager = {
       # url = "github:nix-community/home-manager/release-24.05";
       url = "github:nix-community/home-manager";
@@ -142,7 +143,6 @@
 
     flake-utils = {
       url = "github:numtide/flake-utils";
-      inputs.systems.follows = "systems";
     };
 
     flake-utils-plus = {
@@ -154,9 +154,6 @@
       url = "github:nix-community/haumea/v0.2.2";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    # The list of supported systems.
-    systems.url = "github:nix-systems/default-linux";
 
     # disko for declarative partitioning
     disko = {
@@ -213,11 +210,6 @@
     # stylix = {
     #  url = "github:danth/stylix";
     #  inputs.nixpkgs.follows = "nixpkgs";
-    # };
-
-    # lanzaboote = {
-    #   url = "github:nix-community/lanzaboote/v0.4.1";
-    #   inputs.nixpkgs.follows = "nixpkgs";
     # };
 
     # hyprwm
