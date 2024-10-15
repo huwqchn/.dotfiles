@@ -30,6 +30,9 @@
     mkFlake {
       inherit self inputs;
 
+      ############
+      # channels #
+      ############
       supportedSystems = import inputs.systems;
 
       channelsConfig = {
@@ -41,6 +44,7 @@
       #   (final: prev: { inherit (channels.nixpkgs-stable) bat-extras; })
       # ];
 
+      # TODO: rewrite overlays instructures
       sharedOverlays = import ./overlays inputs;
 
       #########
@@ -70,6 +74,9 @@
         ];
       };
 
+      ###########
+      # Outputs #
+      ###########
       outputsBuilder = channels: let
         pkgs = channels.nixpkgs;
       in {
