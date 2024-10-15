@@ -4,6 +4,7 @@
   ...
 }: let
   cfgUser = config.users.users."${myvars.userName}";
+  ifTheyExist = groups: builtins.filter (group: builtins.hasAttr group config.users.groups) groups;
 in {
   users = {
     # Don't allow mutation of users outside the config.
@@ -29,10 +30,12 @@ in {
         home = "/home/${myvars.userName}";
         isNormalUser = true;
         extraGroups = [
+          "wheel"
+        ] ++ ifTheyExist [
           myvars.userName
           "users"
+          "git"
           "networkmanager"
-          "wheel"
           "docker"
           "wireshark"
           "adbusers"
