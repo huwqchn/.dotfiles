@@ -11,7 +11,8 @@ test:
 
 [group('nix')]
 rebuild host:
-  sudo nixos-rebuild switch --flake .#{{host}} --show-trace -L -v --impure
+  nh os switch . -v -H {{host}} --ask
+  # sudo nixos-rebuild switch --flake .#{{host}} --show-trace -L -v --impure
 
 [group('nix')]
 clean:
@@ -19,7 +20,8 @@ clean:
 
 [group('nix')]
 gc:
-  nix-collect-garbage --delete-older-than 1d
+  nix-collect-garbage --delete-older-than 3d
+  nix store optimize
 
 [group('nix')]
 up:
@@ -36,6 +38,10 @@ history:
 [group('nix')]
 repl:
   nix repl -f flake:nixpkgs
+
+[group('nix')]
+check:
+  nix flake check
 
 [group('neovim')]
 nvim-clean:
