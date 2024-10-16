@@ -51,11 +51,11 @@ on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
 #                 See: https://nikitabobko.github.io/AeroSpace/guide#assign-workspaces-to-monitors
 [gaps]
 inner.horizontal = 10
-inner.vertical =   10
-outer.left =       5
-outer.bottom =     5
-outer.top =        5
-outer.right =      5
+inner.vertical = 10
+outer.left = 5
+outer.bottom = 5
+outer.top = 5
+outer.right = 5
 
 [exec]
 inherit-env-vars = true
@@ -143,14 +143,15 @@ alt-shift-0 = 'move-node-to-workspace 0'
 
 # Custom shortcuts
 alt-enter = 'exec-and-forget open -n /Applications/WezTerm.app'
-alt-b = 'exec-and-forget open -n /Applications/Arc.app'
+# alt-b = 'exec-and-forget open -n /Applications/Arc.app'
+alt-b = 'exec-and-forget open -a "Zen Browser"'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#workspace-back-and-forth
 alt-tab = 'workspace-back-and-forth'
 # See: https://nikitabobko.github.io/AeroSpace/commands#move-workspace-to-monitor
 alt-shift-tab = 'move-workspace-to-monitor --wrap-around next'
 
-alt-leftSquareBracket  = 'workspace prev'
+alt-leftSquareBracket = 'workspace prev'
 alt-rightSquareBracket = 'workspace next'
 
 alt-comma = 'focus-monitor left'
@@ -177,7 +178,10 @@ esc = 'mode main'
 [mode.service.binding]
 esc = ['reload-config', 'mode main']
 r = ['flatten-workspace-tree', 'mode main'] # reset layout
-f = ['layout floating tiling', 'mode main'] # Toggle between floating and tiling layout
+f = [
+  'layout floating tiling',
+  'mode main',
+] # Toggle between floating and tiling layout
 backspace = ['close-all-windows-but-current', 'mode main']
 
 # sticky is not yet supported https://github.com/nikitabobko/AeroSpace/issues/2
@@ -222,6 +226,10 @@ if.app-id = 'company.thebrowser.Browser'
 run = 'move-node-to-workspace 2'
 
 [[on-window-detected]]
+if.app-id = 'org.mozilla.com.zen.browser'
+run = ['move-node-to-workspace 2']
+
+[[on-window-detected]]
 if.app-id = 'ru.keepcoder.Telegram'
 run = 'move-node-to-workspace 3'
 
@@ -259,8 +267,8 @@ run = 'layout floating'
 # =================================================================
 
 [workspace-to-monitor-force-assignment]
-1 = 'main'  # Non-main monitor in case when there are only two monitors'
-2 = 'main'         # "Main" monitor ("main" as in System Settings → Displays → Use as)
+1 = 'main' # Non-main monitor in case when there are only two monitors'
+2 = 'main' # "Main" monitor ("main" as in System Settings → Displays → Use as)
 3 = 'main'
 4 = 'main'
 5 = 'main'
