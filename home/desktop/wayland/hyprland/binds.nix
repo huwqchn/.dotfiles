@@ -24,7 +24,7 @@
 in {
   wayland.windowManager.hyprland.settings = {
     "$mod" = "SUPER";
-    "$browser" = "firefox";
+    "$browser" = "zen";
     "$terminal" = "wezterm";
     # keybindings
     bind =
@@ -74,7 +74,7 @@ in {
         "$mod SHIFT, comma, movecurrentworkspacetomonitor, l"
         "$mod SHIFT, period, movecurrentworkspacetomonitor, r"
         # workspace
-        "$mod, W, workspace, empty" # move to the first empty worksapce
+        "$mod, W, workspace, empty" # move to the first empty workspace
         "$mod, tab, workspace, m+1"
         "$mod SHIFT, tab, workspace, m-1"
         "ALT, tab, cyclenext,"
