@@ -43,28 +43,16 @@ repl:
 check:
   nix flake check
 
-[group('neovim')]
-nvim-clean:
-  rm -rf "$HOME/.config/nvim"
+[group('dev')]
+rm program:
+  rm -rf "$HOME/.config/{{program}}"
 
-[group('neovim')]
-nvim-dev: nvim-clean
-  rsync -avz --copy-links --chmod=D2755,F744 config/nvim/ "$HOME/.config/nvim/"
+[group('dev')]
+dev program:
+  just rm {{program}}
+  rsync -avz --copy-links --chmod=D2755,F744 config/{{program}}/ "$HOME/.config/{{program}}/"
 
-[group('neovim')]
-nvim-readd:
-  rm -rf config/nvim/
-  mv "$HOME/.config/nvim" config/
-
-[group('ags')]
-ags-clean:
-  rm -rf "$HOME/.config/ags"
-
-[group('ags')]
-ags-dev: ags-clean
-  rsync -avz --copy-links --chmod=D2755,F744 config/ags/ "$HOME/.config/ags/"
-
-[group('ags')]
-ags-readd:
-  rm -rf config/ags/
-  mv "$HOME/.config/ags" config/
+[group('dev')]
+readd program:
+  rm -rf config/{{program}}/
+  mv "$HOME/.config/{{program}}" config/
