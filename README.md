@@ -12,6 +12,7 @@ are many improvements that can be made. I will update this README as I make prog
 
 - [ ] ags config
 - [ ] fcitx and rime
+- [ ] zen-browser
 - [ ] integrate yubikey
 - [ ] shells
   - [ ] bash
@@ -32,11 +33,10 @@ are many improvements that can be made. I will update this README as I make prog
   - [ ] rose-pine
   - [ ] kawagana
   - [ ] decay
-- [ ] networks (for vpn)
+- [ ] networks (for proxy)
   - [ ] dae
   - [ ] sing-box
-- [ ] onedrive
-- [ ] complete firefox config
+- [ ] onedrive and onedrive-client
 - [ ] remote deployment
 - [ ] pkgs
   - [ ] wallpapers
