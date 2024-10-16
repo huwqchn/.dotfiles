@@ -21,6 +21,7 @@ in {
         mainPanelSplitMode = "flexible";
         language = "auto";
         timeFormat = "02 Jan 06 15:04 MST";
+        nerdFontsVersion = 3;
         theme = {
           lightTheme = false;
           activeBorderColor = ["green" "bold"];
