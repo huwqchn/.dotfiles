@@ -54,12 +54,11 @@
     geoclue2.enable = true; # Enable geolocation services.
 
     udev.packages = with pkgs; [
-      gnome.gnome-settings-daemon
+      gnome-settings-daemon
       platformio # udev rules for platformio
       openocd # required by paltformio, see https://github.com/NixOS/nixpkgs/issues/224895
       android-udev-rules # required by adb
       openfpgaloader
     ];
-
   };
 }

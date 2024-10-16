@@ -89,10 +89,7 @@
     brotab
   ];
 
-  programs = {
-    jq.enable = true;
-    rio.enable = true;
-  };
+  programs.jq.enable = true;
 
   home.persistence = {
     "/persist/${config.home.homeDirectory}" = {

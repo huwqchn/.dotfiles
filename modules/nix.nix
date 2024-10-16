@@ -18,11 +18,12 @@
     # discard all the default paths, and only use the one from this flake.
     nixPath = lib.mkForce ["/etc/nix/inputs"];
     # do garbage collection weekly to keep disk usage low
-    gc = {
-      automatic = lib.mkDefault true;
-      dates = lib.mkDefault "weekly";
-      options = lib.mkDefault "--delete-older-than 7d";
-    };
+    # use nh clean instead
+    # gc = {
+    #   automatic = lib.mkDefault true;
+    #   dates = lib.mkDefault "weekly";
+    #   options = lib.mkDefault "--delete-older-than 7d";
+    # };
 
     settings = {
       # enable flakes globally
@@ -70,4 +71,15 @@
   };
 
   environment.etc."nix/inputs/nixpkgs".source = "${nixpkgs}";
+
+  programs.nh = {
+    enable = true;
+    clean = {
+      enable = true;
+      extraArgs = "--keep-since 3d --key 5";
+    };
+    flake = "/home/${myvars.userName}/.dotfiles";
+  };
+
+  programs.nix-ld.enable = true;
 }
