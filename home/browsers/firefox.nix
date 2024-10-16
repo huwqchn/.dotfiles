@@ -242,6 +242,7 @@ in {
 
   home.persistence = {
     "/persist/${config.home.homeDirectory}".directories = [
+      ".mozilla"
       ".cache/mozilla/firefox"
     ];
   };

@@ -12,7 +12,7 @@ are many improvements that can be made. I will update this README as I make prog
 
 - [ ] ags config
 - [ ] fcitx and rime
-- [ ] zen-browser
+- [x] zen-browser
 - [ ] integrate yubikey
 - [ ] shells
   - [ ] bash
