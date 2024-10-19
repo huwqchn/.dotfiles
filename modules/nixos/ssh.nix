@@ -1,7 +1,9 @@
-{ lib, 
-  myvars,
+{
+  config,
+  mylib,
   ...
-}: {
+}:
+mylib.mkEnabledModule config "ssh" {
   services.openssh = {
     enable = true;
     settings = {
@@ -12,7 +14,7 @@
   };
 
   # networking.firewall.allowedTCPPorts = [ 22 ];
-  networking.firewall.enable = lib.mkDefault false;
+  networking.firewall.enable = false;
 
   # Add terminfo database of all known terminals to the system profile.
   # https://github.com/NixOS/nixpkgs/blob/nixos-24.05/nixos/modules/config/terminfo.nix
