@@ -32,8 +32,12 @@
 
   # my custom modules
   modules = {
-    onedrive.enable = true;
     btrbk.enable = true;
+    clamav.enable = true;
+    onedrive.enable = true;
+    fhs.enable = true;
+    zram.enable = true;
+    power.enable = true;
   };
 
   system.stateVersion = "24.11"; # Did you read the comment?

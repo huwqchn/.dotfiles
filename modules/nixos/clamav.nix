@@ -2,15 +2,10 @@
   config,
   pkgs,
   lib,
+  mylib,
   ...
 }:
 with lib; let
-  inherit (config.networking) hostName;
-  # Declare which hosts have AV scanning enabled.
-  installOn = [
-    "phasma"
-    "vader"
-  ];
   sus-user-dirs = ["Downloads"];
   all-normal-users = attrsets.filterAttrs (_username: config: config.isNormalUser) config.users.users;
   all-sus-dirs =
@@ -36,32 +31,30 @@ with lib; let
     done
   '';
 in
-  lib.mkIf (lib.elem "${hostName}" installOn) {
+  mylib.mkModule config "clamav" {
     security.sudo = {
       extraConfig = ''
         clamav ALL = (ALL) NOPASSWD: SETENV: ${pkgs.notify-desktop}/bin/notify-desktop
       '';
     };
 
-    services = {
-      clamav = {
-        daemon = {
-          enable = true;
-          settings = {
-            ConcurrentDatabaseReload = false;
-            OnAccessIncludePath = all-sus-dirs;
-            OnAccessPrevention = false;
-            OnAccessExtraScanning = true;
-            OnAccessExcludeUname = "clamav";
-            VirusEvent = "${notify-all-users}";
-            User = "clamav";
-          };
+    services.clamav = {
+      daemon = {
+        enable = true;
+        settings = {
+          ConcurrentDatabaseReload = false;
+          OnAccessIncludePath = all-sus-dirs;
+          OnAccessPrevention = false;
+          OnAccessExtraScanning = true;
+          OnAccessExcludeUname = "clamav";
+          VirusEvent = "${notify-all-users}";
+          User = "clamav";
         };
-        updater = {
-          enable = true;
-          interval = "daily";
-          frequency = 2;
-        };
+      };
+      updater = {
+        enable = true;
+        interval = "daily";
+        frequency = 2;
       };
     };
 
