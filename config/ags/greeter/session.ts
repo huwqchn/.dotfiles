@@ -7,17 +7,17 @@ import { bash } from "lib/utils"
 const userName = await bash("find /home -maxdepth 1 -printf '%f\n' | tail -n 1")
 
 declare global {
-    const WALLPAPER: string
+  const WALLPAPER: string
 }
 
 Object.assign(globalThis, {
-    TMP: `${GLib.get_tmp_dir()}/greeter`,
-    OPTIONS: "/var/cache/greeter/options.json",
-    WALLPAPER: "/var/cache/greeter/background",
-    // TMP: "/tmp/ags",
-    // OPTIONS: Utils.CACHE_DIR + "/options.json",
-    // WALLPAPER: Utils.HOME + "/.config/background",
-    USER: userName,
+  TMP: `${GLib.get_tmp_dir()}/greeter`,
+  OPTIONS: "/var/cache/greeter/options.json",
+  WALLPAPER: "/var/cache/greeter/background",
+  // TMP: "/tmp/ags",
+  // OPTIONS: Utils.CACHE_DIR + "/options.json",
+  // WALLPAPER: Utils.HOME + "/.config/background",
+  USER: userName,
 })
 
 Utils.ensureDirectory(TMP)

@@ -16,26 +16,26 @@ import { setupQuickSettings } from "widget/quicksettings/QuickSettings"
 import { setupDateMenu } from "widget/datemenu/DateMenu"
 
 App.config({
-    onConfigParsed: () => {
-        setupQuickSettings()
-        setupDateMenu()
-        init()
-    },
-    closeWindowDelay: {
-        "launcher": options.transition.value,
-        "overview": options.transition.value,
-        "quicksettings": options.transition.value,
-        "datemenu": options.transition.value,
-    },
-    windows: () => [
-        ...forMonitors(Bar),
-        ...forMonitors(NotificationPopups),
-        ...forMonitors(ScreenCorners),
-        ...forMonitors(OSD),
-        Launcher(),
-        Overview(),
-        PowerMenu(),
-        SettingsDialog(),
-        Verification(),
-    ],
+  onConfigParsed: () => {
+    setupQuickSettings()
+    setupDateMenu()
+    init()
+  },
+  closeWindowDelay: {
+    launcher: options.transition.value,
+    overview: options.transition.value,
+    quicksettings: options.transition.value,
+    datemenu: options.transition.value,
+  },
+  windows: () => [
+    ...forMonitors(Bar),
+    ...forMonitors(NotificationPopups),
+    ...forMonitors(ScreenCorners),
+    ...forMonitors(OSD),
+    Launcher(),
+    Overview(),
+    PowerMenu(),
+    SettingsDialog(),
+    Verification(),
+  ],
 })

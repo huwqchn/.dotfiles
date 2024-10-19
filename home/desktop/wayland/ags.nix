@@ -17,6 +17,7 @@
     swww
     brightnessctl
     slurp
+    fortune
   ];
   programs.ags = {
     enable = true;
