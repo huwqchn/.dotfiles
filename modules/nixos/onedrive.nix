@@ -1,4 +1,10 @@
-{myvars, ...}: {
+{
+  myvars,
+  mylib,
+  config,
+  ...
+}:
+mylib.mkModule config "onedrive" {
   services.onedrive.enable = true;
 
   home-manager.users.${myvars.userName} = {
