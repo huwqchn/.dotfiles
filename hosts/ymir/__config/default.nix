@@ -38,6 +38,9 @@
     fhs.enable = true;
     zram.enable = true;
     power.enable = true;
+    virtual.enable = true;
+    peripherals.enable = true;
+    security.enable = true;
   };
 
   system.stateVersion = "24.11"; # Did you read the comment?
