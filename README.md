@@ -36,7 +36,7 @@ are many improvements that can be made. I will update this README as I make prog
 - [ ] networks (for proxy)
   - [ ] dae
   - [ ] sing-box
-- [ ] onedrive and onedrive-client
+- [x] onedrive and onedrive-client
 - [ ] remote deployment
 - [ ] pkgs
   - [ ] wallpapers
@@ -53,6 +53,7 @@ are many improvements that can be made. I will update this README as I make prog
   flakes
 - [ryan4yin's nix-config](github.com/ryan4yin/nix-config) - Original inspiration
 - [EmergentMind's nixos-config](github.com/EmergentMind/nixos-config) - Original inspiration
+- [runarsf's dotfiles](github.com/runarsf/dotfiles) - Custom library
 - [hilissner's dotfiles](github.com/hilissner/dotfiles) - Code layout
 - [Misterio77's nix-config](github.com/Misterio77/nix-config) - Some configuration
 - [fufexan's dotfiles](github.com/fufexan/dotfiles) - Some configuration

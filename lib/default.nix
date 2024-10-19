@@ -1,19 +1,13 @@
-{ lib, ... }: {
-  # use path relative to the root of the project
-  relativeToRoot = lib.path.append ../.;
-  relativeToConfig = lib.path.append ../config/.;
-  scanPaths = path:
-    builtins.map
-    (f: (path + "/${f}"))
-    (builtins.attrNames
-      (lib.attrsets.filterAttrs
-        (
-          path: _type:
-            (_type == "directory") # include directories
-            || (
-              (path != "default.nix") # ignore default.nix
-              && (lib.strings.hasSuffix ".nix" path) # include .nix files
-            )
-        )
-        (builtins.readDir path)));
-}
+{lib, ...}: let
+  core = import ./core.nix {
+    inherit lib;
+  };
+in
+  core.deepMerge [
+    lib
+    core
+    (core.importAndMerge [
+      ./paths.nix
+      ./modules.nix
+    ] {inherit lib;})
+  ]
