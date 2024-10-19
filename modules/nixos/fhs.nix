@@ -1,4 +1,10 @@
-{pkgs, ...}: {
+{
+  config,
+  pkgs,
+  mylib,
+  ...
+}:
+mylib.mkModule config "fhs" {
   # FHS environment, flatpak, appImage, etc.
   environment.systemPackages = [
     # create a fhs environment by command `fhs`, so we can run non-nixos packages in nixos!
@@ -40,6 +46,7 @@
     enable = true;
     libraries = with pkgs; [
       stdenv.cc.cc
+      icu
     ];
   };
 }
