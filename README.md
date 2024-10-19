@@ -45,6 +45,7 @@ are many improvements that can be made. I will update this README as I make prog
 - [ ] make shells (for dev)
 - [ ] templates (for creating projects)
 - [ ] specialisation
+- [ ] make module for all `module/` and `home/`
 
 ## References
 
