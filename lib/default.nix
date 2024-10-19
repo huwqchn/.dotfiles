@@ -4,7 +4,6 @@
   };
 in
   core.deepMerge [
-    lib
     core
     (core.importAndMerge [
       ./paths.nix
