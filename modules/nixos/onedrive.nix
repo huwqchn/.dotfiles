@@ -19,4 +19,10 @@ mylib.mkModule config "onedrive" {
       skip_file = "~*|.~*|*.tmp|.OBSIDIANTEST"
     '';
   };
+  environment.persistence."/persist" = {
+    users.${myvars.userName}.directories = [
+      "OneDrive"
+      ".config/onedrive"
+    ];
+  };
 }
