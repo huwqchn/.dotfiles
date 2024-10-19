@@ -80,6 +80,4 @@
     };
     flake = "/home/${myvars.userName}/.dotfiles";
   };
-
-  programs.nix-ld.enable = true;
 }
