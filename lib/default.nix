@@ -1,12 +1,12 @@
 {lib, ...}: let
-  core = import ./core.nix {
-    inherit lib;
-  };
+  arg = {inherit lib;};
+  core = import ./core.nix arg;
 in
   core.deepMerge [
     core
     (core.importAndMerge [
-      ./paths.nix
-      ./modules.nix
-    ] {inherit lib;})
+        ./paths.nix
+        ./modules.nix
+      ]
+      arg)
   ]
