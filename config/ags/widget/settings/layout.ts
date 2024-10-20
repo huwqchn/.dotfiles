@@ -17,6 +17,7 @@ const {
   quicksettings: qs,
   osd,
   hyprland: h,
+  wallpaper: w,
 } = options
 
 const { dark, light, blur, scheme, padding, spacing, radius, shadows, widget, border } = theme
@@ -28,6 +29,8 @@ export default [
     Group(
       "",
       Wallpaper() as ReturnType<typeof Row>,
+      Row({ opt: w.engine, title: "Wallpaper Engine", type: "enum", enums: ["hyprpaper", "swww"] }),
+
       Row({ opt: at, title: "Auto Generate Color Scheme" }),
       Row({ opt: scheme, title: "Color Scheme", type: "enum", enums: ["dark", "light"] })
     ),
