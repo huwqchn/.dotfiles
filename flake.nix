@@ -14,7 +14,7 @@
     inherit (inputs.nixpkgs) lib;
     inherit (flake-utils-plus.lib) mkFlake;
     mylib = import ./lib {inherit lib;};
-    myvars = import ./vars {inherit lib;};
+    myvars = import ./vars;
     specialArgs =
       inputs
       // {
