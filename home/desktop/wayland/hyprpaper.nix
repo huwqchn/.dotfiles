@@ -1,21 +1,16 @@
 {
-  pkgs,
-  config,
   myvars,
   wallpapers,
   ...
-}:let
-  package = pkgs.hyprpaper;
+}: let
   wallPath = "${wallpapers}/${myvars.userWall}";
 in {
   services.hyprpaper = {
     enable = true;
-    inherit package;
 
     settings = {
-      preload = [ wallPath ];
+      preload = [wallPath];
       wallpaper = [", ${wallPath}"];
     };
   };
 }
-
