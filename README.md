@@ -46,6 +46,8 @@ are many improvements that can be made. I will update this README as I make prog
 - [ ] templates (for creating projects)
 - [ ] specialisation
 - [x] make module for all `module/` and `home/`
+- [ ] support darwin
+- [ ] support wsl
 
 ## References
 
