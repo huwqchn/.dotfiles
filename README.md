@@ -48,6 +48,11 @@ are many improvements that can be made. I will update this README as I make prog
 - [x] make module for all `module/` and `home/`
 - [ ] support darwin
 - [ ] support wsl
+- [ ] support multiple keymap layouts
+- [ ] minimal nixvim support(add in apps)
+- [ ] support nextcloud
+- [ ] support samba
+- [ ] transparent and blur all apps except browsers
 
 ## References
 
