@@ -3,7 +3,7 @@
   wallpapers,
   ...
 }: let
-  wallPath = "${wallpapers}/${myvars.userWall}";
+  wallPath = "${wallpapers}/${myvars.wallpaper}";
 in {
   services.hyprpaper = {
     enable = true;

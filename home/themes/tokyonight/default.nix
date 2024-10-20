@@ -1,23 +1,27 @@
-{ pkgs, myvars, ... }: let
+{
+  pkgs,
+  myvars,
+  ...
+}: let
   src = pkgs.fetchFromGitHub {
     owner = "folke";
     repo = "tokyonight.nvim";
     rev = "b0e7c7382a7e8f6456f2a95655983993ffda745e";
     hash = "sha256-Fxakkz4+BTbvDLjRggZUVVhVEbg1b/MuuIC1rGrCwVA=";
   };
-  inherit (myvars) userTheme;
-  themeName = builtins.replaceStrings ["-"] ["_"] userTheme;
+  inherit (myvars) theme;
+  themeName = builtins.replaceStrings ["-"] ["_"] theme;
 in {
   home.sessionVariables = {
     MY_THEME = themeName;
   };
   imports = [
-    ./${userTheme}.nix
+    ./${theme}.nix
   ];
   programs = {
     git = {
       includes = [
-        { path = "${src}/extras/delta/${themeName}.gitconfig"; }
+        {path = "${src}/extras/delta/${themeName}.gitconfig";}
       ];
       delta.options = {
         syntax-theme = themeName;
