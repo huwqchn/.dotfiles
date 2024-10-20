@@ -2,33 +2,34 @@
 
 ## bar
 
-- [ ] increase the size of the gaps
-- [ ] deprecate `pannelbutton` (I don't like it)
-- [ ] round the corners of the bar
+- [x] increase the size of the gaps
+- [ ] remove `PanelButton` (I don't like it)
+- [ ] make round corners of the bar
+- [ ] switch wallpaper engine and make a widget to choose the wallpaper
 
 ### left
 
 - [ ] launcher
 - [ ] workspaces
-  - [x] make all workspace same heright
+  - [x] make all workspace same height
   - [ ] transform workspace from label to buttons
-  - [ ] put workspaces in a rounded box
+  - [x] put workspaces in a rounded box
 - [ ] media
 - [ ] tray
-  - [ ] put tray in a rounded box
+  - [x] put tray in a rounded box
 
 ### middle
 
-- [ ] notitfications
-- [ ] date
+- [ ] notifications
+- [x] date
 - [ ] weather
 
 ### right
 
 #### hardware
 
-- [ ] cpu
-- [ ] gpu
+- [ ] CPU
+- [ ] GPU
 - [ ] temperature
 - [ ] ram
 - [ ] disk
@@ -37,16 +38,17 @@
 
 - [ ] brightness
 - [ ] volume
-- [ ] bluetooth
+- [ ] blue-tooth
 - [ ] network
 - [ ] battery
 
 #### controllers
 
-- [ ] vpn
+- [ ] VPN
+- [ ] ChatGPT
 - [ ] mount
 - [ ] keyboard
 - [ ] color picker
 - [ ] screen recorder
 - [ ] settings
-- [ ] power menu
+- [x] power menu
