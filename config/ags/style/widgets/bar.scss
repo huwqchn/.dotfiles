@@ -9,6 +9,7 @@ $button-radius: $radius;
   > * {
     border-radius: $button-radius;
     margin: $bar-spacing;
+    background: rgba(255, 255, 255, 0.15);
   }
 
   label,
