@@ -26,6 +26,7 @@ are many improvements that can be made. I will update this README as I make prog
   - [ ] nvidia
   - [ ] hyprlock
   - [ ] hyprcursor
+  - [ ] hyprshade
 - [ ] themes (create a nix repos for themes, name of `nixporn`)
   - [ ] toykonight
   - [ ] gruvbox
