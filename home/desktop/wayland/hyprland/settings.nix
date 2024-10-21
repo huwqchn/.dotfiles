@@ -1,4 +1,4 @@
-{ lib, ... }: {
+{lib, ...}: {
   wayland.windowManager.hyprland.settings = {
     env = [
       "CLUTTER_BACKEND,wayland"
@@ -40,11 +40,11 @@
       "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP XAUTHORITY"
       "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"
       "gnome-keyring-daemon --start"
-      "ags"
+      # "ags"
       "easyeffects --gapplication-service"
       "hypridle"
       "hyprpaper"
-      "safeeyes -e"
+      # "safeeyes -e"
       "wl-clip-persist --clipboard regular"
       "wl-paste --watch cliphist store"
       "xhost si:localuser:root"
@@ -66,14 +66,13 @@
       };
     };
 
-
     general = {
       allow_tearing = true;
       gaps_in = 10;
       gaps_out = 10;
-      border_size = 3;
-      "col.active_border" = lib.mkForce "rgba(07b5efff)";
-      "col.inactive_border" = lib.mkForce "rgba(ffffff00)";
+      border_size = 2;
+      "col.active_border" = "0xff5e81ac";
+      "col.inactive_border" = "0x66333333";
       layout = "dwindle";
     };
 
@@ -103,7 +102,7 @@
     };
 
     decoration = {
-      rounding = 8;
+      rounding = 19;
       blur = {
         enabled = true;
         brightness = 1.0;
@@ -113,43 +112,48 @@
         vibrancy = 0.2;
         vibrancy_darkness = 0.5;
 
-        size = 3;
-        passes = 2;
+        size = 13;
+        passes = 3; # more passes = more resource intensive
+        new_optimizations = true;
 
         popups = true;
         popups_ignorealpha = 0.2;
       };
 
       drop_shadow = true;
-      shadow_ignore_window = true;
-      shadow_offset = "2 2";
+      # shadow_ignore_window = true;
+      # shadow_offset = "2 2";
       shadow_range = 30;
       shadow_render_power = 3;
-      shadow_scale = 0.97;
-      "col.shadow" = lib.mkForce "0x66000000";
+      # shadow_scale = 0.97;
+      "col.shadow" = "0xffa7caff";
+      "col.shadow_inactive" = "0x50000000";
     };
 
     animations = {
       enabled = true;
       bezier = [
-        "overshot, 0.05, 0.9, 0.1, 1.05"
-        "smoothOut, 0.36, 0, 0.66, -0.56"
-        "smoothIn, 0.25, 1, 0.5, 1"
-        "linear, 0, 0, 1, 1"
-        "snappy, 0.5, 0.93, 0, 1"
+        "overshot,0.13,0.99,0.29,1.1"
+        "linear,0,0,1,1"
+        # "smoothOut, 0.36, 0, 0.66, -0.56"
+        # "smoothIn, 0.25, 1, 0.5, 1"
+        # "snappy, 0.5, 0.93, 0, 1"
       ];
       animation = [
-        "border, 1, 5, linear"
-        "borderangle, 1, 360, linear, loop"
-        "windows, 1, 5, overshot, slide"
-        "windowsOut, 1, 4, smoothOut, slide"
-        "windowsMove, 1, 4, default"
-        "fade, 1, 10, smoothIn"
-        "fadeDim, 1, 10, smoothIn"
-        "workspaces, 1, 6, default"
-        "specialWorkspace, 1, 4, default, slidevert "
+        "windows,1,4,overshot,slide"
+        "fade,1,10,default"
+        "workspaces,1,8.8,overshot,slide"
+        # "border,1,14,default"
+        "border,1,5,linear"
+        "borderangle,1,360,linear,loop"
+        # "windows, 1, 5, overshot, slide"
+        # "windowsOut, 1, 4, smoothOut, slide"
+        # "windowsMove, 1, 4, default"
+        # "fade, 1, 10, smoothIn"
+        # "fadeDim, 1, 10, smoothIn"
+        # "workspaces, 1, 6, default"
+        # "specialWorkspace, 1, 4, default, slidevert "
       ];
-
     };
 
     # touchpad gestures
@@ -168,7 +172,6 @@
         res_h = 800;
         class = "cs2";
       };
-
 
       hyprexpo = {
         columns = 3;

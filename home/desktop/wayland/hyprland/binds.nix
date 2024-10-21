@@ -30,7 +30,7 @@ in {
     bind =
       [
         # command
-        "$mod, Escape, exit,"
+        "$mod SHIFT, Escape, exit,"
         "$mod, Backspace, exec, ${toggle "wlogout" true} -p layer-shell"
         "$mod, Q, killactive,"
         "$mod, L, exec, ${runOnce "hyprlock"}"
