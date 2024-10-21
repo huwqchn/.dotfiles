@@ -67,5 +67,4 @@ are many improvements that can be made. I will update this README as I make prog
 - [Misterio77's nix-config](github.com/Misterio77/nix-config) - Some configuration
 - [fufexan's dotfiles](github.com/fufexan/dotfiles) - Some configuration
 - [gytis-ivaskevicius's dotfiles](github.com/gytis-ivaskevicius/nixfiles) - Code framework
-- [runarsf's dotfiles](github.com/runarsf/dotfiles) - very useful custom library
 - [Nobbz's nixos-config](github.com/Nobbz/nixos-config) - copied some good ideas
