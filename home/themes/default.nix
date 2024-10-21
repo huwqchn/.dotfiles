@@ -1,5 +1,6 @@
 {
   lib,
+  config,
   myvars,
   wallpapers,
   ...
@@ -18,4 +19,7 @@ in {
     cp "${background}" ~/.config/background
     chmod 666 ~/.config/background
   '';
+  home.persistence = {
+    "/persist/${config.home.homeDirectory}".files = [".config/background"];
+  };
 }
