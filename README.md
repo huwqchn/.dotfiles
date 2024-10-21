@@ -35,6 +35,10 @@ are many improvements that can be made. I will update this README as I make prog
   - [ ] rose-pine
   - [ ] kawagana
   - [ ] decay
+  - [ ] solarized
+  - [ ] cyperdream
+  - [ ] dracula
+  - [ ] onedark
 - [ ] networks (for proxy)
   - [ ] dae
   - [ ] sing-box
