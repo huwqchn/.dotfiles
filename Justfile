@@ -53,6 +53,6 @@ dev program:
   rsync -avz --copy-links --chmod=D2755,F744 config/{{program}}/ "$HOME/.config/{{program}}/"
 
 [group('dev')]
-readd program:
+add program:
   rm -rf config/{{program}}/
   mv "$HOME/.config/{{program}}" config/

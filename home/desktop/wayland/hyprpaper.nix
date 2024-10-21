@@ -1,16 +1,11 @@
 {
-  myvars,
-  wallpapers,
-  ...
-}: let
-  wallPath = "${wallpapers}/${myvars.wallpaper}";
-in {
   services.hyprpaper = {
     enable = true;
 
     settings = {
-      preload = [wallPath];
-      wallpaper = [", ${wallPath}"];
+      ipc = "on";
+      splash = false;
+      splash_offset = 2.0;
     };
   };
 }

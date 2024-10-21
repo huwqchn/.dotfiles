@@ -36,14 +36,12 @@
     ];
 
     exec-once = [
-      "eystemctl --user import-environment"
+      "systemctl --user import-environment"
       "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP XAUTHORITY"
       "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"
       "gnome-keyring-daemon --start"
       # "ags"
       "easyeffects --gapplication-service"
-      "hypridle"
-      "hyprpaper"
       # "safeeyes -e"
       "wl-clip-persist --clipboard regular"
       "wl-paste --watch cliphist store"
@@ -98,7 +96,11 @@
       # disable dragging animation
       animate_mouse_windowdragging = false;
       # enable variable refresh rate (effective depending on hardware)
-      vrr = 1;
+      vrr = true;
+    };
+
+    master = {
+      no_gaps_when_only = true;
     };
 
     decoration = {

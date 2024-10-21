@@ -42,9 +42,15 @@ class Wallpaper extends Service {
         })
       })
     } else if (engine.value === "hyprpaper") {
-      sh(`hyprctl hyprpaper preload ${WP}`)
+      sh("hyprctl hyprpaper unload all")
         .then(() => {
-          sh(`hyprctl hyprpaper wallpaper ", ${WP}"`)
+          sh(`hyprctl hyprpaper preload ${WP}`)
+        })
+        .then(() => {
+          sh("hyprctl monitors | grep Monitor | awk '{print $2}'")
+        })
+        .then((monitor) => {
+          sh(`for m in ${monitor}; do hyprctl hyprpaper wallpaper "$m,${WP}"; done`)
         })
         .then(() => {
           this.changed("wallpaper")
