@@ -40,7 +40,7 @@
       "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP XAUTHORITY"
       "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"
       "gnome-keyring-daemon --start"
-      # "ags"
+      "ags"
       "easyeffects --gapplication-service"
       # "safeeyes -e"
       "wl-clip-persist --clipboard regular"

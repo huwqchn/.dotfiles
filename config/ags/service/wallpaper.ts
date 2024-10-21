@@ -7,8 +7,6 @@ export type Market = "random" | "en-US" | "ja-JP" | "en-AU" | "en-GB" | "de-DE" 
 const WP = `${Utils.HOME}/.config/background`
 const Cache = `${Utils.HOME}/Pictures/Wallpapers/Bing`
 
-const { engine } = options.wallpaper
-
 class Wallpaper extends Service {
   static {
     Service.register(
@@ -23,39 +21,22 @@ class Wallpaper extends Service {
   #blockMonitor = false
 
   #wallpaper() {
-    if (engine.value === "swww") {
-      if (!dependencies("swww")) return
+    if (!dependencies("swww")) return
 
-      sh("hyprctl cursorpos").then((pos) => {
-        sh([
-          "swww",
-          "img",
-          "--invert-y",
-          "--transition-duration=0.7",
-          "--transition-type",
-          "random",
-          "--transition-pos",
-          pos.replace(" ", ""),
-          WP,
-        ]).then(() => {
-          this.changed("wallpaper")
-        })
+    sh("hyprctl cursorpos").then((pos) => {
+      sh([
+        "swww",
+        "img",
+        "--invert-y",
+        "--transition-type",
+        "random",
+        "--transition-pos",
+        pos.replace(" ", ""),
+        WP,
+      ]).then(() => {
+        this.changed("wallpaper")
       })
-    } else if (engine.value === "hyprpaper") {
-      sh("hyprctl hyprpaper unload all")
-        .then(() => {
-          sh(`hyprctl hyprpaper preload ${WP}`)
-        })
-        .then(() => {
-          sh("hyprctl monitors | grep Monitor | awk '{print $2}'")
-        })
-        .then((monitor) => {
-          sh(`for m in ${monitor}; do hyprctl hyprpaper wallpaper "$m,${WP}"; done`)
-        })
-        .then(() => {
-          this.changed("wallpaper")
-        })
-    }
+    })
   }
 
   async #setWallpaper(path: string) {

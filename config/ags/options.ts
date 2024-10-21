@@ -7,7 +7,6 @@ const options = mkOptions(OPTIONS, {
   autotheme: opt(false),
 
   wallpaper: {
-    engine: opt("hyprpaper"),
     resolution: opt<import("service/wallpaper").Resolution>(3840),
     market: opt<import("service/wallpaper").Market>("random"),
   },
