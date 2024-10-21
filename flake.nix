@@ -1,5 +1,5 @@
 {
-  description = "my NixOS flakes configuration for test";
+  description = "My NixOS flakes configuration makes me feel like the world is my oyster";
 
   outputs = inputs @ {
     self,
