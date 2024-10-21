@@ -11,7 +11,7 @@ are many improvements that can be made. I will update this README as I make prog
 ## TODO
 
 - [ ] ags config
-  - [ ] switch wallpaper engine
+  - [x] switch wallpaper engine
 - [ ] fcitx and rime
 - [x] zen-browser
 - [ ] integrate yubikey

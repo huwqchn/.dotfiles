@@ -5,7 +5,7 @@
 - [x] increase the size of the gaps
 - [ ] remove `PanelButton` (I don't like it)
 - [ ] make round corners of the bar
-- [ ] switch wallpaper engine and make a widget to choose the wallpaper
+- [x] switch wallpaper engine and make a widget to choose the wallpaper
 
 ### left
 
