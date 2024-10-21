@@ -1,3 +1,0 @@
-#!/bin/bash
-
-eww close powermenu powermenu-closer || eww open-many powermenu powermenu-closer

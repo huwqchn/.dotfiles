@@ -1,5 +1,0 @@
-# ansible_python_interpreter: /usr/bin/python3
-
-user_name: "{{ ansible_env.USER }}"
-role_files: "{{ role_path }}/files"
-nproc: 7 # The number of processing units to use in parallel tasks.

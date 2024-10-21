@@ -1,0 +1,5 @@
+_: {
+  modules = [
+    ./__config
+  ];
+}
