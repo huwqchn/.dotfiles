@@ -20,7 +20,7 @@ are many improvements that can be made. I will update this README as I make prog
   - [ ] zsh
   - [ ] nushell
 - [ ] complete hyprland config
-  - [ ] borders/gaps/colors
+  - [x] borders/gaps/colors
   - [ ] fix unused keybindings
   - [ ] monitor
   - [ ] nvidia
@@ -28,7 +28,7 @@ are many improvements that can be made. I will update this README as I make prog
   - [ ] hyprcursor
   - [ ] hyprshade
 - [ ] themes (create a nix repos for themes, name of `nixporn`)
-  - [ ] toykonight
+  - [x] toykonight
   - [ ] gruvbox
   - [ ] catppuccino
   - [ ] nord
