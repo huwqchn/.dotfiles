@@ -1,9 +1,9 @@
 return {
   {
-    import = "lazyvim.plugins.extras.coding.copilot",
+    import = "lazyvim.plugins.extras.ai.copilot",
   },
   {
-    import = "lazyvim.plugins.extras.coding.copilot-chat",
+    import = "lazyvim.plugins.extras.ai.copilot-chat",
   },
   {
     "zbirenbaum/copilot.lua",

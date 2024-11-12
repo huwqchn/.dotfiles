@@ -1,5 +1,5 @@
 return {
-  { import = "lazyvim.plugins.extras.coding.tabnine" },
+  { import = "lazyvim.plugins.extras.ai.tabnine" },
   {
     "codota/tabnine-nvim",
     build = "./dl_binaries.sh",

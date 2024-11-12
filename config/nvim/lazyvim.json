@@ -3,6 +3,7 @@
     "lazyvim.plugins.extras.dap.core",
     "lazyvim.plugins.extras.dap.nlua",
     "lazyvim.plugins.extras.test.core",
+    "lazyvim.plugins.extras.coding.blink",
     "lazyvim.plugins.extras.coding.yanky",
     "lazyvim.plugins.extras.coding.neogen",
     "lazyvim.plugins.extras.editor.harpoon2",
@@ -34,10 +35,10 @@
     "plugins.extras.ui.mini-animate",
     "plugins.extras.coding.mini-surround",
     "plugins.extras.coding.dial",
-    "plugins.extras.coding.ai.copilot",
-    "plugins.extras.coding.ai.gen",
-    "plugins.extras.coding.ai.hfcc",
-    "plugins.extras.coding.ai.tabnine",
+    "plugins.extras.ai.copilot",
+    "plugins.extras.ai.gen",
+    "plugins.extras.ai.hfcc",
+    "plugins.extras.ai.tabnine",
     "plugins.extras.editor.mini-files",
     "plugins.extras.editor.mini-move",
     "plugins.extras.colorscheme.tokyonight",
@@ -65,8 +66,8 @@
     "plugins.extras.coding.neotab"
   ],
   "news": {
-    "NEWS.md": "6520",
+    "NEWS.md": "7107",
     "doc/news.txt": "10383"
   },
-  "version": 6
+  "version": 7
 }
