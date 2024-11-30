@@ -1,4 +1,22 @@
 return {
+  -- {
+  --   "saghen/blink.cmp",
+  --   optional = true,
+  --   opts = {
+  --     -- keymap = {
+  --     --   show = "<C-x>",
+  --     --   hide = "<C-c>",
+  --     --   select_prev = "<C-i>",
+  --     --   select_next = "<C-e>",
+  --     -- },
+  --     signature = {
+  --       enabled = true,
+  --       window = {
+  --         border = "rounded",
+  --       },
+  --     },
+  --   },
+  -- },
   {
     "hrsh7th/nvim-cmp",
     optional = true,

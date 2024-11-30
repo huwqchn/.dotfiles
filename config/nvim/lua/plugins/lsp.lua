@@ -35,23 +35,23 @@ return {
       keys[#keys + 1] = {
         "<a-.>",
         function()
-          LazyVim.lsp.words.jump(vim.v.count1, true)
+          Snacks.words.jump(vim.v.count1, true)
         end,
         has = "documentHighlight",
         desc = "Next Reference",
         cond = function()
-          return LazyVim.lsp.words.enabled
+          return Snacks.words.is_enabled()
         end,
       }
       keys[#keys + 1] = {
         "<a-,>",
         function()
-          LazyVim.lsp.words.jump(-vim.v.count1, true)
+          Snacks.words.jump(-vim.v.count1, true)
         end,
         has = "documentHighlight",
         desc = "Prev Reference",
         cond = function()
-          return LazyVim.lsp.words.enabled
+          return Snacks.words.is_enabled()
         end,
       }
     end,

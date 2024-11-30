@@ -34,7 +34,7 @@ require("lazy").setup({
   git = {
     timeout = 120,
   },
-  checker = { enabled = true },
+  checker = { enabled = false },
   diff = {
     cmd = "terminal_git",
   },

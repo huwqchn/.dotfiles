@@ -130,7 +130,7 @@ return {
       })
       table.insert(opts.routes, 1, {
         filter = {
-          find = "charactre_offset",
+          find = "character_offset",
         },
         opts = { skip = true },
       })
@@ -417,7 +417,7 @@ return {
         {
           "branch",
           icon = opts.icons.GitBranch,
-          color = { bg = LazyVim.ui.color("Operator"), fg = LazyVim.ui.color("Cursor") },
+          color = { bg = Snacks.util.color("Operator"), fg = Snacks.util.color("Cursor") },
           separator = sep,
         },
         {
@@ -451,7 +451,7 @@ return {
 
           cond = conditions.check_lsp_active,
           separator = sep,
-          color = { bg = LazyVim.ui.color("Substitute", true), fg = LazyVim.ui.color("Cursor") },
+          color = { bg = Snacks.util.color("Substitute", "bg"), fg = Snacks.util.color("Cursor") },
         },
         {
           function()

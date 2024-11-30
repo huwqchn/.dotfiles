@@ -11,6 +11,7 @@
     "lazyvim.plugins.extras.editor.inc-rename",
     "lazyvim.plugins.extras.editor.overseer",
     "lazyvim.plugins.extras.formatting.prettier",
+    "lazyvim.plugins.extras.lang.rust",
     "lazyvim.plugins.extras.lang.ansible",
     "lazyvim.plugins.extras.lang.cmake",
     "lazyvim.plugins.extras.lang.docker",
@@ -54,7 +55,6 @@
     "plugins.extras.lang.typescript",
     "plugins.extras.lang.ymal",
     "plugins.extras.lang.yuck",
-    "plugins.extras.lang.rust",
     "plugins.extras.lang.markdown",
     "plugins.extras.misc.text-case",
     "plugins.extras.misc.tidy",
@@ -66,7 +66,7 @@
     "plugins.extras.coding.neotab"
   ],
   "news": {
-    "NEWS.md": "7107",
+    "NEWS.md": "7429",
     "doc/news.txt": "10383"
   },
   "version": 7
