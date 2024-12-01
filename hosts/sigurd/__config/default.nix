@@ -12,19 +12,6 @@
     # ../../_internal/lanzaboote.nix
   ];
 
-  # fix timed out for device /dev/tpmrm0
-  # systemd.units."dev-tpmrm0.device".enable = false;
-
-  # Use the systemd-boot EFI boot loader.
-  # boot.loader.systemd-boot.enable = true;
-  # boot.loader.efi.canTouchEfiVariables = true;
-
-  # Pick only one of the below networking options.
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-  # networking = {
-  #   networkmanager.enable = true; # Easiest to use and most distros use this by default.
-  # };
-
   hardware.nvidia = {
     modesetting.enable = true;
   };
@@ -33,7 +20,7 @@
   modules = {
     btrbk.enable = true;
     clamav.enable = true;
-    onedrive.enable = true;
+    # onedrive.enable = true;
     fhs.enable = true;
     zram.enable = true;
     virtual.enable = true;

@@ -35,7 +35,7 @@ in {
 
       extensions = with firefox-addons.packages.${pkgs.system}; [
         # onepassword-password-manager # 1Password — Password Manager
-        ublock-origin
+        # ublock-origin
         browserpass
 
         sponsorblock

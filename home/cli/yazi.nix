@@ -1,5 +1,4 @@
 {
-  yazi,
   pkgs,
   config,
   ...
@@ -15,7 +14,6 @@
   # terminal file manager
   programs.yazi = {
     enable = true;
-    package = yazi.packages.${pkgs.system}.default;
     shellWrapperName = "y";
     enableBashIntegration = true;
     enableZshIntegration = true;
