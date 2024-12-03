@@ -236,6 +236,6 @@ in {
     };
   };
   home.persistence = {
-    "/persist/${config.home.homeDirectory}".files = [".local/state/lazygit"];
+    "/persist/${config.home.homeDirectory}".files = [".local/state/lazygit/state.yml"];
   };
 }
