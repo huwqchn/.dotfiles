@@ -46,6 +46,6 @@ in {
     ];
   };
   home.persistence = {
-    "/persist/${config.home.homeDirectory}".files = [".cache/bat"];
+    "/persist/${config.home.homeDirectory}".directories = [".cache/bat"];
   };
 }
