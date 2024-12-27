@@ -5,6 +5,10 @@
   nixpkgs,
   ...
 }: {
+  # for security reasons, do not load neovim's user config
+  # since EDITOR may be used to edit some critical files
+  environment.variables.EDITOR = "nvim --clean";
+
   # Auto upgrade nix package and the daemon service.
   # services.nix-daemon.enable = true;
   # Use this instead of services.nix-daemon.enable if you

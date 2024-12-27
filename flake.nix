@@ -9,6 +9,7 @@
     pre-commit-hooks,
     programs-sqlite,
     nixos-generators,
+    nix-darwin,
     ...
   }: let
     inherit (inputs.nixpkgs) lib;
@@ -25,6 +26,9 @@
       src = ./hosts;
       # Make the default.nix's attrs directly children of lib
       transformer = hl.transformers.liftDefault;
+      inputs = {
+        inherit nix-darwin;
+      };
     };
   in
     mkFlake {
@@ -55,14 +59,13 @@
         inherit specialArgs;
         modules = [
           ./modules/nix.nix
-          ./modules/nixos
           ./secrets
           nixos-generators.nixosModules.all-formats
           programs-sqlite.nixosModules.programs-sqlite
           home-manager.nixosModules.home-manager
           {
             home-manager = {
-              backupFileExtension = "hm-bak";
+              backupFileExtension = "bak";
               useGlobalPkgs = true;
               useUserPackages = true;
               extraSpecialArgs = specialArgs;
@@ -254,6 +257,11 @@
 
     zen-browser = {
       url = "github:fufexan/zen-browser-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    darwin = {
+      url = "github:lnl7/nix-darwin";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
