@@ -80,6 +80,15 @@ verify-store:
 repair-store *paths:
   nix store repair {{paths}}
 
+[macos]
+[group('nix')]
+darwin-build host:
+  nix build .#darwinConfigurations.{{host}}.system --extra-experimental-features "nix-command flakes" --show-trace --verbose
+
+[macos]
+darwin-switch host:
+  ./result/sw/bin/darwin-rebuild switch --flake .#{{host}} --show-trace -L -v --impure
+
 [group('dev')]
 rm program:
   rm -rf "$HOME/.config/{{program}}"

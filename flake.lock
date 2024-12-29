@@ -149,6 +149,26 @@
         "type": "github"
       }
     },
+    "darwin_2": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1735218083,
+        "narHash": "sha256-MoUAbmXz9TEr7zlKDRO56DBJHe30+7B5X7nhXm+Vpc8=",
+        "owner": "lnl7",
+        "repo": "nix-darwin",
+        "rev": "bc03f7818771a75716966ce8c23110b715eff2aa",
+        "type": "github"
+      },
+      "original": {
+        "owner": "lnl7",
+        "repo": "nix-darwin",
+        "type": "github"
+      }
+    },
     "dedsec-grub-theme": {
       "inputs": {
         "nixpkgs": [
@@ -395,9 +415,7 @@
     },
     "flake-utils_3": {
       "inputs": {
-        "systems": [
-          "systems"
-        ]
+        "systems": "systems_3"
       },
       "locked": {
         "lastModified": 1731533236,
@@ -415,7 +433,7 @@
     },
     "flake-utils_4": {
       "inputs": {
-        "systems": "systems_3"
+        "systems": "systems_4"
       },
       "locked": {
         "lastModified": 1710146030,
@@ -742,7 +760,7 @@
         "nixpkgs": [
           "nixpkgs"
         ],
-        "systems": "systems_4"
+        "systems": "systems_5"
       },
       "locked": {
         "lastModified": 1732194982,
@@ -795,6 +813,23 @@
         "owner": "neovim",
         "repo": "neovim",
         "type": "github"
+      }
+    },
+    "nix-darwin": {
+      "inputs": {
+        "nixpkgs": "nixpkgs_2"
+      },
+      "locked": {
+        "lastModified": 1735218083,
+        "narHash": "sha256-MoUAbmXz9TEr7zlKDRO56DBJHe30+7B5X7nhXm+Vpc8=",
+        "owner": "LnL7",
+        "repo": "nix-darwin",
+        "rev": "bc03f7818771a75716966ce8c23110b715eff2aa",
+        "type": "github"
+      },
+      "original": {
+        "id": "nix-darwin",
+        "type": "indirect"
       }
     },
     "nix-index-database": {
@@ -935,6 +970,20 @@
     },
     "nixpkgs_2": {
       "locked": {
+        "lastModified": 1718149104,
+        "narHash": "sha256-Ds1QpobBX2yoUDx9ZruqVGJ/uQPgcXoYuobBguyKEh8=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "e913ae340076bbb73d9f4d3d065c2bca7caafb16",
+        "type": "github"
+      },
+      "original": {
+        "id": "nixpkgs",
+        "type": "indirect"
+      }
+    },
+    "nixpkgs_3": {
+      "locked": {
         "lastModified": 1732521221,
         "narHash": "sha256-2ThgXBUXAE1oFsVATK1ZX9IjPcS4nKFOAjhPNKuiMn0=",
         "owner": "nixos",
@@ -949,7 +998,7 @@
         "type": "github"
       }
     },
-    "nixpkgs_3": {
+    "nixpkgs_4": {
       "locked": {
         "lastModified": 1680487167,
         "narHash": "sha256-9FNIqrxDZgSliGGN2XJJSvcDYmQbgOANaZA4UWnTdg4=",
@@ -1017,7 +1066,7 @@
     },
     "programs-sqlite": {
       "inputs": {
-        "nixpkgs": "nixpkgs_3",
+        "nixpkgs": "nixpkgs_4",
         "utils": "utils"
       },
       "locked": {
@@ -1038,6 +1087,7 @@
       "inputs": {
         "agenix": "agenix",
         "ags": "ags",
+        "darwin": "darwin_2",
         "dedsec-grub-theme": "dedsec-grub-theme",
         "disko": "disko",
         "firefox-addons": "firefox-addons",
@@ -1049,14 +1099,14 @@
         "lanzaboote": "lanzaboote",
         "matugen": "matugen",
         "neovim-nightly": "neovim-nightly",
+        "nix-darwin": "nix-darwin",
         "nix-index-database": "nix-index-database",
         "nixos-generators": "nixos-generators",
-        "nixpkgs": "nixpkgs_2",
+        "nixpkgs": "nixpkgs_3",
         "nixpkgs-small": "nixpkgs-small",
         "nixpkgs-stable": "nixpkgs-stable_2",
         "pre-commit-hooks": "pre-commit-hooks",
         "programs-sqlite": "programs-sqlite",
-        "systems": "systems_5",
         "wallpapers": "wallpapers",
         "wezterm-git": "wezterm-git",
         "yazi": "yazi",
@@ -1198,16 +1248,16 @@
     },
     "systems_4": {
       "locked": {
-        "lastModified": 1689347949,
-        "narHash": "sha256-12tWmuL2zgBgZkdoB6qXZsgJEH9LR3oUgpaQq2RbI80=",
+        "lastModified": 1681028828,
+        "narHash": "sha256-Vy1rq5AaRuLzOxct8nz4T6wlgyUR7zLU309k9mBC768=",
         "owner": "nix-systems",
-        "repo": "default-linux",
-        "rev": "31732fcf5e8fea42e59c2488ad31a0e651500f68",
+        "repo": "default",
+        "rev": "da67096a3b9bf56a91d16901293e51ba5b49a27e",
         "type": "github"
       },
       "original": {
         "owner": "nix-systems",
-        "repo": "default-linux",
+        "repo": "default",
         "type": "github"
       }
     },

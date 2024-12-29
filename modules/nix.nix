@@ -28,7 +28,8 @@
     #   dates = lib.mkDefault "weekly";
     #   options = lib.mkDefault "--delete-older-than 7d";
     # };
-
+    
+    optimise.automatic = lib.mkDefault true;
     settings = {
       # enable flakes globally
       experimental-features = ["nix-command" "flakes"];
@@ -64,24 +65,12 @@
         "cuda-maintainers.cachix.org-1:0dq3bujKpuEPMCX6U4WylrUDZ9JyUG0VpVZa7CNfq5E="
       ];
       builders-use-substitutes = true;
-      # Manual optimise storage: nix-store --optimise
-      # https://nixos.org/manual/nix/stable/command-ref/conf-file.html#conf-auto-optimise-store
-      auto-optimise-store = lib.mkDefault true;
     };
     # remove nix-channel related tools & configs, we use flakes instead.
     channel.enable = false;
     # make `nix run nixpkgs#nixpkgs` use the same nixpkgs as the one used by this flake.
-    registry.nixpkgs.flake = nixpkgs;
+    # registry.nixpkgs.flake = lib.mkForce nixpkgs;
   };
 
   environment.etc."nix/inputs/nixpkgs".source = "${nixpkgs}";
-
-  programs.nh = {
-    enable = true;
-    clean = {
-      enable = true;
-      extraArgs = "--keep-since 3d --key 5";
-    };
-    flake = "/home/${myvars.userName}/.dotfiles";
-  };
 }

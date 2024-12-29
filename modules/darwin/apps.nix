@@ -4,7 +4,6 @@
     git
     just # use Justfile to simplify nix-darwin's commands
   ];
-  environment.variables.EDITOR = "nvim";
 
   # To make this work, homebrew need to be installed manually, see https://brew.sh
   # The apps installed by homebrew are not managed by nix, and not reproducible!
@@ -24,8 +23,7 @@
     # otherwise Apple Store will refuse to install them
     # For details, see https://github.com/mas-cli/mas
     masApps = {
-      Xcode = 497799835
-
+      Xcode = 497799835;
     };
 
     taps = [
@@ -76,7 +74,6 @@
       "miniforge" # Miniconda's community-driven distribution
       "cleanmymac-zh" # clean tool
       "surge" # proxy tool
-
     ];
   };
 }

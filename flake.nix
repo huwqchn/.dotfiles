@@ -27,7 +27,7 @@
       # Make the default.nix's attrs directly children of lib
       transformer = hl.transformers.liftDefault;
       inputs = {
-        inherit nix-darwin;
+        inherit nix-darwin nixos-generators programs-sqlite home-manager mylib myvars;
       };
     };
   in
@@ -37,7 +37,14 @@
       ############
       # channels #
       ############
-      supportedSystems = import inputs.systems;
+      supportedSystems = [
+        "aarch64-linux"
+        "aarch64-darwin"
+        "i686-linux"
+        "x86_64-darwin"
+        "x86_64-linux"
+      ];
+
 
       channelsConfig = {
         allowUnfree = true;
@@ -60,18 +67,12 @@
         modules = [
           ./modules/nix.nix
           ./secrets
-          nixos-generators.nixosModules.all-formats
-          programs-sqlite.nixosModules.programs-sqlite
-          home-manager.nixosModules.home-manager
           {
             home-manager = {
               backupFileExtension = "bak";
               useGlobalPkgs = true;
               useUserPackages = true;
               extraSpecialArgs = specialArgs;
-              users."${myvars.userName}".imports = [
-                ./home
-              ];
             };
           }
         ];
@@ -128,7 +129,7 @@
         formatter = pkgs.alejandra;
       };
     };
-
+    
   inputs = {
     # Official NixOS package source, using nixos's unstable branch by default
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
@@ -150,11 +151,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    systems.url = "github:nix-systems/default-linux";
-
     flake-utils = {
       url = "github:numtide/flake-utils";
-      inputs.systems.follows = "systems";
     };
 
     flake-utils-plus = {

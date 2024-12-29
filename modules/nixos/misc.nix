@@ -56,5 +56,15 @@
         thunar-volman
       ];
     };
+
+    # nix cli helper
+    nh = {
+      enable = true;
+      clean = {
+        enable = true;
+        extraArgs = "--keep-since 3d --key 5";
+      };
+      flake = "/home/${myvars.userName}/.dotfiles";
+    };
   };
 }
