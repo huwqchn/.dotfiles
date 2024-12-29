@@ -3,7 +3,17 @@
     neovim
     git
     just # use Justfile to simplify nix-darwin's commands
+    
+    # darwin only apps
+    utm # virtual machine
   ];
+
+  environment.shells = [
+    pkgs.zsh
+    pkgs.fish
+  ];
+
+  programs.fish.enable = true;
 
   # To make this work, homebrew need to be installed manually, see https://brew.sh
   # The apps installed by homebrew are not managed by nix, and not reproducible!
@@ -24,11 +34,19 @@
     # For details, see https://github.com/mas-cli/mas
     masApps = {
       Xcode = 497799835;
+      Wechat = 836500024;
+      QQ = 451108668;
+      # WeCom = 1189898970; # Wechat for Work
+      TecentMeeting = 1484048379;
+      OneDrive = 823766827;
     };
 
     taps = [
       "homebrew/services"
       "benjiwolff/neovim-nightly"
+      "hashicorp/tap"
+      "nikitabobko/tap" # aerospace - an i3-like tiling window manager for macOS
+      "FelixKratz/formulae" # janky borders - highlight active window borders
     ];
 
     # `brew install`
@@ -57,23 +75,23 @@
       "zen-browser" # web browser
       "zed" # zed editor
       "aerospace" # an i3-like tiling window manager for macOS
-      "viusal-studio-code" # editor
-      "discord" # IM
-      "iina" # video player
+      "visual-studio-code" # editor
+      # "discord" # update too frequently, use the web version instead
+      "telegram" # IM
+      "rustdesk" # remote desktop client
+      # "iina" # video player
       "raycast" # search
       "stats" # beautiful system monitor
       "eudic" # dictionary
       "spotify" # music
-      "curseforge" # game extensions
-      "steam" # game platform
-      "uu-booster" # game booster
       "1password" # password manager
       "1password-cli"
       "ghostty" # terminal
       "obsidian" # note-taking
       "miniforge" # Miniconda's community-driven distribution
-      "cleanmymac-zh" # clean tool
+      "tencent-lemon" # clean tool
       "surge" # proxy tool
+      "miniforge" # Miniconda's community-driven distribution
     ];
   };
 }

@@ -20,7 +20,7 @@
     '';
 
     defaults = {
-      # menuExtraClock.Show24Hour = true;  # show 24 hour clock
+      menuExtraClock.Show24Hour = true;  # show 24 hour clock
       
       # customize dock
       dock = {
@@ -109,7 +109,7 @@
           DSDontWriteUSBStores = true;
         };
         "com.apple.spaces" = {
-          "spans-displays" = 0; # Display have seperate spaces
+          "spans-displays" = true; # Display have seperate spaces
         };
         "com.apple.WindowManager" = {
           EnableStandardClickToShowDesktop = 0; # Click wallpaper to reveal desktop
@@ -161,15 +161,8 @@
   # Add ability to used TouchID for sudo authentication
   security.pam.enableSudoTouchIdAuth = true;
 
-  # Create /etc/zshrc that loads the nix-darwin environment.
-  # this is required if you want to use darwin's default shell - zsh
-  programs.zsh.enable = true;
-  environment.shells = [
-    pkgs.zsh
-  ];
-
   # Set your time zone.
-  time.timeZone = "Asia/shanghai";
+  time.timeZone = "Asia/Shanghai";
 
   # Fonts
   fonts = {
@@ -178,6 +171,11 @@
       material-design-icons
       font-awesome
 
+      # 思源系列字体是 Adobe 主导的。其中汉字部分被称为「思源黑体」和「思源宋体」，是由 Adobe + Google 共同开发的
+      source-sans # 无衬线字体，不含汉字。字族名叫 Source Sans 3 和 Source Sans Pro，以及带字重的变体，加上 Source Sans 3 VF
+      source-serif # 衬线字体，不含汉字。字族名叫 Source Code Pro，以及带字重的变体
+      source-han-sans # 思源黑体
+      source-han-serif # 思源宋体
       # nerdfonts
       # https://github.com/NixOS/nixpkgs/blob/nixos-24.05/pkgs/data/fonts/nerdfonts/shas.nix
       (nerdfonts.override {
