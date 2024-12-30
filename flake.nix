@@ -9,7 +9,7 @@
     pre-commit-hooks,
     programs-sqlite,
     nixos-generators,
-    nix-darwin,
+    darwin,
     ...
   }: let
     inherit (inputs.nixpkgs) lib;
@@ -27,7 +27,7 @@
       # Make the default.nix's attrs directly children of lib
       transformer = hl.transformers.liftDefault;
       inputs = {
-        inherit nix-darwin nixos-generators programs-sqlite home-manager mylib myvars;
+        inherit darwin nixos-generators programs-sqlite home-manager mylib myvars;
       };
     };
   in

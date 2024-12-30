@@ -1,6 +1,7 @@
 { 
   myvars,
   config,
+  pkgs,
   ...
 }: let
   userName = myvars.userName;
@@ -10,8 +11,8 @@ in {
   users.users."${userName}" = {
     home = "/Users/${userName}";
     description = userName;
+    shell = pkgs.fish; # https://github.com/LnL7/nix-darwin/issues/1237 still have a bug
   };
-
   nix.settings.trusted-users = [userName];
 
   networking.computerName = hostName;

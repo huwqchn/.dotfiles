@@ -1,4 +1,4 @@
-{ nix-darwin, home-manager, ... }: {
+{ darwin, home-manager, ... }: {
   system = "aarch64-darwin";
 
   modules = [
@@ -6,5 +6,5 @@
     home-manager.darwinModules.home-manager
   ];
   output = "darwinConfigurations";
-  builder = nix-darwin.lib.darwinSystem;
+  builder = darwin.lib.darwinSystem;
 }
