@@ -22,7 +22,7 @@
     ./editors/nvim.nix
     ./shells
     ./terminals/ghostty.nix
-    ./themes
+    # ./themes
     ./home.nix
   ];
   home.persistence = lib.mkForce {};
