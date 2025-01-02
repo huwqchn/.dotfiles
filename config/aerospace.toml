@@ -142,7 +142,8 @@ alt-shift-9 = 'move-node-to-workspace 9'
 alt-shift-0 = 'move-node-to-workspace 0'
 
 # Custom shortcuts
-alt-enter = 'exec-and-forget open -n /Applications/WezTerm.app'
+# alt-enter = 'exec-and-forget open -n /Applications/Ghostty.app'
+
 # alt-b = 'exec-and-forget open -n /Applications/Arc.app'
 alt-b = 'exec-and-forget open -a "Zen Browser"'
 
@@ -261,6 +262,13 @@ run = 'move-node-to-workspace 4'
 [[on-window-detected]]
 check-further-callbacks = true
 run = 'layout floating'
+
+[[on-window-detected]]
+if.app-id="com.mitchellh.ghostty"
+run= [
+  "layout tiling",
+]
+
 
 # =================================================================
 # Multiple monitor configuration

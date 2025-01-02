@@ -1,11 +1,11 @@
-{ 
+{
   myvars,
   config,
   pkgs,
   ...
 }: let
-  userName = myvars.userName;
-  hostName = config.networking.hostName;
+  inherit (myvars) userName;
+  inherit (config.networking) hostName;
 in {
   # Define a user account.
   users.users."${userName}" = {

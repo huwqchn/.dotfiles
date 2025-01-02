@@ -45,7 +45,6 @@
         "x86_64-linux"
       ];
 
-
       channelsConfig = {
         allowUnfree = true;
         allowBroken = true;
@@ -129,7 +128,7 @@
         formatter = pkgs.alejandra;
       };
     };
-    
+
   inputs = {
     # Official NixOS package source, using nixos's unstable branch by default
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
@@ -261,10 +260,6 @@
     darwin = {
       url = "github:lnl7/nix-darwin";
       inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    ghostty = {
-      url = "github:clo4/ghostty-hm-module";
     };
   };
 }
