@@ -262,5 +262,9 @@
       url = "github:lnl7/nix-darwin";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    ghostty = {
+      url = "github:clo4/ghostty-hm-module";
+    };
   };
 }
