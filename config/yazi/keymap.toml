@@ -33,7 +33,7 @@ prepend_keymap = [
   { on = [
     "o",
   ], run = [
-    "plugin --sync enter-or-open",
+    "plugin smart-enter",
   ] },
 
   { on = [
@@ -84,6 +84,9 @@ prepend_keymap = [
 
 prepend_keymap = [
   { on = [
+    "W",
+  ], run = "close" },
+  { on = [
     "i",
   ], run = "arrow -1" },
   { on = [
@@ -122,6 +125,8 @@ prepend_keymap = [
   { on = ["O"], run = "move 999" },
 
   { on = ["j"], run = "forward --end-of-word" },
+  # Cut/Yank/Paste
+  { on = ["x"], run = ["delete", "move 1 --in-operating"] },
 ]
 
 [help]
