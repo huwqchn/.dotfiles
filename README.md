@@ -53,9 +53,9 @@ are many improvements that can be made. I will update this README as I make prog
 - [ ] specialisation
 - [x] make module for all `module/` and `home/`
 - [x] support darwin
+- [x] support windows
 - [ ] support wsl
 - [ ] support multiple keymap layouts
-- [ ] minimal nixvim support(add in apps)
 - [ ] support nextcloud
 - [ ] support samba
 - [ ] support kanata
