@@ -3,14 +3,26 @@
   config,
   ...
 }: {
-  xdg.configFile."yazi/plugins/enter-or-open.yazi/init.lua".text = ''
-    return {
-      entry = function()
-        local h = cx.active.current.hovered
-        ya.manager_emit(h and h.cha.is_dir and "enter" or "open", {})
-      end,
-    }
-  '';
+  xdg.configFile = {
+    "yazi/plugins/enter-or-open.yazi/init.lua".text = ''
+      --- @sync entry
+      return {
+        entry = function()
+          local h = cx.active.current.hovered
+          ya.manager_emit(h and h.cha.is_dir and "enter" or "open", {})
+        end,
+      }
+    '';
+    "yazi/plugins/smart-enter.yazi/init.lua".text = ''
+      --- @sync entry
+      return {
+        entry = function()
+          local h = cx.active.current.hovered
+          ya.manager_emit(h and h.cha.is_dir and "enter" or "open", { hovered = true })
+        end,
+      }
+    '';
+  };
   # terminal file manager
   programs.yazi = {
     enable = true;
@@ -25,6 +37,7 @@
         sort_sensitive = false;
         sort_reverse = false;
         linemode = "size";
+        show_hidden = true;
       };
       preview = {
         tab_size = 2;
@@ -126,10 +139,17 @@
           mime = "application/x-rar";
           use = ["extract" "reveal" "archive"];
         }
-
         {
           mime = "*";
           use = ["open" "reveal"];
+        }
+      ];
+    };
+    plugin = {
+      prepend_previewers = [
+        {
+          mime = "audio/*";
+          run = "exifaudio";
         }
       ];
     };
@@ -170,7 +190,7 @@
         }
         {
           on = ["o"];
-          run = ["plugin --sync enter-or-open"];
+          run = ["plugin smart-enter"];
         }
 
         {
