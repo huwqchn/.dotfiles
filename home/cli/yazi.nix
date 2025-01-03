@@ -1,8 +1,4 @@
-{
-  pkgs,
-  config,
-  ...
-}: {
+{config, ...}: {
   xdg.configFile = {
     "yazi/plugins/enter-or-open.yazi/init.lua".text = ''
       --- @sync entry
@@ -145,14 +141,6 @@
         }
       ];
     };
-    plugin = {
-      prepend_previewers = [
-        {
-          mime = "audio/*";
-          run = "exifaudio";
-        }
-      ];
-    };
     keymap = {
       manager.prepend_keymap = [
         {
@@ -190,7 +178,7 @@
         }
         {
           on = ["o"];
-          run = ["plugin smart-enter"];
+          run = ["plugin --sync smart-enter"];
         }
 
         {
