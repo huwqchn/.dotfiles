@@ -137,15 +137,10 @@ map("t", "<C-e>", "<cmd>wincmd j<cr>", { desc = "Go to Down Window" })
 map("t", "<C-i>", "<cmd>wincmd k<cr>", { desc = "Go to Up Window" })
 map("t", "<C-o>", "<cmd>wincmd l<cr>", { desc = "Go to Right Window" })
 map("t", "<C-q>", "<cmd>close<cr>", { desc = "Hide Terminal" })
-local lazyterm = function()
-  LazyVim.terminal(nil, { cwd = LazyVim.root() })
-end
-map("n", "<M-/>", lazyterm, { desc = "Terminal (root dir)" })
-map("t", "<M-/>", "<cmd>close<cr>", { desc = "Hide Terminal" })
-map("n", "<C-cr>", function()
-  LazyVim.terminal(nil, { ft = "", border = "rounded" })
-end, { desc = "Float Terminal" })
-map("t", "<C-cr>", "<cmd>close<cr>", { desc = "Hide Terminal" })
+-- map("n", "<C-cr>", function()
+--   LazyVim.terminal(nil, { ft = "", border = "rounded" })
+-- end, { desc = "Float Terminal" })
+-- map("t", "<C-cr>", "<cmd>close<cr>", { desc = "Hide Terminal" })
 
 -- btop
 map("n", "<leader>xb", function()
@@ -324,8 +319,6 @@ map("n", "<leader>bb", function()
 end, { silent = true, desc = "Close unused buffers" })
 
 vim.keymap.set("n", "<C-w>", "<leader>bd", { remap = true, desc = "Close Buffer" })
-vim.keymap.set("n", "<C-/>", "gcc", { remap = true, desc = "Comment line" })
-vim.keymap.set("x", "<C-/>", "gc", { remap = true, desc = "Comment selection" })
 
 -- commenting
 unmap("n", "gco")
