@@ -54,6 +54,7 @@ general:
   # - 'true': Show all windows (regardless of workspace).
   # - 'false': Only show windows from the currently shown workspaces.
   show_all_in_taskbar: false
+
 gaps:
   # Whether to scale the gaps with the DPI of the monitor.
   scale_with_dpi: true
@@ -67,97 +68,45 @@ gaps:
     bottom: "10px"
     left: "10px"
 
-bar:
-  height:       "30px"
-  position:     "top"
-  opacity:       0.9
-  background:    *background
-  foreground:    *foreground
-  font_family:   "CaskaydiaCove Nerd Font"
-  font_size:     "13px"
-  padding:       "4px 2px"
-  offset_x:      "0"
-  offset_y:      "0"
-  border_radius: "0"
-
-  components_left:
-    - type:                           "workspaces"
-      focused_workspace_background:   *white
-      displayed_workspace_background: "#00000033"
-      default_workspace_background:   "transparent"
-
-    - type:              "music"
-      label_not_playing: ""
-      label_paused:      "{artist_name} - {song_title}"
-      label_playing:     "{artist_name} - {song_title} "
-      max_title_length:  20
-      max_artist_length: 20
-      margin:            "0px 5px"
-      foreground: *foreground
-
-  components_center:
-    - type: "window title"
-      foreground: *foreground
-
-  components_right:
-    - type:                "cpu"
-      label:               " {percent_usage}%"
-      background:          *white
-      foreground:          *foreground
-      margin:              "0px 1px"
-      padding:             "0 10px"
-      refresh_interval_ms: 1000
-
-    - type:                "memory"
-      label:               " {percent_usage}%"
-      background:          *white
-      foreground:          *foreground
-      margin:              "0px 1px"
-      padding:             "0 10px"
-      refresh_interval_ms: 1000
-
-    - type:             "tiling direction"
-      label_horizontal: "⮂"
-      label_vertical:   "⮁"
-      background:      *white
-      foreground:      *foreground
-      margin:          "0px 1px"
-      padding:         "0 10px"
-
-    - type:       "binding mode"
-      background: *white
-      foreground: *foreground
-      margin:     "0px 1px"
-      padding:    "0 10px"
-
-    - type:            "clock"
-      background:      *white
-      foreground:      *foreground
-      margin:          "0px 1px"
-      padding:         "0 10px"
-      time_formatting: "  HH:mm ddd d MMM"
-
-    - type: "system tray"
-
 workspaces:
   - name:         "1"
-    display_name: "ブ"
+    display_name: "一"
     keep_alive:   true
 
   - name:         "2"
-    display_name: "ラ"
+    display_name: "二"
     keep_alive:   true
 
   - name:         "3"
-    display_name: "ン"
+    display_name: "三"
     keep_alive:   true
 
   - name: "4"
-    display_name: "ド"
+    display_name: "四"
     keep_alive: true
 
   - name: "5"
-    display_name: "ン"
+    display_name: "五"
+    keep_alive: true
+
+  - name: "6"
+    display_name: "六"
+    keep_alive: true
+
+  - name: "7"
+    display_name: "七"
+    keep_alive: true
+
+  - name: "8"
+    display_name: "八"
+    keep_alive: true
+
+  - name: "9"
+    display_name: "九"
+    keep_alive: true
+
+  - name: "0"
+    display_name: "十"
     keep_alive: true
 
 window_rules:
@@ -328,8 +277,8 @@ keybindings:
     bindings: ['alt+shift+r']
 
   # Redraw all windows.
-  # - commands: ['wm-redraw']
-  #   bindings: ['alt+shift+w']
+  - commands: ['wm-redraw']
+    bindings: ['alt+shift+l']
 
   # Launch CMD terminal. Alternatively, use `shell-exec wt` or
   # `shell-exec %ProgramFiles%/Git/git-bash.exe` to start Windows
@@ -339,13 +288,13 @@ keybindings:
 
   # Focus the next/previous active workspace defined in `workspaces` config.
   - commands: ['focus --next-active-workspace']
-    bindings: ['alt+OemOpenBrackets']
+    bindings: ['alt+Oemcomma']
   - commands: ['focus --prev-active-workspace']
-    bindings: ['alt+OemCloseBrackets']
+    bindings: ['alt+OemPeriod']
 
   # Focus the workspace that last had focus.
   - commands: ['focus --recent-workspace']
-    bindings: ['alt+d']
+    bindings: ['alt+l']
 
   # Change focus to a workspace defined in `workspaces` config.
   - commands: ['focus --workspace 1']
@@ -366,17 +315,19 @@ keybindings:
     bindings: ['alt+8']
   - commands: ['focus --workspace 9']
     bindings: ['alt+9']
+  - commands: ['focus --workspace 0']
+    bindings: ['alt+0']
 
   # Move the focused window's parent workspace to a monitor in a given
   # direction.
   - commands: ['move-workspace --direction left']
-    bindings: ['alt+shift+a']
-  - commands: ['move-workspace --direction right']
     bindings: ['alt+shift+f']
+  - commands: ['move-workspace --direction right']
+    bindings: ['alt+shift+b']
   - commands: ['move-workspace --direction up']
-    bindings: ['alt+shift+d']
+    bindings: ['alt+shift+u']
   - commands: ['move-workspace --direction down']
-    bindings: ['alt+shift+s']
+    bindings: ['alt+shift+d']
 
   # Move focused window to a workspace defined in `workspaces` config.
   - commands: ['move --workspace 1', 'focus --workspace 1']
@@ -397,3 +348,5 @@ keybindings:
     bindings: ['alt+shift+8']
   - commands: ['move --workspace 9', 'focus --workspace 9']
     bindings: ['alt+shift+9']
+  - commands: ['move --workspace 0', 'focus --workspace 0']
+    bindings: ['alt+shift+0']
