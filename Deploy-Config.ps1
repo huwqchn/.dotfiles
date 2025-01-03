@@ -37,9 +37,7 @@ function Ensure-Bucket {
     [string]$BucketName
   )
   Write-Host "Checking if bucket '$BucketName' is added..." -ForegroundColor Cyan
-  $buckets = scoop bucket list
-
-  if ($buckets -contains $BucketName) {
+  if (scoop bucket list | Select-String -Pattern "^\s*$BucketName\s") {
     Write-Host "Bucket '$BucketName' is already added.`n" -ForegroundColor Green
   }
   else {
