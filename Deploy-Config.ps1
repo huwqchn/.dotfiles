@@ -1,22 +1,63 @@
 #!/usr/bin/env pwsh
 <#
 .SYNOPSIS
-    One-click deployment of configuration files in the config folder to their corresponding directories.
+    One-click deployment of configuration files in the config folder + ensure Scoop & apps installed.
 
 .DESCRIPTION
-    - fastfetch        -> $HOME\.config\fastfetch
-    - lazygit          -> $HOME\.config\lazygit
-    - nvim             -> $HOME\AppData\Local\nvim
-    - yazi             -> $HOME\.config\yazi
-    - starship.toml    -> $HOME\.config\starship.toml
-    - powershell.ps1   -> $HOME\Documents\PowerShell\profile.ps1
+    1. Ensure Scoop is installed.
+    2. Ensure certain apps (fastfetch, lazygit, nvim, yazi, etc.) are installed via Scoop.
+    3. Copy config files to their respective destinations.
 
-    If the script or target paths differ from your environment,
-    please adjust the script accordingly.
+    Adjust the script to match your environment or any custom paths.
 #>
 
-Write-Host "`nStarting to copy configuration files..."
+# -----------------------------
+# 1) Ensure Scoop is installed
+# -----------------------------
+Write-Host "`n=== 1) Ensure Scoop is installed ==="
+Write-Host "Checking if Scoop is installed..."
+if (Get-Command scoop -ErrorAction SilentlyContinue) {
+    Write-Host "Scoop is already installed."
+}
+else {
+    Write-Host "Scoop is not installed. Installing Scoop..."
+    # Scoop installation script (requires Set-ExecutionPolicy RemoteSigned or Bypass)
+    Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+    Invoke-RestMethod -Uri https://get.scoop.sh | Invoke-Expression
+    Write-Host "Scoop installed successfully!"
+}
 
+# ------------------------------------------------
+# 2) Ensure specific apps are installed via Scoop
+# ------------------------------------------------
+
+Write-Host "`n=== 2) Add cologler bucket if needed ==="
+if (scoop bucket list | Select-String -Pattern "cologler") {
+    Write-Host "Bucket 'cologler' is already added."
+}
+else {
+    Write-Host "Adding 'cologler' bucket..."
+    scoop bucket add cologler https://github.com/Cologler/cologler-scoop-bucket
+    Write-Host "Installing scoop-backup..."
+    scoop install scoop-backup
+}
+
+
+Write-Host "`n=== 3) Check and import scoop.json if present ==="
+if (Test-Path ".\scoop.json") {
+    Write-Host "Detected 'scoop.json' in current directory. Importing..."
+    Scoop-Import.ps1 ".\scoop.json"
+    Write-Host "Import from 'scoop.json' completed!"
+}
+else {
+    Write-Host "No 'scoop.json' found in current directory. Skipping import..."
+}
+
+# ------------------------------------------------
+# 3) Copy configuration files to their destinations
+# ------------------------------------------------
+Write-Host "`n=== 3) Copying configuration files ==="
+Write-Host "`nStarting to copy configuration files..."
 # ----------------
 # fastfetch
 # ----------------
