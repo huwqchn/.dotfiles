@@ -34,7 +34,7 @@ else {
 function Ensure-Bucket {
   param (
     [Parameter(Mandatory = $true)]
-    [string]$BucketName,
+    [string]$BucketName
   )
   Write-Host "Checking if bucket '$BucketName' is added..." -ForegroundColor Cyan
   $buckets = scoop bucket list
@@ -58,7 +58,7 @@ Write-Host "`n=== 2) Add buckets if needed ==="
 $requiredBuckets = @("main", "extras", "nerd-fonts") # Add more bucket names as needed
 
 foreach ($bucket in $requiredBuckets) {
-  Ensure-Bucket -BucketName $bucket
+  Ensure-Bucket $bucket
 }
 
 function Ensure-App {
