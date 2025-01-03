@@ -37,7 +37,8 @@ function Ensure-Bucket {
     [string]$BucketName
   )
   Write-Host "Checking if bucket '$BucketName' is added..." -ForegroundColor Cyan
-  if (scoop bucket list | Select-String -Pattern "^\s*$BucketName\s") {
+  $buckets = scoop bucket list | Select-Object -ExpandProperty Name
+  if ($buckets -contains $BucketName) {
     Write-Host "Bucket '$BucketName' is already added.`n" -ForegroundColor Green
   }
   else {
@@ -65,7 +66,8 @@ function Ensure-App {
     [string]$AppName
   )
   Write-Host "Checking if app '$AppName' is installed via Scoop..." -ForegroundColor Cyan
-  if (scoop list | Select-String -Pattern "^\s*$AppName\s") {
+  $apps = scoop list | Select-Object -ExpandProperty Name
+  if ($apps -contains $AppName) {
     Write-Host "App '$AppName' is already installed.`n" -ForegroundColor Green
   }
   else {
