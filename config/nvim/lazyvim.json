@@ -57,7 +57,8 @@
     "plugins.extras.misc.tidy",
     "plugins.extras.ui.window-picker",
     "plugins.extras.ui.winshift",
-    "plugins.extras.coding.neotab"
+    "plugins.extras.coding.neotab",
+    "plugins.extras.misc.gx"
   ],
   "news": {
     "NEWS.md": "10960",

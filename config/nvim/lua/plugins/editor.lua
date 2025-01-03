@@ -473,4 +473,9 @@ return {
       }
     end,
   },
+  {
+    "mbbill/undotree",
+    lazy = true,
+    cmd = "UndotreeToggle",
+  },
 }
