@@ -58,6 +58,7 @@ are many improvements that can be made. I will update this README as I make prog
 - [ ] minimal nixvim support(add in apps)
 - [ ] support nextcloud
 - [ ] support samba
+- [ ] support kanata
 - [ ] transparent and blur all apps except browsers
 
 ## References
