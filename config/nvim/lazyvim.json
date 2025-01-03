@@ -38,6 +38,7 @@
     "plugins.extras.coding.mini-surround",
     "plugins.extras.coding.dial",
     "plugins.extras.ai.copilot",
+    "plugins.extras.ai.tabnine",
     "plugins.extras.editor.mini-files",
     "plugins.extras.editor.mini-move",
     "plugins.extras.colorscheme.tokyonight",
