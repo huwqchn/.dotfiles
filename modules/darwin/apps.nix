@@ -1,9 +1,9 @@
-{ pkgs, ... }: {
+{pkgs, ...}: {
   environment.systemPackages = with pkgs; [
     neovim
     git
     just # use Justfile to simplify nix-darwin's commands
-    
+
     # darwin only apps
     utm # virtual machine
   ];
@@ -29,7 +29,7 @@
     };
 
     # Applications to install from Mac App Store using mas
-    # You need to install all these Apps manually first so that your apple accound have records for them.
+    # You need to install all these Apps manually first so that your apple account have records for them.
     # otherwise Apple Store will refuse to install them
     # For details, see https://github.com/mas-cli/mas
     masApps = {
@@ -92,6 +92,14 @@
       "tencent-lemon" # clean tool
       "surge" # proxy tool
       "miniforge" # Miniconda's community-driven distribution
+      "keycastr" # show keystrokes on screen
+      "linear-linear" # task management
+      # "obs" # stream / recoding software
+      "chatgpt" # open ai desktop
+      # virtualization
+      "utm" # virtual machines
+      "docker" # docker desktoplient
+      "karabiner-elements" # keyboard remap
     ];
   };
 }
