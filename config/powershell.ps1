@@ -83,7 +83,7 @@ function new_treela { eza --tree -a --color=always --icons=always --group-direct
 #  "
 
 # glazewm
-setx GLAZEWM_CONFIG_PATH --config="$env:USERPROFILE\.config\config.yaml"
+setx GLAZEWM_CONFIG_PATH --config="$env:USERPROFILE\.config\glazewm.yaml"
 # prompt
 $prompt = ""
 function Invoke-Starship-PreCommand {
