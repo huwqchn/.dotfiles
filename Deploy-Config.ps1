@@ -95,6 +95,21 @@ Else {
 # ----------------
 # powershell.ps1
 # ----------------
+If (Test-Path ".\config\glazewm.yaml") {
+    Write-Host "Detected glazewm.yaml file. Preparing to copy..."
+    New-Item -ItemType Directory -Force -Path "$env:USERPROFILE\.config" | Out-Null
+    Copy-Item -Path ".\config\glazewm.yaml" `
+               -Destination "$env:USERPROFILE\.config\glazewm.yaml" `
+               -Force
+    Write-Host "glazewm.yaml copied successfully!"
+}
+Else {
+    Write-Host "No glazewm.yaml detected. Skipping..."
+}
+
+# ----------------
+# powershell.ps1
+# ----------------
 If (Test-Path ".\config\powershell.ps1") {
     Write-Host "Detected powershell.ps1 file. Preparing to copy..."
     # The PowerShell configuration folder is generally at $HOME\Documents\PowerShell for the current user
