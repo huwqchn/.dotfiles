@@ -35,33 +35,31 @@ function Ensure-Bucket {
   param (
     [Parameter(Mandatory = $true)]
     [string]$BucketName,
-
-    [Parameter(Mandatory = $true)]
-    [string]$BucketUrl
   )
-
   Write-Host "Checking if bucket '$BucketName' is added..." -ForegroundColor Cyan
   $buckets = scoop bucket list
 
   if ($buckets -contains $BucketName) {
-      Write-Host "Bucket '$BucketName' is already added.`n" -ForegroundColor Green
+    Write-Host "Bucket '$BucketName' is already added.`n" -ForegroundColor Green
   }
   else {
-    Write-Host "Adding bucket '$BucketName' from '$BucketURL'..." -ForegroundColor Yellow
-    scoop bucket add $BucketName $BucketURL
+    Write-Host "Adding bucket '$BucketName' ..." -ForegroundColor Yellow
+    scoop bucket add $BucketName
     if ($LASTEXITCODE -eq 0) {
-        Write-Host "Bucket '$BucketName' added successfully.`n" -ForegroundColor Green
+      Write-Host "Bucket '$BucketName' added successfully.`n" -ForegroundColor Green
     }
     else {
-        Write-Host "Failed to add bucket '$BucketName'. Check the URL and try again.`n" -ForegroundColor Red
+      Write-Host "Failed to add bucket '$BucketName'.`n" -ForegroundColor Red
     }
   }
 }
 
 Write-Host "`n=== 2) Add buckets if needed ==="
-Ensure-Bucket "extras"
-Ensure-Bucket "nerd-fonts"
+$requiredBuckets = @("main", "extras", "nerd-fonts") # Add more bucket names as needed
 
+foreach ($bucket in $requiredBuckets) {
+  Ensure-Bucket -BucketName $bucket
+}
 
 function Ensure-App {
   param (
@@ -76,46 +74,52 @@ function Ensure-App {
     Write-Host "App '$AppName' is not installed. Installing now..." -ForegroundColor Yellow
     scoop install $AppName
     if ($LASTEXITCODE -eq 0) {
-        Write-Host "App '$AppName' installed successfully.`n" -ForegroundColor Green
+      Write-Host "App '$AppName' installed successfully.`n" -ForegroundColor Green
     }
     else {
-        Write-Host "Failed to install app '$AppName'. Check if the bucket containing '$AppName' is added.`n" -ForegroundColor Red
+      Write-Host "Failed to install app '$AppName'. Check if the bucket containing '$AppName' is added.`n" -ForegroundColor Red
     }
   }
 }
 
 Write-Host "`n=== 3) Install app if needed ==="
-Ensure-App "fd"
-Ensure-App "7zip"
-Ensure-App "gcc"
-ensure-app "git"
-Ensure-App "extra/lazygit"
-Ensure-App "extras/glazewm"
-Ensure-App "extras/zebar"
-Ensure-App "neovim"
-Ensure-App "starship"
-Ensure-App "yazi"
-Ensure-App "fastfetch"
-Ensure-App "bat"
-Ensure-App "ripgrep"
-Ensure-App "cmake"
-Ensure-App "gh"
-Ensure-App "unzip"
-Ensure-App "innounp"
-Ensure-App "tree-sitter"
-Ensure-App "eza"
-Ensure-App "neovim"
-Ensure-App "nodejs"
-Ensure-App "luarocks"
-Ensure-App "jq"
-Ensure-App "btop"
-Ensure-App "zoxide"
-Ensure-App "imagemagick"
-Ensure-App "fzf"
-Ensure-App "lua"
-Ensure-App "starship"
-Ensure-App "nerd-fonts/CascadiaCode-NF"
-Ensure-App "nerd-fonts/JetBrainsMono-NF"
+$requiredApps = @(
+  "fd",
+  "7zip",
+  "gcc",
+  "git",
+  "extra/lazygit",
+  "extras/glazewm",
+  "extras/zebar",
+  "neovim",
+  "starship",
+  "yazi",
+  "fastfetch",
+  "bat",
+  "ripgrep",
+  "cmake",
+  "gh",
+  "unzip",
+  "innounp",
+  "tree-sitter",
+  "eza",
+  "neovim",
+  "nodejs",
+  "luarocks",
+  "jq",
+  "btop",
+  "zoxide",
+  "imagemagick",
+  "fzf",
+  "lua",
+  "starship",
+  "nerd-fonts/CascadiaCode-NF",
+  "nerd-fonts/JetBrainsMono-NF"
+)
+
+foreach ($app in $requiredApps) {
+  Ensure-App $app
+}
 
 # ------------------------------------------------
 # 3) Copy configuration files to their destinations
