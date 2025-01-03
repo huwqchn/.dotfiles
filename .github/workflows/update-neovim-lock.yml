@@ -1,0 +1,29 @@
+name: "Update nvim plugins"
+on:
+  repository_dispatch:
+  workflow_dispatch:
+  schedule:
+    - cron: "51 2 * * *"
+permissions:
+  contents: write
+  pull-requests: write
+jobs:
+  update-nvim-plugins:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: true
+      - name: Update neovim plugins
+        run: |
+          cp -r config/nvim $HOME/.config/nvim
+          nvim -- --headless "+Lazy! sync" +qa
+          cp $HOME/.config/nvim/lazy-lock.json config/nvim/lazy-lock.json
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v7
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          branch: plugin-updates
+          title: "Update nvim plugins to latest versions"
+          body: "This PR updates the nvim plugins to their latest versions."
+          labels: merge-queue
