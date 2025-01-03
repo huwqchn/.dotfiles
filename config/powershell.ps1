@@ -97,3 +97,4 @@ function Invoke-Starship-PreCommand {
 Set-PSReadlineKeyHandler -Chord Ctrl+d -Function DeleteCharOrExit
 Set-PSReadlineKeyHandler -Chord Ctrl+a -Function BeginningOfLine
 Set-PSReadlineKeyHandler -Chord Ctrl+e -Function EndOfLine
+fastfetch
