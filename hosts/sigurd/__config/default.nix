@@ -26,6 +26,7 @@
     virtual.enable = true;
     peripherals.enable = true;
     security.enable = true;
+    atuin-autosync.enable = true;
   };
 
   system.stateVersion = "24.11"; # Did you read the comment?
