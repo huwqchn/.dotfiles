@@ -175,18 +175,16 @@
       source-serif # 衬线字体，不含汉字。字族名叫 Source Code Pro，以及带字重的变体
       source-han-sans # 思源黑体
       source-han-serif # 思源宋体
-      # nerdfonts
-      # https://github.com/NixOS/nixpkgs/blob/nixos-24.05/pkgs/data/fonts/nerdfonts/shas.nix
-      (nerdfonts.override {
-        fonts = [
-          # symbols icon only
-          "NerdFontsSymbolsOnly"
-          # Characters
-          "FiraCode"
-          "JetBrainsMono"
-          "Iosevka"
-        ];
-      })
+
+      # nerd-fonts
+      nerd-fonts.symbols-only
+      nerd-fonts.fira-code
+      nerd-fonts.jetbrains-mono
+      nerd-fonts.iosevka
+
+      maple-mono
+      julia-mono
+      dejavu_fonts
     ];
   };
 }

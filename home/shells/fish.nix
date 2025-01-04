@@ -3,27 +3,17 @@
   pkgs,
   ...
 }: {
-  home.packages = with pkgs; [
-    fishPlugins.done
-    fishPlugins.fzf-fish
-    fishPlugins.forgit
-    fishPlugins.autopair
-    fishPlugins.grc
-    grc
+  home.packages = with pkgs.fishPlugins; [
+    done
+    fzf-fish
+    forgit
+    autopair
+    bang-bang
+    # fishPlugins.grc
+    # grc
   ];
   programs.fish = {
     enable = true;
-    plugins = [
-      {
-        name = "plugin-bang-bang";
-        src = pkgs.fetchFromGitHub {
-          owner = "oh-my-fish";
-          repo = "plugin-bang-bang";
-          rev = "ec991b80ba7d4dda7a962167b036efc5c2d79419";
-          sha256 = "sha256-oPPCtFN2DPuM//c48SXb4TrFRjJtccg0YPXcAo0Lxq0=";
-        };
-      }
-    ];
     shellInit = ''
       set -gx fish_vi_force_cursor 1
       set -gx fish_cursor_default block
@@ -74,7 +64,7 @@
       gcp = "git commit -p";
       gP = "git push";
       gp = "git pull";
-      gcc = "git reflog expire --expire-unreachable=now --all; and git gc --prune=now";
+      ggc = "git reflog expire --expire-unreachable=now --all; and git gc --prune=now";
       # tmux
       t = "tmux";
       tc = "tmux attach";
