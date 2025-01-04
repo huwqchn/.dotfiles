@@ -18,10 +18,10 @@ window-theme = ghostty
 
 # keybindings
 keybind = clear
-keybind = ctrl+n=goto_split:left
-keybind = ctrl+e=goto_split:bottom
-keybind = ctrl+i=goto_split:top
-keybind = ctrl+o=goto_split:right
+keybind = ctrl+shift+n=goto_split:left
+keybind = ctrl+shift+e=goto_split:bottom
+keybind = ctrl+shift+i=goto_split:top
+keybind = ctrl+shift+o=goto_split:right
 keybind = ctrl+shift+t=new_tab
 keybind = ctrl+shift+left_bracket=previous_tab
 keybind = ctrl+shift+right_bracket=next_tab

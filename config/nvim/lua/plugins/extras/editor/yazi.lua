@@ -1,8 +1,9 @@
----@type LazySpec
 return {
   "mikavilpas/yazi.nvim",
   event = "VeryLazy",
   keys = {
+    { "sy", "<leader>fy", desc = "Yazi (directory of current file)", remap = true },
+    { "sY", "<leader>fY", desc = "Yazi (cwd)", remap = true },
     {
       "<leader>fy",
       "<cmd>Yazi<cr>",

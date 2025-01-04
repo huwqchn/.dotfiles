@@ -51,6 +51,7 @@
 
     # `brew install`
     brews = [
+      "reattach-to-user-namespace" # need by tmux
       "wget"
       "curl"
       "aria2" # download tool
