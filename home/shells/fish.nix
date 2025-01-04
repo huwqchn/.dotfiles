@@ -9,8 +9,6 @@
     forgit
     autopair
     bang-bang
-    # fishPlugins.grc
-    # grc
   ];
   programs.fish = {
     enable = true;

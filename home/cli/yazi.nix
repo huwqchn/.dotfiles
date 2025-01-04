@@ -178,7 +178,7 @@
         }
         {
           on = ["o"];
-          run = ["plugin --sync smart-enter"];
+          run = ["plugin smart-enter"];
         }
 
         {
