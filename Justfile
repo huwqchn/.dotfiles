@@ -67,17 +67,22 @@ fmt:
 gcroot:
   ls -al /nix/var/nix/gcroots/auto/
 
+# reload nix direnv
+[group('nix')]
+reload:
+  nix-direnv-reload
+
 # Verify all the store entries
 # Nix Store can contains corrupted entries if the nix store object has been modified unexpectedly.
 # This command will verify all the store entries,
 # and we need to fix the corrupted entries manually via `sudo nix store delete <store-path-1> <store-path-2> ...`
 [group('nix')]
-verify-store:
+verify:
   nix store verify --all
 
 # Repair Nix Store Objects
 [group('nix')]
-repair-store *paths:
+repair *paths:
   nix store repair {{paths}}
 
 [macos]

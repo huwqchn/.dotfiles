@@ -1,9 +1,13 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  myvars,
+  ...
+}: {
   environment.systemPackages = with pkgs; [
     neovim
     git
     just # use Justfile to simplify nix-darwin's commands
-
+    rsync
     # darwin only apps
     utm # virtual machine
   ];
@@ -15,7 +19,18 @@
 
   programs.fish.enable = true;
 
-  # To make this work, homebrew need to be installed manually, see https://brew.sh
+  # Requires Homebrew to be installed
+  system.activationScripts.preUserActivation.text = ''
+    if ! xcode-select --version 2>/dev/null; then
+      $DRY_RUN_CMD xcode-select --install
+    fi
+    if ! /opt/homebrew/bin/brew --version 2>/dev/null; then
+      $DRY_RUN_CMD /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    fi
+  '';
+
+  # Add homebrew paths to CLI path
+  home-manager.users.${myvars.userName}.home.sessionPath = ["/opt/homebrew/bin/"];
   # The apps installed by homebrew are not managed by nix, and not reproducible!
   # But on macOS, homebrew has a much larger selection of apps than nixpkgs, especially for GUI apps!
   homebrew = {
@@ -28,6 +43,10 @@
       cleanup = "zap";
     };
 
+    global = {
+      brewfile = true; # Run brew bundle from anywhere
+      lockfiles = false; # Don't save lockfile (since running from anywhere)
+    };
     # Applications to install from Mac App Store using mas
     # You need to install all these Apps manually first so that your apple account have records for them.
     # otherwise Apple Store will refuse to install them
@@ -59,7 +78,6 @@
 
       # https://github.com/rgcr/m-cli
       "m-cli" #  Swiss Army Knife for macOS
-      "proxychains-ng"
 
       # commands like `gsed` `gtar` are required by some tools
       "gnu-sed"

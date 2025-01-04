@@ -22,7 +22,7 @@ in {
   # paths it should manage.
   home = {
     inherit username homeDirectory;
-    sessionPath = ["$HOME/.local/bin"];
+    sessionPath = ["$HOME/.local/bin" "/opt/homebrew/bin"];
 
     persistence = {
       "/persist/${config.home.homeDirectory}" = {
