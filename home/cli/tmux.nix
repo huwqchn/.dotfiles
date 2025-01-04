@@ -242,7 +242,7 @@ in {
 
       bind -T copy-mode-vi k send-keys -X search-again
       bind -T copy-mode-vi K send-keys -X search-reverse
-      bind -T copy-mode-vi send l -X other-end
+      bind -T copy-mode-vi send-keys l -X other-end
 
       # don't exit copy mode when dragging with mouse
       unbind -T copy-mode-vi MouseDragEnd1Pane

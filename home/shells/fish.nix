@@ -34,6 +34,11 @@
 
       abbr -a --position anywhere --set-cursor -- -h "-h 2>&1 | bat --plain --language=help"
     '';
+    interactiveShellInit = ''
+      if not set -q TMUX
+          exec tmux attach || tmux new
+      end
+    '';
     shellAbbrs = {
       c = "clear";
       Q = "shutdown -h now";
@@ -63,11 +68,13 @@
       gs = "git st";
       gb = "git checkout -b";
       gc = "git commit";
+      gca = "git commit --amend -a --no-edit";
       gpr = "git pr checkout";
       gm = "git branch -l main | rg main > /dev/null 2>&1 && git checkout main || git checkout master";
       gcp = "git commit -p";
       gP = "git push";
       gp = "git pull";
+      gcc = "git reflog expire --expire-unreachable=now --all; and git gc --prune=now";
       # tmux
       t = "tmux";
       tc = "tmux attach";
