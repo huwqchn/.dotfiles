@@ -115,6 +115,8 @@ $requiredApps = @(
   "starship",
   "nerd-fonts/CascadiaCode-NF",
   "nerd-fonts/JetBrainsMono-NF"
+  "nerd-fonts/CascadiaCode-NF-Mono",
+  "nerd-fonts/JetBrainsMono-NF-Mono"
 )
 
 foreach ($app in $requiredApps) {
