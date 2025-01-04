@@ -1,10 +1,8 @@
 {
+  config,
   lib,
-  myvars,
   ...
-}: let
-  inherit (myvars) userFullName userEmail;
-in {
+}: {
   # `programs.git` will generate the config file: ~/.config/git/config
   # to make git use this config file, `~/.gitconfig` should not exist!
   #
@@ -16,8 +14,8 @@ in {
     enable = true;
     lfs.enable = true;
 
-    userName = userFullName;
-    inherit userEmail;
+    userName = config.my.fullName;
+    userEmail = config.my.email;
 
     extraConfig = {
       color.ui = true;

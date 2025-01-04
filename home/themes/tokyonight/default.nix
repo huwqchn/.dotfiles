@@ -1,6 +1,6 @@
 {
+  config,
   pkgs,
-  myvars,
   ...
 }: let
   src = pkgs.fetchFromGitHub {
@@ -9,7 +9,7 @@
     rev = "b0e7c7382a7e8f6456f2a95655983993ffda745e";
     hash = "sha256-Fxakkz4+BTbvDLjRggZUVVhVEbg1b/MuuIC1rGrCwVA=";
   };
-  inherit (myvars) theme;
+  inherit (config.my) theme;
   themeName = builtins.replaceStrings ["-"] ["_"] theme;
 in {
   home.sessionVariables = {

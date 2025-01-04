@@ -1,5 +1,4 @@
 {
-  myvars,
   mylib,
   config,
   ...
@@ -7,7 +6,7 @@
 mylib.mkModule config "onedrive" {
   services.onedrive.enable = true;
 
-  home-manager.users.${myvars.userName} = {
+  home-manager.users.${config.my.name} = {
     xdg.configFile."onedrive/config".text = ''
       # try to download changes from onedrive every x seconds
       monitor_interval = "6"
@@ -20,7 +19,7 @@ mylib.mkModule config "onedrive" {
     '';
   };
   environment.persistence."/persist" = {
-    users.${myvars.userName}.directories = [
+    users.${config.my.name}.directories = [
       "OneDrive"
       ".config/onedrive"
     ];

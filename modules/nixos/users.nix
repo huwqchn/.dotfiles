@@ -1,9 +1,5 @@
-{
-  myvars,
-  config,
-  ...
-}: let
-  cfgUser = config.users.users."${myvars.userName}";
+{config, ...}: let
+  cfgUser = config.users.users."${config.my.name}";
   ifTheyExist = groups: builtins.filter (group: builtins.hasAttr group config.users.groups) groups;
 in {
   users = {
@@ -11,7 +7,7 @@ in {
     mutableUsers = false;
 
     groups = {
-      "${myvars.userName}" = {};
+      "${config.my.name}" = {};
       docker = {};
       wireshark = {};
       # for android platform tools's udev rules
@@ -23,16 +19,16 @@ in {
       uinput = {};
     };
     users = {
-      "${myvars.userName}" = {
-        inherit (myvars) initialHashedPassword;
-        home = "/home/${myvars.userName}";
+      "${config.my.name}" = {
+        inherit (config.my) initialHashedPassword;
+        home = "/home/${config.my.name}";
         isNormalUser = true;
         extraGroups =
           [
             "wheel"
           ]
           ++ ifTheyExist [
-            myvars.userName
+            config.my.name
             "users"
             "git"
             "networkmanager"

@@ -1,16 +1,15 @@
-{ darwin, home-manager, myvars, mylib, ... }: {
+{
+  darwin,
+  home-manager,
+  ...
+}: {
   system = "aarch64-darwin";
 
   modules = [
     ../../modules/darwin
+    ../../modules/my.nix
+    ./__config
     home-manager.darwinModules.home-manager
-    {
-      home-manager = {
-        users."${myvars.userName}".imports = map mylib.relativeToRoot [
-          "home/darwin.nix"
-        ];
-      };
-    }
   ];
   output = "darwinConfigurations";
   builder = darwin.lib.darwinSystem;

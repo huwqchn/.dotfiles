@@ -1,11 +1,6 @@
-{
-  config,
-  mylib,
-  ...
-}: {
+{config, ...}: {
   home-manager.users."${config.my.name}".imports = [
-    mylib.relativeToRoot
-    "home"
+    ../../../home/darwin.nix
     ../../../modules/my.nix
   ];
 }

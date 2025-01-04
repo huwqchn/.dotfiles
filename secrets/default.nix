@@ -1,12 +1,12 @@
 {
   pkgs,
   agenix,
-  myvars,
+  config,
   ...
 }: let
   user_readable = {
     symlink = false;
-    owner = myvars.userName;
+    owner = config.my.name;
     mode = "0500";
   };
 in {
@@ -29,7 +29,7 @@ in {
     "git-credentials" =
       {
         # target path for decrypted file
-        path = "/home/${myvars.userName}/.git-credentials";
+        path = "/home/${config.my.name}/.git-credentials";
         # encrypted file path
         file = ./git-credentials.age;
       }
@@ -37,14 +37,14 @@ in {
 
     "johnson-hu-gpg-subkeys.priv.age" =
       {
-        path = "/persist/home/${myvars.userName}/.gnupg/johnson-hu-gpg-subkeys.priv.age";
+        path = "/persist/home/${config.my.name}/.gnupg/johnson-hu-gpg-subkeys.priv.age";
         file = ./johnson-hu-gpg-subkeys.priv.age.age;
       }
       // user_readable;
 
     "johnson-hu-ssh-key.age" =
       {
-        path = "/persist/home/${myvars.userName}/.ssh/johnson-hu-ssh-key";
+        path = "/persist/home/${config.my.name}/.ssh/johnson-hu-ssh-key";
         file = ./johnson-hu-ssh-key.age;
       }
       // user_readable;

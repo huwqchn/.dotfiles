@@ -3,10 +3,9 @@
   lib,
   pkgs,
   impermanence,
-  myvars,
   ...
 }: let
-  username = myvars.userName;
+  username = config.my.name;
   homeDirectory =
     if pkgs.stdenv.isLinux
     then "/home/${username}"

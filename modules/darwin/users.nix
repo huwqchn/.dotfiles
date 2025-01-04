@@ -1,10 +1,9 @@
 {
-  myvars,
   config,
   pkgs,
   ...
 }: let
-  inherit (myvars) userName;
+  userName = config.my.name;
   inherit (config.networking) hostName;
 in {
   # Define a user account.

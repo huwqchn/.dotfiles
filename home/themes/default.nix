@@ -1,12 +1,12 @@
 {
   lib,
-  myvars,
+  config,
   wallpapers,
   ...
 }: let
-  userTheme = lib.splitString "-" myvars.theme;
+  userTheme = lib.splitString "-" config.my.theme;
   majorTheme = lib.elemAt userTheme 0;
-  background = "${wallpapers}/${myvars.wallpaper}";
+  background = "${wallpapers}/${config.my.wallpaper}";
 in {
   imports = [
     ./systemTheme.nix

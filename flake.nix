@@ -15,11 +15,10 @@
     inherit (inputs.nixpkgs) lib;
     inherit (flake-utils-plus.lib) mkFlake;
     mylib = import ./lib {inherit lib;};
-    myvars = import ./vars;
     specialArgs =
       inputs
       // {
-        inherit mylib myvars;
+        inherit mylib;
       };
     hl = haumea.lib;
     hosts = hl.load {
@@ -27,7 +26,7 @@
       # Make the default.nix's attrs directly children of lib
       transformer = hl.transformers.liftDefault;
       inputs = {
-        inherit darwin nixos-generators programs-sqlite home-manager mylib myvars;
+        inherit darwin nixos-generators programs-sqlite home-manager mylib;
       };
     };
   in
@@ -65,6 +64,7 @@
         inherit specialArgs;
         modules = [
           ./modules/nix.nix
+          ./modules/my.nix
           ./secrets
           {
             home-manager = {

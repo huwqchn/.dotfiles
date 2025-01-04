@@ -1,8 +1,4 @@
-{
-  pkgs,
-  myvars,
-  ...
-}: {
+{pkgs, ...}: {
   environment.systemPackages = with pkgs; [
     neovim
     git
@@ -29,8 +25,6 @@
     fi
   '';
 
-  # Add homebrew paths to CLI path
-  home-manager.users.${myvars.userName}.home.sessionPath = ["/opt/homebrew/bin/"];
   # The apps installed by homebrew are not managed by nix, and not reproducible!
   # But on macOS, homebrew has a much larger selection of apps than nixpkgs, especially for GUI apps!
   homebrew = {

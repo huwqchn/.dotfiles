@@ -1,5 +1,5 @@
 {
-  myvars,
+  config,
   lib,
   pkgs,
   nixpkgs,
@@ -28,7 +28,7 @@
     #   dates = lib.mkDefault "weekly";
     #   options = lib.mkDefault "--delete-older-than 7d";
     # };
-    
+
     optimise.automatic = lib.mkDefault true;
     settings = {
       # enable flakes globally
@@ -43,7 +43,7 @@
       # given the users in this list the right to specify additional substituters via:
       #    1. `nixConfig.substituers` in `flake.nix`
       #    2. command line args `--options substituers http://xxx`
-      trusted-users = [myvars.userName];
+      trusted-users = [config.my.name];
       # substituers that will be considered before the official ones(https://cache.nixos.org)
       substituters = [
         # cache mirror located in China

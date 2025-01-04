@@ -1,7 +1,6 @@
 {
   config,
   pkgs,
-  myvars,
   ...
 }: {
   environment = {
@@ -27,7 +26,7 @@
   users = {
     # set user's default shell system-wide
     defaultUserShell = pkgs.bashInteractive;
-    users.${myvars.userName}.shell = pkgs.fish;
+    users.${config.my.name}.shell = pkgs.fish;
   };
 
   # fix for `sudo xxx` in kitty/wezterm and other modern terminal emulators
@@ -64,7 +63,7 @@
         enable = true;
         extraArgs = "--keep-since 3d --key 5";
       };
-      flake = "/home/${myvars.userName}/.dotfiles";
+      flake = "/home/${config.my.name}/.dotfiles";
     };
   };
 }
