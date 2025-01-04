@@ -88,9 +88,9 @@ $requiredApps = @(
   "7zip",
   "gcc",
   "git",
-  "extra/lazygit",
-  "extras/glazewm",
-  "extras/zebar",
+  "lazygit",
+  "glazewm",
+  "zebar",
   "neovim",
   "starship",
   "yazi",
@@ -113,10 +113,10 @@ $requiredApps = @(
   "fzf",
   "lua",
   "starship",
-  "nerd-fonts/CascadiaCode-NF",
-  "nerd-fonts/JetBrainsMono-NF"
-  "nerd-fonts/CascadiaCode-NF-Mono",
-  "nerd-fonts/JetBrainsMono-NF-Mono"
+  "CascadiaCode-NF",
+  "JetBrainsMono-NF"
+  "CascadiaCode-NF-Mono",
+  "JetBrainsMono-NF-Mono"
 )
 
 foreach ($app in $requiredApps) {

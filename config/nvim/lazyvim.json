@@ -58,11 +58,12 @@
     "plugins.extras.ui.window-picker",
     "plugins.extras.ui.winshift",
     "plugins.extras.coding.neotab",
-    "plugins.extras.misc.gx"
+    "plugins.extras.misc.gx",
+    "plugins.extras.editor.yazi"
   ],
   "news": {
     "NEWS.md": "10960",
-    "doc/news.txt": "15134"
+    "doc/news.txt": "24923"
   },
   "version": 7
 }
