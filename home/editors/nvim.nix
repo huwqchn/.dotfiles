@@ -3,7 +3,7 @@
   pkgs,
   lib,
   mylib,
-  neovim-nightly,
+  # neovim-nightly,
   ...
 }: let
   inherit (config.lib.file) mkOutOfStoreSymlink;
@@ -28,7 +28,7 @@ in {
 
   programs.neovim = {
     enable = true;
-    package = neovim-nightly.packages.${pkgs.system}.default;
+    # package = neovim-nightly.packages.${pkgs.system}.default;
 
     defaultEditor = true;
     viAlias = true;
