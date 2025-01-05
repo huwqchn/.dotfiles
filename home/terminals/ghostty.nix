@@ -1,9 +1,9 @@
 {
   config,
-  mylib,
+  lib,
   ...
 }: let
   inherit (config.lib.file) mkOutOfStoreSymlink;
 in {
-  xdg.configFile.ghostty.source = mkOutOfStoreSymlink (mylib.relativeToConfig "ghostty");
+  xdg.configFile.ghostty.source = mkOutOfStoreSymlink (lib.my.relativeToConfig "ghostty");
 }

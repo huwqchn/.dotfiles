@@ -1,9 +1,9 @@
 {
   config,
-  mylib,
+  lib,
   ...
 }:
-mylib.mkEnabledModule config "ssh" {
+lib.my.mkEnabledModule config "ssh" {
   services.openssh = {
     enable = true;
     settings = {

@@ -1,9 +1,9 @@
 {
   config,
-  mylib,
+  lib,
   ...
 }:
-mylib.mkModule config "zram" {
+lib.my.mkModule config "zram" {
   # Enable in-memory compressed devices and swap space provided by the zram kernel module.
   # By enable this, we can store more data in memory instead of fallback to disk-based swap devices directly,
   # and thus improve I/O performance when we have a lot of memory.

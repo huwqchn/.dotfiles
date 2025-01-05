@@ -1,5 +1,5 @@
-{ lib, ... } : {
-  imports = [ 
+{lib, ...}: {
+  imports = [
     ./darwin
     ./cli/atuin.nix
     ./cli/bat.nix
@@ -9,7 +9,7 @@
     ./cli/eza.nix
     ./cli/fastfetch.nix
     ./cli/fzf.nix
-    ./cli/gh.nix
+    # ./cli/gh.nix
     ./cli/git.nix
     ./cli/lazygit.nix
     ./cli/nix-index.nix

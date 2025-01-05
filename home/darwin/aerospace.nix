@@ -1,5 +1,9 @@
-{config, mylib, ...}: {
+{
+  config,
+  lib,
+  ...
+}: {
   home.file.".aerospace.toml".source =
     config.lib.file.mkOutOfStoreSymlink
-    (mylib.relativeToConfig "aerospace.toml");
+    (lib.my.relativeToConfig "aerospace.toml");
 }

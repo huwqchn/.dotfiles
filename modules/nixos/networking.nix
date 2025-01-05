@@ -1,10 +1,10 @@
 {
   config,
   pkgs,
-  mylib,
+  lib,
   ...
 }:
-mylib.mkEnabledModule config "network" {
+lib.my.mkEnabledModule config "network" {
   networking.networkmanager = {
     enable = true;
     plugins = with pkgs; [

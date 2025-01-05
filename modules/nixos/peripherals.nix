@@ -1,10 +1,10 @@
 {
   config,
   pkgs,
-  mylib,
+  lib,
   ...
 }:
-mylib.mkModule config "peripherals" {
+lib.my.mkModule config "peripherals" {
   #============================= Audio(PipeWire) =======================
 
   # List packages installed in system profile. To search, run:

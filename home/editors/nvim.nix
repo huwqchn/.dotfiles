@@ -2,7 +2,6 @@
   config,
   pkgs,
   lib,
-  mylib,
   # neovim-nightly,
   ...
 }: let
@@ -14,7 +13,7 @@ in {
     GIT_EDITOR = "nvim";
   };
   xdg = {
-    configFile.nvim.source = mkOutOfStoreSymlink (mylib.relativeToConfig "nvim");
+    configFile.nvim.source = mkOutOfStoreSymlink (lib.my.relativeToConfig "nvim");
     desktopEntries."nvim" = lib.mkIf pkgs.stdenv.isLinux {
       name = "NeoVim";
       comment = "Edit text files";

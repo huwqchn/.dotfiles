@@ -1,6 +1,6 @@
 {
   config,
-  mylib,
+  lib,
   ...
 }: let
   shellAliases = {
@@ -140,7 +140,7 @@ in {
       ];
     };
   };
-  xdg.configFile."fastfetch/pngs".source = mylib.relativeToConfig "fastfetch/pngs";
+  xdg.configFile."fastfetch/pngs".source = lib.my.relativeToConfig "fastfetch/pngs";
   home.persistence = {
     "/persist/${config.home.homeDirectory}".directories = [".cache/fastfetch"];
   };

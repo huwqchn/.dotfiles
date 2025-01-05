@@ -2,7 +2,7 @@
   pkgs,
   config,
   ags,
-  mylib,
+  lib,
   matugen,
   ...
 }: {
@@ -21,7 +21,7 @@
   ];
   programs.ags = {
     enable = true;
-    configDir = mylib.relativeToConfig "ags";
+    configDir = lib.my.relativeToConfig "ags";
     extraPackages = with pkgs; [
       accountsservice
     ];

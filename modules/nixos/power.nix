@@ -1,9 +1,9 @@
 {
   config,
-  mylib,
+  lib,
   ...
 }:
-mylib.mkModule config "power" {
+lib.my.mkModule config "power" {
   services = {
     power-profiles-daemon = {
       enable = true;

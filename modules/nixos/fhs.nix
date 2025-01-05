@@ -1,10 +1,10 @@
 {
   config,
   pkgs,
-  mylib,
+  lib,
   ...
 }:
-mylib.mkModule config "fhs" {
+lib.my.mkModule config "fhs" {
   # FHS environment, flatpak, appImage, etc.
   environment.systemPackages = [
     # create a fhs environment by command `fhs`, so we can run non-nixos packages in nixos!

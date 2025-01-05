@@ -1,10 +1,10 @@
 {
   config,
   pkgs,
-  mylib,
+  lib,
   ...
 }:
-mylib.mkModule config "security" {
+lib.my.mkModule config "security" {
   # nix.extraOptions = ''
   #   !include ${config.age.secrets.nix-access-tokens.path}
   # '';

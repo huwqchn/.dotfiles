@@ -2,7 +2,6 @@
   config,
   pkgs,
   lib,
-  mylib,
   ...
 }:
 with lib; let
@@ -31,7 +30,7 @@ with lib; let
     done
   '';
 in
-  mylib.mkModule config "clamav" {
+  lib.my.mkModule config "clamav" {
     security.sudo = {
       extraConfig = ''
         clamav ALL = (ALL) NOPASSWD: SETENV: ${pkgs.notify-desktop}/bin/notify-desktop

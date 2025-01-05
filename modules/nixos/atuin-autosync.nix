@@ -1,10 +1,10 @@
 {
-  mylib,
+  lib,
   pkgs,
   config,
   ...
 }:
-mylib.mkModule config "atuin-autosync" {
+lib.my.mkModule config "atuin-autosync" {
   systemd.user.timers.atuin-sync = {
     Unit.Description = "Atuin auto sync";
     Timer.OnUnitActiveSec = "1h";

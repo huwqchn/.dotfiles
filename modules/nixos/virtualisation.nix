@@ -1,10 +1,10 @@
 {
   config,
   pkgs,
-  mylib,
+  lib,
   ...
 }:
-mylib.mkModule config "virtual" {
+lib.my.mkModule config "virtual" {
   ###################################################################################
   #
   #  Virtualisation - Libvirt(QEMU/KVM) / Docker / LXD / WayDroid

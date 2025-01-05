@@ -12,13 +12,17 @@
     darwin,
     ...
   }: let
-    inherit (inputs.nixpkgs) lib;
     inherit (flake-utils-plus.lib) mkFlake;
-    mylib = import ./lib {inherit lib;};
+    # https://www.reddit.com/r/NixOS/comments/xrt6ng/extending_lib_in_homemanager_submodule/
+    # https://github.com/bangedorrunt/nix/blob/tdt/flake.nix#L94-L97
+    # if not append home-manager.lib to lib, the home-manager lib will not be available
+    lib =
+      inputs.nixpkgs.lib.extend
+      (final: _: {my = import ./lib {lib = final;};} // home-manager.lib);
     specialArgs =
       inputs
       // {
-        inherit mylib;
+        inherit lib;
       };
     hl = haumea.lib;
     hosts = hl.load {
@@ -26,7 +30,7 @@
       # Make the default.nix's attrs directly children of lib
       transformer = hl.transformers.liftDefault;
       inputs = {
-        inherit darwin nixos-generators programs-sqlite home-manager mylib;
+        inherit darwin nixos-generators programs-sqlite home-manager;
       };
     };
   in

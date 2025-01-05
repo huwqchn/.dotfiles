@@ -1,5 +1,5 @@
 {
-  mylib,
+  lib,
   config,
   ...
 }: {
@@ -9,7 +9,7 @@
   };
   xdg.configFile."wezterm" = {
     recursive = true;
-    source = mylib.relativeToConfig "wezterm";
+    source = lib.my.relativeToConfig "wezterm";
   };
   home.persistence = {
     "/persist/${config.home.homeDirectory}".directories = [

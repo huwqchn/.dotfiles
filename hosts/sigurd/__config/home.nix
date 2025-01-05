@@ -1,10 +1,10 @@
 {
   config,
-  mylib,
+  lib,
   ...
 }: {
   home-manager.users."${config.my.name}".imports = [
-    mylib.relativeToRoot
+    lib.my.relativeToRoot
     "home"
   ];
 }

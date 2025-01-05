@@ -1,9 +1,9 @@
 {
-  mylib,
+  lib,
   config,
   ...
 }:
-mylib.mkModule config "onedrive" {
+lib.my.mkModule config "onedrive" {
   services.onedrive.enable = true;
 
   home-manager.users.${config.my.name} = {
