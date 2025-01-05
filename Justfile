@@ -1,4 +1,7 @@
 set shell := ["bash", "-c"]
+rebuild := if os() == "macos" { "darwin-rebuild switch --flake .#" } else { "nh os switch . -v -H "}
+rebuild_option := if os() == "macos" { "--show-trace -L -v" } else { "--ask" }
+build_config := if os() == "macos" { "darwinConfiguration" } else { "nixosConfiguration" }
 
 # List all the just commands
 default:
@@ -9,11 +12,14 @@ default:
 test:
   nix eval .#evalTests --show-trace --print-build-logs --verbose
 
+[group('nix')]
+build host=`uname -n`:
+  nix build .#{{build_config}}.{{host}}.system --extra-experimental-features "nix-command flakes" --show-trace --verbose
+
 # Rebuild specific host
 [group('nix')]
-rebuild host:
-  nh os switch . -v -H {{host}} --ask
-  # sudo nixos-rebuild switch --flake .#{{host}} --show-trace -L -v --impure
+switch host=`uname -n`:
+  {{rebuild}}{{host}} {{rebuild_option}}
 
 # remove all generations order than 7 days
 # on darwin, you may need to switch to root user to run this command
@@ -85,14 +91,6 @@ verify:
 repair *paths:
   nix store repair {{paths}}
 
-[macos]
-[group('nix')]
-darwin-build host:
-  nix build .#darwinConfigurations.{{host}}.system --extra-experimental-features "nix-command flakes" --show-trace --verbose
-
-[macos]
-darwin-switch host:
-  ./result/sw/bin/darwin-rebuild switch --flake .#{{host}} --show-trace -L -v --impure
 
 [group('dev')]
 rm program:
