@@ -13,6 +13,7 @@
 in {
   imports = [
     impermanence.nixosModules.home-manager.impermanence
+    ../modules/my.nix
   ];
 
   news.display = "show";
