@@ -55,11 +55,9 @@ are many improvements that can be made. I will update this README as I make prog
 - [x] support darwin
 - [x] support windows
 - [ ] support wsl
-- [ ] support multiple keymap layouts
 - [ ] support nextcloud
 - [ ] support samba
-- [ ] support kanata
-- [ ] transparent and blur all apps except browsers
+- [ ] config lazyvim by nix
 
 ## References
 
