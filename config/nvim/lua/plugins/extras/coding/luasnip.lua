@@ -57,6 +57,7 @@ return {
       _G.conds_expand = require("luasnip.extras.conditions.expand")
     end,
   },
+  -- TODO: blink integration
   {
     "hrsh7th/nvim-cmp",
     optional = true,

@@ -402,7 +402,7 @@ return {
           return gitdir and #gitdir > 0 and #gitdir - 5 <= #filepath
         end,
         check_lsp_active = function()
-          local ok, clients = pcall(require("lazyvim.util").lsp.get_clients, { bufnr = 0 })
+          local ok, clients = pcall(LazyVim.lsp.get_clients, { bufnr = 0 })
           if not ok or #clients == 1 and clients[1].name == "copilot" then
             return false
           end

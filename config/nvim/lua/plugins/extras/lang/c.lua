@@ -99,11 +99,11 @@ return {
       -- cscope related defaults
       cscope = {
         -- location of cscope db file
-        db_file = require("util").find_project_root() .. "/cscope.out",
+        db_file = LazyVim.root.get({ normalize = true }) .. "/cscope.out",
         -- cscope executable
         exec = "gtags-cscope", -- "cscope" or "gtags-cscope"
         -- choose your fav picker
-        picker = "telescope", -- "telescope", "fzf-lua" or "quickfix"
+        picker = LazyVim.cmp_engine(), -- "telescope", "fzf-lua" or "quickfix"
         -- "true" does not open picker for single result, just JUMP
         skip_picker_for_single_result = false, -- "false" or "true"
         -- these args are directly passed to "cscope -f <db_file> <args>"

@@ -331,11 +331,6 @@ map("x", "s/", ":s/\\%V", { silent = false, desc = "replace in selection" })
 -- search in selection
 map("x", "g/", ":/\\%V", { silent = false, desc = "search in selection" })
 
--- toggle coloroclumn
-map("n", "<leader>uo", function()
-  require("util").toggle_colorcolumn()
-end, { desc = "Toggle colorcolumn" })
-
 -- smart deletion, dd
 -- It solves the issue, where you want to delete empty line, but dd will override you last yank.
 -- Code above will check if u are deleting empty line, if so - use black hole register.
