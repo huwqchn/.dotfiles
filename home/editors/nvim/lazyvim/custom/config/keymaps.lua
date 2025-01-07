@@ -144,7 +144,7 @@ map("t", "<C-q>", "<cmd>close<cr>", { desc = "Hide Terminal" })
 
 -- btop
 map("n", "<leader>xb", function()
-  LazyVim.terminal({ "btop" }, { esc_esc = false, ctrl_hjkl = false })
+	LazyVim.terminal({ "btop" }, { esc_esc = false, ctrl_hjkl = false })
 end, { desc = "btop" })
 
 -- map tab to tab, because distinguish between <C-i>
@@ -188,16 +188,16 @@ map("n", "<C-Right>", "<cmd>vertical resize +2<CR>", { desc = "Increase window w
 map("n", "<C-k>", "<C-w>o", { desc = "Clear other windows" })
 -- map("n", "<C-x>", "<C-w>x", { desc = "Exchange window" })
 map("n", "<C-q>", function()
-  -- close current window if there are more than 1 window
-  -- else close current tab if there are more than 1 tab
-  -- else close current vim
-  if #vim.api.nvim_tabpage_list_wins(0) > 1 then
-    vim.cmd([[close]])
-  elseif #vim.api.nvim_list_tabpages() > 1 then
-    vim.cmd([[tabclose]])
-  else
-    vim.cmd([[qa]])
-  end
+	-- close current window if there are more than 1 window
+	-- else close current tab if there are more than 1 tab
+	-- else close current vim
+	if #vim.api.nvim_tabpage_list_wins(0) > 1 then
+		vim.cmd([[close]])
+	elseif #vim.api.nvim_list_tabpages() > 1 then
+		vim.cmd([[tabclose]])
+	else
+		vim.cmd([[qa]])
+	end
 end, { desc = "Super Quit" })
 
 -- map s to <nop>
@@ -210,21 +210,21 @@ map("n", "s<Right>", "<cmd>vertical resize +2<CR>", { desc = "Increase window wi
 
 -- split the screens
 map("n", "si", function()
-  vim.opt.splitbelow = false
-  vim.cmd([[split]])
-  vim.opt.splitbelow = true
+	vim.opt.splitbelow = false
+	vim.cmd([[split]])
+	vim.opt.splitbelow = true
 end, { desc = "split above" })
 map("n", "se", function()
-  vim.opt.splitbelow = true
-  vim.cmd([[split]])
+	vim.opt.splitbelow = true
+	vim.cmd([[split]])
 end, { desc = "split below" })
 map("n", "sn", function()
-  vim.opt.splitright = false
-  vim.cmd([[vsplit]])
+	vim.opt.splitright = false
+	vim.cmd([[vsplit]])
 end, { desc = "split left" })
 map("n", "so", function()
-  vim.opt.splitright = true
-  vim.cmd([[vsplit]])
+	vim.opt.splitright = true
+	vim.cmd([[vsplit]])
 end, { desc = "split right" })
 
 -- Rotate window
@@ -255,67 +255,67 @@ map("n", "<leader><tab>t", "<cmd>tabs", { desc = "List all tabs" })
 
 map("n", "<leader><TAB>n", "<Cmd>tabnew<CR>", { desc = "New tab" })
 map("n", "<leader><TAB><TAB>", function()
-  vim.ui.select(vim.api.nvim_list_tabpages(), {
-    prompt = "Select Tab:",
-    format_item = function(tabid)
-      local wins = vim.api.nvim_tabpage_list_wins(tabid)
-      local not_floating_win = function(winid)
-        return vim.api.nvim_win_get_config(winid).relative == ""
-      end
-      wins = vim.tbl_filter(not_floating_win, wins)
-      local bufs = {}
-      for _, win in ipairs(wins) do
-        local buf = vim.api.nvim_win_get_buf(win)
-        local buftype = vim.api.nvim_get_option_value("buftype", { buf = buf })
-        if buftype ~= "nofile" then
-          local fname = vim.api.nvim_buf_get_name(buf)
-          table.insert(bufs, vim.fn.fnamemodify(fname, ":t"))
-        end
-      end
-      local tabnr = vim.api.nvim_tabpage_get_number(tabid)
-      local cwd = string.format(" %8s: ", vim.fn.fnamemodify(vim.fn.getcwd(-1, tabnr), ":t"))
-      local is_current = vim.api.nvim_tabpage_get_number(0) == tabnr and "✸" or " "
-      return tabnr .. is_current .. cwd .. table.concat(bufs, ", ")
-    end,
-  }, function(tabid)
-    if tabid ~= nil then
-      vim.cmd(tabid .. "tabnext")
-    end
-  end)
+	vim.ui.select(vim.api.nvim_list_tabpages(), {
+		prompt = "Select Tab:",
+		format_item = function(tabid)
+			local wins = vim.api.nvim_tabpage_list_wins(tabid)
+			local not_floating_win = function(winid)
+				return vim.api.nvim_win_get_config(winid).relative == ""
+			end
+			wins = vim.tbl_filter(not_floating_win, wins)
+			local bufs = {}
+			for _, win in ipairs(wins) do
+				local buf = vim.api.nvim_win_get_buf(win)
+				local buftype = vim.api.nvim_get_option_value("buftype", { buf = buf })
+				if buftype ~= "nofile" then
+					local fname = vim.api.nvim_buf_get_name(buf)
+					table.insert(bufs, vim.fn.fnamemodify(fname, ":t"))
+				end
+			end
+			local tabnr = vim.api.nvim_tabpage_get_number(tabid)
+			local cwd = string.format(" %8s: ", vim.fn.fnamemodify(vim.fn.getcwd(-1, tabnr), ":t"))
+			local is_current = vim.api.nvim_tabpage_get_number(0) == tabnr and "✸" or " "
+			return tabnr .. is_current .. cwd .. table.concat(bufs, ", ")
+		end,
+	}, function(tabid)
+		if tabid ~= nil then
+			vim.cmd(tabid .. "tabnext")
+		end
+	end)
 end, { desc = "Select tab" })
 
 -- close unused buffers
 local id = vim.api.nvim_create_augroup("startup", {
-  clear = false,
+	clear = false,
 })
 
 local persistbuffer = function(bufnr)
-  bufnr = bufnr or vim.api.nvim_get_current_buf()
-  vim.fn.setbufvar(bufnr, "bufpersist", 1)
+	bufnr = bufnr or vim.api.nvim_get_current_buf()
+	vim.fn.setbufvar(bufnr, "bufpersist", 1)
 end
 
 vim.api.nvim_create_autocmd({ "BufRead" }, {
-  group = id,
-  pattern = { "*" },
-  callback = function()
-    vim.api.nvim_create_autocmd({ "InsertEnter", "BufModifiedSet" }, {
-      buffer = 0,
-      once = true,
-      callback = function()
-        persistbuffer()
-      end,
-    })
-  end,
+	group = id,
+	pattern = { "*" },
+	callback = function()
+		vim.api.nvim_create_autocmd({ "InsertEnter", "BufModifiedSet" }, {
+			buffer = 0,
+			once = true,
+			callback = function()
+				persistbuffer()
+			end,
+		})
+	end,
 })
 
 map("n", "<leader>bb", function()
-  local curbufnr = vim.api.nvim_get_current_buf()
-  local buflist = vim.api.nvim_list_bufs()
-  for _, bufnr in ipairs(buflist) do
-    if vim.bo[bufnr].buflisted and bufnr ~= curbufnr and (vim.fn.getbufvar(bufnr, "bufpersist") ~= 1) then
-      vim.cmd("bd " .. tostring(bufnr))
-    end
-  end
+	local curbufnr = vim.api.nvim_get_current_buf()
+	local buflist = vim.api.nvim_list_bufs()
+	for _, bufnr in ipairs(buflist) do
+		if vim.bo[bufnr].buflisted and bufnr ~= curbufnr and (vim.fn.getbufvar(bufnr, "bufpersist") ~= 1) then
+			vim.cmd("bd " .. tostring(bufnr))
+		end
+	end
 end, { silent = true, desc = "Close unused buffers" })
 
 vim.keymap.set("n", "<C-w>", "<leader>bd", { remap = true, desc = "Close Buffer" })
@@ -331,42 +331,37 @@ map("x", "s/", ":s/\\%V", { silent = false, desc = "replace in selection" })
 -- search in selection
 map("x", "g/", ":/\\%V", { silent = false, desc = "search in selection" })
 
--- toggle coloroclumn
-map("n", "<leader>uo", function()
-  require("util").toggle_colorcolumn()
-end, { desc = "Toggle colorcolumn" })
-
 -- smart deletion, dd
 -- It solves the issue, where you want to delete empty line, but dd will override you last yank.
 -- Code above will check if u are deleting empty line, if so - use black hole register.
 -- [src: https://www.reddit.com/r/neovim/comments/w0jzzv/comment/igfjx5y/?utm_source=share&utm_medium=web2x&context=3]
 local function smart_dd()
-  if vim.api.nvim_get_current_line():match("^%s*$") then
-    return '"_dd'
-  else
-    return "dd"
-  end
+	if vim.api.nvim_get_current_line():match("^%s*$") then
+		return '"_dd'
+	else
+		return "dd"
+	end
 end
 vim.keymap.set("n", "dd", smart_dd, { noremap = true, expr = true, desc = "Don't yank empty line" })
 
 -- delete current line marks
 -- [src: https://github.com/lkhphuc/dotfiles/blob/master/nvim/lua/config/keymaps.lua]
 local function delete_marks()
-  local cur_line = vim.fn.line(".")
-  -- Delete buffer local mark
-  for _, mark in ipairs(vim.fn.getmarklist("%")) do
-    if mark.pos[2] == cur_line and mark.mark:match("[a-zA-Z]") then
-      vim.api.nvim_buf_del_mark(0, string.sub(mark.mark, 2, #mark.mark))
-      return
-    end
-  end
-  -- Delete global marks
-  local cur_buf = vim.api.nvim_win_get_buf(vim.api.nvim_get_current_win())
-  for _, mark in ipairs(vim.fn.getmarklist()) do
-    if mark.pos[1] == cur_buf and mark.pos[2] == cur_line and mark.mark:match("[a-zA-Z]") then
-      vim.api.nvim_buf_del_mark(0, string.sub(mark.mark, 2, #mark.mark))
-      return
-    end
-  end
+	local cur_line = vim.fn.line(".")
+	-- Delete buffer local mark
+	for _, mark in ipairs(vim.fn.getmarklist("%")) do
+		if mark.pos[2] == cur_line and mark.mark:match("[a-zA-Z]") then
+			vim.api.nvim_buf_del_mark(0, string.sub(mark.mark, 2, #mark.mark))
+			return
+		end
+	end
+	-- Delete global marks
+	local cur_buf = vim.api.nvim_win_get_buf(vim.api.nvim_get_current_win())
+	for _, mark in ipairs(vim.fn.getmarklist()) do
+		if mark.pos[1] == cur_buf and mark.pos[2] == cur_line and mark.mark:match("[a-zA-Z]") then
+			vim.api.nvim_buf_del_mark(0, string.sub(mark.mark, 2, #mark.mark))
+			return
+		end
+	end
 end
 vim.keymap.set("n", "dm", delete_marks, { noremap = true, desc = "Delete mark on the current line" })
