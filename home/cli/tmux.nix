@@ -25,7 +25,7 @@ in {
       # R -> reload tmux config
       # set-option -g status-keys emacs
       # set-option -g display-time 4000
-      sensible
+      # sensible
       # theme
       {
         plugin = catppuccin;
@@ -74,9 +74,15 @@ in {
       # -------------------
       # tmux native options
       # -------------------
-      # set-option -g status-keys emacs
-      # set-option -g display-time 4000
-      #
+      set-option -g status-keys emacs
+      set-option -g display-time 4000
+
+      # source tmux config file
+      bind r source-file "~/.config/tmux/tmux.conf" \; display 'Sourced tmux.conf'
+
+      # display panes numbers
+      bind a display-panes
+
       # undercurl support
       set -as terminal-overrides ',*:Smulx=\E[4::%p1%dm'
       # underscore colours - needs tmux-3.0
