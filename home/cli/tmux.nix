@@ -74,7 +74,9 @@ in {
       # -------------------
       # tmux native options
       # -------------------
-
+      # set-option -g status-keys emacs
+      # set-option -g display-time 4000
+      #
       # undercurl support
       set -as terminal-overrides ',*:Smulx=\E[4::%p1%dm'
       # underscore colours - needs tmux-3.0

@@ -3,31 +3,26 @@
   lib,
   pkgs,
   ...
-}: let
-  inherit (lib) mkEnableOption mkOption;
-  cfg = config.my.lazyvim;
+}:
+with lib; let
+  cfg = config.my.neovim.lazyvim;
+
+  pluginsOptionType = listOf (oneOf [
+    package
+    (submodule {
+      options = {
+        name = mkOption {type = str;};
+        path = mkOption {type = package;};
+      };
+    })
+  ]);
 in {
-  options.my.lazyvim = let
-    pluginsOptionType = let
-      inherit
-        (lib.types)
-        listOf
-        oneOf
-        package
-        str
-        submodule
-        ;
-    in
-      listOf (oneOf [
-        package
-        (submodule {
-          options = {
-            name = mkOption {type = str;};
-            path = mkOption {type = package;};
-          };
-        })
-      ]);
-  in {
+  imports = [
+    ./config.nix
+    ./plugins
+  ];
+
+  options.my.neovim.lazyvim = {
     enable = mkEnableOption "LazyVim";
 
     plugins = mkOption {
@@ -118,7 +113,7 @@ in {
     };
 
     cmp = mkOption {
-      type = lib.types.enum ["auto" "nivm-cmp" "blink.cmp"];
+      type = types.enum ["auto" "nivm-cmp" "blink.cmp"];
       default = "auto";
       description = ''
         choose the completion engine
@@ -127,7 +122,7 @@ in {
     };
 
     picker = mkOption {
-      type = lib.types.enum ["auto" "telescope" "fzf"];
+      type = types.enum ["auto" "telescope" "fzf"];
       default = "auto";
       description = ''
         choose the picker engine
@@ -146,12 +141,12 @@ in {
     };
 
     extraSpec = mkOption {
-      type = lib.types.lines;
+      type = types.lines;
       default = "";
     };
   };
 
-  config = lib.mkIf cfg.enable {
+  config = mkIf cfg.enable {
     programs.neovim = {
       enable = true;
       extraPackages = with pkgs; [
@@ -172,18 +167,9 @@ in {
             path = drv;
           }
           else drv;
-        cmpPlugins =
-          if cfg.cmp == "auto" && cfg.cmp == "blink.cmp"
-          then with pkgs.vimPlugins; [blink-cmp]
-          else with pkgs.vimPlugins; [nvim-cmp];
-
-        pickerPlugins =
-          if cfg.picker == "auto" && cfg.cmp == "fzf"
-          then with pkgs.vimPlugins; [fzf-lua]
-          else with pkgs.vimPlugins; [telescope-nvim dressing-nvim];
 
         lazyPath = pkgs.linkFarm "lazy-plugins" (
-          builtins.map mkEntryFromDrv (lib.subtractLists cfg.excludePlugins cfg.plugins ++ cfg.extraPlugins ++ cmpPlugins ++ pickerPlugins)
+          builtins.map mkEntryFromDrv (lib.subtractLists cfg.excludePlugins cfg.plugins ++ cfg.extraPlugins)
         );
       in ''
         vim.g.lazyvim_cmp = "${cfg.cmp}"
@@ -231,7 +217,8 @@ in {
             { import = "plugins" },
             -- treesitter handled by my.neovim.treesitterParsers, put this line at the end of spec to clear ensure_installed
             { "nvim-treesitter/nvim-treesitter", opts = function(_, opts) opts.ensure_installed = {} end },
-        ${cfg.extraSpec}  },
+            ${cfg.extraSpec}
+          },
         })
       '';
     };

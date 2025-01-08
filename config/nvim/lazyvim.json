@@ -3,7 +3,6 @@
     "lazyvim.plugins.extras.dap.core",
     "lazyvim.plugins.extras.dap.nlua",
     "lazyvim.plugins.extras.test.core",
-    "lazyvim.plugins.extras.coding.blink",
     "lazyvim.plugins.extras.coding.yanky",
     "lazyvim.plugins.extras.coding.neogen",
     "lazyvim.plugins.extras.editor.harpoon2",
@@ -66,4 +65,3 @@
   },
   "version": 7
 }
-

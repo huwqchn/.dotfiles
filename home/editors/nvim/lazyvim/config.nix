@@ -5,14 +5,14 @@
   ...
 }: let
   inherit (lib) mkEnableOption;
-  cfg = config.my.lazyvim.custom;
+  cfg = config.my.neovim.lazyvim.config;
 in {
-  options.my.lazyvim.custom = {
+  options.my.neovim.lazyvim.custom = {
     enable = mkEnableOption "LazyVim custom settings";
   };
 
   config = lib.mkIf cfg.enable {
-    my.lazyvim.extraPlugins = with pkgs.vimPlugins; [
+    my.neovim.lazyvim.extraPlugins = with pkgs.vimPlugins; [
       {
         name = "mini.surround";
         path = mini-nvim;
@@ -20,8 +20,8 @@ in {
     ];
 
     xdg.configFile = {
-      "nvim/lua/config".source = ./config;
-      "nvim/lua/util".source = ./util;
+      "nvim/lua/config".source = lib.my.relativeToConfig "nvim/lua/config";
+      "nvim/lua/util".source = lib.my.relativeToConfig "nvim/lua/util";
     };
   };
 }
