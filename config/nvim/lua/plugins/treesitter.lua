@@ -1,16 +1,16 @@
 return {
-  {
-    "andymass/vim-matchup",
-    event = "BufReadPost",
-    init = function()
-      vim.o.matchpairs = "(:),{:},[:],<:>"
-    end,
-    config = function()
-      vim.g.matchup_matchparen_deferred = 1
-      vim.g.matchup_matchparen_offscreen = { method = "status_manual" }
-      vim.g.matchup_matchpref = { html = { nolists = 1 } }
-    end,
-  },
+  -- {
+  --   "andymass/vim-matchup",
+  --   event = "BufReadPost",
+  --   init = function()
+  --     vim.o.matchpairs = "(:),{:},[:],<:>"
+  --   end,
+  --   config = function()
+  --     vim.g.matchup_matchparen_deferred = 1
+  --     vim.g.matchup_matchparen_offscreen = { method = "status_manual" }
+  --     vim.g.matchup_matchpref = { html = { nolists = 1 } }
+  --   end,
+  -- },
   {
     "nvim-treesitter/playground",
     cmd = {
@@ -22,9 +22,9 @@ return {
   {
     "nvim-treesitter/nvim-treesitter",
     opts = {
-      matchup = {
-        enable = true,
-      },
+      -- matchup = {
+      --   enable = true,
+      -- },
       indent = { enable = true, disable = { "yaml", "python", "css", "c", "cpp" } },
       incremental_selection = {
         enable = true,
