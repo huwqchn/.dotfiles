@@ -48,6 +48,40 @@ map("n", "E", "J")
 
 -- colemak-dh insert key
 map({ "n", "x", "o" }, "h", "i")
+vim.keymap.set({ "x", "o" }, "hi", function()
+  Snacks.scope.textobject({
+    min_size = 2, -- minimum size of the scope
+    edge = false, -- inner scope
+    cursor = false,
+    treesitter = { blocks = { enabled = false } },
+  })
+end, { silent = true, desc = "inner scope" })
+vim.keymap.set({ "x", "o" }, "ai", function()
+  Snacks.scope.textobject({
+    cursor = false,
+    min_size = 2, -- minimum size of the scope
+    treesitter = { blocks = { enabled = false } },
+  })
+end, { silent = true, desc = "full scope" })
+
+vim.keymap.set({ "n", "x", "o" }, "[i", function()
+  Snacks.scope.jump({
+    min_size = 1, -- allow single line scopes
+    bottom = false,
+    cursor = false,
+    edge = true,
+    treesitter = { blocks = { enabled = false } },
+  })
+end, { silent = true, desc = "jump to top edge of scope" })
+vim.keymap.set({ "n", "x", "o" }, "]i", function()
+  Snacks.scope.jump({
+    min_size = 1, -- allow single line scopes
+    bottom = true,
+    cursor = false,
+    edge = true,
+    treesitter = { blocks = { enabled = false } },
+  })
+end, { silent = true, desc = "jump to bottom edge of scope" })
 vim.keymap.set({ "n", "x", "o" }, "H", "I")
 map({ "n", "x", "o" }, "gh", "gi", { desc = "goto last insert" })
 map({ "n", "x", "o" }, "gH", "gI", { desc = "goto start of last insert line" })

@@ -8,24 +8,7 @@ return {
     optional = true,
     opts = {
       scope = {
-        keys = {
-          ---@type table<string, snacks.scope.TextObject|{desc?:string}>
-          textobject = {
-            hi = {
-              min_size = 2, -- minimum size of the scope
-              edge = false, -- inner scope
-              cursor = false,
-              treesitter = { blocks = { enabled = false } },
-              desc = "inner scope",
-            },
-            ai = {
-              cursor = false,
-              min_size = 2, -- minimum size of the scope
-              treesitter = { blocks = { enabled = false } },
-              desc = "full scope",
-            },
-          },
-        },
+        enabled = false,
       },
     },
   },
