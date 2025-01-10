@@ -3,6 +3,19 @@ Invoke-Expression (&starship init powershell)
 # set nvim as default editor
 $env:EDITOR = 'nvim'
 $env:GIT_SSH = "C:\Windows\system32\OpenSSH\ssh.exe"
+### Set PowerShell to UTF-8
+[Console]::InputEncoding = [Console]::OutputEncoding = [System.Text.UTF8Encoding]::new()
+### install modules
+$modules = @("PSFzf", "PSWindowsUpdate")
+
+foreach ($module in $modules) {
+    if (-not (Get-Module -ListAvailable -Name $module)) {
+        Install-Module -Name $module -Scope CurrentUser -Force -Repository PSGallery -AllowPrerelease
+    }
+    Import-Module $module -Force
+}
+
+###
 # alias
 Set-Alias -Name v -Value nvim
 Set-Alias -Name g -Value git
@@ -13,6 +26,7 @@ Set-Alias -Name du -Value dust
 Set-Alias -Name reboot -Value Restart-Computer
 Set-Alias -Name shutdown -Value Stop-Computer
 Set-Alias -Name cat -Value bat
+Set-Alias -Name grep Select-String
 #Set-Alias -Name y -Value yazi
 
 # yazi
@@ -105,4 +119,9 @@ function Invoke-Starship-PreCommand {
 Set-PSReadlineKeyHandler -Chord Ctrl+d -Function DeleteCharOrExit
 Set-PSReadlineKeyHandler -Chord Ctrl+a -Function BeginningOfLine
 Set-PSReadlineKeyHandler -Chord Ctrl+e -Function EndOfLine
+### Utilities
+function which ($command) {
+  Get-Command -Name $command -ErrorAction SilentlyContinue |
+    Select-Object -ExpandProperty Source -ErrorAction SilentlyContinue
+}
 fastfetch
