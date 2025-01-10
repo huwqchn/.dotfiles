@@ -24,9 +24,7 @@ unmap({ "n", "i", "x" }, "<A-j>")
 -- local LazyVim = require("lazyvim.util")
 -- colemak-dh movement
 map({ "n", "x" }, "e", "v:count == 0 ? 'gj' : 'j'", { desc = "Down", expr = true, silent = true })
-map({ "n", "x" }, "<Down>", "v:count == 0 ? 'gj' : 'j'", { desc = "Down", expr = true, silent = true })
 map({ "n", "x" }, "i", "v:count == 0 ? 'gk' : 'k'", { desc = "Up", expr = true, silent = true })
-map({ "n", "x" }, "<Up>", "v:count == 0 ? 'gk' : 'k'", { desc = "Up", expr = true, silent = true })
 map({ "n", "x" }, "n", "h", { desc = "Left", silent = true })
 map({ "n", "x" }, "o", "l", { desc = "Left", silent = true })
 
