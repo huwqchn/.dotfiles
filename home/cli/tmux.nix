@@ -27,14 +27,14 @@ in {
       # set-option -g display-time 4000
       # sensible
       # theme
-      {
-        plugin = catppuccin;
-        extraConfig = ''
-          set -g @catppuccin_pill_theme_enabled on
-          set -g @catppuccin_window_tabs_enabled on
-          set -g @catppuccin_date_time "%H:%M"
-        '';
-      }
+      # {
+      #   plugin = catppuccin;
+      #   extraConfig = ''
+      #     set -g @catppuccin_pill_theme_enabled on
+      #     set -g @catppuccin_window_tabs_enabled on
+      #     set -g @catppuccin_date_time "%H:%M"
+      #   '';
+      # }
       {
         plugin = resurrect;
         extraConfig = ''
@@ -68,7 +68,65 @@ in {
           TMUX_FZF_ORDER="session|window|pane|command|keybinding|clipboard|process"
         '';
       }
-      mode-indicator
+      {
+        plugin = mode-indicator;
+        extraConfig = ''
+          color_foreground='#A9B1D6'
+          color_background='#1A1B26'
+          color_highlight='#3A3F4B'
+          color_gray='#292E42'
+          color_red='#F7768E'
+          color_dark_red='#E06C75'
+          color_yellow='#E1AF68'
+          color_dark_yellow='#D19A66'
+          color_green='#9ECE6A'
+          color_dark_green='#98C379'
+          color_blue='#7AA2F7'
+          color_dark_blue='#61AFEF'
+          color_magenta='#9A7ECC'
+          color_dark_magenta='#C678DD'
+          color_cyan='#4ABAAF'
+          color_dark_cyan='#56B6C2'
+          color_white='#ACB0D0'
+          color_dark_white='#ABB2BF'
+
+          #################################### PLUGINS ###################################
+
+          set -g @mode_indicator_prefix_prompt " WAIT"
+          set -g @mode_indicator_prefix_mode_style fg=$color_yellow,bg=$color_gray,bold
+          set -g @mode_indicator_copy_prompt " COPY"
+          set -g @mode_indicator_copy_mode_style fg=$color_green,bg=$color_gray,bold
+          set -g @mode_indicator_sync_prompt " SYNC"
+          set -g @mode_indicator_sync_mode_style fg=$color_red,bg=$color_gray,bold
+          set -g @mode_indicator_empty_prompt " TMUX"
+          set -g @mode_indicator_empty_mode_style fg=$color_blue,bg=$color_gray,bold
+
+          #################################### OPTIONS ###################################
+
+          set -g status on
+          set -g status-justify centre
+          set -g status-position top
+          set -g status-left-length 90
+          set -g status-right-length 90
+          set -g status-style bg=$color_background
+          setw -g window-status-separator " "
+          # set -g window-style ""
+          # set -g window-active-style ""
+
+          set -g message-style bg=$color_green,fg=$color_background
+          set-window-option -g mode-style bg=$color_gray,fg=$color_green
+
+          set -g pane-border-style fg=$color_background
+          set -g pane-active-border-style fg=$color_blue
+
+          ##################################### FORMAT ###################################
+
+          set -g status-left "#[fg=$color_gray,bg=$color_background]#{tmux_mode_indicator}#[fg=$color_gray,bg=$color_background]"
+          set -g status-right "#[fg=$color_gray,bg=$color_background]#[fg=$color_cyan,bg=$color_gray] #S#[fg=$color_gray,bg=$color_background] #[fg=$color_gray,bg=$color_background]#[fg=$color_foreground,bg=$color_gray] %H:%M#[fg=$color_gray,bg=$color_background]"
+          setw -g window-status-format "#[fg=$color_gray,bg=$color_background]#[fg=$color_white,bg=$color_gray,italics]#I: #[noitalics]#W#[fg=$color_gray,bg=$color_background]"
+          setw -g window-status-current-format "#[fg=$color_blue,bg=$color_background]#[fg=$color_background,bg=$color_blue,italics]#I: #[bg=$color_blue,noitalics,bold]#W#[fg=$color_blue,bg=$color_background]"
+        '';
+      }
     ];
     extraConfig = ''
       # -------------------
