@@ -112,8 +112,13 @@ in {
           set -g status-right-length 90
           set -g status-style bg=$color_background
           setw -g window-status-separator " "
+
           # set -g window-style ""
           # set -g window-active-style ""
+
+          # Note: default window-status-activity-style is 'reverse'
+          setw -g window-status-activity-style none
+          setw -g window-status-bell-style none
 
           set -g message-style bg=$color_cyan,fg=$color_background
           set -g message-command-style bg=$color_dark_blue,fg=$color_background
@@ -126,8 +131,8 @@ in {
 
           set -g status-left "#[fg=$color_gray,bg=$color_background]#{tmux_mode_indicator}#[fg=$color_gray,bg=$color_background]"
           set -g status-right "#[fg=$color_gray,bg=$color_background]#[fg=$color_cyan,bg=$color_gray] #S#[fg=$color_gray,bg=$color_background] #[fg=$color_gray,bg=$color_background]#[fg=$color_foreground,bg=$color_gray] %H:%M#[fg=$color_gray,bg=$color_background]"
-          setw -g window-status-format "#[fg=$color_gray,bg=$color_background]#[fg=$color_white,bg=$color_gray,italics]#I: #[noitalics]#W#[fg=$color_gray,bg=$color_background]"
-          setw -g window-status-current-format "#[fg=$color_blue,bg=$color_background]#[fg=$color_background,bg=$color_blue,italics]#I: #[bg=$color_blue,noitalics,bold]#W#[fg=$color_blue,bg=$color_background]"
+          setw -g window-status-format "#[fg=$color_gray,bg=$color_background]#{?window_activity_flag,#[fg=$color_yellow],#[fg=$color_white]}#[bg=$color_gray,italics]#I: #[noitalics]#W#{?window_last_flag,  ,}#{?window_activity_flag,  ,}#{?window_bell_flag, #[fg=$color_red]󰂞 ,}#[fg=$color_gray,bg=$color_background]"
+          setw -g window-status-current-format "#[fg=$color_blue,bg=$color_background]#[fg=$color_background,bg=$color_blue,italics]#I: #[bg=$color_blue,noitalics,bold]#{?window_zoomed_flag,[#W],#W}#[fg=$color_blue,bg=$color_background]"
         '';
       }
     ];
