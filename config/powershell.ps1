@@ -1,7 +1,8 @@
 Invoke-Expression (& { (zoxide init powershell | Out-String) })
 Invoke-Expression (&starship init powershell)
 # set nvim as default editor
-Set-Item Env:EDITOR nvim
+$env:EDITOR = 'nvim'
+$env:GIT_SSH = "C:\Windows\system32\OpenSSH\ssh.exe"
 # alias
 Set-Alias -Name v -Value nvim
 Set-Alias -Name g -Value git
@@ -50,12 +51,13 @@ function new_treela { eza --tree -a --color=always --icons=always --group-direct
 # Fzf
 # FZF config
 # Enable fd integration
-# $env:FZF_DEFAULT_COMMAND='fd --type=f --strip-cwd-prefix --hidden --follow --exclude .git'
-# $env:FZF_CTRL_T_COMMAND=$env:FZF_DEFAULT_COMMAND
-# $env:FZF_ALT_C_COMMAND='fd --type=d --strip-cwd-prefix --hidden --follow --exclude .git'
+# Install-Module -Name PSFzf
+$env:FZF_DEFAULT_COMMAND='fd --type=f --strip-cwd-prefix --hidden --follow --exclude .git'
+$env:FZF_CTRL_T_COMMAND=$env:FZF_DEFAULT_COMMAND
+$env:FZF_ALT_C_COMMAND='fd --type=d --strip-cwd-prefix --hidden --follow --exclude .git'
 # Use bat to show file preview
-# $env:FZF_CTRL_T_OPTS="--preview 'bat -n --color=always --line-range :500 {}'"
-# $env:FZF_ALT_C_OPTS="--preview 'eza --tree --color=always {}'"
+$env:FZF_CTRL_T_OPTS="--preview 'bat -n --color=always --line-range :500 {}'"
+$env:FZF_ALT_C_OPTS="--preview 'eza --tree --color=always {}'"
 # Customise the look of fzf
 
 # $env:FZF_DEFAULT_OPTS="
@@ -81,6 +83,10 @@ function new_treela { eza --tree -a --color=always --icons=always --group-direct
 #  --color=separator:#ff966c \
 #  --color=spinner:#ff007c \
 #  "
+Set-PsFzfOption -PSReadlineChordProvider 'Ctrl+t' -PSReadlineChordReverseHistory 'Ctrl+r'
+Set-PsFzfOption -TabExpansion
+$env:_PSFZF_FZF_DEFAULT_OPTS = "--ansi --preview 'bat --color=always {}'"
+Set-PSFzfOption -EnableAliasFuzzySetEverything
 
 # glazewm
 setx GLAZEWM_CONFIG_PATH "$env:USERPROFILE\.config\glazewm.yaml"
