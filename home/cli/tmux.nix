@@ -25,7 +25,9 @@ in {
       # R -> reload tmux config
       # set-option -g status-keys emacs
       # set-option -g display-time 4000
+
       # sensible
+
       # theme
       # {
       #   plugin = catppuccin;
@@ -54,13 +56,13 @@ in {
         extraConfig = "set -g @jump-key 'Enter'";
       }
       yank
-      {
-        plugin = open;
-        extraConfig = ''
-          set -g @open 'x'
-          set -g @open-editor 'X'
-        '';
-      }
+      # {
+      #   plugin = open;
+      #   extraConfig = ''
+      #     set -g @open 'x'
+      #     set -g @open-editor 'X'
+      #   '';
+      # }
       {
         plugin = tmux-fzf;
         extraConfig = ''
@@ -113,7 +115,8 @@ in {
           # set -g window-style ""
           # set -g window-active-style ""
 
-          set -g message-style bg=$color_green,fg=$color_background
+          set -g message-style bg=$color_cyan,fg=$color_background
+          set -g message-command-style bg=$color_dark_blue,fg=$color_background
           set-window-option -g mode-style bg=$color_gray,fg=$color_green
 
           set -g pane-border-style fg=$color_background
