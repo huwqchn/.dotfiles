@@ -19,9 +19,6 @@ in {
       }
     ];
 
-    xdg.configFile = {
-      "nvim/lua/config".source = lib.my.relativeToConfig "nvim/lua/config";
-      "nvim/lua/util".source = lib.my.relativeToConfig "nvim/lua/util";
-    };
+    xdg.configFile."nvim/lua/config".source = lib.my.relativeToConfig "nvim/lua/config";
   };
 }

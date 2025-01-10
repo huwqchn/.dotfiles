@@ -14,7 +14,6 @@
 -- HACK: very careful with this
 local map = LazyVim.safe_keymap_set
 local unmap = vim.keymap.del
-local cowboy = require("util").cowboy
 unmap("n", "<C-h>")
 unmap("n", "<C-j>")
 unmap("n", "<C-k>")
@@ -24,13 +23,12 @@ unmap({ "n", "i", "x" }, "<A-j>")
 -- local map = vim.keymap.set
 -- local LazyVim = require("lazyvim.util")
 -- colemak-dh movement
-cowboy({ "n", "x" }, "e", "v:count == 0 ? 'gj' : 'j'")
-cowboy({ "n", "x" }, "i", "v:count == 0 ? 'gk' : 'k'")
-cowboy({ "n", "x" }, "n", "h")
-cowboy({ "n", "x" }, "o", "l")
-cowboy({ "n", "x" }, "+")
-cowboy({ "n", "x" }, "-")
-cowboy({ "n", "x" }, "x")
+map({ "n", "x" }, "e", "v:count == 0 ? 'gj' : 'j'", { desc = "Down", expr = true, silent = true })
+map({ "n", "x" }, "<Down>", "v:count == 0 ? 'gj' : 'j'", { desc = "Down", expr = true, silent = true })
+map({ "n", "x" }, "i", "v:count == 0 ? 'gk' : 'k'", { desc = "Up", expr = true, silent = true })
+map({ "n", "x" }, "<Up>", "v:count == 0 ? 'gk' : 'k'", { desc = "Up", expr = true, silent = true })
+map({ "n", "x" }, "n", "h", { desc = "Left", silent = true })
+map({ "n", "x" }, "o", "l", { desc = "Left", silent = true })
 
 -- Search visually selected text (slightly better than builtins in Neovim>=0.8)
 map("x", "*", [[y/\V<C-R>=escape(@", '/\')<CR><CR>]])
