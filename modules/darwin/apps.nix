@@ -4,6 +4,7 @@
     git
     just # use Justfile to simplify nix-darwin's commands
     rsync
+    cmake
     # darwin only apps
     utm # virtual machine
   ];
@@ -80,6 +81,8 @@
       "git-trim"
       "terraform"
       "terraformer"
+      # for development
+      "qt@5"
     ];
 
     # `brew install --cask`
