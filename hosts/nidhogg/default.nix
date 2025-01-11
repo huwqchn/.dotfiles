@@ -1,5 +1,8 @@
 {
   nixos-wsl,
+  home-manager,
+  nixos-generators,
+  programs-sqlite,
   ...
 }: {
   modules = [
@@ -8,5 +11,5 @@
     home-manager.nixosModules.home-manager
     nixos-generators.nixosModules.all-formats
     programs-sqlite.nixosModules.programs-sqlite
-  ]
+  ];
 }
