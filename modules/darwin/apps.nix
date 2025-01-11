@@ -109,7 +109,6 @@
       "surge" # proxy tool
       "miniforge" # Miniconda's community-driven distribution
       "keycastr" # show keystrokes on screen
-      "linear-linear" # task management
       # "obs" # stream / recoding software
       "chatgpt" # open ai desktop
       # virtualization
