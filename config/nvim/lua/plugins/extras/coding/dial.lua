@@ -1,3 +1,10 @@
+local key_remap = {
+  ["<C-a>"] = "+",
+  ["<C-x>"] = "-",
+  ["g<C-a>"] = "g+",
+  ["g<C-x>"] = "g-",
+}
+
 return {
   -- better increase/descrease
   { import = "lazyvim.plugins.extras.editor.dial" },
@@ -7,15 +14,7 @@ return {
     -- stylua: ignore
     keys = function(_, keys)
       for _, key in ipairs(keys) do
-        if key[1] == "<C-a>" then
-          key[1] = "-"
-        elseif key[1] == "<C-x>" then
-          key[1] = "+"
-        elseif key[1] == "g<C-a>" then
-          key[1] = "g-"
-        else
-          key[1] = "g+"
-        end
+        key[1] = key_remap[key[1]]
       end
     end,
   },
