@@ -114,7 +114,7 @@
       # virtualization
       "utm" # virtual machines
       "docker" # docker desktoplient
-      "karabiner-elements" # keyboard remap
+      # "karabiner-elements" # keyboard remap
     ];
   };
 }
