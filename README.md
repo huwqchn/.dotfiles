@@ -17,8 +17,8 @@ are many improvements that can be made. I will update this README as I make prog
 - [ ] integrate yubikey
 - [ ] shells
   - [ ] bash
-  - [ ] zsh
-  - [ ] nushell
+  - [x] zsh
+  - [x] nushell
 - [ ] complete hyprland config
   - [x] borders/gaps/colors
   - [ ] fix unused keybindings
