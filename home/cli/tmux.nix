@@ -13,7 +13,7 @@ in {
     baseIndex = 1;
     clock24 = true;
     mouse = true;
-    prefix = "C-a";
+    prefix = "C-t";
     keyMode = "vi";
     escapeTime = 0;
     historyLimit = 50000;
