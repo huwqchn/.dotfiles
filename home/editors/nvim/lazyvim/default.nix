@@ -28,7 +28,11 @@ in {
     plugins = mkOption {
       type = pluginsOptionType;
       default = with pkgs.vimPlugins; [
+        ############
+        # init.lua #
+        ############
         LazyVim
+        snacks-nvim
 
         ##############
         # coding.lua #
@@ -62,7 +66,6 @@ in {
         # editor.lua #
         ##############
 
-        neo-tree-nvim
         grug-far-nvim
         flash-nvim
         which-key-nvim
@@ -113,7 +116,7 @@ in {
     };
 
     cmp = mkOption {
-      type = types.enum ["auto" "nivm-cmp" "blink.cmp"];
+      type = types.enum ["nivm-cmp" "blink.cmp" "auto"];
       default = "auto";
       description = ''
         choose the completion engine
@@ -122,11 +125,20 @@ in {
     };
 
     picker = mkOption {
-      type = types.enum ["auto" "telescope" "fzf"];
+      type = types.enum ["telescope" "fzf" "snacks" "auto"];
       default = "auto";
       description = ''
         choose the picker engine
         if you choose "auto", it will use the lazyVim default picker engine
+      '';
+    };
+
+    explorer = {
+      type = types.enum ["neo-tree" "snacks" "auto"];
+      default = "auto";
+      description = ''
+        choose the file explorer
+        if you choose "auto", it will use the lazyVim default file explorer
       '';
     };
 
@@ -174,6 +186,7 @@ in {
       in ''
         vim.g.lazyvim_cmp = "${cfg.cmp}"
         vim.g.lazyvim_picker = "${cfg.picker}"
+        vim.g.lazyvim_explorer = "${cfg.explorer}"
         require("lazy").setup({
           change_detection = { notify = false },
           defaults = {

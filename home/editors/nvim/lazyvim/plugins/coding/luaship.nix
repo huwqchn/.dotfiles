@@ -22,6 +22,8 @@ in {
       nvim-snippets
     ];
 
-    xdg.configFile."nvim/lua/plugins/luasnip.lua".source = lib.my.relativeToConfig "nvim/lua/plugins/extras/coding/luasnip.lua";
+    my.neovim.lazyvim.extraSpec = ''
+      { import = "lazyvim.plugins.extras.coding.luasnip" },
+    '';
   };
 }

@@ -5,7 +5,7 @@
   ...
 }: let
   inherit (lib) mkEnableOption mkIf;
-  cfg = config.my.lazyvim.codeium;
+  cfg = config.my.neovim.lazyvim.codeium;
 in {
   options.my.lazyvim.codeium = {
     enable = mkEnableOption "AI plugin - Codeium";

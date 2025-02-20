@@ -19,7 +19,8 @@
     ./cli/yazi.nix
     ./cli/zellij.nix
     ./cli/zoxide.nix
-    ./editors/nvim.nix
+    ./editors/nvim
+    ./editors/emacs
     ./shells
     ./terminals/ghostty.nix
     # ./themes

@@ -17,6 +17,6 @@ in {
       copilot-lua
     ];
 
-    xdg.configFile."nvim/lua/plugins/copilot.lua".source = ./spec.lua;
+    xdg.configFile."nvim/lua/plugins/copilot.lua".source = lib.my.relativeToConfig "nvim/lua/plugins/extras/ai/copilot.lua";
   };
 }
