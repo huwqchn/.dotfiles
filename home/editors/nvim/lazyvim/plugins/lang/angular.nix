@@ -12,7 +12,7 @@ in {
   };
 
   config = mkIf cfg.enable {
-    my.neovim.lazyvim.typescript = true;
+    my.neovim.lazyvim.typescript.enable = true;
 
     programs.neovim.extraPackages = with pkgs; [
       angular-language-server

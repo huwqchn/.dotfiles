@@ -5,9 +5,9 @@
   ...
 }: let
   inherit (lib) mkEnableOption mkIf;
-  cfg = config.my.neovim.lazyvim.mini-files;
+  cfg = config.my.neovim.lazyvim.mini-move;
 in {
-  options.my.neovim.lazyvim.mini-files = {
+  options.my.neovim.lazyvim.mini-move = {
     enable = mkEnableOption "Mini move";
   };
 

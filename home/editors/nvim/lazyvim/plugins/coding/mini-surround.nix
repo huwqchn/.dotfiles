@@ -7,7 +7,7 @@
   inherit (lib) mkEnableOption mkIf;
   cfg = config.my.neovim.lazyvim.mini-surround;
 in {
-  options.my.neovim.lazyvim.mini-surroulnd = {
+  options.my.neovim.lazyvim.mini-surround = {
     enable = mkEnableOption "Fast and feature-rich surround actions";
   };
 
