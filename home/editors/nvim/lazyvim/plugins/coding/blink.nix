@@ -10,7 +10,7 @@ in {
   config = mkIf (cfg.cmp == "auto" || cfg.cmp == "blink") {
     my.neovim.lazyvim.extraPlugins = with pkgs.vimPlugins; [
       blink-cmp
-      blink-cmpat
+      blink-compat
       friendly-snippets
     ];
 

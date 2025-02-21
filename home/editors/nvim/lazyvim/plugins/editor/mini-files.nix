@@ -18,6 +18,6 @@ in {
         path = mini-nvim;
       }
     ];
-    xdg.configFile."nvim/lua/plugins/mini-files.lua".source = lib.my.relativeToConfig "nvim/lua/plugins/extras/editors/mini-files.lua";
+    xdg.configFile."nvim/lua/plugins/mini-files.lua".source = lib.my.relativeToConfig "nvim/lua/plugins/extras/editor/mini-files.lua";
   };
 }

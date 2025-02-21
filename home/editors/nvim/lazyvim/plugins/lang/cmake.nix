@@ -22,7 +22,7 @@ in {
       "cmake"
     ];
 
-    my.neovim.lazyvim.excludePlugins = with pkgs.VimPlugins; [
+    my.neovim.lazyvim.excludePlugins = with pkgs.vimPlugins; [
       cmake-tools-nvim
     ];
 

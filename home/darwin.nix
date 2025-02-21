@@ -17,7 +17,6 @@
     ./cli/starship.nix
     ./cli/tmux.nix
     ./cli/yazi.nix
-    ./cli/zellij.nix
     ./cli/zoxide.nix
     ./editors/nvim
     ./shells

@@ -7,13 +7,13 @@
   inherit (lib) mkEnableOption mkIf;
   cfg = config.my.neovim.lazyvim.prettier;
 in {
-  options.my.neovim.lazyvim.biome = {
+  options.my.neovim.lazyvim.prettier = {
     enable = mkEnableOption "formatting tool - prettier";
   };
 
   config = mkIf cfg.enable {
     programs.neovim.extraPackages = with pkgs; [
-      prettier
+      nodePackages.prettier
     ];
 
     my.neovim.lazyvim.extraSpec = ''

@@ -20,9 +20,9 @@ in {
         }
         friendly-snippets
       ]
-      ++ lib.optionals (my.neovim.lazyvim.cmp == "nvim-cmp") [cmp-mini-snippets];
+      ++ lib.optionals (config.my.neovim.lazyvim.cmp == "nvim-cmp") [cmp-mini-snippets];
 
-    my.neovim.lazyvim.excludePlugins = with pkgs.VimPlugins; [
+    my.neovim.lazyvim.excludePlugins = with pkgs.vimPlugins; [
       nvim-snippets
     ];
 

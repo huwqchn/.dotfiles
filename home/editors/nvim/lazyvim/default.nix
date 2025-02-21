@@ -7,15 +7,18 @@
 with lib; let
   cfg = config.my.neovim.lazyvim;
 
-  pluginsOptionType = listOf (oneOf [
-    package
-    (submodule {
-      options = {
-        name = mkOption {type = str;};
-        path = mkOption {type = package;};
-      };
-    })
-  ]);
+  pluginsOptionType = let
+    inherit (lib.types) listOf oneOf package str submodule;
+  in
+    listOf (oneOf [
+      package
+      (submodule {
+        options = {
+          name = mkOption {type = str;};
+          path = mkOption {type = package;};
+        };
+      })
+    ]);
 in {
   imports = [
     ./config.nix
@@ -133,7 +136,7 @@ in {
       '';
     };
 
-    explorer = {
+    explorer = mkOption {
       type = types.enum ["neo-tree" "snacks" "auto"];
       default = "auto";
       description = ''

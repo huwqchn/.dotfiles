@@ -25,7 +25,7 @@ in {
 
     my.neovim.lazyvim.excludePlugins = with pkgs.vimPlugins; [
       blink-cmp
-      blink-cmpat
+      blink-compat
     ];
 
     xdg.configFile."nvim/lua/plugins/nvim-cmp.lua".source = lib.my.relativeToConfig "nvim/lua/plugins/extras/coding/nvim-cmp.lua";

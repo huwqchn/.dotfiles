@@ -14,14 +14,11 @@ in {
   config = mkIf cfg.enable {
     programs.neovim.extraPackages = with pkgs; [
       nil
+      nixfmt-classic
     ];
 
     my.neovim.treesitterParsers = [
       "nix"
-    ];
-
-    my.neovim.lazyvim.extraPlugins = with pkgs.vimPlugins; [
-      haskellPackages.nixfmt
     ];
 
     my.neovim.lazyvim.extraSpec = ''

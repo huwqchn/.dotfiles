@@ -38,12 +38,12 @@ in {
     ];
     xdg.configFile."nvim/lua/plugins/coding.lua".source = lib.my.relativeToConfig "nvim/lua/plugins/coding.lua";
     xdg.configFile."nvim/lua/plugins/editor.lua".source = lib.my.relativeToConfig "nvim/lua/plugins/editor.lua";
-    xdg.configFile."nvim/lua/plugins/icon.lua".source = lib.my.relativeToConfig "nvim/lua/plugins/icon.lua";
+    xdg.configFile."nvim/lua/plugins/icons.lua".source = lib.my.relativeToConfig "nvim/lua/plugins/icons.lua";
     xdg.configFile."nvim/lua/plugins/lsp.lua".source = lib.my.relativeToConfig "nvim/lua/plugins/lsp.lua";
     xdg.configFile."nvim/lua/plugins/treesitter.lua".source = lib.my.relativeToConfig "nvim/lua/plugins/treesitter.lua";
     xdg.configFile."nvim/lua/plugins/ui.lua".source = lib.my.relativeToConfig "nvim/lua/plugins/ui.lua";
     xdg.configFile."nvim/lua/config".source = lib.my.relativeToConfig "nvim/lua/config";
-    xdg.configFile."nvim/lua/snippets".source = lib.my.relativeToConfig "nvim/lua/snippets";
-    xdg.configFile."nvim/lua/spell".source = lib.my.relativeToConfig "nvim/lua/spell";
+    xdg.configFile."nvim/snippets".source = lib.my.relativeToConfig "nvim/snippets";
+    xdg.configFile."nvim/spell".source = lib.my.relativeToConfig "nvim/spell";
   };
 }

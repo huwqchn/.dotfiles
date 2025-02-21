@@ -7,7 +7,7 @@
   inherit (lib) mkEnableOption mkIf;
   cfg = config.my.neovim.lazyvim.black;
 in {
-  options.my.neovim.lazyvim.biome = {
+  options.my.neovim.lazyvim.black = {
     enable = mkEnableOption "formatting tool - black";
   };
 

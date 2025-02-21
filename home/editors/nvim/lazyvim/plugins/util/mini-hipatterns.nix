@@ -5,9 +5,9 @@
   ...
 }: let
   inherit (lib) mkEnableOption mkIf;
-  cfg = config.my.neovim.lazyvim.dot;
+  cfg = config.my.neovim.lazyvim.mini-hipatterns;
 in {
-  options.my.neovim.lazyvim.dot = {
+  options.my.neovim.lazyvim.mini-hipatterns = {
     enable = mkEnableOption "Highlight colors in your code";
   };
 

@@ -18,6 +18,6 @@ in {
         path = mini-nvim;
       }
     ];
-    xdg.configFile."nvim/lua/plugins/mini-move.lua".source = lib.my.relativeToConfig "nvim/lua/plugins/extras/editors/mini-move.lua";
+    xdg.configFile."nvim/lua/plugins/mini-move.lua".source = lib.my.relativeToConfig "nvim/lua/plugins/extras/editor/mini-move.lua";
   };
 }

@@ -27,7 +27,7 @@ in {
     my.neovim.lazyvim.extraPlugins = with pkgs.vimPlugins; [
       neotest-python
       nvim-dap-python
-      venv-selector-nvim
+      # venv-selector-nvim
     ];
 
     my.neovim.lazyvim.extraSpec = ''

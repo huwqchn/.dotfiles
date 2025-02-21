@@ -5,9 +5,9 @@
   ...
 }: let
   inherit (lib) mkEnableOption mkIf;
-  cfg = config.my.neovim.lazyvim.dap;
+  cfg = config.my.neovim.lazyvim.test;
 in {
-  options.my.lazyvim.dap = {
+  options.my.neovim.lazyvim.test = {
     enable = mkEnableOption "Neotest support";
   };
 

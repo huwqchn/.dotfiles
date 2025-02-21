@@ -1,5 +1,6 @@
 {config, ...}: {
   home-manager.users."${config.my.name}".imports = [
-    ../../../home/darwin.nix
+    ../../../../home/darwin.nix
+    ./nvim.nix
   ];
 }
