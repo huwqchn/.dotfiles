@@ -20,10 +20,7 @@ with lib; let
       })
     ]);
 in {
-  imports = [
-    ./config.nix
-    ./plugins
-  ];
+  imports = [./config.nix ./plugins];
 
   options.my.neovim.lazyvim = {
     enable = mkEnableOption "LazyVim";
@@ -183,13 +180,14 @@ in {
           }
           else drv;
 
-        lazyPath = pkgs.linkFarm "lazy-plugins" (
-          builtins.map mkEntryFromDrv (lib.subtractLists cfg.excludePlugins cfg.plugins ++ cfg.extraPlugins)
-        );
+        lazyPath = pkgs.linkFarm "lazy-plugins" (builtins.map mkEntryFromDrv
+          (lib.subtractLists cfg.excludePlugins cfg.plugins
+            ++ cfg.extraPlugins));
       in ''
         vim.g.lazyvim_cmp = "${cfg.cmp}"
         vim.g.lazyvim_picker = "${cfg.picker}"
         vim.g.lazyvim_explorer = "${cfg.explorer}"
+        vim.g.lazyvim_check_order = false
         require("lazy").setup({
           change_detection = { notify = false },
           defaults = {
@@ -225,6 +223,7 @@ in {
           },
           spec = {
             { "LazyVim/LazyVim", import = "lazyvim.plugins" },
+            ${cfg.extraSpec}
             -- The following configs are needed for fixing lazyvim on nix
             -- disable mason.nvim, use programs.neovim.extraPackages
             { "williamboman/mason-lspconfig.nvim", enabled = false },
@@ -232,16 +231,12 @@ in {
             -- import/override with your plugins
             -- treesitter handled by my.neovim.treesitterParsers, put this line at the end of spec to clear ensure_installed
             { "nvim-treesitter/nvim-treesitter", opts = function(_, opts) opts.ensure_installed = {} end },
-            ${cfg.extraSpec}
             { import = "plugins" },
           },
         })
       '';
     };
 
-    my.neovim.treesitterParsers = [
-      "jsonc"
-      "regex"
-    ];
+    my.neovim.treesitterParsers = ["jsonc" "regex"];
   };
 }
