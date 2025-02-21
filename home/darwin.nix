@@ -20,7 +20,6 @@
     ./cli/zellij.nix
     ./cli/zoxide.nix
     ./editors/nvim
-    ./editors/emacs
     ./shells
     ./terminals/ghostty.nix
     # ./themes
