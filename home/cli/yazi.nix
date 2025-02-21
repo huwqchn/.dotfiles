@@ -1,6 +1,6 @@
 {config, ...}: {
   xdg.configFile = {
-    "yazi/plugins/enter-or-open.yazi/init.lua".text = ''
+    "yazi/plugins/enter-or-open.yazi/main.lua".text = ''
       --- @sync entry
       return {
         entry = function()
@@ -9,7 +9,7 @@
         end,
       }
     '';
-    "yazi/plugins/smart-enter.yazi/init.lua".text = ''
+    "yazi/plugins/smart-enter.yazi/main.lua".text = ''
       --- @sync entry
       return {
         entry = function()
