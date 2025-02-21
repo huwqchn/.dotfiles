@@ -1,5 +1,11 @@
 [files]
-extend-exclude = ["themes/*", "*.age", "*.pub", "*.glsl", "config/*"]
+extend-exclude = [
+  "themes/*",
+  "*.age",
+  "*.pub",
+  "*.glsl",
+  "config/nvim/lua/plugins/extras/editor/neo-tree.lua",
+]
 ignore-dot = true
 ignore-files = true
 
@@ -15,3 +21,5 @@ ags = "ags"
 crypted = "crypted"
 nore = "nore"
 noice = "noice"
+ot = "ot"
+Ot = "Ot"
