@@ -11,14 +11,14 @@ return {
   --     vim.g.matchup_matchpref = { html = { nolists = 1 } }
   --   end,
   -- },
-  {
-    "nvim-treesitter/playground",
-    cmd = {
-      "TSPlaygroundToggle",
-      "TSNodeUnderCursor",
-      "TSHighlightCapturesUnderCursor",
-    },
-  },
+  -- {
+  --   "nvim-treesitter/playground",
+  --   cmd = {
+  --     "TSPlaygroundToggle",
+  --     "TSNodeUnderCursor",
+  --     "TSHighlightCapturesUnderCursor",
+  --   },
+  -- },
   {
     "nvim-treesitter/nvim-treesitter",
     opts = {

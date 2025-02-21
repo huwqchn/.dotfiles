@@ -1,5 +1,5 @@
 [files]
-extend-exclude = ["themes/*", "*.age", "*.pub", "*.glsl", "*.lua"]
+extend-exclude = ["themes/*", "*.age", "*.pub", "*.glsl", "config/*"]
 ignore-dot = true
 ignore-files = true
 

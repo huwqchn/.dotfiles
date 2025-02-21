@@ -23,7 +23,6 @@
     "lazyvim.plugins.extras.lang.yaml",
     "lazyvim.plugins.extras.lang.tex",
     "lazyvim.plugins.extras.lang.nix",
-    "lazyvim.plugins.extras.lang.git",
     "lazyvim.plugins.extras.lang.sql",
     "lazyvim.plugins.extras.ui.edgy",
     "lazyvim.plugins.extras.ui.treesitter-context",
