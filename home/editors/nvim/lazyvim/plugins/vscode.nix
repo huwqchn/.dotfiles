@@ -12,7 +12,7 @@ in {
 
   config = mkIf cfg.enable {
     my.neovim.lazyvim.extraSpec = ''
-      { import = "lazyvim.plugins.extras.vscode"; }
+      { import = "lazyvim.plugins.extras.vscode"; },
     '';
   };
 }
