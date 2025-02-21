@@ -31,6 +31,7 @@
         test.enable = true;
         # ui
         edgy.enable = true;
+        mini-animate.enable = true;
         smear-cursor.enable = true;
         treesitter-context.enable = true;
         # utils
