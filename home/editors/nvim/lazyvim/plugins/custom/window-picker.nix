@@ -12,7 +12,7 @@ in {
   };
 
   config = mkIf cfg.enable {
-    my.lazyvim.extraPlugins = with pkgs.vimPlugins; [
+    my.neovim.lazyvim.extraPlugins = with pkgs.vimPlugins; [
       nvim-window-picker
     ];
 
