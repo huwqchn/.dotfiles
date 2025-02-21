@@ -5,26 +5,27 @@
   ...
 }: let
   inherit (lib) mkEnableOption mkIf;
-  cfg = config.my.neovim.lazyvim.astro;
+  cfg = config.my.neovim.lazyvim.vue;
 in {
-  options.my.neovim.lazyvim.astro = {
-    enable = mkEnableOption "language astro";
+  options.my.neovim.lazyvim.vue = {
+    enable = mkEnableOption "language vue";
   };
 
   config = mkIf cfg.enable {
     my.neovim.lazyvim.typescript = true;
 
     programs.neovim.extraPackages = with pkgs; [
-      astro-language-server
+      vscode-extensions.vue.volar
+      vtsls
     ];
 
     my.neovim.treesitterParsers = [
-      "astro"
+      "vue"
       "css"
     ];
 
     my.neovim.lazyvim.extraSpec = ''
-      { import = "lazyvim.plugins.extras.lang.astro" },
+      { import = "lazyvim.plugins.extras.lang.vue" },
     '';
   };
 }

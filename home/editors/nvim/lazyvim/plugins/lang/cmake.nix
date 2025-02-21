@@ -15,10 +15,15 @@ in {
     programs.neovim.extraPackages = with pkgs; [
       cmake-language-server
       cmake-lint
+      neocmakelsp
     ];
 
     my.neovim.treesitterParsers = [
       "cmake"
+    ];
+
+    my.neovim.lazyvim.excludePlugins = with pkgs.VimPlugins; [
+      cmake-tools-nvim
     ];
 
     my.neovim.lazyvim.extraSpec = ''

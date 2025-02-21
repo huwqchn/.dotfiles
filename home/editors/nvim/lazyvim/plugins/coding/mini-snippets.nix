@@ -18,12 +18,14 @@ in {
           name = "mini.snippets";
           path = mini-nvim;
         }
+        friendly-snippets
       ]
-      ++ optional (config.my.neovim.lazyvim.cmp == "nvim-cmp") [cmp_mini_snippets];
+      ++ lib.optionals (my.neovim.lazyvim.cmp == "nvim-cmp") [cmp-mini-snippets];
 
     my.neovim.lazyvim.excludePlugins = with pkgs.VimPlugins; [
       nvim-snippets
     ];
+
     my.neovim.lazyvim.extraSpec = ''
       { import = "lazyvim.plugins.extras.coding.mini-snippets" },
     '';

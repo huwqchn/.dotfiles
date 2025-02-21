@@ -15,6 +15,7 @@ in {
     my.neovim.lazyvim.extraPlugins = with pkgs.vimPlugins; [
       neogen
     ];
+
     my.neovim.lazyvim.extraSpec = ''
       { import = "lazyvim.plugins.extras.coding.neogen" },
     '';

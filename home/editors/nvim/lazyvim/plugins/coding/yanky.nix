@@ -15,6 +15,7 @@ in {
     my.neovim.lazyvim.extraPlugins = with pkgs.vimPlugins; [
       yanky-nvim
     ];
+
     my.neovim.lazyvim.extraSpec = ''
       { import = "lazyvim.plugins.extras.coding.yanky" },
     '';

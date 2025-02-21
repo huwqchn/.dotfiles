@@ -14,6 +14,7 @@ in {
   config = mkIf cfg.enable {
     programs.neovim.extraPackages = with pkgs; [
       vscode-extensions.vadimcn.vscode-lldb
+      clang-tools
     ];
 
     my.neovim.treesitterParsers = [

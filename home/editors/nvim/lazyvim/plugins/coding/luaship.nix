@@ -16,7 +16,7 @@ in {
       [
         LuaSnip
       ]
-      ++ optional (config.my.neovim.lazyvim.cmp == "nvim-cmp") [cmp_luanip];
+      ++ lib.optionals (config.my.neovim.lazyvim.cmp == "nvim-cmp") [cmp_luasnip];
 
     my.neovim.lazyvim.excludePlugins = with pkgs.VimPlugins; [
       nvim-snippets
