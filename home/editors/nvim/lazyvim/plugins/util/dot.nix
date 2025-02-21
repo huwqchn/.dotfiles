@@ -15,12 +15,9 @@ in {
     my.neovim.treesitterParsers = [
       "jsonc"
       "bash"
-      "kitty"
-      "hyprland"
+      "hyprlang"
       "fish"
       "rasi"
-      "dosini"
-      "sh"
     ];
 
     programs.neovim.extraPackages = with pkgs; [

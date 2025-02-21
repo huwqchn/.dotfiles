@@ -17,15 +17,6 @@ in {
       marksman
     ];
 
-    my.neovim.treesitterParsers = [
-      "markdown"
-      "markdown.mdx"
-      "norg"
-      "org"
-      "codecompanion"
-      "rmd"
-    ];
-
     my.neovim.lazyvim.extraPlugins = with pkgs.vimPlugins; [
       markdown-preview-nvim
       render-markdown-nvim
