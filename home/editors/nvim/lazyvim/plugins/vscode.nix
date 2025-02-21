@@ -4,14 +4,14 @@
   ...
 }: let
   inherit (lib) mkEnableOption mkIf;
-  cfg = config.my.lazyvim.vscode;
+  cfg = config.my.neovim.lazyvim.vscode;
 in {
-  options.my.lazyvim.vscode = {
+  options.my.neovim.lazyvim.vscode = {
     enable = mkEnableOption "LazyVim integration with Visual Studio Code";
   };
 
   config = mkIf cfg.enable {
-    my.lazyvim.extraSpec = ''
+    my.neovim.lazyvim.extraSpec = ''
       { import = "lazyvim.plugins.extras.vscode"; }
     '';
   };
