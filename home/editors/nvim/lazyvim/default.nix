@@ -224,6 +224,7 @@ in {
           spec = {
             { "LazyVim/LazyVim", import = "lazyvim.plugins" },
             ${cfg.extraSpec}
+            { import = "plugins" },
             -- The following configs are needed for fixing lazyvim on nix
             -- disable mason.nvim, use programs.neovim.extraPackages
             { "williamboman/mason-lspconfig.nvim", enabled = false },
@@ -231,7 +232,6 @@ in {
             -- import/override with your plugins
             -- treesitter handled by my.neovim.treesitterParsers, put this line at the end of spec to clear ensure_installed
             { "nvim-treesitter/nvim-treesitter", opts = function(_, opts) opts.ensure_installed = {} end },
-            { import = "plugins" },
           },
         })
       '';
