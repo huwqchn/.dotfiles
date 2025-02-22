@@ -25,95 +25,114 @@ in {
   options.my.neovim.lazyvim = {
     enable = mkEnableOption "LazyVim";
 
-    plugins = mkOption {
-      type = pluginsOptionType;
-      default = with pkgs.vimPlugins; [
-        ############
-        # init.lua #
-        ############
-        LazyVim
-        snacks-nvim
+    plugins = let
+      LazyVim = pkgs.vimUtils.buildVimPlugin {
+        pname = "LazyVimNG";
+        version = "2025-02-15";
+        src = pkgs.fetchFromGitHub {
+          owner = "LazyVim";
+          repo = "LazyVim";
+          rev = "3f034d0a7f58031123300309f2efd3bb0356ee21";
+          sha256 = "sha256-1q8c2M/FZxYg4TiXe9PK6JdR4wKBgPbxRt40biIEBaY=";
+        };
+        doCheck = false;
+        meta.homepage = "https://github.com/LazyVim/LazyVim/";
+        meta.hydraPlatforms = [];
+      };
+    in
+      mkOption {
+        type = pluginsOptionType;
+        default = with pkgs.vimPlugins; [
+          ############
+          # init.lua #
+          ############
+          # LazyVim
+          {
+            name = "LazyVim";
+            path = LazyVim;
+          }
+          snacks-nvim
 
-        ##############
-        # coding.lua #
-        ##############
+          ##############
+          # coding.lua #
+          ##############
 
-        # auto pairs
-        {
-          name = "mini.pairs";
-          path = mini-nvim;
-        }
-        # comments
-        ts-comments-nvim
-        # Better text-objects
-        {
-          name = "mini.ai";
-          path = mini-nvim;
-        }
-        lazydev-nvim
+          # auto pairs
+          {
+            name = "mini.pairs";
+            path = mini-nvim;
+          }
+          # comments
+          ts-comments-nvim
+          # Better text-objects
+          {
+            name = "mini.ai";
+            path = mini-nvim;
+          }
+          lazydev-nvim
 
-        ###################
-        # colorscheme.lua #
-        ###################
+          ###################
+          # colorscheme.lua #
+          ###################
 
-        tokyonight-nvim
-        {
-          name = "catppuccin";
-          path = catppuccin-nvim;
-        }
+          tokyonight-nvim
+          {
+            name = "catppuccin";
+            path = catppuccin-nvim;
+          }
 
-        ##############
-        # editor.lua #
-        ##############
+          ##############
+          # editor.lua #
+          ##############
 
-        grug-far-nvim
-        flash-nvim
-        which-key-nvim
-        gitsigns-nvim
-        trouble-nvim
-        todo-comments-nvim
+          grug-far-nvim
+          flash-nvim
+          which-key-nvim
+          gitsigns-nvim
+          trouble-nvim
+          todo-comments-nvim
 
-        ##################
-        # formatting.lua #
-        ##################
+          ##################
+          # formatting.lua #
+          ##################
 
-        conform-nvim
+          conform-nvim
 
-        ###############
-        # linting.lua #
-        ###############
+          ###############
+          # linting.lua #
+          ###############
 
-        nvim-lint
+          nvim-lint
 
-        ##################
-        # treesitter.lua #
-        ##################
+          ##################
+          # treesitter.lua #
+          ##################
 
-        nvim-treesitter
-        nvim-treesitter-textobjects
-        nvim-ts-autotag
+          nvim-treesitter
+          nvim-treesitter-textobjects
+          nvim-ts-autotag
 
-        ##########
-        # ui.lua #
-        ##########
+          ##########
+          # ui.lua #
+          ##########
 
-        bufferline-nvim
-        lualine-nvim
-        noice-nvim
-        {
-          name = "mini.icons";
-          path = mini-nvim;
-        }
-        nui-nvim
-        snacks-nvim
+          bufferline-nvim
+          lualine-nvim
+          noice-nvim
+          {
+            name = "mini.icons";
+            path = mini-nvim;
+          }
+          nui-nvim
+          snacks-nvim
 
-        #######
-        # lsp #
-        #######
+          #######
+          # lsp #
+          #######
 
-        nvim-lspconfig
-      ];
-    };
+          nvim-lspconfig
+        ];
+      };
 
     cmp = mkOption {
       type = types.enum ["nivm-cmp" "blink.cmp" "auto"];
