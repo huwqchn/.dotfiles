@@ -1,4 +1,8 @@
-let
+{
+  lib,
+  config,
+  ...
+}: let
   lang = icon: color: {
     symbol = icon;
     format = "[$symbol ](${color})";
@@ -27,10 +31,10 @@ let
       "$status"
       "$line_break"
       "[❯](bold purple)"
-      ''''${custom.space}''
+      "\${custom.space}"
     ];
     custom.space = {
-      when = ''! test $env'';
+      when = "! test $env";
       format = "  ";
     };
     continuation_prompt = "∙  ┆ ";
@@ -103,9 +107,15 @@ let
     dart = lang "" "blue";
     elixir = lang "" "purple";
   };
+  inherit (lib) mkEnableOption mkIf;
+  cfg = config.my.starship;
 in {
-  programs.starship = {
-    enable = true;
-    inherit settings;
+  options.my.starship = {enable = mkEnableOption "starship";};
+
+  config = mkIf cfg.enable {
+    programs.starship = {
+      enable = true;
+      inherit settings;
+    };
   };
 }

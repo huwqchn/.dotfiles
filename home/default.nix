@@ -1,15 +1,15 @@
 _: {
   imports = [
     ./home.nix
-    ./apps
-    ./browsers/zen.nix
-    ./cli
-    ./desktop
     ./editors
-    ./security
+    ./cli
+    ./apps
     ./services
+    ./security
     ./shells
     ./terminals
+    ./browsers
+    ./desktop
     # ./themes
   ];
 }

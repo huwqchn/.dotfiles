@@ -11,10 +11,7 @@
     then "/home/${username}"
     else "/Users/${username}";
 in {
-  imports = [
-    impermanence.nixosModules.home-manager.impermanence
-    ../modules/my.nix
-  ];
+  imports = [impermanence.nixosModules.home-manager.impermanence ../modules/my.nix];
 
   news.display = "show";
 
@@ -24,26 +21,29 @@ in {
     inherit username homeDirectory;
     sessionPath = ["$HOME/.local/bin" "/opt/homebrew/bin"];
 
-    persistence = {
-      "/persist/${config.home.homeDirectory}" = {
-        directories = [
-          "Downloads"
-          "Documents"
-          "Desktop"
-          "Music"
-          "Videos"
-          "Public"
-          "Templates"
-          "Pictures"
-          ".local/bin"
-          ".cache/nix"
-          ".cache/pre-commit"
-          ".dotfiles"
-          ".docker"
-        ];
-        allowOther = true;
-      };
-    };
+    persistence =
+      if pkgs.stdenv.isLinux
+      then {
+        "/persist/${config.home.homeDirectory}" = {
+          directories = [
+            "Downloads"
+            "Documents"
+            "Desktop"
+            "Music"
+            "Videos"
+            "Public"
+            "Templates"
+            "Pictures"
+            ".local/bin"
+            ".cache/nix"
+            ".cache/pre-commit"
+            ".dotfiles"
+            ".docker"
+          ];
+          allowOther = true;
+        };
+      }
+      else lib.mkForce {};
 
     # This value determines the Home Manager release that your
     # configuration is compatible with. This helps avoid breakage
