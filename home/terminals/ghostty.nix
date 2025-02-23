@@ -1,4 +1,5 @@
 {
+  pkgs,
   config,
   lib,
   ...
@@ -9,7 +10,10 @@ in {
     mkOutOfStoreSymlink (lib.my.relativeToConfig "ghostty/shaders");
   programs.ghostty = {
     enable = true;
-    package = null;
+    package =
+      if pkgs.stdenv.isLinux
+      then "ghostty"
+      else null;
     enableFishIntegration = true;
     enableZshIntegration = true;
     enableBashIntegration = true;
