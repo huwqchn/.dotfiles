@@ -13,20 +13,7 @@ are many improvements that can be made. I will update this README as I make prog
 - [ ] ags config
   - [x] switch wallpaper engine
 - [ ] fcitx and rime
-- [x] zen-browser
 - [ ] integrate yubikey
-- [ ] shells
-  - [ ] bash
-  - [x] zsh
-  - [x] nushell
-- [ ] complete hyprland config
-  - [x] borders/gaps/colors
-  - [ ] fix unused keybindings
-  - [ ] monitor
-  - [ ] nvidia
-  - [ ] hyprlock
-  - [ ] hyprcursor
-  - [ ] hyprshade
 - [ ] themes (create a nix repos for themes, name of `nixporn`)
   - [x] toykonight
   - [ ] gruvbox
@@ -42,7 +29,6 @@ are many improvements that can be made. I will update this README as I make prog
 - [ ] networks (for proxy)
   - [ ] dae
   - [ ] sing-box
-- [x] onedrive and onedrive-client
 - [ ] remote deployment
 - [ ] pkgs
   - [ ] wallpapers
@@ -51,13 +37,9 @@ are many improvements that can be made. I will update this README as I make prog
 - [ ] make shells (for dev)
 - [ ] templates (for creating projects)
 - [ ] specialisation
-- [x] make module for all `module/` and `home/`
-- [x] support darwin
-- [x] support windows
 - [ ] support wsl
 - [ ] support nextcloud
 - [ ] support samba
-- [ ] config lazyvim by nix
 
 ## References
 
