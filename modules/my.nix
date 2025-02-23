@@ -18,9 +18,9 @@ in {
       description = "The user email";
     };
     theme = mkOption {
-      type = types.str;
-      default = "tokyonight-moon";
-      description = "The theme of the system";
+      type = types.enum ["tokyonight" "catppuccin"];
+      default = "tokyonight";
+      description = "The theme to user";
     };
     wallpaper = mkOption {
       type = types.str;
