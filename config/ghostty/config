@@ -2,9 +2,8 @@
 # the configuration file will be ignored.
 config-file = theme
 # Fonts
-font-family = "Symbols Nerd Font Mono"
-font-family = "Fira Code"
-font-family-bold = "Fira Code"
+font-family = "JetBrainsMono Nerd Font Mono"
+# font-family-bold = "Fira Code"
 font-family-italic = "Maple Mono"
 font-family-bold-italic = "Maple Mono"
 font-size = 13
@@ -18,6 +17,7 @@ mouse-hide-while-typing = true
 cursor-invert-fg-bg = true
 background-opacity = 0.9
 window-theme = ghostty
+background-blur = true
 
 # keybindings
 keybind = clear

@@ -31,7 +31,6 @@
         test.enable = true;
         # ui
         edgy.enable = true;
-        mini-animate.enable = true;
         smear-cursor.enable = true;
         treesitter-context.enable = true;
         # utils
@@ -57,6 +56,9 @@
         tailwind.enable = true;
         tex.enable = true;
         zig.enable = true;
+        # custom
+        winshift.enable = true;
+        window-picker.enable = true;
 
         vscode.enable = true;
       };

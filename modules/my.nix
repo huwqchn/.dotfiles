@@ -1,5 +1,5 @@
 {lib, ...}: let
-  inherit (lib) mkOption types;
+  inherit (lib) mkOption mkEnableOption types;
 in {
   options.my = {
     name = mkOption {
@@ -17,10 +17,16 @@ in {
       default = "johnson.wq.hu@gmail.com";
       description = "The user email";
     };
+    desktop = {enable = mkEnableOption "Desktop";};
     theme = mkOption {
-      type = types.str;
-      default = "tokyonight-moon";
-      description = "The theme of the system";
+      type = types.enum ["tokyonight" "catppuccin"];
+      default = "tokyonight";
+      description = "The theme to use";
+    };
+    shell = mkOption {
+      type = types.enum ["bash" "fish" "zsh" "nushell"];
+      default = "fish";
+      description = "The shell to use";
     };
     wallpaper = mkOption {
       type = types.str;

@@ -1,10 +1,18 @@
-{nix-index-database, ...}: {
+{
+  nix-index-database,
+  config,
+  lib,
+  ...
+}: let
+  inherit (lib) mkEnableOption mkIf;
+  cfg = config.my.nix-index;
+in {
   imports = [
     nix-index-database.hmModules.nix-index
     {programs.nix-index-database.comma.enable = true;}
   ];
 
-  programs.nix-index = {
-    enable = true;
-  };
+  options.my.nix-index = {enable = mkEnableOption "nix-index";};
+
+  config = mkIf cfg.enable {programs.nix-index = {enable = true;};};
 }

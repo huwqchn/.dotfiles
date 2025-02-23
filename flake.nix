@@ -19,11 +19,7 @@
     lib =
       inputs.nixpkgs.lib.extend
       (final: _: {my = import ./lib {lib = final;};} // home-manager.lib);
-    specialArgs =
-      inputs
-      // {
-        inherit lib;
-      };
+    specialArgs = inputs // {inherit lib;};
     hl = haumea.lib;
     hosts = hl.load {
       src = ./hosts;
@@ -106,7 +102,8 @@
                   configPath = "./.prettierrc.yaml"; # relative to the flake root
                 };
               };
-              deadnix.enable = true; # detect unused variable bindings in "*.nix"
+              deadnix.enable =
+                true; # detect unused variable bindings in "*.nix"
               statix.enable = true; # lints and suggestions for Nix code
             };
           };
@@ -154,9 +151,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    flake-utils = {
-      url = "github:numtide/flake-utils";
-    };
+    flake-utils = {url = "github:numtide/flake-utils";};
 
     flake-utils-plus = {
       url = "github:gytis-ivaskevicius/flake-utils-plus/v1.4.0";
@@ -260,12 +255,6 @@
     # blender
     blender-bin = {
       url = "github:edolstra/nix-warez?dir=blender";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    # wezterm git
-    wezterm-git = {
-      url = "github:wez/wezterm?dir=nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 

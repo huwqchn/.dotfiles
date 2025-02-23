@@ -4,19 +4,10 @@
   pkgs,
   ...
 }: let
-  inherit
-    (lib)
-    attrVals
-    literalExpression
-    mkEnableOption
-    mkIf
-    mkOption
-    ;
+  inherit (lib) attrVals literalExpression mkEnableOption mkIf mkOption;
   cfg = config.my.neovim;
 in {
-  imports = [
-    ./lazyvim
-  ];
+  imports = [./lazyvim];
 
   options.my.neovim = {
     enable = mkEnableOption "neovim";
@@ -26,11 +17,7 @@ in {
       example = literalExpression ''
         [ "nix" pkgs.vimPlugins.nvim-treesitter-parsers.yaml ]
       '';
-      type = with lib.types;
-        listOf (oneOf [
-          str
-          package
-        ]);
+      type = with lib.types; listOf (oneOf [str package]);
     };
   };
 
@@ -39,12 +26,6 @@ in {
     # rm -rf ~/.cache/nvim/ ~/.local/share/nvim/lazy/ ~/.local/share/nvim/nvchad/
     # Clear old luac cache
     # find ~/.cache/nvim/luac -type f -mtime +1 -delete
-
-    home.sessionVariables = {
-      EDITOR = "nvim";
-      VISUAL = "nvim";
-      GIT_EDITOR = "nvim";
-    };
 
     programs.neovim = {
       enable = true;
@@ -64,9 +45,8 @@ in {
       parsers = pkgs.symlinkJoin {
         name = "treesitter-parsers";
         paths =
-          (pkgs.vimPlugins.nvim-treesitter.withPlugins (
-            plugins: attrVals parserStrings plugins ++ parserPackages
-          ))
+          (pkgs.vimPlugins.nvim-treesitter.withPlugins (plugins:
+              attrVals parserStrings plugins ++ parserPackages))
           .dependencies;
       };
     in "${parsers}/parser";

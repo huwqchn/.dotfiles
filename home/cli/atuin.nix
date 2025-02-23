@@ -1,42 +1,51 @@
-{config, ...}: {
-  programs.atuin = {
-    enable = true;
-    flags = ["--disable-up-arrow"];
-    settings = {
-      ## enable or disable automatic sync
-      auto_sync = true;
+{
+  config,
+  lib,
+  ...
+}: let
+  inherit (lib) mkEnableOption mkIf;
+  cfg = config.my.atuin;
+in {
+  options.my.atuin = {enable = mkEnableOption "atuin";};
 
-      ## address of the sync server
-      sync_address = "https://api.atuin.sh";
+  config = mkIf cfg.enable {
+    programs.atuin = {
+      enable = true;
+      flags = ["--disable-up-arrow"];
+      settings = {
+        ## enable or disable automatic sync
+        auto_sync = true;
 
-      ## how often to sync history. note that this is only triggered when a command
-      ## is ran, so sync intervals may well be longer
-      ## set it to 0 to sync after every command
-      sync_frequency = "1h";
+        ## address of the sync server
+        sync_address = "https://api.atuin.sh";
 
-      ## which search mode to use
-      ## possible values: prefix, fulltext, fuzzy, skim
-      search_mode = "fuzzy";
+        ## how often to sync history. note that this is only triggered when a command
+        ## is ran, so sync intervals may well be longer
+        ## set it to 0 to sync after every command
+        sync_frequency = "1h";
 
-      ## which style to use
-      ## possible values: auto, full, compact
-      style = "compact";
+        ## which search mode to use
+        ## possible values: prefix, fulltext, fuzzy, skim
+        search_mode = "fuzzy";
 
-      ## the maximum number of lines the interface should take up
-      ## set it to 0 to always go full screen
-      inline_height = 20;
+        ## which style to use
+        ## possible values: auto, full, compact
+        style = "compact";
 
-      ## enable or disable showing a preview of the selected command
-      ## useful when the command is longer than the terminal width and is cut off
-      show_preview = true;
+        ## the maximum number of lines the interface should take up
+        ## set it to 0 to always go full screen
+        inline_height = 20;
 
-      ## possible values: emacs, subl
-      word_jump_mode = "emacs";
+        ## enable or disable showing a preview of the selected command
+        ## useful when the command is longer than the terminal width and is cut off
+        show_preview = true;
+
+        ## possible values: emacs, subl
+        word_jump_mode = "emacs";
+      };
     };
-  };
-  home.persistence = {
-    "/persist/${config.home.homeDirectory}".directories = [
-      ".local/share/atuin"
-    ];
+    home.persistence = {
+      "/persist/${config.home.homeDirectory}".directories = [".local/share/atuin"];
+    };
   };
 }
