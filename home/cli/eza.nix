@@ -4,10 +4,16 @@
   ...
 }: let
   shellAliases = {"tree" = "eza --git --icons --tree";};
-  inherit (lib) mkEnableOption mkIf;
+  inherit (lib) mkIf types mkOption;
   cfg = config.my.eza;
 in {
-  options.my.eza = {enable = mkEnableOption "eza";};
+  options.my.eza = {
+    enable = mkOption {
+      default = true;
+      type = types.bool;
+      description = "Enable eza";
+    };
+  };
   config = mkIf cfg.enable {
     home = {inherit shellAliases;};
     # A modern replacement for ‘ls’

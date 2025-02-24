@@ -3,10 +3,16 @@
   config,
   ...
 }: let
-  inherit (lib) mkEnableOption mkIf;
+  inherit (lib) mkIf types mkOption;
   cfg = config.my.fzf;
 in {
-  options.my.fzf = {enable = mkEnableOption "fzf";};
+  options.my.fzf = {
+    enable = mkOption {
+      default = true;
+      type = types.bool;
+      description = "Enable fzf";
+    };
+  };
   config = mkIf cfg.enable {
     programs.fzf = {
       enable = true;

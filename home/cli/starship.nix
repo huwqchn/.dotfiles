@@ -107,10 +107,16 @@
     dart = lang "" "blue";
     elixir = lang "" "purple";
   };
-  inherit (lib) mkEnableOption mkIf;
+  inherit (lib) mkIf types mkOption;
   cfg = config.my.starship;
 in {
-  options.my.starship = {enable = mkEnableOption "starship";};
+  options.my.starship = {
+    enable = mkOption {
+      default = true;
+      type = types.bool;
+      description = "Enable starship";
+    };
+  };
 
   config = mkIf cfg.enable {
     programs.starship = {

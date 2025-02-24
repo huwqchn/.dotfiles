@@ -5,10 +5,16 @@
   ...
 }: let
   shellAliases = {"t" = "tmux";};
-  inherit (lib) mkEnableOption mkIf;
+  inherit (lib) mkIf types mkOption;
   cfg = config.my.tmux;
 in {
-  options.my.tmux = {enable = mkEnableOption "tmux";};
+  options.my.tmux = {
+    enable = mkOption {
+      default = true;
+      type = types.bool;
+      description = "Enable tmux";
+    };
+  };
 
   config = mkIf cfg.enable {
     home.shellAliases = shellAliases;

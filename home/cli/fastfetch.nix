@@ -5,10 +5,16 @@
 }: let
   shellAliases = {"fetch" = "fastfetch";};
   inherit (config.programs) kitty;
-  inherit (lib) mkEnableOption mkIf;
+  inherit (lib) mkIf types mkOption;
   cfg = config.my.fastfetch;
 in {
-  options.my.fastfetch = {enable = mkEnableOption "fastfetch";};
+  options.my.fastfetch = {
+    enable = mkOption {
+      default = true;
+      type = types.bool;
+      description = "Enable fastfetch";
+    };
+  };
 
   config = mkIf cfg.enable {
     home = {inherit shellAliases;};

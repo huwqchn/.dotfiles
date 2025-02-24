@@ -3,10 +3,16 @@
   lib,
   ...
 }: let
-  inherit (lib) mkEnableOption mkIf;
+  inherit (lib) mkIf types mkOption;
   cfg = config.my.yazi;
 in {
-  options.my.yazi = {enable = mkEnableOption "yazi";};
+  options.my.yazi = {
+    enable = mkOption {
+      default = true;
+      type = types.bool;
+      description = "Enable yazi";
+    };
+  };
 
   config = mkIf cfg.enable {
     xdg.configFile = {

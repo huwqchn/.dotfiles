@@ -3,10 +3,16 @@
   lib,
   ...
 }: let
-  inherit (lib) mkEnableOption mkIf;
+  inherit (lib) mkIf types mkOption;
   cfg = config.my.atuin;
 in {
-  options.my.atuin = {enable = mkEnableOption "atuin";};
+  options.my.atuin = {
+    enable = mkOption {
+      default = true;
+      type = types.bool;
+      description = "Enable atuin";
+    };
+  };
 
   config = mkIf cfg.enable {
     programs.atuin = {

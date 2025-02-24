@@ -4,10 +4,16 @@
   ...
 }: let
   shellAliases = {"lg" = "lazygit";};
-  inherit (lib) mkEnableOption mkIf;
+  inherit (lib) mkIf types mkOption;
   cfg = config.my.lazygit;
 in {
-  options.my.lazygit = {enable = mkEnableOption "lazygit";};
+  options.my.lazygit = {
+    enable = mkOption {
+      default = true;
+      type = types.bool;
+      description = "Enable lazygit";
+    };
+  };
   config = mkIf cfg.enable {
     home.shellAliases = shellAliases;
     programs.nushell.shellAliases = shellAliases;

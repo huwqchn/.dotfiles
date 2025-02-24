@@ -4,10 +4,16 @@
   ...
 }: let
   shellAliases = {"top" = "btop";};
-  inherit (lib) mkEnableOption mkIf;
+  inherit (lib) mkIf types mkOption;
   cfg = config.my.btop;
 in {
-  options.my.btop = {enable = mkEnableOption "btop";};
+  options.my.btop = {
+    enable = mkOption {
+      default = true;
+      type = types.bool;
+      description = "Enable btop";
+    };
+  };
 
   config = mkIf cfg.enable {
     home.shellAliases = shellAliases;
