@@ -13,12 +13,10 @@
     # ../../_internal/lanzaboote.nix
   ];
 
-  hardware.nvidia = {
-    modesetting.enable = true;
-  };
+  hardware.nvidia = {modesetting.enable = true;};
 
   # my custom modules
-  modules = {
+  my = {
     btrbk.enable = true;
     clamav.enable = true;
     # onedrive.enable = true;

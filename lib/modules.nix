@@ -9,7 +9,7 @@
   }: let
     namePathList = lib.splitString "." name;
 
-    modulePath = ["modules"] ++ namePathList;
+    modulePath = ["my"] ++ namePathList;
     enableOptionPath = modulePath ++ ["enable"];
 
     moduleOptions =
@@ -25,8 +25,7 @@
     options = lib.setAttrByPath modulePath moduleOptions;
 
     config =
-      lib.mkIf
-      (lib.getAttrFromPath enableOptionPath config && extraCondition)
+      lib.mkIf (lib.getAttrFromPath enableOptionPath config && extraCondition)
       moduleConfig;
   };
 
@@ -63,8 +62,7 @@
       name = serviceName;
       # Defines overrides for nginx-related properties
       extraOptions = let
-        domain =
-          lib.getAttrFromPath (modulePath ++ ["domain"]) config;
+        domain = lib.getAttrFromPath (modulePath ++ ["domain"]) config;
       in
         {
           domain = lib.mkOption {

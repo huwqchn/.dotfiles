@@ -32,7 +32,7 @@
   };
 
   # my custom modules
-  modules = {
+  my = {
     btrbk.enable = true;
     clamav.enable = true;
     onedrive.enable = true;
