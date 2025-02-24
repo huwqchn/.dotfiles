@@ -40,6 +40,7 @@ are many improvements that can be made. I will update this README as I make prog
 - [ ] support wsl
 - [ ] support nextcloud
 - [ ] support samba
+- [ ] try zed
 
 ## References
 

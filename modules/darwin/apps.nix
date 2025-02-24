@@ -80,6 +80,7 @@
       "terraformer"
       # for development
       "qt@5"
+      "fd"
     ];
 
     # `brew install --cask`
