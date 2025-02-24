@@ -9,10 +9,7 @@
     utm # virtual machine
   ];
 
-  environment.shells = [
-    pkgs.zsh
-    pkgs.fish
-  ];
+  environment.shells = [pkgs.zsh pkgs.fish];
 
   programs.fish.enable = true;
 
@@ -83,6 +80,7 @@
       "terraformer"
       # for development
       "qt@5"
+      "to"
     ];
 
     # `brew install --cask`
