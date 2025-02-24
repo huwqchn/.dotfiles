@@ -12,7 +12,6 @@ in {
   config = mkIf cfg.enable {
     home.packages = with pkgs; [
       # Unixy tools
-      fd
       sd
       moreutils # ts, etc.
       tokei

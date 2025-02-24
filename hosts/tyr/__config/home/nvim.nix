@@ -24,8 +24,8 @@
         mini-diff.enable = true;
         mini-move.enable = true;
         # formatting
-        biome.enable = true;
-        black.enable = true;
+        # biome.enable = true;
+        # black.enable = true;
         prettier.enable = true;
         # test
         test.enable = true;
