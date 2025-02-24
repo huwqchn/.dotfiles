@@ -17,7 +17,7 @@ in {
   config = mkIf cfg.enable {
     programs.fd = {
       enable = true;
-      ignore = [".git/" ".direnv/"];
+      ignores = [".git/" ".direnv/"];
       hidden = true;
     };
   };
