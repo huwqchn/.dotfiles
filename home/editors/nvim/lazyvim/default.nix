@@ -186,6 +186,7 @@ in {
         lua-language-server
         stylua
         vscode-langservers-extracted
+        fd
       ];
 
       plugins = with pkgs.vimPlugins; [lazy-nvim];

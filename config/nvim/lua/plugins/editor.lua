@@ -1,10 +1,58 @@
 return {
   {
+    "folke/snacks.nvim",
+    optional = true,
+    opts = {
+      picker = {
+        sources = {
+          explorer = {
+            win = {
+              list = {
+                keys = {
+                  ["h"] = "focus_input",
+                  ["n"] = "explorer_close",
+                  ["o"] = "confirm",
+                  ["l"] = "explorer_open",
+                  ["s"] = "edit_split",
+                  ["v"] = "edit_vsplit",
+                },
+              },
+            },
+          },
+        },
+        win = {
+          input = {
+            keys = {
+              ["<c-e>"] = { "list_down", mode = { "i", "n" } },
+              ["<c-i>"] = { "list_up", mode = { "i", "n" } },
+              ["e"] = "list_down",
+              ["i"] = "list_up",
+              ["<c-w>N"] = "layout_left",
+              ["<c-w>E"] = "layout_bottom",
+              ["<c-w>I"] = "layout_top",
+              ["<c-w>O"] = "layout_right",
+            },
+          },
+          list = {
+            keys = {
+              ["<c-e>"] = "list_down",
+              ["<c-i>"] = "list_up",
+              ["<c-w>N"] = "layout_left",
+              ["<c-w>E"] = "layout_bottom",
+              ["<c-w>I"] = "layout_top",
+              ["<c-w>O"] = "layout_right",
+              ["h"] = "focus_input",
+              ["e"] = "list_down",
+              ["i"] = "list_up",
+            },
+          },
+        },
+      },
+    },
+  },
+  {
     "folke/flash.nvim",
     optional = true,
-    event = function()
-      return {}
-    end,
     opts = {
       search = { enabled = false },
       labels = "arstgmneioqwfpbjluyxcdvzkh",
