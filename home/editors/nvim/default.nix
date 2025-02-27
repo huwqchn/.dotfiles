@@ -10,7 +10,11 @@ in {
   imports = [./lazyvim];
 
   options.my.neovim = {
-    enable = mkEnableOption "neovim";
+    enable =
+      mkEnableOption "neovim"
+      // {
+        default = config.my.editor == "nvim";
+      };
 
     treesitterParsers = mkOption {
       default = [];

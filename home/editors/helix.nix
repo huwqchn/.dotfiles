@@ -6,7 +6,13 @@
   inherit (lib) mkEnableOption mkIf;
   cfg = config.my.helix;
 in {
-  options.my.helix = {enable = mkEnableOption "helix";};
+  options.my.helix = {
+    enable =
+      mkEnableOption "helix"
+      // {
+        default = config.my.editor == "helix";
+      };
+  };
 
   config = mkIf cfg.enable {
     programs.helix = {

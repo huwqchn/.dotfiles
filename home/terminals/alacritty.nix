@@ -7,7 +7,13 @@
   inherit (lib) mkEnableOption mkIf;
   cfg = config.my.alacritty;
 in {
-  options.my.alacritty = {enable = mkEnableOption "alacritty";};
+  options.my.alacritty = {
+    enable =
+      mkEnableOption "alacritty"
+      // {
+        default = config.my.terminal == "alacritty";
+      };
+  };
 
   config = mkIf cfg.enable {
     programs.alacritty = {

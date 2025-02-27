@@ -8,7 +8,13 @@
   inherit (lib) mkEnableOption mkIf;
   cfg = config.my.ghostty;
 in {
-  options.my.ghostty = {enable = mkEnableOption "ghostty";};
+  options.my.ghostty = {
+    enable =
+      mkEnableOption "ghostty"
+      // {
+        default = config.my.terminal == "ghostty";
+      };
+  };
 
   config = mkIf cfg.enable {
     xdg.configFile."ghostty/shadders".source =

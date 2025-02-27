@@ -6,7 +6,13 @@
   inherit (lib) mkEnableOption mkIf;
   cfg = config.my.wezterm;
 in {
-  options.my.wezterm = {enable = mkEnableOption "wezterm";};
+  options.my.wezterm = {
+    enable =
+      mkEnableOption "wezterm"
+      // {
+        default = config.my.terminal == "wezterm";
+      };
+  };
 
   config = mkIf cfg.enable {
     programs.wezterm = {enable = true;};

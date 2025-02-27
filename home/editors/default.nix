@@ -20,7 +20,5 @@ in {
       VISUAL = "${editor}";
       GIT_EDITOR = "${editor}";
     };
-    my.neovim.enable = editor == "nvim";
-    my.helix.enable = editor == "helix";
   };
 }

@@ -7,7 +7,13 @@
   inherit (lib) mkEnableOption mkIf;
   cfg = config.my.kitty;
 in {
-  options.my.kitty = {enable = mkEnableOption "kitty";};
+  options.my.kitty = {
+    enable =
+      mkEnableOption "kitty"
+      // {
+        default = config.my.terminal == "kitty";
+      };
+  };
 
   config = mkIf cfg.enable {
     programs.kitty = {
