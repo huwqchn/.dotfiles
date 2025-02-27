@@ -7,7 +7,9 @@
   inherit (lib) mkEnableOption mkIf;
   cfg = config.my.fish;
 in {
-  options.my.fish = {enable = mkEnableOption "fish";};
+  options.my.fish = {
+    enable = mkEnableOption "fish" // {default = config.my.shell == "fish";};
+  };
 
   config = mkIf cfg.enable {
     home.packages = with pkgs.fishPlugins; [

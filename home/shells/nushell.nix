@@ -6,7 +6,13 @@
   inherit (lib) mkEnableOption mkIf;
   cfg = config.my.nushell;
 in {
-  options.my.nushell = {enable = mkEnableOption "nushell";};
+  options.my.nushell = {
+    enable =
+      mkEnableOption "nushell"
+      // {
+        default = config.my.shell == "nushell";
+      };
+  };
 
   config = mkIf cfg.enable {
     programs.nushell = {

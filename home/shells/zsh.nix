@@ -7,7 +7,9 @@
   inherit (lib) mkEnableOption mkIf;
   cfg = config.my.zsh;
 in {
-  options.my.zsh = {enable = mkEnableOption "zsh";};
+  options.my.zsh = {
+    enable = mkEnableOption "zsh" // {default = config.my.shell == "zsh";};
+  };
 
   config = mkIf cfg.enable {
     programs.zsh = {
