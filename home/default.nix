@@ -10,6 +10,6 @@ _: {
     ./terminals
     ./browsers
     ./desktop
-    # ./themes
+    ./themes
   ];
 }

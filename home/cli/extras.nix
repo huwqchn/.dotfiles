@@ -43,9 +43,6 @@ in {
 
       sad # CLI search and replace, just like sed, but with diff preview.
       yq-go # yaml processor https://github.com/mikefarah/yq
-      just # a command runner like make, but simpler
-      delta # A viewer for git and diff output
-      lazygit # Git terminal UI.
       hyperfine # command-line benchmarking tool
       gping # ping, but with a graph(TUI)
       doggo # DNS client for humans
