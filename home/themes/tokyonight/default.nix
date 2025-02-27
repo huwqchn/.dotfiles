@@ -70,8 +70,8 @@ in {
       alacritty.settings = {
         import = ["${src}/extras/alacritty/${themeName}.yml"];
       };
-      zathura.extraConfig = "include ${src + "/" + themeName + ".zathurarc"}";
-      ghostty.settings.theme = "${src + "/" + themeName}";
+      zathura.extraConfig = "include ${src + "/extras/zathura/" + themeName + ".zathurarc"}";
+      ghostty.settings.theme = "${src + "/extras/ghostty/" + themeName}";
     };
 
     xdg.configFile = {
