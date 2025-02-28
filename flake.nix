@@ -10,6 +10,7 @@
     programs-sqlite,
     nixos-generators,
     darwin,
+    agenix,
     ...
   }: let
     inherit (flake-utils-plus.lib) mkFlake;
@@ -26,7 +27,7 @@
       # Make the default.nix's attrs directly children of lib
       transformer = hl.transformers.liftDefault;
       inputs = {
-        inherit darwin nixos-generators programs-sqlite home-manager;
+        inherit darwin nixos-generators programs-sqlite home-manager agenix;
       };
     };
   in

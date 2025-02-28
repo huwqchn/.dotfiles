@@ -2,13 +2,15 @@
   nixos-generators,
   programs-sqlite,
   home-manager,
+  agenix,
   ...
 }: {
   modules = [
-    ../../modules/nixos
     ./__config
-    home-manager.nixosModules.home-manager
+    ../../modules/nixos
     nixos-generators.nixosModules.all-formats
     programs-sqlite.nixosModules.programs-sqlite
+    home-manager.darwinModules.home-manager
+    agenix.darwinModules.default
   ];
 }

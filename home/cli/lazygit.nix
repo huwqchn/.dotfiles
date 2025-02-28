@@ -74,7 +74,6 @@ in {
           allBranchesLogCmd = "git log --graph --all --color=always --abbrev-commit --decorate --date=relative  --pretty=medium";
           overrideGpg = false;
           disableForcePushing = false;
-          commitPrefixes = {};
           parseEmoji = false;
           log = {
             order = "topo-order";

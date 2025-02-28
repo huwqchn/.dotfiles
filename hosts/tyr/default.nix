@@ -1,16 +1,18 @@
 {
   darwin,
   home-manager,
+  agenix,
   ...
 }: {
   system = "aarch64-darwin";
 
   modules = [
-    ../../modules/darwin
-    ../../modules/my.nix
     ./__config
+    ../../modules/darwin
     home-manager.darwinModules.home-manager
+    agenix.darwinModules.default
   ];
+
   output = "darwinConfigurations";
   builder = darwin.lib.darwinSystem;
 }

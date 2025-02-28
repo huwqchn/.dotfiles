@@ -6,10 +6,7 @@
   ...
 }: let
   username = config.my.name;
-  homeDirectory =
-    if pkgs.stdenv.isLinux
-    then "/home/${username}"
-    else "/Users/${username}";
+  homeDirectory = config.my.home;
 in {
   imports = [impermanence.nixosModules.home-manager.impermanence ../modules/my.nix];
 

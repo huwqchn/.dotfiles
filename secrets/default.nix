@@ -10,13 +10,7 @@
     mode = "0500";
   };
 in {
-  imports = [
-    agenix.nixosModules.default
-  ];
-
-  environment.systemPackages = [
-    agenix.packages."${pkgs.system}".default
-  ];
+  environment.systemPackages = [agenix.packages."${pkgs.system}".default];
 
   # if you changed this key, you need to regenerate all encrypt files from the decrypt contents!
   age.identityPaths = [

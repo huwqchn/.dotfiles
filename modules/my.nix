@@ -1,5 +1,11 @@
-{lib, ...}: let
+{
+  lib,
+  pkgs,
+  config,
+  ...
+}: let
   inherit (lib) mkOption mkEnableOption types;
+  inherit (pkgs.stdenv) isLinux;
 in {
   options.my = {
     name = mkOption {
@@ -17,9 +23,19 @@ in {
       default = "johnson.wq.hu@gmail.com";
       description = "The user email";
     };
+    home = mkOption {
+      type = types.str;
+      default = let
+        user = config.my.name;
+      in
+        if isLinux
+        then "/home/${user}"
+        else "/Users/${user}";
+      description = "The user home directory";
+    };
     desktop = {enable = mkEnableOption "Desktop";};
     theme = mkOption {
-      type = types.enum ["tokyonight" "catppuccin"];
+      type = types.enum ["tokyonight" "catppuccin" "auto"];
       default = "tokyonight";
       description = "The theme to use";
     };
