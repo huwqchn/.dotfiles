@@ -9,6 +9,7 @@
     owner = config.my.name;
     mode = "0500";
   };
+  inherit (config.my) home;
 in {
   environment.systemPackages = [agenix.packages."${pkgs.system}".default];
 
@@ -23,7 +24,7 @@ in {
     "git-credentials" =
       {
         # target path for decrypted file
-        path = "/home/${config.my.name}/.git-credentials";
+        path = "${home}/.git-credentials";
         # encrypted file path
         file = ./git-credentials.age;
       }
@@ -31,14 +32,14 @@ in {
 
     "johnson-hu-gpg-subkeys.priv.age" =
       {
-        path = "/persist/home/${config.my.name}/.gnupg/johnson-hu-gpg-subkeys.priv.age";
+        path = "${home}/.gnupg/johnson-hu-gpg-subkeys.priv.age";
         file = ./johnson-hu-gpg-subkeys.priv.age.age;
       }
       // user_readable;
 
     "johnson-hu-ssh-key.age" =
       {
-        path = "/persist/home/${config.my.name}/.ssh/johnson-hu-ssh-key";
+        path = "${home}/.ssh/johnson-hu-ssh-key";
         file = ./johnson-hu-ssh-key.age;
       }
       // user_readable;
