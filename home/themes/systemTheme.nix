@@ -6,8 +6,9 @@
 }: let
   inherit (lib) mkIf;
   inherit (pkgs.stdenv) isLinux;
+  inherit (config.my) desktop;
 in {
-  config = mkIf isLinux {
+  config = mkIf (desktop.enable && isLinux) {
     # If your themes for mouse cursor, icons or windows don't load correctly,
     # try setting them with home.pointerCursor and gtk.theme,
     # which enable a bunch of compatibility options that should make the themes load in all situations.
