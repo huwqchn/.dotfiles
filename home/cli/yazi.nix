@@ -1,10 +1,17 @@
 {
   config,
   lib,
+  pkgs,
   ...
 }: let
   inherit (lib) mkIf types mkOption;
   cfg = config.my.yazi;
+  yazi-plugins = pkgs.fetchFromGitHub {
+    owner = "yazi-rs";
+    repo = "plugins";
+    rev = "5186af7984aa8cb0550358aefe751201d7a6b5a8";
+    hash = "sha256-Cw5iMljJJkxOzAGjWGIlCa7gnItvBln60laFMf6PSPM=";
+  };
 in {
   options.my.yazi = {
     enable = mkOption {
@@ -15,26 +22,6 @@ in {
   };
 
   config = mkIf cfg.enable {
-    xdg.configFile = {
-      "yazi/plugins/enter-or-open.yazi/main.lua".text = ''
-        --- @sync entry
-        return {
-          entry = function()
-            local h = cx.active.current.hovered
-            ya.manager_emit(h and h.cha.is_dir and "enter" or "open", {})
-          end,
-        }
-      '';
-      "yazi/plugins/smart-enter.yazi/main.lua".text = ''
-        --- @sync entry
-        return {
-          entry = function()
-            local h = cx.active.current.hovered
-            ya.manager_emit(h and h.cha.is_dir and "enter" or "open", { hovered = true })
-          end,
-        }
-      '';
-    };
     # terminal file manager
     programs.yazi = {
       enable = true;
@@ -43,6 +30,23 @@ in {
       enableZshIntegration = true;
       enableFishIntegration = true;
       enableNushellIntegration = true;
+      plugins = {
+        chmod = "${yazi-plugins}/chmod.yazi";
+        smart-enter = "${yazi-plugins}/smart-enter.yazi";
+        git = "${yazi-plugins}/git.yazi";
+        mount = "${yazi-plugins}/mount.yazi";
+        smart-filter = "${yazi-plugins}/smart-filter.yazi";
+        max-preview = "${yazi-plugins}/max-preview.yazi";
+        starship = pkgs.fetchFromGitHub {
+          owner = "Rolv-Apneseth";
+          repo = "starship.yazi";
+          rev = "6c639b474aabb17f5fecce18a4c97bf90b016512";
+          hash = "sha256-bhLUziCDnF4QDCyysRn7Az35RAy8ibZIVUzoPgyEO1A=";
+        };
+      };
+      initLua = ''
+        require("starship"):setup()
+      '';
       settings = {
         manager = {
           sort_by = "natural";
@@ -160,181 +164,196 @@ in {
       keymap = {
         manager.prepend_keymap = [
           {
-            on = ["w"];
+            on = "F";
+            run = "plugin smart-filter";
+            desc = "Smart filter";
+          }
+          {
+            on = "T";
+            run = "plugin --sync max-preview";
+            desc = "Maximize or restore the preview pane";
+          }
+          {
+            on = ["c" "m"];
+            run = "plugin chmod";
+            desc = "Chmod on selected files";
+          }
+          {
+            on = "w";
             run = ''shell "$SHELL" --block --confirm'';
             desc = "Open shell here";
           }
           {
-            on = ["W"];
+            on = "W";
             run = "tasks_show";
           }
 
           # Navigation
           {
-            on = ["i"];
+            on = "i";
             run = "arrow -1";
           }
           {
-            on = ["e"];
+            on = "e";
             run = "arrow 1";
           }
 
           {
-            on = ["I"];
+            on = "I";
             run = "arrow -5";
           }
           {
-            on = ["E"];
+            on = "E";
             run = "arrow 5";
           }
 
           {
-            on = ["n"];
-            run = ["leave"];
+            on = "n";
+            run = "leave";
           }
           {
-            on = ["o"];
-            run = ["plugin smart-enter"];
+            on = "o";
+            run = "plugin smart-enter";
           }
 
           {
-            on = ["N"];
+            on = "N";
             run = "back";
           }
           {
-            on = ["O"];
+            on = "O";
             run = "forward";
           }
 
           {
-            on = ["<C-u>"];
+            on = "<C-u>";
             run = "seek -5";
           }
           {
-            on = ["<C-d>"];
+            on = "<C-d>";
             run = "seek 5";
           }
 
           {
-            on = ["h"];
+            on = "h";
             run = "hidden toggle";
           }
 
           # Operation
           {
-            on = ["l"];
+            on = "l";
             run = "link";
           }
           {
-            on = ["L"];
+            on = "L";
             run = "link --relative";
           }
 
           # Find
           {
-            on = ["k"];
+            on = "k";
             run = "find_arrow";
           }
           {
-            on = ["K"];
+            on = "K";
             run = "find_arrow --previous";
           }
 
           # Tab
           {
-            on = ["["];
+            on = "[";
             run = "tab_switch -1 --relative";
           }
           {
-            on = ["]"];
+            on = "]";
             run = "tab_switch 1 --relative";
           }
         ];
         tasks.prepend_keymap = [
           {
-            on = ["i"];
+            on = "i";
             run = "arrow -1";
           }
           {
-            on = ["e"];
+            on = "e";
             run = "arrow 1";
           }
         ];
         select.prepend_keymap = [
           {
-            on = ["i"];
+            on = "i";
             run = "arrow -1";
           }
           {
-            on = ["e"];
+            on = "e";
             run = "arrow 1";
           }
           {
-            on = ["I"];
+            on = "I";
             run = "arrow -5";
           }
           {
-            on = ["E"];
+            on = "E";
             run = "arrow 5";
           }
         ];
         input.prepend_keymap = [
           {
-            on = ["h"];
+            on = "h";
             run = "insert";
           }
 
           # Navigation
           {
-            on = ["n"];
+            on = "n";
             run = "move -1";
           }
           {
-            on = ["o"];
+            on = "o";
             run = "move 1";
           }
 
           {
-            on = ["N"];
+            on = "N";
             run = "move -999";
           }
           {
-            on = ["O"];
+            on = "O";
             run = "move 999";
           }
 
           {
-            on = ["j"];
+            on = "j";
             run = "forward --end-of-word";
           }
         ];
         help.prepend_keymap = [
           # Navigation
           {
-            on = ["i"];
+            on = "i";
             run = "arrow -1";
           }
           {
-            on = ["e"];
+            on = "e";
             run = "arrow 1";
           }
 
           {
-            on = ["I"];
+            on = "I";
             run = "arrow -5";
           }
           {
-            on = ["E"];
+            on = "E";
             run = "arrow 5";
           }
         ];
         completion.prepend_keymap = [
           {
-            on = ["<C-u>"];
+            on = "<C-u>";
             run = "arrow -1";
           }
           {
-            on = ["<C-d>"];
+            on = "<C-d>";
             run = "arrow 1";
           }
         ];

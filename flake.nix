@@ -55,7 +55,7 @@
       # ];
 
       # TODO: rewrite overlays instructures
-      sharedOverlays = import ./overlays inputs;
+      # sharedOverlays = import ./overlays inputs;
 
       #########
       # Hosts #
@@ -83,9 +83,10 @@
       ###########
       outputsBuilder = channels: let
         pkgs = channels.nixpkgs;
+        inherit (pkgs) system;
       in {
         checks = {
-          pre-commit-check = pre-commit-hooks.lib."${pkgs.system}".run {
+          pre-commit-check = pre-commit-hooks.lib."${system}".run {
             src = ./.;
             hooks = {
               alejandra.enable = true; # formatter
@@ -109,7 +110,6 @@
             };
           };
         };
-
         # Development Shells
         devShells.default = pkgs.mkShell {
           packages = with pkgs; [
@@ -123,7 +123,7 @@
           ];
           name = "dots";
           shellHook = ''
-            ${self.checks.${pkgs.system}.pre-commit-check.shellHook}
+            ${self.checks.${system}.pre-commit-check.shellHook}
           '';
         };
 
