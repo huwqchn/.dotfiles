@@ -1,6 +1,7 @@
 {
   lib,
   config,
+  pkgs,
   ...
 }: let
   inherit (lib) mkIf;
@@ -8,6 +9,21 @@
 in {
   config = mkIf (cfg.enable && cfg.style == "moon") {
     programs = {
+      tmux.plugins = with pkgs.tmuxPlugins; [
+        {
+          plugin = mode-indicator;
+          extraConfig = lib.mkBefore ''
+            color_background='#1e2030'
+            color_foreground='#c8d3f5'
+            color_gray='#2f334d'
+            color_red='#ff007c'
+            color_yellow='#ffc777'
+            color_green='#c7fb6d'
+            color_blue='#82aaff'
+            color_cyan='#4fd6be'
+          '';
+        }
+      ];
       fzf.colors = {
         "bg+" = "#2d3f76";
         "bg" = "#1e2030";

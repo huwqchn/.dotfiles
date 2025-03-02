@@ -57,6 +57,54 @@ in {
           include ${src}/extras/kitty/${themeName}.conf
         '';
       };
+      tmux.plugins = with pkgs.tmuxPlugins; [
+        {
+          plugin = mode-indicator;
+          extraConfig = lib.mkAfter ''
+            #################################### PLUGINS ###################################
+
+            set -g @mode_indicator_prefix_prompt " WAIT"
+            set -g @mode_indicator_prefix_mode_style fg=$color_yellow,bg=$color_gray,bold
+            set -g @mode_indicator_copy_prompt " COPY"
+            set -g @mode_indicator_copy_mode_style fg=$color_green,bg=$color_gray,bold
+            set -g @mode_indicator_sync_prompt " SYNC"
+            set -g @mode_indicator_sync_mode_style fg=$color_red,bg=$color_gray,bold
+            set -g @mode_indicator_empty_prompt " TMUX"
+            set -g @mode_indicator_empty_mode_style fg=$color_blue,bg=$color_gray,bold
+
+            #################################### OPTIONS ###################################
+
+            set -g status on
+            set -g status-justify centre
+            set -g status-position top
+            set -g status-left-length 90
+            set -g status-right-length 90
+            set -g status-style bg=$color_background
+            setw -g window-status-separator " "
+
+            # set -g window-style ""
+            # set -g window-active-style ""
+
+            # Note: default window-status-activity-style is 'reverse'
+            setw -g window-status-activity-style none
+            setw -g window-status-bell-style none
+
+            set -g message-style bg=$color_cyan,fg=$color_background
+            set -g message-command-style bg=$color_background,fg=$color_white
+            set-window-option -g mode-style bg=$color_gray,fg=$color_green
+
+            set -g pane-border-style fg=$color_background
+            set -g pane-active-border-style fg=$color_blue
+
+            ##################################### FORMAT ###################################
+
+            set -g status-left "#[fg=$color_gray,bg=$color_background]#{tmux_mode_indicator}#[fg=$color_gray,bg=$color_background]"
+            set -g status-right "#[fg=$color_gray,bg=$color_background]#[fg=$color_cyan,bg=$color_gray] #S#[fg=$color_gray,bg=$color_background] #[fg=$color_gray,bg=$color_background]#[fg=$color_white,bg=$color_gray] %H:%M#[fg=$color_gray,bg=$color_background]"
+            setw -g window-status-format "#[fg=$color_gray,bg=$color_background]#{?window_activity_flag,#[fg=$color_yellow],#[fg=$color_white]}#[bg=$color_gray,italics]#I: #[noitalics]#W#{?window_last_flag,  ,}#{?window_activity_flag,  ,}#{?window_bell_flag, #[fg=$color_red]󰂞 ,}#[fg=$color_gray,bg=$color_background]"
+            setw -g window-status-current-format "#[fg=$color_blue,bg=$color_background]#[fg=$color_background,bg=$color_blue,italics]#I: #[bg=$color_blue,noitalics,bold]#{?window_zoomed_flag,[#W],#W}#[fg=$color_blue,bg=$color_background]"
+          '';
+        }
+      ];
       yazi = {
         # plugins = {
         #   yatline = pkgs.pkgs.fetchFromGitHub {
