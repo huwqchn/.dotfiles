@@ -31,7 +31,6 @@ in {
       asciinema
 
       # Dev
-      gh
       entr
 
       # Txns
