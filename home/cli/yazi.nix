@@ -46,6 +46,7 @@ in {
       };
       initLua = ''
         require("starship"):setup()
+        require("git"):setup()
       '';
       settings = {
         manager = {
