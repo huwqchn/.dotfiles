@@ -7,7 +7,7 @@
   inherit (lib) mkEnableOption mkIf;
   cfg = config.my.gh;
 in {
-  options.my.gh = {enable = mkEnableOption "gh";};
+  options.my.gh = {enable = mkEnableOption "gh" // {default = true;};};
   config = mkIf cfg.enable {
     programs.gh = {
       enable = true;

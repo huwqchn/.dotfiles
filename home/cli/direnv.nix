@@ -3,15 +3,11 @@
   lib,
   ...
 }: let
-  inherit (lib) mkIf types mkOption;
+  inherit (lib) mkIf mkEnableOption;
   cfg = config.my.direnv;
 in {
   options.my.direnv = {
-    enable = mkOption {
-      default = true;
-      type = types.bool;
-      description = "Enable direnv";
-    };
+    enable = mkEnableOption "direnv" // {default = true;};
   };
   config = mkIf cfg.enable {
     programs = {

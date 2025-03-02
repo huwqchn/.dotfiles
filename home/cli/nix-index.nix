@@ -4,7 +4,7 @@
   lib,
   ...
 }: let
-  inherit (lib) mkIf types mkOption;
+  inherit (lib) mkIf mkEnableOption;
   cfg = config.my.nix-index;
 in {
   imports = [
@@ -13,11 +13,7 @@ in {
   ];
 
   options.my.nix-index = {
-    enable = mkOption {
-      default = true;
-      type = types.bool;
-      description = "Enable nix-index";
-    };
+    enable = mkEnableOption "nix-index" // {default = true;};
   };
 
   config = mkIf cfg.enable {programs.nix-index = {enable = true;};};

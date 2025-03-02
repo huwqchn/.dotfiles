@@ -3,16 +3,10 @@
   lib,
   ...
 }: let
-  inherit (lib) mkIf types mkOption;
+  inherit (lib) mkIf mkEnableOption;
   cfg = config.my.git;
 in {
-  options.my.git = {
-    enable = mkOption {
-      default = true;
-      type = types.bool;
-      description = "Enable git";
-    };
-  };
+  options.my.git = {enable = mkEnableOption "git" // {default = true;};};
 
   config = mkIf cfg.enable {
     # `programs.git` will generate the config file: ~/.config/git/config

@@ -3,16 +3,10 @@
   lib,
   ...
 }: let
-  inherit (lib) mkIf types mkOption;
+  inherit (lib) mkIf mkEnableOption;
   cfg = config.my.fd;
 in {
-  options.my.fd = {
-    enable = mkOption {
-      default = true;
-      type = types.bool;
-      description = "Enable fd";
-    };
-  };
+  options.my.fd = {enable = mkEnableOption "fd" // {default = true;};};
 
   config = mkIf cfg.enable {
     programs.fd = {

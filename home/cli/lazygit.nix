@@ -4,15 +4,11 @@
   ...
 }: let
   shellAliases = {"lg" = "lazygit";};
-  inherit (lib) mkIf types mkOption;
+  inherit (lib) mkIf mkEnableOption;
   cfg = config.my.lazygit;
 in {
   options.my.lazygit = {
-    enable = mkOption {
-      default = true;
-      type = types.bool;
-      description = "Enable lazygit";
-    };
+    enable = mkEnableOption "lazygit" // {default = true;};
   };
   config = mkIf cfg.enable {
     home.shellAliases = shellAliases;

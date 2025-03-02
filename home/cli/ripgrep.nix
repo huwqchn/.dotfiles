@@ -3,15 +3,11 @@
   lib,
   ...
 }: let
-  inherit (lib) mkIf types mkOption;
+  inherit (lib) mkIf mkEnableOption;
   cfg = config.my.ripgrep;
 in {
   options.my.ripgrep = {
-    enable = mkOption {
-      default = true;
-      type = types.bool;
-      description = "Enable ripgrep";
-    };
+    enable = mkEnableOption "riggrep" // {default = true;};
   };
   config = mkIf cfg.enable {
     programs.ripgrep = {

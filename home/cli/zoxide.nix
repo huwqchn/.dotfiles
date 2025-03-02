@@ -3,15 +3,11 @@
   lib,
   ...
 }: let
-  inherit (lib) mkIf types mkOption;
+  inherit (lib) mkIf mkEnableOption;
   cfg = config.my.zoxide;
 in {
   options.my.zoxide = {
-    enable = mkOption {
-      default = true;
-      type = types.bool;
-      description = "Enable zoxide";
-    };
+    enable = mkEnableOption "zoxide" // {default = true;};
   };
 
   config = mkIf cfg.enable {

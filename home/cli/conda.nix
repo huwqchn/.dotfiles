@@ -7,7 +7,13 @@
   inherit (lib) mkEnableOption mkIf;
   cfg = config.my.conda;
 in {
-  options.my.conda = {enable = mkEnableOption "conda";};
+  options.my.conda =
+    {
+      enable = mkEnableOption "conda";
+    }
+    // {
+      default = true;
+    };
   config = mkIf cfg.enable {
     home.packages = [pkgs.conda];
 

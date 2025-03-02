@@ -12,16 +12,10 @@
     # "diff" = "batdiff"
     "bgrep" = "batgrep";
   };
-  inherit (lib) mkIf types mkOption;
+  inherit (lib) mkIf mkEnableOption;
   cfg = config.my.bat;
 in {
-  options.my.bat = {
-    enable = mkOption {
-      default = true;
-      type = types.bool;
-      description = "Enable bat";
-    };
-  };
+  options.my.bat = {enable = mkEnableOption "bat" // {default = true;};};
   config = mkIf cfg.enable {
     home = {
       inherit shellAliases sessionVariables;

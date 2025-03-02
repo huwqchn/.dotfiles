@@ -4,7 +4,7 @@
   pkgs,
   ...
 }: let
-  inherit (lib) mkIf types mkOption;
+  inherit (lib) mkIf mkEnableOption;
   cfg = config.my.yazi;
   yazi-plugins = pkgs.fetchFromGitHub {
     owner = "yazi-rs";
@@ -13,13 +13,7 @@
     hash = "sha256-Cw5iMljJJkxOzAGjWGIlCa7gnItvBln60laFMf6PSPM=";
   };
 in {
-  options.my.yazi = {
-    enable = mkOption {
-      default = true;
-      type = types.bool;
-      description = "Enable yazi";
-    };
-  };
+  options.my.yazi = {enable = mkEnableOption "yazi" // {default = true;};};
 
   config = mkIf cfg.enable {
     # terminal file manager
