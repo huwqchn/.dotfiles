@@ -4,7 +4,7 @@
   lib,
   ...
 }:
-lib.my.mkModule config "security" {
+lib.mkIf config.security.enable {
   # nix.extraOptions = ''
   #   !include ${config.age.secrets.nix-access-tokens.path}
   # '';

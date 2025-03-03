@@ -30,6 +30,16 @@ in {
         github.user = "huwqchn";
         push.autoSetupRemote = true;
         pull.rebase = true;
+        rebase = {
+          autosquash = true;
+          autostash = true;
+          stat = true;
+        };
+        rerere = {
+          autoupdate = true;
+          enabled = true;
+        };
+        status.submoduleSummary = true;
       };
 
       delta = {
@@ -40,6 +50,12 @@ in {
           line-numbers = true;
         };
       };
+
+      ignores = [
+        ".*.sw?"
+        ".direnv/"
+        ".envrc"
+      ];
 
       aliases = {
         # common aliases

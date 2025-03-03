@@ -1,7 +1,3 @@
-{lib, ...}: let
-  inherit (lib) mkEnableOption;
-in {
+{lib, ...}: {
   imports = lib.my.scanPaths ./.;
-
-  options.my.security.enable = mkEnableOption "my security";
 }
