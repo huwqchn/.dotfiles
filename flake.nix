@@ -134,11 +134,37 @@
   inputs = {
     # Official NixOS package source, using nixos's unstable branch by default
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.05";
-    nixpkgs-small.url = "github:nixos/nixpkgs/nixos-unstable-small";
+    # nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.05";
+    # nixpkgs-small.url = "github:nixos/nixpkgs/nixos-unstable-small";
+    systems = {url = "github:nix-systems/default";};
+    flake-compat = {url = "github:edolstra/flake-compat";};
+    flake-parts = {
+      url = "github:hercules-ci/flake-parts";
+      inputs.nixpkgs-lib.follows = "nixpkgs";
+    };
+    nvidia-patch = {
+      url = "github:keylase/nvidia-patch";
+      flake = false;
+    };
+    openwrt-imagebuilder = {
+      url = "github:astro/nix-openwrt-imagebuilder";
+      inputs = {
+        flake-parts.follows = "flake-parts";
+        nixpkgs.follows = "nixpkgs";
+        systems.follows = "systems";
+      };
+    };
+    devshell = {
+      url = "github:numtide/devshell";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     home-manager = {
       # url = "github:nix-community/home-manager/release-24.05";
       url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    treefmt-nix = {
+      url = "github:numtide/treefmt-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -174,7 +200,12 @@
     agenix = {
       # type-safe reimplementation of agenix to get a better error messages and less bugs
       url = "github:yaxitech/ragenix";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        home-manager.follows = "home-manager";
+        dawin.follows = "darwin";
+        systems.follows = "systems";
+      };
     };
 
     lanzaboote = {
@@ -191,9 +222,12 @@
     };
 
     # nixos wsl
-    nixos-wsl = {
+    wsl = {
       url = "github:nix-community/NixOS-WSL/main";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        flake-compat.follows = "flake-compat";
+      };
     };
 
     nix-index-database = {
@@ -212,10 +246,10 @@
       # inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    matugen = {
-      url = "github:/InioX/Matugen";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    # matugen = {
+    #   url = "github:/InioX/Matugen";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
 
     wallpapers = {
       url = "github:huwqchn/wallpapers";
@@ -254,10 +288,10 @@
     };
 
     # blender
-    blender-bin = {
-      url = "github:edolstra/nix-warez?dir=blender";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    # blender-bin = {
+    #   url = "github:edolstra/nix-warez?dir=blender";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
 
     pre-commit-hooks = {
       url = "github:cachix/git-hooks.nix";
