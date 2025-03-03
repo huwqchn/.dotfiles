@@ -11,7 +11,6 @@
         supermaven.enable = true;
         tabnine.enable = true;
         # coding
-        mini-snippets.enable = true;
         neogen.enable = true;
         yanky.enable = true;
         mini-surround.enable = true;
