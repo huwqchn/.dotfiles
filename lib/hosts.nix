@@ -84,21 +84,28 @@
         if isDarwin'
         then "darwinModules"
         else "nixosModules";
+      defaultModules =
+        if
+          (host.output
+            == "darwinConfigurations"
+            || host.output == "nixosConfigurations")
+        then [
+          ({lib, ...}: {networking.hostName = lib.mkDefault hostName;})
+          {_module.args = host.extraArgs;}
+          (
+            if isDarwin'
+            then ./modules/darwin
+            else ./modules/nixos
+          )
+          inputs.home-manager.${moduleName}.home-manager
+          inputs.agenix.${moduleName}.default
+        ]
+        else [];
 
       host =
         shallowMerge {
           system = "x86_64-linux";
-          modules = [
-            ({lib, ...}: {networking.hostName = lib.mkDefault hostName;})
-            {_module.args = host.extraArgs;}
-            (
-              if isDarwin'
-              then ./modules/darwin
-              else ./modules/nixos
-            )
-            inputs.home-manager.${moduleName}.home-manager
-            inputs.agenix.${moduleName}.default
-          ];
+          modules = defaultModules;
           extraArgs = {};
           specialArgs = args;
           builder =
@@ -107,7 +114,7 @@
             else inputs.nixpkgs.lib.nixosSystem;
 
           output =
-            if isDarwin
+            if isDarwin'
             then "darwinConfigurations"
             else "nixosConfigurations";
         }
