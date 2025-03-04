@@ -24,7 +24,7 @@
       shellHook = ''
         ${config.per-commit.installationScript}
       '';
-      formatter = pkgs.alejandra;
+      # formatter = pkgs.alejandra;
     };
   };
 }

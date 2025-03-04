@@ -76,6 +76,14 @@
 
     isDarwin = system: builtins.match ".*-darwin" system != null;
 
+    moduleName = isDarwin: if isDarwin then "darwinModules" else "nixosModules";
+
+    defaultModules = isDarwin: [
+      (if isDarwin then ./modules/darwin else ./modules/nixos)
+      inputs.home-manager.${moduleName}.home-manager
+      inputs.agenix.${moduleName}.default
+    ];
+
     mkHost = hostName:
       let
         host = shallowMerge {
@@ -93,14 +101,21 @@
             else inputs.nixpkgs.lib.nixosSystem
           else conf.builder;
 
-        defaultModule = if isDarwin then ./modules/darwin else ./modules/nixos
-
         output =
           if conf.output == null then
             if isDarwin conf.system
             then "darwinConfigurations"
             else "nixosConfigurations"
           else conf.output;
+
+        isDarwin' = isDarwin host.system;
+
+        defaultModules = [
+          (if isDarwin' then ./modules/darwin else ./modules/nixos)
+          inputs.home-manager.${moduleName}.home-manager
+          inputs.agenix.${moduleName}.default
+        ];
+
         builtHost = builder {
           inherit (host) system specialArgs;
           modules = host.modules ++ [
@@ -108,8 +123,7 @@
               networking.hostName = lib.mkDefault hostName;
             }
             { _module.args = host.extraArgs; }
-            defaultModule
-          ];
+          ] ++ defaultModules;
         };
       in {
         name = output;
