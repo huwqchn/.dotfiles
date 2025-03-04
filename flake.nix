@@ -1,7 +1,11 @@
 {
   description = "My NixOS flakes configuration makes me feel like the world is my oyster";
 
-  outputs = inputs @ {flake-parts, systems, ...}:
+  outputs = inputs @ {
+    flake-parts,
+    systems,
+    ...
+  }:
     flake-parts.lib.mkFlake {inherit inputs;} {
       inherit systems;
       imports = [./flakes];
@@ -59,10 +63,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    haumea = {
-      url = "github:nix-community/haumea/v0.2.2";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    # haumea = {
+    #   url = "github:nix-community/haumea/v0.2.2";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
 
     # disko for declarative partitioning
     disko = {
