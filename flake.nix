@@ -1,9 +1,9 @@
 {
   description = "My NixOS flakes configuration makes me feel like the world is my oyster";
 
-  outputs = inputs @ {flake-parts, ...}:
+  outputs = inputs @ {flake-parts, systems, ...}:
     flake-parts.lib.mkFlake {inherit inputs;} {
-      inherit (inputs) systems;
+      inherit systems;
       imports = [./flakes];
     };
 
