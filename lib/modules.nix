@@ -46,7 +46,7 @@
   mkDesktopModule' = config: name: extraOptions: moduleConfig:
     mkModuleWithOptions {
       inherit config name extraOptions moduleConfig;
-      extraCondition = config.isDesktop;
+      extraCondition = config.my.desktop.enable;
     };
 
   mkDesktopModule = config: name: moduleConfig:

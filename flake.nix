@@ -1,134 +1,10 @@
 {
   description = "My NixOS flakes configuration makes me feel like the world is my oyster";
 
-  outputs = inputs @ {
-    self,
-    home-manager,
-    flake-utils-plus,
-    haumea,
-    pre-commit-hooks,
-    programs-sqlite,
-    nixos-generators,
-    darwin,
-    agenix,
-    ...
-  }: let
-    inherit (flake-utils-plus.lib) mkFlake;
-    # https://www.reddit.com/r/NixOS/comments/xrt6ng/extending_lib_in_homemanager_submodule/
-    # https://github.com/bangedorrunt/nix/blob/tdt/flake.nix#L94-L97
-    # if not append home-manager.lib to lib, the home-manager lib will not be available
-    lib =
-      inputs.nixpkgs.lib.extend
-      (final: _: {my = import ./lib {lib = final;};} // home-manager.lib);
-    specialArgs = inputs // {inherit lib;};
-    hl = haumea.lib;
-    hosts = hl.load {
-      src = ./hosts;
-      # Make the default.nix's attrs directly children of lib
-      transformer = hl.transformers.liftDefault;
-      inputs = {
-        inherit darwin nixos-generators programs-sqlite home-manager agenix;
-      };
-    };
-  in
-    mkFlake {
-      inherit self inputs;
-
-      ############
-      # channels #
-      ############
-      supportedSystems = [
-        "aarch64-linux"
-        "aarch64-darwin"
-        "i686-linux"
-        "x86_64-darwin"
-        "x86_64-linux"
-      ];
-
-      channelsConfig = {
-        allowUnfree = true;
-        allowBroken = true;
-      };
-
-      # channels.nixpkgs.overlaysBuilder = channels: [
-      #   (final: prev: { inherit (channels.nixpkgs-stable) bat-extras; })
-      # ];
-
-      # TODO: rewrite overlays instructures
-      # sharedOverlays = import ./overlays inputs;
-
-      #########
-      # Hosts #
-      #########
-      inherit hosts;
-      hostDefaults = {
-        inherit specialArgs;
-        modules = [
-          ./modules/nix.nix
-          ./modules/my.nix
-          ./secrets
-          {
-            home-manager = {
-              backupFileExtension = "bak";
-              useGlobalPkgs = true;
-              useUserPackages = true;
-              extraSpecialArgs = specialArgs;
-            };
-          }
-        ];
-      };
-
-      ###########
-      # Outputs #
-      ###########
-      outputsBuilder = channels: let
-        pkgs = channels.nixpkgs;
-        inherit (pkgs) system;
-      in {
-        checks = {
-          pre-commit-check = pre-commit-hooks.lib."${system}".run {
-            src = ./.;
-            hooks = {
-              alejandra.enable = true; # formatter
-              typos = {
-                enable = true;
-                settings = {
-                  write = true; # Automatically fix typos
-                  configPath = "./.typos.toml"; # relative to the flake root
-                };
-              };
-              prettier = {
-                enable = true;
-                settings = {
-                  write = true; # Automatically format files
-                  configPath = "./.prettierrc.yaml"; # relative to the flake root
-                };
-              };
-              deadnix.enable =
-                true; # detect unused variable bindings in "*.nix"
-              statix.enable = true; # lints and suggestions for Nix code
-            };
-          };
-        };
-        # Development Shells
-        devShells.default = pkgs.mkShell {
-          packages = with pkgs; [
-            bashInteractive
-            gcc
-            alejandra
-            deadnix
-            statix
-            typos
-            nodePackages.prettier
-          ];
-          name = "dots";
-          shellHook = ''
-            ${self.checks.${system}.pre-commit-check.shellHook}
-          '';
-        };
-
-        formatter = pkgs.alejandra;
-      };
+  outputs = inputs @ {flake-parts, ...}:
+    flake-parts.lib.mkFlake {inherit inputs;} {
+      inherit (inputs) systems;
+      imports = [./flakes];
     };
 
   inputs = {
@@ -142,6 +18,11 @@
       url = "github:hercules-ci/flake-parts";
       inputs.nixpkgs-lib.follows = "nixpkgs";
     };
+    flake-utils = {
+      url = "github:edolstra/flake-utils";
+      inputs.systems.follows = "systems";
+    };
+    hardware.url = "github:nixos/nixos-hardware";
     nvidia-patch = {
       url = "github:keylase/nvidia-patch";
       flake = false;
@@ -163,10 +44,10 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    treefmt-nix = {
-      url = "github:numtide/treefmt-nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    # treefmt = {
+    #   url = "github:numtide/treefmt-nix";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
 
     yazi = {
       url = "github:sxyazi/yazi";
@@ -176,13 +57,6 @@
     ags = {
       url = "github:Aylur/ags";
       inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    flake-utils = {url = "github:numtide/flake-utils";};
-
-    flake-utils-plus = {
-      url = "github:gytis-ivaskevicius/flake-utils-plus/v1.4.0";
-      inputs.flake-utils.follows = "flake-utils";
     };
 
     haumea = {
@@ -206,11 +80,6 @@
         dawin.follows = "darwin";
         systems.follows = "systems";
       };
-    };
-
-    lanzaboote = {
-      url = "github:nix-community/lanzaboote/v0.4.1";
-      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     impermanence.url = "github:nix-community/impermanence";
@@ -298,7 +167,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    zen-browser = {
+    zen = {
       url = "github:youwen5/zen-browser-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
