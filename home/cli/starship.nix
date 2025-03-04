@@ -107,17 +107,10 @@
     dart = lang "" "blue";
     elixir = lang "" "purple";
   };
-  inherit (lib) mkIf mkEnableOption;
-  cfg = config.my.starship;
-in {
-  options.my.starship = {
-    enable = mkEnableOption "lazygit" // {default = true;};
-  };
-
-  config = mkIf cfg.enable {
+in
+  lib.my.mkEnabledModule config "starship" {
     programs.starship = {
       enable = true;
       inherit settings;
     };
-  };
-}
+  }

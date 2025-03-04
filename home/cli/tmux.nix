@@ -5,12 +5,8 @@
   ...
 }: let
   shellAliases = {"t" = "tmux";};
-  inherit (lib) mkIf mkEnableOption;
-  cfg = config.my.tmux;
-in {
-  options.my.tmux = {enable = mkEnableOption "tmux" // {default = true;};};
-
-  config = mkIf cfg.enable {
+in
+  lib.my.mkEnabledModule config "tmux" {
     home.shellAliases = shellAliases;
     programs.tmux = {
       enable = true;
@@ -310,5 +306,4 @@ in {
         ''}
       '';
     };
-  };
-}
+  }

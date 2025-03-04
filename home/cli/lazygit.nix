@@ -4,13 +4,8 @@
   ...
 }: let
   shellAliases = {"lg" = "lazygit";};
-  inherit (lib) mkIf mkEnableOption;
-  cfg = config.my.lazygit;
-in {
-  options.my.lazygit = {
-    enable = mkEnableOption "lazygit" // {default = true;};
-  };
-  config = mkIf cfg.enable {
+in
+  lib.my.mkEnabledModule config "lazygit" {
     home.shellAliases = shellAliases;
     programs.nushell.shellAliases = shellAliases;
     programs.lazygit = {
@@ -245,5 +240,4 @@ in {
     home.persistence = {
       "/persist/${config.home.homeDirectory}".directories = [".local/state/lazygit"];
     };
-  };
-}
+  }

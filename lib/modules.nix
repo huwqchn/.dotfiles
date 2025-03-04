@@ -43,6 +43,15 @@
   mkEnabledModule = config: name: moduleConfig:
     mkEnabledModule' config name {} moduleConfig;
 
+  mkEnumEnableModule' = config: name: enum: extraOptions: moduleConfig:
+    mkModuleWithOptions {
+      inherit config name extraOptions moduleConfig;
+      default = config.my.${enum} == name;
+    };
+
+  mkEnumEnableModule = config: name: default: moduleConfig:
+    mkEnumEnableModule' config name default {} moduleConfig;
+
   mkDesktopModule' = config: name: extraOptions: moduleConfig:
     mkModuleWithOptions {
       inherit config name extraOptions moduleConfig;

@@ -5,14 +5,8 @@
 }: let
   shellAliases = {"fetch" = "fastfetch";};
   inherit (config.programs) kitty;
-  inherit (lib) mkIf mkEnableOption;
-  cfg = config.my.fastfetch;
-in {
-  options.my.fastfetch = {
-    enable = mkEnableOption "fastfetch" // {default = true;};
-  };
-
-  config = mkIf cfg.enable {
+in
+  lib.my.mkEnabledModule config "fastfetch" {
     home = {inherit shellAliases;};
     programs.nushell = {inherit shellAliases;};
     programs.fastfetch = {
@@ -144,5 +138,4 @@ in {
     home.persistence = {
       "/persist/${config.home.homeDirectory}".directories = [".cache/fastfetch"];
     };
-  };
-}
+  }

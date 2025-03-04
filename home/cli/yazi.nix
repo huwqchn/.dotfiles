@@ -4,18 +4,14 @@
   pkgs,
   ...
 }: let
-  inherit (lib) mkIf mkEnableOption;
-  cfg = config.my.yazi;
   yazi-plugins = pkgs.fetchFromGitHub {
     owner = "yazi-rs";
     repo = "plugins";
     rev = "5186af7984aa8cb0550358aefe751201d7a6b5a8";
     hash = "sha256-Cw5iMljJJkxOzAGjWGIlCa7gnItvBln60laFMf6PSPM=";
   };
-in {
-  options.my.yazi = {enable = mkEnableOption "yazi" // {default = true;};};
-
-  config = mkIf cfg.enable {
+in
+  lib.my.mkEnabledModule config "yazi" {
     # terminal file manager
     programs.yazi = {
       enable = true;
@@ -357,5 +353,4 @@ in {
     home.persistence = {
       "/persist/${config.home.homeDirectory}".directories = [".local/state/yazi"];
     };
-  };
-}
+  }

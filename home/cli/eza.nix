@@ -4,11 +4,8 @@
   ...
 }: let
   shellAliases = {"tree" = "eza --git --icons --tree";};
-  inherit (lib) mkIf mkEnableOption;
-  cfg = config.my.eza;
-in {
-  options.my.eza = {enable = mkEnableOption "eza" // {default = true;};};
-  config = mkIf cfg.enable {
+in
+  lib.my.mkEnabledModule config "eza" {
     home = {inherit shellAliases;};
     # A modern replacement for ‘ls’
     # useful in bash/zsh prompt, not in nushell.
@@ -18,5 +15,4 @@ in {
       icons = "auto";
       extraOptions = ["--group-directories-first"];
     };
-  };
-}
+  }

@@ -4,13 +4,8 @@
   ...
 }: let
   shellAliases = {"top" = "btop";};
-  inherit (lib) mkIf mkEnableOption;
-  cfg = config.my.btop;
-in {
-  options.my.btop = {enable = mkEnableOption "btop" // {default = true;};};
-
-  config = mkIf cfg.enable {
+in
+  lib.my.mkModuleWithOptions config "btop" {
     home.shellAliases = shellAliases;
     programs.btop = {enable = true;};
-  };
-}
+  }
