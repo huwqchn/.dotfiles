@@ -6,10 +6,9 @@
 }: {
   imports = [
     (lib.mkAliasOptionModule ["hm"] ["home-manager" "users" config.my.name])
-    ../modules/common/my.nix
   ];
 
-  hm.imports = lib.my.scanPaths ./.;
+  hm.imports = lib.my.scanPaths ./. ++ [../modules/common/my.nix];
 
   home-manager.extraSpecialArgs = {inherit inputs;};
   home-manager.useGlobalPkgs = true;
