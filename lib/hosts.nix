@@ -92,8 +92,16 @@
             == "darwinConfigurations"
             || host.output == "nixosConfigurations")
         then [
-          ({lib, ...}: {networking.hostName = lib.mkDefault hostName;})
-          {_module.args = host.extraArgs;}
+          ({options, ...}: {
+            # 'mkMerge` to separate out each part into its own module
+            _type = "merge";
+            contents = [
+              (builtins.optionalAttrs (options ? networking.hostName) {
+                networking.hostName = hostName;
+              })
+              {_module.args = host.extraArgs;}
+            ];
+          })
           (
             if isDarwin'
             then ./modules/darwin
