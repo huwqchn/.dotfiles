@@ -1,3 +1,1 @@
-{ inputs, lib, ... } @ args: {
-  flake = lib.mkHosts ../hosts args;
-}
+{lib, ...} @ args: {flake = lib.my.mkHosts ../hosts args;}
