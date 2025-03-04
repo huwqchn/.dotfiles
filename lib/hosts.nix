@@ -15,6 +15,9 @@
     builtins.mapAttrs (_: subAttr: shallowMerge subAttr def)
     (builtins.removeAttrs attr ["default"]);
 
+  startsWith = prefix: str:
+    builtins.substring 0 (builtins.stringLength prefix) str == prefix;
+
   exportFolder = folder: let
     dir = builtins.readDir folder;
     names = builtins.attrNames dir;
@@ -44,8 +47,7 @@
       && (builtins.readDir (folder + "/" + n) ? "default.nix");
 
     validNames =
-      builtins.filter
-      (n: !builtins.stringStartsWith "_" n && (isNixFile n || isNixDir n))
+      builtins.filter (n: !startsWith "_" n && (isNixFile n || isNixDir n))
       names;
   in
     lib.genAttrs validNames (n:
@@ -133,10 +135,7 @@
       }) {}
     hostNames;
 
-  mkHosts = {
-    folder,
-    args,
-  }:
+  mkHosts = folder: args:
     mkHosts' {
       inherit args;
       hosts = exportFolder folder;

@@ -5,8 +5,13 @@
     flake-parts,
     systems,
     ...
-  }:
-    flake-parts.lib.mkFlake {inherit inputs;} {
+  }: let
+    lib =
+      inputs.nixpkgs.lib.extend
+      (final: _: {my = import ./lib {lib = final;};});
+    specialArgs = {inherit lib;};
+  in
+    flake-parts.lib.mkFlake {inherit inputs specialArgs;} {
       inherit systems;
       imports = [./flakes];
     };

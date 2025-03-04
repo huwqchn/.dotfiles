@@ -1,9 +1,1 @@
-{
-  imports = [
-    ./lib.nix
-    ./devshell.nix
-    ./hosts.nix
-    ./overlays.nix
-    ./pre-commit-hooks.nix
-  ];
-}
+{lib, ...}: {imports = lib.my.scanPaths ./.;}
