@@ -60,7 +60,6 @@
     );
 
   mkHosts' = {
-    inputs,
     hosts ? {
       default = {
         system   = "x86_64-linux";
@@ -68,6 +67,7 @@
         extraArgs= {};
       };
     },
+    args,
   }:
   let
     mergedHosts = mergeDefault hosts;
@@ -76,21 +76,20 @@
 
     isDarwin = system: builtins.match ".*-darwin" system != null;
 
-    moduleName = isDarwin: if isDarwin then "darwinModules" else "nixosModules";
+    isDarwin' = isDarwin host.system;
 
-    defaultModules = isDarwin: [
-      (if isDarwin then ./modules/darwin else ./modules/nixos)
-      inputs.home-manager.${moduleName}.home-manager
-      inputs.agenix.${moduleName}.default
-    ];
-
+    moduleName = if isDarwin' then "darwinModules" else "nixosModules";
     mkHost = hostName:
       let
         host = shallowMerge {
           system = "x86_64-linux";
-          modules = [];
+          modules = [
+            (if isDarwin' then ./modules/darwin else ./modules/nixos)
+            inputs.home-manager.${moduleName}.home-manager
+            inputs.agenix.${moduleName}.default
+          ];
           extraArgs = {};
-          specialArgs = {};
+          specialArgs = args;
           builder = null;
           output = null;
         } mergedHosts.${hostName};
@@ -99,22 +98,14 @@
             if isDarwin host.system
             then inputs.darwin.lib.darwinSystem
             else inputs.nixpkgs.lib.nixosSystem
-          else conf.builder;
+          else host.builder;
 
         output =
           if conf.output == null then
             if isDarwin conf.system
             then "darwinConfigurations"
             else "nixosConfigurations"
-          else conf.output;
-
-        isDarwin' = isDarwin host.system;
-
-        defaultModules = [
-          (if isDarwin' then ./modules/darwin else ./modules/nixos)
-          inputs.home-manager.${moduleName}.home-manager
-          inputs.agenix.${moduleName}.default
-        ];
+          else host.output;
 
         builtHost = builder {
           inherit (host) system specialArgs;
@@ -123,7 +114,7 @@
               networking.hostName = lib.mkDefault hostName;
             }
             { _module.args = host.extraArgs; }
-          ] ++ defaultModules;
+          ];
         };
       in {
         name = output;
@@ -141,11 +132,11 @@
     foldHosts;
 
   mkHosts = {
-    inputs,
     folder,
+    args,
   }:
     mkHosts' {
-      inherit inputs;
+      inherit args;
       hosts = exportFolder folder;
     };
 }
