@@ -6,6 +6,7 @@
 }: {
   imports = [
     (lib.mkAliasOptionModule ["hm"] ["home-manager" "users" config.my.name])
+    ../modules/common/my.nix
   ];
 
   hm.imports = lib.my.scanPaths ./.;
