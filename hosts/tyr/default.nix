@@ -1,5 +1,1 @@
-{lib, ...}: {
-  system = "aarch64-darwin";
-
-  modules = lib.scanPaths ./.;
-}
+_: {system = "aarch64-darwin";}

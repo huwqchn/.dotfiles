@@ -5,9 +5,7 @@
   lib,
   ...
 }: {
-  imports = [
-    impermanence.nixosModules.impermanence
-  ];
+  imports = [impermanence.nixosModules.impermanence];
 
   environment.systemPackages = [
     # `sudo ncdu -x /`
@@ -31,10 +29,7 @@
   # move those files/directories to /persistent first!
   environment.persistence."/persist" = {
     hideMounts = true;
-    directories = [
-      "/etc/NetworkManager/system-connections"
-      "/var/lib"
-    ];
+    directories = ["/etc/NetworkManager/system-connections" "/var/lib"];
     files = [
       "/etc/machine-id"
       "/etc/ssh/ssh_host_ed25519_key"

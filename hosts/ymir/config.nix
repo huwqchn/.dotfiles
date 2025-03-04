@@ -6,10 +6,9 @@
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
     disko.nixosModules.disko
-    ../../_internal/disko/luks-lvm-btrfs-tmpfs.nix
+    ../_internal/disko/luks-lvm-btrfs-tmpfs.nix
     ./boot.nix
-    ./impermanence.nix
-    ./nvim.nix
+    ../internal/impermanence.nix
     # ../../_internal/lanzaboote.nix
   ];
 

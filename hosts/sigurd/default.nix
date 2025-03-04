@@ -1,8 +1,6 @@
 {
   nixos-generators,
   programs-sqlite,
-  home-manager,
-  agenix,
   ...
 }: {
   modules = [
