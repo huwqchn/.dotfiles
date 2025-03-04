@@ -1,12 +1,5 @@
-{
-  darwin,
-  home-manager,
-  agenix,
-  ...
-}: {
+{lib, ...}: {
   system = "aarch64-darwin";
 
-  modules = [
-    ./config.nix
-  ];
+  modules = lib.scanPaths ./.;
 }

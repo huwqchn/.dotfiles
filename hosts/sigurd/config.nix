@@ -9,7 +9,6 @@
     ../../_internal/disko/luks-btrfs-tmpfs.nix
     ./boot.nix
     ./impermanence.nix
-    ./home.nix
     # ../../_internal/lanzaboote.nix
   ];
 
