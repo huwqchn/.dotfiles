@@ -23,7 +23,7 @@
       inputs.nixpkgs-lib.follows = "nixpkgs";
     };
     flake-utils = {
-      url = "github:edolstra/flake-utils";
+      url = "github:numtide/flake-utils";
       inputs.systems.follows = "systems";
     };
     hardware.url = "github:nixos/nixos-hardware";
