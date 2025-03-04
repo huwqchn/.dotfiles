@@ -1,135 +1,130 @@
-{ lib, ... }: {
+{lib, ...}: rec {
   shallowMerge = lhs: rhs:
-    lhs // builtins.mapAttrs
-    (name: value:
-      if builtins.isAttrs value then lhs.${name} or { } // value
-      else if isList value then lhs.${name} or [ ] ++ value
-      else value
-    ) rhs;
-  mergeDefault = attr:
-    let
-      def = attr.default or { };
-      merged = lib.mapAttrs (name: value:
-        if builtins.isAttrs value then
-          def // value
-        else value
-      ) attr;
-    in
-      lib.removeAttrs merged [ "default" ];
+    lhs
+    // builtins.mapAttrs (name: value:
+      if builtins.isAttrs value
+      then lhs.${name} or {} // value
+      else if builtins.isList value
+      then lhs.${name} or [] ++ value
+      else value)
+    rhs;
 
-  exportFolder = folder:
-    let
-      dir   = builtins.readDir folder;
-      names = builtins.attrNames dir;
+  mergeDefault = attr: let
+    def = attr.default or {};
+  in
+    builtins.mapAttrs (_: subAttr: shallowMerge subAttr def)
+    (builtins.removeAttrs attr ["default"]);
 
-      hasSuffix = suffix: str:
-        builtins.stringLength str >= builtins.stringLength suffix &&
-        builtins.substring
-          (builtins.stringLength str - builtins.stringLength suffix)
-          (builtins.stringLength suffix)
-          str == suffix;
+  exportFolder = folder: let
+    dir = builtins.readDir folder;
+    names = builtins.attrNames dir;
 
-      removeSuffix = suffix: str:
-        if hasSuffix suffix str
-        then builtins.substring 0 (builtins.stringLength str - builtins.stringLength suffix) str
-        else str;
+    hasSuffix = suffix: str:
+      builtins.stringLength str
+      >= builtins.stringLength suffix
+      && builtins.substring
+      (builtins.stringLength str - builtins.stringLength suffix)
+      (builtins.stringLength suffix)
+      str
+      == suffix;
 
-      isNixFile = n:
-        dir.${n}.type == "regular" && hasSuffix ".nix" n;
+    removeSuffix = suffix: str:
+      if hasSuffix suffix str
+      then
+        builtins.substring 0
+        (builtins.stringLength str - builtins.stringLength suffix)
+        str
+      else str;
 
-      isNixDir = n:
-        dir.${n}.type == "directory" &&
-        (builtins.readDir (folder + "/" + n) ? "default.nix");
+    isNixFile = n: dir.${n}.type == "regular" && hasSuffix ".nix" n;
 
-      validNames =
-        builtins.filter (n:
-          !builtins.stringStartsWith "_" n
-          && (isNixFile n || isNixDir n)
-        ) names;
+    isNixDir = n:
+      dir.${n}.type
+      == "directory"
+      && (builtins.readDir (folder + "/" + n) ? "default.nix");
 
-    in
+    validNames =
+      builtins.filter
+      (n: !builtins.stringStartsWith "_" n && (isNixFile n || isNixDir n))
+      names;
+  in
     lib.genAttrs validNames (n:
       if isNixFile n
       then {
-        name  = removeSuffix ".nix" n;
+        name = removeSuffix ".nix" n;
         value = import (folder + "/" + n);
-      } else {
-        name  = n;
-        value = import (folder + "/" + n + "/default.nix");
       }
-    );
+      else {
+        name = n;
+        value = import (folder + "/" + n + "/default.nix");
+      });
 
   mkHosts' = {
     hosts ? {
       default = {
-        system   = "x86_64-linux";
-        modules  = [];
-        extraArgs= {};
+        system = "x86_64-linux";
+        modules = [];
+        extraArgs = {};
       };
     },
     args,
-  }:
-  let
+  }: let
+    inherit (args) inputs;
+
     mergedHosts = mergeDefault hosts;
 
     hostNames = builtins.attrNames mergedHosts;
 
     isDarwin = system: builtins.match ".*-darwin" system != null;
 
-    isDarwin' = isDarwin host.system;
+    mkHost = hostName: let
+      isDarwin' = isDarwin host.system;
 
-    moduleName = if isDarwin' then "darwinModules" else "nixosModules";
-    mkHost = hostName:
-      let
-        host = shallowMerge {
+      moduleName =
+        if isDarwin'
+        then "darwinModules"
+        else "nixosModules";
+
+      host =
+        shallowMerge {
           system = "x86_64-linux";
           modules = [
-            (if isDarwin' then ./modules/darwin else ./modules/nixos)
+            ({lib, ...}: {networking.hostName = lib.mkDefault hostName;})
+            {_module.args = host.extraArgs;}
+            (
+              if isDarwin'
+              then ./modules/darwin
+              else ./modules/nixos
+            )
             inputs.home-manager.${moduleName}.home-manager
             inputs.agenix.${moduleName}.default
           ];
           extraArgs = {};
           specialArgs = args;
-          builder = null;
-          output = null;
-        } mergedHosts.${hostName};
-        builder =
-          if host.builder == null then
-            if isDarwin host.system
+          builder =
+            if isDarwin'
             then inputs.darwin.lib.darwinSystem
-            else inputs.nixpkgs.lib.nixosSystem
-          else host.builder;
+            else inputs.nixpkgs.lib.nixosSystem;
 
-        output =
-          if conf.output == null then
-            if isDarwin conf.system
+          output =
+            if isDarwin
             then "darwinConfigurations"
-            else "nixosConfigurations"
-          else host.output;
-
-        builtHost = builder {
-          inherit (host) system specialArgs;
-          modules = host.modules ++ [
-            {lib, ...}: {
-              networking.hostName = lib.mkDefault hostName;
-            }
-            { _module.args = host.extraArgs; }
-          ];
-        };
-      in {
-        name = output;
-        value = builtHost;
-      };
-    foldHosts = lib.foldl' (acc: hostName:
-      let out = mkHost hostName;
-      acc // {
-        ${out.name} = (acc.${out.name} or { }) // {
-          ${homeName} = out.value;
-        };
-      }
-    ) {} hostNames;
+            else "nixosConfigurations";
+        }
+        mergedHosts.${hostName};
+    in {
+      name = host.output;
+      value = host.builder {inherit (host) system specialArgs modules;};
+    };
   in
-    foldHosts;
+    lib.foldl' (acc: hostName: let
+      out = mkHost hostName;
+    in
+      acc
+      // {
+        ${out.name} = (acc.${out.name} or {}) // {${hostName} = out.value;};
+      }) {}
+    hostNames;
 
   mkHosts = {
     folder,
