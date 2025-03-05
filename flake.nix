@@ -79,12 +79,7 @@
     agenix = {
       # type-safe reimplementation of agenix to get a better error messages and less bugs
       url = "github:yaxitech/ragenix";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-        home-manager.follows = "home-manager";
-        dawin.follows = "darwin";
-        systems.follows = "systems";
-      };
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     impermanence.url = "github:nix-community/impermanence";

@@ -19,7 +19,7 @@
       ];
       name = "dots";
       shellHook = ''
-        ${config.per-commit.installationScript}
+        ${config.pre-commit.installationScript}
       '';
       # formatter = pkgs.alejandra;
     };
