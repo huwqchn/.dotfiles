@@ -1,18 +1,13 @@
 {
-  nixos-wsl,
+  wsl,
   nixos-generators,
   programs-sqlite,
-  home-manager,
-  agenix,
   ...
 }: {
   modules = [
-    ./__config
-    ../../modules/nixos
-    nixos-wsl.nixosModules.default
+    ./config.nix
+    wsl.nixosModules.default
     nixos-generators.nixosModules.all-formats
     programs-sqlite.nixosModules.programs-sqlite
-    home-manager.nixosModules.home-manager
-    agenix.nixosModules.default
   ];
 }

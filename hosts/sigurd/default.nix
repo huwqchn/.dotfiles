@@ -1,1 +1,1 @@
-{modules = [./my.nix];}
+{modules = [./config.nix];}
