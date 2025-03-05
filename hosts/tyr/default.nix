@@ -1,1 +1,1 @@
-_: {system = "aarch64-darwin";}
+{system = "aarch64-darwin";}

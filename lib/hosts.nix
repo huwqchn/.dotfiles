@@ -40,6 +40,7 @@
       (builtins.stringLength str - builtins.stringLength suffix)
       str
     else str;
+
   shallowLoad = dir: args: let
     dirStr = builtins.toString dir;
     entries = builtins.readDir dir;
@@ -58,10 +59,15 @@
 
     finalNames = validFileNames ++ validDirNames;
   in
-    lib.genAttrs finalNames (n:
-      if builtins.elem n validFileNames
-      then import "${dirStr}/${n}.nix" args
-      else import "${dirStr}/${n}" args);
+    lib.genAttrs finalNames (n: let
+      imported =
+        if builtins.elem n validFileNames
+        then import "${dirStr}/${n}.nix"
+        else import "${dirStr}/${n}";
+    in
+      if builtins.isFunction imported
+      then imported args
+      else imported);
 
   mkHosts' = {
     hosts ? {
