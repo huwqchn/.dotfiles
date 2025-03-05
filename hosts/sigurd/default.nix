@@ -1,1 +1,1 @@
-{modules = [./config.nix];}
+_: {modules = [./config.nix];}

@@ -8,7 +8,10 @@
   username = config.my.name;
   homeDirectory = config.my.home;
 in {
-  imports = [impermanence.nixosModules.home-manager.impermanence];
+  imports = [
+    impermanence.nixosModules.home-manager.impermanence
+    ../modules/common/my.nix
+  ];
 
   news.display = "show";
 

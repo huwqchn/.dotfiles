@@ -1,5 +1,5 @@
 {
-  hm.my = {
+  my = {
     neovim = {
       enable = true;
       lazyvim = {

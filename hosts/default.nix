@@ -1,3 +1,3 @@
 _: {
-  modelues = [./common/nvim.nix ./common/desktop.nix];
+  modelues = [{hm.imports = [./common/nvim.nix ./common/desktop.nix];}];
 }

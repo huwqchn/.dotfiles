@@ -1,1 +1,1 @@
-{hm.my.desktop = {enable = true;};}
+{my.desktop = {enable = true;};}
