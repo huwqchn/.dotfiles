@@ -13,7 +13,7 @@ in {
     enable =
       mkEnableOption "Tokyonight theme"
       // {
-        default = config.my.theme.colorscheme == "tokyonight";
+        default = config.my.theme == "tokyonight";
       };
 
     style = mkOption {

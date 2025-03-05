@@ -35,27 +35,20 @@ in {
     };
     desktop = {enable = mkEnableOption "Desktop";};
     security = {enable = mkEnableOption "Security";};
-    theme = {
-      enable =
-        mkEnableOption "Theme"
-        // {
-          default = config.my.desktop.enable;
-        };
-      wallpaper = mkOption {
-        type = types.str;
-        default = "wallpapers/1.jpg";
-        description = "The wallpaper of the system";
-      };
-      colorscheme = mkOption {
-        type = types.enum ["tokyonight" "catppuccin" "auto"];
-        default = "tokyonight";
-        description = "colorscheme to use";
-      };
+    theme = mkOption {
+      type = types.enum ["tokyonight" "catppuccin" "auto"];
+      default = "tokyonight";
+      description = "The theme to use";
     };
     shell = mkOption {
       type = types.enum ["bash" "fish" "zsh" "nushell"];
       default = "fish";
       description = "The shell to use";
+    };
+    wallpaper = mkOption {
+      type = types.str;
+      default = "wallpapers/1.jpg";
+      description = "The wallpaper of the system";
     };
     initialHashedPassword = mkOption {
       type = types.singleLineStr;
@@ -63,11 +56,6 @@ in {
       # we have to use initialHashedPassword here when using tmpfs for /
       default = "$y$j9T$UtvejDe22fK.4ok7ZyI1Y/$.vc/kQ3hRFbb2ntOCQQna3CcWWP6dxwtEAE1O9bWcO8";
       description = "The hashed password of the user";
-    };
-    isPersist = mkEnableOption "persistent" // {default = isLinux;};
-    hardware = {
-      isNvidia = mkEnableOption "is has nvidia";
-      isHdr = mkEnableOption "is has hdr";
     };
     # TODO: Generate a public key that can login to all my devices and servers.
     # store the privaet key in Yukikey
