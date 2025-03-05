@@ -1,11 +1,7 @@
 {inputs, ...}: {
   imports = [inputs.devshell.flakeModule];
 
-  perSystem = {
-    pkgs,
-    config,
-    ...
-  }: {
+  perSystem = {pkgs, ...}: {
     devshells.default = {
       packages = with pkgs; [
         bashInteractive
@@ -18,10 +14,9 @@
         nix-diff
       ];
       name = "dots";
-      shellHook = ''
-        ${config.pre-commit.installationScript}
-      '';
-      # formatter = pkgs.alejandra;
+      # shellHook = ''
+      #   ${config.pre-commit.installationScript}
+      # '';
     };
   };
 }
