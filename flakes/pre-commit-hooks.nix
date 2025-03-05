@@ -2,7 +2,7 @@
   imports = [inputs.pre-commit-hooks.flakeModule];
 
   perSystem.pre-commit = {
-    setting = {
+    settings = {
       excludes = ["flake.lock"];
       hooks = {
         # ========== General ==========
