@@ -71,9 +71,9 @@
         extraArgs = {};
       };
     },
-    args,
+    inputs,
   }: let
-    inherit (args) inputs;
+    inherit inputs;
 
     mergedHosts = mergeDefault hosts;
 
@@ -103,7 +103,7 @@
             })
           ];
           extraArgs = {};
-          specialArgs = args;
+          specialArgs = inputs;
           builder =
             if isDarwin'
             then inputs.darwin.lib.darwinSystem
@@ -114,25 +114,32 @@
             else "nixosConfigurations";
         }
         rawHost;
-      isOutputDarwin = isDarwin host.output;
-      isOutputNixos = isNixos host.output;
+      isDarwinOutput = isDarwin host.output;
+      isNixosOutput = isNixos host.output;
     in {
       name = host.output;
-      value = host.builder {
-        inherit (host) system specialArgs;
-        modules =
-          host.modules
-          ++ (builtins.optional isOutputDarwin [
-            ../modules/darwin
-            inputs.home-manager.darwinModules.home-manager
-            inputs.agenix.darwinModules.default
-          ])
-          ++ (builtins.optional isOutputNixos [
-            ../modules/nixos
-            inputs.home-manager.nixosModules.home-manager
-            inputs.agenix.nixosModules.default
-          ]);
-      };
+      value =
+        host.builder {
+          inherit (host) system;
+          modules =
+            host.modules
+            ++ (builtins.optional isDarwinOutput [
+              ../modules/darwin
+              inputs.home-manager.darwinModules.home-manager
+              inputs.agenix.darwinModules.default
+            ])
+            ++ (builtins.optional isNixosOutput [
+              ../modules/nixos
+              inputs.home-manager.nixosModules.home-manager
+              inputs.agenix.nixosModules.default
+            ]);
+        }
+        // (builtins.optionalAttrs (isDarwinOutput || isNixosOutput) {
+          inherit (host) extraArgs specialArgs;
+        })
+        // (builtins.optionalAttrs (!isDarwinOutput && !isNixosOutput) {
+          extraSpecialArgs = host.extraArgs // host.specialArgs;
+        });
     };
   in
     lib.foldl' (acc: hostName: let
@@ -144,9 +151,9 @@
       }) {}
     hostNames;
 
-  mkHosts = dir: args:
+  mkHosts = dir: inputs:
     mkHosts' {
-      inherit args;
-      hosts = shallowLoad dir args;
+      inherit inputs;
+      hosts = shallowLoad dir inputs;
     };
 }
