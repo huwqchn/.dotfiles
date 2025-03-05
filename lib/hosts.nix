@@ -36,8 +36,8 @@
     else str;
   shallowLoad = dir: let
     dirStr = builtins.toString dir;
-    entries = builtins.readDir dir; # 目录下所有条目
-    entryNames = builtins.attrNames entries; # 条目名称列表
+    entries = builtins.readDir dir;
+    entryNames = builtins.attrNames entries;
 
     validFileNames =
       builtins.map (n: removeSuffix ".nix" n)
@@ -57,6 +57,8 @@
       then import "${dirStr}/${n}.nix"
       else import "${dirStr}/${n}");
 
+  isDarwin = system: builtins.match ".*-darwin" system != null;
+
   mkHosts' = {
     hosts ? {
       default = {
@@ -73,61 +75,32 @@
 
     hostNames = builtins.attrNames mergedHosts;
 
-    isDarwin = system: builtins.match ".*-darwin" system != null;
-
     mkHost = hostName: let
-      isDarwin' = isDarwin host.system;
-
-      moduleName =
-        if isDarwin'
-        then "darwinModules"
-        else "nixosModules";
-      defaultModules =
-        if
-          (host.output
-            == "darwinConfigurations"
-            || host.output == "nixosConfigurations")
-        then [
-          ({options, ...}: {
-            # 'mkMerge` to separate out each part into its own module
-            _type = "merge";
-            contents = [
-              (builtins.optionalAttrs (options ? networking.hostName) {
-                networking.hostName = hostName;
-              })
-              {_module.args = host.extraArgs;}
-            ];
-          })
-          (
-            if isDarwin'
-            then ./modules/darwin
-            else ./modules/nixos
-          )
-          inputs.home-manager.${moduleName}.home-manager
-          inputs.agenix.${moduleName}.default
-        ]
-        else [];
-
       host =
         shallowMerge {
           system = "x86_64-linux";
-          modules = defaultModules;
+          modules = [
+            ({options, ...}: {
+              # 'mkMerge` to separate out each part into its own module
+              _type = "merge";
+              contents = [
+                (builtins.optionalAttrs (options ? networking.hostName) {
+                  networking.hostName = hostName;
+                })
+                {_module.args = host.extraArgs;}
+              ];
+            })
+          ];
           extraArgs = {};
           specialArgs = args;
-          builder =
-            if isDarwin'
-            then inputs.darwin.lib.darwinSystem
-            else inputs.nixpkgs.lib.nixosSystem;
-
-          output =
-            if isDarwin'
-            then "darwinConfigurations"
-            else "nixosConfigurations";
-        }
-        mergedHosts.${hostName};
+          builder = inputs.nixpkgs.lib.nixosSystem;
+          output = "nixosConfigurations";
+        } mergedHosts.${hostName};
     in {
       name = host.output;
-      value = host.builder {inherit (host) system specialArgs modules;};
+      value = host.builder {
+        inherit (host) system specialArgs hosts modules;
+      };
     };
   in
     lib.foldl' (acc: hostName: let
