@@ -1,18 +1,14 @@
 {
   description = "My NixOS flakes configuration makes me feel like the world is my oyster";
 
-  outputs = inputs @ {
-    flake-parts,
-    systems,
-    ...
-  }: let
+  outputs = inputs @ {flake-parts, ...}: let
     lib =
       inputs.nixpkgs.lib.extend
       (final: _: {my = import ./lib {lib = final;};});
     specialArgs = {inherit lib;};
   in
     flake-parts.lib.mkFlake {inherit inputs specialArgs;} {
-      inherit systems;
+      systems = ["aarch64-darwin" "x86_64-linux"];
       imports = [./flakes];
     };
 
