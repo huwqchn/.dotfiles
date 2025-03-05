@@ -18,48 +18,44 @@
   startsWith = prefix: str:
     builtins.substring 0 (builtins.stringLength prefix) str == prefix;
 
-  exportFolder = folder: let
-    dir = builtins.readDir folder;
-    names = builtins.attrNames dir;
+  hasSuffix = suffix: str:
+    builtins.stringLength str
+    >= builtins.stringLength suffix
+    && builtins.substring
+    (builtins.stringLength str - builtins.stringLength suffix)
+    (builtins.stringLength suffix)
+    str
+    == suffix;
 
-    hasSuffix = suffix: str:
-      builtins.stringLength str
-      >= builtins.stringLength suffix
-      && builtins.substring
+  removeSuffix = suffix: str:
+    if hasSuffix suffix str
+    then
+      builtins.substring 0
       (builtins.stringLength str - builtins.stringLength suffix)
-      (builtins.stringLength suffix)
       str
-      == suffix;
+    else str;
+  shallowLoad = dir: let
+    dirStr = builtins.toString dir;
+    entries = builtins.readDir dir; # 目录下所有条目
+    entryNames = builtins.attrNames entries; # 条目名称列表
 
-    removeSuffix = suffix: str:
-      if hasSuffix suffix str
-      then
-        builtins.substring 0
-        (builtins.stringLength str - builtins.stringLength suffix)
-        str
-      else str;
+    validFileNames =
+      builtins.map (n: removeSuffix ".nix" n)
+      (builtins.filter (n: entries.${n} == "regular" && hasSuffix ".nix" n)
+        entryNames);
 
-    isNixFile = n: dir.${n}.type == "regular" && hasSuffix ".nix" n;
-
-    isNixDir = n:
-      dir.${n}.type
+    validDirNames = builtins.filter (n:
+      entries.${n}
       == "directory"
-      && (builtins.readDir (folder + "/" + n) ? "default.nix");
+      && builtins.pathExists "${dirStr}/${n}/default.nix")
+    entryNames;
 
-    validNames =
-      builtins.filter (n: !startsWith "_" n && (isNixFile n || isNixDir n))
-      names;
+    finalNames = validFileNames ++ validDirNames;
   in
-    lib.genAttrs validNames (n:
-      if isNixFile n
-      then {
-        name = removeSuffix ".nix" n;
-        value = import (folder + "/" + n);
-      }
-      else {
-        name = n;
-        value = import (folder + "/" + n + "/default.nix");
-      });
+    lib.genAttrs finalNames (n:
+      if builtins.elem n validFileNames
+      then import "${dirStr}/${n}.nix"
+      else import "${dirStr}/${n}");
 
   mkHosts' = {
     hosts ? {
@@ -143,9 +139,9 @@
       }) {}
     hostNames;
 
-  mkHosts = folder: args:
+  mkHosts = dir: args:
     mkHosts' {
       inherit args;
-      hosts = exportFolder folder;
+      hosts = shallowLoad dir;
     };
 }
