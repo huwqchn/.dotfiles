@@ -6,7 +6,7 @@
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
     ./boot.nix
-    ../_internal/nixosDefault.nix
+    ../common/nixosDefault.nix
   ];
 
   # fix timed out for device /dev/tpmrm0

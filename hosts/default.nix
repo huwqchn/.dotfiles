@@ -1,1 +1,3 @@
-_: {modelues = [./_internal/nvim.nix ./_internal/desktop.nix];}
+_: {
+  modelues = [./common/nvim.nix ./common/desktop.nix];
+}

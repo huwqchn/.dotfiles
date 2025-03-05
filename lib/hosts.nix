@@ -27,6 +27,11 @@
     str
     == suffix;
 
+  contains = substr: str:
+    builtins.match (".*" + substr + ".*") str != null;
+
+  isDarwin = s: contains s "darwin";
+
   removeSuffix = suffix: str:
     if hasSuffix suffix str
     then
@@ -34,7 +39,7 @@
       (builtins.stringLength str - builtins.stringLength suffix)
       str
     else str;
-  shallowLoad = dir: let
+  shallowLoad = dir: args: let
     dirStr = builtins.toString dir;
     entries = builtins.readDir dir;
     entryNames = builtins.attrNames entries;
@@ -54,10 +59,8 @@
   in
     lib.genAttrs finalNames (n:
       if builtins.elem n validFileNames
-      then import "${dirStr}/${n}.nix"
-      else import "${dirStr}/${n}");
-
-  isDarwin = system: builtins.match ".*-darwin" system != null;
+      then import "${dirStr}/${n}.nix" args
+      else import "${dirStr}/${n}" args);
 
   mkHosts' = {
     hosts ? {
@@ -115,6 +118,6 @@
   mkHosts = dir: args:
     mkHosts' {
       inherit args;
-      hosts = shallowLoad dir;
+      hosts = shallowLoad dir args;
     };
 }

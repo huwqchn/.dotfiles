@@ -3,7 +3,7 @@
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
     ./boot.nix
-    ../_internal/nixosDefault.nix
+    ../common/nixosDefault.nix
   ];
 
   hardware.nvidia = {modesetting.enable = true;};

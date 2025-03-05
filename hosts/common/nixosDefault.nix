@@ -11,7 +11,6 @@
     disko.nixosModules.disko
     ./disko/luks-lvm-btrfs-tmpfs.nix
     ./impermanence.nix
-    # ../../_internal/lanzaboote.nix
   ];
   system.stateVersion = lib.mkDefault "24.11"; # Did you read the comment?
 }
