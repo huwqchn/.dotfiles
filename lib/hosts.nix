@@ -27,10 +27,11 @@
     str
     == suffix;
 
-  contains = substr: str:
-    builtins.match (".*" + substr + ".*") str != null;
+  contains = substr: str: builtins.match (".*" + substr + ".*") str != null;
 
   isDarwin = s: contains s "darwin";
+
+  isNixos = s: contains s "nixos";
 
   removeSuffix = suffix: str:
     if hasSuffix suffix str
@@ -79,6 +80,13 @@
     hostNames = builtins.attrNames mergedHosts;
 
     mkHost = hostName: let
+      rawHost = mergedHosts.${hostName};
+
+      isDarwin' =
+        if rawHost ? system
+        then isDarwin rawHost.system
+        else false;
+
       host =
         shallowMerge {
           system = "x86_64-linux";
@@ -96,13 +104,34 @@
           ];
           extraArgs = {};
           specialArgs = args;
-          builder = inputs.nixpkgs.lib.nixosSystem;
-          output = "nixosConfigurations";
-        } mergedHosts.${hostName};
+          builder =
+            if isDarwin'
+            then inputs.darwin.lib.darwinSystem
+            else inputs.nixpkgs.lib.nixosSystem;
+          output =
+            if isDarwin'
+            then "darwinConfigurations"
+            else "nixosConfigurations";
+        }
+        rawHost;
+      isOutputDarwin = isDarwin host.output;
+      isOutputNixos = isNixos host.output;
     in {
       name = host.output;
       value = host.builder {
-        inherit (host) system specialArgs hosts modules;
+        inherit (host) system specialArgs;
+        modules =
+          host.modules
+          ++ (builtins.optional isOutputDarwin [
+            ../modules/darwin
+            inputs.home-manager.darwinModules.home-manager
+            inputs.agenix.darwinModules.default
+          ])
+          ++ (builtins.optional isOutputNixos [
+            ../modules/nixos
+            inputs.home-manager.nixosModules.home-manager
+            inputs.agenix.nixosModules.default
+          ]);
       };
     };
   in
