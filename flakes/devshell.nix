@@ -6,9 +6,6 @@
     config,
     ...
   }: {
-    NIX_CONFIG = "extra-experimental-features = nix-command flakes";
-    BOOTSTRAP_USER = "johnson";
-    BOOTSTRAP_SSH_PORT = "22";
     devshells.default = {
       packages = with pkgs; [
         bashInteractive
