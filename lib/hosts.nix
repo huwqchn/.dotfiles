@@ -129,12 +129,12 @@
           inherit (host) system;
           modules =
             host.modules
-            ++ (builtins.optional isDarwinOutput [
+            ++ (lib.optional isDarwinOutput [
               ../modules/darwin
               inputs.home-manager.darwinModules.home-manager
               inputs.agenix.darwinModules.default
             ])
-            ++ (builtins.optional isNixosOutput [
+            ++ (lib.optional isNixosOutput [
               ../modules/nixos
               inputs.home-manager.nixosModules.home-manager
               inputs.agenix.nixosModules.default
