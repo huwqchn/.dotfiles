@@ -2,6 +2,7 @@
   config,
   lib,
   pkgs,
+  yazi,
   ...
 }: let
   yazi-plugins = pkgs.fetchFromGitHub {
@@ -15,6 +16,7 @@ in
     # terminal file manager
     programs.yazi = {
       enable = true;
+      package = yazi.packages.${pkgs.system}.default;
       shellWrapperName = "y";
       enableBashIntegration = true;
       enableZshIntegration = true;
