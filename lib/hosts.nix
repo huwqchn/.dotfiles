@@ -1,4 +1,6 @@
 {lib, ...}: rec {
+  # optionalAttrs = check: value: if check then value else { };
+
   shallowMerge = lhs: rhs:
     lhs
     // builtins.mapAttrs (name: value:
@@ -27,11 +29,15 @@
     str
     == suffix;
 
-  contains = substr: str: builtins.match (".*" + substr + ".*") str != null;
+  isContainsSubString = substring: string:
+  let
+    regex = ".*" + substring + ".*";
+  in
+    builtins.match regex string != null;
 
-  isDarwin = s: contains s "darwin";
+  isDarwin = s: isContainsSubString "darwin" s;
 
-  isNixos = s: contains s "nixos";
+  isNixos = s: isContainsSubString "nixos" s;
 
   removeSuffix = suffix: str:
     if hasSuffix suffix str
@@ -101,7 +107,7 @@
               # 'mkMerge` to separate out each part into its own module
               _type = "merge";
               contents = [
-                (builtins.optionalAttrs (options ? networking.hostName) {
+                (lib.optionalAttrs (options ? networking.hostName) {
                   networking.hostName = hostName;
                 })
                 {_module.args = host.extraArgs;}
