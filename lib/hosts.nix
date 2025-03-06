@@ -29,15 +29,15 @@
     str
     == suffix;
 
-  isContainsSubString = substring: string:
+  contains = substring: string:
   let
     regex = ".*" + substring + ".*";
   in
     builtins.match regex string != null;
 
-  isDarwin = s: isContainsSubString "darwin" s;
+  isDarwin = s: contains "darwin" s;
 
-  isNixos = s: isContainsSubString "nixos" s;
+  isNixos = s: contains "nixos" s;
 
   removeSuffix = suffix: str:
     if hasSuffix suffix str
