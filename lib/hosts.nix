@@ -140,10 +140,10 @@
               inputs.agenix.nixosModules.default
             ]);
         }
-        // (builtins.optionalAttrs (isDarwinOutput || isNixosOutput) {
+        // (lib.optionalAttrs (isDarwinOutput || isNixosOutput) {
           inherit (host) extraArgs specialArgs;
         })
-        // (builtins.optionalAttrs (!isDarwinOutput && !isNixosOutput) {
+        // (lib.optionalAttrs (!isDarwinOutput && !isNixosOutput) {
           extraSpecialArgs = host.extraArgs // host.specialArgs;
         });
     };
