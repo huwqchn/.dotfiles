@@ -1,6 +1,7 @@
 {
   lib,
   config,
+  inputs,
   ...
 }: {
   imports = [
@@ -10,7 +11,7 @@
   hm.imports = [../../home];
 
   home-manager = {
-    # extraSpecialArgs = inputs;
+    extraSpecialArgs = inputs // {inherit lib;};
     backupFileExtension = "bak";
     useGlobalPkgs = true;
     # do not enable home-manager.useUserPackages, to match standalone home-manager,

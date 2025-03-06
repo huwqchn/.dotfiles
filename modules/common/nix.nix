@@ -2,9 +2,11 @@
   config,
   lib,
   pkgs,
-  nixpkgs,
+  inputs,
   ...
-}: {
+}: let
+  inherit (inputs) nixpkgs;
+in {
   nixpkgs = {config.allowUnfree = true;};
   # for security reasons, do not load neovim's user config
   # since EDITOR may be used to edit some critical files

@@ -127,7 +127,7 @@
     in {
       name = host.output;
       value =
-        host.builder {
+        {
           inherit (host) system;
           modules =
             host.modules
@@ -148,6 +148,7 @@
         // (lib.optionalAttrs (!isDarwinOutput && !isNixosOutput) {
           extraSpecialArgs = host.extraArgs // host.specialArgs;
         });
+      inherit (host) builder;
     };
   in
     lib.foldl' (acc: hostName: let
@@ -155,7 +156,7 @@
     in
       acc
       // {
-        ${out.name} = (acc.${out.name} or {}) // {${hostName} = out.value;};
+        ${out.name} = (acc.${out.name} or {}) // {${hostName} = out.builder out.value;};
       }) {}
     hostNames;
 
