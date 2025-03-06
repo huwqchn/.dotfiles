@@ -106,7 +106,7 @@
                 (lib.optionalAttrs (options ? networking.hostName) {
                   networking.hostName = hostName;
                 })
-                {_module.args = host.extraArgs;}
+                {_module.args = {inherit inputs;} // host.extraArgs;}
               ];
             })
           ];
