@@ -2,7 +2,11 @@
   config,
   lib,
   ...
-}:
+}: let
+  shellAliases = {
+    "g" = "git";
+  };
+in
 lib.my.mkEnabledModule config "git" {
   # `programs.git` will generate the config file: ~/.config/git/config
   # to make git use this config file, `~/.gitconfig` should not exist!
@@ -11,6 +15,7 @@ lib.my.mkEnabledModule config "git" {
   home.activation.removeExistingGitconfig = lib.hm.dag.entryBefore ["checkLinkTargets"] ''
     rm -f ~/.gitconfig
   '';
+  home.shellAliases = shellAliases;
   programs.git = {
     enable = true;
     lfs.enable = true;
