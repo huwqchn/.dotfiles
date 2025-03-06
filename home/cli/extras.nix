@@ -4,7 +4,7 @@
   lib,
   ...
 }:
-lib.my.mkModuleWithOptions config "extras" {
+lib.my.mkEnabledModule config "extras" {
   home.packages = with pkgs; [
     # Unixy tools
     sd

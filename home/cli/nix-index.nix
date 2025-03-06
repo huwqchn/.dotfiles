@@ -10,6 +10,6 @@
     {programs.nix-index-database.comma.enable = true;}
   ];
 }
-// lib.my.mkEnableModule config "nix-index" {
+// lib.my.mkEnabledModule config "nix-index" {
   programs.nix-index = {enable = true;};
 }
