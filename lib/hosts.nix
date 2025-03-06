@@ -20,17 +20,13 @@
   startsWith = prefix: str:
     builtins.substring 0 (builtins.stringLength prefix) str == prefix;
 
-  hasSuffix = suffix: str:
-    builtins.stringLength str
-    >= builtins.stringLength suffix
-    && builtins.substring
-    (builtins.stringLength str - builtins.stringLength suffix)
-    (builtins.stringLength suffix)
-    str
-    == suffix;
+  # hasSuffix = suffix: str:
+  #   builtins.stringLength str >= builtins.stringLength suffix
+  #   && builtins.substring
+  #   (builtins.stringLength str - builtins.stringLength suffix)
+  #   (builtins.stringLength suffix) str == suffix;
 
-  contains = substring: string:
-  let
+  contains = substring: string: let
     regex = ".*" + substring + ".*";
   in
     builtins.match regex string != null;
@@ -39,13 +35,12 @@
 
   isNixos = s: contains "nixos" s;
 
-  removeSuffix = suffix: str:
-    if hasSuffix suffix str
-    then
-      builtins.substring 0
-      (builtins.stringLength str - builtins.stringLength suffix)
-      str
-    else str;
+  # removeSuffix = suffix: str:
+  #   if hasSuffix suffix str then
+  #     builtins.substring 0
+  #     (builtins.stringLength str - builtins.stringLength suffix) str
+  #   else
+  #     str;
 
   shallowLoad = dir: args: let
     dirStr = builtins.toString dir;
@@ -53,8 +48,9 @@
     entryNames = builtins.attrNames entries;
 
     validFileNames =
-      builtins.map (n: removeSuffix ".nix" n)
-      (builtins.filter (n: entries.${n} == "regular" && hasSuffix ".nix" n)
+      builtins.map (n: lib.strings.removeSuffix ".nix" n)
+      (builtins.filter
+        (n: entries.${n} == "regular" && lib.strings.hasSuffix ".nix" n)
         entryNames);
 
     validDirNames = builtins.filter (n:
@@ -135,12 +131,12 @@
           inherit (host) system;
           modules =
             host.modules
-            ++ (lib.optional isDarwinOutput [
+            ++ (lib.optionals isDarwinOutput [
               ../modules/darwin
               inputs.home-manager.darwinModules.home-manager
               inputs.agenix.darwinModules.default
             ])
-            ++ (lib.optional isNixosOutput [
+            ++ (lib.optionals isNixosOutput [
               ../modules/nixos
               inputs.home-manager.nixosModules.home-manager
               inputs.agenix.nixosModules.default
