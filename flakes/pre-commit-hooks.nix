@@ -8,7 +8,6 @@
         ".direnv"
       ];
       hooks = {
-        # ========== General ==========
         check-added-large-files = {
           enable = true;
           excludes = ["\\.png" "\\.jpg"];
@@ -22,6 +21,9 @@
         fix-byte-order-marker.enable = true;
         mixed-line-endings.enable = true;
         trim-trailing-whitespace.enable = true;
+        end-of-file-fixer.enable = true;
+        detect-private-keys.enable = true;
+        actionlint.enable = true;
 
         forbid-submodules = {
           enable = true;
@@ -32,34 +34,7 @@
           types = ["directory"];
         };
 
-        # prettier = {
-        #   enable = true;
-        #   settings = {
-        #     write = true; # Automatically format files
-        #     configPath = "../.prettierrc.yaml"; # relative to the flake root
-        #   };
-        # };
-        # ========== nix ==========
         treefmt.enable = true;
-        # alejandra.enable = true;
-        # statix.enable = true;
-        # deadnix = {
-        #   enable = true;
-        #   settings = {noLambdaArg = true;};
-        # };
-
-        # ========== shellscripts ==========
-        # shfmt.enable = true;
-        # shellcheck.enable = true;
-
-        # end-of-file-fixer.enable = true;
-        # typos = {
-        #   enable = true;
-        #   settings = {
-        #     write = true;
-        #     configPath = "./.typos.toml";
-        #   };
-        # };
       };
     };
   };
