@@ -1,9 +1,14 @@
 {
+  self,
+  inputs,
+  inputs',
+  pkgs,
   lib,
   config,
-  inputs,
   ...
-}: {
+}: let
+  extraSpecialArgs = {inherit self inputs inputs' pkgs lib;};
+in {
   imports = [
     (lib.mkAliasOptionModule ["hm"] ["home-manager" "users" config.my.name])
   ];
@@ -11,7 +16,7 @@
   hm.imports = [../../home];
 
   home-manager = {
-    extraSpecialArgs = inputs // {inherit lib;};
+    inherit extraSpecialArgs;
     backupFileExtension = "bak";
     useGlobalPkgs = true;
     # do not enable home-manager.useUserPackages, to match standalone home-manager,
