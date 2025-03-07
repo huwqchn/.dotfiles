@@ -35,6 +35,8 @@ rec {
 
   isHome =  s: contains "home" s;
 
+  isNixOnDroid = s: contains "nixOnDroid" s;
+
   shallowLoad = dir: args: let
     dirStr = toString dir;
     entries = readDir dir;
@@ -80,6 +82,7 @@ rec {
         homeConfigurations = inputs.home-manager.lib.homeManagerConfiguration;
         nixosConfigurations = inputs.nixpkgs.lib.nixosSystem;
         darwinConfigurations = inputs.darwin.lib.darwinSystem;
+        nixOnDroidConfigurations = inputs.droid.lib.nixOnDroidConfigurations;
       }
     in builders.${output};
     mergedHosts = mergeDefault hosts;
@@ -120,6 +123,7 @@ rec {
       isDarwinOutput = isDarwin host.output;
       isNixosOutput = isNixos host.output;
       isHomeOutput = isHome host.output;
+      isNixOnDroidOutput = isNixOnDroid host.output;
     in {
       output = host.output;
       config =
@@ -145,7 +149,7 @@ rec {
         // (optionalAttrs (isDarwinOutput || isNixosOutput) {
           inherit (host) specialArgs;
         })
-        // (optionalAttrs (!isDarwinOutput && !isNixosOutput) {
+        // (optionalAttrs (isHomeOutput || isNixOnDroidOutput) {
           extraSpecialArgs = host.specialArgs;
         });
       builder = getBuilder host.output;

@@ -58,7 +58,17 @@
       url = "github:numtide/treefmt-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
+    droid = {
+      url = "github:nix-community/nix-on-droid";
+      inputs = {
+        home-manager.follows = "home-manager";
+        nix-formatter-pack.follows = "";
+        nixpkgs-docs.follows = "";
+        nixpkgs-for-bootstrap.follows = "";
+        nixpkgs.follows = "nixpkgs";
+        nmd.follows = "";
+      };
+    };
     yazi = {
       url = "github:sxyazi/yazi";
       inputs.nixpkgs.follows = "nixpkgs";
