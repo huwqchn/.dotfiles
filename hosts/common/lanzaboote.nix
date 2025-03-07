@@ -1,7 +1,7 @@
 {
+  inputs,
   pkgs,
   lib,
-  lanzaboote,
   ...
 }: {
   # How to enter setup mode - msi motherboard
@@ -13,7 +13,7 @@
   ## 6. select <Delete All Secure Boot Variables>, and then select <No> for <Reboot Without Saving>
   ## 7. Press F10 to saving and reboot.
   imports = [
-    lanzaboote.nixosModules.lanzaboote
+    inputs.lanzaboote.nixosModules.lanzaboote
   ];
 
   environment.systemPackages = [

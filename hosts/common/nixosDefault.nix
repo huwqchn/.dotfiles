@@ -1,14 +1,12 @@
 {
-  disko,
-  nixos-generators,
-  programs-sqlite,
+  inputs,
   lib,
   ...
 }: {
   imports = [
-    nixos-generators.nixosModules.all-formats
-    programs-sqlite.nixosModules.programs-sqlite
-    disko.nixosModules.disko
+    inputs.nixos-generators.nixosModules.all-formats
+    inputs.programs-sqlite.nixosModules.programs-sqlite
+    inputs.disko.nixosModules.disko
     ./disko/luks-lvm-btrfs-tmpfs.nix
     ./impermanence.nix
   ];

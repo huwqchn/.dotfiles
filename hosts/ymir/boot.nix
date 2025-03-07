@@ -1,6 +1,7 @@
-{ dedsec-grub-theme, ... }: {
+{ inputs, ... }: {
+
   imports = [
-    dedsec-grub-theme.nixosModule
+    inputs.dedsec-grub-theme.nixosModule
   ];
   # boot
   boot = {

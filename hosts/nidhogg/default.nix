@@ -1,13 +1,11 @@
 {
-  wsl,
-  nixos-generators,
-  programs-sqlite,
+  inputs,
   ...
 }: {
   modules = [
     ./config.nix
-    wsl.nixosModules.default
-    nixos-generators.nixosModules.all-formats
-    programs-sqlite.nixosModules.programs-sqlite
+    inputs.wsl.nixosModules.default
+    inputs.nixos-generators.nixosModules.all-formats
+    inputs.programs-sqlite.nixosModules.programs-sqlite
   ];
 }

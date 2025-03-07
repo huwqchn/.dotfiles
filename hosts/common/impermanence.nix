@@ -1,11 +1,11 @@
 {
-  impermanence,
+  inputs,
   pkgs,
   config,
   lib,
   ...
 }: {
-  imports = [impermanence.nixosModules.impermanence];
+  imports = [inputs.impermanence.nixosModules.impermanence];
 
   environment.systemPackages = [
     # `sudo ncdu -x /`
