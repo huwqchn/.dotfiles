@@ -1,10 +1,25 @@
 {lib, ...}: let
-  inherit (builtins) map filter attrNames genAttrs mapAttrs removeAttrs isAttrs isList isFunction substring toString match readDir pathExists elem;
+  inherit
+    (builtins)
+    map
+    filter
+    attrNames
+    genAttrs
+    mapAttrs
+    removeAttrs
+    isAttrs
+    isList
+    isFunction
+    substring
+    toString
+    match
+    readDir
+    pathExists
+    elem
+    ;
   inherit (lib.strings) removeSuffix hasSuffix;
-  inherit (lib) optionals optionalAttrs foldl'
-
-in
-rec {
+  inherit (lib) optionals optionalAttrs foldl';
+in rec {
   shallowMerge = lhs: rhs:
     lhs
     // mapAttrs (name: value:
@@ -33,7 +48,7 @@ rec {
 
   isNixos = s: contains "nixos" s;
 
-  isHome =  s: contains "home" s;
+  isHome = s: contains "home" s;
 
   isNixOnDroid = s: contains "nixOnDroid" s;
 
@@ -44,14 +59,11 @@ rec {
 
     validFileNames =
       map (n: removeSuffix ".nix" n)
-      (filter
-        (n: entries.${n} == "regular" && hasSuffix ".nix" n)
+      (filter (n: entries.${n} == "regular" && hasSuffix ".nix" n)
         entryNames);
 
     validDirNames = filter (n:
-      entries.${n}
-      == "directory"
-      && pathExists "${dirStr}/${n}/default.nix")
+      entries.${n} == "directory" && pathExists "${dirStr}/${n}/default.nix")
     entryNames;
 
     finalNames = validFileNames ++ validDirNames;
@@ -79,12 +91,14 @@ rec {
     inherit (specialArgs) inputs;
     getHostBuilder = output: let
       builders = {
-        homeConfigurations = inputs.home-manager.lib.homeManagerConfiguration;
+        homeConfigurations =
+          inputs.home-manager.lib.homeManagerConfiguration;
         nixosConfigurations = inputs.nixpkgs.lib.nixosSystem;
         darwinConfigurations = inputs.darwin.lib.darwinSystem;
-        nixOnDroidConfigurations = inputs.droid.lib.nixOnDroidConfigurations;
-      }
-    in builders.${output};
+        nixOnDroidConfigurations = inputs.droid.lib.nixOnDroidConfiguration;
+      };
+    in
+      builders.${output};
     mergedHosts = mergeDefault hosts;
 
     hostNames = attrNames mergedHosts;
@@ -125,7 +139,7 @@ rec {
       isHomeOutput = isHome host.output;
       isNixOnDroidOutput = isNixOnDroid host.output;
     in {
-      output = host.output;
+      inherit (host) output;
       config =
         {
           inherit (host) system;
@@ -152,15 +166,20 @@ rec {
         // (optionalAttrs (isHomeOutput || isNixOnDroidOutput) {
           extraSpecialArgs = host.specialArgs;
         });
-      builder = getBuilder host.output;
+      builder = getHostBuilder host.output;
     };
   in
     foldl' (acc: hostName: let
       out = mkHost hostName;
+      inherit (out) output;
     in
       acc
       // {
-        ${out.output}.${hostName} = out.builder out.config;};
+        "${output}" =
+          (acc.${output} or {})
+          // {
+            "${hostName}" = out.builder out.config;
+          };
       }) {}
     hostNames;
 
