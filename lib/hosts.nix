@@ -68,6 +68,14 @@
     },
     specialArgs,
   }: let
+    inherit (specialArgs) inputs;
+    getHostBuilder = output: let
+      builders = {
+        homeConfigurations = inputs.home-manager.lib.homeManagerConfiguration;
+        nixosConfigurations = inputs.nixpkgs.lib.nixosSystem;
+        darwinConfigurations = inputs.darwin.lib.darwinSystem;
+      }
+    in builders.${output};
     mergedHosts = mergeDefault hosts;
 
     hostNames = builtins.attrNames mergedHosts;
@@ -97,10 +105,6 @@
           ];
           extraArgs = {};
           specialArgs = inputs;
-          builder =
-            if isDarwin'
-            then inputs.darwin.lib.darwinSystem
-            else inputs.nixpkgs.lib.nixosSystem;
           output =
             if isDarwin'
             then "darwinConfigurations"
@@ -138,7 +142,7 @@
         // (lib.optionalAttrs (!isDarwinOutput && !isNixosOutput) {
           extraSpecialArgs = host.specialArgs;
         });
-      inherit (host) builder;
+      builder = getBuilder host.output;
     };
   in
     lib.foldl' (acc: hostName: let
