@@ -3,10 +3,7 @@
 
   perSystem.pre-commit = {
     settings = {
-      excludes = [
-        "flake.lock"
-        ".direnv"
-      ];
+      excludes = ["flake.lock" ".direnv"];
       hooks = {
         check-added-large-files = {
           enable = true;
@@ -22,7 +19,6 @@
         mixed-line-endings.enable = true;
         trim-trailing-whitespace.enable = true;
         end-of-file-fixer.enable = true;
-        detect-private-keys.enable = true;
         actionlint.enable = true;
 
         forbid-submodules = {

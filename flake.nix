@@ -12,7 +12,7 @@
     specialArgs = {inherit lib;};
   in
     flake-parts.lib.mkFlake {inherit inputs specialArgs;} {
-      debug = true;
+      # debug = true;
       systems = ["aarch64-darwin" "x86_64-linux"];
       imports = [./flakes];
     };
