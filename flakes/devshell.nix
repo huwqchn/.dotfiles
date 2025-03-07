@@ -3,15 +3,10 @@
 
   perSystem = {pkgs, ...}: {
     devshells.default = {
-      packages = with pkgs; [
-        bashInteractive
-        gcc
-        alejandra
-        deadnix
-        statix
-        # typos
-        nodePackages.prettier
-        nix-diff
+      NIX_CONFIG = "extra-experimental-features = nix-command flakes repl-flake";
+      packages = [
+        config.treefmt.build.wrapper
+        pkgs.nix-diff
       ];
       name = "dots";
       # shellHook = ''

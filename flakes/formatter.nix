@@ -9,7 +9,8 @@
       statix.enable = true;
       stylua.enable = true;
       yamlfmt.enable = true;
-      # shfmt.enable = true;
+      shfmt.enable = true;
+      shellcheck.enable = true;
     };
 
     settings = {
@@ -36,6 +37,26 @@
             configPath = "../.prettierrc.yaml"; # relative to the flake root
           };
           includes = [ "*.{css,html,js,json,jsx,md,mdx,scss,ts,yaml}" ];
+        };
+        shellcheck = {
+          options = [
+            "--external-sources"
+            "--source-path=SCRIPTDIR"
+          ];
+          excludes = [
+            "gdb/*"
+            "zsh/*"
+          ];
+        };
+        shfmt = {
+          includes = [
+            "*.envrc"
+            "*.zshrc"
+          ];
+          excludes = [
+            "gdb/*"
+            "zsh/*"
+          ];
         };
       };
     };
