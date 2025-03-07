@@ -2,14 +2,13 @@
   config,
   lib,
   pkgs,
-  impermanence,
   ...
 }: let
   username = config.my.name;
   homeDirectory = config.my.home;
 in {
   imports = [
-    impermanence.nixosModules.home-manager.impermanence
+    inputs.impermanence.nixosModules.home-manager.impermanence
     ../modules/common/my.nix
   ];
 

@@ -1,12 +1,12 @@
 {
-  nix-index-database,
+  inputs,
   config,
   lib,
   ...
 }:
 {
   imports = [
-    nix-index-database.hmModules.nix-index
+    inputs.nix-index-database.hmModules.nix-index
     {programs.nix-index-database.comma.enable = true;}
   ];
 }

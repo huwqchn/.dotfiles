@@ -1,8 +1,8 @@
 {
+  inputs,
   config,
   pkgs,
   lib,
-  zen,
   ...
 }: let
   inherit (lib) mkEnableOption mkIf;
@@ -10,7 +10,7 @@
 in {
   options.my.zen = {enable = mkEnableOption "zen";};
   config = mkIf cfg.enable {
-    home.packages = [zen.packages.${pkgs.system}.default];
+    home.packages = [inputs.zen.packages.${pkgs.system}.default];
     home.persistence = {
       "/persist/${config.home.homeDirectory}".directories = [".zen" ".cache/zen"];
     };

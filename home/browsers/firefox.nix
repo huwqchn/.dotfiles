@@ -1,10 +1,11 @@
 {
+  inputs,
   config,
   pkgs,
   lib,
-  firefox-addons,
   ...
 }: let
+  inherit (inputs) firefox-addons;
   betterfox = pkgs.fetchFromGitHub {
     owner = "yokoffing";
     repo = "Betterfox";
