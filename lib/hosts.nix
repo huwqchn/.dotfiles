@@ -27,6 +27,8 @@
 
   isNixos = s: contains "nixos" s;
 
+  isHome =  s: contains "home" s;
+
   shallowLoad = dir: args: let
     dirStr = builtins.toString dir;
     entries = builtins.readDir dir;
@@ -107,6 +109,7 @@
         rawHost;
       isDarwinOutput = isDarwin host.output;
       isNixosOutput = isNixos host.output;
+      isHomeOutput = isHome host.output;
     in {
       output = host.output;
       config =
@@ -123,6 +126,10 @@
               ../modules/nixos
               inputs.home-manager.nixosModules.home-manager
               inputs.agenix.nixosModules.default
+            ])
+            ++ (lib.optionals isHomeOutput [
+              ../modules/home
+              inputs.agenix.homeManagerModules.default
             ]);
         }
         // (lib.optionalAttrs (isDarwinOutput || isNixosOutput) {
