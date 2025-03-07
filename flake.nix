@@ -54,10 +54,10 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    # treefmt = {
-    #   url = "github:numtide/treefmt-nix";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
+    treefmt = {
+      url = "github:numtide/treefmt-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     yazi = {
       url = "github:sxyazi/yazi";
@@ -120,10 +120,10 @@
       # inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # matugen = {
-    #   url = "github:/InioX/Matugen";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
+    matugen = {
+      url = "github:/InioX/Matugen";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     wallpapers = {
       url = "github:huwqchn/wallpapers";

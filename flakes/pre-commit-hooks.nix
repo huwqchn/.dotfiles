@@ -3,7 +3,10 @@
 
   perSystem.pre-commit = {
     settings = {
-      excludes = ["flake.lock"];
+      excludes = [
+        "flake.lock"
+        ".direnv"
+      ];
       hooks = {
         # ========== General ==========
         check-added-large-files = {
@@ -29,26 +32,27 @@
           types = ["directory"];
         };
 
-        prettier = {
-          enable = true;
-          settings = {
-            write = true; # Automatically format files
-            configPath = "../.prettierrc.yaml"; # relative to the flake root
-          };
-        };
+        # prettier = {
+        #   enable = true;
+        #   settings = {
+        #     write = true; # Automatically format files
+        #     configPath = "../.prettierrc.yaml"; # relative to the flake root
+        #   };
+        # };
         # ========== nix ==========
-        alejandra.enable = true;
-        statix.enable = true;
-        deadnix = {
-          enable = true;
-          settings = {noLambdaArg = true;};
-        };
+        treefmt.enable = true;
+        # alejandra.enable = true;
+        # statix.enable = true;
+        # deadnix = {
+        #   enable = true;
+        #   settings = {noLambdaArg = true;};
+        # };
 
         # ========== shellscripts ==========
-        shfmt.enable = true;
-        shellcheck.enable = true;
+        # shfmt.enable = true;
+        # shellcheck.enable = true;
 
-        end-of-file-fixer.enable = true;
+        # end-of-file-fixer.enable = true;
         # typos = {
         #   enable = true;
         #   settings = {
