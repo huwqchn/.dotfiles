@@ -1,6 +1,4 @@
 {lib, ...}: rec {
-  # optionalAttrs = check: value: if check then value else { };
-
   shallowMerge = lhs: rhs:
     lhs
     // builtins.mapAttrs (name: value:
@@ -20,12 +18,6 @@
   startsWith = prefix: str:
     builtins.substring 0 (builtins.stringLength prefix) str == prefix;
 
-  # hasSuffix = suffix: str:
-  #   builtins.stringLength str >= builtins.stringLength suffix
-  #   && builtins.substring
-  #   (builtins.stringLength str - builtins.stringLength suffix)
-  #   (builtins.stringLength suffix) str == suffix;
-
   contains = substring: string: let
     regex = ".*" + substring + ".*";
   in
@@ -34,13 +26,6 @@
   isDarwin = s: contains "darwin" s;
 
   isNixos = s: contains "nixos" s;
-
-  # removeSuffix = suffix: str:
-  #   if hasSuffix suffix str then
-  #     builtins.substring 0
-  #     (builtins.stringLength str - builtins.stringLength suffix) str
-  #   else
-  #     str;
 
   shallowLoad = dir: args: let
     dirStr = builtins.toString dir;
@@ -79,10 +64,8 @@
         extraArgs = {};
       };
     },
-    inputs,
+    specialArgs,
   }: let
-    inherit inputs;
-
     mergedHosts = mergeDefault hosts;
 
     hostNames = builtins.attrNames mergedHosts;
@@ -106,7 +89,7 @@
                 (lib.optionalAttrs (options ? networking.hostName) {
                   networking.hostName = hostName;
                 })
-                {_module.args = {inherit inputs;} // host.extraArgs;}
+                {_module.args = specialArgs // host.extraArgs;}
               ];
             })
           ];
@@ -125,8 +108,8 @@
       isDarwinOutput = isDarwin host.output;
       isNixosOutput = isNixos host.output;
     in {
-      name = host.output;
-      value =
+      output = host.output;
+      config =
         {
           inherit (host) system;
           modules =
@@ -143,10 +126,10 @@
             ]);
         }
         // (lib.optionalAttrs (isDarwinOutput || isNixosOutput) {
-          inherit (host) extraArgs specialArgs;
+          inherit (host) specialArgs;
         })
         // (lib.optionalAttrs (!isDarwinOutput && !isNixosOutput) {
-          extraSpecialArgs = host.extraArgs // host.specialArgs;
+          extraSpecialArgs = host.specialArgs;
         });
       inherit (host) builder;
     };
@@ -156,13 +139,13 @@
     in
       acc
       // {
-        ${out.name} = (acc.${out.name} or {}) // {${hostName} = out.builder out.value;};
+        ${out.output}.${hostName} = out.builder out.config;};
       }) {}
     hostNames;
 
-  mkHosts = dir: inputs:
+  mkHosts = dir: specialArgs:
     mkHosts' {
-      inherit inputs;
-      hosts = shallowLoad dir inputs;
+      inherit specialArgs;
+      hosts = shallowLoad dir specialArgs;
     };
 }
