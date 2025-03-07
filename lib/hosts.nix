@@ -1,10 +1,16 @@
-{lib, ...}: rec {
+{lib, ...}: let
+  inherit (builtins) map filter attrNames genAttrs mapAttrs removeAttrs isAttrs isList isFunction substring toString match readDir pathExists elem;
+  inherit (lib.strings) removeSuffix hasSuffix;
+  inherit (lib) optionals optionalAttrs foldl'
+
+in
+rec {
   shallowMerge = lhs: rhs:
     lhs
-    // builtins.mapAttrs (name: value:
-      if builtins.isAttrs value
+    // mapAttrs (name: value:
+      if isAttrs value
       then lhs.${name} or {} // value
-      else if builtins.isList value
+      else if isList value
       then lhs.${name} or [] ++ value
       else value)
     rhs;
@@ -12,16 +18,16 @@
   mergeDefault = attr: let
     def = attr.default or {};
   in
-    builtins.mapAttrs (_: subAttr: shallowMerge subAttr def)
-    (builtins.removeAttrs attr ["default"]);
+    mapAttrs (_: subAttr: shallowMerge subAttr def)
+    (removeAttrs attr ["default"]);
 
   startsWith = prefix: str:
-    builtins.substring 0 (builtins.stringLength prefix) str == prefix;
+    substring 0 (builtins.stringLength prefix) str == prefix;
 
   contains = substring: string: let
     regex = ".*" + substring + ".*";
   in
-    builtins.match regex string != null;
+    match regex string != null;
 
   isDarwin = s: contains "darwin" s;
 
@@ -30,31 +36,31 @@
   isHome =  s: contains "home" s;
 
   shallowLoad = dir: args: let
-    dirStr = builtins.toString dir;
-    entries = builtins.readDir dir;
-    entryNames = builtins.attrNames entries;
+    dirStr = toString dir;
+    entries = readDir dir;
+    entryNames = attrNames entries;
 
     validFileNames =
-      builtins.map (n: lib.strings.removeSuffix ".nix" n)
-      (builtins.filter
-        (n: entries.${n} == "regular" && lib.strings.hasSuffix ".nix" n)
+      map (n: removeSuffix ".nix" n)
+      (filter
+        (n: entries.${n} == "regular" && hasSuffix ".nix" n)
         entryNames);
 
-    validDirNames = builtins.filter (n:
+    validDirNames = filter (n:
       entries.${n}
       == "directory"
-      && builtins.pathExists "${dirStr}/${n}/default.nix")
+      && pathExists "${dirStr}/${n}/default.nix")
     entryNames;
 
     finalNames = validFileNames ++ validDirNames;
   in
-    lib.genAttrs finalNames (n: let
+    genAttrs finalNames (n: let
       imported =
-        if builtins.elem n validFileNames
+        if elem n validFileNames
         then import "${dirStr}/${n}.nix"
         else import "${dirStr}/${n}";
     in
-      if builtins.isFunction imported
+      if isFunction imported
       then imported args
       else imported);
 
@@ -78,7 +84,7 @@
     in builders.${output};
     mergedHosts = mergeDefault hosts;
 
-    hostNames = builtins.attrNames mergedHosts;
+    hostNames = attrNames mergedHosts;
 
     mkHost = hostName: let
       rawHost = mergedHosts.${hostName};
@@ -96,7 +102,7 @@
               # 'mkMerge` to separate out each part into its own module
               _type = "merge";
               contents = [
-                (lib.optionalAttrs (options ? networking.hostName) {
+                (optionalAttrs (options ? networking.hostName) {
                   networking.hostName = hostName;
                 })
                 {_module.args = specialArgs // host.extraArgs;}
@@ -121,31 +127,31 @@
           inherit (host) system;
           modules =
             host.modules
-            ++ (lib.optionals isDarwinOutput [
+            ++ (optionals isDarwinOutput [
               ../modules/darwin
               inputs.home-manager.darwinModules.home-manager
               inputs.agenix.darwinModules.default
             ])
-            ++ (lib.optionals isNixosOutput [
+            ++ (optionals isNixosOutput [
               ../modules/nixos
               inputs.home-manager.nixosModules.home-manager
               inputs.agenix.nixosModules.default
             ])
-            ++ (lib.optionals isHomeOutput [
+            ++ (optionals isHomeOutput [
               ../modules/home
               inputs.agenix.homeManagerModules.default
             ]);
         }
-        // (lib.optionalAttrs (isDarwinOutput || isNixosOutput) {
+        // (optionalAttrs (isDarwinOutput || isNixosOutput) {
           inherit (host) specialArgs;
         })
-        // (lib.optionalAttrs (!isDarwinOutput && !isNixosOutput) {
+        // (optionalAttrs (!isDarwinOutput && !isNixosOutput) {
           extraSpecialArgs = host.specialArgs;
         });
       builder = getBuilder host.output;
     };
   in
-    lib.foldl' (acc: hostName: let
+    foldl' (acc: hostName: let
       out = mkHost hostName;
     in
       acc
