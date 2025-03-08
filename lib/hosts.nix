@@ -4,7 +4,6 @@
     map
     filter
     attrNames
-    genAttrs
     mapAttrs
     removeAttrs
     isAttrs
@@ -18,7 +17,7 @@
     elem
     ;
   inherit (lib.strings) removeSuffix hasSuffix;
-  inherit (lib) optionals optionalAttrs foldl';
+  inherit (lib) optionals optionalAttrs foldl' genAttrs;
 in rec {
   shallowMerge = lhs: rhs:
     lhs
@@ -114,6 +113,7 @@ in rec {
       host =
         shallowMerge {
           system = "x86_64-linux";
+          inherit specialArgs;
           modules = [
             ({options, ...}: {
               # 'mkMerge` to separate out each part into its own module
@@ -127,7 +127,6 @@ in rec {
             })
           ];
           extraArgs = {};
-          specialArgs = inputs;
           output =
             if isDarwin'
             then "darwinConfigurations"
@@ -185,7 +184,7 @@ in rec {
 
   mkHosts = dir: specialArgs:
     mkHosts' {
-      inherit specialArgs;
       hosts = shallowLoad dir specialArgs;
+      inherit specialArgs;
     };
 }
