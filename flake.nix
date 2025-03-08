@@ -84,6 +84,23 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    nix-homebrew.url = "github:zhaofengli-wip/nix-homebrew";
+
+    homebrew-core = {
+      url = "github:homebrew/homebrew-core";
+      flake = false;
+    };
+
+    homebrew-cask = {
+      url = "github:homebrew/homebrew-cask";
+      flake = false;
+    };
+
+    homebrew-bundle = {
+      url = "github:homebrew/homebrew-bundle";
+      flake = false;
+    };
+
     # haumea = {
     #   url = "github:nix-community/haumea/v0.2.2";
     #   inputs.nixpkgs.follows = "nixpkgs";
@@ -145,10 +162,10 @@
       flake = false;
     };
 
-    # stylix = {
-    #  url = "github:danth/stylix";
-    #  inputs.nixpkgs.follows = "nixpkgs";
-    # };
+    stylix = {
+     url = "github:danth/stylix";
+     inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     # hyprwm
     # hyprland = {
