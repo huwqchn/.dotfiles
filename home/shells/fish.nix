@@ -12,15 +12,46 @@ in {
   };
 
   config = mkIf cfg.enable {
-    home.packages = with pkgs.fishPlugins; [
-      done
-      # fzf-fish
-      forgit
-      autopair
-      bang-bang
-    ];
     programs.fish = {
       enable = true;
+      plugins = [
+        {
+          name = "fzf-fish";
+          inherit (pkgs.fishPlugins.fzf-fish) src;
+        }
+        {
+          name = "done";
+          inherit (pkgs.fishPlugins.done) src;
+        }
+        {
+          name = "forgit";
+          inherit (pkgs.fishPlugins.forgit) src;
+        }
+        {
+          name = "autopair";
+          inherit (pkgs.fishPlugins.autopair) src;
+        }
+        {
+          name = "sponge";
+          inherit (pkgs.fishPlugins.sponge) src;
+        }
+        {
+          name = "humantime-fish";
+          inherit (pkgs.fishPlugins.humantime-fish) src;
+        }
+        {
+          name = "colored-man-pages";
+          inherit (pkgs.fishPlugins.colored-man-pages) src;
+        }
+        {
+          name = "fish-you-should-use";
+          inherit (pkgs.fishPlugins.fish-you-should-use) src;
+        }
+        {
+          name = "bang-bang";
+          inherit (pkgs.fishPlugins.bang-bang) src;
+        }
+      ];
       shellInit = ''
         set -gx fish_vi_force_cursor 1
         set -gx fish_cursor_default block
