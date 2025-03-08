@@ -37,6 +37,11 @@
       url = "github:keylase/nvidia-patch";
       flake = false;
     };
+    srvos = {
+      url = "github:nix-community/srvos";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    deploy-rs.url = "github:serokell/deploy-rs";
     openwrt-imagebuilder = {
       url = "github:astro/nix-openwrt-imagebuilder";
       inputs = {
