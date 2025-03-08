@@ -2,10 +2,12 @@
   pkgs,
   config,
   lib,
+  inputs,
   ...
 }: let
   inherit (config.lib.file) mkOutOfStoreSymlink;
   inherit (lib) mkEnableOption mkIf;
+  inherit (inputs) ghostty-shaders;
   cfg = config.my.ghostty;
 in {
   options.my.ghostty = {
@@ -82,7 +84,7 @@ in {
         macos-option-as-alt = true;
         macos-window-shadow = true;
         # shader
-        custom-shader = "shaders/bloom025.glsl";
+        custom-shader = "${ghostty-shaders}/shaders/bloom025.glsl";
         # other
         copy-on-select = "clipboard";
         shell-integration-features = "cursor,sudo,no-title";

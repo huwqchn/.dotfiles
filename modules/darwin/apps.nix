@@ -1,4 +1,14 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  config,
+  lib,
+  system,
+  inputs,
+  ...
+}: {
+  imports = [
+    inputs.nix-homebrew.darwinModules.nix-homebrew
+  ];
   environment.systemPackages = with pkgs; [
     neovim
     git
@@ -23,6 +33,19 @@
     fi
   '';
 
+  nix-homebrew = {
+    # Install Homebrew under the default prefix
+    enable = true;
+
+    # Apple Silicon Only: Also install Homebrew under the default Intel prefix for Rosetta 2
+    enableRosetta = lib.hasPrefix "aarch64" system;
+
+    # User owning the Homebrew prefix
+    user = config.my.name;
+
+    # Automatically migrate existing Homebrew installations
+    autoMigrate = true;
+  };
   # The apps installed by homebrew are not managed by nix, and not reproducible!
   # But on macOS, homebrew has a much larger selection of apps than nixpkgs, especially for GUI apps!
   homebrew = {
