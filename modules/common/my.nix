@@ -57,6 +57,8 @@ in {
       default = "$y$j9T$UtvejDe22fK.4ok7ZyI1Y/$.vc/kQ3hRFbb2ntOCQQna3CcWWP6dxwtEAE1O9bWcO8";
       description = "The hashed password of the user";
     };
+    isNvidia = {enable = mkEnableOption "nvidia";};
+    isHidpi = {enable = mkEnableOption "hidpi";};
     # TODO: Generate a public key that can login to all my devices and servers.
     # store the privaet key in Yukikey
   };

@@ -50,6 +50,12 @@
         systems.follows = "systems";
       };
     };
+    nix-gaming = {
+      url = "github:fufexan/nix-gaming";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    raspberry-pi-nix.url = "github:nix-community/raspberry-pi-nix?ref=v0.4.1";
+    nixcord.url = "github:kaylorben/nixcord";
     devshell = {
       url = "github:numtide/devshell";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -141,6 +147,12 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    # Generate configs
+    nixago = {
+      url = "github:nix-community/nixago";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     # Third party programs, packaged with nix
     firefox-addons = {
       url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
@@ -212,6 +224,12 @@
     darwin = {
       url = "github:lnl7/nix-darwin";
       inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    # Shaders for ghostty terminal
+    ghostty-shaders = {
+      url = "github:hackr-sh/ghostty-shaders";
+      flake = false;
     };
   };
 }
