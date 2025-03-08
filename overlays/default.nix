@@ -1,6 +1,5 @@
-{ inputs }:
-[
-  (final: prev: {
+_: [
+  (_final: prev: {
     vimPlugins =
       prev.vimPlugins
       # Remove when vimPlugins.LazyVim updated

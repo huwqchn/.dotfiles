@@ -175,8 +175,8 @@
     };
 
     stylix = {
-     url = "github:danth/stylix";
-     inputs.nixpkgs.follows = "nixpkgs";
+      url = "github:danth/stylix";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     # hyprwm

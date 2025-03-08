@@ -23,24 +23,24 @@ in {
   imports = [./config.nix ./plugins];
 
   options.my.neovim.lazyvim = {
-    enable = mkEnableOption "LazyVim";
+    enable = mkEnableOption "LazyVim" // {default = true;};
 
     plugins =
-    # let
-    #   LazyVim = pkgs.vimUtils.buildVimPlugin {
-    #     pname = "LazyVimNG";
-    #     version = "2025-02-15";
-    #     src = pkgs.fetchFromGitHub {
-    #       owner = "LazyVim";
-    #       repo = "LazyVim";
-    #       rev = "3f034d0a7f58031123300309f2efd3bb0356ee21";
-    #       sha256 = "sha256-1q8c2M/FZxYg4TiXe9PK6JdR4wKBgPbxRt40biIEBaY=";
-    #     };
-    #     doCheck = false;
-    #     meta.homepage = "https://github.com/LazyVim/LazyVim/";
-    #     meta.hydraPlatforms = [];
-    #   };
-    # in
+      # let
+      #   LazyVim = pkgs.vimUtils.buildVimPlugin {
+      #     pname = "LazyVimNG";
+      #     version = "2025-02-15";
+      #     src = pkgs.fetchFromGitHub {
+      #       owner = "LazyVim";
+      #       repo = "LazyVim";
+      #       rev = "3f034d0a7f58031123300309f2efd3bb0356ee21";
+      #       sha256 = "sha256-1q8c2M/FZxYg4TiXe9PK6JdR4wKBgPbxRt40biIEBaY=";
+      #     };
+      #     doCheck = false;
+      #     meta.homepage = "https://github.com/LazyVim/LazyVim/";
+      #     meta.hydraPlatforms = [];
+      #   };
+      # in
       mkOption {
         type = pluginsOptionType;
         default = with pkgs.vimPlugins; [

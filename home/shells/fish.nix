@@ -14,7 +14,7 @@ in {
   config = mkIf cfg.enable {
     home.packages = with pkgs.fishPlugins; [
       done
-      fzf-fish
+      # fzf-fish
       forgit
       autopair
       bang-bang

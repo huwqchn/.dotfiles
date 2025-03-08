@@ -1,10 +1,10 @@
-{ inputs, ... }: {
+{inputs, ...}: {
   imports = [
     inputs.dedsec-grub-theme.nixosModule
   ];
   # boot
   boot = {
-    kernelParams = [ "loglevel=5" "splash" "nowatchdog" ];
+    kernelParams = ["loglevel=5" "splash" "nowatchdog"];
     loader.grub = {
       enable = true;
       device = "nodev";

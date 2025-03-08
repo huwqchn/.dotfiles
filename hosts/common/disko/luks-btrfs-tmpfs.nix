@@ -1,9 +1,8 @@
 {
-  device ?  "/dev/nvme0n1",
+  device ? "/dev/nvme0n1",
   swapSize ? "32G",
   ...
-}:
-{
+}: {
   disko.devices = {
     nodev."/" = {
       fsType = "tmpfs";
@@ -32,7 +31,7 @@
               mountpoint = "/boot";
               # Fix world-accessible /boot/loader/random-seed
               # https://github.com/nix-community/disko/issues/527#issuecomment-1924076948
-              mountOptions = [ "umask=0077" ];
+              mountOptions = ["umask=0077"];
             };
           };
 

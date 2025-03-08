@@ -176,11 +176,7 @@
   },
   "ios": {
     "prefix": "ios",
-    "body": [
-      "std::ios::sync_with_stdio(false);",
-      "std::cin.tie(0);",
-      "$0"
-    ],
+    "body": ["std::ios::sync_with_stdio(false);", "std::cin.tie(0);", "$0"],
     "description": "IO for algorithms"
   }
 }

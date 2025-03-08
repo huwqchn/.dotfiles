@@ -36,20 +36,20 @@ config.window_background_opacity = 0.85
 -- config.xim_im_name = "fcitx"
 
 if wezterm.target_triple:find("windows") then
-	config.default_prog = { "pwsh" }
-	config.window_decorations = "RESIZE|TITLE"
-	wezterm.on("gui-startup", function(cmd)
-		local screen = wezterm.gui.screens().active
-		local tab, pane, window = wezterm.mux.spawn_window(cmd or {})
-		local gui = window:gui_window()
-		local width = 0.7 * screen.width
-		local height = 0.7 * screen.height
-		gui:set_inner_size(width, height)
-		gui:set_position((screen.width - width) / 2, (screen.height - height) / 2)
-	end)
+  config.default_prog = { "pwsh" }
+  config.window_decorations = "RESIZE|TITLE"
+  wezterm.on("gui-startup", function(cmd)
+    local screen = wezterm.gui.screens().active
+    local tab, pane, window = wezterm.mux.spawn_window(cmd or {})
+    local gui = window:gui_window()
+    local width = 0.7 * screen.width
+    local height = 0.7 * screen.height
+    gui:set_inner_size(width, height)
+    gui:set_position((screen.width - width) / 2, (screen.height - height) / 2)
+  end)
 else
-	config.term = "wezterm"
-	config.window_decorations = "NONE"
+  config.term = "wezterm"
+  config.window_decorations = "NONE"
 end
 
 -- colorschemes
@@ -65,21 +65,21 @@ config.font_size = 11
 config.font = wezterm.font({ family = "CaskaydiaCove Nerd Font Mono" })
 config.bold_brightens_ansi_colors = true
 config.font_rules = {
-	{
-		intensity = "Bold",
-		italic = true,
-		font = wezterm.font({ family = "Maple Mono", weight = "Bold", style = "Italic" }),
-	},
-	{
-		italic = true,
-		intensity = "Half",
-		font = wezterm.font({ family = "Maple Mono", weight = "DemiBold", style = "Italic" }),
-	},
-	{
-		italic = true,
-		intensity = "Normal",
-		font = wezterm.font({ family = "Maple Mono", style = "Italic" }),
-	},
+  {
+    intensity = "Bold",
+    italic = true,
+    font = wezterm.font({ family = "Maple Mono", weight = "Bold", style = "Italic" }),
+  },
+  {
+    italic = true,
+    intensity = "Half",
+    font = wezterm.font({ family = "Maple Mono", weight = "DemiBold", style = "Italic" }),
+  },
+  {
+    italic = true,
+    intensity = "Normal",
+    font = wezterm.font({ family = "Maple Mono", style = "Italic" }),
+  },
 }
 
 -- Cursor

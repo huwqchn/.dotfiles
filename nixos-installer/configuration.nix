@@ -1,23 +1,20 @@
 # Edit this configuration file to define what should be installed on
 # your system. Help is available in the configuration.nix(5) man page, on
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
-
-{ config, lib, pkgs, ... }:
-
-{
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-      (import ./disko.nix)
-      "${builtins.fetchTarball "https://github.com/nix-community/disko/archive/master.tar.gz"}/module.nix"
-    ];
+{pkgs, ...}: {
+  imports = [
+    # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+    (import ./disko.nix)
+    "${builtins.fetchTarball "https://github.com/nix-community/disko/archive/master.tar.gz"}/module.nix"
+  ];
 
   # Use the systemd-boot EFI boot loader.
   # boot.loader.systemd-boot.enable = true;
   # boot.loader.efi.canTouchEfiVariables = true;
   # boot
   boot = {
-    kernelParams = [ "loglevel=5" "splash" "nowatchdog" ];
+    kernelParams = ["loglevel=5" "splash" "nowatchdog"];
     loader.grub = {
       enable = true;
       device = "nodev";
@@ -28,7 +25,7 @@
   # networking.hostName = "nixos"; # Define your hostname.
   # Pick only one of the below networking options.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-  networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
+  networking.networkmanager.enable = true; # Easiest to use and most distros use this by default.
 
   # Set your time zone.
   time.timeZone = "Asia/Shanghai";
@@ -47,9 +44,6 @@
 
   # Enable the X11 windowing system.
   # services.xserver.enable = true;
-
-
-  
 
   # Configure keymap in X11
   # services.xserver.xkb.layout = "us";
@@ -77,7 +71,7 @@
     users.johnson = {
       home = "/home/johnson";
       isNormalUser = true;
-      extraGroups = [ "wheel" "johnson" ]; # Enable ‘sudo’ for the user.
+      extraGroups = ["wheel" "johnson"]; # Enable ‘sudo’ for the user.
       initialPassword = "1";
     };
   };
@@ -141,6 +135,4 @@
   #
   # For more information, see `man configuration.nix` or https://nixos.org/manual/nixos/stable/options#opt-system.stateVersion .
   system.stateVersion = "24.05"; # Did you read the comment?
-
 }
-
