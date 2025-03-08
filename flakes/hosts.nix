@@ -2,11 +2,10 @@
   self,
   inputs,
   inputs',
-  pkgs,
   lib,
   ...
 }: let
-  specialArgs = {inherit self inputs inputs' pkgs lib;};
+  specialArgs = {inherit self inputs inputs' lib;};
 in {
   flake.darwinConfigurations = {
     tyr = inputs.darwin.lib.darwinSystem {
