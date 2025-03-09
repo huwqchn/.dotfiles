@@ -122,7 +122,14 @@ in rec {
                 (optionalAttrs (options ? networking.hostName) {
                   networking.hostName = hostName;
                 })
-                {_module.args = host.extraArgs // {inherit (host) system;};}
+                {
+                  _module.args =
+                    host.extraArgs
+                    // {
+                      inherit (host) system;
+                      inherit hostName;
+                    };
+                }
               ];
             })
           ];
