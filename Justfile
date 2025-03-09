@@ -7,11 +7,6 @@ build_config := if os() == "macos" { "darwinConfigurations" } else { "nixosConfi
 default:
     @just --list
 
-# Run eval tests
-[group('nix')]
-test:
-  nix eval .#evalTests --show-trace --print-build-logs --verbose
-
 [group('nix')]
 build host=`uname -n`:
   nix build .#{{build_config}}.{{host}}.system --extra-experimental-features "nix-command flakes" --show-trace --verbose
