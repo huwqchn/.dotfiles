@@ -30,9 +30,18 @@
           types = ["directory"];
         };
 
+        markdownlint.enable = true;
+        markdownlint.excludes = [
+          # Auto-generated
+          "CHANGELOG.md"
+        ];
         nil.enable = true;
         treefmt.enable = true;
       };
+      default_stages = [
+        "pre-commit"
+        "pre-push"
+      ];
     };
   };
 }

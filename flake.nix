@@ -42,6 +42,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     deploy-rs.url = "github:serokell/deploy-rs";
+    nix-topology = {
+      url = "github:oddlama/nix-topology";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     openwrt-imagebuilder = {
       url = "github:astro/nix-openwrt-imagebuilder";
       inputs = {
@@ -205,14 +209,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # blender
-    # blender-bin = {
-    #   url = "github:edolstra/nix-warez?dir=blender";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
-
     pre-commit-hooks = {
-      url = "github:cachix/pre-commit-hooks.nix";
+      url = "github:cachix/git-hooks.nix";
       inputs = {
         nixpkgs.follows = "nixpkgs";
         flake-compat.follows = "flake-compat";
