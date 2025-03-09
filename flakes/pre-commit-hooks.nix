@@ -30,11 +30,11 @@
           types = ["directory"];
         };
 
-        markdownlint.enable = true;
-        markdownlint.excludes = [
-          # Auto-generated
-          "CHANGELOG.md"
-        ];
+        # markdownlint.enable = true;
+        # markdownlint.excludes = [
+        #   # Auto-generated
+        #   "CHANGELOG.md"
+        # ];
         nil.enable = true;
         treefmt.enable = true;
       };

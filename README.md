@@ -34,7 +34,6 @@ are many improvements that can be made. I will update this README as I make prog
   - [ ] wallpapers
   - [ ] other cursors
 - [ ] apps
-- [ ] make shells (for dev)
 - [ ] templates (for creating projects)
 - [ ] specialisation
 - [ ] support wsl
@@ -54,3 +53,6 @@ are many improvements that can be made. I will update this README as I make prog
 - [fufexan's dotfiles](github.com/fufexan/dotfiles) - Some configuration
 - [gytis-ivaskevicius's dotfiles](github.com/gytis-ivaskevicius/nixfiles) - Code framework
 - [Nobbz's nixos-config](github.com/Nobbz/nixos-config) - copied some good ideas
+- [oddlama's nixos-config](github.com/oddlama/nix-config) - flake-parts
+- [azuwis's nixos-config](github.com/azuwis/nix-config) - some framework
+- [oluceps's nixos-config](github.com/oluceps/nixos-config) - great network configuration
