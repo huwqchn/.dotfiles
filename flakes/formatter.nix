@@ -19,7 +19,7 @@
         global.excludes = [
           "LICENSE"
           # unsupported extensions
-          "*.{gif,png,svg,tape,mts,lock,mod,sum,toml,env,envrc,gitignore,age}"
+          "*.{gif,png,jpg,svg,tape,mts,lock,mod,sum,toml,env,envrc,gitignore,age,pub}"
         ];
         formatter = {
           deadnix = {priority = 1;};
