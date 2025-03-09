@@ -7,7 +7,10 @@
 }: let
   inherit (inputs) nixpkgs;
 in {
-  nixpkgs = {config.allowUnfree = true;};
+  nixpkgs = {
+    config.allowUnfree = true;
+    config.allowAliases = true;
+  };
   # for security reasons, do not load neovim's user config
   # since EDITOR may be used to edit some critical files
   environment.variables.EDITOR = "nvim --clean";

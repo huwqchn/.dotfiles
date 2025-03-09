@@ -9,7 +9,7 @@ in {
     pkgs = import inputs.nixpkgs {
       inherit system overlays;
       config = {
-        allowAliases = false;
+        allowAliases = true;
         allowUnfree = true;
         # android_sdk.accept_license = true;
       };
