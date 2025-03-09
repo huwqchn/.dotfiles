@@ -17,10 +17,9 @@
 
       settings = {
         global.excludes = [
-          "hosts/hardware-*.nix"
           "LICENSE"
           # unsupported extensions
-          "*.{gif,png,svg,tape,mts,lock,mod,sum,toml,env,envrc,gitignore}"
+          "*.{gif,png,svg,tape,mts,lock,mod,sum,toml,env,envrc,gitignore,age}"
         ];
         formatter = {
           deadnix = {priority = 1;};

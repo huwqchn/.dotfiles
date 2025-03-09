@@ -113,20 +113,20 @@ window_rules:
   - commands: ["ignore"]
     match:
       # Ignores any Zebar windows.
-      - window_process: { equals: "zebar" }
+      - window_process: {equals: "zebar"}
 
       # Ignores picture-in-picture windows for browsers.
       # Note that *both* the title and class must match for the rule to run.
-      - window_title: { regex: "[Pp]icture.in.[Pp]icture" }
-        window_class: { regex: "Chrome_WidgetWin_1|MozillaDialogClass" }
+      - window_title: {regex: "[Pp]icture.in.[Pp]icture"}
+        window_class: {regex: "Chrome_WidgetWin_1|MozillaDialogClass"}
 
       # Ignore rules for various 3rd-party apps.
-      - window_process: { equals: "PowerToys" }
-        window_class: { regex: 'HwndWrapper\[PowerToys\.PowerAccent.*?\]' }
-      - window_process: { equals: "PowerToys" }
-        window_title: { regex: ".*? - Peek" }
-      - window_process: { equals: "Lively" }
-        window_class: { regex: "HwndWrapper" }
+      - window_process: {equals: "PowerToys"}
+        window_class: {regex: 'HwndWrapper\[PowerToys\.PowerAccent.*?\]'}
+      - window_process: {equals: "PowerToys"}
+        window_title: {regex: ".*? - Peek"}
+      - window_process: {equals: "Lively"}
+        window_class: {regex: "HwndWrapper"}
 
 window_effects:
   # Visual effects to apply to the focused window.

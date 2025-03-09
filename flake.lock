@@ -1018,54 +1018,6 @@
         "type": "github"
       }
     },
-    "homebrew-bundle": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1741409364,
-        "narHash": "sha256-CFVv+RLXKJTDOLgVeWt1m3RfMDPwyFN3ZgRI/XI8urs=",
-        "owner": "homebrew",
-        "repo": "homebrew-bundle",
-        "rev": "2f9ac6a4908916ef08037cc848c1a93c4013b8fa",
-        "type": "github"
-      },
-      "original": {
-        "owner": "homebrew",
-        "repo": "homebrew-bundle",
-        "type": "github"
-      }
-    },
-    "homebrew-cask": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1741481838,
-        "narHash": "sha256-GggOcQ2wHx8SSp3/MTIWt0v+mPoc4dvAsMx+MoRGII8=",
-        "owner": "homebrew",
-        "repo": "homebrew-cask",
-        "rev": "ba9b6aa70cee7b8bd1b1fb4d2224da57a679cfc5",
-        "type": "github"
-      },
-      "original": {
-        "owner": "homebrew",
-        "repo": "homebrew-cask",
-        "type": "github"
-      }
-    },
-    "homebrew-core": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1741476296,
-        "narHash": "sha256-yVlQZX0Ek/xcKI5UnGk+pY8M9wyddhyPHedJOrQDcnM=",
-        "owner": "homebrew",
-        "repo": "homebrew-core",
-        "rev": "2496764a5b71018f07f2db85d3d275028ea17773",
-        "type": "github"
-      },
-      "original": {
-        "owner": "homebrew",
-        "repo": "homebrew-core",
-        "type": "github"
-      }
-    },
     "impermanence": {
       "locked": {
         "lastModified": 1737831083,
@@ -1736,9 +1688,6 @@
         "ghostty-shaders": "ghostty-shaders",
         "hardware": "hardware",
         "home-manager": "home-manager_2",
-        "homebrew-bundle": "homebrew-bundle",
-        "homebrew-cask": "homebrew-cask",
-        "homebrew-core": "homebrew-core",
         "impermanence": "impermanence",
         "matugen": "matugen",
         "neovim-nightly": "neovim-nightly",
