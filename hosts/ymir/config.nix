@@ -27,6 +27,7 @@
     powerManagement.enable = true;
   };
 
+  my.persist.enable = true;
   # my custom modules
   my = {
     btrbk.enable = true;

@@ -61,6 +61,7 @@ in {
     nvidia = {enable = mkEnableOption "nvidia";};
     isHidpi = mkEnableOption "hidpi";
     persist = {enable = mkEnableOption "persist";}; # must use tmpfs for /
+    onedrive = {enable = mkEnableOption "OneDrive";};
     # TODO: Generate a public key that can login to all my devices and servers.
     # store the privaet key in Yukikey
   };

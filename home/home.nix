@@ -2,14 +2,14 @@
   inputs,
   config,
   lib,
-  pkgs,
   ...
 }: let
   username = config.my.name;
   homeDirectory = config.my.home;
+  isPersist = config.my.persist.enable;
 in {
   imports = [
-    inputs.impermanence.nixosModules.home-manager.impermanence
+    inputs.impermanence.homeManagerModules.impermanence
     ../modules/common/my.nix
   ];
 
@@ -22,7 +22,7 @@ in {
     sessionPath = ["$HOME/.local/bin" "/opt/homebrew/bin"];
 
     persistence =
-      if pkgs.stdenv.isLinux
+      if isPersist
       then {
         "/persist/${config.home.homeDirectory}" = {
           directories = [
