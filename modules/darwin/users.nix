@@ -15,7 +15,6 @@ in {
       builtins.getAttr myShell
       pkgs; # https://github.com/LnL7/nix-darwin/issues/1237 still have a bug
   };
-  nix.settings.trusted-users = [userName];
 
   networking.computerName = hostName;
   system.defaults.smb.NetBIOSName = hostName;
