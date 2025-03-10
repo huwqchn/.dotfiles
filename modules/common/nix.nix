@@ -52,6 +52,7 @@ in {
       trusted-users = [config.my.name];
       # substituers that will be considered before the official ones(https://cache.nixos.org)
       substituters = [
+        "https://nix-community.cachix.org"
         # cache mirror located in China
         # status: https://mirror.sjtu.edu.cn/
         "https://mirror.sjtu.edu.cn/nix-channels/store"
@@ -59,7 +60,6 @@ in {
         "https://mirrors.ustc.edu.cn/nix-channels/store"
         "https://mirrors.tuna.tsinghua.edu.cn/nix-channels/store"
 
-        "https://nix-community.cachix.org"
         # cuda-maintainer's cache server
         "https://cuda-maintainers.cachix.org"
       ];
