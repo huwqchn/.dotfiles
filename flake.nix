@@ -129,6 +129,23 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    agenix-shell = {
+      url = "github:aciceri/agenix-shell";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        flake-parts.follows = "flake-parts";
+      };
+    };
+    agenix-rekey = {
+      url = "github:oddlama/agenix-rekey";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        devshell.follows = "devshell";
+        flake-parts.follows = "flake-parts";
+        pre-commit-hooks.follows = "pre-commit-hooks";
+        treefmt-nix.follows = "treefmt";
+      };
+    };
     impermanence.url = "github:nix-community/impermanence";
 
     # generate iso/qcow2/docker/... image from nixos configuration
