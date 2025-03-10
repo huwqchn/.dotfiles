@@ -39,6 +39,5 @@
     virtual.enable = true;
     peripherals.enable = true;
     security.enable = true;
-    atuin-autosync.enable = true;
   };
 }

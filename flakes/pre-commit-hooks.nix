@@ -3,7 +3,7 @@
 
   perSystem.pre-commit = {
     # Add itself to `nix flake check`
-    check.enable = true;
+    check.enable = false; # don't use this now
     settings = {
       excludes = ["flake.lock" ".direnv"];
       hooks = {

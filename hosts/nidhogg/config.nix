@@ -1,3 +1,0 @@
-{
-  wsl.enable = true;
-}

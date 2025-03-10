@@ -3,6 +3,6 @@
   config,
   ...
 }:
-lib.my.mkModule config "onedrive" {
+lib.mkIf config.my.onedrive.enable {
   services.onedrive.enable = true;
 }
