@@ -12,8 +12,13 @@
     # "diff" = "batdiff"
     "bgrep" = "batgrep";
   };
-in
-  lib.my.mkEnabledModule config "bat" {
+  cfg = config.my.bat;
+  inherit (lib) mkEnableOption mkIf;
+in {
+  options.my.bat = {
+    enable = mkEnableOption "bat";
+  };
+  config = mkIf cfg.enable {
     home = {
       inherit shellAliases sessionVariables;
       file.".lesskey".text = ''
@@ -46,4 +51,5 @@ in
     home.persistence = {
       "/persist/${config.home.homeDirectory}".directories = [".cache/bat"];
     };
-  }
+  };
+}

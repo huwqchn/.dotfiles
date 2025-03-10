@@ -11,8 +11,13 @@
     rev = "5186af7984aa8cb0550358aefe751201d7a6b5a8";
     hash = "sha256-Cw5iMljJJkxOzAGjWGIlCa7gnItvBln60laFMf6PSPM=";
   };
-in
-  lib.my.mkEnabledModule config "yazi" {
+  cfg = config.my.yazi;
+  inherit (lib) mkEnableOption mkIf;
+in {
+  options.my.yazi = {
+    enable = mkEnableOption "yazi";
+  };
+  config = mkIf cfg.enable {
     # terminal file manager
     programs.yazi = {
       enable = true;
@@ -355,4 +360,5 @@ in
     home.persistence = {
       "/persist/${config.home.homeDirectory}".directories = [".local/state/yazi"];
     };
-  }
+  };
+}

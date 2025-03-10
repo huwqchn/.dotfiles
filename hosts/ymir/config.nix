@@ -27,17 +27,15 @@
     powerManagement.enable = true;
   };
 
-  my.persist.enable = true;
   # my custom modules
   my = {
-    btrbk.enable = true;
-    clamav.enable = true;
     onedrive.enable = true;
     fhs.enable = true;
     zram.enable = true;
     power.enable = true;
     virtual.enable = true;
-    peripherals.enable = true;
     security.enable = true;
+    desktop.enable = true;
+    persist.enable = true;
   };
 }

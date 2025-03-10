@@ -23,7 +23,7 @@ in {
   imports = [./config.nix ./plugins];
 
   options.my.neovim.lazyvim = {
-    enable = mkEnableOption "LazyVim" // {default = true;};
+    enable = mkEnableOption "LazyVim" // {default = config.my.neovim.enable;};
 
     plugins =
       # let

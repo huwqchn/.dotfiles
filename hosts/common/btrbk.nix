@@ -1,9 +1,4 @@
 {
-  config,
-  lib,
-  ...
-}:
-lib.my.mkModule config "btrbk" {
   # ==================================================================
   #
   # Tool for creating snapshots and remote backups of btrfs subvolumes

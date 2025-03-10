@@ -6,8 +6,13 @@
   shellAliases = {
     "g" = "git";
   };
-in
-  lib.my.mkEnabledModule config "git" {
+  cfg = config.my.git;
+  inherit (lib) mkEnableOption mkIf;
+in {
+  options.my.git = {
+    enable = mkEnableOption "git";
+  };
+  config = mkIf cfg.enable {
     # `programs.git` will generate the config file: ~/.config/git/config
     # to make git use this config file, `~/.gitconfig` should not exist!
     #
@@ -130,4 +135,5 @@ in
         foreach = "submodule foreach";
       };
     };
-  }
+  };
+}

@@ -2,21 +2,25 @@
   config,
   lib,
   ...
-}:
-lib.my.mkEnabledModule config "ssh" {
-  services.openssh = {
-    enable = true;
-    settings = {
-      PermitRootLogin = "yes";
-      PasswordAuthentication = true;
+}: let
+  cfg = config.my.security;
+  inherit (lib) mkIf;
+in {
+  config = mkIf cfg.enable {
+    services.openssh = {
+      enable = true;
+      settings = {
+        PermitRootLogin = "yes";
+        PasswordAuthentication = true;
+      };
+      openFirewall = true;
     };
-    openFirewall = true;
+
+    # networking.firewall.allowedTCPPorts = [ 22 ];
+    networking.firewall.enable = false;
+
+    # Add terminfo database of all known terminals to the system profile.
+    # https://github.com/NixOS/nixpkgs/blob/nixos-24.05/nixos/modules/config/terminfo.nix
+    environment.enableAllTerminfo = true;
   };
-
-  # networking.firewall.allowedTCPPorts = [ 22 ];
-  networking.firewall.enable = false;
-
-  # Add terminfo database of all known terminals to the system profile.
-  # https://github.com/NixOS/nixpkgs/blob/nixos-24.05/nixos/modules/config/terminfo.nix
-  environment.enableAllTerminfo = true;
 }
