@@ -5,7 +5,7 @@
 }: let
   inherit (lib) mkEnableOption mkIf mkMerge;
   cfg = config.my.onedrive;
-  isPersist = config.my.persist.eenable && cfg.enable;
+  isPersist = config.my.persist.enable && cfg.enable;
 in {
   options.my.onedrive = {
     enable = mkEnableOption "Enable OneDrive config";
