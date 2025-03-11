@@ -3,7 +3,6 @@
   lib,
   ...
 }: {
-  system.stateVersion = "24.11";
   wsl = {
     enable = true;
     defaultUser = config.my.name;
@@ -21,11 +20,14 @@
   };
   my.desktop.enable = true;
   # Required by nixos-wsl
+  boot.loader.systemd-boot.enable = lib.mkForce false;
+  networking.firewall.enable = lib.mkForce false;
+  networking.useNetworkd = lib.mkForce false;
   networking.nftables.enable = lib.mkForce false;
-
-  # Suppress warning about this one having no effect
-  # we ship adblocking capabilities here usually
   networking.extraHosts = lib.mkForce '''';
+  services.greetd.enable = lib.mkForce false;
+  services.pipewire.enable = lib.mkForce false;
+
   # Use the newer Docker 24
   virtualisation = {
     docker = {
