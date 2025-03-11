@@ -8,7 +8,6 @@
     enable = true;
     defaultUser = config.my.name;
     interop.register = true;
-    nativeSystemd = true;
     startMenuLaunchers = true;
 
     # Enable integration with Docker Desktop (needs to be installed)
