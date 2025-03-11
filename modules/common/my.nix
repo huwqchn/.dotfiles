@@ -61,6 +61,8 @@ in {
     # roles
     role = mkOption {
       type = types.enum ["workstation" "server" "laptop" "desktop" "mobile" "microvm"];
+      default = "laptop";
+      description = "The role of the system";
     };
     nvidia = {enable = mkEnableOption "nvidia";};
     isHidpi = mkEnableOption "hidpi";

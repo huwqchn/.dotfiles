@@ -1,6 +1,7 @@
 {inputs, ...}: {
   imports = [inputs.treefmt.flakeModule];
   perSystem = {pkgs, ...}: {
+    formatter = config.treefmt.build.wrapper;
     treefmt = {
       package = pkgs.treefmt2;
       projectRootFile = "flake.nix";
