@@ -1,8 +1,8 @@
 {
   nix = {
     settings.auto-optimize-store = true;
-    daemonIOSchedPriority = "batch";
-    daemonCPUSchedPolicy = 5;
+    daemonIOSchedPriority = 5;
+    daemonCPUSchedPolicy = "batch";
     gc.dates = "weekly";
   };
 }
