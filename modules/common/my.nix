@@ -58,6 +58,10 @@ in {
       description = "The hashed password of the user";
     };
     # hardware
+    # roles
+    role = mkOption {
+      type = types.enum ["workstation" "server" "laptop" "desktop" "mobile" "microvm"];
+    };
     nvidia = {enable = mkEnableOption "nvidia";};
     isHidpi = mkEnableOption "hidpi";
     persist = {enable = mkEnableOption "persist";}; # must use tmpfs for /
