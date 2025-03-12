@@ -1,6 +1,10 @@
 {inputs, ...}: {
   imports = [inputs.treefmt.flakeModule];
-  perSystem = {pkgs, ...}: {
+  perSystem = {
+    pkgs,
+    config,
+    ...
+  }: {
     formatter = config.treefmt.build.wrapper;
     treefmt = {
       package = pkgs.treefmt2;

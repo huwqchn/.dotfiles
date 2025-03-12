@@ -24,7 +24,6 @@
   # nix.useDaemon = true;
   nix = {
     settings = {
-      auto-optimise-store = true;
       allowed-users = ["@wheel"];
       trusted-users = ["root" config.my.name];
       # given the users in this list the right to specify additional substituters via:

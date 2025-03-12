@@ -10,6 +10,7 @@
     fzf.enable = true;
     gh.enable = true;
     git.enable = true;
+    jujutsu.enable = true;
     lazygit.enable = true;
     nix-index.enable = true;
     ripgrep.enable = true;
