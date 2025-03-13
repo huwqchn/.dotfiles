@@ -43,16 +43,16 @@ are many improvements that can be made. I will update this README as I make prog
 
 ## References
 
-- [nixos-and-flakes-book](github.com/ryan4yin/nixos-and-flakes-book) - best tutorial for nixos and
-  flakes
-- [ryan4yin's nix-config](github.com/ryan4yin/nix-config) - Original inspiration
-- [EmergentMind's nixos-config](github.com/EmergentMind/nixos-config) - Original inspiration
-- [runarsf's dotfiles](github.com/runarsf/dotfiles) - Custom library
-- [hilissner's dotfiles](github.com/hilissner/dotfiles) - Code layout
-- [Misterio77's nix-config](github.com/Misterio77/nix-config) - Some configuration
-- [fufexan's dotfiles](github.com/fufexan/dotfiles) - Some configuration
-- [gytis-ivaskevicius's dotfiles](github.com/gytis-ivaskevicius/nixfiles) - Code framework
-- [Nobbz's nixos-config](github.com/Nobbz/nixos-config) - copied some good ideas
-- [oddlama's nixos-config](github.com/oddlama/nix-config) - flake-parts
-- [azuwis's nixos-config](github.com/azuwis/nix-config) - some framework
-- [oluceps's nixos-config](github.com/oluceps/nixos-config) - great network configuration
+- [nixos-and-flakes-book](https://github.com/ryan4yin/nixos-and-flakes-book) - best tutorial for
+  nixos and flakes
+- [ryan4yin's nix-config](https://github.com/ryan4yin/nix-config) - Original inspiration
+- [EmergentMind's nixos-config](https://github.com/EmergentMind/nixos-config) - Original inspiration
+- [runarsf's dotfiles](https://github.com/runarsf/dotfiles) - Custom library
+- [hilissner's dotfiles](https://github.com/hilissner/dotfiles) - Code layout
+- [Misterio77's nix-config](https://github.com/Misterio77/nix-config) - Some configuration
+- [fufexan's dotfiles](https://github.com/fufexan/dotfiles) - Some configuration
+- [gytis-ivaskevicius's dotfiles](https://github.com/gytis-ivaskevicius/nixfiles) - Code framework
+- [Nobbz's nixos-config](https://github.com/Nobbz/nixos-config) - copied some good ideas
+- [oddlama's nixos-config](https://github.com/oddlama/nix-config) - flake-parts
+- [azuwis's nixos-config](https://github.com/azuwis/nix-config) - some framework
+- [oluceps's nixos-config](https://github.com/oluceps/nixos-config) - great network configuration
