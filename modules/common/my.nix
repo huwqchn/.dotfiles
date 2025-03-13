@@ -60,11 +60,20 @@ in {
     # hardware
     machine = {
       type = mkOption {
-        type = types.enum ["workstation" "server" "laptop" "desktop" "mobile" "microvm"];
+        type = types.enum ["workstation" "server" "laptop" "desktop" "mobile" "vm" "wsl"];
         default = "laptop";
-        description = "The role of the system";
+        description = "The architecture of the system";
       };
-      nvidia = {enable = mkEnableOption "nvidia";};
+      gpu = {
+        type = types.enum ["intel" "nvidia" "amd"];
+        default = "nvidia";
+        description = "The GPU of the system";
+      };
+      cpu = {
+        type = types.enum ["intel" "amd" "arm"];
+        default = "intel";
+        description = "The CPU of the system";
+      };
       isHidpi = mkEnableOption "hidpi";
       persist = {enable = mkEnableOption "persist";}; # must use tmpfs for /
       minimal = mkEnableOption "Minimal";
