@@ -58,15 +58,16 @@ in {
       description = "The hashed password of the user";
     };
     # hardware
-    # roles
-    role = mkOption {
-      type = types.enum ["workstation" "server" "laptop" "desktop" "mobile" "microvm"];
-      default = "laptop";
-      description = "The role of the system";
+    machine = {
+      type = mkOption {
+        type = types.enum ["workstation" "server" "laptop" "desktop" "mobile" "microvm"];
+        default = "laptop";
+        description = "The role of the system";
+      };
+      nvidia = {enable = mkEnableOption "nvidia";};
+      isHidpi = mkEnableOption "hidpi";
+      persist = {enable = mkEnableOption "persist";}; # must use tmpfs for /
     };
-    nvidia = {enable = mkEnableOption "nvidia";};
-    isHidpi = mkEnableOption "hidpi";
-    persist = {enable = mkEnableOption "persist";}; # must use tmpfs for /
     # TODO: Generate a public key that can login to all my devices and servers.
     # store the privaet key in Yukikey
   };
