@@ -74,8 +74,9 @@ in {
         default = "intel";
         description = "The CPU of the system";
       };
+      useWifi = mkEnableOption "use wifi";
       isHidpi = mkEnableOption "hidpi";
-      persist = {enable = mkEnableOption "persist";}; # must use tmpfs for /
+      persist = mkEnableOption "persist"; # must use tmpfs for /
       minimal = mkEnableOption "Minimal";
     };
     # TODO: Generate a public key that can login to all my devices and servers.
