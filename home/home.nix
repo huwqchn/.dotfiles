@@ -6,7 +6,7 @@
 }: let
   username = config.my.name;
   homeDirectory = config.my.home;
-  isPersist = config.my.persist.enable;
+  inherit (config.my.machine) persist;
 in {
   imports = [
     inputs.impermanence.homeManagerModules.impermanence
@@ -22,7 +22,7 @@ in {
     sessionPath = ["$HOME/.local/bin" "/opt/homebrew/bin"];
 
     persistence =
-      if isPersist
+      if persist
       then {
         "/persist/${config.home.homeDirectory}" = {
           directories = [
