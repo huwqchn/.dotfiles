@@ -1,13 +1,9 @@
 {inputs, ...}: {
   imports = [inputs.treefmt.flakeModule];
-  perSystem = {
-    pkgs,
-    config,
-    ...
-  }: {
+  perSystem = {config, ...}: {
     formatter = config.treefmt.build.wrapper;
     treefmt = {
-      package = pkgs.treefmt2;
+      # package = pkgs.treefmt;
       projectRootFile = "flake.nix";
       programs = {
         alejandra.enable = true;
