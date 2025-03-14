@@ -64,12 +64,12 @@ in {
         default = "laptop";
         description = "The architecture of the system";
       };
-      gpu = {
+      gpu = mkOption {
         type = types.enum ["intel" "nvidia" "amd"];
         default = "nvidia";
         description = "The GPU of the system";
       };
-      cpu = {
+      cpu = mkOption {
         type = types.enum ["intel" "amd" "arm"];
         default = "intel";
         description = "The CPU of the system";
