@@ -16,6 +16,7 @@
   #
   # ==================================================================
 
+  boot.initrd.kernelModules = ["dm-snapshot"];
   services.btrbk.instances.btrbk = {
     # How often this btrbk instance is started. See systemd.time(7) for more information about the format.
     onCalendar = "Tue,Thu,Sat *-*-* 3:45:20";

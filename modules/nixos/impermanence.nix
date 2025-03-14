@@ -11,6 +11,8 @@ in {
   imports = [inputs.impermanence.nixosModules.impermanence];
 
   config = mkIf cfg.enable {
+    fileSystems."/persist".neededForBoot = true; # required by impermanence
+    fileSystems."/var/log".neededForBoot = true; # required by nixos
     environment.systemPackages = [
       # `sudo ncdu -x /`
       pkgs.ncdu

@@ -4,7 +4,7 @@
 {
   imports = [
     # Include the results of the hardware scan.
-    ./hardware-configuration.nix
+    ./machine.nix
     ./boot.nix
     ../common/nixosDefault.nix
   ];
@@ -21,11 +21,6 @@
   # networking = {
   #   networkmanager.enable = true; # Easiest to use and most distros use this by default.
   # };
-
-  hardware.nvidia = {
-    modesetting.enable = true;
-    powerManagement.enable = true;
-  };
 
   # my custom modules
   my = {
