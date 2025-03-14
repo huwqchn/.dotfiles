@@ -31,6 +31,5 @@
     virtual.enable = true;
     security.enable = true;
     desktop.enable = true;
-    persist.enable = true;
   };
 }
