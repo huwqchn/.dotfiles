@@ -15,8 +15,6 @@
       gnumake
     ];
     variables = {
-      # fix https://github.com/NixOS/nixpkgs/issues/238025
-      TZ = "${config.time.timeZone}";
       # fix kitty/wezterm not able to input Chinese
       # https://github.com/kovidgoyal/kitty/issues/403
       GLFW_IM_MODULE = "ibus";
