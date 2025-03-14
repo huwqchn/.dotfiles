@@ -64,6 +64,7 @@
 
     devshells.nixos = {
       devshell = {
+        name = "agenix";
         packagesFrom = [config.agenix-rekey.package];
         startup.agenix-installation = {
           deps = [];
