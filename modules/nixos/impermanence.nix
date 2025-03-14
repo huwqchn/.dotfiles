@@ -6,11 +6,11 @@
   ...
 }: let
   inherit (lib) mkIf;
-  cfg = config.my.persist;
+  inherit (config.my.machine) persist;
 in {
   imports = [inputs.impermanence.nixosModules.impermanence];
 
-  config = mkIf cfg.enable {
+  config = mkIf persist {
     fileSystems."/persist".neededForBoot = true; # required by impermanence
     fileSystems."/var/log".neededForBoot = true; # required by nixos
     environment.systemPackages = [
