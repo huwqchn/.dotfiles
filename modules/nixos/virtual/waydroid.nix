@@ -32,7 +32,6 @@ in {
     ];
 
     virtualisation = {
-      lxd.enable = true; # TODO: make this also acceept sys.lxd.enable
       waydroid.enable = true;
     };
   };
