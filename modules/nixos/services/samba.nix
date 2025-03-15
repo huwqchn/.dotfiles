@@ -10,7 +10,7 @@ in {
   options.my.samba = {
     enable = mkEnableOption "Enable Samba";
   };
-  conifg = mkIf cfg.eenable {
+  config = mkIf cfg.enable {
     services = {
       samba = {
         package = pkgs.samba4Full;
