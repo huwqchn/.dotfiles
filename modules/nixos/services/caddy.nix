@@ -12,7 +12,7 @@ in {
     enable = mkEnableOption "Enable Caddy";
   };
 
-  config = mkIf cfg.eenable {
+  config = mkIf cfg.enable {
     environment = {
       shellAliases = {
         caddy-log = "journalctl _SYSTEMD_UNIT=caddy.service";
