@@ -47,7 +47,7 @@ are many improvements that can be made. I will update this README as I make prog
   nixos and flakes
 - [ryan4yin's nix-config](https://github.com/ryan4yin/nix-config) - Original inspiration
 - [EmergentMind's nixos-config](https://github.com/EmergentMind/nixos-config) - Original inspiration
-- [runarsf's dotfiles](https://github.com/runarsf/dotfiles) - Custom library
+- [runarsf's dotfiles](https://github.com/runarsf/dotfiles) - Great configuration
 - [hilissner's dotfiles](https://github.com/hilissner/dotfiles) - Code layout
 - [Misterio77's nix-config](https://github.com/Misterio77/nix-config) - Some configuration
 - [fufexan's dotfiles](https://github.com/fufexan/dotfiles) - Some configuration
@@ -56,3 +56,4 @@ are many improvements that can be made. I will update this README as I make prog
 - [oddlama's nixos-config](https://github.com/oddlama/nix-config) - flake-parts
 - [azuwis's nixos-config](https://github.com/azuwis/nix-config) - some framework
 - [oluceps's nixos-config](https://github.com/oluceps/nixos-config) - great network configuration
+- [isabelroses's dotfiles](https://github.com/isabelroses/dotfiles) - Amazing nixos configuration
