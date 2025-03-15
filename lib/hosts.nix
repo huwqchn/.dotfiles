@@ -122,9 +122,9 @@ in rec {
                 (optionalAttrs (options ? networking.hostName) {
                   networking.hostName = hostName;
                 })
-                {
+                (optionalAttrs (options ? nixpkgs.hostPlatform) {
                   nixpkgs.hostPlatform = lib.mkDefault host.system;
-                }
+                })
                 {
                   _module.args =
                     host.extraArgs
