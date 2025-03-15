@@ -82,16 +82,48 @@ in {
         description = "The architecture of the system";
       };
       gpu = mkOption {
-        type = types.enum ["intel" "nvidia" "amd"];
-        default = "nvidia";
+        type = types.nullOr (
+          types.enum [
+            "intel"
+            "nvidia"
+            "amd"
+            "hybrid-nv"
+          ]
+        );
+        default = null;
         description = "The GPU of the system";
       };
       cpu = mkOption {
-        type = types.enum ["intel" "amd" "arm"];
-        default = "intel";
+        type = types.nullOr (
+          types.enum [
+            "intel"
+            "amd"
+            "vm-intel"
+            "vm-amd"
+          ]
+        );
+        default = null;
         description = "The CPU of the system";
       };
-      useWifi = mkEnableOption "use wifi";
+      hasBlutooth = mkOption {
+        type = types.bool;
+        default = true;
+        description = "Whether the system has Bluetooth";
+      };
+      hasWifi = mkOption {
+        type = types.bool;
+        default = true;
+        description = "Whether the system has WiFi";
+      };
+      monitors = mkOption {
+        type = listOf str;
+        default = [];
+        description = ''
+          this does not affect any drivers and such, it is only necessary for
+          declaring things like monitors in window manager configurations
+          you can avoid declaring this, but I'd rather if you did declare
+        '';
+      };
       isHidpi = mkEnableOption "hidpi";
       persist = mkEnableOption "persist"; # must use tmpfs for /
     };
