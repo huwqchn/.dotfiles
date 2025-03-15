@@ -83,7 +83,6 @@ in {
       description = "The hashed password of the user";
     };
     minimal = mkEnableOption "Minimal";
-    useYubikey = mkEnableOption "is using Yubikey";
     # hardware
     machine = {
       type = mkOption {
