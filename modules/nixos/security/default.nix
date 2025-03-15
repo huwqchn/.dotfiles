@@ -7,6 +7,7 @@
 with lib; let
   cfg = config.my.security;
 in {
+  imports = my.scanPaths ./.;
   config = mkIf cfg.enable {
     # nix.extraOptions = ''
     #   !include ${config.age.secrets.nix-access-tokens.path}
