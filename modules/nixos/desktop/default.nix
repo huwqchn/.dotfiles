@@ -9,6 +9,7 @@ with lib; let
   waylandEnabled = my.desktop.enable && my.desktop.wayland.enable;
   xorgEnabled = my.desktop.eenable && my.desktop.xorg.enable;
 in {
+  imports = my.scanPaths ./.;
   config = mkMerge [
     (mkIf waylandEnabled {
       ####################################################################
