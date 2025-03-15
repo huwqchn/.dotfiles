@@ -123,6 +123,9 @@ in rec {
                   networking.hostName = hostName;
                 })
                 {
+                  nixpkgs.hostPlatform = lib.mkDefault host.system;
+                }
+                {
                   _module.args =
                     host.extraArgs
                     // {
