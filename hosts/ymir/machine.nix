@@ -10,9 +10,6 @@
   boot.initrd.kernelModules = ["dm-snapshot"];
   boot.kernelModules = ["kvm-intel"];
 
-  fileSystems."/persist".neededForBoot = true; # required by impermanence
-  fileSystems."/var/log".neededForBoot = true; # required by nixos
-
   boot.supportedFilesystems = [
     "ext4"
     "btrfs"
