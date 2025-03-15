@@ -4,7 +4,7 @@ build_config := if os() == "macos" { "darwinConfigurations" } else { "nixosConfi
 
 # List all the just commands
 default:
-    @just --list
+  @just --list --unsorted
 
 [group('nix')]
 build host=`uname -n`:
@@ -13,7 +13,11 @@ build host=`uname -n`:
 # Rebuild specific host
 [group('nix')]
 switch host=`uname -n`:
-  {{rebuild}} switch --flake .#{{host}} --show-trace -L -v
+  {{rebuild}} switch --flake .#{{host}} --show-trace -L -v |& nom
+
+[group('nix')]
+switch2 host=`uname -n`:
+  nh {{ if os() == "macos" { "darwin" } else { "os" } }} switch . -v -H {{host}} --ask
 
 # remove all generations order than 7 days
 # on darwin, you may need to switch to root user to run this command
