@@ -10,6 +10,7 @@
   my = {
     onedrive.enable = true;
     fhs.enable = true;
+    btrbk.enable = true;
     zram.enable = true;
     power.enable = true;
     virtual.enable = true;
