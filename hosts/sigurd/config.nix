@@ -6,8 +6,6 @@
     ../common/nixosDefault.nix
   ];
 
-  hardware.nvidia = {modesetting.enable = true;};
-
   # my custom modules
   my = {
     onedrive.enable = true;
@@ -15,7 +13,6 @@
     zram.enable = true;
     virtual.enable = true;
     security.enable = true;
-    persist.enable = true;
     desktop.enable = true;
   };
 }
