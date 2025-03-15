@@ -13,7 +13,7 @@ build host=`uname -n`:
 # Rebuild specific host
 [group('nix')]
 switch host=`uname -n`:
-  {{rebuild}} switch --falke .#{{host}} --show-trace -L -v
+  {{rebuild}} switch --flake .#{{host}} --show-trace -L -v
 
 # remove all generations order than 7 days
 # on darwin, you may need to switch to root user to run this command
