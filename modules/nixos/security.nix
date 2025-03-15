@@ -3,9 +3,9 @@
   pkgs,
   lib,
   ...
-}: let
+}:
+with lib; let
   cfg = config.my.security;
-  inherit (lib) mkIf;
 in {
   config = mkIf cfg.enable {
     # nix.extraOptions = ''

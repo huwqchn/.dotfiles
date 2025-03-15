@@ -2,8 +2,8 @@
   lib,
   config,
   ...
-}: let
-  inherit (lib) mkEnableOption mkIf mkMerge;
+}:
+with lib; let
   cfg = config.my.onedrive;
   isPersist = config.my.machine.persist && cfg.enable;
 in {

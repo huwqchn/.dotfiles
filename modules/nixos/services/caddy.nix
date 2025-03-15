@@ -3,9 +3,9 @@
   lib,
   pkgs,
   ...
-}: let
+}:
+with lib; let
   inherit (config) my;
-  inherit (lib) mkIf mkEnableOption;
   cfg = config.my.caddy;
 in {
   options.my.caddy = {

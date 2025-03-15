@@ -2,8 +2,8 @@
   config,
   lib,
   ...
-}: let
-  inherit (lib) mkMerge mkIf mkForce;
+}:
+with lib; let
   inherit (config) my;
   inherit (config.my.machine) type;
   isMobile = type == "mobile" || type == "laptop";
