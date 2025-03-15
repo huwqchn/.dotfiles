@@ -33,7 +33,6 @@
 
   my.machine = {
     type = "laptop";
-    gpu = "nvidia";
     useWifi = true;
     isHidpi = true;
     persist = true;
