@@ -8,6 +8,26 @@ with lib; let
 in {
   options.my.security.auditd = {
     enable = mkEnableOption "Enable auditd";
+    autoPrune = {
+      enable =
+        mkEnableOption "Enable auto-pruning of audit logs"
+        // {
+          default = cfg.enable;
+        };
+
+      size = mkOption {
+        type = int;
+        default = 524288000; # ~500 megabytes
+        description = "The maximum size of the audit log in bytes";
+      };
+
+      dates = mkOption {
+        type = str;
+        default = "daily";
+        example = "weekly";
+        description = "How often the audit log should be pruned";
+      };
+    };
   };
 
   config = mkIf cfg.enable {
@@ -74,14 +94,15 @@ in {
       };
     };
 
-    systemd = {
+    # the audit log can grow quite large, so we can automatically prune it
+    systemd = mkIf cfg.autoPrune.enable {
       # a systemd timer to clean /var/log/audit.log daily
       # this can probably be weekly, but daily means we get to clean it every 2-3 days instead of once a week
       timers."clean-audit-log" = {
         description = "Periodically clean audit log";
         wantedBy = ["timers.target"];
         timerConfig = {
-          OnCalendar = "daily";
+          OnCalendar = cfg.autoPrune.dates;
           Persistent = true;
         };
       };
@@ -91,7 +112,7 @@ in {
       services."clean-audit-log" = {
         script = ''
           set -eu
-          if [[ $(stat -c "%s" /var/log/audit/audit.log) -gt 524288000 ]]; then
+          if [[ $(stat -c "%s" /var/log/audit/audit.log) -gt ${toString cfg.autoPrune.size} ]]; then
             echo "Clearing Audit Log";
             rm -rvf /var/log/audit/audit.log;
             echo "Done!"

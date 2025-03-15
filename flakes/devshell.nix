@@ -13,7 +13,20 @@
           pre-commit.text = config.pre-commit.installationScript;
         };
       };
-      packages = [pkgs.nix];
+      packages = with pkgs; [
+        nix
+        # nix helpers
+        nix-melt
+        nix-tree
+        nix-diff
+        nix-inspect
+        nix-search-cli
+        nix-output-monitor
+        nvd
+        # package creation helpers
+        nurl
+        nix-init
+      ];
       commands = [
         {
           package = config.treefmt.build.wrapper;

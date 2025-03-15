@@ -31,7 +31,7 @@
 
   my.machine = {
     type = "laptop";
-    useWifi = true;
+    hasWifi = true;
     isHidpi = true;
     persist = true;
   };
