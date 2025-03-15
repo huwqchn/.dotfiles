@@ -33,7 +33,15 @@ in {
         else "/Users/${user}";
       description = "The user home directory";
     };
-    desktop = {enable = mkEnableOption "Desktop";};
+    desktop = {
+      enable = mkEnableOption "Desktop";
+      wayland = {
+        enable = mkEnableOption "Wayland";
+      };
+      xorg = {
+        enable = mkEnableOption "Xorg";
+      };
+    };
     security = {
       enable = mkEnableOption "Security";
       boot = mkEnableOption "security boot";
