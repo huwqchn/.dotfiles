@@ -36,10 +36,19 @@ in {
     desktop = {
       enable = mkEnableOption "Desktop";
       wayland = {
-        enable = mkEnableOption "Wayland";
+        enable =
+          mkEnableOption "Wayland"
+          // {
+            default = true;
+          };
       };
       xorg = {
         enable = mkEnableOption "Xorg";
+      };
+      defaultWindowManager = mkOption {
+        type = types.enum ["i3" "bspwm" "sway" "hyprland"];
+        default = "hyprland";
+        description = "The default window manager";
       };
     };
     security = {
@@ -52,7 +61,7 @@ in {
       fixWebcam = mkEnableOption "fix webcam";
     };
     theme = mkOption {
-      type = types.enum ["tokyonight" "catppuccin" "auto"];
+      type = types.nullOr (types.enum ["tokyonight" "catppuccin" "auto"]);
       default = "tokyonight";
       description = "The theme to use";
     };
@@ -74,6 +83,7 @@ in {
       description = "The hashed password of the user";
     };
     minimal = mkEnableOption "Minimal";
+    useYubikey = mkEnableOption "is using Yubikey";
     # hardware
     machine = {
       type = mkOption {
@@ -105,16 +115,26 @@ in {
         default = null;
         description = "The CPU of the system";
       };
-      hasBlutooth = mkOption {
-        type = types.bool;
-        default = true;
-        description = "Whether the system has Bluetooth";
-      };
-      hasWifi = mkOption {
-        type = types.bool;
-        default = true;
-        description = "Whether the system has WiFi";
-      };
+      hasTPM =
+        mkEnableOption "Whether the system has TPM"
+        // {
+          default = true;
+        };
+      hasBlutooth =
+        mkEnableOption "Whether the system has Bluetooth"
+        // {
+          default = true;
+        };
+      hasWifi =
+        mkEnableOption "Whether the system has WiFi"
+        // {
+          default = true;
+        };
+      hasSound =
+        mkEnableOption "Whether the system has sound"
+        // {
+          default = true;
+        };
       monitors = mkOption {
         type = listOf str;
         default = [];
