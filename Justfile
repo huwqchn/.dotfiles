@@ -59,6 +59,10 @@ shell:
   nix shell nixpkgs#git nixpkgs#neovim
 
 [group('nix')]
+dev name="default":
+  nix develop .#{{name}}
+
+[group('nix')]
 fmt:
   # format the nix files in this repo
   nix fmt
@@ -92,7 +96,7 @@ rm program:
   rm -rf "$HOME/.config/{{program}}"
 
 [group('dev')]
-dev program:
+cfg program:
   just rm {{program}}
   rsync -avz --copy-links --chmod=D2755,F744 config/{{program}}/ "$HOME/.config/{{program}}/"
 
