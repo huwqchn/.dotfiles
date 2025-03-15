@@ -49,6 +49,7 @@ in {
           default = true;
         };
       boot = mkEnableOption "security boot";
+      fixWebcam = mkEnableOption "fix webcam";
     };
     theme = mkOption {
       type = types.enum ["tokyonight" "catppuccin" "auto"];
