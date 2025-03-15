@@ -43,7 +43,11 @@ in {
       };
     };
     security = {
-      enable = mkEnableOption "Security";
+      enable =
+        mkEnableOption "Security"
+        // {
+          default = true;
+        };
       boot = mkEnableOption "security boot";
     };
     theme = mkOption {
@@ -68,6 +72,7 @@ in {
       default = "$y$j9T$UtvejDe22fK.4ok7ZyI1Y/$.vc/kQ3hRFbb2ntOCQQna3CcWWP6dxwtEAE1O9bWcO8";
       description = "The hashed password of the user";
     };
+    minimal = mkEnableOption "Minimal";
     # hardware
     machine = {
       type = mkOption {
@@ -88,7 +93,6 @@ in {
       useWifi = mkEnableOption "use wifi";
       isHidpi = mkEnableOption "hidpi";
       persist = mkEnableOption "persist"; # must use tmpfs for /
-      minimal = mkEnableOption "Minimal";
     };
     # TODO: Generate a public key that can login to all my devices and servers.
     # store the privaet key in Yukikey
