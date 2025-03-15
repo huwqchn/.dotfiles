@@ -1,6 +1,5 @@
 set shell := ["bash", "-c"]
-rebuild := if os() == "macos" { "darwin-rebuild switch --flake .#" } else { "nh os switch . -v -H "}
-rebuild_option := if os() == "macos" { "--show-trace -L -v" } else { "--ask" }
+rebuild := if os() == "macos" { "darwin-rebuild" } else { "nixos-rebuild" }
 build_config := if os() == "macos" { "darwinConfigurations" } else { "nixosConfigurations" }
 
 # List all the just commands
@@ -14,7 +13,7 @@ build host=`uname -n`:
 # Rebuild specific host
 [group('nix')]
 switch host=`uname -n`:
-  {{rebuild}}{{host}} {{rebuild_option}}
+  {{rebuild}} switch --falke .#{{host}} --show-trace -L -v
 
 # remove all generations order than 7 days
 # on darwin, you may need to switch to root user to run this command
