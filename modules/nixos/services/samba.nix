@@ -3,8 +3,8 @@
   config,
   pkgs,
   ...
-}: let
-  inherit (lib) mkIf mkEnableOption;
+}:
+with lib; let
   cfg = config.my.samba;
 in {
   options.my.samba = {

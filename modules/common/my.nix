@@ -3,8 +3,8 @@
   pkgs,
   config,
   ...
-}: let
-  inherit (lib) mkOption mkEnableOption types;
+}:
+with lib; let
   inherit (pkgs.stdenv) isLinux;
 in {
   options.my = {

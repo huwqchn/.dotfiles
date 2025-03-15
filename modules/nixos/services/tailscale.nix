@@ -3,8 +3,8 @@
   lib,
   pkgs,
   ...
-}: let
-  inherit (lib) mkIf mkEnableOption;
+}:
+with lib; let
   inherit (config) my;
   cfg = config.my.tailscale;
   isWorkstation = config.my.machine.type == "workstation";

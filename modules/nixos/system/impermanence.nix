@@ -4,8 +4,8 @@
   config,
   lib,
   ...
-}: let
-  inherit (lib) mkIf;
+}:
+with lib; let
   inherit (config.my.machine) persist;
 in {
   imports = [inputs.impermanence.nixosModules.impermanence];

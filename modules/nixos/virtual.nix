@@ -3,9 +3,9 @@
   pkgs,
   lib,
   ...
-}: let
+}:
+with lib; let
   cfg = config.my.virtual;
-  inherit (lib) mkEnableOption mkIf;
 in {
   options.my.virtual = {
     enable = mkEnableOption "Enable virtualisation";

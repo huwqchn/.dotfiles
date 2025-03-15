@@ -4,10 +4,10 @@
   lib,
   config,
   ...
-}: let
+}:
+with lib; let
   inherit (config.my) security;
   secureBoot = security.enable && security.boot;
-  inherit (lib) mkIf;
 in {
   # How to enter setup mode - msi motherboard
   ## 1. enter BIOS via [Del] Key

@@ -2,9 +2,9 @@
   config,
   lib,
   ...
-}: let
+}:
+with lib; let
   cfg = config.my.power;
-  inherit (lib) mkEnableOption mkIf;
 in {
   options.my.power = {
     enable = mkEnableOption "Enable power management";
