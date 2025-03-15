@@ -10,7 +10,6 @@
   ];
 
   boot.initrd.kernelModules = ["dm-snapshot"];
-  boot.kernelModules = ["kvm-intel"];
 
   boot.supportedFilesystems = [
     "ext4"
