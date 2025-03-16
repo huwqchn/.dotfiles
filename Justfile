@@ -30,7 +30,7 @@ clean:
 gc:
   # garbage collect all unused nix store entries(system-wide)
   nix-collect-garbage --delete-older-than 7d
-  nix store optimize
+  nix store optimise
 
 # Update all the flake inputs
 [group('nix')]
