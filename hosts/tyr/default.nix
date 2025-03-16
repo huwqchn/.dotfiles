@@ -4,6 +4,6 @@
     {
       my.desktop.enable = true;
     }
-    ./common/yubikey.nix
+    ../common/yubikey.nix
   ];
 }
