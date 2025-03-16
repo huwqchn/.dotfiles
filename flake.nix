@@ -146,7 +146,14 @@
         treefmt-nix.follows = "treefmt";
       };
     };
+
     impermanence.url = "github:nix-community/impermanence";
+
+    # secure boot
+    lanzaboote = {
+      url = "github:nix-community/lanzaboote/v0.3.0";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     # generate iso/qcow2/docker/... image from nixos configuration
     nixos-generators = {
