@@ -84,6 +84,10 @@ in {
   };
 
   config = mkIf cfg.enable {
+    programs.gnupg.agent = {
+      enable = true;
+      enableSSHSupport = true;
+    };
     environment.systemPackages = lib.flatten [
       (builtins.attrValues {
         inherit
@@ -96,5 +100,6 @@ in {
       yubikey-up
       yubikey-down
     ];
+    services.openssh.enable = true;
   };
 }

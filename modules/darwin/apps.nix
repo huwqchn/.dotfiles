@@ -135,6 +135,7 @@
       "utm" # virtual machines
       "docker" # docker desktoplient
       # "karabiner-elements" # keyboard remap
+      "yubico-authenticator" # for yubikey
     ];
   };
 }
