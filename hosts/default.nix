@@ -1,5 +1,6 @@
 {
   modules = [
+    ../secrets
     {
       hm.imports = [
         ./common/nvim.nix

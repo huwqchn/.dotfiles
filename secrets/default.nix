@@ -1,9 +1,4 @@
-{
-  pkgs,
-  agenix,
-  config,
-  ...
-}: let
+{config, ...}: let
   user_readable = {
     symlink = false;
     owner = config.my.name;
@@ -11,8 +6,6 @@
   };
   inherit (config.my) home;
 in {
-  environment.systemPackages = [agenix.packages."${pkgs.system}".default];
-
   # if you changed this key, you need to regenerate all encrypt files from the decrypt contents!
   age.identityPaths = [
     # using the host key for decryption
