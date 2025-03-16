@@ -6,7 +6,7 @@
   # gpg agent with pinentry
   programs.gnupg.agent = {
     enable = true;
-    enableSSHSupport = false;
+    enableSSHSupport = true;
     enableExtraSocket = true;
     pinentryPackage =
       if config.qt.enable
