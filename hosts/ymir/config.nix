@@ -1,9 +1,7 @@
-{inputs, ...}: {
+{
   imports = [
     ./machine.nix
     ./boot.nix
-    inputs.nixos-generators.nixosModules.all-formats
-    inputs.programs-sqlite.nixosModules.programs-sqlite
   ];
 
   # my custom modules

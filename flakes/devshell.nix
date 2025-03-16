@@ -9,9 +9,7 @@
     devshells.default = {
       devshell = {
         name = "dots";
-        startup = {
-          pre-commit.text = config.pre-commit.installationScript;
-        };
+        startup.pre-commit.text = config.pre-commit.installationScript;
       };
       packages = with pkgs; [
         nix
