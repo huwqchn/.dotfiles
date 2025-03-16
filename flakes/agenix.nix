@@ -41,7 +41,6 @@
     pkgs,
     ...
   }: {
-    environment.systemPackages = [inputs'.agenix.packages.default];
     # Agenix extension to avoid `secrets.nix` file by auto re-encrypting secrets where needed.
     #   Allows you to define versatile generators for secrets, so they can be bootstrapped automatically.
     #   This can be used alongside regular use of agenix.
@@ -63,7 +62,7 @@
       # };
     };
 
-    devshells.nixos = {
+    devshells.agenix = {
       devshell = {
         name = "agenix";
         packagesFrom = [config.agenix-rekey.package];
@@ -77,6 +76,11 @@
         };
       };
       commands = [
+        {
+          category = "agenix";
+          name = "agenix";
+          package = inputs'.agenix.packages.default;
+        }
         {
           category = "agenix";
           package = config.agenix-shell.installationScript;
