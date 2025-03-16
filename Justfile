@@ -12,12 +12,12 @@ build host=`uname -n`:
 
 # Rebuild specific host
 [group('nix')]
-switch host=`uname -n`:
+switch2 host=`uname -n`:
   nh {{ if os() == "macos" { "darwin" } else { "os" } }} switch . -v -H {{host}} --ask
 
 [group('nix')]
-classic_switch host=`uname -n`:
-  {{rebuild}} switch --flake .#{{host}} --show-trace -L -v |& nom
+switch host=`uname -n`:
+  {{rebuild}} switch --flake .#{{host}} --show-trace -L -v
 
 # remove all generations order than 7 days
 # on darwin, you may need to switch to root user to run this command
