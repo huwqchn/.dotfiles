@@ -3,6 +3,7 @@
   modules = [
     {
       my.desktop.enable = true;
+      my.yubikey.enable = true;
     }
   ];
 }
