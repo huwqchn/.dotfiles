@@ -100,6 +100,12 @@ in {
       yubikey-up
       yubikey-down
     ];
-    services.openssh.enable = true;
+    # services.openssh.enable = true;
+    # environment.variables = {
+    #   SSH_SK_PROVIDER =
+    #     if pkgs.system == "aarch64-darwin"
+    #     then "${pkgs.libfido2}/lib/libfido2.dylib"
+    #     else "";
+    # };
   };
 }

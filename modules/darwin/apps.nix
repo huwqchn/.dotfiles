@@ -103,6 +103,7 @@
       "terraformer"
       # for development
       "qt@5"
+      "openssh"
     ];
 
     # `brew install --cask`
