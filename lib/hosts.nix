@@ -163,10 +163,14 @@ in rec {
               ../modules/nixos
               inputs.home-manager.nixosModules.home-manager
               inputs.agenix.nixosModules.default
+              inputs.disko.nixosModules.disko
+              inputs.nixos-generators.nixosModules.all-formats
+              inputs.programs-sqlite.nixosModules.programs-sqlite
             ])
             ++ (optionals isHomeOutput [
               ../modules/home
               inputs.agenix.homeManagerModules.default
+              inputs.agenix-rekey.homeManagerModules.default
             ]);
         }
         // (optionalAttrs (isDarwinOutput || isNixosOutput) {

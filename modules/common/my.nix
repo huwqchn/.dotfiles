@@ -1,6 +1,7 @@
 {
   lib,
   pkgs,
+  self,
   config,
   ...
 }:
@@ -32,6 +33,11 @@ in {
         then "/home/${user}"
         else "/Users/${user}";
       description = "The user home directory";
+    };
+    secretsDir = mkOption {
+      type = types.path;
+      default = "${self}/hosts/${config.networking.hostName}";
+      description = "Path to the scrects directory.";
     };
     desktop = {
       enable = mkEnableOption "Desktop";

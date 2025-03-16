@@ -1,6 +1,7 @@
 {
   inputs,
   config,
+  self,
   ...
 }: {
   imports = [
@@ -8,14 +9,22 @@
     inputs.agenix-rekey.flakeModule # https://github.com/oddlama/agenix-rekey
   ];
 
+  flake = {
+    # The identities that are used to rekey agenix secrets and to decrypt all
+    # repository-wide secrets.
+    secretsConfig = {
+      masterIdentities = [../secrets/janus.pub];
+      extraEncryptionPubkeys = [../secrets/backup.pub];
+    };
+  };
+
   # Template: https://github.com/aciceri/agenix-shell/blob/master/templates/basic/flake.nix
   agenix-shell = {
     # Default: "git rev-parse --show-toplevel | xargs basename";
     flakeName = "nix-configs";
 
     identityPaths = [
-      "$HOME/.ssh/id_rsa"
-      "$HOME/.ssh/id_ed25519"
+      "/etc/ssh/ssh_host_ed25519_key"
     ];
     secretsPath = "/run/user/$(id -u)/agenix-shell/$(${config.agenix-shell.flakeName})/$(uuidgen)";
     secrets = {
@@ -35,7 +44,6 @@
   # flake.agenix-rekey = { };
 
   perSystem = {
-    inputs',
     config,
     lib,
     pkgs,
@@ -51,8 +59,7 @@
       # inherit ((colmena.lib.makeHive self.colmena).introspect (x: x)) nodes;
       # inherit (inputs.self.colmenaHive.introspect (x: x)) nodes;
 
-      # homeConfigurations = inputs.self.homeConfigurations;
-      inherit (inputs.self) nixosConfigurations;
+      nixosConfigurations = self.nixosConfigurations // self.drawinConfigurations;
     };
 
     agenix-shell = {
@@ -62,9 +69,8 @@
       # };
     };
 
-    devshells.agenix = {
+    devshells.default = {
       devshell = {
-        name = "agenix";
         packagesFrom = [config.agenix-rekey.package];
         startup.agenix-installation = {
           deps = [];
@@ -76,40 +82,29 @@
         };
       };
       commands = [
-        {
-          category = "agenix";
-          name = "agenix";
-          package = inputs'.agenix.packages.default;
-        }
-        {
-          category = "agenix";
-          package = config.agenix-shell.installationScript;
-          help = "Install agenix secrets";
-        }
-        {
-          category = "agenix";
-          name = "agenix-rekey";
-          command = "${lib.getExe inputs'.agenix-rekey.packages.default} edit";
-          # help     = config.apps.agenix-edit.meta.description;
-          # package  = flakeConfig.agenix-rekey.${system}.edit;
-        }
-        # { name     = "agenix-generate";
-        #   help     = inputs.self.apps.${system}.agenix-generate.meta.description;
-        #   package  = inputs.self.apps.${system}.agenix-generate.program;
-        #   category = "secrets";
+        # {
+        #   category = "agenix";
+        #   name = "agenix";
+        #   package = inputs'.agenix.packages.default;
         # }
-        # { name     = "agenix-rekey";
-        #   help     = inputs.self.apps.${system}.agenix-rekey.meta.description;
-        #   package  = inputs.self.apps.${system}.agenix-rekey.program;
-        #   category = "secrets";
+        # {
+        #   category = "agenix";
+        #   package = config.agenix-shell.installationScript;
+        #   help = "Install agenix secrets";
         # }
+        {
+          inherit (config.agenix-rekey) package;
+          help = "Edit, generate and rekey secrets";
+        }
+      ];
+      env = [
+        {
+          # Always add files to git after agenix rekey and agenix generate.
+          name = "AGENIX_REKEY_ADD_TO_GIT";
+          value = "true";
+        }
       ];
     };
-    # apps = with flakeConfig.agenix-rekey.${pkgs.system}; {
-    #   agenix-edit     = { type="app"; program=edit;     meta.description="Edit your agenix secrets";             };
-    #   agenix-generate = { type="app"; program=generate; meta.description="Generate your missing agenix secrets"; };
-    #   agenix-rekey    = { type="app"; program=rekey;    meta.description="Rekey your existing agenix secrets";   };
-    # };
     packages.agenix-install = config.agenix-shell.installationScript;
   };
 }
