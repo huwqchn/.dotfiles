@@ -93,7 +93,7 @@ in {
         inherit
           (pkgs)
           yubikey-manager # cli-based authenticator tool. accessed via `ykman`
-
+          age-plugin-yubikey
           pam_u2f # for yubikey with sudo
           ;
       })
