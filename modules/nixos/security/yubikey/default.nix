@@ -11,6 +11,10 @@ in {
   ];
   config = mkIf cfg.enable {
     hardware.gpgSmartcards.enable = true;
+    environment.systemPackages = [
+      pkgs.yubioath-flutter
+    ];
+
     programs = {
       ssh.startAgent = mkForece false;
 

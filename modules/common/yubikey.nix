@@ -10,7 +10,7 @@
   homeDirectory = config.my.home;
   yubikey-up = let
     yubikeyIds = lib.concatStringsSep " " (
-      lib.mapAttrsToList (name: id: "[${name}]=\"${builtins.toString id}\"") config.yubikey.identifiers
+      lib.mapAttrsToList (name: id: "[${name}]=\"${builtins.toString id}\"") cfg.identifiers
     );
   in
     pkgs.writeShellApplication {
@@ -88,7 +88,6 @@ in {
       (builtins.attrValues {
         inherit
           (pkgs)
-          yubioath-flutter # gui-based authenticator tool. yubioath-desktop on older nixpkg channels
           yubikey-manager # cli-based authenticator tool. accessed via `ykman`
 
           pam_u2f # for yubikey with sudo
