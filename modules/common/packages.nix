@@ -9,5 +9,7 @@
     cmake
     # darwin only apps
     coreutils
+    # nix
+    nix-prefetch-git
   ];
 }
