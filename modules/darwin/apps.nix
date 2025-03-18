@@ -9,15 +9,6 @@
   imports = [
     inputs.nix-homebrew.darwinModules.nix-homebrew
   ];
-  environment.systemPackages = with pkgs; [
-    neovim
-    git
-    just # use Justfile to simplify nix-darwin's commands
-    rsync
-    cmake
-    # darwin only apps
-    utm # virtual machine
-  ];
 
   environment.shells = [pkgs.zsh pkgs.fish];
 
@@ -137,6 +128,7 @@
       "docker" # docker desktoplient
       # "karabiner-elements" # keyboard remap
       "yubico-authenticator" # for yubikey
+      "veracrypt" # disk encryption
     ];
   };
 }

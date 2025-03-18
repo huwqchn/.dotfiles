@@ -2,13 +2,6 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    # editor
-    neovim
-
-    # git
-    git
-    git-lfs
-
     # archives
     zip
     xz
@@ -40,8 +33,6 @@
     which
     tree
     gnutar
-    rsync
-    just
 
     # system call monitoring
     strace # system call monitoring
