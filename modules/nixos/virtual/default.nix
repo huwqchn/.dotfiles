@@ -9,16 +9,20 @@ in {
   imports = my.scanPaths ./.;
   options.my.virtual = {
     enable = mkEnableOption "Enable virtualisation";
+    podman = {
+      enable = mkEnableOption "Enable podman";
+    };
+    docker = {
+      enable = mkEnableOption "Enable docker";
+    };
   };
 
-  config = mkIf cfg.enable {
-    my.virtual = {
-      distrobox.enable = mkDefault true;
-      docker.enable = mkDefault true;
-      lxd.enable = mkDefault true;
-      podman.enable = mkDefault true;
-      qemu.enable = mkDefault true;
-      waydroid.enable = mkDefault true;
-    };
+  config = {
+    assertions = [
+      {
+        assertion = !(cfg.docker.enable && cfg.podman.enable);
+        message = "You can't enable both Docker and Podman at the same time. Please enable only one of them!";
+      }
+    ];
   };
 }

@@ -12,6 +12,10 @@
 
   environment.shells = [pkgs.zsh pkgs.fish];
 
+  environment.systemPackages = with pkgs; [
+    utm # virtual machine
+  ];
+
   programs.fish.enable = true;
 
   # Requires Homebrew to be installed

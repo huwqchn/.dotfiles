@@ -1,7 +1,6 @@
 {
   lib,
   pkgs,
-  self,
   config,
   ...
 }:
@@ -34,11 +33,6 @@ in {
         else "/Users/${user}";
       description = "The user home directory";
     };
-    secretsDir = mkOption {
-      type = types.path;
-      default = "${self}/hosts/${config.networking.hostName}";
-      description = "Path to the scrects directory.";
-    };
     desktop = {
       enable = mkEnableOption "Desktop";
       wayland = {
@@ -64,7 +58,6 @@ in {
           default = true;
         };
       boot = mkEnableOption "security boot";
-      fixWebcam = mkEnableOption "fix webcam";
     };
     theme = mkOption {
       type = types.nullOr (types.enum ["tokyonight" "catppuccin" "auto"]);
@@ -125,7 +118,7 @@ in {
         // {
           default = true;
         };
-      hasBlutooth =
+      hasBluetooth =
         mkEnableOption "Whether the system has Bluetooth"
         // {
           default = true;

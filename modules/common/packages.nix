@@ -8,6 +8,6 @@
     rsync
     cmake
     # darwin only apps
-    utm # virtual machine
+    coreutils
   ];
 }

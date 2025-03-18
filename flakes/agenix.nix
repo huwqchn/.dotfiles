@@ -12,10 +12,6 @@
   flake = {
     # The identities that are used to rekey agenix secrets and to decrypt all
     # repository-wide secrets.
-    secretsConfig = {
-      masterIdentities = [../secrets/janus.pub];
-      extraEncryptionPubkeys = [../secrets/backup.pub];
-    };
   };
 
   # Template: https://github.com/aciceri/agenix-shell/blob/master/templates/basic/flake.nix
@@ -59,7 +55,7 @@
       # inherit ((colmena.lib.makeHive self.colmena).introspect (x: x)) nodes;
       # inherit (inputs.self.colmenaHive.introspect (x: x)) nodes;
 
-      nixosConfigurations = self.nixosConfigurations // self.drawinConfigurations;
+      nixosConfigurations = self.nixosConfigurations // self.darwinConfigurations;
     };
 
     agenix-shell = {

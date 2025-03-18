@@ -3,52 +3,15 @@
   lib,
   ...
 }: let
-  inherit (lib) optionals versionOlder mkForce mkIf;
-  mitigationFlags =
-    (
-      optionals (versionOlder config.boot.kernelPackages.kernel.version "5.1.13")
-      [
-        # we don't need restricted indirect branch speculation
-        "noibrs"
-        # we don't need no indirect branch prediction barrier either, it sounds funny
-        "noibpb"
-        # allow programs to get data from some other program when they shouldn't be able to - maybe they need it!
-        "nospectre_v1"
-        "nospectre_v2"
-        # why flush the L1 cache? what if we need it later. anyone being able to get it is a small consequence, I think
-        "l1tf=off"
-        # of course we want to use, not bypass, the stored data
-        "nospec_store_bypass_disable"
-        "no_stf_barrier" # We don't need no barriers between software, they could be friends
-        "mds=off" # Zombieload attacks are fine
-      ]
-    )
-    ++ [
-      "mitigations=off" # Of course we don't want no mitigations
-    ];
+  inherit (lib) optionals mkForce mkIf mkEnableOption;
 
-  cfg = config.security;
+  cfg = config.my.security;
 in {
+  options.my.security = {
+    fixWebcam = mkEnableOption "fix webcam";
+    noMitigations = mkEnableOption "Disable all CPU mitigations";
+  };
   config = mkIf cfg.enable {
-    # failsafe for idiots, god knows there are plenty
-    assertions =
-      optionals cfg.mitigations.disable
-      [
-        {
-          assertion = cfg.mitigations.acceptRisk;
-          message = ''
-            You have enabled `config.modules.system.security.mitigations`.
-
-            To make sure you are not doing this out of sheer idiocy, you must explicitly
-            accept the risk of running your kernel without Spectre or Meltdown mitigations.
-
-            Set `config.modules.system.security.mitigations.acceptRisk` to `true` only if you know what your doing!
-
-            If you don't know what you are doing, but still insist on disabling mitigations; perish on your own accord.
-          '';
-        }
-      ];
-
     security = {
       protectKernelImage = true; # disables hibernation
 
@@ -76,7 +39,7 @@ in {
     boot = {
       kernel = {
         # https://docs.kernel.org/admin-guide/sysctl/vm.html
-        sysctl = {
+        sysctl = mkIf (config.my.machine.type != "wsl") {
           # The Magic SysRq key is a key combo that allows users connected to the
           # system console of a Linux kernel to perform some low-level commands.
           # Disable it, since we don't need it, and is a potential security concern.
@@ -84,10 +47,7 @@ in {
 
           # Restrict ptrace() usage to processes with a pre-defined relationship
           # (e.g., parent/child)
-          # FIXME: this breaks game launchers, find a way to launch them with privileges (steam)
-          # gamescope wrapped with the capabilities *might* solve the issue
-          # spoiler: it didn't
-          # "kernel.yama.ptrace_scope" = 2;
+          "kernel.yama.ptrace_scope" = 3;
 
           # Hide kptrs even for processes with CAP_SYSLOG
           # also prevents printing kernel pointers
@@ -143,82 +103,100 @@ in {
           # See:
           #  - <https://docs.kernel.org/admin-guide/sysctl/vm.html#mmap-rnd-bits>
           #  - <https://docs.kernel.org/admin-guide/sysctl/vm.html#mmap-min-addr>
-          "vm.mmap_rnd_bits" = 32;
-          "vm.mmap_min_addr" = 65536;
+          # "vm.mmap_rnd_bits" = 32;
+          # "vm.mmap_min_addr" = 65536;
         };
       };
 
       # https://www.kernel.org/doc/html/latest/admin-guide/kernel-parameters.html
       kernelParams =
-        [
-          # I'm sure we break hibernation in at least 5 other sections of this config, so
-          # let's disable hibernation explicitly. Allowing hibernation makes it possible
-          # to replace the booted kernel with a malicious one, akin to kexec. This helps
-          # us prevent an attack called "Evil Maid" where an attacker with physical access
-          # to the device. P.S. I chose to mention "Evil Maid" specifically because it sounds
-          # funny. Do not think that is the only attack you are vulnerable to.
-          # See: <https://en.wikipedia.org/wiki/Evil_maid_attack>
-          "nohibernate"
+        if cfg.noMitigations
+        then [
+          # disables the L1 Terminal Fault (L1TF) mitigation, which is a hardware mitigation
+          # for L1TF (CVE-2018-3620 and CVE-2018-3646).
+          "l1tf=off"
+
+          # Disables the Microarchitectural Data Sampling (MDS) mitigation, which is
+          # a hardware mitigation for MDS (CVE-2018-12126, CVE-2018-12127, CVE-2018-12130, CVE-2019-11091)
+          "mds=off"
+
+          # Disables the Single Thread Indirect Branch Predictors (STIBP) feature,
+          # which is a hardware mitigation for Spectre variant 2
+          "no_stf_barrier"
+
+          # disables the Indirect Branch Predictor Barrier (IBPB) feature, which is a software
+          # mitigation for Spectre variant 2
+          "noibpb"
+
+          # disables the Indirect Branch Restricted Speculation (IBRS) feature, which is
+          # a hardware mitigation for Spectre variant 2 (CVE-2017-5715)
+          "noibrs"
+
+          # disables the Kernel Page Table Isolation (KPTI) feature, which is a software
+          # mitigation for Meltdown (CVE-2017-5754)
+          "nopti"
+
+          # disables the Speculative Store Bypass Disable (SSBD) feature, which is a
+          # hardware mitigation for Spectre variant 4 (CVE-2018-3639)
+          "nospec_store_bypass_disable"
+
+          # disables all mitigations for Spectre variant 1 (CVE-2017-5753)
+          "nospectre_v1"
+
+          # disables all mitigations for Spectre variant 2, including IBRS and IBPB.
+          "nospectre_v2"
+
+          # enables Intel Transactional Synchronization Extensions (TSX), which can
+          # improve performance for certain workloads that use transactional memory
+          "tsx=on"
+
+          # disables the TSX Asynchronous Abort (TAA) mitigation, which is a hardware
+          # mitigation for TAA (CVE-2019-11135)
+          "tsx_async_abort=off"
+
+          # Disable all mitigations
+          "mitigations=off"
+        ]
+        else [
+          # NixOS produces many wakeups per second, which is bad for battery life.
+          # This kernel parameter disables the timer tick on the last 4 cores
+          "nohz_full=4-7"
 
           # make stack-based attacks on the kernel harder
           "randomize_kstack_offset=on"
 
-          # Disable vsyscalls as they are obsolete and have been replaced with vDSO.
-          # vsyscalls are also at fixed addresses in memory, making them a potential
-          # target for ROP attacks
-          # this breaks really old binaries for security
+          # controls the behavior of vsyscalls. this has been defaulted to none back in 2016 - break really old binaries for security
           "vsyscall=none"
 
           # reduce most of the exposure of a heap attack to a single cache
-          # Disable slab merging which significantly increases the difficulty of heap
-          # exploitation by preventing overwriting objects from merged caches and by
-          # making it harder to influence slab cache layout
           "slab_nomerge"
 
-          # Disable debugfs which exposes a lot of sensitive information about the
-          # kernel. Some programs, such as powertop, use this interface to gather
-          # information about the system, but it is not necessary for the system to
-          # actually publish those. I can live without it.
+          # Disable debugfs which exposes sensitive kernel data
           "debugfs=off"
 
-          # Sometimes certain kernel exploits will cause what is known as an "oops".
-          # This parameter will cause the kernel to panic on such oopses, thereby
-          # preventing those exploits
+          # Sometimes certain kernel exploits will cause what is called an "oops" which is a kernel panic
+          # that is recoverable. This will make it unrecoverable, and therefore safe to those attacks
           "oops=panic"
 
-          # Only allow kernel modules that have been signed with a valid key to be
-          # loaded, which increases security by making it much harder to load a
-          # malicious kernel module
+          # only allow signed modules
           "module.sig_enforce=1"
 
-          # The kernel lockdown LSM can eliminate many methods that user space code
-          # could abuse to escalate to kernel privileges and extract sensitive
-          # information. This LSM is necessary to implement a clear security boundary
-          # between user space and the kernel
-          #  integrity: kernel features that allow userland to modify the running kernel
-          #             are disabled
-          #  confidentiality: kernel features that allow userland to extract confidential
-          #             information from the kernel are also disabled
-          # ArchWiki recommends opting in for "integrity", however since we avoid modifying
-          # running kernel (by the virtue of using NixOS and locking module hot-loading) the
-          # confidentiality mode is a better solution.
+          # blocks access to all kernel memory, even preventing administrators from being able to inspect and probe the kernel
           "lockdown=confidentiality"
 
           # enable buddy allocator free poisoning
-          #  on: memory will befilled with a specific byte pattern
-          #      that is unlikely to occur in normal operation.
-          #  off (default): page poisoning will be disabled
           "page_poison=on"
 
-          # performance improvement for direct-mapped memory-side-cache utilization
-          # reduces the predictability of page allocations
+          # performance improvement for direct-mapped memory-side-cache utilization, reduces the predictability of page allocations
           "page_alloc.shuffle=1"
 
           # for debugging kernel-level slab issues
           "slub_debug=FZP"
 
-          # ignore access time (atime) updates on files
-          # except when they coincide with updates to the ctime or mtime
+          # disable sysrq keys. sysrq is seful for debugging, but also insecure
+          "sysrq_always_enabled=0" # 0 | 1 # 0 means disabled
+
+          # ignore access time (atime) updates on files, except when they coincide with updates to the ctime or mtime
           "rootflags=noatime"
 
           # linux security modules
@@ -226,13 +204,7 @@ in {
 
           # prevent the kernel from blanking plymouth out of the fb
           "fbcon=nodefer"
-
-          # the format that will be used for integrity audit logs
-          #  0 (default): basic integrity auditing messages
-          #  1: additional integrity auditing messages
-          "integrity_audit=1"
-        ]
-        ++ optionals cfg.mitigations.disable mitigationFlags;
+        ];
 
       blacklistedKernelModules = lib.concatLists [
         # Obscure network protocols
@@ -307,7 +279,7 @@ in {
 
         # if bluetooth is enabled, whitelist the module
         # necessary for bluetooth dongles to work
-        (optionals (!config.hardware.bluetooth.enable) [
+        (optionals (!config.my.machine.hasBluetooth) [
           "bluetooth" # let bluetooth work
           "btusb" # let bluetooth dongles work
         ])

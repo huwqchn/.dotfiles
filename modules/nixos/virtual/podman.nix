@@ -5,13 +5,9 @@
   ...
 }:
 with lib; let
-  cfg = config.my.virtual;
+  cfg = config.my.virtual.podman;
 in {
-  options.my.virtual.podman = {
-    enable = mkEnableOption "Enable podman";
-  };
-
-  config = mkIf (cfg.docker.enable || cfg.podman.enable) {
+  config = mkIf cfg.enable {
     environment.systemPackages = with pkgs; [
       podman-compose
       podman-desktop
