@@ -30,7 +30,7 @@ with lib; {
           enable = true;
           enablePattern = "*";
         };
-        fprintAuth = services.fprintd.enable;
+        fprintAuth = config.services.fprintd.enable;
         enableGnomeKeyring = mkDefault config.my.desktop.enable;
       in {
         # Allow screen lockers such as Swaylock or gtklock) to also unlock the screen.

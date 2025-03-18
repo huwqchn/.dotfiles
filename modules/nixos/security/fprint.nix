@@ -4,11 +4,11 @@
   lib,
   ...
 }: let
-  inherit (lib) mkIf;
+  inherit (lib) mkIf mkEnableOption;
   cfg = config.my.security.fprint;
 in {
   options.my.security.fprint = {
-    enable = mkIf "Enable fingerprint login";
+    enable = mkEnableOption "Enable fingerprint login";
   };
 
   config = mkIf cfg.enable {

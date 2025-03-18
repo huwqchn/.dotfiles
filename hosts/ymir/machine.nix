@@ -5,7 +5,7 @@
 }: {
   imports = [
     inputs.hardware.nixosModules.dell-xps-15-9560-nvidia
-    ./common/disko/luks-btrfs-tmpfs.nix
+    ../common/disko/luks-btrfs-tmpfs.nix
   ];
 
   boot.initrd.kernelModules = ["dm-snapshot"];

@@ -8,14 +8,14 @@
 with lib; let
   cfg = config.my.virtual.lxd;
 in {
-  options.modules.virtual.lxd = {
+  options.my.virtual.lxd = {
     enable = mkEnableOption "Enable LXD";
   };
 
   config = mkIf cfg.enable {
     virtualisation.lxd.enable = true;
 
-    user.packages = [
+    environment.systemPackages = [
       (pkgs.writeScriptBin "lxc-build-nixos-image" ''
         #!/usr/bin/env nix-shell
         #!nix-shell -i bash -p nixos-generators

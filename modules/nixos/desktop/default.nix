@@ -3,13 +3,14 @@
   config,
   lib,
   ...
-}:
-with lib; let
+}: let
   inherit (config) my;
+  inherit (lib) mkIf mkMerge;
   waylandEnabled = my.desktop.enable && my.desktop.wayland.enable;
-  xorgEnabled = my.desktop.eenable && my.desktop.xorg.enable;
+  xorgEnabled = my.desktop.enable && my.desktop.xorg.enable;
 in {
-  imports = my.scanPaths ./.;
+  imports = lib.my.scanPaths ./.;
+
   config = mkMerge [
     (mkIf waylandEnabled {
       ####################################################################

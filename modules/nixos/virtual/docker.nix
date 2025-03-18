@@ -4,12 +4,8 @@
   ...
 }:
 with lib; let
-  cfg = config.my.virtual.docker;
+  cfg = config.my.virtual;
 in {
-  options.my.virtual.docker = {
-    enable = mkEnableOption "Enable docker";
-  };
-
   config = mkIf cfg.enable {
     virtualisation = {
       docker = {

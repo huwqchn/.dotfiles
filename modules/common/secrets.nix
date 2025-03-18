@@ -10,12 +10,9 @@
   ];
   # Setup secret rekeying parameters
   age.rekey = {
-    inherit
-      (self.secretsConfig)
-      masterIdentities
-      extraEncryptionPubkeys
-      ;
-    hostPubkey = config.my.secretsDir + "/host.pub";
+    masterIdentities = ["${self}/secrets/janus.pub"];
+    extraEncryptionPubkeys = ["${self}/secrets/backup.pub"];
+    hostPubkey = "${self}/hosts/${config.networking.hostName}/host.pub";
     storageMode = "local";
     generatedSecretsDir = self.outPath + "/secrets/generated/${config.networking.hostName}";
     localStorageDir = self.outPath + "/secrets/rekeyed/${config.networking.hostName}";
