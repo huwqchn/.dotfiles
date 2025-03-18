@@ -40,10 +40,17 @@ in {
           rev = "6c639b474aabb17f5fecce18a4c97bf90b016512";
           hash = "sha256-bhLUziCDnF4QDCyysRn7Az35RAy8ibZIVUzoPgyEO1A=";
         };
+        yaziline = pkgs.fetchFromGitHub {
+          owner = "llanosrocas";
+          repo = "yaziline.yazi";
+          rev = "e06c47f7fc7a1c679e3935b45013108dadd09c96";
+          hash = "sha256-K7ydg+xazl20bgiiZpcBxwKLaRbF51Gibr35dfT0Mro=";
+        };
       };
       initLua = ''
         require("starship"):setup()
         require("git"):setup()
+        require("yaziline"):setup()
       '';
       settings = {
         manager = {
