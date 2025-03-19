@@ -6,5 +6,6 @@
         ./common/cli.nix
       ];
     }
+    ./common/yubikey.nix
   ];
 }

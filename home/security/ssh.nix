@@ -1,13 +1,14 @@
 {
   config,
   lib,
+  self,
   ...
 }: let
   inherit (lib) mkIf;
   cfg = config.my.security;
 in {
   config = mkIf cfg.enable {
-    home.file.".ssh/johnson-hu-ssh-key.pub".source = ./johnson-hu-ssh-key.pub;
+    home.file.".ssh/johnson-hu-ssh-key.pub".source = "${self}/secrets/${config.my.name}/ssh-key.pub";
 
     programs.ssh = {
       enable = true;
