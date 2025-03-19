@@ -7,11 +7,11 @@
   userName = config.my.name;
   myShell = config.my.shell;
   inherit (config.my) home;
-  # user_readable = {
-  #   symlink = false;
-  #   owner = config.my.name;
-  #   mode = "0500";
-  # };
+  user_readable = {
+    symlink = false;
+    owner = config.my.name;
+    mode = "0500";
+  };
 in {
   # Define a user account.
   users.users."${userName}" = {
@@ -28,8 +28,11 @@ in {
     #     rekeyFile = "${self}/secrets/ssh-key.age";
     #   }
     #   // user_readable;
-    git-credentials = {
-      rekeyFile = ./git-credentials.age;
-    };
+    git-credentials =
+      {
+        rekeyFile = ./git-credentials.age;
+        path = "${home}/.git-credentials";
+      }
+      // user_readable;
   };
 }
