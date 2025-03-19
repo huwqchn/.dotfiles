@@ -21,7 +21,6 @@ in {
       rm -f ~/.gitconfig
     '';
     home.shellAliases = shellAliases;
-    # home.file.".git-credentials".source = config.age.secrets.git-credentials.path;
     programs.git = {
       enable = true;
       lfs.enable = true;
