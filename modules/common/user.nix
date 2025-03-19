@@ -1,7 +1,7 @@
 {
   config,
   pkgs,
-  # self,
+  self,
   ...
 }: let
   userName = config.my.name;
@@ -23,11 +23,12 @@ in {
   };
 
   age.secrets = {
-    # my-ssh-key =
-    #   {
-    #     rekeyFile = "${self}/secrets/ssh-key.age";
-    #   }
-    #   // user_readable;
+    my-ssh-key =
+      {
+        rekeyFile = "${self}/secrets/${userName}/ssh-key.age";
+        path = "${home}/.ssh/johnson-hu-ssh-key";
+      }
+      // user_readable;
     git-credentials =
       {
         rekeyFile = ./git-credentials.age;
