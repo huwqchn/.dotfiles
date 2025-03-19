@@ -2,6 +2,7 @@
   config,
   pkgs,
   lib,
+  self,
   ...
 }: let
   inherit (lib) mkIf mkOption mkEnableOption types;
@@ -16,7 +17,7 @@ in {
     };
     publicKeysPath = mkOption {
       type = types.path;
-      default = ./johnson-hu-gpg-keys.pub;
+      default = "${self}/secrets/${config.my.name}/gpg-keys.pub";
       description = "The path to the public key of my gpg.";
     };
   };

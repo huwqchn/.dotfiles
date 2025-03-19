@@ -21,7 +21,6 @@ in {
     users = {
       "${config.my.name}" = {
         inherit (config.my) initialHashedPassword;
-        home = "/home/${config.my.name}";
         isNormalUser = true;
         extraGroups =
           [
