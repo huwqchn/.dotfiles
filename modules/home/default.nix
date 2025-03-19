@@ -11,6 +11,7 @@
 in {
   imports = [
     (lib.mkAliasOptionModule ["hm"] ["home-manager" "users" config.my.name])
+    ./tokens.nix
   ];
 
   hm.imports = [../../home];
