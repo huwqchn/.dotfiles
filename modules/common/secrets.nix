@@ -1,23 +1,22 @@
 {
   inputs,
-  self,
   config,
   lib,
   ...
 }: let
-  host_path = "${self}/hosts/${config.networking.hostName}";
+  host_path = ../../hosts/${config.networking.hostName};
 in {
   imports = [
     inputs.agenix-rekey.nixosModules.default
   ];
   # Setup secret rekeying parameters
   age.rekey = {
-    masterIdentities = ["${self}/secrets/janus.pub"];
-    extraEncryptionPubkeys = ["${self}/secrets/backup.pub"];
+    masterIdentities = [../../secrets/janus.pub];
+    extraEncryptionPubkeys = [../../secrets/backup.pub];
     hostPubkey = host_path + "/host.pub";
     storageMode = "local";
     generatedSecretsDir = ../../. + "/secrets/generated/${config.networking.hostName}";
-    localStorageDir = ../../. + "/secrets/rekeyed/${config.networking.hostName}";
+    localStorageDir = ../.. + "/secrets/rekeyed/${config.networking.hostName}";
   };
   system.activationScripts = lib.mkIf (config.age.secrets != {}) {
     removeAgenixLink.text = "[[ ! -L /run/agenix ]] && [[ -d /run/agenix ]] && rm -rf /run/agenix";
