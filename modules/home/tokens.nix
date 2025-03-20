@@ -8,10 +8,11 @@
     owner = config.my.name;
     mode = "0500";
   };
+  cfg = config.hm.my.neovim.lazyvim;
 in {
   config = lib.mkMerge [
     (
-      lib.mkIf config.hm.my.neovim.lazyvim.copilot.enable {
+      lib.mkIf cfg.copilot.enable {
         age.secrets = {
           github-copilot =
             {
@@ -23,7 +24,7 @@ in {
       }
     )
     (
-      lib.mkIf config.hm.my.neovim.lazyvim.supermaven.enable {
+      lib.mkIf cfg.supermaven.enable {
         age.secrets = {
           supermaven =
             {
@@ -35,7 +36,7 @@ in {
       }
     )
     (
-      lib.mkIf config.hm.my.neovim.lazyvim.codeium.enable {
+      lib.mkIf cfg.codeium.enable {
         age.secrets = {
           codeium =
             {
