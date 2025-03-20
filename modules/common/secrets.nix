@@ -4,7 +4,9 @@
   config,
   lib,
   ...
-}: {
+}: let
+  host_path = "${self}/hosts/${config.networking.hostName}";
+in {
   imports = [
     inputs.agenix-rekey.nixosModules.default
   ];
@@ -12,7 +14,7 @@
   age.rekey = {
     masterIdentities = ["${self}/secrets/janus.pub"];
     extraEncryptionPubkeys = ["${self}/secrets/backup.pub"];
-    hostPubkey = "/etc/ssh/ssh_host_ed25519_key.pub";
+    hostPubkey = host_path + "/host.pub";
     storageMode = "local";
     generatedSecretsDir = ../../. + "/secrets/generated/${config.networking.hostName}";
     localStorageDir = ../../. + "/secrets/rekeyed/${config.networking.hostName}";
