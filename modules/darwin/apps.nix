@@ -1,20 +1,42 @@
 {
   pkgs,
-  config,
   lib,
-  system,
-  inputs,
   ...
-}: {
-  imports = [
-    inputs.nix-homebrew.darwinModules.nix-homebrew
-  ];
+}: let
+  # Homebrew Mirror
+  # NOTE: is only useful when you run `brew install` manually! (not via nix-darwin)
+  homebrew_mirror_env = {
+    # tuna mirror
+    # HOMEBREW_API_DOMAIN = "https://mirrors.tuna.tsinghua.edu.cn/homebrew-bottles/api";
+    # HOMEBREW_BOTTLE_DOMAIN = "https://mirrors.tuna.tsinghua.edu.cn/homebrew-bottles";
+    # HOMEBREW_BREW_GIT_REMOTE = "https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/brew.git";
+    # HOMEBREW_CORE_GIT_REMOTE = "https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/homebrew-core.git";
+    # HOMEBREW_PIP_INDEX_URL = "https://pypi.tuna.tsinghua.edu.cn/simple";
 
+    # nju mirror
+    HOMEBREW_API_DOMAIN = "https://mirror.nju.edu.cn/homebrew-bottles/api";
+    HOMEBREW_BOTTLE_DOMAIN = "https://mirror.nju.edu.cn/homebrew-bottles";
+    HOMEBREW_BREW_GIT_REMOTE = "https://mirror.nju.edu.cn/git/homebrew/brew.git";
+    HOMEBREW_CORE_GIT_REMOTE = "https://mirror.nju.edu.cn/git/homebrew/homebrew-core.git";
+    HOMEBREW_PIP_INDEX_URL = "https://pypi.tuna.tsinghua.edu.cn/simple";
+  };
+in {
   environment.shells = [pkgs.zsh pkgs.fish];
 
   environment.systemPackages = with pkgs; [
     utm # virtual machine
   ];
+  # Set variables for you to manually install homebrew packages.
+  environment.variables = homebrew_mirror_env;
+
+  # Set environment variables for nix-darwin before run `brew bundle`.
+  system.activationScripts.homebrew.text = let
+    env_script = lib.attrsets.foldlAttrs (acc: name: value: acc + "\nexport ${name}=${value}") "" homebrew_mirror_env;
+  in
+    lib.mkBefore ''
+      echo >&2 '${env_script}'
+      ${env_script}
+    '';
 
   programs.fish.enable = true;
 
@@ -28,19 +50,19 @@
     fi
   '';
 
-  nix-homebrew = {
-    # Install Homebrew under the default prefix
-    enable = true;
-
-    # Apple Silicon Only: Also install Homebrew under the default Intel prefix for Rosetta 2
-    enableRosetta = lib.hasPrefix "aarch64" system;
-
-    # User owning the Homebrew prefix
-    user = config.my.name;
-
-    # Automatically migrate existing Homebrew installations
-    autoMigrate = true;
-  };
+  # nix-homebrew = {
+  #   # Install Homebrew under the default prefix
+  #   enable = true;
+  #
+  #   # Apple Silicon Only: Also install Homebrew under the default Intel prefix for Rosetta 2
+  #   enableRosetta = lib.hasPrefix "aarch64" system;
+  #
+  #   # User owning the Homebrew prefix
+  #   user = config.my.name;
+  #
+  #   # Automatically migrate existing Homebrew installations
+  #   autoMigrate = true;
+  # };
   # The apps installed by homebrew are not managed by nix, and not reproducible!
   # But on macOS, homebrew has a much larger selection of apps than nixpkgs, especially for GUI apps!
   homebrew = {
@@ -71,7 +93,6 @@
     };
 
     taps = [
-      "homebrew/services"
       "benjiwolff/neovim-nightly"
       "hashicorp/tap"
       "nikitabobko/tap" # aerospace - an i3-like tiling window manager for macOS
