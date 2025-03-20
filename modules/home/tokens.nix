@@ -15,7 +15,7 @@ in {
         age.secrets = {
           github-copilot =
             {
-              rekeyFile = ./github-copilot.age;
+              rekeyFile = ./secrets/github-copilot.age;
               path = "${config.my.home}/.config/github-copilot/apps.json";
             }
             // user_readable;
@@ -27,7 +27,7 @@ in {
         age.secrets = {
           supermaven =
             {
-              rekeyFile = ./supermaven.age;
+              rekeyFile = ./secrets/supermaven.age;
               path = "${config.my.home}/.supermaven/config.json";
             }
             // user_readable;
@@ -39,7 +39,7 @@ in {
         age.secrets = {
           codeium =
             {
-              rekeyFile = ./codeium.age;
+              rekeyFile = ./secrets/codeium.age;
               path = "${config.my.home}/.cache/nvim/codeium/config.json";
             }
             // user_readable;
