@@ -1,25 +1,44 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}: let
+  inherit (lib) optionals;
+  isGui = config.my.desktop.enable;
+  # isServer = config.my.machine.machine == "server";
+in {
+  environment.systemPackages = optionals isGui [
+    pkgs.networkmanagerapplet
+  ];
+
   networking.networkmanager = {
     enable = true;
-    plugins = with pkgs; [
-      networkmanager-openconnect
-      networkmanager-l2tp
+    plugins = optionals isGui [pkgs.networkmanager-openvpn];
+    dns = "systemd-resolved";
+    unmanaged = [
+      "interface-name:tailscale*"
+      "interface-name:br-*"
+      "interface-name:rndis*"
+      "interface-name:docker*"
+      "interface-name:virbr*"
+      "interface-name:vboxnet*"
+      "interface-name:waydroid*"
+      "type:bridge"
     ];
-  };
 
-  programs.nm-applet.enable = true;
+    wifi = {
+      backend = config.my.networking.wirelessBackend;
 
-  # Network discovery, mDNS, DNS-SD
-  # With this enabled, you can access your machine at <hostname>.local
-  # it's more convenient than using IP addresses
-  # https://avahi.org/
-  services.avahi = {
-    enable = true;
-    nssmdns4 = true;
-    publish = {
-      enable = true;
-      domain = true;
-      userServices = true;
+      powersave = true;
+
+      # MAC address randomization of a Wi-Fi device during scanning
+      # This is a privacy feature that prevents tracking of devices by their MAC address
+      scanRandMacAddress = true;
     };
+
+    # ethernet.macAddress = mkIf isServer "random";
   };
+
+  programs.nm-applet.enable = isGui;
 }
