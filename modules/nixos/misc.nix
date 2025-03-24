@@ -21,15 +21,6 @@
     };
   };
 
-  users = {
-    # set user's default shell system-wide
-    defaultUserShell = pkgs.bashInteractive;
-    users.${config.my.name}.shell = pkgs.fish;
-  };
-
-  # fix for `sudo xxx` in kitty/wezterm and other modern terminal emulators
-  security.sudo.keepTerminfo = true;
-
   services = {
     gvfs.enable = true; # Mount, trash, and other functionalities
     tumbler.enable = true; # Thumbnail support for images

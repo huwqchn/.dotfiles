@@ -18,6 +18,9 @@ in {
       # extraRules you will see below
       wheelNeedsPassword = mkDefault false;
 
+      # fix for `sudo xxx` in kitty/wezterm and other modern terminal emulators
+      keepTerminfo = true;
+
       # only allow members of the wheel group to execute sudo
       # by setting the executable’s permissions accordingly
       execWheelOnly = mkForce true;
