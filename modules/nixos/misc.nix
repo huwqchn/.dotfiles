@@ -33,8 +33,6 @@
     # ssh.startAgent = true;
     # dconf is a low-level configuration system.
     dconf.enable = true;
-    # fish
-    fish.enable = true;
 
     # thunar file manager(part of xfce) related options
     thunar = {
@@ -46,13 +44,13 @@
     };
 
     # nix cli helper
-    nh = {
-      enable = true;
+    # nh = {
+    #   enable = true;
       # clean = {
       #   enable = true;
       #   extraArgs = "--keep-since 3d --key 5";
       # };
-      flake = "/home/${config.my.name}/.dotfiles";
-    };
+      # flake = "/home/${config.my.name}/.dotfiles";
+    # };
   };
 }
