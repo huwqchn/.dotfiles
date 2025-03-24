@@ -8,6 +8,8 @@ in {
       tumbler.enable = true;
       # Mount, trash, and other functionalities
       gvfs.enable = true;
+      # storage daemon required for udiskie auto-mount
+      udisks2.enable = true;
     };
 
     programs = {
