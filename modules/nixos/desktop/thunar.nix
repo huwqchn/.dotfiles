@@ -3,6 +3,8 @@
   cfg = config.my.desktop;
 in {
   config = mkIf cfg.enable {
+    # Thumbnail support for images
+    services.tumbler.enable = true;
     programs = {
       # thunar file manager(part of xfce) related options
       thunar = {
