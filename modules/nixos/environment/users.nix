@@ -39,7 +39,7 @@ in {
             "adbusers"
             "libvirtd"
           ];
-        shell = pkgs.fish;
+        shell = pkgs.${config.my.shell};
       };
       # root's ssh key are mainly used for remote deployment
       root = {
