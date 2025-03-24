@@ -46,6 +46,15 @@ in {
       {LIBVA_DRIVER_NAME = "nvidia";}
       (mkIf isWayland {
         WLR_DRM_DEVICES = mkDefault "/dev/dri/card1";
+        LIBVA_DRIVER_NAME = "nvidia";
+        WLR_NO_HARDWARE_CURSORS = "1";
+
+        # May cause Firefox crashes
+        GBM_BACKEND = "nvidia-drm";
+
+        # If you face problems with Discord windows not displaying or screen
+        # sharing not working in Zoom, remove or comment this:
+        __GLX_VENDOR_LIBRARY_NAME = "nvidia";
       })
     ];
 
