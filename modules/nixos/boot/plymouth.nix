@@ -3,21 +3,37 @@
   pkgs,
   config,
   ...
-}:
-let
+}: let
   inherit (lib.meta) getExe';
   inherit (lib.modules) mkIf;
-  inherit (lib.options) mkEnableOption;
+  inherit (lib.options) mkEnableOption mkOption types;
 
   cfg = config.my.plymouth;
-in
-{
-  options.my.plymouth.enable = mkEnableOption "plymouth boot splash" // {
-    default = true;
+in {
+  options.my.plymouth = {
+    enable =
+      mkEnableOption "plymouth boot splash"
+      // {
+        default = true;
+      };
+
+    playFullAnimation = mkEnableOption "Wait for the boot animation to finish playing before opening login shell.";
+    themesPackage = mkOption {
+      default = pkgs.my.plymouth-themes.override {inherit (cfg) themeName;};
+      type = types.package;
+    };
+    themeName = mkOption {
+      type = types.str;
+      default = "abstract_ring_alt";
+    };
   };
 
   config = mkIf cfg.enable {
-    boot.plymouth.enable = true;
+    boot.plymouth = {
+      enable = true;
+      themePackage = [cfg.themesPackage];
+      theme = cfg.themeName;
+    };
 
     # make plymouth work with sleep
     powerManagement = {
