@@ -3,13 +3,6 @@
   pkgs,
   ...
 }: {
-  environment = {
-    variables = {
-      # fix kitty/wezterm not able to input Chinese
-      # https://github.com/kovidgoyal/kitty/issues/403
-      GLFW_IM_MODULE = "ibus";
-    };
-  };
 
   services = {
     gvfs.enable = true; # Mount, trash, and other functionalities
