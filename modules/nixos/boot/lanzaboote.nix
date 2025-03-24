@@ -4,10 +4,9 @@
   lib,
   config,
   ...
-}:
-with lib; let
-  inherit (config.my) security;
-  secureBoot = security.enable && security.boot;
+}: let
+  inherit (lib) mkIf mkEnableOption;
+  cfg = config.my.boot;
 in {
   # How to enter setup mode - msi motherboard
   ## 1. enter BIOS via [Del] Key
@@ -21,7 +20,9 @@ in {
     inputs.lanzaboote.nixosModules.lanzaboote
   ];
 
-  config = mkIf secureBoot {
+  options.my.boot.secure = mkEnableOption "secure boot";
+
+  config = mkIf cfg.secure {
     environment.systemPackages = [
       # For debugging and troubleshooting Secure Boot.
       pkgs.sbctl
@@ -32,6 +33,9 @@ in {
     # generated at installation time. So we force it to false
     # for now.
     boot.loader.systemd-boot.enable = lib.mkForce false;
+
+    # boot specification logs
+    boot.bootspec.enable = true;
 
     boot.lanzaboote = {
       enable = true;

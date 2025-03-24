@@ -8,9 +8,9 @@
   inherit (lib.modules) mkIf;
   inherit (lib.options) mkEnableOption mkOption types;
 
-  cfg = config.my.plymouth;
+  cfg = config.my.boot.plymouth;
 in {
-  options.my.plymouth = {
+  options.my.boot.plymouth = {
     enable =
       mkEnableOption "plymouth boot splash"
       // {
