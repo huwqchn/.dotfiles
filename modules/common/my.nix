@@ -113,26 +113,6 @@ in {
         default = null;
         description = "The CPU of the system";
       };
-      hasTPM =
-        mkEnableOption "Whether the system has TPM"
-        // {
-          default = true;
-        };
-      hasBluetooth =
-        mkEnableOption "Whether the system has Bluetooth"
-        // {
-          default = true;
-        };
-      hasWifi =
-        mkEnableOption "Whether the system has WiFi"
-        // {
-          default = true;
-        };
-      hasSound =
-        mkEnableOption "Whether the system has sound"
-        // {
-          default = true;
-        };
       monitors = mkOption {
         type = listOf str;
         default = [];
