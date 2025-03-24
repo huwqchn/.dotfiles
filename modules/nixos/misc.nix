@@ -4,11 +4,6 @@
   ...
 }: {
   environment = {
-    # add user's shell into /etc/shells
-    shells = with pkgs; [
-      bashInteractive
-      fish
-    ];
     # List packages installed in system profile. To search, run:
     # $ nix search wget
     systemPackages = with pkgs; [
@@ -42,15 +37,5 @@
         thunar-volman
       ];
     };
-
-    # nix cli helper
-    # nh = {
-    #   enable = true;
-      # clean = {
-      #   enable = true;
-      #   extraArgs = "--keep-since 3d --key 5";
-      # };
-      # flake = "/home/${config.my.name}/.dotfiles";
-    # };
   };
 }
