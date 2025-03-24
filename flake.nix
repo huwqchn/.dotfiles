@@ -20,8 +20,6 @@
   inputs = {
     # Official NixOS package source, using nixos's unstable branch by default
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    # nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.05";
-    # nixpkgs-small.url = "github:nixos/nixpkgs/nixos-unstable-small";
     systems = {url = "github:nix-systems/default";};
     flake-compat = {url = "github:edolstra/flake-compat";};
     flake-parts = {
