@@ -4,12 +4,13 @@
   self,
   ...
 }: let
-  inherit (config.my) name home shell;
+  inherit (config.my) name home;
   user_readable = {
     symlink = false;
     owner = config.my.name;
     mode = "0500";
   };
+  shell = builtins.getAttr config.my.shell pkgs;
 in {
   environment = {
     # add user's shell into /etc/shells
@@ -19,16 +20,10 @@ in {
     ];
   };
   # Define a user account.
-  users = {
-    # set user's default shell system-wide
-    defaultUserShell = pkgs.bashInteractive;
-    users."${name}" = {
-      inherit home;
-      description = name;
-      shell =
-        builtins.getAttr shell
-        pkgs; # https://github.com/LnL7/nix-darwin/issues/1237 still have a bug
-    };
+  users.users."${name}" = {
+    # https://github.com/LnL7/nix-darwin/issues/1237 still have a bug
+    inherit home shell;
+    description = name;
   };
 
   age.secrets = {
