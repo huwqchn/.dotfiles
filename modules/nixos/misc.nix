@@ -4,11 +4,6 @@
   ...
 }: {
   environment = {
-    # List packages installed in system profile. To search, run:
-    # $ nix search wget
-    systemPackages = with pkgs; [
-      gnumake
-    ];
     variables = {
       # fix kitty/wezterm not able to input Chinese
       # https://github.com/kovidgoyal/kitty/issues/403
