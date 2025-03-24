@@ -1,4 +1,9 @@
-{ config, lib, pkgs, ... }: let
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}: let
   inherit (lib) mkIf;
   cfg = config.my.desktop;
 in {
@@ -7,5 +12,4 @@ in {
       veracrypt # a free disk encryption software
     ];
   };
-
 }
