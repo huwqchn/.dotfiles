@@ -2,7 +2,6 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    gnumake
     # archives
     zip
     xz
@@ -21,8 +20,6 @@
     iperf3
     dnsutils # `dig` + `nslookup`
     ldns # replacement of `dig`, it provide the command `drill`
-    wget
-    curl
     aria2 # A lightweight multi-protocol & multi-source command-line download utility
     socat # replacement of openbsd-netcat
     nmap # A utility for network discovery and security auditing
@@ -60,6 +57,5 @@
     dmidecode # a tool that reads information about your system's hardware from the BIOS according to the SMBIOS/DMI standard
     parted
     sbctl # a tool to control the system behavior
-    veracrypt # a free disk encryption software
   ];
 }
