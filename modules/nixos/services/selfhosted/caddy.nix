@@ -6,9 +6,9 @@
 }:
 with lib; let
   inherit (config) my;
-  cfg = config.my.caddy;
+  cfg = config.my.services.caddy;
 in {
-  options.my.caddy = {
+  options.my.services.caddy = {
     enable = mkEnableOption "Enable Caddy";
   };
 

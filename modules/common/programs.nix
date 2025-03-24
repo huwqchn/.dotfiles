@@ -1,8 +1,9 @@
-{config, ... }: {
+{config, ...}: let
+  inherit (config.my) shell;
+in {
   programs = {
-    fish.enable = config.shell == "fish";
-    bash.enable = config.shell == "bash";
-    zsh.enable = config.shell == "zsh";
-    nushell.enable = config.shell == "nushell";
-  }
+    fish.enable = shell == "fish";
+    zsh.enable = shell == "zsh";
+    # nushell.enable = shell == "nushell";
+  };
 }

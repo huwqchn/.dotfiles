@@ -4,28 +4,37 @@
   self,
   ...
 }: let
-  userName = config.my.name;
-  myShell = config.my.shell;
-  inherit (config.my) home;
+  inherit (config.my) name home shell;
   user_readable = {
     symlink = false;
     owner = config.my.name;
     mode = "0500";
   };
 in {
+  environment = {
+    # add user's shell into /etc/shells
+    shells = with pkgs; [
+      bashInteractive
+      shell
+    ];
+  };
   # Define a user account.
-  users.users."${userName}" = {
-    inherit home;
-    description = userName;
-    shell =
-      builtins.getAttr myShell
-      pkgs; # https://github.com/LnL7/nix-darwin/issues/1237 still have a bug
+  users = {
+    # set user's default shell system-wide
+    defaultUserShell = pkgs.bashInteractive;
+    users."${name}" = {
+      inherit home;
+      description = name;
+      shell =
+        builtins.getAttr shell
+        pkgs; # https://github.com/LnL7/nix-darwin/issues/1237 still have a bug
+    };
   };
 
   age.secrets = {
     my-ssh-key =
       {
-        rekeyFile = "${self}/secrets/${userName}/ssh-key.age";
+        rekeyFile = "${self}/secrets/${name}/ssh-key.age";
         path = "${home}/.ssh/johnson-hu-ssh-key";
       }
       // user_readable;

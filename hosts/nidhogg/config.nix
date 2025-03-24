@@ -14,7 +14,7 @@
 
     # Generic WSL settings
     wslConf = {
-      automount.root = "/mnt";
+      # automount.root = "/mnt";
       network.generateResolvConf = false;
     };
   };
