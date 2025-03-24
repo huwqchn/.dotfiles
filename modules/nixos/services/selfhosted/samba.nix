@@ -5,9 +5,9 @@
   ...
 }:
 with lib; let
-  cfg = config.my.samba;
+  cfg = config.my.services.samba;
 in {
-  options.my.samba = {
+  options.my.services.samba = {
     enable = mkEnableOption "Enable Samba";
   };
   config = mkIf cfg.enable {

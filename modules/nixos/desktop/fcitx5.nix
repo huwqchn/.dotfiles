@@ -3,17 +3,16 @@
   lib,
   pkgs,
   ...
-}:
-
-let
+}: let
   inherit (lib) mkEnableOption mkIf mkDefault;
   cfg = config.my.desktop.fcitx5;
-in
-{
+in {
   options.my.desktop.fcitx5 = {
-    enable = mkEnableOption "fcitx5" // {
-      default = config.my.desktop.enable;
-    };
+    enable =
+      mkEnableOption "fcitx5"
+      // {
+        default = config.my.desktop.enable;
+      };
   };
 
   config = mkIf cfg.enable {
@@ -25,8 +24,8 @@ in
           qt6Packages.fcitx5-chinese-addons
           fcitx5-fluent
         ];
-        plasm6Support = true;
-        waylandFronted = mkDefault true;
+        plasma6Support = true;
+        waylandFrontend = mkDefault true;
       };
     };
 

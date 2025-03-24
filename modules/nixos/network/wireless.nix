@@ -4,11 +4,12 @@
   ...
 }: let
   cfg = config.my.networking.wirelessBackend;
+  inherit (lib) mkOption types;
 in {
   options.my.networking = {
     # use wpa_supplicant or iwd, use wpa_supplicant until iwd is stable
-    wirelessBackend = {
-      type = lib.types.enum [
+    wirelessBackend = mkOption {
+      type = types.enum [
         "wpa_supplicant"
         "iwd"
       ];

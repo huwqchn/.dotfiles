@@ -4,10 +4,10 @@
   ...
 }:
 with lib; let
-  cfg = config.my.onedrive;
+  cfg = config.my.services.onedrive;
   isPersist = config.my.machine.persist && cfg.enable;
 in {
-  options.my.onedrive = {
+  options.my.services.onedrive = {
     enable = mkEnableOption "Enable OneDrive config";
   };
 

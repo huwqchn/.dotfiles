@@ -4,7 +4,7 @@
   ...
 }:
 with lib; let
-  cfg = config.my.power;
+  cfg = config.my.services.power;
 in {
   options.my.services.power = {
     enable = mkEnableOption "Enable power management";
