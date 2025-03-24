@@ -1,4 +1,8 @@
-{ lib, config, ... }: let
+{
+  lib,
+  config,
+  ...
+}: let
   inherit (lib) mkIf;
   inherit (config.my.machine) isHidpi;
 in {
