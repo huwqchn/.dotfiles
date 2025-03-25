@@ -3,8 +3,8 @@
   pkgs,
   lib,
   ...
-}:
-with lib; let
+}: let
+  inherit (lib) mkEnableOption mkIf;
   cfg = config.my.security.usbguard;
 in {
   options.my.security.usbguard = {

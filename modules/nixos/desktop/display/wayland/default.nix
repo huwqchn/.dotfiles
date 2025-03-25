@@ -7,11 +7,14 @@
   inherit (lib.meta) getExe;
   inherit (lib.modules) mkIf mkDefault;
   inherit (lib.strings) optionalString;
+  inherit (lib.my) scanPaths;
 
-  inherit (lib.my) shell;
+  inherit (config.my) shell;
   isHyprland = config.my.desktop.default == "hyprland";
   cfg = config.my.desktop.wayland;
 in {
+  imports = scanPaths ./.;
+
   config = mkIf cfg.enable {
     services.xserver.enable = mkDefault false;
 
