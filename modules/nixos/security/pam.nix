@@ -32,15 +32,21 @@ with lib; {
         };
         fprintAuth = config.services.fprintd.enable;
         enableGnomeKeyring = mkDefault config.my.desktop.enable;
+        gnupg = {
+          enable = true;
+          noAutostart = true;
+          storeOnly = true;
+        };
       in {
         # Allow screen lockers such as Swaylock or gtklock) to also unlock the screen.
         swaylock.text = "auth include login";
         gtklock.text = "auth include login";
         hyprlock.text = "auth include login";
         greetd.text = "auto include login";
+        tuigreet.text = "auto include login";
 
         login = {
-          inherit ttyAudit fprintAuth enableGnomeKeyring;
+          inherit ttyAudit fprintAuth gnupg enableGnomeKeyring;
           setLoginUid = true;
         };
 

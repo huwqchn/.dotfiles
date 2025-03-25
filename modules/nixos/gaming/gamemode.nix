@@ -8,7 +8,7 @@
   inherit (lib.options) mkEnableOption;
   inherit (lib.strings) optionalString makeBinPath;
 
-  isHyprland = config.my.desktop.defaultWindowManager == "hyprland";
+  isHyprland = config.my.desktop.default == "hyprland";
 
   programs = makeBinPath (builtins.attrValues {inherit (pkgs) hyprland coreutils systemd;});
 

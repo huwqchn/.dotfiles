@@ -45,7 +45,7 @@ in {
       xorg = {
         enable = mkEnableOption "Xorg";
       };
-      defaultWindowManager = mkOption {
+      default = mkOption {
         type = types.enum ["i3" "bspwm" "sway" "hyprland"];
         default = "hyprland";
         description = "The default window manager";
