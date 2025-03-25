@@ -28,6 +28,9 @@ in {
           fcitx5-configtool #if having issues with qt compatibility, run fcitx5-config-qt
           fcitx5-chinese-addons
           fcitx5-mozc
+          fcitx5-pinyin-moegirl
+          fcitx5-pinyin-zhwiki
+          libsForQt5.fcitx5-qt
         ];
         plasma6Support = true;
         waylandFrontend = mkDefault true;
