@@ -102,7 +102,7 @@
     // (invertListToAttrs "pack_4" pack_4);
   themePath = "${availableThemes.${themeName}}/${themeName}";
 in
-  stdenv.mkDerivation rec {
+  stdenv.mkDerivation {
     pname = "adi1090x-plymouth-${themeName}";
     version = "0.0.1";
 
