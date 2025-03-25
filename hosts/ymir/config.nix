@@ -1,7 +1,6 @@
 {
   imports = [
     ./machine.nix
-    ./boot.nix
   ];
 
   # my custom modules
