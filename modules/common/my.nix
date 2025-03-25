@@ -57,7 +57,6 @@ in {
         // {
           default = true;
         };
-      boot = mkEnableOption "security boot";
     };
     theme = mkOption {
       type = types.nullOr (types.enum ["tokyonight" "catppuccin" "auto"]);
