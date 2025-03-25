@@ -184,7 +184,8 @@ in {
         on-window-detected = [
           {
             "if" = {
-              app-id = "app.zen-browser.zen";
+              app-id = "org.mozilla.com.zen.browser";
+              window-title-regex-substring = "picture-in-picture";
             };
             run = "move-node-to-workspace 1";
           }
