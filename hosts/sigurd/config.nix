@@ -2,7 +2,6 @@
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
-    ./boot.nix
   ];
 
   # my custom modules
