@@ -120,6 +120,7 @@ in {
       # for development
       "qt@5"
       "openssh"
+      "squirrel"
     ];
 
     # `brew install --cask`
