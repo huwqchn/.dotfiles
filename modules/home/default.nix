@@ -1,13 +1,15 @@
 {
   self,
+  self',
   inputs,
   inputs',
   pkgs,
+  pkgs',
   lib,
   config,
   ...
 }: let
-  extraSpecialArgs = {inherit self inputs inputs' pkgs lib;};
+  extraSpecialArgs = {inherit self self' inputs inputs' pkgs pkgs' lib;};
 in {
   imports = [
     (lib.mkAliasOptionModule ["hm"] ["home-manager" "users" config.my.name])

@@ -120,7 +120,6 @@ in {
       # for development
       "qt@5"
       "openssh"
-      "squirrel"
     ];
 
     # `brew install --cask`
@@ -155,6 +154,7 @@ in {
       # "karabiner-elements" # keyboard remap
       "yubico-authenticator" # for yubikey
       "veracrypt" # disk encryption
+      "squirrel"
     ];
   };
 }

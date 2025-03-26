@@ -149,7 +149,7 @@ in rec {
       mkArgs = system:
         withSystem system (args: {
           inherit self inputs lib;
-          inherit (args) self' inupts' pkgs;
+          inherit (args) self' inupts' pkgs pkgs';
         });
     in {
       inherit (host) output;

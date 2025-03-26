@@ -2,6 +2,7 @@
   config,
   lib,
   pkgs,
+  pkgs',
   ...
 }: let
   inherit
@@ -40,7 +41,7 @@ in {
 
   config = mkIf cfg.enable {
     home.file.${cfg.dir} = {
-      source = pkgs.my.rime-ice;
+      source = pkgs'.rime-ice;
       recursive = true;
       onChange = cfg.deploy;
     };
