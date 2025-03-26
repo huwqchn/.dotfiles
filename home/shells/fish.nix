@@ -63,11 +63,6 @@ in {
 
         abbr -a --position anywhere --set-cursor -- -h "-h 2>&1 | bat --plain --language=help"
       '';
-      interactiveShellInit = ''
-        if not set -q TMUX
-            exec tmux attach || tmux new
-        end
-      '';
       shellAbbrs =
         {
           c = "clear";
