@@ -19,7 +19,7 @@ in {
 
     playFullAnimation = mkEnableOption "Wait for the boot animation to finish playing before opening login shell.";
     themesPackage = mkOption {
-      default = pkgs.my.plymouth-themes.override {inherit (cfg) themeName;};
+      default = pkgs.plymouth-themes.override {inherit (cfg) themeName;};
       type = types.package;
     };
     themeName = mkOption {
