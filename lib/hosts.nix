@@ -87,7 +87,7 @@ in rec {
     },
     specialArgs,
   }: let
-    inherit (specialArgs) inputs;
+    inherit (specialArgs) self inputs lib withSystem;
     getHostBuilder = output: let
       builders = {
         homeConfigurations =
@@ -113,7 +113,6 @@ in rec {
       host =
         shallowMerge {
           system = "x86_64-linux";
-          inherit specialArgs;
           modules = [
             ({options, ...}: {
               # 'mkMerge` to separate out each part into its own module
@@ -147,6 +146,11 @@ in rec {
       isNixosOutput = isNixos host.output;
       isHomeOutput = isHome host.output;
       isNixOnDroidOutput = isNixOnDroid host.output;
+      mkArgs = system:
+        withSystem system (args: {
+          inherit self inputs lib;
+          inherit (args) self' inupts' pkgs;
+        });
     in {
       inherit (host) output;
       config =
@@ -174,10 +178,10 @@ in rec {
             ]);
         }
         // (optionalAttrs (isDarwinOutput || isNixosOutput) {
-          inherit (host) specialArgs;
+          specialArgs = mkArgs host.system;
         })
         // (optionalAttrs (isHomeOutput || isNixOnDroidOutput) {
-          extraSpecialArgs = host.specialArgs;
+          extraSpecialArgs = mkArgs host.system;
         });
       builder = getHostBuilder host.output;
     };
