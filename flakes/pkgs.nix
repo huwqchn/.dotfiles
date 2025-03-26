@@ -42,6 +42,7 @@
     #       inherit ((getSystem system).allModuleArgs) pkgs;
     #       modules = [ ];
     #     };
+    # more details see https://discourse.nixos.org/t/flake-parts-overlays-not-working/50435/10
 
     _module.args = {
       inherit pkgs;
