@@ -26,7 +26,7 @@ in {
       enableBashIntegration = true;
       enableZshIntegration = true;
       enableFishIntegration = true;
-      enableNushellIntegration = true;
+      # enableNushellIntegration = true;
       plugins = {
         chmod = "${yazi-plugins}/chmod.yazi";
         smart-enter = "${yazi-plugins}/smart-enter.yazi";

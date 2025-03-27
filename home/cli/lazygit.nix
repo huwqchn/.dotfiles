@@ -12,7 +12,7 @@ in {
   };
   config = mkIf cfg.enable {
     home.shellAliases = shellAliases;
-    programs.nushell.shellAliases = shellAliases;
+    # programs.nushell.shellAliases = shellAliases;
     programs.lazygit = {
       enable = true;
       settings = {

@@ -13,7 +13,7 @@ in {
   };
   config = mkIf cfg.enable {
     home = {inherit shellAliases;};
-    programs.nushell = {inherit shellAliases;};
+    # programs.nushell = {inherit shellAliases;};
     programs.fastfetch = {
       enable = true;
       settings = {
