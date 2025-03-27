@@ -7,6 +7,7 @@
   username = config.my.name;
   homeDirectory = config.my.home;
   inherit (config.my.machine) persist;
+  inherit (lib) mkForce mkDefault;
 in {
   imports = [
     inputs.impermanence.homeManagerModules.impermanence
@@ -43,7 +44,7 @@ in {
           allowOther = true;
         };
       }
-      else lib.mkForce {};
+      else mkForce {};
 
     # This value determines the Home Manager release that your
     # configuration is compatible with. This helps avoid breakage
@@ -53,7 +54,7 @@ in {
     # You can update Home Manager without changing this value. See
     # the Home Manager release notes for a list of state version
     # changes in each release.
-    stateVersion = lib.mkDefault "24.11";
+    stateVersion = mkDefault "24.11";
   };
 
   programs.home-manager.enable = true;
