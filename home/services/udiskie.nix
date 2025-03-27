@@ -4,9 +4,9 @@
   ...
 }: let
   inherit (lib) mkIf mkEnableOption;
-  cfg = config.my.udiskie;
+  cfg = config.my.services.udiskie;
 in {
-  options.my.udiskie = {enable = mkEnableOption "udiskie";};
+  options.my.services.udiskie = {enable = mkEnableOption "udiskie";};
 
   config = mkIf cfg.enable {
     # auto mount usb drives

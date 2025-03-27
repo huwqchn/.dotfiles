@@ -4,9 +4,9 @@
   ...
 }: let
   inherit (lib) mkIf mkEnableOption;
-  cfg = config.my.avizo;
+  cfg = config.my.services.avizo;
 in {
-  options.my.avizo = {enable = mkEnableOption "avizo";};
+  options.my.services.avizo = {enable = mkEnableOption "avizo";};
   config = mkIf cfg.enable {
     services.avizo = {
       enable = false;
