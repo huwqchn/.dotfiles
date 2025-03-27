@@ -1,1 +1,4 @@
-{modules = [./config.nix];}
+{
+  modules = [./config.nix];
+  deployable = true;
+}
