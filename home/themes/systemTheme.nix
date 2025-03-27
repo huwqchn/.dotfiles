@@ -4,7 +4,7 @@
   lib,
   ...
 }: let
-  inherit (lib) mkIf;
+  inherit (lib) mkIf mkForce;
   inherit (pkgs.stdenv) isLinux;
   inherit (config.my) desktop;
 in {
@@ -48,9 +48,9 @@ in {
       gtk2.configLocation = "${config.xdg.configHome}/gtk-2.0/gtkrc";
 
       font = {
-        name = lib.mkForce "Cantarell";
-        package = lib.mkForce pkgs.cantarell-fonts;
-        size = lib.mkForce 11;
+        name = mkForce "Cantarell";
+        package = mkForce pkgs.cantarell-fonts;
+        size = mkForce 11;
       };
 
       iconTheme = {
@@ -59,8 +59,8 @@ in {
       };
 
       theme = {
-        name = lib.mkForce "Tokyonight-Dark-BL";
-        package = lib.mkForce pkgs.tokyonight-gtk-theme;
+        name = mkForce "Tokyonight-Dark-BL";
+        package = mkForce pkgs.tokyonight-gtk-theme;
       };
 
       # cursorTheme = {
