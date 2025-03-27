@@ -19,7 +19,7 @@ in {
 
   config = mkMerge [
     (mkIf cfg.enable {
-      user.packages = [
+      hm.home.packages = [
         nodePkg
         pkgs.yarn
       ];
@@ -43,7 +43,7 @@ in {
         NODE_REPL_HISTORY = "$XDG_CACHE_HOME/node/repl_history";
       };
 
-      home.configFile."npm/config".text = ''
+      hm.home.configFile."npm/config".text = ''
         cache=''${XDG_CACHE_HOME}/npm
         prefix=''${XDG_DATA_HOME}/npm
         tmp=''${XDG_RUNTIME_DIR}/npm

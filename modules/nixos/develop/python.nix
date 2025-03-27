@@ -19,7 +19,7 @@ in {
 
   config = mkMerge [
     (mkIf cfg.enable {
-      user.packages = with pkgs; [
+      hm.home.packages = with pkgs; [
         python3
         python3Packages.pip
         python3Packages.ipython

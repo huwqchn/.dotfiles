@@ -22,7 +22,7 @@ in {
 
   config = mkMerge [
     (mkIf cfg.enable {
-      user.packages = [pkgs.rustup];
+      hm.home.packages = [pkgs.rustup];
       environment.shellAliases = {
         rs = "rustc";
         rsp = "rustup";

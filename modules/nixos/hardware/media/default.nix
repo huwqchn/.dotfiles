@@ -1,6 +1,3 @@
-{
-  imports = [
-    ./sound
-    ./video.nix
-  ];
+{lib, ...}: {
+  imports = lib.my.scanPaths ./.;
 }
