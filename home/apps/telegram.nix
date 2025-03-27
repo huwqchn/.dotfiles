@@ -5,16 +5,20 @@
   ...
 }: let
   inherit (lib) mkIf mkEnableOption;
-  cfg = config.my.apps._1password;
+  cfg = config.my.apps.telegram;
 in {
-  options.my.apps._1password = {
+  options.my.apps.telegram = {
     enable =
-      mkEnableOption "1Password"
+      mkEnableOption "Telegram"
       // {
         default = config.my.apps.enable;
       };
   };
+
   config = mkIf cfg.enable {
-    home.packages = with pkgs; [_1password-cli _1password-gui];
+    home.packages = with pkgs; [
+      # instant messaging
+      telegram-desktop
+    ];
   };
 }
