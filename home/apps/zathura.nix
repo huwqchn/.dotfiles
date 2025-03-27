@@ -3,9 +3,17 @@
   lib,
   ...
 }: let
-  inherit (lib) mkIf;
-  cfg = config.my.apps;
+  inherit (lib) mkIf mkEnableOption;
+  cfg = config.my.apps.zathura;
 in {
+  options.my.apps.zathura = {
+    enable =
+      mkEnableOption "Zathura"
+      // {
+        default = config.my.apps.enable;
+      };
+  };
+
   config = mkIf cfg.enable {
     programs.zathura = {
       enable = true;
