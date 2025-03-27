@@ -9,7 +9,11 @@
   inherit (config.home) homeDirectory;
 in {
   options.my.apps.obs = {
-    enable = mkEnableOption "OBS";
+    enable =
+      mkEnableOption "OBS"
+      // {
+        default = config.my.apps.enable;
+      };
   };
 
   config = mkIf cfg.enable {

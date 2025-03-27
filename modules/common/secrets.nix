@@ -16,7 +16,7 @@ in {
     hostPubkey = host_path + "/host.pub";
     storageMode = "local";
     generatedSecretsDir = ../../. + "/secrets/generated/${config.networking.hostName}";
-    localStorageDir = ../.. + "/secrets/rekeyed/${config.networking.hostName}";
+    localStorageDir = ../../. + "/secrets/rekeyed/${config.networking.hostName}";
   };
   system.activationScripts = lib.mkIf (config.age.secrets != {}) {
     removeAgenixLink.text = "[[ ! -L /run/agenix ]] && [[ -d /run/agenix ]] && rm -rf /run/agenix";

@@ -12,7 +12,7 @@ in {
     enable =
       mkEnableOption "VLC"
       // {
-        default = config.apps.enable;
+        default = config.my.apps.enable;
       };
   };
 
