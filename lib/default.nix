@@ -7,6 +7,7 @@ in
     (core.importAndMerge [
         ./paths.nix
         ./hosts.nix
+        ./modules.nix
       ]
       arg)
   ]
