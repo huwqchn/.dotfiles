@@ -1,8 +1,4 @@
-{
-  inputs,
-  self,
-  ...
-}: {
+{inputs, ...}: {
   imports = [
     inputs.flake-parts.flakeModules.easyOverlay
   ];
@@ -10,21 +6,10 @@
   perSystem = {
     lib,
     config,
-    system,
+    pkgs,
     ...
   }: let
     inherit (lib.filesystem) packagesFromDirectoryRecursive;
-    pkgs = import inputs.nixpkgs {
-      inherit system;
-      overlays = [
-        self.overlays.default
-      ];
-      config = {
-        allowAliases = true;
-        allowUnfree = true;
-        allowUnsupportedSystem = true;
-      };
-    };
   in {
     # two ways to use flake-parts pkgs
     # 1. use withSystem
@@ -44,9 +29,6 @@
     #     };
     # more details see https://discourse.nixos.org/t/flake-parts-overlays-not-working/50435/10
 
-    _module.args = {
-      inherit pkgs;
-    };
     packages = packagesFromDirectoryRecursive {
       inherit (pkgs) callPackage;
       directory = ../pkgs;
