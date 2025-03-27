@@ -49,7 +49,7 @@
     };
     packages = packagesFromDirectoryRecursive {
       inherit (pkgs) callPackage;
-      directory = ../packages;
+      directory = ../pkgs;
     };
     overlayAttrs = config.packages;
   };
