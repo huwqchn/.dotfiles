@@ -1,6 +1,7 @@
 {
   lib,
   config,
+  pkgs,
   ...
 }: let
   inherit (lib) mkEnableOption;
@@ -11,7 +12,7 @@ in {
     enable =
       mkEnableOption "my apps"
       // {
-        default = config.my.desktop.enable;
+        default = config.my.desktop.enable && pkgs.stdenv.isLinux;
       };
   };
 }

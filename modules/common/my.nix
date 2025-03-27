@@ -64,7 +64,7 @@ in {
       description = "The theme to use";
     };
     shell = mkOption {
-      type = types.enum ["bash" "fish" "zsh" ];
+      type = types.enum ["bash" "fish" "zsh"];
       default = "fish";
       description = "The shell to use";
     };
