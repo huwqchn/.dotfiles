@@ -22,7 +22,7 @@
     package
     ;
 
-  cfg = config.my.system.boot;
+  cfg = config.my.boot;
 in {
   imports = lib.my.scanPaths ./.;
 

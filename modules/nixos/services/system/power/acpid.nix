@@ -14,7 +14,7 @@ in {
     # handle ACPI events
     services.acpid.enable = true;
 
-    environment.packages = with pkgs; [
+    environment.systemPackages = with pkgs; [
       acpi
       powertop
     ];

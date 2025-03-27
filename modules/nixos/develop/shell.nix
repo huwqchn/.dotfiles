@@ -13,14 +13,14 @@
   cfg = config.my.develop.shell;
   inherit (lib) mkEnableOption mkMerge mkIf;
 in {
-  options.my.develop.rust = {
+  options.my.develop.shell = {
     enable = mkEnableOption "Shell development environment";
     xdg.enable = mkEnableOption "Shell XDG environment variables";
   };
 
   config = mkMerge [
     (mkIf cfg.enable {
-      user.packages = with pkgs; [
+      hm.home.packages = with pkgs; [
         shellcheck
       ];
     })

@@ -15,9 +15,6 @@ in {
       # gnome's keyring manager
       seahorse.enable = true;
 
-      # networkmanager tray uility, pretty useful actually
-      nm-applet.enable = config.programs.waybar.enable;
-
       # help manage android devices via command line
       adb.enable = true;
 

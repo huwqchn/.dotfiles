@@ -5,8 +5,7 @@
   ...
 }: let
   inherit (lib.meta) getExe';
-  inherit (lib.modules) mkIf;
-  inherit (lib.options) mkEnableOption mkOption types;
+  inherit (lib) mkIf mkEnableOption mkOption types;
 
   cfg = config.my.boot.plymouth;
 in {
@@ -31,7 +30,7 @@ in {
   config = mkIf cfg.enable {
     boot.plymouth = {
       enable = true;
-      themePackage = [cfg.themesPackage];
+      themePackages = [cfg.themesPackage];
       theme = cfg.themeName;
     };
 

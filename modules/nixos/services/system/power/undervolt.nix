@@ -10,7 +10,7 @@ in {
   config = mkIf (machine.type == "laptop") {
     # temperature target on battery
     services.undervolt = {
-      enable = config.garden.device.cpu == "intel";
+      enable = machine.cpu == "intel";
       tempBat = 65; # deg C
       package = pkgs.undervolt;
     };

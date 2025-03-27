@@ -81,7 +81,7 @@ in {
 
         prime.offload = {
           enable = isHybrid;
-          enableOffload = isHybrid;
+          enableOffloadCmd = isHybrid;
         };
 
         powerManagement = {

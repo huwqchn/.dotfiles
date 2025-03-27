@@ -26,7 +26,7 @@ in {
       enable = true;
       package = pkgs.bluez;
       powerOnBoot = true;
-      disablePlugins = ["sap"];
+      disabledPlugins = ["sap"];
       settings = {
         General = {
           Experimental = true;
