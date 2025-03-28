@@ -6,7 +6,7 @@
 }: let
   inherit (lib) mkIf mkEnableOption;
 
-  cfg = config.my.apps.mpv;
+  cfg = config.my.desktop.apps.mpv;
 in {
   options.my.desktop.apps.mpv = {
     enable =
