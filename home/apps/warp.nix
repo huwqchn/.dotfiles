@@ -12,7 +12,7 @@ in {
     enable =
       mkEnableOption "Cloudflare Warp"
       // {
-        default = config.my.apps.enable && config.my.machine.type == "laptop";
+        default = config.my.desktop.apps.enable && config.my.machine.type == "laptop";
       };
   };
 

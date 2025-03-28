@@ -11,7 +11,7 @@ in {
     enable =
       mkEnableOption "1Password"
       // {
-        default = config.my.apps.enable;
+        default = config.my.desktop.apps.enable;
       };
   };
   config = mkIf cfg.enable {

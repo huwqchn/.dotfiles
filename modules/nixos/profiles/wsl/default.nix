@@ -41,7 +41,7 @@ in {
       };
       desktop = {
         enable = mkDefault false;
-        apps = mkForce false;
+        apps.enable = mkForce false;
         wayland.enable = mkDefault true;
         loginManager = mkForce null;
       };
