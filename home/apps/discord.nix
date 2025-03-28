@@ -12,7 +12,7 @@ in {
     enable =
       mkEnableOption "Discord"
       // {
-        default = config.my.apps.enable;
+        default = config.my.desktop.apps.enable;
       };
   };
 

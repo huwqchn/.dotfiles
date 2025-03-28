@@ -50,11 +50,13 @@ in {
         default = "hyprland";
         description = "The default window manager";
       };
-      apps =
-        mkEnableOption "my GUI apps"
-        // {
-          default = config.my.desktop.enable && pkgs.stdenv.isLinux;
-        };
+      apps = {
+        enable =
+          mkEnableOption "my GUI apps"
+          // {
+            default = config.my.desktop.enable && pkgs.stdenv.isLinux;
+          };
+      };
     };
     security = {
       enable = mkEnableOption "Security";

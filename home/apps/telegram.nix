@@ -11,7 +11,7 @@ in {
     enable =
       mkEnableOption "Telegram"
       // {
-        default = config.my.apps.enable;
+        default = config.my.desktop.apps.enable;
       };
   };
 
