@@ -3,9 +3,8 @@
   pkgs,
   lib,
   ...
-}:
-with lib; let
-  inherit (lib) mkIf;
+}: let
+  inherit (lib) mkIf mkEnableOption;
 
   cfg = config.my.virtual.waydroid;
 

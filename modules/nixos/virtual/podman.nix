@@ -3,11 +3,15 @@
   pkgs,
   lib,
   ...
-}:
-with lib; let
+}: let
   cfg = config.my.virtual.podman;
+  inherit (lib) mkIf mkEnableOption mkForce;
 in {
+  options.my.virtual.podman = {
+    enable = mkEnableOption "Podman";
+  };
   config = mkIf cfg.enable {
+    my.virtual.docker = mkForce false;
     environment.systemPackages = with pkgs; [
       podman-compose
       podman-desktop

@@ -3,9 +3,9 @@
   pkgs,
   lib,
   ...
-}:
-with lib; let
+}: let
   cfg = config.my.virtual.distrobox;
+  inherit (lib) mkIf mkEnableOption;
 in {
   options.my.virtual.distrobox = {
     enable =
