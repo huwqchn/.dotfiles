@@ -4,7 +4,7 @@
   ...
 }: let
   inherit (lib) mkIf;
-  isServer = config.my.machine.machine == "server";
+  isServer = config.my.machine.type == "server";
 in {
   config = mkIf isServer {
     # limit systemd journal size
