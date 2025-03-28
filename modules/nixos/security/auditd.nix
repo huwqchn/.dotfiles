@@ -2,9 +2,11 @@
   config,
   lib,
   ...
-}:
-with lib; let
+}: let
   cfg = config.my.security.auditd;
+  inherit (lib) mkEnableOption mkOption;
+  inherit (lib.modules) mkIf;
+  inherit (lib.types) int str;
 in {
   options.my.security.auditd = {
     enable =
