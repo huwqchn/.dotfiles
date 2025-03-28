@@ -46,7 +46,7 @@ in {
       };
       virtual = {
         enable = mkForce false;
-        docker = config.my.desktop.enable;
+        docker.enable = config.my.desktop.enable;
       };
     };
     wsl = {

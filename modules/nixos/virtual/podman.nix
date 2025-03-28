@@ -11,7 +11,7 @@ in {
     enable = mkEnableOption "Podman";
   };
   config = mkIf cfg.enable {
-    my.virtual.docker = mkForce false;
+    my.virtual.docker.enable = mkForce false;
     environment.systemPackages = with pkgs; [
       podman-compose
       podman-desktop
