@@ -9,7 +9,11 @@ with lib; let
   cfg = config.my.virtual.lxd;
 in {
   options.my.virtual.lxd = {
-    enable = mkEnableOption "Enable LXD";
+    enable =
+      mkEnableOption "Enable LXD"
+      // {
+        default = config.my.virtual.enable;
+      };
   };
 
   config = mkIf cfg.enable {

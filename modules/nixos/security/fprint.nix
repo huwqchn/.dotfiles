@@ -8,7 +8,11 @@
   cfg = config.my.security.fprint;
 in {
   options.my.security.fprint = {
-    enable = mkEnableOption "Enable fingerprint login";
+    enable =
+      mkEnableOption "Enable fingerprint login"
+      // {
+        default = config.my.security.enable;
+      };
   };
 
   config = mkIf cfg.enable {

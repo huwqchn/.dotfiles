@@ -124,7 +124,5 @@ in {
       isHidpi = mkEnableOption "hidpi";
       persist = mkEnableOption "persist"; # must use tmpfs for /
     };
-    # TODO: Generate a public key that can login to all my devices and servers.
-    # store the privaet key in Yukikey
   };
 }

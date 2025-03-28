@@ -7,7 +7,11 @@ with lib; let
   cfg = config.my.security.auditd;
 in {
   options.my.security.auditd = {
-    enable = mkEnableOption "Enable auditd";
+    enable =
+      mkEnableOption "Enable auditd"
+      // {
+        default = config.my.security.enable;
+      };
     autoPrune = {
       enable =
         mkEnableOption "Enable auto-pruning of audit logs"

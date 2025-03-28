@@ -19,10 +19,13 @@ in {
     services.xserver.enable = mkDefault false;
 
     environment = {
-      etc."greetd/environments".text = mkIf config.services.greetd.enable ''
-        ${optionalString isHyprland "Hyprland"}
-        ${shell}
-      '';
+      etc."greetd/environments".text =
+        if config.services.greetd.enable
+        then ''
+          ${optionalString isHyprland "Hyprland"}
+          ${shell}
+        ''
+        else "";
 
       variables = {
         NIXOS_OZONE_WL = "1";

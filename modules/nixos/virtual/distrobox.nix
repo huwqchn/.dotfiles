@@ -9,7 +9,10 @@ with lib; let
 in {
   options.my.virtual.distrobox = {
     enable =
-      mkEnableOption "Enable distrobox";
+      mkEnableOption "Enable distrobox"
+      // {
+        default = config.my.virtual.enable;
+      };
   };
 
   config = mkIf cfg.enable {

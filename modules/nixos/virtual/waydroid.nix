@@ -22,7 +22,11 @@ with lib; let
   '';
 in {
   options.my.virtual.waydroid = {
-    enable = mkEnableOption "Enable waydroid";
+    enable =
+      mkEnableOption "Enable waydroid"
+      // {
+        default = config.my.virtual.enable;
+      };
   };
 
   config = mkIf cfg.enable {
