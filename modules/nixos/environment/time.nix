@@ -2,18 +2,22 @@
   config,
   lib,
   ...
-}:
-with lib; let
+}: let
   inherit (config) my;
   inherit (config.my.machine) type;
+  inherit (lib) mkForce mkMerge mkIf;
   isMobile = type == "mobile" || type == "laptop";
-  isHost = type == "desktop" || type == "workstation" || type == "server";
+  isHost = type == "desktop" || type == "workstation";
   isVirtual = type == "vm" || type == "wsl";
+  isServer = type == "server";
 in {
   config = mkMerge [
+    (mkIf isServer {
+      time.timeZone = mkForce "UTC";
+    })
     (mkIf isVirtual {
       # use the host's time
-      time.timeZone = null;
+      time.timeZone = mkForce null;
     })
     (mkIf isHost {
       services = {
