@@ -59,7 +59,11 @@ in {
       };
     };
     security = {
-      enable = mkEnableOption "Security";
+      enable =
+        mkEnableOption "Security"
+        // {
+          default = true;
+        };
     };
     theme = mkOption {
       type = types.nullOr (types.enum ["tokyonight" "catppuccin" "auto"]);

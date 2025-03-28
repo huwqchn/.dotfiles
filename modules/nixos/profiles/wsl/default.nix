@@ -37,6 +37,7 @@ in {
       video.enable = mkForce false;
       game.enable = mkForce false;
       security = {
+        enable = false;
         auditd.enable = true;
       };
       desktop = {
