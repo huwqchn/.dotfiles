@@ -19,7 +19,7 @@ in {
 
   config = mkMerge [
     (mkIf cfg.enable {
-      hm.home.packages = with pkgs; [
+      home.packages = with pkgs; [
         python3
         python3Packages.pip
         python3Packages.ipython
@@ -29,7 +29,7 @@ in {
         python3Packages.poetry
       ];
 
-      environment.shellAliases = {
+      home.shellAliases = {
         py = "python";
         py2 = "python2";
         py3 = "python3";
@@ -40,7 +40,7 @@ in {
     })
 
     (mkIf cfg.xdg.enable {
-      environment.variables = {
+      home.sessionVariables = {
         # Internal
         PYTHONPYCACHEPREFIX = "$XDG_CACHE_HOME/python";
         PYTHONSTARTUP = "$XDG_CONFIG_HOME/python/pythonrc";

@@ -36,7 +36,7 @@ in {
 
   config = mkMerge [
     (mkIf cfg.enable {
-      hm.home.packages = with pkgs; [
+      home.packages = with pkgs; [
         clang
         gcc
         bear

@@ -22,7 +22,7 @@ in {
 
   config = mkMerge [
     (mkIf cfg.enable {
-      hm.home.packages = with pkgs; [
+      home.packages = with pkgs; [
         lua
         luajit
         (mkIf cfg.love2D.enable love2d)

@@ -22,8 +22,8 @@ in {
 
   config = mkMerge [
     (mkIf cfg.enable {
-      hm.home.packages = [pkgs.rustup];
-      environment.shellAliases = {
+      home.packages = [pkgs.rustup];
+      home.shellAliases = {
         rs = "rustc";
         rsp = "rustup";
         ca = "cargo";
@@ -31,7 +31,7 @@ in {
     })
 
     (mkIf cfg.xdg.enable {
-      environment.variables = rec {
+      home.sessionVariables = rec {
         RUSTUP_HOME = "$XDG_DATA_HOME/rustup";
         CARGO_HOME = "$XDG_DATA_HOME/cargo";
         PATH = ["${CARGO_HOME}/bin"];
