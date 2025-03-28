@@ -26,4 +26,16 @@ in {
       })
       deployableSystems;
   };
+
+  perSystem = {inputs', ...}: {
+    # checks = builtins.mapAttrs (system: deployLib: deployLib.deployChecks self.deploy) inputs.deploy-rs.lib;
+
+    apps = {
+      # Deploy
+      default = {
+        type = "app";
+        program = "${inputs'.deploy-rs.packages.deploy-rs}/bin/deploy";
+      };
+    };
+  };
 }
