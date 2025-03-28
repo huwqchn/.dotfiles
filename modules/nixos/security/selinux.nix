@@ -8,7 +8,11 @@ with lib; let
   cfg = config.my.security.selinux;
 in {
   options.my.security.selinux = {
-    enable = mkEnableOption "system SELinux support + kernel patches";
+    enable =
+      mkEnableOption "system SELinux support + kernel patches"
+      // {
+        default = config.my.security.enable;
+      };
     state = mkOption {
       type = enum [
         "enforcing"

@@ -19,6 +19,12 @@ in {
         # start dockerd on boot.
         # This is required for containers which are created with the `--restart=always` flag to work.
         enableOnBoot = true;
+
+        # auto prune unused containers and images
+        autoPrune = {
+          enable = true;
+          flags = ["--all"];
+        };
       };
     };
   };

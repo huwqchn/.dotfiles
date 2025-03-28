@@ -9,7 +9,6 @@
         codeium.enable = true;
         copilot.enable = true;
         supermaven.enable = true;
-        tabnine.enable = true;
         # coding
         mini-snippets.enable = true;
         neogen.enable = true;

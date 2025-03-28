@@ -8,7 +8,11 @@ with lib; let
   cfg = config.my.security.apparmor;
 in {
   options.my.security.apparmor = {
-    enable = mkEnableOption "Enable AppArmor";
+    enable =
+      mkEnableOption "Enable AppArmor"
+      // {
+        default = config.my.security.enable;
+      };
   };
 
   config = mkIf cfg.enable {

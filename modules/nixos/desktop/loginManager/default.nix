@@ -5,7 +5,7 @@
 }: let
   inherit (lib.options) mkOption;
   inherit (lib.types) nullOr enum;
-  inherit (lib.modules) mkOptionDefault;
+  inherit (lib.modules) mkDefault;
   cfg = config.my.desktop;
 in {
   options.my.desktop.loginManager = mkOption {
@@ -18,7 +18,7 @@ in {
   };
 
   config = {
-    my.desktop.loginManager = mkOptionDefault (
+    my.desktop.loginManager = mkDefault (
       if cfg.enable
       then "greetd"
       else null

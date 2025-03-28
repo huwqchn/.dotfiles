@@ -10,7 +10,11 @@ with lib; let
   isAmd = config.my.machine.cpu == "amd";
 in {
   options.my.virtual.qemu = {
-    enable = mkEnableOption "Enable qemu";
+    enable =
+      mkEnableOption "Enable qemu"
+      // {
+        default = config.my.virtual.enable;
+      };
   };
 
   config = mkIf cfg.enable {

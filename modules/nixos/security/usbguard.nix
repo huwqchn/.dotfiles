@@ -8,7 +8,11 @@
   cfg = config.my.security.usbguard;
 in {
   options.my.security.usbguard = {
-    enable = mkEnableOption "Enable USBGuard";
+    enable =
+      mkEnableOption "Enable USBGuard"
+      // {
+        default = config.my.security.enable;
+      };
   };
   config = mkIf cfg.enable {
     services.usbguard = {

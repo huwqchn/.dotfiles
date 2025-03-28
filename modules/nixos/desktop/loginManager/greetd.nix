@@ -17,7 +17,7 @@
   cfg = config.my.desktop.loginManager;
   inherit (config.my) name;
 in {
-  options.my.desktop.loginManager.autologin = mkEnableOption ''
+  options.my.desktop.autologin = mkEnableOption ''
     Whether to enable passwordless login. This is generally useful on systems with
     FDE (Full Disk Encryption) enabled. It is a security risk for systems without FDE.
   '';
