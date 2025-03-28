@@ -2,10 +2,17 @@
   config,
   lib,
   ...
-}:
-with lib; let
+}: let
   cfg = config.my.virtual;
+  inherit (lib) mkIf mkEnableOption;
 in {
+  options.my.virtual.docker = {
+    enable =
+      mkEnableOption "Docker"
+      // {
+        default = config.my.virtual.enable;
+      };
+  };
   config = mkIf cfg.enable {
     virtualisation = {
       docker = {

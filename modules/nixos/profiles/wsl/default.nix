@@ -43,7 +43,6 @@ in {
       desktop = {
         enable = mkDefault false;
         wayland.enable = mkDefault true;
-        default = mkDefault "hyprland";
         loginManager = mkForce null;
       };
       virtual = {

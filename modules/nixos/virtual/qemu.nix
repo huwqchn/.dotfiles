@@ -3,11 +3,11 @@
   pkgs,
   lib,
   ...
-}:
-with lib; let
+}: let
   cfg = config.my.virtual.qemu;
   isIntel = config.my.machine.cpu == "intel";
   isAmd = config.my.machine.cpu == "amd";
+  inherit (lib) mkIf mkEnableOption optionals;
 in {
   options.my.virtual.qemu = {
     enable =

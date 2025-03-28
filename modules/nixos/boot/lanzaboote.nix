@@ -20,9 +20,9 @@ in {
     inputs.lanzaboote.nixosModules.lanzaboote
   ];
 
-  options.my.boot.secure = mkEnableOption "secure boot";
+  options.my.boot.secureBoot = mkEnableOption "secure boot";
 
-  config = mkIf cfg.secure {
+  config = mkIf cfg.secureBoot {
     environment.systemPackages = [
       # For debugging and troubleshooting Secure Boot.
       pkgs.sbctl

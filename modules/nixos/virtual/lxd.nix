@@ -4,9 +4,9 @@
   config,
   pkgs,
   ...
-}:
-with lib; let
+}: let
   cfg = config.my.virtual.lxd;
+  inherit (lib) mkIf mkEnableOption;
 in {
   options.my.virtual.lxd = {
     enable =
