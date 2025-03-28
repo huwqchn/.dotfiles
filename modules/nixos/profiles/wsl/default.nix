@@ -4,17 +4,16 @@
   config,
   ...
 }: let
-  inherit (config.my) machine;
   inherit (lib.modules) mkIf mkDefault mkForce;
+  isWsl = config.my.machine.type == "wsl";
 in {
   imports = [
     inputs.wsl.nixosModules.default
   ];
 
-  config = mkIf (machine.type == "wsl") {
+  config = mkIf isWsl {
     my = {
       machine = {
-        type = "wsl";
         gpu = null;
         cpu = null;
         hasTPM = false;
