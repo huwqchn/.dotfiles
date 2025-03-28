@@ -7,7 +7,7 @@
 
   cfg = config.my.networking;
 in {
-  options.my.netowrking.optimizeTcp = mkEnableOption "Enable tcp optimizations";
+  options.my.networking.optimizeTcp = mkEnableOption "Enable tcp optimizations";
 
   config = mkIf cfg.optimizeTcp {
     boot = {
