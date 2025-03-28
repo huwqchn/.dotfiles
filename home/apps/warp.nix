@@ -5,10 +5,10 @@
   ...
 }: let
   inherit (lib) mkIf mkEnableOption;
-  cfg = config.my.apps.warp;
+  cfg = config.my.desktop.apps.warp;
   inherit (config.home) homeDirectory;
 in {
-  options.my.apps.warp = {
+  options.my.desktop.apps.warp = {
     enable =
       mkEnableOption "Cloudflare Warp"
       // {

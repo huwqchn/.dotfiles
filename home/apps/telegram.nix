@@ -5,9 +5,9 @@
   ...
 }: let
   inherit (lib) mkIf mkEnableOption;
-  cfg = config.my.apps.telegram;
+  cfg = config.my.desktop.apps.telegram;
 in {
-  options.my.apps.telegram = {
+  options.my.desktop.apps.telegram = {
     enable =
       mkEnableOption "Telegram"
       // {

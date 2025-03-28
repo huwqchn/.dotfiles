@@ -5,9 +5,9 @@
   ...
 }: let
   inherit (lib) mkIf mkEnableOption;
-  cfg = config.my.apps._1password;
+  cfg = config.my.desktop.apps._1password;
 in {
-  options.my.apps._1password = {
+  options.my.desktop.apps._1password = {
     enable =
       mkEnableOption "1Password"
       // {

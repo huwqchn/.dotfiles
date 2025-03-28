@@ -4,9 +4,9 @@
   ...
 }: let
   inherit (lib) mkIf mkEnableOption;
-  cfg = config.my.apps.zathura;
+  cfg = config.my.desktop.apps.zathura;
 in {
-  options.my.apps.zathura = {
+  options.my.desktop.apps.zathura = {
     enable =
       mkEnableOption "Zathura"
       // {
