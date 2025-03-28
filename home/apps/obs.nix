@@ -5,10 +5,10 @@
   ...
 }: let
   inherit (lib) mkIf mkEnableOption;
-  cfg = config.my.apps.obs;
+  cfg = config.my.desktop.apps.obs;
   inherit (config.home) homeDirectory;
 in {
-  options.my.apps.obs = {
+  options.my.desktop.apps.obs = {
     enable =
       mkEnableOption "OBS"
       // {

@@ -8,7 +8,7 @@
 
   cfg = config.my.apps.mpv;
 in {
-  options.my.apps.mpv = {
+  options.my.desktop.apps.mpv = {
     enable =
       mkEnableOption "support for mpv"
       // {

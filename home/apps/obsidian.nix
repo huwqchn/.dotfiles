@@ -5,9 +5,9 @@
   ...
 }: let
   inherit (lib) mkIf mkEnableOption;
-  cfg = config.my.apps.obsidian;
+  cfg = config.my.desktop.apps.obsidian;
 in {
-  options.my.apps.obsidian = {
+  options.my.desktop.apps.obsidian = {
     enable =
       mkEnableOption "Obsidian"
       // {

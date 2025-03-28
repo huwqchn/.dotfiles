@@ -5,10 +5,10 @@
   ...
 }: let
   inherit (lib) mkIf mkEnableOption;
-  cfg = config.my.apps.discord;
+  cfg = config.my.desktop.apps.discord;
   inherit (config.home) homeDirectory;
 in {
-  options.my.apps.discord = {
+  options.my.desktop.apps.discord = {
     enable =
       mkEnableOption "Discord"
       // {

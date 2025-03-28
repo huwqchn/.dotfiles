@@ -5,10 +5,10 @@
   ...
 }: let
   inherit (lib) mkIf mkEnableOption;
-  cfg = config.my.apps.vlc;
+  cfg = config.my.desktop.apps.vlc;
   inherit (config.home) homeDirectory;
 in {
-  options.my.apps.vlc = {
+  options.my.desktop.apps.vlc = {
     enable =
       mkEnableOption "VLC"
       // {
