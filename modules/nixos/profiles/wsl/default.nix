@@ -17,7 +17,6 @@ in {
         gpu = null;
         cpu = null;
         hasTPM = false;
-        monitor = [];
         hasSound = false;
         isHidpi = true;
         persist = false;
@@ -38,7 +37,7 @@ in {
       video.enable = mkForce false;
       game.enable = mkForce false;
       security = {
-        audit.enable = true;
+        auditd.enable = true;
       };
       desktop = {
         enable = mkDefault false;
