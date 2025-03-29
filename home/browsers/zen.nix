@@ -6,9 +6,11 @@
   ...
 }: let
   inherit (lib) mkEnableOption mkIf;
-  cfg = config.my.zen;
+  cfg = config.my.desktop.apps.browser;
 in {
-  options.my.zen = {enable = mkEnableOption "zen";};
+  options.my.desktop.apps.browser = {
+    enable = mkEnableOption "zen";
+  };
   config = mkIf cfg.enable {
     home.packages = [inputs.zen.packages.${pkgs.system}.default];
     home.persistence = {
