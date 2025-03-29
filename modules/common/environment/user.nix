@@ -1,15 +1,9 @@
 {
   config,
   pkgs,
-  self,
   ...
 }: let
   inherit (config.my) name home shell;
-  user_readable = {
-    symlink = false;
-    owner = config.my.name;
-    mode = "0500";
-  };
 in {
   environment = {
     # add user's shell into /etc/shells
@@ -36,20 +30,5 @@ in {
       then pkgs.zsh
       else pkgs.bashInteractive;
     description = name;
-  };
-
-  age.secrets = {
-    my-ssh-key =
-      {
-        rekeyFile = "${self}/secrets/${name}/ssh-key.age";
-        path = "${home}/.ssh/johnson-hu-ssh-key";
-      }
-      // user_readable;
-    git-credentials =
-      {
-        rekeyFile = ./secrets/git-credentials.age;
-        path = "${home}/.git-credentials";
-      }
-      // user_readable;
   };
 }

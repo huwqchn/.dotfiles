@@ -173,8 +173,6 @@ in rec {
             ])
             ++ (optionals isHomeOutput [
               ../modules/home
-              inputs.agenix.homeManagerModules.default
-              inputs.agenix-rekey.homeManagerModules.default
             ]);
         }
         // (optionalAttrs (isDarwinOutput || isNixosOutput) {

@@ -18,6 +18,7 @@ in {
     ++ (lib.my.scanPaths ./.);
 
   hm.imports = [../../home];
+  hm.age.rekey = config.age.rekey;
 
   home-manager = {
     inherit extraSpecialArgs;
