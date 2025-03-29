@@ -5,13 +5,13 @@
   ...
 }: let
   inherit (lib) mkEnableOption mkIf;
-  cfg = config.my.alacritty;
+  cfg = config.my.desktop.apps.alacritty;
 in {
-  options.my.alacritty = {
+  options.my.desktop.apps.alacritty = {
     enable =
       mkEnableOption "alacritty"
       // {
-        default = config.my.terminal == "alacritty";
+        default = config.my.desktop.terminal == "alacritty";
       };
   };
 

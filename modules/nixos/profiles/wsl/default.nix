@@ -54,7 +54,10 @@ in {
       yubikey.enable = mkForce false;
     };
     hm.my = {
-      terminal = "none";
+      desktop = {
+        terminal = null;
+        browser = null;
+      };
     };
     wsl = {
       enable = true;

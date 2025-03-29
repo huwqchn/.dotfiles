@@ -8,13 +8,13 @@
   inherit (config.lib.file) mkOutOfStoreSymlink;
   inherit (lib) mkEnableOption mkIf;
   inherit (inputs) ghostty-shaders;
-  cfg = config.my.ghostty;
+  cfg = config.my.desktop.apps.ghostty;
 in {
-  options.my.ghostty = {
+  options.my.desktop.apps.ghostty = {
     enable =
       mkEnableOption "ghostty"
       // {
-        default = config.my.terminal == "ghostty";
+        default = config.my.desktop.terminal == "ghostty";
       };
   };
 

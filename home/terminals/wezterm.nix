@@ -4,13 +4,13 @@
   ...
 }: let
   inherit (lib) mkEnableOption mkIf;
-  cfg = config.my.wezterm;
+  cfg = config.my.desktop.apps.wezterm;
 in {
-  options.my.wezterm = {
+  options.my.desktop.apps.wezterm = {
     enable =
       mkEnableOption "wezterm"
       // {
-        default = config.my.terminal == "wezterm";
+        default = config.my.desktop.terminal == "wezterm";
       };
   };
 
