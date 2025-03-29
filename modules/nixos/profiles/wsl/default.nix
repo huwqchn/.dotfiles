@@ -83,7 +83,6 @@ in {
       smartd.enable = mkForce false;
       thermald.enable = mkForce false;
       resolved.enable = mkForce false;
-      dbus.enable = mkForce false;
     };
 
     environment = {
