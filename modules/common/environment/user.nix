@@ -19,6 +19,12 @@ in {
       zsh
     ];
   };
+
+  programs = {
+    fish.enable = true;
+    zsh.enable = true;
+  };
+
   # Define a user account.
   users.users."${name}" = {
     # https://github.com/LnL7/nix-darwin/issues/1237 still have a bug
