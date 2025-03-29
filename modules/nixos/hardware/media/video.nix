@@ -2,11 +2,10 @@
   lib,
   pkgs,
   config,
-  system,
   ...
 }: let
   inherit (lib) mkIf mkMerge mkEnableOption;
-  isx86Linux = system == "x86_64-linux";
+  inherit (lib.my) isx86Linux;
   cfg = config.my.video;
 in {
   options.my.video = {

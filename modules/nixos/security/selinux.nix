@@ -3,9 +3,10 @@
   pkgs,
   config,
   ...
-}:
-with lib; let
+}: let
   cfg = config.my.security.selinux;
+  inherit (lib) mkIf mkEnableOption mkForce mkOption;
+  inherit (lib.types) enum;
 in {
   options.my.security.selinux = {
     enable =

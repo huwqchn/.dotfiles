@@ -29,8 +29,8 @@ in {
   config = mkIf (cfg.loader == "grub") {
     boot.loader.grub = {
       enable = mkDefault true;
+      useOSProber = mkDefault true;
       efiSupport = true;
-      efiInstallAsRemovable = true;
       enableCryptodisk = mkDefault false;
       inherit (cfg.grub) device;
       dedsec-theme = {
