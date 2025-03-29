@@ -8,6 +8,11 @@
   };
   cfg = config.my.git;
   inherit (lib) mkEnableOption mkIf;
+  user_readable = {
+    symlink = false;
+    mode = "0500";
+  };
+  inherit (config.home) homeDirectory;
 in {
   options.my.git = {
     enable = mkEnableOption "git";
@@ -134,6 +139,15 @@ in {
         update = "submodule update --init --recursive";
         foreach = "submodule foreach";
       };
+    };
+
+    age.secrets = {
+      git-credentials =
+        {
+          rekeyFile = ./secrets/git-credentials.age;
+          path = "${homeDirectory}/.git-credentials";
+        }
+        // user_readable;
     };
   };
 }
