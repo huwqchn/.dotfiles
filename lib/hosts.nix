@@ -195,7 +195,7 @@ in rec {
           // {
             "${hostName}" = out.builder out.config;
           };
-      }) {}
+      }) {nodes = mergedHosts;}
     hostNames;
 
   mkHosts = dir: specialArgs:
