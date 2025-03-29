@@ -14,5 +14,7 @@
     coreutils
     # nix
     nix-prefetch-git
+    # GNU core utilities (rewritten in rust)
+    uutils-coreutils-noprefix
   ];
 }
