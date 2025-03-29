@@ -35,7 +35,7 @@ in {
       // user_readable;
     git-credentials =
       {
-        rekeyFile = ./git-credentials.age;
+        rekeyFile = ./secrets/git-credentials.age;
         path = "${home}/.git-credentials";
       }
       // user_readable;
