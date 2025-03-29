@@ -35,7 +35,7 @@
     security.enable = true;
     services = {
       onedrive.enable = true;
-      printer.enable = true;
+      printing.enable = true;
     };
     desktop = {
       enable = true;

@@ -69,7 +69,7 @@ in {
     # This allows libvirt to use pulseaudio socket
     # which is useful for virt-manager. May be just placebo, but I think
     # I have been experiencing better latency under emulation.
-    hardware.pulseaudio.extraConfig = ''
+    services.pulseaudio.extraConfig = ''
       load-module module-native-protocol-unix auth-group=qemu-libvirtd socket=/tmp/pulse-socket
     '';
 

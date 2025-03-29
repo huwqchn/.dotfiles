@@ -5,7 +5,7 @@
   config,
   ...
 }: let
-  inherit (lib) mkIf mkEnableOption;
+  inherit (lib) mkIf mkEnableOption mkForce;
   cfg = config.my.boot;
 in {
   # How to enter setup mode - msi motherboard
@@ -16,6 +16,7 @@ in {
   ## 5. enter <Key Management>
   ## 6. select <Delete All Secure Boot Variables>, and then select <No> for <Reboot Without Saving>
   ## 7. Press F10 to saving and reboot.
+  # more details: https://wiki.nixos.org/wiki/Secure_Boot
   imports = [
     inputs.lanzaboote.nixosModules.lanzaboote
   ];
@@ -23,6 +24,8 @@ in {
   options.my.boot.secureBoot = mkEnableOption "secure boot";
 
   config = mkIf cfg.secureBoot {
+    my.boot.loader = mkForce "none";
+
     environment.systemPackages = [
       # For debugging and troubleshooting Secure Boot.
       pkgs.sbctl
@@ -32,7 +35,7 @@ in {
     # This setting is usually set to true in configuration.nix
     # generated at installation time. So we force it to false
     # for now.
-    boot.loader.systemd-boot.enable = lib.mkForce false;
+    boot.loader.systemd-boot.enable = mkForce false;
 
     # boot specification logs
     boot.bootspec.enable = true;
