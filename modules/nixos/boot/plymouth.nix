@@ -39,5 +39,8 @@ in {
       powerDownCommands = "${getExe' pkgs.plymouth "plymouth"} --show-splash";
       resumeCommands = "${getExe' pkgs.plymouth "plymouth"} --quit";
     };
+
+    systemd.services.plymouth-quit.serviceConfig.ExecStartPre =
+      mkIf cfg.playFullAnimation "${pkgs.coreutils-full}/bin/sleep 5";
   };
 }
