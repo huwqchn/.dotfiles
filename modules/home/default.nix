@@ -11,10 +11,11 @@
 }: let
   extraSpecialArgs = {inherit self self' inputs inputs' pkgs pkgs' lib;};
 in {
-  imports = [
-    (lib.mkAliasOptionModule ["hm"] ["home-manager" "users" config.my.name])
-    ./tokens.nix
-  ];
+  imports =
+    [
+      (lib.mkAliasOptionModule ["hm"] ["home-manager" "users" config.my.name])
+    ]
+    ++ (lib.my.scanPaths ./.);
 
   hm.imports = [../../home];
 
