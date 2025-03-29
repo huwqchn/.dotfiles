@@ -4,25 +4,31 @@
   self,
   ...
 }: let
-  inherit (config.my) name home;
+  inherit (config.my) name home shell;
   user_readable = {
     symlink = false;
     owner = config.my.name;
     mode = "0500";
   };
-  shell = builtins.getAttr config.my.shell pkgs;
 in {
   environment = {
     # add user's shell into /etc/shells
     shells = with pkgs; [
       bashInteractive
-      shell
+      fish
+      zsh
     ];
   };
   # Define a user account.
   users.users."${name}" = {
     # https://github.com/LnL7/nix-darwin/issues/1237 still have a bug
-    inherit home shell;
+    inherit home;
+    shell =
+      if shell == "fish"
+      then pkgs.fish
+      else if shell == "zsh"
+      then pkgs.zsh
+      else pkgs.bashInteractive;
     description = name;
   };
 
