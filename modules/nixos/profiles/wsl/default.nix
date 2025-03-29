@@ -53,6 +53,9 @@ in {
       };
       yubikey.enable = mkForce false;
     };
+    hm.my = {
+      terminal = "none";
+    };
     wsl = {
       enable = true;
       wslConf = {
@@ -78,11 +81,12 @@ in {
       tcpcrypt.enable = lib.mkForce false;
     };
     # other
-    # that's not make sense on WSL
     services = {
+      # that's not make sense on WSL
       smartd.enable = mkForce false;
       thermald.enable = mkForce false;
       resolved.enable = mkForce false;
+      earlyoom.enable = mkForce false;
     };
 
     environment = {

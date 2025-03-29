@@ -3,7 +3,7 @@
   # inherit (config.my) terminal;
 in {
   options.my.terminal = mkOption {
-    type = types.enum ["wzeterm" "alacritty" "ghostty" "kitty"];
+    type = types.enum ["wzeterm" "alacritty" "ghostty" "kitty" "none"];
     default = "ghostty";
     description = "The terminal to use";
   };
