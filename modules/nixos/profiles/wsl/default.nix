@@ -87,7 +87,7 @@ in {
     };
 
     environment = {
-      variablees.BROWSER = mkForce "wsl-open";
+      variables.BROWSER = mkForce "wsl-open";
       systemPackages = [pkgs.wsl-open];
     };
   };
