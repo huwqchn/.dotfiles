@@ -8,6 +8,7 @@ in
         ./paths.nix
         ./hosts.nix
         ./modules.nix
+        ./hardware.nix
       ]
       arg)
   ]

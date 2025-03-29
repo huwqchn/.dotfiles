@@ -1,4 +1,4 @@
-{lib}: let
+{lib, ...}: let
   inherit (lib.options) mkEnableOption mkPackageOption;
   inherit (lib.attrsets) recursiveUpdate;
 
