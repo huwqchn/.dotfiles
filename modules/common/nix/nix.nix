@@ -54,6 +54,7 @@ in {
       # we don't want to track the registry, but we do want to allow the useage
       # of the `flake:` references, so we need to enable use-registries
       use-registries = true;
+      flake-registry = "";
 
       # let the system decide the number of max jobs
       max-jobs = "auto";
