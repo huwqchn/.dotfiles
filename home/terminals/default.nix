@@ -1,10 +1,12 @@
 {
   lib,
+  pkgs,
   config,
   ...
 }: let
   inherit (lib) mkOption mkIf;
   inherit (lib.types) enum nullOr;
+  inherit (lib.my) ldTernary;
   cfg = config.my.desktop.terminal;
 in {
   imports = lib.my.scanPaths ./.;
@@ -17,12 +19,12 @@ in {
     ]);
     default =
       if config.my.desktop.enable
-      then "wzeterm"
+      then ldTernary pkgs "ghostty" null
       else null;
     description = "The terminal to use";
   };
 
   config = mkIf (cfg != null) {
-    home.sessionVariable = {TERMINAL = "${cfg}";};
+    home.sessionVariables = {TERMINAL = "${cfg}";};
   };
 }
