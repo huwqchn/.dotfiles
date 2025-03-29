@@ -64,6 +64,11 @@
   # nix.useDaemon = true;
   nix = {
     settings = {
+      # these are the bare minimum settings required to get my nixos config working
+      experimental-features = [
+        "flakes"
+        "nix-command"
+      ];
       allowed-users = ["@wheel"];
       trusted-users = ["root" config.my.name];
       # given the users in this list the right to specify additional substituters via:
@@ -80,11 +85,18 @@
         "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
         "cuda-maintainers.cachix.org-1:0dq3bujKpuEPMCX6U4WylrUDZ9JyUG0VpVZa7CNfq5E="
       ];
+
+      # more cores for faster builds
       cores = 5;
+
+      # it's annoying to see the warning when running `nixos-rebuild switch`
+      warn-dirty = false;
+
+      # It's nice to have more http downloads when setting up
+      http-connections = 50;
     };
     extraOptions = ''
       builders-use-substitutes = true
-      experimental-features = nix-command flakes
       flake-registry = /etc/nix/registry.json
     '';
     nixPath = ["nixpkgs=/run/current-system/nixpkgs"];
