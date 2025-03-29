@@ -1,14 +1,28 @@
-{lib, ...}: let
-  inherit (lib) mkOption types;
-  # inherit (config.my) terminal;
+{
+  lib,
+  config,
+  ...
+}: let
+  inherit (lib) mkOption mkIf;
+  inherit (lib.types) enum nullOr;
+  cfg = config.my.desktop.terminal;
 in {
-  options.my.terminal = mkOption {
-    type = types.enum ["wzeterm" "alacritty" "ghostty" "kitty" "none"];
-    default = "ghostty";
+  imports = lib.my.scanPaths ./.;
+  options.my.desktop.terminal = mkOption {
+    type = nullOr (enum [
+      "wzeterm"
+      "alacritty"
+      "ghostty"
+      "kitty"
+    ]);
+    default =
+      if config.my.desktop.enable
+      then "wzeterm"
+      else null;
     description = "The terminal to use";
   };
 
-  imports = lib.my.scanPaths ./.;
-
-  # home.sessionVariable = { TERMINAL = "${terminal}"; };
+  config = mkIf (cfg != null) {
+    home.sessionVariable = {TERMINAL = "${cfg}";};
+  };
 }

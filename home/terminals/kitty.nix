@@ -5,13 +5,13 @@
   ...
 }: let
   inherit (lib) mkEnableOption mkIf;
-  cfg = config.my.kitty;
+  cfg = config.my.desktop.apps.kitty;
 in {
-  options.my.kitty = {
+  options.my.desktop.apps.kitty = {
     enable =
       mkEnableOption "kitty"
       // {
-        default = config.my.terminal == "kitty";
+        default = config.my.desktop.terminal == "kitty";
       };
   };
 
