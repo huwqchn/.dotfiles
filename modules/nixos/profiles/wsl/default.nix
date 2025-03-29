@@ -2,6 +2,7 @@
   inputs,
   lib,
   config,
+  pkgs,
   ...
 }: let
   inherit (lib.modules) mkIf mkDefault mkForce;
@@ -19,7 +20,7 @@ in {
         hasTPM = false;
         hasSound = false;
         isHidpi = true;
-        persist = false;
+        persist = mkForce false;
       };
       boot = {
         loader = "none";
@@ -62,6 +63,11 @@ in {
       defaultUser = config.my.name;
       startMenuLaunchers = true;
 
+      interop = {
+        includePath = false;
+        register = true;
+      };
+
       # enable integration with Docker Desktop (needed to be installed)
       docker-desktop.enable = config.my.desktop.enable;
     };
@@ -69,12 +75,20 @@ in {
       useNetworkd = lib.mkForce false;
       nftables.enable = lib.mkForce false;
       extraHosts = lib.mkForce '''';
+      tcpcrypt.enable = lib.mkForce false;
     };
     # other
     # that's not make sense on WSL
     services = {
       smartd.enable = mkForce false;
       thermald.enable = mkForce false;
+      resolved.enable = mkForce false;
+      apparmor.enable = mkForce false;
+    };
+
+    environment = {
+      variablees.BROWSER = mkForce "wsl-open";
+      systemPackages = [pkgs.wsl-open];
     };
   };
 }
