@@ -50,6 +50,7 @@ in {
         enable = mkForce false;
         docker.enable = config.my.desktop.enable;
       };
+      yubikey.enable = mkForce false;
     };
     wsl = {
       enable = true;
