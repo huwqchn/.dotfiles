@@ -8,7 +8,7 @@
   inherit (lib.attrsets) filterAttrs;
 
   # extract the systems that we want to deploy
-  deployableSystems = filterAttrs (_: attrs: attrs.deployable) self.nixosConfigurations;
+  deployableSystems = filterAttrs (_: attrs: attrs.deployable) self.nodes;
 in {
   flake.deploy = {
     autoRollback = true;
