@@ -70,5 +70,11 @@ in {
       nftables.enable = lib.mkForce false;
       extraHosts = lib.mkForce '''';
     };
+    # other
+    # that's not make sense on WSL
+    services = {
+      smartd.enable = mkForce false;
+      thermald.enable = mkForce false;
+    };
   };
 }
