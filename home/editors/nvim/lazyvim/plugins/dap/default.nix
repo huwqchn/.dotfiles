@@ -19,6 +19,12 @@ in {
       nvim-nio
       one-small-step-for-vimkind
     ];
+
+    # disable mason-nvim-dap.nvim
+    my.neovim.lazyvim.extraSpec = ''
+      { "jay-babu/mason-nvim-dap.nvim", enabled = false },
+    '';
+
     xdg.configFile."nvim/lua/plugins/dap.lua".source = lib.my.relativeToConfig "nvim/lua/plugins/extras/editor/dap.lua";
   };
 }
