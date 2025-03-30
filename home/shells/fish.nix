@@ -177,7 +177,7 @@ in {
             end
           '';
         };
-        fish_greeting = {body = "fastfetch";};
+        # fish_greeting = {body = "fastfetch";};
         backup = {
           argumentNames = "filename";
           body = "cp $filename $filename.bak";

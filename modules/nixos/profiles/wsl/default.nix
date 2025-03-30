@@ -57,6 +57,7 @@ in {
       desktop.enable = mkDefault false;
       terminal = null;
       browser = null;
+      fastfetch.startOnLogin = mkDefault false;
     };
     wsl = {
       enable = true;
