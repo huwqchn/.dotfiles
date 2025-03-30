@@ -58,6 +58,7 @@ in {
       terminal = null;
       browser = null;
       fastfetch.startOnLogin = mkDefault false;
+      tmux.autoStart = mkForce false; # I don't know how to auto start tmux in wsl, never work, break my shell!!!
     };
     wsl = {
       enable = true;
