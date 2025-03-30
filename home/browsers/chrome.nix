@@ -11,7 +11,7 @@ in {
     enable =
       mkEnableOption "chrome"
       // {
-        default = config.my.desktop.browser == "chrome";
+        default = config.my.browser == "chrome";
       };
   };
 
