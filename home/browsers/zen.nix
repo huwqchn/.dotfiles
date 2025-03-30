@@ -12,7 +12,7 @@ in {
     enable =
       mkEnableOption "zen browser"
       // {
-        default = config.my.desktop.browser == "zen";
+        default = config.my.browser == "zen";
       };
   };
 
