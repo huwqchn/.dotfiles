@@ -96,9 +96,6 @@ in {
       # for direnv GC roots
       keep-derivations = true;
       keep-outputs = true;
-
-      # use xdg base directories for all the nix things
-      use-xdg-base-directories = true;
     };
   };
 }
