@@ -6,11 +6,11 @@
   ...
 }: let
   inherit (lib) mkIf;
-  cfg = config.my.desktop.wayland;
+  cfg = config.my.desktop;
 in {
   imports = [inputs.ags.homeManagerModules.default];
 
-  config = mkIf (cfg.enable && pkgs.stdenv.isLinux) {
+  config = mkIf (cfg.enable && cfg.wayland.enable && pkgs.stdenv.isLinux) {
     home.packages = with pkgs; [
       bun
       dart-sass
