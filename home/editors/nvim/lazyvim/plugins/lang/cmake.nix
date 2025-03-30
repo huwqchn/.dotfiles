@@ -18,6 +18,10 @@ in {
       neocmakelsp
     ];
 
+    my.neovim.lazyvim.extraPlugins = with pkgs.vimPlugins; [
+      cmake-tools-nvim
+    ];
+
     my.neovim.treesitterParsers = [
       "cmake"
     ];
