@@ -5,10 +5,10 @@
 }: let
   inherit (lib) mkOption mkIf;
   inherit (lib.types) enum nullOr;
-  cfg = config.my.desktop.terminal;
+  cfg = config.my.terminal;
 in {
   imports = lib.my.scanPaths ./.;
-  options.my.desktop.terminal = mkOption {
+  options.my.terminal = mkOption {
     type = nullOr (enum [
       "wzeterm"
       "alacritty"

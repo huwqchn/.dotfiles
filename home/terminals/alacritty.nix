@@ -11,7 +11,7 @@ in {
     enable =
       mkEnableOption "alacritty"
       // {
-        default = config.my.desktop.terminal == "alacritty";
+        default = config.my.terminal == "alacritty";
       };
   };
 

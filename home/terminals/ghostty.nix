@@ -14,7 +14,7 @@ in {
     enable =
       mkEnableOption "ghostty"
       // {
-        default = config.my.desktop.terminal == "ghostty";
+        default = config.my.terminal == "ghostty";
       };
   };
 
