@@ -5,11 +5,7 @@
 }: let
   inherit (lib.modules) mkIf mkForce;
   inherit (lib.attrsets) mapAttrs;
-  isHeadless =
-    config.my.machine.type
-    == "workstation"
-    || config.my.machine.type == "server"
-    || config.my.machine.type == "mobile";
+  isHeadless = !config.my.desktop.enable;
 in {
   config = mkIf isHeadless {
     # we don't need fonts on a server
