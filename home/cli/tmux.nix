@@ -22,13 +22,13 @@ in {
       fish = mkIf cfg.autoStart {
         interactiveShellInit = ''
           if not set -q TMUX
-              exec tmux attach || tmux new
+              exec tmux attach 2>/dev/null || tmux new
           end
         '';
       };
       zsh = mkIf cfg.autoStart {
         initExtraFirst = ''
-          [ -z "$TMUX" ] && { exec tmux attach || tmux new; }
+          [ -z "$TMUX" ] && { exec tmux attach 2>/dev/null || tmux new; }
         '';
       };
       tmux = {
