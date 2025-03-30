@@ -6,23 +6,10 @@
 }: let
   inherit (lib) mkIf;
   cfg = config.my.security;
-  user_readable = {
-    symlink = false;
-    mode = "0600";
-  };
   inherit (config.my) name;
-  inherit (config.home) homeDirectory;
 in {
   config = mkIf cfg.enable {
     home.file.".ssh/johnson-hu-ssh-key.pub".source = "${self}/secrets/${name}/ssh-key.pub";
-    age.secrets = {
-      my-ssh-key =
-        {
-          rekeyFile = "${self}/secrets/${name}/ssh-key.age";
-          path = "${homeDirectory}/.ssh/johnson-hu-ssh-key";
-        }
-        // user_readable;
-    };
 
     programs.ssh = {
       enable = true;

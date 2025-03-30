@@ -11,8 +11,6 @@
 in {
   imports = [
     inputs.impermanence.homeManagerModules.impermanence
-    inputs.agenix.homeManagerModules.default
-    inputs.agenix-rekey.homeManagerModules.default
     ../modules/common/my.nix
   ];
 
