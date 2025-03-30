@@ -7,12 +7,12 @@
   ...
 }: let
   package = pkgs.hyprland;
-  cfg = config.my.desktop.wayland;
+  cfg = config.my.desktop;
   inherit (lib) mkIf;
 in {
   imports = [./binds.nix ./rules.nix ./settings.nix];
 
-  config = mkIf (cfg.enable && pkgs.stdenv.isLinux) {
+  config = mkIf (cfg.enable && cfg.wayland.enable && pkgs.stdenv.isLinux) {
     home.packages = with pkgs; [
       playerctl
       avizo

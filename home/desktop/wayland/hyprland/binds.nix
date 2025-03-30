@@ -26,10 +26,10 @@
   in "pkill ${prog} || ${runserv} ${program}";
 
   runOnce = program: "pgrep ${program} || ${program}";
-  cfg = config.my.desktop.wayland;
+  cfg = config.my.desktop;
   inherit (lib) mkIf;
 in {
-  config = mkIf (cfg.enable && pkgs.stdenv.isLinux) {
+  config = mkIf (cfg.enable && cfg.wayland.enable && pkgs.stdenv.isLinux) {
     wayland.windowManager.hyprland.settings = {
       "$mod" = "SUPER";
       "$browser" = "zen";

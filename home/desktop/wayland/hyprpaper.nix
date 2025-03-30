@@ -5,10 +5,10 @@
   ...
 }: let
   background = "~/.config/background";
-  cfg = config.my.desktop.wayland;
+  cfg = config.my.desktop;
   inherit (lib) mkIf;
 in {
-  config = mkIf (cfg.enable && pkgs.stdenv.isLinux) {
+  config = mkIf (cfg.enable && cfg.wayland.enable && pkgs.stdenv.isLinux) {
     services.hyprpaper = {
       enable = false;
 
