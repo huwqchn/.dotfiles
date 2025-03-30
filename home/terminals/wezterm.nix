@@ -10,7 +10,7 @@ in {
     enable =
       mkEnableOption "wezterm"
       // {
-        default = config.my.desktop.terminal == "wezterm";
+        default = config.my.terminal == "wezterm";
       };
   };
 
