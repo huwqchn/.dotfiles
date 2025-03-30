@@ -132,6 +132,11 @@ in {
           #######
 
           nvim-lspconfig
+          ########
+          # util #
+          ########
+          persistence-nvim
+          plenary-nvim
         ];
       };
 

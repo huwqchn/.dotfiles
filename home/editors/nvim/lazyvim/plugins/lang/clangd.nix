@@ -15,6 +15,7 @@ in {
     programs.neovim.extraPackages = with pkgs; [
       vscode-extensions.vadimcn.vscode-lldb
       clang-tools
+      vimPlugins.clangd_extensions-nvim
     ];
 
     my.neovim.treesitterParsers = [
