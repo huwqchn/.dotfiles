@@ -11,6 +11,7 @@
   inherit (lib) mkIf;
   inherit (pkgs.stdenv) isLinux;
   inherit (config) my;
+  home = config.home.homeDirectory;
   # define default applications for some url schemes.
   browser = [
     "x-scheme-handler/about" # open `about:` url with `browser`
@@ -79,26 +80,33 @@ in {
   xdg = {
     enable = isLinux;
 
-    cacheHome = "${config.home.homeDirectory}/.cache";
-    configHome = "${config.home.homeDirectory}/.config";
-    dataHome = "${config.home.homeDirectory}/.local/share";
-    stateHome = "${config.home.homeDirectory}/.local/state";
+    cacheHome = "${home}/.cache";
+    configHome = "${home}/.config";
+    dataHome = "${home}/.local/share";
+    stateHome = "${home}/.local/state";
 
     userDirs = mkIf isLinux {
       enable = true;
       createDirectories = true;
 
-      documents = "${config.home.homeDirectory}/documents";
-      download = "${config.home.homeDirectory}/downloads";
-      desktop = "${config.home.homeDirectory}/desktop";
-      videos = "${config.home.homeDirectory}/media/videos";
-      music = "${config.home.homeDirectory}/media/music";
-      pictures = "${config.home.homeDirectory}/media/pictures";
-      publicShare = "${config.home.homeDirectory}/public/share";
-      templates = "${config.home.homeDirectory}/public/templates";
+      documents = "${home}/Documents";
+      download = "${home}/Downloads";
+      desktop = "${home}/Desktop";
+      videos = "${home}/Media/Videos";
+      music = "${home}/Media/Music";
+      pictures = "${home}/Media/Pictures";
+      publicShare = "${home}/Public/Share";
+      templates = "${home}/Public/Templates";
       extraConfig = {
         XDG_SCREENSHOTS_DIR = "${config.xdg.userDirs.pictures}/Screenshots";
-        XDG_DEV_DIR = "${config.home.homeDirectory}/Dev";
+        XDG_DEV_DIR = "${home}/Dev";
+        XDG_MISC_DIR = "''${home}/Misc";
+        XDG_WALLPAPERS_DIR = "${config.xdg.userDirs.pictures}/Wallpapers";
+        XDG_NOTES_DIR = "${config.xdg.userDirs.documents}/Notes";
+        XDG_REPOS_DIR = "${home}/Dev/Repos";
+        XDG_PROJECTS_DIR = "${home}/Dev/Projects";
+        XDG_WORKSPACES_DIR = "${home}/Dev/Workspaces";
+        XDG_SECRET_DIR = "${home}/.secrets";
       };
     };
 
