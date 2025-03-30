@@ -1,3 +1,4 @@
+# FIXME: This is a temporary solution to get secrets into the home-manager
 {
   config,
   lib,
