@@ -4,10 +4,6 @@
   ...
 }: let
   cfg = config.my.atuin;
-  user_readable = {
-    symlink = false;
-    mode = "0600";
-  };
   inherit (lib) mkEnableOption mkIf;
   inherit (config.home) homeDirectory;
 in {
@@ -49,14 +45,6 @@ in {
         ## possible values: emacs, subl
         word_jump_mode = "emacs";
       };
-    };
-    age.secrets = {
-      atuin-key =
-        {
-          rekeyFile = ./secrets/atuin-key.age;
-          path = "${homeDirectory}/.local/share/atuin/key";
-        }
-        // user_readable;
     };
     home.persistence = {
       "/persist/${homeDirectory}".directories = [".local/share/atuin"];
