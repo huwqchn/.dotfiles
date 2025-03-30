@@ -4,11 +4,7 @@
   ...
 }: let
   inherit (lib.modules) mkIf;
-  isHeadless =
-    config.my.machine.type
-    == "workstation"
-    || config.my.machine.type == "server"
-    || config.my.machine.type == "mobile";
+  isHeadless = !config.my.desktop.enable;
 in {
   config = mkIf isHeadless {
     # a headless system should not mount any removable media
