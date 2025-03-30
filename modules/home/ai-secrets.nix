@@ -1,3 +1,4 @@
+# FIXME: This is a temporary solution to get secrets into the home-manager
 {
   config,
   lib,
@@ -6,7 +7,7 @@
   inherit (config.my) home name;
   user_readable = {
     symlink = false;
-    owner = config.my.name;
+    owner = name;
     mode = "0500";
   };
   cfg = config.hm.my.neovim.lazyvim;
@@ -18,7 +19,7 @@ in {
         github-copilot =
           {
             rekeyFile = ./secrets/github-copilot.age;
-            path = "${config.my.home}/.config/github-copilot/apps.json";
+            path = "${home}/.config/github-copilot/apps.json";
           }
           // user_readable;
       };
@@ -29,7 +30,7 @@ in {
           {
             rekeyFile = ./secrets/supermaven.age;
 
-            path = "${config.my.home}/.supermaven/config.json";
+            path = "${home}/.supermaven/config.json";
           }
           // user_readable;
       };
@@ -41,7 +42,7 @@ in {
           {
             rekeyFile = ./secrets/codeium.age;
 
-            path = "${config.my.home}/.cache/nvim/codeium/config.json";
+            path = "${home}/.cache/nvim/codeium/config.json";
           }
           // user_readable;
       };
