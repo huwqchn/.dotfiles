@@ -1,6 +1,3 @@
 {
-  my = {
-    machine.type = "wsl";
-    desktop.enable = true;
-  };
+  my.machine.type = "wsl";
 }
