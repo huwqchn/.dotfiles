@@ -9,7 +9,7 @@
   inherit (config.my) name;
 in {
   config = mkIf cfg.enable {
-    home.file.".ssh/johnson-hu-ssh-key.pub".source = "${self}/secrets/${name}/ssh-key.pub";
+    home.file.".ssh/id_ed25519.pub".source = "${self}/secrets/${name}/ssh-key.pub";
 
     programs.ssh = {
       enable = true;
