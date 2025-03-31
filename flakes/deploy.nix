@@ -29,6 +29,15 @@ in {
 
   perSystem = {inputs', ...}: {
     # checks = builtins.mapAttrs (system: deployLib: deployLib.deployChecks self.deploy) inputs.deploy-rs.lib;
+    devshells.default = {
+      commands = [
+        {
+          name = "deploy";
+          help = "Deploy profiles to servers";
+          package = inputs'.deploy-rs.packages.default;
+        }
+      ];
+    };
 
     apps = {
       # Deploy
