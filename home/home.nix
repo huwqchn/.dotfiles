@@ -1,16 +1,13 @@
 {
-  inputs,
   config,
   lib,
   ...
 }: let
   username = config.my.name;
   homeDirectory = config.my.home;
-  inherit (config.my.machine) persist;
-  inherit (lib) mkForce mkDefault;
+  inherit (lib) mkDefault;
 in {
   imports = [
-    inputs.impermanence.homeManagerModules.impermanence
     ../modules/common/my.nix
   ];
 
@@ -21,31 +18,6 @@ in {
   home = {
     inherit username homeDirectory;
     sessionPath = ["$HOME/.local/bin" "/opt/homebrew/bin"];
-
-    persistence =
-      if persist
-      then {
-        "/persist/${config.home.homeDirectory}" = {
-          directories = [
-            "Downloads"
-            "Documents"
-            "Desktop"
-            "Music"
-            "Videos"
-            "Public"
-            "Templates"
-            "Pictures"
-            ".local/bin"
-            ".cache/nix"
-            ".cache/pre-commit"
-            ".dotfiles"
-            ".docker"
-          ];
-          allowOther = true;
-        };
-      }
-      else mkForce {};
-
     # This value determines the Home Manager release that your
     # configuration is compatible with. This helps avoid breakage
     # when a new Home Manager release introduces backwards
