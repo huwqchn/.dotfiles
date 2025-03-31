@@ -15,37 +15,29 @@
 in {
   config = mkMerge [
     (mkIf cfg.copilot.enable {
-      age.secrets = {
-        github-copilot =
-          {
-            rekeyFile = ./secrets/github-copilot.age;
-            path = "${home}/.config/github-copilot/apps.json";
-          }
-          // user_readable;
-      };
+      age.secrets.github-copilot =
+        {
+          rekeyFile = ./secrets/github-copilot.age;
+          path = "${home}/.config/github-copilot/apps.json";
+        }
+        // user_readable;
     })
     (mkIf cfg.supermaven.enable {
-      age.secrets = {
-        supermaven =
-          {
-            rekeyFile = ./secrets/supermaven.age;
-
-            path = "${home}/.supermaven/config.json";
-          }
-          // user_readable;
-      };
+      age.secrets.supermaven =
+        {
+          rekeyFile = ./secrets/supermaven.age;
+          path = "${home}/.supermaven/config.json";
+        }
+        // user_readable;
     })
 
     (mkIf cfg.codeium.enable {
-      age.secrets = {
-        codeium =
-          {
-            rekeyFile = ./secrets/codeium.age;
-
-            path = "${home}/.cache/nvim/codeium/config.json";
-          }
-          // user_readable;
-      };
+      age.secrets.codeium =
+        {
+          rekeyFile = ./secrets/codeium.age;
+          path = "${home}/.cache/nvim/codeium/config.json";
+        }
+        // user_readable;
     })
   ];
 }
