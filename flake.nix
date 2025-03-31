@@ -105,18 +105,11 @@
 
     # secrets management
     agenix = {
-      # type-safe reimplementation of agenix to get a better error messages and less bugs
-      url = "github:yaxitech/ragenix";
+      url = "github:ryantm/agenix";
+      inputs.home-manager.follows = "home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    agenix-shell = {
-      url = "github:aciceri/agenix-shell";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-        flake-parts.follows = "flake-parts";
-      };
-    };
     agenix-rekey = {
       url = "github:oddlama/agenix-rekey";
       inputs = {
