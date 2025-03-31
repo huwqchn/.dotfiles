@@ -2,13 +2,16 @@
 {
   config,
   lib,
+  pkgs,
   ...
 }: let
   inherit (config.my) home name;
+  userGroup = lib.my.ldTernary pkgs "users" "admin";
   user_readable = {
     symlink = false;
     owner = name;
-    mode = "0500";
+    mode = "0400";
+    group = userGroup;
   };
   cfg = config.hm.my.neovim.lazyvim;
   inherit (lib) mkIf mkMerge;
