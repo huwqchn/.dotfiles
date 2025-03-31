@@ -3,13 +3,16 @@
   config,
   lib,
   self,
+  pkgs,
   ...
 }: let
   inherit (config.my) home name;
+  userGroup = lib.my.ldTernary pkgs "users" "admin";
   user_readable = {
     symlink = false;
     owner = name;
     mode = "0600";
+    group = userGroup;
   };
   cfg = config.hm.my;
   inherit (lib) mkIf mkMerge;
@@ -35,7 +38,7 @@ in {
       age.secrets.my-ssh-key =
         {
           rekeyFile = "${self}/secrets/${name}/ssh-key.age";
-          path = "${home}/.ssh/johnson-hu-ssh-key";
+          path = "${home}/.ssh/id_ed25519";
         }
         // user_readable;
     })
