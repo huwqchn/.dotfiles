@@ -8,8 +8,8 @@
   yazi-plugins = pkgs.fetchFromGitHub {
     owner = "yazi-rs";
     repo = "plugins";
-    rev = "5186af7984aa8cb0550358aefe751201d7a6b5a8";
-    hash = "sha256-Cw5iMljJJkxOzAGjWGIlCa7gnItvBln60laFMf6PSPM=";
+    rev = "a1738e8088366ba73b33da5f45010796fb33221e";
+    hash = "sha256-eiLkIWviGzG9R0XP1Cik3Bg0s6lgk3nibN6bZvo8e9o=";
   };
   cfg = config.my.yazi;
   inherit (lib) mkEnableOption mkIf;
@@ -40,17 +40,29 @@ in {
           rev = "6c639b474aabb17f5fecce18a4c97bf90b016512";
           hash = "sha256-bhLUziCDnF4QDCyysRn7Az35RAy8ibZIVUzoPgyEO1A=";
         };
-        yaziline = pkgs.fetchFromGitHub {
-          owner = "llanosrocas";
-          repo = "yaziline.yazi";
-          rev = "e06c47f7fc7a1c679e3935b45013108dadd09c96";
-          hash = "sha256-K7ydg+xazl20bgiiZpcBxwKLaRbF51Gibr35dfT0Mro=";
-        };
+        # yaziline = pkgs.fetchFromGitHub {
+        #   owner = "llanosrocas";
+        #   repo = "yaziline.yazi";
+        #   rev = "e06c47f7fc7a1c679e3935b45013108dadd09c96";
+        #   hash = "sha256-K7ydg+xazl20bgiiZpcBxwKLaRbF51Gibr35dfT0Mro=";
+        # };
       };
       initLua = ''
         require("starship"):setup()
+
+        th.git = th.git or {}
+        th.git.modified = ui.Style():fg("blue")
+        th.git.deleted = ui.Style():fg("red")
+        th.git.added = ui.Style():fg("green")
+        th.git.ignored = ui.Style():fg("darkgray")
+
+        th.git.modified_sign = "M"
+        th.git.added_sign = "A"
+        th.git.untracked_sign = "U"
+        th.git.ignored_sign = "I"
+        th.git.deleted_sign = "D"
+
         require("git"):setup()
-        require("yaziline"):setup()
       '';
       settings = {
         manager = {
@@ -94,6 +106,21 @@ in {
               run = ''/Applications/MacZip.app/Contents/MacOS/MacZip "$1"'';
               orphan = true;
               desc = "MacZip";
+            }
+          ];
+        };
+        # settings for plugins
+        plugin = {
+          prepend_fetchers = [
+            {
+              id = "git";
+              name = "*";
+              run = "git";
+            }
+            {
+              id = "git";
+              name = "*/";
+              run = "git";
             }
           ];
         };
