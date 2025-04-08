@@ -225,6 +225,15 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    nix-homebrew = {
+      url = "github:zhaofengli-wip/nix-homebrew";
+
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        nix-darwin.follows = "darwin";
+      };
+    };
+
     # Shaders for ghostty terminal
     ghostty-shaders = {
       url = "github:hackr-sh/ghostty-shaders";

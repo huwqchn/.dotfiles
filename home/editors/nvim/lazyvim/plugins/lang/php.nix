@@ -16,7 +16,7 @@ in {
       phpactor
       intelephense
       php84Packages.php-codesniffer
-      php84Packages.php-cs-fixer
+      # php84Packages.php-cs-fixer
     ];
 
     my.neovim.treesitterParsers = [
