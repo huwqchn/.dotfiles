@@ -6,6 +6,7 @@
 }: {
   imports = [
     inputs.nix-homebrew.darwinModules.nix-homebrew
+    ./environment.nix
   ];
 
   # brought in using nix-homebrew to make homebrew apps reproducible
