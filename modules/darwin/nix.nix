@@ -1,5 +1,17 @@
 {
-  # Use this instead of services.nix-daemon.enable if you
-  # don't wan't the daemon service to be managed for you.
-  system.stateVersion = 5;
+  nix = {
+    # nix gc works slightly differently on darwin, so we need to adjust the
+    # interval such that it works properly here.
+    gc.interval = {
+      Hour = 3;
+      Minute = 15;
+    };
+
+    # we add more platforms here because of the limited number of darwin
+    # maintainers that exist, thus meaning less working packages for darwin.
+    settings.extra-platforms = [
+      "aarch64-darwin"
+      "x86-64-darwin"
+    ];
+  };
 }
