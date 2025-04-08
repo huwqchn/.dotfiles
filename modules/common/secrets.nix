@@ -1,14 +1,10 @@
 {
-  inputs,
   config,
   lib,
   ...
 }: let
   host_path = ../../hosts/${config.networking.hostName};
 in {
-  imports = [
-    inputs.agenix-rekey.nixosModules.default
-  ];
   # Setup secret rekeying parameters
   age.rekey = {
     masterIdentities = [../../secrets/janus.pub];
