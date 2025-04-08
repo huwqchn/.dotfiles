@@ -15,11 +15,23 @@
         autohide = true;
         show-recents = false; # disable recent apps
 
-        # customize Hot Corners(触发角, 鼠标移动到屏幕角落时触发的动作)
-        wvous-tl-corner = 2; # top-left - Mission Control
-        # wvous-tr-corner = 13; # top-right - Lock Screen
-        wvous-bl-corner = 3; # bottom-left - Application Windows
-        wvous-br-corner = 4; # bottom-right - Desktop
+        # customize Hot Corners
+        #  1: Disabled
+        #  2: Mission Control
+        #  3: Application Windows
+        #  4: Desktop
+        #  5: Start Screen Saver
+        #  6: Disable Screen Saver
+        #  7: Dashboard
+        #  10: Put Display to Sleep
+        #  11: Launchpad
+        #  12: Notification Center
+        #  13: Lock Screen
+        #  14: Quick Note
+        wvous-tl-corner = 1;
+        wvous-tr-corner = 1;
+        wvous-bl-corner = 1;
+        wvous-br-corner = 1;
       };
 
       # customize finder
