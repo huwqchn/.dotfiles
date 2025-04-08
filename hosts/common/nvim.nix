@@ -49,7 +49,7 @@
         toml.enable = true;
         markdown.enable = true;
         nix.enable = true;
-        php.enable = true;
+        # php.enable = true;
         python.enable = true;
         rust.enable = true;
         tailwind.enable = true;
