@@ -33,7 +33,7 @@ in {
       commands = [
         {
           name = "deploy";
-          help = "Deploy profiles to servers";
+          help = "deploy to remote hosts";
           package = inputs'.deploy-rs.packages.default;
         }
       ];
