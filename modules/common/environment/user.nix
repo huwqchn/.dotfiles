@@ -41,6 +41,10 @@ in {
     description = name;
   };
 
+  systemd.tmpfiles.rules = [
+    "d ${home}/.ssh 0700 ${name} ${userGroup} -"
+  ];
+
   age.secrets.my-ssh-key =
     {
       rekeyFile = "${self}/secrets/${name}/ssh.age";
