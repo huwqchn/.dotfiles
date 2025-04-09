@@ -34,7 +34,10 @@ in {
       description = "The user home directory";
     };
     desktop = {enable = mkEnableOption "Desktop";};
-    security = {enable = mkEnableOption "Security";};
+    security = {
+      enable = mkEnableOption "Security";
+      boot = mkEnableOption "security boot";
+    };
     theme = mkOption {
       type = types.enum ["tokyonight" "catppuccin" "auto"];
       default = "tokyonight";
