@@ -4,6 +4,7 @@
   perSystem = {
     pkgs,
     config,
+    system,
     ...
   }: {
     devshells.default = {
@@ -45,6 +46,20 @@
         {
           package = pkgs.nix-output-monitor;
           help = "Nix Output Monitor (a drop-in alternative for `nix` which shows a build graph)";
+        }
+        {
+          help = "disko";
+          name = "disko";
+          command = ''
+            ${inputs.disko.packages.${system}.disko}/bin/disko ''${@}
+          '';
+        }
+        {
+          help = "nixos-anywhere";
+          name = "nixos-anywhere";
+          command = ''
+            ${inputs.nixos-anywhere.packages.${system}.nixos-anywhere}/bin/nixos-anywhere ''${@}
+          '';
         }
       ];
     };
