@@ -1,5 +1,4 @@
 {
-  inputs,
   config,
   lib,
   ...
@@ -10,9 +9,6 @@
 in {
   imports = [
     ../modules/common/my.nix
-    inputs.agenix.homeManagerModules.default
-    inputs.agenix-rekey.homeManagerModules.default
-    ../modules/common/agenix.nix
   ];
 
   news.display = "show";
