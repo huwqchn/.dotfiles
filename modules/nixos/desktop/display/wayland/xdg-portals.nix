@@ -7,14 +7,25 @@
   inherit (lib.meta) getExe;
   inherit (lib.modules) mkIf mkForce;
   cfg = config.my.desktop;
+  portal =
+    if cfg.default == "hyprland"
+    then "hyprland"
+    else "wlr";
 in {
-  config = mkIf cfg.enable {
+  config = mkIf (cfg.enable && cfg.wayland.enable) {
     xdg.portal = {
       enable = true;
       extraPortals = with pkgs; [
         xdg-desktop-portal-wlr
-        xdg-desktop-portal-gtk
       ];
+      config.common = {
+        default = "*";
+
+        # for flameshot to work
+        # https://github.com/flameshot-org/flameshot/issues/3363#issuecomment-1753771427
+        "org.freedesktop.impl.portal.Screencast" = ["${portal}"];
+        "org.freedesktop.impl.portal.Screenshot" = ["${portal}"];
+      };
       wlr = {
         enable = mkForce cfg.wayland.enable;
         settings = {
@@ -25,7 +36,6 @@ in {
           };
         };
       };
-      config.common.default = "*";
     };
   };
 }
