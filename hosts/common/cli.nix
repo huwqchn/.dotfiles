@@ -3,7 +3,10 @@
     atuin.enable = true;
     bat.enable = true;
     btop.enable = true;
-    direnv.enable = true;
+    direnv = {
+      enable = true;
+      silent = true;
+    };
     eza.enable = true;
     fastfetch.enable = true;
     fd.enable = true;
