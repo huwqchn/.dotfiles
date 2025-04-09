@@ -2,45 +2,6 @@
 
 Nixos is a rabbit hole that I have been wanting to go down for a while.
 
-## WIP
-
-This nixos configuration is a work in progress. I am currently using it on my personal laptop, but
-it is not yet ready for use on other machines. I am still learning Nix and NixOS, so I am sure there
-are many improvements that can be made. I will update this README as I make progress.
-
-## TODO
-
-- [ ] ags config
-  - [x] switch wallpaper engine
-- [ ] fcitx and rime
-- [ ] integrate yubikey
-- [ ] themes (create a nix repos for themes, name of `nixporn`)
-  - [x] toykonight
-  - [ ] gruvbox
-  - [ ] catppuccino
-  - [ ] nord
-  - [ ] rose-pine
-  - [ ] kawagana
-  - [ ] decay
-  - [ ] solarized
-  - [ ] cyperdream
-  - [ ] dracula
-  - [ ] onedark
-- [ ] networks (for proxy)
-  - [ ] dae
-  - [ ] sing-box
-- [ ] remote deployment
-- [ ] pkgs
-  - [ ] wallpapers
-  - [ ] other cursors
-- [ ] apps
-- [ ] templates (for creating projects)
-- [ ] specialisation
-- [ ] support wsl
-- [ ] support nextcloud
-- [ ] support samba
-- [ ] try zed
-
 ## References
 
 - [nixos-and-flakes-book](https://github.com/ryan4yin/nixos-and-flakes-book) - best tutorial for
