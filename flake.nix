@@ -103,6 +103,14 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    nixos-anywhere = {
+      url = "github:nix-community/nixos-anywhere";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        disko.follows = "disko";
+      };
+    };
+
     # secrets management
     agenix = {
       url = "github:ryantm/agenix";
