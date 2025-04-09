@@ -4,7 +4,7 @@
   perSystem = {
     pkgs,
     config,
-    system,
+    inputs',
     ...
   }: {
     devshells.default = {
@@ -51,14 +51,14 @@
           help = "disko";
           name = "disko";
           command = ''
-            ${inputs.disko.packages.${system}.disko}/bin/disko ''${@}
+            ${inputs'.disko.packages.disko}/bin/disko ''${@}
           '';
         }
         {
           help = "nixos-anywhere";
           name = "nixos-anywhere";
           command = ''
-            ${inputs.nixos-anywhere.packages.${system}.nixos-anywhere}/bin/nixos-anywhere ''${@}
+            ${inputs'.nixos-anywhere.packages.nixos-anywhere}/bin/nixos-anywhere ''${@}
           '';
         }
       ];
