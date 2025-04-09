@@ -8,7 +8,7 @@
   inherit (lib) mkDefault;
 in {
   imports = [
-    ../modules/common/my.nix
+    ../common/my.nix
   ];
 
   news.display = "show";
