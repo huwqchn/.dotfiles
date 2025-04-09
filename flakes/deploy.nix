@@ -34,17 +34,10 @@ in {
         {
           name = "deploy";
           help = "deploy to remote hosts";
-          package = inputs'.deploy-rs.packages.default;
+          package = inputs'.deploy-rs.packages.deploy-rs;
+          category = "dev";
         }
       ];
-    };
-
-    apps = {
-      # Deploy
-      default = {
-        type = "app";
-        program = "${inputs'.deploy-rs.packages.deploy-rs}/bin/deploy";
-      };
     };
   };
 }
