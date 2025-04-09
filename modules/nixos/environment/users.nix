@@ -1,10 +1,13 @@
 {
   config,
   pkgs,
+  lib,
   ...
 }: let
+  inherit (config.my) name home;
   cfgUser = config.users.users."${config.my.name}";
   ifTheyExist = groups: builtins.filter (group: builtins.hasAttr group config.users.groups) groups;
+  group = lib.my.ldTernary pkgs "users" "admin";
 in {
   users = {
     # Don't allow mutation of users outside the config.
@@ -14,7 +17,7 @@ in {
     defaultUserShell = pkgs.bashInteractive;
 
     groups = {
-      "${config.my.name}" = {};
+      "${name}" = {};
       docker = {};
       wireshark = {};
       # for android platform tools's udev rules
@@ -26,15 +29,16 @@ in {
       uinput = {};
     };
     users = {
-      "${config.my.name}" = {
+      "${name}" = {
         inherit (config.my) initialHashedPassword;
+        inherit group;
         isNormalUser = true;
         extraGroups =
           [
             "wheel"
           ]
           ++ ifTheyExist [
-            config.my.name
+            name
             "users"
             "git"
             "networkmanager"
@@ -51,4 +55,10 @@ in {
       };
     };
   };
+
+  # cause we need ~/.ssh to be created before agenix sevices running
+  systemd.tmpfiles.rules = [
+    "d ${home}/.ssh 0750 ${name} ${group} -"
+    "d ${home}/.ssh/sockets 0750 ${name} ${group} -"
+  ];
 }
