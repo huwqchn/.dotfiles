@@ -12,7 +12,11 @@
     pkgs,
     ...
   }: {
-    agenix-rekey.nixosConfigurations = self.nixosConfigurations // self.darwinConfigurations;
+    agenix-rekey = {
+      nixosConfigurations = self.nixosConfigurations // self.darwinConfigurations;
+      # homeConfigurations = self.homeConfigurations;
+      collectHomeManagerConfigurations = true;
+    };
     devshells.default = {
       commands = [
         {

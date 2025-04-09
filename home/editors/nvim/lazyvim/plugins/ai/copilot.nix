@@ -6,6 +6,7 @@
 }: let
   inherit (lib) mkEnableOption mkIf;
   cfg = config.my.neovim.lazyvim.copilot;
+  inherit (config.home) homeDirectory;
 in {
   options.my.neovim.lazyvim.copilot = {
     enable = mkEnableOption "AI plugin - Copilot and Copilot-Chat";
@@ -24,5 +25,10 @@ in {
 
     xdg.configFile."nvim/lua/plugins/copilot.lua".source =
       lib.my.relativeToConfig "nvim/lua/plugins/extras/ai/copilot.lua";
+
+    age.secrets.github-copilot = {
+      rekeyFile = ./secrets/github-copilot.age;
+      path = "${homeDirectory}/.config/github-copilot/apps.json";
+    };
   };
 }
