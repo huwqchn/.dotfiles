@@ -35,13 +35,19 @@ in {
     # move those files/directories to /persistent first!
     environment.persistence."/persist" = {
       hideMounts = true;
-      directories = ["/etc/NetworkManager/system-connections" "/var/lib"];
+      directories = [
+        "/etc/NetworkManager/system-connections"
+        "/var/lib"
+        "/etc/secureboot"
+        "/etc/nixos"
+        "/etc/nix"
+      ];
       files = [
         "/etc/machine-id"
-        "/etc/ssh/ssh_host_ed25519_key"
-        "/etc/ssh/ssh_host_ed25519_key.pub"
-        "/etc/ssh/ssh_host_rsa_key"
-        "/etc/ssh/ssh_host_rsa_key.pub"
+        # "/etc/ssh/ssh_host_ed25519_key"
+        # "/etc/ssh/ssh_host_ed25519_key.pub"
+        # "/etc/ssh/ssh_host_rsa_key"
+        # "/etc/ssh/ssh_host_rsa_key.pub"
       ];
     };
     programs.fuse.userAllowOther = true;
@@ -56,5 +62,25 @@ in {
       users = lib.attrValues config.users.users;
     in
       lib.concatLines (map mkHomePersist users);
+
+    # for some reason *this* is what makes networkmanager not get screwed completely instead of the impermanence module
+    systemd.tmpfiles.rules = [
+      "L /var/lib/NetworkManager/secret_key - - - - /persist/var/lib/NetworkManager/secret_key"
+      "L /var/lib/NetworkManager/seen-bssids - - - - /persist/var/lib/NetworkManager/seen-bssids"
+      "L /var/lib/NetworkManager/timestamps - - - - /persist/var/lib/NetworkManager/timestamps"
+    ];
+
+    services.openssh.hostKeys = mkForce [
+      {
+        bits = 4096;
+        path = "/persist/etc/ssh/ssh_host_rsa_key";
+        type = "rsa";
+      }
+      {
+        bits = 4096;
+        path = "/persist/etc/ssh/ssh_host_ed25519_key";
+        type = "ed25519";
+      }
+    ];
   };
 }
