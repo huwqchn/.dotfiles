@@ -132,6 +132,8 @@
       "yubico-authenticator" # for yubikey
       "veracrypt" # disk encryption
       "squirrel"
+      # sing-box
+      "sfm"
     ];
   };
 }
