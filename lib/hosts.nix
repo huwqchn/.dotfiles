@@ -26,7 +26,7 @@ in rec {
       then lhs.${name} or {} // value
       else if isList value
       then lhs.${name} or [] ++ value
-      else value)
+      else lhs.${name} or value)
     rhs;
 
   mergeDefault = attr: let
@@ -110,38 +110,36 @@ in rec {
         then isDarwin rawHost.system
         else false;
 
-      host =
-        shallowMerge {
-          system = "x86_64-linux";
-          modules = [
-            ({options, ...}: {
-              # 'mkMerge` to separate out each part into its own module
-              _type = "merge";
-              contents = [
-                (optionalAttrs (options ? networking.hostName) {
-                  networking.hostName = hostName;
-                })
-                (optionalAttrs (options ? nixpkgs.hostPlatform) {
-                  nixpkgs.hostPlatform = lib.mkDefault host.system;
-                })
-                {
-                  _module.args =
-                    host.extraArgs
-                    // {
-                      inherit (host) system;
-                      inherit hostName;
-                    };
-                }
-              ];
-            })
-          ];
-          extraArgs = {};
-          output =
-            if isDarwin'
-            then "darwinConfigurations"
-            else "nixosConfigurations";
-        }
-        rawHost;
+      host = shallowMerge rawHost {
+        system = "x86_64-linux";
+        modules = [
+          ({options, ...}: {
+            # 'mkMerge` to separate out each part into its own module
+            _type = "merge";
+            contents = [
+              (optionalAttrs (options ? networking.hostName) {
+                networking.hostName = hostName;
+              })
+              (optionalAttrs (options ? nixpkgs.hostPlatform) {
+                nixpkgs.hostPlatform = lib.mkDefault host.system;
+              })
+              {
+                _module.args =
+                  host.extraArgs
+                  // {
+                    inherit (host) system;
+                    inherit hostName;
+                  };
+              }
+            ];
+          })
+        ];
+        extraArgs = {};
+        output =
+          if isDarwin'
+          then "darwinConfigurations"
+          else "nixosConfigurations";
+      };
       isDarwinOutput = isDarwin host.output;
       isNixosOutput = isNixos host.output;
       isHomeOutput = isHome host.output;

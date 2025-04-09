@@ -8,4 +8,5 @@
     }
     ./common/yubikey.nix
   ];
+  deployable = true;
 }
