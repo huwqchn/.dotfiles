@@ -1,20 +1,8 @@
 {
-  config,
   lib,
+  config,
   ...
-}: let
-  host_path = ../../hosts/${config.networking.hostName};
-in {
-  # Setup secret rekeying parameters
-  age.rekey = {
-    masterIdentities = [../../secrets/janus.pub];
-    extraEncryptionPubkeys = [../../secrets/backup.pub];
-    hostPubkey = host_path + "/host.pub";
-    storageMode = "local";
-    generatedSecretsDir = ../../. + "/secrets/generated/${config.networking.hostName}";
-    localStorageDir = ../../. + "/secrets/rekeyed/${config.networking.hostName}";
-  };
-
+}: {
   # Just before switching, remove the agenix directory if it exists.
   # This can happen when a secret is used in the initrd because it will
   # then be copied to the initramfs under the same path. This materializes

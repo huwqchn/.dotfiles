@@ -1,0 +1,38 @@
+{
+  config,
+  lib,
+  ...
+}: let
+  inherit (lib) hasAttr;
+  hostPath = ../../hosts/${config.networking.hostName}/host.pub;
+  userPath = ../../secrets/${config.my.name}/ssh.pub;
+  dirname =
+    if (hasAttr "networking" config)
+    then config.networking.hostName
+    else config.my.name;
+  sshDir = config.my.home + "/.ssh";
+in {
+  # Setup secret rekeying parameters
+  age = {
+    # check the main users ssh key and the system key to see if it is safe
+    # to decrypt the secrets
+    identityPaths = [
+      "/etc/ssh/ssh_host_ed25519_key"
+      "${sshDir}/id_ed25519"
+    ];
+
+    # ageBin = getExe pkgs.rage;
+
+    rekey = {
+      masterIdentities = [../../secrets/janus.pub];
+      extraEncryptionPubkeys = [../../secrets/backup.pub];
+      hostPubkey =
+        if (hasAttr "networking" config)
+        then hostPath
+        else userPath;
+      storageMode = "local";
+      generatedSecretsDir = ../../. + "/secrets/generated/${dirname}";
+      localStorageDir = ../../. + "/secrets/rekeyed/${dirname}";
+    };
+  };
+}

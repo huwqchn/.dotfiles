@@ -9,7 +9,7 @@
   inherit (config.my) name;
 in {
   config = mkIf cfg.enable {
-    home.file.".ssh/id_ed25519.pub".source = "${self}/secrets/${name}/ssh-key.pub";
+    home.file.".ssh/id_ed25519.pub".source = "${self}/secrets/${name}/ssh.pub";
 
     programs.ssh = {
       enable = true;
@@ -30,7 +30,7 @@ in {
           # It has the same effect as adding cli option `ssh -A user@host`
           ForwardAgent yes
           # holds my homelab~
-          IdentityFile ~/.ssh/johnson-hu-ssh-key
+          IdentityFile ~/.ssh/id_ed25519.pub
           # Specifies that ssh should only use the identity file explicitly configured above
           # required to prevent sending default identity files first.
           IdentitiesOnly yes

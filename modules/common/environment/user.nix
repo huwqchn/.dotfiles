@@ -1,9 +1,18 @@
 {
   config,
   pkgs,
+  lib,
+  self,
   ...
 }: let
   inherit (config.my) name home shell;
+  userGroup = lib.my.ldTernary pkgs "users" "admin";
+  user_readable = {
+    symlink = false;
+    owner = name;
+    mode = "0600";
+    group = userGroup;
+  };
 in {
   environment = {
     # add user's shell into /etc/shells
@@ -31,4 +40,11 @@ in {
       else pkgs.bashInteractive;
     description = name;
   };
+
+  age.secrets.my-ssh-key =
+    {
+      rekeyFile = "${self}/secrets/${name}/ssh.age";
+      path = "${home}/.ssh/id_ed25519";
+    }
+    // user_readable;
 }

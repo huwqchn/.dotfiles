@@ -6,6 +6,7 @@
 }: let
   inherit (lib) mkEnableOption mkIf;
   cfg = config.my.neovim.lazyvim.supermaven;
+  inherit (config.home) homeDirectory;
 in {
   options.my.neovim.lazyvim.supermaven = {
     enable = mkEnableOption "AI plugin - Supermaven";
@@ -19,5 +20,10 @@ in {
     my.neovim.lazyvim.extraPlugins = with pkgs.vimPlugins; [
       supermaven-nvim
     ];
+
+    age.secrets.supermaven = {
+      rekeyFile = ./secrets/supermaven.age;
+      path = "${homeDirectory}/.supermaven/config.json";
+    };
   };
 }
