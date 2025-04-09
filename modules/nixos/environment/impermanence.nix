@@ -36,11 +36,12 @@ in {
     environment.persistence."/persist" = {
       hideMounts = true;
       directories = [
-        "/etc/NetworkManager/system-connections"
-        "/var/lib"
         "/etc/secureboot"
         "/etc/nixos"
         "/etc/nix"
+        "/etc/NetworkManager/system-connections"
+        "/var/db/sudo"
+        "/var/lib"
       ];
       files = [
         "/etc/machine-id"
