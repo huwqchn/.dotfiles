@@ -30,22 +30,27 @@
         {
           package = config.treefmt.build.wrapper;
           help = "Format all files";
+          category = "nix";
         }
         {
           package = pkgs.nix-tree;
           help = "Interactively browse dependency graphs of Nix derivations";
+          category = "nix";
         }
         {
           package = pkgs.nvd;
           help = "Diff two nix toplevels and show which packages were upgraded";
+          category = "nix";
         }
         {
           package = pkgs.nix-diff;
           help = "Explain why two Nix derivations differ";
+          category = "nix";
         }
         {
           package = pkgs.nix-output-monitor;
           help = "Nix Output Monitor (a drop-in alternative for `nix` which shows a build graph)";
+          category = "nix";
         }
         {
           help = "disko";
@@ -53,6 +58,7 @@
           command = ''
             ${inputs'.disko.packages.disko}/bin/disko ''${@}
           '';
+          category = "dev";
         }
         {
           help = "nixos-anywhere";
@@ -60,6 +66,13 @@
           command = ''
             ${inputs'.nixos-anywhere.packages.nixos-anywhere}/bin/nixos-anywhere ''${@}
           '';
+          category = "dev";
+        }
+        {
+          help = "Generate NixOS configuration with nixos-generators.";
+          name = "generate";
+          command = "${inputs'.nixos-generators.packages.nixos-generate}/bin/nixos-generate $@";
+          category = "dev";
         }
       ];
     };

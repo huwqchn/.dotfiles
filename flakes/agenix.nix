@@ -22,6 +22,7 @@
         {
           inherit (config.agenix-rekey) package;
           help = "Edit, generate and rekey secrets";
+          category = "dev";
         }
       ];
       env = [
