@@ -21,6 +21,7 @@ in {
       "${sshDir}/id_ed25519"
     ];
 
+    # FIXME: this not working on agenix home module
     # ageBin = getExe pkgs.rage;
 
     rekey = {
