@@ -5,7 +5,7 @@
   ...
 }: let
   inherit (lib.meta) getExe;
-  inherit (lib.modules) mkIf mkForce;
+  inherit (lib.modules) mkIf mkDefault;
   cfg = config.my.desktop;
   portal =
     if cfg.default == "hyprland"
@@ -27,7 +27,7 @@ in {
         "org.freedesktop.impl.portal.Screenshot" = ["${portal}"];
       };
       wlr = {
-        enable = mkForce cfg.wayland.enable;
+        enable = mkDefault cfg.wayland.enable;
         settings = {
           screencast = {
             max_fps = 60;
