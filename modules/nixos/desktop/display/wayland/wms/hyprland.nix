@@ -12,7 +12,7 @@ in {
     services.displayManager.sessionPackages = [pkgs.hyprland];
     xdg.portal = {
       enable = true;
-      extraPackages = with pkgs; [
+      extraPortals = with pkgs; [
         xdg-desktop-portal-hyprland
       ];
 
