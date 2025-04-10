@@ -20,6 +20,10 @@ in {
     secretsMountPoint = "${homeDirectory}/.agenix/agenix.d";
   };
 
+  home.packages = with pkgs; [
+    rage
+  ];
+
   home.activation.agenix = lib.hm.dag.entryAfter ["writeBoundary"] (
     if isLinuxSystemd
     then ''
