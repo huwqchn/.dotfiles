@@ -69,9 +69,9 @@ in {
         # Theme
         # theme = "light:tokyonight-moon,dark:tokyonight-moon";
         cursor-invert-fg-bg = true;
-        background-opacity = 0.9;
-        window-theme = "ghostty";
+        background-opacity = 0.7;
         background-blur = true;
+        window-theme = "ghostty";
         # window
         gtk-single-instance = true;
         gtk-tabs-location = "bottom";
