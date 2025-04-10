@@ -15,6 +15,7 @@ in {
   ];
 
   age = {
+    package = pkgs.rage;
     secretsDir = "${homeDirectory}/.agenix";
     secretsMountPoint = "${homeDirectory}/.agenix/agenix.d";
   };
