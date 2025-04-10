@@ -24,6 +24,7 @@ in {
     age.secrets.codeium = {
       rekeyFile = ./secrets/codeium.age;
       path = "${homeDirectory}/.cache/nvim/codeium/config.json";
+      symlink = false;
     };
   };
 }

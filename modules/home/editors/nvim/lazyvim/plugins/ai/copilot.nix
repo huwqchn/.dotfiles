@@ -29,6 +29,7 @@ in {
     age.secrets.github-copilot = {
       rekeyFile = ./secrets/github-copilot.age;
       path = "${homeDirectory}/.config/github-copilot/apps.json";
+      symlink = false;
     };
   };
 }

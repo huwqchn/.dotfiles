@@ -24,6 +24,7 @@ in {
     age.secrets.supermaven = {
       rekeyFile = ./secrets/supermaven.age;
       path = "${homeDirectory}/.supermaven/config.json";
+      symlink = false;
     };
   };
 }

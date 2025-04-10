@@ -138,6 +138,7 @@ in {
     age.secrets.git-credentials = {
       rekeyFile = ./secrets/git-credentials.age;
       path = "${config.my.home}/.git-credentials";
+      symlink = false;
     };
   };
 }
