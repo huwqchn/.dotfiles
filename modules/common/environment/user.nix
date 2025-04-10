@@ -13,6 +13,8 @@
     mode = "0600";
     group = userGroup;
   };
+  inherit (lib.strings) optionalString;
+  inherit (config.my.machine) persist;
 in {
   environment = {
     # add user's shell into /etc/shells
@@ -44,7 +46,7 @@ in {
   age.secrets.my-ssh-key =
     {
       rekeyFile = "${self}/secrets/${name}/ssh.age";
-      path = "${home}/.ssh/id_ed25519";
+      path = "${optionalString persist "/persist"}/${home}/.ssh/id_${name}";
     }
     // user_readable;
 }

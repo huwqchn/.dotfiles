@@ -5,8 +5,9 @@
 }: let
   inherit (lib) hasAttr;
   inherit (lib.strings) optionalString;
+  inherit (config.my) name;
   hostPath = ../../hosts/${config.networking.hostName}/host.pub;
-  userPath = ../../secrets/${config.my.name}/ssh.pub;
+  userPath = ../../secrets/${name}/ssh.pub;
   dirname =
     if (hasAttr "networking" config)
     then config.networking.hostName
@@ -20,7 +21,7 @@ in {
     # to decrypt the secrets
     identityPaths = [
       "${optionalString persist "/persist"}/etc/ssh/ssh_host_ed25519_key"
-      "${optionalString persist "/persist"}/${sshDir}/id_ed25519"
+      "${optionalString persist "/persist"}/${sshDir}/id_${name}"
     ];
 
     rekey = {
