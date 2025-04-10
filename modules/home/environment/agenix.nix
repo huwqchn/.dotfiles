@@ -2,7 +2,9 @@
   inputs,
   config,
   ...
-}: {
+}: let
+  inherit (config.home) homeDirectory;
+in {
   imports = [
     inputs.agenix.homeManagerModules.default
     inputs.agenix-rekey.homeManagerModules.default
@@ -10,6 +12,7 @@
   ];
 
   age = {
-    secretsDir = "${config.home.homeDirectory}/.agenix";
+    secretsDir = "${homeDirectory}/.agenix";
+    secretsMountPoint = "${homeDirectory}/.agenix/agenix.d";
   };
 }
