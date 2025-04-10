@@ -5,4 +5,4 @@ flake.lock -diff
 *.age -text -diff
 
 # templates should not register on linguist
-parts/templates/* linguist-vendored
+templates/* linguist-vendored
