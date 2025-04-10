@@ -4,6 +4,7 @@
   ...
 }: let
   inherit (lib) hasAttr;
+  inherit (lib.strings) optionalString;
   hostPath = ../../hosts/${config.networking.hostName}/host.pub;
   userPath = ../../secrets/${config.my.name}/ssh.pub;
   dirname =
@@ -11,18 +12,16 @@
     then config.networking.hostName
     else config.my.name;
   sshDir = config.my.home + "/.ssh";
+  inherit (config.my.machine) persist;
 in {
   # Setup secret rekeying parameters
   age = {
     # check the main users ssh key and the system key to see if it is safe
     # to decrypt the secrets
     identityPaths = [
-      "/etc/ssh/ssh_host_ed25519_key"
-      "${sshDir}/id_ed25519"
+      "${optionalString persist "/persist"}/etc/ssh/ssh_host_ed25519_key"
+      "${optionalString persist "/persist"}/${sshDir}/id_ed25519"
     ];
-
-    # FIXME: this not working on agenix home module
-    # ageBin = getExe pkgs.rage;
 
     rekey = {
       masterIdentities = [../../secrets/janus.pub];

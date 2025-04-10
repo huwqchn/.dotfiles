@@ -11,6 +11,8 @@ in {
     enable = mkEnableOption "atuin";
   };
   config = mkIf cfg.enable {
+    age.secrets.atuin-key.rekeyFile = ./secrets/atuin-key.age;
+
     programs.atuin = {
       enable = true;
       flags = ["--disable-up-arrow"];
@@ -46,15 +48,10 @@ in {
         word_jump_mode = "emacs";
 
         ## my atuin secret key
-        ## FIXME: this is not working
-        # key_path = config.age.secrets.atuin-key.path;
+        key_path = config.age.secrets.atuin-key.path;
       };
     };
-    age.secrets.atuin-key = {
-      rekeyFile = ./secrets/atuin-key.age;
-      # WARNING: temporarily enable atuin key here
-      path = "${homeDirectory}/.local/share/atuin/key";
-    };
+
     home.persistence = {
       "/persist/${homeDirectory}".directories = [".local/share/atuin"];
     };
