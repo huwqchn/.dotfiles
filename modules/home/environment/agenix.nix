@@ -16,8 +16,9 @@ in {
 
   age = {
     package = pkgs.rage;
-    secretsDir = "${homeDirectory}/.secrets";
-    secretsMountPoint = "${homeDirectory}/.agenix/";
+    # FIXME: use XDG_SECRET_DIR
+    secretsDir = "${homeDirectory}/.secrets/agenix";
+    secretsMountPoint = "${homeDirectory}/.secrets/agenix.d";
   };
 
   home.packages = with pkgs; [
