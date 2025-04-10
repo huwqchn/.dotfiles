@@ -113,9 +113,13 @@
 
     # secrets management
     agenix = {
-      url = "github:ryantm/agenix";
-      inputs.home-manager.follows = "home-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
+      url = "github:yaxitech/ragenix";
+      # inputs.home-manager.follows = "home-manager";
+
+      inputs = {
+        flake-utils.follows = "flake-utils";
+        nixpkgs.follows = "nixpkgs";
+      };
     };
 
     agenix-rekey = {
