@@ -6,7 +6,6 @@
   ...
 }: let
   inherit (config.home) homeDirectory;
-  inherit (lib.modules) mkIf;
   isLinuxSystemd = pkgs.stdenv.isLinux && config.systemd.user.services ? agenix;
 in {
   imports = [
@@ -21,7 +20,11 @@ in {
     secretsMountPoint = "${homeDirectory}/.agenix/agenix.d";
   };
 
-  home.activation.agenix =
-    lib.hm.dag.entryAnywhere mkIf isLinuxSystemd
-    config.systemd.user.services.agenix.Service.ExecStart;
+  home.activation.agenix = lib.hm.dag.entryAfter ["writeBoundary"] (
+    if isLinuxSystemd
+    then ''
+      ${config.systemd.user.services.agenix.Service.ExecStart}
+    ''
+    else ""
+  );
 }
