@@ -106,7 +106,6 @@ in {
         XDG_REPOS_DIR = "${home}/Dev/Repos";
         XDG_PROJECTS_DIR = "${home}/Dev/Projects";
         XDG_WORKSPACES_DIR = "${home}/Dev/Workspaces";
-        XDG_SECRET_DIR = "${home}/.secrets";
       };
     };
 
