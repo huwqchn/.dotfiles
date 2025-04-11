@@ -25,7 +25,10 @@ in {
     ];
 
     rekey = {
-      masterIdentities = [../../secrets/janus.pub];
+      masterIdentities = [
+        ../../secrets/janus.pub
+        ../../secrets/aegis.pub
+      ];
       extraEncryptionPubkeys = [../../secrets/backup.pub];
       hostPubkey =
         if (hasAttr "networking" config)

@@ -55,4 +55,10 @@ in {
       }
     ];
   };
+
+  # yubikey login / sudo
+  security.pam = {
+    rssh.enable = true;
+    services.sudo.rssh = true;
+  };
 }
