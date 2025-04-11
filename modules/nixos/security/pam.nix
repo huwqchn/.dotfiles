@@ -2,8 +2,9 @@
   config,
   lib,
   ...
-}:
-with lib; {
+}: let
+  inherit (lib.modules) mkDefault;
+in {
   services.gnome.gnome-keyring.enable = mkDefault config.my.desktop.enable;
   security = {
     pam = {

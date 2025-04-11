@@ -3,10 +3,11 @@
   lib,
   pkgs,
   ...
-}:
-with lib; let
+}: let
   inherit (config) my;
   cfg = config.my.services.caddy;
+  inherit (lib.options) mkEnableOption;
+  inherit (lib.modules) mkIf;
 in {
   options.my.services.caddy = {
     enable = mkEnableOption "Enable Caddy";

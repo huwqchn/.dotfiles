@@ -3,9 +3,10 @@
   pkgs,
   lib,
   ...
-}:
-with lib; let
+}: let
   cfg = config.my.fhs;
+  inherit (lib.modules) mkIf;
+  inherit (lib.options) mkEnableOption;
 in {
   options.my.fhs = {
     enable = mkEnableOption "Enable FHS environment";

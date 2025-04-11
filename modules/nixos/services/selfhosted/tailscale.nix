@@ -3,11 +3,12 @@
   lib,
   pkgs,
   ...
-}:
-with lib; let
+}: let
   inherit (config) my;
   cfg = config.my.tailscale;
   isWorkstation = config.my.machine.type == "workstation";
+  inherit (lib.options) mkEnableOption;
+  inherit (lib.modules) mkIf;
 in {
   options.my.tailscale = {
     enable = mkEnableOption "Enable Tailscale";

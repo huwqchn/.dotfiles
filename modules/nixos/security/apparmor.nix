@@ -3,9 +3,10 @@
   config,
   pkgs,
   ...
-}:
-with lib; let
+}: let
   cfg = config.my.security.apparmor;
+  inherit (lib.options) mkEnableOption;
+  inherit (lib.modules) mkIf;
 in {
   options.my.security.apparmor = {
     enable =

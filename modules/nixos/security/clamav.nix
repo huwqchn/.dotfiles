@@ -3,14 +3,18 @@
   pkgs,
   lib,
   ...
-}:
-with lib; let
+}: let
+  inherit (lib.attrsets) filterAttrs mapAttrsToList;
+  inherit (lib.options) mkEnableOption;
+  inherit (lib.modules) mkIf;
+
   cfg = config.my.security.clamav;
+
   sus-user-dirs = ["Downloads"];
-  all-normal-users = attrsets.filterAttrs (_username: config: config.isNormalUser) config.users.users;
+  all-normal-users = filterAttrs (_username: config: config.isNormalUser) config.users.users;
   all-sus-dirs =
     builtins.concatMap (
-      dir: attrsets.mapAttrsToList (_username: config: config.home + "/" + dir) all-normal-users
+      dir: mapAttrsToList (_username: config: config.home + "/" + dir) all-normal-users
     )
     sus-user-dirs;
   # all-user-folders = attrsets.mapAttrsToList (_username: config: config.home) all-normal-users;

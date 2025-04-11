@@ -3,9 +3,9 @@
   pkgs,
   lib,
   ...
-}:
-with lib; let
+}: let
   cfg = config.my.desktop;
+  inherit (lib.modules) mkIf;
 in {
   config = mkIf cfg.enable {
     # all fonts are linked to /nix/var/nix/profiles/system/sw/share/X11/fonts

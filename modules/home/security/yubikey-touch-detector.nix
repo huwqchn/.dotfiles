@@ -5,15 +5,18 @@
   lib,
   pkgs,
   ...
-}:
-with lib; let
+}: let
   cfg = config.my.yubikey.touchDetector;
+  inherit (lib.options) mkEnableOption mkOption;
+  inherit (lib.modules) mkIf;
+  inherit (lib.types) listOf str package literalExpression;
+  inherit (lib.strings) optionals concatStringsSep;
 in {
   options.my.yubikey = {
     touchDetector = {
       enable = mkEnableOption "a tool to detect when your YubiKey is waiting for a touch";
       package = mkOption {
-        type = types.package;
+        type = package;
         default = pkgs.yubikey-touch-detector;
         defaultText = "pkgs.yubikey-touch-detector";
         description = ''
@@ -24,7 +27,7 @@ in {
       socket.enable = mkEnableOption "starting the process only when the socket is used";
 
       extraArgs = mkOption {
-        type = types.listOf types.str;
+        type = listOf str;
         default = ["--libnotify"];
         defaultText = literalExpression ''[ "--libnotify" ]'';
         description = ''

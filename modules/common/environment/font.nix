@@ -3,9 +3,9 @@
   pkgs,
   lib,
   ...
-}:
-with lib; let
+}: let
   cfg = config.my.desktop;
+  inherit (lib.modules) mkIf;
 in {
   config = mkIf cfg.enable {
     fonts = {

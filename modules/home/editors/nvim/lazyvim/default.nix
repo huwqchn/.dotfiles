@@ -3,8 +3,11 @@
   lib,
   pkgs,
   ...
-}:
-with lib; let
+}: let
+  inherit (lib.options) mkEnableOption mkOption;
+  inherit (lib.types) enum lines;
+  inherit (lib.modules) mkIf;
+
   cfg = config.my.neovim.lazyvim;
 
   pluginsOptionType = let
@@ -141,7 +144,7 @@ in {
       };
 
     cmp = mkOption {
-      type = types.enum ["nivm-cmp" "blink.cmp" "auto"];
+      type = enum ["nivm-cmp" "blink.cmp" "auto"];
       default = "auto";
       description = ''
         choose the completion engine
@@ -150,7 +153,7 @@ in {
     };
 
     picker = mkOption {
-      type = types.enum ["telescope" "fzf" "snacks" "auto"];
+      type = enum ["telescope" "fzf" "snacks" "auto"];
       default = "auto";
       description = ''
         choose the picker engine
@@ -159,7 +162,7 @@ in {
     };
 
     explorer = mkOption {
-      type = types.enum ["neo-tree" "snacks" "auto"];
+      type = enum ["neo-tree" "snacks" "auto"];
       default = "auto";
       description = ''
         choose the file explorer
@@ -178,7 +181,7 @@ in {
     };
 
     extraSpec = mkOption {
-      type = types.lines;
+      type = lines;
       default = "";
     };
   };

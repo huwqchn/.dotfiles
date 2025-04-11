@@ -2,10 +2,11 @@
   lib,
   config,
   ...
-}:
-with lib; let
+}: let
   cfg = config.my.services.onedrive;
   isPersist = config.my.machine.persist && cfg.enable;
+  inherit (lib.options) mkEnableOption;
+  inherit (lib.modules) mkIf mkMerge;
 in {
   options.my.services.onedrive = {
     enable = mkEnableOption "Enable OneDrive config";

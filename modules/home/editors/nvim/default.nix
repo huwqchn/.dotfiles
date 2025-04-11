@@ -7,6 +7,7 @@
   inherit (lib.attrsets) attrVals;
   inherit (lib.options) literalExpression mkEnableOption mkOption;
   inherit (lib.modules) mkIf;
+  inherit (lib.types) listOf oneOf str package;
   cfg = config.my.neovim;
 in {
   imports = [./lazyvim];
@@ -23,7 +24,7 @@ in {
       example = literalExpression ''
         [ "nix" pkgs.vimPlugins.nvim-treesitter-parsers.yaml ]
       '';
-      type = with lib.types; listOf (oneOf [str package]);
+      type = listOf (oneOf [str package]);
     };
   };
 
