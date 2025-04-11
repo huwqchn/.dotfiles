@@ -1,3 +1,4 @@
+# FIXME: This module should not be existing, it should be part of themes module
 {
   pkgs,
   config,

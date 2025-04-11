@@ -113,7 +113,7 @@
       "raycast" # search
       "stats" # beautiful system monitor
       "eudic" # dictionary
-      "spotify" # music
+      # "spotify" # music
       "1password" # password manager
       "1password-cli"
       "ghostty" # terminal

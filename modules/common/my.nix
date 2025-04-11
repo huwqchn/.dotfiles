@@ -54,6 +54,7 @@ in {
         enable =
           mkEnableOption "my GUI apps"
           // {
+            # FIXME: should be enable on darwin
             default = config.my.desktop.enable && pkgs.stdenv.isLinux;
           };
       };
