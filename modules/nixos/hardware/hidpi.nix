@@ -3,7 +3,7 @@
   config,
   ...
 }: let
-  inherit (lib) mkIf;
+  inherit (lib.modules) mkIf;
   inherit (config.my.machine) isHidpi;
 in {
   config = mkIf isHidpi {

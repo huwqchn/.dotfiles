@@ -4,7 +4,9 @@
   pkgs,
   ...
 }: let
-  inherit (lib) attrVals literalExpression mkEnableOption mkIf mkOption;
+  inherit (lib.attrsets) attrVals;
+  inherit (lib.options) literalExpression mkEnableOption mkOption;
+  inherit (lib.modules) mkIf;
   cfg = config.my.neovim;
 in {
   imports = [./lazyvim];

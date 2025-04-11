@@ -10,7 +10,8 @@
   ...
 }: let
   cfg = config.my.develop.python;
-  inherit (lib) mkIf mkEnableOption mkMerge;
+  inherit (lib.modules) mkIf mkMerge;
+  inherit (lib.options) mkEnableOption;
 in {
   options.my.develop.python = {
     enable = mkEnableOption "Python development environment";

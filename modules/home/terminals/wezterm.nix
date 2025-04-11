@@ -3,7 +3,8 @@
   config,
   ...
 }: let
-  inherit (lib) mkEnableOption mkIf;
+  inherit (lib.options) mkEnableOption;
+  inherit (lib.modules) mkIf;
   cfg = config.my.desktop.apps.wezterm;
 in {
   options.my.desktop.apps.wezterm = {

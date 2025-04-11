@@ -4,7 +4,7 @@
   ...
 }: let
   cfg = config.my.desktop;
-  inherit (lib) mkIf;
+  inherit (lib.modules) mkIf;
 in {
   config = mkIf cfg.enable {
     programs = {

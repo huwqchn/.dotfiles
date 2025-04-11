@@ -4,7 +4,9 @@
   config,
   ...
 }: let
-  inherit (lib) mkIf mkOption mkEnableOption optionalAttrs;
+  inherit (lib.modules) mkIf;
+  inherit (lib.options) mkOption mkEnableOption;
+  inherit (lib.attrsets) optionalAttrs;
   cfg = config.my.yubikey;
   homeDirectory = config.my.home;
   yubikey-up = let

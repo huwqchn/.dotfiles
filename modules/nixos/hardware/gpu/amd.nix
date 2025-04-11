@@ -5,7 +5,7 @@
   ...
 }: let
   isAmd = config.my.machine.gpu == "amd";
-  inherit (lib) mkIf;
+  inherit (lib.modules) mkIf;
 in {
   config = mkIf isAmd {
     # enable amdgpu xorg drivers

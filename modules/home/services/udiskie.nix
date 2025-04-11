@@ -3,7 +3,8 @@
   config,
   ...
 }: let
-  inherit (lib) mkIf mkEnableOption;
+  inherit (lib.options) mkEnableOption;
+  inherit (lib.modules) mkIf;
   cfg = config.my.services.udiskie;
 in {
   options.my.services.udiskie = {enable = mkEnableOption "udiskie";};

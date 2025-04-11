@@ -4,7 +4,8 @@
   ...
 }: let
   cfg = config.my.atuin;
-  inherit (lib) mkEnableOption mkIf;
+  inherit (lib.options) mkEnableOption;
+  inherit (lib.modules) mkIf;
   inherit (config.home) homeDirectory;
 in {
   options.my.atuin = {

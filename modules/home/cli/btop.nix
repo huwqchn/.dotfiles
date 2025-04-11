@@ -5,7 +5,8 @@
 }: let
   shellAliases = {"top" = "btop";};
   cfg = config.my.btop;
-  inherit (lib) mkEnableOption mkIf;
+  inherit (lib.options) mkEnableOption;
+  inherit (lib.modules) mkIf;
 in {
   options.my.btop = {
     enable = mkEnableOption "btop";

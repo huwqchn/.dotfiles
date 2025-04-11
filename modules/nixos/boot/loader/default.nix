@@ -1,9 +1,10 @@
 {lib, ...}: let
-  inherit (lib) mkOption types;
+  inherit (lib.options) mkOption;
+  inherit (lib.types) enum;
 in {
   imports = lib.my.scanPaths ./.;
   options.my.boot.loader = mkOption {
-    type = types.enum [
+    type = enum [
       "none"
       "grub"
       "systemd-boot"

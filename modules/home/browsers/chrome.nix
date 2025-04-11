@@ -4,7 +4,8 @@
   lib,
   ...
 }: let
-  inherit (lib) mkEnableOption mkIf;
+  inherit (lib.options) mkEnableOption;
+  inherit (lib.modules) mkIf;
   cfg = config.my.desktop.apps.chrome;
 in {
   options.my.desktop.apps.chrome = {

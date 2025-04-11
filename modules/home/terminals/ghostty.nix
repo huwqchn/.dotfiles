@@ -6,7 +6,8 @@
   ...
 }: let
   inherit (config.lib.file) mkOutOfStoreSymlink;
-  inherit (lib) mkEnableOption mkIf;
+  inherit (lib.options) mkEnableOption;
+  inherit (lib.modules) mkIf;
   inherit (inputs) ghostty-shaders;
   cfg = config.my.desktop.apps.ghostty;
 in {

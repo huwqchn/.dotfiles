@@ -4,7 +4,9 @@
   config,
   ...
 }: let
-  inherit (lib) mkIf mkDefault mkEnableOption mkPackageOption optionalAttrs;
+  inherit (lib.modules) mkIf mkDefault;
+  inherit (lib.options) mkEnableOption mkPackageOption;
+  inherit (lib.attrsets) optionalAttrs;
   cfg = config.my.boot;
 in {
   options.my.boot.memtest = {

@@ -13,7 +13,8 @@
   ...
 }: let
   cfg = config.my.develop.rust;
-  inherit (lib) mkEnableOption mkMerge mkIf;
+  inherit (lib.options) mkEnableOption;
+  inherit (lib.modules) mkMerge mkIf;
 in {
   options.my.develop.rust = {
     enable = mkEnableOption "Rust development environment";

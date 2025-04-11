@@ -4,7 +4,8 @@
   ...
 }: let
   cfg = config.my.services.calibre;
-  inherit (lib) mkIf mkEnableOption;
+  inherit (lib.modules) mkIf;
+  inherit (lib.options) mkEnableOption;
 in {
   options.my.services.calibre = {
     enable = mkEnableOption "calibre";

@@ -7,7 +7,9 @@
   cfg = config.my.virtual.qemu;
   isIntel = config.my.machine.cpu == "intel";
   isAmd = config.my.machine.cpu == "amd";
-  inherit (lib) mkIf mkEnableOption optionals;
+  inherit (lib.modules) mkIf;
+  inherit (lib.options) mkEnableOption;
+  inherit (lib.lists) optionals;
 in {
   options.my.virtual.qemu = {
     enable =

@@ -4,9 +4,10 @@
   pkgs,
   ...
 }: let
-  inherit (lib) mkEnableOption mkIf;
-  cfg = config.my.neovim.lazyvim.supermaven;
+  inherit (lib.options) mkEnableOption;
+  inherit (lib.modules) mkIf;
   inherit (config.home) homeDirectory;
+  cfg = config.my.neovim.lazyvim.supermaven;
 in {
   options.my.neovim.lazyvim.supermaven = {
     enable = mkEnableOption "AI plugin - Supermaven";

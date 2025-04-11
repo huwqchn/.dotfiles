@@ -7,7 +7,8 @@
   ...
 }: let
   cfg = config.my.develop.java;
-  inherit (lib) mkEnableOption mkMerge mkIf;
+  inherit (lib.options) mkEnableOption;
+  inherit (lib.modules) mkMerge mkIf;
 in {
   options.my.develop.java = {
     enable = mkEnableOption "java development environment";

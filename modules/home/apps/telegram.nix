@@ -4,7 +4,8 @@
   lib,
   ...
 }: let
-  inherit (lib) mkIf mkEnableOption;
+  inherit (lib.modules) mkIf;
+  inherit (lib.options) mkEnableOption;
   cfg = config.my.desktop.apps.telegram;
 in {
   options.my.desktop.apps.telegram = {

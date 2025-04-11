@@ -5,7 +5,8 @@
   ...
 }: let
   cfg = config.my.virtual.distrobox;
-  inherit (lib) mkIf mkEnableOption;
+  inherit (lib.modules) mkIf;
+  inherit (lib.options) mkEnableOption;
 in {
   options.my.virtual.distrobox = {
     enable =

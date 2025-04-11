@@ -5,7 +5,7 @@
 }: let
   username = config.my.name;
   homeDirectory = config.my.home;
-  inherit (lib) mkDefault;
+  inherit (lib.modules) mkDefault;
 in {
   imports = [
     ../common/my.nix

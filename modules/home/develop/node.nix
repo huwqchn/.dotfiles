@@ -10,7 +10,8 @@
 }: let
   cfg = config.my.develop.node;
   nodePkg = pkgs.nodejs_latest;
-  inherit (lib) mkEnableOption mkMerge mkIf;
+  inherit (lib.modules) mkMerge mkIf;
+  inherit (lib.options) mkEnableOption;
 in {
   options.my.develop.node = {
     enable = mkEnableOption "Node.js development environment";

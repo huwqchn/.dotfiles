@@ -4,9 +4,10 @@
   pkgs,
   ...
 }: let
-  inherit (lib) mkIf mkEnableOption;
-  cfg = config.my.desktop.apps.warp;
+  inherit (lib.modules) mkIf;
+  inherit (lib.options) mkEnableOption;
   inherit (config.home) homeDirectory;
+  cfg = config.my.desktop.apps.warp;
 in {
   options.my.desktop.apps.warp = {
     enable =

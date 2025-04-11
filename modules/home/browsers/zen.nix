@@ -5,7 +5,8 @@
   lib,
   ...
 }: let
-  inherit (lib) mkEnableOption mkIf;
+  inherit (lib.options) mkEnableOption;
+  inherit (lib.modules) mkIf;
   cfg = config.my.desktop.apps.zen;
 in {
   options.my.desktop.apps.zen = {

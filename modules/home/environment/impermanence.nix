@@ -5,7 +5,7 @@
   ...
 }: let
   inherit (config.my.machine) persist;
-  inherit (lib) mkForce;
+  inherit (lib.modules) mkForce;
 in {
   imports = [
     inputs.impermanence.homeManagerModules.impermanence

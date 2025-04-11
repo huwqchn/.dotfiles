@@ -7,7 +7,8 @@
     "g" = "git";
   };
   cfg = config.my.git;
-  inherit (lib) mkEnableOption mkIf;
+  inherit (lib.options) mkEnableOption;
+  inherit (lib.modules) mkIf;
 in {
   options.my.git = {
     enable = mkEnableOption "git";

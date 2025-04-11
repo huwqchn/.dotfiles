@@ -1,5 +1,5 @@
 {lib, ...}: let
-  inherit (lib) mkEnableOption;
+  inherit (lib.options) mkEnableOption;
   inherit (lib.my) scanPaths;
 in {
   imports = scanPaths ./.;

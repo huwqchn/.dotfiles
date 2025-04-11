@@ -4,7 +4,9 @@
   lib,
   ...
 }: let
-  inherit (lib) mkEnableOption mkIf optionalAttrs;
+  inherit (lib.options) mkEnableOption;
+  inherit (lib.modules) mkIf;
+  inherit (lib.attrsets) optionalAttrs;
   cfg = config.my.fish;
   inherit (pkgs.stdenv) isLinux;
 in {

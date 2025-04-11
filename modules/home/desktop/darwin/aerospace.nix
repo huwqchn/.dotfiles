@@ -3,7 +3,7 @@
   pkgs,
   ...
 }: let
-  inherit (lib) mkIf;
+  inherit (lib.modules) mkIf;
 in {
   config = mkIf pkgs.stdenv.isDarwin {
     programs.aerospace = {

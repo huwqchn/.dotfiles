@@ -5,7 +5,8 @@
   ...
 }: let
   cfg = config.my.virtual.podman;
-  inherit (lib) mkIf mkEnableOption mkForce;
+  inherit (lib.modules) mkIf mkForce;
+  inherit (lib.options) mkEnableOption;
 in {
   options.my.virtual.podman = {
     enable = mkEnableOption "Podman";

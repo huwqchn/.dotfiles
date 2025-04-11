@@ -5,7 +5,7 @@
 }: let
   inherit (builtins) toString;
   inherit (lib.lists) singleton;
-  inherit (lib) mkForce mkIf;
+  inherit (lib.modules) mkForce mkIf;
   cfg = config.my.machine;
 in {
   config = mkIf cfg.hasSound {

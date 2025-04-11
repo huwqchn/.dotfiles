@@ -12,7 +12,8 @@
     hash = "sha256-eiLkIWviGzG9R0XP1Cik3Bg0s6lgk3nibN6bZvo8e9o=";
   };
   cfg = config.my.yazi;
-  inherit (lib) mkEnableOption mkIf;
+  inherit (lib.options) mkEnableOption;
+  inherit (lib.modules) mkIf;
 in {
   options.my.yazi = {
     enable = mkEnableOption "yazi";

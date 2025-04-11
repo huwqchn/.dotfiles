@@ -3,7 +3,8 @@
   lib,
   ...
 }: let
-  inherit (lib) mkIf mkEnableOption;
+  inherit (lib.modules) mkIf;
+  inherit (lib.options) mkEnableOption;
   cfg = config.my.desktop.apps.zathura;
 in {
   options.my.desktop.apps.zathura = {

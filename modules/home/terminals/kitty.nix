@@ -4,7 +4,8 @@
   config,
   ...
 }: let
-  inherit (lib) mkEnableOption mkIf;
+  inherit (lib.options) mkEnableOption;
+  inherit (lib.modules) mkIf;
   cfg = config.my.desktop.apps.kitty;
 in {
   options.my.desktop.apps.kitty = {

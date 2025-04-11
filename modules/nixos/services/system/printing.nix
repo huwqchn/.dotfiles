@@ -4,7 +4,8 @@
   ...
 }: let
   cfg = config.my.services.printing;
-  inherit (lib) mkEnableOption mkIf;
+  inherit (lib.options) mkEnableOption;
+  inherit (lib.modules) mkIf;
 in {
   options.my.services.printing = {
     enable = mkEnableOption "Enable printing";

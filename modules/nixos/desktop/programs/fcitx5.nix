@@ -4,7 +4,8 @@
   pkgs,
   ...
 }: let
-  inherit (lib) mkEnableOption mkIf mkDefault;
+  inherit (lib.options) mkEnableOption;
+  inherit (lib.modules) mkIf mkDefault;
   cfg = config.my.desktop.fcitx5;
 in {
   options.my.desktop.fcitx5 = {

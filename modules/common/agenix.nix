@@ -3,7 +3,7 @@
   lib,
   ...
 }: let
-  inherit (lib) hasAttr;
+  inherit (builtins) hasAttr;
   inherit (lib.strings) optionalString;
   inherit (config.my) name;
   hostPath = ../../hosts/${config.networking.hostName}/host.pub;

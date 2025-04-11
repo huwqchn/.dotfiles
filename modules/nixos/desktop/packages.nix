@@ -4,7 +4,7 @@
   pkgs,
   ...
 }: let
-  inherit (lib) mkIf;
+  inherit (lib.modules) mkIf;
   cfg = config.my.desktop.apps;
 in {
   config = mkIf cfg.enable {

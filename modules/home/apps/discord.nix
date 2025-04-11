@@ -4,9 +4,10 @@
   pkgs,
   ...
 }: let
-  inherit (lib) mkIf mkEnableOption;
-  cfg = config.my.desktop.apps.discord;
+  inherit (lib.modules) mkIf;
+  inherit (lib.options) mkEnableOption;
   inherit (config.home) homeDirectory;
+  cfg = config.my.desktop.apps.discord;
 in {
   options.my.desktop.apps.discord = {
     enable =

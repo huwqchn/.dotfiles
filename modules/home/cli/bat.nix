@@ -13,7 +13,8 @@
     "bgrep" = "batgrep";
   };
   cfg = config.my.bat;
-  inherit (lib) mkEnableOption mkIf;
+  inherit (lib.options) mkEnableOption;
+  inherit (lib.modules) mkIf;
 in {
   options.my.bat = {
     enable = mkEnableOption "bat";

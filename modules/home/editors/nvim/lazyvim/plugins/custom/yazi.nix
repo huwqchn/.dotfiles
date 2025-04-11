@@ -4,7 +4,8 @@
   pkgs,
   ...
 }: let
-  inherit (lib) mkEnableOption mkIf;
+  inherit (lib.options) mkEnableOption;
+  inherit (lib.modules) mkIf;
   cfg = config.my.neovim.lazyvim.yazi;
 in {
   options.my.neovim.lazyvim.yazi = {

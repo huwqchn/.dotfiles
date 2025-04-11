@@ -6,7 +6,8 @@
 }: let
   shellAliases = {"t" = "tmux";};
   cfg = config.my.tmux;
-  inherit (lib) mkEnableOption mkIf;
+  inherit (lib.options) mkEnableOption;
+  inherit (lib.modules) mkIf;
 in {
   options.my.tmux = {
     enable = mkEnableOption "tmux";

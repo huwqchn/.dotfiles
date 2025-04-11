@@ -5,7 +5,9 @@
   ...
 }: let
   inherit (lib.meta) getExe';
-  inherit (lib) mkIf mkEnableOption mkOption types;
+  inherit (lib.modules) mkIf;
+  inherit (lib.options) mkEnableOption mkOption;
+  inherit (lib.types) str package;
 
   cfg = config.my.boot.plymouth;
 in {
@@ -19,10 +21,10 @@ in {
     playFullAnimation = mkEnableOption "Wait for the boot animation to finish playing before opening login shell.";
     themesPackage = mkOption {
       default = pkgs.plymouth-themes.override {inherit (cfg) themeName;};
-      type = types.package;
+      type = package;
     };
     themeName = mkOption {
-      type = types.str;
+      type = str;
       default = "abstract_ring_alt";
     };
   };

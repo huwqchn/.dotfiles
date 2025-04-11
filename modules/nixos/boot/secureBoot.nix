@@ -5,7 +5,8 @@
   config,
   ...
 }: let
-  inherit (lib) mkIf mkEnableOption mkForce;
+  inherit (lib.modules) mkIf mkForce;
+  inherit (lib.options) mkEnableOption;
   cfg = config.my.boot;
 in {
   # How to enter setup mode - msi motherboard

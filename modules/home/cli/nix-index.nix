@@ -5,7 +5,8 @@
   ...
 }: let
   cfg = config.my.nix-index;
-  inherit (lib) mkEnableOption mkIf;
+  inherit (lib.options) mkEnableOption;
+  inherit (lib.modules) mkIf;
 in {
   imports = [
     inputs.nix-index-database.hmModules.nix-index

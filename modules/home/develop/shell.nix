@@ -11,7 +11,8 @@
   ...
 }: let
   cfg = config.my.develop.shell;
-  inherit (lib) mkEnableOption mkMerge mkIf;
+  inherit (lib.options) mkEnableOption;
+  inherit (lib.modules) mkMerge mkIf;
 in {
   options.my.develop.shell = {
     enable = mkEnableOption "Shell development environment";

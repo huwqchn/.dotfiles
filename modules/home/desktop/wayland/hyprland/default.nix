@@ -8,7 +8,7 @@
 }: let
   package = pkgs.hyprland;
   cfg = config.my.desktop;
-  inherit (lib) mkIf;
+  inherit (lib.modules) mkIf;
 in {
   imports = [./binds.nix ./rules.nix ./settings.nix];
 

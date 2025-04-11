@@ -4,7 +4,7 @@
   config,
   ...
 }: let
-  inherit (lib) optionals;
+  inherit (lib.lists) optionals;
   isGui = config.my.desktop.enable;
   # isServer = config.my.machine.machine == "server";
 in {

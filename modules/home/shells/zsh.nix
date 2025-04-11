@@ -4,7 +4,8 @@
   lib,
   ...
 }: let
-  inherit (lib) mkEnableOption mkIf;
+  inherit (lib.modules) mkIf;
+  inherit (lib.options) mkEnableOption;
   cfg = config.my.zsh;
 in {
   options.my.zsh = {

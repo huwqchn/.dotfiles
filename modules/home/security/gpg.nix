@@ -5,18 +5,20 @@
   self,
   ...
 }: let
-  inherit (lib) mkIf mkOption mkEnableOption types;
+  inherit (lib.modules) mkIf;
+  inherit (lib.options) mkOption mkEnableOption;
+  inherit (lib.types) str path;
   cfg = config.my.security.gpg;
 in {
   options.my.security.gpg = {
     enable = mkEnableOption "my security gpg" // {default = config.my.security.enable;};
     key = mkOption {
-      type = types.str;
+      type = str;
       default = "776C7FC245E58F55";
       description = "The public key of my gpg.";
     };
     publicKeysPath = mkOption {
-      type = types.path;
+      type = path;
       default = "${self}/secrets/${config.my.name}/gpg-keys.pub";
       description = "The path to the public key of my gpg.";
     };

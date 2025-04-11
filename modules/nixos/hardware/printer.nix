@@ -3,7 +3,8 @@
   config,
   ...
 }: let
-  inherit (lib) mkEnableOption mkIf;
+  inherit (lib.options) mkEnableOption;
+  inherit (lib.modules) mkIf;
   inherit (config.my.machine) hasPrinter;
 in {
   options.my.machine.hasPrinter = mkEnableOption "Whether has printer support";

@@ -3,7 +3,7 @@
   config,
   ...
 }: let
-  inherit (lib) mkIf;
+  inherit (lib.modules) mkIf;
   isServer = config.my.machine.type == "server";
 in {
   config = mkIf isServer {

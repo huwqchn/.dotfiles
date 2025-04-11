@@ -3,7 +3,8 @@
   config,
   ...
 }: let
-  inherit (lib) mkEnableOption mkIf;
+  inherit (lib.options) mkEnableOption;
+  inherit (lib.modules) mkIf;
   inherit (config.my) desktop;
   cfg = config.my.security.tor;
 in {

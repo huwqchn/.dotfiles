@@ -4,9 +4,9 @@
   self,
   ...
 }: let
-  inherit (lib) mkIf;
-  cfg = config.my.security;
+  inherit (lib.modules) mkIf;
   inherit (config.my) name;
+  cfg = config.my.security;
 in {
   config = mkIf cfg.enable {
     home.file.".ssh/id_${name}.pub".source = "${self}/secrets/${name}/ssh.pub";

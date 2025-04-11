@@ -5,7 +5,7 @@
 }: let
   inherit (config) my;
   inherit (config.my.machine) type;
-  inherit (lib) mkForce mkMerge mkIf;
+  inherit (lib.modules) mkForce mkMerge mkIf;
   isMobile = type == "mobile" || type == "laptop";
   isHost = type == "desktop" || type == "workstation";
   isVirtual = type == "vm" || type == "wsl";

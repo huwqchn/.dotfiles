@@ -4,11 +4,12 @@
   pkgs,
   ...
 }: let
-  inherit (lib) types mkOption;
+  inherit (lib.options) mkOption;
+  inherit (lib.types) enum;
   cfg = config.my.neovim.lazyvim.colorscheme;
 in {
   options.my.neovim.lazyvim.colorscheme = mkOption {
-    type = types.enum ["tokyonight" "kanagawa" "catppuccin"];
+    type = enum ["tokyonight" "kanagawa" "catppuccin"];
     default = "tokyonight";
     description = ''
       choose the colorscheme of LazyVim

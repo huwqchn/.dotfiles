@@ -4,7 +4,8 @@
   config,
   ...
 }: let
-  inherit (lib) mkIf mkEnableOption;
+  inherit (lib.modules) mkIf;
+  inherit (lib.options) mkEnableOption;
   cfg = config.my.machine;
 in {
   options.my.machine.hasBluetooth = mkEnableOption "Whether the system has bluetooth support";

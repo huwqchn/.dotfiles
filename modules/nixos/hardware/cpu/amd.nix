@@ -4,7 +4,7 @@
   ...
 }: let
   inherit (config.my) machine;
-  inherit (lib) mkIf;
+  inherit (lib.modules) mkIf;
 in {
   config = mkIf (machine.cpu == "amd" || machine.cpu == "vm-amd") {
     hardware.cpu.amd.updateMicrocode = true;

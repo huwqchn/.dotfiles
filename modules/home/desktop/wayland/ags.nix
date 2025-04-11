@@ -5,7 +5,7 @@
   lib,
   ...
 }: let
-  inherit (lib) mkIf;
+  inherit (lib.modules) mkIf;
   cfg = config.my.desktop;
 in {
   imports = [inputs.ags.homeManagerModules.default];

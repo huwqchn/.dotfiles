@@ -2,11 +2,11 @@
   lib,
   pkgs,
   config,
-  system,
   ...
 }: let
-  inherit (lib) mkIf mkEnableOption;
-  isx86Linux = system == "x86_64-linux";
+  inherit (lib.modules) mkIf;
+  inherit (lib.options) mkEnableOption;
+  inherit (lib.my) isx86Linux;
   cfg = config.my.machine;
 in {
   imports = [
@@ -35,7 +35,7 @@ in {
       # package = pkgs-unstable.pipewire;
       alsa = {
         enable = true;
-        support32Bit = isx86Linux;
+        support32Bit = isx86Linux pkgs;
       };
     };
 

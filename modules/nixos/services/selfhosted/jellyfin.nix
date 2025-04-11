@@ -4,7 +4,8 @@
   ...
 }: let
   cfg = config.my.services.jellyfin;
-  inherit (lib) mkIf mkEnableOption;
+  inherit (lib.modules) mkIf;
+  inherit (lib.options) mkEnableOption;
 in {
   options.my.services.jellyfin = {
     enable = mkEnableOption "jellyfin";

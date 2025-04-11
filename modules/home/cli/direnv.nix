@@ -4,7 +4,8 @@
   ...
 }: let
   cfg = config.my.direnv;
-  inherit (lib) mkEnableOption mkIf;
+  inherit (lib.options) mkEnableOption;
+  inherit (lib.modules) mkIf;
 in {
   options.my.direnv = {
     enable = mkEnableOption "direnv";

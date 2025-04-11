@@ -17,7 +17,8 @@
     elem
     ;
   inherit (lib.strings) removeSuffix hasSuffix;
-  inherit (lib) optionals optionalAttrs foldl' genAttrs;
+  inherit (lib.attrsets) optionalAttrs genAttrs;
+  inherit (lib.lists) optionals foldl';
 in rec {
   shallowMerge = lhs: rhs:
     lhs

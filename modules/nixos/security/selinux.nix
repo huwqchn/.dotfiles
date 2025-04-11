@@ -5,7 +5,8 @@
   ...
 }: let
   cfg = config.my.security.selinux;
-  inherit (lib) mkIf mkEnableOption mkForce mkOption;
+  inherit (lib.modules) mkIf mkForce;
+  inherit (lib.options) mkEnableOption mkOption;
   inherit (lib.types) enum;
 in {
   options.my.security.selinux = {

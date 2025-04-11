@@ -3,7 +3,8 @@
   config,
   ...
 }: let
-  inherit (lib) mkOption mkIf;
+  inherit (lib.options) mkOption;
+  inherit (lib.modules) mkIf;
   inherit (lib.types) enum nullOr;
   cfg = config.my.terminal;
 in {

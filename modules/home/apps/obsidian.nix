@@ -4,7 +4,8 @@
   pkgs,
   ...
 }: let
-  inherit (lib) mkIf mkEnableOption;
+  inherit (lib.modules) mkIf;
+  inherit (lib.options) mkEnableOption;
   cfg = config.my.desktop.apps.obsidian;
 in {
   options.my.desktop.apps.obsidian = {

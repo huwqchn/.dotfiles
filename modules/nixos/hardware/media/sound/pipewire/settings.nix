@@ -6,7 +6,7 @@
   inherit (lib.attrsets) mapAttrs;
   inherit (lib.modules) mkBefore mkOptionDefault;
   inherit (lib.lists) singleton;
-  inherit (lib) mkIf;
+  inherit (lib.modules) mkIf;
 
   mapOptionDefault = mapAttrs (_: mkOptionDefault);
   cfg = config.my.machine;

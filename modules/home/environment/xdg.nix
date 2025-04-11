@@ -8,7 +8,7 @@
   lib,
   ...
 }: let
-  inherit (lib) mkIf;
+  inherit (lib.modules) mkIf;
   inherit (pkgs.stdenv) isLinux;
   inherit (config) my;
   home = config.home.homeDirectory;

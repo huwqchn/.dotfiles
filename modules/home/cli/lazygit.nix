@@ -5,7 +5,8 @@
 }: let
   shellAliases = {"lg" = "lazygit";};
   cfg = config.my.lazygit;
-  inherit (lib) mkEnableOption mkIf;
+  inherit (lib.options) mkEnableOption;
+  inherit (lib.modules) mkIf;
 in {
   options.my.lazygit = {
     enable = mkEnableOption "lazygit";

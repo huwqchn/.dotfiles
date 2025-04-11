@@ -1,5 +1,5 @@
 {lib, ...}: let
-  inherit (lib) mkDefault;
+  inherit (lib.modules) mkDefault;
 in {
   services = {
     # monitor and control temperature

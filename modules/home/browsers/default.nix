@@ -4,7 +4,8 @@
   config,
   ...
 }: let
-  inherit (lib) mkOption mkIf;
+  inherit (lib.options) mkOption;
+  inherit (lib.modules) mkIf;
   inherit (lib.types) enum nullOr;
   inherit (lib.my) ldTernary;
   cfg = config.my.browser;

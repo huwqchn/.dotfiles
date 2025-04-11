@@ -5,7 +5,7 @@
   ...
 }: let
   package = pkgs.hyprlock;
-  inherit (lib) mkIf;
+  inherit (lib.modules) mkIf;
   cfg = config.my.desktop;
 in {
   config = mkIf (cfg.enable && cfg.wayland.enable && pkgs.stdenv.isLinux) {

@@ -5,7 +5,8 @@
 }: let
   shellAliases = {"tree" = "eza --git --icons --tree";};
   cfg = config.my.eza;
-  inherit (lib) mkEnableOption mkIf;
+  inherit (lib.options) mkEnableOption;
+  inherit (lib.modules) mkIf;
 in {
   options.my.eza = {
     enable = mkEnableOption "eza";

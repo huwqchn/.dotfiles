@@ -3,7 +3,9 @@
   lib,
   ...
 }: let
-  inherit (lib) optionals mkForce mkIf mkEnableOption;
+  inherit (lib.lists) optionals;
+  inherit (lib.modules) mkForce mkIf;
+  inherit (lib.options) mkEnableOption;
 
   cfg = config.my.security;
 in {

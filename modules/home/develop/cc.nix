@@ -10,7 +10,8 @@
   ...
 }: let
   cfg = config.my.develop.cc;
-  inherit (lib) mkEnableOption mkMerge mkIf;
+  inherit (lib.options) mkEnableOption;
+  inherit (lib.modules) mkMerge mkIf;
   inherit (builtins) isList elemAt;
 
   mkWrapper = package: postBuild: let

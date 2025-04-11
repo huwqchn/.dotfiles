@@ -4,7 +4,7 @@
   pkgs,
   ...
 }: let
-  inherit (lib) mkIf mkForce;
+  inherit (lib.modules) mkIf mkForce;
   cfg = config.my.yubikey;
 in {
   config = mkIf cfg.enable {

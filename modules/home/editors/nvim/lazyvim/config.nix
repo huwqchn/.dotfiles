@@ -4,7 +4,7 @@
   lib,
   ...
 }: let
-  inherit (lib) mkEnableOption;
+  inherit (lib.options) mkEnableOption;
   cfg = config.my.neovim.lazyvim.config;
 in {
   options.my.neovim.lazyvim.config = {

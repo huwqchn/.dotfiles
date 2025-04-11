@@ -5,7 +5,8 @@
   ...
 }: let
   cfg = config.my.gh;
-  inherit (lib) mkEnableOption mkIf;
+  inherit (lib.options) mkEnableOption;
+  inherit (lib.modules) mkIf;
 in {
   options.my.gh = {
     enable = mkEnableOption "gh";

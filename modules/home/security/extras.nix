@@ -4,7 +4,7 @@
   lib,
   ...
 }: let
-  inherit (lib) mkIf;
+  inherit (lib.modules) mkIf;
   cfg = config.my.security;
 in {
   config = mkIf cfg.enable {home.packages = with pkgs; [age sops rclone];};
