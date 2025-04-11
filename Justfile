@@ -19,6 +19,23 @@ switch2 host=`uname -n`:
 switch host=`uname -n`:
   {{rebuild}} switch --flake .#{{host}} --show-trace -L -v
 
+[group('nix')]
+deploy host *args:
+  deploy .#{{host}} --skip-checks --remote-build {{args}}
+
+[group('nix')]
+install host *args:
+  nixos-anywhere --build-on-remote \
+    --copy-host-keys \
+    --flake .#{{host}} --target-host root@{{host}} {{args}}
+
+[group('nix')]
+disko host:
+  sudo nix --experimental-features "nix-command flakes" run github:nix-community/disko -- \
+    --mode disko \
+    --flake .#{{host}}
+  nixos-install --flake .#{{host}}
+
 # remove all generations order than 7 days
 # on darwin, you may need to switch to root user to run this command
 [group('nix')]
