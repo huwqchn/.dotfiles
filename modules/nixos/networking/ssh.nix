@@ -12,7 +12,8 @@ in {
     settings = {
       # allow root login to remote deployments
       PermitRootLogin = "yes";
-      PasswordAuthentication = true;
+      PasswordAuthentication = false;
+      KbdInteractiveAuthentication = false;
 
       # It's default to true
       # allowSFTP = true;
