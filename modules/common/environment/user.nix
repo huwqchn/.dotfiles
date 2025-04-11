@@ -14,6 +14,8 @@
     group = userGroup;
   };
   inherit (lib.strings) optionalString;
+  inherit (lib.filesystem) listFilesRecursive;
+  inherit (lib.lists) forEach;
   inherit (config.my.machine) persist;
 in {
   environment = {
@@ -41,6 +43,12 @@ in {
       then pkgs.zsh
       else pkgs.bashInteractive;
     description = name;
+
+    # Public Keys that can be used to login to all hosts;
+    openssh.authorizedKeys.keys =
+      forEach
+      (listFilesRecursive "${self}/secrets/${name}/keys")
+      (key: builtins.readFile key);
   };
 
   age.secrets.my-ssh-key =

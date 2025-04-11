@@ -4,9 +4,9 @@
   config,
   lib,
   ...
-}:
-with lib; let
+}: let
   inherit (config.my.machine) persist;
+  inherit (lib.modules) mkIf;
 in {
   imports = [inputs.impermanence.nixosModules.impermanence];
 
@@ -69,19 +69,6 @@ in {
       "L /var/lib/NetworkManager/secret_key - - - - /persist/var/lib/NetworkManager/secret_key"
       "L /var/lib/NetworkManager/seen-bssids - - - - /persist/var/lib/NetworkManager/seen-bssids"
       "L /var/lib/NetworkManager/timestamps - - - - /persist/var/lib/NetworkManager/timestamps"
-    ];
-
-    services.openssh.hostKeys = mkForce [
-      {
-        bits = 4096;
-        path = "/persist/etc/ssh/ssh_host_rsa_key";
-        type = "rsa";
-      }
-      {
-        bits = 4096;
-        path = "/persist/etc/ssh/ssh_host_ed25519_key";
-        type = "ed25519";
-      }
     ];
   };
 }
