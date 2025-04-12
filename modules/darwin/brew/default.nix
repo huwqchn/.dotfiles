@@ -103,8 +103,6 @@
     casks = [
       "squirrel" # input method for Chinese, rime-squirrel
       "zen-browser" # web browser
-      "zed" # zed editor
-      "aerospace" # an i3-like tiling window manager for macOS
       "visual-studio-code" # editor
       # "discord" # update too frequently, use the web version instead
       "telegram" # IM

@@ -8,7 +8,6 @@ in {
   config = mkIf pkgs.stdenv.isDarwin {
     programs.aerospace = {
       enable = true;
-      package = null; # use brew pachage
       userSettings = {
         # You can use it to add commands that run after login to macOS user session.
         # 'start-at-login' needs to be 'true' for 'after-login-command' to work
