@@ -5,6 +5,8 @@
       apps = {
         spotify = {
           enable = true;
+          spotify-player.enable = true;
+          spicetify.enable = true;
         };
       };
     };
