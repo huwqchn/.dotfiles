@@ -9,6 +9,7 @@
   cfg = config.my.git;
   inherit (lib.options) mkEnableOption;
   inherit (lib.modules) mkIf;
+  inherit (config.home) homeDirectory;
 in {
   options.my.git = {
     enable = mkEnableOption "git";
@@ -138,7 +139,7 @@ in {
     };
     age.secrets.git-credentials = {
       rekeyFile = ./secrets/git-credentials.age;
-      path = "${config.my.home}/.git-credentials";
+      path = "${homeDirectory}/.git-credentials";
       symlink = false;
     };
   };

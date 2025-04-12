@@ -8,6 +8,7 @@
   inherit (lib.options) mkEnableOption;
   inherit (lib.modules) mkMerge mkIf;
   inherit (pkgs.stdenv.hostPlatform) isLinux;
+  inherit (config.home) homeDirectory;
   cfg = config.my.desktop.apps.spotify;
 in {
   imports = [
@@ -42,6 +43,11 @@ in {
     (mkIf cfg.spotify-player.enable {
       programs.spotify-player = {
         enable = true;
+      };
+      age.secrets.spotify-player = {
+        rekeyFile = ./secrets/spotify-player.age;
+        path = "${homeDirectory}/.cache/spotify-player/credentials.json";
+        symlink = false;
       };
     })
   ];
