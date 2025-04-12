@@ -1,7 +1,7 @@
 {
+  inputs,
   config,
   lib,
-  pkgs,
   ...
 }: let
   inherit (lib.modules) mkIf;
@@ -9,6 +9,10 @@
   inherit (config.home) homeDirectory;
   cfg = config.my.desktop.apps.discord;
 in {
+  imports = [
+    inputs.nixcord.homeManagerModules.nixcord
+  ];
+
   options.my.desktop.apps.discord = {
     enable =
       mkEnableOption "Discord"
@@ -18,22 +22,53 @@ in {
   };
 
   config = mkIf cfg.enable {
-    home.packages = with pkgs; [
-      discord
-      vesktop
-    ];
+    programs.nixcord = {
+      enable = true;
+      discord.enable = false;
+      vesktop.enable = true;
+      config = {
+        useQuickCss = true;
+        plugins = {
+          alwaysAnimate.enable = true;
+          alwaysExpandRoles.enable = true;
+          betterGifAltText.enable = true;
+          betterGifPicker.enable = true;
+          betterNotesBox.enable = true;
+          betterRoleDot.enable = true;
+          betterUploadButton.enable = true;
+          betterSessions.enable = true;
+          betterSettings.enable = true;
+          biggerStreamPreview.enable = true;
+          copyEmojiMarkdown.enable = true;
+          dearrow.enable = true;
+          decor.enable = true;
+          fakeNitro.enable = true;
+          fixSpotifyEmbeds.enable = true;
+          fixYoutubeEmbeds.enable = true;
+          openInApp.enable = true;
+          translate = {
+            enable = true;
+            autoTranslate = true;
+            showChatBarButton = true;
+          };
+          typingIndicator.enable = true;
+          youtubeAdblock.enable = true;
+          hideAttachments.enable = true;
+          readAllNotificationsButton.enable = true;
+          clearURLs.enable = true;
+          friendsSince.enable = true;
+          moyai.enable = true;
+        };
+      };
+    };
 
     home.persistence."/persist/${homeDirectory}" = {
       allowOther = true;
       directories = [
-        {
-          directory = ".config/discord";
-          method = "symlink";
-        }
-        {
-          directory = ".config/vesktop";
-          method = "symlink";
-        }
+        ".config/Discord"
+        ".config/discord"
+        ".config/vesktop"
+        ".config/vencord"
       ];
     };
   };

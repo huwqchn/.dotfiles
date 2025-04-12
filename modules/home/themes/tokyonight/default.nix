@@ -229,6 +229,16 @@ in {
         #   settings.theme = "Tokyo Night ${lib.my.capitalize cfg.style}";
         #   inherit (importTOML "${src}/extras/spotify_player/${themeName} .toml") themes;
         # };
+        nixcord.config = {
+          transparent = true;
+          frameless = true;
+          enabledThemes = [
+            "tokyo-night.theme.css"
+          ];
+          themeLinks = [
+            "https://raw.githubusercontent.com/Dyzean/Tokyo-Night/main/themes/tokyo-night.theme.css"
+          ];
+        };
         spicetify = let
           tokyonightTheme = pkgs.fetchFromGitHub {
             owner = "evening-hs";

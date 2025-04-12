@@ -8,6 +8,7 @@
           spotify-player.enable = true;
           spicetify.enable = true;
         };
+        discord.enable = true;
       };
     };
     rime.enable = true;
