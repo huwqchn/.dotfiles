@@ -10,7 +10,7 @@ in {
   imports = lib.my.scanPaths ./.;
 
   options.my.editor = mkOption {
-    type = enum ["nvim" "helix"];
+    type = enum ["nvim" "helix" "vscode"];
     default = "nvim";
     description = "The editor to use";
   };

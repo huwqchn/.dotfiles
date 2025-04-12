@@ -16,7 +16,7 @@ in {
     enable =
       mkEnableOption "neovim"
       // {
-        default = config.my.editor == "nvim";
+        default = true;
       };
 
     treesitterParsers = mkOption {

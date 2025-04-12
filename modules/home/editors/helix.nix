@@ -11,7 +11,7 @@ in {
     enable =
       mkEnableOption "helix"
       // {
-        default = config.my.editor == "helix";
+        default = true;
       };
   };
 

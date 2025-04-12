@@ -103,9 +103,9 @@
     casks = [
       "squirrel" # input method for Chinese, rime-squirrel
       "zen-browser" # web browser
-      "visual-studio-code" # editor
+      # "visual-studio-code" # editor
       # "discord" # update too frequently, use the web version instead
-      "telegram" # IM
+      # "telegram" # IM
       "rustdesk" # remote desktop client
       # "iina" # video player
       "raycast" # search
@@ -131,7 +131,6 @@
       # "karabiner-elements" # keyboard remap
       "yubico-authenticator" # for yubikey
       "veracrypt" # disk encryption
-      "squirrel"
       # sing-box
       "sfm"
     ];
