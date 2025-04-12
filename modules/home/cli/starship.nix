@@ -109,6 +109,7 @@ in {
             "Notes" = "󰠮 ";
             "Dev" = " ";
             ".secrets" = " ";
+            ".dotfiles" = " ";
           };
           read_only = " ";
           truncate_to_repo = true;
