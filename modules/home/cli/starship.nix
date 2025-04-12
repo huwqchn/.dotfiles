@@ -92,10 +92,23 @@ in {
         };
         directory = {
           substitutions = {
+            "Desktop" = "󰇄 ";
             "Documents" = "󰈙 ";
             "Downloads" = " ";
+            "Share" = "󰒗 ";
+            "Templates" = " ";
+            "Misc" = " ";
             "Music" = " ";
+            "Videos" = " ";
             "Pictures" = " ";
+            "Projects" = " ";
+            "Workspaces" = "󰊠 ";
+            "Repos" = "󰳐 ";
+            "Screenshots" = "󰹑 ";
+            "Wallpapers" = "󰸉 ";
+            "Notes" = "󰠮 ";
+            "Dev" = " ";
+            ".secrets" = " ";
           };
           read_only = " ";
           truncate_to_repo = true;
