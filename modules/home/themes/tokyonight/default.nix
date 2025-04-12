@@ -69,6 +69,13 @@ in {
           pad_right = "[${pad.right} ](${pad.style})";
           inherit (builtins) concatStringsSep;
         in {
+          username = {
+            style_user = "bold blue";
+            style_root = "bold red";
+          };
+          hostname = {
+            style = "bold blue";
+          };
           git_branch = {
             format = concatStringsSep "" [
               pad_left

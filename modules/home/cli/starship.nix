@@ -24,6 +24,8 @@ in {
         add_newline = true;
         format = builtins.concatStringsSep "" [
           "$os"
+          "$username"
+          "$hostname"
           "$directory"
           "$git_branch"
           "$git_status"
@@ -53,16 +55,14 @@ in {
         };
         continuation_prompt = "∙  ┆ ";
         line_break = {disabled = false;};
-        # username = {
-        #   style_user = "fg:peach bg:surface0";
-        #   style_root = "fg:red bg:surface0";
-        #   format = "[ $user]($style)";
-        #   show_always = false;
-        # };
-        # hostname = {
-        #   ssh_only = true;
-        #   format = "[@$hostname](fg:green bg:surface0)";
-        # };
+        username = {
+          format = "[ $user]($style)";
+          show_always = false;
+        };
+        hostname = {
+          ssh_only = true;
+          format = "[@$hostname]($style)";
+        };
         status = {
           symbol = "✗";
           success_symbol = " ";
