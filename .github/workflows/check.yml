@@ -35,5 +35,10 @@ jobs:
           ref: ${{ inputs.ref && inputs.ref || github.ref_name }}
           persist-credentials: false
 
+      - name: Install Nix
+        uses: cachix/install-nix-action@v26
+        with:
+          nix_path: nixpkgs=channel:nixos-unstable
+
       - name: Check Flake
         run: nix flake check --option allow-import-from-derivation false
