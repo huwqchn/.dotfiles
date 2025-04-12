@@ -49,6 +49,10 @@ in {
         path = "${homeDirectory}/.cache/spotify-player/credentials.json";
         symlink = false;
       };
+      home.persistence."/persist/${homeDirectory}" = {
+        allowOther = true;
+        directories = [".cache/spotify-player"];
+      };
     })
   ];
 }
