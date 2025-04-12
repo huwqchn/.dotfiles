@@ -9,6 +9,7 @@ in
         ./hosts.nix
         ./modules.nix
         ./hardware.nix
+        ./themes.nix
       ]
       arg)
   ]

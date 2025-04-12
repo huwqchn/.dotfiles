@@ -34,7 +34,7 @@ in {
   config = mkMerge [
     (mkIf cfg.enable {
       home.sessionVariables = {THEME = themeName;};
-      services.dunst.settings = importTOML "${src}/extras/dunst/tokyonight_${cfg.style}.dunstrc";
+      services.dunst.settings = importTOML "${src}/extras/dunst/${themeName}.dunstrc";
       programs = {
         git = {
           includes = [{path = "${src}/extras/delta/${themeName}.gitconfig";}];
@@ -224,6 +224,11 @@ in {
         zathura.extraConfig = "include ${src + "/extras/zathura/" + themeName + ".zathurarc"}";
         ghostty.settings.theme = "${src + "/extras/ghostty/" + themeName}";
         spotify-player.settings.theme = "tokyonight";
+        # FIXME: make spotify-player use tokyonight theme
+        # spotify-player = {
+        #   settings.theme = "Tokyo Night ${lib.my.capitalize cfg.style}";
+        #   inherit (importTOML "${src}/extras/spotify_player/${themeName} .toml") themes;
+        # };
         spicetify = let
           tokyonightTheme = pkgs.fetchFromGitHub {
             owner = "evening-hs";
@@ -310,12 +315,12 @@ in {
       home.pointerCursor = {
         gtk.enable = true;
         x11.enable = true;
-        package = lib.mkForce pkgs.bibata-cursors;
-        name = lib.mkForce "Bibata-Modern-Ice";
-        size = lib.mkForce 24;
+        package = mkForce pkgs.bibata-cursors;
+        name = mkForce "Bibata-Modern-Ice";
+        size = mkForce 24;
       };
       dconf.settings."org/gnome/desktop/interface".font-name =
-        lib.mkForce "Cantarell";
+        mkForce "Cantarell";
 
       # set dpi for 4k monitor
       xresources.properties = {
