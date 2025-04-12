@@ -43,7 +43,6 @@ in {
       };
       desktop = {
         enable = mkDefault false;
-        apps.enable = mkForce false;
         wayland.enable = mkDefault true;
         loginManager = mkForce null;
       };

@@ -24,7 +24,7 @@ in {
     spotify-player.enable =
       mkEnableOption "Spotify Player TUI"
       // {
-        default = true;
+        default = config.my.desktop.apps.spotify.enable;
       };
     spicetify.enable =
       mkEnableOption "Spicetify"

@@ -7,9 +7,10 @@
   pkgs',
   lib,
   config,
+  hostName,
   ...
 }: let
-  extraSpecialArgs = {inherit self self' inputs inputs' pkgs pkgs' lib;};
+  extraSpecialArgs = {inherit self self' inputs inputs' pkgs pkgs' lib hostName;};
 in {
   imports = [
     (lib.mkAliasOptionModule ["hm"] ["home-manager" "users" config.my.name])

@@ -124,18 +124,9 @@ in rec {
               (optionalAttrs (options ? nixpkgs.hostPlatform) {
                 nixpkgs.hostPlatform = lib.mkDefault host.system;
               })
-              {
-                _module.args =
-                  host.extraArgs
-                  // {
-                    inherit (host) system;
-                    inherit hostName;
-                  };
-              }
             ];
           })
         ];
-        extraArgs = {};
         output =
           if isDarwin'
           then "darwinConfigurations"
@@ -149,6 +140,7 @@ in rec {
         withSystem system (args: {
           inherit self inputs lib;
           inherit (args) self' inupts';
+          inherit hostName;
         });
     in {
       inherit (host) output;
