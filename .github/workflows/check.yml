@@ -41,4 +41,4 @@ jobs:
           nix_path: nixpkgs=channel:nixos-unstable
 
       - name: Check Flake
-        run: nix flake check --option allow-import-from-derivation false
+        run: nix flake check
