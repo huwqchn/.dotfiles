@@ -49,21 +49,85 @@ in {
             };
           };
         };
-        fish = {
-          interactiveShellInit = ''
-            fish_config theme choose ${themeName}
-          '';
+        fish.interactiveShellInit = ''
+          fish_config theme choose ${themeName}
+        '';
+        btop.settings = {
+          color_theme = "tokyo-night";
+          theme_background = true; # make btop transparent
         };
-        btop = {
-          settings = {
-            color_theme = "tokyo-night";
-            theme_background = true; # make btop transparent
+        kitty.extraConfig = ''
+          include ${src}/extras/kitty/${themeName}.conf
+        '';
+        starship.settings = let
+          pad = {
+            left = "";
+            right = "";
+            style = "fg:gray";
           };
-        };
-        kitty = {
-          extraConfig = ''
-            include ${src}/extras/kitty/${themeName}.conf
-          '';
+          pad_left = "[${pad.left}](${pad.style})";
+          pad_right = "[${pad.right} ](${pad.style})";
+          inherit (builtins) concatStringsSep;
+        in {
+          git_branch = {
+            format = concatStringsSep "" [
+              pad_left
+              "[$symbol $branch ]($style)(:$remote_branch)"
+            ];
+            style = "bg:gray fg:green";
+          };
+          git_status = {
+            format = concatStringsSep "" [
+              "[$all_status$ahead_behind]($style)"
+              pad_right
+            ];
+            style = "bg:gray fg:red";
+          };
+          directory = {
+            format = concatStringsSep "" [
+              pad_left
+              "[$read_only]($read_only_style)"
+              "[$path]($style)"
+              pad_right
+            ];
+            style = "bg:gray fg:fg";
+            read_only_style = "bg:gray fg:red";
+          };
+          nix_shell = {
+            style = "fg:bold blue bg:gray";
+            format = concatStringsSep "" [
+              pad_left
+              "[$symbol$state( \($name\))]($style)"
+              pad_right
+            ];
+          };
+          direnv = {
+            style = "fg:bold yellow bg:gray";
+            format = concatStringsSep "" [
+              pad_left
+              "[$symbol$loaded/$allowed]($style)"
+              pad_right
+            ];
+          };
+          conda = {
+            style = "fg:bold blue bg:gray";
+            format = concatStringsSep "" [
+              pad_right
+              "[$symbol$environment ]($style)"
+              pad_right
+            ];
+          };
+          container = {
+            style = "fg:bold red dimmed bg:gray";
+            format = concatStringsSep "" [
+              pad_left
+              "[$symbol \[$name\]]($style)"
+              pad_right
+            ];
+          };
+          cmd_duration = {
+            format = "[$duration ](fg:yellow)";
+          };
         };
         tmux.plugins = with pkgs.tmuxPlugins; [
           {

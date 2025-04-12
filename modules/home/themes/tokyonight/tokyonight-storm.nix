@@ -9,6 +9,22 @@
 in {
   config = mkIf (cfg.enable && cfg.style == "storm") {
     programs = {
+      starship.settings = {
+        palette = "tokyonight-storm";
+        palettes.tokyonight-storm = {
+          bg = "#24283b";
+          fg = "#c0caf5";
+          gray = "#292e42";
+          blue = "#7aa2f7";
+          cyan = "#7dcfff";
+          green = "#9ece6a";
+          magenta = "#bb9af7";
+          orange = "#ff9e64";
+          red = "#f7768e";
+          yellow = "#e0af68";
+          white = "#a9b1d6";
+        };
+      };
       tmux.plugins = with pkgs.tmuxPlugins; [
         {
           plugin = mode-indicator;

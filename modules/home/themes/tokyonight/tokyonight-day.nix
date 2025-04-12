@@ -9,6 +9,21 @@
 in {
   config = mkIf (cfg.enable && cfg.style == "day") {
     programs = {
+      starship.settings = {
+        palette = "tokyonight-day";
+        palettes.tokyonight-day = {
+          bg = "#e1e2e7";
+          fg = "#3760bf";
+          gray = "#b4b5b9";
+          red = "#f52a65";
+          green = "#587539";
+          yellow = "#8c6c3e";
+          blue = "#2e7de9";
+          magenta = "#9854f1";
+          cyan = "#007197";
+          white = "#6172b0";
+        };
+      };
       tmux.plugins = with pkgs.tmuxPlugins; [
         {
           plugin = mode-indicator;

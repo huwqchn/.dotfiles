@@ -8,14 +8,9 @@
     format = "[$symbol ](${color})";
   };
   os = icon: fg: "[${icon} ](fg:${fg})";
-  pad = {
-    left = "";
-    right = "";
-  };
   cfg = config.my.starship;
   inherit (lib.options) mkEnableOption;
   inherit (lib.modules) mkIf;
-  inherit (builtins) concatStringsSep;
 in {
   options.my.starship = {
     enable = mkEnableOption "starship";
@@ -30,8 +25,12 @@ in {
         format = builtins.concatStringsSep "" [
           "$os"
           "$directory"
+          "$git_branch"
+          "$git_status"
+          "$nix_shell"
+          "$direnv"
+          "$conda"
           "$container"
-          "$git_branch $git_status"
           "$python"
           "$nodejs"
           "$lua"
@@ -39,32 +38,31 @@ in {
           "$java"
           "$c"
           "$golang"
-          "$nix_shell"
           "$cmd_duration"
           "$status"
           "$line_break"
           "$character"
         ];
         character = {
-          success_symbol = "[❯](green bold)";
-          error_symbol = "[](red bold)";
-          vicmd_symbol = "[](green)";
-          vimcmd_replace_one_symbol = "[](yellow)";
-          vimcmd_replace_symbol = "[](yellow bold)";
-          vimcmd_visual_symbol = "[](purple)";
+          success_symbol = "[❯](bold green)";
+          error_symbol = "[](bold red)";
+          vicmd_symbol = "[](bold green)";
+          vimcmd_replace_one_symbol = "[](bold magenta)";
+          vimcmd_replace_symbol = "[](bold magenta)";
+          vimcmd_visual_symbol = "[](bold yellow)";
         };
         continuation_prompt = "∙  ┆ ";
         line_break = {disabled = false;};
-        username = {
-          style_user = "fg:peach bg:surface0";
-          style_root = "fg:red bg:surface0";
-          format = "[ $user]($style)";
-          show_always = false;
-        };
-        hostname = {
-          ssh_only = true;
-          format = "[@$hostname](fg:green bg:surface0)";
-        };
+        # username = {
+        #   style_user = "fg:peach bg:surface0";
+        #   style_root = "fg:red bg:surface0";
+        #   format = "[ $user]($style)";
+        #   show_always = false;
+        # };
+        # hostname = {
+        #   ssh_only = true;
+        #   format = "[@$hostname](fg:green bg:surface0)";
+        # };
         status = {
           symbol = "✗";
           success_symbol = " ";
@@ -72,35 +70,27 @@ in {
           not_executable_symbol = " Can't Execute E";
           sigint_symbol = "󰂭 ";
           signal_symbol = "󱑽 ";
-          format = "[$symbol](fg:red)";
           map_symbol = true;
           disabled = false;
         };
         cmd_duration = {
           min_time = 1000;
-          format = "[$duration ](fg:yellow)";
         };
         direnv = {
           disabled = false;
-          format = "[$symbol\\($loaded/$allowed\\) ](fg:blue)";
-          symbol = "  ";
+          symbol = " ";
         };
         nix_shell = {
-          format = "[$symbol(\\($name\\)) ](fg:blue)";
           heuristic = true; # needed to detect `nix shell`
           symbol = "󱄅 "; # the default unicode is causing issue https://github.com/starship/starship/issues/5924
         };
+        conda = {
+          ignore_base = true;
+        };
         container = {
-          symbol = " 󰏖";
-          format = "[$symbol ](yellow dimmed)";
+          symbol = "󰏖 ";
         };
         directory = {
-          format = concatStringsSep "" [
-            " [${pad.left}](fg:bright-black)"
-            "[$path](bg:bright-black fg:white)"
-            "[${pad.right}](fg:bright-black)"
-            " [$read_only](fg:yellow)"
-          ];
           substitutions = {
             "Documents" = "󰈙 ";
             "Downloads" = " ";
@@ -115,11 +105,8 @@ in {
         };
         git_branch = {
           symbol = "";
-          style = "";
-          format = "[ $symbol $branch](fg:purple)(:$remote_branch)";
         };
         git_status = {
-          format = "[$all_status$ahead_behind]($style)";
           conflicted = " ";
           ahead = " ";
           behind = " ";
@@ -136,20 +123,20 @@ in {
           disabled = false;
           format = "$symbol";
           symbols = {
-            Arch = os "" "bright-blue";
-            Alpine = os "" "bright-blue";
-            Debian = os "" "red)";
-            EndeavourOS = os "" "purple";
+            Arch = os "" "blue";
+            Alpine = os "" "blue";
+            Debian = os "" "red";
+            EndeavourOS = os "" "magenta";
             Fedora = os "" "blue";
             NixOS = os "" "blue";
             openSUSE = os "" "green";
             SUSE = os "" "green";
-            Ubuntu = os "" "bright-purple";
+            Ubuntu = os "" "magenta";
             Macos = os "" "white";
           };
         };
         python = lang "" "yellow";
-        nodejs = lang "󰛦" "bright-blue";
+        nodejs = lang "󰛦" "blue";
         bun = lang "󰛦" "blue";
         deno = lang "󰛦" "blue";
         lua = lang "󰢱" "blue";
@@ -158,7 +145,7 @@ in {
         c = lang "" "blue";
         golang = lang "" "blue";
         dart = lang "" "blue";
-        elixir = lang "" "purple";
+        elixir = lang "" "magenta";
       };
     };
   };
