@@ -97,7 +97,7 @@ in {
             style = "fg:bold blue bg:gray";
             format = concatStringsSep "" [
               pad_left
-              "[$symbol$state( \($name\))]($style)"
+              "[$symbol(\($name\))]($style)"
               pad_right
             ];
           };
