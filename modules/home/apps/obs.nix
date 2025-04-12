@@ -13,7 +13,7 @@ in {
     enable =
       mkEnableOption "OBS"
       // {
-        default = config.my.desktop.apps.enable;
+        default = config.my.desktop.enable && pkgs.stdenv.isLinux;
       };
   };
 

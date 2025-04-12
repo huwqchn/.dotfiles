@@ -12,7 +12,7 @@ in {
     enable =
       mkEnableOption "Obsidian"
       // {
-        default = config.my.desktop.apps.enable;
+        default = config.my.desktop.enable;
       };
   };
 

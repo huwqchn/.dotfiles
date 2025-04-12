@@ -51,14 +51,6 @@ in {
         default = "hyprland";
         description = "The default window manager";
       };
-      apps = {
-        enable =
-          mkEnableOption "my GUI apps"
-          // {
-            # FIXME: should be enable on darwin
-            default = config.my.desktop.enable && pkgs.stdenv.isLinux;
-          };
-      };
     };
     security = {
       enable =

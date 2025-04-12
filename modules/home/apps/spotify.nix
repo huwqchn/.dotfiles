@@ -19,7 +19,7 @@ in {
     enable =
       mkEnableOption "Spotify"
       // {
-        default = config.my.desktop.apps.enable;
+        default = config.my.desktop.enable;
       };
     spotify-player.enable =
       mkEnableOption "Spotify Player TUI"

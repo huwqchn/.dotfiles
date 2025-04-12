@@ -11,7 +11,7 @@ in {
     enable =
       mkEnableOption "Zathura"
       // {
-        default = config.my.desktop.apps.enable;
+        default = config.my.desktop.enable;
       };
   };
 

@@ -12,7 +12,7 @@ in {
     enable =
       mkEnableOption "1Password"
       // {
-        default = config.my.desktop.apps.enable;
+        default = config.my.desktop.enable && pkgs.stdenv.isLinux;
       };
   };
   config = mkIf cfg.enable {

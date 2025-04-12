@@ -114,8 +114,9 @@
       # "spotify" # music
       "1password" # password manager
       "1password-cli"
+      "vlc"
       "ghostty" # terminal
-      "obsidian" # note-taking
+      # "obsidian" # note-taking
       "miniforge" # Miniconda's community-driven distribution
       "tencent-lemon" # clean tool
       "surge" # proxy tool
