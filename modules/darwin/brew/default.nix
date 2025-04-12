@@ -114,7 +114,8 @@
       # "spotify" # music
       "1password" # password manager
       "1password-cli"
-      "vlc"
+      "vlc" # video player
+      "obs" # stream / recoding software
       "ghostty" # terminal
       # "obsidian" # note-taking
       "miniforge" # Miniconda's community-driven distribution
