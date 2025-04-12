@@ -12,7 +12,7 @@
   dirname =
     if (hasAttr "networking" config)
     then config.networking.hostName
-    else name + "@" + hostName;
+    else name + "-" + hostName;
   sshDir = home + "/.ssh";
   inherit (machine) persist;
 in {
