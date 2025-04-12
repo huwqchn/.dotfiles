@@ -128,6 +128,10 @@ in {
           cmd_duration = {
             format = "[$duration ](fg:yellow)";
           };
+          status = {
+            format = "[$symbol]($style)";
+            success_style = "bold green";
+          };
         };
         tmux.plugins = with pkgs.tmuxPlugins; [
           {
