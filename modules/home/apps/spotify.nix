@@ -43,6 +43,46 @@ in {
     (mkIf cfg.spotify-player.enable {
       programs.spotify-player = {
         enable = true;
+        actions = [
+          {
+            action = "ToggleLiked";
+            key_sequence = "l";
+          }
+          {
+            action = "AddToLibrary";
+            key_sequence = "a";
+          }
+          {
+            action = "Follow";
+            key_sequence = "f";
+          }
+        ];
+        keymaps = [
+          {
+            command = "NextTrack";
+            key_sequence = "o";
+          }
+          {
+            command = "PreviousTrack";
+            key_sequence = "n";
+          }
+          {
+            command = "SelectNextOrScrollDown";
+            key_sequence = "e";
+          }
+          {
+            command = "SelectPreviousOrScrollUp";
+            key_sequence = "i";
+          }
+          {
+            command = "MovePlaylistItemUp";
+            key_sequence = "C-i";
+          }
+          {
+            command = "MovePlaylistItemDown";
+            key_sequence = "C-e";
+          }
+        ];
       };
       age.secrets.spotify-player = {
         rekeyFile = ./secrets/spotify-player.age;
