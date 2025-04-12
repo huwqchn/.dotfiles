@@ -34,7 +34,12 @@ in {
         nerd-fonts.jetbrains-mono
         nerd-fonts.iosevka
 
-        maple-mono
+        # maple-mono
+        maple-mono.variable
+        maple-mono.truetype
+        maple-mono.NF
+        maple-mono.NF-CN
+
         julia-mono
         dejavu_fonts
       ];

@@ -4,7 +4,7 @@
   ...
 }: let
   cfg = config.my.networking.wirelessBackend;
-  inherit (lib.opitons) mkOption;
+  inherit (lib.options) mkOption;
   inherit (lib.types) enum;
 in {
   options.my.networking = {
