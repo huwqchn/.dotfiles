@@ -20,30 +20,40 @@
   inputs = {
     # Official NixOS package source, using nixos's unstable branch by default
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+
     systems = {url = "github:nix-systems/default";};
+
     flake-compat = {url = "github:edolstra/flake-compat";};
+
     flake-parts = {
       url = "github:hercules-ci/flake-parts";
       inputs.nixpkgs-lib.follows = "nixpkgs";
     };
+
     flake-utils = {
       url = "github:numtide/flake-utils";
       inputs.systems.follows = "systems";
     };
+
     hardware.url = "github:nixos/nixos-hardware";
+
     nvidia-patch = {
       url = "github:keylase/nvidia-patch";
       flake = false;
     };
+
     srvos = {
       url = "github:nix-community/srvos";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
     deploy-rs.url = "github:serokell/deploy-rs";
+
     nix-topology = {
       url = "github:oddlama/nix-topology";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
     openwrt-imagebuilder = {
       url = "github:astro/nix-openwrt-imagebuilder";
       inputs = {
@@ -52,25 +62,38 @@
         systems.follows = "systems";
       };
     };
+
     nix-gaming = {
       url = "github:fufexan/nix-gaming";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
     raspberry-pi-nix.url = "github:nix-community/raspberry-pi-nix?ref=v0.4.1";
-    nixcord.url = "github:kaylorben/nixcord";
+
     devshell = {
       url = "github:numtide/devshell";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    pre-commit-hooks = {
+      url = "github:cachix/git-hooks.nix";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        flake-compat.follows = "flake-compat";
+      };
+    };
+
     home-manager = {
       # url = "github:nix-community/home-manager/release-24.05";
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
     treefmt = {
       url = "github:numtide/treefmt-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
     droid = {
       url = "github:nix-community/nix-on-droid";
       inputs = {
@@ -82,6 +105,7 @@
         nmd.follows = "";
       };
     };
+
     yazi = {
       url = "github:sxyazi/yazi";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -115,7 +139,6 @@
     agenix = {
       url = "github:yaxitech/ragenix";
       # inputs.home-manager.follows = "home-manager";
-
       inputs = {
         flake-utils.follows = "flake-utils";
         nixpkgs.follows = "nixpkgs";
@@ -219,13 +242,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    pre-commit-hooks = {
-      url = "github:cachix/git-hooks.nix";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-        flake-compat.follows = "flake-compat";
-      };
-    };
+    nixcord.url = "github:kaylorben/nixcord";
 
     zen = {
       url = "github:youwen5/zen-browser-flake";
@@ -239,7 +256,6 @@
 
     nix-homebrew = {
       url = "github:zhaofengli-wip/nix-homebrew";
-
       inputs = {
         nixpkgs.follows = "nixpkgs";
         nix-darwin.follows = "darwin";
