@@ -64,6 +64,15 @@ in {
     (mkIf cfg.spotify-player.enable {
       programs.spotify-player = {
         enable = true;
+        settings = {
+          client_id_command = "cat ${config.age.secrets.spotifyClientID.path}";
+          clinet_port = 8080;
+          layout.playback_window_position = "Bottom";
+          border_type = "Rounded";
+          play_icon = " ";
+          pause_icon = " ";
+          liked_icon = "󰋑 ";
+        };
         actions = [
           {
             action = "ToggleLiked";
@@ -88,6 +97,14 @@ in {
             key_sequence = "n";
           }
           {
+            command = "SeekForward";
+            key_sequence = "O";
+          }
+          {
+            command = "SeekBackward";
+            key_sequence = "N";
+          }
+          {
             command = "SelectNextOrScrollDown";
             key_sequence = "e";
           }
@@ -105,10 +122,13 @@ in {
           }
         ];
       };
-      age.secrets.spotify-player = {
-        rekeyFile = ./secrets/spotify-player.age;
-        path = "${homeDirectory}/.cache/spotify-player/credentials.json";
-        symlink = false;
+      age.secrets = {
+        spotify-player = {
+          rekeyFile = ./secrets/spotify-player.age;
+          path = "${homeDirectory}/.cache/spotify-player/credentials.json";
+          symlink = false;
+        };
+        spotifyClientID.rekeyFile = ./secrets/spotifyClientID.age;
       };
       home.persistence."/persist/${homeDirectory}" = {
         allowOther = true;
