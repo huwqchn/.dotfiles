@@ -10,7 +10,6 @@
   inherit (pkgs.stdenv.hostPlatform) isLinux;
   inherit (pkgs.stdenv) system;
   inherit (config.home) homeDirectory;
-  spicePkgs = inputs.spicetify-nix.legacyPackages.${system};
   cfg = config.my.desktop.apps.spotify;
 in {
   imports = [
@@ -37,11 +36,9 @@ in {
 
   config = mkMerge [
     (mkIf cfg.spicetify.enable {
-      home.packages = [
-        spicePkgs.spicetify-cli
-      ];
-
-      programs.spicetify = {
+      programs.spicetify = let
+        spicePkgs = inputs.spicetify-nix.legacyPackages.${system};
+      in {
         enable = true;
         windowManagerPatch = isLinux;
         enabledCustomApps = with spicePkgs.apps; [
