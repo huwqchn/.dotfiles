@@ -5,7 +5,7 @@
   ...
 }: let
   inherit (lib.modules) mkIf;
-  cfg = config.my.tokyonight;
+  cfg = config.my.themes.tokyonight;
 in {
   config = mkIf (cfg.enable && cfg.style == "night") {
     programs = {

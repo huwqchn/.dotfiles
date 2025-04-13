@@ -12,14 +12,14 @@
   inherit (lib.generators) toINIWithGlobalSection;
   inherit (pkgs.stdenv.hostPlatform) isLinux;
 
-  cfg = config.my.tokyonight;
+  cfg = config.my.themes.tokyonight;
   themeName = "tokyonight_${cfg.style}";
 in {
-  options.my.tokyonight = {
+  options.my.themes.tokyonight = {
     enable =
       mkEnableOption "Tokyonight theme"
       // {
-        default = config.my.theme == "tokyonight";
+        default = config.my.themes.theme == "tokyonight";
       };
 
     style = mkOption {
