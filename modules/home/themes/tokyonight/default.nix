@@ -12,6 +12,7 @@
   inherit (lib.generators) toINIWithGlobalSection;
   inherit (pkgs.stdenv.hostPlatform) isLinux;
   inherit (config.my.themes) transparent;
+  inherit (config.my.themes) pad;
 
   cfg = config.my.themes.tokyonight;
   themeName = "tokyonight_${cfg.style}";
@@ -61,13 +62,9 @@ in {
           include ${src}/extras/kitty/${themeName}.conf
         '';
         starship.settings = let
-          pad = {
-            left = "";
-            right = "";
-            style = "fg:gray";
-          };
-          pad_left = "[${pad.left}](${pad.style})";
-          pad_right = "[${pad.right} ](${pad.style})";
+          pad_style = "fg:gray";
+          left_pad = "[${pad.left}](${pad_style})";
+          right_pad = "[${pad.right} ](${pad_style})";
           inherit (builtins) concatStringsSep;
         in {
           username = {
@@ -79,7 +76,7 @@ in {
           };
           git_branch = {
             format = concatStringsSep "" [
-              pad_left
+              left_pad
               "[$symbol $branch ]($style)(:$remote_branch)"
             ];
             style = "bg:gray fg:green";
@@ -87,16 +84,16 @@ in {
           git_status = {
             format = concatStringsSep "" [
               "[$all_status$ahead_behind]($style)"
-              pad_right
+              right_pad
             ];
             style = "bg:gray fg:red";
           };
           directory = {
             format = concatStringsSep "" [
-              pad_left
+              left_pad
               "[$read_only]($read_only_style)"
               "[$path]($style)"
-              pad_right
+              right_pad
             ];
             style = "bg:gray fg:fg";
             read_only_style = "bg:gray fg:red";
@@ -104,33 +101,33 @@ in {
           nix_shell = {
             style = "fg:bold blue bg:gray";
             format = concatStringsSep "" [
-              pad_left
+              left_pad
               "[$symbol(\($name\))]($style)"
-              pad_right
+              right_pad
             ];
           };
           direnv = {
             style = "fg:bold yellow bg:gray";
             format = concatStringsSep "" [
-              pad_left
+              left_pad
               "[$symbol$loaded/$allowed]($style)"
-              pad_right
+              right_pad
             ];
           };
           conda = {
             style = "fg:bold blue bg:gray";
             format = concatStringsSep "" [
-              pad_right
+              right_pad
               "[$symbol$environment ]($style)"
-              pad_right
+              right_pad
             ];
           };
           container = {
             style = "fg:bold red dimmed bg:gray";
             format = concatStringsSep "" [
-              pad_left
+              left_pad
               "[$symbol \[$name\]]($style)"
-              pad_right
+              right_pad
             ];
           };
           cmd_duration = {
@@ -146,6 +143,13 @@ in {
             if transparent.enable
             then "bg=default"
             else "bg=$color_background";
+          pad_style = fg: "#[fg=${fg},${bg}]";
+          gray_pad_style = pad_style "$color_gray";
+          blue_pad_style = pad_style "$color_blue";
+          left_pad = "${gray_pad_style}${pad.left}";
+          right_pad = "${gray_pad_style}${pad.right}";
+          current_left_pad = "${blue_pad_style}${pad.left}";
+          current_right_pad = "${blue_pad_style}${pad.right}";
         in [
           {
             plugin = mode-indicator;
@@ -186,10 +190,10 @@ in {
               set -g pane-active-border-style fg=$color_blue
 
               ##################################### FORMAT ###################################
-              set -g status-left "#[fg=$color_gray,${bg}]#{tmux_mode_indicator}#[fg=$color_gray,${bg}]"
-              set -g status-right "#[fg=$color_gray,${bg}]#[fg=$color_cyan,bg=$color_gray] #S#[fg=$color_gray,${bg}] #[fg=$color_gray,bg=${bg}]#[fg=$color_foreground,bg=$color_gray] %H:%M#[fg=$color_gray,${bg}]"
-              setw -g window-status-format "#[fg=$color_gray,${bg}]#{?window_activity_flag,#[fg=$color_yellow],#[fg=$color_foreground]}#[bg=$color_gray,italics]#I: #[noitalics]#W#{?window_last_flag,  ,}#{?window_activity_flag,  ,}#{?window_bell_flag, #[fg=$color_red]󰂞 ,}#[fg=$color_gray,${bg}]"
-              setw -g window-status-current-format "#[fg=$color_blue,${bg}]#[fg=$color_background,bg=$color_blue,italics]#I: #[bg=$color_blue,noitalics,bold]#{?window_zoomed_flag,[#W],#W}#[fg=$color_blue,${bg}]"
+              set -g status-left "${left_pad}#{tmux_mode_indicator}${right_pad}"
+              set -g status-right "${left_pad}#[fg=$color_cyan,bg=$color_gray] #S${right_pad} ${left_pad}#[fg=$color_foreground,bg=$color_gray] %H:%M${right_pad}"
+              setw -g window-status-format "${left_pad}#{?window_activity_flag,#[fg=$color_yellow],#[fg=$color_foreground]}#[bg=$color_gray,italics]#I: #[noitalics]#W#{?window_last_flag,  ,}#{?window_activity_flag,  ,}#{?window_bell_flag, #[fg=$color_red]󰂞 ,}${right_pad}"
+              setw -g window-status-current-format "${current_left_pad}#[fg=$color_background,bg=$color_blue,italics]#I: #[bg=$color_blue,noitalics,bold]#{?window_zoomed_flag,[#W],#W}${current_right_pad}"
             '';
           }
         ];

@@ -94,6 +94,18 @@ in {
         default = 0.7;
         description = "The opacity of the background";
       };
+      pad = {
+        left = mkOption {
+          type = str;
+          default = "";
+          description = "The left padding of status bar";
+        };
+        right = mkOption {
+          type = str;
+          default = "";
+          description = "The right padding of status bar";
+        };
+      };
     };
     # hardware
     machine = {
