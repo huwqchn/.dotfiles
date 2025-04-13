@@ -76,16 +76,16 @@ in {
         actions = [
           {
             action = "ToggleLiked";
-            key_sequence = "l";
+            key_sequence = "C-l";
           }
           {
             action = "AddToLibrary";
-            key_sequence = "a";
+            key_sequence = "C-a";
           }
-          {
-            action = "Follow";
-            key_sequence = "f";
-          }
+          # {
+          #   action = "Follow";
+          #   key_sequence = "F";
+          # }
         ];
         keymaps = [
           {
