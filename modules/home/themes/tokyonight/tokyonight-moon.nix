@@ -1,3 +1,4 @@
+# FIXME: Remove hardcoded colors, use stylix instead
 {
   lib,
   config,
