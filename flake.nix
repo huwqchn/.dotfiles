@@ -227,6 +227,7 @@
     };
 
     # it's need by ags
+    # TODO: This should be replace by gowall, gowall seems better
     matugen = {
       url = "github:/InioX/Matugen";
       inputs.nixpkgs.follows = "nixpkgs";
