@@ -8,7 +8,9 @@
   inherit (lib.options) mkEnableOption;
   inherit (lib.modules) mkMerge mkIf;
   inherit (pkgs.stdenv.hostPlatform) isLinux;
+  inherit (pkgs.stdenv) system;
   inherit (config.home) homeDirectory;
+  spicePkgs = inputs.spicetify-nix.legacyPackages.${system};
   cfg = config.my.desktop.apps.spotify;
 in {
   imports = [
@@ -35,9 +37,31 @@ in {
 
   config = mkMerge [
     (mkIf cfg.spicetify.enable {
+      home.packages = [
+        spicePkgs.spicetify-cli
+      ];
+
       programs.spicetify = {
         enable = true;
         windowManagerPatch = isLinux;
+        enabledCustomApps = with spicePkgs.apps; [
+          lyricsPlus
+          reddit
+          marketplace
+          ncsVisualizer
+          historyInSidebar
+          betterLibrary
+        ];
+        enabledExtensions = with spicePkgs.extensions; [
+          adblock
+          fullAppDisplay
+          keyboardShortcut
+          hidePodcasts
+          songStats
+          shuffle # shuffle+ (special characters are sanitized out of extension names)
+          playlistIcons
+          powerBar
+        ];
       };
     })
     (mkIf cfg.spotify-player.enable {

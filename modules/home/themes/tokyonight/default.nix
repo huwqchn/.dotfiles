@@ -2,7 +2,6 @@
   lib,
   config,
   pkgs,
-  inputs,
   ...
 }: let
   src = pkgs.vimPlugins.tokyonight-nvim;
@@ -255,24 +254,11 @@ in {
             rev = "d88ca06eaeeb424d19e0d6f7f8e614e4bce962be";
             hash = "sha256-cLj9v8qtHsdV9FfzV2Qf4pWO8AOBXu51U/lUMvdEXAk=";
           };
-          spicePkgs = inputs.spicetify-nix.legacyPackages.${pkgs.system};
         in {
-          enabledExtensions = with spicePkgs.extensions; [
-            adblock
-            fullAppDisplay
-            keyboardShortcut
-            hidePodcasts
-            songStats
-          ];
-          enabledCustomApps = [spicePkgs.apps.lyricsPlus];
           theme = {
             name = "Tokyo";
             src = tokyonightTheme;
-            injectCss = true;
-            replaceColors = true;
             overwriteAssets = true;
-            sidebarConfig = true;
-            homeConfig = true;
           };
           colorScheme =
             if cfg.style == "night"
