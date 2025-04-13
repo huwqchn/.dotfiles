@@ -78,10 +78,10 @@ in {
             action = "ToggleLiked";
             key_sequence = "C-l";
           }
-          {
-            action = "AddToLibrary";
-            key_sequence = "C-a";
-          }
+          # {
+          #   action = "AddToLibrary";
+          #   key_sequence = "C-a";
+          # }
           # {
           #   action = "Follow";
           #   key_sequence = "F";

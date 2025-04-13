@@ -231,7 +231,6 @@ in {
         };
         zathura.extraConfig = "include ${src + "/extras/zathura/" + themeName + ".zathurarc"}";
         ghostty.settings.theme = "${src + "/extras/ghostty/" + themeName}";
-        spotify-player.settings.theme = "tokyonight";
         # FIXME: make spotify-player use tokyonight theme
         # spotify-player = {
         #   settings.theme = "Tokyo Night ${lib.my.capitalize cfg.style}";
@@ -270,9 +269,6 @@ in {
             else "Night";
         };
       };
-    })
-    (mkIf (cfg.enable && config.programs.fish.enable) {
-      xdg.configFile."fish/themes".source = "${src}/extras/fish_themes";
     })
     (mkIf (cfg.enable && config.programs.yazi.enable) {
       xdg.configFile."yazi/flavors/${themeName}.yazi/flavor.toml".source = "${src}/extras/yazi/${themeName}.toml";

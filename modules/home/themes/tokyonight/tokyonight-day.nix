@@ -10,6 +10,87 @@
 in {
   config = mkIf (cfg.enable && cfg.style == "day") {
     programs = {
+      spotify-player = {
+        settings.theme = "tokyonight-day";
+        themes = [
+          {
+            name = "tokyonight-day";
+            palette = {
+              background = "#e1e2e7";
+              foreground = "#3760bf";
+              black = "#a1a6c5";
+              red = "#f52a65";
+              green = "#587539";
+              yellow = "#8c6c3e";
+              blue = "#2e7de9";
+              magenta = "#9854f1";
+              cyan = "#007197";
+              white = "#d0d5e3";
+              bright_black = "#e1e2e7";
+              bright_red = "#c64343";
+              bright_green = "#387068";
+              bright_yellow = "#b15c00";
+              bright_blue = "#188092";
+              bright_magenta = "#d20065";
+              bright_cyan = "#006a83";
+              bright_white = "#3760bf";
+            };
+            component_style = {
+              block_title = {
+                fg = "BrightGreen";
+                modifiers = ["Italic" "Bold"];
+              };
+              like = {
+                fg = "Red";
+                modifiers = ["Bold"];
+              };
+              playback_track = {
+                fg = "BrightMagenta";
+                modifiers = ["Italic"];
+              };
+              playback_album = {
+                fg = "BrightRed";
+                modifiers = ["Italic"];
+              };
+              playback_artists = {
+                fg = "BrightCyan";
+                modifiers = [];
+              };
+              playback_metadata = {
+                fg = "BrightBlue";
+                modifiers = [];
+              };
+              playback_progress_bar = {
+                fg = "BrightGreen";
+                modifiers = ["Italic"];
+              };
+              current_playing = {
+                fg = "Red";
+                modifiers = ["Bold" "Italic"];
+              };
+              playlist_desc = {
+                fg = "White";
+                modifiers = ["Italic"];
+              };
+              page_desc = {
+                fg = "Magenta";
+                modifiers = ["Bold" "Italic"];
+              };
+              table_header = {
+                fg = "Blue";
+                modifiers = ["Bold"];
+              };
+              border = {fg = "BrightYellow";};
+              selection = {
+                fg = "Red";
+                modifiers = ["Bold" "Reversed"];
+              };
+              secondary_row = {bg = "BrightBlack";};
+            };
+          }
+        ];
+      };
+
       starship.settings = {
         palette = "tokyonight-day";
         palettes.tokyonight-day = {
