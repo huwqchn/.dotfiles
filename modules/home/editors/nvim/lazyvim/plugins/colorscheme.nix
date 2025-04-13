@@ -8,6 +8,7 @@
   inherit (lib.types) enum;
   cfg = config.my.neovim.lazyvim.colorscheme;
 in {
+  # FIXME: This should be controlled by `my.thesmes` (my rice system)
   options.my.neovim.lazyvim.colorscheme = mkOption {
     type = enum ["tokyonight" "kanagawa" "catppuccin"];
     default = "tokyonight";
