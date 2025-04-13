@@ -26,6 +26,7 @@
     "systemd-.*"
     "wezterm"
     "kitty"
+    "ghostty"
     "bash"
     "zsh"
     "fish"
