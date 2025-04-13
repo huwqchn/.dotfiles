@@ -6,7 +6,7 @@
 }: let
   inherit (pkgs.stdenv) isLinux;
   inherit (lib.options) mkOption mkEnableOption;
-  inherit (lib.types) listOf enum str nullOr singleLineStr;
+  inherit (lib.types) listOf enum str nullOr singleLineStr float;
 in {
   options.my = {
     name = mkOption {
@@ -81,6 +81,18 @@ in {
         type = nullOr (enum ["tokyonight" "catppuccin" "auto"]);
         default = "tokyonight";
         description = "The theme to use";
+      };
+      transparent = {
+        enable =
+          mkEnableOption "Enable tmux transparent"
+          // {
+            default = true;
+          };
+      };
+      opacity = mkOption {
+        type = float;
+        default = 0.7;
+        description = "The opacity of the background";
       };
     };
     # hardware

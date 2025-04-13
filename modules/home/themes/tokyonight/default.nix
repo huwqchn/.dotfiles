@@ -11,6 +11,7 @@
   inherit (lib.types) enum;
   inherit (lib.generators) toINIWithGlobalSection;
   inherit (pkgs.stdenv.hostPlatform) isLinux;
+  inherit (config.my.themes) transparent;
 
   cfg = config.my.themes.tokyonight;
   themeName = "tokyonight_${cfg.style}";
@@ -54,7 +55,7 @@ in {
         '';
         btop.settings = {
           color_theme = "tokyo-night";
-          theme_background = true; # make btop transparent
+          theme_background = transparent.enable; # make it transparent
         };
         kitty.extraConfig = ''
           include ${src}/extras/kitty/${themeName}.conf
@@ -142,7 +143,7 @@ in {
         };
         tmux.plugins = with pkgs.tmuxPlugins; let
           bg =
-            if config.my.tmux.transparent
+            if transparent.enable
             then "bg=default"
             else "bg=$color_background";
         in [

@@ -16,11 +16,6 @@ in {
       // {
         default = true;
       };
-    transparent =
-      mkEnableOption "Enable tmux transparent"
-      // {
-        default = true;
-      };
   };
   config = mkIf cfg.enable {
     home.shellAliases = shellAliases;
