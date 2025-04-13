@@ -4,6 +4,8 @@
   pkgs,
   ...
 }: let
+  #FIXME: this is a hack to get the background image to work
+  #but it not works now, or use swww instead?
   background = "~/.config/background";
   cfg = config.my.desktop;
   inherit (lib.modules) mkIf;
