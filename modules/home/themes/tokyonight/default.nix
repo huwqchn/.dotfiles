@@ -140,7 +140,12 @@ in {
             success_style = "bold green";
           };
         };
-        tmux.plugins = with pkgs.tmuxPlugins; [
+        tmux.plugins = with pkgs.tmuxPlugins; let
+          bg =
+            if config.my.tmux.transparent
+            then "bg=default"
+            else "bg=$color_background";
+        in [
           {
             plugin = mode-indicator;
             extraConfig = lib.mkAfter ''
@@ -162,7 +167,7 @@ in {
               set -g status-position top
               set -g status-left-length 90
               set -g status-right-length 90
-              set -g status-style bg=$color_background
+              set -g status-style ${bg}
               setw -g window-status-separator " "
 
               # set -g window-style ""
@@ -180,11 +185,10 @@ in {
               set -g pane-active-border-style fg=$color_blue
 
               ##################################### FORMAT ###################################
-
-              set -g status-left "#[fg=$color_gray,bg=$color_background]#{tmux_mode_indicator}#[fg=$color_gray,bg=$color_background]"
-              set -g status-right "#[fg=$color_gray,bg=$color_background]#[fg=$color_cyan,bg=$color_gray] #S#[fg=$color_gray,bg=$color_background] #[fg=$color_gray,bg=$color_background]#[fg=$color_foreground,bg=$color_gray] %H:%M#[fg=$color_gray,bg=$color_background]"
-              setw -g window-status-format "#[fg=$color_gray,bg=$color_background]#{?window_activity_flag,#[fg=$color_yellow],#[fg=$color_foreground]}#[bg=$color_gray,italics]#I: #[noitalics]#W#{?window_last_flag,  ,}#{?window_activity_flag,  ,}#{?window_bell_flag, #[fg=$color_red]󰂞 ,}#[fg=$color_gray,bg=$color_background]"
-              setw -g window-status-current-format "#[fg=$color_blue,bg=$color_background]#[fg=$color_background,bg=$color_blue,italics]#I: #[bg=$color_blue,noitalics,bold]#{?window_zoomed_flag,[#W],#W}#[fg=$color_blue,bg=$color_background]"
+              set -g status-left "#[fg=$color_gray,${bg}]#{tmux_mode_indicator}#[fg=$color_gray,${bg}]"
+              set -g status-right "#[fg=$color_gray,${bg}]#[fg=$color_cyan,bg=$color_gray] #S#[fg=$color_gray,${bg}] #[fg=$color_gray,bg=${bg}]#[fg=$color_foreground,bg=$color_gray] %H:%M#[fg=$color_gray,${bg}]"
+              setw -g window-status-format "#[fg=$color_gray,${bg}]#{?window_activity_flag,#[fg=$color_yellow],#[fg=$color_foreground]}#[bg=$color_gray,italics]#I: #[noitalics]#W#{?window_last_flag,  ,}#{?window_activity_flag,  ,}#{?window_bell_flag, #[fg=$color_red]󰂞 ,}#[fg=$color_gray,${bg}]"
+              setw -g window-status-current-format "#[fg=$color_blue,${bg}]#[fg=$color_background,bg=$color_blue,italics]#I: #[bg=$color_blue,noitalics,bold]#{?window_zoomed_flag,[#W],#W}#[fg=$color_blue,${bg}]"
             '';
           }
         ];
