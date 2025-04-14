@@ -123,10 +123,11 @@
       flake = false;
     };
 
-    srvos = {
-      url = "github:nix-community/srvos";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    # TODO: how to use this???
+    # srvos = {
+    #   url = "github:nix-community/srvos";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
 
     # generate networking topology images
     nix-topology = {
