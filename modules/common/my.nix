@@ -2,6 +2,7 @@
   lib,
   pkgs,
   config,
+  inputs,
   ...
 }: let
   inherit (pkgs.stdenv) isLinux;
@@ -73,7 +74,7 @@ in {
     themes = {
       wallpaper = mkOption {
         type = str;
-        default = "wallpapers/1.jpg";
+        default = "${inputs.wallpapers}/unorganized/nix.png";
         description = "The wallpaper of the system";
       };
       theme = mkOption {

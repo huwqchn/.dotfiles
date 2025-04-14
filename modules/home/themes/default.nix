@@ -14,6 +14,7 @@ in {
     ++ [
       inputs.stylix.homeManagerModules.stylix
     ];
+
   stylix = {
     enable = true;
     autoEnable = mkDefault false;

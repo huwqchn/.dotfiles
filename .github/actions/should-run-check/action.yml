@@ -34,5 +34,4 @@ runs:
             break
           fi
         done
-        echo "Run check: $run_check"
         echo "run-check=$run_check" >> "$GITHUB_OUTPUT"
