@@ -3,7 +3,7 @@ author: huwqchn
 description: "Determine whether CI should run based on commit message"
 inputs:
   prefixes:
-    description: "Prefix to skip (e.g., chore)"
+    description: "Prefixes to skip (e.g., chore docs)"
     required: false
     default: "chore docs"
 outputs:
@@ -35,4 +35,10 @@ runs:
             break
           fi
         done
+
+        if [[ "$message" =~ --skip-check$ ]]; then
+          echo "Commit message ends with --skip-check, skipping check"
+          run_check="false"
+        fi
+
         echo "run-check=$run_check" >> "$GITHUB_OUTPUT"
