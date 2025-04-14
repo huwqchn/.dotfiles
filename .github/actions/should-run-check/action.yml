@@ -1,0 +1,37 @@
+name: "Should Run Check"
+description: "Determine whether CI should run based on commit message"
+inputs:
+  prefixes:
+    description: "Prefix to skip (e.g., chore)"
+    required: false
+    default: "chore"
+outputs:
+  run-check:
+    description: "Whether the check should run"
+    value: ${{ steps.set-result.outputs.run-check }}
+runs:
+  using: "composite"
+  steps:
+    - name: Get latest commit message
+      id: get-commit
+      shell: bash
+      run: echo "message=$(git log -1 --pretty=%B)" >> $GITHUB_OUTPUT
+
+    - name: Decide whether to run check
+      id: set-output
+      shell: bash
+run: |
+  message="${{ steps.get-commit.outputs.message }}"
+  echo "Commit message: $message"
+
+  # Default to true (run the check)
+  run_check="true"
+
+  for prefix in ${{ inputs.prefixes }}; do
+    if [[ "$message" == "$prefix"* ]]; then
+      run_check="false"
+      break
+    fi
+  done
+
+  echo "run-check=$run_check" >> "$GITHUB_OUTPUT"

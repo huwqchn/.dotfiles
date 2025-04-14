@@ -16,14 +16,28 @@ on:
 permissions: {}
 
 jobs:
+  should-run:
+    runs-on: ubuntu-latest
+    outputs:
+      run-check: ${{ steps.check.outputs.run-check }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Should Run Check
+        id: check
+        uses: ./.github/actions/should-run-check
+        with:
+          prefixes: "chore docs"
+
   check-flake:
+    needs: should-run
+    if: needs.should-run.outputs.run-check == 'true'
     runs-on: ubuntu-latest
     permissions:
       contents: write
 
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
       - name: Install Nix
         uses: cachix/install-nix-action@v31
