@@ -1,0 +1,36 @@
+name: check-commit
+author: gendloop
+description: "Commit message check"
+
+runs:
+  using: "composite"
+  steps:
+    - name: checkout
+      uses: actions/checkout@v4
+
+    - name: get-commit-message
+      shell: bash
+      run: |
+        commit_message=$(git log -1 --pretty=format:'%s')
+        echo "::notice::Commit message: $commit_message"
+
+        # Use regex to check the commit message format
+        if [[ ! "$commit_message" =~ ^(fix|feat|chore|ci|docs|style|refactor|test)(\([a-zA-Z_]+\))?\!?:\ .+ ]] && [[ ! "$commit_message" =~ ^(Merge|Revert)\ .+ ]]; then
+          echo "::error::Commit message does not follow the correct format:"
+          echo "::warning::● <type>[optional scope]: <description>"
+          echo "::warning::  ○ type"
+          echo "::warning::    ■ fix      -- fixes a bug"
+          echo "::warning::    ■ feat     -- adds a new feature"
+          echo "::warning::    ■ perf     -- performance improvements"
+          echo "::warning::    ■ chore    -- miscellaneous changes"
+          echo "::warning::    ■ ci       -- workflow updates"
+          echo "::warning::    ■ docs     -- documentation updates"
+          echo "::warning::    ■ style    -- code style updates"
+          echo "::warning::    ■ refactor -- code refactoring"
+          echo "::warning::    ■ test     -- test code updates"
+          echo "::warning::● <type>[optional scope]!: <description>"
+          echo "::warning::  ○ Adding an exclamation mark '!' indicates a major update;"
+          echo "::warning::  ○ Ensure there is a space between '!:’ and <description>"
+          echo "::warning::● The colon (:) must be the standard English colon, not one from a Chinese input method"
+          exit 1
+        fi

@@ -1,11 +1,6 @@
 name: "Check Flake"
 on:
   workflow_dispatch:
-  workflow_call:
-    inputs:
-      ref:
-        required: false
-        type: string
   push:
     paths:
       - "**.nix"
@@ -16,6 +11,13 @@ on:
 permissions: {}
 
 jobs:
+  check-commit:
+    name: "Check Commit Message"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run commit message check
+        uses: ./.github/actions/commit-message-check
+
   should-run:
     runs-on: ubuntu-latest
     outputs:

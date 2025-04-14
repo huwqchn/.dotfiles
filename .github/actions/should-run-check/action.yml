@@ -1,4 +1,5 @@
 name: "Should Run Check"
+author: huwqchn
 description: "Determine whether CI should run based on commit message"
 inputs:
   prefixes:
