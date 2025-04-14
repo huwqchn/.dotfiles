@@ -6,7 +6,7 @@
   inherit (lib.modules) mkIf;
   cfg = config.my.desktop;
 in {
-  config = mkIf (cfg.enable && cfg.environment == "aerospace") {
+  config = mkIf (cfg.enable && cfg.type == "darwin" && cfg.environment == "aerospace") {
     programs.aerospace = {
       enable = true;
       userSettings = {

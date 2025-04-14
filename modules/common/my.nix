@@ -57,16 +57,29 @@ in {
         enable =
           mkEnableOption "Wayland"
           // {
-            default = true;
+            default = config.my.desktop.type == "wayland";
           };
       };
 
       xorg = {
-        enable = mkEnableOption "Xorg";
+        enable =
+          mkEnableOption "Xorg"
+          // {
+            default = config.my.desktop.type == "xorg";
+          };
       };
 
-      # FIXME: should be add a assert if desktop.environment is not wayland desktop environment
-      # FIXME: should be add a assert if desktop.environment is not linux
+      type = mkOption {
+        type = nullOr (enum ["wayland" "xorg" "darwin"]);
+        default =
+          if isLinux
+          then "wayland"
+          else "darwin";
+        description = "The desktop environment type to use";
+      };
+
+      # TODO: should be add a assert if desktop.environment is not wayland desktop environment
+      # TODO: should be add a assert if desktop.environment is not linux
       # TODO: i3 and bspwm are not supported yet
       # TODO: sway is not supported yet
       # TODO: should support niri, that's supper cool

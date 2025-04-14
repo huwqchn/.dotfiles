@@ -26,9 +26,8 @@
 
   cfg = config.my.desktop;
   inherit (lib.modules) mkIf;
-  inherit (pkgs.stdenv.hostPlatform) isLinux;
 in {
-  config = mkIf (cfg.enable && cfg.wayland.enable && isLinux) {
+  config = mkIf (cfg.enable && cfg.wayland.enable) {
     services.hypridle = {
       enable = true;
       inherit package;

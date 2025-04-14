@@ -1,7 +1,6 @@
 {
   lib,
   config,
-  pkgs,
   ...
 }: let
   #FIXME: this is a hack to get the background image to work
@@ -9,9 +8,8 @@
   background = "~/.config/background";
   cfg = config.my.desktop;
   inherit (lib.modules) mkIf;
-  inherit (pkgs.stdenv.hostPlatform) isLinux;
 in {
-  config = mkIf (cfg.enable && cfg.wayland.enable && isLinux) {
+  config = mkIf (cfg.enable && cfg.wayland.enable) {
     services.hyprpaper = {
       enable = false;
 
