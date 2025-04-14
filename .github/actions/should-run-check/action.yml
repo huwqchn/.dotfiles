@@ -4,11 +4,11 @@ inputs:
   prefixes:
     description: "Prefix to skip (e.g., chore)"
     required: false
-    default: "chore"
+    default: "chore docs"
 outputs:
   run-check:
     description: "Whether the check should run"
-    value: ${{ steps.set-result.outputs.run-check }}
+    value: ${{ steps.set-output.outputs.run-check }}
 runs:
   using: "composite"
   steps:
