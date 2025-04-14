@@ -20,18 +20,18 @@ runs:
     - name: Decide whether to run check
       id: set-output
       shell: bash
-run: |
-  message="${{ steps.get-commit.outputs.message }}"
-  echo "Commit message: $message"
+      run: |
+        message="${{ steps.get-commit.outputs.message }}"
+        echo "Commit message: $message"
 
-  # Default to true (run the check)
-  run_check="true"
+        # Default to true (run the check)
+        run_check="true"
 
-  for prefix in ${{ inputs.prefixes }}; do
-    if [[ "$message" == "$prefix"* ]]; then
-      run_check="false"
-      break
-    fi
-  done
+        for prefix in ${{ inputs.prefixes }}; do
+          if [[ "$message" == "$prefix"* ]]; then
+            run_check="false"
+            break
+          fi
+        done
 
-  echo "run-check=$run_check" >> "$GITHUB_OUTPUT"
+        echo "run-check=$run_check" >> "$GITHUB_OUTPUT"
