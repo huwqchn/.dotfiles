@@ -55,4 +55,5 @@ runs:
         fi
 
         echo "deploy=$deploy" >> "$GITHUB_OUTPUT"
+        echo "build=$build" >> "$GITHUB_OUTPUT"
         echo "skip-check=$skip_check" >> "$GITHUB_OUTPUT"
