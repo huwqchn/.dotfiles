@@ -6,7 +6,9 @@
   inherit (lib.modules) mkIf;
   inherit (lib.strings) optionalString;
   inherit (config.my) shell;
-  isHyprland = config.my.desktop.default == "hyprland";
+  # inherit (config.my.desktop) environment;
+  # FIXME: should be add a assert if desktop.environment is not wayland desktop environment
+  isHyprland = config.my.desktop.environment == "Hyprland";
   cfg = config.my.desktop;
 in {
   config = mkIf (cfg.enable && cfg.wayland.enable) {

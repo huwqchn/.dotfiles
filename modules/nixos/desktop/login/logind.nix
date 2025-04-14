@@ -4,7 +4,7 @@
   ...
 }: let
   inherit (lib.modules) mkIf;
-  cfg = config.my.desktop.loginManager;
+  cfg = config.my.desktop.login;
 in {
   config = mkIf (cfg == "logind") {
     services.logind = {

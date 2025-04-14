@@ -8,7 +8,7 @@
 
   inherit (config.my) desktop;
 in {
-  config = mkIf (desktop.enable && desktop.wayland.enable && desktop.default == "hyprland") {
+  config = mkIf (desktop.enable && desktop.wayland.enable && desktop.environment == "Hyprland") {
     services.displayManager.sessionPackages = [pkgs.hyprland];
     xdg.portal = {
       enable = true;

@@ -10,7 +10,7 @@
 in {
   imports = scanPaths ./.;
 
-  options.my.desktop.loginManager = mkOption {
+  options.my.desktop.login = mkOption {
     type = nullOr (enum [
       "greetd"
       "sddm"

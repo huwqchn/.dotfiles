@@ -14,11 +14,13 @@
     "${sessionData}/share/xsessions"
     "${sessionData}/share/wayland-sessions"
   ];
-  cfg = config.my.desktop.loginManager;
+  cfg = config.my.desktop.login;
   inherit (config.my) name;
   inherit (config.my.machine) persist;
+  inherit (config.my.desktop) autologin;
+  inherit (config.my.desktop) environment;
 in {
-  options.my.desktop.loginManager.autologin =
+  options.my.desktop.autologin =
     mkEnableOption ''
       Whether to enable passwordless login. This is generally useful on systems with
       FDE (Full Disk Encryption) enabled. It is a security risk for systems without FDE.
@@ -31,7 +33,7 @@ in {
     services.greetd = {
       enable = true;
       vt = 2;
-      restart = !cfg.autologin;
+      restart = !autologin;
 
       settings = {
         default_session = {
@@ -46,9 +48,9 @@ in {
           ];
         };
 
-        initial_session = mkIf cfg.autologin {
+        initial_session = mkIf autologin {
           user = name;
-          command = cfg.default;
+          command = environment;
         };
       };
     };

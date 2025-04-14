@@ -1,13 +1,12 @@
 {
   lib,
   config,
-  pkgs,
   ...
 }: let
   cfg = config.my.desktop;
   inherit (lib.modules) mkIf;
 in {
-  config = mkIf (cfg.enable && cfg.wayland.enable && pkgs.stdenv.hostPlatform.isLinux) {
+  config = mkIf (cfg.enable && cfg.wayland.enable && cfg.environment == "Hyprland") {
     wayland.windowManager.hyprland.settings = {
       env = [
         "CLUTTER_BACKEND,wayland"

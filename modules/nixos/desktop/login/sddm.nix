@@ -5,9 +5,9 @@
   ...
 }: let
   inherit (lib.modules) mkIf;
-  cfg = config.my.desktop.loginManager;
+  cfg = config.my.desktop.login;
 in {
-  config = mkIf (cfg.loginManager == "sddm") {
+  config = mkIf (cfg == "sddm") {
     services.displayManager.sddm = {
       enable = true;
       package = pkgs.kdePackages.sddm; # allow qt6 themes to work

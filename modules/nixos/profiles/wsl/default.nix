@@ -44,7 +44,6 @@ in {
       desktop = {
         enable = mkDefault false;
         wayland.enable = mkDefault true;
-        loginManager = mkForce null;
       };
       virtual = {
         enable = mkForce false;

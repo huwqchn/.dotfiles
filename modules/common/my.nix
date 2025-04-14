@@ -52,6 +52,7 @@ in {
         // {
           default = true;
         };
+
       wayland = {
         enable =
           mkEnableOption "Wayland"
@@ -59,13 +60,24 @@ in {
             default = true;
           };
       };
+
       xorg = {
         enable = mkEnableOption "Xorg";
       };
-      default = mkOption {
-        type = enum ["i3" "bspwm" "sway" "hyprland"];
-        default = "hyprland";
-        description = "The default window manager";
+
+      # FIXME: should be add a assert if desktop.environment is not wayland desktop environment
+      # FIXME: should be add a assert if desktop.environment is not linux
+      # TODO: i3 and bspwm are not supported yet
+      # TODO: sway is not supported yet
+      # TODO: should support niri, that's supper cool
+      # TODO: should support cosmic desktop environment
+      environment = mkOption {
+        type = enum ["i3" "bspwm" "sway" "Hyprland" "aerospace"];
+        default =
+          if isLinux
+          then "Hyprland"
+          else "aerospace";
+        description = "The default desktop environment";
       };
     };
     security = {

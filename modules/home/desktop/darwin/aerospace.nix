@@ -1,12 +1,12 @@
 {
   lib,
-  pkgs,
+  config,
   ...
 }: let
   inherit (lib.modules) mkIf;
-  inherit (pkgs.stdenv.hostPlatform) isDarwin;
+  cfg = config.my.desktop;
 in {
-  config = mkIf isDarwin {
+  config = mkIf (cfg.enable && cfg.environment == "aerospace") {
     programs.aerospace = {
       enable = true;
       userSettings = {

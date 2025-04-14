@@ -1,14 +1,13 @@
 {
   lib,
   config,
-  pkgs,
   ...
 }: let
   cfg = config.my.desktop;
   inherit (lib.modules) mkIf;
   inherit (config.my.themes) opacity;
 in {
-  config = mkIf (cfg.enable && cfg.wayland.enable && pkgs.stdenv.hostPlatform.isLinux) {
+  config = mkIf (cfg.enable && cfg.wayland.enable && cfg.environment == "Hyprland") {
     wayland.windowManager.hyprland.settings = {
       # layer rules
       layerrule = let

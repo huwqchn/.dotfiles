@@ -50,11 +50,6 @@
       printing.enable = true;
       samba.enable = true;
     };
-    desktop = {
-      enable = true;
-      wayland.enable = true;
-      default = "hyprland";
-    };
     virtual.enable = true;
     machine = {
       type = "laptop";
