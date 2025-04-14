@@ -9,6 +9,7 @@
   inherit (lib.modules) mkForce mkIf mkMerge importTOML;
   inherit (lib.types) enum;
   inherit (lib.generators) toINIWithGlobalSection;
+  inherit (builtins) readFile;
   inherit (pkgs.stdenv.hostPlatform) isLinux;
   inherit (config.my.themes) transparent;
   inherit (config.my.themes) pad;
@@ -39,7 +40,7 @@ in {
       programs = {
         git = {
           includes = [{path = "${src}/extras/delta/${themeName}.gitconfig";}];
-          delta.options = {syntax-theme = themeName;};
+          delta.options.features = themeName;
         };
         bat = {
           config.theme = themeName;
@@ -50,9 +51,7 @@ in {
             };
           };
         };
-        fish.interactiveShellInit = ''
-          fish_config theme choose ${themeName}
-        '';
+        fish.interactiveShellInit = readFile "${src}/extras/fish/${themeName}.fish";
         btop.settings = {
           color_theme = "tokyo-night";
           theme_background = transparent.enable; # make it transparent
