@@ -13,12 +13,14 @@ in {
   };
 
   config = mkIf cfg.enable {
-    my.neovim.lazyvim.extraPlugins = with pkgs.vimPlugins; [
-      project-nvim
-    ];
+    my.neovim.lazyvim = {
+      extraPlugins = with pkgs.vimPlugins; [
+        project-nvim
+      ];
 
-    my.neovim.lazyvim.extraSpec = ''
-      { import = "lazyvim.plugins.extras.util.project" },
-    '';
+      extraSpec = ''
+        { import = "lazyvim.plugins.extras.util.project" },
+      '';
+    };
   };
 }

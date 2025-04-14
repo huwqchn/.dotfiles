@@ -13,24 +13,28 @@ in {
   };
 
   config = mkIf cfg.enable {
+    my.neovim = {
+      treesitterParsers = [
+        "rust"
+        "ron"
+      ];
+
+      lazyvim = {
+        extraPlugins = with pkgs.vimPlugins; [
+          rustaceanvim
+          crates-nvim
+        ];
+
+        extraSpec = ''
+          { import = "lazyvim.plugins.extras.lang.rust" },
+        '';
+      };
+    };
+
     programs.neovim.extraPackages = with pkgs; [
       bacon
       rust-analyzer
       vscode-extensions.vadimcn.vscode-lldb
     ];
-
-    my.neovim.treesitterParsers = [
-      "rust"
-      "ron"
-    ];
-
-    my.neovim.lazyvim.extraPlugins = with pkgs.vimPlugins; [
-      rustaceanvim
-      crates-nvim
-    ];
-
-    my.neovim.lazyvim.extraSpec = ''
-      { import = "lazyvim.plugins.extras.lang.rust" },
-    '';
   };
 }

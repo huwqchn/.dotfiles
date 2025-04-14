@@ -11,6 +11,7 @@ in {
   options.my.gh = {
     enable = mkEnableOption "gh";
   };
+
   config = mkIf cfg.enable {
     programs.gh = {
       enable = true;
@@ -52,12 +53,11 @@ in {
         prompt = "enabled";
       };
     };
-    home.persistence = {
-      "/persist/${config.home.homeDirectory}".files = [
-        ".config/gh/hosts.yml"
-        ".config/gh-copilot/config.yml"
-        ".local/state/gh-config/state.yml"
-      ];
-    };
+
+    home.persistence."/persist/${config.home.homeDirectory}".files = [
+      ".config/gh/hosts.yml"
+      ".config/gh-copilot/config.yml"
+      ".local/state/gh-config/state.yml"
+    ];
   };
 }

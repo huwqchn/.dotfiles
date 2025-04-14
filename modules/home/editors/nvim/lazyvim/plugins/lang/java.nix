@@ -13,21 +13,25 @@ in {
   };
 
   config = mkIf cfg.enable {
+    my.neovim = {
+      treesitterParsers = [
+        "java"
+      ];
+
+      lazyvim = {
+        extraPlugins = with pkgs.vimPlugins; [
+          nvim-jdtls
+        ];
+
+        extraSpec = ''
+          { import = "lazyvim.plugins.extras.lang.java" },
+        '';
+      };
+    };
+
     programs.neovim.extraPackages = with pkgs; [
       vscode-extensions.vscjava.vscode-java-debug
       vscode-extensions.vscjava.vscode-java-test
     ];
-
-    my.neovim.treesitterParsers = [
-      "java"
-    ];
-
-    my.neovim.lazyvim.extraPlugins = with pkgs.vimPlugins; [
-      nvim-jdtls
-    ];
-
-    my.neovim.lazyvim.extraSpec = ''
-      { import = "lazyvim.plugins.extras.lang.java" },
-    '';
   };
 }

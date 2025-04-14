@@ -15,6 +15,7 @@ in {
         default = config.my.desktop.enable && pkgs.stdenv.isLinux;
       };
   };
+
   config = mkIf cfg.enable {
     home.packages = with pkgs; [_1password-cli _1password-gui];
   };

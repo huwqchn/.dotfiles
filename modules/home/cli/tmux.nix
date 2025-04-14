@@ -17,8 +17,8 @@ in {
         default = true;
       };
   };
+
   config = mkIf cfg.enable {
-    home.shellAliases = shellAliases;
     programs = {
       fish = mkIf cfg.autoStart {
         interactiveShellInit = ''
@@ -330,6 +330,10 @@ in {
           ''}
         '';
       };
+    };
+
+    home = {
+      inherit shellAliases;
     };
   };
 }

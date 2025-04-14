@@ -13,16 +13,17 @@ in {
   };
 
   config = mkIf cfg.enable {
+    my.neovim = {
+      treesitterParsers = [
+        "dockerfile"
+      ];
+      lazyvim.extraSpec = ''
+        { import = "lazyvim.plugins.extras.lang.docker" },
+      '';
+    };
+
     programs.neovim.extraPackages = with pkgs; [
       hadolint
     ];
-
-    my.neovim.treesitterParsers = [
-      "dockerfile"
-    ];
-
-    my.neovim.lazyvim.extraSpec = ''
-      { import = "lazyvim.plugins.extras.lang.docker" },
-    '';
   };
 }

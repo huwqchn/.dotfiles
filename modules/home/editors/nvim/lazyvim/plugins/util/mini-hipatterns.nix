@@ -13,15 +13,17 @@ in {
   };
 
   config = mkIf cfg.enable {
-    my.neovim.lazyvim.extraPlugins = with pkgs.vimPlugins; [
-      {
-        name = "mini.hipatterns";
-        path = mini-nvim;
-      }
-    ];
+    my.neovim.lazyvim = {
+      extraPlugins = with pkgs.vimPlugins; [
+        {
+          name = "mini.hipatterns";
+          path = mini-nvim;
+        }
+      ];
 
-    my.neovim.lazyvim.extraSpec = ''
-      { import = "lazyvim.plugins.extras.util.mini-hipatterns" },
-    '';
+      extraSpec = ''
+        { import = "lazyvim.plugins.extras.util.mini-hipatterns" },
+      '';
+    };
   };
 }

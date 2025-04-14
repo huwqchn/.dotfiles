@@ -13,17 +13,19 @@ in {
   };
 
   config = mkIf cfg.enable {
+    my.neovim = {
+      treesitterParsers = [
+        "cpp"
+      ];
+
+      lazyvim.extraPlugins = with pkgs.vimPlugins; [
+        clangd_extensions-nvim
+      ];
+    };
+
     programs.neovim.extraPackages = with pkgs; [
       vscode-extensions.vadimcn.vscode-lldb
       clang-tools
-    ];
-
-    my.neovim.lazyvim.extraPlugins = with pkgs.vimPlugins; [
-      clangd_extensions-nvim
-    ];
-
-    my.neovim.treesitterParsers = [
-      "cpp"
     ];
 
     xdg.configFile."nvim/lua/plugins/clangd.lua".source = lib.my.relativeToConfig "nvim/lua/plugins/extras/lang/clangd.lua";

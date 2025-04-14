@@ -11,8 +11,12 @@ in {
   options.my.btop = {
     enable = mkEnableOption "btop";
   };
+
   config = mkIf cfg.enable {
-    home.shellAliases = shellAliases;
     programs.btop = {enable = true;};
+
+    home = {
+      inherit shellAliases;
+    };
   };
 }

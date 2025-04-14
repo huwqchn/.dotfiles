@@ -13,18 +13,19 @@ in {
   };
 
   config = mkIf cfg.enable {
+    my.neovim = {
+      treesitterParsers = [
+        "javascript"
+        "typescript"
+      ];
+      lazyvim.extraSpec = ''
+        { import = "lazyvim.plugins.extras.lang.typescript" },
+      '';
+    };
+
     programs.neovim.extraPackages = with pkgs; [
       typescript-language-server
       vtsls
     ];
-
-    my.neovim.treesitterParsers = [
-      "javascript"
-      "typescript"
-    ];
-
-    my.neovim.lazyvim.extraSpec = ''
-      { import = "lazyvim.plugins.extras.lang.typescript" },
-    '';
   };
 }

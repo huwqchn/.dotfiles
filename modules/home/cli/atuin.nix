@@ -11,9 +11,8 @@ in {
   options.my.atuin = {
     enable = mkEnableOption "atuin";
   };
-  config = mkIf cfg.enable {
-    age.secrets.atuin-key.rekeyFile = ./secrets/atuin-key.age;
 
+  config = mkIf cfg.enable {
     programs.atuin = {
       enable = true;
       flags = ["--disable-up-arrow"];
@@ -53,8 +52,10 @@ in {
       };
     };
 
-    home.persistence = {
-      "/persist/${homeDirectory}".directories = [".local/share/atuin"];
-    };
+    home.persistence."/persist/${homeDirectory}".directories = [
+      ".local/share/atuin"
+    ];
+
+    age.secrets.atuin-key.rekeyFile = ./secrets/atuin-key.age;
   };
 }

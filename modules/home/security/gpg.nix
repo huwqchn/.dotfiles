@@ -109,10 +109,13 @@ in {
         };
       };
     };
-    home.packages = lib.optional config.gtk.enable pkgs.gcr;
 
-    home.persistence = {
-      "/persist/${config.home.homeDirectory}".directories = [".gnupg"];
+    home = {
+      packages = lib.optional config.gtk.enable pkgs.gcr;
+
+      persistence = {
+        "/persist/${config.home.homeDirectory}".directories = [".gnupg"];
+      };
     };
   };
 }

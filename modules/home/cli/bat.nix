@@ -19,9 +19,23 @@ in {
   options.my.bat = {
     enable = mkEnableOption "bat";
   };
+
   config = mkIf cfg.enable {
+    # a cat(1) clone with syntax highlighting and Git integration.
+    programs.bat = {
+      enable = true;
+      config = {pager = "less -RF";};
+      extraPackages = with pkgs.bat-extras; [
+        # batdiff # TODO:: fails to compile, nixpkgs-stable can compile successfully, but I can't overlays it with nixpkgs-unstable
+        batman
+        batgrep
+        batwatch
+      ];
+    };
+
     home = {
       inherit shellAliases sessionVariables;
+
       file.".lesskey".text = ''
         #command
         n left-scroll
@@ -36,21 +50,10 @@ in {
         \eK reverse-search-all
         c clear-search
       '';
-    };
 
-    # a cat(1) clone with syntax highlighting and Git integration.
-    programs.bat = {
-      enable = true;
-      config = {pager = "less -RF";};
-      extraPackages = with pkgs.bat-extras; [
-        # batdiff # TODO:: fails to compile, nixpkgs-stable can compile successfully, but I can't overlays it with nixpkgs-unstable
-        batman
-        batgrep
-        batwatch
+      persistence."/persist/${config.home.homeDirectory}".directories = [
+        ".cache/bat"
       ];
-    };
-    home.persistence = {
-      "/persist/${config.home.homeDirectory}".directories = [".cache/bat"];
     };
   };
 }

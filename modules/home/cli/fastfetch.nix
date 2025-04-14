@@ -17,8 +17,8 @@ in {
         default = true;
       };
   };
+
   config = mkIf cfg.enable {
-    home = {inherit shellAliases;};
     # programs.nushell = {inherit shellAliases;};
     programs = {
       fish.functions.fish_greeting = mkIf cfg.startOnLogin {
@@ -154,10 +154,16 @@ in {
         };
       };
     };
+
+    home = {
+      inherit shellAliases;
+
+      persistence."/persist/${config.home.homeDirectory}".directories = [
+        ".cache/fastfetch"
+      ];
+    };
+
     xdg.configFile."fastfetch/pngs".source =
       lib.my.relativeToConfig "fastfetch/pngs";
-    home.persistence = {
-      "/persist/${config.home.homeDirectory}".directories = [".cache/fastfetch"];
-    };
   };
 }

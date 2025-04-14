@@ -13,22 +13,24 @@ in {
   };
 
   config = mkIf cfg.enable {
-    my.neovim.lazyvim.extraPlugins = with pkgs.vimPlugins;
-      [
-        {
-          name = "mini.snippets";
-          path = mini-nvim;
-        }
-        friendly-snippets
-      ]
-      ++ lib.optionals (config.my.neovim.lazyvim.cmp == "nvim-cmp") [cmp-mini-snippets];
+    my.neovim.lazyvim = {
+      extraPlugins = with pkgs.vimPlugins;
+        [
+          {
+            name = "mini.snippets";
+            path = mini-nvim;
+          }
+          friendly-snippets
+        ]
+        ++ lib.optionals (config.my.neovim.lazyvim.cmp == "nvim-cmp") [cmp-mini-snippets];
 
-    my.neovim.lazyvim.excludePlugins = with pkgs.vimPlugins; [
-      nvim-snippets
-    ];
+      excludePlugins = with pkgs.vimPlugins; [
+        nvim-snippets
+      ];
 
-    my.neovim.lazyvim.extraSpec = ''
-      { import = "lazyvim.plugins.extras.coding.mini-snippets" },
-    '';
+      extraSpec = ''
+        { import = "lazyvim.plugins.extras.coding.mini-snippets" },
+      '';
+    };
   };
 }

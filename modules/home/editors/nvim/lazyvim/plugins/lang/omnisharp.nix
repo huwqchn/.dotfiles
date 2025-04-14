@@ -13,22 +13,26 @@ in {
   };
 
   config = mkIf cfg.enable {
+    my.neovim = {
+      treesitterParsers = [
+        "c_sharp"
+      ];
+
+      lazyvim = {
+        extraPlugins = with pkgs.vimPlugins; [
+          neotest-dotnet
+          omnisharp-extended-lsp-nvim
+        ];
+
+        extraSpec = ''
+          { import = "lazyvim.plugins.extras.lang.omnisharp" },
+        '';
+      };
+    };
+
     programs.neovim.extraPackages = with pkgs; [
       csharpier
       netcoredbg
     ];
-
-    my.neovim.treesitterParsers = [
-      "c_sharp"
-    ];
-
-    my.neovim.lazyvim.extraPlugins = with pkgs.vimPlugins; [
-      neotest-dotnet
-      omnisharp-extended-lsp-nvim
-    ];
-
-    my.neovim.lazyvim.extraSpec = ''
-      { import = "lazyvim.plugins.extras.lang.omnisharp" },
-    '';
   };
 }

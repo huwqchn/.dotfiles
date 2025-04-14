@@ -8,14 +8,16 @@
   cfg = config.my.neovim.lazyvim;
 in {
   config = mkIf (cfg.cmp == "auto" || cfg.cmp == "blink") {
-    my.neovim.lazyvim.extraPlugins = with pkgs.vimPlugins; [
-      blink-cmp
-      blink-compat
-      friendly-snippets
-    ];
+    my.neovim.lazyvim = {
+      extraPlugins = with pkgs.vimPlugins; [
+        blink-cmp
+        blink-compat
+        friendly-snippets
+      ];
 
-    my.neovim.lazyvim.excludePlugins = with pkgs.vimPlugins; [
-      nvim-cmp
-    ];
+      excludePlugins = with pkgs.vimPlugins; [
+        nvim-cmp
+      ];
+    };
   };
 }

@@ -36,14 +36,17 @@ in {
       dropbar-nvim
       scope-nvim
     ];
-    xdg.configFile."nvim/lua/plugins/coding.lua".source = lib.my.relativeToConfig "nvim/lua/plugins/coding.lua";
-    xdg.configFile."nvim/lua/plugins/editor.lua".source = lib.my.relativeToConfig "nvim/lua/plugins/editor.lua";
-    xdg.configFile."nvim/lua/plugins/icons.lua".source = lib.my.relativeToConfig "nvim/lua/plugins/icons.lua";
-    xdg.configFile."nvim/lua/plugins/lsp.lua".source = lib.my.relativeToConfig "nvim/lua/plugins/lsp.lua";
-    xdg.configFile."nvim/lua/plugins/treesitter.lua".source = lib.my.relativeToConfig "nvim/lua/plugins/treesitter.lua";
-    xdg.configFile."nvim/lua/plugins/ui.lua".source = lib.my.relativeToConfig "nvim/lua/plugins/ui.lua";
-    xdg.configFile."nvim/lua/config".source = lib.my.relativeToConfig "nvim/lua/config";
-    xdg.configFile."nvim/snippets".source = lib.my.relativeToConfig "nvim/snippets";
-    xdg.configFile."nvim/spell".source = lib.my.relativeToConfig "nvim/spell";
+
+    xdg.configFile = {
+      "nvim/lua/plugins/coding.lua".source = lib.my.relativeToConfig "nvim/lua/plugins/coding.lua";
+      "nvim/lua/plugins/editor.lua".source = lib.my.relativeToConfig "nvim/lua/plugins/editor.lua";
+      "nvim/lua/plugins/icons.lua".source = lib.my.relativeToConfig "nvim/lua/plugins/icons.lua";
+      "nvim/lua/plugins/lsp.lua".source = lib.my.relativeToConfig "nvim/lua/plugins/lsp.lua";
+      "nvim/lua/plugins/treesitter.lua".source = lib.my.relativeToConfig "nvim/lua/plugins/treesitter.lua";
+      "nvim/lua/plugins/ui.lua".source = lib.my.relativeToConfig "nvim/lua/plugins/ui.lua";
+      "nvim/lua/config".source = lib.my.relativeToConfig "nvim/lua/config";
+      "nvim/snippets".source = lib.my.relativeToConfig "nvim/snippets";
+      "nvim/spell".source = lib.my.relativeToConfig "nvim/spell";
+    };
   };
 }

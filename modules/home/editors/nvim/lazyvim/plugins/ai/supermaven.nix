@@ -14,13 +14,15 @@ in {
   };
 
   config = mkIf cfg.enable {
-    my.neovim.lazyvim.extraSpec = ''
-      { import = "lazyvim.plugins.extras.ai.supermaven" },
-    '';
+    my.neovim.lazyvim = {
+      extraPlugins = with pkgs.vimPlugins; [
+        supermaven-nvim
+      ];
 
-    my.neovim.lazyvim.extraPlugins = with pkgs.vimPlugins; [
-      supermaven-nvim
-    ];
+      extraSpec = ''
+        { import = "lazyvim.plugins.extras.ai.supermaven" },
+      '';
+    };
 
     age.secrets.supermaven = {
       rekeyFile = ./secrets/supermaven.age;

@@ -18,11 +18,13 @@ in {
   };
 
   config = mkIf cfg.enable {
-    home.packages = with pkgs; [vlc];
+    home = {
+      packages = with pkgs; [vlc];
 
-    home.persistence."/persist/${homeDirectory}" = {
-      allowOther = true;
-      directories = [".config/vlc"];
+      persistence."/persist/${homeDirectory}" = {
+        allowOther = true;
+        directories = [".config/vlc"];
+      };
     };
   };
 }

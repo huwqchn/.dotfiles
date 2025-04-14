@@ -18,6 +18,7 @@ in {
   options.my.yazi = {
     enable = mkEnableOption "yazi";
   };
+
   config = mkIf cfg.enable {
     # terminal file manager
     programs.yazi = {
@@ -401,8 +402,9 @@ in {
         ];
       };
     };
-    home.persistence = {
-      "/persist/${config.home.homeDirectory}".directories = [".local/state/yazi"];
-    };
+
+    home.persistence."/persist/${config.home.homeDirectory}".directories = [
+      ".local/state/yazi"
+    ];
   };
 }

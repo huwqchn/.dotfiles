@@ -9,8 +9,6 @@
   cfg = config.my.security;
 in {
   config = mkIf cfg.enable {
-    home.file.".ssh/id_${name}.pub".source = "${self}/secrets/${name}/ssh.pub";
-
     programs.ssh = {
       enable = true;
       # a private key that is used during authentication will be added to ssh-agent if it is running
@@ -44,8 +42,13 @@ in {
         };
       };
     };
-    home.persistence = {
-      "/persist/${config.home.homeDirectory}".directories = [".ssh"];
+
+    home = {
+      file.".ssh/id_${name}.pub".source = "${self}/secrets/${name}/ssh.pub";
+
+      persistence = {
+        "/persist/${config.home.homeDirectory}".directories = [".ssh"];
+      };
     };
   };
 }

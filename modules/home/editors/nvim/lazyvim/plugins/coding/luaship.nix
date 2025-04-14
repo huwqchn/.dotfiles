@@ -13,18 +13,20 @@ in {
   };
 
   config = mkIf cfg.enable {
-    my.neovim.lazyvim.extraPlugins = with pkgs.vimPlugins;
-      [
-        LuaSnip
-      ]
-      ++ lib.optionals (config.my.neovim.lazyvim.cmp == "nvim-cmp") [cmp_luasnip];
+    my.neovim.lazyvim = {
+      extraPlugins = with pkgs.vimPlugins;
+        [
+          LuaSnip
+        ]
+        ++ lib.optionals (config.my.neovim.lazyvim.cmp == "nvim-cmp") [cmp_luasnip];
 
-    my.neovim.lazyvim.excludePlugins = with pkgs.VimPlugins; [
-      nvim-snippets
-    ];
+      excludePlugins = with pkgs.VimPlugins; [
+        nvim-snippets
+      ];
 
-    my.neovim.lazyvim.extraSpec = ''
-      { import = "lazyvim.plugins.extras.coding.luasnip" },
-    '';
+      extraSpec = ''
+        { import = "lazyvim.plugins.extras.coding.luasnip" },
+      '';
+    };
   };
 }

@@ -13,12 +13,14 @@ in {
   };
 
   config = mkIf cfg.enable {
-    my.neovim.lazyvim.extraPlugins = with pkgs.vimPlugins; [
-      nvim-treesitter-context
-    ];
+    my.neovim.lazyvim = {
+      extraPlugins = with pkgs.vimPlugins; [
+        nvim-treesitter-context
+      ];
 
-    my.neovim.lazyvim.extraSpec = ''
-      { import = "lazyvim.plugins.extras.ui.treesitter-context" },
-    '';
+      extraSpec = ''
+        { import = "lazyvim.plugins.extras.ui.treesitter-context" },
+      '';
+    };
   };
 }

@@ -17,12 +17,15 @@ in {
 
   config = mkIf cfg.enable {
     programs.wezterm = {enable = true;};
+
     xdg.configFile."wezterm" = {
       recursive = true;
       source = lib.my.relativeToConfig "wezterm";
     };
-    home.persistence = {
-      "/persist/${config.home.homeDirectory}".directories = [".cache/wezterm" ".local/share/wezterm"];
-    };
+
+    home.persistence."/persist/${config.home.homeDirectory}".directories = [
+      ".cache/wezterm"
+      ".local/share/wezterm"
+    ];
   };
 }

@@ -13,18 +13,20 @@ in {
   };
 
   config = mkIf cfg.enable {
+    my.neovim = {
+      treesitterParsers = [
+        "angular"
+        "scss"
+      ];
+
+      lazyvim.extraSpec = ''
+        { import = "lazyvim.plugins.extras.lang.ansible" },
+      '';
+    };
+
     programs.neovim.extraPackages = with pkgs; [
       ansible-lint
       ansible-language-server
     ];
-
-    my.neovim.treesitterParsers = [
-      "angular"
-      "scss"
-    ];
-
-    my.neovim.lazyvim.extraSpec = ''
-      { import = "lazyvim.plugins.extras.lang.ansible" },
-    '';
   };
 }

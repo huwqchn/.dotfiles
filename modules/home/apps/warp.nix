@@ -21,8 +21,6 @@ in {
   };
 
   config = mkIf cfg.enable {
-    home.packages = with pkgs; [cloudflare-warp];
-
     systemd.user.services = {
       warp-taskbar = {
         Unit = {
@@ -40,9 +38,12 @@ in {
       };
     };
 
-    home.persistence."/persist/${homeDirectory}" = {
-      directories = [".local/share/warp"];
-      allowOther = true;
+    home = {
+      packages = with pkgs; [cloudflare-warp];
+      persistence."/persist/${homeDirectory}" = {
+        directories = [".local/share/warp"];
+        allowOther = true;
+      };
     };
   };
 }

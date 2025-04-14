@@ -11,8 +11,8 @@ in {
   options.my.eza = {
     enable = mkEnableOption "eza";
   };
+
   config = mkIf cfg.enable {
-    home = {inherit shellAliases;};
     # A modern replacement for ‘ls’
     # useful in bash/zsh prompt, not in nushell.
     programs.eza = {
@@ -20,6 +20,10 @@ in {
       git = true;
       icons = "auto";
       extraOptions = ["--group-directories-first"];
+    };
+
+    home = {
+      inherit shellAliases;
     };
   };
 }

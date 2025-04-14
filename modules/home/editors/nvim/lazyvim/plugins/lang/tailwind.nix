@@ -13,18 +13,17 @@ in {
   };
 
   config = mkIf cfg.enable {
-    programs.neovim.extraPackages = with pkgs; [
-      tailwindcss
-    ];
-
     /*
        my.neovim.lazyvim.extraPlugins = with pkgs.vimPlugins; [
       tailwindcss-colorizer-cmp-nvim
     ];
     */
-
     my.neovim.lazyvim.extraSpec = ''
       { import = "lazyvim.plugins.extras.lang.tailwind" },
     '';
+
+    programs.neovim.extraPackages = with pkgs; [
+      tailwindcss
+    ];
   };
 }

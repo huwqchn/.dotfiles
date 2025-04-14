@@ -11,6 +11,7 @@ in {
     enable = mkEnableOption "direnv";
     silent = mkEnableOption "silent";
   };
+
   config = mkIf cfg.enable {
     programs.direnv = {
       enable = true;
@@ -23,8 +24,9 @@ in {
 
       config.global = {hide_env_diff = true;};
     };
-    home.persistence = {
-      "/persist/${config.home.homeDirectory}".directories = [".local/share/direnv/allow"];
-    };
+
+    home.persistence."/persist/${config.home.homeDirectory}".directories = [
+      ".local/share/direnv/allow"
+    ];
   };
 }

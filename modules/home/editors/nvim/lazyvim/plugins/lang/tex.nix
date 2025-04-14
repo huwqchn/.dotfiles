@@ -13,17 +13,21 @@ in {
   };
 
   config = mkIf cfg.enable {
-    my.neovim.treesitterParsers = [
-      "bibtex"
-      "latex"
-    ];
+    my.neovim = {
+      treesitterParsers = [
+        "bibtex"
+        "latex"
+      ];
 
-    my.neovim.lazyvim.extraPlugins = with pkgs.vimPlugins; [
-      vimtex
-    ];
+      lazyvim = {
+        extraPlugins = with pkgs.vimPlugins; [
+          vimtex
+        ];
 
-    my.neovim.lazyvim.extraSpec = ''
-      { import = "lazyvim.plugins.extras.lang.tex" },
-    '';
+        extraSpec = ''
+          { import = "lazyvim.plugins.extras.lang.tex" },
+        '';
+      };
+    };
   };
 }

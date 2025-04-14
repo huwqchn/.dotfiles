@@ -13,11 +13,14 @@ in {
   };
 
   config = mkIf cfg.enable {
-    my.neovim.lazyvim.extraPlugins = with pkgs.vimPlugins; [
-      kulala-nvim
-    ];
-    my.neovim.lazyvim.extraSpec = ''
-      { import = "lazyvim.plugins.extras.util.rest" },
-    '';
+    my.neovim.lazyvim = {
+      extraPlugins = with pkgs.vimPlugins; [
+        kulala-nvim
+      ];
+
+      extraSpec = ''
+        { import = "lazyvim.plugins.extras.util.rest" },
+      '';
+    };
   };
 }

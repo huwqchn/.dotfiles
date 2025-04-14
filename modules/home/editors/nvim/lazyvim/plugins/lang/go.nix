@@ -13,6 +13,26 @@ in {
   };
 
   config = mkIf cfg.enable {
+    my.neovim = {
+      treesitterParsers = [
+        "go"
+        "gomod"
+        "gowork"
+        "gosum"
+      ];
+
+      lazyvim = {
+        extraPlugins = with pkgs.vimPlugins; [
+          nvim-dap-go
+          neotest-golang
+        ];
+
+        extraSpec = ''
+          { import = "lazyvim.plugins.extras.lang.go" },
+        '';
+      };
+    };
+
     programs.neovim.extraPackages = with pkgs; [
       delve
       gopls
@@ -21,21 +41,5 @@ in {
       gomodifytags
       impl
     ];
-
-    my.neovim.treesitterParsers = [
-      "go"
-      "gomod"
-      "gowork"
-      "gosum"
-    ];
-
-    my.neovim.lazyvim.extraPlugins = with pkgs.vimPlugins; [
-      nvim-dap-go
-      neotest-golang
-    ];
-
-    my.neovim.lazyvim.extraSpec = ''
-      { import = "lazyvim.plugins.extras.lang.go" },
-    '';
   };
 }

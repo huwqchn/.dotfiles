@@ -13,14 +13,14 @@ in {
   };
 
   config = mkIf cfg.enable {
-    programs.neovim.extraPackages = with pkgs; [
-      markdownlint-cli2
-      marksman
-    ];
-
     my.neovim.lazyvim.extraPlugins = with pkgs.vimPlugins; [
       markdown-preview-nvim
       render-markdown-nvim
+    ];
+
+    programs.neovim.extraPackages = with pkgs; [
+      markdownlint-cli2
+      marksman
     ];
 
     xdg.configFile."nvim/lua/plugins/markdown.lua".source = lib.my.relativeToConfig "nvim/lua/plugins/extras/lang/markdown.lua";

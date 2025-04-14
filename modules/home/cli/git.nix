@@ -15,25 +15,8 @@ in {
   options.my.git = {
     enable = mkEnableOption "git";
   };
+
   config = mkIf cfg.enable {
-    # `programs.git` will generate the config file: ~/.config/git/config
-    # to make git use this config file, `~/.gitconfig` should not exist!
-    #
-    #    https://git-scm.com/docs/git-config#Documentation/git-config.txt---global
-    home = {
-      inherit shellAliases;
-      activation.removeExistingGitconfig = lib.hm.dag.entryBefore ["checkLinkTargets"] ''
-        rm -f ~/.gitconfig
-      '';
-      packages = with pkgs; [
-        # actions runner for github actions
-        act
-        actionlint
-        action-validator
-        # for .gitignore
-        gibo
-      ];
-    };
     programs.git = {
       enable = true;
       lfs.enable = true;
@@ -149,6 +132,28 @@ in {
         foreach = "submodule foreach";
       };
     };
+
+    home = {
+      inherit shellAliases;
+
+      packages = with pkgs; [
+        # actions runner for github actions
+        act
+        actionlint
+        action-validator
+        # for .gitignore
+        gibo
+      ];
+
+      # `programs.git` will generate the config file: ~/.config/git/config
+      # to make git use this config file, `~/.gitconfig` should not exist!
+      #
+      #    https://git-scm.com/docs/git-config#Documentation/git-config.txt---global
+      activation.removeExistingGitconfig = lib.hm.dag.entryBefore ["checkLinkTargets"] ''
+        rm -f ~/.gitconfig
+      '';
+    };
+
     age.secrets.git-credentials = {
       rekeyFile = ./secrets/git-credentials.age;
       path = "${homeDirectory}/.git-credentials";

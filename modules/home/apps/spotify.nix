@@ -122,6 +122,12 @@ in {
           }
         ];
       };
+
+      home.persistence."/persist/${homeDirectory}" = {
+        allowOther = true;
+        directories = [".cache/spotify-player"];
+      };
+
       age.secrets = {
         spotify-player = {
           rekeyFile = ./secrets/spotify-player.age;
@@ -129,10 +135,6 @@ in {
           symlink = false;
         };
         spotifyClientID.rekeyFile = ./secrets/spotifyClientID.age;
-      };
-      home.persistence."/persist/${homeDirectory}" = {
-        allowOther = true;
-        directories = [".cache/spotify-player"];
       };
     })
   ];

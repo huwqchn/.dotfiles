@@ -23,6 +23,7 @@ in {
   config = mkIf cfg.enable {
     xdg.configFile."ghostty/shadders".source =
       mkOutOfStoreSymlink (lib.my.relativeToConfig "ghostty/shaders");
+
     programs.ghostty = {
       enable = true;
       package =

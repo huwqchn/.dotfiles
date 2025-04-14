@@ -18,9 +18,12 @@ in {
   };
 
   config = mkIf cfg.enable {
-    home.packages = [inputs.zen.packages.${pkgs.system}.default];
-    home.persistence = {
-      "/persist/${config.home.homeDirectory}".directories = [".zen" ".cache/zen"];
+    home = {
+      packages = [inputs.zen.packages.${pkgs.system}.default];
+
+      persistence = {
+        "/persist/${config.home.homeDirectory}".directories = [".zen" ".cache/zen"];
+      };
     };
   };
 }

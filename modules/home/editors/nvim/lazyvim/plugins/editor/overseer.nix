@@ -13,11 +13,14 @@ in {
   };
 
   config = mkIf cfg.enable {
-    my.neovim.lazyvim.extraPlugins = with pkgs.vimPlugins; [
-      overseer-nvim
-    ];
-    my.neovim.lazyvim.extraSpec = ''
-      { import = "lazyvim.plugins.extras.editor.overseer" },
-    '';
+    my.neovim.lazyvim = {
+      extraPlugins = with pkgs.vimPlugins; [
+        overseer-nvim
+      ];
+
+      extraSpec = ''
+        { import = "lazyvim.plugins.extras.editor.overseer" },
+      '';
+    };
   };
 }

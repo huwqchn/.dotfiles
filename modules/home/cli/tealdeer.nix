@@ -10,6 +10,7 @@ in {
   options.my.tealdeer = {
     enable = mkEnableOption "tealdeer";
   };
+
   config = mkIf cfg.enable {
     programs.tealdeer = {
       enable = true;

@@ -13,15 +13,18 @@ in {
   };
 
   config = mkIf cfg.enable {
-    my.neovim.lazyvim.extraPlugins = with pkgs.vimPlugins; [
-      {
-        name = "mini.comment";
-        path = mini-nvim;
-      }
-      nvim-ts-context-commentstring
-    ];
-    my.neovim.lazyvim.extraSpec = ''
-      { import = "lazyvim.plugins.extras.coding.mini-comment" },
-    '';
+    my.neovim.lazyvim = {
+      extraPlugins = with pkgs.vimPlugins; [
+        {
+          name = "mini.comment";
+          path = mini-nvim;
+        }
+        nvim-ts-context-commentstring
+      ];
+
+      extraSpec = ''
+        { import = "lazyvim.plugins.extras.coding.mini-comment" },
+      '';
+    };
   };
 }

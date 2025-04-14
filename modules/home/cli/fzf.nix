@@ -10,6 +10,7 @@ in {
   options.my.fzf = {
     enable = mkEnableOption "fzf";
   };
+
   config = mkIf cfg.enable {
     programs.fzf = {
       enable = true;

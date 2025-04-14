@@ -13,11 +13,14 @@ in {
   };
 
   config = mkIf cfg.enable {
-    my.neovim.lazyvim.extraPlugins = with pkgs.vimPlugins; [
-      inc-rename-nvim
-    ];
-    my.neovim.lazyvim.extraSpec = ''
-      { import = "lazyvim.plugins.extras.editor.inc-rename" },
-    '';
+    my.neovim.lazyvim = {
+      extraPlugins = with pkgs.vimPlugins; [
+        inc-rename-nvim
+      ];
+
+      extraSpec = ''
+        { import = "lazyvim.plugins.extras.editor.inc-rename" },
+      '';
+    };
   };
 }

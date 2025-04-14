@@ -7,10 +7,11 @@
   inherit (lib.options) mkOption;
   inherit (lib.modules) mkIf;
   inherit (lib.types) enum nullOr;
-  inherit (lib.my) ldTernary;
+  inherit (lib.my) ldTernary scanPaths;
   cfg = config.my.browser;
 in {
-  imports = lib.my.scanPaths ./.;
+  imports = scanPaths ./.;
+
   options.my.browser = mkOption {
     type = nullOr (enum [
       "zen"

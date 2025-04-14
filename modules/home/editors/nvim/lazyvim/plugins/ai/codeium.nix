@@ -14,13 +14,15 @@ in {
   };
 
   config = mkIf cfg.enable {
-    my.neovim.lazyvim.extraSpec = ''
-      { import = "lazyvim.plugins.extras.ai.codeium" },
-    '';
+    my.neovim.lazyvim = {
+      extraPlugins = with pkgs.vimPlugins; [
+        codeium-nvim
+      ];
 
-    my.neovim.lazyvim.extraPlugins = with pkgs.vimPlugins; [
-      codeium-nvim
-    ];
+      extraSpec = ''
+        { import = "lazyvim.plugins.extras.ai.codeium" },
+      '';
+    };
 
     age.secrets.codeium = {
       rekeyFile = ./secrets/codeium.age;

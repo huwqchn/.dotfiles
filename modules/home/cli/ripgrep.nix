@@ -10,6 +10,7 @@ in {
   options.my.ripgrep = {
     enable = mkEnableOption "ripgrep";
   };
+
   config = mkIf cfg.enable {
     programs.ripgrep = {
       enable = true;

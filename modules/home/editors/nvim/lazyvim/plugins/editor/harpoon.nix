@@ -13,11 +13,14 @@ in {
   };
 
   config = mkIf cfg.enable {
-    my.neovim.lazyvim.extraPlugins = with pkgs.vimPlugins; [
-      harpoon
-    ];
-    my.neovim.lazyvim.extraSpec = ''
-      { import = "lazyvim.plugins.extras.editor.harpoon2" },
-    '';
+    my.neovim.lazyvim = {
+      extraPlugins = with pkgs.vimPlugins; [
+        harpoon
+      ];
+
+      extraSpec = ''
+        { import = "lazyvim.plugins.extras.editor.harpoon2" },
+      '';
+    };
   };
 }
