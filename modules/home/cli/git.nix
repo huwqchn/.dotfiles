@@ -1,6 +1,7 @@
 {
   config,
   lib,
+  pkgs,
   ...
 }: let
   shellAliases = {
@@ -8,7 +9,7 @@
   };
   cfg = config.my.git;
   inherit (lib.options) mkEnableOption;
-  inherit (lib.modules) mkIf;
+  inherit (lib.modules) mkIf mkDefault;
   inherit (config.home) homeDirectory;
 in {
   options.my.git = {
@@ -19,10 +20,20 @@ in {
     # to make git use this config file, `~/.gitconfig` should not exist!
     #
     #    https://git-scm.com/docs/git-config#Documentation/git-config.txt---global
-    home.activation.removeExistingGitconfig = lib.hm.dag.entryBefore ["checkLinkTargets"] ''
-      rm -f ~/.gitconfig
-    '';
-    home.shellAliases = shellAliases;
+    home = {
+      inherit shellAliases;
+      activation.removeExistingGitconfig = lib.hm.dag.entryBefore ["checkLinkTargets"] ''
+        rm -f ~/.gitconfig
+      '';
+      packages = with pkgs; [
+        # actions runner for github actions
+        act
+        actionlint
+        action-validator
+        # for .gitignore
+        gibo
+      ];
+    };
     programs.git = {
       enable = true;
       lfs.enable = true;
@@ -33,6 +44,7 @@ in {
       extraConfig = {
         color.ui = true;
         core.editor = "nvim";
+        init.defaultBranch = "main";
         credential.helper = "store";
         github.user = "huwqchn";
         push.autoSetupRemote = true;
@@ -52,7 +64,7 @@ in {
       delta = {
         enable = true;
         options = {
-          features = "side-by-side";
+          features = mkDefault "side-by-side";
           navigate = true; # use n and N to move between diff sections
           line-numbers = true;
         };
