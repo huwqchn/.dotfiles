@@ -6,6 +6,7 @@
 }: let
   inherit (lib.modules) mkIf mkMerge mkAfter;
   inherit (lib.options) mkEnableOption;
+  inherit (pkgs.stdenv.hostPlatform) isLinux isDarwin;
   cfg = config.my.activation.diff;
 in {
   options.my.activation.diff.enable =
@@ -30,11 +31,11 @@ in {
       };
     }
 
-    (mkIf pkgs.stdenv.hostPlatform.isLinux {
+    (mkIf isLinux {
       system.activationScripts.diff.supportsDryActivation = true;
     })
 
-    (mkIf pkgs.stdenv.hostPlatform.isDarwin {
+    (mkIf isDarwin {
       system.activationScripts.postActivation.text = mkAfter ''
         ${config.system.activationScripts.diff.text}
       '';

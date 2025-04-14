@@ -8,6 +8,7 @@
   inherit (lib.modules) mkForce;
   inherit (lib.types) isType;
   inherit (lib.my) ldTernary;
+  inherit (pkgs.stdenv.hostPlatform) isLinux;
   flakeInputs = filterAttrs (name: value: (isType "flake" value) && (name != "self")) inputs;
   sudoers = ldTernary pkgs "@wheel" "@admin";
 in {
@@ -61,7 +62,7 @@ in {
 
       # build inside sandboxed environments
       # we only enable this on linux because it servirly breaks on darwin
-      sandbox = pkgs.stdenv.hostPlatform.isLinux;
+      sandbox = isLinux;
 
       # supported system features
       system-features = [

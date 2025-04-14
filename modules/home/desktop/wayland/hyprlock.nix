@@ -8,7 +8,7 @@
   inherit (lib.modules) mkIf;
   cfg = config.my.desktop;
 in {
-  config = mkIf (cfg.enable && cfg.wayland.enable && pkgs.stdenv.isLinux) {
+  config = mkIf (cfg.enable && cfg.wayland.enable && pkgs.stdenv.hostPlatform.isLinux) {
     programs.hyprlock = {
       enable = true;
       inherit package;

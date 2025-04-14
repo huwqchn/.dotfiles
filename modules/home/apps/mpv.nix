@@ -6,7 +6,8 @@
 }: let
   inherit (lib.modules) mkIf;
   inherit (lib.options) mkEnableOption;
-
+  inherit (lib.lists) optionals;
+  inherit (pkgs.stdenv.hostPlatform) isLinux;
   cfg = config.my.desktop.apps.mpv;
 in {
   options.my.desktop.apps.mpv = {
@@ -19,13 +20,13 @@ in {
 
   config = mkIf cfg.enable {
     programs.mpv = {
-      enable = pkgs.stdenv.hostPlatform.isLinux;
+      enable = isLinux;
       package = pkgs.mpv;
 
       defaultProfiles = ["gpu-hq"];
-      scripts = lib.optionals pkgs.stdenv.hostPlatform.isLinux [pkgs.mpvScripts.mpris];
+      scripts = optionals isLinux [pkgs.mpvScripts.mpris];
     };
 
-    services.plex-mpv-shim.enable = pkgs.stdenv.hostPlatform.isLinux;
+    services.plex-mpv-shim.enable = isLinux;
   };
 }

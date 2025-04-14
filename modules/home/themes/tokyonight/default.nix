@@ -13,6 +13,11 @@
   inherit (pkgs.stdenv.hostPlatform) isLinux;
   inherit (config.my.themes) transparent;
   inherit (config.my.themes) pad;
+  inherit (config.my.machine) isHidpi;
+  dpi =
+    if isHidpi
+    then 192
+    else 96;
 
   cfg = config.my.themes.tokyonight;
   themeName = "tokyonight_${cfg.style}";
@@ -315,19 +320,22 @@ in {
       home.pointerCursor = {
         gtk.enable = true;
         x11.enable = true;
-        package = mkForce pkgs.bibata-cursors;
-        name = mkForce "Bibata-Modern-Ice";
-        size = mkForce 24;
+
+        # NOTE: cursor is managed by stylix
+        # package = mkForce pkgs.bibata-cursors;
+        # name = mkForce "Bibata-Modern-Ice";
+        # size = mkForce 24;
       };
-      dconf.settings."org/gnome/desktop/interface".font-name =
-        mkForce "Cantarell";
+
+      # dconf.settings."org/gnome/desktop/interface".font-name =
+      #   mkForce "Cantarell";
 
       # set dpi for 4k monitor
       xresources.properties = {
         # dpi for Xorg.s font
-        "Xft.dpi" = 192;
+        "Xft.dpi" = dpi;
         # or set a generic dpi
-        "*.dpi" = 192;
+        "*.dpi" = dpi;
 
         # These might also be useful depending on your monitor and personal preferences.
         "Xft.autohint" = 0;
@@ -346,22 +354,26 @@ in {
 
         gtk2.configLocation = "${config.xdg.configHome}/gtk-2.0/gtkrc";
 
-        font = {
-          name = mkForce "Cantarell";
-          package = mkForce pkgs.cantarell-fonts;
-          size = mkForce 11;
-        };
+        # NOTE: font is managed by stylix
+        # font = {
+        #   name = mkForce "Cantarell";
+        #   package = mkForce pkgs.cantarell-fonts;
+        #   size = mkForce 11;
+        # };
 
-        iconTheme = {
-          name = "Papirus-Dark";
-          package = pkgs.papirus-icon-theme;
-        };
+        # NOTE: iconTheme is managed by stylix
+        # iconTheme = {
+        #   name = "Papirus-Dark";
+        #   package = pkgs.papirus-icon-theme;
+        # };
 
         theme = {
+          # I don't stylix manager this, using mkForce to override
           name = mkForce "Tokyonight-Dark-BL";
           package = mkForce pkgs.tokyonight-gtk-theme;
         };
 
+        # NOTE: cursorTheme is managed by stylix
         # cursorTheme = {
         #   name = "Bibata-Modern";
         #   package = pkgs.bibata-cursors;

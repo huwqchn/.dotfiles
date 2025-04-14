@@ -6,7 +6,7 @@
   ...
 }: let
   inherit (config.home) homeDirectory;
-  isLinuxSystemd = pkgs.stdenv.isLinux && config.systemd.user.services ? agenix;
+  isLinuxSystemd = pkgs.stdenv.hostPlatform.isLinux && config.systemd.user.services ? agenix;
 in {
   imports = [
     inputs.agenix.homeManagerModules.default

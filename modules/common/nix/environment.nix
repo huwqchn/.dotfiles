@@ -9,6 +9,7 @@
   inherit (lib.lists) optionals;
   inherit (lib.attrsets) filterAttrs mapAttrs';
   inherit (lib.modules) mkForce;
+  inherit (pkgs.stdenv.hostPlatform) isDarwin;
 in {
   # for security reasons, do not load neovim's user config
   # since EDITOR may be used to edit some critical files
@@ -30,7 +31,7 @@ in {
           "nixpkgs"
           "home-manager"
         ]
-        ++ optionals pkgs.stdenv.hostPlatform.isDarwin [
+        ++ optionals isDarwin [
           "nix-darwin"
         ];
     in

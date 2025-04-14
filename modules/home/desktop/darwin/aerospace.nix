@@ -4,8 +4,9 @@
   ...
 }: let
   inherit (lib.modules) mkIf;
+  inherit (pkgs.stdenv.hostPlatform) isDarwin;
 in {
-  config = mkIf pkgs.stdenv.isDarwin {
+  config = mkIf isDarwin {
     programs.aerospace = {
       enable = true;
       userSettings = {

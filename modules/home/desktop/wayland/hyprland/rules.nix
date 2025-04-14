@@ -8,7 +8,7 @@
   inherit (lib.modules) mkIf;
   inherit (config.my.themes) opacity;
 in {
-  config = mkIf (cfg.enable && cfg.wayland.enable && pkgs.stdenv.isLinux) {
+  config = mkIf (cfg.enable && cfg.wayland.enable && pkgs.stdenv.hostPlatform.isLinux) {
     wayland.windowManager.hyprland.settings = {
       # layer rules
       layerrule = let

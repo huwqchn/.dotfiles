@@ -8,12 +8,13 @@
   inherit (lib.options) mkEnableOption;
   cfg = config.my.desktop.apps.vlc;
   inherit (config.home) homeDirectory;
+  inherit (pkgs.stdenv.hostPlatform) isLinux;
 in {
   options.my.desktop.apps.vlc = {
     enable =
       mkEnableOption "VLC"
       // {
-        default = config.my.desktop.enable && pkgs.stdenv.isLinux;
+        default = config.my.desktop.enable && isLinux;
       };
   };
 

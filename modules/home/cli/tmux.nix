@@ -8,6 +8,8 @@
   cfg = config.my.tmux;
   inherit (lib.options) mkEnableOption;
   inherit (lib.modules) mkIf;
+  inherit (lib.strings) optionalString;
+  inherit (pkgs.stdenv.hostPlatform) isDarwin;
 in {
   options.my.tmux = {
     enable = mkEnableOption "tmux";
@@ -325,7 +327,7 @@ in {
           bind-key -T copy-mode-vi 'C-i' select-pane -U
           bind-key -T copy-mode-vi 'C-o' select-pane -R
           bind-key -T copy-mode-vi 'C-\' select-pane -l
-          ${lib.optionalString pkgs.stdenv.isDarwin ''
+          ${optionalString isDarwin ''
             set-option -g default-command "${pkgs.reattach-to-user-namespace}/bin/reattach-to-user-namespace -l ${pkgs.fish}/bin/fish"
           ''}
         '';

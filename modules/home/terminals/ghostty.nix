@@ -7,9 +7,10 @@
 }: let
   inherit (config.lib.file) mkOutOfStoreSymlink;
   inherit (lib.options) mkEnableOption;
-  inherit (lib.modules) mkIf;
+  inherit (lib.modules) mkIf mkForce;
   inherit (inputs) ghostty-shaders;
   inherit (config.my.themes) opacity;
+  inherit (pkgs.stdenv.hostPlatform) isLinux;
   cfg = config.my.desktop.apps.ghostty;
 in {
   options.my.desktop.apps.ghostty = {
@@ -27,7 +28,7 @@ in {
     programs.ghostty = {
       enable = true;
       package =
-        if pkgs.stdenv.isLinux
+        if isLinux
         then pkgs.ghostty
         else null;
       enableFishIntegration = true;
@@ -61,11 +62,14 @@ in {
       #   };
       # };
       settings = {
-        font-family = "JetBrainsMono Nerd Font Mono";
-        font-family-bold = "JetBrainsMono Nerd Font Mono";
-        font-family-italic = "Maple Mono";
-        font-family-bold-italic = "Maple Mono";
-        font-size = 13;
+        font-family = mkForce "JetBrainsMono Nerd Font Mono";
+        font-family-bold = mkForce "JetBrainsMono Nerd Font Mono";
+        font-family-italic = mkForce "Maple Mono";
+        font-family-bold-italic = mkForce "Maple Mono";
+
+        # NOTE: font-size is managed by stylix
+        # font-size = 13;
+
         adjust-underline-position = 4;
         # Mouse
         mouse-hide-while-typing = true;

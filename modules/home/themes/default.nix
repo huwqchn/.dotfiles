@@ -1,5 +1,4 @@
 {
-  inputs,
   lib,
   pkgs,
   config,
@@ -7,20 +6,14 @@
 }: let
   inherit (lib.my) scanPaths;
   inherit (lib.modules) mkDefault;
-  wall = config.my.themes.wallpaper;
 in {
-  imports =
-    (scanPaths ./.)
-    ++ [
-      inputs.stylix.homeManagerModules.stylix
-    ];
+  imports = scanPaths ./.;
 
-  stylix = {
+  stylix.iconTheme = mkDefault {
     enable = true;
-    autoEnable = mkDefault false;
-    # TODO: TEST this, since I change a lot of things
-    image = wall;
-    # TODO: use stylix manage my font and cursor
+    package = pkgs.papirus-icon-theme;
+    light = "Papirus-Light";
+    dark = "Papirus-Dark";
   };
 
   home = {

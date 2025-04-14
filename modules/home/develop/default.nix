@@ -9,7 +9,7 @@
     enable =
       lib.mkEnableOption "development environment"
       // {
-        default = pkgs.stdenv.isLinux;
+        default = pkgs.stdenv.hostPlatform.isLinux;
       };
   };
 }

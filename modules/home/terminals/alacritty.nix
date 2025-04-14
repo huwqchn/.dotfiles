@@ -6,6 +6,7 @@
 }: let
   inherit (lib.options) mkEnableOption;
   inherit (lib.modules) mkIf;
+  inherit (pkgs.stdenv.hostPlatform) isLinux;
   cfg = config.my.desktop.apps.alacritty;
 in {
   options.my.desktop.apps.alacritty = {
@@ -25,7 +26,7 @@ in {
             y = 5;
           };
           decorations =
-            if pkgs.stdenv.isLinux
+            if isLinux
             then "none"
             else "buttonless";
           opacity = 0.95;
@@ -53,7 +54,9 @@ in {
             family = "JetBrains Mono Nerd Font";
             style = "BoldItalic";
           };
-          size = 12;
+
+          # NOTE: font-size is managed by stylix
+          # size = 13;
         };
         keyboard = {
           bindings = [

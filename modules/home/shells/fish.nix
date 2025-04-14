@@ -8,7 +8,7 @@
   inherit (lib.modules) mkIf;
   inherit (lib.attrsets) optionalAttrs;
   cfg = config.my.fish;
-  inherit (pkgs.stdenv) isLinux;
+  inherit (pkgs.stdenv.hostPlatform) isLinux;
 in {
   options.my.fish = {
     enable = mkEnableOption "fish" // {default = config.my.shell == "fish";};

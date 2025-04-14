@@ -7,6 +7,7 @@
   inherit (lib.modules) mkIf;
   inherit (lib.options) mkOption mkEnableOption;
   inherit (lib.attrsets) optionalAttrs;
+  inherit (pkgs.stdenv.hostPlatform) isLinux;
   cfg = config.my.yubikey;
   homeDirectory = config.my.home;
   yubikey-up = let
@@ -111,7 +112,7 @@ in {
     # We already have a yubikey rule that sets the ENV variable
 
     # FIXME(yubikey): This is linux only
-    services = optionalAttrs pkgs.stdenv.isLinux {
+    services = optionalAttrs isLinux {
       udev.extraRules = ''
         # Link/unlink ssh key on yubikey add/remove
         SUBSYSTEM=="usb", ACTION=="add", ATTR{idVendor}=="1050", RUN+="${lib.getBin yubikey-up}/bin/yubikey-up"

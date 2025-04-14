@@ -12,7 +12,7 @@
 in {
   imports = [./binds.nix ./rules.nix ./settings.nix];
 
-  config = mkIf (cfg.enable && cfg.wayland.enable && pkgs.stdenv.isLinux) {
+  config = mkIf (cfg.enable && cfg.wayland.enable && pkgs.stdenv.hostPlatform.isLinux) {
     # enable hyprland
     wayland.windowManager.hyprland = {
       enable = true;

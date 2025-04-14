@@ -5,7 +5,7 @@
   inputs,
   ...
 }: let
-  inherit (pkgs.stdenv) isLinux;
+  inherit (pkgs.stdenv.hostPlatform) isLinux;
   inherit (lib.options) mkOption mkEnableOption;
   inherit (lib.types) listOf enum str nullOr singleLineStr float;
 in {

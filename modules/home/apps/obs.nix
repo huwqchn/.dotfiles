@@ -8,12 +8,13 @@
   inherit (lib.options) mkEnableOption;
   cfg = config.my.desktop.apps.obs;
   inherit (config.home) homeDirectory;
+  inherit (pkgs.stdenv.hostPlatform) isLinux;
 in {
   options.my.desktop.apps.obs = {
     enable =
       mkEnableOption "OBS"
       // {
-        default = config.my.desktop.enable && pkgs.stdenv.isLinux;
+        default = config.my.desktop.enable && isLinux;
       };
   };
 
