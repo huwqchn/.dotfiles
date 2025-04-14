@@ -1,0 +1,58 @@
+name: "Parse Commit Args"
+author: huwqchn
+description: "Parse commit message args and output flags for workflow control"
+
+inputs: {}
+
+outputs:
+  deploy:
+    description: "Whether the commit message contains --deploy"
+    value: ${{ steps.parse.outputs.deploy }}
+  build:
+    description: "Whether the commit message contains --build"
+    value: ${{ steps.parse.outputs.build }}
+  skip-check:
+    description: "Whether the commit message contains --skip-check"
+    value: ${{ steps.parse.outputs.skip-check }}
+
+runs:
+  using: "composite"
+  steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Get commit message
+      id: get-commit
+      shell: bash
+      run: |
+        commit_message=$(git log -1 --pretty=format:'%s')
+        echo "message=$commit_message" >> "$GITHUB_OUTPUT"
+
+    - name: Parse commit flags
+      id: parse
+      shell: bash
+      run: |
+        message="${{ steps.get-commit.outputs.message }}"
+        echo "Commit message: $message"
+
+        deploy="false"
+        build="false"
+        skip_check="false"
+
+        if [[ "$message" =~ (--deploy)([[:space:]]|$) ]]; then
+          echo "Found --deploy flag"
+          deploy="true"
+        fi
+
+        if [[ "$message" =~ (--build)([[:space:]]|$) ]]; then
+          echo "Found --build flag"
+          build="true"
+        fi
+
+        if [[ "$message" =~ (--skip-check)([[:space:]]|$) ]]; then
+          echo "Found --skip-check flag"
+          skip_check="true"
+        fi
+
+        echo "deploy=$deploy" >> "$GITHUB_OUTPUT"
+        echo "skip-check=$skip_check" >> "$GITHUB_OUTPUT"

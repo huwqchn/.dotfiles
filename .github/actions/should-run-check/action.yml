@@ -18,6 +18,10 @@ runs:
       shell: bash
       run: echo "message=$(git log -1 --pretty=%B)" >> $GITHUB_OUTPUT
 
+    - name: Parse commit message args
+      id: parse
+      uses: ./.github/actions/parse-commit-args
+
     - name: Decide whether to run check
       id: set-output
       shell: bash
@@ -36,8 +40,9 @@ runs:
           fi
         done
 
-        if [[ "$message" =~ --skip-check$ ]]; then
-          echo "Commit message ends with --skip-check, skipping check"
+        skip_check="${{ steps.parse.outputs.skip_check }}"
+        if [ "$skip_check" = "true" ]; then
+          echo "Parsed flag --skip-check is set, so skipping check"
           run_check="false"
         fi
 
