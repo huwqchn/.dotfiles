@@ -33,9 +33,6 @@ jobs:
     needs: should-run
     if: needs.should-run.outputs.run-check == 'true'
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
-
     steps:
       - uses: actions/checkout@v4
 

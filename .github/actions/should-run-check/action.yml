@@ -28,7 +28,8 @@ runs:
         run_check="true"
 
         for prefix in ${{ inputs.prefixes }}; do
-          if [[ "$message" == "$prefix"* ]]; then
+          if [[ "$message" =~ ^$prefix ]]; then
+            echo "Matched prefix: $prefix"
             run_check="false"
             break
           fi
