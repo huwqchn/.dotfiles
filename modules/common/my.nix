@@ -47,7 +47,11 @@ in {
       description = "The user home directory";
     };
     desktop = {
-      enable = mkEnableOption "Desktop";
+      enable =
+        mkEnableOption "Desktop"
+        // {
+          default = true;
+        };
       wayland = {
         enable =
           mkEnableOption "Wayland"
@@ -89,6 +93,8 @@ in {
             default = true;
           };
       };
+
+      # FIXME: remove this, let stylix handle this
       opacity = mkOption {
         type = float;
         default = 0.7;

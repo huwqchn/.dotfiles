@@ -48,9 +48,11 @@
     services = {
       onedrive.enable = true;
       printing.enable = true;
+      samba.enable = true;
     };
     desktop = {
       enable = true;
+      autologin = true;
       wayland.enable = true;
       default = "hyprland";
     };

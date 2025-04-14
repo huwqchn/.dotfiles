@@ -243,7 +243,13 @@
     # it's easy to rice
     stylix = {
       url = "github:danth/stylix";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        flake-utils.follows = "flake-utils";
+        home-manager.follows = "home-manager";
+        systems.follows = "systems";
+        git-hooks.follows = "pre-commit-hooks";
+      };
     };
 
     # hyprwm
