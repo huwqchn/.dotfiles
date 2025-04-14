@@ -30,6 +30,7 @@ in {
     };
     users = {
       "${name}" = {
+        # we have to use initialHashedPassword here when using tmpfs for /
         inherit (config.my) initialHashedPassword;
         inherit group;
         isNormalUser = true;
