@@ -1,5 +1,5 @@
 {config, ...}: let
-  inherit (config.my.desktop) loginManager;
+  cfg = config.my.desktop.loginManager;
 in {
-  services.displayManager.cosmic-greeter.enable = loginManager == "cosmic-greeter";
+  services.displayManager.cosmic-greeter.enable = cfg == "cosmic-greeter";
 }

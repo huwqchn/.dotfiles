@@ -52,7 +52,6 @@
     };
     desktop = {
       enable = true;
-      autologin = true;
       wayland.enable = true;
       default = "hyprland";
     };

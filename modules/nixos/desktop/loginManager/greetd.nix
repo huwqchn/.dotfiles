@@ -16,11 +16,16 @@
   ];
   cfg = config.my.desktop.loginManager;
   inherit (config.my) name;
+  inherit (config.my.machine) persist;
 in {
-  options.my.desktop.autologin = mkEnableOption ''
-    Whether to enable passwordless login. This is generally useful on systems with
-    FDE (Full Disk Encryption) enabled. It is a security risk for systems without FDE.
-  '';
+  options.my.desktop.loginManager.autologin =
+    mkEnableOption ''
+      Whether to enable passwordless login. This is generally useful on systems with
+      FDE (Full Disk Encryption) enabled. It is a security risk for systems without FDE.
+    ''
+    // {
+      default = persist;
+    };
 
   config = mkIf (cfg == "greetd") {
     services.greetd = {

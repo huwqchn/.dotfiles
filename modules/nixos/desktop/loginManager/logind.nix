@@ -3,10 +3,10 @@
   config,
   ...
 }: let
-  inherit (lib.module) mkIf;
-  cfg = config.my.desktop;
+  inherit (lib.modules) mkIf;
+  cfg = config.my.desktop.loginManager;
 in {
-  config = mkIf cfg.enable {
+  config = mkIf (cfg == "logind") {
     services.logind = {
       lidSwitch = "ignore";
       lidSwitchDocked = "ignore";
