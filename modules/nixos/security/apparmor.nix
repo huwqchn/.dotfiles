@@ -7,6 +7,7 @@
   cfg = config.my.security.apparmor;
   inherit (lib.options) mkEnableOption;
   inherit (lib.modules) mkIf;
+  inherit (lib.meta) getExe;
 in {
   options.my.security.apparmor = {
     enable =
@@ -48,28 +49,25 @@ in {
       # apparmor policies
       policies = {
         "default_deny" = {
-          enforce = false;
-          enable = false;
+          state = "disable";
           profile = ''
             profile default_deny /** { }
           '';
         };
 
         "sudo" = {
-          enforce = false;
-          enable = false;
+          state = "disable";
           profile = ''
-            ${pkgs.sudo}/bin/sudo {
+            ${getExe pkgs.sudo} {
               file /** rwlkUx,
             }
           '';
         };
 
         "nix" = {
-          enforce = false;
-          enable = false;
+          state = "disable";
           profile = ''
-            ${config.nix.package}/bin/nix {
+            ${getExe config.nix.package} {
               unconfined,
             }
           '';
