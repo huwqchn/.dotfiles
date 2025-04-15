@@ -9,11 +9,17 @@
 in {
   imports = scanPaths ./.;
 
-  stylix.iconTheme = mkDefault {
-    enable = true;
-    package = pkgs.papirus-icon-theme;
-    light = "Papirus-Light";
-    dark = "Papirus-Dark";
+  stylix = {
+    iconTheme = mkDefault {
+      enable = true;
+      package = pkgs.papirus-icon-theme;
+      light = "Papirus-Light";
+      dark = "Papirus-Dark";
+    };
+    targets = {
+      # for hyprland wallpaper, maybe i also need swwww
+      hyprpaper.enable = true;
+    };
   };
 
   home = {
