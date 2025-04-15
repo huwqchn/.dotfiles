@@ -7,8 +7,9 @@
   inherit (lib.meta) getExe;
   inherit (lib.modules) mkIf;
   cfg = config.my.desktop;
+  isWayland = cfg.type == "wayland";
 in {
-  config = mkIf (cfg.enable && cfg.wayland.enable) {
+  config = mkIf (cfg.enable && isWayland) {
     systemd.services.seatd = {
       enable = true;
       description = "Seat management daemon";

@@ -48,7 +48,7 @@
     services = {
       onedrive.enable = true;
       printing.enable = true;
-      samba.enable = true;
+      # samba.enable = true;
     };
     virtual.enable = true;
     machine = {

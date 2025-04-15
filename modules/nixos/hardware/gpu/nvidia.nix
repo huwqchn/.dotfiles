@@ -5,7 +5,7 @@
   ...
 }: let
   inherit (lib.modules) mkIf mkMerge mkDefault;
-  isWayland = config.my.desktop.wayland.enable;
+  isWayland = config.my.desktop.type == "wayland";
   isNvidia = config.my.machine.gpu == "nvidia";
   isHybrid = config.my.machine.gpu == "hybrid-nv";
 in {

@@ -19,7 +19,7 @@ in {
         cpu = null;
         hasTPM = false;
         hasSound = false;
-        isHidpi = true;
+        isHidpi = false;
         persist = mkForce false;
       };
       boot = {
@@ -41,14 +41,12 @@ in {
         enable = false;
         auditd.enable = true;
       };
-      desktop = {
-        enable = mkDefault false;
-        wayland.enable = mkDefault true;
-      };
+      desktop.enable = mkDefault false;
       virtual = {
         enable = mkForce false;
         docker.enable = config.my.desktop.enable;
       };
+      # TODO: so many things rely on yubikey, so It should enable no WSL too
       yubikey.enable = mkForce false;
     };
     hm.my = {

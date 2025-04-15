@@ -11,6 +11,9 @@ in {
   options.my.services.samba = {
     enable = mkEnableOption "Enable Samba";
   };
+  # TODO: completed this
+  # check this url: https://github.com/skogsbrus/os/blob/02e9b05a01da428df9a10588c83687f6f7bfb22b/sys/samba_server.nix#L51
+
   config = mkIf cfg.enable {
     services = {
       samba = {
@@ -25,11 +28,11 @@ in {
           writable = "true";
           comment = "Hello World!";
         };
-        extraConfig = ''
-          server smb encrypt = required
-          # ^^ Note: Breaks `smbclient -L <ip/host> -U%` by default, might require the client to set `client min protocol`?
-          server min protocol = SMB3_00
-        '';
+        # extraConfig = ''
+        #   server smb encrypt = required
+        #   # ^^ Note: Breaks `smbclient -L <ip/host> -U%` by default, might require the client to set `client min protocol`?
+        #   server min protocol = SMB3_00
+        # '';
       };
       avahi = {
         # Allow samba to automatically register mDNS records (without the need for an `extraServiceFile`

@@ -6,12 +6,12 @@
   ...
 }: let
   inherit (lib.modules) mkIf;
-  inherit (pkgs.stdenv.hostPlatform) isLinux;
   cfg = config.my.desktop;
+  isWayland = cfg.type == "wayland";
 in {
   imports = [inputs.ags.homeManagerModules.default];
 
-  config = mkIf (cfg.enable && cfg.wayland.enable && isLinux) {
+  config = mkIf (cfg.enable && isWayland) {
     programs.ags = {
       enable = true;
       configDir = lib.my.relativeToConfig "ags";

@@ -5,7 +5,7 @@
   ...
 }: let
   inherit (lib.lists) optional;
-  isWayland = config.my.desktop.wayland.enable;
+  isWayland = config.my.desktop.type == "wayland";
   cfg = config.my.programs.wine;
 in {
   options.my.programs.wine = lib.my.mkProgram pkgs "wine" {

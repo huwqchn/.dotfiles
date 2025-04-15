@@ -5,14 +5,15 @@
   config,
   ...
 }: let
+  inherit (lib.modules) mkIf;
   package = pkgs.hyprland;
   cfg = config.my.desktop;
-  inherit (lib.modules) mkIf;
+  isHyprland = cfg.environment == "Hyprland";
 in {
   imports = [./binds.nix ./rules.nix ./settings.nix];
 
   # TODO: monitors config
-  config = mkIf (cfg.enable && cfg.wayland.enable && cfg.environment == "Hyprland") {
+  config = mkIf (cfg.enable && isHyprland) {
     # enable hyprland
     wayland.windowManager.hyprland = {
       enable = true;

@@ -322,8 +322,8 @@ in {
       #   size = 24;
       # };
 
-      # NOTE: dconf font can managed by stylix if autoEnable is true
-      dconf.settings."org/gnome/desktop/interface".font-name = "Cantarell";
+      # I cont't know this, it's conflick with gtk
+      # dconf.settings."org/gnome/desktop/interface".font-name = "Cantarell";
 
       # set dpi for 4k monitor
       xresources.properties = {

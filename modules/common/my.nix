@@ -7,7 +7,9 @@
 }: let
   inherit (pkgs.stdenv.hostPlatform) isLinux isDarwin;
   inherit (lib.options) mkOption mkEnableOption;
-  inherit (lib.types) listOf enum str nullOr singleLineStr float;
+  inherit (lib.types) listOf enum str nullOr singleLineStr package path coercedTo;
+  inherit (lib.strings) toString;
+  inherit (config.my) desktop;
 in {
   options.my = {
     name = mkOption {
@@ -54,28 +56,10 @@ in {
           default = true;
         };
 
-      # TODO: Am I really need muliple desktop environments?
-      wayland = {
-        enable =
-          mkEnableOption "Wayland"
-          // {
-            default = config.my.desktop.type == "wayland";
-          };
-      };
-
-      # TODO: Am I really need muliple desktop environments?
-      xorg = {
-        enable =
-          mkEnableOption "Xorg"
-          // {
-            default = config.my.desktop.type == "xorg";
-          };
-      };
-
       type = mkOption {
         type = nullOr (enum ["wayland" "xorg" "darwin"]);
         default =
-          if !config.my.desktop.enable
+          if !desktop.enable
           then null
           else if isLinux
           then "wayland"
@@ -88,9 +72,11 @@ in {
       # TODO: should support niri, that's supper cool
       # TODO: should support cosmic desktop environment
       environment = mkOption {
-        type = enum ["i3" "bspwm" "sway" "Hyprland" "aerospace"];
+        type = nullOr (enum ["i3" "bspwm" "sway" "Hyprland" "aerospace"]);
         default =
-          if isLinux
+          if !desktop.enable
+          then null
+          else if isLinux
           then "Hyprland"
           else "aerospace";
         description = "The default desktop environment";
@@ -106,9 +92,12 @@ in {
     themes = {
       # TODO: wallpaper engine support?
       wallpaper = mkOption {
-        type = nullOr str;
+        type = nullOr (coercedTo package toString path);
+        # we don't set wallpaper on macos, because it doesn't work
         default =
-          if config.my.desktop.enable
+          if isDarwin
+          then null
+          else if desktop.enable
           then "${inputs.wallpapers}/unorganized/nix.png"
           else null;
         description = "The wallpaper of the system";
@@ -124,13 +113,6 @@ in {
           // {
             default = true;
           };
-      };
-
-      # FIXME: remove this, let stylix handle this
-      opacity = mkOption {
-        type = float;
-        default = 0.7;
-        description = "The opacity of the background";
       };
       pad = {
         left = mkOption {
@@ -194,59 +176,43 @@ in {
   # TODO: should refactor this, too many asserts
   config.assertions = [
     {
-      assertion = config.my.desktop.type != null -> config.my.desktop.enable;
+      assertion = desktop.type != null -> desktop.enable;
       message = "You can't use desktop.type without desktop.enable";
     }
     {
-      assertion = config.my.desktop.enable -> config.my.desktop.type != null;
+      assertion = desktop.enable -> desktop.type != null;
       message = "You can't use desktop.enable without desktop.type";
     }
     {
-      assertion = config.my.desktop.wayland.enable -> config.my.desktop.enable;
-      message = "You can't use wayland desktop environment without desktop.enable";
-    }
-    {
-      assertion = config.my.desktop.xorg.enable -> config.my.desktop.enable;
-      message = "You can't use xorg desktop environment without desktop.enable";
-    }
-    {
-      assertion = config.my.desktop.environment == "i3" -> config.my.desktop.type == "xorg";
+      assertion = desktop.environment == "i3" -> desktop.type == "xorg";
       message = "You can't use i3 desktop environment without xorg";
     }
     {
-      assertion = config.my.desktop.environment == "bspwm" -> config.my.desktop.type == "xorg";
+      assertion = desktop.environment == "bspwm" -> desktop.type == "xorg";
       message = "You can't use bspwm desktop environment without xorg";
     }
     {
-      assertion = config.my.desktop.environment == "Hyprland" -> config.my.desktop.type == "wayland";
+      assertion = desktop.environment == "Hyprland" -> desktop.type == "wayland";
       message = "You can't use hyprland desktop environment without wayland";
     }
     {
-      assertion = config.my.desktop.environment == "sway" -> config.my.desktop.type == "wayland";
+      assertion = desktop.environment == "sway" -> desktop.type == "wayland";
       message = "You can't use sway desktop environment without wayland";
     }
     {
-      assertion = config.my.desktop.xorg.enable -> isLinux;
+      assertion = desktop.type == "wayland" -> isLinux;
       message = "You can't use xorg on non-linux system";
     }
     {
-      assertion = config.my.desktop.wayland.enable -> isLinux;
+      assertion = desktop.type == "wayland" -> isLinux;
       message = "You can't use wayland on non-linux system";
     }
     {
-      assertion = config.my.desktop.type == "xorg" -> isLinux;
-      message = "You can't use xorg on non-linux system";
-    }
-    {
-      assertion = config.my.desktop.type == "wayland" -> isLinux;
-      message = "You can't use wayland on non-linux system";
-    }
-    {
-      assertion = config.my.desktop.type == "darwin" -> isDarwin;
+      assertion = desktop.type == "darwin" -> isDarwin;
       message = "You can't use darwin desktop environment on non-darwin system";
     }
     {
-      assertion = config.my.desktop.environment == "aerospace" -> config.my.desktop.type == "darwin";
+      assertion = desktop.environment == "aerospace" -> desktop.type == "darwin";
       message = "You can't use aerospace desktop environment without darwin";
     }
   ];

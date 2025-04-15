@@ -4,20 +4,18 @@
   pkgs,
   ...
 }: let
-  inherit (lib.modules) mkDefault;
-  inherit (config.my) desktop;
-  wall = config.my.themes.wallpaper;
-  autoTheme = config.my.themes.theme == "auto";
+  inherit (lib.modules) mkIf;
+  inherit (config.my.themes) theme wallpaper;
+  autoEnable = theme == "auto";
+  image = wallpaper;
 in {
   stylix = {
-    # NOTE: if I set desktop disable that will make image is null taht make stylix can't compiled
-    # so I must set stylix disable when desktop is disable
-    # TODO: I need add a defualt colorscheme when autoEnable is true but the wall is null
-    inherit (desktop) enable;
+    enable = true;
     # FIXME: Is stylix can config fonts opacity cursor icons and wall but not colors?
-    autoEnable = mkDefault autoTheme;
-    # polarity = mkDefault "dark";
-    image = mkDefault wall;
+    inherit autoEnable image;
+
+    # We need set a default colorscheme when we don't set wall
+    base16Scheme = mkIf (image == null) "${pkgs.base16-schemes}/share/themes/catppuccin-mocha.yaml";
     fonts = {
       serif = {
         package = pkgs.source-han-serif;

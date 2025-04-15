@@ -4,19 +4,17 @@
   ...
 }: let
   inherit (lib.modules) mkIf;
-  inherit (lib.strings) optionalString;
   inherit (config.my) shell;
-  # inherit (config.my.desktop) environment;
-  # FIXME: should be add a assert if desktop.environment is not wayland desktop environment
-  isHyprland = config.my.desktop.environment == "Hyprland";
+  inherit (config.my.desktop) environment;
   cfg = config.my.desktop;
+  isWayland = cfg.type == "wayland";
 in {
-  config = mkIf (cfg.enable && cfg.wayland.enable) {
+  config = mkIf (cfg.enable && isWayland) {
     environment = {
       etc."greetd/environments".text =
         if config.services.greetd.enable
         then ''
-          ${optionalString isHyprland "Hyprland"}
+          ${environment}
           ${shell}
         ''
         else "";

@@ -3,11 +3,11 @@
   config,
   ...
 }: let
-  cfg = config.my.desktop;
   inherit (lib.modules) mkIf;
-  inherit (config.my.themes) opacity;
+  cfg = config.my.desktop;
+  isHyprland = cfg.environment == "Hyprland";
 in {
-  config = mkIf (cfg.enable && cfg.wayland.enable && cfg.environment == "Hyprland") {
+  config = mkIf (cfg.enable && isHyprland) {
     wayland.windowManager.hyprland.settings = {
       # layer rules
       layerrule = let
@@ -71,11 +71,11 @@ in {
         "size 640 400, class:^(.*jetbrains.*)$, title:^(splash)$"
 
         # opacity rules
-        "opacity ${opacity} ${opacity},class:^(kitty)$"
-        "opacity ${opacity} ${opacity},class:^(Alacritty)$"
-        "opacity ${opacity} ${opacity},class:^(wezterm)$"
-        "opacity ${opacity} ${opacity},class:^(ghostty)$"
-        "opacity ${opacity} ${opacity},class:^(Spotify)$"
+        "opacity 0.85 0.85,class:^(kitty)$"
+        "opacity 0.85 0.85,class:^(Alacritty)$"
+        "opacity 0.85 0.85,class:^(wezterm)$"
+        "opacity 0.70 0.70,class:^(ghostty)$"
+        "opacity 0.70 0.70,class:^(Spotify)$"
       ];
     };
   };

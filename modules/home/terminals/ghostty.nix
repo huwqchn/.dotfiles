@@ -9,7 +9,6 @@
   inherit (lib.options) mkEnableOption;
   inherit (lib.modules) mkIf mkDefault;
   inherit (inputs) ghostty-shaders;
-  inherit (config.my.themes) opacity;
   inherit (pkgs.stdenv.hostPlatform) isLinux;
   cfg = config.my.desktop.apps.ghostty;
 in {
@@ -77,7 +76,7 @@ in {
         # Theme
         # theme = "light:tokyonight-moon,dark:tokyonight-moon";
         cursor-invert-fg-bg = true;
-        background-opacity = opacity;
+        background-opacity = 0.7;
         background-blur = true;
         window-theme = "ghostty";
         # window

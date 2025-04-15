@@ -5,10 +5,10 @@
   ...
 }: let
   inherit (lib.modules) mkIf mkForce;
-
-  inherit (config.my) desktop;
+  cfg = config.my.desktop;
+  isHpyrland = cfg.environment == "Hyprland";
 in {
-  config = mkIf (desktop.enable && desktop.wayland.enable && desktop.environment == "Hyprland") {
+  config = mkIf (cfg.enable && isHpyrland == "Hyprland") {
     services.displayManager.sessionPackages = [pkgs.hyprland];
     xdg.portal = {
       enable = true;
