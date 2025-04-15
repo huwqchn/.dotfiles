@@ -10,11 +10,35 @@
   inherit (lib.types) enum;
 in {
   options.my.security.selinux = {
+    # FIXME: This not working now
+    #> GOT: y
+    #> QUESTION: Microsoft Hyper-V driver testing, NAME: HYPERV_TESTING, ALTS: N/y/?, ANSWER:
+    #> GOT:
+    #> GOT: *
+    #> GOT: * Rust hacking
+    #> GOT: *
+    #> QUESTION: Debug assertions, NAME: RUST_DEBUG_ASSERTIONS, ALTS: N/y/?, ANSWER:
+    #> GOT:
+    #> QUESTION: Overflow checks, NAME: RUST_OVERFLOW_CHECKS, ALTS: Y/n/?, ANSWER:
+    #> GOT:
+    #> QUESTION: Allow unoptimized build-time assertions, NAME: RUST_BUILD_ASSERT_ALLOW, ALTS: N/y/?, ANSWER:
+    #> GOT:
+    #> GOT: #
+    #> GOT: # configuration written to .config
+    #> GOT: #
+    #> GOT: make[1]: Leaving directory '/build/linux-6.14.1/build'
+    #> GOT: make: Leaving directory '/build/linux-6.14.1'
+    #> warning: unused option: CRC32_SELFTEST
+    #> warning: unused option: POWER_RESET_GPIO
+    #> warning: unused option: POWER_RESET_GPIO_RESTART
+    #> warning: unused option: REISERFS_FS_POSIX_ACL
+    #> warning: unused option: REISERFS_FS_SECURITY
+    #> warning: unused option: REISERFS_FS_XATTR
+    #> error: unused option: SECURITY_SELINUX_CHECKREQPROT_VALUE
+    #> error: unused option: SECURITY_SELINUX_DISABLE
+
     enable =
-      mkEnableOption "system SELinux support + kernel patches"
-      // {
-        default = config.my.security.enable;
-      };
+      mkEnableOption "system SELinux support + kernel patches";
     state = mkOption {
       type = enum [
         "enforcing"
