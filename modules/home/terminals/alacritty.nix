@@ -1,4 +1,4 @@
-# FIXME: This module is stale, I don't sure if it works
+# FIXME: This module is stale which I don't sure if it works
 {
   pkgs,
   config,

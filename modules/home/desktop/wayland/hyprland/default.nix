@@ -1,9 +1,8 @@
+# FIXME: Hyprland config has so many errors need fix up
 {
   pkgs,
   lib,
   config,
-  # hyprland,
-  # hyprland-plugins,
   ...
 }: let
   package = pkgs.hyprland;
@@ -12,6 +11,7 @@
 in {
   imports = [./binds.nix ./rules.nix ./settings.nix];
 
+  # TODO: monitors config
   config = mkIf (cfg.enable && cfg.wayland.enable && cfg.environment == "Hyprland") {
     # enable hyprland
     wayland.windowManager.hyprland = {
@@ -19,6 +19,7 @@ in {
       inherit package;
       xwayland.enable = true;
 
+      # TODO: I want some hyprland plugins
       # plugins = with hyprland-plugins.packages.${pkgs.system}; [
       #   hyprbars
       #   hyprexpo

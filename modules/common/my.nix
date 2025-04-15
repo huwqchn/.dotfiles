@@ -25,6 +25,7 @@ in {
       default = "johnson.wq.hu@gmail.com";
       description = "The user email";
     };
+    # TODO: need config bash for minimal mode
     shell = mkOption {
       type = enum ["bash" "fish" "zsh"];
       default = "fish";
