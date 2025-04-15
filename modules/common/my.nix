@@ -104,9 +104,13 @@ in {
         };
     };
     themes = {
+      # TODO: wallpaper engine support?
       wallpaper = mkOption {
-        type = str;
-        default = "${inputs.wallpapers}/unorganized/nix.png";
+        type = nullOr str;
+        default =
+          if config.my.desktop.enable
+          then "${inputs.wallpapers}/unorganized/nix.png"
+          else null;
         description = "The wallpaper of the system";
       };
       theme = mkOption {

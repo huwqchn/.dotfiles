@@ -1,5 +1,6 @@
 # FIXME: Remove hardcoded colors, use stylix instead
 {
+  inputs,
   lib,
   config,
   pkgs,
@@ -9,6 +10,8 @@
   cfg = config.my.themes.tokyonight;
 in {
   config = mkIf (cfg.enable && cfg.style == "moon") {
+    my.themes.wallpaper = "${inputs.wallpapers}/tokyonight/Night_City_Street_Umbrella.jpg";
+
     programs = {
       spotify-player = {
         settings.theme = "tokyonight-moon";
