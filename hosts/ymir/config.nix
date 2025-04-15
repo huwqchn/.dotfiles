@@ -25,7 +25,8 @@
       tmpOnTmpfs = true;
       enableKernelTweaks = true;
       loadRecommendedModules = true;
-      plymouth.enable = true;
+      # TODO: diable for debugging
+      plymouth.enable = false;
 
       initrd = {
         enableTweaks = true;
