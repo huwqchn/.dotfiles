@@ -200,7 +200,7 @@ in {
       message = "You can't use sway desktop environment without wayland";
     }
     {
-      assertion = desktop.type == "wayland" -> isLinux;
+      assertion = desktop.type == "xorg" -> isLinux;
       message = "You can't use xorg on non-linux system";
     }
     {
