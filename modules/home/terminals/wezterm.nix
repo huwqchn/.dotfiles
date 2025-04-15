@@ -15,6 +15,7 @@ in {
       };
   };
 
+  # TODO: Setup wezterm config use nix for more flexibility
   config = mkIf cfg.enable {
     programs.wezterm = {enable = true;};
 

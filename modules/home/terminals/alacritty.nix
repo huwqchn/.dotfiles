@@ -1,3 +1,4 @@
+# FIXME: This module is stale, I don't sure if it works
 {
   pkgs,
   config,
@@ -5,7 +6,7 @@
   ...
 }: let
   inherit (lib.options) mkEnableOption;
-  inherit (lib.modules) mkIf;
+  inherit (lib.modules) mkIf mkDefault;
   inherit (pkgs.stdenv.hostPlatform) isLinux;
   cfg = config.my.desktop.apps.alacritty;
 in {
@@ -38,26 +39,26 @@ in {
           multiplier = 3;
         };
 
-        # NOTE: font is managed by stylix
-        # font = {
-        #   normal = {
-        #     family = "JetBrains Mono Nerd Font";
-        #     style = "Medium";
-        #   };
-        #   bold = {
-        #     family = "JetBrains Mono Nerd Font";
-        #     style = "Bold";
-        #   };
-        #   italic = {
-        #     family = "JetBrains Mono Nerd Font";
-        #     style = "MediumItalic";
-        #   };
-        #   bold_italic = {
-        #     family = "JetBrains Mono Nerd Font";
-        #     style = "BoldItalic";
-        #   };
-        #   size = 13;
-        # };
+        # NOTE: font is managed by stylix if autoEnable is true
+        font = mkDefault {
+          normal = {
+            family = "JetBrains Mono Nerd Font";
+            style = "Medium";
+          };
+          bold = {
+            family = "JetBrains Mono Nerd Font";
+            style = "Bold";
+          };
+          italic = {
+            family = "JetBrains Mono Nerd Font";
+            style = "MediumItalic";
+          };
+          bold_italic = {
+            family = "JetBrains Mono Nerd Font";
+            style = "BoldItalic";
+          };
+          size = 13;
+        };
 
         keyboard = {
           bindings = [

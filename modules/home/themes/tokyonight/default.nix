@@ -6,7 +6,7 @@
 }: let
   src = pkgs.vimPlugins.tokyonight-nvim;
   inherit (lib.options) mkEnableOption mkOption;
-  inherit (lib.modules) mkForce mkIf mkMerge importTOML;
+  inherit (lib.modules) mkIf mkMerge importTOML;
   inherit (lib.types) enum;
   inherit (lib.generators) toINIWithGlobalSection;
   inherit (builtins) readFile;
@@ -235,11 +235,6 @@ in {
         };
         zathura.extraConfig = "include ${src + "/extras/zathura/" + themeName + ".zathurarc"}";
         ghostty.settings.theme = "${src + "/extras/ghostty/" + themeName}";
-        # FIXME: make spotify-player use tokyonight theme
-        # spotify-player = {
-        #   settings.theme = "Tokyo Night ${lib.my.capitalize cfg.style}";
-        #   inherit (importTOML "${src}/extras/spotify_player/${themeName} .toml") themes;
-        # };
         nixcord.config = {
           transparent = true;
           frameless = true;
@@ -317,18 +312,18 @@ in {
       # try setting them with home.pointerCursor and gtk.theme,
       # which enable a bunch of compatibility options that should make the themes load in all situations.
 
-      home.pointerCursor = {
-        gtk.enable = true;
-        x11.enable = true;
+      # NOTE: cursor is managed by stylix
+      # https://github.com/danth/stylix/blob/master/stylix/hm/cursor.nix
+      # home.pointerCursor = {
+      #   gtk.enable = true;
+      #   x11.enable = true;
+      #   package = pkgs.bibata-cursors;
+      #   name = "Bibata-Modern-Ice";
+      #   size = 24;
+      # };
 
-        # NOTE: cursor is managed by stylix
-        # package = mkForce pkgs.bibata-cursors;
-        # name = mkForce "Bibata-Modern-Ice";
-        # size = mkForce 24;
-      };
-
-      # dconf.settings."org/gnome/desktop/interface".font-name =
-      #   mkForce "Cantarell";
+      # NOTE: dconf font can managed by stylix if autoEnable is true
+      dconf.settings."org/gnome/desktop/interface".font-name = "Cantarell";
 
       # set dpi for 4k monitor
       xresources.properties = {
@@ -354,14 +349,15 @@ in {
 
         gtk2.configLocation = "${config.xdg.configHome}/gtk-2.0/gtkrc";
 
-        # NOTE: font is managed by stylix
-        # font = {
-        #   name = mkForce "Cantarell";
-        #   package = mkForce pkgs.cantarell-fonts;
-        #   size = mkForce 11;
-        # };
+        # NOTE: font can managed by stylix if autoEnable is true
+        font = {
+          name = "Cantarell";
+          package = pkgs.cantarell-fonts;
+          size = 11;
+        };
 
-        # NOTE: iconTheme is managed by stylix
+        # NOTE: iconTheme is managed by stylix if autoEnable is true
+        # https://github.com/danth/stylix/blob/master/stylix/hm/icon.nix
         # iconTheme = {
         #   name = "Papirus-Dark";
         #   package = pkgs.papirus-icon-theme;
@@ -369,18 +365,19 @@ in {
 
         theme = {
           # I don't stylix manager this, using mkForce to override
-          name = mkForce "Tokyonight-Dark-BL";
-          package = mkForce pkgs.tokyonight-gtk-theme;
+          name = "Tokyonight-Dark-BL";
+          package = pkgs.tokyonight-gtk-theme;
         };
 
-        # NOTE: cursorTheme is managed by stylix
-        # cursorTheme = {
-        #   name = "Bibata-Modern";
-        #   package = pkgs.bibata-cursors;
-        #   size = 0;
-        # };
+        # NOTE: cursorTheme can managed by stylix if autoEnable is true
+        cursorTheme = {
+          name = "Bibata-Modern";
+          package = pkgs.bibata-cursors;
+          size = 0;
+        };
       };
 
+      # TODO: make qt theme tokyonight
       qt = {
         enable = true;
         platformTheme.name = "qtct";

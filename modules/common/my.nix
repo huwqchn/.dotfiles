@@ -5,7 +5,7 @@
   inputs,
   ...
 }: let
-  inherit (pkgs.stdenv.hostPlatform) isLinux;
+  inherit (pkgs.stdenv.hostPlatform) isLinux isDarwin;
   inherit (lib.options) mkOption mkEnableOption;
   inherit (lib.types) listOf enum str nullOr singleLineStr float;
 in {
@@ -53,6 +53,7 @@ in {
           default = true;
         };
 
+      # TODO: Am I really need muliple desktop environments?
       wayland = {
         enable =
           mkEnableOption "Wayland"
@@ -61,6 +62,7 @@ in {
           };
       };
 
+      # TODO: Am I really need muliple desktop environments?
       xorg = {
         enable =
           mkEnableOption "Xorg"
@@ -72,14 +74,14 @@ in {
       type = mkOption {
         type = nullOr (enum ["wayland" "xorg" "darwin"]);
         default =
-          if isLinux
+          if !config.my.desktop.enable
+          then null
+          else if isLinux
           then "wayland"
           else "darwin";
         description = "The desktop environment type to use";
       };
 
-      # TODO: should be add a assert if desktop.environment is not wayland desktop environment
-      # TODO: should be add a assert if desktop.environment is not linux
       # TODO: i3 and bspwm are not supported yet
       # TODO: sway is not supported yet
       # TODO: should support niri, that's supper cool
@@ -183,4 +185,64 @@ in {
       minimal = mkEnableOption "Minimal";
     };
   };
+
+  # TODO: should refactor this, too many asserts
+  config.assertions = [
+    {
+      assertion = config.my.desktop.type != null -> config.my.desktop.enable;
+      message = "You can't use desktop.type without desktop.enable";
+    }
+    {
+      assertion = config.my.desktop.enable -> config.my.desktop.type != null;
+      message = "You can't use desktop.enable without desktop.type";
+    }
+    {
+      assertion = config.my.desktop.wayland.enable -> config.my.desktop.enable;
+      message = "You can't use wayland desktop environment without desktop.enable";
+    }
+    {
+      assertion = config.my.desktop.xorg.enable -> config.my.desktop.enable;
+      message = "You can't use xorg desktop environment without desktop.enable";
+    }
+    {
+      assertion = config.my.desktop.environment == "i3" -> config.my.desktop.type == "xorg";
+      message = "You can't use i3 desktop environment without xorg";
+    }
+    {
+      assertion = config.my.desktop.environment == "bspwm" -> config.my.desktop.type == "xorg";
+      message = "You can't use bspwm desktop environment without xorg";
+    }
+    {
+      assertion = config.my.desktop.environment == "Hyprland" -> config.my.desktop.type == "wayland";
+      message = "You can't use hyprland desktop environment without wayland";
+    }
+    {
+      assertion = config.my.desktop.environment == "sway" -> config.my.desktop.type == "wayland";
+      message = "You can't use sway desktop environment without wayland";
+    }
+    {
+      assertion = config.my.desktop.xorg.enable -> isLinux;
+      message = "You can't use xorg on non-linux system";
+    }
+    {
+      assertion = config.my.desktop.wayland.enable -> isLinux;
+      message = "You can't use wayland on non-linux system";
+    }
+    {
+      assertion = config.my.desktop.type == "xorg" -> isLinux;
+      message = "You can't use xorg on non-linux system";
+    }
+    {
+      assertion = config.my.desktop.type == "wayland" -> isLinux;
+      message = "You can't use wayland on non-linux system";
+    }
+    {
+      assertion = config.my.desktop.type == "darwin" -> isDarwin;
+      message = "You can't use darwin desktop environment on non-darwin system";
+    }
+    {
+      assertion = config.my.desktop.environment == "aerospace" -> config.my.desktop.type == "darwin";
+      message = "You can't use aerospace desktop environment without darwin";
+    }
+  ];
 }

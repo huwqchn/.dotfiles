@@ -10,6 +10,7 @@
 in {
   stylix = {
     enable = true;
+    # FIXME: Is stylix can config fonts opacity cursor icons and wall but not colors?
     autoEnable = mkDefault autoTheme;
     # polarity = mkDefault "dark";
     image = wall;
