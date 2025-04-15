@@ -96,11 +96,11 @@ in {
           if isDarwin
           then null
           else if desktop.enable
-          then
-            pkgs.fetchurl {
-              url = "https://github.com/huwqchn/wallpapers/blob/main/unorganized/nix.png";
-              sha256 = "11qgd9k79fhpsk7x0q3cwin8i1ycf9kcd6c3si7sdck78rdhdwl8";
-            }
+          then ./themes/walls/nix.png
+          # pkgs.fetchurl {
+          #   url = "https://github.com/huwqchn/wallpapers/blob/main/unorganized/nix.png";
+          #   sha256 = "11qgd9k79fhpsk7x0q3cwin8i1ycf9kcd6c3si7sdck78rdhdwl8";
+          # }
           else null;
         description = "The wallpaper of the system";
       };
