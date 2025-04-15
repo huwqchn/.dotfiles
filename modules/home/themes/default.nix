@@ -6,7 +6,7 @@
   inherit (lib.my) scanPaths;
   inherit (lib.modules) mkDefault;
 in {
-  imports = scanPaths ./.;
+  imports = [../../common/themes] ++ (scanPaths ./.);
 
   stylix = {
     iconTheme = mkDefault {

@@ -5,9 +5,7 @@
   ...
 }: let
   src = pkgs.vimPlugins.tokyonight-nvim;
-  inherit (lib.options) mkEnableOption mkOption;
   inherit (lib.modules) mkIf mkMerge importTOML;
-  inherit (lib.types) enum;
   inherit (lib.generators) toINIWithGlobalSection;
   inherit (builtins) readFile;
   inherit (pkgs.stdenv.hostPlatform) isLinux;
@@ -22,20 +20,6 @@
   cfg = config.my.themes.tokyonight;
   themeName = "tokyonight_${cfg.style}";
 in {
-  options.my.themes.tokyonight = {
-    enable =
-      mkEnableOption "Tokyonight theme"
-      // {
-        default = config.my.themes.theme == "tokyonight";
-      };
-
-    style = mkOption {
-      type = enum ["night" "storm" "day" "moon"];
-      default = "moon";
-      description = "The style of tokyonight";
-    };
-  };
-
   imports = lib.my.scanPaths ./.;
 
   config = mkMerge [

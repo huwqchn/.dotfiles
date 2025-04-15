@@ -4,7 +4,7 @@
   ...
 }: let
   inherit (lib.options) mkOption mkEnableOption;
-  inherit (lib.modules) mkIf mkForce;
+  inherit (lib.modules) mkIf;
   inherit (lib.types) enum;
   cfg = config.my.themes.auto;
 in {
@@ -38,6 +38,5 @@ in {
       autoEnable = true;
       polarity = cfg.style;
     };
-    home.file.".config/gowall/config.ymal".text = mkForce "";
   };
 }
