@@ -25,9 +25,18 @@ deploy host *args:
 
 [group('nix')]
 install host *args:
-  nixos-anywhere --build-on-remote \
+  nixos-anywhere \
+    --flake .#{{host}} \
     --copy-host-keys \
-    --flake .#{{host}} --target-host root@{{host}} {{args}}
+    --build-on-remote root@{{host}} {{args}}
+
+# install nixos on a machine with no operating system
+[group('nix')]
+install2 host ip *args:
+  nixos-anywhere  \
+    --flake .#{{host}} \
+    --copy-host-keys \
+    --build-on-remote nixos@{{ip}} {{args}}
 
 [group('nix')]
 disko host:

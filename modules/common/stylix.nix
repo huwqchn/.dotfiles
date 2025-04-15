@@ -1,10 +1,8 @@
 {
-  lib,
   config,
   pkgs,
   ...
 }: let
-  inherit (lib.modules) mkIf;
   inherit (config.my.themes) theme wallpaper;
   autoEnable = theme == "auto";
   image = wallpaper;
@@ -15,7 +13,9 @@ in {
     inherit autoEnable image;
 
     # We need set a default colorscheme when we don't set wall
-    base16Scheme = mkIf (image == null) "${pkgs.base16-schemes}/share/themes/catppuccin-mocha.yaml";
+    # base16Scheme = mkIf (image == null) "${pkgs.base16-schemes}/share/themes/catppuccin-mocha.yaml";
+    # FIXME: this is not success check on darwin
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-mocha.yaml";
     fonts = {
       serif = {
         package = pkgs.source-han-serif;
