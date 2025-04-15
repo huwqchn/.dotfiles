@@ -7,7 +7,7 @@
 }: let
   inherit (config.lib.file) mkOutOfStoreSymlink;
   inherit (lib.options) mkEnableOption;
-  inherit (lib.modules) mkIf mkForce;
+  inherit (lib.modules) mkIf;
   inherit (inputs) ghostty-shaders;
   inherit (config.my.themes) opacity;
   inherit (pkgs.stdenv.hostPlatform) isLinux;
@@ -62,10 +62,11 @@ in {
       #   };
       # };
       settings = {
-        font-family = mkForce "JetBrainsMono Nerd Font Mono";
-        font-family-bold = mkForce "JetBrainsMono Nerd Font Mono";
-        font-family-italic = mkForce "Maple Mono";
-        font-family-bold-italic = mkForce "Maple Mono";
+        # NOTE: font-family is managed by stylix
+        # font-family = mkForce "JetBrainsMono Nerd Font Mono";
+        # font-family-bold = mkForce "JetBrainsMono Nerd Font Mono";
+        # font-family-italic = mkForce "Maple Mono";
+        # font-family-bold-italic = mkForce "Maple Mono";
 
         # NOTE: font-size is managed by stylix
         # font-size = 13;

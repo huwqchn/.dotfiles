@@ -37,27 +37,28 @@ in {
           history = 10000;
           multiplier = 3;
         };
-        font = {
-          normal = {
-            family = "JetBrains Mono Nerd Font";
-            style = "Medium";
-          };
-          bold = {
-            family = "JetBrains Mono Nerd Font";
-            style = "Bold";
-          };
-          italic = {
-            family = "JetBrains Mono Nerd Font";
-            style = "MediumItalic";
-          };
-          bold_italic = {
-            family = "JetBrains Mono Nerd Font";
-            style = "BoldItalic";
-          };
 
-          # NOTE: font-size is managed by stylix
-          # size = 13;
-        };
+        # NOTE: font is managed by stylix
+        # font = {
+        #   normal = {
+        #     family = "JetBrains Mono Nerd Font";
+        #     style = "Medium";
+        #   };
+        #   bold = {
+        #     family = "JetBrains Mono Nerd Font";
+        #     style = "Bold";
+        #   };
+        #   italic = {
+        #     family = "JetBrains Mono Nerd Font";
+        #     style = "MediumItalic";
+        #   };
+        #   bold_italic = {
+        #     family = "JetBrains Mono Nerd Font";
+        #     style = "BoldItalic";
+        #   };
+        #   size = 13;
+        # };
+
         keyboard = {
           bindings = [
             {
