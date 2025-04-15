@@ -5,7 +5,10 @@
 }: {
   imports = [
     inputs.hardware.nixosModules.dell-xps-15-9560-nvidia
-    ../common/disko/luks-btrfs-tmpfs.nix
+    (import ../common/disko/luks-btrfs-tmpfs.nix {
+      device = "/dev/nvme0n1";
+      swapSize = "8G";
+    })
   ];
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking

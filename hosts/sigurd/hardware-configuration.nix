@@ -9,7 +9,7 @@
 }: {
   imports = [
     (modulesPath + "/installer/scan/not-detected.nix")
-    ../common/disko/luks-btrfs-tmpfs.nix
+    (import ../common/disko/luks-btrfs-tmpfs.nix {})
   ];
 
   boot.initrd.availableKernelModules = ["vmd" "xhci_pci" "ahci" "nvme" "usbhid" "usb_storage" "sd_mod"];

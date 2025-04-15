@@ -6,6 +6,7 @@
 }: let
   inherit (lib.modules) mkIf;
   inherit (config.my) name;
+  inherit (config.home) homeDirectory;
   cfg = config.my.security;
 in {
   config = mkIf cfg.enable {
@@ -25,17 +26,24 @@ in {
         "*" = {
           serverAliveInterval = 180;
           serverAliveCountMax = 3;
-          identityFile = ["~/.ssh/id_ed25519"];
+          identityFile = [
+            "${homeDirectory}/.ssh/id_ed25519"
+          ];
         };
         "192.168.*" = {
           # allow to securely use local SSH agent to authenticate on the remote machine.
           # It has the same effect as adding cli option `ssh -A user@host`
           forwardAgent = true;
         };
+        "ymir" = {
+          hostname = "192.168.5.146";
+        };
         "github.com" = {
           hostname = "github.com";
           user = "git";
-          identityFile = ["~/.ssh/id_${name}"];
+          identityFile = [
+            "${homeDirectory}/.ssh/id_${name}"
+          ];
           # Specifies that ssh should only use the identity file explicitly configured above
           # required to prevent sending default identity files first.
           identitiesOnly = true;
