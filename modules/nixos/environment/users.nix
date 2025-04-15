@@ -33,9 +33,11 @@ in {
         # we have to use initialHashedPassword here when using tmpfs for /
         inherit (config.my) initialHashedPassword;
         inherit group;
+        # set isNormalUser to true to create a home directory
         isNormalUser = true;
         extraGroups =
           [
+            # we need this to use `sudo -i`
             "wheel"
           ]
           ++ ifTheyExist [

@@ -7,6 +7,8 @@
 }: let
   inherit (config.my.machine) persist;
   inherit (lib.modules) mkIf;
+  inherit (lib.strings) optionalString concatLines;
+  inherit (lib.attrsets) attrValues;
 in {
   imports = [inputs.impermanence.nixosModules.impermanence];
 
@@ -30,7 +32,7 @@ in {
     #
     #  See also https://grahamc.com/blog/erase-your-darlings/
 
-    # NOTE: impermanence only mounts the directory/file list below to /persistent
+    # NOTE: impermanence only mounts the directory/file list below to /persist
     # If the directory/file already exists in the root filesystem, you should
     # move those files/directories to /persistent first!
     environment.persistence."/persist" = {
@@ -51,18 +53,17 @@ in {
         # "/etc/ssh/ssh_host_rsa_key.pub"
       ];
     };
-    programs.fuse.userAllowOther = true;
 
     system.activationScripts.persistent-dirs.text = let
       mkHomePersist = user:
-        lib.optionalString user.createHome ''
+        optionalString user.createHome ''
           mkdir -p /persist/${user.home}
           chown ${user.name}:${user.group} /persist/${user.home}
           chmod ${user.homeMode} /persist/${user.home}
         '';
-      users = lib.attrValues config.users.users;
+      users = attrValues config.users.users;
     in
-      lib.concatLines (map mkHomePersist users);
+      concatLines (map mkHomePersist users);
 
     # for some reason *this* is what makes networkmanager not get screwed completely instead of the impermanence module
     systemd.tmpfiles.rules = [
@@ -70,5 +71,8 @@ in {
       "L /var/lib/NetworkManager/seen-bssids - - - - /persist/var/lib/NetworkManager/seen-bssids"
       "L /var/lib/NetworkManager/timestamps - - - - /persist/var/lib/NetworkManager/timestamps"
     ];
+
+    # for uesr level persistence
+    programs.fuse.userAllowOther = true;
   };
 }
