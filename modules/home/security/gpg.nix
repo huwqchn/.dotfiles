@@ -114,7 +114,7 @@ in {
       packages = lib.optional config.gtk.enable pkgs.gcr;
 
       persistence = {
-        "/persist/${config.home.homeDirectory}".directories = [".gnupg"];
+        "/persist${config.home.homeDirectory}".directories = [".gnupg"];
       };
     };
   };

@@ -123,7 +123,7 @@ in {
         ];
       };
 
-      home.persistence."/persist/${homeDirectory}" = {
+      home.persistence."/persist${homeDirectory}" = {
         allowOther = true;
         directories = [".cache/spotify-player"];
       };

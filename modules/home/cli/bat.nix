@@ -51,7 +51,7 @@ in {
         c clear-search
       '';
 
-      persistence."/persist/${config.home.homeDirectory}".directories = [
+      persistence."/persist${config.home.homeDirectory}".directories = [
         ".cache/bat"
       ];
     };

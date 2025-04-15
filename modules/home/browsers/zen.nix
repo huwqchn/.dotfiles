@@ -22,7 +22,7 @@ in {
       packages = [inputs.zen.packages.${pkgs.system}.default];
 
       persistence = {
-        "/persist/${config.home.homeDirectory}".directories = [".zen" ".cache/zen"];
+        "/persist${config.home.homeDirectory}".directories = [".zen" ".cache/zen"];
       };
     };
   };

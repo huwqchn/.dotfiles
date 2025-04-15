@@ -21,7 +21,7 @@ in {
       packages = with pkgs; [google-chrome];
 
       persistence = {
-        "/persist/${config.home.homeDirectory}".directories = [".config/google-chrome"];
+        "/persist${config.home.homeDirectory}".directories = [".config/google-chrome"];
       };
     };
   };

@@ -93,7 +93,7 @@ in {
         brotab
       ];
 
-      persistence."/persist/${config.home.homeDirectory}" = {
+      persistence."/persist${config.home.homeDirectory}" = {
         directories = [
           ".cache/brillo"
           ".cache/fontconfig"

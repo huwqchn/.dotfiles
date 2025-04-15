@@ -247,7 +247,7 @@ in {
       };
     };
 
-    home.persistence."/persist/${config.home.homeDirectory}".files = [
+    home.persistence."/persist${config.home.homeDirectory}".files = [
       ".local/share/fish/fish_history"
     ];
   };

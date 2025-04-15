@@ -14,7 +14,7 @@ in {
   config = mkIf cfg.enable {
     programs.zoxide.enable = true;
 
-    home.persistence."/persist/${config.home.homeDirectory}".directories = [
+    home.persistence."/persist${config.home.homeDirectory}".directories = [
       ".local/share/zoxide"
     ];
   };

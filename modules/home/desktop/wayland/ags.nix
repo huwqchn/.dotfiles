@@ -30,7 +30,7 @@ in {
         fortune
       ];
 
-      persistence."/persist/${config.home.homeDirectory}".directories = [
+      persistence."/persist${config.home.homeDirectory}".directories = [
         ".cache/ags"
         ".local/share/com.github.Aylur.ags"
       ];

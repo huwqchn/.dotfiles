@@ -42,7 +42,9 @@ in {
         "/etc/nixos"
         "/etc/nix"
         "/etc/NetworkManager/system-connections"
+        "/etc/adjtime"
         "/var/db/sudo"
+        # maybe we need more fine-grained
         "/var/lib"
       ];
       files = [
@@ -54,23 +56,101 @@ in {
       ];
     };
 
-    system.activationScripts.persistent-dirs.text = let
-      mkHomePersist = user:
-        optionalString user.createHome ''
-          mkdir -p /persist/${user.home}
-          chown ${user.name}:${user.group} /persist/${user.home}
-          chmod ${user.homeMode} /persist/${user.home}
-        '';
-      users = attrValues config.users.users;
-    in
-      concatLines (map mkHomePersist users);
+    system.activationScripts = {
+      # NOTE: this is for nixos-anywhere to install nixos on first boot
+      persistent-init = {
+        deps = ["persistence-home" "persistence-ssh"];
+        text = let
+          persistence = config.environment.persistence."/persist";
+          cpDir = dir: let
+            dest = "/persist${dir}";
+          in ''
+            if [ -d "${dir}" ]; then
+              echo "Copying directory ${dir} to ${dest}"
+              mkdir -p "$(dirname "${dest}")"
+              cp -a "${dir}" "${dest}"
+            fi
+          '';
 
-    # for some reason *this* is what makes networkmanager not get screwed completely instead of the impermanence module
-    systemd.tmpfiles.rules = [
-      "L /var/lib/NetworkManager/secret_key - - - - /persist/var/lib/NetworkManager/secret_key"
-      "L /var/lib/NetworkManager/seen-bssids - - - - /persist/var/lib/NetworkManager/seen-bssids"
-      "L /var/lib/NetworkManager/timestamps - - - - /persist/var/lib/NetworkManager/timestamps"
-    ];
+          cpFile = file: let
+            dest = "/persist${file}";
+          in ''
+            if [ -f "${file}" ]; then
+              echo "Copying file ${file} to ${dest}"
+              mkdir -p "$(dirname "${dest}")"
+              cp -a "${file}" "${dest}"
+            fi
+          '';
+        in ''
+          #!/bin/sh
+          if [ ! -f /persist/.init ]; then
+            echo "Initializing persistent directories and files ..."
+
+            echo "Copying directories to /persist:"
+            ${concatLines (map cpDir persistence.directories)}
+
+            echo "Copying files to /persist:"
+            ${concatLines (map cpFile persistence.files)}
+
+            touch /persist/.init
+            echo "Persistent initialization complete."
+          else
+            echo "/persist/.init exists, skipping persistent initialization."
+          fi
+        '';
+      };
+      # NOTE: we use nixos-anywhere with copy-host-keys arg so we need copy these ssh keys to /persist
+      persistent-ssh.text = let
+        sshKeys = [
+          {
+            path = "/etc/ssh/ssh_host_ed25519_key";
+            mode = "700";
+          }
+          {
+            path = "/etc/ssh/ssh_host_ed25519_key.pub";
+            mode = "755";
+          }
+          {
+            path = "/etc/ssh/ssh_host_rsa_key";
+            mode = "700";
+          }
+          {
+            path = "/etc/ssh/ssh_host_rsa_key.pub";
+            mode = "755";
+          }
+        ];
+        cpSSHKeys = key: let
+          dest = "/persist${key.path}";
+        in ''
+          if [ -f "${key.path}" ]; then
+            echo "Copying ${key.path} to ${dest} with mode ${key.mode}"
+            mkdir -p "$(dirname "${dest}")"
+            cp -a "${key.path}" "${dest}"
+            chmod ${key.mode} "${dest}"
+          fi
+        '';
+      in ''
+        #!/bin/sh
+        if [ ! -f /persist/etc/ssh/.init ]; then
+          echo "Initializing persistent SSH keys..."
+          ${lib.concatLines (map cpSSHKeys sshKeys)}
+          touch /persist/etc/ssh/.init
+          echo "Persistent SSH keys initialization complete."
+        else
+          echo "Persistent SSH keys already initialized, skipping."
+        fi
+      '';
+      persistent-home.text = let
+        mkHomePersist = user:
+          optionalString user.createHome ''
+            mkdir -p /persist${user.home}
+            chown ${user.name}:${user.group} /persist${user.home}
+            chmod ${user.homeMode} /persist${user.home}
+          '';
+        users = attrValues config.users.users;
+      in
+        concatLines (map mkHomePersist users);
+    };
 
     # for uesr level persistence
     programs.fuse.userAllowOther = true;

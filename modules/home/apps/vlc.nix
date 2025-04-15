@@ -22,7 +22,7 @@ in {
     home = {
       packages = with pkgs; [vlc];
 
-      persistence."/persist/${homeDirectory}" = {
+      persistence."/persist${homeDirectory}" = {
         allowOther = true;
         directories = [".config/vlc"];
       };

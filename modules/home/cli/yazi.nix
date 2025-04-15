@@ -403,7 +403,7 @@ in {
       };
     };
 
-    home.persistence."/persist/${config.home.homeDirectory}".directories = [
+    home.persistence."/persist${config.home.homeDirectory}".directories = [
       ".local/state/yazi"
     ];
   };

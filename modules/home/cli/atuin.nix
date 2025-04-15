@@ -52,7 +52,7 @@ in {
       };
     };
 
-    home.persistence."/persist/${homeDirectory}".directories = [
+    home.persistence."/persist${homeDirectory}".directories = [
       ".local/share/atuin"
     ];
 

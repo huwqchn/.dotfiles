@@ -66,7 +66,7 @@ in {
     };
 
     home.persistence = {
-      "/persist/${config.home.homeDirectory}".directories = [".local/share/password-store"];
+      "/persist${config.home.homeDirectory}".directories = [".local/share/password-store"];
     };
   };
 }

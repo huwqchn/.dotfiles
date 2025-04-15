@@ -14,7 +14,7 @@ in {
   home.persistence =
     if persist
     then {
-      "/persist/${config.home.homeDirectory}" = {
+      "/persist${config.home.homeDirectory}" = {
         directories = [
           ".local/bin"
           ".cache/nix"

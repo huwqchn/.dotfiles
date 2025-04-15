@@ -40,7 +40,7 @@ in {
 
     home = {
       packages = with pkgs; [cloudflare-warp];
-      persistence."/persist/${homeDirectory}" = {
+      persistence."/persist${homeDirectory}" = {
         directories = [".local/share/warp"];
         allowOther = true;
       };
