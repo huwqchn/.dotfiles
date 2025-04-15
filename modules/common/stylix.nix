@@ -23,8 +23,8 @@ in {
         name = "Source Han Sans SC";
       };
       monospace = {
-        package = pkgs.maple-mono.NF-CN;
-        name = "Maple Mono NF CN";
+        package = pkgs.nerd-fonts.jetbrains-mono;
+        name = "JetBrainsMono Nerd Font Mono";
       };
       emoji = {
         package = pkgs.noto-fonts-emoji;
@@ -34,7 +34,7 @@ in {
         applications = 13;
         desktop = 13;
         popups = 14;
-        terminal = 13;
+        terminal = 12;
       };
     };
     opacity = {
