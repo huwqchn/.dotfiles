@@ -235,10 +235,11 @@
     };
 
     # my own wallpapers
-    wallpapers = {
-      url = "github:huwqchn/wallpapers";
-      flake = false;
-    };
+    # this wallpaper is too big
+    # wallpapers = {
+    #   url = "github:huwqchn/wallpapers";
+    #   flake = false;
+    # };
 
     # it's easy to rice
     stylix = {

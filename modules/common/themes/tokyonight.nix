@@ -1,5 +1,4 @@
 {
-  inputs,
   lib,
   config,
   pkgs,
@@ -27,17 +26,29 @@ in {
   };
 
   config = mkMerge [
-    (mkIf (cfg.enable && cfg.style == "day") {
-      my.themes.wallpaper = mkIf (isLinux && desktop.enable) "${inputs.wallpapers}/tokyonight/Anime_girl.jpg";
+    (mkIf (cfg.enable && cfg.style == "day" && isLinux && desktop.enable) {
+      my.themes.wallpaper = pkgs.fetchurl {
+        url = "https://github.com/huwqchn/wallpapers/blob/main/tokyonight/Anime_girl.jpg";
+        sha256 = "0irzajb3fi0f7x8vd6h55dsplkyl95p0vr9sigmlk46y673j6ksr";
+      };
     })
-    (mkIf (cfg.enable && cfg.style == "moon") {
-      my.themes.wallpaper = mkIf (isLinux && desktop.enable) "${inputs.wallpapers}/tokyonight/Night_City_Street_Umbrella.jpg";
+    (mkIf (cfg.enable && cfg.style == "moon" && isLinux && desktop.enable) {
+      my.themes.wallpaper = pkgs.fetchurl {
+        url = "https://github.com/huwqchn/wallpapers/blob/main/tokyonight/Night_City_Street_Umbrella.jpg";
+        sha256 = "19nmdw8jldkh5niav478qwzvsnvfr3id3a02r4lgvmmb94kqv9xw";
+      };
     })
-    (mkIf (cfg.enable && cfg.style == "night") {
-      my.themes.wallpaper = mkIf (isLinux && desktop.enable) "${inputs.wallpapers}/Tokyo_streets_night.jpg";
+    (mkIf (cfg.enable && cfg.style == "night" && isLinux && desktop.enable) {
+      my.themes.wallpaper = pkgs.fetchurl {
+        url = "https://github.com/huwqchn/wallpapers/blob/main/tokyonight/tokyonight-kimoni-girl.png";
+        sha256 = "1y3nlxm8if13ckc8z1vfwkhn66sqb2az33l0ai1v1xh96nlp8qfz";
+      };
     })
-    (mkIf (cfg.enable && cfg.style == "storm") {
-      my.themes.wallpaper = mkIf (isLinux && desktop.enable) "${inputs.wallpapers}/your_name.jpg";
+    (mkIf (cfg.enable && cfg.style == "storm" && isLinux && desktop.enable) {
+      my.themes.wallpaper = pkgs.fetchurl {
+        url = "https://github.com/huwqchn/wallpapers/blob/main/tokyonight/cafe-at-night_4k.png";
+        sha256 = "1d7bimqagd4bf33ijvigfai9v1vca6ycii5sb0v00apwgz9wcp93";
+      };
     })
   ];
 }

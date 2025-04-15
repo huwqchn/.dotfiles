@@ -1671,7 +1671,6 @@
         "stylix": "stylix",
         "systems": "systems_7",
         "treefmt": "treefmt",
-        "wallpapers": "wallpapers",
         "wsl": "wsl",
         "yazi": "yazi",
         "zen": "zen"
@@ -2236,22 +2235,6 @@
       "original": {
         "owner": "numtide",
         "repo": "flake-utils",
-        "type": "github"
-      }
-    },
-    "wallpapers": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1737020975,
-        "narHash": "sha256-SgTKRgarM625lKEGJSp419yDsRuyXHbeJ4nsCWzusyg=",
-        "owner": "huwqchn",
-        "repo": "wallpapers",
-        "rev": "e100a598a3ddee944006c869e682d039fe7de3b6",
-        "type": "github"
-      },
-      "original": {
-        "owner": "huwqchn",
-        "repo": "wallpapers",
         "type": "github"
       }
     },

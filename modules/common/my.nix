@@ -2,13 +2,11 @@
   lib,
   pkgs,
   config,
-  inputs,
   ...
 }: let
   inherit (pkgs.stdenv.hostPlatform) isLinux isDarwin;
   inherit (lib.options) mkOption mkEnableOption;
   inherit (lib.types) listOf enum str nullOr singleLineStr package path coercedTo;
-  inherit (lib.strings) toString;
   inherit (config.my) desktop;
 in {
   options.my = {
@@ -98,7 +96,11 @@ in {
           if isDarwin
           then null
           else if desktop.enable
-          then "${inputs.wallpapers}/unorganized/nix.png"
+          then
+            pkgs.fetchurl {
+              url = "https://github.com/huwqchn/wallpapers/blob/main/unorganized/nix.png";
+              sha256 = "11qgd9k79fhpsk7x0q3cwin8i1ycf9kcd6c3si7sdck78rdhdwl8";
+            }
           else null;
         description = "The wallpaper of the system";
       };
