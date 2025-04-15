@@ -6,23 +6,27 @@ build_config := if os() == "macos" { "darwinConfigurations" } else { "nixosConfi
 default:
   @just --list --unsorted
 
+# Build the system configuration
 [group('nix')]
 build host=`uname -n`:
   nix build .#{{build_config}}.{{host}}.system --extra-experimental-features "nix-command flakes" --show-trace --verbose
 
-# Rebuild specific host
+# Rebuild specific host using nh
 [group('nix')]
 switch2 host=`uname -n`:
   nh {{ if os() == "macos" { "darwin" } else { "os" } }} switch . -v -H {{host}} --ask
 
+# Classic cmmand to rebuild nixos
 [group('nix')]
 switch host=`uname -n`:
   {{rebuild}} switch --flake .#{{host}} --show-trace -L -v
 
+# Deploy the system configuration to a remote host
 [group('nix')]
 deploy host *args:
   deploy .#{{host}} --skip-checks --remote-build {{args}}
 
+# Install nixos on a machine with an existing operating system
 [group('nix')]
 install host *args:
   nixos-anywhere \
@@ -30,7 +34,7 @@ install host *args:
     --copy-host-keys \
     --build-on-remote root@{{host}} {{args}}
 
-# install nixos on a machine with no operating system
+# Install nixos on a machine with no operating system
 [group('nix')]
 install2 host ip *args:
   nixos-anywhere  \
@@ -38,6 +42,7 @@ install2 host ip *args:
     --copy-host-keys \
     --build-on-remote nixos@{{ip}} {{args}}
 
+# Create disks
 [group('nix')]
 disko host:
   sudo nix --experimental-features "nix-command flakes" run github:nix-community/disko -- \
@@ -45,7 +50,7 @@ disko host:
     --flake .#{{host}}
   nixos-install --flake .#{{host}}
 
-# remove all generations order than 7 days
+# Remove all generations order than 7 days
 # on darwin, you may need to switch to root user to run this command
 [group('nix')]
 clean:
@@ -79,18 +84,22 @@ history:
 repl:
   nix repl -f flake:nixpkgs
 
+# Check the flake
 [group('nix')]
-check:
-  nix flake check
+check *args:
+  nix flake check {{args}}
 
+# Create a clean and simple shell with git and neovim
 [group('nix')]
 shell:
   nix shell nixpkgs#git nixpkgs#neovim
 
+# Open my develop shell whicih is defined in this repo
 [group('nix')]
 dev name="default":
   nix develop .#{{name}}
 
+# Format the nix files in this repo
 [group('nix')]
 fmt:
   # format the nix files in this repo
@@ -101,7 +110,7 @@ fmt:
 gcroot:
   ls -al /nix/var/nix/gcroots/auto/
 
-# reload nix direnv
+# Reload nix direnv
 [group('nix')]
 reload:
   nix-direnv-reload
@@ -120,15 +129,18 @@ repair *paths:
   nix store repair {{paths}}
 
 
+# Remove this program's configuration folder
 [group('dev')]
 rm program:
   rm -rf "$HOME/.config/{{program}}"
 
+# Move this program's configuration folder from my repo to the config folder for devvelopment
 [group('dev')]
 cfg program:
   just rm {{program}}
   rsync -avz --copy-links --chmod=D2755,F744 config/{{program}}/ "$HOME/.config/{{program}}/"
 
+# Backup this program's configuration folder to my repo
 [group('dev')]
 add program:
   rm -rf config/{{program}}/
