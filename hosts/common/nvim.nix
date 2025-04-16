@@ -38,6 +38,7 @@
         octo.enable = true;
         project.enable = true;
         rest.enable = true;
+        practice.enable = true;
         # lang
         typescript.enable = true;
         clangd.enable = true;
