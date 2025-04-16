@@ -8,12 +8,18 @@
     "g" = "git";
   };
   cfg = config.my.git;
-  inherit (lib.options) mkEnableOption;
+  inherit (lib.options) mkEnableOption mkOption;
   inherit (lib.modules) mkIf mkDefault;
+  inherit (lib.types) nullOr enum;
   inherit (config.home) homeDirectory;
 in {
   options.my.git = {
     enable = mkEnableOption "git";
+    diffTool = mkOption {
+      type = nullOr (enum ["riff" "delta"]);
+      default = "riff";
+      description = "The git diff tool to use";
+    };
   };
 
   config = mkIf cfg.enable {
@@ -44,7 +50,7 @@ in {
         status.submoduleSummary = true;
       };
 
-      delta = {
+      delta = mkIf (cfg.diffTool == "delta") {
         enable = true;
         options = {
           features = mkDefault "side-by-side";
@@ -52,6 +58,9 @@ in {
           line-numbers = true;
         };
       };
+
+      # Use riff instead of delta
+      riff.enable = cfg.diffTool == "riff";
 
       ignores = [".*.sw?" ".direnv/" ".envrc" "result*" "node_modules"];
 
