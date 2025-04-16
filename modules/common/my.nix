@@ -222,9 +222,9 @@ in {
         machine.persist
         -> (machine.type
           == "workstation"
-          && machine.type == "laptop"
-          && machine.type == "desktop"
-          && isLinux);
+          || machine.type == "laptop"
+          || machine.type == "desktop")
+        && isLinux;
     }
   ];
 }
