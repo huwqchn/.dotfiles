@@ -9,7 +9,7 @@
   cfg = config.my.yubikey.touchDetector;
   inherit (lib.options) mkEnableOption mkOption;
   inherit (lib.modules) mkIf;
-  inherit (lib.types) listOf str package literalExpression;
+  inherit (lib.types) bool listOf str package literalExpression;
   inherit (lib.strings) optionals concatStringsSep;
 in {
   options.my.yubikey = {
@@ -34,15 +34,15 @@ in {
           Extra arguments to pass to the tool. The arguments are not escaped.
         '';
       };
-      notificationSound = lib.mkOption {
-        type = lib.types.bool;
+      notificationSound = mkOption {
+        type = bool;
         default = true;
         description = ''
           Play sounds when the YubiKey is waiting for a touch.
         '';
       };
-      notificationSoundFile = lib.mkOption {
-        type = lib.types.str;
+      notificationSoundFile = mkOption {
+        type = str;
         default = "${pkgs.sound-theme-freedesktop}/share/sounds/freedesktop/stereo/window-attention.oga";
         description = ''
           Path to the sound file to play when the YubiKey is waiting for a touch.
@@ -110,7 +110,7 @@ in {
         done
       '';
     in
-      lib.mkIf cfg.notificationSound {
+      mkIf cfg.notificationSound {
         Unit = {
           Description = "Play sound when the YubiKey is waiting for a touch";
           Requires = ["yubikey-touch-detector.service"];

@@ -6,7 +6,6 @@
         ./common/cli.nix
       ];
     }
-    ./common/yubikey.nix
   ];
   deployable = true;
 }

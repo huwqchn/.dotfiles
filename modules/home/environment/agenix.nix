@@ -22,8 +22,12 @@ in {
   };
 
   home = {
+    # some security tools
     packages = with pkgs; [
       rage
+      age
+      sops
+      rclone
     ];
 
     # You must set this, if you want to use agenix home manager module on nixos

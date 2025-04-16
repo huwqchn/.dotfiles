@@ -19,12 +19,30 @@ in {
     # There are two ways to clear the root filesystem on every boot:
     ##  1. use tmpfs for /
     ##  2. (btrfs/zfs only)take a blank snapshot of the root filesystem and revert to it on every boot via:
-    ##     boot.initrd.postDeviceCommands = ''
-    ##       mkdir -p /run/mymount
-    ##       mount -o subvol=/ /dev/disk/by-uuid/UUID /run/mymount
-    ##       btrfs subvolume delete /run/mymount
-    ##       btrfs subvolume snapshot / /run/mymount
-    ##     '';
+    # boot.initrd.postResumeCommands = lib.mkAfter ''
+    #   mkdir /btrfs_tmp
+    #   mount /dev/root_vg/root /btrfs_tmp
+    #   if [[ -e /btrfs_tmp/root ]]; then
+    #       mkdir -p /btrfs_tmp/old_roots
+    #       timestamp=$(date --date="@$(stat -c %Y /btrfs_tmp/root)" "+%Y-%m-%-d_%H:%M:%S")
+    #       mv /btrfs_tmp/root "/btrfs_tmp/old_roots/$timestamp"
+    #   fi
+    #
+    #   delete_subvolume_recursively() {
+    #       IFS=$'\n'
+    #       for i in $(btrfs subvolume list -o "$1" | cut -f 9- -d ' '); do
+    #           delete_subvolume_recursively "/btrfs_tmp/$i"
+    #       done
+    #       btrfs subvolume delete "$1"
+    #   }
+    #
+    #   for i in $(find /btrfs_tmp/old_roots/ -maxdepth 1 -mtime +30); do
+    #       delete_subvolume_recursively "$i"
+    #   done
+    #
+    #   btrfs subvolume create /btrfs_tmp/root
+    #   umount /btrfs_tmp
+    # '';
     #
     #  See also https://grahamc.com/blog/erase-your-darlings/
 
@@ -55,26 +73,39 @@ in {
     system.activationScripts = {
       # NOTE: this is for nixos-anywhere to install nixos on first boot
       persistent-init = {
-        deps = ["persistent-ssh"];
+        deps = ["persistent-ssh" "create-home"];
         text = let
-          persistence = config.environment.persistence."/persist";
-          cpDir = dir: let
-            dest = "/persist${dir}";
+          persistentRoot = config.environment.persistence."/persist";
+          cpDir = d: let
+            user = d.user or "root";
+            group = d.group or "root";
+            mode = d.mode or "0755";
+            inherit (d) dirPath;
+            dest = "/persist${dirPath}";
           in ''
-            if [ -d "${dir}" ]; then
-              echo "Copying directory ${dir} to ${dest}"
-              mkdir -p "$(dirname "${dest}")"
-              cp -a "${dir}" "${dest}"
+            if [ -d "${dirPath}" ]; then
+              echo "Copying directory ${dirPath} to ${dest}"
+              mkdirPath -p "$(dirname "${dest}")"
+              cp -a "${dirPath}" "${dest}"
+              chown ${user}:${group} "${dest}"
+              chomod ${mode} "${dest}"
             fi
           '';
 
-          cpFile = file: let
-            dest = "/persist${file}";
+          cpFile = f: let
+            user = f.user or "root";
+            group = f.group or "root";
+            mode = f.mode or "0755";
+            inherit (f) filePath;
+            # dirPath = f.dirPath; # this is abusolute parent dir of filePath
+            dest = "/persist${filePath}";
           in ''
-            if [ -f "${file}" ]; then
-              echo "Copying file ${file} to ${dest}"
+            if [ -f "${filePath}" ]; then
+              echo "Copying filePath ${filePath} to ${dest}"
               mkdir -p "$(dirname "${dest}")"
-              cp -a "${file}" "${dest}"
+              cp -a "${filePath}" "${dest}"
+              chown ${user}:${group} "${dest}"
+              chomod ${mode} "${dest}"
             fi
           '';
         in ''
@@ -83,10 +114,10 @@ in {
             echo "Initializing persistent directories and files ..."
 
             echo "Copying directories to /persist:"
-            ${concatLines (map cpDir persistence.directories)}
+            ${concatLines (map cpDir persistentRoot.directories)}
 
             echo "Copying files to /persist:"
-            ${concatLines (map cpFile persistence.files)}
+            ${concatLines (map cpFile persistentRoot.files)}
 
             touch /persist/.init
             echo "Persistent initialization complete."

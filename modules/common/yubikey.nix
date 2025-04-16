@@ -6,14 +6,16 @@
 }: let
   inherit (lib.modules) mkIf;
   inherit (lib.options) mkOption mkEnableOption;
-  inherit (lib.attrsets) optionalAttrs;
+  inherit (lib.attrsets) optionalAttrs mapAttrsToList getBin;
+  inherit (lib.lists) flatten;
   inherit (lib.types) attrsOf int literalExample;
+  inherit (lib.strings) concatStringsSep;
   inherit (pkgs.stdenv.hostPlatform) isLinux;
   cfg = config.my.yubikey;
   homeDirectory = config.my.home;
   yubikey-up = let
-    yubikeyIds = lib.concatStringsSep " " (
-      lib.mapAttrsToList (name: id: "[${name}]=\"${builtins.toString id}\"") cfg.identifiers
+    yubikeyIds = concatStringsSep " " (
+      mapAttrsToList (name: id: "[${name}]=\"${builtins.toString id}\"") cfg.identifiers
     );
   in
     pkgs.writeShellApplication {
@@ -61,7 +63,11 @@
   };
 in {
   options.my.yubikey = {
-    enable = mkEnableOption "yubikey support";
+    enable =
+      mkEnableOption "yubikey support"
+      // {
+        default = true;
+      };
 
     identifiers = mkOption {
       default = {
@@ -91,11 +97,20 @@ in {
   };
 
   config = mkIf cfg.enable {
+    # make home-manager enable yubikey-touch-detector
+
+    # FIXME: This doesn't work
+    # hm.my.yubikey.touchDetector.enable = true;
+
+    # TODO: need to figure out how to use gpg-agent with ssh
+    # or just ues ssh-agent with yubikey?
+    # can ssh-agent works with yubikey?
     # programs.gnupg.agent = {
     #   enable = true;
     #   enableSSHSupport = true;
     # };
-    environment.systemPackages = lib.flatten [
+
+    environment.systemPackages = flatten [
       (builtins.attrValues {
         inherit
           (pkgs)
@@ -116,14 +131,14 @@ in {
     # SUBSYSTEM == "usb", ATTR{idVendor}=="1050", ENV{ID_SECURITY_TOKEN}="1", GROUP="wheel"
     # We already have a yubikey rule that sets the ENV variable
 
-    # FIXME(yubikey): This is linux only
+    # FIXME: This is linux only
     services = optionalAttrs isLinux {
       udev.extraRules = ''
         # Link/unlink ssh key on yubikey add/remove
-        SUBSYSTEM=="usb", ACTION=="add", ATTR{idVendor}=="1050", RUN+="${lib.getBin yubikey-up}/bin/yubikey-up"
+        SUBSYSTEM=="usb", ACTION=="add", ATTR{idVendor}=="1050", RUN+="${getBin yubikey-up}/bin/yubikey-up"
         # NOTE: Yubikey 4 has a ID_VENDOR_ID on remove, but not Yubikey 5 BIO, whereas both have a HID_NAME.
         # Yubikey 5 HID_NAME uses "YubiKey" whereas Yubikey 4 uses "Yubikey", so matching on "Yubi" works for both
-        SUBSYSTEM=="hid", ACTION=="remove", ENV{HID_NAME}=="Yubico Yubi*", RUN+="${lib.getBin yubikey-down}/bin/yubikey-down"
+        SUBSYSTEM=="hid", ACTION=="remove", ENV{HID_NAME}=="Yubico Yubi*", RUN+="${getBin yubikey-down}/bin/yubikey-down"
 
         ##
         # Yubikey 4
@@ -157,7 +172,7 @@ in {
         #  ACTION=="add",\
         #  ENV{HID_NAME}=="Yubico YubiKey FIDO",\
         #  RUN+="${pkgs.systemd}/bin/loginctl activate 1"
-        #  #RUN+="${lib.getBin pkgs.xorg.xset}/bin/xset dpms force on"
+        #  #RUN+="${getBin pkgs.xorg.xset}/bin/xset dpms force on"
       '';
     };
   };

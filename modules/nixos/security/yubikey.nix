@@ -13,6 +13,9 @@ in {
       pkgs.yubioath-flutter
     ];
 
+    # TODO: need to figure out how to use gpg-agent with ssh
+    # or just ues ssh-agent with yubikey?
+    # can ssh-agent works with yubikey?
     programs = {
       ssh.startAgent = mkForce false;
 
