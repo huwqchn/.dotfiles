@@ -7,7 +7,7 @@
   inherit (pkgs.stdenv.hostPlatform) isLinux isDarwin;
   inherit (lib.options) mkOption mkEnableOption;
   inherit (lib.types) listOf enum str nullOr singleLineStr package path coercedTo;
-  inherit (config.my) desktop;
+  inherit (config.my) desktop machine;
 in {
   options.my = {
     name = mkOption {
@@ -216,6 +216,15 @@ in {
     {
       assertion = desktop.environment == "aerospace" -> desktop.type == "darwin";
       message = "You can't use aerospace desktop environment without darwin";
+    }
+    {
+      assertion =
+        machine.persist
+        -> (machine.type
+          == "workstation"
+          && machine.type == "laptop"
+          && machine.type == "desktop"
+          && isLinux);
     }
   ];
 }
