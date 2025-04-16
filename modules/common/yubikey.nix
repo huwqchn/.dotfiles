@@ -7,6 +7,7 @@
   inherit (lib.modules) mkIf;
   inherit (lib.options) mkOption mkEnableOption;
   inherit (lib.attrsets) optionalAttrs;
+  inherit (lib.types) attrsOf int literalExample;
   inherit (pkgs.stdenv.hostPlatform) isLinux;
   cfg = config.my.yubikey;
   homeDirectory = config.my.home;
@@ -63,10 +64,14 @@ in {
     enable = mkEnableOption "yubikey support";
 
     identifiers = mkOption {
-      default = {};
-      type = lib.types.attrsOf lib.types.int;
+      default = {
+        janus = 30805408;
+        aegis = 29642951;
+        mimir = 32226619;
+      };
+      type = attrsOf int;
       description = "Attrset of Yubikey serial numbers. NOTE: Yubico's 'Security Key' products do not use unique serial number therefore, the scripts in this module are unable to distinguish between multiple 'Security Key' devices and instead will detect a Security Key serial number as the string \"[FIDO]\". This means you can only use a single Security Key but can still mix it with YubiKey 4 and 5 devices.";
-      example = lib.literalExample ''
+      example = literalExample ''
         {
           foo = 12345678;
           bar = 87654321;
