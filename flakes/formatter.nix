@@ -47,5 +47,14 @@
         };
       };
     };
+    devshells.default = {
+      commands = [
+        {
+          package = config.treefmt.build.wrapper;
+          help = "Format all files";
+          category = "nix";
+        }
+      ];
+    };
   };
 }

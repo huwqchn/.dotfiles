@@ -28,11 +28,6 @@
       ];
       commands = [
         {
-          package = config.treefmt.build.wrapper;
-          help = "Format all files";
-          category = "nix";
-        }
-        {
           package = pkgs.nix-tree;
           help = "Interactively browse dependency graphs of Nix derivations";
           category = "nix";
