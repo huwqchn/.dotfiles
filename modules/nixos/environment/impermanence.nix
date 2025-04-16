@@ -15,10 +15,6 @@ in {
   config = mkIf persist {
     fileSystems."/persist".neededForBoot = true; # required by impermanence
     fileSystems."/var/log".neededForBoot = true; # required by nixos
-    environment.systemPackages = [
-      # `sudo ncdu -x /`
-      pkgs.ncdu
-    ];
 
     # There are two ways to clear the root filesystem on every boot:
     ##  1. use tmpfs for /
@@ -59,7 +55,7 @@ in {
     system.activationScripts = {
       # NOTE: this is for nixos-anywhere to install nixos on first boot
       persistent-init = {
-        deps = ["persistence-home" "persistence-ssh"];
+        deps = ["persistent-ssh"];
         text = let
           persistence = config.environment.persistence."/persist";
           cpDir = dir: let
@@ -140,7 +136,7 @@ in {
           echo "Persistent SSH keys already initialized, skipping."
         fi
       '';
-      persistent-home.text = let
+      create-home.text = let
         mkHomePersist = user:
           optionalString user.createHome ''
             mkdir -p /persist${user.home}
@@ -151,6 +147,11 @@ in {
       in
         concatLines (map mkHomePersist users);
     };
+
+    environment.systemPackages = [
+      # `sudo ncdu -x /`
+      pkgs.ncdu
+    ];
 
     # for uesr level persistence
     programs.fuse.userAllowOther = true;
