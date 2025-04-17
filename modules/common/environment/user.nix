@@ -54,7 +54,7 @@ in {
   age.secrets.my-ssh-key =
     {
       rekeyFile = "${self}/secrets/${name}/ssh.age";
-      path = "${optionalString persist "/persist"}/${home}/.ssh/id_${name}";
+      path = "${optionalString persist "/persist"}${home}/.ssh/id_${name}";
     }
     // user_readable;
 }
