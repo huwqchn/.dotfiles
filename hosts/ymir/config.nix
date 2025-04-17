@@ -61,7 +61,7 @@
       hasSound = true;
       hasBluetooth = true;
       hasPrinter = false;
-      hasTPM = false;
+      hasTPM = true;
       isHidpi = true;
       persist = true;
     };
