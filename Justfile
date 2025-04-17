@@ -42,13 +42,14 @@ install2 host ip *args:
     --copy-host-keys \
     --build-on remote nixos@{{ip}} {{args}}
 
-# Create disks
+# Create disks and install nixos
+# args can use specific mrrior url --option substituters "https://mirror.sjtu.edu.cn/nix-channels/store"
 [group('nix')]
-disko host:
+disko host *args:
   sudo nix --experimental-features "nix-command flakes" run github:nix-community/disko -- \
     --mode disko \
     --flake .#{{host}}
-  nixos-install --flake .#{{host}}
+  nixos-install --flake .#{{host}} {{args}}
 
 # Remove all generations order than 7 days
 # on darwin, you may need to switch to root user to run this command
