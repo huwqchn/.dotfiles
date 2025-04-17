@@ -5,7 +5,8 @@
   ...
 }: let
   inherit (lib.options) mkEnableOption;
-  inherit (lib.modules) mkIf;
+  inherit (lib.modules) mkIf mkMerge;
+  inherit (lib.my) sourceLua;
   cfg = config.my.neovim.lazyvim.nix;
 in {
   options.my.neovim.lazyvim.nix = {enable = mkEnableOption "language nix";};
@@ -18,7 +19,8 @@ in {
     # my.neovim.lazyvim.extraSpec = ''
     #   { import = "lazyvim.plugins.extras.lang.nix" },
     # '';
-    xdg.configFile."nvim/lua/plugins/nix.lua".source =
-      lib.my.relativeToConfig "nvim/lua/plugins/extras/lang/nix.lua";
+    xdg.configFile = mkMerge [
+      (sourceLua "lang/nix.lua")
+    ];
   };
 }

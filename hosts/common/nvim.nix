@@ -6,7 +6,7 @@
         enable = true;
         config.enable = true;
         # ai
-        codeium.enable = true;
+        windsurf.enable = true;
         copilot.enable = true;
         supermaven.enable = true;
         # coding

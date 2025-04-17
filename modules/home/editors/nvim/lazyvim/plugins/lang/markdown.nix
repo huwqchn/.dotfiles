@@ -5,7 +5,8 @@
   ...
 }: let
   inherit (lib.options) mkEnableOption;
-  inherit (lib.modules) mkIf;
+  inherit (lib.modules) mkIf mkMerge;
+  inherit (lib.my) sourceLua;
   cfg = config.my.neovim.lazyvim.markdown;
 in {
   options.my.neovim.lazyvim.markdown = {
@@ -23,6 +24,8 @@ in {
       marksman
     ];
 
-    xdg.configFile."nvim/lua/plugins/markdown.lua".source = lib.my.relativeToConfig "nvim/lua/plugins/extras/lang/markdown.lua";
+    xdg.configFile = mkMerge [
+      (sourceLua "lang/markdown.lua")
+    ];
   };
 }

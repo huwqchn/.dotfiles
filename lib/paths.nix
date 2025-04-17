@@ -16,4 +16,16 @@
             )
         )
         (builtins.readDir path)));
+
+  sourceLua = path: let
+    name = builtins.baseNameOf path;
+
+    # ssourcePath
+    sourcePath = "nvim/lua/plugins/extras/${path}";
+
+    # xdg.configFile."key"
+    key = "nvim/lua/plugins/${name}";
+  in
+    # 返回一个 attrset，动态定义了 `${key}.source`
+    {"${key}".source = lib.my.relativeToConfig sourcePath;};
 }

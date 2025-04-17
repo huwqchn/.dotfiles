@@ -5,7 +5,8 @@
   ...
 }: let
   inherit (lib.options) mkEnableOption;
-  inherit (lib.modules) mkIf;
+  inherit (lib.modules) mkIf mkMerge;
+  inherit (lib.my) sourceLua;
   cfg = config.my.neovim.lazyvim.practice;
 in {
   options.my.neovim.lazyvim.practice = {
@@ -17,6 +18,8 @@ in {
       precognition-nvim
     ];
 
-    xdg.configFile."nvim/lua/plugins/practice.lua".source = lib.my.relativeToConfig "nvim/lua/plugins/extras/util/practice.lua";
+    xdg.configFile = mkMerge [
+      (sourceLua "util/practice.lua")
+    ];
   };
 }

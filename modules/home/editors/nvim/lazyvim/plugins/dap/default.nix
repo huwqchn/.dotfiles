@@ -5,7 +5,8 @@
   ...
 }: let
   inherit (lib.options) mkEnableOption;
-  inherit (lib.modules) mkIf;
+  inherit (lib.modules) mkIf mkMerge;
+  inherit (lib.my) sourceLua;
   cfg = config.my.neovim.lazyvim.dap;
 in {
   options.my.neovim.lazyvim.dap = {
@@ -28,6 +29,8 @@ in {
       '';
     };
 
-    xdg.configFile."nvim/lua/plugins/dap.lua".source = lib.my.relativeToConfig "nvim/lua/plugins/extras/editor/dap.lua";
+    xdg.configFile = mkMerge [
+      (sourceLua "editor/dap.lua")
+    ];
   };
 }

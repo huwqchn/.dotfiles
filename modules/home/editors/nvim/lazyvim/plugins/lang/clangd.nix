@@ -5,7 +5,8 @@
   ...
 }: let
   inherit (lib.options) mkEnableOption;
-  inherit (lib.modules) mkIf;
+  inherit (lib.modules) mkIf mkMerge;
+  inherit (lib.my) sourceLua;
   cfg = config.my.neovim.lazyvim.clangd;
 in {
   options.my.neovim.lazyvim.clangd = {
@@ -28,6 +29,8 @@ in {
       clang-tools
     ];
 
-    xdg.configFile."nvim/lua/plugins/clangd.lua".source = lib.my.relativeToConfig "nvim/lua/plugins/extras/lang/clangd.lua";
+    xdg.configFile = mkMerge [
+      (sourceLua "lang/clangd.lua")
+    ];
   };
 }

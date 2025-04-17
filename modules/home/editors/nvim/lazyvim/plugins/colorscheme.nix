@@ -6,6 +6,8 @@
 }: let
   inherit (lib.options) mkOption;
   inherit (lib.types) enum;
+  inherit (lib.modules) mkMerge;
+  inherit (lib.my) sourceLua;
   cfg = config.my.neovim.lazyvim.colorscheme;
 in {
   # FIXME: This should be controlled by `my.thesmes` (my rice system)
@@ -23,7 +25,8 @@ in {
       catppuccin-nvim
     ];
 
-    xdg.configFile."nvim/lua/plugins/colorscheme.lua".source =
-      lib.my.relativeToConfig "nvim/lua/plugins/extras/colorscheme/${cfg}.lua";
+    xdg.configFile = mkMerge [
+      (sourceLua "colorscheme/${cfg}.lua")
+    ];
   };
 }

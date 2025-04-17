@@ -5,7 +5,8 @@
   ...
 }: let
   inherit (lib.options) mkEnableOption;
-  inherit (lib.modules) mkIf;
+  inherit (lib.my) sourceLua;
+  inherit (lib.modules) mkIf mkMerge;
   cfg = config.my.neovim.lazyvim.window-picker;
 in {
   options.my.neovim.lazyvim.window-picker = {
@@ -17,6 +18,8 @@ in {
       nvim-window-picker
     ];
 
-    xdg.configFile."nvim/lua/plugins/window-picker.lua".source = lib.my.relativeToConfig "nvim/lua/plugins/extras/ui/window-picker.lua";
+    xdg.configFile = mkMerge [
+      (sourceLua "ui/window-picker.lua")
+    ];
   };
 }

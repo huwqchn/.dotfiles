@@ -5,7 +5,8 @@
   ...
 }: let
   inherit (lib.options) mkEnableOption;
-  inherit (lib.modules) mkIf;
+  inherit (lib.modules) mkIf mkMerge;
+  inherit (lib.my) sourceLua;
   cfg = config.my.neovim.lazyvim.dial;
 in {
   options.my.neovim.lazyvim.dial = {
@@ -16,6 +17,8 @@ in {
     my.neovim.lazyvim.extraPlugins = with pkgs.vimPlugins; [
       dial-nvim
     ];
-    xdg.configFile."nvim/lua/plugins/dial.lua".source = lib.my.relativeToConfig "nvim/lua/plugins/extras/coding/dial.lua";
+    xdg.configFile = mkMerge [
+      (sourceLua "coding/dial.lua")
+    ];
   };
 }

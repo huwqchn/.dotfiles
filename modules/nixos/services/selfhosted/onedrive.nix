@@ -28,8 +28,8 @@ in {
       '';
     })
     (mkIf isPersist {
-      environment.persistence."/persist" = {
-        users.${config.my.name}.directories = [
+      hm.home.persistence."/persist${config.my.home}" = {
+        directories = [
           "OneDrive"
           ".config/onedrive"
         ];

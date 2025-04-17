@@ -5,7 +5,8 @@
   ...
 }: let
   inherit (lib.options) mkEnableOption;
-  inherit (lib.modules) mkIf;
+  inherit (lib.modules) mkIf mkMerge;
+  inherit (lib.my) sourceLua;
   cfg = config.my.neovim.lazyvim.copilot;
   inherit (config.home) homeDirectory;
 in {
@@ -24,8 +25,9 @@ in {
         == "blink"
         || config.my.neovim.lazyvim.cmp == "auto") [blink-cmp-copilot];
 
-    xdg.configFile."nvim/lua/plugins/copilot.lua".source =
-      lib.my.relativeToConfig "nvim/lua/plugins/extras/ai/copilot.lua";
+    xdg.configFile = mkMerge [
+      (sourceLua "ai/copilot.lua")
+    ];
 
     age.secrets.github-copilot = {
       rekeyFile = ./secrets/github-copilot.age;
