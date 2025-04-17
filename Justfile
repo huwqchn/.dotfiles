@@ -32,7 +32,7 @@ install host *args:
   nixos-anywhere \
     --flake .#{{host}} \
     --copy-host-keys \
-    --build-on-remote root@{{host}} {{args}}
+    --build-on remote root@{{host}} {{args}}
 
 # Install nixos on a machine with no operating system
 [group('nix')]
@@ -40,7 +40,7 @@ install2 host ip *args:
   nixos-anywhere  \
     --flake .#{{host}} \
     --copy-host-keys \
-    --build-on-remote nixos@{{ip}} {{args}}
+    --build-on remote nixos@{{ip}} {{args}}
 
 # Create disks
 [group('nix')]

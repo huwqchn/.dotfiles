@@ -5,6 +5,15 @@
     #    2. command line args `--options substituers http://xxx`
     # substituers that will be considered before the official ones(https://cache.nixos.org)
     substituters = [
+      # cache mirror located in China
+      # status: https://mirrors.ustc.edu.cn/status/
+      "https://mirrors.ustc.edu.cn/nix-channels/store"
+      # status: https://mirror.sjtu.edu.cn/
+      # "https://mirror.sjtu.edu.cn/nix-channels/store"
+      # others
+      # "https://mirrors.sustech.edu.cn/nix-channels/store"
+      "https://mirrors.tuna.tsinghua.edu.cn/nix-channels/store"
+      # official nix cache mirror
       "https://cache.nixos.org"
       "https://nix-community.cachix.org"
       "https://cuda-maintainers.cachix.org"
