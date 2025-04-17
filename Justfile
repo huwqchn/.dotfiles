@@ -139,7 +139,7 @@ rm program:
 [group('dev')]
 cfg program:
   just rm {{program}}
-  rsync -avz --copy-links --chmod=D2755,F744 config/{{program}}/ "$HOME/.config/{{program}}/"
+  rsync -avz --copy-links config/{{program}}/ "$HOME/.config/{{program}}/"
 
 # Backup this program's configuration folder to my repo
 [group('dev')]
