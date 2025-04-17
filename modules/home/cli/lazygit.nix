@@ -1,6 +1,7 @@
 {
   config,
   lib,
+  pkgs,
   ...
 }: let
   shellAliases = {"lg" = "lazygit";};
@@ -56,7 +57,7 @@ in {
         git = {
           paging = {
             colorArg = "always";
-            pager = "delta --dark --paging=never";
+            pager = "${pkgs.delta}/bin/delta --dark --paging=never";
             useConfig = false;
           };
           commit.signOff = false;

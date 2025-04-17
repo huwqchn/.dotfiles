@@ -15,7 +15,7 @@
 in {
   options.my.git = {
     enable = mkEnableOption "git";
-    diffTool = mkOption {
+    diff = mkOption {
       type = nullOr (enum ["riff" "delta"]);
       default = "riff";
       description = "The git diff tool to use";
@@ -50,7 +50,7 @@ in {
         status.submoduleSummary = true;
       };
 
-      delta = mkIf (cfg.diffTool == "delta") {
+      delta = mkIf (cfg.diff == "delta") {
         enable = true;
         options = {
           features = mkDefault "side-by-side";
@@ -60,7 +60,7 @@ in {
       };
 
       # Use riff instead of delta
-      riff.enable = cfg.diffTool == "riff";
+      riff.enable = cfg.diff == "riff";
 
       ignores = [".*.sw?" ".direnv/" ".envrc" "result*" "node_modules"];
 
