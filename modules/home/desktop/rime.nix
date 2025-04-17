@@ -12,6 +12,7 @@
     types
     ;
   cfg = config.my.rime;
+  kernelName = pkgs.stdenv.hostPlatform.parsed.kernel.name;
 in {
   options.my.rime = {
     enable = mkEnableOption "rime";
@@ -24,7 +25,9 @@ in {
           darwin = "Library/Rime";
           linux = ".local/share/fcitx5/rime";
         }
-        .${pkgs.stdenv.hostPlatform.parsed.kernel.name};
+        .${
+          kernelName
+        };
     };
 
     deploy = mkOption {
@@ -34,7 +37,9 @@ in {
           darwin = "'/Library/Input Methods/Squirrel.app/Contents/MacOS/Squirrel' --reload";
           linux = "fcitx-remote -r";
         }
-        .${pkgs.stdenv.hostPlatform.parsed.kernel.name};
+        .${
+          kernelName
+        };
     };
   };
 
