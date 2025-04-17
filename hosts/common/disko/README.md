@@ -12,11 +12,14 @@
 
 3. run: `mount | grep /mnt` for check the mount points
 
-4. run: `nixos-generate-config --root /mnt --no-filesystems` to generate nixos configuration files
+4. you can use your yubikey to decrypt the luks partition. run:
+   `sudo systemd-cryptenroll --fido2-device=auto /dev/nvme1n1p1`
+
+5. run: `nixos-generate-config --root /mnt --no-filesystems` to generate nixos configuration files
    without filesystem configuration (disko.nix holds the filesystem). and run
    `mv /tmp/disko.nix /mnt/etc/nixos/`
 
-5. edit /etc/nixos/configuration.nix:
+6. edit /etc/nixos/configuration.nix:
 
 ```
 imports =
