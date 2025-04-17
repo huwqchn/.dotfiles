@@ -1,7 +1,9 @@
 {
   imports = [
     # Include the results of the hardware scan.
+    # TODO: we give nios-factor a try
     ./hardware-configuration.nix
+    (import ../common/disko/luks-btrfs-tmpfs.nix {})
   ];
 
   my = {
