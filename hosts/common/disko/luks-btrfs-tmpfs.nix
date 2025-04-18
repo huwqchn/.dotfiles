@@ -44,10 +44,11 @@
                 allowDiscards = true;
                 bypassWorkqueues = true; # SSD optimization
                 # https://github.com/hmajid2301/dotfiles/blob/a0b511c79b11d9b4afe2a5e2b7eedb2af23e288f/systems/x86_64-linux/framework/disks.nix#L36
-                crypttabExtraOpts = [
-                  "fido2-device=auto"
-                  "token-timeout=10"
-                ];
+                # FIXME: I don't know how to get this to work
+                # crypttabExtraOpts = [
+                #   "fido2-device=auto"
+                #   "token-timeout=10"
+                # ];
               };
               # encrypt the root partition with luks2 and argon2id, will prompt for a passphrase, which will be used to unlock the partition.
               # cryptsetup luksFormat
