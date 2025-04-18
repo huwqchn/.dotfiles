@@ -43,8 +43,8 @@ in {
         swaylock.text = "auth include login";
         gtklock.text = "auth include login";
         hyprlock.text = "auth include login";
-        greetd.text = "auto include login";
-        tuigreet.text = "auto include login";
+        greetd.text = "auth include login";
+        tuigreet.text = "auth include login";
 
         login = {
           inherit ttyAudit fprintAuth gnupg enableGnomeKeyring;
