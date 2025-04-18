@@ -96,44 +96,43 @@ in {
           echo "Process $EARLYOOM_NAME ($EARLYOOM_PID) was killed"
         '';
       };
-
-      systemd.services.earlyoom.serviceConfig = {
-        # from upstream
-        DynamicUser = true;
-        AmbientCapabilities = "CAP_KILL CAP_IPC_LOCK";
-        Nice = -20;
-        OOMScoreAdjust = -100;
-        ProtectSystem = "strict";
-        ProtectHome = true;
-        Restart = "always";
-        TasksMax = 10;
-        MemoryMax = "50M";
-
-        # Protection rules. Mostly from the `systemd-oomd` service
-        # with some of them already included upstream.
-        CapabilityBoundingSet = "CAP_KILL CAP_IPC_LOCK";
-        PrivateDevices = true;
-        ProtectClock = true;
-        ProtectHostname = true;
-        ProtectKernelLogs = true;
-        ProtectKernelModules = true;
-        ProtectKernelTunables = true;
-        ProtectControlGroups = true;
-        RestrictNamespaces = true;
-        RestrictRealtime = true;
-
-        PrivateNetwork = true;
-        IPAddressDeny = "any";
-        RestrictAddressFamilies = "AF_UNIX";
-
-        SystemCallArchitectures = "native";
-        SystemCallFilter = [
-          "@system-service"
-          "~@resources @privileged"
-        ];
-      };
-
       systembus-notify.enable = mkForce true;
+    };
+
+    systemd.services.earlyoom.serviceConfig = {
+      # from upstream
+      DynamicUser = true;
+      AmbientCapabilities = "CAP_KILL CAP_IPC_LOCK";
+      Nice = -20;
+      OOMScoreAdjust = -100;
+      ProtectSystem = "strict";
+      ProtectHome = true;
+      Restart = "always";
+      TasksMax = 10;
+      MemoryMax = "50M";
+
+      # Protection rules. Mostly from the `systemd-oomd` service
+      # with some of them already included upstream.
+      CapabilityBoundingSet = "CAP_KILL CAP_IPC_LOCK";
+      PrivateDevices = true;
+      ProtectClock = true;
+      ProtectHostname = true;
+      ProtectKernelLogs = true;
+      ProtectKernelModules = true;
+      ProtectKernelTunables = true;
+      ProtectControlGroups = true;
+      RestrictNamespaces = true;
+      RestrictRealtime = true;
+
+      PrivateNetwork = true;
+      IPAddressDeny = "any";
+      RestrictAddressFamilies = "AF_UNIX";
+
+      SystemCallArchitectures = "native";
+      SystemCallFilter = [
+        "@system-service"
+        "~@resources @privileged"
+      ];
     };
   };
 }
