@@ -129,6 +129,9 @@ in {
         };
       };
     };
+    persistence = {
+      enable = mkEnableOption "persistence"; # must use tmpfs for /
+    };
     # hardware
     machine = {
       type = mkOption {
@@ -169,9 +172,7 @@ in {
           you can avoid declaring this, but I'd rather if you did declare
         '';
       };
-      isHidpi = mkEnableOption "hidpi";
-      persist = mkEnableOption "persist"; # must use tmpfs for /
-      minimal = mkEnableOption "Minimal";
+      hasHidpi = mkEnableOption "hidpi";
     };
   };
 
@@ -219,7 +220,7 @@ in {
     }
     {
       assertion =
-        machine.persist
+        config.my.persistence.enable
         -> (machine.type
           == "workstation"
           || machine.type == "laptop"

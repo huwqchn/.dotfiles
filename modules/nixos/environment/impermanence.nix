@@ -5,16 +5,19 @@
   lib,
   ...
 }: let
-  inherit (config.my.machine) persist;
+  cfg = config.my.persistence;
   inherit (lib.modules) mkIf;
   inherit (lib.strings) optionalString concatLines;
   inherit (lib.attrsets) attrValues;
 in {
   imports = [inputs.impermanence.nixosModules.impermanence];
 
-  config = mkIf persist {
+  config = mkIf cfg.enable {
     fileSystems."/persist".neededForBoot = true; # required by impermanence
     fileSystems."/var/log".neededForBoot = true; # required by nixos
+
+    # enable persist on home-manager too
+    hm.my.persistence.enable = true;
 
     # There are two ways to clear the root filesystem on every boot:
     ##  1. use tmpfs for /

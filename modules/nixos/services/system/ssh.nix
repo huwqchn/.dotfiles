@@ -4,7 +4,7 @@
   ...
 }: let
   inherit (lib.strings) optionalString;
-  inherit (config.my.machine) persist;
+  persist = config.my.persistence.enable;
 in {
   services.openssh = {
     enable = true;

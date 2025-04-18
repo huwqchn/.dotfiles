@@ -11,9 +11,9 @@
   inherit (pkgs.stdenv.hostPlatform) isLinux;
   inherit (config.my.themes) transparent;
   inherit (config.my.themes) pad;
-  inherit (config.my.machine) isHidpi;
+  inherit (config.my.machine) hasHidpi;
   dpi =
-    if isHidpi
+    if hasHidpi
     then 192
     else 96;
 

@@ -16,9 +16,9 @@
   ];
   cfg = config.my.desktop.login;
   inherit (config.my) name;
-  inherit (config.my.machine) persist;
   inherit (config.my.desktop) autologin;
   inherit (config.my.desktop) environment;
+  persist = config.my.persistence.enable;
 in {
   options.my.desktop.autologin =
     mkEnableOption ''

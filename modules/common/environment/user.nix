@@ -16,7 +16,7 @@
   inherit (lib.strings) optionalString;
   inherit (lib.filesystem) listFilesRecursive;
   inherit (lib.lists) forEach;
-  inherit (config.my.machine) persist;
+  persist = config.my.persistence.enable;
 in {
   environment = {
     # add user's shell into /etc/shells

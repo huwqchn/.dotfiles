@@ -4,7 +4,7 @@
   ...
 }: let
   cfg = config.my.services.onedrive;
-  isPersist = config.my.machine.persist && cfg.enable;
+  persist = config.my.persistence.enable && cfg.enable;
   inherit (lib.options) mkEnableOption;
   inherit (lib.modules) mkIf mkMerge;
 in {
@@ -27,7 +27,7 @@ in {
         skip_file = "~*|.~*|*.tmp|.OBSIDIANTEST"
       '';
     })
-    (mkIf isPersist {
+    (mkIf persist {
       hm.home.persistence."/persist${config.my.home}" = {
         directories = [
           "OneDrive"

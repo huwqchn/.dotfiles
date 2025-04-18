@@ -49,6 +49,7 @@
       # samba.enable = true;
     };
     virtual.enable = true;
+    persistence.enable = true;
     machine = {
       type = "laptop";
       cpu = "intel";
@@ -57,8 +58,7 @@
       hasBluetooth = true;
       hasPrinter = false;
       hasTPM = true;
-      isHidpi = true;
-      persist = true;
+      hasHidpi = true;
       ethernetDevices = ["wlp2s0"]; # ymir wifi device
     };
   };

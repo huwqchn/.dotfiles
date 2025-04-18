@@ -19,8 +19,7 @@ in {
         cpu = null;
         hasTPM = false;
         hasSound = false;
-        isHidpi = false;
-        persist = mkForce false;
+        hasHidpi = false;
       };
       boot = {
         loader = "none";
@@ -46,6 +45,7 @@ in {
         enable = mkForce false;
         docker.enable = config.my.desktop.enable;
       };
+      persistence.enable = mkForce false;
       # TODO: so many things rely on yubikey, so It should enable no WSL too
       yubikey.enable = mkForce false;
     };

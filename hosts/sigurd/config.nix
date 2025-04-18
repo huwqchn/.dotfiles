@@ -41,6 +41,7 @@
       printing.enable = true;
     };
     virtual.enable = true;
+    persistence.enable = true;
     machine = {
       type = "desktop";
       cpu = "intel";
@@ -49,8 +50,7 @@
       hasBluetooth = true;
       hasPrinter = false;
       hasTPM = false;
-      isHidpi = true;
-      persist = true;
+      hasHidpi = true;
     };
   };
 }

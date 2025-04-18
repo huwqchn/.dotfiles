@@ -4,7 +4,7 @@
   config,
   ...
 }: let
-  inherit (config.my.machine) persist;
+  persist = config.my.persistence.enable;
   inherit (lib.modules) mkForce;
 in {
   imports = [

@@ -6,7 +6,7 @@
 }: let
   inherit (builtins) hasAttr;
   inherit (lib.strings) optionalString;
-  inherit (config.my) name home machine;
+  inherit (config.my) name home;
   hostPath = ../../hosts/${config.networking.hostName}/host.pub;
   userPath = ../../secrets/${name}/ssh.pub;
   dirname =
@@ -14,7 +14,7 @@
     then config.networking.hostName
     else name + "-" + hostName;
   sshDir = home + "/.ssh";
-  inherit (machine) persist;
+  persist = config.my.persistence.enable;
 in {
   # Setup secret rekeying parameters
   age = {
