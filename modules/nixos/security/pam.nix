@@ -4,6 +4,11 @@
   ...
 }: let
   inherit (lib.modules) mkDefault;
+  pamInclude = ''
+    auth include login
+    account include login
+    session include login
+  '';
 in {
   services.gnome.gnome-keyring.enable = mkDefault config.my.desktop.enable;
   security = {
@@ -40,11 +45,11 @@ in {
         };
       in {
         # Allow screen lockers such as Swaylock or gtklock) to also unlock the screen.
-        swaylock.text = "auth include login";
-        gtklock.text = "auth include login";
-        hyprlock.text = "auth include login";
-        greetd.text = "auth include login";
-        tuigreet.text = "auth include login";
+        swaylock.text = pamInclude;
+        gtklock.text = pamInclude;
+        hyprlock.text = pamInclude;
+        greetd.text = pamInclude;
+        tuigreet.text = pamInclude;
 
         login = {
           inherit ttyAudit fprintAuth gnupg enableGnomeKeyring;
