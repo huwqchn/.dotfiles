@@ -42,25 +42,33 @@ in {
         "fish"
         "n?vim"
       ];
-      prefer = mkOption {
-        type = listOf str;
-        default = [
-          # browsers
-          "Web Content"
-          "Isolated Web Co"
-          "firefox.*"
-          "chrom(e|ium).*"
-          "electron"
-          "dotnet"
-          ".*.exe"
-          "java.*"
-          "pipewire(.*)"
-          "nix"
-          "npm"
-          "node"
-          "pipewire(.*)"
-        ];
-      };
+      description = ''
+        A list of processes to avoid killing. This is a regex that will be
+        matched against the process name.
+      '';
+    };
+    prefer = mkOption {
+      type = listOf str;
+      default = [
+        # browsers
+        "Web Content"
+        "Isolated Web Co"
+        "firefox.*"
+        "chrom(e|ium).*"
+        "electron"
+        "dotnet"
+        ".*.exe"
+        "java.*"
+        "pipewire(.*)"
+        "nix"
+        "npm"
+        "node"
+        "pipewire(.*)"
+      ];
+      description = ''
+        A list of processes to prefer killing. This is a regex that will be
+        matched against the process name.
+      '';
     };
   };
 
