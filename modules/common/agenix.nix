@@ -22,7 +22,7 @@ in {
     # to decrypt the secrets
     identityPaths = [
       "${optionalString persist "/persist"}/etc/ssh/ssh_host_ed25519_key"
-      "${optionalString persist "/persist"}/${sshDir}/id_${name}"
+      "${optionalString persist "/persist"}${sshDir}/id_${name}"
     ];
 
     rekey = {

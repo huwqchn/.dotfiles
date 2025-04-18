@@ -9,6 +9,7 @@
   inherit (lib.attrsets) concatMapAttrs genAttrs;
   inherit (config.my.machine) ethernetDevices;
 in {
+  # run `ip a` to find out
   options.my.machine.ethernetDevices = mkOption {
     type = listOf str;
     default = [];

@@ -59,7 +59,7 @@
       hasTPM = true;
       isHidpi = true;
       persist = true;
-      ethernetDevices = ["wlp2s0"];
+      ethernetDevices = ["wlp2s0"]; # ymir wifi device
     };
   };
 }
