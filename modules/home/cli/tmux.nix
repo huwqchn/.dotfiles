@@ -31,7 +31,6 @@ in {
              && test -z "$EMACS" \
              && test -z "$VIM" \
              && test -z "$NVIM" \
-             && test -z "$NVIM_LISTEN_ADDRESS" \
              && test -z "$INSIDE_PYCHARM" \
              && test -z "$ZELLIJ_SESSION_NAME" \
              && test "$TERN_PROGRAM" != "vscode"; then
@@ -49,7 +48,6 @@ in {
             && [[ -z "$EMACS" ]] \
             && [[ -z "$VIM" ]] \
             && [[ -z "$NVIM" ]] \
-            && [[ -z "$NVIM_LISTEN_ADDRESS" ]]; \
             && [[ -z "$ZELLIJ_SESSION_NAME" ]] \
             && [[ -z "$INSIDE_PYCHARM" ]]; then
             exec tmux attach || tmux new;
