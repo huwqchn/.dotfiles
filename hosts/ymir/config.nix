@@ -59,6 +59,7 @@
       hasTPM = true;
       isHidpi = true;
       persist = true;
+      ethernetDevices = ["eno2" "wlo1"];
     };
   };
 }
