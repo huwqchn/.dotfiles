@@ -13,8 +13,8 @@ in {
     inherit autoEnable image;
 
     # We need set a default colorscheme when we don't set wall
-    # base16Scheme = mkIf (image == null) "${pkgs.base16-schemes}/share/themes/catppuccin-mocha.yaml";
     # FIXME: this is not success check on darwin
+    # base16Scheme = mkIf (image == null) "${pkgs.base16-schemes}/share/themes/catppuccin-mocha.yaml";
     base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-mocha.yaml";
     fonts = {
       serif = {
