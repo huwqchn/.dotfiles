@@ -14,8 +14,6 @@
   # networking.interfaces.eno2.useDHCP = lib.mkDefault true;
   # networking.interfaces.wlo1.useDHCP = lib.mkDefault true;
 
-  # TODO: for test, it's can't work on wsl and ssh
-  hm.my.tmux.autoStart = false;
   my = {
     boot = {
       secureBoot = false;
