@@ -36,7 +36,11 @@
   '';
 in {
   options.my.security.clamav = {
-    enable = mkEnableOption "Enable ClamAV antivirus";
+    enable =
+      mkEnableOption "Enable ClamAV antivirus"
+      // {
+        default = config.my.security.enable;
+      };
   };
 
   config = mkIf cfg.enable {
