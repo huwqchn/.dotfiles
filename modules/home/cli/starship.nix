@@ -56,12 +56,12 @@ in {
         continuation_prompt = "∙  ┆ ";
         line_break = {disabled = false;};
         username = {
-          format = "[ $user]($style)";
+          format = "[$user]($style)";
           show_always = false;
         };
         hostname = {
           ssh_only = true;
-          format = "[@$hostname]($style)";
+          format = "[@$hostname ]($style)";
         };
         status = {
           symbol = "✗";
