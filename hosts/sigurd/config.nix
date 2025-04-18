@@ -10,7 +10,7 @@
     boot = {
       # TODO: this is should be enabled by default
       secureBoot = false;
-      tmpOnTmpfs = true;
+      tmpOnTmpfs = false;
       enableKernelTweaks = true;
       loadRecommendedModules = true;
       # TODO: diable for debugging

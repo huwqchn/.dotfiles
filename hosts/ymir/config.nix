@@ -17,7 +17,7 @@
   my = {
     boot = {
       secureBoot = false;
-      tmpOnTmpfs = true;
+      tmpOnTmpfs = false;
       enableKernelTweaks = true;
       loadRecommendedModules = true;
       # TODO: diable for debugging
