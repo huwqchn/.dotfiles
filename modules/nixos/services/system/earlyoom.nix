@@ -12,7 +12,7 @@
 
   cfg = config.my.services.earlyoom;
 in {
-  options.my.sevices.earlyoom = {
+  options.my.services.earlyoom = {
     enable =
       mkEnableOption "earlyoom"
       // {
