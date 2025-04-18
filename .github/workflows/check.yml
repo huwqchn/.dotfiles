@@ -2,6 +2,8 @@ name: "Check Flake"
 on:
   workflow_dispatch:
   push:
+    branches:
+      - main
     paths:
       - "**.nix"
       - "**.lock"
