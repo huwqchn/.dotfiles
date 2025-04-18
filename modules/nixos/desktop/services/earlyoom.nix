@@ -11,7 +11,7 @@
   inherit (config.my) desktop;
 
   avoid = concatStringsSep "|" [
-    "(h|H)yprland"
+    "Hyprland"
     "sway"
     "Xwayland"
     "cryptsetup"
@@ -62,8 +62,8 @@ in {
         freeMemThreshold = 2;
         extraArgs = [
           "-g"
-          "--avoid '(^|/)(${avoid})'" # things that we want to avoid killing
-          "--prefer '(^|/)(${prefer})'" # things we want to remove fast
+          "--avoid '(^|/)(${avoid})$'" # things that we want to avoid killing
+          "--prefer '(^|/)(${prefer})$'" # things we want to remove fast
         ];
 
         # we should ideally write the logs into a designated log file; or even better, to the journal
