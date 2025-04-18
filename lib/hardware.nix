@@ -73,6 +73,7 @@ _: let
   => "DP-1"
   ```
   */
+  primaryMonitor = config: builtins.elemAt config.my.machine.monitors 0;
 in {
-  inherit isx86Linux ldTernary;
+  inherit isx86Linux ldTernary primaryMonitor;
 }
