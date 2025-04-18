@@ -24,14 +24,32 @@ in {
     programs = {
       fish = mkIf cfg.autoStart {
         interactiveShellInit = ''
-          if not set -q TMUX
-              exec tmux attach || tmux new
+          if not set -q TMUX \
+             && test -z "$SSH_TTY" \
+             && test -z "$WSL_DISTRO_NAME" \
+             && test -z "$INSIDE_EMACS" \
+             && test -z "$EMACS" \
+             && test -z "$VIM" \
+             && test -z "$NVIM" \
+             && test -z "$NVIM_LISTEN_ADDRESS" \
+             && test "$TERN_PROGRAM" != "vscode"; then
+            exec tmux attach || tmux new
           end
         '';
       };
       zsh = mkIf cfg.autoStart {
         initExtraFirst = ''
-          [ -z "$TMUX" ] && { exec tmux attach || tmux new; }
+          if [[ -z "$TMUX" ]] \
+            && [[ -z "$SSH_TTY" ]] \
+            && [[ -z "$WSL_DISTRO_NAME" ]] \
+            && [[ "$TERM_PROGRAM" != "vscode" ]] \
+            && [[ -z "$INSIDE_EMACS" ]] \
+            && [[ -z "$EMACS" ]] \
+            && [[ -z "$VIM" ]] \
+            && [[ -z "$NVIM" ]] \
+            && [[ -z "$NVIM_LISTEN_ADDRESS" ]]; then
+            exec tmux attach || tmux new;
+          fi
         '';
       };
       tmux = {
