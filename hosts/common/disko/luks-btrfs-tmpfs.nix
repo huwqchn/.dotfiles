@@ -66,7 +66,10 @@
               ];
               content = {
                 type = "btrfs";
+                # Override existing filesystem
                 extraArgs = ["-f"];
+                # Subvolumes must set a mountpoint in order to be mounted
+                # unless its parent is mounted
                 subvolumes = let
                   mountOptions = [
                     "compress=zstd"

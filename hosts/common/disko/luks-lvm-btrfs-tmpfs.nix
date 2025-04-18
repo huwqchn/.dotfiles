@@ -4,6 +4,16 @@
   ...
 }: {
   disko.devices = {
+    nodev."/" = {
+      fsType = "tmpfs";
+      mountOptions = [
+        "defaults"
+        # set mode to 755, otherwise systemd will set it to 777, which cause problems.
+        # relatime: Update inode access times relative to modify or change time.
+        "mode=755"
+      ];
+    };
+
     disk.main = {
       type = "disk";
       inherit device;
@@ -123,15 +133,6 @@
           };
         };
       };
-    };
-    nodev."/" = {
-      fsType = "tmpfs";
-      mountOptions = [
-        "defaults"
-        # set mode to 755, otherwise systemd will set it to 777, which cause problems.
-        # relatime: Update inode access times relative to modify or change time.
-        "mode=755"
-      ];
     };
   };
 }

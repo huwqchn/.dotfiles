@@ -75,7 +75,7 @@ in {
       docker-desktop.enable = config.my.desktop.enable;
     };
     networking = {
-      useNetworkd = lib.mkForce false;
+      networkmanager.enable = lib.mkForce false;
       nftables.enable = lib.mkForce false;
       extraHosts = lib.mkForce '''';
       tcpcrypt.enable = lib.mkForce false;

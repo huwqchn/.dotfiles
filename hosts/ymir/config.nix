@@ -1,8 +1,4 @@
-{
-  inputs,
-  lib,
-  ...
-}: {
+{inputs, ...}: {
   imports = [
     inputs.hardware.nixosModules.dell-xps-15-9560-nvidia
     (import ../common/disko/luks-btrfs-tmpfs.nix {
@@ -15,7 +11,6 @@
   # (the default) this is the recommended approach. When using systemd-networkd it's
   # still possible to use this option, but it's recommended to use it in conjunction
   # with explicit per-interface declarations with `networking.interfaces.<interface>.useDHCP`.
-  networking.useDHCP = lib.mkDefault true;
   # networking.interfaces.eno2.useDHCP = lib.mkDefault true;
   # networking.interfaces.wlo1.useDHCP = lib.mkDefault true;
 
@@ -47,7 +42,7 @@
     btrbk.enable = true;
     zram.enable = true;
     game.enable = false;
-    security.enable = true;
+    security.enable = false;
     services = {
       onedrive.enable = true;
       printing.enable = true;

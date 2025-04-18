@@ -8,15 +8,13 @@
 in {
   services.openssh = {
     enable = true;
+    startWhenNeeded = true;
 
     settings = {
       # allow root login to remote deployments
       PermitRootLogin = "yes";
       # PasswordAuthentication = false;
       KbdInteractiveAuthentication = false;
-
-      # It's default to true
-      # allowSFTP = true;
 
       # Use key exchange algorithms recommended by `nixpkgs#ssh-audit`
       KexAlgorithms = [
