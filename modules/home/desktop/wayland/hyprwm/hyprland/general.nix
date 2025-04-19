@@ -3,60 +3,11 @@
   config,
   ...
 }: let
-  inherit (lib.modules) mkIf mkForce;
+  inherit (lib.modules) mkIf;
   cfg = config.my.desktop.hyprland;
 in {
   config = mkIf cfg.enable {
     wayland.windowManager.hyprland.settings = {
-      env = [
-        "CLUTTER_BACKEND,wayland"
-        "GDK_BACKEND,wayland,x11"
-        "XDG_CURRENT_DESKTOP,Hyprland"
-        "XDG_SESSION_TYPE,wayland"
-        "XDG_SESSION_DESKTOP,Hyprland"
-        "QT_AUTO_SCREEN_SCALE_FACTOR,1"
-        "QT_QPA_PLATFORM,wayland;xcb"
-        "QT_QPA_PLATFORMTHEME,qt6ct"
-        "QT_WAYLAND_DISABLE_WINDOWDECORATION,1"
-        "QT_AUTO_SCREEN_SCALE_FACTOR,1"
-        "MOZ_ENABLE_WAYLAND,1"
-        "GDK_SCALE,1"
-        "GDK_DPI_SCALE,1"
-        "SDL_VIDEODRIVER,wayland"
-        "WLR_NO_HARDWARE_CURSORS,1"
-        "SDL_VIDEODRIVER,wayland"
-        # for hyprland with nvidia gpu, ref https://wiki.hyprland.org/Nvidia/
-        # "LIBVA_DRIVER_NAME,nvidia"
-        "XDG_SESSION_TYPE,wayland"
-        # "GBM_BACKEND,nvidia-drm"
-        # "__GLX_VENDOR_LIBRARY_NAME,nvidia"
-        # fix https://github.com/hyprwm/Hyprland/issues/1520
-        # "WLR_NO_HARDWARE_CURSORS,1"
-      ];
-
-      exec = [
-        # "gsettings set ${gnome-schema} gtk-theme $system_theme"
-        # "gsettings set ${gnome-schema} icon-theme $icon_theme"
-        # "gsettings set ${gnome-schema} cursor-theme $cursor_theme"
-        "gsettings set org.gnome.desktop.interface text-scaling-factor $text_scale"
-        "gsettings set org.gnome.desktop.interface cursor-size $cursor_size"
-        "hyprshade auto"
-      ];
-
-      exec-once = [
-        "systemctl --user import-environment"
-        "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP XAUTHORITY"
-        "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"
-        "gnome-keyring-daemon --start"
-        "ags"
-        "easyeffects --gapplication-service"
-        # "safeeyes -e"
-        "wl-clip-persist --clipboard regular"
-        "wl-paste --watch cliphist store"
-        "xhost si:localuser:root"
-        "hyprlock"
-      ];
-
       input = {
         kb_layout = "us";
         kb_options = "ctrl:nocaps";
@@ -83,13 +34,10 @@ in {
       };
 
       group = {
-        "col.border_active" = mkForce "rgba(ca9ee6ff) rgba(f2d5cfff) 45deg";
-        "col.border_inactive" =
-          mkForce "rgba(b4befecc) rgba(6c7086cc) 45deg";
-        "col.border_locked_active" =
-          mkForce "rgba(ca9ee6ff) rgba(f2d5cfff) 45deg";
-        "col.border_locked_inactive" =
-          mkForce "rgba(b4befecc) rgba(6c7086cc) 45deg";
+        "col.border_active" = "rgba(ca9ee6ff) rgba(f2d5cfff) 45deg";
+        "col.border_inactive" = "rgba(b4befecc) rgba(6c7086cc) 45deg";
+        "col.border_locked_active" = "rgba(ca9ee6ff) rgba(f2d5cfff) 45deg";
+        "col.border_locked_inactive" = "rgba(b4befecc) rgba(6c7086cc) 45deg";
       };
 
       dwindle = {
@@ -176,24 +124,6 @@ in {
       xwayland.force_zero_scaling = true;
 
       # debug.disable_logs = false;
-
-      plugin = {
-        csgo-vulkan-fix = {
-          res_w = 1280;
-          res_h = 800;
-          class = "cs2";
-        };
-
-        hyprexpo = {
-          columns = 3;
-          gap_size = 4;
-          bg_col = "rgb(000000)";
-
-          enable_gesture = true;
-          gesture_distance = 300;
-          gesture_positive = false;
-        };
-      };
     };
   };
 }

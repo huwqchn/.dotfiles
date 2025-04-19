@@ -7,11 +7,12 @@
   inherit (lib.options) mkEnableOption mkOption;
   inherit (lib.types) listOf enum;
   inherit (lib.modules) mkIf;
+  inherit (lib.my) scanPaths;
   inherit (config.my) desktop;
   isHyprland = desktop.environment == "Hyprland";
   cfg = desktop.hyprland;
 in {
-  imports = [./binds.nix ./rules.nix ./settings.nix];
+  imports = scanPaths ./.;
 
   options.my.desktop.hyprland = {
     enable =
