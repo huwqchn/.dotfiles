@@ -8,7 +8,7 @@
   cfg = config.my.desktop.hyprland;
 in {
   config = mkIf cfg.enable {
-    environment.systemPackages = with pkgs; [
+    home.packages = with pkgs; [
       hyprpicker
       (writeShellScriptBin "hyprpicker-wl-copy" ''
         ${hyprpicker}/bin/hyprpicker \
