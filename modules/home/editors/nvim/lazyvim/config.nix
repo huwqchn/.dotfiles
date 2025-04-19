@@ -5,13 +5,14 @@
   ...
 }: let
   inherit (lib.options) mkEnableOption;
+  inherit (lib.modules) mkIf;
   cfg = config.my.neovim.lazyvim.config;
 in {
   options.my.neovim.lazyvim.config = {
     enable = mkEnableOption "LazyVim custom settings";
   };
 
-  config = lib.mkIf cfg.enable {
+  config = mkIf cfg.enable {
     my.neovim.lazyvim.extraPlugins = with pkgs.vimPlugins; [
       {
         name = "mini.align";

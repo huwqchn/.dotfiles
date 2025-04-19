@@ -19,6 +19,7 @@
   inherit (lib.strings) removeSuffix hasSuffix;
   inherit (lib.attrsets) optionalAttrs genAttrs;
   inherit (lib.lists) optionals foldl';
+  inherit (lib.modules) mkDefault;
 in rec {
   shallowMerge = lhs: rhs:
     lhs
@@ -122,7 +123,7 @@ in rec {
                 networking.hostName = hostName;
               })
               (optionalAttrs (options ? nixpkgs.hostPlatform) {
-                nixpkgs.hostPlatform = lib.mkDefault host.system;
+                nixpkgs.hostPlatform = mkDefault host.system;
               })
             ];
           })

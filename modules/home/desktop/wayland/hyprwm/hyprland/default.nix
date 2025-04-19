@@ -5,7 +5,7 @@
   config,
   ...
 }: let
-  inherit (lib.modules) mkEnableOption;
+  inherit (lib.options) mkEnableOption;
   inherit (lib.modules) mkIf;
   inherit (config.my) desktop;
   isHyprland = desktop.environment == "Hyprland";

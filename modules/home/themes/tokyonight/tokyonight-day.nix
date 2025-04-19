@@ -5,7 +5,7 @@
   pkgs,
   ...
 }: let
-  inherit (lib.modules) mkIf;
+  inherit (lib.modules) mkIf mkBefore;
   cfg = config.my.themes.tokyonight;
 in {
   config = mkIf (cfg.enable && cfg.style == "day") {
@@ -109,7 +109,7 @@ in {
       tmux.plugins = with pkgs.tmuxPlugins; [
         {
           plugin = mode-indicator;
-          extraConfig = lib.mkBefore ''
+          extraConfig = mkBefore ''
             color_background='#e1e2e7'
             color_foreground='#3760bf'
             color_gray='#b4b5b9'

@@ -5,7 +5,7 @@
   ...
 }: let
   src = pkgs.vimPlugins.tokyonight-nvim;
-  inherit (lib.modules) mkIf mkMerge importTOML;
+  inherit (lib.modules) mkIf mkMerge importTOML mkAfter;
   inherit (lib.generators) toINIWithGlobalSection;
   inherit (builtins) readFile;
   inherit (pkgs.stdenv.hostPlatform) isLinux;
@@ -140,7 +140,7 @@ in {
         in [
           {
             plugin = mode-indicator;
-            extraConfig = lib.mkAfter ''
+            extraConfig = mkAfter ''
               #################################### PLUGINS ###################################
 
               set -g @mode_indicator_prefix_prompt " WAIT"
