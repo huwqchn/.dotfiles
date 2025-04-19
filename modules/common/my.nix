@@ -7,7 +7,7 @@
   inherit (pkgs.stdenv.hostPlatform) isLinux isDarwin;
   inherit (lib.options) mkOption mkEnableOption;
   inherit (lib.types) listOf enum str nullOr singleLineStr package path coercedTo;
-  inherit (config.my) desktop machine;
+  inherit (config) my;
 in {
   options.my = {
     name = mkOption {
@@ -57,7 +57,7 @@ in {
       type = mkOption {
         type = nullOr (enum ["wayland" "xorg" "darwin"]);
         default =
-          if !desktop.enable
+          if !my.desktop.enable
           then null
           else if isLinux
           then "wayland"
@@ -72,7 +72,7 @@ in {
       environment = mkOption {
         type = nullOr (enum ["i3" "bspwm" "sway" "Hyprland" "aerospace"]);
         default =
-          if !desktop.enable
+          if !my.desktop.enable
           then null
           else if isLinux
           then "Hyprland"
@@ -95,7 +95,7 @@ in {
         default =
           if isDarwin
           then null
-          else if desktop.enable
+          else if my.desktop.enable
           then ./themes/walls/nix.png
           # pkgs.fetchurl {
           #   url = "https://github.com/huwqchn/wallpapers/blob/main/unorganized/nix.png";
@@ -179,52 +179,52 @@ in {
   # TODO: should refactor this, too many asserts
   config.assertions = [
     {
-      assertion = desktop.type != null -> desktop.enable;
+      assertion = my.desktop.type != null -> my.desktop.enable;
       message = "You can't use desktop.type without desktop.enable";
     }
     {
-      assertion = desktop.enable -> desktop.type != null;
+      assertion = my.desktop.enable -> my.desktop.type != null;
       message = "You can't use desktop.enable without desktop.type";
     }
     {
-      assertion = desktop.environment == "i3" -> desktop.type == "xorg";
+      assertion = my.desktop.environment == "i3" -> my.desktop.type == "xorg";
       message = "You can't use i3 desktop environment without xorg";
     }
     {
-      assertion = desktop.environment == "bspwm" -> desktop.type == "xorg";
+      assertion = my.desktop.environment == "bspwm" -> my.desktop.type == "xorg";
       message = "You can't use bspwm desktop environment without xorg";
     }
     {
-      assertion = desktop.environment == "Hyprland" -> desktop.type == "wayland";
+      assertion = my.desktop.environment == "Hyprland" -> my.desktop.type == "wayland";
       message = "You can't use hyprland desktop environment without wayland";
     }
     {
-      assertion = desktop.environment == "sway" -> desktop.type == "wayland";
+      assertion = my.desktop.environment == "sway" -> my.desktop.type == "wayland";
       message = "You can't use sway desktop environment without wayland";
     }
     {
-      assertion = desktop.type == "xorg" -> isLinux;
+      assertion = my.desktop.type == "xorg" -> isLinux;
       message = "You can't use xorg on non-linux system";
     }
     {
-      assertion = desktop.type == "wayland" -> isLinux;
+      assertion = my.desktop.type == "wayland" -> isLinux;
       message = "You can't use wayland on non-linux system";
     }
     {
-      assertion = desktop.type == "darwin" -> isDarwin;
+      assertion = my.desktop.type == "darwin" -> isDarwin;
       message = "You can't use darwin desktop environment on non-darwin system";
     }
     {
-      assertion = desktop.environment == "aerospace" -> desktop.type == "darwin";
+      assertion = my.desktop.environment == "aerospace" -> my.desktop.type == "darwin";
       message = "You can't use aerospace desktop environment without darwin";
     }
     {
       assertion =
         config.my.persistence.enable
-        -> (machine.type
+        -> (my.machine.type
           == "workstation"
-          || machine.type == "laptop"
-          || machine.type == "desktop")
+          || my.machine.type == "laptop"
+          || my.machine.type == "desktop")
         && isLinux;
     }
   ];

@@ -16,9 +16,6 @@ in {
     fileSystems."/persist".neededForBoot = true; # required by impermanence
     fileSystems."/var/log".neededForBoot = true; # required by nixos
 
-    # enable persist on home-manager too
-    hm.my.persistence.enable = true;
-
     # There are two ways to clear the root filesystem on every boot:
     ##  1. use tmpfs for /
     ##  2. (btrfs/zfs only)take a blank snapshot of the root filesystem and revert to it on every boot via:

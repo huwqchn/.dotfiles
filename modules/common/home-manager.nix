@@ -11,12 +11,33 @@
   ...
 }: let
   extraSpecialArgs = {inherit self self' inputs inputs' pkgs pkgs' lib hostName;};
+  inherit (config) my;
 in {
   imports = [
     (lib.mkAliasOptionModule ["hm"] ["home-manager" "users" config.my.name])
   ];
 
-  hm.imports = [../home];
+  hm = {
+    imports = [../home];
+    my = {
+      inherit (my) name fullName email shell home;
+      desktop = {
+        inherit (my.desktop) enable type environment;
+      };
+      security = {
+        inherit (my.security) enable;
+      };
+      themes = {
+        inherit (my.themes) wallpaper theme transparent pad;
+      };
+      persistence = {
+        inherit (my.persistence) enable;
+      };
+      machine = {
+        inherit (my.machine) type gpu cpu monitors hasHidpi;
+      };
+    };
+  };
 
   home-manager = {
     inherit extraSpecialArgs;
