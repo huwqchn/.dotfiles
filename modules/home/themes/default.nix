@@ -1,10 +1,12 @@
 {
   lib,
   pkgs,
+  config,
   ...
 }: let
   inherit (lib.my) scanPaths;
   inherit (lib.modules) mkDefault;
+  isHyprland = config.my.desktop.environment == "Hyprland";
 in {
   imports = [../../common/themes] ++ (scanPaths ./.);
 
@@ -17,7 +19,7 @@ in {
     };
     targets = {
       # for hyprland wallpaper, maybe i also need swwww
-      hyprpaper.enable = true;
+      hyprpaper.enable = isHyprland;
     };
   };
 
