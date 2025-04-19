@@ -6,7 +6,9 @@
 }: let
   inherit (lib.options) mkEnableOption;
   inherit (lib.modules) mkIf mkDefault;
-  cfg = config.my.desktop.fcitx5;
+  inherit (config.my) desktop;
+  cfg = desktop.fcitx5;
+  isWayland = desktop.type == "wayland";
 in {
   options.my.desktop.fcitx5 = {
     enable =
@@ -34,7 +36,7 @@ in {
           libsForQt5.fcitx5-qt
         ];
         plasma6Support = true;
-        waylandFrontend = mkDefault true;
+        waylandFrontend = mkDefault isWayland;
       };
     };
 

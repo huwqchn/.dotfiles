@@ -8,7 +8,7 @@
   isWayland = config.my.desktop.type == "wayland";
   cfg = config.my.programs.wine;
 in {
-  options.my.programs.wine = lib.my.mkProgram pkgs "wine" {
+  options.my.deesktop.wine = lib.my.mkProgram pkgs "wine" {
     package.default =
       if isWayland config
       then pkgs.wineWowPackages.waylandFull
