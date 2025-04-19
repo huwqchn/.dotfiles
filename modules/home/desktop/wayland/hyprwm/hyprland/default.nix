@@ -19,20 +19,27 @@ in {
       // {
         default = desktop.enable && desktop.type == "wayland" && isHyprland;
       };
+    # TODO: config all of these
     plugins = {
       enable = mkEnableOption "Enable Hyprland plugins";
       list = mkOption {
-        default = ["hyprfocus"];
+        default = [
+          "hyprfocus"
+          "hyprsplit"
+          "hyprexpo"
+          "hyprspace"
+          "hyprgrass"
+        ];
         type = listOf enum [
           "hy3"
           "hyprfocus"
           "hyprsplit"
           "hyprspace"
-          "hyprscroller"
-          "hyprbars"
           "hyprexpo"
-          "hyprtrails"
+          "hyprbars"
           "hyprgrass"
+          "hyprtrails"
+          "hyprscroller"
           "borders-plus-plus"
           "csgo-vulkan-fix"
           "hypr-dynamic-cursors"

@@ -8,7 +8,7 @@
   inherit (lib.lists) elem;
   inherit (lib.my) mkHyprWorkspaces;
   inherit (config.my.desktop.hyprland) plugins;
-  enable = plugins.enable && elem "hyprfocus" plugins.list;
+  enable = plugins.enable && elem "hyprsplit" plugins.list;
   num_workspaces = config.my.desktop.general.workspace.number;
 in {
   config = mkIf enable {
