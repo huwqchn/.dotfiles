@@ -6,12 +6,13 @@
   ...
 }: let
   inherit (lib.modules) mkIf;
-  cfg = config.my.desktop;
-  isWayland = cfg.type == "wayland";
+  inherit (config.my) desktop;
+  isWayland = desktop.type == "wayland";
+  enable = desktop.enable && isWayland;
 in {
   imports = [inputs.ags.homeManagerModules.default];
 
-  config = mkIf (cfg.enable && isWayland) {
+  config = mkIf enable {
     programs.ags = {
       enable = true;
       configDir = lib.my.relativeToConfig "ags";

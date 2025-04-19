@@ -43,17 +43,6 @@ in {
       };
     };
 
-    home.packages = with pkgs; [
-      playerctl
-      avizo
-      wireplumber
-      brillo
-      wl-clip-persist
-      wl-clipboard-rs
-      wl-screenrec
-      wlr-randr
-    ];
-
     # make stuff work on wayland
     # home.sessionVariables = {
     #   QT_QPA_PLATFORM = "wayland";
