@@ -11,11 +11,16 @@
     mkOption
     types
     ;
-  cfg = config.my.rime;
+  inherit (config.my) desktop;
+  cfg = desktop.rime;
   kernelName = pkgs.stdenv.hostPlatform.parsed.kernel.name;
 in {
-  options.my.rime = {
-    enable = mkEnableOption "rime";
+  options.my.desktop.rime = {
+    enable =
+      mkEnableOption "rime"
+      // {
+        default = desktop.enable;
+      };
 
     dir = mkOption {
       type = types.str;

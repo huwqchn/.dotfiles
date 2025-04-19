@@ -16,8 +16,7 @@
     );
 
   # Example format function: Hyprland style
-  hyprlandFormat = cmd: key: workspaceNum: lib.concatStringsSep ", " [cmd.modifier key cmd.action workspaceNum];
-
+  hyprlandFormat = cmd: key: workspaceNum: lib.concatStringsSep ", " cmd.modifier key cmd.action workspaceNum;
   mkHyprWorkspaces = actions: n:
     mkWorkspaces [
       # Define the command definitions for workspace bindings
@@ -36,6 +35,27 @@
     ]
     hyprlandFormat
     n;
+  aerospaceFormat = cmd: key: workspaceNum: {
+    name = "${cmd.modifier}-${key}";
+    value = "${cmd.action} ${workspaceNum}";
+  };
+
+  mkAerospaceWorkspaces = n: let
+    ws =
+      mkWorkspaces [
+        {
+          modifier = "alt";
+          action = "workspace";
+        }
+        {
+          modifier = "alt-shift";
+          action = "move-node-to-workspace";
+        }
+      ]
+      aerospaceFormat
+      n;
+  in
+    builtins.listToAttrs ws;
 in {
-  inherit mkWorkspaces mkHyprWorkspaces;
+  inherit mkWorkspaces mkHyprWorkspaces mkAerospaceWorkspaces;
 }
