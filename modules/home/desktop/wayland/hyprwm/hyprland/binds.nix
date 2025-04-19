@@ -144,10 +144,26 @@ in {
       binde=,E,resizeactive,0 10
       binde=,I,resizeactive,0 -10
       binde=,O,resizeactive,-10 0
+
       binde=,right,resizeactive,10 0
       binde=,left,resizeactive,-10 0
       binde=,up,resizeactive,0 -10
       binde=,down,resizeactive,0 10
+
+
+      binde=SHIFT,N,moveactive,-10 0
+      binde=SHIFT,E,moveactive,0 10
+      binde=SHIFT,I,moveactive,0 -10
+      binde=SHIFT,O,moveactive,10 0
+
+      binde=SHIFT,right,moveactive,10 0
+      binde=SHIFT,left,moveactive,-10 0
+      binde=SHIFT,up,moveactive,0 -10
+      binde=SHIFT,down,moveactive,0 10
+
+      bind = , SPACE, centerwindow
+
+      bind = , escape, exec, hyprctl keyword input:follow_mouse 0
       bind=,escape,submap,reset
       submap=reset
     '';
