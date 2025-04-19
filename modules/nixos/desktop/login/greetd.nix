@@ -39,6 +39,7 @@ in {
           user = "greeter";
           command = concatStringsSep " " [
             (getExe pkgs.greetd.tuigreet)
+            "--greeting 'Welcome to NixOS!'"
             "--time"
             "--remember"
             "--remember-user-session"
