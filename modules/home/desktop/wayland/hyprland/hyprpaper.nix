@@ -5,9 +5,9 @@
 }: let
   cfg = config.my.desktop;
   inherit (lib.modules) mkIf;
-  isWayland = cfg.type == "wayland";
+  isHyprland = cfg.environment == "Hyprland";
 in {
-  config = mkIf (cfg.enable && isWayland) {
+  config = mkIf (cfg.enable && isHyprland) {
     services.hyprpaper = {
       enable = true;
 

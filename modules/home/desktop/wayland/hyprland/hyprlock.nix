@@ -7,9 +7,9 @@
   package = pkgs.hyprlock;
   inherit (lib.modules) mkIf;
   cfg = config.my.desktop;
-  isWayland = cfg.type == "wayland";
+  isHyprland = cfg.environment == "Hyprland";
 in {
-  config = mkIf (cfg.enable && isWayland) {
+  config = mkIf (cfg.enable && isHyprland) {
     programs.hyprlock = {
       enable = true;
       inherit package;
