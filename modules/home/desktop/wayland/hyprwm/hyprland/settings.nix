@@ -3,7 +3,7 @@
   config,
   ...
 }: let
-  inherit (lib.modules) mkIf;
+  inherit (lib.modules) mkIf mkForce;
   cfg = config.my.desktop.hyprland;
 in {
   config = mkIf cfg.enable {
@@ -83,13 +83,13 @@ in {
       };
 
       group = {
-        "col.border_active" = lib.mkForce "rgba(ca9ee6ff) rgba(f2d5cfff) 45deg";
+        "col.border_active" = mkForce "rgba(ca9ee6ff) rgba(f2d5cfff) 45deg";
         "col.border_inactive" =
-          lib.mkForce "rgba(b4befecc) rgba(6c7086cc) 45deg";
+          mkForce "rgba(b4befecc) rgba(6c7086cc) 45deg";
         "col.border_locked_active" =
-          lib.mkForce "rgba(ca9ee6ff) rgba(f2d5cfff) 45deg";
+          mkForce "rgba(ca9ee6ff) rgba(f2d5cfff) 45deg";
         "col.border_locked_inactive" =
-          lib.mkForce "rgba(b4befecc) rgba(6c7086cc) 45deg";
+          mkForce "rgba(b4befecc) rgba(6c7086cc) 45deg";
       };
 
       dwindle = {
