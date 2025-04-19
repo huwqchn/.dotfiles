@@ -42,6 +42,7 @@
     };
     virtual.enable = true;
     persistence.enable = true;
+    desktop.wine.enable = true;
     machine = {
       type = "desktop";
       cpu = "intel";

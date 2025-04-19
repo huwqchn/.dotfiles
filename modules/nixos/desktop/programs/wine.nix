@@ -6,11 +6,11 @@
 }: let
   inherit (lib.lists) optional;
   isWayland = config.my.desktop.type == "wayland";
-  cfg = config.my.programs.wine;
+  cfg = config.my.desktop.wine;
 in {
-  options.my.deesktop.wine = lib.my.mkProgram pkgs "wine" {
+  options.my.desktop.wine = lib.my.mkProgram pkgs "wine" {
     package.default =
-      if isWayland config
+      if isWayland
       then pkgs.wineWowPackages.waylandFull
       else pkgs.wineWowPackages.stableFull;
   };
