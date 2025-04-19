@@ -1,11 +1,11 @@
 # FIXME: Hyprland config has so many errors need fix up
 {
-  pkgs,
   lib,
   config,
   ...
 }: let
-  inherit (lib.options) mkEnableOption;
+  inherit (lib.options) mkEnableOption mkOption;
+  inherit (lib.types) listOf enum;
   inherit (lib.modules) mkIf;
   inherit (config.my) desktop;
   isHyprland = desktop.environment == "Hyprland";
@@ -19,6 +19,28 @@ in {
       // {
         default = desktop.enable && desktop.type == "wayland" && isHyprland;
       };
+    plugins = {
+      enable = mkEnableOption "Enable Hyprland plugins";
+      list = mkOption {
+        default = ["hyprfocus"];
+        type = listOf enum [
+          "hy3"
+          "hyprfocus"
+          "hyprsplit"
+          "hyprspace"
+          "hyprscroller"
+          "hyprbars"
+          "hyprexpo"
+          "hyprtrails"
+          "hyprgrass"
+          "borders-plus-plus"
+          "csgo-vulkan-fix"
+          "hypr-dynamic-cursors"
+          "hyprwinwrap"
+        ];
+        description = "List of Hyprland plugins to enable";
+      };
+    };
   };
 
   # TODO: monitors config
@@ -27,12 +49,6 @@ in {
     wayland.windowManager.hyprland = {
       enable = true;
       xwayland.enable = true;
-
-      plugins = with pkgs.hyprlandPlugins; [
-        hyprbars
-        hyprexpo
-      ];
-
       systemd = {
         enable = true;
         variables = ["--all"];

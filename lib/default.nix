@@ -10,6 +10,7 @@ in
         ./modules.nix
         ./hardware.nix
         ./themes.nix
+        ./helper.nix
       ]
       arg)
   ]
