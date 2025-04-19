@@ -9,6 +9,7 @@
   cfg = config.my.desktop.wine;
 in {
   options.my.desktop.wine = lib.my.mkProgram pkgs "wine" {
+    enable.default = config.my.game.enable;
     package.default =
       if isWayland
       then pkgs.wineWowPackages.waylandFull

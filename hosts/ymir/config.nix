@@ -42,7 +42,6 @@
     video.enable = true;
     btrbk.enable = true;
     zram.enable = true;
-    game.enable = false;
     security.enable = false;
     services = {
       onedrive.enable = true;
