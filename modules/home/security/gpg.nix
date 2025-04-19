@@ -12,6 +12,12 @@
 in {
   options.my.security.gpg = {
     enable = mkEnableOption "my security gpg" // {default = config.my.security.enable;};
+    signGitCommits = mkOption {
+      type = lib.types.bool;
+      default = true;
+      description = "Sign git commits with gpg.";
+    };
+
     key = mkOption {
       type = str;
       default = "776C7FC245E58F55";
@@ -27,7 +33,7 @@ in {
     programs = {
       git = {
         signing = {
-          signByDefault = true;
+          signByDefault = cfg.signGitCommits;
           inherit (cfg) key;
         };
       };
