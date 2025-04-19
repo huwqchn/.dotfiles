@@ -4,7 +4,7 @@
   pkgs,
   ...
 }: let
-  inherit (lib.modules) mkIf;
+  inherit (lib.modules) mkIf mkAfter;
   inherit (lib.lists) elem;
   inherit (config.my.desktop.hyprland) plugins;
   enable = plugins.enable && elem "hyprspace" plugins.list;
@@ -14,7 +14,7 @@ in {
       plugins = with pkgs.hyprlandPlugins; [hyprspace];
 
       settings = {
-        bind = [
+        bind = mkAfter [
           "$mainMod, TAB, overview:toggle"
           "$mainMod SHIFT, TAB, overview:toggle, all"
         ];

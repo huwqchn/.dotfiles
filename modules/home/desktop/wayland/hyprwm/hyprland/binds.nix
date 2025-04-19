@@ -71,8 +71,8 @@ in {
           "$mod SHIFT, period, movecurrentworkspacetomonitor, r"
           # workspace
           "$mod, W, workspace, empty" # move to the first empty workspace
-          "$mod, tab, workspace, m+1"
-          "$mod SHIFT, tab, workspace, m-1"
+          # "$mod, tab, workspace, m+1"
+          # "$mod SHIFT, tab, workspace, m-1"
           "ALT, tab, cyclenext,"
           "ALT SHIFT, tab, bringactivetotop,"
           "$mod, mouse_down, workspace, e+1"
