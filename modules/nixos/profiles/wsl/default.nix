@@ -75,10 +75,10 @@ in {
       docker-desktop.enable = config.my.desktop.enable;
     };
     networking = {
-      networkmanager.enable = lib.mkForce false;
-      nftables.enable = lib.mkForce false;
-      extraHosts = lib.mkForce '''';
-      tcpcrypt.enable = lib.mkForce false;
+      networkmanager.enable = mkForce false;
+      nftables.enable = mkForce false;
+      extraHosts = mkForce '''';
+      tcpcrypt.enable = mkForce false;
     };
     # other
     services = {
