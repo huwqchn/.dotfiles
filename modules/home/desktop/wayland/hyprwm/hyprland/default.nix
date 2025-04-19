@@ -29,6 +29,7 @@ in {
           "hyprexpo"
           "hyprspace"
           "hyprgrass"
+          "hypr-dynamic-cursors"
         ];
         type = listOf enum [
           "hy3"
