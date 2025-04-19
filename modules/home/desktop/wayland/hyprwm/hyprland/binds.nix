@@ -26,14 +26,14 @@
 
   runOnce = program: "pgrep ${program} || ${program}";
   inherit (lib.modules) mkIf;
-  cfg = config.my.desktop;
-  isHyprland = cfg.environment == "Hyprland";
+  inherit (config.my) browser terminal;
+  cfg = config.my.desktop.hyprland;
 in {
-  config = mkIf (cfg.enable && isHyprland) {
+  config = mkIf cfg.enable {
     wayland.windowManager.hyprland.settings = {
       "$mod" = "SUPER";
-      "$browser" = "zen";
-      "$terminal" = "wezterm";
+      "$browser" = browser;
+      "$terminal" = terminal;
       # keybindings
       bind =
         [

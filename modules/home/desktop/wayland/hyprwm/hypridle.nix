@@ -24,11 +24,10 @@
   # timeout after which DPMS kicks in
   timeout = 300;
 
-  cfg = config.my.desktop;
   inherit (lib.modules) mkIf;
-  isHyprland = cfg.environment == "Hyprland";
+  cfg = config.my.desktop.hyprland;
 in {
-  config = mkIf (cfg.enable && isHyprland) {
+  config = mkIf cfg.enable {
     services.hypridle = {
       enable = true;
       inherit package;

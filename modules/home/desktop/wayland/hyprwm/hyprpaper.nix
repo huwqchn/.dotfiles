@@ -3,11 +3,10 @@
   config,
   ...
 }: let
-  cfg = config.my.desktop;
   inherit (lib.modules) mkIf;
-  isHyprland = cfg.environment == "Hyprland";
+  cfg = config.my.desktop.hyprland;
 in {
-  config = mkIf (cfg.enable && isHyprland) {
+  config = mkIf cfg.enable {
     services.hyprpaper = {
       enable = true;
 

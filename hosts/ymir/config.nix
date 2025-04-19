@@ -63,4 +63,12 @@
       ethernetDevices = ["wlp2s0"]; # ymir wifi device
     };
   };
+  hm.my = {
+    machine = {
+      type = "laptop";
+      cpu = "intel";
+      gpu = "nvidia";
+      hasHidpi = true;
+    };
+  };
 }

@@ -6,10 +6,9 @@
 }: let
   package = pkgs.hyprlock;
   inherit (lib.modules) mkIf;
-  cfg = config.my.desktop;
-  isHyprland = cfg.environment == "Hyprland";
+  cfg = config.my.desktop.hyprland;
 in {
-  config = mkIf (cfg.enable && isHyprland) {
+  config = mkIf cfg.enable {
     programs.hyprlock = {
       enable = true;
       inherit package;

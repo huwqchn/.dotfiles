@@ -4,10 +4,9 @@
   ...
 }: let
   inherit (lib.modules) mkIf;
-  cfg = config.my.desktop;
-  isHyprland = cfg.environment == "Hyprland";
+  cfg = config.my.desktop.hyprland;
 in {
-  config = mkIf (cfg.enable && isHyprland) {
+  config = mkIf cfg.enable {
     wayland.windowManager.hyprland.settings = {
       # layer rules
       layerrule = let

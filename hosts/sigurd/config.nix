@@ -53,4 +53,12 @@
       hasHidpi = true;
     };
   };
+  hm.my = {
+    machine = {
+      type = "desktop";
+      cpu = "intel";
+      gpu = "nvidia";
+      hasHidpi = true;
+    };
+  };
 }
