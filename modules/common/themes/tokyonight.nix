@@ -4,27 +4,11 @@
   pkgs,
   ...
 }: let
-  inherit (lib.options) mkEnableOption mkOption;
-  inherit (lib.types) enum;
   inherit (lib.modules) mkMerge mkIf;
   inherit (pkgs.stdenv.hostPlatform) isLinux;
   inherit (config.my) desktop;
   cfg = config.my.themes.tokyonight;
 in {
-  options.my.themes.tokyonight = {
-    enable =
-      mkEnableOption "Tokyonight theme"
-      // {
-        default = config.my.themes.theme == "tokyonight";
-      };
-
-    style = mkOption {
-      type = enum ["night" "storm" "day" "moon"];
-      default = "moon";
-      description = "The style of tokyonight";
-    };
-  };
-
   config = mkMerge [
     (mkIf (cfg.enable && cfg.style == "day" && isLinux && desktop.enable) {
       # my.themes.wallpaper = pkgs.fetchurl {

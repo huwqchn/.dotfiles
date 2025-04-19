@@ -29,6 +29,12 @@ in {
       };
       themes = {
         inherit (my.themes) wallpaper theme transparent pad;
+        tokyonight = {
+          inherit (my.themes.tokyonight) enable style;
+        };
+        auto = {
+          inherit (my.themes.auto) enable style;
+        };
       };
       persistence = {
         inherit (my.persistence) enable;

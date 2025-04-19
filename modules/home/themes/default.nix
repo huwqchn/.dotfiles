@@ -8,7 +8,7 @@
   inherit (lib.modules) mkDefault;
   isHyprland = config.my.desktop.environment == "Hyprland";
 in {
-  imports = [../../common/themes] ++ (scanPaths ./.);
+  imports = [../../common/themes/options] ++ (scanPaths ./.);
 
   stylix = {
     iconTheme = mkDefault {
