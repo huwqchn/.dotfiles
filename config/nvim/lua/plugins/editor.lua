@@ -213,16 +213,16 @@ return {
     keys = { { "E", "<cmd>TSJToggle<cr>", desc = "Join Toggle" } },
     opts = { use_default_keymaps = false, max_join_length = 150 },
   },
-  -- {
-  --   "chrisgrieser/nvim-spider",
-  --   event = "VeryLazy",
-  --   keys = {
-  --     { "w", "<cmd>lua require('spider').motion('w')<CR>", mode = { "n", "o", "x" }, desc = "Spider-w" },
-  --     { "j", "<cmd>lua require('spider').motion('e')<CR>", mode = { "n", "o", "x" }, desc = "Spider-e" },
-  --     { "b", "<cmd>lua require('spider').motion('b')<CR>", mode = { "n", "o", "x" }, desc = "Spider-b" },
-  --     { "gj", "<cmd>lua require('spider').motion('ge')<CR>", mode = { "n", "o", "x" }, desc = "Spider-ge" },
-  --   },
-  -- },
+  {
+    "chrisgrieser/nvim-spider",
+    event = "VeryLazy",
+    keys = {
+      { "w", "<cmd>lua require('spider').motion('w')<CR>", mode = { "n", "o", "x" }, desc = "Spider-w" },
+      { "j", "<cmd>lua require('spider').motion('e')<CR>", mode = { "n", "o", "x" }, desc = "Spider-e" },
+      { "b", "<cmd>lua require('spider').motion('b')<CR>", mode = { "n", "o", "x" }, desc = "Spider-b" },
+      { "gj", "<cmd>lua require('spider').motion('ge')<CR>", mode = { "n", "o", "x" }, desc = "Spider-ge" },
+    },
+  },
   {
     "mrjones2014/smart-splits.nvim",
     build = "./kitty/install-kittens.bash",

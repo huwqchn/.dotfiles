@@ -20,7 +20,10 @@ return {
   --     },
   --   },
   -- },
-
+  {
+    "chrisgrieser/nvim-spider",
+    enabled = false,
+  },
   {
     "tris203/precognition.nvim",
     event = "BufRead",

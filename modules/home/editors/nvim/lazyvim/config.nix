@@ -27,7 +27,7 @@ in {
         path = mini-nvim;
       }
       treesj
-      # nvim-spider
+      nvim-spider
       smart-splits-nvim
       diffview-nvim
       git-blame-nvim

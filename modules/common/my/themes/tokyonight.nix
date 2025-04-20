@@ -14,6 +14,7 @@ in {
         default = my.themes.theme == "tokyonight";
       };
 
+    #TODO: we need create a pr for tokyonight.nvim to generate tokyonight.nix
     style = mkOption {
       type = enum ["night" "storm" "day" "moon"];
       default = "moon";

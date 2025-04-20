@@ -34,8 +34,8 @@ in {
         flavor.use = themeName;
       };
     };
-    xdg.configFile = mkIf config.programs.yazi.enable {
-      "yazi/flavors/${themeName}.yazi/flavor.toml".source = "${src}/extras/yazi/${themeName}.toml";
+    xdg.configFile."yazi/flavors/${themeName}.yazi/flavor.toml" = mkIf config.programs.yazi.enable {
+      source = "${src}/extras/yazi/${themeName}.toml";
     };
   };
 }
