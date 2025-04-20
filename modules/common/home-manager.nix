@@ -28,13 +28,7 @@ in {
         inherit (my.security) enable;
       };
       theme = {
-        inherit (my.theme) name cursor wallpaper;
-        tokyonight = {
-          inherit (my.theme.tokyonight) enable style;
-        };
-        colorscheme = {
-          inherit (my.theme.colorscheme) slug name author description palette;
-        };
+        inherit (my.theme) name cursor wallpaper tokyonight colorscheme;
       };
       persistence = {
         inherit (my.persistence) enable;
