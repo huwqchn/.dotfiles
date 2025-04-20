@@ -1,17 +1,15 @@
 {
-  pkgs,
   lib,
   config,
   ...
 }: let
-  package = pkgs.hyprlock;
   inherit (lib.modules) mkIf;
+  inherit (config.my.theme) wallpaper;
   cfg = config.my.desktop.hyprland;
 in {
   config = mkIf cfg.enable {
     programs.hyprlock = {
       enable = true;
-      inherit package;
 
       settings = {
         general = {disable_loading_bar = true;};
@@ -19,7 +17,7 @@ in {
         background = [
           {
             monitor = "";
-            path = "./tokyonight.png";
+            path = wallpaper;
             blur_passes = 3;
             blur_size = 7;
             noise = 1.17e-2;
