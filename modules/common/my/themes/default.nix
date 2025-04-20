@@ -61,13 +61,11 @@ in {
         description = "The palette of the colorscheme";
       };
     };
-    transparent = {
-      enable =
-        mkEnableOption "Enable tmux transparent"
-        // {
-          default = true;
-        };
-    };
+    transparent =
+      mkEnableOption "Enable tmux transparent"
+      // {
+        default = true;
+      };
     pad = {
       left = mkOption {
         type = str;

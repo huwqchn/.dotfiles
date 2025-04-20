@@ -1,15 +1,15 @@
 {
   lib,
+  pkgs,
   config,
   ...
 }: let
   inherit (lib.modules) mkIf;
+  src = pkgs.vimPlugins.tokyonight-nvim;
   cfg = config.my.themes.tokyonight;
   themeName = "tokyonight_${cfg.style}";
 in {
-  imports = lib.my.scanPaths ./.;
-
   config = mkIf cfg.enable {
-    home.sessionVariables = {THEME = themeName;};
+    programs.ghostty.settings.theme = "${src + "/extras/ghostty/" + themeName}";
   };
 }
