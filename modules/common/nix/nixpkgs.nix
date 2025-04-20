@@ -11,6 +11,8 @@
       # broken for a specific reason. At that point we can either try to solve
       # the breakage, or get rid of the package entirely.
       allowBroken = false;
+
+      # Allow unsupported system packages to be built.
       allowUnsupportedSystem = true;
 
       # Really a pain in the ass to deal with when disabled. True means

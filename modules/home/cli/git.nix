@@ -147,9 +147,9 @@ in {
 
       packages = with pkgs; [
         # actions runner for github actions
-        act
-        actionlint
-        action-validator
+        # act
+        # actionlint
+        # action-validator
         # for .gitignore
         gibo
       ];
