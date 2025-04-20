@@ -28,7 +28,7 @@ in {
         inherit (my.security) enable;
       };
       themes = {
-        inherit (my.themes) wallpaper theme transparent pad;
+        inherit (my.themes) wallpaper theme cursor transparent pad;
         tokyonight = {
           inherit (my.themes.tokyonight) enable style;
         };

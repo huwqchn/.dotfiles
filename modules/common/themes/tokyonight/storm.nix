@@ -4,7 +4,12 @@
   ...
 }: let
   inherit (lib.modules) mkIf;
-  palette = {
+  palette = rec {
+    cursor = {
+      baseColor = teal;
+      outlineColor = bg_highlight;
+      watchBackgroundColor = purple;
+    };
     bg = "#24283b";
     bg_dark = "#1f2335";
     bg_dark1 = "#1b1e2d";
@@ -29,7 +34,7 @@
     cyan = "#7dcfff";
     dark3 = "#545c7e";
     dark5 = "#737aa2";
-    error = "#db4b4b";
+    error = red1;
     fg = "#c0caf5";
     fg_dark = "#a9b1d6";
     fg_float = "#c0caf5";
@@ -59,7 +64,7 @@
     bright_yellow = "#faba4a";
     terminal_black = "#414868";
     todo = "#7aa2f7";
-    warning = "#e0af68";
+    warning = yellow;
     yellow = "#e0af68";
   };
   cfg = config.my.themes.tokyonight;

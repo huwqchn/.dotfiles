@@ -4,7 +4,12 @@
   ...
 }: let
   inherit (lib.modules) mkIf;
-  palette = {
+  palette = rec {
+    cursor = {
+      baseColor = blue;
+      outlineColor = bg_highlight;
+      watchBackgroundColor = info;
+    };
     bg = "#1a1b26";
     bg_dark = "#16161e";
     bg_dark1 = "#0C0E14";
