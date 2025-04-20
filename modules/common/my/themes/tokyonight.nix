@@ -3,14 +3,15 @@
   config,
   ...
 }: let
-  inherit (lib.options) mkEnableOption mkOption;
+  inherit (lib.options) mkOption mkEnableOption;
   inherit (lib.types) enum;
+  inherit (config) my;
 in {
   options.my.themes.tokyonight = {
     enable =
       mkEnableOption "Tokyonight theme"
       // {
-        default = config.my.themes.theme == "tokyonight";
+        default = my.themes.theme == "tokyonight";
       };
 
     style = mkOption {

@@ -153,7 +153,6 @@ in rec {
             ++ (optionals isDarwinOutput [
               ../modules/darwin
               inputs.home-manager.darwinModules.home-manager
-              inputs.stylix.darwinModules.stylix
               inputs.agenix.darwinModules.default
               # since agenix-rekey has no darwin module, we use the nixos one
               inputs.agenix-rekey.nixosModules.default
@@ -161,7 +160,6 @@ in rec {
             ++ (optionals isNixosOutput [
               ../modules/nixos
               inputs.home-manager.nixosModules.home-manager
-              inputs.stylix.nixosModules.stylix
               inputs.agenix.nixosModules.default
               inputs.agenix-rekey.nixosModules.default
               inputs.disko.nixosModules.disko

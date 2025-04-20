@@ -9,7 +9,7 @@
 in {
   imports = [
     # common options defined both user level and system level
-    ../common/my.nix
+    ../common/my
   ];
 
   news.display = "show";

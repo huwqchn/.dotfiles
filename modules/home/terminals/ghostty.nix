@@ -61,14 +61,12 @@ in {
       #   };
       # };
       settings = {
-        # NOTE: font-family is managed by stylix
         font-family = mkDefault "JetBrainsMono Nerd Font Mono";
         font-family-bold = mkDefault "JetBrainsMono Nerd Font Mono";
         font-family-italic = mkDefault "Maple Mono";
         font-family-bold-italic = mkDefault "Maple Mono";
 
-        # NOTE: font-size is managed by stylix
-        # font-size = 12;
+        font-size = 12;
 
         adjust-underline-position = 4;
         # Mouse

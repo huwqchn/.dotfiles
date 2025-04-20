@@ -5,12 +5,12 @@
   ...
 }: let
   src = pkgs.vimPlugins.tokyonight-nvim;
-  inherit (lib.modules) mkIf mkMerge importTOML mkAfter;
+  inherit (lib.modules) mkIf mkMerge importTOML;
   inherit (lib.generators) toINIWithGlobalSection;
   inherit (builtins) readFile;
   inherit (pkgs.stdenv.hostPlatform) isLinux;
-  inherit (config.my.themes) transparent;
-  inherit (config.my.themes) pad;
+  inherit (config.my.themes) transparent pad colorscheme;
+  inherit (colorscheme) palette slug;
   inherit (config.my.machine) hasHidpi;
   dpi =
     if hasHidpi
@@ -48,12 +48,35 @@ in {
         kitty.extraConfig = ''
           include ${src}/extras/kitty/${themeName}.conf
         '';
+        fzf.colors = with palette; {
+          "bg+" = bg_visual;
+          "bg" = bg_dark;
+          "border" = border_highlight;
+          "fg" = fg;
+          "gutter" = bg_dark;
+          "header" = orange;
+          "hl+" = blue1;
+          "hl" = blue1;
+          "info" = dark3;
+          "marker" = magenta2;
+          "pointer" = magenta2;
+          "prompt" = blue1;
+          "query" = fg;
+          "scrollbar" = border_highlight;
+          "separator" = orange;
+          "spinner" = magenta2;
+        };
         starship.settings = let
           pad_style = "fg:gray";
           left_pad = "[${pad.left}](${pad_style})";
           right_pad = "[${pad.right} ](${pad_style})";
           inherit (builtins) concatStringsSep;
         in {
+          palette = slug;
+          palettes.${slug} = with palette; {
+            inherit bg fg red green yellow blue magenta cyan white;
+            gray = bg_highlight;
+          };
           username = {
             style_user = "bold blue";
             style_root = "bold red";
@@ -126,11 +149,11 @@ in {
           };
         };
         tmux.plugins = with pkgs.tmuxPlugins; let
-          bg =
+          status_bg =
             if transparent.enable
             then "bg=default"
             else "bg=$color_background";
-          pad_style = fg: "#[fg=${fg},${bg}]";
+          pad_style = fg: "#[fg=${fg},${status_bg}]";
           gray_pad_style = pad_style "$color_gray";
           blue_pad_style = pad_style "$color_blue";
           left_pad = "${gray_pad_style}${pad.left}";
@@ -140,7 +163,7 @@ in {
         in [
           {
             plugin = mode-indicator;
-            extraConfig = mkAfter ''
+            extraConfig = with palette; ''
               #################################### PLUGINS ###################################
 
               set -g @mode_indicator_prefix_prompt " WAIT"
@@ -153,13 +176,21 @@ in {
               set -g @mode_indicator_empty_mode_style fg=$color_blue,bg=$color_gray,bold
 
               #################################### OPTIONS ###################################
+              color_background='${bg}'
+              color_foreground='${fg}'
+              color_gray='${bg_highlight}'
+              color_red='${red}'
+              color_yellow='${orange}'
+              color_green='${green}'
+              color_blue='${blue}'
+              color_cyan='${cyan}'
 
               set -g status on
               set -g status-justify centre
               set -g status-position top
               set -g status-left-length 90
               set -g status-right-length 90
-              set -g status-style ${bg}
+              set -g status-style ${status_bg}
               setw -g window-status-separator " "
 
               # set -g window-style ""
@@ -251,6 +282,101 @@ in {
             then "Light"
             else "Night";
         };
+        lazygit.settings.gui.theme = with palette; {
+          activeBorderColor = [orange "bold"];
+          inactiveBorderColor = [border_highlight];
+          searchingActiveBorderColor = [orange "bold"];
+          optionsTextColor = [blue];
+          selectedLineBgColor = [bg_visual];
+          cherryPickedCommitFgColor = [blue];
+          cherryPickedCommitBgColor = [magenta];
+          markedBaseCommitFgColor = [blue];
+          markedBaseCommitBgColor = [yellow];
+          unstagedChangesColor = [red1];
+          defaultFgColor = [fg];
+        };
+        spotify-player = {
+          settings.theme = slug;
+          themes = [
+            {
+              name = slug;
+              palette = with palette; {
+                background = bg;
+                foreground = fg;
+                inherit
+                  black
+                  red
+                  green
+                  yellow
+                  blue
+                  magenta
+                  cyan
+                  white
+                  bright_black
+                  bright_red
+                  bright_green
+                  bright_yellow
+                  bright_blue
+                  bright_magenta
+                  bright_cyan
+                  bright_white
+                  ;
+              };
+              component_style = {
+                block_title = {
+                  fg = "BrightGreen";
+                  modifiers = ["Italic" "Bold"];
+                };
+                like = {
+                  fg = "Red";
+                  modifiers = ["Bold"];
+                };
+                playback_track = {
+                  fg = "BrightMagenta";
+                  modifiers = ["Italic"];
+                };
+                playback_album = {
+                  fg = "BrightRed";
+                  modifiers = ["Italic"];
+                };
+                playback_artists = {
+                  fg = "BrightCyan";
+                  modifiers = [];
+                };
+                playback_metadata = {
+                  fg = "BrightBlue";
+                  modifiers = [];
+                };
+                playback_progress_bar = {
+                  fg = "BrightGreen";
+                  modifiers = ["Italic"];
+                };
+                current_playing = {
+                  fg = "Red";
+                  modifiers = ["Bold" "Italic"];
+                };
+                playlist_desc = {
+                  fg = "White";
+                  modifiers = ["Italic"];
+                };
+                page_desc = {
+                  fg = "Magenta";
+                  modifiers = ["Bold" "Italic"];
+                };
+                table_header = {
+                  fg = "Blue";
+                  modifiers = ["Bold"];
+                };
+                border = {fg = "BrightYellow";};
+                selection = {
+                  fg = "Red";
+                  modifiers = ["Bold" "Reversed"];
+                };
+                secondary_row = {bg = "BrightBlack";};
+              };
+            }
+          ];
+        };
       };
     })
     (mkIf (cfg.enable && config.programs.yazi.enable) {
@@ -296,15 +422,13 @@ in {
       # try setting them with home.pointerCursor and gtk.theme,
       # which enable a bunch of compatibility options that should make the themes load in all situations.
 
-      # NOTE: cursor is managed by stylix
-      # https://github.com/danth/stylix/blob/master/stylix/hm/cursor.nix
-      # home.pointerCursor = {
-      #   gtk.enable = true;
-      #   x11.enable = true;
-      #   package = pkgs.bibata-cursors;
-      #   name = "Bibata-Modern-Ice";
-      #   size = 24;
-      # };
+      home.pointerCursor = {
+        gtk.enable = true;
+        x11.enable = true;
+        package = pkgs.bibata-cursors;
+        name = "Bibata-Modern-Classic";
+        size = 24;
+      };
 
       # I cont't know this, it's conflick with gtk
       # dconf.settings."org/gnome/desktop/interface".font-name = "Cantarell";
@@ -333,27 +457,25 @@ in {
 
         gtk2.configLocation = "${config.xdg.configHome}/gtk-2.0/gtkrc";
 
-        # NOTE: font can managed by stylix if autoEnable is true
         font = {
           name = "Cantarell";
           package = pkgs.cantarell-fonts;
           size = 11;
         };
 
-        # NOTE: iconTheme is managed by stylix if autoEnable is true
-        # https://github.com/danth/stylix/blob/master/stylix/hm/icon.nix
-        # iconTheme = {
-        #   name = "Papirus-Dark";
-        #   package = pkgs.papirus-icon-theme;
-        # };
+        iconTheme = {
+          name =
+            if cfg.style == "day"
+            then "Papirus-Light"
+            else "Papirus-Dark";
+          package = pkgs.papirus-icon-theme;
+        };
 
         theme = {
-          # I don't stylix manager this, using mkForce to override
           name = "Tokyonight-Dark-BL";
           package = pkgs.tokyonight-gtk-theme;
         };
 
-        # NOTE: cursorTheme can managed by stylix if autoEnable is true
         cursorTheme = {
           name = "Bibata-Modern";
           package = pkgs.bibata-cursors;
@@ -361,7 +483,6 @@ in {
         };
       };
 
-      # TODO: make qt theme tokyonight
       qt = {
         enable = true;
         platformTheme.name = "qtct";
