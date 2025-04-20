@@ -21,10 +21,10 @@ in {
         "col.border_locked_inactive" = gradient yellow 0.5 orange 0.9 90;
         groupbar = {
           text_colore = rgba black 1.0;
-          col.active = rgba todo 1.0;
-          col.inactive = rgba bg_visual 0.8;
-          col.locked_active = rgba red 1.0;
-          col.locked_inactive = rgba orange 0.8;
+          "col.active" = rgba todo 1.0;
+          "col.inactive" = rgba bg_visual 0.8;
+          "col.locked_active" = rgba red 1.0;
+          "col.locked_inactive" = rgba orange 0.8;
         };
       };
 
