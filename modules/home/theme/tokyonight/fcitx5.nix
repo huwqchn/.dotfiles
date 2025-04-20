@@ -5,9 +5,9 @@
   ...
 }: let
   inherit (lib.modules) mkIf;
-  cfg = config.my.theme.tokyonight;
   inherit (pkgs.stdenv.hostPlatform) isLinux;
   inherit (lib.generators) toINIWithGlobalSection;
+  cfg = config.my.theme.tokyonight;
   enable = cfg.enable && isLinux;
 in {
   config = mkIf enable {

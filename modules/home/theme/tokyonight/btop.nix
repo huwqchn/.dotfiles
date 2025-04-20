@@ -4,9 +4,8 @@
   ...
 }: let
   inherit (lib.modules) mkIf;
-  cfg = config.my.theme.tokyonight;
-
   inherit (config.my.theme.general) transparent;
+  cfg = config.my.theme.tokyonight;
 in {
   config = mkIf cfg.enable {
     programs.btop.settings = {

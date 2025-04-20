@@ -7,15 +7,15 @@
   inherit (lib.modules) mkIf;
   src = pkgs.vimPlugins.tokyonight-nvim;
   cfg = config.my.theme.tokyonight;
-  themeName = "tokyonight_${cfg.style}";
+  inherit (config.my.theme.colorscheme) slug;
 in {
   config = mkIf cfg.enable {
     programs.bat = {
-      config.theme = themeName;
+      config.theme = slug;
       themes = {
-        "${themeName}" = {
+        "${slug}" = {
           inherit src;
-          file = "extras/sublime/${themeName}.tmTheme";
+          file = "extras/sublime/${slug}.tmTheme";
         };
       };
     };

@@ -5,8 +5,8 @@
   ...
 }: let
   inherit (lib.modules) mkIf;
-  cfg = config.my.theme.tokyonight;
   inherit (pkgs.stdenv.hostPlatform) isLinux;
+  cfg = config.my.theme.tokyonight;
   enable = cfg.enable && config.my.desktop.enable && isLinux;
 in {
   config = mkIf enable {

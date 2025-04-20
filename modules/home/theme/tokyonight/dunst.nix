@@ -7,9 +7,9 @@
   inherit (lib.modules) mkIf importTOML;
   src = pkgs.vimPlugins.tokyonight-nvim;
   cfg = config.my.theme.tokyonight;
-  themeName = "tokyonight_${cfg.style}";
+  inherit (config.my.theme.colorscheme) slug;
 in {
   config = mkIf cfg.enable {
-    services.dunst.settings = importTOML "${src}/extras/dunst/${themeName}.dunstrc";
+    services.dunst.settings = importTOML "${src}/extras/dunst/${slug}.dunstrc";
   };
 }

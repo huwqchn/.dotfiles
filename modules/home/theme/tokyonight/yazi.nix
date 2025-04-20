@@ -7,7 +7,7 @@
   inherit (lib.modules) mkIf;
   src = pkgs.vimPlugins.tokyonight-nvim;
   cfg = config.my.theme.tokyonight;
-  themeName = "tokyonight_${cfg.style}";
+  inherit (config.my.theme.colorscheme) slug;
 in {
   config = mkIf cfg.enable {
     programs.yazi = {
@@ -31,11 +31,11 @@ in {
       # '';
       theme = {
         "$scheme" = "https://yazi-rs.github.io/schemas/theme.json";
-        flavor.use = themeName;
+        flavor.use = slug;
       };
     };
-    xdg.configFile."yazi/flavors/${themeName}.yazi/flavor.toml" = mkIf config.programs.yazi.enable {
-      source = "${src}/extras/yazi/${themeName}.toml";
+    xdg.configFile."yazi/flavors/${slug}.yazi/flavor.toml" = mkIf config.programs.yazi.enable {
+      source = "${src}/extras/yazi/${slug}.toml";
     };
   };
 }

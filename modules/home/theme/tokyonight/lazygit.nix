@@ -4,8 +4,8 @@
   ...
 }: let
   inherit (lib.modules) mkIf;
-  cfg = config.my.theme.tokyonight;
   inherit (config.my.theme.colorscheme) palette;
+  cfg = config.my.theme.tokyonight;
 in {
   config = mkIf cfg.enable {
     programs.lazygit.settings.gui.theme = with palette; {

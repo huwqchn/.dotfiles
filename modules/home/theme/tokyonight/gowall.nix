@@ -6,7 +6,7 @@
 }: let
   inherit (lib.modules) mkIf;
   cfg = config.my.theme.tokyonight;
-  inherit (config.my.theme.colorscheme) palette;
+  inherit (config.my.theme.colorscheme) palette slug;
 in {
   config = mkIf cfg.enable {
     home = {
@@ -16,7 +16,7 @@ in {
       ];
       file.".config/gowall/config.yml".text = with palette; ''
         themes:
-          - name: "global"
+          - name: "${slug}"
             colors:
               - "#${black}"
               - "#${bright_black}"

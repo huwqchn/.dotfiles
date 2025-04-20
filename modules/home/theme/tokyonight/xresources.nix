@@ -5,8 +5,8 @@
   ...
 }: let
   inherit (lib.modules) mkIf;
-  cfg = config.my.theme.tokyonight;
   inherit (config.my.machine) hasHidpi;
+  cfg = config.my.theme.tokyonight;
   # set dpi for 4k monitor
   dpi =
     if hasHidpi

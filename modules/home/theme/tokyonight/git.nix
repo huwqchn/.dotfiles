@@ -7,12 +7,12 @@
   inherit (lib.modules) mkIf;
   src = pkgs.vimPlugins.tokyonight-nvim;
   cfg = config.my.theme.tokyonight;
-  themeName = "tokyonight_${cfg.style}";
+  inherit (config.my.theme.colorscheme) slug;
 in {
   config = mkIf cfg.enable {
     programs.git = {
-      includes = [{path = "${src}/extras/delta/${themeName}.gitconfig";}];
-      delta.options.features = themeName;
+      includes = [{path = "${src}/extras/delta/${slug}.gitconfig";}];
+      delta.options.features = slug;
     };
   };
 }
