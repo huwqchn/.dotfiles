@@ -5,6 +5,8 @@
   ...
 }: let
   inherit (lib.modules) mkIf;
+  inherit (pkgs.stdenv.hostPlatform) isLinux;
+  inherit (config.my.theme.colorscheme) palette;
   inherit (config.my.machine) hasHidpi;
   cfg = config.my.theme.tokyonight;
   # set dpi for 4k monitor
@@ -12,11 +14,14 @@
     if hasHidpi
     then 192
     else 96;
-  inherit (pkgs.stdenv.hostPlatform) isLinux;
   enable = cfg.enable && isLinux;
 in {
   config = mkIf enable {
-    xresources.properties = {
+    xresources.properties = with palette; {
+      # font
+      "*.faceName" = "JetBrainsMono Nerd Font Mono";
+      "*.faceSize" = toString 14;
+      "*.renderFont" = true;
       # dpi for Xorg.s font
       "Xft.dpi" = dpi;
       # or set a generic dpi
@@ -28,6 +33,25 @@ in {
       "Xft.hintstyle" = "hintfull";
       "Xft.antialias" = 1;
       "Xft.rgba" = "rgb";
+      "*foreground" = fg;
+      "*background" = bg;
+      "*cursorColor" = bg_search;
+      "*color0" = black;
+      "*color1" = red;
+      "*color2" = green;
+      "*color3" = yellow;
+      "*color4" = blue;
+      "*color5" = magenta;
+      "*color6" = cyan;
+      "*color7" = fg_dark;
+      "*color8" = terminal_black;
+      "*color9" = bright_red;
+      "*color10" = bright_green;
+      "*color11" = bright_yellow;
+      "*color12" = bright_blue;
+      "*color13" = bright_magenta;
+      "*color14" = bright_cyan;
+      "*color15" = fg;
     };
   };
 }
