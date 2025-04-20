@@ -8,7 +8,7 @@
   # inherit (lib.types) enum;
   inherit (lib.modules) mkMerge;
   inherit (lib.my) sourceLua;
-  inherit (config.my.themes) theme;
+  inherit (config.my.theme) name;
 in {
   # options.my.neovim.lazyvim.colorscheme = mkOption {
   #   type = enum ["tokyonight" "kanagawa" "catppuccin"];
@@ -20,15 +20,17 @@ in {
 
   config = {
     my.neovim.lazyvim.extraPlugins = with pkgs.vimPlugins;
-      if theme == "tokyonight"
+      if name == "tokyonight"
       then [
         tokyonight-nvim
       ]
-      else if theme == "kanagawa"
+      # TODO: should define a my.theme.kanagawa
+      else if name == "kanagawa"
       then [
         kanagawa-nvim
       ]
-      else if theme == "catppuccin"
+      # TODO: should define a my.theme.catppuccin
+      else if name == "catppuccin"
       then [
         catppuccin-nvim
       ]
@@ -36,7 +38,7 @@ in {
 
     # FIXME: not working when theme is auto
     xdg.configFile = mkMerge [
-      (sourceLua "colorscheme/${theme}.lua")
+      (sourceLua "colorscheme/${name}.lua")
     ];
   };
 }

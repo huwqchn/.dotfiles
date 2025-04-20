@@ -27,13 +27,13 @@ in {
       security = {
         inherit (my.security) enable;
       };
-      themes = {
-        inherit (my.themes) wallpaper theme cursor transparent pad;
+      theme = {
+        inherit (my.theme) name cursor wallpaper;
         tokyonight = {
-          inherit (my.themes.tokyonight) enable style;
+          inherit (my.theme.tokyonight) enable style;
         };
         colorscheme = {
-          inherit (my.themes.colorscheme) slug name author description palette;
+          inherit (my.theme.colorscheme) slug name author description palette;
         };
       };
       persistence = {
