@@ -56,6 +56,42 @@
       n;
   in
     builtins.listToAttrs ws;
+  vec2 = x: y: let
+    x_str = toString x;
+    y_str = toString y;
+  in
+    lib.strings.concatStringsSep " " [x_str y_str];
+  # mkAnimation = {
+  #   name,
+  #   enabled ? true,
+  #   speed ? 1,
+  #   curve ? "linear",
+  #   style ? null,
+  # }: let
+  #   params =
+  #     if !enabled
+  #     then [name "0"]
+  #     else
+  #       lib.lists.remove null [
+  #         name
+  #         "1"
+  #         (toString speed)
+  #         curve
+  #         style
+  #       ];
+  # in
+  #   lib.strings.concatStringSep "," params;
+  #
+  # mkBezier = {
+  #   name,
+  #   x0,
+  #   y0,
+  #   x1,
+  #   y1,
+  # }: let
+  #   parts = [name x0 y0 x1 y1];
+  # in
+  #   lib.strings.concatStringSep "," parts;
 in {
-  inherit mkWorkspaces mkHyprWorkspaces mkAerospaceWorkspaces;
+  inherit mkWorkspaces mkHyprWorkspaces mkAerospaceWorkspaces vec2;
 }

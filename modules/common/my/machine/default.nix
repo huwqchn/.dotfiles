@@ -1,7 +1,9 @@
 {lib, ...}: let
   inherit (lib.options) mkOption mkEnableOption;
-  inherit (lib.types) enum str nullOr listOf;
+  inherit (lib.types) enum nullOr;
+  inherit (lib.my) scanPaths;
 in {
+  imports = scanPaths ./.;
   # hardware
   options.my.machine = {
     type = mkOption {
@@ -32,15 +34,6 @@ in {
       );
       default = null;
       description = "The CPU of the system";
-    };
-    monitors = mkOption {
-      type = listOf str;
-      default = [];
-      description = ''
-        this does not affect any drivers and such, it is only necessary for
-        declaring things like monitors in window manager configurations
-        you can avoid declaring this, but I'd rather if you did declare
-      '';
     };
     hasHidpi = mkEnableOption "hidpi";
   };
