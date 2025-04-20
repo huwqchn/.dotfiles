@@ -6,7 +6,7 @@
   ...
 }: let
   inherit (lib.options) mkEnableOption;
-  inherit (lib.modules) mkIf mkDefault;
+  inherit (lib.modules) mkIf;
   inherit (pkgs.stdenv.hostPlatform) isLinux;
   cfg = config.my.desktop.apps.alacritty;
 in {
@@ -39,8 +39,7 @@ in {
           multiplier = 3;
         };
 
-        # NOTE: font is managed by stylix if autoEnable is true
-        font = mkDefault {
+        font = {
           normal = {
             family = "JetBrains Mono Nerd Font";
             style = "Medium";

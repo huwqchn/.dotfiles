@@ -1,15 +1,16 @@
 {
   lib,
+  pkgs,
   config,
   ...
 }: let
   inherit (lib.modules) mkIf;
+  src = pkgs.vimPlugins.tokyonight-nvim;
   cfg = config.my.themes.tokyonight;
   themeName = "tokyonight_${cfg.style}";
+  inherit (builtins) readFile;
 in {
-  imports = lib.my.scanPaths ./.;
-
   config = mkIf cfg.enable {
-    home.sessionVariables = {THEME = themeName;};
+    programs.fish.interactiveShellInit = readFile "${src}/extras/fish/${themeName}.fish";
   };
 }

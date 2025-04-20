@@ -4,7 +4,7 @@
   ...
 }: let
   inherit (lib.options) mkEnableOption;
-  inherit (lib.modules) mkIf mkDefault;
+  inherit (lib.modules) mkIf;
   cfg = config.my.desktop.apps.kitty;
 in {
   options.my.desktop.apps.kitty = {
@@ -18,9 +18,7 @@ in {
   config = mkIf cfg.enable {
     programs.kitty = {
       enable = true;
-
-      # NOTE: font is managed by stylix
-      font = mkDefault {
+      font = {
         name = "CaskaydiaCove Nerd Font Mono";
         size = 13;
       };

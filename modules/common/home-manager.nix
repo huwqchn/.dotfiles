@@ -32,8 +32,8 @@ in {
         tokyonight = {
           inherit (my.themes.tokyonight) enable style;
         };
-        auto = {
-          inherit (my.themes.auto) enable style;
+        colorscheme = {
+          inherit (my.themes.colorscheme) slug name author description palette;
         };
       };
       persistence = {

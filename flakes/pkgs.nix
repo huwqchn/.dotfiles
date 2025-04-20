@@ -33,7 +33,7 @@
       inherit (pkgs) callPackage;
       directory = ../pkgs;
     };
-    # if you want to use this overlays in your own nixpkgs, use: overlays = builtins.attrValues self.overlays
+    # if you want to use this overlays in your system nixpkgs (not flake-parts nixpkgs), use: overlays = builtins.attrValues self.overlays
     overlayAttrs = config.packages;
   };
 }
