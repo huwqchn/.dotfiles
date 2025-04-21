@@ -4,21 +4,12 @@
   config,
   ...
 }: let
-  inherit (lib.options) mkEnableOption;
   inherit (lib.modules) mkIf;
-  cfg = config.my.desktop.hyprpanel;
+  enable = config.my.desktop.bar == "hyprpanel";
 in {
   imports = [inputs.hyprpanel.homeManagerModules.hyprpanel];
 
-  options.my.desktop.hyprpanel = {
-    enable =
-      mkEnableOption "hyprpanel"
-      // {
-        default = config.my.desktop.hyprland.enable;
-      };
-  };
-
-  config = mkIf cfg.enable {
+  config = mkIf enable {
     programs.hyprpanel = {
       enable = true;
       hyprland.enable = config.my.desktop.hyprland.enable;

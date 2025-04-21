@@ -174,6 +174,16 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    # wayland simple runner
+    # anyrun = {
+    #   url = "github:fufexan/anyrun/launch-prefix";
+    #   inputs = {
+    #     nixpkgs.follows = "nixpkgs";
+    #     systems.follows = "systems";
+    #     flake-parts.follows = "flake-parts";
+    #   };
+    # };
+
     # haumea = {
     #   url = "github:nix-community/haumea/v0.2.2";
     #   inputs.nixpkgs.follows = "nixpkgs";

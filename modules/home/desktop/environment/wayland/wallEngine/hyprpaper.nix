@@ -5,9 +5,9 @@
 }: let
   inherit (lib.modules) mkIf;
   inherit (config.my.theme) wallpaper;
-  cfg = config.my.desktop.hyprland;
+  enable = config.my.desktop.wallEngine == "hyprpaper";
 in {
-  config = mkIf cfg.enable {
+  config = mkIf enable {
     services.hyprpaper = {
       enable = true;
 

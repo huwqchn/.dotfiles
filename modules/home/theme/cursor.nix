@@ -1,10 +1,13 @@
 {
   lib,
   config,
+  pkgs,
   ...
 }: let
-  inherit (lib) mkIf;
+  inherit (lib.modules) mkIf;
+  inherit (lib.meta) getExe';
   inherit (config.my.theme) cursor;
+  hyprctl' = getExe' pkgs.hyprland "hyprctl";
 in {
   config = mkIf (cursor != null) {
     # If your theme for mouse cursor, icons or windows don't load correctly,
@@ -25,7 +28,7 @@ in {
       ];
       exec-once = [
         # set cursor for HL itself
-        "hyprctl setcursor ${cursor.name} ${toString cursor.size}"
+        "${hyprctl'} setcursor ${cursor.name} ${toString cursor.size}"
       ];
     };
     xdg.dataFile."icon/${cursor.name}".source = "${cursor.package}/share/icons/${cursor.name}";

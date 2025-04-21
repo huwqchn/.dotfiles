@@ -13,6 +13,10 @@ in {
 
   config = mkIf enable {
     home.packages = with pkgs; [
+      grim
+      slurp
+      tesseract5
+      # use more uwsm wrappers
       uwsm
       playerctl
       avizo

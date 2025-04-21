@@ -5,9 +5,9 @@
   ...
 }: let
   inherit (lib.modules) mkIf;
-  cfg = config.my.desktop.polkit;
+  enable = config.my.desktop.polkit == "hyprpolkit";
 in {
-  config = mkIf (cfg == "hyprland") {
+  config = mkIf enable {
     systemd.user.services."polkit-hyprpolkitagent" = {
       # It is required for GUI applications to be able to request elevated privileges.
       Unit = {

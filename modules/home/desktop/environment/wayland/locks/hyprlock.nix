@@ -17,7 +17,7 @@ in {
     enable =
       mkEnableOption "hyprlock"
       // {
-        default = config.my.desktop.hyprland.enable;
+        default = config.my.desktop.lock == "hyprlock";
       };
     colors = {
       background = mkOption {

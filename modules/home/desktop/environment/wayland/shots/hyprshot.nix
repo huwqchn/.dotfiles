@@ -7,12 +7,12 @@
   inherit (lib.modules) mkIf;
   inherit (lib.meta) getExe getExe';
   inherit (config.xdg.userDirs.extraConfig) XDG_SCREENSHOTS_DIR;
-  cfg = config.my.desktop.hyprland;
   hyprshot' = getExe' pkgs.hyprshot "hyprshot";
   wl-copy' = getExe' pkgs.wl-clipboard-rs "wl-copy";
   satty' = getExe pkgs.satty;
+  enable = config.my.desktop.shots == "hyprshot";
 in {
-  config = mkIf cfg.enable {
+  config = mkIf enable {
     home = {
       file = {
         "${config.xdg.configHome}/satty/config.toml".text = ''
@@ -53,6 +53,9 @@ in {
           ", Print, exec, ${hyprshot'} --mode output --raw | ${satty'} --filename -"
           "SHIFT, Print, exec, ${hyprshot'} --mode window --raw | ${satty'} --filename -"
           "ALT, Print, exec, ${hyprshot'} --mode region --raw | ${satty'} --filename -"
+          "$mod, K, exec, ${hyprshot'} --mode output --raw | ${satty'} --filename -"
+          "$mod SHIFT, K, exec, ${hyprshot'} --mode window --raw | ${satty'} --filename -"
+          "$mod ALT, K, exec, ${hyprshot'} --mode region --raw | ${satty'} --filename -"
         ];
       };
     };

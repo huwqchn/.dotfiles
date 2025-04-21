@@ -27,9 +27,9 @@
   timeout = 300;
 
   inherit (lib.modules) mkIf;
-  cfg = config.my.desktop.hyprland;
+  enable = config.my.desktop.idle == "hypridle";
 in {
-  config = mkIf cfg.enable {
+  config = mkIf enable {
     services.hypridle = {
       enable = true;
 

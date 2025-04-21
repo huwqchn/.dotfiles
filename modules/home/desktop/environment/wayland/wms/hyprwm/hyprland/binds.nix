@@ -4,7 +4,7 @@
   pkgs,
   ...
 }: let
-  inherit (lib.my) mkHyprWorkspaces mkHyprMoveTo toggle;
+  inherit (lib.my) mkHyprWorkspaces mkHyprMoveTo toggle runOnce;
   inherit (lib.lists) elem optionals;
   inherit (lib.modules) mkIf;
   inherit (lib.meta) getExe getExe';
@@ -98,6 +98,10 @@ in {
 
             "$mod, mouse_down, focusworkspaceoncurrentmonitor, -1"
             "$mod, mouse_up, focusworkspaceoncurrentmonitor, +1"
+            # utility
+            # select area to perform OCR on
+            "$mod, H, exec, ${runOnce "wl-ocr"}"
+            ", XF86Favorites, exec, ${runOnce "wl-ocr"}"
           ]
           ++ (mkHyprMoveTo ["focusworkspaceoncurrentmonitor" "movetoworkspacesilent"] num)
           ++ (optionals (!hyprsplit_enabled)

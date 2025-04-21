@@ -11,10 +11,10 @@
 in {
   imports = scanPaths ./.;
   options.my.desktop.polkit = mkOption {
-    type = enum ["pantheon" "hyprland"];
+    type = enum ["pantheon" "hyprpolkit"];
     default =
       if isHyprland
-      then "hyprland"
+      then "hyprpolkit"
       else "pantheon";
     description = ''
       The policy kit agent to use for authentication.

@@ -35,7 +35,7 @@ in {
     };
 
     xdg.configFile = {
-      "hyprswitch/style.css".source = ./assets/hyprswitch.css;
+      "hyprswitch/style.css".source = ./styles/hyprswitch.css;
     };
   };
 }
