@@ -28,7 +28,7 @@ in {
         inherit (my.security) enable;
       };
       theme = {
-        inherit (my.theme) name cursor wallpaper tokyonight colorscheme;
+        inherit (my.theme) name cursor avatar wallpaper tokyonight colorscheme;
       };
       persistence = {
         inherit (my.persistence) enable;

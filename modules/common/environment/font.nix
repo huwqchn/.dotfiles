@@ -2,6 +2,7 @@
   config,
   pkgs,
   lib,
+  inputs,
   ...
 }: let
   cfg = config.my.desktop;
@@ -42,6 +43,7 @@ in {
 
         julia-mono
         dejavu_fonts
+        inputs.apple-fonts.packages.${pkgs.system}.sf-pro-nerd
       ];
     };
   };

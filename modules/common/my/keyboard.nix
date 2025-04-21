@@ -5,7 +5,7 @@
   ...
 }: let
   inherit (lib.options) mkOption;
-  inherit (lib.typer) enum attrs;
+  inherit (lib.types) enum attrs;
   inherit (lib.modules) mkIf;
   cfg = config.my.keyboard;
 in {
@@ -52,7 +52,7 @@ in {
   };
 
   config = mkIf (cfg.layout == "colemak") {
-    cfg.bindings = {
+    my.keyboard.bindings = {
       h = "n";
       j = "e";
       k = "i";

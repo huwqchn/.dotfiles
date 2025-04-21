@@ -271,6 +271,12 @@
     # manager vencord by nix
     nixcord.url = "github:kaylorben/nixcord";
 
+    # apple fonts
+    apple-fonts = {
+      url = "github:Lyndeno/apple-fonts.nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     # zen browser
     zen = {
       url = "github:youwen5/zen-browser-flake";

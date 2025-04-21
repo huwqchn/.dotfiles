@@ -21,7 +21,9 @@ in {
       ${pkgs.hyprshade}/bin/hyprshade install
       ${pkgs.systemd}/bin/systemctl --user enable --now hyprshade.timer
     '';
-    wayland.windowManager.hyprland.settings.exec = ["${pkgs.hyprshade}/bin/hyprshade auto"];
+    wayland.windowManager.hyprland.settings.exec = [
+      "${pkgs.hyprshade}/bin/hyprshade auto"
+    ];
     xdg.configFile = {
       "hypr/hyprshade.toml".text = ''
         [[shades]]

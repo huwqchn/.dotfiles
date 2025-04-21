@@ -4,7 +4,7 @@
   pkgs,
   ...
 }: let
-  inherit (lib.my) scanPaths;
+  inherit (lib.my) scanPaths relativeToConfig;
   inherit (lib.options) mkOption;
   inherit (lib.types) enum str nullOr package path coercedTo attrs;
   inherit (pkgs.stdenv.hostPlatform) isDarwin;
@@ -46,6 +46,14 @@ in {
       };
     };
     # TODO: wallpaper engine support?
+    avatar = mkOption {
+      type = nullOr (coercedTo package toString path);
+      default =
+        if my.desktop.enable
+        then (relativeToConfig "avatars/pain.png")
+        else null;
+      description = "The avatar of the user";
+    };
     wallpaper = mkOption {
       type = nullOr (coercedTo package toString path);
       # we don't set wallpaper on macos, because it doesn't work
