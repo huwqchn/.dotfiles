@@ -13,14 +13,16 @@
   runOnce = program: "pgrep ${program} || ${program}";
   inherit (lib.modules) mkIf;
   inherit (config.my) browser terminal;
-  cfg = config.my.desktop.hyprland;
-  num = config.my.desktop.general.workspace.number;
+  inherit (config.my) desktop;
+  cfg = desktop.hyprland;
+  num = desktop.general.workspace.number;
+  mod = desktop.general.keybind.modifier;
   hyprsplit_enabled = cfg.plugins.enable && elem "hyprsplit" cfg.plugins.list;
 in {
   config = mkIf cfg.enable {
     wayland.windowManager.hyprland = {
       settings = {
-        "$mod" = "SUPER";
+        "$mod" = mod;
         "$browser" = browser;
         "$terminal" = terminal;
         # keybindings
