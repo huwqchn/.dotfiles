@@ -174,7 +174,7 @@ map("t", "<C-q>", "<cmd>close<cr>", { desc = "Hide Terminal" })
 
 -- btop
 map("n", "<leader>xb", function()
-  LazyVim.terminal({ "btop" }, { esc_esc = false, ctrl_hjkl = false })
+  Snacks.terminal({ "btop" }, { esc_esc = false, ctrl_hjkl = false })
 end, { desc = "btop" })
 
 -- map tab to tab, because distinguish between <C-i>
