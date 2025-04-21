@@ -152,7 +152,7 @@ return {
       keys = {
         I = "inspect",
         e = "next",
-        i = "",
+        i = "prev",
       },
       modes = {
         cascade = {
