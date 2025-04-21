@@ -1,16 +1,14 @@
+# TODO: need to apply for all apps
 {
   lib,
   config,
   ...
 }: let
-  inherit (lib.my) scanPaths;
   inherit (lib.options) mkOption;
   inherit (lib.typer) enum attrs;
   inherit (lib.modules) mkIf;
   cfg = config.my.keyboard;
 in {
-  imports = scanPaths ./.;
-
   options.my.keyboard = {
     layout = mkOption {
       type = enum ["colemak" "qwerty"];
