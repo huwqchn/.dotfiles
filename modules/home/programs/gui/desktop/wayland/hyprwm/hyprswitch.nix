@@ -6,7 +6,9 @@
 }: let
   inherit (lib.options) mkEnableOption;
   inherit (lib.modules) mkIf mkAfter;
+  inherit (lib.meta) getExe;
   cfg = config.my.desktop.hyprland;
+  hyprswitch' = getExe pkgs.hyprswitch;
 in {
   options.my.desktop.hyprland.switch = {
     enable =
@@ -23,12 +25,12 @@ in {
 
     wayland.windowManager.hyprland.settings = {
       exec-once = [
-        "hyprswitch init --show-title --size-factor 5.5 --workspaces-per-row 5 &"
+        "${hyprswitch'} init --show-title --size-factor 5.5 --workspaces-per-row 5 &"
       ];
       bind = mkAfter [
         # Switcher
-        "ALT, tab, exec, hyprswitch gui --mod-key ALT --key tab --close mod-key-release --reverse-key=mod=SHIFT --max-switch-offset 9 -m && hyprswitch dispatch"
-        "ALT SHIFT, tab, exec, hyprswitch gui --mod-key ALT --key tab --close mod-key-release --reverse-key=mod=SHIFT --max-switch-offset 9 -m && hyprswitch dispatch -r"
+        "ALT, tab, exec, ${hyprswitch'} gui --mod-key ALT --key tab --close mod-key-release --reverse-key=mod=SHIFT --max-switch-offset 9 -m && ${hyprswitch'} dispatch"
+        "ALT SHIFT, tab, exec, ${hyprswitch'} gui --mod-key ALT --key tab --close mod-key-release --reverse-key=mod=SHIFT --max-switch-offset 9 -m && ${hyprswitch'} dispatch -r"
       ];
     };
 

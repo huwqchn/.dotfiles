@@ -13,10 +13,12 @@ in {
 
   config = mkIf enable {
     home.packages = with pkgs; [
+      uwsm
       playerctl
       avizo
       wireplumber
       brillo
+      brightnessctl
       wl-clip-persist
       wl-clipboard-rs
       wl-screenrec

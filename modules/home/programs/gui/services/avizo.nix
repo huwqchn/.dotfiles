@@ -11,7 +11,7 @@ in {
   config = mkIf cfg.enable {
     services.avizo = {
       enable = false;
-      settings = {default = {y-offset = 0.85;};};
+      settings.default.y-offset = 0.85;
     };
   };
 }

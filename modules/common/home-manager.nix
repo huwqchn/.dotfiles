@@ -22,7 +22,7 @@ in {
     my = {
       inherit (my) name fullName email shell home;
       desktop = {
-        inherit (my.desktop) enable type environment;
+        inherit (my.desktop) enable type environment fcitx5;
       };
       security = {
         inherit (my.security) enable;

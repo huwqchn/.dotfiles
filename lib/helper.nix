@@ -16,7 +16,14 @@
     );
 
   # Example format function: Hyprland style
-  hyprlandFormat = cmd: key: workspaceNum: lib.concatStringsSep ", " cmd.modifier key cmd.action workspaceNum;
+  hyprlandFormat = cmd: key: workspaceNum:
+    lib.concatStringsSep ", " [
+      cmd.modifier
+      key
+      cmd.action
+      workspaceNum
+    ];
+
   mkHyprWorkspaces = actions: n:
     mkWorkspaces [
       # Define the command definitions for workspace bindings
@@ -35,6 +42,21 @@
     ]
     hyprlandFormat
     n;
+
+  mkHyprMoveTo = actions: n:
+    mkWorkspaces [
+      {
+        modifier = "$mod";
+        action = builtins.elemAt actions 0;
+      }
+      {
+        modifier = "$mod SHIFT";
+        action = builtins.elemAt actions 1;
+      }
+    ]
+    hyprlandFormat
+    n;
+
   aerospaceFormat = cmd: key: workspaceNum: {
     name = "${cmd.modifier}-${key}";
     value = "${cmd.action} ${workspaceNum}";
@@ -56,42 +78,19 @@
       n;
   in
     builtins.listToAttrs ws;
+
   vec2 = x: y: let
     x_str = toString x;
     y_str = toString y;
   in
     lib.strings.concatStringsSep " " [x_str y_str];
-  # mkAnimation = {
-  #   name,
-  #   enabled ? true,
-  #   speed ? 1,
-  #   curve ? "linear",
-  #   style ? null,
-  # }: let
-  #   params =
-  #     if !enabled
-  #     then [name "0"]
-  #     else
-  #       lib.lists.remove null [
-  #         name
-  #         "1"
-  #         (toString speed)
-  #         curve
-  #         style
-  #       ];
-  # in
-  #   lib.strings.concatStringSep "," params;
-  #
-  # mkBezier = {
-  #   name,
-  #   x0,
-  #   y0,
-  #   x1,
-  #   y1,
-  # }: let
-  #   parts = [name x0 y0 x1 y1];
-  # in
-  #   lib.strings.concatStringSep "," parts;
+
+  toggle = program: service: let
+    prog = builtins.substring 0 14 program;
+    runserv = lib.optionalString service "run-as-service";
+  in "pkill ${prog} || ${runserv} ${program}";
+
+  runOnce = program: "pgrep ${program} || ${program}";
 in {
-  inherit mkWorkspaces mkHyprWorkspaces mkAerospaceWorkspaces vec2;
+  inherit mkWorkspaces mkHyprWorkspaces mkHyprMoveTo mkAerospaceWorkspaces vec2 toggle runOnce;
 }

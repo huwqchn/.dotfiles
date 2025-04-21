@@ -4,20 +4,11 @@
   pkgs,
   ...
 }: let
-  inherit (lib.options) mkEnableOption;
   inherit (lib.modules) mkIf mkDefault;
   inherit (config.my) desktop;
   cfg = desktop.fcitx5;
   isWayland = desktop.type == "wayland";
 in {
-  options.my.desktop.fcitx5 = {
-    enable =
-      mkEnableOption "fcitx5"
-      // {
-        default = config.my.desktop.enable;
-      };
-  };
-
   config = mkIf cfg.enable {
     i18n.inputMethod = {
       enable = true;

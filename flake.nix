@@ -156,7 +156,21 @@
     };
 
     ags = {
-      url = "github:Aylur/ags";
+      url = "github:aylur/ags";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    hyprpanel = {
+      url = "github:Jas-SinghFSU/HyprPanel";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        ags.follows = "ags";
+      };
+    };
+
+    # it's need by ags
+    matugen = {
+      url = "github:/InioX/Matugen";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -227,12 +241,7 @@
       # inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # it's need by ags
-    # TODO: This should be replace by gowall, gowall seems better
-    matugen = {
-      url = "github:/InioX/Matugen";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    # catppuccin.url = "github:catppuccin/nix";
 
     # my own wallpapers
     # this wallpaper is too big

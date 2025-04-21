@@ -11,6 +11,6 @@ in {
 
   config = mkIf cfg.enable {
     # auto mount usb drives
-    services = {udiskie.enable = true;};
+    services.udiskie.enable = true;
   };
 }

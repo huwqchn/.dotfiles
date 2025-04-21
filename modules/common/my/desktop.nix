@@ -27,6 +27,18 @@ in {
       description = "The desktop environment type to use";
     };
 
+    # we need this on home-manager
+    fcitx5 = {
+      enable =
+        mkEnableOption "fcitx5"
+        // {
+          default =
+            if isLinux
+            then config.my.desktop.enable
+            else false;
+        };
+    };
+
     # TODO: i3 and bspwm are not supported yet
     # TODO: sway is not supported yet
     # TODO: should support niri, that's supper cool

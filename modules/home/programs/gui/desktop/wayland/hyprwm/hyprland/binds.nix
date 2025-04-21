@@ -1,23 +1,21 @@
 {
   lib,
   config,
+  pkgs,
   ...
 }: let
-  inherit (lib.my) mkHyprWorkspaces;
+  inherit (lib.my) mkHyprWorkspaces mkHyprMoveTo toggle;
   inherit (lib.lists) elem optionals;
-  toggle = program: service: let
-    prog = builtins.substring 0 14 program;
-    runserv = lib.optionalString service "run-as-service";
-  in "pkill ${prog} || ${runserv} ${program}";
-
-  runOnce = program: "pgrep ${program} || ${program}";
   inherit (lib.modules) mkIf;
-  inherit (config.my) browser terminal;
-  inherit (config.my) desktop;
+  inherit (lib.meta) getExe getExe';
+  inherit (config.my) browser terminal desktop;
   cfg = desktop.hyprland;
   num = desktop.general.workspace.number;
   mod = desktop.general.keybind.modifier;
   hyprsplit_enabled = cfg.plugins.enable && elem "hyprsplit" cfg.plugins.list;
+  playerctl' = getExe pkgs.playerctl;
+  wpctl' = getExe' pkgs.wireplumber "wpctl";
+  brightnessctl' = getExe pkgs.brightnessctl;
 in {
   config = mkIf cfg.enable {
     wayland.windowManager.hyprland = {
@@ -30,29 +28,39 @@ in {
           [
             # command
             "$mod SHIFT, Escape, exit,"
-            "$mod, Backspace, exec, ${toggle "wlogout" true} -p layer-shell"
-            "$mod, Q, killactive,"
-            "$mod, L, exec, ${runOnce "hyprlock"}"
+            "$mod, Escape, exec, ${toggle "wlogout" true} -p layer-shell"
+            "$mod, Q, killactive," # close the active window
+            "$mod SHIFT, Q, forcekillactive," # kill the active windwo
             "$mod, B, exec, $browser"
             "$mod, return, exec, $terminal"
-            "$mod, space, exec, ags -t launcher"
-            "$mod SHIFT, R, exec, ags -q; ags"
-            "$mod, A, exec, ags -t overview"
+
+            # "$mod, space, exec, ags -t launcher"
+            # "$mod SHIFT, R, exec, ags -q; ags"
+            # "$mod, A, exec, ags -t overview"
             # "SUPER ALT, E,           exec, ags -r 'launcher.open(\":em \")'"
             # "SUPER ALT, V,           exec, ags -r 'launcher.open(\":ch \")'"
-            ",Print, exec, ags -r 'recorder.screenshot()'"
-            "$mod, Print, exec, ags -r 'recorder.screenshot(true)'"
-            "$mod ALT,Print, exec, ags -r 'recorder.start()'"
-            ",XF86PowerOff, exec, ags -t powermenu"
-            "$mod, U, exec, XDG_CURRENT_DESKTOP=GNOME gnome-control-center"
+            # ",Print, exec, ags -r 'recorder.screenshot()'"
+            # "$mod, Print, exec, ags -r 'recorder.screenshot(true)'"
+            # "$mod ALT,Print, exec, ags -r 'recorder.start()'"
+            # ",XF86PowerOff, exec, ags -t powermenu"
+            # "$mod, U, exec, XDG_CURRENT_DESKTOP=GNOME gnome-control-center"
 
-            "$mod, T, togglefloating,"
-            "$mod SHIFT, T, pseudo,"
             "$mod, J, togglesplit,"
+            "$mod, Z, alterzorder, top"
+            "$mod SHIFT, Z, alterzorder, bottom"
+            "$mod SHIFT, F, togglefloating,"
             "$mod, F, fullscreen, 0"
             "$mod, M, fullscreen, 1"
+            "$mod, P, pseudo,"
+            "$mod SHIFT, P, pin,"
+            # group
             "$mod, G, togglegroup,"
-            "$mod, P, pin,"
+            "$mod SHIFT, G, changegroupactive, f"
+            # move group
+            "$mod SHIFT CONTROL, N, movewindoworgroUP, l"
+            "$mod SHIFT CONTROL, E, movewindoworgroUP, d"
+            "$mod SHIFT CONTROL, I, movewindoworgroUP, u"
+            "$mod SHIFT CONTROL, O, movewindoworgroUP, r"
             # move focus
             "$mod, N, movefocus, l"
             "$mod, E, movefocus, d"
@@ -63,6 +71,7 @@ in {
             "$mod SHIFT, E, movewindow, d"
             "$mod SHIFT, I, movewindow, u"
             "$mod SHIFT, O, movewindow, r"
+
             # special workspace
             "$mod SHIFT, grave, togglespecialworkspace"
             "$mod, grave, movetoworkspace, special"
@@ -76,36 +85,46 @@ in {
             "$mod, W, workspace, empty" # move to the first empty workspace
             # "$mod, tab, workspace, m+1"
             # "$mod SHIFT, tab, workspace, m-1"
-            "$mod, mouse_down, workspace, e+1"
-            "$mod, mouse_up, workspace, e-1"
-            "$mod, bracketleft, workspace, e+1"
-            "$mod, bracketright, workspace, e-1"
-            "$mod SHIFT, bracketleft, movetoworkspace, -1"
-            "$mod SHIFT, bracketright, movetoworkspace, +1"
             # send focused workspace to left/right monitor
             "$mod ALT, bracketleft, movecurrentworkspacetomonitor, l"
             "$mod ALT, bracketright, movecurrentworkspacetomonitor, r"
             # send focused workspace to left/right space silent
             "$mod CTRL, bracketleft, movetoworkspacesilent, -1"
             "$mod CTRL, bracketright, movetoworkspacesilent, +1"
+
+            # Workspace control
+            "$mod, D, focusworkspaceoncurrentmonitor, name:D" # desktop only
+            "$mod, backspace, focusworkspaceoncurrentmonitor, previous"
+
+            "$mod, mouse_down, focusworkspaceoncurrentmonitor, -1"
+            "$mod, mouse_up, focusworkspaceoncurrentmonitor, +1"
           ]
-          ++ (
-            optionals hyprsplit_enabled
+          ++ (mkHyprMoveTo ["focusworkspaceoncurrentmonitor" "movetoworkspacesilent"] num)
+          ++ (optionals (!hyprsplit_enabled)
             (mkHyprWorkspaces
               ["workspace" "movetoworkspace" "movetoworkspacesilent"]
-              num)
-          )
+              num))
           ++ (optionals (!cfg.switch.enable) [
             "ALT, tab, cyclenext,"
             "ALT SHIFT, tab, bringactivetotop,"
+          ])
+          ++ (optionals (!cfg.nome.enable) [
+            "$mod, mouse_down, workspace, e+1"
+            "$mod, mouse_up, workspace, e-1"
+            "$mod, bracketleft, workspace, e+1"
+            "$mod, bracketright, workspace, e-1"
+            "$mod SHIFT, bracketleft, movetoworkspace, -1"
+            "$mod SHIFT, bracketright, movetoworkspace, +1"
           ]);
 
+        # Bind: mouse binds
         bindm = [
           # Move/resize windows with mainMod + LMB/RMB and dragging
-          "SUPER, mouse:272, movewindow"
-          "SUPER ALT, mouse:272, resizewindow"
+          "$mod, mouse:272, movewindow"
+          "$mod ALT, mouse:272, resizewindow"
         ];
 
+        # Bind: repeat while holding
         binde = [
           # Window split ratio
           "$mod, Minus, splitratio, -0.1"
@@ -119,25 +138,35 @@ in {
           "$mod CTRL, O, resizeactive, -10 0"
         ];
 
+        # Bind: locked binds
         bindl = [
           # media controls
-          ", XF86AudioPlay, exec, playerctl play-pause"
-          ", XF86AudioPrev, exec, playerctl previous"
-          ", XF86AudioNext, exec, playerctl next"
+          ", XF86AudioPlay, exec, ${playerctl'} play"
+          ", XF86AudioPrev, exec, ${playerctl'} previous"
+          ", XF86AudioNext, exec, ${playerctl'} next"
+          ", XF86AudioPause, exec, ${playerctl'} pause"
 
           # volume
-          ", XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
-          ", XF86AudioMicMute, exec, wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"
+          ", XF86AudioMute, exec, ${wpctl'} set-mute @DEFAULT_AUDIO_SINK@ toggle"
+          ", XF86AudioMicMute, exec, ${wpctl'} set-mute @DEFAULT_AUDIO_SOURCE@ toggle"
+
+          # misc
+          ", XF86Messenger, togglespecialworkspace"
         ];
 
+        # Bind: locked and repeat
         bindel = [
           # volume
-          ", XF86AudioRaiseVolume, exec, wpctl set-volume -l '1.0' @DEFAULT_AUDIO_SINK@ 6%+"
-          ", XF86AudioLowerVolume, exec, wpctl set-volume -l '1.0' @DEFAULT_AUDIO_SINK@ 6%-"
+          ", XF86AudioRaiseVolume, exec, ${wpctl'} set-volume -l '1.0' @DEFAULT_AUDIO_SINK@ 6%+"
+          ", XF86AudioLowerVolume, exec, ${wpctl'} set-volume -l '1.0' @DEFAULT_AUDIO_SINK@ 6%-"
+          "ALT, XF86AudioRaiseVolume, exec, ${wpctl'} set-volume -l '1.0' @DEFAULT_AUDIO_SOURCE@ 6%+"
+          "ALT, XF86AudioLowerVolume, exec, ${wpctl'} set-volume -l '1.0' @DEFAULT_AUDIO_SOURCE@ 6%-"
 
           # backlight
-          ", XF86MonBrightnessUp, exec, brillo -q -u 300000 -A 5"
-          ", XF86MonBrightnessDown, exec, brillo -q -u 300000 -U 5"
+          ", XF86MonBrightnessUp, exec, ${brightnessctl'} --exponent s 5%+"
+          ", XF86MonBrightnessDown, exec, ${brightnessctl'} --exponent s 5%-"
+          ", XF86KbdBrightnessUp, exec, ${brightnessctl'} --device='*::kbd_backlight' s 10%+"
+          ", XF86KbdBrightnessDown, exec, ${brightnessctl'} --device='*::kbd_backlight' s 10%-"
         ];
       };
       extraConfig = ''

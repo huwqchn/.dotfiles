@@ -1,4 +1,8 @@
-{self, ...}: {
+{
+  self,
+  inputs,
+  ...
+}: {
   # Global nixpkgs configuration. This is ignored if nixpkgs.pkgs is set
   # which is a case that should be avoided. Everything that is set to configure
   # nixpkgs must go here.
@@ -42,6 +46,10 @@
       # with maintainers, so it's disabled for the time being.
       showDerivationWarnings = [];
     };
-    overlays = builtins.attrValues self.overlays;
+    overlays =
+      (builtins.attrValues self.overlays)
+      ++ [
+        inputs.hyprpanel.overlay
+      ];
   };
 }

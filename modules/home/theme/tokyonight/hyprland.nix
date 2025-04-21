@@ -20,7 +20,7 @@ in {
         "col.border_locked_active" = gradient red 0.4 teal 0.9 90;
         "col.border_locked_inactive" = gradient yellow 0.5 orange 0.9 90;
         groupbar = {
-          text_colore = rgba black 1.0;
+          text_color = rgba black 1.0;
           "col.active" = rgba todo 1.0;
           "col.inactive" = rgba bg_visual 0.8;
           "col.locked_active" = rgba red 1.0;

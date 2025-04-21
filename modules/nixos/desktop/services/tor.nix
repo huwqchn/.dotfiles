@@ -6,9 +6,9 @@
   inherit (lib.options) mkEnableOption;
   inherit (lib.modules) mkIf;
   inherit (config.my) desktop;
-  cfg = config.my.security.tor;
+  cfg = config.my.services.tor;
 in {
-  options.my.security.tor = {
+  options.my.services.tor = {
     enable =
       mkEnableOption "Enable Tor"
       // {

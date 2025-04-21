@@ -6,7 +6,10 @@
 }: let
   inherit (lib.options) mkEnableOption;
   inherit (lib.modules) mkIf;
+  inherit (lib.meta) getExe getExe';
   cfg = config.my.desktop.hyprland;
+  hyprshade' = getExe pkgs.hyprshade;
+  systemctl' = getExe' pkgs.systemd "systemctl";
 in {
   options.my.desktop.hyprland.shade = {
     enable =
@@ -18,12 +21,14 @@ in {
 
   config = mkIf cfg.shade.enable {
     home.activation.hyprshade = lib.hm.dag.entryAfter ["writeBoundary"] ''
-      ${pkgs.hyprshade}/bin/hyprshade install
-      ${pkgs.systemd}/bin/systemctl --user enable --now hyprshade.timer
+      ${hyprshade'} install
+      ${systemctl'} enable --now hyprshade.timer
     '';
+
     wayland.windowManager.hyprland.settings.exec = [
-      "${pkgs.hyprshade}/bin/hyprshade auto"
+      "${hyprshade'} auto"
     ];
+
     xdg.configFile = {
       "hypr/hyprshade.toml".text = ''
         [[shades]]

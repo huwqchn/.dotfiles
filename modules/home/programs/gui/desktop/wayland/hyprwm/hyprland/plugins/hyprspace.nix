@@ -8,6 +8,7 @@
   inherit (lib.lists) elem;
   inherit (config.my.desktop.hyprland) plugins;
   enable = plugins.enable && elem "hyprspace" plugins.list;
+  hyprland_settings = config.wayland.windowManager.hyprland.settings;
 in {
   config = mkIf enable {
     wayland.windowManager.hyprland = {
@@ -36,15 +37,14 @@ in {
           hideOverlayLayers = true;
           drawActiveWorkspace = true;
 
-          # TODO: theme
-          # plugin:overview:panelColor
-          # plugin:overview:panelBorderColor
-          # plugin:overview:workspaceActiveBackground
-          # plugin:overview:workspaceInactiveBackground
-          # plugin:overview:workspaceActiveBorder
-          # plugin:overview:workspaceInactiveBorder
-          # plugin:overview:dragAlpha overrides the alpha of window when dragged in overview (0 - 1, 0 = transparent, 1 = opaque)
-          # plugin:overview:disableBlur
+          panelBorderColor = hyprland_settings.general."col.active_border";
+          panelBorderWidth = hyprland_settings.general.border_size;
+          panelColor = hyprland_settings.decoration."col.shadow";
+          workspaceActiveBackground = hyprland_settings.group.groupbar.col.active;
+          workspaceInactiveBackground = hyprland_settings.group.groupbar.col.inactive;
+          workspaceActiveBorder = hyprland_settings.group."col.active_border";
+          workspaceInactiveBorder = hyprland_settings.group."col.inactive_border";
+          workspaceBorderSize = hyprland_settings.general.border_size;
         };
       };
     };

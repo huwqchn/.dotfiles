@@ -1,12 +1,15 @@
 {
   lib,
   config,
+  pkgs,
   ...
 }: let
   inherit (lib.modules) mkIf;
   inherit (lib.options) mkEnableOption mkOption;
   inherit (lib.types) nullOr str;
+  inherit (lib.meta) getExe;
   inherit (config.my.theme) wallpaper avatar;
+  hyprlock' = getExe pkgs.hyprlock;
   font_family = "SFProDisplay Nerd Font Bold";
   cfg = config.my.desktop.hyprlock;
 in {
@@ -90,6 +93,14 @@ in {
   };
 
   config = mkIf cfg.enable {
+    wayland.windowManager.hyprland.settings = {
+      # exec-once = [
+      #   "hyprlock"
+      # ];
+      bind = [
+        "$mod, L, exec, ${hyprlock'}"
+      ];
+    };
     programs.hyprlock = {
       enable = true;
 

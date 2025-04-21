@@ -12,15 +12,13 @@
   watchBackgroundColor ? "#000000",
   colorName ? "classic",
 }: let
-  capitalize = str: let
-    capital_letter = builtins.substring 0 1 str;
-    non_capital = lib.removePrefix capital_letter str;
-  in
-    lib.toUpper capital_letter + non_capital;
+  capitalize = str:
+    lib.toUpper (builtins.substring 0 1 str) + (builtins.substring 1 (builtins.stringLength str - 1) str);
 
   themeName = "Bibata-${capitalize variant}-${capitalize colorName}-Hyprcursor";
 in
-  assert builtins.elem variant ["modern" "modern-right" "original" "original-right"];
+  assert builtins.elem variant ["modern" "modern-right" "original" "original-right"]
+  || builtins.trace "Invalid variant ${variant}. Valid variants are: modern, modern-right, original, original-right" false;
     stdenvNoCC.mkDerivation (final: {
       pname = "bibata-hyprcursor";
       version = "v2.0.7";
