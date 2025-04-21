@@ -76,8 +76,6 @@ in {
             "$mod, W, workspace, empty" # move to the first empty workspace
             # "$mod, tab, workspace, m+1"
             # "$mod SHIFT, tab, workspace, m-1"
-            "ALT, tab, cyclenext,"
-            "ALT SHIFT, tab, bringactivetotop,"
             "$mod, mouse_down, workspace, e+1"
             "$mod, mouse_up, workspace, e-1"
             "$mod, bracketleft, workspace, e+1"
@@ -96,7 +94,11 @@ in {
             (mkHyprWorkspaces
               ["workspace" "movetoworkspace" "movetoworkspacesilent"]
               num)
-          );
+          )
+          ++ (optionals (!cfg.switch.enable) [
+            "ALT, tab, cyclenext,"
+            "ALT SHIFT, tab, bringactivetotop,"
+          ]);
 
         bindm = [
           # Move/resize windows with mainMod + LMB/RMB and dragging
