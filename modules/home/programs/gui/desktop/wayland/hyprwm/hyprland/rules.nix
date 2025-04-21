@@ -7,6 +7,7 @@
   cfg = config.my.desktop.hyprland;
 in {
   config = mkIf cfg.enable {
+    # workspace rules
     wayland.windowManager.hyprland.settings = {
       # layer rules
       layerrule = let
