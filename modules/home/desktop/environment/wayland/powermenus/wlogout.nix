@@ -15,7 +15,7 @@
 in {
   config = mkIf enable {
     wayland.windowManager.hyprland.settings = {
-      bindr = [
+      bind = [
         # powermenu
         "$mod, Escape, exec, ${toggle wlogout'} -p layer-shell"
       ];

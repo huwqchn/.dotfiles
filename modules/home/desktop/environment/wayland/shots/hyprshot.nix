@@ -6,6 +6,7 @@
 }: let
   inherit (lib.modules) mkIf;
   inherit (lib.meta) getExe getExe';
+  inherit (lib.my) runOnce;
   inherit (config.xdg.userDirs.extraConfig) XDG_SCREENSHOTS_DIR;
   hyprshot' = getExe' pkgs.hyprshot "hyprshot";
   wl-copy' = getExe' pkgs.wl-clipboard-rs "wl-copy";
@@ -50,12 +51,12 @@ in {
     wayland.windowManager.hyprland = {
       settings = {
         bind = [
-          ", Print, exec, ${hyprshot'} --mode output --raw | ${satty'} --filename -"
-          "SHIFT, Print, exec, ${hyprshot'} --mode window --raw | ${satty'} --filename -"
-          "ALT, Print, exec, ${hyprshot'} --mode region --raw | ${satty'} --filename -"
-          "$mod, K, exec, ${hyprshot'} --mode output --raw | ${satty'} --filename -"
-          "$mod SHIFT, K, exec, ${hyprshot'} --mode window --raw | ${satty'} --filename -"
-          "$mod ALT, K, exec, ${hyprshot'} --mode region --raw | ${satty'} --filename -"
+          ", Print, exec, ${runOnce hyprshot'} --mode output --raw | ${runOnce satty'} --filename -"
+          "SHIFT, Print, exec, ${runOnce hyprshot'} --mode window --raw | ${runOnce satty'} --filename -"
+          "ALT, Print, exec, ${runOnce hyprshot'} --mode region --raw | ${runOnce satty'} --filename -"
+          "$mod, K, exec, ${runOnce hyprshot'} --mode output --raw | ${runOnce satty'} --filename -"
+          "$mod SHIFT, K, exec, ${runOnce hyprshot'} --mode window --raw | ${runOnce satty'} --filename -"
+          "$mod ALT, K, exec, ${runOnce hyprshot'} --mode region --raw | ${runOnce satty'} --filename -"
         ];
       };
     };
