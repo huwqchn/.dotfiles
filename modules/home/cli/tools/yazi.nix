@@ -5,15 +5,9 @@
   pkgs,
   ...
 }: let
-  yazi-plugins = pkgs.fetchFromGitHub {
-    owner = "yazi-rs";
-    repo = "plugins";
-    rev = "a1738e8088366ba73b33da5f45010796fb33221e";
-    hash = "sha256-eiLkIWviGzG9R0XP1Cik3Bg0s6lgk3nibN6bZvo8e9o=";
-  };
-  cfg = config.my.yazi;
   inherit (lib.options) mkEnableOption;
   inherit (lib.modules) mkIf;
+  cfg = config.my.yazi;
 in {
   options.my.yazi = {
     enable = mkEnableOption "yazi";
@@ -30,24 +24,15 @@ in {
       enableFishIntegration = true;
       # enableNushellIntegration = true;
       plugins = {
-        chmod = "${yazi-plugins}/chmod.yazi";
-        smart-enter = "${yazi-plugins}/smart-enter.yazi";
-        git = "${yazi-plugins}/git.yazi";
-        mount = "${yazi-plugins}/mount.yazi";
-        smart-filter = "${yazi-plugins}/smart-filter.yazi";
-        max-preview = "${yazi-plugins}/max-preview.yazi";
-        starship = pkgs.fetchFromGitHub {
-          owner = "Rolv-Apneseth";
-          repo = "starship.yazi";
-          rev = "6c639b474aabb17f5fecce18a4c97bf90b016512";
-          hash = "sha256-bhLUziCDnF4QDCyysRn7Az35RAy8ibZIVUzoPgyEO1A=";
-        };
-        # yaziline = pkgs.fetchFromGitHub {
-        #   owner = "llanosrocas";
-        #   repo = "yaziline.yazi";
-        #   rev = "e06c47f7fc7a1c679e3935b45013108dadd09c96";
-        #   hash = "sha256-K7ydg+xazl20bgiiZpcBxwKLaRbF51Gibr35dfT0Mro=";
-        # };
+        inherit (pkgs.yaziPlugins) starship;
+        inherit (pkgs.yaziPlugins) sudo;
+        inherit (pkgs.yaziPlugins) smart-enter;
+        inherit (pkgs.yaziPlugins) smart-filter;
+        inherit (pkgs.yaziPlugins) time-travel;
+        inherit (pkgs.yaziPlugins) mount;
+        inherit (pkgs.yaziPlugins) git;
+        inherit (pkgs.yaziPlugins) chmod;
+        inherit (pkgs.yaziPlugins) no-status;
       };
       initLua = ''
         require("starship"):setup()
@@ -74,6 +59,7 @@ in {
         th.git.updated_sign = ""
 
         require("git"):setup()
+        require("no-status"):setup()
       '';
       settings = {
         manager = {
@@ -240,16 +226,6 @@ in {
             on = "e";
             run = "arrow 1";
           }
-
-          {
-            on = "I";
-            run = "arrow -5";
-          }
-          {
-            on = "E";
-            run = "arrow 5";
-          }
-
           {
             on = "n";
             run = "leave";
@@ -310,6 +286,33 @@ in {
           {
             on = "]";
             run = "tab_switch 1 --relative";
+          }
+          # diff
+          {
+            on = "<A-d>";
+            run = "plugin diff";
+            desc = "Diff";
+          }
+          # mount
+          {
+            on = "M";
+            run = "plugin mount";
+          }
+          # time travel
+          {
+            on = ["z" "h"];
+            run = "plugin time-travel --args=prev";
+            desc = "Go to previous snapshot";
+          }
+          {
+            on = ["z" "l"];
+            run = "plugin time-travel --args=next";
+            desc = "Go to next snapshot";
+          }
+          {
+            on = ["z" "e"];
+            run = "plugin time-travel --args=exit";
+            desc = "Exit time travel";
           }
         ];
         tasks.prepend_keymap = [
