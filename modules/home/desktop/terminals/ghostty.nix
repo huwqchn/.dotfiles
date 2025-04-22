@@ -33,40 +33,13 @@ in {
       enableFishIntegration = true;
       enableZshIntegration = true;
       enableBashIntegration = true;
-      # themes = {
-      #   tokyonight-moon = {
-      #     palette = [
-      #       "0=#1b1d2b"
-      #       "1=#ff757f"
-      #       "2=#c3e88d"
-      #       "3=#ffc777"
-      #       "4=#82aaff"
-      #       "5=#c099ff"
-      #       "6=#86e1fc"
-      #       "7=#828bb8"
-      #       "8=#444a73"
-      #       "9=#ff8d94"
-      #       "10=#c7fb6d"
-      #       "11=#ffd8ab"
-      #       "12=#9ab8ff"
-      #       "13=#caabff"
-      #       "14=#b2ebff"
-      #       "15=#c8d3f5"
-      #     ];
-      #     background = "#222436";
-      #     foreground = "#c8d3f5";
-      #     cursor-color = "#c8d3f5";
-      #     selection-background = "#2d3f76";
-      #     selection-foreground = "#c8d3f5";
-      #   };
-      # };
       settings = {
         font-family = mkDefault "JetBrainsMono Nerd Font Mono";
         font-family-bold = mkDefault "JetBrainsMono Nerd Font Mono";
         font-family-italic = mkDefault "Maple Mono";
         font-family-bold-italic = mkDefault "Maple Mono";
 
-        font-size = 12;
+        font-size = 13;
 
         adjust-underline-position = 4;
         # Mouse
