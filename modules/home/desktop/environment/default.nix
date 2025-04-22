@@ -52,10 +52,10 @@ in {
       description = "The launcher to use";
     };
     shots = mkOption {
-      type = nullOr (enum ["hyprshots"]);
+      type = nullOr (enum ["hyprshots" "grimblast"]);
       default =
         if desktop.enable
-        then "hyprshots"
+        then "grimblast"
         else null;
       description = "The screenshot tool to use";
     };
