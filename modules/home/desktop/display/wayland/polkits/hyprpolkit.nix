@@ -5,7 +5,9 @@
   ...
 }: let
   inherit (lib.modules) mkIf;
-  enable = config.my.desktop.polkit == "hyprpolkit";
+  inherit (pkgs.stdenv.platform) isLinux;
+  isWayland = config.my.desktop.type == "Wayland" && isLinux;
+  enable = config.my.desktop.polkit == "hyprpolkit" && isWayland;
 in {
   config = mkIf enable {
     systemd.user.services."polkit-hyprpolkitagent" = {

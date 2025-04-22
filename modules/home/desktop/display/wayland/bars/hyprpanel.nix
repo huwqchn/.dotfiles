@@ -2,10 +2,13 @@
   inputs,
   lib,
   config,
+  pkgs,
   ...
 }: let
   inherit (lib.modules) mkIf;
-  enable = config.my.desktop.bar == "hyprpanel";
+  inherit (pkgs.stdenv.platform) isLinux;
+  isWayland = config.my.desktop.type == "Wayland" && isLinux;
+  enable = config.my.desktop.bar == "hyprpanel" && isWayland;
 in {
   imports = [inputs.hyprpanel.homeManagerModules.hyprpanel];
 

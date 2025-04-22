@@ -8,7 +8,9 @@
   inherit (lib.my) runOnce;
   hyprshot' = runOnce pkgs "hyprshot";
   satty' = runOnce pkgs "satty";
-  enable = config.my.desktop.shot == "hyprshot";
+  inherit (pkgs.stdenv.platform) isLinux;
+  isWayland = config.my.desktop.type == "Wayland" && isLinux;
+  enable = config.my.desktop.shot == "hyprshot" && isWayland;
 in {
   config = mkIf enable {
     home.packages = with pkgs; [

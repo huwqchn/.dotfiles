@@ -8,7 +8,9 @@
   inherit (lib.my) runOnce;
   grimblast' = runOnce pkgs "grimblast";
   satty' = runOnce pkgs "satty";
-  enable = config.my.desktop.shot == "grimblast";
+  inherit (pkgs.stdenv.platform) isLinux;
+  isWayland = config.my.desktop.type == "Wayland" && isLinux;
+  enable = config.my.desktop.shot == "grimblast" && isWayland;
 in {
   config = mkIf enable {
     # packages = with pkgs; [

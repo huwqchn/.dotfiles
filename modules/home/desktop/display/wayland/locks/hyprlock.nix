@@ -5,20 +5,18 @@
   ...
 }: let
   inherit (lib.modules) mkIf;
-  inherit (lib.options) mkEnableOption mkOption;
+  inherit (lib.options) mkOption;
   inherit (lib.types) nullOr str;
   inherit (lib.my) runOnce;
   inherit (config.my.theme) wallpaper avatar;
   hyprlock' = runOnce pkgs "hyprlock";
   font_family = "SFProDisplay Nerd Font Bold";
+  inherit (pkgs.stdenv.platform) isLinux;
+  isWayland = config.my.desktop.type == "Wayland" && isLinux;
   cfg = config.my.desktop.hyprlock;
+  enable = config.my.desktop.lock == "hyprlock" && isWayland;
 in {
   options.my.desktop.hyprlock = {
-    enable =
-      mkEnableOption "hyprlock"
-      // {
-        default = config.my.desktop.lock == "hyprlock";
-      };
     colors = {
       background = mkOption {
         type = nullOr str;
@@ -92,7 +90,7 @@ in {
     };
   };
 
-  config = mkIf cfg.enable {
+  config = mkIf enable {
     wayland.windowManager.hyprland.settings = {
       # exec-once = [
       #   "hyprlock"

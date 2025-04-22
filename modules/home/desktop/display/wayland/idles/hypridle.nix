@@ -27,7 +27,9 @@
   timeout = 300;
 
   inherit (lib.modules) mkIf;
-  enable = config.my.desktop.idle == "hypridle";
+  inherit (pkgs.stdenv.platform) isLinux;
+  isWayland = config.my.desktop.type == "Wayland" && isLinux;
+  enable = config.my.desktop.idle == "hypridle" && isWayland;
 in {
   config = mkIf enable {
     services.hypridle = {

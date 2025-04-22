@@ -7,9 +7,11 @@
   inherit (lib.modules) mkIf;
   inherit (lib.meta) getExe';
   inherit (config.my.theme) cursor;
+  inherit (pkgs.stdenv.hostPlatform) isLinux;
   hyprctl' = getExe' pkgs.hyprland "hyprctl";
+  enable = cursor != null && config.my.desktop.enable && isLinux;
 in {
-  config = mkIf (cursor != null) {
+  config = mkIf enable {
     # If your theme for mouse cursor, icons or windows don't load correctly,
     # try setting them with home.pointerCursor and gtk.theme,
     # which enable a bunch of compatibility options that should make the theme load in all situations.

@@ -1,6 +1,7 @@
 {
   lib,
   config,
+  pkgs,
   ...
 }: let
   inherit (lib.options) mkEnableOption mkOption;
@@ -8,7 +9,9 @@
   inherit (lib.modules) mkIf;
   inherit (lib.my) scanPaths;
   inherit (config.my) desktop;
-  isHyprland = desktop.environment == "hyprland";
+  inherit (pkgs.stdenv.platform) isLinux;
+  isWayland = config.my.desktop.type == "Wayland" && isLinux;
+  isHyprland = desktop.environment == "hyprland" && isWayland;
   cfg = desktop.hyprland;
 in {
   imports = scanPaths ./.;
@@ -17,7 +20,7 @@ in {
     enable =
       mkEnableOption "Enable Hyprland"
       // {
-        default = desktop.enable && desktop.type == "wayland" && isHyprland;
+        default = desktop.enable && isHyprland;
       };
     plugins = {
       enable = mkEnableOption "Enable Hyprland plugins";
