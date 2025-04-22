@@ -103,6 +103,33 @@
         "type": "github"
       }
     },
+    "anyrun": {
+      "inputs": {
+        "flake-parts": [
+          "flake-parts"
+        ],
+        "nixpkgs": [
+          "nixpkgs"
+        ],
+        "systems": [
+          "systems"
+        ]
+      },
+      "locked": {
+        "lastModified": 1731186561,
+        "narHash": "sha256-+jwC6oo7yx40SowZW4SCpTlYS+e0mPKmIuXvsBFNw3g=",
+        "owner": "fufexan",
+        "repo": "anyrun",
+        "rev": "3bc08db41dec30cd4278597c1c4bd7cf66b15fe0",
+        "type": "github"
+      },
+      "original": {
+        "owner": "fufexan",
+        "ref": "launch-prefix",
+        "repo": "anyrun",
+        "type": "github"
+      }
+    },
     "apple-fonts": {
       "inputs": {
         "nixpkgs": [
@@ -1525,6 +1552,7 @@
         "agenix": "agenix",
         "agenix-rekey": "agenix-rekey",
         "ags": "ags",
+        "anyrun": "anyrun",
         "apple-fonts": "apple-fonts",
         "darwin": "darwin_2",
         "dedsec-grub-theme": "dedsec-grub-theme",

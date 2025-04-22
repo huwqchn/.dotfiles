@@ -4,7 +4,7 @@
   pkgs,
   ...
 }: let
-  inherit (lib.my) mkHyprWorkspaces mkHyprMoveTo toggle runOnce;
+  inherit (lib.my) mkHyprWorkspaces mkHyprMoveTo runOnce;
   inherit (lib.lists) elem optionals;
   inherit (lib.modules) mkIf;
   inherit (lib.meta) getExe getExe';
@@ -16,6 +16,7 @@
   playerctl' = getExe pkgs.playerctl;
   wpctl' = getExe' pkgs.wireplumber "wpctl";
   brightnessctl' = getExe pkgs.brightnessctl;
+  wl-ocr' = getExe' pkgs.wl-ocr "wl-ocr";
 in {
   config = mkIf cfg.enable {
     wayland.windowManager.hyprland = {
@@ -28,7 +29,6 @@ in {
           [
             # command
             "$mod SHIFT, Escape, exit,"
-            "$mod, Escape, exec, ${toggle "wlogout" true} -p layer-shell"
             "$mod, Q, killactive," # close the active window
             "$mod SHIFT, Q, forcekillactive," # kill the active windwo
             "$mod, B, exec, $browser"
@@ -100,8 +100,8 @@ in {
             "$mod, mouse_up, focusworkspaceoncurrentmonitor, +1"
             # utility
             # select area to perform OCR on
-            "$mod, H, exec, ${runOnce "wl-ocr"}"
-            ", XF86Favorites, exec, ${runOnce "wl-ocr"}"
+            "$mod, H, exec, ${runOnce wl-ocr'}"
+            ", XF86Favorites, exec, ${runOnce wl-ocr'}"
           ]
           ++ (mkHyprMoveTo ["focusworkspaceoncurrentmonitor" "movetoworkspacesilent"] num)
           ++ (optionals (!hyprsplit_enabled)

@@ -6,28 +6,24 @@
   ...
 }: let
   inherit (lib.modules) mkIf;
+  inherit (lib.meta) getExe;
   inherit (lib.my) toggle;
   enable = config.my.desktop.launcher == "anyrun";
+  anyrunPkg = inputs.anyrun.packages.${pkgs.system}.anyrun-with-all-plugins;
+  anyrun' = getExe anyrunPkg;
 in {
   config = mkIf enable {
     wayland.windowManager.hyprland.settings = {
       bindr = [
         # launcher
-        "$mod, SPACE, exec, ${toggle "anyrun"}"
+        "$mod, SPACE, exec, ${toggle anyrun'}"
       ];
     };
     programs.anyrun = {
       enable = true;
+      package = anyrunPkg;
 
       config = {
-        plugins = with inputs.anyrun.packages.${pkgs.system}; [
-          uwsm_app
-          randr
-          rink
-          shell
-          symbols
-        ];
-
         width.fraction = 0.25;
         y.fraction = 0.3;
         hidePluginInfo = true;

@@ -5,8 +5,8 @@
 }: let
   inherit (lib.modules) mkIf;
   inherit (lib.my) rgba;
-  cfg = config.my.theme.tokyonight;
   inherit (config.my.theme.colorscheme) palette;
+  cfg = config.my.theme.tokyonight;
 in {
   config = mkIf cfg.enable {
     programs.anyrun.extraCss = with palette; ''

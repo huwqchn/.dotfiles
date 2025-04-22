@@ -85,12 +85,25 @@
   in
     lib.strings.concatStringsSep " " [x_str y_str];
 
-  toggle = program: service: let
-    prog = builtins.substring 0 14 program;
-    runserv = lib.optionalString service "run-as-service";
-  in "pkill ${prog} || ${runserv} ${program}";
+  getProgramName = program: builtins.baseNameOf program;
 
-  runOnce = program: "pgrep ${program} || ${program}";
+  toggle = program: let
+    programName = getProgramName program;
+  in ''
+    if pgrep -x -u "$USER" -- "${programName}" >/dev/null 2>&1; then
+      pkill  -x -u "$USER" -- "${programName}"
+    else
+      exec uwsm app -- "${program}"
+    fi
+  '';
+
+  runOnce = program: let
+    programName = getProgramName program;
+  in ''
+    if ! pgrep -x -u "$USER" -- "${programName}" >/dev/null 2>&1; then
+      exec uwsm app -- "${program}"
+    fi
+  '';
 in {
   inherit mkWorkspaces mkHyprWorkspaces mkHyprMoveTo mkAerospaceWorkspaces vec2 toggle runOnce;
 }

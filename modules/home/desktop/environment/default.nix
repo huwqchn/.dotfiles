@@ -59,6 +59,14 @@ in {
         else null;
       description = "The screenshot tool to use";
     };
+    powermenu = mkOption {
+      type = nullOr (enum ["wlogout"]);
+      default =
+        if desktop.enable
+        then "wlogout"
+        else null;
+      description = "The powermenu to use";
+    };
     general = {
       workspace = {
         number = mkOption {

@@ -52,7 +52,6 @@ in {
     };
   };
 
-  # TODO: monitors config
   config = mkIf cfg.enable {
     # enable hyprland
     wayland.windowManager.hyprland = {
