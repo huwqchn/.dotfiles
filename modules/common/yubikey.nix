@@ -7,12 +7,14 @@
   inherit (lib.modules) mkIf;
   inherit (lib.options) mkOption mkEnableOption;
   inherit (lib.attrsets) optionalAttrs mapAttrsToList getBin;
+  inherit (lib.meta) getExe';
   inherit (lib.lists) flatten;
   inherit (lib.types) attrsOf int literalExample;
   inherit (lib.strings) concatStringsSep;
   inherit (pkgs.stdenv.hostPlatform) isLinux;
   cfg = config.my.yubikey;
   homeDirectory = config.my.home;
+  loginctl' = getExe' pkgs.systemd "loginctl";
   yubikey-up = let
     yubikeyIds = concatStringsSep " " (
       mapAttrsToList (name: id: "[${name}]=\"${builtins.toString id}\"") cfg.identifiers
@@ -152,7 +154,7 @@ in {
         #  ENV{ID_BUS}=="usb",\
         #  ENV{ID_VENDOR_ID}=="1050",\
         #  ENV{ID_VENDOR}=="Yubico",\
-        #  RUN+="${pkgs.systemd}/bin/loginctl lock-sessions"
+        #  RUN+="${loginctl'} lock-sessions"
 
         ##
         # Yubikey 5 BIO
@@ -165,13 +167,13 @@ in {
         # SUBSYSTEM=="hid",\
         #  ACTION=="remove",\
         #  ENV{HID_NAME}=="Yubico YubiKey FIDO",\
-        #  RUN+="${pkgs.systemd}/bin/loginctl lock-sessions"
+        #  RUN+="${loginctl'} lock-sessions"
 
         # FIXME(yubikey): Change this so it only wakes up the screen to the login screen, xset cmd doesn't work
         # SUBSYSTEM=="hid",\
         #  ACTION=="add",\
         #  ENV{HID_NAME}=="Yubico YubiKey FIDO",\
-        #  RUN+="${pkgs.systemd}/bin/loginctl activate 1"
+        #  RUN+="${loginctl'} activate 1"
         #  #RUN+="${getBin pkgs.xorg.xset}/bin/xset dpms force on"
       '';
     };

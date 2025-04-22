@@ -4,7 +4,7 @@
   lib,
   ...
 }: let
-  inherit (lib.meta) getExe;
+  inherit (lib.meta) getExe getExe';
 
   # Define a function that creates wrapper scripts to track impure program calls
   mkTracer = name: target: exe:
@@ -16,7 +16,7 @@
     '');
 in {
   environment = {
-    usrbinenv = mkTracer "env" "/usr/bin/env" "${pkgs.coreutils}/bin/env";
-    binsh = mkTracer "sh" "/bin/sh" "${pkgs.bashInteractive}/bin/sh";
+    usrbinenv = mkTracer "env" "/usr/bin/env" "${getExe' pkgs.coreutils "env"}";
+    binsh = mkTracer "sh" "/bin/sh" "${getExe' pkgs.bashInteractive "sh"}";
   };
 }

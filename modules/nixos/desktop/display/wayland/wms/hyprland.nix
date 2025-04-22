@@ -5,11 +5,20 @@
   ...
 }: let
   inherit (lib.modules) mkIf mkForce;
+  inherit (lib.meta) getExe;
   cfg = config.my.desktop;
-  isHpyrland = cfg.environment == "Hyprland";
+  isHpyrland = cfg.environment == "hyprland";
 in {
-  config = mkIf (cfg.enable && isHpyrland == "Hyprland") {
-    services.displayManager.sessionPackages = [pkgs.hyprland];
+  config = mkIf (cfg.enable && isHpyrland) {
+    services.displayManager.defaultSession = "hyprland-uwsm";
+
+    programs.hyprland = {
+      enable = true;
+      withUWSM = true;
+    };
+
+    my.commands.login = "${getExe config.programs.uwsm.package} start hyprland-uwsm.desktop";
+
     xdg.portal = {
       enable = true;
       extraPortals = with pkgs; [

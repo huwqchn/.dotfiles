@@ -4,9 +4,11 @@
   lib,
   ...
 }: let
-  cfg = config.my.virtual.distrobox;
   inherit (lib.modules) mkIf;
   inherit (lib.options) mkEnableOption;
+  inherit (lib.meta) getExe';
+  cfg = config.my.virtual.distrobox;
+  distrobox' = getExe' pkgs.distrobox "distrobox";
 in {
   options.my.virtual.distrobox = {
     enable =
@@ -36,7 +38,7 @@ in {
       services."distrobox-update" = {
         enable = true;
         script = ''
-          ${pkgs.distrobox}/bin/distrobox upgrade --all
+          ${distrobox'} upgrade --all
         '';
         serviceConfig = {
           Type = "oneshot";

@@ -6,9 +6,9 @@
 }: let
   inherit (lib.options) mkEnableOption;
   inherit (lib.modules) mkIf mkAfter;
-  inherit (lib.meta) getExe;
+  inherit (lib.my) withUWSM;
   cfg = config.my.desktop.hyprland;
-  hyprnome' = getExe pkgs.hyprnome;
+  hyprnome' = withUWSM pkgs "hyprnome";
 in {
   options.my.desktop.hyprland.nome = {
     enable =

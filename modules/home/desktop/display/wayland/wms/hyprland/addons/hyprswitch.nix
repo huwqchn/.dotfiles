@@ -6,9 +6,9 @@
 }: let
   inherit (lib.options) mkEnableOption;
   inherit (lib.modules) mkIf mkAfter;
-  inherit (lib.meta) getExe;
+  inherit (lib.my) withUWSM;
   cfg = config.my.desktop.hyprland;
-  hyprswitch' = getExe pkgs.hyprswitch;
+  hyprswitch' = withUWSM pkgs "hyprswitch";
 in {
   options.my.desktop.hyprland.switch = {
     enable =

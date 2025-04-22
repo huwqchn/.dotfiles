@@ -1,4 +1,3 @@
-# FIXME: Hyprland config has so many errors need fix up
 {
   lib,
   config,
@@ -9,7 +8,7 @@
   inherit (lib.modules) mkIf;
   inherit (lib.my) scanPaths;
   inherit (config.my) desktop;
-  isHyprland = desktop.environment == "Hyprland";
+  isHyprland = desktop.environment == "hyprland";
   cfg = desktop.hyprland;
 in {
   imports = scanPaths ./.;
@@ -20,7 +19,6 @@ in {
       // {
         default = desktop.enable && desktop.type == "wayland" && isHyprland;
       };
-    # TODO: config all of these
     plugins = {
       enable = mkEnableOption "Enable Hyprland plugins";
       list = mkOption {
@@ -57,14 +55,16 @@ in {
     wayland.windowManager.hyprland = {
       enable = true;
       xwayland.enable = true;
-      systemd = {
-        enable = true;
-        variables = ["--all"];
-        extraCommands = [
-          "systemctl --user stop graphical-session.target"
-          "systemctl --user start hyprland-session.target"
-        ];
-      };
+      # NOTE: we use uwsm start hyprland, not manual ssystemd
+      systemd.enable = false;
+      # systemd = {
+      #   enable = true;
+      #   variables = ["--all"];
+      #   extraCommands = [
+      #     "systemctl --user stop graphical-session.target"
+      #     "systemctl --user start hyprland-session.target"
+      #   ];
+      # };
     };
 
     # make stuff work on wayland

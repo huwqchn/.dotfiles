@@ -9,7 +9,7 @@
   cfg = config.my.desktop;
   isWayland = cfg.type == "wayland";
   portal =
-    if cfg.environment == "Hyprland"
+    if cfg.environment == "hyprland"
     then "hyprland"
     else "wlr";
 in {

@@ -4,9 +4,11 @@
   config,
   ...
 }: let
+  inherit (lib.meta) getExe;
   inherit (lib.modules) mkIf mkMerge mkAfter;
   inherit (lib.options) mkEnableOption;
   inherit (pkgs.stdenv.hostPlatform) isLinux isDarwin;
+  nvd' = getExe pkgs.nvd;
   cfg = config.my.activation.diff;
 in {
   options.my.activation.diff.enable =
@@ -24,7 +26,7 @@ in {
         text = ''
           if [[ -e /run/current-system ]]; then
             echo "=== diff to current-system ==="
-            ${pkgs.nvd}/bin/nvd --nix-bin-dir='${config.nix.package}/bin' diff /run/current-system "$systemConfig"
+            ${nvd'} --nix-bin-dir='${config.nix.package}/bin' diff /run/current-system "$systemConfig"
             echo "=== end of the system diff ==="
           fi
         '';

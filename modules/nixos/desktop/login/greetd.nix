@@ -14,10 +14,11 @@
     "${sessionData}/share/xsessions"
     "${sessionData}/share/wayland-sessions"
   ];
-  cfg = config.my.desktop.login;
   inherit (config.my) name;
-  inherit (config.my.desktop) autologin environment;
+  inherit (config.my.desktop) autologin;
+  inherit (config.my.commands) login;
   persist = config.my.persistence.enable;
+  cfg = config.my.desktop.login;
 in {
   options.my.desktop.autologin =
     mkEnableOption ''
@@ -40,19 +41,34 @@ in {
           command = concatStringsSep " " [
             (getExe pkgs.greetd.tuigreet)
             "--greeting 'Welcome to NixOS!'"
-            "--time"
-            "--remember"
-            "--remember-user-session"
-            "--asterisks"
+            "--theme border=magenta;text=cyan;prompt=green;time=red;action=blue;button=yellow;container=black;input=red"
+            "--time" # display time
+            "--remember" # remember last logged-in username
+            "--remember-user-session" # remember last logged-in session
+            "--asterisks" # display asterisks when typing password
             "--sessions '${sessionPath}'"
+            "--cmd ${login}"
           ];
         };
 
         initial_session = mkIf autologin {
           user = name;
-          command = environment;
+          command = login;
         };
       };
+    };
+
+    # Extend systemd service
+    systemd.services.greetd.serviceConfig = {
+      Type = "idle";
+      StandardInput = "tty";
+      StandardOutput = "tty";
+      # Without this errors will spam on screen
+      StandardError = "journal";
+      # Without this bootlogs will spam on screen
+      TTYReset = true;
+      TTYVHangup = true;
+      TTYVTDisallocate = true;
     };
   };
 }

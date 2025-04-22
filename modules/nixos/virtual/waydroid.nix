@@ -6,19 +6,22 @@
 }: let
   inherit (lib.modules) mkIf;
   inherit (lib.options) mkEnableOption;
+  inherit (lib.meta) getExe;
+  weston' = getExe pkgs.weston;
+  waydroid' = getExe pkgs.waydroid;
 
   cfg = config.my.virtual.waydroid;
 
   waydroid-ui = pkgs.writeShellScriptBin "waydroid-ui" ''
     export WAYLAND_DISPLAY=wayland-0
-    ${pkgs.weston}/bin/weston -Swayland-1 --width=600 --height=1000 --shell="kiosk-shell.so" &
+    ${weston'} -Swayland-1 --width=600 --height=1000 --shell="kiosk-shell.so" &
     WESTON_PID=$!
 
     export WAYLAND_DISPLAY=wayland-1
-    ${pkgs.waydroid}/bin/waydroid show-full-ui &
+    ${waydroid'} show-full-ui &
 
     wait $WESTON_PID
-    waydroid session stop
+    ${waydroid'} session stop
   '';
 in {
   options.my.virtual.waydroid = {

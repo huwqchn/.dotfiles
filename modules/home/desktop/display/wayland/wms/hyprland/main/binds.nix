@@ -4,11 +4,11 @@
   pkgs,
   ...
 }: let
-  inherit (lib.my) mkHyprWorkspaces mkHyprMoveTo runOnce;
+  inherit (lib.my) mkHyprWorkspaces mkHyprMoveTo;
   inherit (lib.lists) elem optionals;
   inherit (lib.modules) mkIf;
   inherit (lib.meta) getExe getExe';
-  inherit (config.my) browser terminal desktop;
+  inherit (config.my) desktop commands;
   cfg = desktop.hyprland;
   num = desktop.general.workspace.number;
   mod = desktop.general.keybind.modifier;
@@ -16,14 +16,16 @@
   playerctl' = getExe pkgs.playerctl;
   wpctl' = getExe' pkgs.wireplumber "wpctl";
   brightnessctl' = getExe pkgs.brightnessctl;
-  wl-ocr' = getExe' pkgs.wl-ocr "wl-ocr";
+
+  lang = "eng+chi_sim+chi_tra";
+  wl-ocr = pkgs.writeShellScript "wl-ocr" ''
+    ${getExe pkgs.grim} -g "$(${getExe pkgs.slurp})" - | ${getExe pkgs.tesseract} ${lang} - - | ${getExe' pkgs.wl-clipboard "wl-copy"}
+  '';
 in {
   config = mkIf cfg.enable {
     wayland.windowManager.hyprland = {
       settings = {
         "$mod" = mod;
-        "$browser" = browser;
-        "$terminal" = terminal;
         # keybindings
         bind =
           [
@@ -31,8 +33,8 @@ in {
             "$mod SHIFT, Escape, exit,"
             "$mod, Q, killactive," # close the active window
             "$mod SHIFT, Q, forcekillactive," # kill the active windwo
-            "$mod, B, exec, $browser"
-            "$mod, return, exec, $terminal"
+            "$mod, B, exec, ${commands.browser}"
+            "$mod, return, exec, ${commands.terminal}"
 
             # "$mod, space, exec, ags -t launcher"
             # "$mod SHIFT, R, exec, ags -q; ags"
@@ -100,8 +102,8 @@ in {
             "$mod, mouse_up, focusworkspaceoncurrentmonitor, +1"
             # utility
             # select area to perform OCR on
-            "$mod, H, exec, ${runOnce wl-ocr'}"
-            ", XF86Favorites, exec, ${runOnce wl-ocr'}"
+            "$mod, H, exec, ${wl-ocr}"
+            ", XF86Favorites, exec, ${wl-ocr}"
           ]
           ++ (mkHyprMoveTo ["focusworkspaceoncurrentmonitor" "movetoworkspacesilent"] num)
           ++ (optionals (!hyprsplit_enabled)

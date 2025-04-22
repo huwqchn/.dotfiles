@@ -7,6 +7,7 @@
   inherit (lib.modules) mkIf mkForce;
   inherit (lib.options) mkOption mkEnableOption;
   inherit (lib.strings) escapeShellArgs;
+  inherit (lib.meta) getExe';
   inherit
     (lib.types)
     int
@@ -16,6 +17,8 @@
     listOf
     attrsOf
     ;
+
+  notify-send' = getExe' pkgs.libnotify "notify-send";
 
   cfg = config.my.security.clamav;
 in {
@@ -39,7 +42,7 @@ in {
           LogTime = true;
           DetectPUA = true;
           VirusEvent = escapeShellArgs [
-            "${pkgs.libnotify}/bin/notify-send"
+            "${notify-send'}"
             "--"
             "ClamAV Virus Scan"
             "Found virus: %v"
@@ -148,7 +151,7 @@ in {
             ExecStart = let
               message = "Updating ClamAV database";
             in ''
-              ${pkgs.coreutils}/bin/echo -en ${message}
+              ${getExe' pkgs.coreutils "echo"} -en ${message}
             '';
             SuccessExitStatus = mkForce [
               11

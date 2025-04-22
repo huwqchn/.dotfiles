@@ -87,23 +87,39 @@
 
   getProgramName = program: builtins.baseNameOf program;
 
-  toggle = program: let
-    programName = getProgramName program;
-  in ''
-    if pgrep -x -u "$USER" -- "${programName}" >/dev/null 2>&1; then
-      pkill  -x -u "$USER" -- "${programName}"
-    else
-      exec uwsm app -- "${program}"
-    fi
-  '';
+  toggle = pkgs: program: let
+    program' = lib.getExe (builtins.getAttr program pkgs);
+    programName = getProgramName program';
+    uwsm' = lib.getExe pkgs.uwsm;
+  in "pkill -x ${programName} || ${uwsm'} app -- ${program'}";
 
-  runOnce = program: let
+  toggle' = pkgs: package: program: let
+    program' = lib.getExe' package program;
+    programName = getProgramName program';
+    uwsm' = lib.getExe pkgs.uwsm;
+  in "pkill -x ${programName} || ${uwsm'} app -- ${program'}";
+
+  runOnce = pkgs: program: let
+    program' = lib.getExe (builtins.getAttr program pkgs);
     programName = getProgramName program;
-  in ''
-    if ! pgrep -x -u "$USER" -- "${programName}" >/dev/null 2>&1; then
-      exec uwsm app -- "${program}"
-    fi
-  '';
+    uwsm' = lib.getExe pkgs.uwsm;
+  in "pidof ${programName} > /dev/null || ${uwsm'} app -- ${program'}";
+
+  runOnce' = pkgs: package: program: let
+    program' = lib.getExe' package program;
+    programName = getProgramName program;
+    uwsm' = lib.getExe pkgs.uwsm;
+  in "pidof ${programName} > /dev/null || ${uwsm'} app -- ${program'}";
+
+  withUWSM = pkgs: program: let
+    uwsm' = lib.getExe pkgs.uwsm;
+    program' = lib.getExe (builtins.getAttr program pkgs);
+  in "${uwsm'} app -- ${program'}";
+
+  withUWSM' = pkgs: package: program: let
+    uwsm' = lib.getExe pkgs.uwsm;
+    program' = lib.getExe' package program;
+  in "${uwsm'} app -- ${program'}";
 in {
-  inherit mkWorkspaces mkHyprWorkspaces mkHyprMoveTo mkAerospaceWorkspaces vec2 toggle runOnce;
+  inherit mkWorkspaces mkHyprWorkspaces mkHyprMoveTo mkAerospaceWorkspaces vec2 toggle toggle' runOnce runOnce' withUWSM withUWSM';
 }

@@ -51,8 +51,8 @@ in {
         else null;
       description = "The launcher to use";
     };
-    shots = mkOption {
-      type = nullOr (enum ["hyprshots" "grimblast"]);
+    shot = mkOption {
+      type = nullOr (enum ["hyprshot" "grimblast"]);
       default =
         if desktop.enable
         then "grimblast"

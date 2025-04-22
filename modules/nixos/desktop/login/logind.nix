@@ -4,9 +4,9 @@
   ...
 }: let
   inherit (lib.modules) mkIf;
-  cfg = config.my.desktop.login;
+  inherit (config.my) desktop;
 in {
-  config = mkIf (cfg == "logind") {
+  config = mkIf desktop.enable {
     services.logind = {
       lidSwitch = "ignore";
       lidSwitchDocked = "ignore";

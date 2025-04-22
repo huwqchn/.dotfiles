@@ -5,20 +5,20 @@
   ...
 }: let
   inherit (lib.meta) getExe getExe';
+  inherit (lib.my) runOnce;
+
   suspendScript = pkgs.writeShellScript "suspend-script" ''
     # check if any player has statutes "Playing"
-    ${lib.getExe pkgs.playerctl} -a status | ${
-      lib.getExe pkgs.ripgrep
+    ${getExe pkgs.playerctl} -a status | ${
+      getExe pkgs.ripgrep
     } Playing -q
     # only suspend if nothing is playing
     if [ $? == 1 ]; then
-      ${pkgs.system}/bin/systemctl suspend
+      ${getExe' pkgs.systemd "systemctl"} suspend
     fi
-
   '';
 
   brillo' = getExe pkgs.brillo;
-  hyprlock' = getExe pkgs.hyprlock;
   loginctl' = getExe' pkgs.systemd "loginctl";
   brightnessctl' = getExe pkgs.brightnessctl;
   hyprctl' = getExe' pkgs.hyprland "hyprctl";
@@ -36,13 +36,13 @@ in {
       settings = {
         general = {
           # avoid starting multiple hyprlock instances
-          lock_cmd = "pidof ${hyprlock'} || ${hyprlock'}";
+          lock_cmd = runOnce pkgs "hyprlock";
 
           # lock before suspend
           before_sleep_cmd = "${loginctl'} lock-session";
 
           # to avoid having to press a key twice to turn on the display
-          after_sleep_cmd = "hyprctl dispatch dpms on";
+          after_sleep_cmd = "${hyprctl'} dispatch dpms on";
         };
 
         listener = [

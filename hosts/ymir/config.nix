@@ -38,7 +38,6 @@
         "exfat"
       ];
     };
-    desktop.autologin = true;
     video.enable = true;
     btrbk.enable = true;
     zram.enable = true;

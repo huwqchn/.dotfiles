@@ -7,10 +7,9 @@
   inherit (lib.modules) mkIf;
   inherit (lib.options) mkEnableOption mkOption;
   inherit (lib.types) nullOr str;
-  inherit (lib.meta) getExe;
   inherit (lib.my) runOnce;
   inherit (config.my.theme) wallpaper avatar;
-  hyprlock' = getExe pkgs.hyprlock;
+  hyprlock' = runOnce pkgs "hyprlock";
   font_family = "SFProDisplay Nerd Font Bold";
   cfg = config.my.desktop.hyprlock;
 in {
@@ -99,7 +98,7 @@ in {
       #   "hyprlock"
       # ];
       bind = [
-        "$mod, L, exec, ${runOnce hyprlock'}"
+        "$mod, L, exec, ${hyprlock'}"
       ];
     };
     programs.hyprlock = {

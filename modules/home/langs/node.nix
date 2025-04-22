@@ -12,6 +12,8 @@
   nodePkg = pkgs.nodejs_latest;
   inherit (lib.modules) mkMerge mkIf;
   inherit (lib.options) mkEnableOption;
+  inherit (lib.meta) getExe;
+  yarn' = getExe pkgs.yarn;
 in {
   options.my.develop.node = {
     enable = mkEnableOption "Node.js development environment";
@@ -31,7 +33,7 @@ in {
         ya = "yarn";
       };
 
-      home.sessionVariables.PATH = ["$(${pkgs.yarn}/bin/yarn global bin)"];
+      home.sessionVariables.PATH = ["$(${yarn'} global bin)"];
     })
 
     (mkIf cfg.xdg.enable {

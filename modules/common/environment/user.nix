@@ -5,7 +5,7 @@
   self,
   ...
 }: let
-  inherit (config.my) name home shell;
+  inherit (config.my) name home;
   userGroup = lib.my.ldTernary pkgs "users" "admin";
   user_readable = {
     symlink = false;
@@ -17,11 +17,12 @@
   inherit (lib.filesystem) listFilesRecursive;
   inherit (lib.lists) forEach;
   persist = config.my.persistence.enable;
+  shell = builtins.getAttr config.my.shell pkgs;
 in {
   environment = {
     # add user's shell into /etc/shells
     shells = with pkgs; [
-      bashInteractive
+      bash
       fish
       zsh
     ];
@@ -35,13 +36,7 @@ in {
   # Define a user account.
   users.users."${name}" = {
     # https://github.com/LnL7/nix-darwin/issues/1237 still have a bug
-    inherit home;
-    shell =
-      if shell == "fish"
-      then pkgs.fish
-      else if shell == "zsh"
-      then pkgs.zsh
-      else pkgs.bashInteractive;
+    inherit home shell;
     description = name;
 
     # Public Keys that can be used to login to all hosts;

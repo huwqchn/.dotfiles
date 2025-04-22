@@ -44,12 +44,12 @@ in {
     # TODO: should support niri, that's supper cool
     # TODO: should support cosmic desktop environment
     environment = mkOption {
-      type = nullOr (enum ["i3" "bspwm" "sway" "Hyprland" "aerospace"]);
+      type = nullOr (enum ["i3" "bspwm" "sway" "hyprland" "aerospace"]);
       default =
         if !my.desktop.enable
         then null
         else if isLinux
-        then "Hyprland"
+        then "hyprland"
         else "aerospace";
       description = "The default desktop environment";
     };
@@ -72,7 +72,7 @@ in {
       message = "You can't use bspwm desktop environment without xorg";
     }
     {
-      assertion = my.desktop.environment == "Hyprland" -> my.desktop.type == "wayland";
+      assertion = my.desktop.environment == "hyprland" -> my.desktop.type == "wayland";
       message = "You can't use hyprland desktop environment without wayland";
     }
     {

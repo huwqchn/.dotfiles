@@ -10,6 +10,7 @@
   inherit (lib.types) str package;
 
   cfg = config.my.boot.plymouth;
+  plymouth' = getExe' pkgs.plymouth "plymouth";
 in {
   options.my.boot.plymouth = {
     enable =
@@ -38,11 +39,11 @@ in {
 
     # make plymouth work with sleep
     powerManagement = {
-      powerDownCommands = "${getExe' pkgs.plymouth "plymouth"} --show-splash";
-      resumeCommands = "${getExe' pkgs.plymouth "plymouth"} --quit";
+      powerDownCommands = "${plymouth'} --show-splash";
+      resumeCommands = "${plymouth'} --quit";
     };
 
     systemd.services.plymouth-quit.serviceConfig.ExecStartPre =
-      mkIf cfg.playFullAnimation "${pkgs.coreutils-full}/bin/sleep 5";
+      mkIf cfg.playFullAnimation "${getExe' pkgs.coreutils-full "sleep"} 5";
   };
 }

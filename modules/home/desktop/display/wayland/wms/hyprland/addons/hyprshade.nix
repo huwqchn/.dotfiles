@@ -6,9 +6,10 @@
 }: let
   inherit (lib.options) mkEnableOption;
   inherit (lib.modules) mkIf;
-  inherit (lib.meta) getExe getExe';
+  inherit (lib.my) toggle;
+  inherit (lib.meta) getExe';
   cfg = config.my.desktop.hyprland;
-  hyprshade' = getExe pkgs.hyprshade;
+  hyprshade' = toggle pkgs "hyprshade";
   systemctl' = getExe' pkgs.systemd "systemctl";
 in {
   options.my.desktop.hyprland.shade = {

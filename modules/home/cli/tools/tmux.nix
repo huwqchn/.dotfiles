@@ -10,6 +10,8 @@
   inherit (lib.modules) mkIf;
   inherit (lib.strings) optionalString;
   inherit (pkgs.stdenv.hostPlatform) isDarwin;
+  inherit (lib.meta) getExe getExe';
+  shell = getExe (builtins.getAttr config.my.shell pkgs);
 in {
   options.my.tmux = {
     enable = mkEnableOption "tmux";
@@ -66,7 +68,7 @@ in {
         focusEvents = true;
         aggressiveResize = true;
         terminal = "screen-256color";
-        shell = "${pkgs.fish}/bin/fish";
+        inherit shell;
         plugins = with pkgs.tmuxPlugins; [
           # R -> reload tmux config
           # set-option -g status-keys emacs
@@ -348,7 +350,7 @@ in {
           bind-key -T copy-mode-vi 'C-o' select-pane -R
           bind-key -T copy-mode-vi 'C-\' select-pane -l
           ${optionalString isDarwin ''
-            set-option -g default-command "${pkgs.reattach-to-user-namespace}/bin/reattach-to-user-namespace -l ${pkgs.fish}/bin/fish"
+            set-option -g default-command "${getExe' pkgs.reattach-to-user-namespace "reattach-to-user-namespace"} -l ${shell}"
           ''}
         '';
       };

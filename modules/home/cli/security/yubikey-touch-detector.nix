@@ -11,6 +11,7 @@
   inherit (lib.modules) mkIf;
   inherit (lib.types) bool listOf str package literalExpression;
   inherit (lib.strings) optionals concatStringsSep;
+  inherit (lib.meta) getExe getExe';
 in {
   options.my.yubikey = {
     touchDetector = {
@@ -96,17 +97,17 @@ in {
             fi
             printf '{"text": ""}\n'
 
-            ${lib.getBin pkgs.netcat}/bin/nc -U "$socket" | while read -n5 cmd; do
+            ${getExe' pkgs.netcat "nc"} -U "$socket" | while read -n5 cmd; do
 
               if [ "''${cmd:4:1}" = "1" ]; then
                 printf "Playing ${file}\n"
-                ${pkgs.mpv}/bin/mpv --volume=100 ${file} > /dev/null
+                ${getExe pkgs.mpv} --volume=100 ${file} > /dev/null
               else
                 printf "Ignored yubikey command: $cmd\n"
               fi
             done
 
-            ${lib.getBin pkgs.coreutils}/bin/sleep 1
+            ${getExe' pkgs.coreutils "sleep"} 1
         done
       '';
     in

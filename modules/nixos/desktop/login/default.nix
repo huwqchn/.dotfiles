@@ -15,7 +15,6 @@ in {
       "greetd"
       "sddm"
       "cosmic-greeter"
-      "logind"
     ]);
     default =
       if cfg.enable

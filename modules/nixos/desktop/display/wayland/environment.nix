@@ -4,35 +4,23 @@
   ...
 }: let
   inherit (lib.modules) mkIf;
-  inherit (config.my) shell;
-  inherit (config.my.desktop) environment;
   cfg = config.my.desktop;
   isWayland = cfg.type == "wayland";
 in {
   config = mkIf (cfg.enable && isWayland) {
-    environment = {
-      etc."greetd/environments".text =
-        if config.services.greetd.enable
-        then ''
-          ${environment}
-          ${shell}
-        ''
-        else "";
-
-      variables = {
-        NIXOS_OZONE_WL = "1";
-        _JAVA_AWT_WM_NONEREPARENTING = "1";
-        GDK_BACKEND = "wayland,x11";
-        ANKI_WAYLAND = "1";
-        MOZ_ENABLE_WAYLAND = "1";
-        XDG_SESSION_TYPE = "wayland";
-        SDL_VIDEODRIVER = "wayland";
-        CLUTTER_BACKEND = "wayland";
-        #WLR_DRM_NO_ATOMIC = "1";
-        #WLR_BACKEND = "vulkan";
-        #__GL_GSYNC_ALLOWED = "0";
-        #__GL_VRR_ALLOWED = "0";
-      };
+    environment.variables = {
+      NIXOS_OZONE_WL = "1";
+      _JAVA_AWT_WM_NONEREPARENTING = "1";
+      GDK_BACKEND = "wayland,x11";
+      ANKI_WAYLAND = "1";
+      MOZ_ENABLE_WAYLAND = "1";
+      XDG_SESSION_TYPE = "wayland";
+      SDL_VIDEODRIVER = "wayland";
+      CLUTTER_BACKEND = "wayland";
+      #WLR_DRM_NO_ATOMIC = "1";
+      #WLR_BACKEND = "vulkan";
+      #__GL_GSYNC_ALLOWED = "0";
+      #__GL_VRR_ALLOWED = "0";
     };
   };
 }

@@ -5,19 +5,19 @@
   ...
 }: let
   inherit (lib.modules) mkIf;
-  inherit (lib.meta) getExe' getExe;
+  inherit (lib.meta) getExe';
   inherit (lib.my) toggle;
   inherit (config.home) username;
   enable = config.my.desktop.powermenu == "wlogout";
   loginctl' = getExe' pkgs.systemd "loginctl";
   systemctl' = getExe' pkgs.systemd "systemctl";
-  wlogout' = getExe pkgs.wlogout;
+  wlogout' = toggle pkgs "wlogout";
 in {
   config = mkIf enable {
     wayland.windowManager.hyprland.settings = {
       bind = [
         # powermenu
-        "$mod, Escape, exec, ${toggle wlogout'} -p layer-shell"
+        "$mod, Escape, exec, ${wlogout'} -p layer-shell"
       ];
     };
     programs.wlogout = {

@@ -8,6 +8,10 @@
   inherit (pkgs.stdenv.hostPlatform) isLinux;
   cfg = config.my.theme.tokyonight;
   enable = cfg.enable && config.my.desktop.enable && isLinux;
+  preferDark =
+    if cfg.style == "day"
+    then 0
+    else 1;
 in {
   config = mkIf enable {
     # gkt's theme settings, generate files:
@@ -18,17 +22,27 @@ in {
       enable = true;
 
       gtk2.configLocation = "${config.xdg.configHome}/gtk-2.0/gtkrc";
+      # cursor theme is set on cursor.nix
 
       font = {
-        name = "Cantarell";
-        package = pkgs.cantarell-fonts;
-        size = 11;
+        name = "SFProDisplay Nerd Font";
+        size = 13;
+      };
+
+      iconTheme = {
+        name =
+          if cfg.style == "day"
+          then "Papirus-Light"
+          else "Papirus-Dark";
+        package = pkgs.papirus-icon-theme;
       };
 
       theme = {
         name = "Tokyonight-Dark-BL";
         package = pkgs.tokyonight-gtk-theme;
       };
+      gtk3.extraConfig.gtk-application-prefer-dark-theme = preferDark;
+      gtk4.extraConfig.gtk-application-prefer-dark-theme = preferDark;
     };
   };
 }
