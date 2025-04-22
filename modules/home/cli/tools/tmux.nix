@@ -27,15 +27,15 @@ in {
       fish = mkIf cfg.autoStart {
         interactiveShellInit = ''
           if not set -q TMUX \
-             && test -z "$SSH_TTY" \
-             && test -z "$WSL_DISTRO_NAME" \
-             && test -z "$INSIDE_EMACS" \
-             && test -z "$EMACS" \
-             && test -z "$VIM" \
-             && test -z "$NVIM" \
-             && test -z "$INSIDE_PYCHARM" \
-             && test -z "$ZELLIJ_SESSION_NAME" \
-             && test "$TERM_PROGRAM" != "vscode"
+             and test -z "$SSH_TTY" \
+             and test -z "$WSL_DISTRO_NAME" \
+             and test -z "$INSIDE_EMACS" \
+             and test -z "$EMACS" \
+             and test -z "$VIM" \
+             and test -z "$NVIM" \
+             and test -z "$INSIDE_PYCHARM" \
+             and test -z "$ZELLIJ_SESSION_NAME" \
+             and test "$TERM_PROGRAM" != "vscode"
             exec tmux attach || tmux new
           end
         '';
