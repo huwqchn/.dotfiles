@@ -75,7 +75,7 @@ in {
     #   sha256 = "0irzajb3fi0f7x8vd6h55dsplkyl95p0vr9sigmlk46y673j6ksr";
     # };
     my.theme = {
-      wallpaper = ../walls/Anime_girl.png;
+      wallpaper = ./walls/Anime_girl.png;
       # I hated base16 scheme, so I made my own
       colorscheme = {
         inherit palette;
