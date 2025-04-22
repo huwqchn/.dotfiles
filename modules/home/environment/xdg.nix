@@ -78,8 +78,7 @@
 in {
   # xdg.configFile."mimeapps.list".force = true;
   xdg = {
-    # FIXME: enable on darwin
-    enable = isLinux;
+    enable = true;
 
     cacheHome = "${home}/.cache";
     configHome = "${home}/.config";

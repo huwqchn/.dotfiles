@@ -27,6 +27,15 @@ in {
       {
         plugin = mode-indicator;
         extraConfig = with palette; ''
+          color_background='${bg}'
+          color_foreground='${fg}'
+          color_gray='${bg_highlight}'
+          color_red='${red}'
+          color_yellow='${orange}'
+          color_green='${green}'
+          color_blue='${blue}'
+          color_cyan='${cyan}'
+
           #################################### PLUGINS ###################################
 
           set -g @mode_indicator_prefix_prompt " WAIT"
@@ -39,14 +48,6 @@ in {
           set -g @mode_indicator_empty_mode_style fg=$color_blue,bg=$color_gray,bold
 
           #################################### OPTIONS ###################################
-          color_background='${bg}'
-          color_foreground='${fg}'
-          color_gray='${bg_highlight}'
-          color_red='${red}'
-          color_yellow='${orange}'
-          color_green='${green}'
-          color_blue='${blue}'
-          color_cyan='${cyan}'
 
           set -g status on
           set -g status-justify centre

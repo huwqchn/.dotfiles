@@ -62,8 +62,6 @@ in {
         set -gx fish_cursor_visual block
         set -gx fish_cursor_replace_one underscore
         set fish_emoji_width 2
-
-        abbr -a --position anywhere --set-cursor -- -h "-h 2>&1 | bat --plain --language=help"
       '';
       shellAbbrs =
         {
