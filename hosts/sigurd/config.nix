@@ -12,7 +12,6 @@
       secureBoot = false;
       tmpOnTmpfs = false;
       enableKernelTweaks = true;
-      loadRecommendedModules = true;
       # TODO: diable for debugging
       plymouth.enable = false;
 

@@ -5,7 +5,7 @@
   config,
   ...
 }: let
-  inherit (lib.modules) mkIf mkForce;
+  inherit (lib.modules) mkIf mkForce mkDefault;
   inherit (lib.options) mkEnableOption;
   cfg = config.my.boot;
 in {
@@ -32,18 +32,18 @@ in {
       pkgs.sbctl
     ];
 
-    # Lanzaboote currently replaces the systemd-boot module.
-    # This setting is usually set to true in configuration.nix
-    # generated at installation time. So we force it to false
-    # for now.
-    boot.loader.systemd-boot.enable = mkForce false;
-
-    # boot specification logs
-    boot.bootspec.enable = true;
-
-    boot.lanzaboote = {
-      enable = true;
-      pkiBundle = "/etc/secureboot";
+    boot = {
+      loader = {
+        # Lanzaboote currently replaces the systemd-boot module.
+        # This setting is usually set to true in configuration.nix
+        # generated at installation time. So we force it to false
+        # for now.
+        systemd-boot.enable = mkForce false;
+      };
+      lanzaboote = {
+        enable = true;
+        pkiBundle = mkDefault "/var/lib/sbctl";
+      };
     };
   };
 }

@@ -28,7 +28,6 @@ in {
 
   options.my.boot = {
     enableKernelTweaks = mkEnableOption "security and performance related kernel parameters";
-    loadRecommendedModules = mkEnableOption "kernel modules that accommodate for most use cases";
     tmpOnTmpfs = mkEnableOption "`/tmp` living on tmpfs. false means it will be cleared manually on each reboot";
 
     kernel = mkOption {
