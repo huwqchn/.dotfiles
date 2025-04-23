@@ -9,7 +9,7 @@
   my = {
     boot = {
       # TODO: this is should be enabled by default
-      secureBoot = false;
+      secureBoot = true;
       tmpOnTmpfs = false;
       enableKernelTweaks = true;
       loadRecommendedModules = true;
@@ -49,7 +49,7 @@
       hasSound = true;
       hasBluetooth = true;
       hasPrinter = false;
-      hasTPM = false;
+      hasTPM = true;
       hasHidpi = true;
     };
   };

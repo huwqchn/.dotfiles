@@ -133,6 +133,8 @@
       "veracrypt" # disk encryption
       # sing-box
       "sfm"
+      # for work
+      "wpsoffice"
     ];
   };
 }
