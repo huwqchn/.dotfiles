@@ -6,16 +6,17 @@
     # substituers that will be considered before the official ones(https://cache.nixos.org)
     substituters = [
       # cache mirror located in China
-      "https://mirrors.ustc.edu.cn/nix-channels/store"
-      "https://mirrors.tuna.tsinghua.edu.cn/nix-channels/store"
+      # "https://mirrors.ustc.edu.cn/nix-channels/store"
+      # "https://mirrors.tuna.tsinghua.edu.cn/nix-channels/store"
 
-      "https://anyrun.cachix.org"
-      "https://yazi.cachix.org"
-      "https://nix-gaming.cachix.org"
       # official nix cache mirror, high priority
       "https://cache.nixos.org?priority=10"
       "https://nix-community.cachix.org"
       "https://cuda-maintainers.cachix.org"
+
+      "https://anyrun.cachix.org"
+      "https://yazi.cachix.org"
+      "https://nix-gaming.cachix.org"
     ];
     trusted-public-keys = [
       "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
