@@ -6,10 +6,10 @@
   ...
 }: let
   inherit (lib.modules) mkForce mkIf;
-  inherit (lib.meta) getExe';
+  inherit (lib.meta) getExe' getExe;
   persist = config.my.persistence.enable;
   fusermount' = getExe' pkgs.fuse "fusermount";
-  findmnt' = lib.getExe' pkgs.util-linux "findmnt";
+  gawk' = getExe pkgs.gawk;
 in {
   imports = [
     inputs.impermanence.homeManagerModules.impermanence
@@ -41,9 +41,12 @@ in {
       else mkForce {};
 
     activation = mkIf persist {
-      cleanup-dead-fuse = lib.hm.dag.entryBefore ["persistence-init"] ''
-        for mp in $(${findmnt'} -t fuse.* -n -o TARGET); do
-          ${fusermount'} -uz "$mp" || true
+      cleanup-dead-fuse = lib.hm.dag.entryBefore ["createAndMountPersistentStoragePaths"] ''
+        for mp in $(${gawk'} '/fuse/ {print $2}' /proc/mounts); do
+          if ! ls "$mp" >/dev/null 2>&1; then
+            echo "Unmounting dead FUSE mount: $mp"
+            ${fusermount'} -uz "$mp" 2>/dev/null || sudo umount -l "$mp"
+          fi
         done
       '';
     };
