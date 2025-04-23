@@ -12,7 +12,7 @@ in {
     enable =
       mkEnableOption "Enable Emacs"
       // {
-        default = true;
+        default = config.my.desktop.enable;
       };
   };
 
@@ -25,7 +25,15 @@ in {
         emacs-all-the-icons-fonts
       ];
       sessionPath = ["${config.xdg.configHome}/emacs/bin"];
-      sessionVariables.EDITOR = "emacsclient -t";
+      sessionVariables = let
+        editor = "emacsclient -t";
+      in
+        mkIf (config.my.editor == "emacs")
+        {
+          EDITOR = editor;
+          VISUAL = editor;
+          GIT_EDITOR = editor;
+        };
     };
 
     services.emacs = {

@@ -7,7 +7,7 @@
   shellAliases = {"t" = "tmux";};
   cfg = config.my.tmux;
   inherit (lib.options) mkEnableOption;
-  inherit (lib.modules) mkIf;
+  inherit (lib.modules) mkIf mkBefore;
   inherit (lib.strings) optionalString;
   inherit (pkgs.stdenv.hostPlatform) isDarwin;
   inherit (lib.meta) getExe getExe';
@@ -40,23 +40,30 @@ in {
           end
         '';
       };
-      zsh = mkIf cfg.autoStart {
-        initExtraFirst = ''
-          if [[ -z "$TMUX" ]] \
-            && [[ -z "$SSH_TTY" ]] \
-            && [[ -z "$WSL_DISTRO_NAME" ]] \
-            && [[ -z "$INSIDE_PYCHARM" ]] \
-            && [[ -z "$EMACS" ]] \
-            && [[ -z "$VIM" ]] \
-            && [[ -z "$NVIM" ]] \
-            && [[ -z "$INSIDE_EMACS" ]] \
-            && [[ -z "$ZELLIJ_SESSION_NAME" ]] \
-            && [[ "$TERM_PROGRAM" != "vscode" ]]
-          then
-            exec tmux attach || tmux new;
-          fi
-        '';
-      };
+      zsh = let
+        # see: https://github.com/catppuccin/nix/pull/543/files
+        key =
+          if builtins.hasAttr "initContent" config.programs.zsh
+          then "initContent"
+          else "initExtraFirst";
+      in
+        mkIf cfg.autoStart {
+          "${key}" = mkBefore ''
+            if [[ -z "$TMUX" ]] \
+              && [[ -z "$SSH_TTY" ]] \
+              && [[ -z "$WSL_DISTRO_NAME" ]] \
+              && [[ -z "$INSIDE_PYCHARM" ]] \
+              && [[ -z "$EMACS" ]] \
+              && [[ -z "$VIM" ]] \
+              && [[ -z "$NVIM" ]] \
+              && [[ -z "$INSIDE_EMACS" ]] \
+              && [[ -z "$ZELLIJ_SESSION_NAME" ]] \
+              && [[ "$TERM_PROGRAM" != "vscode" ]]
+            then
+              exec tmux attach || tmux new;
+            fi
+          '';
+        };
       tmux = {
         enable = true;
         baseIndex = 1;
