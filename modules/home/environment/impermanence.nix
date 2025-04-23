@@ -10,6 +10,7 @@
   persist = config.my.persistence.enable;
   fusermount' = getExe' pkgs.fuse "fusermount";
   gawk' = getExe pkgs.gawk;
+  umount' = lib.getExe' pkgs.util-linux "umount";
 in {
   imports = [
     inputs.impermanence.homeManagerModules.impermanence
@@ -45,7 +46,7 @@ in {
         for mp in $(${gawk'} '/fuse/ {print $2}' /proc/mounts); do
           if ! ls "$mp" >/dev/null 2>&1; then
             echo "Unmounting dead FUSE mount: $mp"
-            ${fusermount'} -uz "$mp" 2>/dev/null || sudo umount -l "$mp"
+            ${fusermount'} -uz "$mp" 2>/dev/null || ${umount'} -l "$mp" 2>/dev/null
           fi
         done
       '';
