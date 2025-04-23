@@ -50,6 +50,7 @@
       (builtins.attrValues self.overlays)
       ++ [
         inputs.hyprpanel.overlay
+        inputs.emacs-overlay.overlay
       ];
   };
 }

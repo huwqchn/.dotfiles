@@ -281,6 +281,12 @@
     # neovim nightly overlay
     # neovim-nightly.url = "github:nix-community/neovim-nightly-overlay";
 
+    # emacs overlay
+    emacs-overlay = {
+      url = "github:nix-community/emacs-overlay";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     # spicetify-nix
     spicetify-nix = {
       url = "github:Gerg-L/spicetify-nix";

@@ -99,7 +99,11 @@ in {
       keep-outputs = true;
 
       # use xdg base directories for all the nix things
-      # use-xdg-base-directories = true;
+      # Get Nix (2.14+) itself to respect XDG. I.e.
+      # ~/.nix-defexpr -> $XDG_DATA_HOME/nix/defexpr
+      # ~/.nix-profile -> $XDG_DATA_HOME/nix/profile
+      # ~/.nix-channels -> $XDG_DATA_HOME/nix/channels
+      use-xdg-base-directories = true;
     };
   };
 }
