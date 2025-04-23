@@ -8,8 +8,7 @@
 
   my = {
     boot = {
-      # TODO: this is should be enabled by default
-      secureBoot = false;
+      secureBoot = true;
       tmpOnTmpfs = false;
       enableKernelTweaks = true;
       # TODO: diable for debugging
