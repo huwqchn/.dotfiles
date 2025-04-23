@@ -9,7 +9,7 @@
   my = {
     boot = {
       # TODO: this is should be enabled by default
-      secureBoot = true;
+      secureBoot = false;
       tmpOnTmpfs = false;
       enableKernelTweaks = true;
       loadRecommendedModules = true;
