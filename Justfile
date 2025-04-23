@@ -21,7 +21,6 @@ switch host=`uname -n`:
 switch2 host=`uname -n`:
   nh {{ if os() == "macos" { "darwin" } else { "os" } }} switch . -v -H {{host}} --ask
 
-
 # Deploy the system configuration to a remote host
 [group('nix')]
 deploy host *args:

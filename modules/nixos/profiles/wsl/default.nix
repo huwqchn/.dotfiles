@@ -26,7 +26,6 @@ in {
         secureBoot = false;
         tmpOnTmpfs = true;
         enableKernelTweaks = true;
-        loadRecommendedModules = true;
         plymouth.enable = false;
 
         initrd = {
