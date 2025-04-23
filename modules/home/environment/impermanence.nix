@@ -5,7 +5,15 @@
   ...
 }: let
   persist = config.my.persistence.enable;
-  inherit (lib.modules) mkForce;
+  inherit (lib.modules) mkForce mkIf;
+  cleanupDeadFUSE = {
+    name = "cleanup-dead-fuse";
+    text = ''
+      for mp in $(findmnt -t fuse.* -n -o TARGET); do
+        fusermount -uz "$mp" || true
+      done
+    '';
+  };
 in {
   imports = [
     inputs.impermanence.homeManagerModules.impermanence
@@ -34,4 +42,8 @@ in {
       };
     }
     else mkForce {};
+
+  home.activation = mkIf persist (
+    lib.hm.dag.before ["persistence-init"] cleanupDeadFUSE
+  );
 }
