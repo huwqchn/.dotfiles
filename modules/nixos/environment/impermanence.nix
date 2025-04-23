@@ -178,6 +178,23 @@ in {
         users = attrValues config.users.users;
       in
         concatLines (map mkHomePersist users);
+      cleanupDeadFuse = {
+        deps = ["persistent-ssh" "create-home"];
+        text = let
+          inherit (lib.meta) getExe' getExe;
+          fusermount' = getExe' pkgs.fuse "fusermount";
+          gawk' = getExe pkgs.gawk;
+          umount' = lib.getExe' pkgs.util-linux "umount";
+        in ''
+          for mp in $(${gawk'} '/fuse/ {print $2}' /proc/mounts); do
+            if ! ls "$mp" >/dev/null 2>&1; then
+              echo "Unmounting dead FUSE mount: $mp"
+              ${fusermount'} -uz "$mp" 2>/dev/null \
+                || ${umount'} -l "$mp"
+            fi
+          done
+        '';
+      };
     };
 
     # for some reason *this* is what makes networkmanager not get screwed completely instead of the impermanence module
