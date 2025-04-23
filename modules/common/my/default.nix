@@ -60,6 +60,11 @@ in {
     persistence = {
       enable = mkEnableOption "persistence"; # must use tmpfs for /
     };
+    stateVersion = mkOption {
+      type = str;
+      default = "24.11";
+      description = "The version of my system";
+    };
   };
 
   # TODO: should refactor this, too many asserts
