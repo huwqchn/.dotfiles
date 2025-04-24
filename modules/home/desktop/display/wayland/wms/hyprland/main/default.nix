@@ -9,7 +9,7 @@
   inherit (lib.modules) mkIf;
   inherit (lib.my) scanPaths;
   inherit (config.my) desktop;
-  inherit (pkgs.stdenv.platform) isLinux;
+  inherit (pkgs.stdenv.hostPlatform) isLinux;
   isWayland = config.my.desktop.type == "wayland" && isLinux;
   isHyprland = desktop.environment == "hyprland" && isWayland;
   cfg = desktop.hyprland;

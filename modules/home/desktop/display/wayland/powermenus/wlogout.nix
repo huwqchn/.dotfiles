@@ -8,7 +8,7 @@
   inherit (lib.meta) getExe';
   inherit (lib.my) toggle;
   inherit (config.home) username;
-  inherit (pkgs.stdenv.platform) isLinux;
+  inherit (pkgs.stdenv.hostPlatform) isLinux;
   isWayland = config.my.desktop.type == "wayland" && isLinux;
   enable = config.my.desktop.powermenu == "wlogout" && isWayland;
   loginctl' = getExe' pkgs.systemd "loginctl";

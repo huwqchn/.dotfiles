@@ -8,7 +8,7 @@
   inherit (lib.my) runOnce;
   hyprshot' = runOnce pkgs "hyprshot";
   satty' = runOnce pkgs "satty";
-  inherit (pkgs.stdenv.platform) isLinux;
+  inherit (pkgs.stdenv.hostPlatform) isLinux;
   isWayland = config.my.desktop.type == "wayland" && isLinux;
   enable = config.my.desktop.shot == "hyprshot" && isWayland;
 in {

@@ -27,7 +27,7 @@
   timeout = 300;
 
   inherit (lib.modules) mkIf;
-  inherit (pkgs.stdenv.platform) isLinux;
+  inherit (pkgs.stdenv.hostPlatform) isLinux;
   isWayland = config.my.desktop.type == "wayland" && isLinux;
   enable = config.my.desktop.idle == "hypridle" && isWayland;
 in {

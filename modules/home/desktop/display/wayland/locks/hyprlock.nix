@@ -11,7 +11,7 @@
   inherit (config.my.theme) wallpaper avatar;
   hyprlock' = runOnce pkgs "hyprlock";
   font_family = "SFProDisplay Nerd Font Bold";
-  inherit (pkgs.stdenv.platform) isLinux;
+  inherit (pkgs.stdenv.hostPlatform) isLinux;
   isWayland = config.my.desktop.type == "wayland" && isLinux;
   cfg = config.my.desktop.hyprlock;
   enable = config.my.desktop.lock == "hyprlock" && isWayland;
