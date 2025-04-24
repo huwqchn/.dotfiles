@@ -145,3 +145,13 @@ cfg program:
 add program:
   rm -rf config/{{program}}/
   mv "$HOME/.config/{{program}}" config/
+
+[group('misc')]
+cleanDead:
+  @for mp in $$(awk '/fuse/ {print $$2}' /proc/mounts); do \
+    if ! ls "$$mp" >/dev/null 2>&1; then \
+      echo "Unmounting dead FUSE mount: $$mp"; \
+      fusermount -uz "$$mp" >/dev/null 2>&1 \
+        || umount -l "$$mp" >/dev/null 2>&1; \
+    fi; \
+  done

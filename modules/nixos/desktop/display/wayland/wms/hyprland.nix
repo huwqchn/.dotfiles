@@ -8,6 +8,7 @@
   inherit (lib.meta) getExe;
   cfg = config.my.desktop;
   isHpyrland = cfg.environment == "hyprland";
+  uwsm' = getExe pkgs.uwsm;
 in {
   config = mkIf (cfg.enable && isHpyrland) {
     services.displayManager.defaultSession = "hyprland-uwsm";
@@ -17,7 +18,7 @@ in {
       withUWSM = true;
     };
 
-    my.commands.login = "${getExe config.programs.uwsm.package} start hyprland-uwsm.desktop";
+    my.commands.login = "${uwsm'} start hyprland-uwsm.desktop";
 
     xdg.portal = {
       enable = true;
