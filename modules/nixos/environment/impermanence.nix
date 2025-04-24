@@ -71,61 +71,6 @@ in {
     };
 
     system.activationScripts = {
-      # we don't need this, see: https://github.com/nix-community/impermanence/pull/37
-      # persistent-init = {
-      #   deps = ["persistent-ssh" "create-home"];
-      #   text = let
-      #     persistentRoot = config.environment.persistence."/persist";
-      #     cpDir = d: let
-      #       user = d.user or "root";
-      #       group = d.group or "root";
-      #       mode = d.mode or "0755";
-      #       inherit (d) dirPath;
-      #       dest = "/persist${dirPath}";
-      #     in ''
-      #       if [ -d "${dirPath}" ]; then
-      #         echo "Copying directory ${dirPath} to ${dest}"
-      #         mkdirPath -p "$(dirname "${dest}")"
-      #         cp -a "${dirPath}" "${dest}"
-      #         chown ${user}:${group} "${dest}"
-      #         chomod ${mode} "${dest}"
-      #       fi
-      #     '';
-      #
-      #     cpFile = f: let
-      #       user = f.user or "root";
-      #       group = f.group or "root";
-      #       mode = f.mode or "0755";
-      #       inherit (f) filePath;
-      #       # dirPath = f.dirPath; # this is abusolute parent dir of filePath
-      #       dest = "/persist${filePath}";
-      #     in ''
-      #       if [ -f "${filePath}" ]; then
-      #         echo "Copying filePath ${filePath} to ${dest}"
-      #         mkdir -p "$(dirname "${dest}")"
-      #         cp -a "${filePath}" "${dest}"
-      #         chown ${user}:${group} "${dest}"
-      #         chomod ${mode} "${dest}"
-      #       fi
-      #     '';
-      #   in ''
-      #     #!/bin/sh
-      #     if [ ! -f /persist/.init ]; then
-      #       echo "Initializing persistent directories and files ..."
-      #
-      #       echo "Copying directories to /persist:"
-      #       ${concatLines (map cpDir persistentRoot.directories)}
-      #
-      #       echo "Copying files to /persist:"
-      #       ${concatLines (map cpFile persistentRoot.files)}
-      #
-      #       touch /persist/.init
-      #       echo "Persistent initialization complete."
-      #     else
-      #       echo "/persist/.init exists, skipping persistent initialization."
-      #     fi
-      #   '';
-      # };
       # NOTE: we use nixos-anywhere with copy-host-keys arg
       # so we need copy these ssh keys to /persist on frest installs
       persistent-ssh.text = let
