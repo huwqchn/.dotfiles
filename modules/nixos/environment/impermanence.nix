@@ -174,6 +174,10 @@ in {
             mkdir -p /persist${user.home}
             chown ${user.name}:${user.group} /persist${user.home}
             chmod ${user.homeMode} /persist${user.home}
+
+            mkdir -p /persist${user.home}/.ssh
+            chown ${user.name}:${user.group} /persist${user.home}/.ssh
+            chmod 700 /persist${user.home}/.ssh
           '';
         users = attrValues config.users.users;
       in
