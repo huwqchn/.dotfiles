@@ -8,17 +8,12 @@
   inherit (lib.meta) getExe;
   inherit (lib.strings) concatStringsSep;
   inherit (lib.options) mkEnableOption;
-
-  sessionData = config.services.displayManager.sessionData.desktops;
-  sessionPath = concatStringsSep ":" [
-    "${sessionData}/share/xsessions"
-    "${sessionData}/share/wayland-sessions"
-  ];
   inherit (config.my) name;
   inherit (config.my.desktop) autologin;
   inherit (config.my.commands) login;
   persist = config.my.persistence.enable;
   cfg = config.my.desktop.login;
+  shell = builtins.getAttr config.my.shell pkgs;
 in {
   options.my.desktop.autologin =
     mkEnableOption ''
@@ -30,6 +25,10 @@ in {
     };
 
   config = mkIf (cfg == "greetd") {
+    environment.etc."greetd/environments".text = ''
+      ${login}
+      ${shell}
+    '';
     services.greetd = {
       enable = true;
       vt = 2;
@@ -46,8 +45,6 @@ in {
             "--remember" # remember last logged-in username
             "--remember-user-session" # remember last logged-in session
             "--asterisks" # display asterisks when typing password
-            "--sessions '${sessionPath}'"
-            "--cmd ${login}"
           ];
         };
 
