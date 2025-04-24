@@ -6,9 +6,16 @@
 }: let
   inherit (lib.options) mkEnableOption;
   inherit (lib.modules) mkIf;
+  inherit (pkgs.stdenv.hostPlatform) isLinux;
   cfg = config.my.conda;
 in {
-  options.my.conda = {enable = mkEnableOption "conda";};
+  options.my.conda = {
+    enable =
+      mkEnableOption "conda"
+      // {
+        default = isLinux;
+      };
+  };
 
   config = mkIf cfg.enable {
     home = {

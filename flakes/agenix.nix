@@ -7,11 +7,7 @@
     inputs.agenix-rekey.flakeModule
   ];
 
-  perSystem = {
-    config,
-    pkgs,
-    ...
-  }: {
+  perSystem = {config, ...}: {
     agenix-rekey = {
       nixosConfigurations = self.nixosConfigurations // self.darwinConfigurations;
       # homeConfigurations = self.homeConfigurations;
@@ -31,15 +27,15 @@
           name = "AGENIX_REKEY_ADD_TO_GIT";
           value = "true";
         }
-        {
-          # Additionally configure nix-plugins with our extra builtins file.
-          # We need this for our repo secrets.
-          name = "NIX_CONFIG";
-          value = ''
-            plugin-files = ${pkgs.nix-plugins}/lib/nix/plugins
-            extra-builtins-file = ${self}/scripts/extra-builtins.nix
-          '';
-        }
+        # {
+        #   # Additionally configure nix-plugins with our extra builtins file.
+        #   # We need this for our repo secrets.
+        #   name = "NIX_CONFIG";
+        #   value = ''
+        #     plugin-files = ${pkgs.nix-plugins}/lib/nix/plugins
+        #     extra-builtins-file = ${self}/scripts/extra-builtins.nix
+        #   '';
+        # }
       ];
     };
   };

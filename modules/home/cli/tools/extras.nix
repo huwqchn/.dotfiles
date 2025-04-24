@@ -6,10 +6,17 @@
 }: let
   inherit (lib.options) mkEnableOption;
   inherit (lib.modules) mkIf;
+  inherit (pkgs.stdenv.hostPlatform) isLinux;
   cfg = config.my.extras;
   # Platform-independent terminal setup
 in {
-  options.my.extras = {enable = mkEnableOption "extras";};
+  options.my.extras = {
+    enable =
+      mkEnableOption "extras"
+      // {
+        default = isLinux;
+      };
+  };
   config = mkIf cfg.enable {
     programs.jq.enable = true;
 
