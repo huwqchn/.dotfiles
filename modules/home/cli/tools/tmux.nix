@@ -15,11 +15,7 @@
 in {
   options.my.tmux = {
     enable = mkEnableOption "tmux";
-    autoStart =
-      mkEnableOption "tmux auto start"
-      // {
-        default = true;
-      };
+    autoStart = mkEnableOption "tmux auto start";
   };
 
   config = mkIf cfg.enable {

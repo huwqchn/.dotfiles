@@ -32,8 +32,8 @@ in {
         ];
         animation = [
           "windows,1,6,jelly,popin 80%"
-          "windowsMove,1,6,ovreshot,slide"
-          "layer,1,10,bounceback,slide"
+          "windowsMove,1,6,overshot,slide"
+          "layers,1,10,bounceback,slide"
           "fadeIn,1,10,smoothIn"
           "fadeOut,1,10,smoothOut"
           "fadeSwitch, 1, 5, easeOutCirc" # fade on changing activewindow and its opacity
