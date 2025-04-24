@@ -245,8 +245,9 @@ in {
       };
     };
 
-    home.persistence."/persist${config.home.homeDirectory}".files = [
-      ".local/share/fish/fish_history"
+    home.persistence."/persist${config.home.homeDirectory}".directories = [
+      ".local/share/fish"
+      ".cache/fish"
     ];
   };
 }
