@@ -9,7 +9,7 @@
   hyprshot' = runOnce pkgs "hyprshot";
   satty' = runOnce pkgs "satty";
   inherit (pkgs.stdenv.platform) isLinux;
-  isWayland = config.my.desktop.type == "Wayland" && isLinux;
+  isWayland = config.my.desktop.type == "wayland" && isLinux;
   enable = config.my.desktop.shot == "hyprshot" && isWayland;
 in {
   config = mkIf enable {

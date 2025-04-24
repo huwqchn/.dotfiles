@@ -7,7 +7,7 @@
 }: let
   inherit (lib.modules) mkIf;
   inherit (pkgs.stdenv.platform) isLinux;
-  isWayland = config.my.desktop.type == "Wayland" && isLinux;
+  isWayland = config.my.desktop.type == "wayland" && isLinux;
   enable = config.my.desktop.bar == "hyprpanel" && isWayland;
 in {
   imports = [inputs.hyprpanel.homeManagerModules.hyprpanel];

@@ -10,13 +10,12 @@
     boot = {
       secureBoot = false;
       tmpOnTmpfs = false;
-      enableKernelTweaks = true;
-      # TODO: diable for debugging
+      enableKernelTweaks = false;
       plymouth.enable = false;
 
       initrd = {
-        enableTweaks = true;
-        optimizeCompressor = true;
+        enableTweaks = false;
+        optimizeCompressor = false;
       };
 
       fs = [

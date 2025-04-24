@@ -10,7 +10,7 @@
   inherit (lib.my) scanPaths;
   inherit (config.my) desktop;
   inherit (pkgs.stdenv.platform) isLinux;
-  isWayland = config.my.desktop.type == "Wayland" && isLinux;
+  isWayland = config.my.desktop.type == "wayland" && isLinux;
   isHyprland = desktop.environment == "hyprland" && isWayland;
   cfg = desktop.hyprland;
 in {

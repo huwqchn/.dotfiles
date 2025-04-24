@@ -8,7 +8,7 @@
   inherit (lib.modules) mkIf;
   inherit (config.xdg.userDirs.extraConfig) XDG_SCREENSHOTS_DIR;
   inherit (pkgs.stdenv.platform) isLinux;
-  isWayland = config.my.desktop.type == "Wayland" && isLinux;
+  isWayland = config.my.desktop.type == "wayland" && isLinux;
   wl-copy' = getExe' pkgs.wl-clipboard-rs "wl-copy";
 in {
   imports = lib.my.scanPaths ./.;

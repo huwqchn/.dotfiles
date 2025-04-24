@@ -6,8 +6,10 @@
   ...
 }: let
   inherit (lib.modules) mkIf;
+  inherit (lib.strings) optionalString;
   inherit (config.home) homeDirectory;
   isLinuxSystemd = pkgs.stdenv.hostPlatform.isLinux && config.systemd.user.services ? agenix;
+  persist = config.my.persistence.enable;
 in {
   imports = [
     inputs.agenix.homeManagerModules.default
@@ -17,8 +19,8 @@ in {
 
   age = {
     package = pkgs.rage;
-    secretsDir = "${homeDirectory}/.secrets/agenix";
-    secretsMountPoint = "${homeDirectory}/.secrets/agenix.d";
+    secretsDir = "${optionalString persist "/persist"}${homeDirectory}/.secrets/agenix";
+    secretsMountPoint = "${optionalString persist "/persist"}${homeDirectory}/.secrets/agenix.d";
   };
 
   home = {

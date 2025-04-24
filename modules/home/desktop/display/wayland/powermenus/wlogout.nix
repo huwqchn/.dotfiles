@@ -9,7 +9,7 @@
   inherit (lib.my) toggle;
   inherit (config.home) username;
   inherit (pkgs.stdenv.platform) isLinux;
-  isWayland = config.my.desktop.type == "Wayland" && isLinux;
+  isWayland = config.my.desktop.type == "wayland" && isLinux;
   enable = config.my.desktop.powermenu == "wlogout" && isWayland;
   loginctl' = getExe' pkgs.systemd "loginctl";
   systemctl' = getExe' pkgs.systemd "systemctl";

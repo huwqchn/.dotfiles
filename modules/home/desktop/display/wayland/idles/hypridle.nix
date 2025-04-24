@@ -28,7 +28,7 @@
 
   inherit (lib.modules) mkIf;
   inherit (pkgs.stdenv.platform) isLinux;
-  isWayland = config.my.desktop.type == "Wayland" && isLinux;
+  isWayland = config.my.desktop.type == "wayland" && isLinux;
   enable = config.my.desktop.idle == "hypridle" && isWayland;
 in {
   config = mkIf enable {

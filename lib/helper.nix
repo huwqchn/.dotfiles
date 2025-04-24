@@ -91,25 +91,29 @@
     program' = lib.getExe (builtins.getAttr program pkgs);
     programName = getProgramName program';
     uwsm' = lib.getExe pkgs.uwsm;
-  in "pkill -x ${programName} || ${uwsm'} app -- ${program'}";
+    pkill' = lib.getExe' pkgs.procps "pkill";
+  in "${pkill'} -x ${programName} || ${uwsm'} app -- ${program'}";
 
   toggle' = pkgs: package: program: let
     program' = lib.getExe' package program;
     programName = getProgramName program';
     uwsm' = lib.getExe pkgs.uwsm;
-  in "pkill -x ${programName} || ${uwsm'} app -- ${program'}";
+    pkill' = lib.getExe' pkgs.procps "pkill";
+  in "${pkill'} -x ${programName} || ${uwsm'} app -- ${program'}";
 
   runOnce = pkgs: program: let
     program' = lib.getExe (builtins.getAttr program pkgs);
     programName = getProgramName program;
     uwsm' = lib.getExe pkgs.uwsm;
-  in "pidof ${programName} > /dev/null || ${uwsm'} app -- ${program'}";
+    pidof' = lib.getExe' pkgs.procps "pidof";
+  in "${pidof'} ${programName} > /dev/null || ${uwsm'} app -- ${program'}";
 
   runOnce' = pkgs: package: program: let
     program' = lib.getExe' package program;
     programName = getProgramName program;
     uwsm' = lib.getExe pkgs.uwsm;
-  in "pidof ${programName} > /dev/null || ${uwsm'} app -- ${program'}";
+    pidof' = lib.getExe' pkgs.procps "pidof";
+  in "${pidof'} ${programName} > /dev/null || ${uwsm'} app -- ${program'}";
 
   withUWSM = pkgs: program: let
     uwsm' = lib.getExe pkgs.uwsm;

@@ -7,7 +7,7 @@
   inherit (lib.modules) mkIf;
   inherit (config.my.theme) wallpaper;
   inherit (pkgs.stdenv.platform) isLinux;
-  isWayland = config.my.desktop.type == "Wayland" && isLinux;
+  isWayland = config.my.desktop.type == "wayland" && isLinux;
   enable = config.my.desktop.wallEngine == "hyprpaper" && isWayland;
 in {
   config = mkIf enable {
