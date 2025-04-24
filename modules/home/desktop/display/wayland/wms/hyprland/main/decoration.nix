@@ -20,7 +20,7 @@ in {
         dim_special = 0.4;
         dim_around = 0.4;
         # screen_shader = ;
-        border_part_of_window = true;
+        # border_part_of_window = true;
 
         blur = {
           enabled = true;

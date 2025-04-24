@@ -4,7 +4,7 @@
   ...
 }: let
   inherit (lib.modules) mkIf;
-  inherit (config.my.machine) hasHidpi;
+  # inherit (config.my.machine) hasHidpi;
   cfg = config.my.desktop.hyprland;
 in {
   config = mkIf cfg.enable {
@@ -19,7 +19,7 @@ in {
         resize_on_border = true;
         extend_border_grab_area = 10;
         hover_icon_on_border = true;
-        allow_tear = hasHidpi;
+        # allow_tear = hasHidpi;
         resize_corner = 3;
         snap.enabled = true;
       };
