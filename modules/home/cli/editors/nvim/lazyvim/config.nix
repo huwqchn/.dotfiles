@@ -6,6 +6,7 @@
 }: let
   inherit (lib.options) mkEnableOption;
   inherit (lib.modules) mkIf;
+  inherit (lib.my) relativeToConfig;
   cfg = config.my.neovim.lazyvim.config;
 in {
   options.my.neovim.lazyvim.config = {
@@ -39,15 +40,15 @@ in {
     ];
 
     xdg.configFile = {
-      "nvim/lua/plugins/coding.lua".source = lib.my.relativeToConfig "nvim/lua/plugins/coding.lua";
-      "nvim/lua/plugins/editor.lua".source = lib.my.relativeToConfig "nvim/lua/plugins/editor.lua";
-      "nvim/lua/plugins/icons.lua".source = lib.my.relativeToConfig "nvim/lua/plugins/icons.lua";
-      "nvim/lua/plugins/lsp.lua".source = lib.my.relativeToConfig "nvim/lua/plugins/lsp.lua";
-      "nvim/lua/plugins/treesitter.lua".source = lib.my.relativeToConfig "nvim/lua/plugins/treesitter.lua";
-      "nvim/lua/plugins/ui.lua".source = lib.my.relativeToConfig "nvim/lua/plugins/ui.lua";
-      "nvim/lua/config".source = lib.my.relativeToConfig "nvim/lua/config";
-      "nvim/snippets".source = lib.my.relativeToConfig "nvim/snippets";
-      "nvim/spell".source = lib.my.relativeToConfig "nvim/spell";
+      "nvim/lua/plugins/coding.lua".source = relativeToConfig "nvim/lua/plugins/coding.lua";
+      "nvim/lua/plugins/editor.lua".source = relativeToConfig "nvim/lua/plugins/editor.lua";
+      "nvim/lua/plugins/icons.lua".source = relativeToConfig "nvim/lua/plugins/icons.lua";
+      "nvim/lua/plugins/lsp.lua".source = relativeToConfig "nvim/lua/plugins/lsp.lua";
+      "nvim/lua/plugins/treesitter.lua".source = relativeToConfig "nvim/lua/plugins/treesitter.lua";
+      "nvim/lua/plugins/ui.lua".source = relativeToConfig "nvim/lua/plugins/ui.lua";
+      "nvim/lua/config".source = relativeToConfig "nvim/lua/config";
+      "nvim/snippets".source = relativeToConfig "nvim/snippets";
+      "nvim/spell".source = relativeToConfig "nvim/spell";
     };
   };
 }

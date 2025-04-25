@@ -22,7 +22,7 @@ in {
     my = {
       inherit (my) name fullName email shell home;
       desktop = {
-        inherit (my.desktop) enable type name enableInputMethod;
+        inherit (my.desktop) enable type name;
       };
       security = {
         inherit (my.security) enable;

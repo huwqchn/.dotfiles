@@ -7,7 +7,6 @@
   inherit (lib.options) mkEnableOption;
   inherit (lib.modules) mkIf mkDefault;
   inherit (lib.my) isWayland;
-  inherit (config.my) desktop;
   isWayland' = isWayland config;
   cfg = config.my.desktop.fcitx5;
 in {
@@ -15,7 +14,7 @@ in {
     enable =
       mkEnableOption "Enable fcitx5 input method"
       // {
-        default = desktop.enableInputMethod;
+        default = config.my.desktop.enable;
       };
   };
 
@@ -48,5 +47,6 @@ in {
         GLFW_IM_MODULE = "ibus";
       };
     };
+    hm.my.desktop.fcitx5.enable = true;
   };
 }

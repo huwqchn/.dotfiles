@@ -19,7 +19,7 @@ in {
     enable =
       mkEnableOption "rime"
       // {
-        default = desktop.enableInputMethod;
+        default = desktop.enable;
       };
 
     dir = mkOption {

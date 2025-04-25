@@ -51,12 +51,6 @@ in {
         `my.desktop.exec` module to determine which command to run.
       '';
     };
-
-    enableInputMethod =
-      mkEnableOption "fcitx5"
-      // {
-        default = my.desktop.enable;
-      };
   };
   config.assertions = [
     {

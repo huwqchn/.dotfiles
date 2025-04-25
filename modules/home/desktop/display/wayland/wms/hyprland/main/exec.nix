@@ -6,14 +6,11 @@
 }: let
   inherit (lib.modules) mkIf;
   inherit (lib.meta) getExe getExe';
-  inherit (lib.strings) optionalString;
   inherit (lib.my) withUWSM withUWSM';
-  inherit (config.my.desktop) enableInputMethod;
   inherit (config) gtk;
   gsettings = getExe' pkgs.glib "gsettings";
   gnomeSchema = "org.gnome.desktop.interface";
   cfg = config.my.desktop.hyprland;
-  fcitx5' = withUWSM pkgs "fcitx5";
   wl-paste' = withUWSM' pkgs pkgs.wl-clipboard "wl-paste";
   wl-clip-persist' = withUWSM pkgs "wl-clip-persist";
   cliphist' = getExe pkgs.cliphist;
@@ -31,7 +28,6 @@ in {
         "${wl-clip-persist'} --clipboard regular"
         "${wl-paste'} --type text --watch ${cliphist'} store"
         "${wl-paste'} --type image --watch ${cliphist'} store"
-        (optionalString enableInputMethod fcitx5')
       ];
     };
   };
