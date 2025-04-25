@@ -52,17 +52,11 @@ in {
       '';
     };
 
-    # we need this on home-manager
-    fcitx5 = {
-      enable =
-        mkEnableOption "fcitx5"
-        // {
-          default =
-            if isLinux
-            then config.my.desktop.enable
-            else false;
-        };
-    };
+    enableInputMethod =
+      mkEnableOption "fcitx5"
+      // {
+        default = my.desktop.enable;
+      };
   };
   config.assertions = [
     {
