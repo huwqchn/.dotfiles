@@ -5,12 +5,10 @@
   ...
 }: let
   inherit (lib.modules) mkIf;
-  inherit (lib.my) runOnce;
+  inherit (lib.my) runOnce isWayland;
   grimblast' = runOnce pkgs "grimblast";
   satty' = runOnce pkgs "satty";
-  inherit (pkgs.stdenv.hostPlatform) isLinux;
-  isWayland = config.my.desktop.type == "wayland" && isLinux;
-  enable = config.my.desktop.shot == "grimblast" && isWayland;
+  enable = config.my.desktop.shot == "grimblast" && isWayland config;
 in {
   config = mkIf enable {
     # packages = with pkgs; [

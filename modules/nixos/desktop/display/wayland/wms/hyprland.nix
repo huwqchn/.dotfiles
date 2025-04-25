@@ -6,11 +6,11 @@
 }: let
   inherit (lib.modules) mkIf mkForce;
   inherit (lib.meta) getExe;
-  cfg = config.my.desktop;
-  isHpyrland = cfg.environment == "hyprland";
+  inherit (lib.my) isHyprland;
   uwsm' = getExe pkgs.uwsm;
+  enable = isHyprland config;
 in {
-  config = mkIf (cfg.enable && isHpyrland) {
+  config = mkIf enable {
     services.displayManager.defaultSession = "hyprland-uwsm";
 
     programs.hyprland = {
@@ -18,7 +18,7 @@ in {
       withUWSM = true;
     };
 
-    my.greetd.login = "${uwsm'} start hyprland-uwsm.desktop";
+    my.desktop.exec = "${uwsm'} start hyprland-uwsm.desktop";
 
     xdg.portal = {
       enable = true;

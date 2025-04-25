@@ -5,13 +5,11 @@
   ...
 }: let
   inherit (lib.modules) mkIf;
-  inherit (config.my) desktop;
-  isWayland = desktop.type == "wayland";
-  enable = desktop.enable && isWayland;
+  inherit (lib.my) isWayland;
 in {
   imports = lib.my.scanPaths ./.;
 
-  config = mkIf enable {
+  config = mkIf (isWayland config) {
     home.packages = with pkgs; [
       grim
       slurp

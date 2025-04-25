@@ -4,10 +4,10 @@
   ...
 }: let
   inherit (lib.modules) mkIf;
-  cfg = config.my.desktop;
-  isWayland = cfg.type == "wayland";
+  inherit (lib.my) isWayland;
+  enable = isWayland config;
 in {
-  config = mkIf (cfg.enable && isWayland) {
+  config = mkIf enable {
     environment.variables = {
       NIXOS_OZONE_WL = "1";
       _JAVA_AWT_WM_NONEREPARENTING = "1";

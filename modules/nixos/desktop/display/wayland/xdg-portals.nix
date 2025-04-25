@@ -6,14 +6,15 @@
 }: let
   inherit (lib.meta) getExe;
   inherit (lib.modules) mkIf mkDefault;
+  inherit (lib.my) isWayland;
   cfg = config.my.desktop;
-  isWayland = cfg.type == "wayland";
   portal =
-    if cfg.environment == "hyprland"
+    if cfg.name == "hyprland"
     then "hyprland"
     else "wlr";
+  enable = isWayland config;
 in {
-  config = mkIf (cfg.enable && isWayland) {
+  config = mkIf enable {
     xdg.portal = {
       enable = true;
       extraPortals = with pkgs; [
@@ -28,7 +29,7 @@ in {
         "org.freedesktop.impl.portal.Screenshot" = ["${portal}"];
       };
       wlr = {
-        enable = mkDefault isWayland;
+        enable = mkDefault enable;
         settings = {
           screencast = {
             max_fps = 60;

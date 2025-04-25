@@ -6,26 +6,14 @@
 }: let
   inherit (lib.options) mkOption;
   inherit (lib.modules) mkIf;
-  inherit (lib.types) enum nullOr str;
+  inherit (lib.types) enum nullOr str int float;
   inherit (lib.meta) getExe;
-  inherit (lib.my) withUWSM;
-  isHpyrland = config.my.desktop.environment == "hyprland";
-  cfg = config.my.terminal;
+  inherit (lib.my) withUWSM isHyprland;
+  inherit (config.my) terminal;
 in {
   imports = lib.my.scanPaths ./.;
-  options.my = {
-    commands.terminal = mkOption {
-      type = str;
-      default =
-        if isHpyrland
-        then withUWSM pkgs cfg
-        else getExe (builtins.getAttr cfg pkgs);
-      description = ''
-        The command to use for the terminal. This is used by the
-        `my.terminal` module to determine which command to run.
-      '';
-    };
-    terminal = mkOption {
+  options.my.terminal = {
+    name = mkOption {
       type = nullOr (enum [
         "wzeterm"
         "alacritty"
@@ -38,9 +26,52 @@ in {
         else null;
       description = "The terminal to use";
     };
+    exec = mkOption {
+      type = str;
+      default =
+        if isHyprland config
+        then withUWSM pkgs terminal.name
+        else getExe (builtins.getAttr terminal.name pkgs);
+      description = ''
+        The command to use for the terminal. This is used by the
+        `my.terminal` module to determine which command to run.
+      '';
+    };
+    size = mkOption {
+      type = int;
+      default = 12;
+      description = ''
+        The font size to use for the terminal. This is used by the
+        `my.terminal` module to determine which font size to use.
+      '';
+    };
+    font = mkOption {
+      type = str;
+      default = "JetBrainsMono Nerd Font Mono";
+      description = ''
+        The font to use for the terminal. This is used by the
+        `my.terminal` module to determine which font to use.
+      '';
+    };
+    padding = mkOption {
+      type = int;
+      default = 5;
+      description = ''
+        The padding to use for the terminal. This is used by the
+        `my.terminal` module to determine which padding to use.
+      '';
+    };
+    opacity = mkOption {
+      type = float;
+      default = 0.8;
+      description = ''
+        The opacity to use for the terminal. This is used by the
+        `my.terminal` module to determine which opacity to use.
+      '';
+    };
   };
 
-  config = mkIf (cfg != null) {
-    home.sessionVariables = {TERMINAL = "${cfg}";};
+  config = mkIf (terminal.name != null) {
+    home.sessionVariables = {TERMINAL = "${terminal.name}";};
   };
 }

@@ -4,13 +4,12 @@
   ...
 }: let
   inherit (lib.modules) mkIf mkDefault;
-  inherit (lib.my) scanPaths;
-  cfg = config.my.desktop;
-  isWayland = cfg.type == "wayland";
+  inherit (lib.my) scanPaths isWayland;
+  enable = isWayland config;
 in {
   imports = scanPaths ./.;
 
-  config = mkIf (cfg.enable && isWayland) {
+  config = mkIf enable {
     services.xserver.enable = mkDefault false;
   };
 }

@@ -22,13 +22,13 @@ in {
     my = {
       inherit (my) name fullName email shell home;
       desktop = {
-        inherit (my.desktop) enable type environment fcitx5;
+        inherit (my.desktop) enable type name fcitx5;
       };
       security = {
         inherit (my.security) enable;
       };
       theme = {
-        inherit (my.theme) name cursor avatar wallpaper tokyonight colorscheme font;
+        inherit (my.theme) name cursor avatar wallpaper tokyonight colorscheme;
       };
       persistence = {
         inherit (my.persistence) enable;

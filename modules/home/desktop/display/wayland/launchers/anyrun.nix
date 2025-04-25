@@ -6,10 +6,8 @@
   ...
 }: let
   inherit (lib.modules) mkIf;
-  inherit (lib.my) toggle';
-  inherit (pkgs.stdenv.hostPlatform) isLinux;
-  isWayland = config.my.desktop.type == "wayland" && isLinux;
-  enable = config.my.desktop.launcher == "anyrun" && isWayland;
+  inherit (lib.my) toggle' isWayland;
+  enable = config.my.desktop.launcher == "anyrun" && isWayland config;
   pkg = inputs.anyrun.packages.${pkgs.system};
   anyrunPkg = pkg.anyrun-with-all-plugins;
   anyrun' = toggle' pkgs anyrunPkg "anyrun";

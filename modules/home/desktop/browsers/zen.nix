@@ -8,8 +8,7 @@
   inherit (lib.options) mkEnableOption;
   inherit (lib.modules) mkIf;
   inherit (lib.meta) getExe';
-  inherit (lib.my) withUWSM';
-  isHyprland = config.my.desktop.environment == "hyprland";
+  inherit (lib.my) withUWSM' isHyprland;
   cfg = config.my.desktop.apps.zen;
   zenPkg = inputs.zen.packages.${pkgs.system}.default;
 in {
@@ -17,13 +16,13 @@ in {
     enable =
       mkEnableOption "zen browser"
       // {
-        default = config.my.browser == "zen";
+        default = config.my.browser.name == "zen";
       };
   };
 
   config = mkIf cfg.enable {
-    my.commands.browser =
-      if isHyprland
+    my.browser.exec =
+      if isHyprland config
       then withUWSM' pkgs zenPkg "zen"
       else (getExe' zenPkg "zen");
     home = {

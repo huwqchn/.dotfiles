@@ -4,18 +4,19 @@
   config,
   ...
 }: let
+  inherit (lib.my) isHyprland;
   inherit (lib.modules) mkIf;
   inherit (lib.options) mkEnableOption;
   inherit (lib.strings) optionalString makeBinPath;
   inherit (lib.meta) getExe';
   notify-send' = getExe' pkgs.libnotify "notify-send";
 
-  isHyprland = config.my.desktop.environment == "hyprland";
+  isHyprland' = isHyprland config;
 
   programs = makeBinPath (builtins.attrValues {inherit (pkgs) hyprland coreutils systemd;});
 
   startscript = pkgs.writeShellScript "gamemode-start" ''
-    ${optionalString isHyprland ''
+    ${optionalString isHyprland' ''
       export PATH=$PATH:${programs}
       export HYPRLAND_INSTANCE_SIGNATURE=$(ls -w1 /tmp/hypr | tail -1)
       hyprctl --batch 'keyword decoration:blur 0 ; keyword animations:enabled 0 ; keyword misc:vfr 0'
@@ -25,7 +26,7 @@
   '';
 
   endscript = pkgs.writeShellScript "gamemode-end" ''
-    ${optionalString isHyprland ''
+    ${optionalString isHyprland' ''
       export PATH=$PATH:${programs}
       export HYPRLAND_INSTANCE_SIGNATURE=$(ls -w1 /tmp/hypr | tail -1)
       hyprctl --batch 'keyword decoration:blur 1 ; keyword animations:enabled 1 ; keyword misc:vfr 1'

@@ -6,10 +6,10 @@
 }: let
   inherit (lib.meta) getExe;
   inherit (lib.modules) mkIf;
-  cfg = config.my.desktop;
-  isWayland = cfg.type == "wayland";
+  inherit (lib.my) isWayland;
+  enable = isWayland config;
 in {
-  config = mkIf (cfg.enable && isWayland) {
+  config = mkIf enable {
     systemd.services.seatd = {
       enable = true;
       description = "Seat management daemon";

@@ -7,17 +7,17 @@
 }: let
   inherit (config.lib.file) mkOutOfStoreSymlink;
   inherit (lib.options) mkEnableOption;
-  inherit (lib.modules) mkIf mkDefault;
+  inherit (lib.modules) mkIf;
   inherit (inputs) ghostty-shaders;
   inherit (pkgs.stdenv.hostPlatform) isLinux;
+  inherit (config.my) terminal;
   cfg = config.my.desktop.apps.ghostty;
-  font-size = config.my.theme.font.sizes.terminal;
 in {
   options.my.desktop.apps.ghostty = {
     enable =
       mkEnableOption "ghostty"
       // {
-        default = config.my.terminal == "ghostty";
+        default = terminal.name == "ghostty";
       };
   };
 
@@ -35,26 +35,27 @@ in {
       enableZshIntegration = true;
       enableBashIntegration = true;
       settings = {
-        font-family = mkDefault "JetBrainsMono Nerd Font Mono";
-        font-family-bold = mkDefault "JetBrainsMono Nerd Font Mono";
-        font-family-italic = mkDefault "Maple Mono";
-        font-family-bold-italic = mkDefault "Maple Mono";
-        inherit font-size;
+        # font-family = terminal.font;
+        # font-family-bold = terminal.font;
+        # font-family-italic = terminal.font-italic;
+        # font-family-bold-italic = terminal.font-italic;
+        font-family = terminal.font;
+        font-size = terminal.size;
 
         adjust-underline-position = 4;
         # Mouse
         mouse-hide-while-typing = true;
         # Theme
-        # theme = "light:tokyonight-moon,dark:tokyonight-moon";
         cursor-invert-fg-bg = true;
-        background-opacity = 0.7;
+        background-opacity = terminal.opacity;
         background-blur = true;
         window-theme = "ghostty";
         # window
         gtk-single-instance = true;
         gtk-tabs-location = "bottom";
         gtk-wide-tabs = false;
-        window-padding-y = "2,0";
+        window-padding-x = terminal.padding;
+        window-padding-y = terminal.padding;
         window-padding-balance = true;
         window-decoration = false;
         # macos

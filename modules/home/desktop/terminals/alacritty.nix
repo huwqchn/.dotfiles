@@ -8,13 +8,14 @@
   inherit (lib.options) mkEnableOption;
   inherit (lib.modules) mkIf;
   inherit (pkgs.stdenv.hostPlatform) isLinux;
+  inherit (config.my) terminal;
   cfg = config.my.desktop.apps.alacritty;
 in {
   options.my.desktop.apps.alacritty = {
     enable =
       mkEnableOption "alacritty"
       // {
-        default = config.my.terminal == "alacritty";
+        default = terminal.name == "alacritty";
       };
   };
 
@@ -23,14 +24,14 @@ in {
       settings = {
         window = {
           padding = {
-            x = 5;
-            y = 5;
+            x = terminal.padding;
+            y = terminal.padding;
           };
           decorations =
             if isLinux
             then "none"
             else "buttonless";
-          opacity = 0.95;
+          inherit (terminal) opacity;
           title = "Alacritty";
           dynamic_title = true;
         };
@@ -40,23 +41,8 @@ in {
         };
 
         font = {
-          normal = {
-            family = "JetBrains Mono Nerd Font";
-            style = "Medium";
-          };
-          bold = {
-            family = "JetBrains Mono Nerd Font";
-            style = "Bold";
-          };
-          italic = {
-            family = "JetBrains Mono Nerd Font";
-            style = "MediumItalic";
-          };
-          bold_italic = {
-            family = "JetBrains Mono Nerd Font";
-            style = "BoldItalic";
-          };
-          size = 13;
+          normal.family = terminal.font;
+          inherit (terminal) size;
         };
 
         keyboard = {

@@ -50,8 +50,8 @@ in {
     };
     hm.my = {
       desktop.enable = mkDefault false;
-      terminal = null;
-      browser = null;
+      terminal.name = null;
+      browser.name = null;
       fastfetch.startOnLogin = mkDefault false;
       tmux.autoStart = mkForce false; # I don't know how to auto start tmux in wsl, never work, break my shell!!!
     };

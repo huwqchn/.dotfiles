@@ -2,13 +2,11 @@
   inputs,
   lib,
   config,
-  pkgs,
   ...
 }: let
+  inherit (lib.my) isWayland;
   inherit (lib.modules) mkIf;
-  inherit (pkgs.stdenv.hostPlatform) isLinux;
-  isWayland = config.my.desktop.type == "wayland" && isLinux;
-  enable = config.my.desktop.bar == "hyprpanel" && isWayland;
+  enable = config.my.desktop.bar == "hyprpanel" && isWayland config;
 in {
   imports = [inputs.hyprpanel.homeManagerModules.hyprpanel];
 
@@ -19,8 +17,7 @@ in {
       overwrite.enable = true;
       settings = {
         scalingPriority = "hyprland";
-
-        inherit (config.my) terminal;
+        terminal = config.my.terminal.name;
         tear = false;
         layout = {
           "bar.layouts" = {

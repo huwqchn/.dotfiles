@@ -5,9 +5,10 @@
   ...
 }: let
   inherit (lib.options) mkOption mkEnableOption;
-  inherit (lib.types) enum nullOr;
-  inherit (config) my;
+  inherit (lib.types) enum nullOr str;
   inherit (pkgs.stdenv.hostPlatform) isLinux isDarwin;
+  inherit (lib.meta) getExe;
+  inherit (config) my;
 in {
   options.my.desktop = {
     enable =
@@ -15,6 +16,21 @@ in {
       // {
         default = true;
       };
+
+    # TODO: i3 and bspwm are not supported yet
+    # TODO: sway is not supported yet
+    # TODO: should support niri, that's supper cool
+    # TODO: should support cosmic desktop environment
+    name = mkOption {
+      type = nullOr (enum ["i3" "bspwm" "awesome" "niri" "sway" "hyprland" "aerospace"]);
+      default =
+        if !my.desktop.enable
+        then null
+        else if isLinux
+        then "hyprland"
+        else "aerospace";
+      description = "The default desktop environment";
+    };
 
     type = mkOption {
       type = nullOr (enum ["wayland" "xorg" "darwin"]);
@@ -25,6 +41,15 @@ in {
         then "wayland"
         else "darwin";
       description = "The desktop environment type to use";
+    };
+
+    exec = mkOption {
+      type = str;
+      default = getExe (builtins.getAttr my.desktop.name pkgs);
+      description = ''
+        The command to use for logging in. This is used by the
+        `my.desktop.exec` module to determine which command to run.
+      '';
     };
 
     # we need this on home-manager
@@ -38,21 +63,6 @@ in {
             else false;
         };
     };
-
-    # TODO: i3 and bspwm are not supported yet
-    # TODO: sway is not supported yet
-    # TODO: should support niri, that's supper cool
-    # TODO: should support cosmic desktop environment
-    environment = mkOption {
-      type = nullOr (enum ["i3" "bspwm" "sway" "hyprland" "aerospace"]);
-      default =
-        if !my.desktop.enable
-        then null
-        else if isLinux
-        then "hyprland"
-        else "aerospace";
-      description = "The default desktop environment";
-    };
   };
   config.assertions = [
     {
@@ -64,19 +74,19 @@ in {
       message = "You can't use desktop.enable without desktop.type";
     }
     {
-      assertion = my.desktop.environment == "i3" -> my.desktop.type == "xorg";
+      assertion = my.desktop.name == "i3" -> my.desktop.type == "xorg";
       message = "You can't use i3 desktop environment without xorg";
     }
     {
-      assertion = my.desktop.environment == "bspwm" -> my.desktop.type == "xorg";
+      assertion = my.desktop.name == "bspwm" -> my.desktop.type == "xorg";
       message = "You can't use bspwm desktop environment without xorg";
     }
     {
-      assertion = my.desktop.environment == "hyprland" -> my.desktop.type == "wayland";
+      assertion = my.desktop.name == "hyprland" -> my.desktop.type == "wayland";
       message = "You can't use hyprland desktop environment without wayland";
     }
     {
-      assertion = my.desktop.environment == "sway" -> my.desktop.type == "wayland";
+      assertion = my.desktop.name == "sway" -> my.desktop.type == "wayland";
       message = "You can't use sway desktop environment without wayland";
     }
     {
@@ -92,7 +102,7 @@ in {
       message = "You can't use darwin desktop environment on non-darwin system";
     }
     {
-      assertion = my.desktop.environment == "aerospace" -> my.desktop.type == "darwin";
+      assertion = my.desktop.name == "aerospace" -> my.desktop.type == "darwin";
       message = "You can't use aerospace desktop environment without darwin";
     }
   ];

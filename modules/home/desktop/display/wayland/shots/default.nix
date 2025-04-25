@@ -6,13 +6,12 @@
 }: let
   inherit (lib.meta) getExe';
   inherit (lib.modules) mkIf;
+  inherit (lib.my) isWayland;
   inherit (config.xdg.userDirs.extraConfig) XDG_SCREENSHOTS_DIR;
-  inherit (pkgs.stdenv.hostPlatform) isLinux;
-  isWayland = config.my.desktop.type == "wayland" && isLinux;
   wl-copy' = getExe' pkgs.wl-clipboard-rs "wl-copy";
 in {
   imports = lib.my.scanPaths ./.;
-  config = mkIf isWayland {
+  config = mkIf (isWayland config) {
     home = {
       file = {
         "${config.xdg.configHome}/satty/config.toml".text = ''

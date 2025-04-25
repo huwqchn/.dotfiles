@@ -5,44 +5,28 @@
   ...
 }: let
   inherit (lib.modules) mkIf;
-  inherit (lib.types) str;
   inherit (lib.meta) getExe;
   inherit (lib.strings) concatStringsSep;
-  inherit (lib.options) mkEnableOption mkOption;
+  inherit (lib.options) mkEnableOption;
   inherit (config.my) name desktop;
-  inherit (desktop) environment;
+  inherit (desktop) autologin exec;
   persist = config.my.persistence.enable;
-  cfg = config.my.greetd;
+  cfg = config.my.desktop.login;
 in {
-  options.my.greetd = {
-    enable =
-      mkEnableOption ''Whether to enable greetd as a display manager.''
-      // {
-        enable = desktop.login == "greetd";
-      };
-    login = mkOption {
-      type = str;
-      default = getExe (builtins.getAttr environment pkgs);
-      description = ''
-        The command to use for logging in. This is used by the
-        `my.login` module to determine which command to run.
-      '';
+  options.my.desktop.autologin =
+    mkEnableOption ''
+      Whether to enable passwordless login. This is generally useful on systems with
+      FDE (Full Disk Encryption) enabled. It is a security risk for systems without FDE.
+    ''
+    // {
+      default = persist;
     };
-    autologin =
-      mkEnableOption ''
-        Whether to enable passwordless login. This is generally useful on systems with
-        FDE (Full Disk Encryption) enabled. It is a security risk for systems without FDE.
-      ''
-      // {
-        default = persist;
-      };
-  };
 
-  config = mkIf cfg.enable {
+  config = mkIf (cfg == "greetd") {
     services.greetd = {
       enable = true;
       vt = 2;
-      restart = !cfg.autologin;
+      restart = !autologin;
 
       settings = {
         default_session = {
@@ -55,13 +39,13 @@ in {
             "--remember" # remember last logged-in username
             "--remember-user-session" # remember last logged-in session
             "--asterisks" # display asterisks when typing password
-            "--cmd ${cfg.login}" # login command
+            "--cmd ${exec}" # login command
           ];
         };
 
-        initial_session = mkIf cfg.autologin {
+        initial_session = mkIf autologin {
           user = name;
-          command = cfg.login;
+          command = exec;
         };
       };
     };

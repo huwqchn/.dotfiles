@@ -8,7 +8,7 @@
   cfg = config.my.desktop;
   inherit (cfg.general.workspace) number;
 in {
-  config = mkIf (cfg.enable && cfg.type == "darwin" && cfg.environment == "aerospace") {
+  config = mkIf (cfg.enable && cfg.type == "darwin" && cfg.name == "aerospace") {
     programs.aerospace = {
       enable = true;
       userSettings = {

@@ -5,10 +5,10 @@
   ...
 }: let
   inherit (lib.modules) mkIf;
-  cfg = config.my.desktop;
-  isXorg = cfg.type == "xorg";
+  inherit (lib.my) isXorg;
+  enable = isXorg config;
 in {
-  config = mkIf (cfg.enable && isXorg) {
+  config = mkIf enable {
     xdg.portal = {
       enable = true;
 

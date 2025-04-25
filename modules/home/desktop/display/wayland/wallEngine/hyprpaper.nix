@@ -1,14 +1,12 @@
 {
   lib,
   config,
-  pkgs,
   ...
 }: let
   inherit (lib.modules) mkIf;
+  inherit (lib.my) isWayland;
   inherit (config.my.theme) wallpaper;
-  inherit (pkgs.stdenv.hostPlatform) isLinux;
-  isWayland = config.my.desktop.type == "wayland" && isLinux;
-  enable = config.my.desktop.wallEngine == "hyprpaper" && isWayland;
+  enable = config.my.desktop.wallEngine == "hyprpaper" && isWayland config;
 in {
   config = mkIf enable {
     services.hyprpaper = {

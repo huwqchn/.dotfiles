@@ -5,9 +5,10 @@
   ...
 }: let
   inherit (lib.modules) mkIf mkMerge mkDefault;
-  isWayland = config.my.desktop.type == "wayland";
+  inherit (lib.my) isWayland;
   isNvidia = config.my.machine.gpu == "nvidia";
   isHybrid = config.my.machine.gpu == "hybrid-nv";
+  isWayland' = isWayland config;
 in {
   config = mkIf isNvidia {
     # nvidia drivers kinda are unfree software
@@ -17,7 +18,7 @@ in {
       {videoDrivers = ["nvidia"];}
 
       # xorg settings
-      (mkIf (!isWayland) {
+      (mkIf (!isWayland') {
         # disable DPMS
         monitorSection = ''
           Option "DPMS" "false"
@@ -44,7 +45,7 @@ in {
 
     environment.sessionVariables = mkMerge [
       {LIBVA_DRIVER_NAME = "nvidia";}
-      (mkIf isWayland {
+      (mkIf isWayland' {
         WLR_DRM_DEVICES = mkDefault "/dev/dri/card1";
         LIBVA_DRIVER_NAME = "nvidia";
         WLR_NO_HARDWARE_CURSORS = "1";

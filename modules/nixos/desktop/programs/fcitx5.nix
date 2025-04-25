@@ -5,9 +5,10 @@
   ...
 }: let
   inherit (lib.modules) mkIf mkDefault;
+  inherit (lib.my) isWayland;
   inherit (config.my) desktop;
   cfg = desktop.fcitx5;
-  isWayland = desktop.type == "wayland";
+  isWayland' = isWayland config;
 in {
   config = mkIf cfg.enable {
     i18n.inputMethod = {
@@ -27,7 +28,7 @@ in {
           libsForQt5.fcitx5-qt
         ];
         plasma6Support = true;
-        waylandFrontend = mkDefault isWayland;
+        waylandFrontend = mkDefault isWayland';
       };
     };
 

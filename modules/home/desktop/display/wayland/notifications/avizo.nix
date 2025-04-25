@@ -1,13 +1,11 @@
 {
   config,
   lib,
-  pkgs,
   ...
 }: let
+  inherit (lib.my) isWayland;
   inherit (lib.modules) mkIf;
-  inherit (pkgs.stdenv.hostPlatform) isLinux;
-  isWayland = config.my.desktop.type == "wayland" && isLinux;
-  enable = config.my.desktop.notification == "avizo" && isWayland;
+  enable = config.my.desktop.notification == "avizo" && isWayland config;
 in {
   config = mkIf enable {
     services.avizo = {

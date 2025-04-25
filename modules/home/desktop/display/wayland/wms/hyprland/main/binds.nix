@@ -8,7 +8,7 @@
   inherit (lib.lists) elem optionals;
   inherit (lib.modules) mkIf;
   inherit (lib.meta) getExe getExe';
-  inherit (config.my) desktop commands;
+  inherit (config.my) desktop terminal browser;
   cfg = desktop.hyprland;
   num = desktop.general.workspace.number;
   mod = desktop.general.keybind.modifier;
@@ -33,8 +33,8 @@ in {
             "$mod SHIFT, Escape, exit,"
             "$mod, Q, killactive," # close the active window
             "$mod SHIFT, Q, forcekillactive," # kill the active windwo
-            "$mod, B, exec, ${commands.browser}"
-            "$mod, return, exec, ${commands.terminal}"
+            "$mod, B, exec, ${browser.exec}"
+            "$mod, return, exec, ${terminal.exec}"
 
             # "$mod, space, exec, ags -t launcher"
             # "$mod SHIFT, R, exec, ags -q; ags"

@@ -6,11 +6,9 @@
 }: let
   inherit (lib.modules) mkIf;
   inherit (lib.meta) getExe';
-  inherit (lib.my) toggle;
+  inherit (lib.my) toggle isWayland;
   inherit (config.home) username;
-  inherit (pkgs.stdenv.hostPlatform) isLinux;
-  isWayland = config.my.desktop.type == "wayland" && isLinux;
-  enable = config.my.desktop.powermenu == "wlogout" && isWayland;
+  enable = config.my.desktop.powermenu == "wlogout" && isWayland config;
   loginctl' = getExe' pkgs.systemd "loginctl";
   systemctl' = getExe' pkgs.systemd "systemctl";
   wlogout' = toggle pkgs "wlogout";
