@@ -10,7 +10,7 @@ in {
   options.my.services.avizo = {enable = mkEnableOption "avizo";};
   config = mkIf cfg.enable {
     services.avizo = {
-      enable = false;
+      enable = true;
       settings.default.y-offset = 0.85;
     };
   };

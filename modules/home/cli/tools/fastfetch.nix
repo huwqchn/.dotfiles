@@ -11,11 +11,7 @@
 in {
   options.my.fastfetch = {
     enable = mkEnableOption "fastfetch";
-    startOnLogin =
-      mkEnableOption "fastfetch on login"
-      // {
-        default = true;
-      };
+    startOnLogin = mkEnableOption "fastfetch on login";
   };
 
   config = mkIf cfg.enable {

@@ -11,6 +11,7 @@
   inherit (inputs) ghostty-shaders;
   inherit (pkgs.stdenv.hostPlatform) isLinux;
   cfg = config.my.desktop.apps.ghostty;
+  font-size = config.my.theme.font.sizes.terminal;
 in {
   options.my.desktop.apps.ghostty = {
     enable =
@@ -38,8 +39,7 @@ in {
         font-family-bold = mkDefault "JetBrainsMono Nerd Font Mono";
         font-family-italic = mkDefault "Maple Mono";
         font-family-bold-italic = mkDefault "Maple Mono";
-
-        font-size = 13;
+        inherit font-size;
 
         adjust-underline-position = 4;
         # Mouse

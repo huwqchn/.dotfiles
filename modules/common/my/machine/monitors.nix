@@ -34,13 +34,13 @@ in {
         name = "DP-1";
         resolution = "highres";
         position = "auto-left";
-        scale = 1;
+        scale = 2;
       }
       {
-        name = "DP-1";
+        name = "DP-2";
         resolution = "highres";
         position = "auto-right";
-        scale = 1;
+        scale = 2;
       }
     ];
     description = ''

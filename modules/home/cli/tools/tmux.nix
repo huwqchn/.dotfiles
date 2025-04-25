@@ -15,22 +15,23 @@
 in {
   options.my.tmux = {
     enable = mkEnableOption "tmux";
-    autoStart = mkEnableOption "tmux auto start";
+    autoStart =
+      mkEnableOption "tmux auto start";
   };
 
   config = mkIf cfg.enable {
     programs = {
       fish = mkIf cfg.autoStart {
         interactiveShellInit = ''
-          if not set -q TMUX
-             and test -z "$SSH_TTY"
-             and test -z "$WSL_DISTRO_NAME"
-             and test -z "$INSIDE_EMACS"
-             and test -z "$EMACS"
-             and test -z "$VIM"
-             and test -z "$NVIM"
-             and test -z "$INSIDE_PYCHARM"
-             and test -z "$ZELLIJ_SESSION_NAME"
+          if not set -q TMUX \
+             and test -z "$SSH_TTY" \
+             and test -z "$WSL_DISTRO_NAME" \
+             and test -z "$INSIDE_EMACS" \
+             and test -z "$EMACS" \
+             and test -z "$VIM" \
+             and test -z "$NVIM" \
+             and test -z "$INSIDE_PYCHARM" \
+             and test -z "$ZELLIJ_SESSION_NAME" \
              and test "$TERM_PROGRAM" != "vscode"
             exec tmux attach || tmux new
           end

@@ -103,8 +103,8 @@ in {
           # tmux
           t = "tmux";
           tc = "tmux attach";
-          ta = "tmux attact -t";
-          tad = "tmux attact -d -t";
+          ta = "tmux attach -t";
+          tad = "tmux attach -d -t";
           ts = "tmux new -s";
           tl = "tmux ls";
           tk = "tmux kill-session -t";

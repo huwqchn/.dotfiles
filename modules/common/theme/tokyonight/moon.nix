@@ -6,7 +6,7 @@
   inherit (lib.modules) mkIf;
   palette = rec {
     cursor = {
-      baseColor = blue;
+      baseColor = magenta2;
       outlineColor = bg_highlight;
       watchBackgroundColor = orange;
     };

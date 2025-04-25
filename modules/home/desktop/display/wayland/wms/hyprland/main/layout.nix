@@ -8,7 +8,7 @@
 in {
   config = mkIf cfg.enable {
     wayland.windowManager.hyprland.settings = {
-      general.layout = "master";
+      general.layout = "dwindle";
 
       dwindle = {
         pseudotile = true;
@@ -16,7 +16,7 @@ in {
       };
 
       master = {
-        no_gaps_when_only = true;
+        # no_gaps_when_only = true;
         new_on_top = true;
         new_status = "master";
         mfact = 0.55;

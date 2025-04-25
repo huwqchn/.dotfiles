@@ -123,6 +123,10 @@ in {
             mkdir -p /persist${user.home}/.ssh
             chown ${user.name}:${user.group} /persist${user.home}/.ssh
             chmod 700 /persist${user.home}/.ssh
+
+            mkdir -p /persist${user.home}/.gnupg
+            chown ${user.name}:${user.group} /persist${user.home}/.gnupg
+            chmod 700 /persist${user.home}/.gnupg
           '';
         users = attrValues config.users.users;
       in

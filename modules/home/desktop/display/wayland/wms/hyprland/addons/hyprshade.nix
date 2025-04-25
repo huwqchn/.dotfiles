@@ -38,7 +38,7 @@ in {
 
         [[shades]]
         name = "blue-light-filter"
-        start_time = 19:00:00
+        start_time = 23:00:00
         end_time = 06:00:00
       '';
     };

@@ -9,10 +9,10 @@
   inherit (lib.my) isx86Linux;
   cfg = config.my.machine;
 in {
-  imports = [
-    ./low-latency.nix
-    ./settings.nix
-  ];
+  # imports = [
+  # ./low-latency.nix
+  # ./settings.nix
+  # ];
 
   options.my.machine.hasSound = mkEnableOption "Whether the system has sound";
 
@@ -39,9 +39,9 @@ in {
       };
     };
 
-    systemd.user.services = {
-      pipewire.wantedBy = ["default.target"];
-      pipewire-pulse.wantedBy = ["default.target"];
-    };
+    # systemd.user.services = {
+    #   pipewire.wantedBy = ["default.target"];
+    #   pipewire-pulse.wantedBy = ["default.target"];
+    # };
   };
 }

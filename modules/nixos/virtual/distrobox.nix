@@ -11,11 +11,7 @@
   distrobox' = getExe' pkgs.distrobox "distrobox";
 in {
   options.my.virtual.distrobox = {
-    enable =
-      mkEnableOption "Enable distrobox"
-      // {
-        default = config.my.virtual.enable;
-      };
+    enable = mkEnableOption "Enable distrobox";
   };
 
   config = mkIf cfg.enable {

@@ -28,7 +28,7 @@ in {
         inherit (my.security) enable;
       };
       theme = {
-        inherit (my.theme) name cursor avatar wallpaper tokyonight colorscheme;
+        inherit (my.theme) name cursor avatar wallpaper tokyonight colorscheme font;
       };
       persistence = {
         inherit (my.persistence) enable;
@@ -41,7 +41,7 @@ in {
 
   home-manager = {
     inherit extraSpecialArgs;
-    backupFileExtension = "backup";
+    backupFileExtension = "hmbackup";
     useGlobalPkgs = true;
     # do not enable home-manager.useUserPackages, to match standalone home-manager,
     # so home-manager/nixos-rebuild/darwin-rebuild can be used at the same time

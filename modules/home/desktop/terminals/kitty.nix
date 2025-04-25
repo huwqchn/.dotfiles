@@ -11,7 +11,7 @@ in {
     enable =
       mkEnableOption "kitty"
       // {
-        default = config.my.terminal == "kitty";
+        default = true;
       };
   };
 
