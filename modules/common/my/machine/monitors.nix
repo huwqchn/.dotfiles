@@ -1,6 +1,6 @@
 {lib, ...}: let
   inherit (lib.options) mkOption;
-  inherit (lib.types) str listOf submodule int;
+  inherit (lib.types) str listOf submodule float;
 in {
   options.my.machine.monitors = mkOption {
     type = listOf (
@@ -22,7 +22,7 @@ in {
             description = "The position of the monitor";
           };
           scale = mkOption {
-            type = int;
+            type = float;
             default = 1;
             description = "The scale of the monitor";
           };
@@ -34,13 +34,13 @@ in {
         name = "DP-1";
         resolution = "highres";
         position = "auto-left";
-        scale = 2;
+        scale = 2.0;
       }
       {
         name = "DP-2";
         resolution = "highres";
         position = "auto-right";
-        scale = 2;
+        scale = 2.0;
       }
     ];
     description = ''

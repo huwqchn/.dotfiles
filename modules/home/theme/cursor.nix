@@ -19,6 +19,7 @@ in {
       inherit (cursor) name package size;
       gtk.enable = true;
       x11.enable = true;
+      hyprcursor.enable = true;
     };
     gtk.cursorTheme = {
       inherit (cursor) name package size;
