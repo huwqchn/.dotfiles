@@ -1,10 +1,12 @@
 {
   lib,
   config,
+  pkgs,
   ...
 }: let
   inherit (lib.options) mkEnableOption;
   inherit (lib.modules) mkIf;
+  inherit (lib.my) ldTernary;
   inherit (config.my) desktop;
   cfg = config.my.services.udiskie;
 in {
@@ -12,7 +14,7 @@ in {
     enable =
       mkEnableOption "udiskie"
       // {
-        default = desktop.enable;
+        default = ldTernary pkgs desktop.enable false;
       };
   };
 
