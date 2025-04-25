@@ -85,7 +85,7 @@ in {
       description = "The screenshot tool to use";
     };
     powermenu = mkOption {
-      type = nullOr (enum ["wlogout"]);
+      type = nullOr (enum ["hyprpanel" "wlogout"]);
       default =
         ldTernary pkgs
         (
@@ -95,6 +95,18 @@ in {
         )
         null;
       description = "The powermenu to use";
+    };
+    notification = mkOption {
+      type = nullOr (enum ["hyprpanel" "avizo"]);
+      default =
+        ldTernary pkgs
+        (
+          if desktop.enable
+          then "hyprpanel"
+          else null
+        )
+        null;
+      description = "The notification daemon to use";
     };
     general = {
       workspace = {
