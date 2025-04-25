@@ -52,7 +52,6 @@ in {
     environment.persistence."/persist" = {
       hideMounts = true;
       directories = [
-        "/etc/secureboot"
         "/etc/nixos"
         "/etc/nix"
         "/etc/NetworkManager/system-connections"
