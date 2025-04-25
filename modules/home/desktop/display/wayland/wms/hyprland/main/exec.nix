@@ -8,7 +8,7 @@
   inherit (lib.meta) getExe getExe';
   inherit (lib.strings) optionalString;
   inherit (lib.my) withUWSM withUWSM';
-  inherit (config.my.desktop) fcitx5;
+  inherit (config.my.desktop) enableInputMethod;
   inherit (config) gtk;
   gsettings = getExe' pkgs.glib "gsettings";
   gnomeSchema = "org.gnome.desktop.interface";
@@ -31,7 +31,7 @@ in {
         "${wl-clip-persist'} --clipboard regular"
         "${wl-paste'} --type text --watch ${cliphist'} store"
         "${wl-paste'} --type image --watch ${cliphist'} store"
-        (optionalString fcitx5.enable fcitx5')
+        (optionalString enableInputMethod fcitx5')
       ];
     };
   };

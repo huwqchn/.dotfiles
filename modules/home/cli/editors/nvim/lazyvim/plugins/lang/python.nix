@@ -34,7 +34,6 @@ in {
     programs.neovim.extraPackages = with pkgs; [
       pyright
       ruff
-      ruff-lsp
       basedpyright
     ];
   };
