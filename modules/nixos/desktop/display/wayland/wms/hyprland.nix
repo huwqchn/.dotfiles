@@ -18,7 +18,7 @@ in {
       withUWSM = true;
     };
 
-    my.commands.login = "${uwsm'} start hyprland-uwsm.desktop";
+    my.greetd.login = "${uwsm'} start hyprland-uwsm.desktop";
 
     xdg.portal = {
       enable = true;
