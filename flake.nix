@@ -257,16 +257,13 @@
     # };
 
     # hyprwm
-    # hyprland = {
-    #  type = "git";
-    #  url = "https://github.com/hyprwm/Hyprland";
-    #  submodules = true;
-    # };
-
-    # hyprland-plugins = {
-    #  url = "github:hyprwm/hyprland-plugins";
-    #  inputs.hyprland.follows = "hyprland";
-    # };
+    hyprland = {
+      url = "github:hyprwm/hyprland";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        pre-commit-hooks.follows = "pre-commit-hooks";
+      };
+    };
 
     # this grub theme is cool
     dedsec-grub-theme = {

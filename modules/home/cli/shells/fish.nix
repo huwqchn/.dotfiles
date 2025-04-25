@@ -102,8 +102,8 @@ in {
           ggc = "git reflog expire --expire-unreachable=now --all; and git gc --prune=now";
           # tmux
           t = "tmux";
-          tc = "tmux attach";
-          ta = "tmux attach -t";
+          ta = "tmux attach";
+          tat = "tmux attach -t";
           tad = "tmux attach -d -t";
           ts = "tmux new -s";
           tl = "tmux ls";

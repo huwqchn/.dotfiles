@@ -1,4 +1,6 @@
 {
+  inputs,
+  pkgs,
   lib,
   config,
   ...
@@ -53,17 +55,17 @@ in {
     # enable hyprland
     wayland.windowManager.hyprland = {
       enable = true;
+      package = inputs.hyprland.packages.${pkgs.system}.default;
       xwayland.enable = true;
-      # NOTE: we use uwsm start hyprland, not manual ssystemd
-      systemd.enable = false;
-      # systemd = {
-      #   enable = true;
-      #   variables = ["--all"];
-      #   extraCommands = [
-      #     "systemctl --user stop graphical-session.target"
-      #     "systemctl --user start hyprland-session.target"
-      #   ];
-      # };
+      systemd = {
+        # NOTE: we use uwsm start hyprland, not manual ssystemd
+        enable = false;
+        variables = ["--all"];
+        extraCommands = [
+          "systemctl --user stop graphical-session.target"
+          "systemctl --user start hyprland-session.target"
+        ];
+      };
     };
 
     # make stuff work on wayland
