@@ -5,6 +5,7 @@
   ...
 }: let
   inherit (builtins) hasAttr;
+  inherit (lib.lists) optional;
   inherit (lib.strings) optionalString;
   inherit (config.my) name home;
   hostPath = ../../hosts/${config.networking.hostName}/host.pub;
@@ -15,15 +16,20 @@
     else name + "-" + hostName;
   sshDir = home + "/.ssh";
   persist = config.my.persistence.enable;
+  hostIdentityPath = "${optionalString persist "/persist"}/etc/ssh/ssh_host_ed25519_key";
+  userIdentityPath = "${optionalString persist "/persist"}${sshDir}/id_${name}";
+  # cause first boot can't get the home-level identity key
+  isUserIdentityKeyExists = builtins.pathExists userIdentityPath;
 in {
   # Setup secret rekeying parameters
   age = {
     # check the main users ssh key and the system key to see if it is safe
     # to decrypt the secrets
-    identityPaths = [
-      "${optionalString persist "/persist"}/etc/ssh/ssh_host_ed25519_key"
-      "${optionalString persist "/persist"}${sshDir}/id_${name}"
-    ];
+    identityPaths =
+      [
+        hostIdentityPath
+      ]
+      ++ optional isUserIdentityKeyExists userIdentityPath;
 
     rekey = {
       masterIdentities = [
