@@ -89,6 +89,7 @@ repl:
 [group('nix')]
 check *args:
   nix flake check {{args}}
+  statix check .
 
 # Create a clean and simple shell with git and neovim
 [group('nix')]

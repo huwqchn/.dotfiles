@@ -39,14 +39,6 @@ in {
         waylandFrontend = mkDefault isWayland';
       };
     };
-
-    environment = {
-      variables = {
-        # fix kitty/wezterm not able to input Chinese
-        # https://github.com/kovidgoyal/kitty/issues/403
-        GLFW_IM_MODULE = "ibus";
-      };
-    };
     hm.my.desktop.fcitx5.enable = true;
   };
 }

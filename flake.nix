@@ -68,11 +68,7 @@
       url = "github:nix-community/nix-on-droid";
       inputs = {
         home-manager.follows = "home-manager";
-        nix-formatter-pack.follows = "";
-        nixpkgs-docs.follows = "";
-        nixpkgs-for-bootstrap.follows = "";
         nixpkgs.follows = "nixpkgs";
-        nmd.follows = "";
       };
     };
 
@@ -81,7 +77,7 @@
 
     # nixos wsl
     wsl = {
-      url = "github:nix-community/NixOS-WSL/main";
+      url = "github:nix-community/NixOS-WSL?ref=main";
       inputs = {
         nixpkgs.follows = "nixpkgs";
         flake-compat.follows = "flake-compat";
@@ -170,7 +166,7 @@
 
     # it's need by ags
     matugen = {
-      url = "github:/InioX/Matugen";
+      url = "github:InioX/Matugen";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
