@@ -23,17 +23,17 @@ in {
     programs = {
       fish = mkIf cfg.autoStart {
         interactiveShellInit = ''
-          if not set -q TMUX;
-             and test -z "$SSH_TTY";
-             and test -z "$WSL_DISTRO_NAME";
-             and test -z "$INSIDE_EMACS";
-             and test -z "$EMACS";
-             and test -z "$VIM";
-             and test -z "$NVIM";
-             and test -z "$INSIDE_PYCHARM";
-             and test -z "$ZELLIJ_SESSION_NAME";
+          if not set -q TMUX
+             and test -z "$SSH_TTY"
+             and test -z "$WSL_DISTRO_NAME"
+             and test -z "$INSIDE_EMACS"
+             and test -z "$EMACS"
+             and test -z "$VIM"
+             and test -z "$NVIM"
+             and test -z "$INSIDE_PYCHARM"
+             and test -z "$ZELLIJ_SESSION_NAME"
              and test "$TERM_PROGRAM" != "vscode"
-            exec tmux attach || tmux new
+            tmux attach-session; or tmux
           end
         '';
       };
@@ -57,7 +57,7 @@ in {
               && [[ -z "$ZELLIJ_SESSION_NAME" ]] \
               && [[ "$TERM_PROGRAM" != "vscode" ]]
             then
-              exec tmux attach || tmux new;
+              tmux attach-session || tmux;
             fi
           '';
         };
