@@ -4,16 +4,15 @@
   pkgs,
   ...
 }: let
-  inherit
-    (lib)
-    mkEnableOption
-    mkIf
-    mkOption
-    types
-    ;
+  inherit (lib.options) mkEnableOption mkOption;
+  inherit (lib.modules) mkIf;
+  inherit (lib.types) str;
+  inherit (lib.meta) getExe';
+
   inherit (config.my) desktop;
   cfg = desktop.rime;
   kernelName = pkgs.stdenv.hostPlatform.parsed.kernel.name;
+  fcitx5-remote' = getExe' pkgs.fcitx5 "fcitx5-remote";
 in {
   options.my.desktop.rime = {
     enable =
@@ -23,7 +22,7 @@ in {
       };
 
     dir = mkOption {
-      type = types.str;
+      type = str;
       default =
         {
           # /Library/Input\ Methods/Squirrel.app/Contents/SharedSupport
@@ -36,11 +35,11 @@ in {
     };
 
     deploy = mkOption {
-      type = types.str;
+      type = str;
       default =
         {
           darwin = "'/Library/Input Methods/Squirrel.app/Contents/MacOS/Squirrel' --reload";
-          linux = "fcitx-remote -r";
+          linux = "${fcitx5-remote'} -r";
         }
         .${
           kernelName

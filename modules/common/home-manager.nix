@@ -41,7 +41,7 @@ in {
 
   home-manager = {
     inherit extraSpecialArgs;
-    backupFileExtension = "hmbackup";
+    backupFileExtension = "backup";
     useGlobalPkgs = true;
     # do not enable home-manager.useUserPackages, to match standalone home-manager,
     # so home-manager/nixos-rebuild/darwin-rebuild can be used at the same time
