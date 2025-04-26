@@ -117,11 +117,13 @@ in {
             "Hotkey/TogglePreedit" = {"0" = "Control+Alt+P";};
           };
           addons = {
-            rime = {
+            rime.globalSection = {
               # Show preedit within application
               PreeditInApplication = true;
               # Fix embedded preedit cursor at the beginning of the preedit
               PreeditCursorPositionAtBeginning = true;
+              # Commit current text when deactivating
+              "Commit when deactivate" = true;
             };
           };
         };
