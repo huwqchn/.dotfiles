@@ -42,7 +42,6 @@
     zram.enable = true;
     security.enable = false;
     services = {
-      onedrive.enable = true;
       printing.enable = true;
       # samba.enable = true;
     };

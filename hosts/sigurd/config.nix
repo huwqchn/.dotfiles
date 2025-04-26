@@ -34,7 +34,6 @@
     game.enable = true;
     security.enable = true;
     services = {
-      onedrive.enable = true;
       printing.enable = true;
     };
     virtual.enable = true;

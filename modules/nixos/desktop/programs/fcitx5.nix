@@ -39,6 +39,5 @@ in {
         waylandFrontend = mkDefault isWayland';
       };
     };
-    hm.my.desktop.fcitx5.enable = true;
   };
 }
