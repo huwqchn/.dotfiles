@@ -10,7 +10,7 @@
   cfg = config.my.desktop.apps.discord;
 in {
   imports = [
-    inputs.nixcord.homeManagerModules.nixcord
+    inputs.nixcord.homeModules.nixcord
   ];
 
   options.my.desktop.apps.discord = {

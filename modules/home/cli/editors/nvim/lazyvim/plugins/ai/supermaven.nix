@@ -29,5 +29,9 @@ in {
       path = "${homeDirectory}/.supermaven/config.json";
       symlink = false;
     };
+
+    home.persistence."/persist${config.home.homeDirectory}".directories = [
+      ".local/share/supermaven"
+    ];
   };
 }
