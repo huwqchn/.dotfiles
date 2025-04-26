@@ -10,7 +10,8 @@
   inherit (lib.options) mkEnableOption mkOption;
   inherit (lib.modules) mkIf;
   inherit (lib.types) bool listOf str package literalExpression;
-  inherit (lib.strings) optionals concatStringsSep;
+  inherit (lib.strings) concatStringsSep;
+  inherit (lib.lists) optionals;
   inherit (lib.meta) getExe getExe';
 in {
   options.my.yubikey = {
