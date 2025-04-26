@@ -122,8 +122,6 @@ in {
               PreeditInApplication = true;
               # Fix embedded preedit cursor at the beginning of the preedit
               PreeditCursorPositionAtBeginning = true;
-              # Commit current text when deactivating
-              "Commit when deactivate" = true;
             };
           };
         };
