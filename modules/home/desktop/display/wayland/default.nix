@@ -21,11 +21,22 @@ in {
       wireplumber
       brillo
       brightnessctl
+      wf-recorder
       wl-clip-persist
       wl-clipboard-rs
       wl-screenrec
       wlr-randr
       waypaper # GUI for wallpaper engine
+      ffmpeg
+      glib
+      gnome-console
+      gnome-photos
+      gnome-tour
+      gnome-connections
+      gnome-font-viewer
+      gnome-shell-extensions
+      gnome-maps
+      gnome-characters
     ];
   };
 }

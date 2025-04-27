@@ -8,7 +8,6 @@
   inherit (config.lib.file) mkOutOfStoreSymlink;
   inherit (lib.options) mkEnableOption;
   inherit (lib.modules) mkIf;
-  inherit (inputs) ghostty-shaders;
   inherit (pkgs.stdenv.hostPlatform) isLinux;
   inherit (config.my) terminal;
   cfg = config.my.desktop.apps.ghostty;
@@ -63,7 +62,7 @@ in {
         macos-option-as-alt = true;
         macos-window-shadow = true;
         # shader
-        custom-shader = "${ghostty-shaders}/shaders/bloom025.glsl";
+        custom-shader = "${inputs.ghostty-shaders}/bloom025.glsl";
         # other
         copy-on-select = "clipboard";
         shell-integration-features = "cursor,sudo,no-title";
