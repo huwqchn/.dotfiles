@@ -8,10 +8,10 @@
   inherit (pkgs.stdenv.hostPlatform) isLinux;
   cfg = config.my.theme.tokyonight;
   enable = cfg.enable && config.my.desktop.enable && isLinux;
-  preferDark =
-    if cfg.style == "day"
-    then 0
-    else 1;
+  # preferDark =
+  #   if cfg.style == "day"
+  #   then 0
+  #   else 1;
 in {
   config = mkIf enable {
     # gkt's theme settings, generate files:
@@ -38,11 +38,11 @@ in {
       };
 
       theme = {
-        name = "Tokyonight-Dark-BL";
+        name = "Tokyonight-Dark";
         package = pkgs.tokyonight-gtk-theme;
       };
-      gtk3.extraConfig.gtk-application-prefer-dark-theme = preferDark;
-      gtk4.extraConfig.gtk-application-prefer-dark-theme = preferDark;
+      # gtk3.extraConfig.gtk-application-prefer-dark-theme = preferDark;
+      # gtk4.extraConfig.gtk-application-prefer-dark-theme = preferDark;
     };
   };
 }
