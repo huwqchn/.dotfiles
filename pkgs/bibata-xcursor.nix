@@ -3,13 +3,13 @@
   lib,
   stdenvNoCC,
   fetchFromGitHub,
-  clickgen, # 提供 ctgen
-  cbmp, # 提供 cbmp 渲染工具
-  variant ? "modern", # modern | modern-right | original | original-right
-  baseColor ? "#000000", # 填充色，替换 SVG 中的 #00FF00
-  outlineColor ? "#FFFFFF", # 描边色，替换 SVG 中的 #0000FF
-  watchBackgroundColor ? "#000000", # 忙碌环背景，替换 SVG 中的 #FF0000
-  colorName ? "classic", # 主题后缀
+  clickgen,
+  cbmp,
+  variant ? "modern",
+  baseColor ? "#000000",
+  outlineColor ? "#FFFFFF",
+  watchBackgroundColor ? "#000000",
+  colorName ? "classic",
 }: let
   capitalize = str:
     lib.toUpper (builtins.substring 0 1 str)
