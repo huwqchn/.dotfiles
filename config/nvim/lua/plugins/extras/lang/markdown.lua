@@ -9,4 +9,10 @@ return {
       }
     end,
   },
+  {
+    "folke/snacks.nvim",
+    opts = {
+      image = {},
+    },
+  },
 }

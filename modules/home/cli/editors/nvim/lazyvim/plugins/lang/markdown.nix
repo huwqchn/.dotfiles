@@ -22,6 +22,11 @@ in {
     programs.neovim.extraPackages = with pkgs; [
       markdownlint-cli2
       marksman
+      imagemagick # for snacks.image
+      typst # for snacks.image
+      tectonic # for snacks.image
+      ghostscript # for snacks.image
+      mermaid-cli # for snacks.image
     ];
 
     xdg.configFile = mkMerge [

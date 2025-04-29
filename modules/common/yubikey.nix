@@ -7,6 +7,7 @@
   inherit (lib.modules) mkIf;
   inherit (lib.options) mkOption mkEnableOption;
   inherit (lib.types) attrsOf int literalExample;
+  inherit (pkgs.stdenv.hostPlatform) isLinux;
   cfg = config.my.yubikey;
 in {
   options.my.yubikey = {
@@ -44,7 +45,7 @@ in {
   };
 
   config = mkIf cfg.enable {
-    hm.my.yubikey.touchDetector.enable = true;
+    hm.my.yubikey.touchDetector.enable = isLinux;
 
     # TODO: need to figure out how to use gpg-agent with ssh
     # or just ues ssh-agent with yubikey?
