@@ -7,7 +7,7 @@
 }: let
   inherit (lib.options) mkEnableOption;
   inherit (lib.modules) mkMerge mkIf;
-  inherit (pkgs.stdenv.hostPlatform) isLinux;
+  # inherit (pkgs.stdenv.hostPlatform) isLinux;
   inherit (pkgs.stdenv) system;
   inherit (config.home) homeDirectory;
   cfg = config.my.desktop.apps.spotify;
@@ -40,7 +40,7 @@ in {
         spicePkgs = inputs.spicetify-nix.legacyPackages.${system};
       in {
         enable = true;
-        windowManagerPatch = isLinux;
+        # windowManagerPatch = isLinux;
         enabledCustomApps = with spicePkgs.apps; [
           lyricsPlus
           reddit

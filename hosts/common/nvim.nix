@@ -40,6 +40,7 @@
         rest.enable = true;
         # practice.enable = true;
         # lang
+        lean.enable = true;
         typescript.enable = true;
         clangd.enable = true;
         cmake.enable = true;
