@@ -15,8 +15,6 @@ in {
   };
 
   config = mkIf cfg.enable {
-    programs.neovim.extraPackages = with pkgs; [nodejs_23];
-
     my.neovim.lazyvim.extraPlugins = with pkgs.vimPlugins;
       [CopilotChat-nvim copilot-lua]
       ++ lib.optionals (config.my.neovim.lazyvim.cmp == "nvim-cmp")
