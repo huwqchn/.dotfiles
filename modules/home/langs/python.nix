@@ -21,14 +21,14 @@ in {
   config = mkMerge [
     (mkIf cfg.enable {
       home.packages = with pkgs; [
-        # python3
-        jupyter
-        # python3Packages.pip
-        # python3Packages.ipython
-        # python3Packages.black
-        # python3Packages.setuptools
-        # python3Packages.pylint
-        # python3Packages.poetry
+        (python3.withPackages
+          (ps:
+            with ps; [
+              jupyterlab
+              numpy
+              pandas
+              matplotlib
+            ]))
       ];
 
       home.shellAliases = {
