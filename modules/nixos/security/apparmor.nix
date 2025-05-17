@@ -23,7 +23,6 @@ in {
       apparmor-profiles
       apparmor-parser
       libapparmor
-      apparmor-kernel-patches
       apparmor-pam
       apparmor-utils
     ];

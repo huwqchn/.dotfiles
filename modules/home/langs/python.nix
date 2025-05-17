@@ -28,6 +28,7 @@ in {
               numpy
               pandas
               matplotlib
+              scipy
             ]))
       ];
 
