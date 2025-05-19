@@ -133,10 +133,6 @@ in {
           systemd = {
             # enable systemd in initrd (experimental)
             enable = true;
-
-            # strip copied binaries and libraries from inframs
-            # saves some nice space
-            strip = true;
           };
 
           kernelModules = [
