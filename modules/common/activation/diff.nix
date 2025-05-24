@@ -5,9 +5,9 @@
   ...
 }: let
   inherit (lib.meta) getExe;
-  inherit (lib.modules) mkIf mkMerge mkAfter;
+  inherit (lib.modules) mkIf mkMerge;
   inherit (lib.options) mkEnableOption;
-  inherit (pkgs.stdenv.hostPlatform) isLinux isDarwin;
+  inherit (pkgs.stdenv.hostPlatform) isLinux;
   nvd' = getExe pkgs.nvd;
   cfg = config.my.activation.diff;
 in {
@@ -37,10 +37,10 @@ in {
       system.activationScripts.diff.supportsDryActivation = true;
     })
 
-    (mkIf isDarwin {
-      system.activationScripts.postActivation.text = mkAfter ''
-        ${config.system.activationScripts.diff.text}
-      '';
-    })
+    # (mkIf isDarwin {
+    #   system.activationScripts.postActivation.text = mkAfter ''
+    #     ${config.system.activationScripts.diff.text}
+    #   '';
+    # })
   ]);
 }
