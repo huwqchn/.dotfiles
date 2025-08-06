@@ -10,7 +10,8 @@
   perSystem = {config, ...}: {
     agenix-rekey = {
       nixosConfigurations = self.nixosConfigurations // self.darwinConfigurations;
-      # homeConfigurations = self.homeConfigurations;
+      # FIXME: This is a hack, please complete homeConfigurations
+      homeConfigurations = {};
       collectHomeManagerConfigurations = true;
     };
     devshells.default = {
