@@ -63,15 +63,17 @@
     # You need to install all these Apps manually first so that your apple account have records for them.
     # otherwise Apple Store will refuse to install them
     # For details, see https://github.com/mas-cli/mas
-    masApps = {
-      Xcode = 497799835;
-      Wechat = 836500024;
-      QQ = 451108668;
-      # WeCom = 1189898970; # Wechat for Work
-      TecentMeeting = 1484048379;
-      OneDrive = 823766827;
-      "Jolt of Caffeine" = 1437130425;
-    };
+
+    # Notes: mas-cli is too slow to use with nix
+
+    # masApps = {
+    #   Xcode = 497799835;
+    #   Wechat = 836500024;
+    #   QQ = 451108668;
+    #   # WeCom = 1189898970; # Wechat for Work
+    #   TecentMeeting = 1484048379;
+    #   "Jolt of Caffeine" = 1437130425;
+    # };
 
     # if we don't do this nix-darwin may attempt to remove our taps
     # even when they are managed by nix-homebrew
@@ -136,6 +138,11 @@
       "sfm"
       # for work
       "wpsoffice"
+      "onedrive"
+      "wechat"
+      "qq"
+      "tencent-meeting"
+      "caffeine"
     ];
   };
 }
