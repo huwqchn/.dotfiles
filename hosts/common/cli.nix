@@ -21,5 +21,6 @@
     tmux.enable = true;
     yazi.enable = true;
     zoxide.enable = true;
+    pet.enable = true;
   };
 }
