@@ -147,7 +147,7 @@ add program:
   rm -rf config/{{program}}/
   mv "$HOME/.config/{{program}}" config/
 
-[group('misd')]
+[group('misc')]
 ssh-init:
   sudo ssh-keygen -A
 

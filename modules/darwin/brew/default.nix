@@ -70,6 +70,7 @@
       # WeCom = 1189898970; # Wechat for Work
       TecentMeeting = 1484048379;
       OneDrive = 823766827;
+      "Jolt of Caffeine" = 1437130425;
     };
 
     # if we don't do this nix-darwin may attempt to remove our taps
