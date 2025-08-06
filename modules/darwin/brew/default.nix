@@ -138,7 +138,6 @@
       "sfm"
       # for work
       "wpsoffice"
-      "onedrive"
       "wechat"
       "qq"
       "tencent-meeting"
