@@ -25,7 +25,6 @@ in {
   config = mkIf (cfg == "greetd") {
     services.greetd = {
       enable = true;
-      vt = 2;
       restart = !autologin;
 
       settings = {

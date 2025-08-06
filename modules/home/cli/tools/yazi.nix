@@ -1,5 +1,4 @@
 {
-  inputs,
   config,
   lib,
   pkgs,
@@ -17,7 +16,6 @@ in {
     # terminal file manager
     programs.yazi = {
       enable = true;
-      package = inputs.yazi.packages.${pkgs.system}.default;
       shellWrapperName = "y";
       enableBashIntegration = true;
       enableZshIntegration = true;

@@ -1,31 +1,31 @@
 {
   lib,
-  fetchFromGitHub,
-  nix-update-script,
-  nodejs,
-  pnpm,
   stdenv,
+  fetchFromGitHub,
+  pnpm_9,
+  nodejs,
+  nix-update-script,
 }:
-# https://github.com/NixOS/nixpkgs/pull/380665
 stdenv.mkDerivation (finalAttrs: {
   pname = "zashboard";
-  version = "1.76.0";
+  version = "1.96.0";
 
   src = fetchFromGitHub {
     owner = "Zephyruso";
     repo = "zashboard";
     tag = "v${finalAttrs.version}";
-    hash = "sha256-V64YvUXgF0hml0Dd8bOEffdAED0Wh8WUoWFa2HRJTWo=";
+    hash = "sha256-3sY3C4iNqVPhbwWCzGRRJ9pDfewPq7q70kMrXuqZQpc=";
   };
 
   nativeBuildInputs = [
-    pnpm.configHook
+    pnpm_9.configHook
     nodejs
   ];
 
-  pnpmDeps = pnpm.fetchDeps {
+  pnpmDeps = pnpm_9.fetchDeps {
     inherit (finalAttrs) pname version src;
-    hash = "sha256-ldCwNVD3b6840gM5NekW8Il5YvBsZ/to7byp4ECdAGA=";
+    hash = "sha256-aiSZS6FEs7kqGXxC9Tx6Rngv3qrPMi5gOuh5Z3/oZyc=";
+    fetcherVersion = 1;
   };
 
   buildPhase = ''
@@ -39,7 +39,7 @@ stdenv.mkDerivation (finalAttrs: {
   installPhase = ''
     runHook preInstall
 
-    cp -r ./dist $out
+    cp -r dist $out
 
     runHook postInstall
   '';
@@ -52,6 +52,6 @@ stdenv.mkDerivation (finalAttrs: {
     changelog = "https://github.com/Zephyruso/zashboard/releases/tag/v${finalAttrs.version}";
     license = lib.licenses.mit;
     platforms = lib.platforms.all;
-    maintainers = with lib.maintainers; [];
+    maintainers = with lib.maintainers; [emaryn];
   };
 })

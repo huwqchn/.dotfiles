@@ -1,0 +1,3 @@
+{
+  my.machine.type = "laptop";
+}

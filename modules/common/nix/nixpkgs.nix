@@ -49,7 +49,6 @@
     overlays =
       (builtins.attrValues self.overlays)
       ++ [
-        inputs.hyprpanel.overlay
         inputs.emacs-overlay.overlay
         (_final: prev: {
           qt6Packages = prev.qt6Packages.overrideScope (

@@ -8,7 +8,7 @@
   inherit (lib.modules) mkIf mkAfter;
   inherit (lib.my) withUWSM;
   cfg = config.my.desktop.hyprland;
-  hyprswitch' = withUWSM pkgs "hyprswitch";
+  hyprshell' = withUWSM pkgs "hyprshell";
 in {
   options.my.desktop.hyprland.switch = {
     enable =
@@ -20,22 +20,22 @@ in {
 
   config = mkIf cfg.switch.enable {
     home.packages = with pkgs; [
-      hyprswitch
+      hyprshell
     ];
 
     wayland.windowManager.hyprland.settings = {
       exec-once = [
-        "${hyprswitch'} init --show-title --size-factor 5.5 --workspaces-per-row 5 &"
+        "${hyprshell'} init --show-title --size-factor 5.5 --workspaces-per-row 5 &"
       ];
       bind = mkAfter [
         # Switcher
-        "ALT, tab, exec, ${hyprswitch'} gui --mod-key ALT --key tab --close mod-key-release --reverse-key=mod=SHIFT --max-switch-offset 9 -m && ${hyprswitch'} dispatch"
-        "ALT SHIFT, tab, exec, ${hyprswitch'} gui --mod-key ALT --key tab --close mod-key-release --reverse-key=mod=SHIFT --max-switch-offset 9 -m && ${hyprswitch'} dispatch -r"
+        "ALT, tab, exec, ${hyprshell'} gui --mod-key ALT --key tab --close mod-key-release --reverse-key=mod=SHIFT --max-switch-offset 9 -m && ${hyprshell'} dispatch"
+        "ALT SHIFT, tab, exec, ${hyprshell'} gui --mod-key ALT --key tab --close mod-key-release --reverse-key=mod=SHIFT --max-switch-offset 9 -m && ${hyprshell'} dispatch -r"
       ];
     };
 
     xdg.configFile = {
-      "hyprswitch/style.css".source = ./styles/hyprswitch.css;
+      "hyprshell/style.css".source = ./styles/hyprshell.css;
     };
   };
 }

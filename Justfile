@@ -147,6 +147,10 @@ add program:
   rm -rf config/{{program}}/
   mv "$HOME/.config/{{program}}" config/
 
+[group('misd')]
+ssh-init:
+  sudo ssh-keygen -A
+
 [group('misc')]
 cleanDead:
 	@for mp in $(awk '/fuse/ {print $$2}' /proc/mounts); do \

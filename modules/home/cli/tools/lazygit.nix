@@ -69,7 +69,7 @@ in {
           autoFetch = true;
           autoRefresh = true;
           branchLogCmd = "git log --graph --color=always --abbrev-commit --decorate --date=relative --pretty=medium {{branchName}} --";
-          allBranchesLogCmd = "git log --graph --all --color=always --abbrev-commit --decorate --date=relative  --pretty=medium";
+          allBranchesLogCmds = ["git log --graph --all --color=always --abbrev-commit --decorate --date=relative  --pretty=medium"];
           overrideGpg = false;
           disableForcePushing = false;
           parseEmoji = false;

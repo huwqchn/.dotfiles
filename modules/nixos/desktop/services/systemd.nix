@@ -5,19 +5,23 @@
 }: let
   inherit (lib.modules) mkIf;
   inherit (lib.attrsets) genAttrs;
-
-  extraConfig = ''
-    DefaultTimeoutStartSec=15s
-    DefaultTimeoutStopSec=15s
-    DefaultTimeoutAbortSec=15s
-    DefaultDeviceTimeoutSec=15s
-  '';
   inherit (config.my) desktop;
 in {
   config = mkIf desktop.enable {
     systemd = {
-      inherit extraConfig;
-      user = {inherit extraConfig;};
+      settings.Manager = {
+        DefaultTimeoutStartSec = "15s";
+        DefaultTimeoutStopSec = "15s";
+        DefaultTimeoutAbortSec = "15s";
+        DefaultDeviceTimeoutSec = "15s";
+      };
+
+      user.extraConfig = ''
+        DefaultTimeoutStartSec=15s
+        DefaultTimeoutStopSec=15s
+        DefaultTimeoutAbortSec=15s
+        DefaultDeviceTimeoutSec=15s
+      '';
 
       services =
         genAttrs

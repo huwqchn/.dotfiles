@@ -1,5 +1,4 @@
 {
-  inputs,
   lib,
   config,
   ...
@@ -8,13 +7,9 @@
   inherit (lib.modules) mkIf;
   enable = config.my.desktop.bar == "hyprpanel" && isWayland config;
 in {
-  imports = [inputs.hyprpanel.homeManagerModules.hyprpanel];
-
   config = mkIf enable {
     programs.hyprpanel = {
       enable = true;
-      hyprland.enable = config.my.desktop.hyprland.enable;
-      overwrite.enable = true;
       settings = {
         scalingPriority = "hyprland";
         terminal = config.my.terminal.name;

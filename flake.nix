@@ -91,13 +91,7 @@
     };
 
     # make homebrew reproducible
-    nix-homebrew = {
-      url = "github:zhaofengli-wip/nix-homebrew";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-        nix-darwin.follows = "darwin";
-      };
-    };
+    nix-homebrew.url = "github:zhaofengli-wip/nix-homebrew";
 
     # persistent
     impermanence.url = "github:nix-community/impermanence";
@@ -146,22 +140,9 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    yazi = {
-      url = "github:sxyazi/yazi";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     ags = {
       url = "github:aylur/ags";
       inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    hyprpanel = {
-      url = "github:Jas-SinghFSU/HyprPanel";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-        ags.follows = "ags";
-      };
     };
 
     # it's need by ags
@@ -242,10 +223,7 @@
     #   inputs.nixpkgs.follows = "nixpkgs";
     # };
 
-    programs-sqlite = {
-      url = "github:wamserma/flake-programs-sqlite";
-      # inputs.nixpkgs.follows = "nixpkgs";
-    };
+    programs-sqlite.url = "github:wamserma/flake-programs-sqlite";
 
     # catppuccin.url = "github:catppuccin/nix";
 
