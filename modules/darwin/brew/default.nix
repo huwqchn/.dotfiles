@@ -136,12 +136,6 @@
       "veracrypt" # disk encryption
       # sing-box
       "sfm"
-      # for work
-      "wpsoffice"
-      "wechat"
-      "qq"
-      "tencent-meeting"
-      "caffeine"
     ];
   };
 }
