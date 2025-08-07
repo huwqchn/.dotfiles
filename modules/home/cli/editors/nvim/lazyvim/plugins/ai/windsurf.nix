@@ -26,7 +26,7 @@ in {
     };
 
     xdg.configFile = mkMerge [
-      (sourceLua "ai/windsurf.lua")
+      (sourceLua config "ai/windsurf.lua")
     ];
 
     age.secrets.codeium = {

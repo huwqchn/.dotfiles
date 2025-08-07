@@ -38,7 +38,7 @@ in {
 
     # FIXME: not working when theme is auto
     xdg.configFile = mkMerge [
-      (sourceLua "colorscheme/${name}.lua")
+      (sourceLua config "colorscheme/${name}.lua")
     ];
   };
 }

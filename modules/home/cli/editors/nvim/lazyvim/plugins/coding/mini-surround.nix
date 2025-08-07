@@ -22,7 +22,7 @@ in {
     ];
 
     xdg.configFile = mkMerge [
-      (sourceLua "coding/mini-surround.lua")
+      (sourceLua config "coding/mini-surround.lua")
     ];
   };
 }

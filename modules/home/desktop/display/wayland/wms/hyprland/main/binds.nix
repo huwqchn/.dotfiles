@@ -21,6 +21,21 @@
   wl-ocr = pkgs.writeShellScript "wl-ocr" ''
     ${getExe pkgs.grim} -g "$(${getExe pkgs.slurp})" - | ${getExe pkgs.tesseract} ${lang} - - | ${getExe' pkgs.wl-clipboard "wl-copy"}
   '';
+  layouts = {
+    qwerty = {
+      left = "h";
+      down = "j";
+      up = "k";
+      right = "l";
+    };
+    colemak = {
+      left = "n";
+      down = "e";
+      up = "i";
+      right = "o";
+    };
+  };
+  layout = layouts.${config.my.keyboardLayout or "qwerty"};
 in {
   config = mkIf cfg.enable {
     wayland.windowManager.hyprland = {
@@ -59,20 +74,20 @@ in {
             "$mod, G, togglegroup,"
             "$mod SHIFT, G, changegroupactive, f"
             # move group
-            "$mod SHIFT CONTROL, N, movewindoworgroUP, l"
-            "$mod SHIFT CONTROL, E, movewindoworgroUP, d"
-            "$mod SHIFT CONTROL, I, movewindoworgroUP, u"
-            "$mod SHIFT CONTROL, O, movewindoworgroUP, r"
+            "$mod SHIFT CONTROL, ${layout.left}, movewindoworgroUP, l"
+            "$mod SHIFT CONTROL, ${layout.down}, movewindoworgroUP, d"
+            "$mod SHIFT CONTROL, ${layout.up}, movewindoworgroUP, u"
+            "$mod SHIFT CONTROL, ${layout.right}, movewindoworgroUP, r"
             # move focus
-            "$mod, N, movefocus, l"
-            "$mod, E, movefocus, d"
-            "$mod, I, movefocus, u"
-            "$mod, O, movefocus, r"
+            "$mod, ${layout.left}, movefocus, l"
+            "$mod, ${layout.down}, movefocus, d"
+            "$mod, ${layout.up}, movefocus, u"
+            "$mod, ${layout.right}, movefocus, r"
             # move window
-            "$mod SHIFT, N, movewindow, l"
-            "$mod SHIFT, E, movewindow, d"
-            "$mod SHIFT, I, movewindow, u"
-            "$mod SHIFT, O, movewindow, r"
+            "$mod SHIFT, ${layout.left}, movewindow, l"
+            "$mod SHIFT, ${layout.down}, movewindow, d"
+            "$mod SHIFT, ${layout.up}, movewindow, u"
+            "$mod SHIFT, ${layout.right}, movewindow, r"
 
             # special workspace
             "$mod SHIFT, grave, togglespecialworkspace"
@@ -138,10 +153,10 @@ in {
           "$mod, Semicolon, splitratio, -0.1"
           "$mod, Apostrophe, splitratio, 0.1"
           # resizing the active window
-          "$mod CTRL, N, resizeactive, 10 0"
-          "$mod CTRL, E, resizeactive, 0 10"
-          "$mod CTRL, I, resizeactive, 0 -10"
-          "$mod CTRL, O, resizeactive, -10 0"
+          "$mod CTRL, ${layout.left}, resizeactive, 10 0"
+          "$mod CTRL, ${layout.down}, resizeactive, 0 10"
+          "$mod CTRL, ${layout.up}, resizeactive, 0 -10"
+          "$mod CTRL, ${layout.right}, resizeactive, -10 0"
         ];
 
         # Bind: locked binds
@@ -180,10 +195,10 @@ in {
         bind=$mod,R,submap,resize
 
         submap=resize
-        binde=,N,resizeactive,10 0
-        binde=,E,resizeactive,0 10
-        binde=,I,resizeactive,0 -10
-        binde=,O,resizeactive,-10 0
+        binde=,${layout.left},resizeactive,10 0
+        binde=,${layout.down},resizeactive,0 10
+        binde=,${layout.up},resizeactive,0 -10
+        binde=,${layout.right},resizeactive,-10 0
 
         binde=,right,resizeactive,10 0
         binde=,left,resizeactive,-10 0
@@ -191,10 +206,10 @@ in {
         binde=,down,resizeactive,0 10
 
 
-        binde=SHIFT,N,moveactive,-10 0
-        binde=SHIFT,E,moveactive,0 10
-        binde=SHIFT,I,moveactive,0 -10
-        binde=SHIFT,O,moveactive,10 0
+        binde=SHIFT,${layout.left},moveactive,-10 0
+        binde=SHIFT,${layout.down},moveactive,0 10
+        binde=SHIFT,${layout.up},moveactive,0 -10
+        binde=SHIFT,${layout.right},moveactive,10 0
 
         binde=SHIFT,right,moveactive,10 0
         binde=SHIFT,left,moveactive,-10 0

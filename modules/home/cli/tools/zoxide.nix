@@ -12,7 +12,11 @@ in {
   };
 
   config = mkIf cfg.enable {
-    programs.zoxide.enable = true;
+    programs.zoxide = {
+      enable = true;
+
+      options = ["--cmd cd"];
+    };
 
     home.persistence."/persist${config.home.homeDirectory}".directories = [
       ".local/share/zoxide"

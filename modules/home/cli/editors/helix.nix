@@ -51,7 +51,7 @@ in {
           };
           file-picker = {hidden = false;};
         };
-        keys = {
+        keys = mkIf (config.my.keyboardLayout == "colemak") {
           normal = {
             # motion
             n = "move_char_left";

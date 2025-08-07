@@ -43,6 +43,7 @@ in {
     inherit extraSpecialArgs;
     backupFileExtension = "backup";
     useGlobalPkgs = true;
-    useUserPackages = true;
+    # FIXME: this is not work
+    # useUserPackages = true;
   };
 }

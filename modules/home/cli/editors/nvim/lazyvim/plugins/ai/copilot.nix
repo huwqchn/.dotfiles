@@ -26,7 +26,7 @@ in {
         || config.my.neovim.lazyvim.cmp == "auto") [blink-cmp-copilot];
 
     xdg.configFile = mkMerge [
-      (sourceLua "ai/copilot.lua")
+      (sourceLua config "ai/copilot.lua")
     ];
 
     age.secrets.github-copilot = {

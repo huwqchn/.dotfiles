@@ -30,7 +30,7 @@ in {
     };
 
     xdg.configFile = mkMerge [
-      (sourceLua "editor/dap.lua")
+      (sourceLua config "editor/dap.lua")
     ];
   };
 }

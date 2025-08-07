@@ -7,6 +7,21 @@
   inherit (lib.my) mkAerospaceWorkspaces;
   cfg = config.my.desktop;
   inherit (cfg.general.workspace) number;
+  layouts = {
+    qwerty = {
+      left = "h";
+      down = "j";
+      up = "k";
+      right = "l";
+    };
+    colemak = {
+      left = "n";
+      down = "e";
+      up = "i";
+      right = "o";
+    };
+  };
+  layout = layouts.${config.my.keyboardLayout or "qwerty"};
 in {
   config = mkIf (cfg.enable && cfg.type == "darwin" && cfg.name == "aerospace") {
     programs.aerospace = {
@@ -86,16 +101,16 @@ in {
                 "alt-backslash" = "layout accordion horizontal vertical";
 
                 # See: https://nikitabobko.github.io/AeroSpace/commands#focus
-                "alt-n" = "focus left";
-                "alt-e" = "focus down";
-                "alt-i" = "focus up";
-                "alt-o" = "focus right";
+                "alt-${layout.left}" = "focus left";
+                "alt-${layout.down}" = "focus down";
+                "alt-${layout.up}" = "focus up";
+                "alt-${layout.right}" = "focus right";
 
                 # See: https://nikitabobko.github.io/AeroSpace/commands#move
-                "alt-shift-n" = "move left";
-                "alt-shift-e" = "move down";
-                "alt-shift-i" = "move up";
-                "alt-shift-o" = "move right";
+                "alt-shift-${layout.left}" = "move left";
+                "alt-shift-${layout.down}" = "move down";
+                "alt-shift-${layout.up}" = "move up";
+                "alt-shift-${layout.right}" = "move right";
 
                 # See: https://nikitabobko.github.io/AeroSpace/commands#resize
                 "alt-shift-minus" = "resize smart -50";
@@ -160,10 +175,10 @@ in {
           };
           resize = {
             binding = {
-              "n" = "resize width -50";
-              "e" = "resize height +50";
-              "i" = "resize height -50";
-              "o" = "resize width +50";
+              "${layout.left}" = "resize width -50";
+              "${layout.down}" = "resize height +50";
+              "${layout.up}" = "resize height -50";
+              "${layout.right}" = "resize width +50";
               "enter" = "mode main";
               "esc" = "mode main";
             };
@@ -177,10 +192,10 @@ in {
                 "mode main"
               ]; # Toggle between floating and tiling layout
               "backspace" = ["close-all-windows-but-current" "mode main"];
-              "alt-shift-n" = ["join-with left" "mode main"];
-              "alt-shift-e" = ["join-with down" "mode main"];
-              "alt-shift-i" = ["join-with up" "mode main"];
-              "alt-shift-o" = ["join-with right" "mode main"];
+              "alt-shift-${layout.left}" = ["join-with left" "mode main"];
+              "alt-shift-${layout.down}" = ["join-with down" "mode main"];
+              "alt-shift-${layout.up}" = ["join-with up" "mode main"];
+              "alt-shift-${layout.right}" = ["join-with right" "mode main"];
             };
           };
         };

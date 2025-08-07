@@ -50,6 +50,12 @@ in {
         else "/Users/${user}";
       description = "The user home directory";
     };
+    # Note: I need to use general keyboard layout for my laptop and for Enterprise desktop
+    keyboardLayout = mkOption {
+      type = enum ["qwerty" "colemak"];
+      default = "qwerty";
+      description = "The keyboard layout to use";
+    };
     security = {
       enable =
         mkEnableOption "Security"

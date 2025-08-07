@@ -18,7 +18,7 @@ in {
       dial-nvim
     ];
     xdg.configFile = mkMerge [
-      (sourceLua "coding/dial.lua")
+      (sourceLua config "coding/dial.lua")
     ];
   };
 }

@@ -7,6 +7,43 @@
   inherit (lib.options) mkEnableOption;
   inherit (lib.modules) mkIf;
   cfg = config.my.yazi;
+  layouts = {
+    qwerty = {
+      left = "h";
+      down = "j";
+      up = "k";
+      right = "l";
+      Left = "H";
+      Down = "J";
+      Up = "K";
+      Right = "L";
+      end = "e";
+      next = "n";
+      prve = "N";
+      hide = "T";
+      link = "o";
+      Link = "O";
+      insert = "i";
+    };
+    colemak = {
+      left = "n";
+      down = "e";
+      up = "i";
+      right = "o";
+      Left = "N";
+      Down = "E";
+      Up = "I";
+      Right = "O";
+      end = "j";
+      next = "k";
+      prev = "K";
+      hide = "h";
+      link = "l";
+      Link = "L";
+      insert = "h";
+    };
+  };
+  layout = layouts.${config.my.keyboardLayout or "qwerty"};
 in {
   options.my.yazi = {
     enable = mkEnableOption "yazi";
@@ -217,28 +254,28 @@ in {
 
           # Navigation
           {
-            on = "i";
+            on = layout.up;
             run = "arrow -1";
           }
           {
-            on = "e";
+            on = layout.down;
             run = "arrow 1";
           }
           {
-            on = "n";
+            on = layout.left;
             run = "leave";
           }
           {
-            on = "o";
+            on = layout.right;
             run = "plugin smart-enter";
           }
 
           {
-            on = "N";
+            on = layout.Left;
             run = "back";
           }
           {
-            on = "O";
+            on = layout.Right;
             run = "forward";
           }
 
@@ -252,27 +289,27 @@ in {
           }
 
           {
-            on = "h";
+            on = layout.hide;
             run = "hidden toggle";
           }
 
           # Operation
           {
-            on = "l";
+            on = layout.link;
             run = "link";
           }
           {
-            on = "L";
+            on = layout.Link;
             run = "link --relative";
           }
 
           # Find
           {
-            on = "k";
+            on = layout.next;
             run = "find_arrow";
           }
           {
-            on = "K";
+            on = layout.prve;
             run = "find_arrow --previous";
           }
 
@@ -315,79 +352,79 @@ in {
         ];
         tasks.prepend_keymap = [
           {
-            on = "i";
+            on = layout.up;
             run = "arrow -1";
           }
           {
-            on = "e";
+            on = layout.down;
             run = "arrow 1";
           }
         ];
         select.prepend_keymap = [
           {
-            on = "i";
+            on = layout.up;
             run = "arrow -1";
           }
           {
-            on = "e";
+            on = layout.down;
             run = "arrow 1";
           }
           {
-            on = "I";
+            on = layout.Up;
             run = "arrow -5";
           }
           {
-            on = "E";
+            on = layout.Down;
             run = "arrow 5";
           }
         ];
         input.prepend_keymap = [
           {
-            on = "h";
+            on = layout.insert;
             run = "insert";
           }
 
           # Navigation
           {
-            on = "n";
+            on = layout.left;
             run = "move -1";
           }
           {
-            on = "o";
+            on = layout.right;
             run = "move 1";
           }
 
           {
-            on = "N";
+            on = layout.Left;
             run = "move -999";
           }
           {
-            on = "O";
+            on = layout.Right;
             run = "move 999";
           }
 
           {
-            on = "j";
+            on = layout.end;
             run = "forward --end-of-word";
           }
         ];
         help.prepend_keymap = [
           # Navigation
           {
-            on = "i";
+            on = layout.up;
             run = "arrow -1";
           }
           {
-            on = "e";
+            on = layout.down;
             run = "arrow 1";
           }
 
           {
-            on = "I";
+            on = layout.Up;
             run = "arrow -5";
           }
           {
-            on = "E";
+            on = layout.Down;
             run = "arrow 5";
           }
         ];

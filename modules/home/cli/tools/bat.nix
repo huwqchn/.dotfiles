@@ -36,20 +36,22 @@ in {
     home = {
       inherit shellAliases sessionVariables;
 
-      file.".lesskey".text = ''
-        #command
-        n left-scroll
-        o right-scroll
-        i back-line
-        I back-line-force
-        ^I back-line
-        E forw-line-force
-        k repeat-search
-        \ek repeat-search-all
-        K reverse-search
-        \eK reverse-search-all
-        c clear-search
-      '';
+      file.".lesskey" = mkIf (config.my.keyboardLayout == "colemak") {
+        text = ''
+          #command
+          n left-scroll
+          o right-scroll
+          i back-line
+          I back-line-force
+          ^I back-line
+          E forw-line-force
+          k repeat-search
+          \ek repeat-search-all
+          K reverse-search
+          \eK reverse-search-all
+          c clear-search
+        '';
+      };
 
       persistence."/persist${config.home.homeDirectory}".directories = [
         ".cache/bat"

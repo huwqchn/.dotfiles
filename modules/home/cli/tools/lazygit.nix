@@ -8,6 +8,53 @@
   cfg = config.my.lazygit;
   inherit (lib.options) mkEnableOption;
   inherit (lib.modules) mkIf;
+  layouts = {
+    qwerty = {
+      universal = {
+        prevItem-alt = "k";
+        nextItem-alt = "j";
+        scrollLeft = "H";
+        scrollRight = "L";
+        prevBlock-alt = "h";
+        nextBlock-alt = "l";
+        nextMatch = "n";
+        prevMatch = "N";
+        edit = "e";
+        openFile = "o";
+      };
+      files = {
+        ignoreFile = "i";
+      };
+      branches = {
+        createPullRequest = "o";
+        viewPullRequestOptions = "O";
+        viewGitFlowOptions = "i";
+      };
+    };
+    colemak = {
+      universal = {
+        prevItem-alt = "i";
+        nextItem-alt = "e";
+        scrollLeft = "N";
+        scrollRight = "O";
+        prevBlock-alt = "n";
+        nextBlock-alt = "o";
+        nextMatch = "k";
+        prevMatch = "K";
+        edit = "h";
+        openFile = "H";
+      };
+      files = {
+        ignoreFile = "i";
+      };
+      brahches = {
+        createPullRequest = "l";
+        viewPullRequestOptions = "L";
+        viewGitFlowOptions = "I";
+      };
+    };
+  };
+  layout = layouts.${config.my.keyboardLayout or "qwerty"};
 in {
   options.my.lazygit = {
     enable = mkEnableOption "lazygit";
@@ -93,108 +140,100 @@ in {
         confirmOnQuit = false;
         quitOnTopLevelReturn = false;
         keybinding = {
-          universal = {
-            quit = "q";
-            quit-alt1 = "<c-c>";
-            return = "<esc>";
-            quitWithoutChangingDirectory = "Q";
-            togglePanel = "<tab>";
-            prevItem = "<up>";
-            nextItem = "<down>";
-            prevItem-alt = "i";
-            nextItem-alt = "e";
-            prevPage = ",";
-            nextPage = ".";
-            scrollLeft = "N";
-            scrollRight = "O";
-            gotoTop = "<";
-            gotoBottom = ">";
-            prevBlock = "<left>";
-            nextBlock = "<right>";
-            prevBlock-alt = "n";
-            nextBlock-alt = "o";
-            nextBlock-alt2 = "<tab>";
-            prevBlock-alt2 = "<backtab>";
-            jumpToBlock = ["1" "2" "3" "4" "5"];
-            nextMatch = "k";
-            prevMatch = "K";
-            startSearch = "/";
-            optionMenu = "x";
-            optionMenu-alt1 = "?";
-            select = "<space>";
-            goInto = "<enter>";
-            confirm = "<enter>";
-            confirm-alt1 = "y";
-            remove = "d";
-            new = "a";
-            edit = "h";
-            openFile = "H";
-            scrollUpMain = "<pgup>";
-            scrollDownMain = "<pgdown>";
-            # scrollUpMain-alt1 = "I";
-            # scrollDownMain-alt1 = "E";
-            scrollUpMain-alt2 = "<c-u>";
-            scrollDownMain-alt2 = "<c-d>";
-            executeShellCommand = ":";
-            createRebaseOptionsMenu = "m";
-            pushFiles = "P";
-            pullFiles = "p";
-            refresh = "R";
-            createPatchOptionsMenu = "<c-p>";
-            nextTab = "]";
-            prevTab = "[";
-            nextScreenMode = "+";
-            prevScreenMode = "_";
-            undo = "u";
-            redo = "<c-r>";
-            filteringMenu = "<c-f>";
-            diffingMenu = "W";
-            diffingMenu-alt = "<c-e>";
-            copyToClipboard = "Y";
-            openRecentRepos = "<c-o>";
-            submitEditorText = "<enter>";
-            appendNewline = "<a-enter>";
-            extrasMenu = "@";
-            toggleWhitespaceInDiffView = "<c-w>";
-            increaseContextInDiffView = "}";
-            decreaseContextInDiffView = "{";
-          };
+          universal =
+            {
+              quit = "q";
+              quit-alt1 = "<c-c>";
+              return = "<esc>";
+              quitWithoutChangingDirectory = "Q";
+              togglePanel = "<tab>";
+              prevItem = "<up>";
+              nextItem = "<down>";
+              prevPage = ",";
+              nextPage = ".";
+              gotoTop = "<";
+              gotoBottom = ">";
+              prevBlock = "<left>";
+              nextBlock = "<right>";
+              nextBlock-alt2 = "<tab>";
+              prevBlock-alt2 = "<backtab>";
+              jumpToBlock = ["1" "2" "3" "4" "5"];
+              startSearch = "/";
+              optionMenu = "x";
+              optionMenu-alt1 = "?";
+              select = "<space>";
+              goInto = "<enter>";
+              confirm = "<enter>";
+              confirm-alt1 = "y";
+              remove = "d";
+              new = "a";
+              scrollUpMain = "<pgup>";
+              scrollDownMain = "<pgdown>";
+              # scrollUpMain-alt1 = "I";
+              # scrollDownMain-alt1 = "E";
+              scrollUpMain-alt2 = "<c-u>";
+              scrollDownMain-alt2 = "<c-d>";
+              executeShellCommand = ":";
+              createRebaseOptionsMenu = "m";
+              pushFiles = "P";
+              pullFiles = "p";
+              refresh = "R";
+              createPatchOptionsMenu = "<c-p>";
+              nextTab = "]";
+              prevTab = "[";
+              nextScreenMode = "+";
+              prevScreenMode = "_";
+              undo = "u";
+              redo = "<c-r>";
+              filteringMenu = "<c-f>";
+              diffingMenu = "W";
+              diffingMenu-alt = "<c-e>";
+              copyToClipboard = "Y";
+              openRecentRepos = "<c-o>";
+              submitEditorText = "<enter>";
+              appendNewline = "<a-enter>";
+              extrasMenu = "@";
+              toggleWhitespaceInDiffView = "<c-w>";
+              increaseContextInDiffView = "}";
+              decreaseContextInDiffView = "{";
+            }
+            // layout.universal;
           status = {
             checkForUpdate = "U";
             recentRepos = "<enter>";
             allBranchesLogGraph = "a";
           };
-          files = {
-            commitChanges = "c";
-            commitChangesWithoutHook = "w";
-            amendLastCommit = "A";
-            commitChangesWithEditor = "C";
-            ignoreFile = "I";
-            refreshFiles = "r";
-            stashAllChanges = "s";
-            viewStashOptions = "S";
-            toggleStagedAll = "a";
-            viewResetOptions = "D";
-            fetch = "f";
-            toggleTreeView = "`";
-            openMergeTool = "M";
-            openStatusFilter = "<c-b>";
-          };
-          branches = {
-            createPullRequest = "l";
-            viewPullRequestOptions = "L";
-            copyPullRequestURL = "<c-y>";
-            checkoutBranchByName = "c";
-            forceCheckoutBranch = "F";
-            rebaseBranch = "r";
-            renameBranch = "R";
-            mergeIntoCurrentBranch = "M";
-            viewGitFlowOptions = "I";
-            fastForward = "f";
-            pushTag = "P";
-            setUpstream = "U";
-            fetchRemote = "f";
-          };
+          files =
+            {
+              commitChanges = "c";
+              commitChangesWithoutHook = "w";
+              amendLastCommit = "A";
+              commitChangesWithEditor = "C";
+              refreshFiles = "r";
+              stashAllChanges = "s";
+              viewStashOptions = "S";
+              toggleStagedAll = "a";
+              viewResetOptions = "D";
+              fetch = "f";
+              toggleTreeView = "`";
+              openMergeTool = "M";
+              openStatusFilter = "<c-b>";
+            }
+            // layout.files;
+          branches =
+            {
+              copyPullRequestURL = "<c-y>";
+              checkoutBranchByName = "c";
+              forceCheckoutBranch = "F";
+              rebaseBranch = "r";
+              renameBranch = "R";
+              mergeIntoCurrentBranch = "M";
+              fastForward = "f";
+              pushTag = "P";
+              setUpstream = "U";
+              fetchRemote = "f";
+            }
+            // layout.branches;
           commits = {
             squashDown = "s";
             renameCommit = "r";

@@ -19,7 +19,7 @@ in {
     ];
 
     xdg.configFile = mkMerge [
-      (sourceLua "ui/window-picker.lua")
+      (sourceLua config "ui/window-picker.lua")
     ];
   };
 }

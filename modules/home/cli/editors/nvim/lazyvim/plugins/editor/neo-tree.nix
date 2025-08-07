@@ -14,7 +14,7 @@ in {
     ];
 
     xdg.configFile = mkMerge [
-      (sourceLua "editor/neo-tree.lua")
+      (sourceLua config "editor/neo-tree.lua")
     ];
   };
 }

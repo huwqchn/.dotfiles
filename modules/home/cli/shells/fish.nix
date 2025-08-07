@@ -207,7 +207,7 @@ in {
             journalctl -u $service_name --no-pager -n 10
           '';
         };
-        fish_user_key_bindings = {
+        fish_user_key_bindings = mkIf (config.my.keyboardLayout == "colemak") {
           body = ''
             set -g fish_key_bindings fish_vi_key_bindings
             fish_default_key_bindings -M insert
