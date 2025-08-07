@@ -19,7 +19,7 @@
       Right = "L";
       end = "e";
       next = "n";
-      prve = "N";
+      prev = "N";
       hide = "T";
       link = "o";
       Link = "O";
@@ -309,7 +309,7 @@ in {
             run = "find_arrow";
           }
           {
-            on = layout.prve;
+            on = layout.prev;
             run = "find_arrow --previous";
           }
 

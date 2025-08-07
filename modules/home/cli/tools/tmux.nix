@@ -26,7 +26,7 @@
       Right = "L";
       next-word = "e";
       next = "n";
-      prve = "N";
+      prev = "N";
       other-end = "o";
     };
     colemak = {
@@ -341,7 +341,7 @@ in {
           # bind -T copy-mode-vi y send-keys -X copy-selection-and-cancel
 
           bind -T copy-mode-vi ${layout.next} send-keys -X search-again
-          bind -T copy-mode-vi ${layout.prve} send-keys -X search-reverse
+          bind -T copy-mode-vi ${layout.prev} send-keys -X search-reverse
           bind -T copy-mode-vi ${layout.other-end} send-keys -X other-end
 
           # don't exit copy mode when dragging with mouse

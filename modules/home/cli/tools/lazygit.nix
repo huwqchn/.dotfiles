@@ -47,7 +47,7 @@
       files = {
         ignoreFile = "i";
       };
-      brahches = {
+      branches = {
         createPullRequest = "l";
         viewPullRequestOptions = "L";
         viewGitFlowOptions = "I";
