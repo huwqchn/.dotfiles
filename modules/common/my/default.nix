@@ -53,7 +53,7 @@ in {
     # Note: I need to use general keyboard layout for my laptop and for Enterprise desktop
     keyboardLayout = mkOption {
       type = enum ["qwerty" "colemak"];
-      default = "qwerty";
+      default = "colemak";
       description = "The keyboard layout to use";
     };
     security = {

@@ -8,6 +8,7 @@ NixOS is a rabbit hole that I have been wanting to go down for a while.
 - `nidhogg`: WSL2 host.
 - `ymir`: My first NixOS laptop for test.
 - `sigurd`: My primary desktop computer.
+- `eir`: My Macbook Air for learning, traveling, and development.
 
 ## References
 

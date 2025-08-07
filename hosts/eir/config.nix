@@ -1,3 +1,6 @@
 {
-  my.machine.type = "laptop";
+  my = {
+    machine.type = "laptop";
+    keyboardLayout = "qwerty";
+  };
 }
