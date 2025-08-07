@@ -20,7 +20,7 @@ in {
   hm = {
     imports = [../home];
     my = {
-      inherit (my) name fullName email shell home;
+      inherit (my) name fullName email shell home keyboardLayout;
       desktop = {
         inherit (my.desktop) enable type name;
       };
@@ -44,6 +44,6 @@ in {
     backupFileExtension = "backup";
     useGlobalPkgs = true;
     # FIXME: this is not work
-    # useUserPackages = true;
+    useUserPackages = true;
   };
 }
