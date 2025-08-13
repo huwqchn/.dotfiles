@@ -9,9 +9,6 @@ map("x", "#", [[y?\V<C-R>=escape(@", '?\')<CR><CR>]])
 -- select all
 map({ "n", "x", "i" }, "<C-a>", "<cmd>normal! ggVG<cr>")
 
-map({ "n", "x", "o" }, "H", "^")
-map({ "n", "x", "o" }, "L", "$")
-
 -- new space line
 -- map("n", "gO", "<Cmd>call append(line('.') - 1, repeat([''], v:count1))<CR>", { desc = "Put empty line above" })
 -- map("n", "go", "<Cmd>call append(line('.'), repeat([''], v:count1))<CR>", { desc = "Put empty line below" })
