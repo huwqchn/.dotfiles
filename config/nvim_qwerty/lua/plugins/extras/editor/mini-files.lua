@@ -5,10 +5,10 @@ return {
     optional = true,
     opts = {
       mappings = {
-        go_in = "o",
-        go_in_plus = "O",
-        go_out = "n",
-        go_out_plus = "N",
+        go_in = "h",
+        go_in_plus = "H",
+        go_out = "l",
+        go_out_plus = "L",
       },
     },
     keys = {
