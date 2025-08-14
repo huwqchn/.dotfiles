@@ -69,7 +69,7 @@ map("n", "<C-Left>", "<cmd>vertical resize -2<CR>", { desc = "Decrease window wi
 map("n", "<C-Right>", "<cmd>vertical resize +2<CR>", { desc = "Increase window width" })
 
 -- other window keybindings
-map("n", "<C-o>", "<C-w>o", { desc = "Clear other windows" })
+map("n", "<leader>wo", "<C-w>o", { desc = "Clear other windows" })
 -- map("n", "<C-x>", "<C-w>x", { desc = "Exchange window" })
 map("n", "<C-q>", function()
   -- close current window if there are more than 1 window

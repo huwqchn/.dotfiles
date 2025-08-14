@@ -136,6 +136,7 @@
       "veracrypt" # disk encryption
       # sing-box
       "sfm"
+      "karabiner-elements" # keyboard remap
     ];
   };
 }
