@@ -370,10 +370,10 @@ in {
           # vim tmux navigation
           is_vim="ps -o state= -o comm= -t '#{pane_tty}' \
               | grep -iqE '^[^TXZ ]+ +(\\S+\\/)?g?(view|n?vim?x?)(diff)?$'"
-          bind-key -n C-n if-shell "$is_vim" 'send-keys C-${layout.left}'  'select-pane -L'
-          bind-key -n C-e if-shell "$is_vim" 'send-keys C-${layout.down}'  'select-pane -D'
-          bind-key -n C-i if-shell "$is_vim" 'send-keys C-${layout.up}'  'select-pane -U'
-          bind-key -n C-o if-shell "$is_vim" 'send-keys C-${layout.right}'  'select-pane -R'
+          bind-key -n C-${layout.left} if-shell "$is_vim" 'send-keys C-${layout.left}'  'select-pane -L'
+          bind-key -n C-${layout.down} if-shell "$is_vim" 'send-keys C-${layout.down}'  'select-pane -D'
+          bind-key -n C-${layout.up} if-shell "$is_vim" 'send-keys C-${layout.up}'  'select-pane -U'
+          bind-key -n C-${layout.right} if-shell "$is_vim" 'send-keys C-${layout.right}'  'select-pane -R'
           bind-key -n C-q if-shell "$is_vim" 'send-keys C-q'  'kill-pane'
 
           bind-key -n C-Left if-shell "$is_vim" 'send-keys C-Left' 'resize-pane -L 3'

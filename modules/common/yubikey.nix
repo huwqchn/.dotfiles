@@ -20,8 +20,8 @@ in {
     identifiers = mkOption {
       default = {
         janus = 30805408;
-        aegis = 29642951;
-        mimir = 32226619;
+        aegis = 32226619;
+        mimir = 29642951;
       };
       type = attrsOf int;
       description = "Attrset of Yubikey serial numbers. NOTE: Yubico's 'Security Key' products do not use unique serial number therefore, the scripts in this module are unable to distinguish between multiple 'Security Key' devices and instead will detect a Security Key serial number as the string \"[FIDO]\". This means you can only use a single Security Key but can still mix it with YubiKey 4 and 5 devices.";
