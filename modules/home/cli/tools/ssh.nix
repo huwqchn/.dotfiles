@@ -1,7 +1,8 @@
 {
+  self,
   config,
   lib,
-  self,
+  pkgs,
   ...
 }: let
   inherit (lib.modules) mkIf;
@@ -42,7 +43,7 @@ in {
           hostname = "github.com";
           user = "git";
           identityFile = [
-            "${homeDirectory}/.ssh/id_${name}"
+            "${homeDirectory}/.ssh/id_ed25519"
           ];
           # Specifies that ssh should only use the identity file explicitly configured above
           # required to prevent sending default identity files first.
@@ -52,6 +53,10 @@ in {
     };
 
     home = {
+      packages = with pkgs; [
+        connect
+      ];
+
       file.".ssh/id_ed25519.pub".source = "${self}/secrets/${name}/ssh.pub";
 
       persistence = {

@@ -32,7 +32,7 @@ in {
           "--pointer=''"
           "--marker='│'"
           "--separator='─'"
-          "--scrollbar = '│'"
+          "--scrollbar='│'"
         ]
         ++ (
           if (config.my.keyboardLayout == "colemak")

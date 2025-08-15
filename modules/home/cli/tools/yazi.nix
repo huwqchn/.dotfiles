@@ -97,7 +97,7 @@ in {
         require("no-status"):setup()
       '';
       settings = {
-        manager = {
+        mgr = {
           sort_by = "natural";
           sort_sensitive = false;
           sort_reverse = false;
@@ -226,7 +226,7 @@ in {
         ];
       };
       keymap = {
-        manager.prepend_keymap = [
+        mgr.prepend_keymap = [
           {
             on = "F";
             run = "plugin smart-filter";
