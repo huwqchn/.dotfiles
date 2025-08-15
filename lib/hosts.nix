@@ -156,6 +156,7 @@ in rec {
               inputs.agenix.darwinModules.default
               # since agenix-rekey has no darwin module, we use the nixos one
               inputs.agenix-rekey.nixosModules.default
+              inputs.sops.darwinModules.sops
             ])
             ++ (optionals isNixosOutput [
               ../modules/nixos
@@ -165,6 +166,7 @@ in rec {
               inputs.disko.nixosModules.disko
               inputs.nixos-generators.nixosModules.all-formats
               inputs.programs-sqlite.nixosModules.programs-sqlite
+              inputs.sops.nixosModules.sops
             ])
             ++ (optionals isHomeOutput [
               ../modules/home

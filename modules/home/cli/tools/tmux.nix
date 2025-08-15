@@ -301,7 +301,7 @@ in {
           # split
           unbind '"'
           unbind %
-          bind ${layout.up} -vb -c "#{pane_current_path}"
+          bind ${layout.up} split-window -vb -c "#{pane_current_path}"
           bind ${layout.down} split-window -v -c "#{pane_current_path}"
           bind ${layout.left} split-window -hb -c "#{pane_current_path}"
           bind ${layout.right} split-window -h -c "#{pane_current_path}"
