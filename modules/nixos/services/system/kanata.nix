@@ -5,7 +5,7 @@
 }: let
   inherit (lib.modules) mkIf;
 in {
-  config = mkIf (config.my.keyboradLayout == "qwerty") {
+  config = mkIf (config.my.keyboardLayout == "qwerty") {
     hardware.uinput.enable = true;
     services.kanata = {
       enable = true;
