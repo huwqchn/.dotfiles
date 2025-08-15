@@ -1,4 +1,5 @@
 {
+  self,
   config,
   lib,
   pkgs,
@@ -24,10 +25,11 @@ in {
       '';
     };
 
-    age.secrets.supermaven = {
-      rekeyFile = ./secrets/supermaven.age;
+    sops.secrets.supermaven = {
+      sopsFile = "${self}/secrets/supermaven.json";
       path = "${homeDirectory}/.supermaven/config.json";
-      symlink = false;
+      mode = "0400";
+      format = "binary";
     };
 
     home.persistence."/persist${config.home.homeDirectory}".directories = [

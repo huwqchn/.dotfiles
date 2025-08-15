@@ -1,4 +1,5 @@
 {
+  self,
   config,
   lib,
   pkgs,
@@ -29,10 +30,11 @@ in {
       (sourceLua config "ai/copilot.lua")
     ];
 
-    age.secrets.github-copilot = {
-      rekeyFile = ./secrets/github-copilot.age;
+    sops.secrets.github-copilot = {
+      sopsFile = "${self}/secrets/github-copilot.json";
       path = "${homeDirectory}/.config/github-copilot/apps.json";
-      symlink = false;
+      mode = "0400";
+      format = "binary";
     };
   };
 }

@@ -4,7 +4,7 @@
   lib,
   ...
 }: let
-  inherit (config.my) name home;
+  inherit (config.my) name;
   cfgUser = config.users.users."${config.my.name}";
   ifTheyExist = groups: builtins.filter (group: builtins.hasAttr group config.users.groups) groups;
   group = lib.my.ldTernary pkgs "users" "admin";
@@ -58,10 +58,4 @@ in {
       };
     };
   };
-
-  # cause we need ~/.ssh to be created before agenix sevices running
-  systemd.tmpfiles.rules = [
-    "d ${home}/.ssh 0750 ${name} ${group} -"
-    "d ${home}/.ssh/sockets 0750 ${name} ${group} -"
-  ];
 }

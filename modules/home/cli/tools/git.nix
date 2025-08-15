@@ -164,15 +164,9 @@ in {
       '';
     };
 
-    age.secrets.git-credentials = {
-      rekeyFile = ./secrets/git-credentials.age;
-      path = "${homeDirectory}/.git-credentials";
-      symlink = false;
-    };
-
     sops.secrets.github_token = {
       sopsFile = "${self}/secrets/default.yaml";
-      path = "${homeDirectory}/github_token";
+      path = "${homeDirectory}/.github_token";
     };
   };
 }

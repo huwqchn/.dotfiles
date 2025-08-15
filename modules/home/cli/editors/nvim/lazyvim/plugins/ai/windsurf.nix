@@ -1,4 +1,5 @@
 {
+  self,
   config,
   lib,
   pkgs,
@@ -29,10 +30,11 @@ in {
       (sourceLua config "ai/windsurf.lua")
     ];
 
-    age.secrets.codeium = {
-      rekeyFile = ./secrets/codeium.age;
+    sops.secrets.codeium = {
+      sopsFile = "${self}/secrets/codeium.json";
       path = "${homeDirectory}/.cache/nvim/codeium/config.json";
-      symlink = false;
+      mode = "0400";
+      format = "binary";
     };
   };
 }

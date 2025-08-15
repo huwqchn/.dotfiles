@@ -184,28 +184,6 @@
     # remote deploy tool
     deploy-rs.url = "github:serokell/deploy-rs";
 
-    # secrets management
-    agenix = {
-      url = "github:yaxitech/ragenix";
-      # inputs.home-manager.follows = "home-manager";
-      inputs = {
-        flake-utils.follows = "flake-utils";
-        nixpkgs.follows = "nixpkgs";
-      };
-    };
-
-    # rekey make agenix so easy to use
-    agenix-rekey = {
-      url = "github:oddlama/agenix-rekey";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-        devshell.follows = "devshell";
-        flake-parts.follows = "flake-parts";
-        pre-commit-hooks.follows = "pre-commit-hooks";
-        treefmt-nix.follows = "treefmt";
-      };
-    };
-
     sops = {
       url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";

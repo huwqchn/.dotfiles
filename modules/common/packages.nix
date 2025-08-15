@@ -1,13 +1,4 @@
-{
-  pkgs,
-  lib,
-  ...
-}: let
-  inherit (lib.meta) getExe;
-in {
-  ## add this here, cause agenix.homeManagerModule not has this option
-  age.ageBin = getExe pkgs.rage;
-
+{pkgs, ...}: {
   environment.systemPackages = with pkgs; [
     # editor
     neovim

@@ -1,4 +1,5 @@
 {
+  self,
   config,
   lib,
   ...
@@ -48,7 +49,7 @@ in {
         word_jump_mode = "emacs";
 
         ## my atuin secret key
-        key_path = config.age.secrets.atuin-key.path;
+        key_path = config.sops.secrets.atuin_key.path;
       };
     };
 
@@ -56,6 +57,6 @@ in {
       ".local/share/atuin"
     ];
 
-    age.secrets.atuin-key.rekeyFile = ./secrets/atuin-key.age;
+    sops.secrets.atuin_key.sopsFile = "${self}/secrets/default.yaml";
   };
 }

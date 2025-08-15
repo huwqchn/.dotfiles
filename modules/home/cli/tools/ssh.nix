@@ -52,11 +52,18 @@ in {
     };
 
     home = {
-      file.".ssh/id_${name}.pub".source = "${self}/secrets/${name}/ssh.pub";
+      file.".ssh/id_ed25519.pub".source = "${self}/secrets/${name}/ssh.pub";
 
       persistence = {
         "/persist${config.home.homeDirectory}".directories = [".ssh"];
       };
+    };
+
+    sops.secrets.id_johnson = {
+      sopsFile = "${self}/secrets/id_ed25519";
+      path = "${homeDirectory}/.ssh/id_ed25519";
+      mode = "0400";
+      format = "binary";
     };
   };
 }

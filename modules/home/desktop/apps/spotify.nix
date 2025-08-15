@@ -1,4 +1,5 @@
 {
+  self,
   inputs,
   lib,
   config,
@@ -65,7 +66,7 @@ in {
       programs.spotify-player = {
         enable = true;
         settings = {
-          client_id_command = "cat ${config.age.secrets.spotifyClientID.path}";
+          client_id_command = "cat ${config.sops.secrets.spotify_client_id.path}";
           clinet_port = 8080;
           layout.playback_window_position = "Bottom";
           border_type = "Rounded";
@@ -128,13 +129,14 @@ in {
         directories = [".cache/spotify-player"];
       };
 
-      age.secrets = {
+      sops.secrets = {
         spotify-player = {
-          rekeyFile = ./secrets/spotify-player.age;
+          sopsFile = "${self}/secrets/spotify-player.json";
           path = "${homeDirectory}/.cache/spotify-player/credentials.json";
-          symlink = false;
+          mode = "0644";
+          format = "binary";
         };
-        spotifyClientID.rekeyFile = ./secrets/spotifyClientID.age;
+        spotify_client_id.sopsFile = "${self}/secrets/default.yaml";
       };
     })
   ];

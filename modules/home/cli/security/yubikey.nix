@@ -1,9 +1,12 @@
-{config, ...}: let
+{
+  self,
+  config,
+  ...
+}: let
   inherit (config.home) homeDirectory;
 in {
-  # for yubikey sudo login
-  age.secrets.u2f_keys = {
-    rekeyFile = ./secrets/u2f_keys.age;
+  sops.secrets.u2f_keys = {
+    sopsFile = "${self}/secrets/default.yaml";
     path = "${homeDirectory}/.config/Yubico/u2f_keys";
   };
 }
