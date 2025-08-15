@@ -6,6 +6,8 @@ local map = LazyVim.safe_keymap_set
 map("x", "*", [[y/\V<C-R>=escape(@", '/\')<CR><CR>]])
 map("x", "#", [[y?\V<C-R>=escape(@", '?\')<CR><CR>]])
 
+vim.keymap.set({ "n", "x", "o" }, "<S-h>", "^", { desc = "Go to first non-blank character of the line" })
+vim.keymap.set({ "n", "x", "o" }, "<S-l>", "$", { desc = "Go to last non-blank character of the line" })
 -- select all
 map({ "n", "x", "i" }, "<C-a>", "<cmd>normal! ggVG<cr>")
 
