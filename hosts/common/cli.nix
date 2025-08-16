@@ -22,5 +22,6 @@
     yazi.enable = true;
     zoxide.enable = true;
     pet.enable = true;
+    fuck.enable = true;
   };
 }
