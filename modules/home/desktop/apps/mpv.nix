@@ -24,7 +24,11 @@ in {
       package = pkgs.mpv;
 
       defaultProfiles = ["gpu-hq"];
-      scripts = optionals isLinux [pkgs.mpvScripts.mpris];
+      scripts = optionals isLinux (with pkgs.mpvScripts; [
+        mpris
+        mpvacious
+        sud_pause
+      ]);
     };
 
     services.plex-mpv-shim.enable = isLinux;

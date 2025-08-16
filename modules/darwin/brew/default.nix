@@ -137,6 +137,7 @@
       # sing-box
       "sfm"
       "karabiner-elements" # keyboard remap
+      "mpv"
     ];
   };
 }
