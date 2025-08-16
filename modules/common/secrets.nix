@@ -1,5 +1,12 @@
-{config, ...}: let
+{
+  config,
+  self,
+  ...
+}: let
   inherit (config.my) home;
 in {
-  sops.gnupg.home = "${home}/.gnupg";
+  sops = {
+    defaultSopsFile = "${self}/secrets/default.yaml";
+    gnupg.home = "${home}/.gnupg";
+  };
 }

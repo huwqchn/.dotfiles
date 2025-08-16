@@ -136,7 +136,7 @@ in {
           mode = "0644";
           format = "binary";
         };
-        spotify_client_id.sopsFile = "${self}/secrets/default.yaml";
+        spotify_client_id = {};
       };
     })
   ];

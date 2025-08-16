@@ -1,5 +1,4 @@
 {
-  self,
   config,
   lib,
   pkgs,
@@ -164,9 +163,6 @@ in {
       '';
     };
 
-    sops.secrets.github_token = {
-      sopsFile = "${self}/secrets/default.yaml";
-      path = "${homeDirectory}/.github_token";
-    };
+    sops.secrets.github_token.path = "${homeDirectory}/.github_token";
   };
 }
