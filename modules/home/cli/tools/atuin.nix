@@ -8,7 +8,6 @@
   inherit (lib.options) mkEnableOption;
   inherit (lib.modules) mkIf mkMerge;
   inherit (lib.meta) getExe getExe';
-  inherit (lib.lists) optionals;
   inherit (config.home) homeDirectory;
   inherit (pkgs.stdenv) isLinux isDarwin;
   atuin' = getExe pkgs.atuin;
@@ -34,6 +33,9 @@ in {
     {
       programs.atuin = {
         enable = true;
+        # Enable the background daemon
+        # Add the new section to the bottom of your config file
+        daemon.enable = true;
         flags = ["--disable-up-arrow"];
         settings = {
           ## enable or disable automatic sync
@@ -68,12 +70,6 @@ in {
 
           ## my atuin secret key
           key_path = config.sops.secrets.atuin_key.path;
-
-          # Enable the background daemon
-          # Add the new section to the bottom of your config file
-          daemon = {
-            enabled = true;
-          };
         };
       };
       sops.secrets = {
@@ -84,22 +80,7 @@ in {
       };
     }
     (mkIf isDarwin {
-      launchd.agents.atuin-daemon = {
-        enable = true;
-        config = {
-          ProgramArguments = ["${atuin'}" "daemon"];
-          EnvironmentVariables = {
-            ATUIN_LOG = "info";
-          };
-          KeepAlive = {
-            Crashed = true;
-            SuccessfulExit = false;
-          };
-          ProcessType = "Background";
-        };
-      };
-
-      launchd.agents.atuin-automatic-login = mkIf cfg.autoLogin {
+      launchd.agents.atuin-auto-login = mkIf cfg.autoLogin {
         enable = true;
         config = {
           ProgramArguments = ["${atuinAutoLoginScript}"];
@@ -114,65 +95,23 @@ in {
       };
     })
     (mkIf isLinux {
-      programs.atuin.settings.daemon.systemd_socket = true;
-      home = {
-        persistence."/persist${homeDirectory}".directories = [
-          ".local/share/atuin"
-        ];
-        sessionVariables.ATUIN_DAEMON__SOCKET_PATH = "$XDG_RUNTIME_DIR/atuin.sock";
-      };
-      systemd.user = {
-        services = {
-          atuin-auto-login = mkIf cfg.autoLogin {
-            Unit = {
-              Description = "automatic atuin login";
-              Requires = ["sops-nix.service" "atuin-daemon.service"];
-            };
-
-            Service = {
-              Type = "oneshot";
-              ExecStart = "${atuinAutoLoginScript}";
-              Restart = "on-failure";
-            };
-
-            Install = {
-              WantedBy = ["default.target"];
-            };
-          };
-          atuin-daemon = {
-            Unit = {
-              Description = "Atuin daemon";
-              After = optionals cfg.autoLogin ["sops-nix.service"];
-              Requires = ["atuin-daemon.socket"];
-            };
-            Install = {
-              Also = ["atuin-daemon.socket"];
-              WantedBy = ["default.target"];
-            };
-            Service = {
-              ExecStart = "${atuin'} daemon";
-              Environment = [
-                "ATUIN_LOG=info"
-                "ATUIN_DAEMON__SOCKET_PATH=%t/atuin.sock"
-              ];
-              Restart = "on-failure";
-              RestartSteps = 3;
-              RestartMaxDelaySec = 6;
-            };
-          };
+      home.persistence."/persist${homeDirectory}".directories = [
+        ".local/share/atuin"
+      ];
+      systemd.user.services.atuin-auto-login = mkIf cfg.autoLogin {
+        Unit = {
+          Description = "automatic atuin login";
+          Requires = ["sops-nix.service" "atuin-daemon.service"];
         };
-        sockets.atuin-daemon = {
-          Unit = {
-            Description = "atuin daemon socket";
-          };
-          Install = {
-            WantedBy = ["sockets.target"];
-          };
-          Socket = {
-            ListenStream = "%t/atuin.sock";
-            SocketMode = "0600";
-            RemoveOnStop = true;
-          };
+
+        Service = {
+          Type = "oneshot";
+          ExecStart = "${atuinAutoLoginScript}";
+          Restart = "on-failure";
+        };
+
+        Install = {
+          WantedBy = ["default.target"];
         };
       };
     })

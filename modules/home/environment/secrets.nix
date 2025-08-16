@@ -14,5 +14,6 @@
     age
     sops
     rclone
+    ssh-to-age
   ];
 }

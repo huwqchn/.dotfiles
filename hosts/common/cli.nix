@@ -1,6 +1,9 @@
 {
   my = {
-    atuin.enable = true;
+    atuin = {
+      enable = true;
+      autoLogin = true;
+    };
     bat.enable = true;
     btop.enable = true;
     direnv = {
