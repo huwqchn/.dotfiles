@@ -31,7 +31,7 @@ in {
     ];
 
     sops.secrets.github-copilot = {
-      sopsFile = "${self}/secrets/github-copilot.json";
+      sopsFile = "${self}/secrets/github-copilot";
       path = "${homeDirectory}/.config/github-copilot/apps.json";
       mode = "0400";
       format = "binary";

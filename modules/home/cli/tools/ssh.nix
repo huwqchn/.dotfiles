@@ -57,7 +57,7 @@ in {
         connect
       ];
 
-      file.".ssh/id_ed25519.pub".source = "${self}/secrets/${name}/ssh.pub";
+      file.".ssh/id_ed25519.pub".source = "${self}/secrets/${name}/id_ed25519.pub";
 
       persistence = {
         "/persist${config.home.homeDirectory}".directories = [".ssh"];
@@ -65,7 +65,7 @@ in {
     };
 
     sops.secrets.id_johnson = {
-      sopsFile = "${self}/secrets/id_ed25519";
+      sopsFile = "${self}/secrets/${name}/id_ed25519";
       path = "${homeDirectory}/.ssh/id_ed25519";
       mode = "0400";
       format = "binary";

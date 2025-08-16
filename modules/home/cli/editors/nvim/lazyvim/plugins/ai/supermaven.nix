@@ -26,7 +26,7 @@ in {
     };
 
     sops.secrets.supermaven = {
-      sopsFile = "${self}/secrets/supermaven.json";
+      sopsFile = "${self}/secrets/supermaven";
       path = "${homeDirectory}/.supermaven/config.json";
       mode = "0400";
       format = "binary";

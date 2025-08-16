@@ -131,7 +131,7 @@ in {
 
       sops.secrets = {
         spotify-player = {
-          sopsFile = "${self}/secrets/spotify-player.json";
+          sopsFile = "${self}/secrets/spotify-player";
           path = "${homeDirectory}/.cache/spotify-player/credentials.json";
           mode = "0644";
           format = "binary";

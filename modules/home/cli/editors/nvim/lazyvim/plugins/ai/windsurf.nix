@@ -31,7 +31,7 @@ in {
     ];
 
     sops.secrets.codeium = {
-      sopsFile = "${self}/secrets/codeium.json";
+      sopsFile = "${self}/secrets/codeium";
       path = "${homeDirectory}/.cache/nvim/codeium/config.json";
       mode = "0400";
       format = "binary";
