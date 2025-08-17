@@ -138,6 +138,7 @@
       "sfm"
       "karabiner-elements" # keyboard remap
       "mpv"
+      "kindavim"
     ];
   };
 }

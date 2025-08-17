@@ -57,6 +57,7 @@ in {
 
     environment.systemPackages = with pkgs; [
       yubikey-manager # cli-based authenticator tool. accessed via `ykman`
+      yubikey-personalization
       age-plugin-yubikey
       pam_u2f # for yubikey with sudo
     ];
