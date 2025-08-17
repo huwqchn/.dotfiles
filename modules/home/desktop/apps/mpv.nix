@@ -27,7 +27,6 @@ in {
       scripts = optionals isLinux (with pkgs.mpvScripts; [
         mpris
         mpvacious
-        sud_pause
       ]);
     };
 
