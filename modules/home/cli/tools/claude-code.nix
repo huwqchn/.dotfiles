@@ -4,9 +4,6 @@
   lib,
   ...
 }: let
-  shellAliases = {
-    "claude" = "claude-code";
-  };
   cfg = config.my.claude-code;
   inherit (lib.options) mkEnableOption;
   inherit (lib.modules) mkIf;
@@ -221,12 +218,8 @@ in {
       };
     };
 
-    home = {
-      inherit shellAliases;
-
-      persistence."/persist${config.home.homeDirectory}".directories = [
-        ".claude"
-      ];
-    };
+    home.persistence."/persist${config.home.homeDirectory}".directories = [
+      ".claude"
+    ];
   };
 }

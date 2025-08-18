@@ -9,13 +9,13 @@
   cfg = config.my.zsh;
 in {
   options.my.zsh = {
-    enable = mkEnableOption "zsh" // {default = config.my.shell == "zsh";};
+    enable = mkEnableOption "zsh" // {default = true;};
   };
 
   config = mkIf cfg.enable {
     programs.zsh = {
       enable = true;
-      dotDir = ".config/zsh";
+      dotDir = "${config.xdg.configHome}/zsh";
       defaultKeymap = "viins";
       autosuggestion = {enable = true;};
       enableCompletion = true;

@@ -3,9 +3,6 @@
   lib,
   ...
 }: let
-  shellAliases = {
-    "gemini" = "gemini-cli";
-  };
   cfg = config.my.gemini-cli;
   inherit (lib.options) mkEnableOption;
   inherit (lib.modules) mkIf;
@@ -19,12 +16,8 @@ in {
       enable = true;
     };
 
-    home = {
-      inherit shellAliases;
-
-      persistence."/persist${config.home.homeDirectory}".directories = [
-        ".gemini"
-      ];
-    };
+    home.persistence."/persist${config.home.homeDirectory}".directories = [
+      ".gemini"
+    ];
   };
 }
