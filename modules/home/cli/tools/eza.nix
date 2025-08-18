@@ -3,7 +3,10 @@
   lib,
   ...
 }: let
-  shellAliases = {"tree" = "eza --git --icons --tree";};
+  shellAliases = {
+    tree = "eza --git --icons --tree";
+    l = "eza -lah";
+  };
   cfg = config.my.eza;
   inherit (lib.options) mkEnableOption;
   inherit (lib.modules) mkIf;
