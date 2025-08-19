@@ -11,6 +11,7 @@
   # inherit (pkgs.stdenv.hostPlatform) isLinux;
   inherit (pkgs.stdenv) system;
   inherit (config.home) homeDirectory;
+  inherit (config.my) name;
   cfg = config.my.desktop.apps.spotify;
 in {
   imports = [
@@ -131,7 +132,7 @@ in {
 
       sops.secrets = {
         spotify-player = {
-          sopsFile = "${self}/secrets/spotify-player";
+          sopsFile = "${self}/secrets/${name}/spotify-player";
           path = "${homeDirectory}/.cache/spotify-player/credentials.json";
           mode = "0644";
           format = "binary";

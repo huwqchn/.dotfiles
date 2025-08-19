@@ -10,6 +10,7 @@
   inherit (lib.my) sourceLua;
   cfg = config.my.neovim.lazyvim.windsurf;
   inherit (config.home) homeDirectory;
+  inherit (config.my) name;
 in {
   options.my.neovim.lazyvim.windsurf = {
     enable = mkEnableOption "AI plugin - windsurf";
@@ -31,7 +32,7 @@ in {
     ];
 
     sops.secrets.codeium = {
-      sopsFile = "${self}/secrets/codeium";
+      sopsFile = "${self}/secrets/${name}/codeium";
       path = "${homeDirectory}/.cache/nvim/codeium/config.json";
       mode = "0400";
       format = "binary";

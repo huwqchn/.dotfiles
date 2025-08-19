@@ -8,6 +8,7 @@
   inherit (lib.options) mkEnableOption;
   inherit (lib.modules) mkIf mkMerge;
   inherit (lib.my) sourceLua;
+  inherit (config.my) name;
   cfg = config.my.neovim.lazyvim.copilot;
   inherit (config.home) homeDirectory;
 in {
@@ -31,7 +32,7 @@ in {
     ];
 
     sops.secrets.github-copilot = {
-      sopsFile = "${self}/secrets/github-copilot";
+      sopsFile = "${self}/secrets/${name}/github-copilot";
       path = "${homeDirectory}/.config/github-copilot/apps.json";
       mode = "0400";
       format = "binary";
