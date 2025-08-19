@@ -9,23 +9,36 @@
   inherit (lib.modules) mkIf;
   inherit (lib.meta) getExe';
   cat' = getExe' pkgs.coreutils "cat";
+  tokenExportsBash = ''
+    if [ -f ${config.sops.secrets.google_cloud_project.path} ]; then
+      GOOGLE_CLOUD_PROJECT="$(${cat'} ${config.sops.secrets.google_cloud_project.path})"
+      export GOOGLE_CLOUD_PROJECT
+    fi
+  '';
+  tokenExportsFish = ''
+    if test -f ${config.sops.secrets.google_cloud_project.path}
+      set -x GOOGLE_CLOUD_PROJECT (${cat'} ${config.sops.secrets.google_cloud_project.path})
+    end
+  '';
 in {
   options.my.gemini-cli = {
     enable = mkEnableOption "gemini-cli";
   };
 
   config = mkIf cfg.enable {
-    programs.gemini-cli = {
-      enable = true;
+    programs = {
+      bash.initExtra = tokenExportsBash;
+      fish.shellInit = tokenExportsFish;
+      zsh.initExtra = tokenExportsBash;
+      gemini-cli = {
+        enable = true;
+      };
     };
 
     home = {
       persistence."/persist${config.home.homeDirectory}".directories = [
         ".gemini"
       ];
-      sessionVariables = {
-        GOOGLE_CLOUD_PROJECT = "$(${cat'} ${config.sops.secrets.google_cloud_project.path})";
-      };
     };
 
     sops.secrets.google_cloud_project = {};

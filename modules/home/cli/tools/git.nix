@@ -11,7 +11,19 @@
   inherit (lib.options) mkEnableOption mkOption;
   inherit (lib.modules) mkIf mkDefault;
   inherit (lib.types) nullOr enum;
-  inherit (config.home) homeDirectory;
+  inherit (lib.meta) getExe';
+  cat' = getExe' pkgs.coreutils "cat";
+  tokenExportsBash = ''
+    if [ -f ${config.sops.secrets.github_token.path} ]; then
+      GITHUB_TOKEN="$(${cat'} ${config.sops.secrets.github_token.path})"
+      export GITHUB_TOKEN
+    fi
+  '';
+  tokenExportsFish = ''
+    if test -f ${config.sops.secrets.github_token.path}
+      set -x GITHUB_TOKEN (${cat'} ${config.sops.secrets.github_token.path})
+    end
+  '';
 in {
   options.my.git = {
     enable = mkEnableOption "git";
@@ -23,122 +35,127 @@ in {
   };
 
   config = mkIf cfg.enable {
-    programs.git = {
-      enable = true;
-      lfs.enable = true;
-
-      userName = config.my.fullName;
-      userEmail = config.my.email;
-
-      extraConfig = {
-        color.ui = true;
-        core.editor = "nvim";
-        init.defaultBranch = "main";
-        credential.helper = "store";
-        github.user = "huwqchn";
-        push.autoSetupRemote = true;
-        pull.rebase = true;
-        rebase = {
-          autosquash = true;
-          autostash = true;
-          stat = true;
-        };
-        rerere = {
-          autoupdate = true;
-          enabled = true;
-        };
-        status.submoduleSummary = true;
-      };
-
-      delta = mkIf (cfg.diff == "delta") {
+    programs = {
+      bash.initExtra = tokenExportsBash;
+      fish.shellInit = tokenExportsFish;
+      zsh.initExtra = tokenExportsBash;
+      git = {
         enable = true;
-        options = {
-          features = mkDefault "side-by-side";
-          navigate = true; # use n and N to move between diff sections
-          line-numbers = true;
+        lfs.enable = true;
+
+        userName = config.my.fullName;
+        userEmail = config.my.email;
+
+        extraConfig = {
+          color.ui = true;
+          core.editor = "nvim";
+          init.defaultBranch = "main";
+          credential.helper = "store";
+          github.user = "huwqchn";
+          push.autoSetupRemote = true;
+          pull.rebase = true;
+          rebase = {
+            autosquash = true;
+            autostash = true;
+            stat = true;
+          };
+          rerere = {
+            autoupdate = true;
+            enabled = true;
+          };
+          status.submoduleSummary = true;
         };
-      };
 
-      # Use riff instead of delta
-      riff.enable = cfg.diff == "riff";
+        delta = mkIf (cfg.diff == "delta") {
+          enable = true;
+          options = {
+            features = mkDefault "side-by-side";
+            navigate = true; # use n and N to move between diff sections
+            line-numbers = true;
+          };
+        };
 
-      ignores = [".*.sw?" ".direnv/" ".envrc" "result*" "node_modules"];
+        # Use riff instead of delta
+        riff.enable = cfg.diff == "riff";
 
-      aliases = let
-        log = "log --show-notes='*' --abbrev-commit --pretty=format:'%Cred%h %Cgreen(%aD)%Creset -%C(bold red)%d%Creset %s %C(bold blue)<%an>% %Creset' --graph";
-      in {
-        # common aliases
-        # add
-        a = "add --patch";
-        ad = "add";
+        ignores = [".*.sw?" ".direnv/" ".envrc" "result*" "node_modules"];
 
-        # branch
-        b = "branch";
-        ba = "branch -a"; # list remote branches
-        bd = "branch --delete";
-        bD = "branch -D";
+        aliases = let
+          log = "log --show-notes='*' --abbrev-commit --pretty=format:'%Cred%h %Cgreen(%aD)%Creset -%C(bold red)%d%Creset %s %C(bold blue)<%an>% %Creset' --graph";
+        in {
+          # common aliases
+          # add
+          a = "add --patch";
+          ad = "add";
 
-        # commit
-        c = "commit";
-        ca = "commit --amend";
-        cm = "commit --message";
+          # branch
+          b = "branch";
+          ba = "branch -a"; # list remote branches
+          bd = "branch --delete";
+          bD = "branch -D";
 
-        co = "checkout";
-        cb = "checkout -b";
-        pc = "checkout --patch";
+          # commit
+          c = "commit";
+          ca = "commit --amend";
+          cm = "commit --message";
 
-        cl = "clone";
+          co = "checkout";
+          cb = "checkout -b";
+          pc = "checkout --patch";
 
-        # diff
-        d = "diff";
-        ds = "diff --staged";
-        dc = "diff --cached";
+          cl = "clone";
 
-        # show
-        h = "show";
-        h1 = "show HEAD^";
-        h2 = "show HEAD^^";
-        h3 = "show HEAD^^^";
-        h4 = "show HEAD^^^^";
-        h5 = "show HEAD^^^^^";
+          # diff
+          d = "diff";
+          ds = "diff --staged";
+          dc = "diff --cached";
 
-        # push & pull
-        P = "push";
-        Pf = "push --force-with-lease";
-        p = "pull";
-        pr = "pull --rebase";
-        # rebase
-        r = "rebase";
-        ra = "rebase --abort";
-        rc = "rebase --continue";
-        ri = "rebase --interactive";
-        # reset
-        R = "reset";
-        Rh = "reset --hard";
+          # show
+          h = "show";
+          h1 = "show HEAD^";
+          h2 = "show HEAD^^";
+          h3 = "show HEAD^^^";
+          h4 = "show HEAD^^^^";
+          h5 = "show HEAD^^^^^";
 
-        # log
-        l = log;
-        la = "${log} --all";
-        ll = "${log} --numstat";
-        ls = "${log} --patch";
+          # push & pull
+          P = "push";
+          Pf = "push --force-with-lease";
+          p = "pull";
+          pr = "pull --rebase";
+          # rebase
+          r = "rebase";
+          ra = "rebase --abort";
+          rc = "rebase --continue";
+          ri = "rebase --interactive";
+          # reset
+          R = "reset";
+          Rh = "reset --hard";
 
-        # status
-        s = "status --short --branch";
-        st = "status";
-        # stash
-        S = "stash";
-        Sc = "stash clear";
-        Sh = "stash show --patch";
-        Sl = "stash list";
-        Sp = "stash pop";
-        # ls = ''
-        #   log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate'';
-        # ll = ''
-        #   log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat'';
+          # log
+          l = log;
+          la = "${log} --all";
+          ll = "${log} --numstat";
+          ls = "${log} --patch";
 
-        # aliases for submodule
-        update = "submodule update --init --recursive";
-        foreach = "submodule foreach";
+          # status
+          s = "status --short --branch";
+          st = "status";
+          # stash
+          S = "stash";
+          Sc = "stash clear";
+          Sh = "stash show --patch";
+          Sl = "stash list";
+          Sp = "stash pop";
+          # ls = ''
+          #   log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate'';
+          # ll = ''
+          #   log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat'';
+
+          # aliases for submodule
+          update = "submodule update --init --recursive";
+          foreach = "submodule foreach";
+        };
       };
     };
 
@@ -163,6 +180,6 @@ in {
       '';
     };
 
-    sops.secrets.github_token.path = "${homeDirectory}/.github_token";
+    sops.secrets.github_token = {};
   };
 }
