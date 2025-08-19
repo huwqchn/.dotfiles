@@ -1,15 +1,20 @@
 keys:
-  - &johnson E23E274D412D4C761A871B1E776C7FC245E58F55
+  # User age key (primary, no root required)
+  - &johnson_age age1dru9s2hakwc4zjzh64z35nkt7uemgq4xc0vz5v5m8s2juy0edugs5esp5j
+  # Host SSH-derived age keys (system-level backup)
   - &eir age13srgr0k8nkwfh6yuptk9g3ly9aslsatmav4cvje04z58lp8d3d6q0d9g6j
   - &nidhogg age145r5u0hvnd6xnfgrhgxs0ayp205jsrc2h7aakl4dzmhr78ek9fqs9jfwd2
   - &tyr age1ezm8h5js9rl3s23d3xp9ngsapd5anxn7lh8gcd4pafd4ck0alu5qju0lt8
   - &ymir age1f64lg3datsj9l5gq6ca2kuczzg9l2upu0ukavk3ykry5z59c4qnqtsdpgc
   - &sigurd age1m8f0m489vql2p7l4a80ehjh0ae4zgwcnjzv8ngjrsg957yjlcyrq35nvv8
+  # PGP key (requires Yubikey)
+  - &johnson E23E274D412D4C761A871B1E776C7FC245E58F55
 
 creation_rules:
   - path_regex: ^(\./)?secrets/(?:[^/]+/)*[^/]+(?:\.(?:ya?ml|json|ini|env))?$
     key_groups:
       - age:
+          - *johnson_age
           - *eir
           - *nidhogg
           - *tyr
