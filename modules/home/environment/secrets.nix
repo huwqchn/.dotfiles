@@ -1,12 +1,27 @@
 {
+  self,
   inputs,
   pkgs,
+  config,
+  lib,
   ...
-}: {
+}: let
+  inherit (lib.strings) optionalString;
+  inherit (config.my) home name;
+  persist = config.my.persistence.enable;
+in {
   imports = [
     inputs.sops.homeManagerModules.sops
-    ../../common/secrets.nix
   ];
+
+  # User-level SOPS configuration using SSH key
+  sops = {
+    defaultSopsFile = "${self}/secrets/${name}/default.yaml";
+    # Use SSH key directly (no GPG to avoid Yubikey prompts)
+    age.sshKeyPaths = ["${optionalString persist "/persist"}${home}/.ssh/id_ed25519"];
+    # Keep GPG support for Yubikey when available
+    gnupg.home = "${home}/.gnupg";
+  };
 
   # some security tools
   home.packages = with pkgs; [

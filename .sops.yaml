@@ -1,7 +1,7 @@
 keys:
-  # User age key (primary, no root required)
+  # User SSH-derived age key (from id_ed25519)
   - &johnson_age age1dru9s2hakwc4zjzh64z35nkt7uemgq4xc0vz5v5m8s2juy0edugs5esp5j
-  # Host SSH-derived age keys (system-level backup)
+  # Host SSH-derived age keys (system-level)
   - &eir age13srgr0k8nkwfh6yuptk9g3ly9aslsatmav4cvje04z58lp8d3d6q0d9g6j
   - &nidhogg age145r5u0hvnd6xnfgrhgxs0ayp205jsrc2h7aakl4dzmhr78ek9fqs9jfwd2
   - &tyr age1ezm8h5js9rl3s23d3xp9ngsapd5anxn7lh8gcd4pafd4ck0alu5qju0lt8
@@ -11,6 +11,25 @@ keys:
   - &johnson E23E274D412D4C761A871B1E776C7FC245E58F55
 
 creation_rules:
+  # Service-level secrets: use all host keys for system-wide access
+  - path_regex: ^(\./)?secrets/services/[^/]+\.(ya?ml|json|env|ini)$
+    key_groups:
+      - age:
+          - *eir
+          - *nidhogg
+          - *tyr
+          - *ymir
+          - *sigurd
+        pgp:
+          - *johnson
+  # User-specific secrets: only user keys needed
+  - path_regex: ^(\./)?secrets/johnson/
+    key_groups:
+      - age:
+          - *johnson_age
+        pgp:
+          - *johnson
+  # Default secrets: all keys for backward compatibility
   - path_regex: ^(\./)?secrets/(?:[^/]+/)*[^/]+(?:\.(?:ya?ml|json|ini|env))?$
     key_groups:
       - age:
