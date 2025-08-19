@@ -29,7 +29,7 @@ in {
     programs = {
       bash.initExtra = tokenExportsBash;
       fish.shellInit = tokenExportsFish;
-      zsh.initExtra = tokenExportsBash;
+      zsh.initContent = tokenExportsBash;
       gemini-cli = {
         enable = true;
       };

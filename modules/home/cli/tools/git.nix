@@ -38,7 +38,7 @@ in {
     programs = {
       bash.initExtra = tokenExportsBash;
       fish.shellInit = tokenExportsFish;
-      zsh.initExtra = tokenExportsBash;
+      zsh.initContent = tokenExportsBash;
       git = {
         enable = true;
         lfs.enable = true;
