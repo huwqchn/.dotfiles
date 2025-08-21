@@ -16,7 +16,12 @@ runs:
     - name: Get latest commit message
       id: get-commit
       shell: bash
-      run: echo "message=$(git log -1 --pretty=%B)" >> $GITHUB_OUTPUT
+      run: |
+        {
+          echo 'message<<EOF'
+          git log -1 --pretty=%B
+          echo EOF
+        } >> $GITHUB_OUTPUT
 
     - name: Parse commit message args
       id: parse
