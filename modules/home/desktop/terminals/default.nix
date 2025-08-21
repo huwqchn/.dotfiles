@@ -39,7 +39,10 @@ in {
     };
     size = mkOption {
       type = int;
-      default = 12;
+      default =
+        if config.my.machine.type == "laptop"
+        then 15
+        else 12;
       description = ''
         The font size to use for the terminal. This is used by the
         `my.terminal` module to determine which font size to use.
