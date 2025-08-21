@@ -8,6 +8,11 @@
   cfg = config.my.fastfetch;
   inherit (lib.options) mkEnableOption;
   inherit (lib.modules) mkIf;
+  fetch_greeting = ''
+    if ! [ -z "$DISPLAY" ] && [ "$XDG_VTNR" = 1 ]; then
+      fastfetch
+    fi
+  '';
 in {
   options.my.fastfetch = {
     enable = mkEnableOption "fastfetch";
@@ -20,11 +25,8 @@ in {
       fish.functions.fish_greeting = mkIf cfg.startOnLogin {
         body = "fastfetch";
       };
-      zsh.initExtra = mkIf cfg.startOnLogin ''
-        if ! [ -z "$DISPLAY" ] && [ "$XDG_VTNR" = 1 ]; then
-          fastfetch
-        fi
-      '';
+      zsh.initContent = mkIf cfg.startOnLogin fetch_greeting;
+      bash.initExtra = mkIf cfg.startOnLogin fetch_greeting;
       fastfetch = {
         enable = true;
         settings = {
