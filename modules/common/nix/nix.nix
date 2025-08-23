@@ -90,6 +90,9 @@ in {
       # It's nice to have more http downloads when setting up
       http-connections = 50;
 
+      # https://github.com/NixOS/nix/issues/11728
+      download-buffer-size = 1073741824; # 1GB
+
       # this defaults to true, however it slows down evaluation so maybe we should disable it
       # some day, but we do need it for catppuccin/nix so maybe not too soon
       allow-import-from-derivation = true;
