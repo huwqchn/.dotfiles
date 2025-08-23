@@ -31,7 +31,7 @@ in {
         default_session = {
           user = "greeter";
           command = concatStringsSep " " [
-            (getExe pkgs.greetd.tuigreet)
+            (getExe pkgs.tuigreet)
             "--greeting 'Welcome to NixOS!'"
             "--theme border=magenta;text=cyan;prompt=green;time=red;action=blue;button=yellow;container=black;input=red"
             "--time" # display time
