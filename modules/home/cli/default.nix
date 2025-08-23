@@ -1,11 +1,3 @@
-{
-  lib,
-  pkgs,
-  ...
-}: {
+{lib, ...}: {
   imports = lib.my.scanPaths ./.;
-  home.packages = with pkgs; [
-    typst
-    typstyle
-  ];
 }
