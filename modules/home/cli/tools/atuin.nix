@@ -6,12 +6,22 @@
 }: let
   cfg = config.my.atuin;
   inherit (lib.options) mkEnableOption;
-  inherit (lib.modules) mkIf mkMerge;
+  inherit (lib.modules) mkIf mkMerge mkForce;
   inherit (lib.meta) getExe getExe';
   inherit (config.home) homeDirectory;
   inherit (pkgs.stdenv) isLinux isDarwin;
   atuin' = getExe pkgs.atuin;
   cat' = getExe' pkgs.coreutils "cat";
+  # Wrapper to ensure stale daemon socket is removed before starting (macOS)
+  atuinDaemonWrapper = pkgs.writeShellScript "atuin-daemon-wrapper.sh" ''
+    #!/usr/bin/env bash
+    set -euo pipefail
+    SOCK_PATH="${config.home.homeDirectory}/.local/share/atuin/daemon.sock"
+    if [ -S "$SOCK_PATH" ]; then
+      rm -f "$SOCK_PATH" || true
+    fi
+    exec ${atuin'} daemon
+  '';
   atuinAutoLoginScript = pkgs.writeShellScript "atuin-auto-login.sh" ''
     if [ -e ${config.home.homeDirectory}/.local/share/atuin/session ]; then
       echo "atuin session exists already"
@@ -80,6 +90,27 @@ in {
       };
     }
     (mkIf isDarwin {
+      # On macOS, use a custom LaunchAgent that unlinks a stale socket
+      # before starting the daemon. Disable the built-in daemon unit to avoid
+      # a label collision and ensure launchd uses our wrapper.
+      programs.atuin.daemon.enable = mkForce false;
+
+      launchd.agents.atuin-daemon = {
+        enable = true;
+        config = {
+          ProgramArguments = ["${atuinDaemonWrapper}"];
+          RunAtLoad = true;
+          # Start the daemon when the socket is missing. The wrapper will
+          # create it cleanly, preventing EADDRINUSE from stale sockets.
+          KeepAlive = {
+            PathState = {
+              "${homeDirectory}/.local/share/atuin/daemon.sock" = false;
+            };
+          };
+          ProcessType = "Background";
+        };
+      };
+
       launchd.agents.atuin-auto-login = mkIf cfg.autoLogin {
         enable = true;
         config = {
