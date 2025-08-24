@@ -21,6 +21,11 @@ switch host=`uname -n`:
 switch2 host=`uname -n`:
   nh {{ if os() == "macos" { "darwin" } else { "os" } }} switch . -v -H {{host}} --ask
 
+# Roll back to the previous system generation
+[group('nix')]
+rollback host=`uname -n`:
+  {{rebuild}} switch --rollback --flake .#{{host}} --show-trace -L -v
+
 # Deploy the system configuration to a remote host
 [group('nix')]
 deploy host *args:

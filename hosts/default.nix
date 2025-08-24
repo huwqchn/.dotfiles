@@ -8,5 +8,4 @@
       ];
     }
   ];
-  deployable = true;
 }

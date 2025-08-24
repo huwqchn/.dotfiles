@@ -35,9 +35,10 @@
       inputs.systems.follows = "systems";
     };
 
-    # flake-hosts = {
-    #   url = "git+file:/Users/johnson/Projects/flake-hosts";
-    # };
+    flake-hosts = {
+      # url = "git+file:/Users/johnson/Projects/flake-hosts";
+      url = "github:huwqchn/flake-hosts";
+    };
 
     hardware.url = "github:nixos/nixos-hardware";
 

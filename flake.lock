@@ -409,6 +409,21 @@
         "url": "https://flakehub.com/f/edolstra/flake-compat/1.tar.gz"
       }
     },
+    "flake-hosts": {
+      "locked": {
+        "lastModified": 1756006348,
+        "narHash": "sha256-L4LFSbeN1L2GvtgLqRo/5gsoCvXqZC8VZLTFLF1dqsA=",
+        "owner": "huwqchn",
+        "repo": "flake-hosts",
+        "rev": "05220241840929ff3d78457f9ef061042db00c46",
+        "type": "github"
+      },
+      "original": {
+        "owner": "huwqchn",
+        "repo": "flake-hosts",
+        "type": "github"
+      }
+    },
     "flake-parts": {
       "inputs": {
         "nixpkgs-lib": [
@@ -1855,6 +1870,7 @@
         "droid": "droid",
         "emacs-overlay": "emacs-overlay",
         "flake-compat": "flake-compat_2",
+        "flake-hosts": "flake-hosts",
         "flake-parts": "flake-parts",
         "flake-utils": "flake-utils",
         "ghostty-shaders": "ghostty-shaders",

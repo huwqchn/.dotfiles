@@ -1,5 +1,7 @@
 {
-  system = "aarch64-darwin";
-  modules = [./config.nix];
-  deployable = false;
+  arch = "aarch64";
+  class = "darwin";
+  modules = [
+    ./config.nix
+  ];
 }
