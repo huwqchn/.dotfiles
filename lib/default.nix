@@ -6,7 +6,6 @@ in
     core
     (core.importAndMerge [
         ./paths.nix
-        ./hosts.nix
         ./modules.nix
         ./hardware.nix
         ./theme.nix
