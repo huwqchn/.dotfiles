@@ -1,6 +1,11 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  inputs,
+  ...
+}: {
   imports = [
     ./hardware-configuration.nix
+    inputs.disko.nixosModules.disko
     (import ../common/disko/luks-btrfs-tmpfs.nix {})
   ];
   # ssh-agent is used to pull my private secrets repo from github when deploying my nixos config.

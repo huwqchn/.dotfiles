@@ -411,11 +411,11 @@
     },
     "flake-hosts": {
       "locked": {
-        "lastModified": 1756006348,
-        "narHash": "sha256-L4LFSbeN1L2GvtgLqRo/5gsoCvXqZC8VZLTFLF1dqsA=",
+        "lastModified": 1756016529,
+        "narHash": "sha256-E0QG8Gy8aiwPfgyA1sRoIzc5u5ezmPBQQlfK9XSorvE=",
         "owner": "huwqchn",
         "repo": "flake-hosts",
-        "rev": "05220241840929ff3d78457f9ef061042db00c46",
+        "rev": "46cadf5cc1d134a9b70183e122c028a7a0dafde7",
         "type": "github"
       },
       "original": {
