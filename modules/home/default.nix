@@ -1,1 +1,4 @@
-{lib, ...}: {imports = lib.my.scanPaths ./.;}
+{lib, ...}: {
+  _class = "homeManager";
+  imports = lib.my.scanPaths ./.;
+}
