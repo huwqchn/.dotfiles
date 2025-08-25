@@ -8,10 +8,12 @@
     inputs.disko.nixosModules.disko
     (import ../common/disko/luks-btrfs-tmpfs.nix {})
   ];
-  boot.loader.grub = {
-    enable = true;
-    efiSupport = true;
-    devices = ["nodev"];
+  boot.loader = {
+    systemd-boot.enable = true;
+    efi = {
+      canTouchEfiVariables = true;
+      efiSysMountPoint = "/boot";
+    };
   };
   # ssh-agent is used to pull my private secrets repo from github when deploying my nixos config.
   programs.ssh.startAgent = true;
