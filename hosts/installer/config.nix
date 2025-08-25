@@ -15,10 +15,11 @@
       efiSysMountPoint = "/boot";
     };
   };
+  users.users.root.password = "123456";
   users.users.johnson = {
     isNormalUser = true;
-    extraGroups = ["wheel"];
-    password = "123456"; # temoorary password, will be changed after first login.
+    extraGroups = ["wheel" "networkmanager"];
+    password = "123456";
   };
   # ssh-agent is used to pull my private secrets repo from github when deploying my nixos config.
   programs.ssh.startAgent = true;
