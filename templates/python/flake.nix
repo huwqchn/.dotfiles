@@ -18,19 +18,35 @@
   in {
     packages = forAllSystems (
       system: let
-        inherit (poetry2nix.lib.mkPoetry2Nix {pkgs = pkgs.${system};}) mkPoetryApplication;
+        inherit (poetry2nix.lib.mkPoetry2Nix {pkgs = pkgs.${system};}) mkPoetryApplication overrides;
       in {
-        default = mkPoetryApplication {projectDir = self;};
+        default = mkPoetryApplication {
+          projectDir = self;
+          overrides = overrides.withDefaults (final: prev: {
+            # Fix for mypy-extensions build issue
+            mypy-extensions = prev.mypy-extensions.overridePythonAttrs (old: {
+              buildInputs = (old.buildInputs or []) ++ [final.flit-core];
+            });
+          });
+        };
       }
     );
 
     devShells = forAllSystems (
       system: let
-        inherit (poetry2nix.lib.mkPoetry2Nix {pkgs = pkgs.${system};}) mkPoetryEnv;
+        inherit (poetry2nix.lib.mkPoetry2Nix {pkgs = pkgs.${system};}) mkPoetryEnv overrides;
       in {
         default = pkgs.${system}.mkShellNoCC {
           packages = with pkgs.${system}; [
-            (mkPoetryEnv {projectDir = self;})
+            (mkPoetryEnv {
+              projectDir = self;
+              overrides = overrides.withDefaults (final: prev: {
+                # Fix for mypy-extensions build issue
+                mypy-extensions = prev.mypy-extensions.overridePythonAttrs (old: {
+                  buildInputs = (old.buildInputs or []) ++ [final.flit-core];
+                });
+              });
+            })
             poetry
           ];
         };
