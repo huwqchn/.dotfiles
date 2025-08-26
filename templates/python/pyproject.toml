@@ -5,11 +5,17 @@ description = ""
 authors = ["Author Name <author@example.com>"]
 # readme = "README.md"
 # license = "BSD"
-packages = [{ include = "sample_package" }]
+packages = [{ include = "package" }]
 
 [tool.poetry.dependencies]
 python = "^3.10"
 
+[tool.poetry.dev-dependencies]
+pytest = "^5.2"
+
 [build-system]
-requires = ["poetry-core"]
+requires = ["poetry-core>=1.0.0"]
 build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.scripts]
+sample-project = "package.__main__:main"
