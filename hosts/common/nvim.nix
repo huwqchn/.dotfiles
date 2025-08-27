@@ -38,6 +38,7 @@
         octo.enable = true;
         project.enable = true;
         rest.enable = true;
+        obsidian.enable = true;
         # practice.enable = true;
         # lang
         lean.enable = true;
