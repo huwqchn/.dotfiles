@@ -53,7 +53,7 @@ in {
           };
           typingIndicator.enable = true;
           youtubeAdblock.enable = true;
-          hideAttachments.enable = true;
+          # hideAttachments.enable = true;
           readAllNotificationsButton.enable = true;
           clearURLs.enable = true;
           friendsSince.enable = true;
