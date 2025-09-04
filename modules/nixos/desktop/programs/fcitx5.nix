@@ -35,7 +35,6 @@ in {
           fcitx5-pinyin-zhwiki
           libsForQt5.fcitx5-qt
         ];
-        plasma6Support = true;
         waylandFrontend = mkDefault isWayland';
       };
     };
