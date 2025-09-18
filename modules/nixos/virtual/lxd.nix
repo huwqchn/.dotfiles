@@ -18,8 +18,6 @@ in {
   };
 
   config = mkIf cfg.enable {
-    virtualisation.lxd.enable = true;
-
     environment.systemPackages = [
       (pkgs.writeScriptBin "lxc-build-nixos-image" ''
         #!/usr/bin/env nix-shell
