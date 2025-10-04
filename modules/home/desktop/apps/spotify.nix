@@ -32,7 +32,7 @@ in {
     spicetify.enable =
       mkEnableOption "Spicetify"
       // {
-        default = false; # Temporarily disabled due to hash mismatch in SpotifyARM64.dmg
+        default = config.my.desktop.apps.spotify.enable;
       };
   };
 
