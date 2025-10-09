@@ -28,6 +28,13 @@ in {
               numpy
               pandas
               matplotlib
+              scikitlearn
+              sympy
+              plotly
+              #line_profiler
+              memory_profiler
+              psutil
+              ipywidgets
               scipy
             ]))
       ];
