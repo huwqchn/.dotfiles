@@ -1,7 +1,7 @@
 return {
   { import = "lazyvim.plugins.extras.editor.mini-files" },
   {
-    "echasnovski/mini.files",
+    "nvim-mini/mini.files",
     optional = true,
     opts = {
       mappings = {

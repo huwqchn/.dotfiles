@@ -9,7 +9,7 @@ return {
     },
   },
   {
-    "echasnovski/mini.ai",
+    "nvim-mini/mini.ai",
     optional = true,
     keys = {
       { "a", mode = { "x", "o" } },
@@ -28,7 +28,7 @@ return {
     },
   },
   {
-    "echasnovski/mini.pairs",
+    "nvim-mini/mini.pairs",
     optional = true,
     event = function()
       return { "InsertEnter" }

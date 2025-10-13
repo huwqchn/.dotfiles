@@ -1,7 +1,7 @@
 return {
   { import = "lazyvim.plugins.extras.editor.mini-move" },
   {
-    "echasnovski/mini.move",
+    "nvim-mini/mini.move",
     version = false,
     keys = function(_, keys)
       -- Populate the keys based on the user's options

@@ -1,7 +1,7 @@
 return {
   { import = "lazyvim.plugins.extras.ui.mini-indentscope" },
   {
-    "echasnovski/mini.indentscope",
+    "nvim-mini/mini.indentscope",
     optional = true,
     opts = {
       mappings = {

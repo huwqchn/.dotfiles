@@ -5,7 +5,7 @@ return {
   },
   -- Join
   {
-    "echasnovski/mini.splitjoin",
+    "nvim-mini/mini.splitjoin",
     opts = { mappings = { toggle = "E" } },
     keys = {
       { "E", desc = "Split/Join" },
