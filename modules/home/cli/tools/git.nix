@@ -47,7 +47,7 @@ in {
         userEmail = config.my.email;
 
         extraConfig = {
-          color.ui = true;
+          color.ui = "auto";
           core.editor = "nvim";
           init.defaultBranch = "main";
           credential.helper = "store";
@@ -57,13 +57,31 @@ in {
           rebase = {
             autosquash = true;
             autostash = true;
-            stat = true;
+            # stat = true;
+            updateRefs = true;
           };
           rerere = {
             autoupdate = true;
             enabled = true;
           };
           status.submoduleSummary = true;
+          "filter \"lfs\"" = {
+            process = "git-lfs filter-process";
+            required = true;
+            clean = "git-lfs clean -- %f";
+            smudge = "git-lfs smudge -- %f";
+          };
+          diff = {
+            algorithm = "histogram";
+            tool = "nvimdiff";
+            # word-diff = "color";
+            renamelimit = 14000; # useful for kernel
+            # how code movement in different colors then added and removed lines.
+            colorMoved = true;
+
+            # replace the a/ and b/ in your diff header output with where the diff is coming from, so i/ (index), w/ (working directory) or c/ commit.
+            mnemonicPrefix = true;
+          };
         };
 
         delta = mkIf (cfg.diff == "delta") {
@@ -78,7 +96,7 @@ in {
         # Use riff instead of delta
         riff.enable = cfg.diff == "riff";
 
-        ignores = [".*.sw?" ".direnv/" ".envrc" "result*" "node_modules"];
+        ignores = [".*.sw?" ".direnv/" ".envrc" ".vscode" "result*" "node_modules"];
 
         aliases = let
           log = "log --show-notes='*' --abbrev-commit --pretty=format:'%Cred%h %Cgreen(%aD)%Creset -%C(bold red)%d%Creset %s %C(bold blue)<%an>% %Creset' --graph";
@@ -169,6 +187,7 @@ in {
         # action-validator
         # for .gitignore
         gibo
+        gitAndTools.hub
       ];
 
       # `programs.git` will generate the config file: ~/.config/git/config

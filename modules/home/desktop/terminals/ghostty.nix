@@ -11,6 +11,21 @@
   inherit (pkgs.stdenv.hostPlatform) isLinux;
   inherit (config.my) terminal;
   cfg = config.my.desktop.apps.ghostty;
+  layouts = {
+    qwerty = {
+      left = "h";
+      down = "j";
+      up = "k";
+      right = "l";
+    };
+    colemak = {
+      left = "n";
+      down = "e";
+      up = "i";
+      right = "o";
+    };
+  };
+  layout = layouts.${config.my.keyboardLayout or "qwerty"};
 in {
   options.my.desktop.apps.ghostty = {
     enable =
@@ -53,6 +68,7 @@ in {
         gtk-single-instance = true;
         gtk-tabs-location = "bottom";
         gtk-wide-tabs = false;
+        gtk-toolbar-style = "flat";
         window-padding-x = terminal.padding;
         window-padding-y = terminal.padding;
         window-padding-balance = true;
@@ -65,16 +81,17 @@ in {
         custom-shader = "${inputs.ghostty-shaders}/bloom025.glsl";
         # other
         copy-on-select = "clipboard";
-        shell-integration-features = "cursor,sudo,no-title";
+        shell-integration-features = "cursor,sudo,no-title,ssh-env";
         quit-after-last-window-closed = true;
         confirm-close-surface = false;
+        app-notifications = "no-clipboard-copy";
         # keybinds
         keybind = [
           "clear"
-          "ctrl+shift+n=goto_split:left"
-          "ctrl+shift+e=goto_split:bottom"
-          "ctrl+shift+i=goto_split:top"
-          "ctrl+shift+o=goto_split:right"
+          "ctrl+shift+${layout.left}=goto_split:left"
+          "ctrl+shift+${layout.down}=goto_split:bottom"
+          "ctrl+shift+${layout.up}=goto_split:top"
+          "ctrl+shift+${layout.right}=goto_split:right"
           "ctrl+shift+t=new_tab"
           "ctrl+shift+left_bracket=previous_tab"
           "ctrl+shift+right_bracket=next_tab"
@@ -86,7 +103,7 @@ in {
           "ctrl+shift+c=copy_to_clipboard"
           "ctrl+shift+v=paste_from_clipboard"
           "ctrl+shift+enter=new_split:auto"
-          "ctrl+shift+i=inspector:toggle"
+          "ctrl+shift+x=inspector:toggle"
           "ctrl+shift+m=toggle_split_zoom"
           "ctrl+shift+r=reload_config"
           "ctrl+shift+s=write_screen_file:open"
