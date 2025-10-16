@@ -291,11 +291,11 @@
         "nixpkgs-stable": "nixpkgs-stable"
       },
       "locked": {
-        "lastModified": 1760548963,
-        "narHash": "sha256-gG0QAv7ljKd0QvWTKrGYwOoIv9cDNgNn2fJlwcFvZxU=",
+        "lastModified": 1760634643,
+        "narHash": "sha256-QqT3rZ8J4QeCS0knHwImQUBCTGjwCEJldPNLl6oLPkI=",
         "owner": "nix-community",
         "repo": "emacs-overlay",
-        "rev": "7245d675f0ce0eee78f4eac5966a4ea2c9132f3f",
+        "rev": "a1374f70394c78e8595e2e58e6d74e5724572a30",
         "type": "github"
       },
       "original": {
@@ -801,11 +801,11 @@
         "xdph": "xdph"
       },
       "locked": {
-        "lastModified": 1760531859,
-        "narHash": "sha256-akjHaa54IEBlgeDNwVuuNdkttbDOStgXpDXeJ5GR2QI=",
+        "lastModified": 1760621586,
+        "narHash": "sha256-sIbe3te3RrL9PY4ASKGwv1KuJs0pyn4Zvo3xIF3jFms=",
         "owner": "hyprwm",
         "repo": "hyprland",
-        "rev": "ab11af9664a80df70fe3398810b79c4298312a33",
+        "rev": "8164b90bc2839d4d2a10c0d2b26c4a413ecf90b2",
         "type": "github"
       },
       "original": {
@@ -1115,11 +1115,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1760493063,
-        "narHash": "sha256-yYqrMI9jg7vTjHu4wOiER9HmqE+NvOqOjfYzuMsTo3Y=",
+        "lastModified": 1760579393,
+        "narHash": "sha256-YuXbuaJ/2EZ1FePhz1eTyo/b+kpiEmw4lj6wX0u0Q/0=",
         "owner": "fufexan",
         "repo": "nix-gaming",
-        "rev": "d7f6ab23b939e6e1247321a0e63a89cacb98c03c",
+        "rev": "7d002241668a738df3973a6c07ef5d79e5508b24",
         "type": "github"
       },
       "original": {
@@ -1337,11 +1337,11 @@
         "nixpkgs": "nixpkgs_2"
       },
       "locked": {
-        "lastModified": 1760576507,
-        "narHash": "sha256-/Xc+b7tvGAS7U+VhvwHmx2cx22nPmMg2WcIkKbBnjtI=",
+        "lastModified": 1760577660,
+        "narHash": "sha256-ukYkRvYyzzq2qIDVZHfTizNVmrUsKa+Am7V+4K4w4Fg=",
         "owner": "kaylorben",
         "repo": "nixcord",
-        "rev": "d86572e8be3afd3745de753756e4bcb4ea7f9fc5",
+        "rev": "1f1d0421558822f69934be92685f1a6f0f16b98e",
         "type": "github"
       },
       "original": {
@@ -1680,11 +1680,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1760516761,
-        "narHash": "sha256-vO6T+mxBAYAO5PljUuDsxvxMCkmZE4/voL3SQ6XCExY=",
+        "lastModified": 1760603167,
+        "narHash": "sha256-bVCs/LwxNWV4KgxhzBE1nurbQVl+9846b83SR2uugbc=",
         "owner": "astro",
         "repo": "nix-openwrt-imagebuilder",
-        "rev": "049e75c96df32948118473462c3bdfe3c143db28",
+        "rev": "dacddb99551e3bd9093f9cf4f1bd5e331344754f",
         "type": "github"
       },
       "original": {
@@ -1776,11 +1776,11 @@
         "utils": "utils_2"
       },
       "locked": {
-        "lastModified": 1760575049,
-        "narHash": "sha256-OGezTH64KkTD+57ZYWPV02JdBblw5A89wqAZNh7OIGI=",
+        "lastModified": 1760628572,
+        "narHash": "sha256-zJ/0NxH08vB3GQn4Uv0bG880xgumGUnYP0c5kDZHHB0=",
         "owner": "wamserma",
         "repo": "flake-programs-sqlite",
-        "rev": "691c1285b3981f42210947e74ee3c67bb3be7545",
+        "rev": "b8843a86e40dfb2ab12fa82e14830659c3d5e387",
         "type": "github"
       },
       "original": {
