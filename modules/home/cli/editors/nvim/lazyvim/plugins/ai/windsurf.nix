@@ -28,7 +28,7 @@ in {
     };
 
     xdg.configFile = mkMerge [
-      (sourceLua config "ai/windsurf.lua")
+      (sourceLua "ai/windsurf.lua")
     ];
 
     sops.secrets.codeium = {

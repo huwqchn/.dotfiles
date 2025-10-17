@@ -17,7 +17,7 @@ in {
     my.neovim.lazyvim.extraPlugins = with pkgs.vimPlugins; [winshift-nvim];
 
     xdg.configFile = mkMerge [
-      (sourceLua config "ui/winshift.lua")
+      (sourceLua "ui/winshift.lua")
     ];
   };
 }

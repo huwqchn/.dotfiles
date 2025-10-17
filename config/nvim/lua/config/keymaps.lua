@@ -1,111 +1,16 @@
---          Mode  | Norm | Ins | Cmd | Vis | Sel | Opr | Term | Lang |
--- Command        +------+-----+-----+-----+-----+-----+------+------+
--- [nore]map      | yes  |  -  |  -  | yes | yes | yes |  -   |  -   |
--- n[nore]map     | yes  |  -  |  -  |  -  |  -  |  -  |  -   |  -   |
--- [nore]map!     |  -   | yes | yes |  -  |  -  |  -  |  -   |  -   |
--- i[nore]map     |  -   | yes |  -  |  -  |  -  |  -  |  -   |  -   |
--- c[nore]map     |  -   |  -  | yes |  -  |  -  |  -  |  -   |  -   |
--- v[nore]map     |  -   |  -  |  -  | yes | yes |  -  |  -   |  -   |
--- x[nore]map     |  -   |  -  |  -  | yes |  -  |  -  |  -   |  -   |
--- s[nore]map     |  -   |  -  |  -  |  -  | yes |  -  |  -   |  -   |
--- o[nore]map     |  -   |  -  |  -  |  -  |  -  | yes |  -   |  -   |
--- t[nore]map     |  -   |  -  |  -  |  -  |  -  |  -  | yes  |  -   |
--- l[nore]map     |  -   | yes | yes |  -  |  -  |  -  |  -   | yes  |
--- HACK: very careful with this
 local map = LazyVim.safe_keymap_set
-local unmap = vim.keymap.del
-unmap("n", "<C-h>")
-unmap("n", "<C-j>")
-unmap("n", "<C-k>")
-unmap("n", "<C-l>")
-unmap({ "n", "i", "x" }, "<A-k>")
-unmap({ "n", "i", "x" }, "<A-j>")
--- local map = vim.keymap.set
--- local LazyVim = require("lazyvim.util")
--- colemak-dh movement
-map({ "n", "x" }, "e", "v:count == 0 ? 'gj' : 'j'", { desc = "Down", expr = true, silent = true })
-map({ "n", "x" }, "i", "v:count == 0 ? 'gk' : 'k'", { desc = "Up", expr = true, silent = true })
-map({ "n", "x" }, "n", "h", { desc = "Left", silent = true })
-map({ "n", "x" }, "o", "l", { desc = "Left", silent = true })
-
 -- Search visually selected text (slightly better than builtins in Neovim>=0.8)
 map("x", "*", [[y/\V<C-R>=escape(@", '/\')<CR><CR>]])
 map("x", "#", [[y?\V<C-R>=escape(@", '?\')<CR><CR>]])
 
--- colemak-dh jump to start/end of the line
-map({ "n", "x", "o" }, "N", "^")
-map({ "n", "x", "o" }, "O", "$")
-map({ "n", "x", "o" }, "gn", "gh")
-map({ "n", "x", "o" }, "gN", "gH")
+-- select all
+map({ "n", "x", "i" }, "<C-a>", "<cmd>normal! ggVG<cr>")
 
--- colemak-dh join/hover
-map("n", "I", "K")
-map("n", "E", "J")
-
--- colemak-dh insert key
-map({ "n", "x", "o" }, "h", "i")
-vim.keymap.set({ "x", "o" }, "hi", function()
-  Snacks.scope.textobject({
-    min_size = 2, -- minimum size of the scope
-    edge = false, -- inner scope
-    cursor = false,
-    treesitter = { blocks = { enabled = false } },
-  })
-end, { silent = true, desc = "inner scope" })
-vim.keymap.set({ "x", "o" }, "ai", function()
-  Snacks.scope.textobject({
-    cursor = false,
-    min_size = 2, -- minimum size of the scope
-    treesitter = { blocks = { enabled = false } },
-  })
-end, { silent = true, desc = "full scope" })
-
-vim.keymap.set({ "n", "x", "o" }, "[i", function()
-  Snacks.scope.jump({
-    min_size = 1, -- allow single line scopes
-    bottom = false,
-    cursor = false,
-    edge = true,
-    treesitter = { blocks = { enabled = false } },
-  })
-end, { silent = true, desc = "jump to top edge of scope" })
-vim.keymap.set({ "n", "x", "o" }, "]i", function()
-  Snacks.scope.jump({
-    min_size = 1, -- allow single line scopes
-    bottom = true,
-    cursor = false,
-    edge = true,
-    treesitter = { blocks = { enabled = false } },
-  })
-end, { silent = true, desc = "jump to bottom edge of scope" })
-vim.keymap.set({ "n", "x", "o" }, "H", "I")
-map({ "n", "x", "o" }, "gh", "gi", { desc = "goto last insert" })
-map({ "n", "x", "o" }, "gH", "gI", { desc = "goto start of last insert line" })
-
--- colemake-dh undo key
-vim.keymap.set({ "n", "x", "o" }, "l", "o")
-vim.keymap.set({ "n", "x", "o" }, "L", "O")
-
--- colemak-dh end of word
-map({ "n", "x", "o" }, "j", "e")
-map({ "n", "x", "o" }, "gj", "ge")
-map({ "n", "x", "o" }, "J", "E")
-map({ "n", "x", "o" }, "gJ", "gE")
-
--- colemak-dh searching key
--- https://github.com/mhinz/vim-galore#saner-behavior-of-n-and-n
-vim.keymap.set("n", "k", "'Nn'[v:searchforward].'zv'", { expr = true, desc = "Next search result" })
-vim.keymap.set("x", "k", "'Nn'[v:searchforward]", { expr = true, desc = "Next search result" })
-vim.keymap.set("o", "k", "'Nn'[v:searchforward]", { expr = true, desc = "Next search result" })
-vim.keymap.set("n", "K", "'nN'[v:searchforward].'zv'", { expr = true, desc = "Prev search result" })
-vim.keymap.set("x", "K", "'nN'[v:searchforward]", { expr = true, desc = "Prev search result" })
-vim.keymap.set("o", "K", "'nN'[v:searchforward]", { expr = true, desc = "Prev search result" })
-
-map({ "n", "x", "o" }, "gk", "gn", { desc = "Search forwards and select" })
-map({ "n", "x", "o" }, "gK", "gN", { desc = "Search backwards and select" })
-
--- colemak scroll
-map({ "n", "v" }, "<C-j>", "<C-e>")
+-- inc/dec number
+map({ "n", "v" }, "+", "<C-a>", { desc = "Increment number" })
+map({ "n", "v" }, "-", "<C-x>", { desc = "Decrement number" })
+map({ "n", "v" }, "g+", "g<C-a>", { desc = "Increment number" })
+map({ "n", "v" }, "g-", "g<C-x>", { desc = "Decrement number" })
 
 -- emacs delete end of line
 map("i", "<C-k>", "<cmd>normal! d$<cr>", { silent = true, desc = "delete to end of line" })
@@ -127,31 +32,10 @@ map("i", "<M-b>", "<C-Left>", { silent = true, desc = "backward word" })
 -- autocorrect spelling from previous error
 -- map("i", "<C-f>", "<c-g>u<Esc>[s1z=`]a<c-g>u", { expr = true, silent = true })
 
--- select all
-map({ "n", "x", "i" }, "<C-a>", "<cmd>normal! ggVG<cr>")
-
--- new space line
-map("n", "gL", "<Cmd>call append(line('.') - 1, repeat([''], v:count1))<CR>", { desc = "Put empty line above" })
-map("n", "gl", "<Cmd>call append(line('.'), repeat([''], v:count1))<CR>", { desc = "Put empty line below" })
-
 -- paste
 map("i", "<C-v>", "<C-g>u<Cmd>set paste<CR><C-r>+<Cmd>set nopaste<CR>")
 map("t", "<C-v>", "<C-\\><C-N>pi")
 map("c", "<C-v>", "<C-r>+")
-
--- inc/dec number
-map({ "n", "v" }, "<C-=>", "<C-a>", { desc = "Increment number" })
-map({ "n", "v" }, "<C-->", "<C-x>", { desc = "Decrement number" })
-map({ "n", "v" }, "g<C-=>", "g<C-a>", { desc = "Increment number" })
-map({ "n", "v" }, "g<C-->", "g<C-x>", { desc = "Decrement number" })
-
--- Move lines
-map("n", "<A-e>", "<cmd>m .+1<CR>==", { desc = "Move down" })
-map("n", "<A-i>", "<cmd>m .-2<CR>==", { desc = "Move up" })
-map("i", "<A-e>", "<Esc><cmd>m .+1<CR>==gi", { desc = "Move down" })
-map("i", "<A-i>", "<Esc><cmd>m .-2<CR>==gi", { desc = "Move up" })
-map("x", "<A-e>", ":m '>+1<CR>gv=gv", { desc = "Move down" })
-map("x", "<A-i>", ":m '<-2<CR>gv=gv", { desc = "Move up" })
 
 -- insert mode navigation
 map("i", "<A-Up>", "<C-\\><C-N><C-w>k")
@@ -162,10 +46,6 @@ map("i", "<A-Right>", "<C-\\><C-N><C-w>l")
 -- Terminal window navigation
 --WARN: <esc><esc> is not work when timeoutlen=0
 map("t", "<C-esc>", "<c-\\><c-n>", { desc = "Enter Normal Mode" })
-map("t", "<C-n>", "<cmd>wincmd h<cr>", { desc = "Go to Left Window" })
-map("t", "<C-e>", "<cmd>wincmd j<cr>", { desc = "Go to Down Window" })
-map("t", "<C-i>", "<cmd>wincmd k<cr>", { desc = "Go to Up Window" })
-map("t", "<C-o>", "<cmd>wincmd l<cr>", { desc = "Go to Right Window" })
 map("t", "<C-q>", "<cmd>close<cr>", { desc = "Hide Terminal" })
 -- map("n", "<C-cr>", function()
 --   LazyVim.terminal(nil, { ft = "", border = "rounded" })
@@ -180,33 +60,10 @@ end, { desc = "btop" })
 -- map tab to tab, because distinguish between <C-i>
 map("t", "<Tab>", "<Tab>")
 
--- navigate tab completion with <c-e> and <c-j>
--- runs conditionally
-map("c", "<C-e>", 'pumvisible() ? "\\<C-n>" : "\\<C-j>"', { expr = true, noremap = true })
-map("c", "<C-i>", 'pumvisible() ? "\\<C-p>" : "\\<C-k>"', { expr = true, noremap = true })
-
--- colemak goto new position in jumplist
-map("n", "<C-h>", "<C-i>")
-map("n", "<C-l>", "<C-o>")
-
 -- scroll window horizontally (scroll-horizontal)
 -- < reference: https://unix.stackexchange.com/questions/110251/how-to-put-current-line-at-top-center-bottom-of-screen-in-vim
 map("n", "[z", "zh", { desc = "scroll left", silent = true }) -- left
 map("n", "]z", "zl", { desc = "scroll right", silent = true }) -- right
-
--- Windows management
--- Better window movement
--- navigate window
-map("n", "<C-n>", "<C-w>h", { desc = "Go to left window" })
-map("n", "<C-e>", "<C-w>j", { desc = "Go to lower window" })
-map("n", "<C-i>", "<C-w>k", { desc = "Go to upper window" })
-map("n", "<C-o>", "<C-w>l", { desc = "Go to right window" })
-
--- swap windows with sn se si so
-map("n", "sN", "<C-w>H", { desc = "swap with left" })
-map("n", "sE", "<C-w>J", { desc = "swap with below" })
-map("n", "sI", "<C-w>K", { desc = "swap with above" })
-map("n", "sO", "<C-w>L", { desc = "swap with right" })
 
 -- Resize with arrows
 map("n", "<C-Up>", "<cmd>resize +2<CR>", { desc = "Increase window height" })
@@ -214,8 +71,6 @@ map("n", "<C-Down>", "<cmd>resize -2<CR>", { desc = "Decrease window height" })
 map("n", "<C-Left>", "<cmd>vertical resize -2<CR>", { desc = "Decrease window width" })
 map("n", "<C-Right>", "<cmd>vertical resize +2<CR>", { desc = "Increase window width" })
 
--- other window keybindings
-map("n", "<C-k>", "<C-w>o", { desc = "Clear other windows" })
 -- map("n", "<C-x>", "<C-w>x", { desc = "Exchange window" })
 map("n", "<C-q>", function()
   -- close current window if there are more than 1 window
@@ -237,35 +92,6 @@ map("n", "s<Up>", "<cmd>resize +2<CR>", { desc = "Increase window height" })
 map("n", "s<Down>", "<cmd>resize -2<CR>", { desc = "Decrease window height" })
 map("n", "s<Left>", "<cmd>vertical resize -2<CR>", { desc = "Decrease window width" })
 map("n", "s<Right>", "<cmd>vertical resize +2<CR>", { desc = "Increase window width" })
-
--- split the screens
-map("n", "si", function()
-  vim.opt.splitbelow = false
-  vim.cmd([[split]])
-  vim.opt.splitbelow = true
-end, { desc = "split above" })
-map("n", "se", function()
-  vim.opt.splitbelow = true
-  vim.cmd([[split]])
-end, { desc = "split below" })
-map("n", "sn", function()
-  vim.opt.splitright = false
-  vim.cmd([[vsplit]])
-end, { desc = "split left" })
-map("n", "so", function()
-  vim.opt.splitright = true
-  vim.cmd([[vsplit]])
-end, { desc = "split right" })
-
--- Rotate window
-map("n", "<leader>wI", "<C-w>b<C-w>K", { desc = "rotate window up" })
-map("n", "<leader>wN", "<C-w>b<C-w>H", { desc = "rotate window left" })
-
--- move current window to the far left, bottom, right, top
-map("n", "<leader>wn", "<C-w>H", { desc = "move to the far left" })
-map("n", "<leader>we", "<C-w>J", { desc = "move to the far bottom" })
-map("n", "<leader>wo", "<C-w>L", { desc = "move to the far right" })
-map("n", "<leader>wi", "<C-w>K", { desc = "move to the far top" })
 
 -- Switch buffer with tab
 -- vim.keymap.set("n", "<tab>", "<tab>") -- conflict with <C-i>
@@ -350,12 +176,6 @@ end, { silent = true, desc = "Close unused buffers" })
 
 vim.keymap.set("n", "<C-w>", "<leader>bd", { remap = true, desc = "Close Buffer" })
 
--- commenting
-unmap("n", "gco")
-unmap("n", "gcO")
-map("n", "gcl", "o<esc>Vcx<esc><cmd>normal gcc<cr>fxa<bs>", { desc = "Add Comment Below" })
-map("n", "gcL", "O<esc>Vcx<esc><cmd>normal gcc<cr>fxa<bs>", { desc = "Add Comment Above" })
-
 -- Replace in selection
 map("x", "s/", ":s/\\%V", { silent = false, desc = "replace in selection" })
 -- search in selection
@@ -395,3 +215,10 @@ local function delete_marks()
   end
 end
 vim.keymap.set("n", "dm", delete_marks, { noremap = true, desc = "Delete mark on the current line" })
+
+local layout = require("util.layout")
+if layout.is_colemak() then
+  require("util.keymaps.colemak")
+else
+  require("util.keymaps.qwerty")
+end

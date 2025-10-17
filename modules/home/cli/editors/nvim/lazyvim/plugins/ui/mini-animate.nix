@@ -21,7 +21,7 @@ in {
       }
     ];
     xdg.configFile = mkMerge [
-      (sourceLua config "ui/mini-animate.lua")
+      (sourceLua "ui/mini-animate.lua")
     ];
   };
 }

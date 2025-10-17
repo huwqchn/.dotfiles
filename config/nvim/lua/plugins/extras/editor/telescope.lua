@@ -87,19 +87,13 @@ return {
       defaults = {
         mappings = {
           i = {
-            ["<C-e>"] = function(...)
-              return require("telescope.actions").move_selection_next(...)
-            end,
-            ["<C-i>"] = function(...)
-              return require("telescope.actions").move_selection_previous(...)
-            end,
             ["<C-v>"] = function(...)
               return require("telescope.actions").select_vertical(...)
             end,
-            ["<C-h>"] = function(...)
+            ["<C-s>"] = function(...)
               return require("telescope.actions").select_horizontal(...)
             end,
-            ["<C-s>"] = function(...)
+            ["<C-tab>"] = function(...)
               return require("telescope.actions").select_tab(...)
             end,
             ["<C-p>"] = function(...)
@@ -107,21 +101,13 @@ return {
             end,
           },
           n = {
-            ["e"] = function(...)
-              return require("telescope.actions").move_selection_next(...)
-            end,
-            ["i"] = function(...)
-              return require("telescope.actions").move_selection_previous(...)
-            end,
-            ["j"] = nil,
-            ["k"] = nil,
-            ["h"] = function(...)
+            ["s"] = function(...)
               return require("telescope.actions").select_horizontal(...)
             end,
             ["v"] = function(...)
               return require("telescope.actions").select_vertical(...)
             end,
-            ["s"] = function(...)
+            ["<tab>"] = function(...)
               return require("telescope.actions").select_tab(...)
             end,
             ["gg"] = function(...)

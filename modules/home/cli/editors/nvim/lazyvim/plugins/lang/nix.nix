@@ -20,7 +20,7 @@ in {
     #   { import = "lazyvim.plugins.extras.lang.nix" },
     # '';
     xdg.configFile = mkMerge [
-      (sourceLua config "lang/nix.lua")
+      (sourceLua "lang/nix.lua")
     ];
   };
 }

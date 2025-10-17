@@ -17,16 +17,11 @@
         )
         (builtins.readDir path)));
 
-  sourceLua = config: path: let
+  sourceLua = path: let
     name = builtins.baseNameOf path;
 
-    nvim =
-      if config.my.keyboardLayout == "colemak"
-      then "nvim"
-      else "nvim_qwerty";
-
     # ssourcePath
-    sourcePath = "${nvim}/lua/plugins/extras/${path}";
+    sourcePath = "nvim/lua/plugins/extras/${path}";
 
     # xdg.configFile."key"
     key = "nvim/lua/plugins/${name}";

@@ -32,7 +32,7 @@ in {
     };
 
     xdg.configFile = mkMerge [
-      (sourceLua config "coding/nvim-cmp.lua")
+      (sourceLua "coding/nvim-cmp.lua")
     ];
   };
 }

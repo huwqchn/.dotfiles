@@ -30,7 +30,7 @@ in {
     ];
 
     xdg.configFile = mkMerge [
-      (sourceLua config "lang/markdown.lua")
+      (sourceLua "lang/markdown.lua")
     ];
   };
 }

@@ -27,11 +27,5 @@ return {
   {
     "tris203/precognition.nvim",
     event = "BufRead",
-    opts = {
-      hints = {
-        e = { text = "j", prio = 8 },
-        E = { text = "J", prio = 5 },
-      },
-    },
   },
 }

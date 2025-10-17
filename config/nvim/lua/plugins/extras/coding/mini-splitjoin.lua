@@ -6,9 +6,9 @@ return {
   -- Join
   {
     "nvim-mini/mini.splitjoin",
-    opts = { mappings = { toggle = "E" } },
+    opts = { mappings = { toggle = "J" } },
     keys = {
-      { "E", desc = "Split/Join" },
+      { "J", desc = "Split/Join" },
     },
   },
 }

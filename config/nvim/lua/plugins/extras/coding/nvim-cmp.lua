@@ -41,8 +41,8 @@ return {
             return fallback()
           end
         end),
-        ["<C-e>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
-        ["<C-i>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
+        ["<C-j>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
+        ["<C-k>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
         ["<C-c>"] = cmp.mapping.abort(),
         ["<C-x>"] = cmp.mapping.complete(),
         ["<C-Space>"] = nil,

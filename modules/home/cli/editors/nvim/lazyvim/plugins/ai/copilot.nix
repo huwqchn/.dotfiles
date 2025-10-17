@@ -19,14 +19,16 @@ in {
     chat.enable = mkEnableOption "AI plugin - Copilot-Chat";
   };
 
-  assertions = [
-    {
-      assertion = !(cfg.lua.enable && cfg.native.enable);
-      message = "Copilot: choose either copilot.lua (copilot.enable) OR native LSP (copilot.native.enable), not both.";
-    }
-  ];
-
   config = mkMerge [
+    {
+      assertions = [
+        {
+          assertion = !(cfg.lua.enable && cfg.native.enable);
+          message = "Copilot: choose either copilot.lua (copilot.enable) OR native LSP (copilot.native.enable), not both.";
+        }
+      ];
+    }
+
     (mkIf (cfg.lua.enable || cfg.native.enable || cfg.chat.enable) {
       programs.neovim.extraPackages = with pkgs; [nodejs_24];
 
@@ -47,17 +49,17 @@ in {
           || config.my.neovim.lazyvim.cmp == "auto") [blink-cmp-copilot];
 
       xdg.configFile = mkMerge [
-        (sourceLua config "ai/copilot.lua")
+        (sourceLua "ai/copilot.lua")
       ];
     })
     (mkIf cfg.chat.enable {
       my.neovim.lazyvim.extraPlugins = with pkgs.vimPlugins; [CopilotChat-nvim];
       xdg.configFile = mkMerge [
-        (sourceLua config "ai/copilot-chat.lua")
+        (sourceLua "ai/copilot-chat.lua")
       ];
     })
     (mkIf cfg.native.enable {
-      extraSpec = ''
+      my.neovim.lazyvim.extraSpec = ''
         { import = "lazyvim.plugins.extras.ai.copilot-native" },
       '';
     })

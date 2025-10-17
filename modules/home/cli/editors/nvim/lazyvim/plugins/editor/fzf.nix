@@ -19,7 +19,7 @@ in {
     };
 
     xdg.configFile = mkMerge [
-      (sourceLua config "editor/fzf.lua")
+      (sourceLua "editor/fzf.lua")
     ];
   };
 }

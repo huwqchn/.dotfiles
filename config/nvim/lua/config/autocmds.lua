@@ -1,3 +1,5 @@
+local layout = require("util.layout")
+
 local function augroup(name)
   return vim.api.nvim_create_augroup("lazyvim_" .. name, { clear = true })
 end
@@ -91,11 +93,18 @@ vim.api.nvim_create_autocmd({ "BufWritePre" }, {
 })
 
 -- NOTE: nix not respect my keymap settings, force it to work
-vim.api.nvim_create_autocmd({ "FileType" }, {
-  pattern = "nix",
-  callback = function()
-    vim.keymap.set("n", "K", "'nN'[v:searchforward].'zv'", { buffer = true, expr = true, desc = "Prev search result" })
-    vim.keymap.set("x", "K", "'nN'[v:searchforward]", { buffer = true, expr = true, desc = "Prev search result" })
-    vim.keymap.set("o", "K", "'nN'[v:searchforward]", { buffer = true, expr = true, desc = "Prev search result" })
-  end,
-})
+if layout.is_colemak() then
+  vim.api.nvim_create_autocmd({ "FileType" }, {
+    pattern = "nix",
+    callback = function()
+      vim.keymap.set(
+        "n",
+        "K",
+        "'nN'[v:searchforward].'zv'",
+        { buffer = true, expr = true, desc = "Prev search result" }
+      )
+      vim.keymap.set("x", "K", "'nN'[v:searchforward]", { buffer = true, expr = true, desc = "Prev search result" })
+      vim.keymap.set("o", "K", "'nN'[v:searchforward]", { buffer = true, expr = true, desc = "Prev search result" })
+    end,
+  })
+end

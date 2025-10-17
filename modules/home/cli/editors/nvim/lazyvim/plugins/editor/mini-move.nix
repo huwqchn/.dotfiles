@@ -22,7 +22,7 @@ in {
     ];
 
     xdg.configFile = mkMerge [
-      (sourceLua config "editor/mini-move.lua")
+      (sourceLua "editor/mini-move.lua")
     ];
   };
 }

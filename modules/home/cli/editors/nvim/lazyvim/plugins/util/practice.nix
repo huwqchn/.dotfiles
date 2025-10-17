@@ -19,7 +19,7 @@ in {
     ];
 
     xdg.configFile = mkMerge [
-      (sourceLua config "util/practice.lua")
+      (sourceLua "util/practice.lua")
     ];
   };
 }

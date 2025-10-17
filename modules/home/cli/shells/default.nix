@@ -1,13 +1,17 @@
 {
   lib,
   pkgs,
+  config,
   ...
 }: let
   inherit (lib.meta) getExe;
   curl' = getExe pkgs.curl;
 in {
   imports = lib.my.scanPaths ./.;
-  home.shellAliases = {
-    weather = "${curl'} wttr.in";
+  config.home = {
+    shellAliases = {
+      weather = "${curl'} wttr.in";
+    };
+    sessionVariables.KEYBOARD_LAYOUT = config.my.keyboardLayout;
   };
 }

@@ -20,7 +20,7 @@ in {
       ];
     };
     xdg.configFile = mkMerge [
-      (sourceLua config "util/obsidian.lua")
+      (sourceLua "util/obsidian.lua")
     ];
   };
 }

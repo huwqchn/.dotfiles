@@ -1,56 +1,5 @@
 return {
   {
-    "folke/snacks.nvim",
-    optional = true,
-    opts = {
-      picker = {
-        sources = {
-          explorer = {
-            win = {
-              list = {
-                keys = {
-                  ["h"] = "focus_input",
-                  ["n"] = "explorer_close",
-                  ["o"] = "confirm",
-                  ["l"] = "explorer_open",
-                  ["s"] = "edit_split",
-                  ["v"] = "edit_vsplit",
-                },
-              },
-            },
-          },
-        },
-        win = {
-          input = {
-            keys = {
-              ["<c-e>"] = { "list_down", mode = { "i", "n" } },
-              ["<c-i>"] = { "list_up", mode = { "i", "n" } },
-              ["e"] = "list_down",
-              ["i"] = "list_up",
-              ["<c-w>N"] = "layout_left",
-              ["<c-w>E"] = "layout_bottom",
-              ["<c-w>I"] = "layout_top",
-              ["<c-w>O"] = "layout_right",
-            },
-          },
-          list = {
-            keys = {
-              ["<c-e>"] = "list_down",
-              ["<c-i>"] = "list_up",
-              ["<c-w>N"] = "layout_left",
-              ["<c-w>E"] = "layout_bottom",
-              ["<c-w>I"] = "layout_top",
-              ["<c-w>O"] = "layout_right",
-              ["h"] = "focus_input",
-              ["e"] = "list_down",
-              ["i"] = "list_up",
-            },
-          },
-        },
-      },
-    },
-  },
-  {
     "folke/flash.nvim",
     optional = true,
     opts = {
@@ -149,11 +98,6 @@ return {
     optional = true,
     opts = {
       focus = true,
-      keys = {
-        I = "inspect",
-        e = "next",
-        i = "prev",
-      },
       modes = {
         cascade = {
           mode = "diagnostics", -- inherit from diagnostics mode
@@ -183,10 +127,10 @@ return {
     "nvim-mini/mini.operators",
     event = "BufRead",
     keys = {
-      { "<M-t>", "sxhww.", desc = "transpose word after", remap = true, silent = true },
-      { "<M-S-t>", "sxhwb.", desc = "transpose word before", remap = true, silent = true },
+      { "<M-t>", "sxiww.", desc = "transpose word after", remap = true, silent = true },
+      { "<M-S-t>", "sxiwb.", desc = "transpose word before", remap = true, silent = true },
       { "<M-m>", "gmm", desc = "multiply line", remap = true, silent = true },
-      { "<M-r>", "schw", desc = "replace word", remap = true, silent = true },
+      { "<M-r>", "sciw", desc = "replace word", remap = true, silent = true },
     },
     opts = {
       exchange = {
@@ -210,7 +154,7 @@ return {
   },
   {
     "Wansmer/treesj",
-    keys = { { "E", "<cmd>TSJToggle<cr>", desc = "Join Toggle" } },
+    keys = { { "J", "<cmd>TSJToggle<cr>", desc = "Join Toggle" } },
     opts = { use_default_keymaps = false, max_join_length = 150 },
   },
   {
@@ -218,9 +162,9 @@ return {
     event = "VeryLazy",
     keys = {
       { "w", "<cmd>lua require('spider').motion('w')<CR>", mode = { "n", "o", "x" }, desc = "Spider-w" },
-      { "j", "<cmd>lua require('spider').motion('e')<CR>", mode = { "n", "o", "x" }, desc = "Spider-e" },
+      { "e", "<cmd>lua require('spider').motion('e')<CR>", mode = { "n", "o", "x" }, desc = "Spider-e" },
       { "b", "<cmd>lua require('spider').motion('b')<CR>", mode = { "n", "o", "x" }, desc = "Spider-b" },
-      { "gj", "<cmd>lua require('spider').motion('ge')<CR>", mode = { "n", "o", "x" }, desc = "Spider-ge" },
+      { "ge", "<cmd>lua require('spider').motion('ge')<CR>", mode = { "n", "o", "x" }, desc = "Spider-ge" },
     },
   },
   {
@@ -265,7 +209,7 @@ return {
       -- moving between splits
       {
         mode = { "n", "t" },
-        "<C-n>",
+        "<C-h>",
         function()
           require("smart-splits").move_cursor_left()
         end,
@@ -273,7 +217,7 @@ return {
       },
       {
         mode = { "n", "t" },
-        "<C-e>",
+        "<C-j>",
         function()
           require("smart-splits").move_cursor_down()
         end,
@@ -281,7 +225,7 @@ return {
       },
       {
         mode = { "n", "t" },
-        "<C-i>",
+        "<C-k>",
         function()
           require("smart-splits").move_cursor_up()
         end,
@@ -289,7 +233,7 @@ return {
       },
       {
         mode = { "n", "t" },
-        "<C-o>",
+        "<C-l>",
         function()
           require("smart-splits").move_cursor_right()
         end,
@@ -298,7 +242,7 @@ return {
       -- swapping buffers between windows
       {
         mode = { "n", "t" },
-        "sN",
+        "sH",
         function()
           require("smart-splits").swap_buf_left()
         end,
@@ -306,7 +250,7 @@ return {
       },
       {
         mode = { "n", "t" },
-        "sE",
+        "sJ",
         function()
           require("smart-splits").swap_buf_down()
         end,
@@ -314,7 +258,7 @@ return {
       },
       {
         mode = { "n", "t" },
-        "sI",
+        "sK",
         function()
           require("smart-splits").swap_buf_up()
         end,
@@ -322,7 +266,7 @@ return {
       },
       {
         mode = { "n", "t" },
-        "sO",
+        "sL",
         function()
           require("smart-splits").swap_buf_right()
         end,
@@ -341,7 +285,7 @@ return {
       move_cursor_same_row = false,
       resize_mode = {
         quit_key = "<ESC>",
-        resize_keys = { "n", "e", "i", "o" },
+        resize_keys = { "h", "j", "k", "l" },
         silent = false,
         hooks = {
           on_enter = function()
@@ -410,27 +354,6 @@ return {
   --     },
   --   },
   -- },
-  {
-    "lewis6991/gitsigns.nvim",
-    optional = true,
-    opts = function(_, opts)
-      return {
-        on_attach = function(buffer)
-          opts.on_attach(buffer)
-          local function map(mode, l, r, desc)
-            vim.keymap.set(mode, l, r, { buffer = buffer, desc = desc })
-          end
-
-          local function unmap(mode, key)
-            vim.keymap.del(mode, key, { buffer = buffer })
-          end
-
-          unmap({ "o", "x" }, "ih")
-          map({ "o", "x" }, "hh", ":<C-U>Gitsigns select_hunk<CR>", "GitSigns Select Hunk")
-        end,
-      }
-    end,
-  },
   {
     "mbbill/undotree",
     lazy = true,

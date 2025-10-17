@@ -19,7 +19,7 @@ in {
     ];
 
     xdg.configFile = mkMerge [
-      (sourceLua config "editor/yazi.lua")
+      (sourceLua "editor/yazi.lua")
     ];
   };
 }

@@ -41,9 +41,9 @@ return {
         menu = {
           keymaps = {
             -- Navigate back to the parent menu.
-            ["n"] = "<C-w>q",
+            ["h"] = "<C-w>q",
             -- Expands the entry if possible.
-            ["o"] = function()
+            ["l"] = function()
               local menu = menu_utils.get_current()
               if not menu then
                 return
@@ -54,14 +54,13 @@ return {
                 menu:click_on(component, nil, 1, "l")
               end
             end,
-            ["O"] = function()
+            ["L"] = function()
               local menu = menu_utils.get_current()
               if not menu then
                 return
               end
               menu:fuzzy_find_open()
             end,
-            ["i"] = "k", -- don't use i for fuzzy search, use O instead
             ["q"] = close,
             ["<esc>"] = close,
           },
@@ -87,10 +86,10 @@ return {
       { "[b", "<cmd>BufferLineCyclePrev<cr>", desc = "Previous" },
       { "<leader>bj", "<cmd>BufferLinePick<cr>", desc = "Jump" },
       { "<leader>bc", "<cmd>BufferLinePickClose<cr>", desc = "Pick Close" },
-      { "<leader>bn", "<cmd>BufferLineMoveLeft<cr>", desc = "Move left" },
-      { "<leader>bo", "<cmd>BufferLineMoveRight<cr>", desc = "Move right" },
-      { "<leader>bN", "<cmd>BufferLineCloseLeft<cr>", desc = "Close all to the left" },
-      { "<leader>bO", "<cmd>BufferLineCloseRight<cr>", desc = "Close all to the right" },
+      { "<leader>b[", "<cmd>BufferLineMoveLeft<cr>", desc = "Move left" },
+      { "<leader>b]", "<cmd>BufferLineMoveRight<cr>", desc = "Move right" },
+      { "<leader>b{", "<cmd>BufferLineCloseLeft<cr>", desc = "Close all to the left" },
+      { "<leader>b}", "<cmd>BufferLineCloseRight<cr>", desc = "Close all to the right" },
       { "<leader>bD", "<cmd>BufferLineSortByDirectory<cr>", desc = "Sort by directory" },
       { "<leader>bL", "<cmd>BufferLineSortByExtension<cr>", desc = "Sort by language" },
     },

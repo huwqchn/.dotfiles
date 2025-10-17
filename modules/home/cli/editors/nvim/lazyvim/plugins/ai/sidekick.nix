@@ -19,7 +19,7 @@ in {
     ];
 
     xdg.configFile = mkMerge [
-      (sourceLua config "ai/sidekick.lua")
+      (sourceLua "ai/sidekick.lua")
     ];
   };
 }

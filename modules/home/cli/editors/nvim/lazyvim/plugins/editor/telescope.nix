@@ -22,7 +22,7 @@ in {
     };
 
     xdg.configFile = mkMerge [
-      (sourceLua config "editor/telescope.lua")
+      (sourceLua "editor/telescope.lua")
     ];
   };
 }
