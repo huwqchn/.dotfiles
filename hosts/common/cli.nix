@@ -4,7 +4,8 @@
       enable = true;
       autoLogin = true;
     };
-    bat.enable = true;
+    bash.enable = false; #TODO: Temporarily disable bash module to avoid nokogiri via bash-preexec
+    bat.enable = false; # TODO: Temporarily disable bat due to nokogiri compilation issues
     btop.enable = true;
     direnv = {
       enable = true;
