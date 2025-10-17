@@ -9,7 +9,7 @@ return {
     },
   },
   {
-    "echasnovski/mini.pairs",
+    "nvim-mini/mini.pairs",
     optional = true,
     event = function()
       return { "InsertEnter" }

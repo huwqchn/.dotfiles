@@ -2,7 +2,7 @@ return {
   { import = "lazyvim.plugins.extras.ui.mini-animate" },
   -- animations
   {
-    "echasnovski/mini.animate",
+    "nvim-mini/mini.animate",
     event = "VeryLazy",
     opts = function()
       -- don't use animate when scrolling with the mouse

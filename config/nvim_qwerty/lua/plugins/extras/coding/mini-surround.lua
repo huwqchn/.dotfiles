@@ -2,7 +2,7 @@
 return {
   { import = "lazyvim.plugins.extras.coding.mini-surround" },
   {
-    "echasnovski/mini.surround",
+    "nvim-mini/mini.surround",
     optional = true,
     opts = {
       mappings = {

@@ -116,7 +116,7 @@ return {
     },
   },
   {
-    "echasnovski/mini.align",
+    "nvim-mini/mini.align",
     opts = {},
     keys = {
       { "ga", mode = { "n", "v" } },
@@ -124,7 +124,7 @@ return {
     },
   },
   {
-    "echasnovski/mini.operators",
+    "nvim-mini/mini.operators",
     event = "BufRead",
     keys = {
       { "<M-t>", "sxiww.", desc = "transpose word after", remap = true, silent = true },
@@ -142,7 +142,7 @@ return {
     },
   },
   {
-    "echasnovski/mini.bracketed",
+    "nvim-mini/mini.bracketed",
     event = "BufReadPost",
     opts = {
       file = { suffix = "" },
