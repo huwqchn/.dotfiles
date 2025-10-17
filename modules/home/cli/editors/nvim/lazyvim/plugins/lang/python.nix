@@ -22,7 +22,7 @@ in {
         extraPlugins = with pkgs.vimPlugins; [
           neotest-python
           nvim-dap-python
-          # venv-selector-nvim
+          venv-selector-nvim
         ];
 
         extraSpec = ''

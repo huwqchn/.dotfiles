@@ -118,7 +118,6 @@
       flake = false;
     };
 
-    # TODO: how to use this???
     # srvos = {
     #   url = "github:nix-community/srvos";
     #   inputs.nixpkgs.follows = "nixpkgs";
@@ -130,14 +129,14 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    openwrt-imagebuilder = {
-      url = "github:astro/nix-openwrt-imagebuilder";
-      inputs = {
-        flake-parts.follows = "flake-parts";
-        nixpkgs.follows = "nixpkgs";
-        systems.follows = "systems";
-      };
-    };
+    # openwrt-imagebuilder = {
+    #   url = "github:astro/nix-openwrt-imagebuilder";
+    #   inputs = {
+    #     flake-parts.follows = "flake-parts";
+    #     nixpkgs.follows = "nixpkgs";
+    #     systems.follows = "systems";
+    #   };
+    # };
 
     # for gaming
     nix-gaming = {
@@ -237,13 +236,22 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # neovim nightly overlay
-    # neovim-nightly.url = "github:nix-community/neovim-nightly-overlay";
-
     # emacs overlay
     emacs-overlay = {
       url = "github:nix-community/emacs-overlay";
       inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    # neovim nightly overlay
+    neovim-nightly-overlay = {
+      url = "github:nix-community/neovim-nightly-overlay";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        flake-parts.follows = "flake-parts";
+        flake-compat.follows = "flake-compat";
+        git-hooks.follows = "pre-commit-hooks";
+        treefmt-nix.follows = "treefmt";
+      };
     };
 
     # spicetify-nix

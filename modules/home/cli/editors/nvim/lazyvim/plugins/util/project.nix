@@ -15,6 +15,7 @@ in {
   config = mkIf cfg.enable {
     my.neovim.lazyvim = {
       extraPlugins = with pkgs.vimPlugins; [
+        # WARNING: This plugin is override by other plugins with the same name
         project-nvim
       ];
 

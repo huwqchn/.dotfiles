@@ -703,6 +703,31 @@
         "type": "github"
       }
     },
+    "hercules-ci-effects": {
+      "inputs": {
+        "flake-parts": [
+          "neovim-nightly-overlay",
+          "flake-parts"
+        ],
+        "nixpkgs": [
+          "neovim-nightly-overlay",
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1758022363,
+        "narHash": "sha256-ENUhCRWgSX4ni751HieNuQoq06dJvApV/Nm89kh+/A0=",
+        "owner": "hercules-ci",
+        "repo": "hercules-ci-effects",
+        "rev": "1a3667d33e247ad35ca250698d63f49a5453d824",
+        "type": "github"
+      },
+      "original": {
+        "owner": "hercules-ci",
+        "repo": "hercules-ci-effects",
+        "type": "github"
+      }
+    },
     "home-manager": {
       "inputs": {
         "nixpkgs": [
@@ -1078,6 +1103,56 @@
       "original": {
         "owner": "InioX",
         "repo": "Matugen",
+        "type": "github"
+      }
+    },
+    "neovim-nightly-overlay": {
+      "inputs": {
+        "flake-compat": [
+          "flake-compat"
+        ],
+        "flake-parts": [
+          "flake-parts"
+        ],
+        "git-hooks": [
+          "pre-commit-hooks"
+        ],
+        "hercules-ci-effects": "hercules-ci-effects",
+        "neovim-src": "neovim-src",
+        "nixpkgs": [
+          "nixpkgs"
+        ],
+        "treefmt-nix": [
+          "treefmt"
+        ]
+      },
+      "locked": {
+        "lastModified": 1760659500,
+        "narHash": "sha256-oBVyFuQfDBZ0HHYWKv7SUc3RECrKIJj++hAQedfHpjk=",
+        "owner": "nix-community",
+        "repo": "neovim-nightly-overlay",
+        "rev": "c9c781b2434050fe75aaa69a0664362fa4c721e9",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "repo": "neovim-nightly-overlay",
+        "type": "github"
+      }
+    },
+    "neovim-src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1760632793,
+        "narHash": "sha256-qkxukXjPMsel0cSNMlJhP9IWFMd3jICGHQDQQ8NLdb0=",
+        "owner": "neovim",
+        "repo": "neovim",
+        "rev": "371ad48135edc0584ea38272251167f23a998f09",
+        "type": "github"
+      },
+      "original": {
+        "owner": "neovim",
+        "repo": "neovim",
         "type": "github"
       }
     },
@@ -1667,32 +1742,6 @@
         "type": "github"
       }
     },
-    "openwrt-imagebuilder": {
-      "inputs": {
-        "flake-parts": [
-          "flake-parts"
-        ],
-        "nixpkgs": [
-          "nixpkgs"
-        ],
-        "systems": [
-          "systems"
-        ]
-      },
-      "locked": {
-        "lastModified": 1760689531,
-        "narHash": "sha256-8LdkSWh9RGOC/d9CZabD6yApSvLhGW0sunVddXNvPE4=",
-        "owner": "astro",
-        "repo": "nix-openwrt-imagebuilder",
-        "rev": "d28dca70df486b8f41a232b9dea144d194ea9d53",
-        "type": "github"
-      },
-      "original": {
-        "owner": "astro",
-        "repo": "nix-openwrt-imagebuilder",
-        "type": "github"
-      }
-    },
     "pre-commit-hooks": {
       "inputs": {
         "flake-compat": "flake-compat_4",
@@ -1839,6 +1888,7 @@
         "impermanence": "impermanence",
         "lanzaboote": "lanzaboote",
         "matugen": "matugen",
+        "neovim-nightly-overlay": "neovim-nightly-overlay",
         "nix-gaming": "nix-gaming",
         "nix-homebrew": "nix-homebrew",
         "nix-index-database": "nix-index-database",
@@ -1849,7 +1899,6 @@
         "nixos-generators": "nixos-generators",
         "nixpkgs": "nixpkgs_3",
         "nvidia-patch": "nvidia-patch",
-        "openwrt-imagebuilder": "openwrt-imagebuilder",
         "pre-commit-hooks": "pre-commit-hooks_2",
         "programs-sqlite": "programs-sqlite",
         "raspberry-pi-nix": "raspberry-pi-nix",

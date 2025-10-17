@@ -4,8 +4,7 @@
   pkgs,
   ...
 }: let
-  inherit (lib.modules) mkIf mkMerge;
-  inherit (lib.my) sourceLua;
+  inherit (lib.modules) mkIf;
   cfg = config.my.neovim.lazyvim;
 in {
   config = mkIf (cfg.picker == "fzf") {
@@ -16,10 +15,9 @@ in {
       excludePlugins = with pkgs.vimPlugins; [
         telescope-nvim
       ];
+      extraSpec = ''
+        { import = "lazyvim.plugins.editor.fzf" }
+      '';
     };
-
-    xdg.configFile = mkMerge [
-      (sourceLua "editor/fzf.lua")
-    ];
   };
 }
