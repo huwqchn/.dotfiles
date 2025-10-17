@@ -7,3 +7,4 @@ result/
 CLAUDE.md
 GEMINI.md
 QWEN.md
+.cache/nix

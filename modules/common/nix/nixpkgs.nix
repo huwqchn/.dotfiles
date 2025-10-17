@@ -1,8 +1,4 @@
 {
-  self,
-  inputs,
-  ...
-}: {
   # Global nixpkgs configuration. This is ignored if nixpkgs.pkgs is set
   # which is a case that should be avoided. Everything that is set to configure
   # nixpkgs must go here.
@@ -46,43 +42,5 @@
       # with maintainers, so it's disabled for the time being.
       showDerivationWarnings = [];
     };
-    overlays =
-      (builtins.attrValues self.overlays)
-      ++ [
-        inputs.emacs-overlay.overlay
-        (_final: prev: {
-          vimPlugins =
-            prev.vimPlugins
-            // {
-              project-nvim = prev.vimUtils.buildVimPlugin {
-                pname = "project.nvim";
-                version = "2025-10-18";
-                src = prev.fetchFromGitHub {
-                  owner = "ahmedkhalf";
-                  repo = "project.nvim";
-                  rev = "8c6bad7d22eef1b71144b401c9f74ed01526a4fb";
-                  hash = "sha256-avV3wMiDbraxW4mqlEsKy0oeewaRj9Q33K8NzWoaptU=";
-                };
-              };
-              venv-selector-nvim = prev.vimUtils.buildVimPlugin {
-                pname = "venv-selector.nvim";
-                version = "2025-10-18";
-                src = prev.fetchFromGitHub {
-                  owner = "linux-cultist";
-                  repo = "venv-selector.nvim";
-                  rev = "7fff64b5b1455207b9a9fd2ae8697cf9ac0b2a2d";
-                  hash = "sha256-m165YyY8VX0YQ5v6vxDJp4avDRrxByZQY+uMNkubggo=";
-                };
-              };
-            };
-        })
-        (_final: prev: {
-          qt6Packages = prev.qt6Packages.overrideScope (
-            _qt6final: qt6prev: {
-              fcitx5-with-addons = qt6prev.fcitx5-with-addons.override {withConfigtool = false;};
-            }
-          );
-        })
-      ];
   };
 }
