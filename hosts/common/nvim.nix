@@ -7,7 +7,8 @@
         config.enable = true;
         # ai
         windsurf.enable = true;
-        copilot.enable = true;
+        copilot.native.enable = true;
+        sidekick.enable = true;
         supermaven.enable = true;
         # coding
         mini-snippets.enable = true;
