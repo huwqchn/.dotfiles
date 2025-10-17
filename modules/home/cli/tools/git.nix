@@ -21,7 +21,7 @@
   '';
   tokenExportsFish = ''
     if test -f ${config.sops.secrets.github_token.path}
-      set -x GITHUB_TOKEN (${cat'} ${config.sops.secrets.github_token.path})
+      set -gx GITHUB_TOKEN (${cat'} ${config.sops.secrets.github_token.path})
     end
   '';
 in {

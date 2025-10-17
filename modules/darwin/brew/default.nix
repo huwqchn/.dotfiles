@@ -130,14 +130,12 @@
       "chatgpt" # open ai desktop
       # virtualization
       "utm" # virtual machines
-      "docker" # docker desktoplient
       # "karabiner-elements" # keyboard remap
       "yubico-authenticator" # for yubikey
       "veracrypt" # disk encryption
       # sing-box
       "sfm"
       "karabiner-elements" # keyboard remap
-      "mpv"
       "kindavim"
     ];
   };
