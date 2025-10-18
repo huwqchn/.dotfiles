@@ -13,8 +13,7 @@ in {
   config = mkIf enable {
     programs.zellij.settings = {
       theme = slug;
+      theme_dir = "${src}/extras/zellij";
     };
-
-    xdg.configFile."zellij/themes/${slug}.kdl".source = mkIf config.programs.zellij.enable "${src}/extras/zellij/${slug}.kdl";
   };
 }

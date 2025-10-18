@@ -4,14 +4,68 @@
   config,
   ...
 }: let
-  shellAliases = {"z" = "zellij";};
   cfg = config.my.zellij;
-  inherit (lib.options) mkEnableOption;
-  inherit (lib.modules) mkIf mkBefore;
-  inherit (lib.meta) getExe;
+  inherit (lib) mkEnableOption mkIf mkBefore getExe;
+
   shell = getExe (builtins.getAttr config.my.shell pkgs);
 
-  # Keyboard layout mappings similar to tmux
+  # Helper functions for cleaner keybind definitions
+  # mkBind converts a key-action pair into a Zellij keybind string
+  mkBind = key: action:
+    if builtins.isString action
+    then "bind \"${key}\" {${action};}"
+    else "bind \"${key}\" {${lib.concatStringsSep ";" action};}";
+
+  # mkUnbind creates an unbind directive for one or multiple keys
+  mkUnbind = key:
+    if builtins.isString key
+    then "unbind \"${key}\""
+    else lib.concatStringsSep " " (map (k: "unbind \"${k}\"") key);
+
+  # mkBinds converts an attrset of keybinds into Zellij format
+  mkBinds = binds:
+    lib.attrsets.mapAttrs' (key: action:
+      lib.attrsets.nameValuePair (mkBind key action) {})
+    binds;
+
+  # mkMode creates a mode with support for clear-defaults and unbind
+  # Usage:
+  #   mkMode "normal" {
+  #     clear-defaults = true;  # Optional: clear all default bindings
+  #     unbind = "Ctrl q";      # Optional: unbind specific key(s)
+  #     "Ctrl t" = "SwitchToMode \"Tmux\"";
+  #   }
+  mkMode = mode: bindings: let
+    clearDefaults = bindings.clear-defaults or false;
+    unbindKeys = bindings.unbind or null;
+    actualBindings = removeAttrs bindings ["clear-defaults" "unbind"];
+    modeName =
+      if clearDefaults
+      then "${mode} clear-defaults=true"
+      else mode;
+    modeBinds = mkBinds actualBindings;
+    unbindAttrs =
+      if unbindKeys != null
+      then lib.attrsets.genAttrs [mkUnbind unbindKeys] (_: {})
+      else {};
+  in
+    lib.attrsets.nameValuePair modeName (modeBinds // unbindAttrs);
+
+  # mkKeybinds converts an attrset of modes to Zellij keybinds format
+  # Usage:
+  #   mkKeybinds {
+  #     normal = { ... };
+  #     tmux = { ... };
+  #     scroll = { ... };
+  #   }
+  mkKeybinds = modes:
+    builtins.listToAttrs (lib.attrsets.mapAttrsToList mkMode modes);
+
+  # Common action builders
+  SwitchToMode = mode: "SwitchToMode \"${mode}\"";
+  GoToTab = tab: "GoToTab ${toString tab}";
+
+  # Keyboard layout mappings
   layouts = {
     qwerty = {
       left = "h";
@@ -31,6 +85,12 @@
     };
   };
   layout = layouts.${config.my.keyboardLayout or "qwerty"};
+
+  # Auto-start condition for zsh
+  autoStartCheck = ''
+    [[ -z "$ZELLIJ$SSH_TTY$WSL_DISTRO_NAME$INSIDE_PYCHARM$EMACS$VIM$NVIM$INSIDE_EMACS$TMUX" ]] \
+      && [[ "$TERM_PROGRAM" != "vscode" ]]
+  '';
 in {
   options.my.zellij = {
     enable = mkEnableOption "Zellij";
@@ -44,23 +104,18 @@ in {
         message = "Cannot enable both tmux.autoStart and zellij.autoStart simultaneously";
       }
     ];
+
     programs = {
       fish = mkIf cfg.autoStart {
         interactiveShellInit = ''
           if not set -q ZELLIJ
-             and test -z "$SSH_TTY"
-             and test -z "$WSL_DISTRO_NAME"
-             and test -z "$INSIDE_EMACS"
-             and test -z "$EMACS"
-             and test -z "$VIM"
-             and test -z "$NVIM"
-             and test -z "$INSIDE_PYCHARM"
-             and test -z "$TMUX"
+             and test -z "$SSH_TTY$WSL_DISTRO_NAME$INSIDE_EMACS$EMACS$VIM$NVIM$INSIDE_PYCHARM$TMUX"
              and test "$TERM_PROGRAM" != "vscode"
             zellij attach -c
           end
         '';
       };
+
       zsh = let
         key =
           if builtins.hasAttr "initContent" config.programs.zsh
@@ -69,198 +124,94 @@ in {
       in
         mkIf cfg.autoStart {
           "${key}" = mkBefore ''
-            if [[ -z "$ZELLIJ" ]] \
-              && [[ -z "$SSH_TTY" ]] \
-              && [[ -z "$WSL_DISTRO_NAME" ]] \
-              && [[ -z "$INSIDE_PYCHARM" ]] \
-              && [[ -z "$EMACS" ]] \
-              && [[ -z "$VIM" ]] \
-              && [[ -z "$NVIM" ]] \
-              && [[ -z "$INSIDE_EMACS" ]] \
-              && [[ -z "$TMUX" ]] \
-              && [[ "$TERM_PROGRAM" != "vscode" ]]
-            then
+            if ${autoStartCheck}; then
               zellij attach -c
             fi
           '';
         };
+
       zellij = {
         enable = true;
         settings = {
-          # Enable tmux mode for tmux-like behavior
-          default_mode = "tmux";
-          # Simplified UI - disable beginner mode helpers
+          default_mode = "locked";
+          default_shell = shell;
           pane_frames = false;
           simplified_ui = true;
-          # Session behavior
-          default_shell = shell;
           copy_on_select = false;
-          scrollback_editor = getExe config.programs.neovim.package;
-          # Mouse support
           mouse_mode = true;
-          # Copy behavior
+          scrollback_editor = getExe config.programs.neovim.package;
           copy_command =
             if pkgs.stdenv.hostPlatform.isDarwin
             then "pbcopy"
             else if pkgs.stdenv.hostPlatform.isLinux
             then "wl-copy"
             else "xclip -selection clipboard";
-          # Theme handled by theme modules
-          # Keybindings based on keyboard layout
-          keybinds = {
-            # Tmux mode keybindings (mimicking tmux behavior)
+
+          keybinds = mkKeybinds {
             tmux = {
-              # Unbind defaults that conflict
-              "bind \"Ctrl t\"" = {
-                SwitchToMode = "Normal";
-              };
-              # Pane navigation (Ctrl + hjkl/neio)
-              "bind \"Ctrl ${layout.left}\"" = {
-                MoveFocus = "Left";
-              };
-              "bind \"Ctrl ${layout.down}\"" = {
-                MoveFocus = "Down";
-              };
-              "bind \"Ctrl ${layout.up}\"" = {
-                MoveFocus = "Up";
-              };
-              "bind \"Ctrl ${layout.right}\"" = {
-                MoveFocus = "Right";
-              };
-              # Pane splitting (prefix + hjkl/neio)
-              "bind \"${layout.left}\"" = {
-                NewPane = "Left";
-                SwitchToMode = "Normal";
-              };
-              "bind \"${layout.down}\"" = {
-                NewPane = "Down";
-                SwitchToMode = "Normal";
-              };
-              "bind \"${layout.up}\"" = {
-                NewPane = "Up";
-                SwitchToMode = "Normal";
-              };
-              "bind \"${layout.right}\"" = {
-                NewPane = "Right";
-                SwitchToMode = "Normal";
-              };
+              "Ctrl t" = SwitchToMode "Normal";
+              # Pane navigation with Ctrl
+              "Ctrl ${layout.left}" = "MoveFocus \"Left\"";
+              "Ctrl ${layout.down}" = "MoveFocus \"Down\"";
+              "Ctrl ${layout.up}" = "MoveFocus \"Up\"";
+              "Ctrl ${layout.right}" = "MoveFocus \"Right\"";
+              # Pane splitting
+              "${layout.left}" = ["NewPane \"Left\"" (SwitchToMode "Normal")];
+              "${layout.down}" = ["NewPane \"Down\"" (SwitchToMode "Normal")];
+              "${layout.up}" = ["NewPane \"Up\"" (SwitchToMode "Normal")];
+              "${layout.right}" = ["NewPane \"Right\"" (SwitchToMode "Normal")];
               # Tab management
-              "bind \"c\"" = {
-                NewTab = {
-                  SwitchToMode = "Normal";
-                };
-              };
-              "bind \"${layout.next}\"" = {
-                GoToNextTab = {};
-              };
-              "bind \"${layout.prev}\"" = {
-                GoToPreviousTab = {};
-              };
-              "bind \"Tab\"" = {
-                ToggleTab = {};
-              };
+              "c" = ["NewTab" (SwitchToMode "Normal")];
+              "${layout.next}" = "GoToNextTab";
+              "${layout.prev}" = "GoToPreviousTab";
+              "Tab" = "ToggleTab";
+              # Quick tab access
+              "1" = [(GoToTab 1) (SwitchToMode "Normal")];
+              "2" = [(GoToTab 2) (SwitchToMode "Normal")];
+              "3" = [(GoToTab 3) (SwitchToMode "Normal")];
+              "4" = [(GoToTab 4) (SwitchToMode "Normal")];
+              "5" = [(GoToTab 5) (SwitchToMode "Normal")];
+              "6" = [(GoToTab 6) (SwitchToMode "Normal")];
+              "7" = [(GoToTab 7) (SwitchToMode "Normal")];
+              "8" = [(GoToTab 8) (SwitchToMode "Normal")];
+              "9" = [(GoToTab 9) (SwitchToMode "Normal")];
               # Pane management
-              "bind \"x\"" = {
-                CloseFocus = {};
-                SwitchToMode = "Normal";
-              };
-              "bind \"q\"" = {
-                CloseFocus = {};
-                SwitchToMode = "Normal";
-              };
-              "bind \"z\"" = {
-                ToggleFocusFullscreen = {};
-                SwitchToMode = "Normal";
-              };
+              "x" = ["CloseFocus" (SwitchToMode "Normal")];
+              "z" = ["ToggleFocusFullscreen" (SwitchToMode "Normal")];
               # Mode switches
-              "bind \"Space\"" = {
-                SwitchToMode = "Scroll";
-              };
-              "bind \"[\"" = {
-                SwitchToMode = "Scroll";
-              };
-              "bind \"s\"" = {
-                SwitchToMode = "Session";
-              };
-              "bind \"r\"" = {
-                SwitchToMode = "Resize";
-              };
-              "bind \"m\"" = {
-                SwitchToMode = "Move";
-              };
-              "bind \",\"" = {
-                SwitchToMode = "RenameTab";
-                TabNameInput = 0;
-              };
-              "bind \"d\"" = {
-                Detach = {};
-              };
+              "Space" = SwitchToMode "Scroll";
+              "[" = SwitchToMode "Scroll";
+              "s" = SwitchToMode "Session";
+              "r" = SwitchToMode "Resize";
+              "m" = SwitchToMode "Move";
+              "," = ["SwitchToMode \"RenameTab\"" "TabNameInput 0"];
+              "d" = "Detach";
             };
-            # Scroll mode (copy mode) with vim-like keybindings
             scroll = {
-              "bind \"${layout.down}\" \"${layout.up}\" \"${layout.left}\" \"${layout.right}\"" = {};
-              "bind \"Ctrl c\"" = {
-                ScrollToBottom = {};
-                SwitchToMode = "Normal";
-              };
-              "bind \"${layout.down}\"" = {
-                ScrollDown = {};
-              };
-              "bind \"${layout.up}\"" = {
-                ScrollUp = {};
-              };
-              "bind \"Ctrl f\"" = {
-                PageScrollDown = {};
-              };
-              "bind \"Ctrl b\"" = {
-                PageScrollUp = {};
-              };
-              "bind \"d\"" = {
-                HalfPageScrollDown = {};
-              };
-              "bind \"u\"" = {
-                HalfPageScrollUp = {};
-              };
-              "bind \"v\"" = {
-                SwitchToMode = "EnterSearch";
-                SearchInput = 0;
-              };
-              "bind \"/\"" = {
-                SwitchToMode = "EnterSearch";
-                SearchInput = 0;
-              };
-              "bind \"${layout.next}\"" = {
-                Search = "down";
-              };
-              "bind \"${layout.prev}\"" = {
-                Search = "up";
-              };
+              "${layout.down}" = "ScrollDown";
+              "${layout.up}" = "ScrollUp";
+              "g" = "ScrollToTop";
+              "G" = "ScrollToBottom";
+              "d" = "HalfPageScrollDown";
+              "u" = "HalfPageScrollUp";
+              "Ctrl f" = "PageScrollDown";
+              "Ctrl b" = "PageScrollUp";
+              "/" = "Search \"down\"";
+              "?" = "Search \"up\"";
+              "${layout.next}" = "Search \"down\"";
+              "${layout.prev}" = "Search \"up\"";
             };
-            # Resize mode
             resize = {
-              "bind \"${layout.left}\"" = {
-                Resize = "Increase Left";
-              };
-              "bind \"${layout.down}\"" = {
-                Resize = "Increase Down";
-              };
-              "bind \"${layout.up}\"" = {
-                Resize = "Increase Up";
-              };
-              "bind \"${layout.right}\"" = {
-                Resize = "Increase Right";
-              };
+              "${layout.left}" = "Resize \"Increase Left\"";
+              "${layout.down}" = "Resize \"Increase Down\"";
+              "${layout.up}" = "Resize \"Increase Up\"";
+              "${layout.right}" = "Resize \"Increase Right\"";
             };
-            # Shared bindings across modes
             shared_except_normal = {
-              "bind \"Esc\"" = {
-                SwitchToMode = "Normal";
-              };
+              "Esc" = SwitchToMode "Normal";
             };
             shared_except_tmux = {
-              "bind \"Ctrl t\"" = {
-                SwitchToMode = "Tmux";
-              };
+              "Ctrl t" = SwitchToMode "Tmux";
             };
           };
         };
@@ -268,7 +219,7 @@ in {
     };
 
     home = {
-      inherit shellAliases;
+      shellAliases.z = "zellij";
       persistence."/persist${config.home.homeDirectory}".directories = mkIf (config.home ? persistence) [
         ".local/share/zellij"
       ];
