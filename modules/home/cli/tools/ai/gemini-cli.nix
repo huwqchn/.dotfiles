@@ -10,16 +10,11 @@
   inherit (lib.modules) mkIf;
   inherit (lib.meta) getExe';
   cat' = getExe' pkgs.coreutils "cat";
-  tokenExportsBash = ''
-    if [ -f ${config.sops.secrets.google_cloud_project.path} ]; then
-      GOOGLE_CLOUD_PROJECT="$(${cat'} ${config.sops.secrets.google_cloud_project.path})"
-      export GOOGLE_CLOUD_PROJECT
+  secretPath = config.sops.secrets.google_cloud_project.path;
+  tokenExportShell = ''
+    if [ -f ${secretPath} ]; then
+      export GOOGLE_CLOUD_PROJECT="$(${cat'} ${secretPath})"
     fi
-  '';
-  tokenExportsFish = ''
-    if test -f ${config.sops.secrets.google_cloud_project.path}
-      set -x GOOGLE_CLOUD_PROJECT (${cat'} ${config.sops.secrets.google_cloud_project.path})
-    end
   '';
 in {
   options.my.gemini-cli = {
@@ -28,9 +23,13 @@ in {
 
   config = mkIf cfg.enable {
     programs = {
-      bash.initExtra = tokenExportsBash;
-      fish.shellInit = tokenExportsFish;
-      zsh.initContent = tokenExportsBash;
+      bash.initExtra = tokenExportShell;
+      fish.shellInit = ''
+        if test -f ${secretPath}
+          set -x GOOGLE_CLOUD_PROJECT (${cat'} ${secretPath})
+        end
+      '';
+      zsh.initContent = tokenExportShell;
       gemini-cli = {
         enable = true;
         package = inputs.nix-ai-tools.packages.${pkgs.system}.gemini-cli;

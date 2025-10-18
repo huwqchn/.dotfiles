@@ -27,6 +27,7 @@
     zoxide.enable = true;
     pet.enable = true;
     fuck.enable = true;
+    aichat.enable = true;
     claude-code.enable = true;
     codex.enable = true;
     gemini-cli.enable = true;

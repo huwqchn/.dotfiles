@@ -13,16 +13,11 @@
   inherit (lib.types) nullOr enum;
   inherit (lib.meta) getExe';
   cat' = getExe' pkgs.coreutils "cat";
-  tokenExportsBash = ''
-    if [ -f ${config.sops.secrets.github_token.path} ]; then
-      GITHUB_TOKEN="$(${cat'} ${config.sops.secrets.github_token.path})"
-      export GITHUB_TOKEN
+  secretPath = config.sops.secrets.github_token.path;
+  tokenExportShell = ''
+    if [ -f ${secretPath} ]; then
+      export GITHUB_TOKEN="$(${cat'} ${secretPath})"
     fi
-  '';
-  tokenExportsFish = ''
-    if test -f ${config.sops.secrets.github_token.path}
-      set -gx GITHUB_TOKEN (${cat'} ${config.sops.secrets.github_token.path})
-    end
   '';
 in {
   options.my.git = {
@@ -36,9 +31,13 @@ in {
 
   config = mkIf cfg.enable {
     programs = {
-      bash.initExtra = tokenExportsBash;
-      fish.shellInit = tokenExportsFish;
-      zsh.initContent = tokenExportsBash;
+      bash.initExtra = tokenExportShell;
+      fish.shellInit = ''
+        if test -f ${secretPath}
+          set -gx GITHUB_TOKEN (${cat'} ${secretPath})
+        end
+      '';
+      zsh.initContent = tokenExportShell;
       git = {
         enable = true;
         lfs.enable = true;
