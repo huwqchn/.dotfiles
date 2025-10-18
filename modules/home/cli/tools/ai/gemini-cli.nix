@@ -1,4 +1,5 @@
 {
+  inputs,
   config,
   lib,
   pkgs,
@@ -32,6 +33,7 @@ in {
       zsh.initContent = tokenExportsBash;
       gemini-cli = {
         enable = true;
+        package = inputs.nix-ai-tools.packages.${pkgs.system}.gemini-cli;
       };
     };
 
