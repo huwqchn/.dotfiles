@@ -17,8 +17,6 @@ in {
       black
     ];
 
-    my.neovim.lazyvim.extraSpec = ''
-      { import = "lazyvim.plugins.extras.formatting.black" },
-    '';
+    my.neovim.lazyvim.imports = ["lazyvim.plugins.extras.formatting.black"];
   };
 }

@@ -32,9 +32,7 @@ in {
           cmp-tabnine
         ];
 
-      extraSpec = ''
-        { import = "lazyvim.plugins.extras.ai.tabnine" },
-      '';
+      imports = ["lazyvim.plugins.extras.ai.tabnine"];
     };
     # programs.neovim.extraPackages = with pkgs; [
     #   tabnine

@@ -21,9 +21,7 @@ in {
         }
       ];
 
-      extraSpec = ''
-        { import = "lazyvim.plugins.extras.util.mini-hipatterns" },
-      '';
+      imports = ["lazyvim.plugins.extras.util.mini-hipatterns"];
     };
   };
 }

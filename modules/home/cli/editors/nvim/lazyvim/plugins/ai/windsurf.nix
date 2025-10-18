@@ -6,8 +6,7 @@
   ...
 }: let
   inherit (lib.options) mkEnableOption;
-  inherit (lib.modules) mkIf mkMerge;
-  inherit (lib.my) sourceLua;
+  inherit (lib.modules) mkIf;
   cfg = config.my.neovim.lazyvim.windsurf;
   inherit (config.home) homeDirectory;
   inherit (config.my) name;
@@ -27,9 +26,7 @@ in {
       # '';
     };
 
-    xdg.configFile = mkMerge [
-      (sourceLua "ai/windsurf.lua")
-    ];
+    my.neovim.lazyvim.config = ["ai/windsurf.lua"];
 
     sops.secrets.codeium = {
       sopsFile = "${self}/secrets/${name}/codeium";

@@ -5,8 +5,7 @@
   ...
 }: let
   inherit (lib.options) mkEnableOption;
-  inherit (lib.modules) mkIf mkMerge;
-  inherit (lib.my) sourceLua;
+  inherit (lib.modules) mkIf;
   cfg = config.my.neovim.lazyvim.winshift;
 in {
   options.my.neovim.lazyvim.winshift = {
@@ -16,8 +15,6 @@ in {
   config = mkIf cfg.enable {
     my.neovim.lazyvim.extraPlugins = with pkgs.vimPlugins; [winshift-nvim];
 
-    xdg.configFile = mkMerge [
-      (sourceLua "ui/winshift.lua")
-    ];
+    my.neovim.lazyvim.config = ["ui/winshift.lua"];
   };
 }

@@ -4,8 +4,7 @@
   pkgs,
   ...
 }: let
-  inherit (lib.modules) mkIf mkMerge;
-  inherit (lib.my) sourceLua;
+  inherit (lib.modules) mkIf;
   cfg = config.my.neovim.lazyvim;
 in {
   config = mkIf (cfg.explorer == "neo-tree") {
@@ -13,8 +12,6 @@ in {
       neo-tree
     ];
 
-    xdg.configFile = mkMerge [
-      (sourceLua "editor/neo-tree.lua")
-    ];
+    my.neovim.lazyvim.config = ["editor/neo-tree.lua"];
   };
 }

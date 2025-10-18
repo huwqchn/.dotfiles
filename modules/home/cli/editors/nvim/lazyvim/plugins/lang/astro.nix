@@ -13,18 +13,10 @@ in {
   };
 
   config = mkIf cfg.enable {
-    my.neovim = {
-      treesitterParsers = [
-        "astro"
-        "css"
-      ];
-      lazyvim = {
-        typescript.enable = true;
+    my.neovim.lazyvim = {
+      typescript.enable = true;
 
-        extraSpec = ''
-          { import = "lazyvim.plugins.extras.lang.astro" },
-        '';
-      };
+      imports = ["lazyvim.plugins.extras.lang.astro"];
     };
 
     programs.neovim.extraPackages = with pkgs; [

@@ -13,18 +13,11 @@ in {
   };
 
   config = mkIf cfg.enable {
-    my.neovim = {
-      treesitterParsers = [
-        "yaml"
+    my.neovim.lazyvim = {
+      extraPlugins = with pkgs.vimPlugins; [
+        SchemaStore-nvim
       ];
-      lazyvim = {
-        extraPlugins = with pkgs.vimPlugins; [
-          SchemaStore-nvim
-        ];
-        extraSpec = ''
-          { import = "lazyvim.plugins.extras.lang.yaml" },
-        '';
-      };
+      imports = ["lazyvim.plugins.extras.lang.yaml"];
     };
 
     programs.neovim.extraPackages = with pkgs; [

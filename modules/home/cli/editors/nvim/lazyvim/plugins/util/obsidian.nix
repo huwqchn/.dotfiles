@@ -5,8 +5,7 @@
   ...
 }: let
   inherit (lib.options) mkEnableOption;
-  inherit (lib.modules) mkIf mkMerge;
-  inherit (lib.my) sourceLua;
+  inherit (lib.modules) mkIf;
   cfg = config.my.neovim.lazyvim.obsidian;
 in {
   options.my.neovim.lazyvim.obsidian = {
@@ -19,8 +18,6 @@ in {
         obsidian-nvim
       ];
     };
-    xdg.configFile = mkMerge [
-      (sourceLua "util/obsidian.lua")
-    ];
+    my.neovim.lazyvim.config = ["util/obsidian.lua"];
   };
 }

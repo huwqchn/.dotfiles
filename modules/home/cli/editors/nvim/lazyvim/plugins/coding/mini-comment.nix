@@ -22,9 +22,7 @@ in {
         nvim-ts-context-commentstring
       ];
 
-      extraSpec = ''
-        { import = "lazyvim.plugins.extras.coding.mini-comment" },
-      '';
+      imports = ["lazyvim.plugins.extras.coding.mini-comment"];
     };
   };
 }

@@ -8,10 +8,10 @@
   inherit (lib.modules) mkIf;
   inherit (lib.attrsets) optionalAttrs;
   inherit (lib.my) relativeToConfig;
-  cfg = config.my.neovim.lazyvim.config;
+  cfg = config.my.neovim.lazyvim;
 in {
-  options.my.neovim.lazyvim.config = {
-    enable = mkEnableOption "LazyVim custom settings";
+  options.my.neovim.lazyvim.custom = {
+    enable = mkEnableOption "Custom Configs";
   };
 
   config = mkIf cfg.enable {
@@ -35,7 +35,6 @@ in {
       git-blame-nvim
       git-conflict-nvim
       undotree
-      playground
       dropbar-nvim
       scope-nvim
     ];

@@ -21,9 +21,7 @@ in {
         }
       ];
 
-      extraSpec = ''
-        { import = "lazyvim.plugins.extras.editor.mini-diff" },
-      '';
+      imports = ["lazyvim.plugins.extras.editor.mini-diff"];
     };
   };
 }

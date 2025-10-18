@@ -13,19 +13,7 @@ in {
   };
 
   config = mkIf cfg.enable {
-    my.neovim = {
-      treesitterParsers = [
-        "jsonc"
-        "bash"
-        "hyprlang"
-        "fish"
-        "rasi"
-      ];
-
-      lazyvim.extraSpec = ''
-        { import = "lazyvim.plugins.extras.util.dot" },
-      '';
-    };
+    my.neovim.lazyvim.imports = ["lazyvim.plugins.extras.util.dot"];
 
     programs.neovim.extraPackages = with pkgs; [
       shellcheck

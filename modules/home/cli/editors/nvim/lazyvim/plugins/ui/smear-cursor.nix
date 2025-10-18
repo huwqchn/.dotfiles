@@ -18,9 +18,7 @@ in {
         smear-cursor-nvim
       ];
 
-      extraSpec = ''
-        { import = "lazyvim.plugins.extras.ui.smear-cursor" },
-      '';
+      imports = ["lazyvim.plugins.extras.ui.smear-cursor"];
     };
   };
 }

@@ -5,8 +5,7 @@
   ...
 }: let
   inherit (lib.options) mkEnableOption;
-  inherit (lib.modules) mkIf mkMerge;
-  inherit (lib.my) sourceLua;
+  inherit (lib.modules) mkIf;
   cfg = config.my.neovim.lazyvim.yazi;
 in {
   options.my.neovim.lazyvim.yazi = {
@@ -18,8 +17,6 @@ in {
       yazi-nvim
     ];
 
-    xdg.configFile = mkMerge [
-      (sourceLua "editor/yazi.lua")
-    ];
+    my.neovim.lazyvim.config = ["editor/yazi.lua"];
   };
 }

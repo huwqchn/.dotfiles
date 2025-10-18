@@ -19,9 +19,7 @@ in {
         project-nvim
       ];
 
-      extraSpec = ''
-        { import = "lazyvim.plugins.extras.util.project" },
-      '';
+      imports = ["lazyvim.plugins.extras.util.project"];
     };
   };
 }

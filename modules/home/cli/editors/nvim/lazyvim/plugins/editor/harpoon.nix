@@ -18,9 +18,7 @@ in {
         harpoon
       ];
 
-      extraSpec = ''
-        { import = "lazyvim.plugins.extras.editor.harpoon2" },
-      '';
+      imports = ["lazyvim.plugins.extras.editor.harpoon2"];
     };
   };
 }

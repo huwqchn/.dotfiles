@@ -7,21 +7,23 @@
   inherit (lib.options) mkEnableOption mkOption;
   inherit (lib.types) enum lines;
   inherit (lib.modules) mkIf;
-
+  inherit (lib.types) coercedTo listOf oneOf package str submodule;
+  inherit (lib.lists) foldl';
+  inherit (lib.my) sourceLua;
+  extraLuaConfigs =
+    foldl' (acc: path: acc // sourceLua path) {}
+    cfg.config;
   cfg = config.my.neovim.lazyvim;
 
-  pluginsOptionType = let
-    inherit (lib.types) listOf oneOf package str submodule;
-  in
-    listOf (oneOf [
-      package
-      (submodule {
-        options = {
-          name = mkOption {type = str;};
-          path = mkOption {type = package;};
-        };
-      })
-    ]);
+  pluginsOptionType = listOf (oneOf [
+    package
+    (submodule {
+      options = {
+        name = mkOption {type = str;};
+        path = mkOption {type = package;};
+      };
+    })
+  ]);
 in {
   imports = [./config.nix ./plugins];
 
@@ -180,23 +182,75 @@ in {
       default = [];
     };
 
+    config = mkOption {
+      type = coercedTo str (path: [path]) (listOf str);
+      default = [];
+      description = ''
+        LazyVim Lua config files (relative to `nvim/lua/plugins/extras`) that
+        should be linked into `nvim/lua/plugins`. Accepts either a single string
+        or a list of strings.
+      '';
+    };
+
+    imports = mkOption {
+      type = listOf str;
+      default = [];
+      description = ''
+        LazyVim import modules to include in the generated spec.
+      '';
+    };
+
     extraSpec = mkOption {
       type = lines;
       default = "";
+      internal = true;
+      description = ''
+        Additional raw Lazy spec snippets appended after `imports`.
+      '';
     };
-  };
 
-  config = mkIf cfg.enable {
-    programs.neovim = {
-      enable = true;
-      extraPackages = with pkgs; [
-        # LazyVim
+    finalExtraSpec = mkOption {
+      type = lines;
+      readOnly = true;
+      internal = true;
+      description = ''
+        Derived Lazy spec snippet used during setup. Populated from `imports`
+        and `extraSpec`.
+      '';
+    };
+
+    extraPackages = mkOption {
+      default = with pkgs; [
+        # LazyVim essentials
         lua
         lua-language-server
         stylua
         vscode-langservers-extracted
         fd
       ];
+      example = lib.literalExpression ''
+        [ pkgs.ripgrep ]
+      '';
+      type = listOf package;
+    };
+  };
+
+  config = mkIf cfg.enable {
+    my.neovim.lazyvim.finalExtraSpec = let
+      importsSpec =
+        lib.concatMapStrings (import: ''
+          { import = "${import}" },
+        '')
+        cfg.imports;
+      specPieces = lib.filter (s: s != "") [importsSpec cfg.extraSpec];
+    in
+      builtins.concatStringsSep "\n" specPieces;
+
+    xdg.configFile = extraLuaConfigs;
+
+    programs.neovim = {
+      enable = true;
+      inherit (cfg) extraPackages;
 
       plugins = with pkgs.vimPlugins; [lazy-nvim];
 
@@ -209,7 +263,7 @@ in {
           }
           else drv;
 
-        lazyPath = pkgs.linkFarm "lazy-plugins" (builtins.map mkEntryFromDrv
+        lazyvimPlugins = pkgs.linkFarm "lazy-plugins" (builtins.map mkEntryFromDrv
           (lib.subtractLists cfg.excludePlugins cfg.plugins
             ++ cfg.extraPlugins));
       in ''
@@ -225,7 +279,7 @@ in {
           },
           ui = { border = "rounded" },
           dev = {
-            path = "${lazyPath}",
+            path = "${lazyvimPlugins}",
             patterns = { "" },
             fallback = true,
           },
@@ -252,20 +306,18 @@ in {
           },
           spec = {
             { "LazyVim/LazyVim", import = "lazyvim.plugins" },
-            ${cfg.extraSpec}
+            ${cfg.finalExtraSpec}
             { import = "plugins" },
             -- The following configs are needed for fixing lazyvim on nix
             -- disable mason.nvim, use programs.neovim.extraPackages
             { "mason-org/mason-lspconfig.nvim", enabled = false },
             { "mason-org/mason.nvim", enabled = false },
             -- import/override with your plugins
-            -- treesitter handled by my.neovim.treesitterParsers, put this line at the end of spec to clear ensure_installed
+            -- treesitter ships with all grammars via overlay; keep ensure_installed empty to skip downloads
             { "nvim-treesitter/nvim-treesitter", opts = function(_, opts) opts.ensure_installed = {} end },
           },
         })
       '';
     };
-
-    my.neovim.treesitterParsers = ["jsonc" "regex"];
   };
 }

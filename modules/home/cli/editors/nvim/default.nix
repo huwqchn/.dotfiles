@@ -5,10 +5,8 @@
   pkgs,
   ...
 }: let
-  inherit (lib.attrsets) attrVals;
-  inherit (lib.options) literalExpression mkEnableOption mkOption;
+  inherit (lib.options) mkEnableOption;
   inherit (lib.modules) mkIf;
-  inherit (lib.types) listOf oneOf str package;
   cfg = config.my.neovim;
 in {
   imports = [./lazyvim];
@@ -19,14 +17,6 @@ in {
       // {
         default = true;
       };
-
-    treesitterParsers = mkOption {
-      default = [];
-      example = literalExpression ''
-        [ "nix" pkgs.vimPlugins.nvim-treesitter-parsers.yaml ]
-      '';
-      type = listOf (oneOf [str package]);
-    };
   };
 
   config = mkIf cfg.enable {
@@ -46,18 +36,5 @@ in {
       vimAlias = true;
       vimdiffAlias = true;
     };
-
-    # https://github.com/nvim-treesitter/nvim-treesitter#i-get-query-error-invalid-node-type-at-position
-    xdg.configFile."nvim/parser".source = let
-      parserStrings = builtins.filter builtins.isString cfg.treesitterParsers;
-      parserPackages = builtins.filter lib.isDerivation cfg.treesitterParsers;
-      parsers = pkgs.symlinkJoin {
-        name = "treesitter-parsers";
-        paths =
-          (pkgs.vimPlugins.nvim-treesitter.withPlugins (plugins:
-              attrVals parserStrings plugins ++ parserPackages))
-          .dependencies;
-      };
-    in "${parsers}/parser";
   };
 }

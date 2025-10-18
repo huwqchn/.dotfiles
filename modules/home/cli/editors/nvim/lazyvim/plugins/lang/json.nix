@@ -13,21 +13,13 @@ in {
   };
 
   config = mkIf cfg.enable {
-    my.neovim = {
-      treesitterParsers = [
-        "json5"
+    my.neovim.lazyvim = {
+      extraPlugins = with pkgs.vimPlugins; [
+        SchemaStore-nvim
+        crates-nvim
       ];
 
-      lazyvim = {
-        extraPlugins = with pkgs.vimPlugins; [
-          SchemaStore-nvim
-          crates-nvim
-        ];
-
-        extraSpec = ''
-          { import = "lazyvim.plugins.extras.lang.json" },
-        '';
-      };
+      imports = ["lazyvim.plugins.extras.lang.json"];
     };
 
     programs.neovim.extraPackages = with pkgs; [

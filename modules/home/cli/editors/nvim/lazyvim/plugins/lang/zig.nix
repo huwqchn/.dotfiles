@@ -13,20 +13,12 @@ in {
   };
 
   config = mkIf cfg.enable {
-    my.neovim = {
-      treesitterParsers = [
-        "zig"
+    my.neovim.lazyvim = {
+      extraPlugins = with pkgs.vimPlugins; [
+        neotest-zig
       ];
 
-      lazyvim = {
-        extraPlugins = with pkgs.vimPlugins; [
-          neotest-zig
-        ];
-
-        extraSpec = ''
-          { import = "lazyvim.plugins.extras.lang.zig" },
-        '';
-      };
+      imports = ["lazyvim.plugins.extras.lang.zig"];
     };
 
     programs.neovim.extraPackages = with pkgs; [

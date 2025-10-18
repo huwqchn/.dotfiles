@@ -4,8 +4,7 @@
   pkgs,
   ...
 }: let
-  inherit (lib.modules) mkIf mkMerge;
-  inherit (lib.my) sourceLua;
+  inherit (lib.modules) mkIf;
   cfg = config.my.neovim.lazyvim;
 in {
   config = mkIf (cfg.cmp == "nvim-cmp") {
@@ -31,8 +30,6 @@ in {
       ];
     };
 
-    xdg.configFile = mkMerge [
-      (sourceLua "coding/nvim-cmp.lua")
-    ];
+    my.neovim.lazyvim.config = ["coding/nvim-cmp.lua"];
   };
 }

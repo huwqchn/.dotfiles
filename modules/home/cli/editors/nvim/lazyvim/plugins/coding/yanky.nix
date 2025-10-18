@@ -18,9 +18,7 @@ in {
         yanky-nvim
       ];
 
-      extraSpec = ''
-        { import = "lazyvim.plugins.extras.coding.yanky" },
-      '';
+      imports = ["lazyvim.plugins.extras.coding.yanky"];
     };
   };
 }

@@ -5,8 +5,7 @@
   ...
 }: let
   inherit (lib.options) mkEnableOption;
-  inherit (lib.modules) mkIf mkMerge;
-  inherit (lib.my) sourceLua;
+  inherit (lib.modules) mkIf;
   cfg = config.my.neovim.lazyvim.markdown;
 in {
   options.my.neovim.lazyvim.markdown = {
@@ -29,8 +28,6 @@ in {
       mermaid-cli # for snacks.image
     ];
 
-    xdg.configFile = mkMerge [
-      (sourceLua "lang/markdown.lua")
-    ];
+    my.neovim.lazyvim.config = ["lang/markdown.lua"];
   };
 }

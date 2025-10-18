@@ -13,21 +13,13 @@ in {
   };
 
   config = mkIf cfg.enable {
-    my.neovim = {
-      treesitterParsers = [
-        "c_sharp"
+    my.neovim.lazyvim = {
+      extraPlugins = with pkgs.vimPlugins; [
+        neotest-dotnet
+        omnisharp-extended-lsp-nvim
       ];
 
-      lazyvim = {
-        extraPlugins = with pkgs.vimPlugins; [
-          neotest-dotnet
-          omnisharp-extended-lsp-nvim
-        ];
-
-        extraSpec = ''
-          { import = "lazyvim.plugins.extras.lang.omnisharp" },
-        '';
-      };
+      imports = ["lazyvim.plugins.extras.lang.omnisharp"];
     };
 
     programs.neovim.extraPackages = with pkgs; [

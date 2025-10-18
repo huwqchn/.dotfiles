@@ -13,22 +13,14 @@ in {
   };
 
   config = mkIf cfg.enable {
-    my.neovim = {
-      treesitterParsers = [
-        "ninja"
-        "rst"
+    my.neovim.lazyvim = {
+      extraPlugins = with pkgs.vimPlugins; [
+        neotest-python
+        nvim-dap-python
+        venv-selector-nvim
       ];
-      lazyvim = {
-        extraPlugins = with pkgs.vimPlugins; [
-          neotest-python
-          nvim-dap-python
-          venv-selector-nvim
-        ];
 
-        extraSpec = ''
-          { import = "lazyvim.plugins.extras.lang.python" },
-        '';
-      };
+      imports = ["lazyvim.plugins.extras.lang.python"];
     };
 
     programs.neovim.extraPackages = with pkgs; [

@@ -18,9 +18,7 @@ in {
         neotest
       ];
 
-      extraSpec = ''
-        { import = "lazyvim.plugins.extras.test.core" },
-      '';
+      imports = ["lazyvim.plugins.extras.test.core"];
     };
   };
 }

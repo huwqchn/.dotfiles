@@ -18,9 +18,7 @@ in {
         inc-rename-nvim
       ];
 
-      extraSpec = ''
-        { import = "lazyvim.plugins.extras.editor.inc-rename" },
-      '';
+      imports = ["lazyvim.plugins.extras.editor.inc-rename"];
     };
   };
 }

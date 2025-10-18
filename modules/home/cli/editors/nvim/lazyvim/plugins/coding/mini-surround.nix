@@ -5,8 +5,7 @@
   ...
 }: let
   inherit (lib.options) mkEnableOption;
-  inherit (lib.modules) mkIf mkMerge;
-  inherit (lib.my) sourceLua;
+  inherit (lib.modules) mkIf;
   cfg = config.my.neovim.lazyvim.mini-surround;
 in {
   options.my.neovim.lazyvim.mini-surround = {
@@ -21,8 +20,6 @@ in {
       }
     ];
 
-    xdg.configFile = mkMerge [
-      (sourceLua "coding/mini-surround.lua")
-    ];
+    my.neovim.lazyvim.config = ["coding/mini-surround.lua"];
   };
 }

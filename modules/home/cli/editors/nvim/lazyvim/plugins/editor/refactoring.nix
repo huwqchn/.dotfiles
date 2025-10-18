@@ -18,9 +18,7 @@ in {
         refactoring-nvim
       ];
 
-      extraSpec = ''
-        { import = "lazyvim.plugins.extras.editor.refactoring" },
-      '';
+      imports = ["lazyvim.plugins.extras.editor.refactoring"];
     };
   };
 }

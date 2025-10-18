@@ -7,10 +7,15 @@
     (builtins.attrValues self.overlays)
     ++ [
       inputs.emacs-overlay.overlay
+      inputs.nvim-treesitter-main.overlays.default
       (_final: prev: {
-        vimPlugins =
-          prev.vimPlugins
-          // {
+        vimPlugins = prev.vimPlugins.extend (
+          f: p: {
+            nvim-treesitter = p.nvim-treesitter.withAllGrammars; # or withPlugins...
+            # also redefine nvim-treesitter-textobjects (any other plugins that depend on nvim-treesitter)
+            nvim-treesitter-textobjects = p.nvim-treesitter-textobjects.overrideAttrs {
+              dependencies = [f.nvim-treesitter];
+            };
             project-nvim = prev.vimUtils.buildVimPlugin {
               pname = "project.nvim";
               version = "2025-10-18";
@@ -21,6 +26,7 @@
                 hash = "sha256-avV3wMiDbraxW4mqlEsKy0oeewaRj9Q33K8NzWoaptU=";
               };
             };
+
             venv-selector-nvim = prev.vimUtils.buildVimPlugin {
               pname = "venv-selector.nvim";
               version = "2025-10-18";
@@ -31,7 +37,8 @@
                 hash = "sha256-m165YyY8VX0YQ5v6vxDJp4avDRrxByZQY+uMNkubggo=";
               };
             };
-          };
+          }
+        );
       })
       (_final: prev: {
         qt6Packages = prev.qt6Packages.overrideScope (

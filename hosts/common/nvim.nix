@@ -4,7 +4,6 @@
       enable = true;
       lazyvim = {
         enable = true;
-        config.enable = true;
         # ai
         windsurf.enable = true;
         copilot.native.enable = true;

@@ -18,9 +18,7 @@ in {
         overseer-nvim
       ];
 
-      extraSpec = ''
-        { import = "lazyvim.plugins.extras.editor.overseer" },
-      '';
+      imports = ["lazyvim.plugins.extras.editor.overseer"];
     };
   };
 }

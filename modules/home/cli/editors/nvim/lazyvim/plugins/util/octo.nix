@@ -18,9 +18,7 @@ in {
         octo-nvim
       ];
 
-      extraSpec = ''
-        { import = "lazyvim.plugins.extras.util.octo" },
-      '';
+      imports = ["lazyvim.plugins.extras.util.octo"];
     };
   };
 }

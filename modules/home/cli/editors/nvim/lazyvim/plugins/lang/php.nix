@@ -13,15 +13,7 @@ in {
   };
 
   config = mkIf cfg.enable {
-    my.neovim = {
-      treesitterParsers = [
-        "php"
-      ];
-
-      lazyvim.extraSpec = ''
-        { import = "lazyvim.plugins.extras.lang.php" },
-      '';
-    };
+    my.neovim.lazyvim.imports = ["lazyvim.plugins.extras.lang.php"];
 
     programs.neovim.extraPackages = with pkgs; [
       phpactor

@@ -5,8 +5,7 @@
   ...
 }: let
   inherit (lib.options) mkEnableOption;
-  inherit (lib.modules) mkIf mkMerge;
-  inherit (lib.my) sourceLua;
+  inherit (lib.modules) mkIf;
   cfg = config.my.neovim.lazyvim.gx;
 in {
   options.my.neovim.lazyvim.gx = {
@@ -18,8 +17,6 @@ in {
       gx-nvim
     ];
 
-    xdg.configFile = mkMerge [
-      (sourceLua "ui/gx.lua")
-    ];
+    my.neovim.lazyvim.config = ["ui/gx.lua"];
   };
 }

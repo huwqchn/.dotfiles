@@ -18,9 +18,7 @@ in {
         startuptime-nvim
       ];
 
-      extraSpec = ''
-        { import = "lazyvim.plugins.extras.util.startuptime" },
-      '';
+      imports = ["lazyvim.plugins.extras.util.startuptime"];
     };
   };
 }

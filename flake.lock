@@ -1742,6 +1742,62 @@
         "type": "github"
       }
     },
+    "nvim-treesitter": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1760260935,
+        "narHash": "sha256-To/syCZPs7vKA0WkuBz7ZxCGT/wzj705QfxZng6Nsjo=",
+        "owner": "nvim-treesitter",
+        "repo": "nvim-treesitter",
+        "rev": "0606c7a9dcaa5c5beee0b0f09043e9fdd1ba0a68",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nvim-treesitter",
+        "ref": "main",
+        "repo": "nvim-treesitter",
+        "type": "github"
+      }
+    },
+    "nvim-treesitter-main": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ],
+        "nvim-treesitter": "nvim-treesitter",
+        "nvim-treesitter-textobjects": "nvim-treesitter-textobjects"
+      },
+      "locked": {
+        "lastModified": 1760413001,
+        "narHash": "sha256-Z9H9C41QtWVcEDeUtMAUuvWo9x6NCda7UHBzmvrd1m8=",
+        "owner": "iofq",
+        "repo": "nvim-treesitter-main",
+        "rev": "976859670cb4da623a7178fb856005be02024a5a",
+        "type": "github"
+      },
+      "original": {
+        "owner": "iofq",
+        "repo": "nvim-treesitter-main",
+        "type": "github"
+      }
+    },
+    "nvim-treesitter-textobjects": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1756368113,
+        "narHash": "sha256-+KmOpRi4JAqm6UqYdtk80jwFrJhLCs0lZM/Liofq0R4=",
+        "owner": "nvim-treesitter",
+        "repo": "nvim-treesitter-textobjects",
+        "rev": "1b2d85d3de6114c4bcea89ffb2cd1ce9e3a19931",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nvim-treesitter",
+        "ref": "main",
+        "repo": "nvim-treesitter-textobjects",
+        "type": "github"
+      }
+    },
     "pre-commit-hooks": {
       "inputs": {
         "flake-compat": "flake-compat_4",
@@ -1899,6 +1955,7 @@
         "nixos-generators": "nixos-generators",
         "nixpkgs": "nixpkgs_3",
         "nvidia-patch": "nvidia-patch",
+        "nvim-treesitter-main": "nvim-treesitter-main",
         "pre-commit-hooks": "pre-commit-hooks_2",
         "programs-sqlite": "programs-sqlite",
         "raspberry-pi-nix": "raspberry-pi-nix",

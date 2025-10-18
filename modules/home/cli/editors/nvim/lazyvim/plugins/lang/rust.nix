@@ -13,22 +13,13 @@ in {
   };
 
   config = mkIf cfg.enable {
-    my.neovim = {
-      treesitterParsers = [
-        "rust"
-        "ron"
+    my.neovim.lazyvim = {
+      extraPlugins = with pkgs.vimPlugins; [
+        rustaceanvim
+        crates-nvim
       ];
 
-      lazyvim = {
-        extraPlugins = with pkgs.vimPlugins; [
-          rustaceanvim
-          crates-nvim
-        ];
-
-        extraSpec = ''
-          { import = "lazyvim.plugins.extras.lang.rust" },
-        '';
-      };
+      imports = ["lazyvim.plugins.extras.lang.rust"];
     };
 
     programs.neovim.extraPackages = with pkgs; [

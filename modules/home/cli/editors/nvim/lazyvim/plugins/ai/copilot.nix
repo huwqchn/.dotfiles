@@ -7,7 +7,6 @@
 }: let
   inherit (lib.options) mkEnableOption;
   inherit (lib.modules) mkIf mkMerge;
-  inherit (lib.my) sourceLua;
   inherit (config.my) name;
   inherit (lib) optionals;
   cfg = config.my.neovim.lazyvim.copilot;
@@ -30,7 +29,7 @@ in {
     }
 
     (mkIf (cfg.lua.enable || cfg.native.enable || cfg.chat.enable) {
-      programs.neovim.extraPackages = with pkgs; [nodejs_24];
+      my.neovim.lazyvim.extraPackages = with pkgs; [nodejs_24];
 
       sops.secrets.github-copilot = {
         sopsFile = "${self}/secrets/${name}/github-copilot";
@@ -48,20 +47,14 @@ in {
           == "blink"
           || config.my.neovim.lazyvim.cmp == "auto") [blink-cmp-copilot];
 
-      xdg.configFile = mkMerge [
-        (sourceLua "ai/copilot.lua")
-      ];
+      my.neovim.lazyvim.config = ["ai/copilot.lua"];
     })
     (mkIf cfg.chat.enable {
       my.neovim.lazyvim.extraPlugins = with pkgs.vimPlugins; [CopilotChat-nvim];
-      xdg.configFile = mkMerge [
-        (sourceLua "ai/copilot-chat.lua")
-      ];
+      my.neovim.lazyvim.config = ["ai/copilot-chat.lua"];
     })
     (mkIf cfg.native.enable {
-      my.neovim.lazyvim.extraSpec = ''
-        { import = "lazyvim.plugins.extras.ai.copilot-native" },
-      '';
+      my.neovim.lazyvim.imports = ["lazyvim.plugins.extras.ai.copilot-native"];
     })
   ];
 }

@@ -21,9 +21,7 @@ in {
         supermaven-nvim
       ];
 
-      extraSpec = ''
-        { import = "lazyvim.plugins.extras.ai.supermaven" },
-      '';
+      imports = ["lazyvim.plugins.extras.ai.supermaven"];
     };
 
     sops.secrets.supermaven = {

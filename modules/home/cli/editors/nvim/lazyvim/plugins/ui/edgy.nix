@@ -18,9 +18,7 @@ in {
         edgy-nvim
       ];
 
-      extraSpec = ''
-        { import = "lazyvim.plugins.extras.ui.edgy" },
-      '';
+      imports = ["lazyvim.plugins.extras.ui.edgy"];
     };
   };
 }

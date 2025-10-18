@@ -4,8 +4,7 @@
   pkgs,
   ...
 }: let
-  inherit (lib.modules) mkIf mkMerge;
-  inherit (lib.my) sourceLua;
+  inherit (lib.modules) mkIf;
   cfg = config.my.neovim.lazyvim;
 in {
   config = mkIf (cfg.picker == "telescope") {
@@ -21,8 +20,6 @@ in {
       ];
     };
 
-    xdg.configFile = mkMerge [
-      (sourceLua "editor/telescope.lua")
-    ];
+    my.neovim.lazyvim.config = ["editor/telescope.lua"];
   };
 }

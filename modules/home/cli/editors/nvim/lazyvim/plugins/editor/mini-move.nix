@@ -5,8 +5,7 @@
   ...
 }: let
   inherit (lib.options) mkEnableOption;
-  inherit (lib.modules) mkIf mkMerge;
-  inherit (lib.my) sourceLua;
+  inherit (lib.modules) mkIf;
   cfg = config.my.neovim.lazyvim.mini-move;
 in {
   options.my.neovim.lazyvim.mini-move = {
@@ -21,8 +20,6 @@ in {
       }
     ];
 
-    xdg.configFile = mkMerge [
-      (sourceLua "editor/mini-move.lua")
-    ];
+    my.neovim.lazyvim.config = ["editor/mini-move.lua"];
   };
 }

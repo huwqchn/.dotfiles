@@ -13,19 +13,10 @@ in {
   };
 
   config = mkIf cfg.enable {
-    my.neovim = {
-      treesitterParsers = [
-        "angular"
-        "scss"
-      ];
+    my.neovim.lazyvim = {
+      typescript.enable = true;
 
-      lazyvim = {
-        typescript.enable = true;
-
-        extraSpec = ''
-          { import = "lazyvim.plugins.extras.lang.angular" },
-        '';
-      };
+      imports = ["lazyvim.plugins.extras.lang.angular"];
     };
 
     programs.neovim.extraPackages = with pkgs; [

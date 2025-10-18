@@ -17,8 +17,6 @@ in {
       nodePackages.prettier
     ];
 
-    my.neovim.lazyvim.extraSpec = ''
-      { import = "lazyvim.plugins.extras.formatting.prettier" },
-    '';
+    my.neovim.lazyvim.imports = ["lazyvim.plugins.extras.formatting.prettier"];
   };
 }

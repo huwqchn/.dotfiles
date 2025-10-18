@@ -13,23 +13,16 @@ in {
   };
 
   config = mkIf cfg.enable {
-    my.neovim = {
-      treesitterParsers = [
-        "cmake"
+    my.neovim.lazyvim = {
+      excludePlugins = with pkgs.vimPlugins; [
+        cmake-tools-nvim
       ];
-      lazyvim = {
-        excludePlugins = with pkgs.vimPlugins; [
-          cmake-tools-nvim
-        ];
 
-        extraPlugins = with pkgs.vimPlugins; [
-          cmake-tools-nvim
-        ];
+      extraPlugins = with pkgs.vimPlugins; [
+        cmake-tools-nvim
+      ];
 
-        extraSpec = ''
-          { import = "lazyvim.plugins.extras.lang.cmake" },
-        '';
-      };
+      imports = ["lazyvim.plugins.extras.lang.cmake"];
     };
 
     programs.neovim.extraPackages = with pkgs; [

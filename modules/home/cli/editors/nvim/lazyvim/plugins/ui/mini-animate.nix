@@ -5,8 +5,7 @@
   ...
 }: let
   inherit (lib.options) mkEnableOption;
-  inherit (lib.modules) mkIf mkMerge;
-  inherit (lib.my) sourceLua;
+  inherit (lib.modules) mkIf;
   cfg = config.my.neovim.lazyvim.mini-animate;
 in {
   options.my.neovim.lazyvim.mini-animate = {
@@ -20,8 +19,6 @@ in {
         path = mini-nvim;
       }
     ];
-    xdg.configFile = mkMerge [
-      (sourceLua "ui/mini-animate.lua")
-    ];
+    my.neovim.lazyvim.config = ["ui/mini-animate.lua"];
   };
 }

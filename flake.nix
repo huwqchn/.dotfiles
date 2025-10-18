@@ -253,6 +253,10 @@
         treefmt-nix.follows = "treefmt";
       };
     };
+    nvim-treesitter-main = {
+      url = "github:iofq/nvim-treesitter-main";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     # spicetify-nix
     spicetify-nix = {

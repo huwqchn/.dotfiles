@@ -5,8 +5,7 @@
   ...
 }: let
   inherit (lib.options) mkEnableOption;
-  inherit (lib.modules) mkIf mkMerge;
-  inherit (lib.my) sourceLua;
+  inherit (lib.modules) mkIf;
   cfg = config.my.neovim.lazyvim.sidekick;
 in {
   options.my.neovim.lazyvim.sidekick = {
@@ -18,8 +17,6 @@ in {
       sidekick-nvim
     ];
 
-    xdg.configFile = mkMerge [
-      (sourceLua "ai/sidekick.lua")
-    ];
+    my.neovim.lazyvim.config = ["ai/sidekick.lua"];
   };
 }

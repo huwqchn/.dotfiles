@@ -15,9 +15,7 @@ in {
       excludePlugins = with pkgs.vimPlugins; [
         telescope-nvim
       ];
-      extraSpec = ''
-        { import = "lazyvim.plugins.editor.fzf" }
-      '';
+      imports = ["lazyvim.plugins.editor.fzf"];
     };
   };
 }

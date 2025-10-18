@@ -18,9 +18,7 @@ in {
         neogen
       ];
 
-      extraSpec = ''
-        { import = "lazyvim.plugins.extras.coding.neogen" },
-      '';
+      imports = ["lazyvim.plugins.extras.coding.neogen"];
     };
   };
 }

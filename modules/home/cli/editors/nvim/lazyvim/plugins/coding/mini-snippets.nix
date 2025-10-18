@@ -28,9 +28,7 @@ in {
         nvim-snippets
       ];
 
-      extraSpec = ''
-        { import = "lazyvim.plugins.extras.coding.mini-snippets" },
-      '';
+      imports = ["lazyvim.plugins.extras.coding.mini-snippets"];
     };
   };
 }

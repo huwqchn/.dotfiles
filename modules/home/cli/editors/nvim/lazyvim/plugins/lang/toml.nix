@@ -13,15 +13,7 @@ in {
   };
 
   config = mkIf cfg.enable {
-    my.neovim = {
-      treesitterParsers = [
-        "toml"
-      ];
-
-      lazyvim.extraSpec = ''
-        { import = "lazyvim.plugins.extras.lang.toml" },
-      '';
-    };
+    my.neovim.lazyvim.imports = ["lazyvim.plugins.extras.lang.toml"];
 
     programs.neovim.extraPackages = with pkgs; [
       taplo

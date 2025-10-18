@@ -13,20 +13,12 @@ in {
   };
 
   config = mkIf cfg.enable {
-    my.neovim = {
-      treesitterParsers = [
-        "java"
+    my.neovim.lazyvim = {
+      extraPlugins = with pkgs.vimPlugins; [
+        nvim-jdtls
       ];
 
-      lazyvim = {
-        extraPlugins = with pkgs.vimPlugins; [
-          nvim-jdtls
-        ];
-
-        extraSpec = ''
-          { import = "lazyvim.plugins.extras.lang.java" },
-        '';
-      };
+      imports = ["lazyvim.plugins.extras.lang.java"];
     };
 
     programs.neovim.extraPackages = with pkgs; [

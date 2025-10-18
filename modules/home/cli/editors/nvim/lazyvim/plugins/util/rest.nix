@@ -18,9 +18,7 @@ in {
         kulala-nvim
       ];
 
-      extraSpec = ''
-        { import = "lazyvim.plugins.extras.util.rest" },
-      '';
+      imports = ["lazyvim.plugins.extras.util.rest"];
     };
   };
 }

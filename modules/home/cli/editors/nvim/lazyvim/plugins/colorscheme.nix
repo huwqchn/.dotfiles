@@ -1,13 +1,10 @@
 {
   config,
-  lib,
   pkgs,
   ...
 }: let
   # inherit (lib.options) mkOption;
   # inherit (lib.types) enum;
-  inherit (lib.modules) mkMerge;
-  inherit (lib.my) sourceLua;
   inherit (config.my.theme) name;
 in {
   # options.my.neovim.lazyvim.colorscheme = mkOption {
@@ -37,8 +34,6 @@ in {
       else [];
 
     # FIXME: not working when theme is auto
-    xdg.configFile = mkMerge [
-      (sourceLua "colorscheme/${name}.lua")
-    ];
+    my.neovim.lazyvim.config = ["colorscheme/${name}.lua"];
   };
 }

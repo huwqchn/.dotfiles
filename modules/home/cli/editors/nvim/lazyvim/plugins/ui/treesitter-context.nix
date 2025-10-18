@@ -18,9 +18,7 @@ in {
         nvim-treesitter-context
       ];
 
-      extraSpec = ''
-        { import = "lazyvim.plugins.extras.ui.treesitter-context" },
-      '';
+      imports = ["lazyvim.plugins.extras.ui.treesitter-context"];
     };
   };
 }

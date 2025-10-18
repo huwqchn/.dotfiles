@@ -17,8 +17,6 @@ in {
       biome
     ];
 
-    my.neovim.lazyvim.extraSpec = ''
-      { import = "lazyvim.plugins.extras.formatting.biome" },
-    '';
+    my.neovim.lazyvim.imports = ["lazyvim.plugins.extras.formatting.biome"];
   };
 }
