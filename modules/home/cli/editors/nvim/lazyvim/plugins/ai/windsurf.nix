@@ -24,9 +24,9 @@ in {
       # extraSpec = ''
       #   { import = "lazyvim.plugins.extras.ai.codeium" },
       # '';
-    };
 
-    my.neovim.lazyvim.config = ["ai/windsurf.lua"];
+      config = ["ai/windsurf.lua"];
+    };
 
     sops.secrets.codeium = {
       sopsFile = "${self}/secrets/${name}/codeium";

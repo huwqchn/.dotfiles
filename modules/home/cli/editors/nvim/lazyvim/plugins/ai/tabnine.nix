@@ -34,7 +34,7 @@ in {
 
       imports = ["lazyvim.plugins.extras.ai.tabnine"];
     };
-    # programs.neovim.extraPackages = with pkgs; [
+    # my.neovim.lazyvim.extraPackages = with pkgs; [
     #   tabnine
     # ];
 

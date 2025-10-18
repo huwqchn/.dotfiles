@@ -23,12 +23,12 @@ in {
       ];
 
       imports = ["lazyvim.plugins.extras.lang.cmake"];
-    };
 
-    programs.neovim.extraPackages = with pkgs; [
-      cmake-language-server
-      cmake-lint
-      neocmakelsp
-    ];
+      extraPackages = with pkgs; [
+        cmake-language-server
+        cmake-lint
+        neocmakelsp
+      ];
+    };
   };
 }

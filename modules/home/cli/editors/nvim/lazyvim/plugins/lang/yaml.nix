@@ -18,10 +18,9 @@ in {
         SchemaStore-nvim
       ];
       imports = ["lazyvim.plugins.extras.lang.yaml"];
+      extraPackages = with pkgs; [
+        yaml-language-server
+      ];
     };
-
-    programs.neovim.extraPackages = with pkgs; [
-      yaml-language-server
-    ];
   };
 }

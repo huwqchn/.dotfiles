@@ -19,11 +19,11 @@ in {
       ];
 
       imports = ["lazyvim.plugins.extras.lang.java"];
-    };
 
-    programs.neovim.extraPackages = with pkgs; [
-      vscode-extensions.vscjava.vscode-java-debug
-      vscode-extensions.vscjava.vscode-java-test
-    ];
+      extraPackages = with pkgs; [
+        vscode-extensions.vscjava.vscode-java-debug
+        vscode-extensions.vscjava.vscode-java-test
+      ];
+    };
   };
 }

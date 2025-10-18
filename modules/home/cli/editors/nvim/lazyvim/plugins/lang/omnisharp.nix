@@ -20,11 +20,11 @@ in {
       ];
 
       imports = ["lazyvim.plugins.extras.lang.omnisharp"];
-    };
 
-    programs.neovim.extraPackages = with pkgs; [
-      csharpier
-      netcoredbg
-    ];
+      extraPackages = with pkgs; [
+        csharpier
+        netcoredbg
+      ];
+    };
   };
 }

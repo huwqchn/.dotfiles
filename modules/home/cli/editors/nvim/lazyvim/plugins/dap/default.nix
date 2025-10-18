@@ -26,8 +26,8 @@ in {
       extraSpec = ''
         { "jay-babu/mason-nvim-dap.nvim", enabled = false },
       '';
-    };
 
-    my.neovim.lazyvim.config = ["editor/dap.lua"];
+      config = ["editor/dap.lua"];
+    };
   };
 }

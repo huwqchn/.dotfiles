@@ -20,7 +20,7 @@ in {
     */
     my.neovim.lazyvim.imports = ["lazyvim.plugins.extras.lang.tailwind"];
 
-    programs.neovim.extraPackages = with pkgs; [
+    my.neovim.lazyvim.extraPackages = with pkgs; [
       tailwindcss
     ];
   };

@@ -15,7 +15,7 @@ in {
   config = mkIf cfg.enable {
     my.neovim.lazyvim.imports = ["lazyvim.plugins.extras.lang.docker"];
 
-    programs.neovim.extraPackages = with pkgs; [
+    my.neovim.lazyvim.extraPackages = with pkgs; [
       hadolint
     ];
   };

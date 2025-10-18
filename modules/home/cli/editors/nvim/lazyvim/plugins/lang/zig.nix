@@ -19,10 +19,10 @@ in {
       ];
 
       imports = ["lazyvim.plugins.extras.lang.zig"];
-    };
 
-    programs.neovim.extraPackages = with pkgs; [
-      zls
-    ];
+      extraPackages = with pkgs; [
+        zls
+      ];
+    };
   };
 }

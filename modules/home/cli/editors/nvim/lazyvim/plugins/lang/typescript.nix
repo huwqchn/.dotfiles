@@ -15,7 +15,7 @@ in {
   config = mkIf cfg.enable {
     my.neovim.lazyvim.imports = ["lazyvim.plugins.extras.lang.typescript"];
 
-    programs.neovim.extraPackages = with pkgs; [
+    my.neovim.lazyvim.extraPackages = with pkgs; [
       typescript-language-server
       vtsls
     ];

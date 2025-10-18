@@ -17,10 +17,10 @@ in {
       typescript.enable = true;
 
       imports = ["lazyvim.plugins.extras.lang.astro"];
-    };
 
-    programs.neovim.extraPackages = with pkgs; [
-      astro-language-server
-    ];
+      extraPackages = with pkgs; [
+        astro-language-server
+      ];
+    };
   };
 }

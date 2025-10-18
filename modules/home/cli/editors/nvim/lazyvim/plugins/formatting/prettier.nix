@@ -13,7 +13,7 @@ in {
   };
 
   config = mkIf cfg.enable {
-    programs.neovim.extraPackages = with pkgs; [
+    my.neovim.lazyvim.extraPackages = with pkgs; [
       nodePackages.prettier
     ];
 

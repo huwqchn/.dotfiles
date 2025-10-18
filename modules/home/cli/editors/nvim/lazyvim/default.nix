@@ -309,7 +309,7 @@ in {
             ${cfg.finalExtraSpec}
             { import = "plugins" },
             -- The following configs are needed for fixing lazyvim on nix
-            -- disable mason.nvim, use programs.neovim.extraPackages
+            -- disable mason.nvim, use my.neovim.lazyvim.extraPackages
             { "mason-org/mason-lspconfig.nvim", enabled = false },
             { "mason-org/mason.nvim", enabled = false },
             -- import/override with your plugins

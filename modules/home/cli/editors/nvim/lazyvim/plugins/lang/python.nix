@@ -21,12 +21,12 @@ in {
       ];
 
       imports = ["lazyvim.plugins.extras.lang.python"];
-    };
 
-    programs.neovim.extraPackages = with pkgs; [
-      pyright
-      ruff
-      basedpyright
-    ];
+      extraPackages = with pkgs; [
+        pyright
+        ruff
+        basedpyright
+      ];
+    };
   };
 }

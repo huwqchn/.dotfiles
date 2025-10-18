@@ -16,9 +16,9 @@ in {
         lean-nvim
       ];
       imports = ["lazyvim.plugins.extras.lang.lean"];
+      extraPackages = with pkgs; [
+        lean4
+      ];
     };
-    programs.neovim.extraPackages = with pkgs; [
-      lean4
-    ];
   };
 }

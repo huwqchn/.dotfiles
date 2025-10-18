@@ -18,7 +18,7 @@ in {
       render-markdown-nvim
     ];
 
-    programs.neovim.extraPackages = with pkgs; [
+    my.neovim.lazyvim.extraPackages = with pkgs; [
       markdownlint-cli2
       marksman
       imagemagick # for snacks.image

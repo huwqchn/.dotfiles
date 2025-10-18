@@ -23,10 +23,10 @@ in {
         ++ lib.optionals (config.my.neovim.lazyvim.cmp == "nvim-cmp") [cmp-conjure];
 
       imports = ["lazyvim.plugins.extras.lang.clojure"];
-    };
 
-    programs.neovim.extraPackages = with pkgs; [
-      astro-language-server
-    ];
+      extraPackages = with pkgs; [
+        astro-language-server
+      ];
+    };
   };
 }

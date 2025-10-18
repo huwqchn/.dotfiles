@@ -17,7 +17,7 @@ in {
       extraPlugins = with pkgs.vimPlugins; [
         obsidian-nvim
       ];
+      config = ["util/obsidian.lua"];
     };
-    my.neovim.lazyvim.config = ["util/obsidian.lua"];
   };
 }

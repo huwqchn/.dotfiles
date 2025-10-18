@@ -28,8 +28,8 @@ in {
         blink-cmp
         blink-compat
       ];
-    };
 
-    my.neovim.lazyvim.config = ["coding/nvim-cmp.lua"];
+      config = ["coding/nvim-cmp.lua"];
+    };
   };
 }

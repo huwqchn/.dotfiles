@@ -18,8 +18,8 @@ in {
       excludePlugins = with pkgs.vimPlugins; [
         fzf-lua
       ];
-    };
 
-    my.neovim.lazyvim.config = ["editor/telescope.lua"];
+      config = ["editor/telescope.lua"];
+    };
   };
 }

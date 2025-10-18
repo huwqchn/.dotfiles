@@ -20,15 +20,15 @@ in {
       ];
 
       imports = ["lazyvim.plugins.extras.lang.go"];
-    };
 
-    programs.neovim.extraPackages = with pkgs; [
-      delve
-      gopls
-      gotools
-      gofumpt
-      gomodifytags
-      impl
-    ];
+      extraPackages = with pkgs; [
+        delve
+        gopls
+        gotools
+        gofumpt
+        gomodifytags
+        impl
+      ];
+    };
   };
 }

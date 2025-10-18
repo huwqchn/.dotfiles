@@ -20,12 +20,12 @@ in {
       ];
 
       imports = ["lazyvim.plugins.extras.lang.rust"];
-    };
 
-    programs.neovim.extraPackages = with pkgs; [
-      bacon
-      rust-analyzer
-      vscode-extensions.vadimcn.vscode-lldb
-    ];
+      extraPackages = with pkgs; [
+        bacon
+        rust-analyzer
+        vscode-extensions.vadimcn.vscode-lldb
+      ];
+    };
   };
 }

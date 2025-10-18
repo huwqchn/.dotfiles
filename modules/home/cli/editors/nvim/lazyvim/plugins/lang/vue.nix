@@ -17,11 +17,11 @@ in {
       typescript.enable = true;
 
       imports = ["lazyvim.plugins.extras.lang.vue"];
-    };
 
-    programs.neovim.extraPackages = with pkgs; [
-      vscode-extensions.vue.volar
-      vtsls
-    ];
+      extraPackages = with pkgs; [
+        vscode-extensions.vue.volar
+        vtsls
+      ];
+    };
   };
 }

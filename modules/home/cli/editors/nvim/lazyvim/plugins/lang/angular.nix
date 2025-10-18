@@ -17,10 +17,10 @@ in {
       typescript.enable = true;
 
       imports = ["lazyvim.plugins.extras.lang.angular"];
-    };
 
-    programs.neovim.extraPackages = with pkgs; [
-      angular-language-server
-    ];
+      extraPackages = with pkgs; [
+        angular-language-server
+      ];
+    };
   };
 }

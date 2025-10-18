@@ -17,7 +17,7 @@ in {
       clangd_extensions-nvim
     ];
 
-    programs.neovim.extraPackages = with pkgs; [
+    my.neovim.lazyvim.extraPackages = with pkgs; [
       vscode-extensions.vadimcn.vscode-lldb
       clang-tools
     ];
