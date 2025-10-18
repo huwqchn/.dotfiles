@@ -8,7 +8,7 @@
   inherit (lib.modules) mkIf;
   inherit (lib.attrsets) optionalAttrs;
   inherit (lib.my) relativeToConfig;
-  cfg = config.my.neovim.lazyvim;
+  cfg = config.my.neovim.lazyvim.custom;
 in {
   options.my.neovim.lazyvim.custom = {
     enable = mkEnableOption "Custom Configs";
