@@ -25,7 +25,7 @@
     })
   ]);
 in {
-  imports = [./config.nix ./plugins];
+  imports = lib.my.scanPaths ./.;
 
   options.my.neovim.lazyvim = {
     enable = mkEnableOption "LazyVim" // {default = config.my.neovim.enable;};
