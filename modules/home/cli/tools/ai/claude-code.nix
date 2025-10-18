@@ -15,7 +15,6 @@ in {
   config = mkIf cfg.enable {
     programs.claude-code = {
       enable = true;
-
       mcpServers = {
         github = {
           type = "stdio";
