@@ -46,9 +46,9 @@ runs:
           fi
         done
 
-        skip_check="${{ steps.parse.outputs.skip-check }}"
-        if [ "$skip_check" = "true" ]; then
-          echo "Parsed flag --skip-check is set, so skipping check"
+        skip_checks="${{ steps.parse.outputs.skip-checks }}"
+        if [ "$skip_checks" = "true" ]; then
+          echo "Parsed flag --skip-checks is set, so skipping check"
           run_check="false"
         fi
 
