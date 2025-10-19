@@ -43,7 +43,7 @@
       insert = "h";
     };
   };
-  layout = layouts.${config.my.keyboardLayout or "qwerty"};
+  layout = layouts.${config.my.keyboard.layout or "qwerty"};
 in {
   options.my.yazi = {
     enable = mkEnableOption "yazi";

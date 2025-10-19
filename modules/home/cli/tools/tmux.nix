@@ -46,7 +46,7 @@
       other-end = "l";
     };
   };
-  layout = layouts.${config.my.keyboardLayout or "qwerty"};
+  layout = layouts.${config.my.keyboard.layout or "qwerty"};
 in {
   options.my.tmux = {
     enable = mkEnableOption "tmux";

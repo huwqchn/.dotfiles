@@ -51,7 +51,7 @@ in {
         shellAliases
         // optionalAttrs cfg.extras.enable extrasShellAliases;
 
-      file.".lesskey" = mkIf (config.my.keyboardLayout == "colemak") {
+      file.".lesskey" = mkIf (config.my.keyboard.layout == "colemak") {
         text = ''
           #command
           n left-scroll

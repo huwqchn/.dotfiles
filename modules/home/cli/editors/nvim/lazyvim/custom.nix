@@ -52,7 +52,7 @@ in {
         "nvim/snippets".source = relativeToConfig "nvim/snippets";
         "nvim/spell".source = relativeToConfig "nvim/spell";
       }
-      // optionalAttrs (config.my.keyboardLayout == "colemak") {
+      // optionalAttrs (config.my.keyboard.layout == "colemak") {
         "nvim/lua/plugins/layout.lua".source = relativeToConfig "nvim/lua/plugins/layout.lua";
         "nvim/lua/plugins/extras/colemak.lua".source = relativeToConfig "nvim/lua/plugins/extras/colemak.lua";
       };

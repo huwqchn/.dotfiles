@@ -273,6 +273,12 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    # Keyboard
+    # kanata-tray = {
+    #   url = "github:rszyma/kanata-tray";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
+
     # manager vencord by nix
     nixcord.url = "github:kaylorben/nixcord";
 

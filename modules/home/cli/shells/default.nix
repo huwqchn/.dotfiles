@@ -12,6 +12,6 @@ in {
     shellAliases = {
       weather = "${curl'} wttr.in";
     };
-    sessionVariables.KEYBOARD_LAYOUT = config.my.keyboardLayout;
+    sessionVariables.KEYBOARD_LAYOUT = config.my.keyboard.layout;
   };
 }

@@ -10,7 +10,7 @@
   inherit (lib.attrsets) optionalAttrs;
   inherit (pkgs.stdenv.hostPlatform) isLinux;
   cfg = config.my.fish;
-  isColemak = config.my.keyboardLayout == "colemak";
+  isColemak = config.my.keyboard.layout == "colemak";
 in {
   options.my.fish = {
     enable = mkEnableOption "fish" // {default = config.my.shell == "fish";};

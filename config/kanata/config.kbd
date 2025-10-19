@@ -1,0 +1,29 @@
+;; Kanata configuration
+;; Simple Ctrl/Caps swap configuration
+
+(defcfg
+  process-unmapped-keys yes
+  ;; Linux-specific settings (ignored on other platforms)
+  linux-dev /dev/input/by-path/platform-i8042-serio-0-event-kbd
+  linux-continue-if-no-devs-found yes
+  ;; macOS-specific settings (ignored on other platforms)
+  macos-dev-names-include ("Apple Internal Keyboard / Trackpad")
+)
+
+(defsrc
+  caps lctl lalt lmet ralt rmet
+)
+
+(defalias
+  ;; Caps: tap -> Esc, hold -> Left Ctrl
+  caps-as-ctrl (tap-hold 150 200 esc lctl)
+)
+
+(deflayer base
+  @caps-as-ctrl
+  lctl
+  lalt
+  lmet
+  rmet
+  ralt
+)

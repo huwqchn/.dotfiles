@@ -20,7 +20,10 @@ in {
   hm = {
     imports = [../home];
     my = {
-      inherit (my) name fullName email shell home keyboardLayout;
+      inherit (my) name fullName email shell home;
+      keyboard = {
+        inherit (my.keyboard) layout kanata;
+      };
       desktop = {
         inherit (my.desktop) enable type name;
       };

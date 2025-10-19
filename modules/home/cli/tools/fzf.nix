@@ -40,7 +40,7 @@ in {
           "--scrollbar=│"
         ]
         ++ (
-          if (config.my.keyboardLayout == "colemak")
+          if (config.my.keyboard.layout == "colemak")
           then [
             "--bind=ctrl-e:down,ctrl-i:up"
           ]

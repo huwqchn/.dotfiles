@@ -1,6 +1,9 @@
 {
   my = {
     machine.type = "laptop";
-    keyboardLayout = "qwerty";
+    keyboard = {
+      layout = "qwerty";
+      kanata.enable = true;
+    };
   };
 }

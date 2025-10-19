@@ -84,7 +84,7 @@
       prev = "K";
     };
   };
-  layout = layouts.${config.my.keyboardLayout or "qwerty"};
+  layout = layouts.${config.my.keyboard.layout or "qwerty"};
 
   # Auto-start condition for zsh
   autoStartCheck = ''

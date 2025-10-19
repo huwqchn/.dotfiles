@@ -25,7 +25,7 @@
       right = "o";
     };
   };
-  layout = layouts.${config.my.keyboardLayout or "qwerty"};
+  layout = layouts.${config.my.keyboard.layout or "qwerty"};
 in {
   options.my.desktop.apps.ghostty = {
     enable =

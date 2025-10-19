@@ -21,7 +21,7 @@
       right = "o";
     };
   };
-  layout = layouts.${config.my.keyboardLayout or "qwerty"};
+  layout = layouts.${config.my.keyboard.layout or "qwerty"};
 in {
   config = mkIf (cfg.enable && cfg.type == "darwin" && cfg.name == "aerospace") {
     programs.aerospace = {
