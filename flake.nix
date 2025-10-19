@@ -49,6 +49,11 @@
     # This is what AUR strives to be.
     nur.url = "github:nix-community/NUR";
 
+    # nix2container = {
+    #   url = "github:nlewo/nix2container";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
+
     # a flake-parts module to config nix flakes devshell
     devshell = {
       url = "github:numtide/devshell";
