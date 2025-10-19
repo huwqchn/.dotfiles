@@ -13,7 +13,6 @@
   in
     flake-parts.lib.mkFlake {inherit inputs specialArgs;} {
       debug = true;
-      systems = import inputs.systems;
       imports = [./flakes];
     };
 
@@ -61,6 +60,9 @@
         flake-compat.follows = "flake-compat";
       };
     };
+
+    # This is what AUR strives to be.
+    nur.url = "github:nix-community/NUR";
 
     # best way to config nix format
     treefmt = {
