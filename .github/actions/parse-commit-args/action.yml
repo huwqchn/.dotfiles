@@ -11,9 +11,9 @@ outputs:
   build:
     description: "Whether the commit message contains --build"
     value: ${{ steps.parse.outputs.build }}
-  skip-check:
-    description: "Whether the commit message contains --skip-check"
-    value: ${{ steps.parse.outputs.skip-check }}
+  skip-checks:
+    description: "Whether the commit message contains --skip-checks"
+    value: ${{ steps.parse.outputs.skip-checks }}
 
 runs:
   using: "composite"
@@ -31,29 +31,30 @@ runs:
     - name: Parse commit flags
       id: parse
       shell: bash
+      env:
+        MESSAGE: "${{ steps.get-commit.outputs.message }}"
       run: |
-        message="${{ steps.get-commit.outputs.message }}"
-        echo "Commit message: $message"
+        echo "Commit message: $MESSAGE"
 
         deploy="false"
         build="false"
-        skip_check="false"
+        skip_checks="false"
 
-        if [[ "$message" =~ (--deploy)([[:space:]]|$) ]]; then
+        if [[ "$MESSAGE" =~ (--deploy)([[:space:]]|$) ]]; then
           echo "Found --deploy flag"
           deploy="true"
         fi
 
-        if [[ "$message" =~ (--build)([[:space:]]|$) ]]; then
+        if [[ "$MESSAGE" =~ (--build)([[:space:]]|$) ]]; then
           echo "Found --build flag"
           build="true"
         fi
 
-        if [[ "$message" =~ (--skip-check)([[:space:]]|$) ]]; then
-          echo "Found --skip-check flag"
-          skip_check="true"
+        if [[ "$MESSAGE" =~ (--skip-checks)([[:space:]]|$) ]]; then
+          echo "Found --skip-checks flag"
+          skip_checks="true"
         fi
 
         echo "deploy=$deploy" >> "$GITHUB_OUTPUT"
         echo "build=$build" >> "$GITHUB_OUTPUT"
-        echo "skip-check=$skip_check" >> "$GITHUB_OUTPUT"
+        echo "skip-checks=$skip_checks" >> "$GITHUB_OUTPUT"
