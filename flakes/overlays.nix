@@ -3,6 +3,7 @@
     # Export overlays coming from inputs directly
     emacs = inputs.emacs-overlay.overlay;
     treesitter = inputs.nvim-treesitter-main.overlays.default;
+    nur = inputs.nur.overlay;
 
     # Your overlay that modifies vimPlugins
     vimTweaks = _final: prev: {
@@ -43,6 +44,6 @@
     };
   in {
     # Export named overlays for external/internal use
-    inherit emacs treesitter vimTweaks qt6FcitxNoCfgtool;
+    inherit emacs treesitter vimTweaks qt6FcitxNoCfgtool nur;
   };
 }

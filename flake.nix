@@ -12,7 +12,6 @@
     specialArgs = {inherit lib;};
   in
     flake-parts.lib.mkFlake {inherit inputs specialArgs;} {
-      # debug = true;
       imports = [./flakes];
     };
 
@@ -20,9 +19,9 @@
     # Official NixOS package source, using nixos's unstable branch by default
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
-    systems = {url = "github:nix-systems/default";};
+    systems.url = "github:nix-systems/default";
 
-    flake-compat = {url = "github:edolstra/flake-compat";};
+    flake-compat.url = "github:edolstra/flake-compat";
 
     flake-parts = {
       url = "github:hercules-ci/flake-parts";
@@ -47,6 +46,9 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    # This is what AUR strives to be.
+    nur.url = "github:nix-community/NUR";
+
     # a flake-parts module to config nix flakes devshell
     devshell = {
       url = "github:numtide/devshell";
@@ -61,9 +63,6 @@
       };
     };
 
-    # This is what AUR strives to be.
-    nur.url = "github:nix-community/NUR";
-
     # best way to config nix format
     treefmt = {
       url = "github:numtide/treefmt-nix";
@@ -71,16 +70,16 @@
     };
 
     # TODO: use this on my android phone future, I don't have a android phone yet
-    droid = {
-      url = "github:nix-community/nix-on-droid";
-      inputs = {
-        home-manager.follows = "home-manager";
-        nixpkgs.follows = "nixpkgs";
-      };
-    };
+    # droid = {
+    #   url = "github:nix-community/nix-on-droid";
+    #   inputs = {
+    #     home-manager.follows = "home-manager";
+    #     nixpkgs.follows = "nixpkgs";
+    #   };
+    # };
 
     # TODO: use this on my raspberry pi future
-    raspberry-pi-nix.url = "github:nix-community/raspberry-pi-nix?ref=v0.4.1";
+    # raspberry-pi-nix.url = "github:nix-community/raspberry-pi-nix?ref=v0.4.1";
 
     # nixos wsl
     wsl = {
@@ -120,25 +119,11 @@
       flake = false;
     };
 
-    # srvos = {
-    #   url = "github:nix-community/srvos";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
-
     # generate networking topology images
     nix-topology = {
       url = "github:oddlama/nix-topology";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    # openwrt-imagebuilder = {
-    #   url = "github:astro/nix-openwrt-imagebuilder";
-    #   inputs = {
-    #     flake-parts.follows = "flake-parts";
-    #     nixpkgs.follows = "nixpkgs";
-    #     systems.follows = "systems";
-    #   };
-    # };
 
     # for gaming
     nix-gaming = {

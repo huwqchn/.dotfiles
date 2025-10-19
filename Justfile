@@ -69,16 +69,12 @@ gc:
   nix-collect-garbage --delete-older-than 7d
   nix store optimise
 
-# Update all the flake inputs
+# Update all or specific flake inputs.
+# If no inputs are provided, all flake inputs will be updated.
+# Usage: just update [input1] [input2]...
 [group('nix')]
-up:
-  nix flake update
-
-# Update specific input
-# Usage: just upp nixpkgs
-[group('nix')]
-upp input:
-  nix flake update {{input}}
+update *inputs:
+  nix flake update {{inputs}}
 
 # List all generations of the system profile
 [group('nix')]
