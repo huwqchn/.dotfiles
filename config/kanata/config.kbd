@@ -28,14 +28,14 @@
   sft (one-shot $tapping-term lsft)
   escctrl (tap-hold $tapping-term $quick-tap esc lctl)
   smart_sft (tap-dance 200 (@sft @caps_word))
-  a-mod (tap-hold $tapping-term $quick-tap a lmet)
-  s-mod (tap-hold $tapping-term $quick-tap s lalt)
-  d-mod (tap-hold $tapping-term $quick-tap d lsft)
-  f-mod (tap-hold $tapping-term $quick-tap f lctl)
-  j-mod (tap-hold $tapping-term $quick-tap j rctl)
-  k-mod (tap-hold $tapping-term $quick-tap k rsft)
-  l-mod (tap-hold $tapping-term $quick-tap l ralt)
-  ;-mod (tap-hold $tapping-term $quick-tap ; rmet)
+  ;; a-mod (tap-hold $tapping-term $quick-tap a lmet)
+  ;; s-mod (tap-hold $tapping-term $quick-tap s lalt)
+  ;; d-mod (tap-hold $tapping-term $quick-tap d lsft)
+  ;; f-mod (tap-hold $tapping-term $quick-tap f lctl)
+  ;; j-mod (tap-hold $tapping-term $quick-tap j rctl)
+  ;; k-mod (tap-hold $tapping-term $quick-tap k rsft)
+  ;; l-mod (tap-hold $tapping-term $quick-tap l ralt)
+  ;; ;-mod (tap-hold $tapping-term $quick-tap ; rmet)
   tab-mod (tap-hold $tapping-term $quick-tap tab (layer-while-held tab_layer))
   spc-mod (tap-hold $tapping-term $quick-tap spc (layer-while-held spc_layer))
   amp S-7
@@ -51,7 +51,7 @@
 
 (deflayer base
   @tab-mod  q    w    e    r    t    y    u    i    o    p
-  @escctrl @a-mod @s-mod @d-mod @f-mod g    h    @j-mod @k-mod @l-mod @;-mod '    ret
+  @escctrl _ _ _ _ g    h    _ _ _ _ '    ret
   @smart_sft z    x    c    v    b    n    m    ,    .    /    @smart_sft
   lctl lalt lmet           @spc-mod            ralt rmet
 )
