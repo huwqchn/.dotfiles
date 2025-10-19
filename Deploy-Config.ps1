@@ -113,6 +113,7 @@ $requiredApps = @(
   "fzf",
   "lua",
   "starship",
+  "kanata",
   "CascadiaCode-NF",
   "JetBrainsMono-NF"
   "CascadiaCode-NF-Mono",
@@ -250,6 +251,21 @@ If (Test-Path ".\config\windows_terminal_settings.json") {
 }
 Else {
   Write-Host "No windows_terminal_settings.json detected. Skipping..."
+}
+
+# ----------------
+# kanata
+# ----------------
+If (Test-Path ".\config\kanata\config.kbd") {
+  Write-Host "Detected kanata configuration file. Preparing to copy..."
+  New-Item -ItemType Directory -Force -Path "$env:USERPROFILE\.config\kanata" | Out-Null
+  Copy-Item -Path ".\config\kanata\config.kbd" `
+            -Destination "$env:USERPROFILE\.config\kanata\config.kbd" `
+            -Force
+  Write-Host "kanata configuration copied successfully!"
+}
+Else {
+  Write-Host "No kanata configuration detected. Skipping..."
 }
 
 Write-Host "`nAll configurations have been copied!"
