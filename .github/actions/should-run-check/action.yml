@@ -30,15 +30,16 @@ runs:
     - name: Decide whether to run check
       id: set-output
       shell: bash
+      env:
+        MESSAGE: "${{ steps.get-commit.outputs.message }}"
       run: |
-        message="${{ steps.get-commit.outputs.message }}"
-        echo "Commit message: $message"
+        echo "Commit message: $MESSAGE"
 
         # Default to true (run the check)
         run_check="true"
 
         for prefix in ${{ inputs.prefixes }}; do
-          if [[ "$message" =~ ^$prefix ]]; then
+          if [[ "$MESSAGE" =~ ^$prefix ]]; then
             echo "Matched prefix: $prefix"
             run_check="false"
             break
