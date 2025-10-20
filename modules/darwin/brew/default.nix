@@ -129,7 +129,7 @@
       # "obs" # stream / recoding software
       "chatgpt" # open ai desktop
       # virtualization
-      "utm" # virtual machines
+      "orbstack"
       # "karabiner-elements" # keyboard remap
       "yubico-authenticator" # for yubikey
       "veracrypt" # disk encryption
