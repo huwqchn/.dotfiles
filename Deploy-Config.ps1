@@ -91,6 +91,7 @@ $requiredApps = @(
   "lazygit",
   "glazewm",
   "zebar",
+  "powertoys",
   "neovim",
   "starship",
   "yazi",
