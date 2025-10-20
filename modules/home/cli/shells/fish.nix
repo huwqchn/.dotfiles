@@ -30,7 +30,7 @@ in {
             "sponge"
             "humantime-fish"
             "colored-man-pages"
-            "fish-you-should-use"
+            # "fish-you-should-use"
             "bang-bang"
           ]
           ++ optionals isDarwin [
