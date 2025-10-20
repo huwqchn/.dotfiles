@@ -119,7 +119,7 @@
       "1password-cli"
       "vlc" # video player
       "obs" # stream / recoding software
-      "ghostty" # terminal
+      # "ghostty" # terminal
       # "obsidian" # note-taking
       "miniforge" # Miniconda's community-driven distribution
       "tencent-lemon" # clean tool

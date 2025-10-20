@@ -41,6 +41,8 @@ in {
 
     programs.ghostty = {
       enable = true;
+      # NOTE: It's broken on macOS, so you should to install it by brew.
+      # See: https://github.com/NixOS/nixpkgs/issues/388984
       package =
         if isLinux
         then pkgs.ghostty
