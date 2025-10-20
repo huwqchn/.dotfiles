@@ -29,21 +29,48 @@
       lib.attrsets.nameValuePair (mkBind key action) {})
     binds;
 
-  # mkMode creates a mode with support for clear-defaults and unbind
+  # mkMode creates a mode with support for clear-defaults, unbind, and special mode keywords
   # Usage:
   #   mkMode "normal" {
   #     clear-defaults = true;  # Optional: clear all default bindings
   #     unbind = "Ctrl q";      # Optional: unbind specific key(s)
   #     "Ctrl t" = "SwitchToMode \"Tmux\"";
   #   }
+  #   mkMode "shared" { ... }  # Applies to all modes
+  #   mkMode "shared_except" {
+  #     modes = ["resize" "locked"];  # modes to exclude
+  #     "Ctrl g" = "SwitchToMode \"locked\"";
+  #   }
+  #   mkMode "shared_among" {
+  #     modes = ["resize" "locked"];  # modes to include
+  #     "Ctrl g" = "SwitchToMode \"locked\"";
+  #   }
+  #   For multiple shared_except/shared_among with different mode lists, use descriptive names:
+  #   mkMode "shared_except_normal" { ... }  # Will be parsed as shared_except
+  #   mkMode "shared_among_resize_move" { ... }  # Will be parsed as shared_among
   mkMode = mode: bindings: let
     clearDefaults = bindings.clear-defaults or false;
     unbindKeys = bindings.unbind or null;
-    actualBindings = removeAttrs bindings ["clear-defaults" "unbind"];
+    modesList = bindings.modes or null;
+    actualBindings = removeAttrs bindings ["clear-defaults" "unbind" "modes"];
+
+    # Detect if mode name starts with special keywords
+    isShared = mode == "shared";
+    isSharedExcept = lib.hasPrefix "shared_except" mode;
+    isSharedAmong = lib.hasPrefix "shared_among" mode;
+
+    # Handle special mode keywords with mode list syntax
     modeName =
-      if clearDefaults
+      if isShared
+      then "shared"
+      else if isSharedExcept && modesList != null
+      then "shared_except \"${lib.concatStringsSep "\" \"" modesList}\""
+      else if isSharedAmong && modesList != null
+      then "shared_among \"${lib.concatStringsSep "\" \"" modesList}\""
+      else if clearDefaults
       then "${mode} clear-defaults=true"
       else mode;
+
     modeBinds = mkBinds actualBindings;
     unbindAttrs =
       if unbindKeys != null
@@ -143,6 +170,7 @@ in {
           copy_on_select = false;
           mouse_mode = true;
           scrollback_editor = getExe config.programs.neovim.package;
+          show_startup_tips = false;
           copy_command =
             if pkgs.stdenv.hostPlatform.isDarwin
             then "pbcopy"
@@ -210,10 +238,13 @@ in {
               "${layout.up}" = "Resize \"Increase Up\"";
               "${layout.right}" = "Resize \"Increase Right\"";
             };
-            shared_except_normal = {
+            # Using the new shared_except syntax - applies to all modes except specified ones
+            shared_except = {
+              modes = ["normal"];
               "Esc" = SwitchToMode "Normal";
             };
             shared_except_tmux = {
+              modes = ["tmux"];
               "Ctrl t" = SwitchToMode "Tmux";
             };
           };
