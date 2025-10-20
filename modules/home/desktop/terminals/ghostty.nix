@@ -70,7 +70,7 @@ in {
         gtk-single-instance = true;
         gtk-tabs-location = "bottom";
         gtk-wide-tabs = false;
-        gtk-toolbar-style = "flat";
+        # gtk-toolbar-style = "flat";
         window-padding-x = terminal.padding;
         window-padding-y = terminal.padding;
         window-padding-balance = true;
@@ -83,7 +83,7 @@ in {
         custom-shader = "${inputs.ghostty-shaders}/bloom025.glsl";
         # other
         copy-on-select = "clipboard";
-        shell-integration-features = "cursor,sudo,no-title,ssh-env";
+        # shell-integration-features = "cursor,sudo,no-title,ssh-env";
         quit-after-last-window-closed = true;
         confirm-close-surface = false;
         app-notifications = "no-clipboard-copy";
