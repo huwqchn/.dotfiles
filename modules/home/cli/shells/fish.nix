@@ -8,7 +8,8 @@
   inherit (lib.modules) mkIf;
   inherit (lib.strings) optionalString;
   inherit (lib.attrsets) optionalAttrs;
-  inherit (pkgs.stdenv.hostPlatform) isLinux;
+  inherit (lib.lists) optionals;
+  inherit (pkgs.stdenv.hostPlatform) isLinux isDarwin;
   cfg = config.my.fish;
   isColemak = config.my.keyboard.layout == "colemak";
 in {
@@ -19,51 +20,55 @@ in {
   config = mkIf cfg.enable {
     programs.fish = {
       enable = true;
-      plugins = [
-        {
-          name = "fzf-fish";
-          inherit (pkgs.fishPlugins.fzf-fish) src;
-        }
-        {
-          name = "done";
-          inherit (pkgs.fishPlugins.done) src;
-        }
-        {
-          name = "forgit";
-          inherit (pkgs.fishPlugins.forgit) src;
-        }
-        {
-          name = "autopair";
-          inherit (pkgs.fishPlugins.autopair) src;
-        }
-        {
-          name = "sponge";
-          inherit (pkgs.fishPlugins.sponge) src;
-        }
-        {
-          name = "humantime-fish";
-          inherit (pkgs.fishPlugins.humantime-fish) src;
-        }
-        {
-          name = "colored-man-pages";
-          inherit (pkgs.fishPlugins.colored-man-pages) src;
-        }
-        # {
-        #   name = "fish-you-should-use";
-        #   inherit (pkgs.fishPlugins.fish-you-should-use) src;
-        # }
-        {
-          name = "bang-bang";
-          inherit (pkgs.fishPlugins.bang-bang) src;
-        }
-      ];
-      shellInit = ''
+      plugins = with pkgs.fishPlugins;
+        [
+          {
+            name = "done";
+            inherit (done) src;
+          }
+          {
+            name = "forgit";
+            inherit (forgit) src;
+          }
+          {
+            name = "autopair";
+            inherit (autopair) src;
+          }
+          {
+            name = "sponge";
+            inherit (sponge) src;
+          }
+          {
+            name = "humantime-fish";
+            inherit (humantime-fish) src;
+          }
+          {
+            name = "colored-man-pages";
+            inherit (colored-man-pages) src;
+          }
+          # {
+          #   name = "fish-you-should-use";
+          #   inherit (pkgs.fishPlugins.fish-you-should-use) src;
+          # }
+          {
+            name = "bang-bang";
+            inherit (bang-bang) src;
+          }
+        ]
+        ++ optionals isDarwin [
+          {
+            name = "macos";
+            inherit (macos) src;
+          }
+        ];
+      interactiveShellInit = ''
         set -gx fish_vi_force_cursor 1
         set -gx fish_cursor_default block
         set -gx fish_cursor_insert line blink
         set -gx fish_cursor_visual block
         set -gx fish_cursor_replace_one underscore
-        set fish_emoji_width 2
+        set -g fish_emoji_width 2
+        set -g sponge_purge_only_on_exit true
       '';
       shellAbbrs =
         {
@@ -139,6 +144,10 @@ in {
           ju = "journalctl --unit";
         };
       functions = {
+        mkcd = {
+          body = "mkdir -p $argv[1] && cd $argv[1]";
+          description = "Create a directory and cd into it";
+        };
         extract = {
           body = ''
             if test -f $argv[1]

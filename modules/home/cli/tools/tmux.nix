@@ -60,6 +60,7 @@ in {
   config = mkIf cfg.enable {
     programs = {
       fish = mkIf cfg.autoStart {
+        # TODO: use tmux.fish instaed
         interactiveShellInit = ''
           if not set -q TMUX
              and test -z "$SSH_TTY"

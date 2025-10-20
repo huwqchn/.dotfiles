@@ -37,10 +37,11 @@ in {
         if cfg.extras.enable
         then
           with pkgs.bat-extras; [
-            # batdiff # TODO:: fails to compile, nixpkgs-stable can compile successfully, but I can't overlays it with nixpkgs-unstable
+            batdiff
             batman
             batgrep
             batwatch
+            batpipe
           ]
         else [];
     };
