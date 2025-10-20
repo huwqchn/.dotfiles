@@ -11,15 +11,15 @@ default:
 build host=`uname -n`:
   nix build .#{{build_config}}.{{host}}.system --extra-experimental-features "nix-command flakes" --show-trace --verbose
 
-# Classic cmmand to rebuild nixos
-[group('nix')]
-switch host=`uname -n`:
-  {{rebuild}} switch --flake .#{{host}} --show-trace -L -v
-
 # Rebuild specific host using nh
 [group('nix')]
-switch2 host=`uname -n`:
+switch host=`uname -n`:
   nh {{ if os() == "macos" { "darwin" } else { "os" } }} switch . -v -H {{host}} --ask
+
+# Classic cmmand to rebuild nixos
+[group('nix')]
+switch2 host=`uname -n`:
+  {{rebuild}} switch --flake .#{{host}} --show-trace -L -v
 
 # Roll back to the previous system generation
 [group('nix')]

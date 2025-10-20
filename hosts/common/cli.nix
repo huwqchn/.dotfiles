@@ -7,6 +7,7 @@
     bash.enable = false; #TODO: Temporarily disable bash module to avoid nokogiri via bash-preexec
     bat.enable = false; # TODO: Temporarily disable bat due to nokogiri compilation issues
     btop.enable = true;
+    tealdeer.enable = true;
     direnv = {
       enable = true;
       silent = true;
