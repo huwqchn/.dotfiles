@@ -14,10 +14,19 @@ in {
   config = mkIf cfg.enable {
     programs.tealdeer = {
       enable = true;
-      settings.updates = {
-        auto_update = true;
-        auto_update_interval_hours = 24;
+      settings = {
+        display = {
+          compact = true;
+          use_pager = true;
+        };
+        updates = {
+          auto_update = true;
+          auto_update_interval_hours = 24;
+        };
       };
     };
+    home.persistence."/persist${config.home.homeDirectory}".directories = [
+      ".cache/tealdeer"
+    ];
   };
 }

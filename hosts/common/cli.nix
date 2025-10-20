@@ -11,6 +11,9 @@
       enable = true;
       silent = true;
     };
+    glow.enable = true;
+    zk.enable = true;
+    numbat.enable = true;
     eza.enable = true;
     fastfetch.enable = true;
     fd.enable = true;

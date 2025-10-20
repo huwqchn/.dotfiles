@@ -33,7 +33,7 @@ in {
         ];
         interactiveShellInit = ''
           # fzf.fish plugin
-          fzf_configure_bindings --variables=\ev --processes=\ep --git_status=\cs --git_log=\cg --directory=\cf
+          fzf_configure_bindings --variables=\ev --processes=\ep --git_status=\cs --git_log=\cg --directory=\ef
           set -gx fzf_fd_opts ${fd_opts}
           ${optionalString config.programs.eza.enable "set -gx fzf_preview_dir_cmd ${getExe pkgs.eza} ${eza_opts}"}
           ${optionalString config.programs.bat.enable "set -gx fzf_preview_file_cmd ${getExe pkgs.bat}"}

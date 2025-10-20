@@ -36,7 +36,6 @@ in {
         batgrep
         batwatch
         batpipe
-        unzip
       ];
     };
 
