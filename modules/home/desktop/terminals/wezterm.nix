@@ -11,7 +11,7 @@ in {
     enable =
       mkEnableOption "wezterm"
       // {
-        default = config.my.terminal.name == "wezterm";
+        default = config.my.terminal.default == "wezterm";
       };
   };
 

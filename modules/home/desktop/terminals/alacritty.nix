@@ -15,7 +15,7 @@ in {
     enable =
       mkEnableOption "alacritty"
       // {
-        default = terminal.name == "alacritty";
+        default = terminal.default == "alacritty";
       };
   };
 

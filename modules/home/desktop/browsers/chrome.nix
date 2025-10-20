@@ -12,7 +12,7 @@ in {
     enable =
       mkEnableOption "chrome"
       // {
-        default = config.my.browser.name == "chrome";
+        default = config.my.browser.default == "chrome";
       };
   };
 

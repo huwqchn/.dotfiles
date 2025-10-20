@@ -17,6 +17,10 @@ in {
   options.my = {
     browser = {
       name = mkOption {
+        type = nullOr str;
+        default = null;
+      };
+      default = mkOption {
         type = nullOr (enum [
           "zen"
           "chrome"
@@ -31,8 +35,8 @@ in {
         type = str;
         default =
           if isHyprland config
-          then withUWSM pkgs browser.name
-          else getExe (builtins.getAttr browser.name pkgs);
+          then withUWSM pkgs browser.default
+          else getExe (builtins.getAttr browser.default pkgs);
         description = ''
           The command to use for the browser. This is used by the
           `my.browser` module to determine which command to run.
@@ -41,7 +45,7 @@ in {
     };
   };
 
-  config = mkIf (browser.name != null) {
-    home.sessionVariables = {BROWSER = "${browser.name}";};
+  config = mkIf (browser.default != null) {
+    home.sessionVariables = {BROWSER = "${browser.default}";};
   };
 }

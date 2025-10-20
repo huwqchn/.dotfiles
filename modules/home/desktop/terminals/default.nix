@@ -14,6 +14,10 @@ in {
   imports = lib.my.scanPaths ./.;
   options.my.terminal = {
     name = mkOption {
+      type = nullOr str;
+      default = null;
+    };
+    default = mkOption {
       type = nullOr (enum [
         "wzeterm"
         "alacritty"
@@ -30,8 +34,8 @@ in {
       type = str;
       default =
         if isHyprland config
-        then withUWSM pkgs terminal.name
-        else getExe (builtins.getAttr terminal.name pkgs);
+        then withUWSM pkgs terminal.default
+        else getExe (builtins.getAttr terminal.default pkgs);
       description = ''
         The command to use for the terminal. This is used by the
         `my.terminal` module to determine which command to run.
@@ -74,7 +78,7 @@ in {
     };
   };
 
-  config = mkIf (terminal.name != null) {
-    home.sessionVariables = {TERMINAL = "${terminal.name}";};
+  config = mkIf (terminal.default != null) {
+    home.sessionVariables = {TERMINAL = "${terminal.default}";};
   };
 }

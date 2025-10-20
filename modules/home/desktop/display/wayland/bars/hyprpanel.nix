@@ -12,7 +12,7 @@ in {
       enable = true;
       settings = {
         scalingPriority = "hyprland";
-        terminal = config.my.terminal.name;
+        terminal = config.my.terminal.default;
         tear = false;
         layout = {
           "bar.layouts" = {

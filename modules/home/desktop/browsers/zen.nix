@@ -16,7 +16,7 @@ in {
     enable =
       mkEnableOption "zen browser"
       // {
-        default = config.my.browser.name == "zen";
+        default = config.my.browser.default == "zen";
       };
   };
 

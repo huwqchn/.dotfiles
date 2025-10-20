@@ -31,7 +31,7 @@ in {
     enable =
       mkEnableOption "ghostty"
       // {
-        default = terminal.name == "ghostty";
+        default = terminal.default == "ghostty";
       };
   };
 
