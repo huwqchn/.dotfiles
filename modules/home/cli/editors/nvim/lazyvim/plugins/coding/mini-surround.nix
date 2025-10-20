@@ -13,13 +13,15 @@ in {
   };
 
   config = mkIf cfg.enable {
-    my.neovim.lazyvim.extraPlugins = with pkgs.vimPlugins; [
-      {
-        name = "mini.surround";
-        path = mini-nvim;
-      }
-    ];
+    my.neovim.lazyvim = {
+      extraPlugins = with pkgs.vimPlugins; [
+        {
+          name = "mini.surround";
+          path = mini-nvim;
+        }
+      ];
 
-    my.neovim.lazyvim.config = ["coding/mini-surround.lua"];
+      config = ["coding/mini-surround.lua"];
+    };
   };
 }

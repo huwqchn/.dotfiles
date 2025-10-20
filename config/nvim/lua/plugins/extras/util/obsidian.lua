@@ -38,14 +38,27 @@ return {
     dependencies = {
       -- Required.
       "nvim-lua/plenary.nvim",
-
-      -- see below for full list of optional dependencies 👇
     },
     opts = {
       ui = { enable = false },
       -- Optional, set to true if you use the Obsidian Advanced URI plugin.
       -- https://github.com/Vinzent03/obsidian-advanced-uri
       use_advanced_uri = true,
+      -- Optional, configure key mappings. These are the defaults. If you don't want to set any keymappings this
+      -- way then set 'mappings = {}'.
+      mappings = {
+        -- Overrides the 'gf' mapping to work on markdown/wiki links within your vault.
+        ["gf"] = {
+          action = function()
+            return require("obsidian").util.gf_passthrough()
+          end,
+          opts = { noremap = false, expr = true, buffer = true },
+        },
+        ["gb"] = {
+          action = "<cmd>ObsidianBacklinks<cr>",
+          opts = { noremap = true, buffer = true },
+        },
+      },
 
       completion = {
         blink = vim.g.lazyvim_cmp == "auto" or vim.g.lazyvim_cmp == "blink.cmp",
@@ -57,8 +70,6 @@ return {
           path = "~/Documents/Notes",
         },
       },
-
-      -- see below for full list of options 👇
     },
   },
 }

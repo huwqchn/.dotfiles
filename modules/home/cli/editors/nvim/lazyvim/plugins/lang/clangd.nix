@@ -13,15 +13,17 @@ in {
   };
 
   config = mkIf cfg.enable {
-    my.neovim.lazyvim.extraPlugins = with pkgs.vimPlugins; [
-      clangd_extensions-nvim
-    ];
+    my.neovim.lazyvim = {
+      extraPlugins = with pkgs.vimPlugins; [
+        clangd_extensions-nvim
+      ];
 
-    my.neovim.lazyvim.extraPackages = with pkgs; [
-      vscode-extensions.vadimcn.vscode-lldb
-      clang-tools
-    ];
+      extraPackages = with pkgs; [
+        vscode-extensions.vadimcn.vscode-lldb
+        clang-tools
+      ];
 
-    my.neovim.lazyvim.config = ["lang/clangd.lua"];
+      config = ["lang/clangd.lua"];
+    };
   };
 }

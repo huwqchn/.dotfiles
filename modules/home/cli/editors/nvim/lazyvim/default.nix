@@ -14,7 +14,6 @@
     foldl' (acc: path: acc // sourceLua path) {}
     cfg.config;
   cfg = config.my.neovim.lazyvim;
-
   pluginsOptionType = listOf (oneOf [
     package
     (submodule {
@@ -220,31 +219,36 @@ in {
     };
 
     extraPackages = mkOption {
-      default = with pkgs; [
-        # LazyVim essentials
+      type = listOf package;
+      default = [];
+      example = lib.literalExpression ''
+        [ pkgs.ripgrep ]
+      '';
+    };
+  };
+
+  config = mkIf cfg.enable {
+    my.neovim.lazyvim = {
+      finalExtraSpec = let
+        importsSpec =
+          lib.concatMapStrings (import: ''
+            { import = "${import}" },
+          '')
+          cfg.imports;
+        specPieces = lib.filter (s: s != "") [importsSpec cfg.extraSpec];
+      in
+        builtins.concatStringsSep "\n" specPieces;
+      extraPackages = with pkgs; [
+        # LazyVim essentials shipped with the wrapper
         lua
         lua-language-server
         stylua
         vscode-langservers-extracted
         fd
+        fzf
+        ripgrep
       ];
-      example = lib.literalExpression ''
-        [ pkgs.ripgrep ]
-      '';
-      type = listOf package;
     };
-  };
-
-  config = mkIf cfg.enable {
-    my.neovim.lazyvim.finalExtraSpec = let
-      importsSpec =
-        lib.concatMapStrings (import: ''
-          { import = "${import}" },
-        '')
-        cfg.imports;
-      specPieces = lib.filter (s: s != "") [importsSpec cfg.extraSpec];
-    in
-      builtins.concatStringsSep "\n" specPieces;
 
     xdg.configFile = extraLuaConfigs;
 

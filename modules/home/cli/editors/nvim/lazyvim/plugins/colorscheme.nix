@@ -16,24 +16,26 @@ in {
   # };
 
   config = {
-    my.neovim.lazyvim.extraPlugins = with pkgs.vimPlugins;
-      if name == "tokyonight"
-      then [
-        tokyonight-nvim
-      ]
-      # TODO: should define a my.theme.kanagawa
-      else if name == "kanagawa"
-      then [
-        kanagawa-nvim
-      ]
-      # TODO: should define a my.theme.catppuccin
-      else if name == "catppuccin"
-      then [
-        catppuccin-nvim
-      ]
-      else [];
+    my.neovim.lazyvim = {
+      extraPlugins = with pkgs.vimPlugins;
+        if name == "tokyonight"
+        then [
+          tokyonight-nvim
+        ]
+        # TODO: should define a my.theme.kanagawa
+        else if name == "kanagawa"
+        then [
+          kanagawa-nvim
+        ]
+        # TODO: should define a my.theme.catppuccin
+        else if name == "catppuccin"
+        then [
+          catppuccin-nvim
+        ]
+        else [];
 
-    # FIXME: not working when theme is auto
-    my.neovim.lazyvim.config = ["colorscheme/${name}.lua"];
+      # FIXME: not working when theme is auto
+      config = ["colorscheme/${name}.lua"];
+    };
   };
 }

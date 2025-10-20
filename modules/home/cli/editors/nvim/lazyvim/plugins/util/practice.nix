@@ -13,10 +13,12 @@ in {
   };
 
   config = mkIf cfg.enable {
-    my.neovim.lazyvim.extraPlugins = with pkgs.vimPlugins; [
-      precognition-nvim
-    ];
+    my.neovim.lazyvim = {
+      extraPlugins = with pkgs.vimPlugins; [
+        precognition-nvim
+      ];
 
-    my.neovim.lazyvim.config = ["util/practice.lua"];
+      config = ["util/practice.lua"];
+    };
   };
 }

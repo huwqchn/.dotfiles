@@ -43,15 +43,17 @@ in {
           # Enable support for Bear's #multi-word tags#
           multiword-tags = true;
         };
-        group.daily = {
-          # Directories listed here will automatically use this group when creating notes.
-          paths = ["Notes/Journal"];
 
-          note = {
-            # %Y-%m-%d is actually the default format, so you could use {{format-date now}} instead.
-            filename = "{{format-date now '%Y-%m-%d'}}";
-            extension = "md";
-            template = "daily.md";
+        group = {
+          daily = {
+            # Directories listed here will automatically use this group when creating notes.
+            paths = ["Fleeting/Daily"];
+            note = {
+              # %Y-%m-%d is actually the default format, so you could use {{format-date now}} instead.
+              filename = "{{format-date now '%Y-%m-%d'}}";
+              extension = "md";
+              template = "daily.md";
+            };
           };
         };
 
@@ -61,34 +63,64 @@ in {
           fzf-preview = "${lib.getExe pkgs.glow} --style ${config.home.sessionVariables.GLAMOUR_STYLE} {-1}";
         };
 
-        lsp.diagnostics.dead-link = "error";
+        alias = let
+          # Respect the user's preferred shell when forwarding arguments.
+          argsVar =
+            if config.my.shell == "fish"
+            then "$argv"
+            else "$@";
+        in {
+          list = "zk list --quiet -f oneline ${argsVar}";
+          ls = "zk list ${argsVar}";
+          wc = "zk list --sort word-count ${argsVar}";
 
-        alias = {
-          list = "zk list --quiet -f oneline $@";
-          ls = "zk list $@";
-          wc = "zk list --sort word-count $@";
+          search = "zk list -i ${argsVar}";
 
-          search = "zk list -i $@";
+          # remove a files
+          rm = "zk list --interactive --quiet --format path --delimiter0 ${argsVar} | xargs -0 rm -vf --";
+
+          daily = "zk new $ZK_NOTEBOOK_DIR/Fleeting/Daily";
+
+          # Show a random note.
+          lucky = "zk list --quiet --format full --sort random --limit 1";
 
           # Edit the last modified note.
-          editlast = "zk edit --limit 1 --sort modified- $@";
+          last = "zk edit --limit 1 --sort modified- ${argsVar}";
 
           # Edit the notes selected interactively among the notes created the last two weeks.
-          # This alias doesn't take any argument, so we don't use $@.
+          # This alias doesn't take any argument, so nothing to forward.
           recent = "zk edit --sort created- --created-after 'last two weeks' --interactive";
 
           # Print paths separated with colons for the notes found with the given
           # arguments. This can be useful to expand a complex search query into a flag
           # taking only paths. For example:
           #   zk list --link-to "`zk path -m potato`"
-          path = "zk list --quiet --format {{path}} --delimiter , $@";
+          path = "zk list --quiet --format {{path}} --delimiter , ${argsVar}";
 
           # Returns the Git history for the notes found with the given arguments.
-          # Note the use of a pipe and the location of $@.
-          hist = "zk list --format path --delimiter0 --quiet $@ | xargs -t -0 git log --patch --";
+          # Note the use of a pipe: we still forward the original arguments.
+          log = "zk list --format path --delimiter0 --quiet ${argsVar} | xargs -t -0 git log --patch --";
 
-          tags = "zk tag list $@";
+          tags = "zk tag list ${argsVar}";
         };
+
+        lsp = {
+          diagnostics = {
+            # Report titles of wiki-links as hints.
+            wiki-title = "hint";
+            # Warn for dead links between notes.
+            dead-link = "error";
+          };
+          completion = {
+            # Show the note title in the completion pop-up, or fallback on its path if empty.
+            note-label = "{{title-or-path}}";
+            # Filter out the completion pop-up using the note title or its path.
+            note-filter-text = "{{title}} {{path}}";
+            # Show the note filename without extension as detail.
+            note-detail = "{{filename-stem}}";
+          };
+        };
+
         extra.author = config.my.name;
       };
     };

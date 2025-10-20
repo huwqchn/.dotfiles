@@ -13,12 +13,14 @@ in {
   };
 
   config = mkIf cfg.enable {
-    my.neovim.lazyvim.extraPlugins = with pkgs.vimPlugins; [
-      {
-        name = "mini.animate";
-        path = mini-nvim;
-      }
-    ];
-    my.neovim.lazyvim.config = ["ui/mini-animate.lua"];
+    my.neovim.lazyvim = {
+      extraPlugins = with pkgs.vimPlugins; [
+        {
+          name = "mini.animate";
+          path = mini-nvim;
+        }
+      ];
+      config = ["ui/mini-animate.lua"];
+    };
   };
 }

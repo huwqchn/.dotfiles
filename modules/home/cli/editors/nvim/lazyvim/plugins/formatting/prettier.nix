@@ -13,10 +13,12 @@ in {
   };
 
   config = mkIf cfg.enable {
-    my.neovim.lazyvim.extraPackages = with pkgs; [
-      nodePackages.prettier
-    ];
+    my.neovim.lazyvim = {
+      extraPackages = with pkgs; [
+        nodePackages.prettier
+      ];
 
-    my.neovim.lazyvim.imports = ["lazyvim.plugins.extras.formatting.prettier"];
+      imports = ["lazyvim.plugins.extras.formatting.prettier"];
+    };
   };
 }

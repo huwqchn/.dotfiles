@@ -13,8 +13,10 @@ in {
   };
 
   config = mkIf cfg.enable {
-    my.neovim.lazyvim.extraPlugins = with pkgs.vimPlugins; [winshift-nvim];
+    my.neovim.lazyvim = {
+      extraPlugins = with pkgs.vimPlugins; [winshift-nvim];
 
-    my.neovim.lazyvim.config = ["ui/winshift.lua"];
+      config = ["ui/winshift.lua"];
+    };
   };
 }

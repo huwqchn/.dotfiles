@@ -13,10 +13,12 @@ in {
   };
 
   config = mkIf cfg.enable {
-    my.neovim.lazyvim.extraPackages = with pkgs; [
-      black
-    ];
+    my.neovim.lazyvim = {
+      imports = ["lazyvim.plugins.extras.formatting.black"];
 
-    my.neovim.lazyvim.imports = ["lazyvim.plugins.extras.formatting.black"];
+      extraPackages = with pkgs; [
+        black
+      ];
+    };
   };
 }

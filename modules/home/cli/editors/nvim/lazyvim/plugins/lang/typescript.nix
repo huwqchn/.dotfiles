@@ -13,11 +13,13 @@ in {
   };
 
   config = mkIf cfg.enable {
-    my.neovim.lazyvim.imports = ["lazyvim.plugins.extras.lang.typescript"];
+    my.neovim.lazyvim = {
+      imports = ["lazyvim.plugins.extras.lang.typescript"];
 
-    my.neovim.lazyvim.extraPackages = with pkgs; [
-      typescript-language-server
-      vtsls
-    ];
+      extraPackages = with pkgs; [
+        typescript-language-server
+        vtsls
+      ];
+    };
   };
 }

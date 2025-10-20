@@ -13,10 +13,12 @@ in {
   };
 
   config = mkIf cfg.enable {
-    my.neovim.lazyvim.imports = ["lazyvim.plugins.extras.lang.docker"];
+    my.neovim.lazyvim = {
+      imports = ["lazyvim.plugins.extras.lang.docker"];
 
-    my.neovim.lazyvim.extraPackages = with pkgs; [
-      hadolint
-    ];
+      extraPackages = with pkgs; [
+        hadolint
+      ];
+    };
   };
 }

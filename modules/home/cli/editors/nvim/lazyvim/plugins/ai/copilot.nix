@@ -50,8 +50,10 @@ in {
       my.neovim.lazyvim.config = ["ai/copilot.lua"];
     })
     (mkIf cfg.chat.enable {
-      my.neovim.lazyvim.extraPlugins = with pkgs.vimPlugins; [CopilotChat-nvim];
-      my.neovim.lazyvim.config = ["ai/copilot-chat.lua"];
+      my.neovim.lazyvim = {
+        extraPlugins = with pkgs.vimPlugins; [CopilotChat-nvim];
+        config = ["ai/copilot-chat.lua"];
+      };
     })
     (mkIf cfg.native.enable {
       my.neovim.lazyvim.imports = ["lazyvim.plugins.extras.ai.copilot-native"];

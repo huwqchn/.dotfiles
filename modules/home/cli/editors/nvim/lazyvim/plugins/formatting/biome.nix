@@ -13,10 +13,12 @@ in {
   };
 
   config = mkIf cfg.enable {
-    my.neovim.lazyvim.extraPackages = with pkgs; [
-      biome
-    ];
+    my.neovim.lazyvim = {
+      imports = ["lazyvim.plugins.extras.formatting.biome"];
 
-    my.neovim.lazyvim.imports = ["lazyvim.plugins.extras.formatting.biome"];
+      extraPackages = with pkgs; [
+        biome
+      ];
+    };
   };
 }

@@ -13,10 +13,12 @@ in {
   };
 
   config = mkIf cfg.enable {
-    my.neovim.lazyvim.imports = ["lazyvim.plugins.extras.lang.toml"];
+    my.neovim.lazyvim = {
+      imports = ["lazyvim.plugins.extras.lang.toml"];
 
-    my.neovim.lazyvim.extraPackages = with pkgs; [
-      taplo
-    ];
+      extraPackages = with pkgs; [
+        taplo
+      ];
+    };
   };
 }

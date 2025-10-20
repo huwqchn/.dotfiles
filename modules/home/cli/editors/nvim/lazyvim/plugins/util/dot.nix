@@ -13,10 +13,12 @@ in {
   };
 
   config = mkIf cfg.enable {
-    my.neovim.lazyvim.imports = ["lazyvim.plugins.extras.util.dot"];
+    my.neovim.lazyvim = {
+      imports = ["lazyvim.plugins.extras.util.dot"];
 
-    my.neovim.lazyvim.extraPackages = with pkgs; [
-      shellcheck
-    ];
+      extraPackages = with pkgs; [
+        shellcheck
+      ];
+    };
   };
 }

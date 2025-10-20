@@ -13,21 +13,24 @@ in {
   };
 
   config = mkIf cfg.enable {
-    my.neovim.lazyvim.extraPlugins = with pkgs.vimPlugins; [
-      markdown-preview-nvim
-      render-markdown-nvim
-    ];
+    my.neovim.lazyvim = {
+      extraPlugins = with pkgs.vimPlugins; [
+        markdown-preview-nvim
+        render-markdown-nvim
+        zk-nvim
+      ];
 
-    my.neovim.lazyvim.extraPackages = with pkgs; [
-      markdownlint-cli2
-      marksman
-      imagemagick # for snacks.image
-      typst # for snacks.image
-      tectonic # for snacks.image
-      ghostscript # for snacks.image
-      mermaid-cli # for snacks.image
-    ];
+      extraPackages = with pkgs; [
+        markdownlint-cli2
+        marksman
+        imagemagick # for snacks.image
+        typst # for snacks.image
+        tectonic # for snacks.image
+        ghostscript # for snacks.image
+        mermaid-cli # for snacks.image
+      ];
 
-    my.neovim.lazyvim.config = ["lang/markdown.lua"];
+      config = ["lang/markdown.lua"];
+    };
   };
 }

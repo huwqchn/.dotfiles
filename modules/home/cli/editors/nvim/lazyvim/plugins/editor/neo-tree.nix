@@ -8,10 +8,12 @@
   cfg = config.my.neovim.lazyvim;
 in {
   config = mkIf (cfg.explorer == "neo-tree") {
-    my.neovim.lazyvim.extraPlugins = with pkgs.vimPlugins; [
-      neo-tree
-    ];
+    my.neovim.lazyvim = {
+      extraPlugins = with pkgs.vimPlugins; [
+        neo-tree
+      ];
 
-    my.neovim.lazyvim.config = ["editor/neo-tree.lua"];
+      config = ["editor/neo-tree.lua"];
+    };
   };
 }

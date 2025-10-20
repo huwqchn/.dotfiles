@@ -62,7 +62,6 @@
         # custom
         winshift.enable = true;
         window-picker.enable = true;
-
         vscode.enable = true;
       };
     };

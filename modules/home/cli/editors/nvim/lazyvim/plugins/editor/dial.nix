@@ -13,9 +13,11 @@ in {
   };
 
   config = mkIf cfg.enable {
-    my.neovim.lazyvim.extraPlugins = with pkgs.vimPlugins; [
-      dial-nvim
-    ];
-    my.neovim.lazyvim.config = ["coding/dial.lua"];
+    my.neovim.lazyvim = {
+      extraPlugins = with pkgs.vimPlugins; [
+        dial-nvim
+      ];
+      config = ["coding/dial.lua"];
+    };
   };
 }

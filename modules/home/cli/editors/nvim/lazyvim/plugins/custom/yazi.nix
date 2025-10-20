@@ -13,10 +13,12 @@ in {
   };
 
   config = mkIf cfg.enable {
-    my.neovim.lazyvim.extraPlugins = with pkgs.vimPlugins; [
-      yazi-nvim
-    ];
+    my.neovim.lazyvim = {
+      extraPlugins = with pkgs.vimPlugins; [
+        yazi-nvim
+      ];
 
-    my.neovim.lazyvim.config = ["editor/yazi.lua"];
+      config = ["editor/yazi.lua"];
+    };
   };
 }

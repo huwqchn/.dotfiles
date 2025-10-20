@@ -18,10 +18,12 @@ in {
       tailwindcss-colorizer-cmp-nvim
     ];
     */
-    my.neovim.lazyvim.imports = ["lazyvim.plugins.extras.lang.tailwind"];
+    my.neovim.lazyvim = {
+      imports = ["lazyvim.plugins.extras.lang.tailwind"];
 
-    my.neovim.lazyvim.extraPackages = with pkgs; [
-      tailwindcss
-    ];
+      extraPackages = with pkgs; [
+        tailwindcss
+      ];
+    };
   };
 }

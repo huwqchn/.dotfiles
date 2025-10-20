@@ -13,13 +13,15 @@ in {
   };
 
   config = mkIf cfg.enable {
-    my.neovim.lazyvim.extraPlugins = with pkgs.vimPlugins; [
-      {
-        name = "mini.files";
-        path = mini-nvim;
-      }
-    ];
+    my.neovim.lazyvim = {
+      extraPlugins = with pkgs.vimPlugins; [
+        {
+          name = "mini.files";
+          path = mini-nvim;
+        }
+      ];
 
-    my.neovim.lazyvim.config = ["editor/mini-files.lua"];
+      config = ["editor/mini-files.lua"];
+    };
   };
 }

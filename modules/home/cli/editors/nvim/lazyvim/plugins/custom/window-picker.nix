@@ -13,10 +13,12 @@ in {
   };
 
   config = mkIf cfg.enable {
-    my.neovim.lazyvim.extraPlugins = with pkgs.vimPlugins; [
-      nvim-window-picker
-    ];
+    my.neovim.lazyvim = {
+      extraPlugins = with pkgs.vimPlugins; [
+        nvim-window-picker
+      ];
 
-    my.neovim.lazyvim.config = ["ui/window-picker.lua"];
+      config = ["ui/window-picker.lua"];
+    };
   };
 }

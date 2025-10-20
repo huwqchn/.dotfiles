@@ -13,13 +13,15 @@ in {
   };
 
   config = mkIf cfg.enable {
-    my.neovim.lazyvim.imports = ["lazyvim.plugins.extras.lang.php"];
+    my.neovim.lazyvim = {
+      imports = ["lazyvim.plugins.extras.lang.php"];
 
-    my.neovim.lazyvim.extraPackages = with pkgs; [
-      phpactor
-      intelephense
-      php84Packages.php-codesniffer
-      # php84Packages.php-cs-fixer
-    ];
+      extraPackages = with pkgs; [
+        phpactor
+        intelephense
+        php84Packages.php-codesniffer
+        # php84Packages.php-cs-fixer
+      ];
+    };
   };
 }

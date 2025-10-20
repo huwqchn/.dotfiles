@@ -13,10 +13,12 @@ in {
   };
 
   config = mkIf cfg.enable {
-    my.neovim.lazyvim.extraPlugins = with pkgs.vimPlugins; [
-      sidekick-nvim
-    ];
+    my.neovim.lazyvim = {
+      extraPlugins = with pkgs.vimPlugins; [
+        sidekick-nvim
+      ];
 
-    my.neovim.lazyvim.config = ["ai/sidekick.lua"];
+      config = ["ai/sidekick.lua"];
+    };
   };
 }

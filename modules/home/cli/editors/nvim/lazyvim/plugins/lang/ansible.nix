@@ -13,11 +13,13 @@ in {
   };
 
   config = mkIf cfg.enable {
-    my.neovim.lazyvim.imports = ["lazyvim.plugins.extras.lang.ansible"];
+    my.neovim.lazyvim = {
+      imports = ["lazyvim.plugins.extras.lang.ansible"];
 
-    my.neovim.lazyvim.extraPackages = with pkgs; [
-      ansible-lint
-      ansible-language-server
-    ];
+      extraPackages = with pkgs; [
+        ansible-lint
+        ansible-language-server
+      ];
+    };
   };
 }
