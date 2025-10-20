@@ -49,11 +49,15 @@
   layout = layouts.${config.my.keyboard.layout or "qwerty"};
 in {
   options.my.tmux = {
-    enable = mkEnableOption "tmux";
+    enable =
+      mkEnableOption "tmux"
+      // {
+        default = config.my.mux == "tmux";
+      };
     autoStart =
       mkEnableOption "tmux auto start"
       // {
-        default = true;
+        default = config.my.mux == "tmux";
       };
   };
 

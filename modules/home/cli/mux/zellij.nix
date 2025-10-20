@@ -1,3 +1,4 @@
+#TODO: add layouts
 {
   pkgs,
   lib,
@@ -93,8 +94,16 @@
   '';
 in {
   options.my.zellij = {
-    enable = mkEnableOption "Zellij";
-    autoStart = mkEnableOption "zellij auto start";
+    enable =
+      mkEnableOption "Zellij"
+      // {
+        default = config.my.mux == "zellij";
+      };
+    autoStart =
+      mkEnableOption "zellij auto start"
+      // {
+        default = config.my.mux == "zellij";
+      };
   };
 
   config = mkIf cfg.enable {
@@ -116,19 +125,13 @@ in {
         '';
       };
 
-      zsh = let
-        key =
-          if builtins.hasAttr "initContent" config.programs.zsh
-          then "initContent"
-          else "initExtraFirst";
-      in
-        mkIf cfg.autoStart {
-          "${key}" = mkBefore ''
-            if ${autoStartCheck}; then
-              zellij attach -c
-            fi
-          '';
-        };
+      zsh = mkIf cfg.autoStart {
+        initContent = mkBefore ''
+          if ${autoStartCheck}; then
+            zellij attach -c
+          fi
+        '';
+      };
 
       zellij = {
         enable = true;

@@ -4,22 +4,18 @@
   lib,
   ...
 }: let
-  sessionVariables = {
-    PAGER = "less -RF";
-    MANPAGER = "sh -c 'col --no-backspaces --spaces | bat --plain --language=man'";
-  };
-  shellAliases = {
-    cat = "bat --paging=never";
-    less = "bat --paging=always";
-    man = "batman";
-    diff = "batdiff";
-    bgrep = "batgrep";
-  };
   cfg = config.my.bat;
   inherit (lib.options) mkEnableOption;
   inherit (lib.modules) mkIf;
   inherit (lib.meta) getExe getExe';
   inherit (lib.strings) concatMapStrings;
+  shellAliases = {
+    cat = "bat --paging=never";
+    less = "bat --paging=always";
+    man = getExe pkgs.bat-extras.batman;
+    diff = getExe pkgs.bat-extras.batpipe;
+    bgrep = getExe pkgs.bat-extras.batgrep;
+  };
 in {
   options.my.bat = {
     enable = mkEnableOption "bat";
@@ -40,24 +36,7 @@ in {
     };
 
     home = {
-      inherit sessionVariables shellAliases;
-
-      file.".lesskey" = mkIf (config.my.keyboard.layout == "colemak") {
-        text = ''
-          #command
-          n left-scroll
-          o right-scroll
-          i back-line
-          I back-line-force
-          ^I back-line
-          E forw-line-force
-          k repeat-search
-          \ek repeat-search-all
-          K reverse-search
-          \eK reverse-search-all
-          c clear-search
-        '';
-      };
+      inherit shellAliases;
 
       persistence."/persist${config.home.homeDirectory}".directories = [
         ".cache/bat"

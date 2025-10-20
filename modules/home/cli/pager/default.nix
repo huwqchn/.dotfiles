@@ -1,6 +1,7 @@
 {
   pkgs,
   lib,
+  config,
   ...
 }: let
   inherit (lib.options) mkOption;
@@ -9,9 +10,23 @@
   less' = getExe pkgs.less;
 in {
   imports = lib.my.scanPaths ./.;
-  options.my.pager = mkOption {
-    type = str;
-    default = "${less'} -FR";
-    description = "The editor to use";
+  options.my = {
+    pager = mkOption {
+      type = str;
+      default = "${less'} -FR";
+      description = "The pager to use";
+    };
+    manpager = mkOption {
+      type = str;
+      default = "sh -c 'col --no-backspaces --spaces | bat --plain --language=man'";
+      description = "The manpages to use";
+    };
+  };
+
+  config = {
+    home.sessionVariables = {
+      PAGER = config.my.pager;
+      MANPAGER = config.my.manpager;
+    };
   };
 }

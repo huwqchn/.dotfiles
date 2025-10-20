@@ -28,9 +28,9 @@ in {
       default = "johnson.wq.hu@gmail.com";
       description = "The user email";
     };
-    # TODO: need config bash for minimal mode
+    # TODO: need config nushell
     shell = mkOption {
-      type = enum ["bash" "fish" "zsh"];
+      type = enum ["bash" "fish" "zsh" "nushell"];
       default = "fish";
       description = "The shell to use";
     };
@@ -67,7 +67,6 @@ in {
     };
   };
 
-  # TODO: should refactor this, too many asserts
   config.assertions = [
     {
       assertion =

@@ -27,6 +27,7 @@
     ripgrep.enable = true;
     starship.enable = true;
     tmux.enable = true;
+    zellij.enable = true;
     yazi.enable = true;
     zoxide.enable = true;
     pet.enable = true;
