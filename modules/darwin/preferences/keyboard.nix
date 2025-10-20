@@ -29,7 +29,7 @@
         "65" = {enabled = false;};
         # Previous input source = Ctrl+F12
         "60" = {
-          enabled = 1;
+          enabled = true;
           value = {
             type = "standard";
             parameters = [65535 111 8650752];
@@ -39,7 +39,7 @@
 
         # (Optional) Next input source = Ctrl+Shift+F12
         "61" = {
-          enabled = 1;
+          enabled = true;
           value = {
             type = "standard";
             parameters = [65535 111 8781824];
