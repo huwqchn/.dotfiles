@@ -10,7 +10,7 @@
   inherit (lib.meta) getExe;
   inherit (lib.strings) optionalString concatStringsSep;
   find' = "${getExe pkgs.fd} --type f --hidden --exclude=.git";
-  diff = getExe (builtins.getAttr config.my.git.diff pkgs);
+  delta' = getExe pkgs.delta;
   fd_opts = "--hidden --exclude=.git --exclude=.github --exclude=.cache";
   eza_opts = concatStringsSep " " config.programs.eza.extraOptions;
 in {
@@ -37,7 +37,7 @@ in {
           set -gx fzf_fd_opts ${fd_opts}
           ${optionalString config.programs.eza.enable "set -gx fzf_preview_dir_cmd ${getExe pkgs.eza} ${eza_opts}"}
           ${optionalString config.programs.bat.enable "set -gx fzf_preview_file_cmd ${getExe pkgs.bat}"}
-          set -gx fzf_diff_highlighter ${diff}
+          set -gx fzf_diff_highlighter ${delta'} --paging=never --width=20
 
           # fifc plugin
           set -gx fifc_editor ${config.home.sessionVariables.VISUAL}

@@ -9,6 +9,7 @@
   inherit (lib.strings) optionalString;
   inherit (lib.attrsets) optionalAttrs;
   inherit (lib.lists) optionals;
+  inherit (lib.meta) getExe;
   inherit (pkgs.stdenv.hostPlatform) isLinux isDarwin;
   cfg = config.my.fish;
   isColemak = config.my.keyboard.layout == "colemak";
@@ -20,47 +21,27 @@ in {
   config = mkIf cfg.enable {
     programs.fish = {
       enable = true;
-      plugins = with pkgs.fishPlugins;
-        [
-          {
-            name = "done";
-            inherit (done) src;
-          }
-          {
-            name = "forgit";
-            inherit (forgit) src;
-          }
-          {
-            name = "autopair";
-            inherit (autopair) src;
-          }
-          {
-            name = "sponge";
-            inherit (sponge) src;
-          }
-          {
-            name = "humantime-fish";
-            inherit (humantime-fish) src;
-          }
-          {
-            name = "colored-man-pages";
-            inherit (colored-man-pages) src;
-          }
-          # {
-          #   name = "fish-you-should-use";
-          #   inherit (pkgs.fishPlugins.fish-you-should-use) src;
-          # }
-          {
-            name = "bang-bang";
-            inherit (bang-bang) src;
-          }
-        ]
-        ++ optionals isDarwin [
-          {
-            name = "macos";
-            inherit (macos) src;
-          }
-        ];
+      plugins = let
+        pluginNames =
+          [
+            "done"
+            "forgit"
+            "autopair"
+            "sponge"
+            "humantime-fish"
+            "colored-man-pages"
+            "fish-you-should-use"
+            "bang-bang"
+          ]
+          ++ optionals isDarwin [
+            "macos"
+          ];
+      in
+        map (name: {
+          inherit name;
+          inherit (pkgs.fishPlugins."${name}") src;
+        })
+        pluginNames;
       interactiveShellInit = ''
         set -gx fish_vi_force_cursor 1
         set -gx fish_cursor_default block
@@ -69,6 +50,12 @@ in {
         set -gx fish_cursor_replace_one underscore
         set -g fish_emoji_width 2
         set -g sponge_purge_only_on_exit true
+        # Use fish for `nix develop`
+        ${getExe pkgs.nix-your-shell} fish | source
+      '';
+      shellInit = ''
+        # Initialize batpipe
+        eval (${getExe pkgs.bat-extras.batpipe})
       '';
       shellAbbrs =
         {
@@ -188,7 +175,26 @@ in {
             end
           '';
         };
-        # fish_greeting = {body = "fastfetch";};
+        fish_greeting = {
+          # copy from https://github.com/Anomalocaridid/dotfiles/blob/d63e4a3599876cd0f0687fc3f83a8e2909c70dfd/modules/terminal/fish.nix#L61
+          body = let
+            lolcat' = getExe pkgs.lolcat;
+          in ''
+            # Ascii Terminal greeting.
+            # Shows Linux distro and version in rainbow ascii art.
+            echo -en "\e[1m"
+            uname -s |
+            tr --delete '"' |
+            ${getExe pkgs.toilet} \
+            --termwidth \
+            --font smslant \
+            --filter border \
+            --directory ${pkgs.figlet}/share/figlet |
+            ${lolcat'}
+            echo -e "\e[1m Welcome back, $USER!\e[0m" |
+            ${lolcat'}
+          '';
+        };
         backup = {
           argumentNames = "filename";
           body = "cp $filename $filename.bak";
