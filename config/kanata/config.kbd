@@ -60,7 +60,7 @@
   _    _    _    _    _    _    _    @amp @astr min @plus
   _    _    _    _    _    _    _    @dolr @pct @circ eql  _    _
   _ _    _    _    _    _    _    @exlm @at @hash _    _
-  _    _    _              _              _    _
+  _    _    _              C-f12          _    _
 )
 
 (deflayer spc_layer
