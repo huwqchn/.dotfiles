@@ -47,7 +47,13 @@
     };
 
     # This is what AUR strives to be.
-    nur.url = "github:nix-community/NUR";
+    nur = {
+      url = "github:nix-community/NUR";
+      inputs = {
+        flake-parts.follows = "flake-parts";
+        nixpkgs.follows = "nixpkgs";
+      };
+    };
 
     # nix2container = {
     #   url = "github:nlewo/nix2container";
