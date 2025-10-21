@@ -11,21 +11,6 @@
   inherit (pkgs.stdenv.hostPlatform) isLinux;
   inherit (config.my) terminal;
   cfg = config.my.desktop.apps.ghostty;
-  layouts = {
-    qwerty = {
-      left = "h";
-      down = "j";
-      up = "k";
-      right = "l";
-    };
-    colemak = {
-      left = "n";
-      down = "e";
-      up = "i";
-      right = "o";
-    };
-  };
-  layout = layouts.${config.my.keyboard.layout or "qwerty"};
 in {
   options.my.desktop.apps.ghostty = {
     enable =
@@ -39,7 +24,7 @@ in {
     xdg.configFile."ghostty/shadders".source =
       mkOutOfStoreSymlink (lib.my.relativeToConfig "ghostty/shaders");
 
-    programs.ghostty = {
+    programs.ghostty = with config.my.keyboard.keys; {
       enable = true;
       # NOTE: It's broken on macOS, so you should to install it by brew.
       # See: https://github.com/NixOS/nixpkgs/issues/388984
@@ -90,10 +75,10 @@ in {
         # keybinds
         keybind = [
           "clear"
-          "ctrl+shift+${layout.left}=goto_split:left"
-          "ctrl+shift+${layout.down}=goto_split:bottom"
-          "ctrl+shift+${layout.up}=goto_split:top"
-          "ctrl+shift+${layout.right}=goto_split:right"
+          "ctrl+shift+${h}=goto_split:left"
+          "ctrl+shift+${j}=goto_split:bottom"
+          "ctrl+shift+${k}=goto_split:top"
+          "ctrl+shift+${l}=goto_split:right"
           "ctrl+shift+t=new_tab"
           "ctrl+shift+left_bracket=previous_tab"
           "ctrl+shift+right_bracket=next_tab"

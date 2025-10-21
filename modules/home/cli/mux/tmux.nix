@@ -16,34 +16,10 @@
     qwerty = {
       break-pane = "J";
       display-message = "i";
-      left = "h";
-      down = "j";
-      up = "k";
-      right = "l";
-      Left = "H";
-      Down = "J";
-      Up = "K";
-      Right = "L";
-      next-word = "e";
-      next = "n";
-      prev = "N";
-      other-end = "o";
     };
     colemak = {
       break-pane = "j";
       display-message = "I";
-      left = "n";
-      down = "e";
-      up = "i";
-      right = "o";
-      Left = "N";
-      Down = "E";
-      Up = "I";
-      Right = "O";
-      next-word = "j";
-      next = "k";
-      prev = "K";
-      other-end = "l";
     };
   };
   layout = layouts.${config.my.keyboard.layout or "qwerty"};
@@ -104,7 +80,7 @@ in {
             fi
           '';
         };
-      tmux = {
+      tmux = with config.my.keyboard.keys; {
         enable = true;
         baseIndex = 1;
         clock24 = true;
@@ -306,10 +282,10 @@ in {
           # split
           unbind '"'
           unbind %
-          bind ${layout.up} split-window -vb -c "#{pane_current_path}"
-          bind ${layout.down} split-window -v -c "#{pane_current_path}"
-          bind ${layout.left} split-window -hb -c "#{pane_current_path}"
-          bind ${layout.right} split-window -h -c "#{pane_current_path}"
+          bind ${k} split-window -vb -c "#{pane_current_path}"
+          bind ${j} split-window -v -c "#{pane_current_path}"
+          bind ${h} split-window -hb -c "#{pane_current_path}"
+          bind ${l} split-window -h -c "#{pane_current_path}"
 
           # When pressing prefix+s to list sessions, I want them sorted by time
           # That way my latest used sessions show at the top of the list
@@ -331,23 +307,23 @@ in {
 
           bind Space copy-mode
           bind -T copy-mode-vi v send-keys -X begin-selection
-          bind -T copy-mode-vi ${layout.left} send-keys -X cursor-left
-          bind -T copy-mode-vi ${layout.right} send-keys -X cursor-right
-          bind -T copy-mode-vi ${layout.up} send-keys -X cursor-up
-          bind -T copy-mode-vi ${layout.down} send-keys -X cursor-down
-          bind -T copy-mode-vi ${layout.Down} send -X scroll-down
-          bind -T copy-mode-vi ${layout.Up} send -X scroll-up
-          bind -T copy-mode-vi ${layout.next-word} send-keys -X next-word-end
-          bind -T copy-mode-vi ${layout.Left} send-keys -X start-of-line
-          bind -T copy-mode-vi ${layout.Right} send-keys -X end-of-line
+          bind -T copy-mode-vi ${h} send-keys -X cursor-left
+          bind -T copy-mode-vi ${l} send-keys -X cursor-right
+          bind -T copy-mode-vi ${k} send-keys -X cursor-up
+          bind -T copy-mode-vi ${j} send-keys -X cursor-down
+          bind -T copy-mode-vi ${J} send -X scroll-down
+          bind -T copy-mode-vi ${K} send -X scroll-up
+          bind -T copy-mode-vi ${e} send-keys -X next-word-end
+          bind -T copy-mode-vi ${H} send-keys -X start-of-line
+          bind -T copy-mode-vi ${L} send-keys -X end-of-line
 
           # commented out because it's handly by tmux-yank
           # bind -T copy-mode-vi Y send-keys -X copy-end-of-line
           # bind -T copy-mode-vi y send-keys -X copy-selection-and-cancel
 
-          bind -T copy-mode-vi ${layout.next} send-keys -X search-again
-          bind -T copy-mode-vi ${layout.prev} send-keys -X search-reverse
-          bind -T copy-mode-vi ${layout.other-end} send-keys -X other-end
+          bind -T copy-mode-vi ${n} send-keys -X search-again
+          bind -T copy-mode-vi ${N} send-keys -X search-reverse
+          bind -T copy-mode-vi ${o} send-keys -X other-end
 
           # don't exit copy mode when dragging with mouse
           unbind -T copy-mode-vi MouseDragEnd1Pane
@@ -375,10 +351,10 @@ in {
           # vim tmux navigation
           is_vim="ps -o state= -o comm= -t '#{pane_tty}' \
               | grep -iqE '^[^TXZ ]+ +(\\S+\\/)?g?(view|n?vim?x?)(diff)?$'"
-          bind-key -n C-${layout.left} if-shell "$is_vim" 'send-keys C-${layout.left}'  'select-pane -L'
-          bind-key -n C-${layout.down} if-shell "$is_vim" 'send-keys C-${layout.down}'  'select-pane -D'
-          bind-key -n C-${layout.up} if-shell "$is_vim" 'send-keys C-${layout.up}'  'select-pane -U'
-          bind-key -n C-${layout.right} if-shell "$is_vim" 'send-keys C-${layout.right}'  'select-pane -R'
+          bind-key -n C-${h} if-shell "$is_vim" 'send-keys C-${h}'  'select-pane -L'
+          bind-key -n C-${j} if-shell "$is_vim" 'send-keys C-${j}'  'select-pane -D'
+          bind-key -n C-${k} if-shell "$is_vim" 'send-keys C-${k}'  'select-pane -U'
+          bind-key -n C-${l} if-shell "$is_vim" 'send-keys C-${l}'  'select-pane -R'
           bind-key -n C-q if-shell "$is_vim" 'send-keys C-q'  'kill-pane'
 
           bind-key -n C-Left if-shell "$is_vim" 'send-keys C-Left' 'resize-pane -L 3'
@@ -392,10 +368,10 @@ in {
           if-shell -b '[ "$(echo "$tmux_version >= 3.0" | bc)" = 1 ]' \
               "bind-key -n 'C-\\' if-shell \"$is_vim\" 'send-keys C-\\\\'  'select-pane -l'"
 
-          bind-key -T copy-mode-vi 'C-${layout.left}' select-pane -L
-          bind-key -T copy-mode-vi 'C-${layout.down}' select-pane -D
-          bind-key -T copy-mode-vi 'C-${layout.up}' select-pane -U
-          bind-key -T copy-mode-vi 'C-${layout.right}' select-pane -R
+          bind-key -T copy-mode-vi 'C-${h}' select-pane -L
+          bind-key -T copy-mode-vi 'C-${j}' select-pane -D
+          bind-key -T copy-mode-vi 'C-${k}' select-pane -U
+          bind-key -T copy-mode-vi 'C-${l}' select-pane -R
           bind-key -T copy-mode-vi 'C-\' select-pane -l
           ${optionalString isDarwin ''
             set-option -g default-command "${getExe' pkgs.reattach-to-user-namespace "reattach-to-user-namespace"} -l ${shell}"

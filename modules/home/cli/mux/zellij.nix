@@ -93,27 +93,6 @@
   SwitchToMode = mode: "SwitchToMode \"${mode}\"";
   GoToTab = tab: "GoToTab ${toString tab}";
 
-  # Keyboard layout mappings
-  layouts = {
-    qwerty = {
-      left = "h";
-      down = "j";
-      up = "k";
-      right = "l";
-      next = "n";
-      prev = "p";
-    };
-    colemak = {
-      left = "n";
-      down = "e";
-      up = "i";
-      right = "o";
-      next = "k";
-      prev = "K";
-    };
-  };
-  layout = layouts.${config.my.keyboard.layout or "qwerty"};
-
   # Auto-start condition for zsh
   autoStartCheck = ''
     [[ -z "$ZELLIJ$SSH_TTY$WSL_DISTRO_NAME$INSIDE_PYCHARM$EMACS$VIM$NVIM$INSIDE_EMACS$TMUX" ]] \
@@ -160,7 +139,7 @@ in {
         '';
       };
 
-      zellij = {
+      zellij = with config.my.keyboard.keys; {
         enable = true;
         settings = {
           default_mode = "locked";
@@ -182,19 +161,19 @@ in {
             tmux = {
               "Ctrl t" = SwitchToMode "Normal";
               # Pane navigation with Ctrl
-              "Ctrl ${layout.left}" = "MoveFocus \"Left\"";
-              "Ctrl ${layout.down}" = "MoveFocus \"Down\"";
-              "Ctrl ${layout.up}" = "MoveFocus \"Up\"";
-              "Ctrl ${layout.right}" = "MoveFocus \"Right\"";
+              "Ctrl ${h}" = "MoveFocus \"Left\"";
+              "Ctrl ${j}" = "MoveFocus \"Down\"";
+              "Ctrl ${k}" = "MoveFocus \"Up\"";
+              "Ctrl ${l}" = "MoveFocus \"Right\"";
               # Pane splitting
-              "${layout.left}" = ["NewPane \"Left\"" (SwitchToMode "Normal")];
-              "${layout.down}" = ["NewPane \"Down\"" (SwitchToMode "Normal")];
-              "${layout.up}" = ["NewPane \"Up\"" (SwitchToMode "Normal")];
-              "${layout.right}" = ["NewPane \"Right\"" (SwitchToMode "Normal")];
+              h = ["NewPane \"Left\"" (SwitchToMode "Normal")];
+              j = ["NewPane \"Down\"" (SwitchToMode "Normal")];
+              k = ["NewPane \"Up\"" (SwitchToMode "Normal")];
+              l = ["NewPane \"Right\"" (SwitchToMode "Normal")];
               # Tab management
               "c" = ["NewTab" (SwitchToMode "Normal")];
-              "${layout.next}" = "GoToNextTab";
-              "${layout.prev}" = "GoToPreviousTab";
+              n = "GoToNextTab";
+              N = "GoToPreviousTab";
               "Tab" = "ToggleTab";
               # Quick tab access
               "1" = [(GoToTab 1) (SwitchToMode "Normal")];
@@ -219,8 +198,8 @@ in {
               "d" = "Detach";
             };
             scroll = {
-              "${layout.down}" = "ScrollDown";
-              "${layout.up}" = "ScrollUp";
+              j = "ScrollDown";
+              k = "ScrollUp";
               "g" = "ScrollToTop";
               "G" = "ScrollToBottom";
               "d" = "HalfPageScrollDown";
@@ -229,14 +208,14 @@ in {
               "Ctrl b" = "PageScrollUp";
               "/" = "Search \"down\"";
               "?" = "Search \"up\"";
-              "${layout.next}" = "Search \"down\"";
-              "${layout.prev}" = "Search \"up\"";
+              n = "Search \"down\"";
+              N = "Search \"up\"";
             };
             resize = {
-              "${layout.left}" = "Resize \"Increase Left\"";
-              "${layout.down}" = "Resize \"Increase Down\"";
-              "${layout.up}" = "Resize \"Increase Up\"";
-              "${layout.right}" = "Resize \"Increase Right\"";
+              h = "Resize \"Increase Left\"";
+              j = "Resize \"Increase Down\"";
+              k = "Resize \"Increase Up\"";
+              l = "Resize \"Increase Right\"";
             };
             # Using the new shared_except syntax - applies to all modes except specified ones
             shared_except = {

@@ -7,21 +7,6 @@
   inherit (lib.modules) mkIf;
   inherit (config.my) terminal;
   cfg = config.my.desktop.apps.kitty;
-  layouts = {
-    qwerty = {
-      left = "h";
-      down = "j";
-      up = "k";
-      right = "l";
-    };
-    colemak = {
-      left = "n";
-      down = "e";
-      up = "i";
-      right = "o";
-    };
-  };
-  layout = layouts.${config.my.keyboard.layout or "qwerty"};
 in {
   options.my.desktop.apps.kitty = {
     enable =
@@ -32,7 +17,7 @@ in {
   };
 
   config = mkIf cfg.enable {
-    programs.kitty = {
+    programs.kitty = with config.my.keyboard.keys; {
       enable = true;
       font = {
         name = terminal.font;
@@ -117,16 +102,16 @@ in {
         "shift+enter" = "send_text all x1b[13;2u";
       };
       extraConfig = ''
-        map ctrl+${layout.left} neighboring_window left
-        map ctrl+${layout.down} neighboring_window down
-        map ctrl+${layout.up} neighboring_window up
-        map ctrl+${layout.right} neighboring_window right
+        map ctrl+${h} neighboring_window left
+        map ctrl+${j} neighboring_window down
+        map ctrl+${k} neighboring_window up
+        map ctrl+${l} neighboring_window right
 
         # Unset the mapping to pass the keys to neovim
-        map --when-focus-on var:IS_NVIM ctrl+${layout.left}
-        map --when-focus-on var:IS_NVIM ctrl+${layout.down}
-        map --when-focus-on var:IS_NVIM ctrl+${layout.up}
-        map --when-focus-on var:IS_NVIM ctrl+${layout.right}
+        map --when-focus-on var:IS_NVIM ctrl+${h}
+        map --when-focus-on var:IS_NVIM ctrl+${j}
+        map --when-focus-on var:IS_NVIM ctrl+${k}
+        map --when-focus-on var:IS_NVIM ctrl+${l}
 
         # the 3 here is the resize amount, adjust as needed
         map alt+down kitten relative_resize.py down  3
