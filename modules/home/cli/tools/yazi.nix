@@ -58,16 +58,16 @@ in {
       enableZshIntegration = true;
       enableFishIntegration = true;
       # enableNushellIntegration = true;
-      plugins = {
-        inherit (pkgs.yaziPlugins) starship;
-        inherit (pkgs.yaziPlugins) sudo;
-        inherit (pkgs.yaziPlugins) smart-enter;
-        inherit (pkgs.yaziPlugins) smart-filter;
-        inherit (pkgs.yaziPlugins) time-travel;
-        inherit (pkgs.yaziPlugins) mount;
-        inherit (pkgs.yaziPlugins) git;
-        inherit (pkgs.yaziPlugins) chmod;
-        inherit (pkgs.yaziPlugins) no-status;
+      plugins = with pkgs.yaziPlugins; {
+        inherit starship;
+        inherit sudo;
+        inherit smart-enter;
+        inherit smart-filter;
+        inherit time-travel;
+        inherit mount;
+        inherit git;
+        inherit chmod;
+        inherit no-status;
       };
       initLua = ''
         require("starship"):setup()

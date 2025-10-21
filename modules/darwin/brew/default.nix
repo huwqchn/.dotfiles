@@ -107,7 +107,6 @@
       "squirrel" # input method for Chinese, rime-squirrel
       "zen-browser" # web browser
       # "visual-studio-code" # editor
-      # "discord" # update too frequently, use the web version instead
       # "telegram" # IM
       "rustdesk" # remote desktop client
       # "iina" # video player
@@ -124,10 +123,8 @@
       "miniforge" # Miniconda's community-driven distribution
       "tencent-lemon" # clean tool
       "surge" # proxy tool
-      "miniforge" # Miniconda's community-driven distribution
       "keycastr" # show keystrokes on screen
       # "obs" # stream / recoding software
-      "chatgpt" # open ai desktop
       # virtualization
       "orbstack"
       # "karabiner-elements" # keyboard remap
@@ -136,7 +133,6 @@
       # sing-box
       "sfm"
       "karabiner-elements" # keyboard remap
-      "kindavim"
     ];
   };
 }
