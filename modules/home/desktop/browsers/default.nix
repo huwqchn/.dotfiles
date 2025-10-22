@@ -16,14 +16,11 @@ in {
 
   options.my = {
     browser = {
-      name = mkOption {
-        type = nullOr str;
-        default = null;
-      };
       default = mkOption {
         type = nullOr (enum [
           "zen"
           "chrome"
+          "firefox"
         ]);
         default =
           if config.my.desktop.enable

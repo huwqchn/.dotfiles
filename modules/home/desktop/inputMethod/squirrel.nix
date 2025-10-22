@@ -9,7 +9,7 @@
   inherit (config.my) desktop;
   inherit (pkgs.stdenv.hostPlatform) isDarwin;
   dir = "Library/Rime";
-  cfg = desktop.rime;
+  cfg = desktop.squirrel;
   # version = "2025.04.06";
   # rime-ice = pkgs.fetchFromGitHub {
   #   owner = "iDvel";
@@ -32,6 +32,7 @@ in {
       ${dir} = {
         source = "${pkgs.rime-ice}/share/rime-data";
         recursive = true;
+        force = true;
       };
       "${dir}/default.yaml".source = "${pkgs.rime-ice}/share/rime-data/rime_ice_suggestion.yaml";
     };

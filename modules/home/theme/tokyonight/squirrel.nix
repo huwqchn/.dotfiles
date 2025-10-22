@@ -7,12 +7,12 @@
   inherit (lib.modules) mkIf;
   cfg = config.my.theme.tokyonight;
   inherit (config.my.theme.colorscheme) palette slug;
-  inherit (config.my.desktop) rime;
+  dir = "Library/Rime";
   inherit (lib.my) toHex;
 in {
   config = mkIf (cfg.enable && pkgs.stdenv.hostPlatform.isDarwin) {
     # FIXME: not working anyway
-    home.file."${rime.dir}/squirrel.custom.yaml".text = ''
+    home.file."${dir}/squirrel.custom.yaml".text = ''
       patch:
         style/color_scheme: tokyonight-day
         style/color_scheme_dark: ${slug}
