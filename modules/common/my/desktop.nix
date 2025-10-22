@@ -43,6 +43,15 @@ in {
       description = "The desktop environment type to use";
     };
 
+    autologin =
+      mkEnableOption ''
+        Whether to enable passwordless login. This is generally useful on systems
+        with full disk encryption (FDE) enabled, but is a security risk otherwise.
+      ''
+      // {
+        default = my.persistence.enable;
+      };
+
     exec = mkOption {
       type = str;
       default = getExe (builtins.getAttr my.desktop.default pkgs);
