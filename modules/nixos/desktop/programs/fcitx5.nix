@@ -24,7 +24,6 @@ in {
       type = "fcitx5";
       fcitx5 = {
         addons = with pkgs; [
-          rime-data
           fcitx5-fluent
           fcitx5-gtk
           fcitx5-configtool #if having issues with qt compatibility, run fcitx5-config-qt
@@ -34,9 +33,12 @@ in {
           fcitx5-pinyin-zhwiki
           libsForQt5.fcitx5-qt
           (fcitx5-rime.override {
-            rimeDataPkgs = [
+            rimeDataPkgs = with pkgs; [
+              rime-data
               # /run/current-system/sw/share/rime-data/
-              pkgs.rime-ice
+              rime-ice
+              rime-moegirl
+              rime-zhwiki
             ];
           })
         ];
