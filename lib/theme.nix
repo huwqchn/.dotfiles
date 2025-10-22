@@ -65,6 +65,11 @@
   in
     lib.strings.concatStringsSep " " [c1 c2 deg];
   # gradient = args: gradient' args.h1 args.a1 args.h2 args.a2 args.angle;
+
+  # Convert #RRGGBB or #RGB to 0xRRGGBB format
+  toHex = color: let
+    hex = removeHashtag color;
+  in "0x${hex}";
 in {
-  inherit removeHashtag removeHashtags removeHashtags' capitalize rgba gradient;
+  inherit removeHashtag removeHashtags removeHashtags' capitalize rgba gradient toHex;
 }
