@@ -23,6 +23,7 @@ in {
   };
 
   config = mkIf cfg.enable {
+    my.desktop.apps.firefox.enable = true;
     programs.zen-browser = {
       enable = true;
       nativeMessagingHosts = [pkgs.firefoxpwa];
