@@ -125,7 +125,7 @@
     program' = lib.getExe' package program;
   in "${uwsm'} app -- ${program'}";
 
-  isHyprland = conf: isWayland conf && conf.my.desktop.name == "hyprland";
+  isHyprland = conf: isWayland conf && conf.my.desktop.default == "hyprland";
 
   isWayland = conf: conf.my.desktop.enable && conf.my.desktop.type == "wayland";
 

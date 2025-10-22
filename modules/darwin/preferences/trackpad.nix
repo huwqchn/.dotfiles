@@ -1,6 +1,6 @@
 {
   system.defaults = {
-    # enable natural scrolling
+    # Disable natural scrolling
     NSGlobalDomain."com.apple.swipescrolldirection" = false;
 
     # customize trackpad

@@ -21,7 +21,7 @@ in {
     # TODO: sway is not supported yet
     # TODO: should support niri, that's supper cool
     # TODO: should support cosmic desktop environment
-    name = mkOption {
+    default = mkOption {
       type = nullOr (enum ["i3" "bspwm" "awesome" "niri" "sway" "hyprland" "aerospace"]);
       default =
         if !my.desktop.enable
@@ -45,7 +45,7 @@ in {
 
     exec = mkOption {
       type = str;
-      default = getExe (builtins.getAttr my.desktop.name pkgs);
+      default = getExe (builtins.getAttr my.desktop.default pkgs);
       description = ''
         The command to use for logging in. This is used by the
         `my.desktop.exec` module to determine which command to run.
@@ -62,19 +62,19 @@ in {
       message = "You can't use desktop.enable without desktop.type";
     }
     {
-      assertion = my.desktop.name == "i3" -> my.desktop.type == "xorg";
+      assertion = my.desktop.default == "i3" -> my.desktop.type == "xorg";
       message = "You can't use i3 desktop environment without xorg";
     }
     {
-      assertion = my.desktop.name == "bspwm" -> my.desktop.type == "xorg";
+      assertion = my.desktop.default == "bspwm" -> my.desktop.type == "xorg";
       message = "You can't use bspwm desktop environment without xorg";
     }
     {
-      assertion = my.desktop.name == "hyprland" -> my.desktop.type == "wayland";
+      assertion = my.desktop.default == "hyprland" -> my.desktop.type == "wayland";
       message = "You can't use hyprland desktop environment without wayland";
     }
     {
-      assertion = my.desktop.name == "sway" -> my.desktop.type == "wayland";
+      assertion = my.desktop.default == "sway" -> my.desktop.type == "wayland";
       message = "You can't use sway desktop environment without wayland";
     }
     {
@@ -90,7 +90,7 @@ in {
       message = "You can't use darwin desktop environment on non-darwin system";
     }
     {
-      assertion = my.desktop.name == "aerospace" -> my.desktop.type == "darwin";
+      assertion = my.desktop.default == "aerospace" -> my.desktop.type == "darwin";
       message = "You can't use aerospace desktop environment without darwin";
     }
   ];

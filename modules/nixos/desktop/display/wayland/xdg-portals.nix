@@ -9,7 +9,7 @@
   inherit (lib.my) isWayland;
   cfg = config.my.desktop;
   portal =
-    if cfg.name == "hyprland"
+    if cfg.default == "hyprland"
     then "hyprland"
     else "wlr";
   enable = isWayland config;

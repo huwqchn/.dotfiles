@@ -20,25 +20,20 @@ in {
   hm = {
     imports = [../home];
     my = {
-      inherit (my) name fullName email shell home;
-      keyboard = {
-        inherit (my.keyboard) layout kanata;
-      };
-      desktop = {
-        inherit (my.desktop) enable type name;
-      };
-      security = {
-        inherit (my.security) enable;
-      };
-      theme = {
-        inherit (my.theme) name cursor avatar wallpaper tokyonight colorscheme;
-      };
-      persistence = {
-        inherit (my.persistence) enable;
-      };
-      machine = {
-        inherit (my.machine) type gpu cpu monitors hasHidpi;
-      };
+      inherit
+        (my)
+        name
+        fullName
+        email
+        shell
+        home
+        keyboard
+        desktop
+        security
+        theme
+        persistence
+        machine
+        ;
     };
   };
 

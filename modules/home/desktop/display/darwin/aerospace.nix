@@ -9,7 +9,7 @@
   inherit (cfg.general.workspace) number;
 in
   with config.my.keyboard.keys; {
-    config = mkIf (cfg.enable && cfg.type == "darwin" && cfg.name == "aerospace") {
+    config = mkIf (cfg.enable && cfg.type == "darwin" && cfg.default == "aerospace") {
       programs.aerospace = {
         enable = true;
         userSettings = {

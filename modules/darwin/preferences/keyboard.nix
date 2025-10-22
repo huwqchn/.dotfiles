@@ -53,7 +53,8 @@
 
         AppleKeyboardUIMode = 3; # Mode 3 enables full keyboard control for dialogs and menus.
 
-        ApplePressAndHoldEnabled = true; # keep native press-and-hold picker instead of forcing key-repeat.
+        # Don't keep native press-and-hold picker instead of forcing key-repeat.
+        ApplePressAndHoldEnabled = false;
         # `InitialKeyRepeat` controls how long macOS waits (in 1/60s) before key repeat kicks in.
         # 15 ≈ 225 ms which feels fast while still staying within Apple’s supported range.
         InitialKeyRepeat = 15;
