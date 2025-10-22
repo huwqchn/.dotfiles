@@ -27,7 +27,7 @@ in {
         inherit (my.machine) type gpu cpu monitors hasHidpi;
       };
       desktop = {
-        inherit (my.desktop) enable type default;
+        inherit (my.desktop) enable type default exec;
       };
 
       security = {
