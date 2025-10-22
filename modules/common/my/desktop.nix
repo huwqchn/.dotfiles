@@ -9,6 +9,8 @@
   inherit (pkgs.stdenv.hostPlatform) isLinux isDarwin;
   inherit (lib.meta) getExe;
   inherit (config) my;
+  cfg = my.desktop;
+  persist = config.my.persistence.enable;
 in {
   options.my.desktop = {
     enable =
@@ -51,6 +53,26 @@ in {
         `my.desktop.exec` module to determine which command to run.
       '';
     };
+    options.my.desktop.login = mkOption {
+      type = nullOr (enum [
+        "greetd"
+        "sddm"
+        "cosmic-greeter"
+      ]);
+      default =
+        if cfg.enable
+        then "greetd"
+        else null;
+      description = "Desktop login manager";
+    };
+    autologin =
+      mkEnableOption ''
+        Whether to enable passwordless login. This is generally useful on systems with
+        FDE (Full Disk Encryption) enabled. It is a security risk for systems without FDE.
+      ''
+      // {
+        default = persist;
+      };
   };
   config.assertions = [
     {

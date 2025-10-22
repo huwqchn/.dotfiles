@@ -7,10 +7,10 @@
   inherit (lib.my) capitalize;
   inherit (lib.modules) mkIf;
   inherit (pkgs.stdenv.hostPlatform) isLinux;
-  inherit (config.my.theme) name tokyonight colorscheme;
+  inherit (config.my.theme) default tokyonight colorscheme;
   inherit (colorscheme) palette;
   cfg = tokyonight;
-  colorName = "${capitalize name}-${capitalize cfg.style}";
+  colorName = "${capitalize default}-${capitalize cfg.style}";
   enable = cfg.enable && config.my.desktop.enable && isLinux;
   variant = "modern";
   cursorName = "Bibata-${capitalize variant}-${colorName}-Hyprcursor";

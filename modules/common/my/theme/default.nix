@@ -13,7 +13,7 @@ in {
   imports = scanPaths ./.;
 
   options.my.theme = {
-    name = mkOption {
+    default = mkOption {
       type = nullOr (enum ["tokyonight" "catppuccin"]);
       default = "tokyonight";
       description = "The theme to use";

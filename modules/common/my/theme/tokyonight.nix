@@ -11,7 +11,7 @@ in {
     enable =
       mkEnableOption "Tokyonight theme"
       // {
-        default = my.theme.name == "tokyonight";
+        default = my.theme.default == "tokyonight";
       };
 
     #TODO: we need create a pr for tokyonight.nvim to generate tokyonight.nix
