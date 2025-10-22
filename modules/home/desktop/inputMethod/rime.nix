@@ -34,14 +34,6 @@ in {
         recursive = true;
       };
       "${dir}/default.yaml".source = "${pkgs.rime-ice}/share/rime-data/rime_ice_suggestion.yaml";
-      # FIXME: not working anyway
-      # "${dir}/default.custom.yaml".text = with config.my.keyboard.keys; ''
-      #   key_binder/bindings:
-      #     - { when: has_menu, accept: Control+${h}, send: Left }
-      #     - { when: has_menu, accept: Control+${j}, send: Page_Down }
-      #     - { when: has_menu, accept: Control+${k}, send: Page_Up }
-      #     - { when: has_menu, accept: Control+${l}, send: Right }
-      # '';
     };
 
     home.activation.rimeDeploy = lib.hm.dag.entryAfter ["writeBoundary"] ''

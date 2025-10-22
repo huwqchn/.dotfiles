@@ -21,6 +21,40 @@ in {
     # TODO: sway is not supported yet
     # TODO: should support niri, that's supper cool
     # TODO: should support cosmic desktop environment
+    # TODO: refactor this
+    # { lib, ... }:
+    # let
+    #   t = lib.types;
+    #   waylandChoices = [ "niri" "sway" "hyprland" ];
+    #   xorgChoices    = [ "i3" "bspwm" "awesome" ];
+    #   darwinChoices  = [ "aerospace" ];
+    # in {
+    #   options.my.desktop.default = lib.mkOption {
+    #     type = t.nullOr (t.submodule ({ config, ... }: {
+    #       options = {
+    #         type = lib.mkOption {
+    #           type = t.enum [ "wayland" "xorg" "darwin" ];
+    #           description = "Display server type.";
+    #         };
+    #
+    #         default = lib.mkOption {
+    #           # 关键：依赖同一 submodule 内的 config.type
+    #           type = t.enum (
+    #             if      config.type == "wayland" then waylandChoices
+    #             else if config.type == "xorg"    then xorgChoices
+    #             else                              darwinChoices
+    #           );
+    #           description = "Default WM limited by `type`.";
+    #         };
+    #       };
+    #     }));
+    #
+    #     default = {
+    #       type = "wayland";
+    #       default = "niri";
+    #     };
+    #   };
+    # }
     default = mkOption {
       type = nullOr (enum ["i3" "bspwm" "awesome" "niri" "sway" "hyprland" "aerospace"]);
       default =
