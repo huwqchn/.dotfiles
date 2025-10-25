@@ -1,5 +1,5 @@
 set shell := ["bash", "-c"]
-rebuild := if os() == "macos" { "darwin-rebuild" } else { "nixos-rebuild" }
+rebuild := if os() == "macos" { "sudo darwin-rebuild" } else { "nixos-rebuild" }
 build_config := if os() == "macos" { "darwinConfigurations" } else { "nixosConfigurations" }
 
 # List all the just commands
