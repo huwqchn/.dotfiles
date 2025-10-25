@@ -10,10 +10,7 @@
 in {
   options.my.desktop.apps.telegram = {
     enable =
-      mkEnableOption "Telegram"
-      // {
-        default = config.my.desktop.enable;
-      };
+      mkEnableOption "Telegram";
   };
 
   config = mkIf cfg.enable {

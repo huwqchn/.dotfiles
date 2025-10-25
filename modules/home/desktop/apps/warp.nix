@@ -7,9 +7,9 @@
   inherit (lib.modules) mkIf;
   inherit (lib.options) mkEnableOption;
   inherit (config.home) homeDirectory;
-  cfg = config.my.desktop.apps.warp;
+  cfg = config.my.desktop.apps.cloudflare-warp;
 in {
-  options.my.desktop.apps.warp = {
+  options.my.desktop.apps.cloudflare-warp = {
     enable =
       mkEnableOption "Cloudflare Warp"
       // {

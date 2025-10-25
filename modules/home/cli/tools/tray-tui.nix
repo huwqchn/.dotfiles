@@ -3,8 +3,8 @@
   lib,
   ...
 }: let
-  inherit (lib.options) mkIf;
-  inherit (lib.modules) mkEnableOption;
+  inherit (lib.options) mkEnableOption;
+  inherit (lib.modules) mkIf;
   cfg = config.my.tray-tui;
 in {
   options.my.tray-tui = {
