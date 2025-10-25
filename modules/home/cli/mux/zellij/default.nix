@@ -28,13 +28,6 @@ in {
   };
 
   config = mkIf cfg.enable {
-    assertions = [
-      {
-        assertion = !(cfg.autoStart && config.my.tmux.autoStart or false);
-        message = "Cannot enable both tmux.autoStart and zellij.autoStart simultaneously";
-      }
-    ];
-
     programs = {
       fish = mkIf autoStart {
         interactiveShellInit = ''

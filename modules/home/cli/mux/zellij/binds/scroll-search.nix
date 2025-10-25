@@ -1,5 +1,5 @@
 {config, ...}: {
-  zellij.settings.keybinds._children = with config.my.keyboard.keys; [
+  programs.zellij.settings.keybinds._children = with config.my.keyboard.keys; [
     {
       scroll._children = [
         {

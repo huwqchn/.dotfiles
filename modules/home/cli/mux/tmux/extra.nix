@@ -1,5 +1,6 @@
 {
   lib,
+  pkgs,
   config,
   ...
 }: let
@@ -80,6 +81,10 @@
       else "${lib.concatStringsSep " " flags} ";
   in "${command} ${flagStr}${option} ${value}";
   # mkSetUnquoted: Same as mkSet but without quotes around value (for special cases)
+  inherit (lib.strings) optionalString;
+  inherit (pkgs.stdenv.hostPlatform) isDarwin;
+  inherit (lib.meta) getExe' getExe;
+  shell = getExe (builtins.getAttr config.my.shell pkgs);
 in {
   programs.tmux.extraConfig = with config.my.keyboard.keys; ''
     # Fix colors and enable true color support and italics

@@ -1,5 +1,5 @@
 {
-  zellij.settings.keybinds._children = [
+  programs.zellij.settings.keybinds._children = [
     {
       shared_among = {
         _args = ["tmux" "session"];

@@ -4,10 +4,10 @@
   config,
   ...
 }: let
-  vimZellijNavigatorUri = "file:${pkgs.my.zellijPlugins.vim-zellij.navigator}/bin/vim-zellij-navigator.wasm";
+  vimZellijNavigatorUri = "file:${pkgs.my.vim-zellij-navigator}/bin/vim-zellij-navigator.wasm";
 in {
   imports = lib.my.scanPaths ./.;
-  zellij.settings.keybinds = with config.my.keyboard.keys; {
+  programs.zellij.settings.keybinds = with config.my.keyboard.keys; {
     _prop.clear-defaults = true;
     _children = [
       {
