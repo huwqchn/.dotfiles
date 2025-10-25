@@ -3,8 +3,12 @@
 {
   lib,
   pkgs,
+  config,
+  hostName,
   ...
-}: {
+}: let
+  inherit (config.my) name;
+in {
   config = {
     programs.opencode.settings.lsp = {
       nixd = {
@@ -16,10 +20,10 @@
           };
           options = {
             nixos = {
-              expr = "(builtins.getFlake \"/home/khaneliman/khanelinix\").nixosConfigurations.khanelinix.options";
+              expr = "(builtins.getFlake \"/home/${name}/.dotfiles\").nixosConfigurations.my.options";
             };
             home-manager = {
-              expr = "(builtins.getFlake \"/home/khaneliman/khanelinix\").homeConfigurations.\"khaneliman@khanelinix\".options";
+              expr = "(builtins.getFlake \"/home/${name}/.dotfiles\").homeConfigurations.\"${name}@${hostName}\".options";
             };
           };
         };
@@ -40,7 +44,7 @@
             workspace = {
               library = [
                 "/nix/store/*/share/lua/5.1"
-                "/etc/profiles/per-user/khaneliman/share/lua/5.1"
+                "/etc/profiles/per-user/${name}/share/lua/5.1"
               ];
             };
           };

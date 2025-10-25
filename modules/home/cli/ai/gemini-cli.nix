@@ -16,7 +16,7 @@
       export GOOGLE_CLOUD_PROJECT="$(${cat'} ${secretPath})"
     fi
   '';
-  sharedAiTools = import (lib.getFile "modules/home/cli/ai/common") {inherit lib;};
+  sharedAiTools = import (lib.my.getFile "modules/home/cli/ai/common/shared.nix") {inherit lib;};
 in {
   options.my.gemini-cli = {
     enable = mkEnableOption "gemini-cli";
@@ -34,7 +34,7 @@ in {
       gemini-cli = {
         enable = true;
         package = inputs.nix-ai-tools.packages.${pkgs.system}.gemini-cli;
-        settigns = {
+        settings = {
           ui.theme = "Default";
           general = {
             vimMode = true;
@@ -44,7 +44,7 @@ in {
         };
         defaultModel = "gemini-2.5-pro";
         context = {
-          GEMINI = lib.getFile "modules/home/cli/ai/common/base.md";
+          GEMINI = lib.my.getFile "modules/home/cli/ai/common/base.md";
         };
 
         commands =

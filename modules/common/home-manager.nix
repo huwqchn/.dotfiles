@@ -7,9 +7,9 @@
   pkgs',
   lib,
   config,
-  hostName,
   ...
 }: let
+  inherit (config.networking) hostName;
   extraSpecialArgs = {inherit self self' inputs inputs' pkgs pkgs' lib hostName;};
   inherit (config) my;
 in {

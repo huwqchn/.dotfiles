@@ -7,7 +7,8 @@
   cfg = config.my.claude-code;
   inherit (lib.options) mkEnableOption;
   inherit (lib.modules) mkIf;
-  hooks = lib.importDir ./hooks {inherit pkgs;};
+  hooks = lib.my.importDir ./hooks {inherit pkgs;};
+  sharedAiTools = import (lib.my.getFile "modules/home/cli/ai/common/shared.nix") {inherit lib;};
 in {
   options.my.claude-code = {
     enable = mkEnableOption "claude-code";
@@ -157,11 +158,11 @@ in {
         };
       };
 
-      inherit ((import (lib.getFile "modules/home/cli/ai/common") {inherit lib;}).claudeCode) agents;
+      inherit (sharedAiTools.claudeCode) agents;
 
-      inherit ((import (lib.getFile "modules/home/cli/ai/common/") {inherit lib;}).claudeCode) commands;
+      inherit (sharedAiTools.claudeCode) commands;
 
-      memory.source = lib.getFile "modules/home/cli/ai/common/base.md";
+      memory.source = lib.my.getFile "modules/home/cli/ai/common/base.md";
     };
 
     home.persistence."/persist${config.home.homeDirectory}".directories = [

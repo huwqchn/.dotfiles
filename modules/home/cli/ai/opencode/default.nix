@@ -6,8 +6,9 @@
   ...
 }: let
   inherit (lib) mkIf mkEnableOption;
+  sharedAiTools = import (lib.my.getFile "modules/home/cli/ai/common/shared.nix") {inherit lib;};
 
-  cfg = config.khanelinix.programs.terminal.tools.opencode;
+  cfg = config.my.opencode;
 in {
   imports = lib.my.scanPaths ./.;
 
@@ -28,11 +29,10 @@ in {
         autoupdate = false;
       };
 
-      inherit ((import (lib.getFile "modules/common/ai-tools") {inherit lib;}).claudeCode) agents;
+      inherit (sharedAiTools.claudeCode) agents;
+      inherit (sharedAiTools.claudeCode) commands;
 
-      inherit ((import (lib.getFile "modules/common/ai-tools") {inherit lib;}).claudeCode) commands;
-
-      rules = builtins.readFile (lib.getFile "modules/common/ai-tools/base.md");
+      rules = builtins.readFile (lib.my.getFile "modules/home/cli/ai/common/base.md");
     };
 
     home.persistence."/persist${config.home.homeDirectory}".directories = [
