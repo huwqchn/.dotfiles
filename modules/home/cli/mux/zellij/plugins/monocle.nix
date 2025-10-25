@@ -1,0 +1,38 @@
+{pkgs, ...}: let
+  monocleWasm = "file:${pkgs.my.zellijPlugins.zellij-harpoon}/bin/monocle.wasm";
+  launchMonocle = {
+    launchOrFocusPlugin = {
+      _args = [monocleWasm];
+      _children = [
+        {
+          floating = true;
+        }
+        {
+          move_to_focusd_tab = true;
+        }
+      ];
+    };
+  };
+in {
+  programs.zellij.setting = {
+    plugins.harpoon._props.location = monocleWasm;
+    keybinds._children = [
+      {
+        shared_except = {
+          _args = ["locked"];
+          _children = [
+            {
+              bind = {
+                _args = ["Alt" "m"];
+                _children = [
+                  launchMonocle
+                  {SwitchToMode._args = ["normal"];}
+                ];
+              };
+            }
+          ];
+        };
+      }
+    ];
+  };
+}
