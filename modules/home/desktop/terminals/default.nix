@@ -23,6 +23,7 @@ in {
         "alacritty"
         "ghostty"
         "kitty"
+        "warp"
       ]);
       default =
         if config.my.desktop.enable
