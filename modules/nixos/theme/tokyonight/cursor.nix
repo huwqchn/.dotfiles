@@ -14,7 +14,7 @@
   enable = cfg.enable && config.my.desktop.enable && isLinux;
   variant = "modern";
   cursorName = "Bibata-${capitalize variant}-${colorName}-Hyprcursor";
-  cursorPackage = pkgs.bibata-hyprcursor.override {
+  cursorPackage = pkgs.my.bibata-hyprcursor.override {
     inherit (palette.cursor) baseColor outlineColor watchBackgroundColor;
     inherit variant colorName;
   };
