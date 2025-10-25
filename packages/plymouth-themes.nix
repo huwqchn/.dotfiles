@@ -121,4 +121,6 @@ in
     passthru = {
       inherit availableThemes;
     };
+
+    meta.platforms = lib.platforms.linux;
   }

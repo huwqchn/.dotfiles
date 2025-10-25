@@ -89,4 +89,6 @@ in
 
         runHook postInstall
       '';
+
+      meta.platforms = lib.platforms.linux;
     })

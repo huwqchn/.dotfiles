@@ -46,14 +46,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # This is what AUR strives to be.
-    nur = {
-      url = "github:nix-community/NUR";
-      inputs = {
-        flake-parts.follows = "flake-parts";
-        nixpkgs.follows = "nixpkgs";
-      };
-    };
+    firefox-addons.url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
 
     # nix2container = {
     #   url = "github:nlewo/nix2container";
@@ -296,6 +289,15 @@
     ghostty-shaders = {
       url = "github:hackr-sh/ghostty-shaders";
       flake = false;
+    };
+
+    # zellij status bar
+    zjstatus = {
+      url = "github:dj95/zjstatus";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        flake-utils.follows = "flake-utils";
+      };
     };
   };
 }
