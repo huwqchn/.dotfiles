@@ -385,6 +385,8 @@ sudo journalctl -u home-manager-username.service
   configuration
 - **[fufexan's dotfiles](https://github.com/fufexan/dotfiles)** - Hyprland and Wayland expertise
 - **[hilissner's dotfiles](https://github.com/hlissner/dotfiles)** - Clean code layout and structure
+- **[khaneliman's khanelinix](https://github.com/khaneliman/khanelinix)** - Extensive AI
+  configuration
 
 ### Framework & Tools
 
