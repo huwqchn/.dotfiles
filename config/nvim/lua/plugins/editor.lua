@@ -176,7 +176,7 @@ return {
       -- resizing splits
       {
         mode = { "n", "t" },
-        "<C-Left>",
+        "<A-h>",
         function()
           require("smart-splits").resize_left()
         end,
@@ -184,7 +184,7 @@ return {
       },
       {
         mode = { "n", "t" },
-        "<C-Down>",
+        "<A-j>",
         function()
           require("smart-splits").resize_down()
         end,
@@ -192,7 +192,7 @@ return {
       },
       {
         mode = { "n", "t" },
-        "<C-Up>",
+        "<A-k>",
         function()
           require("smart-splits").resize_up()
         end,
@@ -200,7 +200,7 @@ return {
       },
       {
         mode = { "n", "t" },
-        "<C-Right>",
+        "<A-l>",
         function()
           require("smart-splits").resize_right()
         end,

@@ -5,15 +5,14 @@ local map = LazyVim.safe_keymap_set
 vim.keymap.set({ "n", "x", "o" }, "<S-h>", "^", { desc = "Go to first non-blank character of the line" })
 vim.keymap.set({ "n", "x", "o" }, "<S-l>", "$", { desc = "Go to last non-blank character of the line" })
 
+-- Resize window using <ctrl> arrow keys
+map("n", "<A-h>", "<cmd>vertical resize -2<cr>", { desc = "Decrease Window Width" })
+map("n", "<A-j>", "<cmd>resize -2<cr>", { desc = "Decrease Window Height" })
+map("n", "<A-k>", "<cmd>resize +2<cr>", { desc = "Increase Window Height" })
+map("n", "<A-l>", "<cmd>vertical resize +2<cr>", { desc = "Increase Window Width" })
 -- new space line
 -- map("n", "gO", "<Cmd>call append(line('.') - 1, repeat([''], v:count1))<CR>", { desc = "Put empty line above" })
 -- map("n", "go", "<Cmd>call append(line('.'), repeat([''], v:count1))<CR>", { desc = "Put empty line below" })
-
--- Terminal window navigation
-map("t", "<C-h>", "<cmd>wincmd h<cr>", { desc = "Go to Left Window" })
-map("t", "<C-j>", "<cmd>wincmd j<cr>", { desc = "Go to Down Window" })
-map("t", "<C-e>", "<cmd>wincmd k<cr>", { desc = "Go to Up Window" })
-map("t", "<C-l>", "<cmd>wincmd l<cr>", { desc = "Go to Right Window" })
 
 -- swap windows with sn se si so
 map("n", "sH", "<C-w>H", { desc = "swap with left", remap = true })

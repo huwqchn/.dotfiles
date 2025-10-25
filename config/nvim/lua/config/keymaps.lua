@@ -38,10 +38,10 @@ map("t", "<C-v>", "<C-\\><C-N>pi")
 map("c", "<C-v>", "<C-r>+")
 
 -- insert mode navigation
-map("i", "<A-Up>", "<C-\\><C-N><C-w>k")
-map("i", "<A-Down>", "<C-\\><C-N><C-w>j")
-map("i", "<A-Left>", "<C-\\><C-N><C-w>h")
-map("i", "<A-Right>", "<C-\\><C-N><C-w>l")
+-- map("i", "<A-Up>", "<C-\\><C-N><C-w>k")
+-- map("i", "<A-Down>", "<C-\\><C-N><C-w>j")
+-- map("i", "<A-Left>", "<C-\\><C-N><C-w>h")
+-- map("i", "<A-Right>", "<C-\\><C-N><C-w>l")
 
 -- Terminal window navigation
 --WARN: <esc><esc> is not work when timeoutlen=0
@@ -65,11 +65,13 @@ map("t", "<Tab>", "<Tab>")
 map("n", "[z", "zh", { desc = "scroll left", silent = true }) -- left
 map("n", "]z", "zl", { desc = "scroll right", silent = true }) -- right
 
--- Resize with arrows
-map("n", "<C-Up>", "<cmd>resize +2<CR>", { desc = "Increase window height" })
-map("n", "<C-Down>", "<cmd>resize -2<CR>", { desc = "Decrease window height" })
-map("n", "<C-Left>", "<cmd>vertical resize -2<CR>", { desc = "Decrease window width" })
-map("n", "<C-Right>", "<cmd>vertical resize +2<CR>", { desc = "Increase window width" })
+-- Move lines
+map("n", "<Down>", "<cmd>m .+1<CR>==", { desc = "Move down" })
+map("n", "<Up>", "<cmd>m .-2<CR>==", { desc = "Move up" })
+map("i", "<Down>", "<Esc><cmd>m .+1<CR>==gi", { desc = "Move down" })
+map("i", "<Up>", "<Esc><cmd>m .-2<CR>==gi", { desc = "Move up" })
+map("x", "<Down>", ":m '>+1<CR>gv=gv", { desc = "Move down" })
+map("x", "<Up>", ":m '<-2<CR>gv=gv", { desc = "Move up" })
 
 -- map("n", "<C-x>", "<C-w>x", { desc = "Exchange window" })
 map("n", "<C-q>", function()
@@ -88,10 +90,10 @@ end, { desc = "Super Quit" })
 -- map s to <nop>
 vim.keymap.set("n", "s", "<nop>", { noremap = true, desc = "split/surround/selection" })
 -- Resize with arrows
-map("n", "s<Up>", "<cmd>resize +2<CR>", { desc = "Increase window height" })
-map("n", "s<Down>", "<cmd>resize -2<CR>", { desc = "Decrease window height" })
-map("n", "s<Left>", "<cmd>vertical resize -2<CR>", { desc = "Decrease window width" })
-map("n", "s<Right>", "<cmd>vertical resize +2<CR>", { desc = "Increase window width" })
+-- map("n", "s<Up>", "<cmd>resize +2<CR>", { desc = "Increase window height" })
+-- map("n", "s<Down>", "<cmd>resize -2<CR>", { desc = "Decrease window height" })
+-- map("n", "s<Left>", "<cmd>vertical resize -2<CR>", { desc = "Decrease window width" })
+-- map("n", "s<Right>", "<cmd>vertical resize +2<CR>", { desc = "Increase window width" })
 
 -- Switch buffer with tab
 -- vim.keymap.set("n", "<tab>", "<tab>") -- conflict with <C-i>

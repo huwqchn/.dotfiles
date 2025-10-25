@@ -18,8 +18,7 @@ unmap("n", "<C-h>")
 unmap("n", "<C-j>")
 unmap("n", "<C-k>")
 unmap("n", "<C-l>")
-unmap({ "n", "i", "x" }, "<A-k>")
-unmap({ "n", "i", "x" }, "<A-j>")
+
 -- local map = vim.keymap.set
 -- local LazyVim = require("lazyvim.util")
 -- colemak-dh movement
@@ -107,14 +106,6 @@ map({ "n", "v" }, "<C-j>", "<C-e>")
 map("n", "gL", "<Cmd>call append(line('.') - 1, repeat([''], v:count1))<CR>", { desc = "Put empty line above" })
 map("n", "gl", "<Cmd>call append(line('.'), repeat([''], v:count1))<CR>", { desc = "Put empty line below" })
 
--- Move lines
-map("n", "<A-e>", "<cmd>m .+1<CR>==", { desc = "Move down" })
-map("n", "<A-i>", "<cmd>m .-2<CR>==", { desc = "Move up" })
-map("i", "<A-e>", "<Esc><cmd>m .+1<CR>==gi", { desc = "Move down" })
-map("i", "<A-i>", "<Esc><cmd>m .-2<CR>==gi", { desc = "Move up" })
-map("x", "<A-e>", ":m '>+1<CR>gv=gv", { desc = "Move down" })
-map("x", "<A-i>", ":m '<-2<CR>gv=gv", { desc = "Move up" })
-
 -- Terminal window navigation
 map("t", "<C-n>", "<cmd>wincmd h<cr>", { desc = "Go to Left Window" })
 map("t", "<C-e>", "<cmd>wincmd j<cr>", { desc = "Go to Down Window" })
@@ -137,6 +128,12 @@ map("n", "<C-n>", "<C-w>h", { desc = "Go to left window" })
 map("n", "<C-e>", "<C-w>j", { desc = "Go to lower window" })
 map("n", "<C-i>", "<C-w>k", { desc = "Go to upper window" })
 map("n", "<C-o>", "<C-w>l", { desc = "Go to right window" })
+
+-- Resize with arrows
+map("n", "<A-n>", "<cmd>vertical resize -2<CR>", { desc = "Decrease window width" })
+map("n", "<A-e>", "<cmd>resize -2<CR>", { desc = "Decrease window height" })
+map("n", "<A-i>", "<cmd>resize +2<CR>", { desc = "Increase window height" })
+map("n", "<A-o>", "<cmd>vertical resize +2<CR>", { desc = "Increase window width" })
 
 -- swap windows with sn se si so
 map("n", "sN", "<C-w>H", { desc = "swap with left" })

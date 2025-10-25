@@ -130,6 +130,39 @@ return {
     optional = true,
     keys = function(_, keys)
       return replace_keys(keys, {
+        -- resizing splits
+        {
+          mode = { "n", "t" },
+          "<A-n>",
+          function()
+            require("smart-splits").resize_left()
+          end,
+          desc = "resize left",
+        },
+        {
+          mode = { "n", "t" },
+          "<A-e>",
+          function()
+            require("smart-splits").resize_down()
+          end,
+          desc = "resize down",
+        },
+        {
+          mode = { "n", "t" },
+          "<A-i>",
+          function()
+            require("smart-splits").resize_up()
+          end,
+          desc = "resize up",
+        },
+        {
+          mode = { "n", "t" },
+          "<A-o>",
+          function()
+            require("smart-splits").resize_right()
+          end,
+          desc = "resize right",
+        },
         {
           "<C-n>",
           function()
@@ -442,24 +475,24 @@ return {
       return opts
     end,
   },
-  {
-    "nvim-mini/mini.move",
-    optional = true,
-    opts = function(_, opts)
-      opts = opts or {}
-      opts.mappings = vim.tbl_extend("force", opts.mappings or {}, {
-        left = "<M-n>",
-        right = "<M-o>",
-        down = "<M-e>",
-        up = "<M-i>",
-        line_left = "<M-n>",
-        line_right = "<M-o>",
-        line_down = "<M-e>",
-        line_up = "<M-i>",
-      })
-      return opts
-    end,
-  },
+  -- {
+  --   "nvim-mini/mini.move",
+  --   optional = true,
+  --   opts = function(_, opts)
+  --     opts = opts or {}
+  --     opts.mappings = vim.tbl_extend("force", opts.mappings or {}, {
+  --       left = "<M-n>",
+  --       right = "<M-o>",
+  --       down = "<M-e>",
+  --       up = "<M-i>",
+  --       line_left = "<M-n>",
+  --       line_right = "<M-o>",
+  --       line_down = "<M-e>",
+  --       line_up = "<M-i>",
+  --     })
+  --     return opts
+  --   end,
+  -- },
   {
     "nvim-neo-tree/neo-tree.nvim",
     optional = true,
