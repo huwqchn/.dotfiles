@@ -5,6 +5,7 @@
   pnpm_9,
   nodejs,
   nix-update-script,
+  ...
 }:
 stdenv.mkDerivation (finalAttrs: {
   pname = "zashboard";

@@ -8,18 +8,26 @@
   overlaysPath = ../overlays;
   dynamicOverlaysSet =
     if builtins.pathExists overlaysPath
-    then let
-      overlayDirs = builtins.attrNames (builtins.readDir overlaysPath);
-    in
-      lib.genAttrs overlayDirs (
-        name: let
-          overlayPath = overlaysPath + "/${name}";
-          overlayFn = import overlayPath;
-        in
-          if lib.isFunction overlayFn
-          then overlayFn {inherit inputs;}
-          else overlayFn
-      )
+    then
+      lib.foldl'
+      (acc: name: let
+        overlayPath = overlaysPath + "/${name}";
+        overlayValue =
+          import overlayPath;
+        resolved =
+          if lib.isFunction overlayValue
+          then overlayValue {inherit inputs;}
+          else overlayValue;
+        isOverlaySet =
+          lib.isAttrs resolved
+          && resolved != {}
+          && lib.all lib.isFunction (builtins.attrValues resolved);
+      in
+        if isOverlaySet
+        then acc // resolved
+        else acc // {${name} = resolved;})
+      {}
+      (builtins.attrNames (builtins.readDir overlaysPath))
     else {};
 
   myPackagesOverlay = final: prev: let

@@ -4,6 +4,7 @@
   stdenv,
   makeWrapper,
   python3,
+  ...
 }: let
   pythonEnv = python3.withPackages (
     p:
