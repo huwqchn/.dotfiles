@@ -14,7 +14,8 @@
     less = "bat --paging=always";
     man = getExe pkgs.bat-extras.batman;
     diff = getExe pkgs.bat-extras.batpipe;
-    bgrep = getExe pkgs.bat-extras.batgrep;
+    # FIXME: batwatch is broken
+    # bgrep = getExe pkgs.bat-extras.batgrep;
   };
 in {
   options.my.bat = {
@@ -29,7 +30,7 @@ in {
       extraPackages = with pkgs.bat-extras; [
         batdiff
         batman
-        batgrep
+        # batgrep
         batwatch
         batpipe
       ];

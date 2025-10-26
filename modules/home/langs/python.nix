@@ -30,7 +30,8 @@ in {
               matplotlib
               scikitlearn
               sympy
-              plotly
+              # FIXME: This is a workaround for a bug in the nixpkgs version of
+              # plotly
               #line_profiler
               memory_profiler
               psutil
