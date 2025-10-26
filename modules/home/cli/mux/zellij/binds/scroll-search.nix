@@ -1,6 +1,19 @@
 {config, ...}: {
   programs.zellij.settings.keybinds._children = with config.my.keyboard.keys; [
     {
+      shared_except = {
+        _args = ["scroll" "locked"];
+        _children = [
+          {
+            bind = {
+              _args = ["Ctrl s"];
+              _children = [{SwitchToMode._args = ["scroll"];}];
+            };
+          }
+        ];
+      };
+    }
+    {
       scroll._children = [
         {
           bind = {
@@ -54,13 +67,7 @@
       entersearch._children = [
         {
           bind = {
-            _args = ["Ctrl c"];
-            _children = [{SwitchToMode._args = ["scroll"];}];
-          };
-        }
-        {
-          bind = {
-            _args = ["Esc"];
+            _args = ["Ctrl c" "Esc"];
             _children = [{SwitchToMode._args = ["scroll"];}];
           };
         }
@@ -78,13 +85,19 @@
         _children = [
           {
             bind = {
-              _args = [j];
+              _args = ["Ctrl c"];
+              _children = [{ScrollToBottom = {};} {SwitchToMode._args = ["normal"];}];
+            };
+          }
+          {
+            bind = {
+              _args = [j "Down"];
               _children = [{ScrollDown = {};}];
             };
           }
           {
             bind = {
-              _args = [k];
+              _args = [k "Up"];
               _children = [{ScrollUp = {};}];
             };
           }

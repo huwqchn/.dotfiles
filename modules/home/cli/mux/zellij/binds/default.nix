@@ -11,16 +11,24 @@ in {
     _props.clear-defaults = true;
     _children = [
       {
-        locked = {
-          _children = [
-            {
-              bind = {
-                _args = ["Ctrl g"];
-                _children = [{SwitchToMode._args = ["normal"];}];
-              };
-            }
-          ];
-        };
+        normal._children = [
+          {
+            bind = {
+              _args = ["Esc"];
+              _children = [{SwitchToMode._args = ["locked"];}];
+            };
+          }
+        ];
+      }
+      {
+        locked._children = [
+          {
+            bind = {
+              _args = ["Ctrl g"];
+              _children = [{SwitchToMode._args = ["normal"];}];
+            };
+          }
+        ];
       }
       {
         shared_except = {
@@ -200,22 +208,6 @@ in {
                       _children = [{name._args = ["resize"];} {payload._args = ["right"];}];
                     };
                   }
-                ];
-              };
-            }
-            {
-              bind = {
-                _args = ["Ctrl Enter"];
-                _children = [
-                  {NewPane = {};}
-                ];
-              };
-            }
-            {
-              bind = {
-                _args = ["Ctrl t"];
-                _children = [
-                  {NewTab = {};}
                 ];
               };
             }

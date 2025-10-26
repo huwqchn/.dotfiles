@@ -17,43 +17,13 @@
       resize._children = [
         {
           bind = {
-            _args = ["left"];
-            _children = [{Resize._args = ["Increase Left"];}];
-          };
-        }
-        {
-          bind = {
-            _args = ["down"];
-            _children = [{Resize._args = ["Increase Down"];}];
-          };
-        }
-        {
-          bind = {
-            _args = ["up"];
-            _children = [{Resize._args = ["Increase Up"];}];
-          };
-        }
-        {
-          bind = {
-            _args = ["right"];
-            _children = [{Resize._args = ["Increase Right"];}];
-          };
-        }
-        {
-          bind = {
-            _args = ["+"];
-            _children = [{Resize._args = ["Increase"];}];
-          };
-        }
-        {
-          bind = {
             _args = ["-"];
             _children = [{Resize._args = ["Decrease"];}];
           };
         }
         {
           bind = {
-            _args = ["="];
+            _args = ["=" "+"];
             _children = [{Resize._args = ["Increase"];}];
           };
         }
@@ -83,25 +53,25 @@
         }
         {
           bind = {
-            _args = [h];
+            _args = [h "Left"];
             _children = [{Resize._args = ["Increase Left"];}];
           };
         }
         {
           bind = {
-            _args = [j];
+            _args = [j "Down"];
             _children = [{Resize._args = ["Increase Down"];}];
           };
         }
         {
           bind = {
-            _args = [k];
+            _args = [k "Up"];
             _children = [{Resize._args = ["Increase Up"];}];
           };
         }
         {
           bind = {
-            _args = [l];
+            _args = [l "Right"];
             _children = [{Resize._args = ["Increase Right"];}];
           };
         }
