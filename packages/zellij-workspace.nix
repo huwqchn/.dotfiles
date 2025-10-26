@@ -1,18 +1,16 @@
 {
   lib,
   stdenv,
-  fetchFromGitHub,
+  fetchurl,
   ...
 }:
 stdenv.mkDerivation rec {
   pname = "zellij-workspace";
-  version = "0.2.0";
+  version = "v0.3.0";
 
-  src = fetchFromGitHub {
-    owner = "vdbulcke";
-    repo = "zellij-workspace";
-    rev = "v${version}";
-    hash = "sha256-7KYdYCzCOq5nqjpzYESJCQi4UB+Aw7aBhJuHvVC9Kis=";
+  src = fetchurl {
+    url = "https://github.com/vdbulcke/zellij-workspace/releases/download/${version}/zellij-workspace.wasm";
+    sha256 = "0wvb16dr1gnrf4bqdx1z6c7x7ka6zmgh98qg583haza9myjh87rx";
   };
 
   dontUnpack = true;

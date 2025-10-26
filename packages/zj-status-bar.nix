@@ -1,18 +1,16 @@
 {
   lib,
   stdenv,
-  fetchFromGitHub,
+  fetchurl,
   ...
 }:
 stdenv.mkDerivation rec {
   pname = "zj-status-bar";
   version = "0.3.0";
 
-  src = fetchFromGitHub {
-    owner = "cristiand391";
-    repo = "zj-status-bar";
-    rev = version;
-    hash = "sha256-mIXoCep3L/A9hPSPClINUxjTaVAT+N65pQP3V+Wl4gc=";
+  src = fetchurl {
+    url = "https://github.com/cristiand391/zj-status-bar/releases/download/${version}/zj-status-bar.wasm";
+    sha256 = "1s091b9hv4bsh0mbz7g9di8l8bzbhh1srmvsq71mk41bvc59ds5i";
   };
 
   dontUnpack = true;

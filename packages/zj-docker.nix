@@ -1,18 +1,16 @@
 {
   lib,
   stdenv,
-  fetchFromGitHub,
+  fetchurl,
   ...
 }:
 stdenv.mkDerivation rec {
   pname = "zj-docker";
-  version = "0.4.0";
+  version = "v0.4.0";
 
-  src = fetchFromGitHub {
-    owner = "dj95";
-    repo = "zj-docker";
-    rev = "v${version}";
-    hash = "sha256-xuypRhYDXAvYgvCusxa+ut8ITIuZxYkUa3fdu1eLSdA=";
+  src = fetchurl {
+    url = "https://github.com/dj95/zj-docker/releases/download/${version}/zj-docker.wasm";
+    sha256 = "0r46i4wlchh8q85g9n21vqdg4vv3v7106r6a74i8s3j205p54rdy";
   };
 
   dontUnpack = true;

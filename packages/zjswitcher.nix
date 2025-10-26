@@ -1,18 +1,16 @@
 {
   lib,
   stdenv,
-  fetchFromGitHub,
+  fetchurl,
   ...
 }:
 stdenv.mkDerivation rec {
   pname = "zjswitcher";
-  version = "0.2.1";
+  version = "v0.2.1";
 
-  src = fetchFromGitHub {
-    owner = "WingsZeng";
-    repo = "zjswitcher";
-    rev = "v${version}";
-    hash = "sha256-lACbFz3GP4E2kArdjTjpLdd1GpG9s7fo6mR0ltVO9Og=";
+  src = fetchurl {
+    url = "https://github.com/WingsZeng/zjswitcher/releases/download/${version}/zjswitcher.wasm";
+    sha256 = "1bkn43ym4r88264n4jsanwv1phckihba7bbpx3d6y6ghzrpdcasn";
   };
 
   dontUnpack = true;

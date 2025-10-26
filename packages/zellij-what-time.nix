@@ -1,18 +1,16 @@
 {
   lib,
   stdenv,
-  fetchFromGitHub,
+  fetchurl,
   ...
 }:
 stdenv.mkDerivation rec {
   pname = "zellij-what-time";
   version = "0.1.1";
 
-  src = fetchFromGitHub {
-    owner = "pirafrank";
-    repo = "zellij-what-time";
-    rev = version;
-    hash = "sha256-6+uNUC22RL6jbe5lqQH3Bvp8XkzNBwVbNzlt+lBQ7Ys=";
+  src = fetchurl {
+    url = "https://github.com/pirafrank/zellij-what-time/releases/download/${version}/zellij-what-time.wasm";
+    sha256 = "1c1n1s8ajai0qn4xmxbvc381564hi81lpfaq7vq0a7cm0my93iqj";
   };
 
   dontUnpack = true;

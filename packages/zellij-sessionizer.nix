@@ -1,18 +1,16 @@
 {
   lib,
   stdenv,
-  fetchFromGitHub,
+  fetchurl,
   ...
 }:
 stdenv.mkDerivation rec {
   pname = "zellij-sessionizer";
-  version = "0.4.3";
+  version = "v0.4.3";
 
-  src = fetchFromGitHub {
-    owner = "laperlej";
-    repo = "zellij-sessionizer";
-    rev = "v${version}";
-    hash = "sha256-G2O77M+0ua53WpoNBkE3sNp3yN7uv9byqIteSyEluiQ=";
+  src = fetchurl {
+    url = "https://github.com/laperlej/zellij-sessionizer/releases/download/${version}/zellij-sessionizer.wasm";
+    sha256 = "sha256-0d43jhlhm7p8pvd8kcylfbfy3dahr8q4yngpnjyqivapwip9csq0";
   };
 
   dontUnpack = true;

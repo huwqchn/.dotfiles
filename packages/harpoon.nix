@@ -1,36 +1,31 @@
 {
   lib,
   stdenv,
-  fetchFromGitHub,
+  fetchurl,
   ...
-}: let
-  rev = "34b71b88f56fa8f066c5eed07d43b20ed01dc130";
-  version = "unstable-${builtins.substring 0 7 rev}";
-in
-  stdenv.mkDerivation rec {
-    pname = "harpoon";
-    inherit version;
+}:
+stdenv.mkDerivation rec {
+  pname = "harpoon";
+  version = "v0.1.0";
 
-    src = fetchFromGitHub {
-      inherit rev;
-      owner = "Nacho114";
-      repo = "harpoon";
-      hash = "sha256-NwZWFIocBAXoPbqdKoyatG9XYIvJ2fLhfuHTRQNVqNk=";
-    };
+  src = fetchurl {
+    url = "https://github.com/Nacho114/harpoon/releases/download/${version}/harpoon.wasm";
+    sha256 = "00ln03gjpf6xdfq1d3z84pcvmyrk1n1ddi1nkfxsmnqxldyzinfa";
+  };
 
-    dontUnpack = true;
+  dontUnpack = true;
 
-    installPhase = ''
-      mkdir -p $out/bin
-      cp $src $out/bin/${pname}.wasm
-      chmod +x $out/bin/${pname}.wasm
-    '';
+  installPhase = ''
+    mkdir -p $out/bin
+    cp $src $out/bin/${pname}.wasm
+    chmod +x $out/bin/${pname}.wasm
+  '';
 
-    meta = with lib; {
-      description = "Zellij plugin to quickly navigate your panes (clone of nvim's harpoon)";
-      homepage = "https://github.com/Nacho114/harpoon";
-      license = licenses.mit;
-      platforms = platforms.all;
-      maintainers = [];
-    };
-  }
+  meta = with lib; {
+    description = "Zellij plugin to quickly navigate your panes (clone of nvim's harpoon)";
+    homepage = "https://github.com/Nacho114/harpoon";
+    license = licenses.mit;
+    platforms = platforms.all;
+    maintainers = [];
+  };
+}

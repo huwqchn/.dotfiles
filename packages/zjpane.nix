@@ -1,18 +1,16 @@
 {
   lib,
   stdenv,
-  fetchFromGitHub,
+  fetchurl,
   ...
 }:
 stdenv.mkDerivation rec {
   pname = "zjpane";
-  version = "0.2.0";
+  version = "v0.2.0";
 
-  src = fetchFromGitHub {
-    owner = "FuriouZz";
-    repo = "zjpane";
-    rev = "v${version}";
-    hash = "sha256-PnlXqyCWf9iK+jutnOkn0ZbvqVFrH0kBjc4IqL1J1Io=";
+  src = fetchurl {
+    url = "https://github.com/FuriouZz/zjpane/releases/download/${version}/zjpane.wasm";
+    sha256 = "1pman067x2ka2gmifjxzfhpmmfsb51l18a564xklmz1zysfb8srp";
   };
 
   dontUnpack = true;

@@ -271,6 +271,59 @@ in {
           (lib.subtractLists cfg.excludePlugins cfg.plugins
             ++ cfg.extraPlugins));
       in ''
+        local uv = vim.uv or vim.loop
+        local function path_exists(path)
+          return type(path) == "string" and uv.fs_stat(path) ~= nil
+        end
+
+        local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+        local has_lazy = path_exists(lazypath)
+
+        if not has_lazy then
+          local fallback_patterns = {
+            vim.env.LAZY_NVIM_PATH,
+            vim.fn.stdpath("config") .. "/lazy.nvim",
+            "/nix/store/*-lazy.nvim-*",
+            "/nix/store/*-vimplugin-lazy.nvim-*",
+          }
+
+          for _, pattern in ipairs(fallback_patterns) do
+            if type(pattern) == "string" and pattern ~= "" then
+              if pattern:find("%*") then
+                local matches = vim.fn.glob(pattern, true, true)
+                if type(matches) == "string" then
+                  matches = { matches }
+                end
+                for _, match in ipairs(matches) do
+                  if path_exists(match) then
+                    lazypath = match
+                    has_lazy = true
+                    break
+                  end
+                end
+              elseif path_exists(pattern) then
+                lazypath = pattern
+                has_lazy = true
+              end
+            end
+            if has_lazy then
+              break
+            end
+          end
+        end
+
+        if not has_lazy then
+          local repo = "https://github.com/folke/lazy.nvim.git"
+          vim.fn.system({ "git", "clone", "--filter=blob:none", repo, lazypath })
+          has_lazy = path_exists(lazypath)
+        end
+
+        if not has_lazy then
+          vim.api.nvim_err_writeln("lazy.nvim not found; install it or update your configuration.")
+          return
+        end
+
+        vim.opt.rtp:prepend(lazypath)
         vim.g.lazyvim_cmp = "${cfg.cmp}"
         vim.g.lazyvim_picker = "${cfg.picker}"
         vim.g.lazyvim_explorer = "${cfg.explorer}"

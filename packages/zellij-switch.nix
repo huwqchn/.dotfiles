@@ -1,18 +1,16 @@
 {
   lib,
   stdenv,
-  fetchFromGitHub,
+  fetchurl,
   ...
 }:
 stdenv.mkDerivation rec {
   pname = "zellij-switch";
-  version = "0.2.0";
+  version = "0.2.1";
 
-  src = fetchFromGitHub {
-    owner = "mostafaqanbaryan";
-    repo = "zellij-switch";
-    rev = version;
-    hash = "sha256-Plu/j4DaQMRtygOK0ZXOdlktxfsIzcVCYKrl2rR0dug=";
+  src = fetchurl {
+    url = "https://github.com/mostafaqanbaryan/zellij-switch/releases/download/${version}/zellij-switch.wasm";
+    sha256 = "1bi219dh9dfs1h7ifn4g5p8n6ini8ack1bfys5z36wzbzx0pw9gg";
   };
 
   dontUnpack = true;

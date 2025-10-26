@@ -1,18 +1,16 @@
 {
   lib,
   stdenv,
-  fetchFromGitHub,
+  fetchurl,
   ...
 }:
 stdenv.mkDerivation rec {
   pname = "zj-quit";
   version = "0.3.1";
 
-  src = fetchFromGitHub {
-    owner = "cristiand391";
-    repo = "zj-quit";
-    rev = version;
-    hash = "sha256-APimuHdhfxIBGIzCkT42+wSQCDv5Do5OKtmr997Usfs=";
+  src = fetchurl {
+    url = "https://github.com/cristiand391/zj-quit/releases/download/${version}/zj-quit.wasm";
+    sha256 = "153z2gdb7vfppz9ip3bs6pfmb1ypzj1q6k38l91b6j3nccc2f9i5";
   };
 
   dontUnpack = true;
