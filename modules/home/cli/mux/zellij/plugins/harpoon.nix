@@ -1,5 +1,5 @@
 {pkgs, ...}: let
-  harpoonWasm = "file:${pkgs.my.zellijPlugins.zellij-harpoon}/bin/zellij-harpoon.wasm";
+  harpoonWasm = "file:${pkgs.my.zellij-harpoon}/bin/zellij-harpoon.wasm";
   launchHarpoon = {
     launchOrFocusPlugin = {
       _args = [harpoonWasm];

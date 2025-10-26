@@ -2,16 +2,16 @@
   lib,
   stdenv,
   fetchFromGitHub,
+  ...
 }:
 stdenv.mkDerivation rec {
-  pname = "zj-status-bar";
-  version = "0.3.0";
+  pname = "jbz";
 
   src = fetchFromGitHub {
-    owner = "cristiand391";
-    repo = "zj-status-bar";
-    rev = version;
-    hash = "sha256-mIXoCep3L/A9hPSPClINUxjTaVAT+N65pQP3V+Wl4gc=";
+    owner = "nim65s";
+    repo = "jbz";
+    rev = "e547d0386b07390587290273f633f1fdf90303c4";
+    hash = "sha256-vDCRR/sFwCF6/ZYaZIVh9dnGNd4hh/f1JjDEPwQTxgU=";
   };
 
   dontUnpack = true;
@@ -23,8 +23,8 @@ stdenv.mkDerivation rec {
   '';
 
   meta = with lib; {
-    description = "A status bar for Zellij";
-    homepage = "https://github.com/cristiand391/zj-status-bar";
+    description = "A Zellij plugin to display your just commands wrapped in bacon";
+    homepage = "https://github.com/nim65s/jbz";
     license = licenses.mit;
     platforms = platforms.all;
     maintainers = [];

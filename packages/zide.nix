@@ -1,6 +1,7 @@
 {
   stdenv,
   fetchFromGitHub,
+  ...
 }:
 stdenv.mkDerivation rec {
   pname = "zide";

@@ -2,16 +2,16 @@
   lib,
   stdenv,
   fetchFromGitHub,
+  ...
 }:
 stdenv.mkDerivation rec {
-  pname = "zj-quit";
-  version = "0.3.1";
+  pname = "harpoon";
 
   src = fetchFromGitHub {
-    owner = "cristiand391";
-    repo = "zj-quit";
-    rev = version;
-    hash = "sha256-APimuHdhfxIBGIzCkT42+wSQCDv5Do5OKtmr997Usfs=";
+    owner = "Nacho114";
+    repo = "harpoon";
+    rev = "34b71b88f56fa8f066c5eed07d43b20ed01dc130";
+    hash = "sha256-NwZWFIocBAXoPbqdKoyatG9XYIvJ2fLhfuHTRQNVqNk=";
   };
 
   dontUnpack = true;
@@ -23,8 +23,8 @@ stdenv.mkDerivation rec {
   '';
 
   meta = with lib; {
-    description = "A Zellij plugin that asks for confirmation before quitting.";
-    homepage = "https://github.com/cristiand391/zj-quit";
+    description = "Zellij plugin to quickly navigate your panes (clone of nvim's harpoon)";
+    homepage = "https://github.com/Nacho114/harpoon";
     license = licenses.mit;
     platforms = platforms.all;
     maintainers = [];

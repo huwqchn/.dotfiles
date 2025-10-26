@@ -3,7 +3,7 @@
   pkgs,
   ...
 }: let
-  multitask = "${pkgs.my.zellijPlugins.multitask}/bin/multitask.wasm";
+  multitask = "${pkgs.my.multitask}/bin/multitask.wasm";
 in {
   programs.settings = {
     plugins.autolock = {

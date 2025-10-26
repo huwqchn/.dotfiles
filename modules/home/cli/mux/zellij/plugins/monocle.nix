@@ -1,5 +1,5 @@
 {pkgs, ...}: let
-  monocleWasm = "file:${pkgs.my.zellijPlugins.zellij-harpoon}/bin/monocle.wasm";
+  monocleWasm = "file:${pkgs.my.zellij-harpoon}/bin/monocle.wasm";
   launchMonocle = {
     launchOrFocusPlugin = {
       _args = [monocleWasm];

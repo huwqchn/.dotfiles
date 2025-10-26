@@ -2,15 +2,19 @@
   lib,
   stdenv,
   fetchFromGitHub,
+  ...
 }:
 stdenv.mkDerivation rec {
-  pname = "zbuffers";
+  pname = "zj-quit";
+  version = "0.3.1";
+
   src = fetchFromGitHub {
-    owner = "Strech";
-    repo = "zbuffers";
-    rev = "v0.4.0";
-    hash = "sha256-5Yrp10ONwNRryLkgbWK3WmnKVjbZH5PWvTTKbnLPDHA=";
+    owner = "cristiand391";
+    repo = "zj-quit";
+    rev = version;
+    hash = "sha256-APimuHdhfxIBGIzCkT42+wSQCDv5Do5OKtmr997Usfs=";
   };
+
   dontUnpack = true;
 
   installPhase = ''
@@ -20,8 +24,8 @@ stdenv.mkDerivation rec {
   '';
 
   meta = with lib; {
-    description = "Zellij plugin for convenient switching between tabs with search capabilities";
-    homepage = "https://github.com/Strech/zbuffers";
+    description = "A Zellij plugin that asks for confirmation before quitting.";
+    homepage = "https://github.com/cristiand391/zj-quit";
     license = licenses.mit;
     platforms = platforms.all;
     maintainers = [];

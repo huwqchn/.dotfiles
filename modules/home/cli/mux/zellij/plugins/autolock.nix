@@ -1,9 +1,9 @@
 {pkgs, ...}: let
-  autolock = "${pkgs.my.zellijPlugins.zellij-autolock}/bin/zellij-autolock.wasm";
+  autolock = "file:${pkgs.my.zellij-autolock}/bin/zellij-autolock.wasm";
 in {
   programs.settings = {
     plugins.autolock = {
-      _props.location = "file:${autolock}";
+      _props.location = autolock;
       _children = [
         {
           is_enabled = true;

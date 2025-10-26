@@ -2,17 +2,16 @@
   lib,
   stdenv,
   fetchFromGitHub,
+  ...
 }:
 stdenv.mkDerivation rec {
-  pname = "jbz";
-
+  pname = "room";
   src = fetchFromGitHub {
-    owner = "nim65s";
-    repo = "jbz";
-    rev = "e547d0386b07390587290273f633f1fdf90303c4";
-    hash = "sha256-vDCRR/sFwCF6/ZYaZIVh9dnGNd4hh/f1JjDEPwQTxgU=";
+    owner = "rvcas";
+    repo = "room";
+    rev = "fd6dc54a46fb9bce21065ce816189c037aeaf24f";
+    hash = "sha256-T1JNFJUDCtCjXtZQUe1OQsfL3/BI7FUw60dImlUmLhg=";
   };
-
   dontUnpack = true;
 
   installPhase = ''
@@ -22,8 +21,8 @@ stdenv.mkDerivation rec {
   '';
 
   meta = with lib; {
-    description = "A Zellij plugin to display your just commands wrapped in bacon";
-    homepage = "https://github.com/nim65s/jbz";
+    description = "A Zellij plugin for quickly searching and switching tabs";
+    homepage = "https://github.com/rvcas/room";
     license = licenses.mit;
     platforms = platforms.all;
     maintainers = [];

@@ -2,16 +2,17 @@
   lib,
   stdenv,
   fetchFromGitHub,
+  ...
 }:
 stdenv.mkDerivation rec {
-  pname = "zellij-workspace";
-  version = "0.2.0";
+  pname = "zellij-what-time";
+  version = "0.1.1";
 
   src = fetchFromGitHub {
-    owner = "vdbulcke";
-    repo = "zellij-workspace";
-    rev = "v${version}";
-    hash = "sha256-7KYdYCzCOq5nqjpzYESJCQi4UB+Aw7aBhJuHvVC9Kis=";
+    owner = "pirafrank";
+    repo = "zellij-what-time";
+    rev = version;
+    hash = "sha256-6+uNUC22RL6jbe5lqQH3Bvp8XkzNBwVbNzlt+lBQ7Ys=";
   };
 
   dontUnpack = true;
@@ -23,8 +24,8 @@ stdenv.mkDerivation rec {
   '';
 
   meta = with lib; {
-    description = "A Zellij plugin to easily navigate and create workspaces";
-    homepage = "https://github.com/vdbulcke/zellij-workspace";
+    description = "A zellij plugin that shows the current time";
+    homepage = "https://github.com/pirafrank/zellij-what-time";
     license = licenses.mit;
     platforms = platforms.all;
     maintainers = [];

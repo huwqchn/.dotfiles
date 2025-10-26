@@ -2,15 +2,19 @@
   lib,
   stdenv,
   fetchFromGitHub,
+  ...
 }:
 stdenv.mkDerivation rec {
-  pname = "zellij-cb";
+  pname = "zj-status-bar";
+  version = "0.3.0";
+
   src = fetchFromGitHub {
-    owner = "ndavd";
-    repo = "zellij-cb";
-    rev = "c82517e112ee6ab30849922901d911c4104e5763";
-    hash = "sha256-q64UK36bXTEd3xcMEDNw769Ya3axcn+gJAqsM2jL8gA=";
+    owner = "cristiand391";
+    repo = "zj-status-bar";
+    rev = version;
+    hash = "sha256-mIXoCep3L/A9hPSPClINUxjTaVAT+N65pQP3V+Wl4gc=";
   };
+
   dontUnpack = true;
 
   installPhase = ''
@@ -20,8 +24,8 @@ stdenv.mkDerivation rec {
   '';
 
   meta = with lib; {
-    description = "Customizable compact bar plugin for Zellij";
-    homepage = "https://github.com/ndavd/zellij-cb";
+    description = "A status bar for Zellij";
+    homepage = "https://github.com/cristiand391/zj-status-bar";
     license = licenses.mit;
     platforms = platforms.all;
     maintainers = [];

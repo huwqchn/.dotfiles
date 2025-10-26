@@ -1,5 +1,5 @@
 {pkgs, ...}: let
-  roomWasm = "file:${pkgs.my.zellijPlugins.room}/bin/room.wasm";
+  roomWasm = "file:${pkgs.my.room}/bin/room.wasm";
   launchRoom = {
     launchOrFocusPlugin = {
       _args = [roomWasm];

@@ -2,18 +2,16 @@
   lib,
   stdenv,
   fetchFromGitHub,
+  ...
 }:
 stdenv.mkDerivation rec {
-  pname = "zj-docker";
-  version = "0.4.0";
-
+  pname = "zellij-cb";
   src = fetchFromGitHub {
-    owner = "dj95";
-    repo = "zj-docker";
-    rev = "v${version}";
-    hash = "sha256-xuypRhYDXAvYgvCusxa+ut8ITIuZxYkUa3fdu1eLSdA=";
+    owner = "ndavd";
+    repo = "zellij-cb";
+    rev = "c82517e112ee6ab30849922901d911c4104e5763";
+    hash = "sha256-q64UK36bXTEd3xcMEDNw769Ya3axcn+gJAqsM2jL8gA=";
   };
-
   dontUnpack = true;
 
   installPhase = ''
@@ -23,8 +21,8 @@ stdenv.mkDerivation rec {
   '';
 
   meta = with lib; {
-    description = "A zellij plugin for docker";
-    homepage = "https://github.com/dj95/zj-docker";
+    description = "Customizable compact bar plugin for Zellij";
+    homepage = "https://github.com/ndavd/zellij-cb";
     license = licenses.mit;
     platforms = platforms.all;
     maintainers = [];

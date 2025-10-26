@@ -2,15 +2,19 @@
   lib,
   stdenv,
   fetchFromGitHub,
+  ...
 }:
 stdenv.mkDerivation rec {
-  pname = "room";
+  pname = "zellij-workspace";
+  version = "0.2.0";
+
   src = fetchFromGitHub {
-    owner = "rvcas";
-    repo = "room";
-    rev = "fd6dc54a46fb9bce21065ce816189c037aeaf24f";
-    hash = "sha256-T1JNFJUDCtCjXtZQUe1OQsfL3/BI7FUw60dImlUmLhg=";
+    owner = "vdbulcke";
+    repo = "zellij-workspace";
+    rev = "v${version}";
+    hash = "sha256-7KYdYCzCOq5nqjpzYESJCQi4UB+Aw7aBhJuHvVC9Kis=";
   };
+
   dontUnpack = true;
 
   installPhase = ''
@@ -20,8 +24,8 @@ stdenv.mkDerivation rec {
   '';
 
   meta = with lib; {
-    description = "A Zellij plugin for quickly searching and switching tabs";
-    homepage = "https://github.com/rvcas/room";
+    description = "A Zellij plugin to easily navigate and create workspaces";
+    homepage = "https://github.com/vdbulcke/zellij-workspace";
     license = licenses.mit;
     platforms = platforms.all;
     maintainers = [];

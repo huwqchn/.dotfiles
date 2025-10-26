@@ -2,16 +2,17 @@
   lib,
   stdenv,
   fetchFromGitHub,
+  ...
 }:
 stdenv.mkDerivation rec {
-  pname = "zjswitcher";
-  version = "0.2.1";
+  pname = "zj-docker";
+  version = "0.4.0";
 
   src = fetchFromGitHub {
-    owner = "WingsZeng";
-    repo = "zjswitcher";
+    owner = "dj95";
+    repo = "zj-docker";
     rev = "v${version}";
-    hash = "sha256-lACbFz3GP4E2kArdjTjpLdd1GpG9s7fo6mR0ltVO9Og=";
+    hash = "sha256-xuypRhYDXAvYgvCusxa+ut8ITIuZxYkUa3fdu1eLSdA=";
   };
 
   dontUnpack = true;
@@ -23,8 +24,8 @@ stdenv.mkDerivation rec {
   '';
 
   meta = with lib; {
-    description = "A zellij plugin to switch sessions, tabs, panes.";
-    homepage = "https://github.com/WingsZeng/zjswitcher";
+    description = "A zellij plugin for docker";
+    homepage = "https://github.com/dj95/zj-docker";
     license = licenses.mit;
     platforms = platforms.all;
     maintainers = [];

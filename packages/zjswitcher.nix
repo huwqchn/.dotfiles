@@ -2,14 +2,17 @@
   lib,
   stdenv,
   fetchFromGitHub,
+  ...
 }:
 stdenv.mkDerivation rec {
-  pname = "zellij-datetime";
+  pname = "zjswitcher";
+  version = "0.2.1";
+
   src = fetchFromGitHub {
-    owner = "h1romas4";
-    repo = "zellij-datetime";
-    rev = "v0.21.0";
-    hash = "sha256-hMkzhP+4r6PLeJBOr6AZlvC+qn2HOiwQYdakOr8bkHE=";
+    owner = "WingsZeng";
+    repo = "zjswitcher";
+    rev = "v${version}";
+    hash = "sha256-lACbFz3GP4E2kArdjTjpLdd1GpG9s7fo6mR0ltVO9Og=";
   };
 
   dontUnpack = true;
@@ -21,8 +24,8 @@ stdenv.mkDerivation rec {
   '';
 
   meta = with lib; {
-    description = "This plugin adds a date and time pane to [Zellij](https://zellij.dev/), a terminal workspace.";
-    homepage = "https://github.com/h1romas4/zellij-datetime";
+    description = "A zellij plugin to switch sessions, tabs, panes.";
+    homepage = "https://github.com/WingsZeng/zjswitcher";
     license = licenses.mit;
     platforms = platforms.all;
     maintainers = [];

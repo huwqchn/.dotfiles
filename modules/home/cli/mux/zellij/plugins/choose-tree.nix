@@ -1,5 +1,5 @@
 {pkgs, ...}: let
-  chooseTreeWasm = "file:${pkgs.my.zellijPlugins.zellij-choose-tree}/bin/zellij-choose-tree.wasm";
+  chooseTreeWasm = "file:${pkgs.my.zellij-choose-tree}/bin/zellij-choose-tree.wasm";
   launchChooseTree = {
     launchOrFocusPlugin = {
       _args = [chooseTreeWasm];

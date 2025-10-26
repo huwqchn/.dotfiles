@@ -2,18 +2,16 @@
   lib,
   stdenv,
   fetchFromGitHub,
+  ...
 }:
 stdenv.mkDerivation rec {
-  pname = "zellij-sessionizer";
-  version = "0.4.3";
-
+  pname = "zbuffers";
   src = fetchFromGitHub {
-    owner = "laperlej";
-    repo = "zellij-sessionizer";
-    rev = "v${version}";
-    hash = "sha256-G2O77M+0ua53WpoNBkE3sNp3yN7uv9byqIteSyEluiQ=";
+    owner = "Strech";
+    repo = "zbuffers";
+    rev = "v0.4.0";
+    hash = "sha256-5Yrp10ONwNRryLkgbWK3WmnKVjbZH5PWvTTKbnLPDHA=";
   };
-
   dontUnpack = true;
 
   installPhase = ''
@@ -23,8 +21,8 @@ stdenv.mkDerivation rec {
   '';
 
   meta = with lib; {
-    description = "A session manager for Zellij";
-    homepage = "https://github.com/laperlej/zellij-sessionizer";
+    description = "Zellij plugin for convenient switching between tabs with search capabilities";
+    homepage = "https://github.com/Strech/zbuffers";
     license = licenses.mit;
     platforms = platforms.all;
     maintainers = [];

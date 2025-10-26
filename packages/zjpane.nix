@@ -2,16 +2,17 @@
   lib,
   stdenv,
   fetchFromGitHub,
+  ...
 }:
 stdenv.mkDerivation rec {
-  pname = "zellij-switch";
+  pname = "zjpane";
   version = "0.2.0";
 
   src = fetchFromGitHub {
-    owner = "mostafaqanbaryan";
-    repo = "zellij-switch";
-    rev = version;
-    hash = "sha256-Plu/j4DaQMRtygOK0ZXOdlktxfsIzcVCYKrl2rR0dug=";
+    owner = "FuriouZz";
+    repo = "zjpane";
+    rev = "v${version}";
+    hash = "sha256-PnlXqyCWf9iK+jutnOkn0ZbvqVFrH0kBjc4IqL1J1Io=";
   };
 
   dontUnpack = true;
@@ -23,8 +24,8 @@ stdenv.mkDerivation rec {
   '';
 
   meta = with lib; {
-    description = "A zellij plugin to switch between different programming language contexts.";
-    homepage = "https://github.com/mostafaqanbaryan/zellij-switch";
+    description = "Zellij plugin to navigate between panes and create new ones";
+    homepage = "https://github.com/FuriouZz/zjpane";
     license = licenses.mit;
     platforms = platforms.all;
     maintainers = [];
