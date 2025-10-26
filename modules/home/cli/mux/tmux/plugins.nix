@@ -3,9 +3,10 @@
   config,
   ...
 }: let
-  smartSplitsTmux =
+  smart-splits =
     (pkgs.tmuxPlugins.mkTmuxPlugin {
       pluginName = "smart-splits";
+      rtpFilePath = "smart-splits.tmux";
       version =
         pkgs.vimPlugins.smart-splits-nvim.version or "unstable";
       inherit (pkgs.vimPlugins.smart-splits-nvim) src;
@@ -15,7 +16,7 @@
       name = "tmuxplugins-smart-splits-${old.version}";
     });
 in {
-  programs.tmux.plugins = [
+  programs.tmux.plugins = with pkgs.tmuxPlugins; [
     # theme
     # {
     #   plugin = catppuccin;
@@ -26,24 +27,24 @@ in {
     #   '';
     # }
     {
-      plugin = pkgs.tmuxPlugins.resurrect;
+      plugin = resurrect;
       extraConfig = ''
         set -g @resurrect-capture-pane-contents 'on'
         set -g @resurrect-strategy-nvim 'session'
       '';
     }
     {
-      plugin = pkgs.tmuxPlugins.continuum;
+      plugin = continuum;
       extraConfig = ''
         set -g @continuum-boot 'off'
         set -g @continuum-restore 'on'
       '';
     }
     {
-      plugin = pkgs.tmuxPlugins.jump;
+      plugin = jump;
       extraConfig = "set -g @jump-key 'Enter'";
     }
-    pkgs.tmuxPlugins.yank
+    yank
     # {
     #   plugin = open;
     #   extraConfig = ''
@@ -52,14 +53,14 @@ in {
     #   '';
     # }
     {
-      plugin = pkgs.tmuxPlugins.tmux-fzf;
+      plugin = tmux-fzf;
       extraConfig = ''
         TMUX_FZF_LAUNCH_KEY="f"
         TMUX_FZF_ORDER="session|window|pane|command|keybinding|clipboard|process"
       '';
     }
     {
-      plugin = smartSplitsTmux;
+      plugin = smart-splits;
       extraConfig = with config.my.keyboard.keys; ''
         set -g @smart-splits_no_wrap \'\'
         set -g @smart-splits_move_left_key  'C-${h}' # key-mapping for navigation.
