@@ -26,8 +26,10 @@
     nix-index.enable = true;
     ripgrep.enable = true;
     starship.enable = true;
-    tmux.enable = true;
-    zellij.enable = true;
+    mux = {
+      default = "tmux";
+      autoStart = true;
+    };
     yazi.enable = true;
     zoxide.enable = true;
     pet.enable = true;
