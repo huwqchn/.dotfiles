@@ -28,11 +28,6 @@ in {
                   _children = [
                     {
                       pane = {
-                        cwd = "${config.home.homeDirectory}";
-                      };
-                    }
-                    {
-                      pane = {
                         size = 1;
                         borderless = true;
                         plugin = {
@@ -60,22 +55,22 @@ in {
                               mode_locked = "#[bg=${red},fg=${fg_dark},bold]LOCKED#[bg=${bg_statusline},fg=${red}]";
                               mode_pane = "#[bg=${green2},fg=${fg_dark},bold]PANE#[bg=${bg_statusline},fg=${green2}]";
                               mode_tab = "#[bg=${teal},fg=${fg_dark},bold]TAB#[bg=${bg_statusline},fg=${teal}]";
-                              mode_scroll = "#[bg=${orange},fg=${fg_dark},bold]SCROLL#[bg=${bg_hightlight},fg=${orange}]";
+                              mode_scroll = "#[bg=${orange},fg=${fg_dark},bold]SCROLL#[bg=${bg_highlight},fg=${orange}]";
                               mode_enter_search = "#[bg=${orange},fg=${fg_dark},bold]ENT-SEARCH#[bg=${bg_statusline},fg=${orange}]";
                               mode_search = "#[bg=${orange},fg=${fg_dark},bold]SEARCHARCH#[bg=${bg_statusline},fg=${orange}]";
-                              mode_resize = "#[bg=${yellow},fg=${fg_dark},bold]RESIZE#[bg=${bg_hightlight},fg=${yellow}]";
+                              mode_resize = "#[bg=${yellow},fg=${fg_dark},bold]RESIZE#[bg=${bg_highlight},fg=${yellow}]";
                               mode_rename_tab = "#[bg=${yellow},fg=${fg_dark},bold]RENAME-TAB#[bg=${bg_statusline},fg=${yellow}]";
                               mode_rename_pane = "#[bg=${yellow},fg=${fg_dark},bold]RENAME-PANE#[bg=${bg_statusline},fg=${yellow}]";
                               mode_move = "#[bg=${yellow},fg=${fg_dark},bold]MOVE#[bg=${bg_statusline},fg=${yellow}]";
                               mode_session = "#[bg=${magenta2},fg=${fg_dark},bold]SESSION#[bg=${bg_statusline},fg=${magenta2}]";
                               mode_prompt = "#[bg=${magenta2},fg=${fg_dark},bold]PROMPT#[bg=${bg_statusline},fg=${magenta2}]";
 
-                              tab_normal = "#[fg=${blue}]#[bg=${blue},fg=${fg_dark},bold]{index} #[bg=${bg_hightlight},fg=${blue},bold] {name}{floating_indicator}#[fg=${bg_hightlight}]";
-                              tab_normal_fullscreen = "#[fg=${blue}]#[bg=${blue},fg=${fg_dark},bold]{index} #[bg=${bg_hightlight},fg=${blue},bold] {name}{fullscreen_indicator}#[fg=${bg_hightlight}]";
-                              tab_normal_sync = "#[fg=${blue}]#[bg=${blue},fg=${fg_dark},bold]{index} #[bg=${bg_hightlight},fg=${blue},bold] {name}{sync_indicator}#[fg=${bg_hightlight}]";
-                              tab_active = "#[fg=${purple}]#[bg=${purple},fg=${fg_dark},bold]{index} #[bg=${bg_hightlight},fg=${purple},bold] {name}{floating_indicator}#[fg=${bg_hightlight}]";
-                              tab_active_fullscreen = "#[fg=${purple}]#[bg=${purple},fg=${fg_dark},bold]{index} #[bg=${bg_hightlight},fg=${purple},bold] {name}{fullscreen_indicator}#[fg=${bg_hightlight}]";
-                              tab_active_sync = "#[fg=${purple}]#[bg=${purple},fg=${fg_dark},bold]{index} #[bg=${bg_hightlight},fg=${purple},bold] {name}{sync_indicator}#[fg=${bg_hightlight}]";
+                              tab_normal = "#[fg=${blue}]#[bg=${blue},fg=${fg_dark},bold]{index} #[bg=${bg_highlight},fg=${blue},bold] {name}{floating_indicator}#[fg=${bg_highlight}]";
+                              tab_normal_fullscreen = "#[fg=${blue}]#[bg=${blue},fg=${fg_dark},bold]{index} #[bg=${bg_highlight},fg=${blue},bold] {name}{fullscreen_indicator}#[fg=${bg_highlight}]";
+                              tab_normal_sync = "#[fg=${blue}]#[bg=${blue},fg=${fg_dark},bold]{index} #[bg=${bg_highlight},fg=${blue},bold] {name}{sync_indicator}#[fg=${bg_highlight}]";
+                              tab_active = "#[fg=${purple}]#[bg=${purple},fg=${fg_dark},bold]{index} #[bg=${bg_highlight},fg=${purple},bold] {name}{floating_indicator}#[fg=${bg_highlight}]";
+                              tab_active_fullscreen = "#[fg=${purple}]#[bg=${purple},fg=${fg_dark},bold]{index} #[bg=${bg_highlight},fg=${purple},bold] {name}{fullscreen_indicator}#[fg=${bg_highlight}]";
+                              tab_active_sync = "#[fg=${purple}]#[bg=${purple},fg=${fg_dark},bold]{index} #[bg=${bg_highlight},fg=${purple},bold] {name}{sync_indicator}#[fg=${bg_highlight}]";
                               tab_separator = " ";
 
                               tab_sync_indicator = " ";
@@ -103,6 +98,9 @@ in {
                           ];
                         };
                       };
+                    }
+                    {
+                      "children" = {};
                     }
                   ];
                 };
