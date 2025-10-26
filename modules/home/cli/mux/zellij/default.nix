@@ -8,6 +8,7 @@
   cfg = config.my.zellij;
   autoStart = config.my.mux.autoStart && config.my.mux.default == "zellij";
   inherit (lib) mkEnableOption mkIf getExe;
+  inherit (lib.modules) mkDefault;
 
   shell = getExe (builtins.getAttr config.my.shell pkgs);
 in {
@@ -63,7 +64,7 @@ in {
           # UI
           pane_frames = false;
           simplified_ui = true;
-          default_layout = "compact";
+          default_layout = mkDefault "compact";
           ui.pane_frames = {
             rounded_corners = true;
             hide_session_name = true;
