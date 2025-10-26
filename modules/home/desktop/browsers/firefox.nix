@@ -79,7 +79,7 @@ in {
       profiles.default = {
         isDefault = true;
 
-        extensions.packages = with pkgs.nur.repos.rycee.firefox-addons; [
+        extensions.packages = with pkgs.firefox-addons; [
           ublock-origin
           enhancer-for-youtube
           sponsorblock
