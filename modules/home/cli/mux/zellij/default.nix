@@ -55,7 +55,7 @@ in {
         enableFishIntegration = autoStart;
         enableBashIntegration = autoStart;
         enableZshIntegration = autoStart;
-        exitShellOnExit = true;
+        exitShellOnExit = autoStart;
         settings = {
           default_mode = "locked";
           default_shell = shell;
