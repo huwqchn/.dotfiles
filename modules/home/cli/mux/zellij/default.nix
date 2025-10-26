@@ -7,15 +7,9 @@
 }: let
   cfg = config.my.zellij;
   autoStart = config.my.mux.autoStart && config.my.mux.default == "zellij";
-  inherit (lib) mkEnableOption mkIf mkBefore getExe;
+  inherit (lib) mkEnableOption mkIf getExe;
 
   shell = getExe (builtins.getAttr config.my.shell pkgs);
-
-  # Auto-start condition for zsh
-  autoStartCheck = ''
-    [[ -z "$ZELLIJ$SSH_TTY$WSL_DISTRO_NAME$INSIDE_PYCHARM$EMACS$VIM$NVIM$INSIDE_EMACS$TMUX" ]] \
-      && [[ "$TERM_PROGRAM" != "vscode" ]]
-  '';
 in {
   imports = lib.my.scanPaths ./.;
 
@@ -29,15 +23,9 @@ in {
 
   config = mkIf cfg.enable {
     programs = {
-      fish = mkIf autoStart {
-        interactiveShellInit = ''
-          if not set -q ZELLIJ
-             and test -z "$SSH_TTY$WSL_DISTRO_NAME$INSIDE_EMACS$EMACS$VIM$NVIM$INSIDE_PYCHARM$TMUX"
-             and test "$TERM_PROGRAM" != "vscode"
-            zellij attach -c
-            _update_zellij_tab_name
-          end
-        '';
+      fish = mkIf config.programs.starship.enable {
+        # force the function to load so it starts watching PWD
+        interactiveShellInit = "_update_zellij_tab_name";
         functions."_update_zellij_tab_name" = {
           onEvent = "fish_prompt";
           onVariable = "PWD";
@@ -62,21 +50,14 @@ in {
         };
       };
 
-      zsh = mkIf autoStart {
-        initContent = mkBefore ''
-          if ${autoStartCheck}; then
-            zellij attach -c
-          fi
-        '';
-      };
-
       zellij = {
         enable = true;
-        enableFishIntegration = true;
-        enableBashIntegration = true;
-        enableZshIntegration = true;
+        enableFishIntegration = autoStart;
+        enableBashIntegration = autoStart;
+        enableZshIntegration = autoStart;
+        exitShellOnExit = true;
         settings = {
-          default_mode = "tmux";
+          default_mode = "locked";
           default_shell = shell;
           pane_frames = false;
           simplified_ui = true;
@@ -84,6 +65,10 @@ in {
           mouse_mode = true;
           scrollback_editor = getExe config.programs.neovim.package;
           show_startup_tips = false;
+          ui.pane_frames = {
+            rounded_corners = true;
+            hide_session_name = true;
+          };
           # TODO: add option that handles darwin and X11/Wayland
           copy_command =
             if pkgs.stdenv.hostPlatform.isDarwin
