@@ -17,7 +17,7 @@
     };
   };
 in {
-  programs.zellij.setting.keybinds._children = [
+  programs.zellij.settings.keybinds._children = [
     {
       tmux._children = [
         {

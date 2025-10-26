@@ -1,5 +1,5 @@
 {pkgs, ...}: let
-  harpoonWasm = "file:${pkgs.my.zellij-harpoon}/bin/zellij-harpoon.wasm";
+  harpoonWasm = "file:${pkgs.my.harpoon}/bin/harpoon.wasm";
   launchHarpoon = {
     launchOrFocusPlugin = {
       _args = [harpoonWasm];
@@ -14,7 +14,7 @@
     };
   };
 in {
-  programs.zellij.setting = {
+  programs.zellij.settings = {
     plugins.harpoon._props.location = harpoonWasm;
     keybinds._children = [
       {

@@ -1,5 +1,5 @@
 {pkgs, ...}: let
-  monocleWasm = "file:${pkgs.my.zellij-harpoon}/bin/monocle.wasm";
+  monocleWasm = "file:${pkgs.my.monocle}/bin/monocle.wasm";
   launchMonocle = {
     launchOrFocusPlugin = {
       _args = [monocleWasm];
@@ -14,8 +14,8 @@
     };
   };
 in {
-  programs.zellij.setting = {
-    plugins.harpoon._props.location = monocleWasm;
+  programs.zellij.settings = {
+    plugins.monocle._props.location = monocleWasm;
     keybinds._children = [
       {
         shared_except = {

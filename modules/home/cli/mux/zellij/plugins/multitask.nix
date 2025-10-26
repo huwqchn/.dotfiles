@@ -1,16 +1,19 @@
 {
+  lib,
   config,
   pkgs,
   ...
 }: let
   multitask = "${pkgs.my.multitask}/bin/multitask.wasm";
+  inherit (lib.meta) getExe;
+  shell = getExe (builtins.getAttr config.my.shell pkgs);
 in {
-  programs.settings = {
-    plugins.autolock = {
+  programs.zellij.settings = {
+    plugins.multitask = {
       _props.location = "file:${multitask}";
       _children = [
         {
-          shell = config.my.shell.exec;
+          inherit shell;
         }
       ];
     };

@@ -17,8 +17,8 @@
     };
   };
 in {
-  programs.zellij.setting = {
-    plugins.harpoon._props.location = roomWasm;
+  programs.zellij.settings = {
+    plugins.room._props.location = roomWasm;
     keybinds._children = [
       {
         shared_except = {

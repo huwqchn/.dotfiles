@@ -1,7 +1,7 @@
 {pkgs, ...}: let
   autolock = "file:${pkgs.my.zellij-autolock}/bin/zellij-autolock.wasm";
 in {
-  programs.settings = {
+  programs.zellij.settings = {
     plugins.autolock = {
       _props.location = autolock;
       _children = [
