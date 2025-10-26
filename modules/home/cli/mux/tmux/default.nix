@@ -18,7 +18,7 @@ in {
     enable =
       mkEnableOption "tmux"
       // {
-        default = config.my.mux == "tmux";
+        default = config.my.mux.default == "tmux";
       };
   };
 

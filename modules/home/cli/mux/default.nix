@@ -1,6 +1,6 @@
 {lib, ...}: let
   inherit (lib.options) mkOption;
-  inherit (lib.types) enum;
+  inherit (lib.types) enum bool;
 in {
   imports = lib.my.scanPaths ./.;
 
@@ -11,7 +11,7 @@ in {
       description = "The terminal multiplexer to use";
     };
     autoStart = mkOption {
-      type = lib.types.bool;
+      type = bool;
       default = false;
       description = "Whether to start the terminal multiplexer automatically";
     };
