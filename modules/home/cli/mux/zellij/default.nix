@@ -59,16 +59,21 @@ in {
         settings = {
           default_mode = "locked";
           default_shell = shell;
+
+          # UI
           pane_frames = false;
           simplified_ui = true;
-          copy_on_select = true;
-          mouse_mode = true;
-          scrollback_editor = getExe config.programs.neovim.package;
-          show_startup_tips = false;
+          default_layout = "compact";
           ui.pane_frames = {
             rounded_corners = true;
             hide_session_name = true;
           };
+          show_startup_tips = false;
+
+          # Mouse
+          mouse_mode = true;
+          copy_on_select = true;
+          scrollback_editor = getExe config.programs.neovim.package;
           # TODO: add option that handles darwin and X11/Wayland
           copy_command =
             if pkgs.stdenv.hostPlatform.isDarwin
@@ -76,10 +81,12 @@ in {
             else if pkgs.stdenv.hostPlatform.isLinux
             then "wl-copy"
             else "xclip -selection clipboard";
+
           # serialized
           serialize_pane_viewport = true;
           session_serialization = true;
 
+          # web
           # https://zellij.dev/tutorials/web-client/
           web_server = true;
           # Generated with `nix run nixpkgs#mkcert -install localhost 127.0.0.1`
