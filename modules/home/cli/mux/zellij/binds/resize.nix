@@ -6,7 +6,7 @@
         _children = [
           {
             bind = {
-              _args = ["Ctrl" "r"];
+              _args = ["Ctrl r"];
               _children = [{SwitchToMode._args = ["resize"];}];
             };
           }

@@ -6,7 +6,7 @@
         _children = [
           {
             bind = {
-              _args = ["Ctrl" "p"];
+              _args = ["Ctrl p"];
               _children = [{SwitchToMode._args = ["pane"];}];
             };
           }
@@ -75,7 +75,7 @@
         {
           bind = {
             _args = ["c"];
-            _children = [{SwitchToMode._args = ["renamePane"];} {PaneNameInput._args = ["0"];}];
+            _children = [{SwitchToMode._args = ["renamepane"];} {PaneNameInput._args = [0];}];
           };
         }
         {

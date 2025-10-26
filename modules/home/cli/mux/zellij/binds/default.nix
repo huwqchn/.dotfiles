@@ -8,14 +8,14 @@
 in {
   imports = lib.my.scanPaths ./.;
   programs.zellij.settings.keybinds = with config.my.keyboard.keys; {
-    _prop.clear-defaults = true;
+    _props.clear-defaults = true;
     _children = [
       {
         locked = {
           _children = [
             {
               bind = {
-                _args = ["Ctrl" "g"];
+                _args = ["Ctrl g"];
                 _children = [{SwitchToMode._args = ["normal"];}];
               };
             }
@@ -55,7 +55,7 @@ in {
           _children = [
             {
               bind = {
-                _args = ["Alt" "g"];
+                _args = ["Alt g"];
                 _children = [
                   {
                     Run = {
@@ -69,7 +69,7 @@ in {
             }
             {
               bind = {
-                _args = ["Alt" "y"];
+                _args = ["Alt y"];
                 _children = [
                   {
                     NewPane._args = ["Left"];
@@ -84,7 +84,7 @@ in {
             # Quit
             {
               bind = {
-                _args = ["Ctrl" "q"];
+                _args = ["Ctrl q"];
                 _children = [
                   {Quit = {};}
                 ];
@@ -92,14 +92,14 @@ in {
             }
             {
               bind = {
-                _args = ["Ctrl" "g"];
+                _args = ["Ctrl g"];
                 _children = [{SwitchToMode._args = ["locked"];}];
               };
             }
             # Focus movement
             {
               bind = {
-                _args = ["Ctrl" h];
+                _args = ["Ctrl ${h}"];
                 _children = [
                   {
                     MessagePlugin = {
@@ -112,7 +112,7 @@ in {
             }
             {
               bind = {
-                _args = ["Ctrl" j];
+                _args = ["Ctrl ${j}"];
                 _children = [
                   {
                     MessagePlugin = {
@@ -125,7 +125,7 @@ in {
             }
             {
               bind = {
-                _args = ["Ctrl" k];
+                _args = ["Ctrl ${k}"];
                 _children = [
                   {
                     MessagePlugin = {
@@ -138,7 +138,7 @@ in {
             }
             {
               bind = {
-                _args = ["Ctrl" l];
+                _args = ["Ctrl ${l}"];
                 _children = [
                   {
                     MessagePlugin = {
@@ -153,7 +153,7 @@ in {
             # Resizing
             {
               bind = {
-                _args = ["Alt" h];
+                _args = ["Alt ${h}"];
                 _children = [
                   {
                     MessagePlugin = {
@@ -166,7 +166,7 @@ in {
             }
             {
               bind = {
-                _args = ["Alt" j];
+                _args = ["Alt ${j}"];
                 _children = [
                   {
                     MessagePlugin = {
@@ -179,7 +179,7 @@ in {
             }
             {
               bind = {
-                _args = ["Alt" k];
+                _args = ["Alt ${k}"];
                 _children = [
                   {
                     MessagePlugin = {
@@ -192,7 +192,7 @@ in {
             }
             {
               bind = {
-                _args = ["Alt" l];
+                _args = ["Alt ${l}"];
                 _children = [
                   {
                     MessagePlugin = {
@@ -205,7 +205,7 @@ in {
             }
             {
               bind = {
-                _args = ["Ctrl" "Enter"];
+                _args = ["Ctrl Enter"];
                 _children = [
                   {NewPane = {};}
                 ];
@@ -213,7 +213,7 @@ in {
             }
             {
               bind = {
-                _args = ["Ctrl" "t"];
+                _args = ["Ctrl t"];
                 _children = [
                   {NewTab = {};}
                 ];

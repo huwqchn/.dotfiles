@@ -11,7 +11,7 @@
         {
           bind = {
             _args = ["s"];
-            _children = [{SwitchToMode._args = ["entersearch"];} {SearchInput._args = ["0"];}];
+            _children = [{SwitchToMode._args = ["entersearch"];} {SearchInput._args = [0];}];
           };
         }
       ];
@@ -54,7 +54,7 @@
       entersearch._children = [
         {
           bind = {
-            _args = ["Ctrl" "c"];
+            _args = ["Ctrl c"];
             _children = [{SwitchToMode._args = ["scroll"];}];
           };
         }

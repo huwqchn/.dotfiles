@@ -32,7 +32,7 @@
         _children = [
           {
             bind = {
-              _args = ["Ctrl" "c"];
+              _args = ["Ctrl c"];
               _children = [{SwitchToMode._args = ["normal"];}];
             };
           }

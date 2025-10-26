@@ -6,7 +6,7 @@
         _children = [
           {
             bind = {
-              _args = ["Ctrl" "t"];
+              _args = ["Ctrl t"];
               _children = [{SwitchToMode._args = ["tab"];}];
             };
           }
@@ -185,7 +185,7 @@
             _args = ["c"];
             _children = [
               {SwitchToMode._args = ["renametab"];}
-              {TabNameInput._args = ["0"];}
+              {TabNameInput._args = [0];}
             ];
           };
         }

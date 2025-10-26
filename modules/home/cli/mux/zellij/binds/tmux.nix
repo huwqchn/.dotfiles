@@ -6,7 +6,7 @@
         _children = [
           {
             bind = {
-              _args = ["Ctrl" "a"];
+              _args = ["Ctrl a"];
               _children = [{SwitchToMode._args = ["Tmux"];}];
             };
           }
@@ -138,7 +138,7 @@
             _args = ["c"];
             _children = [
               {SwitchToMode._args = ["renametab"];}
-              {TabNameInput._args = ["0"];}
+              {TabNameInput._args = [0];}
             ];
           };
         }
