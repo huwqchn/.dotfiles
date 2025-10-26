@@ -1,16 +1,10 @@
 {pkgs, ...}: let
   monocleWasm = "file:${pkgs.my.monocle}/bin/monocle.wasm";
   launchMonocle = {
-    launchOrFocusPlugin = {
+    LaunchOrFocusPlugin = {
       _args = [monocleWasm];
-      _children = [
-        {
-          floating = true;
-        }
-        {
-          move_to_focusd_tab = true;
-        }
-      ];
+      floating = true;
+      move_to_focusd_tab = true;
     };
   };
 in {
@@ -23,7 +17,7 @@ in {
           _children = [
             {
               bind = {
-                _args = ["Alt" "m"];
+                _args = ["Alt m"];
                 _children = [
                   launchMonocle
                   {SwitchToMode._args = ["normal"];}

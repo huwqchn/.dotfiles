@@ -1,16 +1,10 @@
 {pkgs, ...}: let
   harpoonWasm = "file:${pkgs.my.harpoon}/bin/harpoon.wasm";
   launchHarpoon = {
-    launchOrFocusPlugin = {
+    LaunchOrFocusPlugin = {
       _args = [harpoonWasm];
-      _children = [
-        {
-          floating = true;
-        }
-        {
-          move_to_focusd_tab = true;
-        }
-      ];
+      floating = true;
+      move_to_focusd_tab = true;
     };
   };
 in {
@@ -23,7 +17,7 @@ in {
           _children = [
             {
               bind = {
-                _args = ["Alt" "a"];
+                _args = ["Alt a"];
                 _children = [
                   launchHarpoon
                 ];

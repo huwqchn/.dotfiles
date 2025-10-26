@@ -1,19 +1,11 @@
 {pkgs, ...}: let
   chooseTreeWasm = "file:${pkgs.my.zellij-choose-tree}/bin/zellij-choose-tree.wasm";
   launchChooseTree = {
-    launchOrFocusPlugin = {
+    LaunchOrFocusPlugin = {
       _args = [chooseTreeWasm];
-      _children = [
-        {
-          floating = true;
-        }
-        {
-          move_to_focusd_tab = true;
-        }
-        {
-          show_plugins = false;
-        }
-      ];
+      floating = true;
+      move_to_focusd_tab = true;
+      show_plugins = false;
     };
   };
 in {

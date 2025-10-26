@@ -1,19 +1,11 @@
 {pkgs, ...}: let
   roomWasm = "file:${pkgs.my.room}/bin/room.wasm";
   launchRoom = {
-    launchOrFocusPlugin = {
+    LaunchOrFocusPlugin = {
       _args = [roomWasm];
-      _children = [
-        {
-          floating = true;
-        }
-        {
-          ignore_case = true;
-        }
-        {
-          quick_jump = true;
-        }
-      ];
+      floating = true;
+      ignore_case = true;
+      quick_jump = true;
     };
   };
 in {
@@ -26,7 +18,7 @@ in {
           _children = [
             {
               bind = {
-                _args = ["Alt" "r"];
+                _args = ["Alt r"];
                 _children = [
                   launchRoom
                 ];

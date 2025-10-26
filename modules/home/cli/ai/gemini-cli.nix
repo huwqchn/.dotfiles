@@ -10,12 +10,12 @@
   inherit (lib.modules) mkIf;
   inherit (lib.meta) getExe';
   cat' = getExe' pkgs.coreutils "cat";
-  cloudProject = config.sops.secrets.google_cloud_project.path;
+  cloudProjectPath = config.sops.secrets.google_cloud_project.path;
   apiKeyPath = config.sops.secrets.gemini_api_key.path;
 
   tokenExportShell = ''
-    if [ -f ${cloudProject} ]; then
-      export GOOGLE_CLOUD_PROJECT="$(${cat'} ${cloudProject})"
+    if [ -f ${cloudProjectPath} ]; then
+      export GOOGLE_CLOUD_PROJECT="$(${cat'} ${cloudProjectPath})"
     fi
     if [ -f ${apiKeyPath} ]; then
       export GEMINI_API_KEY="$(${cat'} ${apiKeyPath})"
@@ -31,8 +31,11 @@ in {
     programs = {
       bash.initExtra = tokenExportShell;
       fish.shellInit = ''
-        if test -f ${cloudProject}
-          set -x GOOGLE_CLOUD_PROJECT (${cat'} ${cloudProject})
+        if test -f ${cloudProjectPath}
+          set -x GOOGLE_CLOUD_PROJECT (${cat'} ${cloudProjectPath})
+        end
+        if test -f ${apiKeyPath}
+          set -x GEMINI_API_KEY (${cat'} ${apiKeyPath})
         end
       '';
       zsh.initContent = tokenExportShell;
