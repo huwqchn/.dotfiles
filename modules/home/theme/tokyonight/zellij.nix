@@ -10,6 +10,7 @@
   enable = cfg.enable && config.my.zellij.enable;
   inherit (config.my.theme) tokyonight colorscheme;
   inherit (colorscheme) palette;
+  inherit (config.my.theme.general) transparent;
   cfg = tokyonight;
   zjstatusWasm = "${pkgs.zjstatus}/bin/zjstatus.wasm";
 in {
@@ -33,14 +34,19 @@ in {
                         borderless = true;
                         plugin = {
                           _props.location = "file:${zjstatusWasm}";
-                          _children = with palette; [
+                          _children = with palette; let
+                            statusline =
+                              if transparent
+                              then "default"
+                              else bg_statusline;
+                          in [
                             {
                               # source: https://github.com/merikan/.dotfiles/blob/main/config/zellij/themes/zjstatus/catppuccin.kdl
 
-                              format_left = "#[bg=${bg_statusline},fg=${bright_blue}]#[bg=${bright_blue},fg=${bg_dark},bold] {session} #[bg=${bg_statusline}] {mode}#[bg=${bg_statusline}] {tabs}";
+                              format_left = "#[bg=${statusline},fg=${bright_blue}]#[bg=${bright_blue},fg=${bg_dark},bold] {session} #[bg=${statusline}] {mode}#[bg=${statusline}] {tabs}";
                               format_center = "{notifications}";
-                              format_right = "#[bg=${bg_statusline},fg=${orange}]#[fg=${bg_dark},bg=${orange}] #[bg=${bg_highlight},fg=${orange},bold] {command_user}@{command_host}#[bg=${bg_statusline},fg=${bg_highlight}]#[bg=${bg_statusline},fg=${info}]#[bg=${info},fg=${bg_dark}]󰃭 #[bg=${bg_highlight},fg=${info},bold] {datetime}#[bg=${bg_statusline},fg=${bg_highlight}]";
-                              format_space = "#[bg=${bg_statusline}]";
+                              format_right = "#[bg=${statusline},fg=${orange}]#[fg=${bg_dark},bg=${orange}] #[bg=${bg_highlight},fg=${orange},bold] {command_user}@{command_host}#[bg=${statusline},fg=${bg_highlight}] #[bg=${statusline},fg=${info}]#[bg=${info},fg=${bg_dark}]󰃭 #[bg=${bg_highlight},fg=${info},bold] {datetime}#[bg=${statusline},fg=${bg_highlight}]";
+                              format_space = "#[bg=${statusline}]";
                               format_hide_on_overlength = "true";
                               format_precedence = "lrc";
 
@@ -51,20 +57,20 @@ in {
 
                               hide_frame_for_single_pane = "false";
 
-                              mode_normal = "#[bg=${green},fg=${bg_dark},bold] NORMAL#[bg=${bg_statusline},fg=${green}]";
-                              mode_tmux = "#[bg=${blue},fg=${bg_dark},bold] TMUX#[bg=${bg_statusline},fg=${blue}]";
-                              mode_locked = "#[bg=${red},fg=${bg_dark},bold] LOCKED#[bg=${bg_statusline},fg=${red}]";
-                              mode_pane = "#[bg=${green2},fg=${bg_dark},bold] PANE#[bg=${bg_statusline},fg=${green2}]";
-                              mode_tab = "#[bg=${teal},fg=${bg_dark},bold] TAB#[bg=${bg_statusline},fg=${teal}]";
+                              mode_normal = "#[bg=${green},fg=${bg_dark},bold] NORMAL#[bg=${statusline},fg=${green}]";
+                              mode_tmux = "#[bg=${blue},fg=${bg_dark},bold] TMUX#[bg=${statusline},fg=${blue}]";
+                              mode_locked = "#[bg=${red},fg=${bg_dark},bold] LOCKED#[bg=${statusline},fg=${red}]";
+                              mode_pane = "#[bg=${green2},fg=${bg_dark},bold] PANE#[bg=${statusline},fg=${green2}]";
+                              mode_tab = "#[bg=${teal},fg=${bg_dark},bold] TAB#[bg=${statusline},fg=${teal}]";
                               mode_scroll = "#[bg=${orange},fg=${bg_dark},bold] SCROLL#[bg=${bg_highlight},fg=${orange}]";
-                              mode_enter_search = "#[bg=${orange},fg=${bg_dark},bold] ENT-SEARCH#[bg=${bg_statusline},fg=${orange}]";
-                              mode_search = "#[bg=${orange},fg=${bg_dark},bold] SEARCHARCH#[bg=${bg_statusline},fg=${orange}]";
+                              mode_enter_search = "#[bg=${orange},fg=${bg_dark},bold] ENT-SEARCH#[bg=${statusline},fg=${orange}]";
+                              mode_search = "#[bg=${orange},fg=${bg_dark},bold] SEARCHARCH#[bg=${statusline},fg=${orange}]";
                               mode_resize = "#[bg=${yellow},fg=${bg_dark},bold] RESIZE#[bg=${bg_highlight},fg=${yellow}]";
-                              mode_rename_tab = "#[bg=${yellow},fg=${bg_dark},bold] RENAME-TAB#[bg=${bg_statusline},fg=${yellow}]";
-                              mode_rename_pane = "#[bg=${yellow},fg=${bg_dark},bold] RENAME-PANE#[bg=${bg_statusline},fg=${yellow}]";
-                              mode_move = "#[bg=${yellow},fg=${bg_dark},bold] MOVE#[bg=${bg_statusline},fg=${yellow}]";
-                              mode_session = "#[bg=${magenta2},fg=${bg_dark},bold] SESSION#[bg=${bg_statusline},fg=${magenta2}]";
-                              mode_prompt = "#[bg=${magenta2},fg=${bg_dark},bold] PROMPT#[bg=${bg_statusline},fg=${magenta2}]";
+                              mode_rename_tab = "#[bg=${yellow},fg=${bg_dark},bold] RENAME-TAB#[bg=${statusline},fg=${yellow}]";
+                              mode_rename_pane = "#[bg=${yellow},fg=${bg_dark},bold] RENAME-PANE#[bg=${statusline},fg=${yellow}]";
+                              mode_move = "#[bg=${yellow},fg=${bg_dark},bold] MOVE#[bg=${statusline},fg=${yellow}]";
+                              mode_session = "#[bg=${magenta2},fg=${bg_dark},bold] SESSION#[bg=${statusline},fg=${magenta2}]";
+                              mode_prompt = "#[bg=${magenta2},fg=${bg_dark},bold] PROMPT#[bg=${statusline},fg=${magenta2}]";
 
                               tab_normal = "#[fg=${blue}]#[bg=${blue},fg=${bg_dark},bold]{index} #[bg=${bg_highlight},fg=${blue},bold] {name}{floating_indicator}#[fg=${bg_highlight}]";
                               tab_normal_fullscreen = "#[fg=${blue}]#[bg=${blue},fg=${bg_dark},bold]{index} #[bg=${bg_highlight},fg=${blue},bold] {name}{fullscreen_indicator}#[fg=${bg_highlight}]";
