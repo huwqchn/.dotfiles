@@ -10,7 +10,7 @@ stdenv.mkDerivation rec {
 
   src = fetchurl {
     url = "https://github.com/imsnif/monocle/releases/download/${version}/monocle.wasm";
-    sha256 = "0b3r2d3wz42lffdsh28a4kwjxrhdgx7f94swfm75p5rdj76f5dsc";
+    sha256 = "sha256-TLfizJEtl1tOdVyT5E5/DeYu+SQKCaibc1SQz0cTeSw=";
   };
 
   dontUnpack = true;

@@ -7,12 +7,10 @@
 stdenv.mkDerivation rec {
   pname = "zellij-cb";
   version = "v0.1.0";
-  src =
-    fetchurl {
-      url = " https://github.com/ndavd/zellij-cb/releases/download/${version}/zellij-cb.w
-asm";
-      sha256 = "1lg9bww6s1afbynzxaj3dkkyhs9wzzp0yy5y5lqxlc6wv6q3nfw5";
-    };
+  src = fetchurl {
+    url = "https://github.com/ndavd/zellij-cb/releases/download/${version}/zellij-cb.wasm";
+    sha256 = "sha256-hTs7sNncMNoxLb54D+7/PGno52xDqv6tX04FbThf6dE=";
+  };
   dontUnpack = true;
 
   installPhase = ''

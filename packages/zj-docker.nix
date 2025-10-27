@@ -10,7 +10,7 @@ stdenv.mkDerivation rec {
 
   src = fetchurl {
     url = "https://github.com/dj95/zj-docker/releases/download/${version}/zj-docker.wasm";
-    sha256 = "0r46i4wlchh8q85g9n21vqdg4vv3v7106r6a74i8s3j205p54rdy";
+    sha256 = "sha256-vmVSbgFCDo0iOcpkA8LZY2/yGt5B2PQKwghCRjmJhmQ=";
   };
 
   dontUnpack = true;

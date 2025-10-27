@@ -10,7 +10,7 @@ stdenv.mkDerivation rec {
 
   src = fetchurl {
     url = "https://github.com/WingsZeng/zjswitcher/releases/download/${version}/zjswitcher.wasm";
-    sha256 = "1bkn43ym4r88264n4jsanwv1phckihba7bbpx3d6y6ghzrpdcasn";
+    sha256 = "sha256-VivWbv7wGW/a6HetoxaMk8EbNrdKS2KJEQhlUv0gdq4=";
   };
 
   dontUnpack = true;

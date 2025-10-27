@@ -10,7 +10,7 @@ stdenv.mkDerivation rec {
 
   src = fetchurl {
     url = "https://github.com/pirafrank/zellij-what-time/releases/download/${version}/zellij-what-time.wasm";
-    sha256 = "1c1n1s8ajai0qn4xmxbvc381564hi81lpfaq7vq0a7cm0my93iqj";
+    sha256 = "sha256-EseRfAWVHQXwPli5SwOKkJgS0GB79dqJxSAqqZAONrA=";
   };
 
   dontUnpack = true;

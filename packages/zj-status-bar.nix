@@ -10,7 +10,7 @@ stdenv.mkDerivation rec {
 
   src = fetchurl {
     url = "https://github.com/cristiand391/zj-status-bar/releases/download/${version}/zj-status-bar.wasm";
-    sha256 = "1s091b9hv4bsh0mbz7g9di8l8bzbhh1srmvsq71mk41bvc59ds5i";
+    sha256 = "sha256-seiWCtsrkFnDwXrXrAOE6y9EUWzpnb8qgHqRDdMKCeg=";
   };
 
   dontUnpack = true;

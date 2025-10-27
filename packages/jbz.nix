@@ -10,7 +10,7 @@ stdenv.mkDerivation rec {
 
   src = fetchurl {
     url = "https://github.com/nim65s/jbz/releases/download/${version}/jbz.wasm";
-    sha256 = "04rwmapr9pqlh9pb4xab64g727fb02qpdc421axrq1ald4wyr932";
+    sha256 = "sha256-YqTsOWlUBZy7CoKwdrEAyx1xHjFLdbJughTflK+qPBM=";
   };
 
   dontUnpack = true;

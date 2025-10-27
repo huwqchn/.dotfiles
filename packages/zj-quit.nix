@@ -10,7 +10,7 @@ stdenv.mkDerivation rec {
 
   src = fetchurl {
     url = "https://github.com/cristiand391/zj-quit/releases/download/${version}/zj-quit.wasm";
-    sha256 = "153z2gdb7vfppz9ip3bs6pfmb1ypzj1q6k38l91b6j3nccc2f9i5";
+    sha256 = "sha256-JSYnGGN2SLNComhMg4P814dV3TV6jRvTv9fts9oTf5Q=";
   };
 
   dontUnpack = true;

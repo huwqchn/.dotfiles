@@ -9,7 +9,7 @@ stdenv.mkDerivation rec {
   version = "0.2.2";
   src = fetchurl {
     url = "https://github.com/fresh2dev/zellij-autolock/releases/download/${version}/zellij-autolock.wasm";
-    sha256 = "194fgd421w2j77jbpnq994y2ma03qzdlz932cxfhfznrpw3mdjb9";
+    sha256 = "sha256-aclWB7/ZfgddZ2KkT9vHA6gqPEkJ27vkOVLwIEh7jqQ=";
   };
   dontUnpack = true;
 

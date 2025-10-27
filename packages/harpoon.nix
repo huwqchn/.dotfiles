@@ -10,7 +10,7 @@ stdenv.mkDerivation rec {
 
   src = fetchurl {
     url = "https://github.com/Nacho114/harpoon/releases/download/${version}/harpoon.wasm";
-    sha256 = "00ln03gjpf6xdfq1d3z84pcvmyrk1n1ddi1nkfxsmnqxldyzinfa";
+    sha256 = "sha256-ytn4faMd26q7mzbE1oINM/u62SXojxawa924K98AlgI=";
   };
 
   dontUnpack = true;

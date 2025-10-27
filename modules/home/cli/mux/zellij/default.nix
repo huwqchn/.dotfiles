@@ -58,7 +58,7 @@ in {
         enableZshIntegration = autoStart;
         exitShellOnExit = autoStart;
         settings = {
-          default_mode = "locked";
+          default_mode = "normal";
           default_shell = shell;
 
           # UI

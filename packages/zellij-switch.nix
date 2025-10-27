@@ -10,7 +10,7 @@ stdenv.mkDerivation rec {
 
   src = fetchurl {
     url = "https://github.com/mostafaqanbaryan/zellij-switch/releases/download/${version}/zellij-switch.wasm";
-    sha256 = "1bi219dh9dfs1h7ifn4g5p8n6ini8ack1bfys5z36wzbzx0pw9gg";
+    sha256 = "sha256-7yV+Qf/rczN+0d6tMJlC0UZj0S2PWBcPDNq1BFsKIq4=";
   };
 
   dontUnpack = true;

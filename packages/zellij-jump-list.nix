@@ -10,7 +10,7 @@ stdenv.mkDerivation rec {
 
   src = fetchurl {
     url = "https://github.com/blank2121/zellij-jump-list/releases/download/Latest/zellij-jump-list.wasm";
-    sha256 = "0p17aanprmw71r67hliyk17q825mn86pwhgslagflh7vvgr4w8cm";
+    sha256 = "sha256-lSFO8tv7QOqeovpBfg2ytQiET5g+UnhMDofXfK1SJ1w=";
   };
 
   dontUnpack = true;

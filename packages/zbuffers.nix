@@ -9,7 +9,7 @@ stdenv.mkDerivation rec {
   version = "v0.4.0";
   src = fetchurl {
     url = "https://github.com/Strech/zbuffers/releases/download/${version}/zbuffers.wasm";
-    sha256 = "0ai8ag88mpcxfnvscx9dql36w25vm5dkhkhgifaiyy2llpwcxy41";
+    sha256 = "sha256-gfjO+KVUeB+Viw9OOFupuwhuBsUtdaa3dZ3ditBTKCo=";
   };
   dontUnpack = true;
 

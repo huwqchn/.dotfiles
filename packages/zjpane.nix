@@ -10,7 +10,7 @@ stdenv.mkDerivation rec {
 
   src = fetchurl {
     url = "https://github.com/FuriouZz/zjpane/releases/download/${version}/zjpane.wasm";
-    sha256 = "1pman067x2ka2gmifjxzfhpmmfsb51l18a564xklmz1zysfb8srp";
+    sha256 = "sha256-N2u0nPY//EpnJ6YoFGgoS7taL3S/SxfrE2qKfgywqt4=";
   };
 
   dontUnpack = true;

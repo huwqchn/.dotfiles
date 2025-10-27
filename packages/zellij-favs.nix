@@ -9,7 +9,7 @@ stdenv.mkDerivation rec {
   version = "v1.0.2";
   src = fetchurl {
     url = "https://github.com/JoseMM2002/zellij-favs/releases/download/${version}/zellij-favs.wasm";
-    sha256 = "09rd7nk6rxa42lkrdbbdpijnzylynkrmmc3snhsywjr2k65zh8ya";
+    sha256 = "sha256-yiP4i5kiS+41tHqwWvO0nvpvZbxtrZYnFUT1bKY9LSc=";
   };
   dontUnpack = true;
 

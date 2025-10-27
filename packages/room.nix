@@ -9,7 +9,7 @@ stdenv.mkDerivation rec {
   version = "v1.2.0";
   src = fetchurl {
     url = "https://github.com/rvcas/room/releases/download/${version}/room.wasm";
-    sha256 = "0k5fy3svjvifsgp0kdvqdx9m9rzrql9cwq6hbvxdgklfnczqz8dp";
+    sha256 = "sha256-t6GPP7OOztf6XtBgzhLF+edUU294twnu0y5uufXwrkw=";
   };
   dontUnpack = true;
 

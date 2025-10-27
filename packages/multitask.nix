@@ -9,7 +9,7 @@ stdenv.mkDerivation rec {
   version = "v0.1.0";
   src = fetchurl {
     url = "https://github.com/leakec/multitask/releases/download/0.43.1/multitask.wasm";
-    sha256 = "0q2m7j43vmfjcd4zh62qxnr737icrr69gib9q201dc49xwan917h";
+    sha256 = "sha256-8IRkFe+JsBaAwGnFl0zOLJ5xsu1YGPhJY9LVPYg8VWA=";
   };
   dontUnpack = true;
 

@@ -10,7 +10,7 @@ stdenv.mkDerivation rec {
 
   src = fetchurl {
     url = "https://github.com/laperlej/zellij-sessionizer/releases/download/${version}/zellij-sessionizer.wasm";
-    sha256 = "sha256-0d43jhlhm7p8pvd8kcylfbfy3dahr8q4yngpnjyqivapwip9csq0";
+    sha256 = "sha256-AGuWbuRX7Yi9tPdZTzDKULXh3XLUs4navuieCimUgzQ=";
   };
 
   dontUnpack = true;

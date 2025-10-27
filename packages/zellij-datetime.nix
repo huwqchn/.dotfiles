@@ -9,7 +9,7 @@ stdenv.mkDerivation rec {
   version = "v0.21.0";
   src = fetchurl {
     url = "https://github.com/h1romas4/zellij-datetime/releases/download/${version}/zellij-datetime.wasm";
-    sha256 = "0h8hmi5l1xbx1khcns7m4xvsi6gjyd0p1rnmcdf8hys5p7f22lx1";
+    sha256 = "sha256-oVMh3LlFe4hcY9XmcEHz8pmodyf1aMvgDH31QEusEEE=";
   };
 
   dontUnpack = true;

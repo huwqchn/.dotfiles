@@ -10,16 +10,16 @@ in {
   programs.zellij.settings.keybinds = with config.my.keyboard.keys; {
     _props.clear-defaults = true;
     _children = [
-      {
-        normal._children = [
-          {
-            bind = {
-              _args = ["Esc"];
-              _children = [{SwitchToMode._args = ["locked"];}];
-            };
-          }
-        ];
-      }
+      # {
+      #   normal._children = [
+      #     {
+      #       bind = {
+      #         _args = ["Esc"];
+      #         _children = [{SwitchToMode._args = ["locked"];}];
+      #       };
+      #     }
+      #   ];
+      # }
       {
         locked._children = [
           {
