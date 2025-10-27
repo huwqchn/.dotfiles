@@ -31,6 +31,15 @@
     }
     {
       session._children = [
+        # Quit
+        {
+          bind = {
+            _args = ["q"];
+            _children = [
+              {Quit = {};}
+            ];
+          };
+        }
         {
           bind = {
             _args = ["a"];

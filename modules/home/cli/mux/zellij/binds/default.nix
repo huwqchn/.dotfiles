@@ -198,15 +198,6 @@ in {
                 ];
               };
             }
-            # Quit
-            {
-              bind = {
-                _args = ["Ctrl q"];
-                _children = [
-                  {Quit = {};}
-                ];
-              };
-            }
           ];
         };
       }
