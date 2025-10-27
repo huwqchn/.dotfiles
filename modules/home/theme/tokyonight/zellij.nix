@@ -19,10 +19,10 @@ in {
       settings = {
         theme = slug;
         theme_dir = "${src}/extras/zellij";
-        default_layout = mkForce "default";
+        default_layout = mkForce "tmux";
       };
       layouts = {
-        default = {
+        tmux = {
           layout = {
             _children = [
               {
