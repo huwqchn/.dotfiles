@@ -22,7 +22,7 @@
         _children = [
           {
             bind = {
-              _args = ["Ctrl s"];
+              _args = ["Ctrl space"];
               _children = [{SwitchToMode._args = ["session"];}];
             };
           }

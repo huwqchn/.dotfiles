@@ -10,16 +10,6 @@ in {
   programs.zellij.settings.keybinds = with config.my.keyboard.keys; {
     _props.clear-defaults = true;
     _children = [
-      # {
-      #   normal._children = [
-      #     {
-      #       bind = {
-      #         _args = ["Esc"];
-      #         _children = [{SwitchToMode._args = ["locked"];}];
-      #       };
-      #     }
-      #   ];
-      # }
       {
         locked._children = [
           {
@@ -58,52 +48,8 @@ in {
         };
       }
       {
-        shared_except = {
-          _args = ["locked"];
+        shared = {
           _children = [
-            {
-              bind = {
-                _args = ["Alt g"];
-                _children = [
-                  {
-                    Run = {
-                      _args = ["zellij" "run" "--floating" "--" "lazygit"];
-                      close_on_exit = true;
-                    };
-                  }
-                  {SwitchToMode._args = ["locked"];}
-                ];
-              };
-            }
-            {
-              bind = {
-                _args = ["Alt y"];
-                _children = [
-                  {
-                    NewPane._args = ["Left"];
-                  }
-                  {
-                    Run._args = ["yazi"];
-                  }
-                  {SwitchToMode._args = ["locked"];}
-                ];
-              };
-            }
-            # Quit
-            {
-              bind = {
-                _args = ["Ctrl q"];
-                _children = [
-                  {Quit = {};}
-                ];
-              };
-            }
-            {
-              bind = {
-                _args = ["Ctrl g"];
-                _children = [{SwitchToMode._args = ["locked"];}];
-              };
-            }
             # Focus movement
             {
               bind = {
@@ -208,6 +154,56 @@ in {
                       _children = [{name._args = ["resize"];} {payload._args = ["right"];}];
                     };
                   }
+                ];
+              };
+            }
+          ];
+        };
+      }
+      {
+        shared_except = {
+          _args = ["locked"];
+          _children = [
+            {
+              bind = {
+                _args = ["Ctrl g"];
+                _children = [{SwitchToMode._args = ["locked"];}];
+              };
+            }
+            {
+              bind = {
+                _args = ["Alt g"];
+                _children = [
+                  {
+                    Run = {
+                      _args = ["zellij" "run" "--floating" "--" "lazygit"];
+                      close_on_exit = true;
+                    };
+                  }
+                  {SwitchToMode._args = ["locked"];}
+                ];
+              };
+            }
+            {
+              bind = {
+                _args = ["Alt y"];
+                _children = [
+                  {
+                    NewPane._args = ["Left"];
+                  }
+                  {
+                    Run._args = ["yazi"];
+                  }
+                  {SwitchToMode._args = ["locked"];}
+                ];
+              };
+            }
+            # Quit
+            {
+              bind = {
+                _args = ["Ctrl q"];
+                _children = [
+                  {Quit = {};}
                 ];
               };
             }
