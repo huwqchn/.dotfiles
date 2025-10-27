@@ -56,7 +56,6 @@ in {
         enableBashIntegration = autoStart;
         enableZshIntegration = autoStart;
         exitShellOnExit = autoStart;
-        attachExistingSession = autoStart;
         settings = {
           default_mode = "normal";
           default_shell = shell;
