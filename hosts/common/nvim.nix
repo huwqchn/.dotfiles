@@ -59,6 +59,7 @@
         tailwind.enable = true;
         tex.enable = true;
         zig.enable = true;
+        r.enable = true;
         # custom
         winshift.enable = true;
         window-picker.enable = true;

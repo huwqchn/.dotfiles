@@ -48,8 +48,15 @@ in {
         };
       }
       {
-        shared = {
+        shared_except = {
+          _args = ["locked"];
           _children = [
+            {
+              bind = {
+                _args = ["Ctrl g"];
+                _children = [{SwitchToMode._args = ["locked"];}];
+              };
+            }
             # Focus movement
             {
               bind = {
@@ -155,19 +162,6 @@ in {
                     };
                   }
                 ];
-              };
-            }
-          ];
-        };
-      }
-      {
-        shared_except = {
-          _args = ["locked"];
-          _children = [
-            {
-              bind = {
-                _args = ["Ctrl g"];
-                _children = [{SwitchToMode._args = ["locked"];}];
               };
             }
             {

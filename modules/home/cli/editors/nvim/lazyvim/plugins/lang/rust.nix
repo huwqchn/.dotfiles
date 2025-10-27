@@ -17,6 +17,7 @@ in {
       extraPlugins = with pkgs.vimPlugins; [
         rustaceanvim
         crates-nvim
+        neotest-rust
       ];
 
       imports = ["lazyvim.plugins.extras.lang.rust"];
