@@ -1,4 +1,3 @@
-#TODO: add layouts
 {
   pkgs,
   lib,

@@ -9,7 +9,7 @@ in {
           is_enabled = true;
         }
         {
-          triggers = "nvim|vim|git";
+          triggers = "nvim|vim|git|yazi";
         }
         {
           reaction_seconds = "0.3";
