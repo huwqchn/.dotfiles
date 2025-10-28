@@ -65,7 +65,7 @@ in {
                   {
                     MessagePlugin = {
                       _args = [vimZellijNavigatorUri];
-                      _children = [{name._args = ["move_focus_or_tab"];} {payload._args = ["left"];}];
+                      _children = [{name._args = ["move_focus"];} {payload._args = ["left"];}];
                     };
                   }
                 ];
@@ -104,7 +104,7 @@ in {
                   {
                     MessagePlugin = {
                       _args = [vimZellijNavigatorUri];
-                      _children = [{name._args = ["move_focus_or_tab"];} {payload._args = ["right"];}];
+                      _children = [{name._args = ["move_focus"];} {payload._args = ["right"];}];
                     };
                   }
                 ];

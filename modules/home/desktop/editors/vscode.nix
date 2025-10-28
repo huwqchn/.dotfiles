@@ -39,6 +39,10 @@ in {
           asvetliakov.vscode-neovim
           davidanson.vscode-markdownlint
         ];
+        userSettings = {
+          "vscode-neovim.neovimExecutablePaths.darwin" = "/etc/profiles/per-user/${config.my.name}/bin/nvim";
+          # "vscode-neovim.neovimInitPath" = "~/.config/nvim/vscode/init.vim";
+        };
       };
     };
   };
