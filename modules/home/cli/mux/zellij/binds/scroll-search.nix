@@ -17,7 +17,7 @@
       scroll._children = [
         {
           bind = {
-            _args = ["Enter"];
+            _args = ["Space"];
             _children = [{EditScrollback = {};} {SwitchToMode._args = ["normal"];}];
           };
         }

@@ -15,6 +15,7 @@ in {
   config = mkIf cfg.enable {
     my.neovim.lazyvim = {
       extraPlugins = with pkgs.vimPlugins; [
+        hardtime-nvim
         precognition-nvim
       ];
 

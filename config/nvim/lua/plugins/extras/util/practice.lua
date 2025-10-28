@@ -1,25 +1,27 @@
 return {
-  -- {
-  --   "m4xshen/hardtime.nvim",
-  --   event = "BufRead",
-  --   dependencies = {
-  --     "MunifTanjim/nui.nvim",
-  --     "nvim-lua/plenary.nvim",
-  --   },
-  --   opts = {
-  --     restricted_keys = {
-  --       ["n"] = { "n", "x" },
-  --       ["e"] = { "n", "x" },
-  --       ["i"] = { "n", "x" },
-  --       ["o"] = { "n", "x" },
-  --       ["ge"] = { "n", "x" },
-  --       ["gi"] = { "n", "x" },
-  --       ["<C-M>"] = { "n", "x" },
-  --       ["<C-N>"] = { "n", "x" },
-  --       ["<C-P>"] = { "n", "x" },
-  --     },
-  --   },
-  -- },
+  {
+    "m4xshen/hardtime.nvim",
+    event = "VeryLazy",
+    dependencies = {
+      "MunifTanjim/nui.nvim",
+    },
+    opts = {
+      resetting_keys = {
+        ["<cr>"] = { "n", "x" }, -- my jump key
+        ["<S-cr>"] = { "n", "x" }, -- my jump key
+        ["g<cr>"] = { "n", "x", "o" }, -- my jump key
+        ["s"] = { "n", "x" }, -- my super key
+      },
+      hints = {
+        ["hx"] = {
+          message = function(keys)
+            return "Use X instead of " .. keys
+          end,
+          length = 2,
+        },
+      },
+    },
+  },
   {
     "chrisgrieser/nvim-spider",
     enabled = false,

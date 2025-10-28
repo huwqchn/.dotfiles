@@ -110,7 +110,7 @@
         }
         {
           bind = {
-            _args = ["w"];
+            _args = ["Space"];
             _children = [
               {
                 LaunchOrFocusPlugin = {
