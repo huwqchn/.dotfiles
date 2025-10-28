@@ -164,10 +164,10 @@ in
             };
             resize = {
               binding = {
-                "${h}" = "resize width -50";
-                "${j}" = "resize height +50";
-                "${k}" = "resize height -50";
-                "${l}" = "resize width +50";
+                "${h}" = "resize width +50";
+                "${j}" = "resize height -50";
+                "${k}" = "resize height +50";
+                "${l}" = "resize width -50";
                 "minus" = "resize smart -50";
                 "equal" = "resize smart +50";
                 "enter" = "mode main";
