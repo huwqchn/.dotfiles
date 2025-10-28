@@ -62,7 +62,7 @@ in {
         window-decoration = false;
         # macos
         macos-titlebar-style = "hidden";
-        macos-option-as-alt = true;
+        macos-option-as-alt = "left";
         macos-window-shadow = true;
         # shader
         custom-shader = "${inputs.ghostty-shaders}/bloom025.glsl";
