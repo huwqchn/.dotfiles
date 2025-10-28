@@ -62,15 +62,15 @@
     value = "${cmd.action} ${workspaceNum}";
   };
 
-  mkAerospaceWorkspaces = n: let
+  mkAerospaceWorkspaces = mod: n: let
     ws =
       mkWorkspaces [
         {
-          modifier = "alt";
+          modifier = mod;
           action = "workspace";
         }
         {
-          modifier = "alt-shift";
+          modifier = "${mod}-shift";
           action = "move-node-to-workspace";
         }
       ]

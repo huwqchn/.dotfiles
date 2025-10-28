@@ -103,8 +103,8 @@ map({ "n", "x", "o" }, "gK", "gN", { desc = "Search backwards and select" })
 map({ "n", "v" }, "<C-j>", "<C-e>")
 
 -- new space line
-map("n", "gL", "<Cmd>call append(line('.') - 1, repeat([''], v:count1))<CR>", { desc = "Put empty line above" })
-map("n", "gl", "<Cmd>call append(line('.'), repeat([''], v:count1))<CR>", { desc = "Put empty line below" })
+map("n", "sL", "<Cmd>call append(line('.') - 1, repeat([''], v:count1))<CR>", { desc = "Put empty line above" })
+map("n", "sl", "<Cmd>call append(line('.'), repeat([''], v:count1))<CR>", { desc = "Put empty line below" })
 
 -- Terminal window navigation
 map("t", "<C-n>", "<cmd>wincmd h<cr>", { desc = "Go to Left Window" })

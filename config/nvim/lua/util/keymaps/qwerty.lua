@@ -42,6 +42,10 @@ map("n", "sl", function()
   vim.cmd([[vsplit]])
 end, { desc = "split right" })
 
+-- new space line
+map("n", "sO", "<Cmd>call append(line('.') - 1, repeat([''], v:count1))<CR>", { desc = "Put empty line above" })
+map("n", "so", "<Cmd>call append(line('.'), repeat([''], v:count1))<CR>", { desc = "Put empty line below" })
+
 -- Rotate window
 map("n", "<leader>wK", "<C-w>b<C-w>K", { desc = "rotate window up" })
 map("n", "<leader>wH", "<C-w>b<C-w>H", { desc = "rotate window left" })

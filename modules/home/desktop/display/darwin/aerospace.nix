@@ -84,8 +84,8 @@ in
               binding =
                 {
                   # See: https://nikitabobko.github.io/AeroSpace/commands#layout
-                  "${hyper}-slash" = "layout tiles horizontal vertical";
-                  "${hyper}-backslash" = "layout accordion horizontal vertical";
+                  "${hyper}-space" = "layout tiles horizontal vertical";
+                  "${hyper}-shift-space" = "layout accordion horizontal vertical";
 
                   # See: https://nikitabobko.github.io/AeroSpace/commands#focus
                   "${hyper}-${h}" = "focus left";
@@ -105,8 +105,10 @@ in
 
                   # fullscreen
                   "${hyper}-f" = "fullscreen";
+                  # switch layout between tiling and floating
+                  "${hyper}-shift-f" = "layout floating tiling";
 
-                  # # See: https://nikitabobko.github.io/AeroSpace/commands#workspace
+                  # See: https://nikitabobko.github.io/AeroSpace/commands#workspace
                   # "${hyper}-1" = "workspace 1";
                   # "${hyper}-2" = "workspace 2";
                   # "${hyper}-3" = "workspace 3";
@@ -117,8 +119,8 @@ in
                   # "${hyper}-8" = "workspace 8";
                   # "${hyper}-9" = "workspace 9";
                   # "${hyper}-0" = "workspace 0";
-                  #
-                  # # See: https://nikitabobko.github.io/AeroSpace/commands#move-node-to-workspace
+
+                  # See: https://nikitabobko.github.io/AeroSpace/commands#move-node-to-workspace
                   # "${hyper}-shift-1" = "move-node-to-workspace 1";
                   # "${hyper}-shift-2" = "move-node-to-workspace 2";
                   # "${hyper}-shift-3" = "move-node-to-workspace 3";
@@ -152,13 +154,13 @@ in
                   "${hyper}-shift-comma" = "move-node-to-monitor left";
                   "${hyper}-shift-period" = "move-node-to-monitor right";
                   # See: https://nikitabobko.github.io/AeroSpace/commands#mode
-                  "${hyper}-shift-semicolon" = "mode service";
-
-                  "${hyper}-shift-r" = "reload-config";
+                  "${hyper}-esc" = "mode service";
 
                   "${hyper}-r" = "mode resize";
+
+                  "${hyper}-shift-r" = "reload-config";
                 }
-                // (mkAerospaceWorkspaces number);
+                // (mkAerospaceWorkspaces hyper number);
             };
             resize = {
               binding = {
@@ -166,6 +168,8 @@ in
                 "${j}" = "resize height +50";
                 "${k}" = "resize height -50";
                 "${l}" = "resize width +50";
+                "minus" = "resize smart -50";
+                "equal" = "resize smart +50";
                 "enter" = "mode main";
                 "esc" = "mode main";
               };
@@ -179,10 +183,16 @@ in
                   "mode main"
                 ]; # Toggle between floating and tiling layout
                 "backspace" = ["close-all-windows-but-current" "mode main"];
-                "${hyper}-shift-${h}" = ["join-with left" "mode main"];
-                "${hyper}-shift-${j}" = ["join-with down" "mode main"];
-                "${hyper}-shift-${k}" = ["join-with up" "mode main"];
-                "${hyper}-shift-${l}" = ["join-with right" "mode main"];
+                "${h}" = ["join-with left" "mode main"];
+                "${j}" = ["join-with down" "mode main"];
+                "${k}" = ["join-with up" "mode main"];
+                "${l}" = ["join-with right" "mode main"];
+
+                # sticky is not yet supported https://github.com/nikitabobko/AeroSpace/issues/2
+                #s = ['layout sticky tiling', 'mode main']
+                "down" = "volume down";
+                "up" = "volume up";
+                "shift-down" = ["volume set 0" "mode main"];
               };
             };
           };
