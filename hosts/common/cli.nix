@@ -27,7 +27,7 @@
     ripgrep.enable = true;
     starship.enable = true;
     mux = {
-      default = "zellij";
+      default = "tmux";
       autoStart = true;
     };
     tmux.enable = true;

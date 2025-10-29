@@ -1,21 +1,4 @@
-{
-  pkgs,
-  config,
-  ...
-}: let
-  smart-splits =
-    (pkgs.tmuxPlugins.mkTmuxPlugin {
-      pluginName = "smart-splits";
-      rtpFilePath = "smart-splits.tmux";
-      version =
-        pkgs.vimPlugins.smart-splits-nvim.version or "unstable";
-      inherit (pkgs.vimPlugins.smart-splits-nvim) src;
-    })
-    .overrideAttrs (old: {
-      pname = "tmuxplugins-smart-splits";
-      name = "tmuxplugins-smart-splits-${old.version}";
-    });
-in {
+{pkgs, ...}: {
   programs.tmux.plugins = with pkgs.tmuxPlugins; [
     # theme
     # {
@@ -55,24 +38,24 @@ in {
     {
       plugin = tmux-fzf;
       extraConfig = ''
-        TMUX_FZF_LAUNCH_KEY="f"
+        TMUX_FZF_LAUNCH_KEY="/"
         TMUX_FZF_ORDER="session|window|pane|command|keybinding|clipboard|process"
       '';
     }
-    {
-      plugin = smart-splits;
-      extraConfig = with config.my.keyboard.keys; ''
-        set -g @smart-splits_no_wrap \'\'
-        set -g @smart-splits_move_left_key  'C-${h}' # key-mapping for navigation.
-        set -g @smart-splits_move_down_key  'C-${j}' #  --"--
-        set -g @smart-splits_move_up_key    'C-${k}' #  --"--
-        set -g @smart-splits_move_right_key 'C-${l}' #  --"--
-        set -g @smart-splits_resize_left_key  'A-${h}' # key-mapping for resizing.
-        set -g @smart-splits_resize_down_key  'A-${j}' #  --"--
-        set -g @smart-splits_resize_right_key 'A-${k}' #  --"--
-        set -g @smart-splits_resize_up_key    'A-${l}' #  --"--
-        set -g @smart-splits_resize_step_size '3' # change the step-size for resizing.
-      '';
-    }
+    # {
+    #   plugin = smart-splits;
+    #   extraConfig = with config.my.keyboard.keys; ''
+    #     set -g @smart-splits_no_wrap \'\'
+    #     set -g @smart-splits_move_left_key  'C-${h}' # key-mapping for navigation.
+    #     set -g @smart-splits_move_down_key  'C-${j}' #  --"--
+    #     set -g @smart-splits_move_up_key    'C-${k}' #  --"--
+    #     set -g @smart-splits_move_right_key 'C-${l}' #  --"--
+    #     set -g @smart-splits_resize_left_key  'A-${h}' # key-mapping for resizing.
+    #     set -g @smart-splits_resize_down_key  'A-${j}' #  --"--
+    #     set -g @smart-splits_resize_right_key 'A-${k}' #  --"--
+    #     set -g @smart-splits_resize_up_key    'A-${l}' #  --"--
+    #     set -g @smart-splits_resize_step_size '3' # change the step-size for resizing.
+    #   '';
+    # }
   ];
 }
