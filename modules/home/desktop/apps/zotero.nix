@@ -17,10 +17,9 @@ in {
   };
 
   config = mkIf cfg.enable {
-    home.packages = [
-      pkgs.zotero
-      pkgs.tesseract
-      pkgs."poppler-utils"
+    home.packages = with pkgs; [
+      zotero
+      tesseract
     ];
   };
 }
