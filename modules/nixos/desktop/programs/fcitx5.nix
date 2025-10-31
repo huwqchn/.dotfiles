@@ -26,8 +26,6 @@ in {
         addons = with pkgs; [
           fcitx5-fluent
           fcitx5-gtk
-          fcitx5-configtool #if having issues with qt compatibility, run fcitx5-config-qt
-          fcitx5-chinese-addons
           fcitx5-mozc
           fcitx5-pinyin-moegirl
           fcitx5-pinyin-zhwiki

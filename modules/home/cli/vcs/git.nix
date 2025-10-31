@@ -186,7 +186,7 @@ in {
         # action-validator
         # for .gitignore
         gibo
-        gitAndTools.hub
+        # gitAndTools.hub
       ];
 
       # `programs.git` will generate the config file: ~/.config/git/config

@@ -60,8 +60,6 @@ in {
     ];
 
     environment.systemPackages = with pkgs; [
-      nvtopPackages.nvidia
-
       # mesa
       mesa
 

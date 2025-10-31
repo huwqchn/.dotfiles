@@ -10,6 +10,18 @@ return {
       scope = {
         enabled = false,
       },
+      zen = {
+        on_open = function()
+          vim.wo.number = false
+          vim.wo.relativenumber = false
+          vim.wo.winbar = ""
+        end,
+        on_close = function()
+          vim.wo.number = true
+          vim.wo.relativenumber = true
+          vim.o.winbar = "%{%v:lua.dropbar()%}"
+        end,
+      },
     },
   },
   {

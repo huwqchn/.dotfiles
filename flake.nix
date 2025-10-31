@@ -239,9 +239,6 @@
       inputs = {
         nixpkgs.follows = "nixpkgs";
         flake-parts.follows = "flake-parts";
-        flake-compat.follows = "flake-compat";
-        git-hooks.follows = "pre-commit-hooks";
-        treefmt-nix.follows = "treefmt";
       };
     };
 
