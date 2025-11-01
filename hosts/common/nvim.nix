@@ -36,7 +36,6 @@
         # utils
         dot.enable = true;
         mini-hipatterns.enable = true;
-        octo.enable = true;
         project.enable = true;
         rest.enable = true;
         obsidian.enable = true;

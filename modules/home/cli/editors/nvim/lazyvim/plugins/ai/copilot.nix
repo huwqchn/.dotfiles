@@ -56,7 +56,10 @@ in {
       };
     })
     (mkIf cfg.native.enable {
-      my.neovim.lazyvim.imports = ["lazyvim.plugins.extras.ai.copilot-native"];
+      my.neovim.lazyvim = {
+        imports = ["lazyvim.plugins.extras.ai.copilot-native"];
+        extraPackages = with pkgs; [copilot-language-server];
+      };
     })
   ];
 }
