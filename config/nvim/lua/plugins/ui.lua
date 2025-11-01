@@ -11,15 +11,26 @@ return {
         enabled = false,
       },
       zen = {
+        win = {
+          wo = {
+            number = false,
+            relativenumber = false,
+            colorcolumn = "",
+            signcolumn = "no",
+            statuscolumn = "",
+            winbar = "",
+            cursorline = false,
+          },
+        },
         on_open = function()
-          vim.wo.number = false
-          vim.wo.relativenumber = false
-          vim.wo.winbar = ""
+          -- disable snacks indent
+          Snacks.indent.disable()
+          vim.cmd("GitBlameDisable")
         end,
         on_close = function()
-          vim.wo.number = true
-          vim.wo.relativenumber = true
-          vim.o.winbar = "%{%v:lua.dropbar()%}"
+          -- restore snacks indent setting
+          Snacks.indent.enable()
+          vim.cmd("GitBlameEnable")
         end,
       },
     },
