@@ -44,8 +44,6 @@ in {
         "nvim/lua/plugins/coding.lua".source = relativeToConfig "nvim/lua/plugins/coding.lua";
         "nvim/lua/plugins/editor.lua".source = relativeToConfig "nvim/lua/plugins/editor.lua";
         "nvim/lua/plugins/icons.lua".source = relativeToConfig "nvim/lua/plugins/icons.lua";
-        "nvim/lua/plugins/lsp.lua".source = relativeToConfig "nvim/lua/plugins/lsp.lua";
-        "nvim/lua/plugins/treesitter.lua".source = relativeToConfig "nvim/lua/plugins/treesitter.lua";
         "nvim/lua/plugins/ui.lua".source = relativeToConfig "nvim/lua/plugins/ui.lua";
         "nvim/lua/config".source = relativeToConfig "nvim/lua/config";
         "nvim/lua/util".source = relativeToConfig "nvim/lua/util";

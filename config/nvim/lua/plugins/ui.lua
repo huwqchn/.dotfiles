@@ -1,7 +1,3 @@
--- local function isGui()
---   return vim.g.neovide or vim.g.goneovim or vim.g.started_by_firenvim
--- end
-
 return {
   {
     "folke/snacks.nvim",
@@ -140,84 +136,6 @@ return {
       },
     },
   },
-  -- {
-  --   "folke/noice.nvim",
-  --   optional = true,
-  --   cond = not isGui(),
-  --   opts = function(_, opts)
-  --     opts.lsp.progress = {
-  --       enabled = false,
-  --     }
-  --     table.insert(opts.routes, 1, {
-  --       filter = {
-  --         event = "msg_show",
-  --         find = "%d+L, %d+B",
-  --       },
-  --       view = "mini",
-  --     })
-  --     table.insert(opts.routes, 1, {
-  --       filter = {
-  --         find = "offset_encodings",
-  --       },
-  --       opts = { skip = true },
-  --     })
-  --     table.insert(opts.routes, 1, {
-  --       filter = {
-  --         find = "character_offset",
-  --       },
-  --       opts = { skip = true },
-  --     })
-  --     table.insert(opts.routes, 1, {
-  --       filter = {
-  --         find = "method textDocument",
-  --       },
-  --       opts = { skip = true },
-  --     })
-  --     table.insert(opts.routes, 1, {
-  --       filter = {
-  --         find = "cmp_tabnine/source.lua:280",
-  --       },
-  --       opts = { skip = true },
-  --     })
-  --     table.insert(opts.routes, 1, {
-  --       filter = {
-  --         event = "msg_show",
-  --         kind = "",
-  --         find = "written",
-  --       },
-  --       opts = { skip = true },
-  --     })
-  --     opts.presets = {
-  --       bottom_search = false,
-  --       command_palette = true,
-  --       long_message_to_split = true,
-  --       inc_rename = true,
-  --       cmdline_output_to_split = false,
-  --       lsp_doc_border = true,
-  --     }
-  --     opts.commands = {
-  --       all = {
-  --         -- options for the message history that you get with `:Noice`
-  --         view = "split",
-  --         opts = { enter = true, format = "details" },
-  --         filter = {},
-  --       },
-  --     }
-  --     opts.format = {
-  --       level = {
-  --         icons = false,
-  --       },
-  --     }
-  --     vim.api.nvim_create_autocmd("FileType", {
-  --       pattern = "markdown",
-  --       callback = function(event)
-  --         vim.schedule(function()
-  --           require("noice.text.markdown").keys(event.buf)
-  --         end)
-  --       end,
-  --     })
-  --   end,
-  -- },
   {
     "nvim-lualine/lualine.nvim",
     optional = true,
@@ -239,7 +157,7 @@ return {
           return gitdir and #gitdir > 0 and #gitdir - 5 <= #filepath
         end,
         check_lsp_active = function()
-          local ok, clients = pcall(LazyVim.lsp.get_clients, { bufnr = 0 })
+          local ok, clients = pcall(vim.lsp.get_clients, { bufnr = 0 })
           if not ok or #clients == 1 and clients[1].name == "copilot" then
             return false
           end
@@ -308,7 +226,7 @@ return {
         },
         {
           function()
-            local clients = LazyVim.lsp.get_clients()
+            local clients = vim.lsp.get_clients()
             return opts.icons.LspPrefix .. clients[1].name
           end,
 
