@@ -4,6 +4,7 @@
   outputs = inputs @ {
     flake-parts,
     home-manager,
+    systems,
     ...
   }: let
     lib =
@@ -12,6 +13,7 @@
     specialArgs = {inherit lib;};
   in
     flake-parts.lib.mkFlake {inherit inputs specialArgs;} {
+      systems = import systems;
       imports = [./flakes];
     };
 

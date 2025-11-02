@@ -1,9 +1,7 @@
 {inputs, ...}: {
   imports = [inputs.pre-commit-hooks.flakeModule];
 
-  perSystem = {pkgs, ...}: let
-    conventional-commit = pkgs.callPackage ./pkgs/conventional-pre-commit.nix {};
-  in {
+  perSystem = {
     pre-commit = {
       # Add itself to `nix flake check`
       check.enable = false; # don't use this now
@@ -45,15 +43,6 @@
             language = "fail";
             entry = "submodules are not allowed in this repository:";
             types = ["directory"];
-          };
-          conventional-commit = {
-            enable = true;
-            name = "conventional-commit";
-            description = "A pre-commit hook that checks commit messages for Conventional Commits formatting";
-            package = conventional-commit;
-            entry = "${conventional-commit}/bin/conventional-pre-commit";
-            args = ["--strict" "feat" "fix" "chore" "style" "docs" "refactor" "test" "ci" "perf" "Merge" "Revert"];
-            stages = ["commit-msg"];
           };
         };
         default_stages = [

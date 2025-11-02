@@ -23,6 +23,9 @@ in {
       home.packages = with pkgs.rPackages; [
         pkgs.R
         pkgs.rstudio
+        # publisher tools
+        pkgs.pandoc
+        pkgs.quarto
         # R Language Server and Development Tools
         languageserver
         styler
