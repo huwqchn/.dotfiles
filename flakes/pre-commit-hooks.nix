@@ -29,6 +29,7 @@
           # Nix
           nil.enable = true;
           treefmt.enable = true;
+          deadnix.enable = true;
 
           # Misc
           actionlint.enable = true; # GitHub actions
@@ -36,14 +37,9 @@
           check-merge-conflicts.enable = true;
           fix-byte-order-marker.enable = true;
           mixed-line-endings.enable = true;
-          forbid-submodules = {
-            enable = true;
-            name = "forbid submodules";
-            description = "forbids any submodules in the repository";
-            language = "fail";
-            entry = "submodules are not allowed in this repository:";
-            types = ["directory"];
-          };
+          forbid-new-submodules.enable = true;
+          # Conventional Commits
+          commitizen.enable = true;
         };
         default_stages = [
           "pre-commit"

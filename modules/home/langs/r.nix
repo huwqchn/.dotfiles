@@ -90,6 +90,9 @@ in {
         jsonlite
         yaml
         RPostgreSQL
+
+        # publish
+        rmarkdown
       ];
 
       # --- Aliases -----------------------------------------------------------
