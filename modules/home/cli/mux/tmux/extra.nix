@@ -73,7 +73,7 @@ in {
     bind < select-layout -p
 
     # last layout
-    bind backspace last-layout
+    bind BSpace last-layout
 
     # display panes numbers
     bind m display-message
