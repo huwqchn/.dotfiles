@@ -16,12 +16,8 @@
         nix
         # nix helpers
         nix-melt
-        nix-tree
-        nix-diff
         nix-inspect
         nix-search-cli
-        nix-output-monitor
-        nvd
         # package creation helpers
         nurl
         nix-init
@@ -45,6 +41,16 @@
         {
           package = pkgs.nix-output-monitor;
           help = "Nix Output Monitor (a drop-in alternative for `nix` which shows a build graph)";
+          category = "nix";
+        }
+        {
+          package = pkgs.statix;
+          help = "Lint flake";
+          category = "nix";
+        }
+        {
+          package = pkgs.deadnix;
+          help = "Check flake for dead code";
           category = "nix";
         }
         {
