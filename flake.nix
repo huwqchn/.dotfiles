@@ -137,17 +137,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    ags = {
-      url = "github:aylur/ags";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    # it's need by ags
-    matugen = {
-      url = "github:InioX/Matugen";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     # wayland simple runner
     anyrun = {
       url = "github:fufexan/anyrun/launch-prefix";
