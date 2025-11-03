@@ -7,7 +7,13 @@ return {
         enabled = false,
       },
       zen = {
+        toggles = {
+          dim = false,
+          git_signs = false,
+          mini_diff_signs = false,
+        },
         win = {
+          backdrop = { transparent = false, blend = 99 },
           wo = {
             number = false,
             relativenumber = false,
