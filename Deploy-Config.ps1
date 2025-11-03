@@ -146,21 +146,6 @@ Else {
 }
 
 # ----------------
-# lazygit
-# ----------------
-If (Test-Path ".\config\lazygit") {
-  Write-Host "Detected lazygit configuration folder. Preparing to copy..."
-  New-Item -ItemType Directory -Force -Path "$env:USERPROFILE\AppData\Local\lazygit" | Out-Null
-  Copy-Item -Path ".\config\lazygit\*" `
-            -Destination "$env:USERPROFILE\AppData\Local\lazygit" `
-            -Recurse -Force
-  Write-Host "lazygit configuration copied successfully!"
-}
-Else {
-  Write-Host "No lazygit configuration detected. Skipping..."
-}
-
-# ----------------
 # nvim
 # ----------------
 If (Test-Path ".\config\nvim") {
@@ -173,36 +158,6 @@ If (Test-Path ".\config\nvim") {
 }
 Else {
   Write-Host "No nvim configuration detected. Skipping..."
-}
-
-# ----------------
-# yazi
-# ----------------
-If (Test-Path ".\config\yazi") {
-  Write-Host "Detected yazi configuration folder. Preparing to copy..."
-  New-Item -ItemType Directory -Force -Path "$env:USERPROFILE\AppData\Roaming\yazi\config" | Out-Null
-  Copy-Item -Path ".\config\yazi\*" `
-            -Destination "$env:USERPROFILE\AppData\Roaming\yazi\config" `
-            -Recurse -Force
-  Write-Host "yazi configuration copied successfully!"
-}
-Else {
-  Write-Host "No yazi configuration detected. Skipping..."
-}
-
-# ----------------
-# starship.toml
-# ----------------
-If (Test-Path ".\config\starship.toml") {
-  Write-Host "Detected starship.toml file. Preparing to copy..."
-  New-Item -ItemType Directory -Force -Path "$env:USERPROFILE\.config" | Out-Null
-  Copy-Item -Path ".\config\starship.toml" `
-              -Destination "$env:USERPROFILE\.config\starship.toml" `
-              -Force
-  Write-Host "starship.toml copied successfully!"
-}
-Else {
-  Write-Host "No starship.toml detected. Skipping..."
 }
 
 # ----------------

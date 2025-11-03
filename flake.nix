@@ -137,6 +137,12 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    # TODO: use this
+    # quickshell = {
+    #   url = "git+https://git.outfoxxed.me/outfoxxed/quickshell";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
+
     # wayland simple runner
     anyrun = {
       url = "github:fufexan/anyrun/launch-prefix";
