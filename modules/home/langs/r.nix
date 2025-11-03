@@ -11,6 +11,19 @@
   cfg = config.my.develop.r;
   inherit (lib.modules) mkIf mkMerge;
   inherit (lib.options) mkEnableOption;
+
+  nvimcom = pkgs.rPackages.buildRPackage {
+    name = "nvimcom";
+    src =
+      pkgs.fetchFromGitHub {
+        owner = "R-nvim";
+        repo = "R.nvim";
+        rev = "382858fcf23aabbf47ff06279baf69d52260b939";
+        hash = "sha256-j2rXXO7246Nh8U6XyX43nNTbrire9ta9Ono9Yr+Eh9M=";
+      }
+      + "/nvimcom/";
+  };
+
   packages = with pkgs.rPackages; [
     tidyverse # Core Data Science (includes ggplot2, dplyr)
     tidymodels # Meta-package including rsample, recipes, parsnip, yardstick, broom, tune, etc.
@@ -24,6 +37,7 @@
     knitr # From your list
     quarto # R package for Quarto rendering
     languageserver # From your list, for RStudio/VSCode code completion etc.
+    nvimcom # Neovim communication for R.nvim plugin
 
     Rcpp # Core Dependencies (from your list)
 

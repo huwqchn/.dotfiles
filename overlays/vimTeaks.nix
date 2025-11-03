@@ -58,6 +58,11 @@ _: _final: prev: {
         rev = "fef990378e4b5157f23314dca4136bc0079cc2c4";
         hash = "sha256-KgvK2tR6C97Z1WEUbVNHzAe6QKUg0T5FLB9HwO3eay4=";
       };
+
+      # Skip nvimcom build - it tries to write to read-only Nix store
+      postPatch = ''
+        rm -rf nvimcom
+      '';
     };
   });
 }
