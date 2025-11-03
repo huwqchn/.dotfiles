@@ -28,11 +28,15 @@ return {
           -- disable snacks indent
           Snacks.indent.disable()
           vim.cmd("GitBlameDisable")
+          -- hide tmux statusbar
+          vim.fn.system("tmux set status off")
         end,
         on_close = function()
           -- restore snacks indent setting
           Snacks.indent.enable()
           vim.cmd("GitBlameEnable")
+          -- restore tmux statusbar
+          vim.fn.system("tmux set status on")
         end,
       },
     },
