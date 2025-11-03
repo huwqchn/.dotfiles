@@ -15,6 +15,7 @@
   cfg = config.my.develop.rust;
   inherit (lib.options) mkEnableOption;
   inherit (lib.modules) mkMerge mkIf;
+  inherit (config) xdg;
 in {
   options.my.develop.rust = {
     enable = mkEnableOption "Rust development environment";
@@ -33,8 +34,8 @@ in {
 
     (mkIf cfg.xdg.enable {
       home.sessionVariables = rec {
-        RUSTUP_HOME = "$XDG_DATA_HOME/rustup";
-        CARGO_HOME = "$XDG_DATA_HOME/cargo";
+        RUSTUP_HOME = "${xdg.dataHome}/rustup";
+        CARGO_HOME = "${xdg.dataHome}/cargo";
         PATH = ["${CARGO_HOME}/bin"];
       };
     })

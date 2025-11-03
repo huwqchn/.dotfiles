@@ -21,7 +21,7 @@ in {
     })
 
     (mkIf cfg.xdg.enable {
-      home.sessionVariables._JAVA_OPTIONS = ''-Djava.util.prefs.userRoot="$XDG_CONFIG_HOME/java"'';
+      home.sessionVariables._JAVA_OPTIONS = ''-Djava.util.prefs.userRoot="${config.xdg.configHome}/java"'';
     })
   ];
 }

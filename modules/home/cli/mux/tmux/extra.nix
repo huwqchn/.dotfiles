@@ -72,9 +72,6 @@ in {
     bind > select-layout -n
     bind < select-layout -p
 
-    # last layout
-    bind BSpace last-layout
-
     # display panes numbers
     bind m display-message
     bind M display-panes

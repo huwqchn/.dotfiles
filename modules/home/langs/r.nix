@@ -11,6 +11,42 @@
   cfg = config.my.develop.r;
   inherit (lib.modules) mkIf mkMerge;
   inherit (lib.options) mkEnableOption;
+  packages = with pkgs.rPackages; [
+    tidyverse # Core Data Science (includes ggplot2, dplyr)
+    tidymodels # Meta-package including rsample, recipes, parsnip, yardstick, broom, tune, etc.
+
+    xts # From your list, for time series objects
+    freqparcoord # From your list
+    RANN # From your list; often used for recipes::step_impute_knn (KNN imputation)
+    MASS # From your list; includes LDA/QDA and other classic stat models
+    plotly # From your list, for interactive charts
+    rmarkdown # From your list
+    knitr # From your list
+    quarto # R package for Quarto rendering
+    languageserver # From your list, for RStudio/VSCode code completion etc.
+
+    Rcpp # Core Dependencies (from your list)
+
+    ranger # For fast Random Forest (rand_forest)
+    xgboost # For XGBoost (boost_tree)
+    glmnet # For Lasso/Ridge regularized linear/logistic regression
+    kknn # For K-Nearest Neighbors (k_nearest_neighbor)
+    kernlab # For Support Vector Machines (svm_rbf, svm_linear)
+    rpart # For Decision Trees (decision_tree)
+
+    # timetk # "Tidy" style time series processing
+    # modeltime # "Tidymodels" style time series forecasting
+
+    rmarkdown
+    quarto
+    languageserver
+    knitr
+    titanic # Titanic dataset for practice
+    ISLR # Datasets from "An Introduction to Statistical Learning"
+    mlbench # Machine learning benchmark problems
+    nycflights13 # Data on all flights that departed NYC in 2013 (great for dplyr)
+    AER # Datasets from "Applied Econometrics with R"
+  ];
 in {
   options.my.develop.r = {
     enable = mkEnableOption "R development environment";
@@ -20,79 +56,17 @@ in {
   config = mkMerge [
     (mkIf cfg.enable {
       # --- Packages ----------------------------------------------------------
-      home.packages = with pkgs.rPackages; [
-        pkgs.R
-        pkgs.rstudio
+      home.packages = with pkgs; [
+        (rWrapper.override {
+          inherit packages;
+        })
+
+        (rstudioWrapper.override {
+          inherit packages;
+        })
         # publisher tools
         pkgs.pandoc
         pkgs.quarto
-        # R Language Server and Development Tools
-        languageserver
-        styler
-        testthat
-        roxygen2
-
-        # Data Processing and Analysis
-        tidyverse
-        gridExtra
-        kableExtra
-        validate
-
-        # Visualization
-        ggplot2
-        plotly
-        viridis
-        corrplot
-        ggcorrplot
-
-        # Machine Learning
-        ROCR
-        ranger
-        VIM
-        caret
-        randomForest
-        nnet
-
-        # Shiny Web Framework
-        shiny
-        shinythemes
-        shinydashboard
-        shinyjs
-        shiny_telemetry
-        shinyWidgets
-        shinyBS
-
-        # Optimization and Constraint Solving (Epic 2)
-        GA
-        igraph
-        ompr
-        ROI
-        lpSolve
-        optimx
-        Pareto
-
-        # Database Integration (Epic 2)
-        DBI
-        RSQLite
-        # config
-
-        # Enhanced Visualization (Epic 2)
-        leaflet
-        heatmaply
-
-        # Testing and Quality Assurance
-        covr
-        lintr
-
-        # Additional Utilities
-        DT
-        htmltools
-        jsonlite
-        yaml
-        RPostgreSQL
-
-        # publish
-        rmarkdown
       ];
 
       # --- Aliases -----------------------------------------------------------
@@ -110,14 +84,14 @@ in {
         # Prefer a consistent CRAN mirror; override per-project if needed
         R_REPOS = "https://cran.r-project.org";
         # Where user-installed R libs would go (if you ever install in R)
-        R_LIBS_USER = "$XDG_DATA_HOME/R/library";
+        R_LIBS_USER = "${config.xdg.dataHome}/R/library";
 
         # Config files
-        R_PROFILE_USER = "$XDG_CONFIG_HOME/R/Rprofile";
-        R_ENVIRON_USER = "$XDG_CONFIG_HOME/R/Renviron";
+        R_PROFILE_USER = "${config.xdg.configHome}/R/Rprofile";
+        R_ENVIRON_USER = "${config.xdg.configHome}/R/Renviron";
 
         # History (R >= 4.4 honors R_HISTFILE)
-        R_HISTFILE = "$XDG_STATE_HOME/R/history";
+        R_HISTFILE = "${config.xdg.stateHome}/R/history";
 
         # Open things sanely
         R_BROWSER = "xdg-open";

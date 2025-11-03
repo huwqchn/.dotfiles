@@ -13,6 +13,7 @@
   inherit (lib.modules) mkMerge mkIf;
   inherit (lib.options) mkEnableOption;
   inherit (lib.meta) getExe;
+  inherit (config) xdg;
   yarn' = getExe pkgs.yarn;
 in {
   options.my.develop.node = {
@@ -39,17 +40,17 @@ in {
     (mkIf cfg.xdg.enable {
       # NPM refuses to adopt XDG conventions upstream, so I enforce it myself.
       home.sessionVariables = {
-        NPM_CONFIG_USERCONFIG = "$XDG_CONFIG_HOME/npm/config";
-        NPM_CONFIG_CACHE = "$XDG_CACHE_HOME/npm";
-        NPM_CONFIG_PREFIX = "$XDG_CACHE_HOME/npm";
-        NPM_CONFIG_TMP = "$XDG_RUNTIME_DIR/npm";
-        NODE_REPL_HISTORY = "$XDG_CACHE_HOME/node/repl_history";
+        NPM_CONFIG_USERCONFIG = "${xdg.configHome}/npm/config";
+        NPM_CONFIG_CACHE = "${xdg.cacheHome}/npm";
+        NPM_CONFIG_PREFIX = "${xdg.dataHome}/npm";
+        NPM_CONFIG_TMP = "${xdg.cacheHome}/npm/tmp";
+        NODE_REPL_HISTORY = "${xdg.stateHome}/node/repl_history";
       };
 
       home.file."npm/config".text = ''
-        cache=''${XDG_CACHE_HOME}/npm
-        prefix=''${XDG_DATA_HOME}/npm
-        tmp=''${XDG_RUNTIME_DIR}/npm
+        cache=${xdg.cacheHome}/npm
+        prefix=${xdg.dataHome}/npm
+        tmp=${xdg.cacheHome}/npm/tmp
       '';
     })
   ];
