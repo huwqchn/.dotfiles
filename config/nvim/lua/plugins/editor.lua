@@ -158,16 +158,6 @@ return {
     opts = { use_default_keymaps = false, max_join_length = 150 },
   },
   {
-    "chrisgrieser/nvim-spider",
-    event = "VeryLazy",
-    keys = {
-      { "w", "<cmd>lua require('spider').motion('w')<CR>", mode = { "n", "o", "x" }, desc = "Spider-w" },
-      { "e", "<cmd>lua require('spider').motion('e')<CR>", mode = { "n", "o", "x" }, desc = "Spider-e" },
-      { "b", "<cmd>lua require('spider').motion('b')<CR>", mode = { "n", "o", "x" }, desc = "Spider-b" },
-      { "ge", "<cmd>lua require('spider').motion('ge')<CR>", mode = { "n", "o", "x" }, desc = "Spider-ge" },
-    },
-  },
-  {
     "mrjones2014/smart-splits.nvim",
     build = "./kitty/install-kittens.bash",
     lazy = false,
@@ -341,19 +331,6 @@ return {
     opts = {},
   },
 
-  -- git ignore
-  -- {
-  --   "wintermute-cell/gitignore.nvim",
-  --   keys = {
-  --     {
-  --       "<leader>gi",
-  --       function()
-  --         require("gitignore").generate()
-  --       end,
-  --       desc = "gitignore",
-  --     },
-  --   },
-  -- },
   {
     "mbbill/undotree",
     lazy = true,

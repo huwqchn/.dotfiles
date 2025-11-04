@@ -116,16 +116,6 @@ return {
     end,
   },
   {
-    "chrisgrieser/nvim-spider",
-    optional = true,
-    keys = function(_, keys)
-      return replace_keys(keys, {
-        { "j", "<cmd>lua require('spider').motion('e')<CR>", mode = { "n", "o", "x" }, desc = "Spider-e" },
-        { "gj", "<cmd>lua require('spider').motion('ge')<CR>", mode = { "n", "o", "x" }, desc = "Spider-ge" },
-      })
-    end,
-  },
-  {
     "mrjones2014/smart-splits.nvim",
     optional = true,
     keys = function(_, keys)
@@ -301,57 +291,6 @@ return {
       }
     end,
   },
-  {
-    "nvim-treesitter/nvim-treesitter",
-    optional = true,
-    opts = function(_, opts)
-      opts.playground = opts.playground or {}
-      opts.playground.keybindings = {
-        toggle_query_editor = "l",
-        toggle_hl_groups = "h",
-        toggle_injected_languages = "t",
-        toggle_anonymous_nodes = "a",
-        toggle_language_display = "H",
-        focus_language = "f",
-        unfocus_language = "F",
-        update = "R",
-        goto_node = "<cr>",
-        show_help = "?",
-      }
-      return opts
-    end,
-  },
-  {
-    "Bekaboo/dropbar.nvim",
-    optional = true,
-    opts = function(_, opts)
-      opts = opts or {}
-      local menu = ensure(opts, "menu", "keymaps")
-      menu.n = "<C-w>q"
-      menu.o = function()
-        local menu_utils = require("dropbar.utils.menu")
-        local menu_instance = menu_utils.get_current()
-        if not menu_instance then
-          return
-        end
-        local row = vim.api.nvim_win_get_cursor(menu_instance.win)[1]
-        local component = menu_instance.entries[row]:first_clickable()
-        if component then
-          menu_instance:click_on(component, nil, 1, "l")
-        end
-      end
-      menu.O = function()
-        local menu_utils = require("dropbar.utils.menu")
-        local menu_instance = menu_utils.get_current()
-        if not menu_instance then
-          return
-        end
-        menu_instance:fuzzy_find_open()
-      end
-      menu.i = "k"
-      return opts
-    end,
-  },
   -- Extras overrides
   {
     "nvim-mini/mini.splitjoin",
@@ -475,24 +414,6 @@ return {
       return opts
     end,
   },
-  -- {
-  --   "nvim-mini/mini.move",
-  --   optional = true,
-  --   opts = function(_, opts)
-  --     opts = opts or {}
-  --     opts.mappings = vim.tbl_extend("force", opts.mappings or {}, {
-  --       left = "<M-n>",
-  --       right = "<M-o>",
-  --       down = "<M-e>",
-  --       up = "<M-i>",
-  --       line_left = "<M-n>",
-  --       line_right = "<M-o>",
-  --       line_down = "<M-e>",
-  --       line_up = "<M-i>",
-  --     })
-  --     return opts
-  --   end,
-  -- },
   {
     "nvim-neo-tree/neo-tree.nvim",
     optional = true,

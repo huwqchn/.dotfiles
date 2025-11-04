@@ -373,13 +373,13 @@
       "locked": {
         "lastModified": 1756037036,
         "narHash": "sha256-fO7YY6yTj4P5RX6+DGdPGj3V7/ZFAlEkm5kYYOirZNI=",
-        "owner": "huwqchn",
+        "owner": "GandhariKos",
         "repo": "flake-hosts",
         "rev": "0b985bc1188cb4ebd4ee1f86778f3b819052b59f",
         "type": "github"
       },
       "original": {
-        "owner": "huwqchn",
+        "owner": "GandhariKos",
         "repo": "flake-hosts",
         "type": "github"
       }

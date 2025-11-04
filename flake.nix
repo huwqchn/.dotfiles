@@ -37,7 +37,7 @@
 
     flake-hosts = {
       # url = "git+file:/Users/johnson/Projects/flake-hosts";
-      url = "github:huwqchn/flake-hosts";
+      url = "github:GandhariKos/flake-hosts";
     };
 
     hardware.url = "github:nixos/nixos-hardware";
