@@ -63,7 +63,7 @@ in {
           set -g pane-active-border-style fg=${blue}
 
           ##################################### FORMAT ###################################
-          set -g status-left "${left_pad}#{tmux_mode_indicator}${right_pad} ${left_pad}#[fg=${hint},bg=${bg_highlight}] #{pane_current_command}${right_pad}"
+          set -g status-left "${left_pad}#{tmux_mode_indicator}${right_pad} ${left_pad}#[fg=${info},bg=${bg_highlight}] #{=/-32/...:#{s|$USER|~|:#{b:pane_current_path}}}${right_pad}"
           set -g status-right "${left_pad}#[fg=${cyan},bg=${bg_highlight}] #S${right_pad} ${left_pad}#[fg=${fg},bg=${bg_highlight}] %H:%M${right_pad}"
           setw -g window-status-format "${left_pad}#{?window_activity_flag,#[fg=${orange}],#[fg=${fg}]}#[bg=${bg_highlight},italics]#I: #[noitalics]#W#{?window_last_flag,  ,}#{?window_activity_flag,  ,}#{?window_bell_flag, #[fg=${magenta2}]󰂞 ,}${right_pad}"
           setw -g window-status-current-format "${current_left_pad}#[fg=${bg},bg=${blue},italics]#I: #[bg=${blue},noitalics,bold]#{?window_zoomed_flag,[#W],#W}${current_right_pad}"
