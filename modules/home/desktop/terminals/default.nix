@@ -20,7 +20,6 @@ in {
     default = mkOption {
       type = nullOr (enum [
         "wzeterm"
-        "alacritty"
         "ghostty"
         "kitty"
         "warp"

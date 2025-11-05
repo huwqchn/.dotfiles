@@ -61,15 +61,8 @@ in {
       description = "The idle screen to use";
     };
     launcher = mkOption {
-      type = nullOr (enum ["anyrun"]);
-      default =
-        ldTernary pkgs
-        (
-          if desktop.enable
-          then "anyrun"
-          else null
-        )
-        null;
+      type = nullOr (enum []);
+      default = null;
       description = "The launcher to use";
     };
     shot = mkOption {

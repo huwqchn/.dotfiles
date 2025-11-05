@@ -50,11 +50,6 @@
 
     firefox-addons.url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
 
-    # nix2container = {
-    #   url = "github:nlewo/nix2container";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
-
     # a flake-parts module to config nix flakes devshell
     devshell = {
       url = "github:numtide/devshell";
@@ -144,18 +139,13 @@
     # };
 
     # wayland simple runner
-    anyrun = {
-      url = "github:fufexan/anyrun/launch-prefix";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-        systems.follows = "systems";
-        flake-parts.follows = "flake-parts";
-      };
-    };
-
-    # haumea = {
-    #   url = "github:nix-community/haumea/v0.2.2";
-    #   inputs.nixpkgs.follows = "nixpkgs";
+    # anyrun = {
+    #   url = "github:fufexan/anyrun/launch-prefix";
+    #   inputs = {
+    #     nixpkgs.follows = "nixpkgs";
+    #     systems.follows = "systems";
+    #     flake-parts.follows = "flake-parts";
+    #   };
     # };
 
     # disko for declarative partitioning
@@ -191,12 +181,6 @@
       url = "github:nix-community/nixago";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    # Third party programs, packaged with nix
-    # firefox-addons = {
-    #   url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
 
     programs-sqlite.url = "github:wamserma/flake-programs-sqlite";
 
@@ -257,12 +241,6 @@
       url = "github:Gerg-L/spicetify-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    # Keyboard
-    # kanata-tray = {
-    #   url = "github:rszyma/kanata-tray";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
 
     # manager vencord by nix
     nixcord.url = "github:kaylorben/nixcord";

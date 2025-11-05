@@ -17,7 +17,7 @@ in {
 
         lowopacity = ["bar" "calendar" "notifications" "system-menu"];
 
-        highopacity = ["anyrun" "osd" "logout_dialog"];
+        highopacity = ["osd" "logout_dialog"];
 
         blurred = lib.concatLists [lowopacity highopacity];
       in [
