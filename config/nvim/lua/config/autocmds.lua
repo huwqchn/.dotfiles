@@ -108,3 +108,12 @@ if layout.is_colemak() then
     end,
   })
 end
+
+-- Highlight matching brackets with same style as current line number
+vim.api.nvim_create_autocmd({ "ColorScheme", "VimEnter" }, {
+  group = augroup("matchparen_highlight"),
+  callback = function()
+    -- Link MatchParen to CursorLineNr for consistent styling
+    vim.api.nvim_set_hl(0, "MatchParen", { link = "CursorLineNr" })
+  end,
+})

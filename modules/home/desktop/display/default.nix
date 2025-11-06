@@ -12,17 +12,29 @@ in {
   imports = scanPaths ./.;
 
   options.my.desktop = {
-    bar = mkOption {
-      type = nullOr (enum ["hyprpanel"]);
+    shell = mkOption {
+      type = nullOr (enum ["DankMaterialShell" "NoctaliaShell" "CaelestiaShell"]);
       default =
         ldTernary pkgs
         (
           if desktop.enable
-          then "hyprpanel"
+          then "DankMaterialShell"
           else null
         )
         null;
-      description = "The Bar to use";
+      description = "The desktop shell to use";
+    };
+    bar = mkOption {
+      type = nullOr (enum ["waybar"]);
+      default =
+        ldTernary pkgs
+        (
+          if desktop.enable
+          then "waybar"
+          else null
+        )
+        null;
+      description = "The bar to use";
     };
     lock = mkOption {
       type = nullOr (enum ["hyprlock"]);
@@ -61,8 +73,15 @@ in {
       description = "The idle screen to use";
     };
     launcher = mkOption {
-      type = nullOr (enum []);
-      default = null;
+      type = nullOr (enum ["hyprlauncher"]);
+      default =
+        ldTernary pkgs
+        (
+          if desktop.enable
+          then "hyprlauncher"
+          else null
+        )
+        null;
       description = "The launcher to use";
     };
     shot = mkOption {
@@ -78,7 +97,7 @@ in {
       description = "The screenshot tool to use";
     };
     powermenu = mkOption {
-      type = nullOr (enum ["hyprpanel" "wlogout"]);
+      type = nullOr (enum ["wlogout"]);
       default =
         ldTernary pkgs
         (
@@ -90,12 +109,12 @@ in {
       description = "The powermenu to use";
     };
     notification = mkOption {
-      type = nullOr (enum ["hyprpanel" "avizo"]);
+      type = nullOr (enum ["avizo"]);
       default =
         ldTernary pkgs
         (
           if desktop.enable
-          then "hyprpanel"
+          then "avizo"
           else null
         )
         null;

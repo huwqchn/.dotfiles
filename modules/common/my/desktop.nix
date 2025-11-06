@@ -9,6 +9,10 @@
   inherit (pkgs.stdenv.hostPlatform) isLinux isDarwin;
   inherit (lib.meta) getExe;
   inherit (config) my;
+
+  waylandChoices = ["hyprland" "niri" "cosmic"];
+  xorgChoices = ["i3" "bspwm" "awesome"];
+  darwinChoices = ["aerospace"];
 in {
   options.my.desktop = {
     enable =
@@ -16,55 +20,6 @@ in {
       // {
         default = true;
       };
-
-    # TODO: i3 and bspwm are not supported yet
-    # TODO: sway is not supported yet
-    # TODO: should support niri, that's supper cool
-    # TODO: should support cosmic desktop environment
-    # TODO: refactor this
-    # { lib, ... }:
-    # let
-    #   t = lib.types;
-    #   waylandChoices = [ "niri" "sway" "hyprland" ];
-    #   xorgChoices    = [ "i3" "bspwm" "awesome" ];
-    #   darwinChoices  = [ "aerospace" ];
-    # in {
-    #   options.my.desktop.default = lib.mkOption {
-    #     type = t.nullOr (t.submodule ({ config, ... }: {
-    #       options = {
-    #         type = lib.mkOption {
-    #           type = t.enum [ "wayland" "xorg" "darwin" ];
-    #           description = "Display server type.";
-    #         };
-    #
-    #         default = lib.mkOption {
-    #           # 关键：依赖同一 submodule 内的 config.type
-    #           type = t.enum (
-    #             if      config.type == "wayland" then waylandChoices
-    #             else if config.type == "xorg"    then xorgChoices
-    #             else                              darwinChoices
-    #           );
-    #           description = "Default WM limited by `type`.";
-    #         };
-    #       };
-    #     }));
-    #
-    #     default = {
-    #       type = "wayland";
-    #       default = "niri";
-    #     };
-    #   };
-    # }
-    default = mkOption {
-      type = nullOr (enum ["i3" "bspwm" "awesome" "niri" "sway" "hyprland" "aerospace"]);
-      default =
-        if !my.desktop.enable
-        then null
-        else if isLinux
-        then "hyprland"
-        else "aerospace";
-      description = "The default desktop environment";
-    };
 
     type = mkOption {
       type = nullOr (enum ["wayland" "xorg" "darwin"]);
@@ -75,6 +30,25 @@ in {
         then "wayland"
         else "darwin";
       description = "The desktop environment type to use";
+    };
+
+    default = mkOption {
+      type = nullOr (enum (
+        if my.desktop.type == "wayland"
+        then waylandChoices
+        else if my.desktop.type == "xorg"
+        then xorgChoices
+        else darwinChoices
+      ));
+      default =
+        if !my.desktop.enable
+        then null
+        else if my.desktop.type == "wayland"
+        then "hyprland"
+        else if my.desktop.type == "xorg"
+        then "i3"
+        else "aerospace";
+      description = "The default window manager limited by desktop.type";
     };
 
     exec = mkOption {
@@ -96,22 +70,6 @@ in {
       message = "You can't use desktop.enable without desktop.type";
     }
     {
-      assertion = my.desktop.default == "i3" -> my.desktop.type == "xorg";
-      message = "You can't use i3 desktop environment without xorg";
-    }
-    {
-      assertion = my.desktop.default == "bspwm" -> my.desktop.type == "xorg";
-      message = "You can't use bspwm desktop environment without xorg";
-    }
-    {
-      assertion = my.desktop.default == "hyprland" -> my.desktop.type == "wayland";
-      message = "You can't use hyprland desktop environment without wayland";
-    }
-    {
-      assertion = my.desktop.default == "sway" -> my.desktop.type == "wayland";
-      message = "You can't use sway desktop environment without wayland";
-    }
-    {
       assertion = my.desktop.type == "xorg" -> isLinux;
       message = "You can't use xorg on non-linux system";
     }
@@ -122,10 +80,6 @@ in {
     {
       assertion = my.desktop.type == "darwin" -> isDarwin;
       message = "You can't use darwin desktop environment on non-darwin system";
-    }
-    {
-      assertion = my.desktop.default == "aerospace" -> my.desktop.type == "darwin";
-      message = "You can't use aerospace desktop environment without darwin";
     }
   ];
 }
