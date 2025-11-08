@@ -70,7 +70,7 @@ in {
     };
     opacity = mkOption {
       type = float;
-      default = 0.8;
+      default = 0.95;
       description = ''
         The opacity to use for the terminal. This is used by the
         `my.terminal` module to determine which opacity to use.

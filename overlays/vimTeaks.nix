@@ -14,17 +14,6 @@ _: _final: prev: {
     #   };
     # };
 
-    project-nvim = prev.vimUtils.buildVimPlugin {
-      pname = "project.nvim";
-      version = "2025-10-18";
-      src = prev.fetchFromGitHub {
-        owner = "ahmedkhalf";
-        repo = "project.nvim";
-        rev = "8c6bad7d22eef1b71144b401c9f74ed01526a4fb";
-        hash = "sha256-avV3wMiDbraxW4mqlEsKy0oeewaRj9Q33K8NzWoaptU=";
-      };
-    };
-
     venv-selector-nvim = prev.vimUtils.buildVimPlugin {
       pname = "venv-selector.nvim";
       version = "2025-10-18";

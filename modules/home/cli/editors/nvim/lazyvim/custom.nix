@@ -44,6 +44,7 @@ in {
         "nvim/lua/plugins/coding.lua".source = relativeToConfig "nvim/lua/plugins/coding.lua";
         "nvim/lua/plugins/editor.lua".source = relativeToConfig "nvim/lua/plugins/editor.lua";
         "nvim/lua/plugins/ui.lua".source = relativeToConfig "nvim/lua/plugins/ui.lua";
+        "nvim/lua/plugins/colorscheme.lua".source = relativeToConfig "nvim/lua/plugins/colorscheme.lua";
         "nvim/lua/config".source = relativeToConfig "nvim/lua/config";
         "nvim/lua/util".source = relativeToConfig "nvim/lua/util";
         "nvim/snippets".source = relativeToConfig "nvim/snippets";
