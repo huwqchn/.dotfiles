@@ -28,12 +28,12 @@ in {
               numpy
               pandas
               matplotlib
-              scikitlearn
+              scikit-learn
               sympy
               # FIXME: This is a workaround for a bug in the nixpkgs version of
               # plotly
               #line_profiler
-              memory_profiler
+              memory-profiler
               psutil
               ipywidgets
               scipy

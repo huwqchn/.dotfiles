@@ -5,9 +5,10 @@
   ...
 }: {
   imports = lib.my.scanPaths ./.;
-  home.packages = with inputs.nix-ai-tools.packages.${pkgs.system}; [
+  home.packages = with inputs.nix-ai-tools.packages.${pkgs.stdenv.hostPlatform.system}; [
     copilot-cli
     cursor-agent
-    qwen-code
+    # BUG: Can't build
+    # qwen-code
   ];
 }

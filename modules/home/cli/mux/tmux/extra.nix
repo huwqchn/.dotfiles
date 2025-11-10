@@ -46,6 +46,9 @@ in {
     set -g pane-border-indicators colour
 
     # binds
+    # send prefix to nested tmux session
+    bind C-a send-prefix
+
     # source tmux config file
     bind C-r source-file "~/.config/tmux/tmux.conf" \; display 'Sourced tmux.conf'
     bind q kill-window
@@ -162,14 +165,10 @@ in {
     if -b '[ -c /dev/clipboard ]' 'bind y run -b "tmux save-buffer - > /dev/clipboard"'
 
     # -- toggle_syn_input
-    bind C-g if-shell '[[ $(tmux showw synchronize-panes | cut -d\  -f2) == "on" ]]' \
-    'setw synchronize-panes off; set -g pane-border-style fg=magenta' \
-    'setw synchronize-panes on; set -g pane-border-style fg=red'
+    bind C-g setw synchronize-panes
 
     # -- toggle_status
-    bind C-b if-shell '[[ $(tmux show -g status | cut -d\  -f2) == "on" ]]' \
-    'set -g status off' \
-    'set -g status on'
+    bind C-b set status
 
     # vim tmux navigation
     is_vim="ps -o state= -o comm= -t '#{pane_tty}' \

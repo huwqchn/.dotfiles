@@ -55,7 +55,7 @@ in {
       '';
       shellInit = ''
         # Initialize batpipe
-        eval (${getExe pkgs.bat-extras.batpipe})
+        eval (${getExe pkgs.bat-extras.batpipe} --fish)
       '';
       shellAbbrs =
         {

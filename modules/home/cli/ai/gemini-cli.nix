@@ -41,7 +41,7 @@ in {
       zsh.initContent = tokenExportShell;
       gemini-cli = {
         enable = true;
-        package = inputs.nix-ai-tools.packages.${pkgs.system}.gemini-cli;
+        package = inputs.nix-ai-tools.packages.${pkgs.stdenv.hostPlatform.system}.gemini-cli;
         settings = {
           ui.theme = "Default";
           general = {

@@ -31,7 +31,7 @@
       autoStart = true;
     };
     tmux.enable = true;
-    zellij.enable = true;
+    zellij.enable = false;
     yazi.enable = true;
     zoxide.enable = true;
     pet.enable = true;

@@ -56,11 +56,13 @@ in
             splitDiff = "auto";
           };
           git = {
-            paging = {
-              colorArg = "always";
-              pager = "${pkgs.delta}/bin/delta --dark --paging=never";
-              useConfig = false;
-            };
+            pagers = [
+              {
+                colorArg = "always";
+                pager = "${pkgs.delta}/bin/delta --dark --paging=never";
+                useConfig = false;
+              }
+            ];
             commit.signOff = false;
             merging = {
               manualCommit = false;
@@ -177,7 +179,7 @@ in
               viewResetOptions = "D";
               fetch = "f";
               toggleTreeView = "`";
-              openMergeTool = "M";
+              openMergeOptions = "M";
               openStatusFilter = "<c-b>";
               ignoreFile =
                 if config.my.keyboard.layout == "colemak"

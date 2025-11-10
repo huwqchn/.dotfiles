@@ -10,7 +10,7 @@
   inherit (lib.meta) getExe';
   inherit (lib.my) withUWSM' isHyprland;
   cfg = config.my.desktop.apps.zen;
-  zenPkg = inputs.zen.packages.${pkgs.system}.beta;
+  zenPkg = inputs.zen.packages.${pkgs.stdenv.hostPlatform.system}.beta;
 in {
   imports = [inputs.zen.homeModules.beta];
 

@@ -50,7 +50,7 @@ _: let
     then l
     else if pkgs.stdenv.hostPlatform.isDarwin
     then d
-    else throw "Unsupported system: ${pkgs.stdenv.system}";
+    else throw "Unsupported system: ${pkgs.stdenv.hostPlatform.system}";
   /*
   *
   assume the first monitor in the list of monitors is primary

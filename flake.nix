@@ -271,6 +271,7 @@
         flake-utils.follows = "flake-utils";
       };
     };
+
     quickshell = {
       url = "github:outfoxxed/quickshell";
       inputs.nixpkgs.follows = "nixpkgs";
