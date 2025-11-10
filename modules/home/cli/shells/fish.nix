@@ -53,10 +53,6 @@ in {
         # Use fish for `nix develop`
         ${getExe pkgs.nix-your-shell} fish | source
       '';
-      shellInit = ''
-        # Initialize batpipe
-        eval (${getExe pkgs.bat-extras.batpipe} --fish)
-      '';
       shellAbbrs =
         {
           c = "clear";
@@ -173,26 +169,6 @@ in {
             else
                 echo "'$argv[1]' is not a valid file"
             end
-          '';
-        };
-        fish_greeting = {
-          # copy from https://github.com/Anomalocaridid/dotfiles/blob/d63e4a3599876cd0f0687fc3f83a8e2909c70dfd/modules/terminal/fish.nix#L61
-          body = let
-            lolcat' = getExe pkgs.lolcat;
-          in ''
-            # Ascii Terminal greeting.
-            # Shows Linux distro and version in rainbow ascii art.
-            echo -en "\e[1m"
-            uname -s |
-            tr --delete '"' |
-            ${getExe pkgs.toilet} \
-            --termwidth \
-            --font smslant \
-            --filter border \
-            --directory ${pkgs.figlet}/share/figlet |
-            ${lolcat'}
-            echo -e "\e[1m Welcome back, $USER!\e[0m" |
-            ${lolcat'}
           '';
         };
         backup = {
