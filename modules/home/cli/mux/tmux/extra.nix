@@ -56,9 +56,6 @@ in {
 
     bind t new-window -c "#{pane_current_path}"
 
-    # fullscreen
-    bind f resize-pane -Z
-
     # rotate panes
     bind r rotate-window -D
     bind R rotate-window -U
@@ -75,13 +72,10 @@ in {
     bind > select-layout -n
     bind < select-layout -p
 
-    # display panes numbers
-    bind m display-message
-    bind M display-panes
-
     bind b break-pane
     bind B list-buffers
     bind p select-pane -t:.+
+    bind P display-panes
 
     # Search sessions using an fzf menu
     # Found this gem down here:
@@ -135,6 +129,9 @@ in {
     bind ${L} swap-pane -D
     bind ${J} swap-pane -D
     bind ${K} swap-pane -U
+    # layouts switch
+    bind ${n} next-layout
+    bind ${N} previous-layout
 
     # copy-mode-vi
     bind Space copy-mode
