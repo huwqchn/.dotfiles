@@ -12,7 +12,7 @@
   inherit (colorscheme) palette;
   inherit (config.my.theme.general) transparent;
   cfg = tokyonight;
-  zjstatusWasm = "${pkgs.zjstatus}/bin/zjstatus.wasm";
+  zjstatusWasm = "${pkgs.my.zjstatus}/bin/zjstatus.wasm";
 in {
   config = mkIf enable {
     programs.zellij = {

@@ -1,5 +1,5 @@
 {pkgs, ...}: let
-  zjframesWasm = "file:${pkgs.zjstatus}/bin/zjframes.wasm";
+  zjframesWasm = "file:${pkgs.my.zjframes}/bin/zjframes.wasm";
 in {
   programs.zellij.settings = {
     plugins.zjframes._props.location = zjframesWasm;

@@ -132,22 +132,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # TODO: use this
-    # quickshell = {
-    #   url = "git+https://git.outfoxxed.me/outfoxxed/quickshell";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
-
-    # wayland simple runner
-    # anyrun = {
-    #   url = "github:fufexan/anyrun/launch-prefix";
-    #   inputs = {
-    #     nixpkgs.follows = "nixpkgs";
-    #     systems.follows = "systems";
-    #     flake-parts.follows = "flake-parts";
-    #   };
-    # };
-
     # disko for declarative partitioning
     disko = {
       url = "github:nix-community/disko";
@@ -185,13 +169,6 @@
     programs-sqlite.url = "github:wamserma/flake-programs-sqlite";
 
     # catppuccin.url = "github:catppuccin/nix";
-
-    # my own wallpapers
-    # this wallpaper is too big
-    # wallpapers = {
-    #   url = "github:huwqchn/wallpapers";
-    #   flake = false;
-    # };
 
     # hyprwm
     hyprland = {
@@ -261,15 +238,6 @@
     ghostty-shaders = {
       url = "github:hackr-sh/ghostty-shaders";
       flake = false;
-    };
-
-    # zellij status bar
-    zjstatus = {
-      url = "github:dj95/zjstatus";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-        flake-utils.follows = "flake-utils";
-      };
     };
 
     quickshell = {
