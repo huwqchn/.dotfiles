@@ -73,15 +73,8 @@ in {
       description = "The idle screen to use";
     };
     launcher = mkOption {
-      type = nullOr (enum ["hyprlauncher"]);
-      default =
-        ldTernary pkgs
-        (
-          if desktop.enable
-          then "hyprlauncher"
-          else null
-        )
-        null;
+      type = nullOr (enum []);
+      default = null;
       description = "The launcher to use";
     };
     shot = mkOption {
