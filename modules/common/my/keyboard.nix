@@ -36,7 +36,7 @@ in {
 
       configFile = mkOption {
         type = path;
-        default = relativeToConfig "kanata/config.kbd";
+        default = relativeToConfig "kanata/${pkgs.stdenv.hostPlatform.parsed.kernel.name}.kbd";
         description = "Path to the primary Kanata configuration file.";
       };
 
