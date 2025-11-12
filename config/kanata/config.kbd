@@ -54,7 +54,7 @@
   @tab-mod  _    _    _    _    _    _    _    _    _    _
   @escctrl _ _ _ _ _    _    _ _ _ _ _     _
   _ _    _    _    _    _    _    _    _    _    _    @smart_sft
-  lctl lalt lmet           @spc-mod            @hyper rmet
+  lctl lmet lalt           @spc-mod            @hyper rmet
 )
 
 (deflayer tab_layer

@@ -21,7 +21,7 @@
 
 6. edit /etc/nixos/configuration.nix:
 
-```
+```nix
 imports =
  [ # Include the results of the hardware scan.
    ./hardware-configuration.nix
@@ -32,7 +32,7 @@ imports =
 
 and grub config
 
-```
+```nix
 boot.loader.grub.device = "nodev";
 boot.loader.grub.enable = true;
 boot.loader.grub.efiSupport = true;
