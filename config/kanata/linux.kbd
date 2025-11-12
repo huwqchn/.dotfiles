@@ -15,7 +15,7 @@
   tab  q    w    e    r    t    y    u    i    o    p
   caps a    s    d    f    g    h    j    k    l    ;    '    ret
   lsft z    x    c    v    b    n    m    ,    .    /    rsft
-  lctl lmet lalt           spc            ralt rmet
+  lctl lmet lalt           spc            ralt
 )
 
 ;; vars
@@ -55,7 +55,7 @@
   @tab-mod  _    _    _    _    _    _    _    _    _    _
   @escctrl _ _ _ _ _    _    _ _ _ _ _     _
   _ _    _    _    _    _    _    _    _    _    _    @smart_sft
-  lctl lmet lalt           @spc-mod            rmet ralt
+  lctl lmet lalt           @spc-mod            rmet
 )
 
 (deflayer tab_layer
