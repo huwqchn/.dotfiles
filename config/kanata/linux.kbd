@@ -48,7 +48,6 @@
   exlm S-1
   at S-2
   hash S-3
-  hyper (multi lalt lmet lctl)
 )
 
 (deflayer base
