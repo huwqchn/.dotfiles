@@ -133,8 +133,6 @@
       # sing-box
       "sfm"
       "karabiner-elements" # keyboard remap
-      #alternative terminal
-      "iterm2"
     ];
   };
 }
